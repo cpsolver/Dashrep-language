@@ -1,0 +1,44 @@
+Language::Dashrep
+
+Dashrep is a versatile descriptive programming language based on hyphenated phrases (such as "rectangle-outline-attention-begin") being successively expanded into replacement text.  The resulting expanded text can be an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, etc.  It is a much more flexible alternative to using a template language, yet it is much more useful than simply being a text-manipulation language.
+
+See www.Dashrep.org for details.
+
+
+Version 2.10
+
+
+RUNNING
+
+To run the example, run the following command:
+
+    perl dashrep_do_translation.pl < input_dashrep_sample.txt > output_dashrep_sample.txt
+
+
+To run a test of the code, run the following command:
+
+    perl dashrep_test.pl
+
+
+SUPPORT AND DOCUMENTATION
+
+You can find documentation for the Dashrep language at:
+
+    www.dashrep.org
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (c) 2009, 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
+
+You can redistribute and/or modify this library module
+under the Perl Artistic license, a copy
+of which is included in the LICENSE file.
+
+Conversions of this code into other languages are also
+covered by the above license terms.
+
+The Dashrep (TM) name is trademarked by Richard Fobes at
+www.Dashrep.org to prevent the name from being co-opted.
+
+The Dashrep (TM) language is in the public domain.
