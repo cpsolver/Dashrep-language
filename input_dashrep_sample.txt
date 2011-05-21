@@ -1,0 +1,164 @@
+begin-dashrep-definitions
+
+/------- Generated in executable code ------/
+
+ex-idlist-animals: 3,4,1,2 ----
+
+ex-language-id: en ----
+
+
+/------- Automatically generated from XML or database ------/
+
+db-animal-count-for-animal-id-1: 2 ----
+db-animal-count-for-animal-id-2: 5 ----
+db-animal-count-for-animal-id-3: 4 ----
+db-animal-count-for-animal-id-4: 1 ----
+
+
+/------- Specify the displayed layout/arrangement ------/
+
+entire-content:
+[-create-list-named: animal-phrases-]
+[-first-item-animal-id = [-first-item-in-list: [-ex-idlist-animals-]-]-]
+[-last-item-animal-id = [-last-item-in-list: [-ex-idlist-animals-]-]-]
+[-ex-language-id-]-words-welcome-and-intro
+[-wording-for-animal-count-[-zero-one-multiple-count-of-list: [-ex-idlist-animals-]-]-]
+no-space . no-space
+--------
+
+wording-for-animal-count-zero: [-ex-language-id-]-words-no-pets --------
+wording-for-animal-count-one: [-ex-language-id-]-word-just generated-list-named-animal-phrases --------
+wording-for-animal-count-multiple: new-line generated-list-named-animal-phrases --------
+
+parameter-name-for-list-named-animal-phrases: parameter-animal-id --------
+
+list-of-parameter-values-for-list-named-animal-phrases: [-ex-idlist-animals-] --------
+
+
+template-for-list-named-animal-phrases:
+
+[-ex-language-id-]-word-[-and-or-no-word-match-first-[-same-or-not-same: [-parameter-animal-id-]-[-first-item-animal-id-]-]-and-match-last-[-same-or-not-same: [-parameter-animal-id-]-[-last-item-animal-id-]-]-]
+
+[-ex-language-id-]-word-for-number-[-db-animal-count-for-animal-id-[-parameter-animal-id-]-]
+
+[-ex-language-id-]-word-animal-name-[-singular-or-plural-for-count-category-[-zero-one-multiple: [-db-animal-count-for-animal-id-[-parameter-animal-id-]-]-]-]-for-animal-id-[-parameter-animal-id-]
+
+[-ex-language-id-]-word-that
+
+[-ex-language-id-]-word-is-are-[-zero-one-multiple: [-db-animal-count-for-animal-id-[-parameter-animal-id-]-]-]
+
+[-ex-language-id-]-words-characteristic-[-singular-or-plural-for-count-category-[-zero-one-multiple: [-db-animal-count-for-animal-id-[-parameter-animal-id-]-]-]-]-for-animal-id-[-parameter-animal-id-]
+----
+
+possible-and-word-for-last-not-same: ----
+possible-and-word-for-last-same: word-and ----
+
+prefix-for-list-named-animal-phrases: ----
+separator-for-list-named-animal-phrases: no-space , new-line ----
+suffix-for-list-named-animal-phrases: ----
+
+singular-or-plural-for-count-category-zero: plural ----
+singular-or-plural-for-count-category-one: singular ----
+singular-or-plural-for-count-category-multiple: plural ----
+
+two-spaces: one-space one-space ----
+
+and-or-no-word-match-first-not-same-and-match-last-same: and ----
+and-or-no-word-match-first-not-same-and-match-last-not-same: no-word ----
+and-or-no-word-match-first-same-and-match-last-same: no-word ----
+and-or-no-word-match-first-same-and-match-last-not-same: no-word ----
+
+
+/------- Language-specific words, English ------/
+
+en-words-welcome-and-intro: Welcome to our menagerie. two-spaces We have ----
+
+en-words-no-pets: no animals at the moment ----
+en-word-that: that ----
+en-word-just: just ----
+en-word-and: and ----
+en-word-no-word ----
+
+en-word-is-are-zero: are ----
+en-word-is-are-one: is ----
+en-word-is-are-multiple: are ----
+
+en-word-for-number-0: zero ----
+en-word-for-number-1: one ----
+en-word-for-number-2: two ----
+en-word-for-number-3: three ----
+en-word-for-number-4: four ----
+en-word-for-number-5: five ----
+en-word-for-number-6: six ----
+en-word-for-number-7: seven ----
+en-word-for-number-8: eight ----
+en-word-for-number-9: nine ----
+en-word-for-number-10: ten ----
+
+en-word-animal-name-singular-for-animal-id-1: parrot ----
+en-word-animal-name-plural-for-animal-id-1: parrots ----
+en-word-animal-name-singular-for-animal-id-2: rabbit ----
+en-word-animal-name-plural-for-animal-id-2: rabbits ----
+en-word-animal-name-singular-for-animal-id-3: fish ----
+en-word-animal-name-plural-for-animal-id-3: fish ----
+en-word-animal-name-singular-for-animal-id-4: cat ----
+en-word-animal-name-plural-for-animal-id-4: cats ----
+
+en-words-characteristic-singular-for-animal-id-1: talkative ----
+en-words-characteristic-singular-for-animal-id-2: cute ----
+en-words-characteristic-singular-for-animal-id-3: wet ----
+en-words-characteristic-singular-for-animal-id-4: aloof ----
+
+en-words-characteristic-plural-for-animal-id-1: en-words-characteristic-singular-for-animal-id-1 ----
+en-words-characteristic-plural-for-animal-id-2: en-words-characteristic-singular-for-animal-id-2 ----
+en-words-characteristic-plural-for-animal-id-3: en-words-characteristic-singular-for-animal-id-3 ----
+en-words-characteristic-plural-for-animal-id-4: en-words-characteristic-singular-for-animal-id-4 ----
+
+
+/------- Language-specific words, French ------/
+
+fr-words-welcome-and-intro: Bienvenue a notre menagerie. two-spaces Nous avons ----
+
+fr-words-no-pets: aucuns animaux a l'heure actuelle ----
+fr-word-that: qui ----
+fr-word-just: juste ----
+fr-word-and: et ----
+fr-word-no-word ----
+
+fr-word-is-are-zero: sont ----
+fr-word-is-are-one: est ----
+fr-word-is-are-multiple: sont ----
+
+fr-word-for-number-0: zero ----
+fr-word-for-number-1: un ----
+fr-word-for-number-2: deux ----
+fr-word-for-number-3: trois ----
+fr-word-for-number-4: quatre ----
+fr-word-for-number-5: cinq ----
+fr-word-for-number-6: six ----
+fr-word-for-number-7: sept ----
+fr-word-for-number-8: huit ----
+fr-word-for-number-9: nuef ----
+fr-word-for-number-10: dix ----
+
+fr-word-animal-name-singular-for-animal-id-1: perroquet ----
+fr-word-animal-name-plural-for-animal-id-1: perroquets ----
+fr-word-animal-name-singular-for-animal-id-2: lapin ----
+fr-word-animal-name-plural-for-animal-id-2: lapins ----
+fr-word-animal-name-singular-for-animal-id-3: poisson ----
+fr-word-animal-name-plural-for-animal-id-3: poissons ----
+fr-word-animal-name-singular-for-animal-id-4: chat ----
+fr-word-animal-name-plural-for-animal-id-4: chats ----
+
+fr-words-characteristic-singular-for-animal-id-1: bavard ----
+fr-words-characteristic-plural-for-animal-id-1: bavards ----
+fr-words-characteristic-singular-for-animal-id-2: mignon ----
+fr-words-characteristic-plural-for-animal-id-2: mignons ----
+fr-words-characteristic-singular-for-animal-id-3: humide ----
+fr-words-characteristic-plural-for-animal-id-3: humides ----
+fr-words-characteristic-singular-for-animal-id-4: distant ----
+fr-words-characteristic-plural-for-animal-id-4: distants ----
+
+end-dashrep-definitions
+
+[-entire-content-]
