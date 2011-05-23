@@ -7,7 +7,7 @@ Dashrep is a versatile descriptive programming language based on hyphenated phra
 
 =head1 VERSION
 
-Version 2.10
+Version 2.11
 
 =cut
 
@@ -706,7 +706,7 @@ sub dashrep_expand_parameters
     {
         $loop_status_done = $global_true ;
 
-        if ( ( $dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
+        if ( ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
         {
             print "{{trace; replacement string: " . $replacement_text . "}}\n";
         }
@@ -726,7 +726,7 @@ sub dashrep_expand_parameters
             $text_parameter_content =~ s/ +$// ;
             $loop_status_done = $global_false ;
 
-            if ( ( $dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+            if ( ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
             {
                 print "{{trace; innermost parameter: " . $text_parameter_content . "}}\n";
             }
@@ -755,7 +755,7 @@ sub dashrep_expand_parameters
                 }
                 $replacement_text = $text_begin . " " . $text_end ;
                 $replacement_count_for_item_name{ $text_parameter_value } ++ ;
-                if ( ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
+                if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
                 {
                     print "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
                 }
@@ -770,7 +770,7 @@ sub dashrep_expand_parameters
                 $source_phrase = $1 ;
                 $target_phrase = $2 ;
                 $dashrep_replacement{ $target_phrase } .= " " . $dashrep_replacement{ $source_phrase } ;
-                if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+                if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
                 {
                     print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
                 }
@@ -795,7 +795,7 @@ sub dashrep_expand_parameters
                     $second_object_of_action = $2 ;
                 }
 
-                if ( ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+                if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
                 {
                     print "{{trace; action and object: " . $action_name . " : " . $object_of_action . "}}\n";
                 }
@@ -1019,7 +1019,7 @@ sub dashrep_expand_parameters
                 } else
                 {
                     $replacement_text = $text_begin . $action_name . " " . $object_of_action . $text_end ;
-                    if ( ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+                    if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
                     {
                         print "{{trace; action not recognized: " . $action_name . "}}\n";
                     }
@@ -1536,7 +1536,7 @@ sub dashrep_expand_special_phrases
     $expanded_string = "" ;
     if ( ( $global_ignore_level > 0 ) && ( $remaining_string !~ /((ignore-begin-here)|(ignore-end-here))/si ) )
     {
-        if ( $dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
         {
             print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
             if ( $remaining_string =~ /[^ ]/ )
@@ -1554,7 +1554,7 @@ sub dashrep_expand_special_phrases
         if ( $ignore_directive eq "ignore-begin-here" )
         {
             $expanded_string .= $code_begin . " " ;
-            if ( $dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
             }
@@ -1565,7 +1565,7 @@ sub dashrep_expand_special_phrases
         {
             if ( $global_ignore_level > 0 )
             {
-                if ( $dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+                if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
                 {
                     print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
                     if ( $code_begin =~ /[^ ]/ )
@@ -1577,7 +1577,7 @@ sub dashrep_expand_special_phrases
             {
                 $expanded_string .= " " . $code_begin ;
             }
-            if ( $dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
             }
@@ -1863,7 +1863,7 @@ sub dashrep_xml_tags_to_dashrep
 #  the highest level of interest.  Tags at
 #  higher levels are ignored.
 
-    $first_tag_name = $dashrep_replacement{ "dashrep-internal-first-xml-tag-name" } ;
+    $first_tag_name = $dashrep_replacement{ "dashrep_internal-first-xml-tag-name" } ;
 
 
 #-----------------------------------------------
@@ -1881,7 +1881,7 @@ sub dashrep_xml_tags_to_dashrep
         $tag_name = $3 ;
         $may_include_closing_slash = $4 ;
         $input_text = $5 ;
-        if ( $dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
         {
             print "{{trace; tag: <" . $possible_slash . $tag_name . ">}}\n" ;
         }
@@ -1961,7 +1961,7 @@ sub dashrep_xml_tags_to_dashrep
                     $xml_level_number ++ ;
                     $xml_tag_at_level_number[ $xml_level_number ] = $tag_name ;
                     $xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
-                    if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
                     {
                         print "{{trace; specified top-level tag name: " . $first_tag_name . "}}\n" ;
                     }
@@ -1970,15 +1970,15 @@ sub dashrep_xml_tags_to_dashrep
                     $xml_level_number ++ ;
                     $xml_tag_at_level_number[ $xml_level_number ] = $tag_name ;
                     $first_tag_name = $tag_name ;
-                    $dashrep_replacement{ "dashrep-internal-first-xml-tag-name" } = $first_tag_name ;
+                    $dashrep_replacement{ "dashrep_internal-first-xml-tag-name" } = $first_tag_name ;
                     $xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
-                    if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
                     {
                         print "{{trace; default top-level tag name: " . $tag_name . "}}\n" ;
                     }
                 } else
                 {
-                    if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
                     {
                         print "{{trace; ignored tag: " . $tag_name . "}}\n" ;
                     }
@@ -2118,7 +2118,7 @@ sub dashrep_top_level_action
         $source_phrase = $1 ;
         $target_phrase = $2 ;
         $dashrep_replacement{ $target_phrase } .= " " . $dashrep_replacement{ $source_phrase } ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
         }
@@ -2145,7 +2145,7 @@ sub dashrep_top_level_action
             print OUTFILE "\n" . $dashrep_replacement{ $source_phrase } . "\n" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; copied from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
         }
@@ -2179,7 +2179,7 @@ sub dashrep_top_level_action
             $dashrep_replacement{ $target_phrase } = $all_lines ;
         }
         close( INFILE ) ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; copied from file " . $source_filename . " to phrase " . $target_phrase . "}}\n" ;
         }
@@ -2205,7 +2205,7 @@ sub dashrep_top_level_action
             print OUTFILE "" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; created empty file: " . $target_filename . "}}\n" ;
         }
@@ -2220,7 +2220,7 @@ sub dashrep_top_level_action
     {
         $target_filename = $1 ;
         unlink $target_filename ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; deleted file: " . $target_filename . "}}\n" ;
         }
@@ -2257,7 +2257,7 @@ sub dashrep_top_level_action
             print OUTFILE "end-dashrep-definitions\n\n" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; wrote all definitions to file: " . $target_filename . "}}\n" ;
         }
@@ -2290,7 +2290,7 @@ sub dashrep_top_level_action
         }
         close( INFILE ) ;
         &dashrep_import_replacements( $source_definitions ) ;
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; got definitions from file: " . $source_filename . "}}\n" ;
         }
@@ -2303,7 +2303,7 @@ sub dashrep_top_level_action
 
     } elsif ( $input_text =~ /^ *clear-all-dashrep-phrases *$/ )
     {
-        $tracking_on_or_off = $dashrep_replacement{ "dashrep-tracking-on-or-off" } ;
+        $tracking_on_or_off = $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } ;
         &dashrep_delete_all( );
         if ( $tracking_on_or_off eq "on" )
         {
@@ -2362,13 +2362,13 @@ sub dashrep_top_level_action
                     print OUTFILE $translation . "\n" ;
                 }
             }
-            if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
             {
                 print "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
             }
         } else
         {
-            if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
             {
                 print "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
             }
@@ -2409,13 +2409,13 @@ sub dashrep_top_level_action
                 $translation = &dashrep_xml_tags_to_dashrep( $input_line );
                 print OUTFILE $translation . "\n" ;
             }
-            if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
             {
                 print "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
             }
         } else
         {
-            if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
             {
                 print "{{trace; failed to expand source xml file named " . $source_filename . " into dashrep phrases in file named " . $target_filename . "}}\n" ;
             }
@@ -2429,7 +2429,7 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Finish handling a top-level action.
 
-        if ( $dashrep_replacement{ "dashrep-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; not recognized as top-level action: " . $input_text . "}}\n" ;
         }
@@ -2480,7 +2480,7 @@ sub dashrep_linewise_translate
     while( $input_line = <STDIN> )
     {
         chomp( $input_line );
-        if ( ( $dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+        if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
         {
             print "{{trace; linewise input line: " . $input_line . "}}\n" ;
         }
@@ -2489,19 +2489,19 @@ sub dashrep_linewise_translate
 #-----------------------------------------------
 #  If there are Dashrep definitions, get them.
 
-        if ( $input_line =~ /^ *begin-dashrep-definitions *$/ )
+        if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
         {
             while( $input_line = <STDIN> )
             {
                 chomp( $input_line );
-                if ( $input_line =~ /^ *end-dashrep-definitions *$/ )
+                if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
                 {
                     last;
                 }
                 $all_lines .= $input_line . " " ;
             }
             $numeric_return_value = &dashrep_import_replacements( $all_lines );
-            if ( ( $dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+            if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
             {
                 print "{{trace; definition line: " . $input_line . "}}\n" ;
             }
@@ -2513,12 +2513,12 @@ sub dashrep_linewise_translate
         } else
         {
             $revised_text = &dashrep_expand_parameters( $input_line );
-            if ( ( $dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
+            if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
             {
                 print "{{trace; line after parameters expanded: " . $revised_text . "}}\n" ;
             }
             $revised_text = &dashrep_expand_phrases( $revised_text );
-            if ( ( $dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
+            if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
             {
                 print "{{trace; line after phrases expanded: " . $revised_text . "}}\n" ;
             }
