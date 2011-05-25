@@ -747,7 +747,7 @@ sub dashrep_expand_parameters
             {
                 $text_parameter_name = $1 ;
                 $text_parameter_value = $2 ;
-                $text_parameter_value =~ s/\-+$// ;
+                $text_parameter_value =~ s/[\- ]+$// ;
                 if ( length( $text_parameter_name ) > 0 )
                 {
                     $dashrep_replacement{ $text_parameter_name } = $text_parameter_value ;
@@ -1331,6 +1331,12 @@ sub dashrep_expand_phrases_except_special
 #  Initialization.
 
     $expanded_output_string = "" ;
+
+
+#-----------------------------------------------
+#  Internally define the "hyphen-here" phrase.
+
+    $dashrep_replacement{ "hyphen-here" } = "no-space - no-space" ;
 
 
 #-----------------------------------------------
@@ -2429,7 +2435,7 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Finish handling a top-level action.
 
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $input_text =~ /[^ ]/ ) )
         {
             print "{{trace; not recognized as top-level action: " . $input_text . "}}\n" ;
         }
