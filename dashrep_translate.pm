@@ -305,10 +305,10 @@ sub dashrep_import_replacements
 
 
 #-----------------------------------------------
-#  Ignore the "begin-dashrep-definitions" and
-#  "end-dashrep-definitions" directives.
+#  Ignore the "dashrep-definitions-begin" and
+#  "dashrep-definitions-end" directives.
 
-        } elsif ( ( $input_string eq 'begin-dashrep-definitions' ) || ( $input_string eq 'end-dashrep-definitions' ) )
+        } elsif ( ( $input_string eq 'dashrep-definitions-begin' ) || ( $input_string eq 'dashrep-definitions-end' ) )
         {
             $do_nothing ++ ;
 
@@ -2250,7 +2250,7 @@ sub dashrep_top_level_action
         }
         if ( $possible_error_message eq "" )
         {
-            print OUTFILE "begin-dashrep-definitions\n\n" ;
+            print OUTFILE "dashrep-definitions-begin\n\n" ;
             foreach $phrase_name ( @list_of_phrases )
             {
                 if ( $phrase_name =~ /[^ ]/ )
@@ -2260,7 +2260,7 @@ sub dashrep_top_level_action
                     print OUTFILE $phrase_name . ":\n" . $dashrep_replacement{ $phrase_name } . "\n-----\n\n" ;
                 }
             }
-            print OUTFILE "end-dashrep-definitions\n\n" ;
+            print OUTFILE "dashrep-definitions-end\n\n" ;
         }
         close( OUTFILE ) ;
         if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
