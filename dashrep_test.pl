@@ -150,6 +150,27 @@ test-of-tabs:
 abc tab-here def tab-here ghi
 --------
 
+test-of-parameter-substitution:
+[-prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text-]
+--------
+
+prefix-text:
+abc
+--------
+
+middle-text:
+ghi
+--------
+
+suffix-text:
+mno
+--------
+
+intended-result-of-parameter-substitution:
+abc-def-ghi-jkl-mno
+--------
+
+
 page-participants-list:
 [-create-list-named: participant-names-full-]
 [-auto-increment: test-counter-]
@@ -178,9 +199,9 @@ web-page-begin-1-of-2:
 tag-begin !DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" tag-end
 tag-begin html tag-end
 tag-begin head tag-end
-tag-begin title tag-end
+tag-begin title tag-end no-space
 words-web-page-title
-tag-begin /title tag-end
+no-space tag-begin /title tag-end
 --------
 web-page-begin-2-of-2:
 tag-begin /head tag-end
@@ -200,7 +221,7 @@ no-space  tag-begin /h1 tag-end
 
 case-info-idlistparticipants: [-list-of-numbers-]
 --------
-template-for-list-named-participant-names-full: tag-begin li tag-end participant-fullname-for-participantid-[-parameter-participant-id-] tag-begin /li tag-end
+template-for-list-named-participant-names-full: tag-begin li tag-end no-space participant-fullname-for-participantid-[-parameter-participant-id-] no-space tag-begin /li tag-end
 --------
 parameter-name-for-list-named-participant-names-full:
 parameter-participant-id
@@ -245,9 +266,20 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 #-------------------------------------------
 #  Test expanding parameters.
 
+$content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "test-of-parameter-substitution" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+if ( $content_with_expanded_parameters eq $string_return_value )
+{
+    $one_if_ok = 1 ;
+} else
+{
+    $one_if_ok = 0 ;
+}
+print "expanded parameters in one string -- ";
+if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
+
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "page-participants-list" );
-$numeric_return_value = &dashrep_translate::dashrep_define( "web-page-content" , $content_with_expanded_parameters );
-if ( $content_with_expanded_parameters ne 0 )
+if ( $content_with_expanded_parameters =~ /format-begin-heading-level-1 words-web-page-title format-end-heading-level-1 tag-begin ul tag-end generated-list-named-participant-names-full tag-begin .* tag-end/ )
 {
     $one_if_ok = 1 ;
 } else
@@ -657,7 +689,7 @@ if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s )
 print "test subroutine named dashrep_xml_tags_to_dashrep -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-internal-first-xml-tag-name" , "html" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep_internal-first-xml-tag-name" , "html" );
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-xml-phrase" , "" );
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
