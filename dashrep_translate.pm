@@ -7,7 +7,7 @@ Dashrep is a versatile descriptive programming language based on hyphenated phra
 
 =head1 VERSION
 
-Version 2.11
+Version 2.12
 
 =cut
 
@@ -17,7 +17,7 @@ Implements the Dashrep (TM) language, which is a versatile descriptive programmi
 
 See www.Dashrep.org for details.
 
-Note about Version 2.10: This code has been modified from Version 1.10, which is the code in the Language::Dashrep module in the Perl CPAN archives.  This version can be used without involving anything related to CPAN; it only needs the Perl interpreter.  (One of the changes is to use the "warn" and "die" commands instead of the CPAN-based "carp" and "croak" function calls.)
+Note about Version 2: This code has been modified from Version 1.10, which is the code in the Language::Dashrep module in the Perl CPAN archives.  Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the Perl.exe and Perlxxx.dll files are needed to execute this code.)
 
 Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
 
@@ -1255,7 +1255,7 @@ sub dashrep_generate_lists
 
 #-----------------------------------------------
 #  Protect against an endless loop.
-
+                                                                                                       
             $global_endless_loop_counter ++ ;
             if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
             {
@@ -1280,6 +1280,7 @@ sub dashrep_generate_lists
 #  generated.
 
     }
+
 
 #-----------------------------------------------
 #  End of subroutine.
@@ -1412,6 +1413,19 @@ sub dashrep_expand_phrases_except_special
                 push( @item_stack , $remainder ) ;
             }
             push( @item_stack , $first_item ) ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  If the phrase is "copy-from-next-line-to-phrase"
+#  and there is another item on the stack,
+#  leave that next item -- which should be a
+#  phrase -- un-expanded.
+
+        if ( ( $current_item eq "copy-from-next-line-to-phrase" ) && ( $#item_stack >= 0 ) )
+        {
+            $expanded_output_string .= $current_item . " " . pop( @item_stack ) . " " ;
             next ;
         }
 
@@ -2360,10 +2374,24 @@ sub dashrep_top_level_action
                     $partial_translation = &dashrep_expand_parameters( $input_line );
                     $translation = &dashrep_expand_phrases( $partial_translation );
                 }
-                if ( $translation =~ /[^ ]/ )
+                while ( $translation =~ /^(.*?) *copy-from-next-line-to-phrase +([^ \[\]\n]+) *(.*)$/s )
                 {
-                    print OUTFILE $translation . "\n" ;
-                } elsif ( $global_ignore_level < 1 )
+                    $prefix_text = $1 ;
+                    $target_phrase = $2 ;
+                    $suffix_text = $3 ;
+                    $input_line = <INFILE> ;
+                    chomp( $input_line ) ;
+                    $input_line =~ s/^ +// ;
+                    $input_line =~ s/ +$// ;
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    {
+                        print OUTFILE "{{trace; got next line: " . $input_line . "}}\n" ;
+                        print OUTFILE "{{trace; phrase " . $target_phrase . " defined as " . $input_line . "}}\n" ;
+                    }
+                    $dashrep_replacement{ $target_phrase } = $input_line ;
+                    $translation = $prefix_text . " " . $suffix_text ;
+                }
+                if ( ( $translation =~ /[^ ]/ ) && ( $global_ignore_level < 1 ) )
                 {
                     print OUTFILE $translation . "\n" ;
                 }
