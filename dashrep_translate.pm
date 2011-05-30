@@ -1554,6 +1554,7 @@ sub dashrep_expand_special_phrases
 
     $remaining_string = $expanded_string ;
     $expanded_string = "" ;
+
     if ( ( $global_ignore_level > 0 ) && ( $remaining_string !~ /((ignore-begin-here)|(ignore-end-here))/si ) )
     {
         if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
@@ -1566,37 +1567,38 @@ sub dashrep_expand_special_phrases
         }
         $remaining_string = "" ;
     }
+
     while ( $remaining_string =~ /^(.*? +)?((ignore-begin-here)|(ignore-end-here))( +.*)?$/si )
     {
         $code_begin = $1 ;
         $ignore_directive = $2 ;
         $remaining_string = $5 ;
-        if ( $ignore_directive eq "ignore-begin-here" )
+
+        if ( $global_ignore_level > 0 )
+        {
+            if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
+                if ( $remaining_string =~ /[^ ]/ )
+                {
+                    print "{{trace; ignored: " . $code_begin . "}}\n" ;
+                }
+            }
+        } else
         {
             $expanded_string .= $code_begin . " " ;
+        }
+
+        if ( $ignore_directive eq "ignore-begin-here" )
+        {
             if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
             }
             $global_ignore_level ++ ;
             $dashrep_replacement{ "dashrep_internal-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
-        }
-        if ( $ignore_directive eq "ignore-end-here" )
+        } elsif ( $ignore_directive eq "ignore-end-here" )
         {
-            if ( $global_ignore_level > 0 )
-            {
-                if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
-                    if ( $code_begin =~ /[^ ]/ )
-                    {
-                        print "{{trace; ignored: " . $code_begin . "}}\n" ;
-                    }
-                }
-            } else
-            {
-                $expanded_string .= " " . $code_begin ;
-            }
             if ( $dashrep_replacement{ "dashrep_internal-ignore-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
