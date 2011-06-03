@@ -2284,7 +2284,7 @@ sub dashrep_top_level_action
                 $def_end = "\n-----\n\n" ;
             }
             print OUTFILE $all_defs_begin ;
-            foreach $phrase_name ( @list_of_phrases )
+            foreach $phrase_name ( sort( @list_of_phrases ) )
             {
                 if ( $phrase_name =~ /[^ ]/ )
                 {
