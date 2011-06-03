@@ -2266,17 +2266,32 @@ sub dashrep_top_level_action
         }
         if ( $possible_error_message eq "" )
         {
-            print OUTFILE "dashrep-definitions-begin\n\n" ;
+            if ( $dashrep_replacement{ "dashrep_internal-export-delimited-definitions" } eq "yes" )
+            {
+                $all_defs_begin = "export-defs-all-begin\n\n" ;
+                $all_defs_end = "export-defs-all-end\n\n" ;
+                $phrase_begin = "export-defs-phrase-begin " ;
+                $phrase_end = " export-defs-phrase-end\n\n" ;
+                $def_begin = "export-defs-def-begin " ;
+                $def_end = " export-defs-def-end\n\n" ;
+            } else
+            {
+                $all_defs_begin = "dashrep-definitions-begin\n\n" ;
+                $all_defs_end = "dashrep-definitions-end\n\n" ;
+                $phrase_begin = "" ;
+                $phrase_end = ":\n" ;
+                $def_begin = "" ;
+                $def_end = "\n-----\n\n" ;
+            }
+            print OUTFILE $all_defs_begin ;
             foreach $phrase_name ( @list_of_phrases )
             {
                 if ( $phrase_name =~ /[^ ]/ )
                 {
-#                    $counter ++ ;
-#                    print OUTFILE $counter . ": " . $phrase_name . ":\n" . $dashrep_replacement{ $phrase_name } . "\n-----\n\n" ;
-                    print OUTFILE $phrase_name . ":\n" . $dashrep_replacement{ $phrase_name } . "\n-----\n\n" ;
+                    print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $dashrep_replacement{ $phrase_name } . $def_end ;
                 }
             }
-            print OUTFILE "dashrep-definitions-end\n\n" ;
+            print OUTFILE $all_defs_end ;
         }
         close( OUTFILE ) ;
         if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
