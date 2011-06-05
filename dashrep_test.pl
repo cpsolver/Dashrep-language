@@ -1,7 +1,7 @@
 #  Test the dashrep_translate.pm module
 
 
-use dashrep_translate ;
+use dashrep_translate;
 
 
 BEGIN {
@@ -9,14 +9,15 @@ BEGIN {
 #-------------------------------------------
 #  Declare variables.
 
-my ( $numeric_return_value ) ;
-my ( $string_return_value ) ;
-my ( $list_count ) ;
-my ( $one_if_ok ) ;
-my ( $dashrep_code ) ;
-my ( $content_with_expanded_parameters ) ;
-my ( $html_code ) ;
-my ( @string_array_return_value ) ;
+my ( $numeric_return_value );
+my ( $string_return_value );
+my ( $list_count );
+my ( $one_if_ok );
+my ( $dashrep_code );
+my ( $content_with_expanded_parameters );
+my ( $html_code );
+my ( @string_array_return_value );
+my ( $captured_text );
 
 
 #-------------------------------------------
@@ -49,16 +50,16 @@ print "defined hyphenated phrase -- ";
 if ( $numeric_return_value eq 1 ) { print "OK\n" } else { print "ERROR\n\n" };
 
 @string_array_return_value = &dashrep_translate::dashrep_get_list_of_phrases;
-$list_count = $#string_array_return_value + 1 ;
+$list_count = $#string_array_return_value + 1;
 print "counted defined phrases -- ";
 if ( $list_count eq 2 ) { print "OK\n" } else { print "ERROR\n\n" }
 
 if ( $string_array_return_value[ 1 ] =~ /page/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "verified name in list of phrase names -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -254,10 +255,10 @@ TEXT_TO_IMPORT
 $numeric_return_value = &dashrep_translate::dashrep_import_replacements( $dashrep_code );
 if ( $numeric_return_value > 10 )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "imported replacements using Dashrep code -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -270,10 +271,10 @@ $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameter
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
 if ( $content_with_expanded_parameters eq $string_return_value )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "expanded parameters in one string -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -281,10 +282,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "page-participants-list" );
 if ( $content_with_expanded_parameters =~ /format-begin-heading-level-1 words-web-page-title format-end-heading-level-1 tag-begin ul tag-end generated-list-named-participant-names-full tag-begin .* tag-end/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "expanded parameters -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -380,10 +381,10 @@ if ( $string_return_value ne "3" ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-of-comment-delimiters" );
 if ( $string_return_value !~ /comment/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test comment delimiters -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -395,10 +396,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases_except_special( "test-of-special-spacing" );
 if ( $string_return_value =~ /abc no\-space def one\-space ghi jkl/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test expansion without special phrases -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -410,10 +411,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  no-space  def" );
 if ( $string_return_value =~ /abcdef/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test no-space directive -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -421,10 +422,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  one-space  def" );
 if ( $string_return_value =~ /abc def/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test one-space directive -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -432,10 +433,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
 if ( $string_return_value =~ /abc\n    def/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test four-space indentation -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -443,10 +444,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc non-breaking-space def" );
 if ( $string_return_value =~ /abc&nbsp;def/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test non-breaking-space directives -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -454,10 +455,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx" );
 if ( $string_return_value =~ /jkl mno&nbsp;pqr&nbsp;stu vwx/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test non-breaking-spaces-begin/end directive -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -465,10 +466,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc tab-here def" );
 if ( $string_return_value =~ /abc\tdef/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test tab-here directive -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -476,10 +477,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc empty-line def new-line ghi" );
 if ( $string_return_value =~ /abc\n\ndef\nghi/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test empty-line and new-line directives -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -491,10 +492,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-special-line-phrases" );
 if ( $string_return_value =~ /\n/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test line break phrase -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -502,10 +503,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-of-special-line-phrases" );
 if ( $string_return_value =~ /\n/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test special-phrase line break -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -517,10 +518,10 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-tabs" );
 if ( $string_return_value ne "abc\tdef\tghi" )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test tab-here phrase -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -530,36 +531,74 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 #  Test the "ignore-begin-here" and
 #  "ignore-end-here" directives.
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc ignore-begin-here def ghi ignore-end-here test-jkl" );
 if ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test ignore directives on same line -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc" );
-$accumulated_string = $string_return_value ;
+$accumulated_string = $string_return_value;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "ignore-begin-here" );
-$accumulated_string .= $string_return_value ;
+$accumulated_string .= $string_return_value;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "def ghi" );
-$accumulated_string .= $string_return_value ;
+$accumulated_string .= $string_return_value;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "ignore-end-here" );
-$accumulated_string .= $string_return_value ;
+$accumulated_string .= $string_return_value;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-jkl" );
-$accumulated_string .= $string_return_value ;
+$accumulated_string .= $string_return_value;
 if ( $accumulated_string =~ /test-abc[^a-z]*test-jkl/i )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test ignore directives on different lines -- ";
+if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
+
+
+#-------------------------------------------
+#  Test the "capture-begin-here" and
+#  "capture-end-here" directives.
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "on" );
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc capture-begin-here def ghi capture-end-here test-jkl" );
+$captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
+if ( ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ ) && ( $captured_text =~ /^[^a-z]*def +ghi[^a-z]*$/ ) )
+{
+    $one_if_ok = 1;
+} else
+{
+    $one_if_ok = 0;
+}
+print "test capture directives on same line -- ";
+if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
+
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc" );
+$accumulated_string = $string_return_value;
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "capture-begin-here" );
+$accumulated_string .= $string_return_value;
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "def ghi" );
+$accumulated_string .= $string_return_value;
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "capture-end-here" );
+$accumulated_string .= $string_return_value;
+$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-jkl" );
+$accumulated_string .= $string_return_value;
+$captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
+if ( ( $accumulated_string =~ /test-abc *test-jkl/ ) && ( $captured_text =~ /def +ghi/ ) )
+{
+    $one_if_ok = 1;
+} else
+{
+    $one_if_ok = 0;
+}
+print "test capture directives on different lines -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
 
@@ -573,20 +612,20 @@ $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameter
 $html_code = &dashrep_translate::dashrep_expand_phrases( $content_with_expanded_parameters );
 if ( length( $html_code ) gt 100 )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "expanded hyphenated phrase using all replacements -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 
 if ( ( $html_code =~ /List of participants/ ) && ( $html_code =~ /Nicole/ ) )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "found specific expanded text -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -596,7 +635,7 @@ if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
 #  Test setting the runaway limit (to stop
 #  endless loops).
 
-$string_return_value = &dashrep_translate::dashrep_set_runaway_limit( 7000 ) ;
+$string_return_value = &dashrep_translate::dashrep_set_runaway_limit( 7000 );
 print 'set new runaway limit -- ';
 if ( $numeric_return_value eq 1 ) { print 'OK' . "\n"  } else { print "ERROR\n\n" }
 
@@ -608,8 +647,8 @@ if ( $numeric_return_value eq 1 ) { print 'OK' . "\n"  } else { print "ERROR\n\n
 #  with a web browser.
 
 open ( OUTFILE , ">" . "output_test_web_page.html" );
-print OUTFILE $html_code ;
-close OUTFILE ;
+print OUTFILE $html_code;
+close OUTFILE;
 
 
 #-------------------------------------------
@@ -621,10 +660,10 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "append-fro
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /some content here/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test top-level action: append-from-phrase-to-phrase -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -636,10 +675,10 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /some content here/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test top-level actions that create file, append to file, and copy from file to phrase -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -665,10 +704,10 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /replaced content/ )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test top-level action: linewise-translate-from-file-to-file -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -681,10 +720,10 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-internal-fi
 $string_return_value = &dashrep_translate::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
 if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test subroutine named dashrep_xml_tags_to_dashrep -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
@@ -698,10 +737,10 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-xml-phrase" );
 if ( $string_return_value =~ /begin-html-head.*participants.*end-html-head/s )
 {
-    $one_if_ok = 1 ;
+    $one_if_ok = 1;
 } else
 {
-    $one_if_ok = 0 ;
+    $one_if_ok = 0;
 }
 print "test top-level action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
 if ( $one_if_ok eq 1 ) { print "OK\n" } else { print "ERROR\n\n" }
