@@ -97,6 +97,9 @@ my ( $xml_level_number ) ;
 my ( $xml_accumulated_sequence_of_tag_names ) ;
 my ( $spaces ) ;
 my ( $global_ignore_level ) ;
+my ( $global_top_level_previous_line ) ;
+my ( $global_phrase_to_insert_after_next_top_level_line ) ;
+my ( $global_top_line_count_for_insert_phrase ) ;
 my ( @global_list_of_lists_to_generate ) ;
 my ( %dashrep_replacement ) ;
 my ( %replacement_count_for_item_name ) ;
@@ -116,7 +119,7 @@ BEGIN {
     $nesting_level_of_file_actions = 0 ;
     $global_ignore_level = 0 ;
     $xml_level_number = 0 ;
-
+    $global_top_level_previous_line = "" ;
     %dashrep_replacement = ( ) ;
     %replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
@@ -782,7 +785,7 @@ sub dashrep_expand_parameters
 #  includes a colon between the action and its
 #  operand(s), handle it.
 
-            } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *: *([^\n\:=]*)$/ )
+            } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *[: ] *([^\n\:=]*)$/ )
             {
                 $action_name = $1 ;
                 $object_of_action = $2 ;
@@ -1011,6 +1014,37 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the action:
+#  copy-from-previous-line-to-phrase
+
+                } elsif ( $action_name eq "copy-from-previous-line-to-phrase" )
+                {
+                    $dashrep_replacement{ $object_of_action } = $global_top_level_previous_line ;
+                    $replacement_text = $text_begin . " " . $text_end ;
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    {
+                        print "{{trace; got previous top-level line: " . $global_top_level_previous_line . "}}\n" ;
+                        print "{{trace; phrase " . $object_of_action . " defined as " . $global_top_level_previous_line . "}}\n" ;
+                    }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  insert-phrase-with-brackets-after-next-top-line
+#  For now, just get the phrase name.
+
+                } elsif ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
+                {
+                    $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
+                    $global_top_line_count_for_insert_phrase = 1 ;
+                    $replacement_text = $text_begin . " " . $text_end ;
+                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    {
+                        print "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
+                    }
+
+
+#-----------------------------------------------
 #  Terminate the branching that handles a
 #  parameter of the type that uses a colon to
 #  separate the action name from its required
@@ -1018,11 +1052,11 @@ sub dashrep_expand_parameters
 
                 } else
                 {
-                    $replacement_text = $text_begin . $action_name . " " . $object_of_action . $text_end ;
                     if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
                     {
                         print "{{trace; action not recognized: " . $action_name . "}}\n";
                     }
+                    $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
                 }
 
 
@@ -1413,19 +1447,6 @@ sub dashrep_expand_phrases_except_special
                 push( @item_stack , $remainder ) ;
             }
             push( @item_stack , $first_item ) ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  If the phrase is "copy-from-next-line-to-phrase"
-#  and there is another item on the stack,
-#  leave that next item -- which should be a
-#  phrase -- un-expanded.
-
-        if ( ( $current_item eq "copy-from-next-line-to-phrase" ) && ( $#item_stack >= 0 ) )
-        {
-            $expanded_output_string .= $current_item . " " . pop( @item_stack ) . " " ;
             next ;
         }
 
@@ -2091,6 +2112,7 @@ sub dashrep_top_level_action
     my ( $target_filename ) ;
     my ( $source_phrase ) ;
     my ( $target_phrase ) ;
+    my ( $lines_to_translate ) ;
     my ( @list_of_phrases ) ;
 
 
@@ -2377,40 +2399,44 @@ sub dashrep_top_level_action
         if ( $possible_error_message eq "" )
         {
             $global_ignore_level = 0 ;
+            $global_top_level_previous_line = "" ;
+            $global_top_line_count_for_insert_phrase = 0 ;
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( $qualifier eq "-parameters-only" )
+                $input_line_read = $input_line ;
+                $lines_to_translate = 1 ;
+                while ( $lines_to_translate > 0 )
                 {
-                    $translation = &dashrep_expand_parameters( $input_line );
-                } elsif ( $qualifier eq "-phrases-only" )
-                {
-                    $translation = &dashrep_expand_phrases( $input_line );
-                } else
-                {
-                    $partial_translation = &dashrep_expand_parameters( $input_line );
-                    $translation = &dashrep_expand_phrases( $partial_translation );
-                }
-                while ( $translation =~ /^(.*?) *copy-from-next-line-to-phrase +([^ \[\]\n]+) *(.*)$/s )
-                {
-                    $prefix_text = $1 ;
-                    $target_phrase = $2 ;
-                    $suffix_text = $3 ;
-                    $input_line = <INFILE> ;
-                    chomp( $input_line ) ;
-                    $input_line =~ s/^ +// ;
-                    $input_line =~ s/ +$// ;
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    $lines_to_translate = 0 ;
+                    if ( $qualifier eq "-parameters-only" )
                     {
-                        print OUTFILE "{{trace; got next line: " . $input_line . "}}\n" ;
-                        print OUTFILE "{{trace; phrase " . $target_phrase . " defined as " . $input_line . "}}\n" ;
+                        $translation = &dashrep_expand_parameters( $input_line );
+                    } elsif ( $qualifier eq "-phrases-only" )
+                    {
+                        $translation = &dashrep_expand_phrases( $input_line );
+                    } else
+                    {
+                        $partial_translation = &dashrep_expand_parameters( $input_line );
+                        $translation = &dashrep_expand_phrases( $partial_translation );
                     }
-                    $dashrep_replacement{ $target_phrase } = $input_line ;
-                    $translation = $prefix_text . " " . $suffix_text ;
-                }
-                if ( ( $translation =~ /[^ ]/ ) && ( $global_ignore_level < 1 ) )
-                {
-                    print OUTFILE $translation . "\n" ;
+                    if ( ( $translation =~ /[^ ]/ ) && ( $global_ignore_level < 1 ) )
+                    {
+                        print OUTFILE $translation . "\n" ;
+                    }
+                    if ( $global_top_line_count_for_insert_phrase == 1 )
+                    {
+                        $global_top_line_count_for_insert_phrase = 2 ;
+                    } elsif ( $global_top_line_count_for_insert_phrase == 2 )
+                    {
+                        $global_top_line_count_for_insert_phrase = 0 ;
+                        if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
+                        {
+                            $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
+                            $lines_to_translate = 1 ;
+                        }
+                    }
+                    $global_top_level_previous_line = $input_line_read ;
                 }
             }
             if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
