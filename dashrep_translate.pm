@@ -2172,11 +2172,17 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Handle the action:
 #  copy-from-phrase-append-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *copy-from-phrase-append-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
         $source_phrase = $1 ;
         $target_filename = $2 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         if ( open ( OUTFILE , ">>" . $target_filename ) )
         {
             $possible_error_message .= "" ;
@@ -2233,10 +2239,16 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Handle the action:
 #  create-empty-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *create-empty-file +([^ \[\]]+) *$/ )
     {
         $target_filename = $1 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         if ( open ( OUTFILE , ">" . $target_filename ) )
         {
             $possible_error_message .= "" ;
@@ -2259,10 +2271,16 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Handle the action:
 #  delete-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *delete-file +([^ \[\]]+) *$/ )
     {
         $target_filename = $1 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         unlink $target_filename ;
         if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
@@ -2274,10 +2292,16 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Handle the action:
 #  write-all-dashrep-definitions-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *write-all-dashrep-definitions-to-file +([^ \[\]]+) *$/ )
     {
         $target_filename = $1 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
         if ( open ( OUTFILE , ">" . $target_filename ) )
         {
@@ -2376,12 +2400,18 @@ sub dashrep_top_level_action
 #  linewise-translate-from-file-to-file and
 #  linewise-translate-parameters-only-from-file-to-file
 #  linewise-translate-phrases-only-from-file-to-file
+#
+#  The output filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *linewise-translate(()|(-parameters-only)|(-phrases-only))-from-file-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
         $qualifier = $1 ;
         $source_filename = $5 ;
         $target_filename = $6 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
@@ -2459,11 +2489,17 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Handle the action:
 #  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
+#
+#  The output filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
 
     } elsif ( $input_text =~ /^ *linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
         $source_filename = $1 ;
         $target_filename = $2 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
