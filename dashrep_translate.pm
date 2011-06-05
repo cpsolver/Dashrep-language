@@ -1689,6 +1689,7 @@ sub dashrep_expand_special_phrases
 
         if ( $capture_directive eq "capture-begin-here" )
         {
+            $dashrep_replacement{ "captured-text" } = "" ;
             if ( $dashrep_replacement{ "dashrep_internal-capture-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; capture directive: " . $capture_directive . "}}\n" ;
