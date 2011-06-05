@@ -97,7 +97,7 @@ my ( $xml_level_number ) ;
 my ( $xml_accumulated_sequence_of_tag_names ) ;
 my ( $spaces ) ;
 my ( $global_ignore_level ) ;
-my ( $global_top_level_previous_line ) ;
+my ( $global_capture_level ) ;
 my ( $global_phrase_to_insert_after_next_top_level_line ) ;
 my ( $global_top_line_count_for_insert_phrase ) ;
 my ( @global_list_of_lists_to_generate ) ;
@@ -118,8 +118,8 @@ BEGIN {
     $spaces = "                                                                              " ;
     $nesting_level_of_file_actions = 0 ;
     $global_ignore_level = 0 ;
+    $global_capture_level = 0 ;
     $xml_level_number = 0 ;
-    $global_top_level_previous_line = "" ;
     %dashrep_replacement = ( ) ;
     %replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
@@ -238,9 +238,10 @@ sub dashrep_import_replacements
 
 
 #-----------------------------------------------
-#  Reset the "ignore" level.
+#  Reset the "ignore" and "capture" levels.
 
     $global_ignore_level = 0 ;
+    $global_capture_level = 0 ;
 
 
 #-----------------------------------------------
@@ -559,9 +560,10 @@ sub dashrep_delete_all
 
 
 #-----------------------------------------------
-#  Reset the "ignore" level.
+#  Reset the "ignore" and "capture" levels.
 
     $global_ignore_level = 0 ;
+    $global_capture_level = 0 ;
 
 
 #-----------------------------------------------
@@ -1011,21 +1013,6 @@ sub dashrep_expand_parameters
                 {
                     push ( @global_list_of_lists_to_generate , $object_of_action ) ;
                     $replacement_text = $text_begin . " " . $text_end ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  copy-from-previous-line-to-phrase
-
-                } elsif ( $action_name eq "copy-from-previous-line-to-phrase" )
-                {
-                    $dashrep_replacement{ $object_of_action } = $global_top_level_previous_line ;
-                    $replacement_text = $text_begin . " " . $text_end ;
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
-                    {
-                        print "{{trace; got previous top-level line: " . $global_top_level_previous_line . "}}\n" ;
-                        print "{{trace; phrase " . $object_of_action . " defined as " . $global_top_level_previous_line . "}}\n" ;
-                    }
 
 
 #-----------------------------------------------
@@ -1569,6 +1556,31 @@ sub dashrep_expand_special_phrases
 
 
 #-----------------------------------------------
+#  Get the capture level.  It can be accessed
+#  from outside this subroutine in case multiple
+#  streams of Dashrep code are being processed
+#  in turn.
+
+    if ( $dashrep_replacement{ "dashrep_internal-capture-level" } =~ /^[0-9]+$/ )
+    {
+        $global_capture_level = $dashrep_replacement{ "dashrep_internal-capture-level" } + 0 ;
+    }
+
+
+#-----------------------------------------------
+#  If the ignore level and capture level are both
+#  non-zero, indicate an error (because they
+#  overlap).
+
+    if ( ( $global_ignore_level > 0 ) && ( $global_capture_level > 0 ) )
+    {
+        $expanded_string .= " [warning: ignore and capture directives overlap, both directives reset] " ;
+        $global_ignore_level = 0 ;
+        $global_capture_level = 0 ;
+    }
+
+
+#-----------------------------------------------
 #  Handle the directives:
 #  "ignore-begin-here" and
 #  "ignore-end-here"
@@ -1626,6 +1638,71 @@ sub dashrep_expand_special_phrases
             }
             $global_ignore_level -- ;
             $dashrep_replacement{ "dashrep_internal-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
+        }
+    }
+    $expanded_string .= $remaining_string ;
+
+
+#-----------------------------------------------
+#  Handle the directives:
+#  "capture-begin-here" and
+#  "capture-end-here"
+
+    $remaining_string = $expanded_string ;
+    $expanded_string = "" ;
+
+    if ( ( $global_capture_level > 0 ) && ( $remaining_string !~ /((capture-begin-here)|(capture-end-here))/si ) )
+    {
+        $dashrep_replacement{ "captured-text" } .= " " . $remaining_string ;
+        if ( $dashrep_replacement{ "dashrep_internal-capture-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; capture level: " . $global_capture_level . "}}\n" ;
+            if ( $remaining_string =~ /[^ ]/ )
+            {
+                print "{{trace; captured: " . $remaining_string . "}}\n" ;
+            }
+        }
+        $remaining_string = "" ;
+    }
+
+    while ( $remaining_string =~ /^(.*? +)?((capture-begin-here)|(capture-end-here))( +.*)?$/si )
+    {
+        $code_begin = $1 ;
+        $capture_directive = $2 ;
+        $remaining_string = $5 ;
+
+        if ( $global_capture_level > 0 )
+        {
+            $dashrep_replacement{ "captured-text" } .= " " . $code_begin ;
+            if ( $dashrep_replacement{ "dashrep_internal-capture-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; capture level: " . $global_capture_level . "}}\n" ;
+                if ( $remaining_string =~ /[^ ]/ )
+                {
+                    print "{{trace; captured: " . $code_begin . "}}\n" ;
+                }
+            }
+        } else
+        {
+            $expanded_string .= $code_begin . " " ;
+        }
+
+        if ( $capture_directive eq "capture-begin-here" )
+        {
+            if ( $dashrep_replacement{ "dashrep_internal-capture-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+            }
+            $global_capture_level ++ ;
+            $dashrep_replacement{ "dashrep_internal-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
+        } elsif ( $capture_directive eq "capture-end-here" )
+        {
+            if ( $dashrep_replacement{ "dashrep_internal-capture-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+            }
+            $global_capture_level -- ;
+            $dashrep_replacement{ "dashrep_internal-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
         }
     }
     $expanded_string .= $remaining_string ;
@@ -1809,9 +1886,10 @@ sub dashrep_set_runaway_limit
 
 
 #-----------------------------------------------
-#  Reset the "ignore" level.
+#  Reset the "ignore" and "capture" levels.
 
     $global_ignore_level = 0 ;
+    $global_capture_level = 0 ;
 
 
 #-----------------------------------------------
@@ -2429,12 +2507,11 @@ sub dashrep_top_level_action
         if ( $possible_error_message eq "" )
         {
             $global_ignore_level = 0 ;
-            $global_top_level_previous_line = "" ;
+            $global_capture_level = 0 ;
             $global_top_line_count_for_insert_phrase = 0 ;
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                $input_line_read = $input_line ;
                 $lines_to_translate = 1 ;
                 while ( $lines_to_translate > 0 )
                 {
@@ -2450,7 +2527,7 @@ sub dashrep_top_level_action
                         $partial_translation = &dashrep_expand_parameters( $input_line );
                         $translation = &dashrep_expand_phrases( $partial_translation );
                     }
-                    if ( ( $translation =~ /[^ ]/ ) && ( $global_ignore_level < 1 ) )
+                    if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
                     {
                         print OUTFILE $translation . "\n" ;
                     }
@@ -2466,7 +2543,6 @@ sub dashrep_top_level_action
                             $lines_to_translate = 1 ;
                         }
                     }
-                    $global_top_level_previous_line = $input_line_read ;
                 }
             }
             if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
