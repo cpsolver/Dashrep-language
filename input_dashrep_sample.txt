@@ -1,4 +1,4 @@
-begin-dashrep-definitions
+dashrep-definitions-begin
 
 /------- Generated in executable code ------/
 
@@ -159,6 +159,6 @@ fr-words-characteristic-plural-for-animal-id-3: humides ----
 fr-words-characteristic-singular-for-animal-id-4: distant ----
 fr-words-characteristic-plural-for-animal-id-4: distants ----
 
-end-dashrep-definitions
+dashrep-definitions-end
 
 [-entire-content-]
