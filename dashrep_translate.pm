@@ -2486,6 +2486,11 @@ sub dashrep_top_level_action
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
         $text_list_of_phrases = $dashrep_replacement{ $source_phrase } ;
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        {
+            print "{{trace; phrase that contains list of phrases to export: " . $source_phrase . "}}\n" ;
+            print "{{trace; list of phrases for exporting definitions to file: " . $text_list_of_phrases . "}}\n" ;
+        }
         @list_of_phrases = &dashrep_internal_split_delimited_items( $text_list_of_phrases ) ;
         if ( open ( OUTFILE , ">" . $target_filename ) )
         {
