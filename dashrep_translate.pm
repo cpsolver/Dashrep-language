@@ -2192,6 +2192,8 @@ sub dashrep_top_level_action
     my ( $source_phrase ) ;
     my ( $target_phrase ) ;
     my ( $lines_to_translate ) ;
+    my ( $line_count ) ;
+    my ( $text_to_expand ) ;
     my ( @list_of_phrases ) ;
 
 
@@ -2277,6 +2279,42 @@ sub dashrep_top_level_action
         if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; copied from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
+        }
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  expand-phrase-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
+
+    } elsif ( $input_text =~ /^ *expand-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
+    {
+        $source_phrase = $1 ;
+        $target_filename = $2 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
+        if ( open ( OUTFILE , ">" . $target_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $text_to_expand = "[-" . $dashrep_replacement{ $source_phrase } . "-]" ;
+            $partial_translation = &dashrep_expand_parameters( $text_to_expand );
+            $translation = &dashrep_expand_phrases( $partial_translation );
+            print OUTFILE $translation . "\n" ;
+        }
+        close( OUTFILE ) ;
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        {
+            print "{{trace; expanded phrase " . $source_phrase . " to file " . $target_filename . "}}\n" ;
         }
         $input_text = "" ;
 
@@ -2483,6 +2521,8 @@ sub dashrep_top_level_action
 #  The output filename is edited to remove any path
 #  specifications, so that only local files
 #  are affected.
+#
+#  If there are Dashrep definitions, get them.
 
     } elsif ( $input_text =~ /^ *linewise-translate(()|(-parameters-only)|(-phrases-only))-from-file-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
@@ -2516,32 +2556,55 @@ sub dashrep_top_level_action
                 $lines_to_translate = 1 ;
                 while ( $lines_to_translate > 0 )
                 {
-                    $lines_to_translate = 0 ;
-                    if ( $qualifier eq "-parameters-only" )
+                    if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
                     {
-                        $translation = &dashrep_expand_parameters( $input_line );
-                    } elsif ( $qualifier eq "-phrases-only" )
-                    {
-                        $translation = &dashrep_expand_phrases( $input_line );
+                        $all_lines = "" ;
+                        $line_count = 0 ;
+                        while( $input_line = <STDIN> )
+                        {
+                            chomp( $input_line );
+                            if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
+                            {
+                                last;
+                            }
+                            $all_lines .= $input_line . " " ;
+                            $line_count ++ ;
+                        }
+                        $numeric_return_value = &dashrep_import_replacements( $all_lines );
+                        if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+                        {
+                            print "{{trace; definitions found, got definitions from " . $line_count . " lines}}\n" ;
+                        }
+                        $lines_to_translate = 0 ;
                     } else
                     {
-                        $partial_translation = &dashrep_expand_parameters( $input_line );
-                        $translation = &dashrep_expand_phrases( $partial_translation );
-                    }
-                    if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
-                    {
-                        print OUTFILE $translation . "\n" ;
-                    }
-                    if ( $global_top_line_count_for_insert_phrase == 1 )
-                    {
-                        $global_top_line_count_for_insert_phrase = 2 ;
-                    } elsif ( $global_top_line_count_for_insert_phrase == 2 )
-                    {
-                        $global_top_line_count_for_insert_phrase = 0 ;
-                        if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
+                        $lines_to_translate = 0 ;
+                        if ( $qualifier eq "-parameters-only" )
                         {
-                            $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
-                            $lines_to_translate = 1 ;
+                            $translation = &dashrep_expand_parameters( $input_line );
+                        } elsif ( $qualifier eq "-phrases-only" )
+                        {
+                            $translation = &dashrep_expand_phrases( $input_line );
+                        } else
+                        {
+                            $partial_translation = &dashrep_expand_parameters( $input_line );
+                            $translation = &dashrep_expand_phrases( $partial_translation );
+                        }
+                        if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
+                        {
+                            print OUTFILE $translation . "\n" ;
+                        }
+                        if ( $global_top_line_count_for_insert_phrase == 1 )
+                        {
+                            $global_top_line_count_for_insert_phrase = 2 ;
+                        } elsif ( $global_top_line_count_for_insert_phrase == 2 )
+                        {
+                            $global_top_line_count_for_insert_phrase = 0 ;
+                            if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
+                            {
+                                $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
+                                $lines_to_translate = 1 ;
+                            }
                         }
                     }
                 }
@@ -2681,6 +2744,8 @@ sub dashrep_linewise_translate
 
         if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
         {
+            $all_lines = "" ;
+            $line_count = 0 ;
             while( $input_line = <STDIN> )
             {
                 chomp( $input_line );
@@ -2689,11 +2754,12 @@ sub dashrep_linewise_translate
                     last;
                 }
                 $all_lines .= $input_line . " " ;
+                $line_count ++ ;
             }
             $numeric_return_value = &dashrep_import_replacements( $all_lines );
             if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
             {
-                print "{{trace; definition line: " . $input_line . "}}\n" ;
+                print "{{trace; definition line: " . $input_line . " ; got definitions from " . $line_count . " lines}}\n" ;
             }
 
 
