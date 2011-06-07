@@ -2193,6 +2193,7 @@ sub dashrep_top_level_action
     my ( $target_phrase ) ;
     my ( $lines_to_translate ) ;
     my ( $line_count ) ;
+    my ( $text_list_of_phrases ) ;
     my ( @list_of_phrases ) ;
 
 
@@ -2230,6 +2231,31 @@ sub dashrep_top_level_action
     {
         warn "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
         return 0 ;
+    }
+
+
+#-----------------------------------------------
+#  In case definitions are exported, specify
+#  which delimiters to use -- based on the value
+#  of the phrase
+#  "dashrep_internal-export-delimited-definitions".
+
+    if ( $dashrep_replacement{ "dashrep_internal-export-delimited-definitions" } eq "yes" )
+    {
+        $all_defs_begin = "export-defs-all-begin\n\n" ;
+        $all_defs_end = "export-defs-all-end\n\n" ;
+        $phrase_begin = "export-defs-phrase-begin " ;
+        $phrase_end = " export-defs-phrase-end\n\n" ;
+        $def_begin = "export-defs-def-begin " ;
+        $def_end = " export-defs-def-end\n\n" ;
+    } else
+    {
+        $all_defs_begin = "dashrep-definitions-begin\n\n" ;
+        $all_defs_end = "dashrep-definitions-end\n\n" ;
+        $phrase_begin = "" ;
+        $phrase_end = ":\n" ;
+        $def_begin = "" ;
+        $def_end = "\n-----\n\n" ;
     }
 
 
@@ -2427,23 +2453,6 @@ sub dashrep_top_level_action
         }
         if ( $possible_error_message eq "" )
         {
-            if ( $dashrep_replacement{ "dashrep_internal-export-delimited-definitions" } eq "yes" )
-            {
-                $all_defs_begin = "export-defs-all-begin\n\n" ;
-                $all_defs_end = "export-defs-all-end\n\n" ;
-                $phrase_begin = "export-defs-phrase-begin " ;
-                $phrase_end = " export-defs-phrase-end\n\n" ;
-                $def_begin = "export-defs-def-begin " ;
-                $def_end = " export-defs-def-end\n\n" ;
-            } else
-            {
-                $all_defs_begin = "dashrep-definitions-begin\n\n" ;
-                $all_defs_end = "dashrep-definitions-end\n\n" ;
-                $phrase_begin = "" ;
-                $phrase_end = ":\n" ;
-                $def_begin = "" ;
-                $def_end = "\n-----\n\n" ;
-            }
             print OUTFILE $all_defs_begin ;
             foreach $phrase_name ( sort( @list_of_phrases ) )
             {
@@ -2458,6 +2467,49 @@ sub dashrep_top_level_action
         if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
         {
             print "{{trace; wrote all definitions to file: " . $target_filename . "}}\n" ;
+        }
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  write-dashrep-definitions-listed-in-phrase-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
+
+    } elsif ( $input_text =~ /^ *write-dashrep-definitions-listed-in-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
+    {
+        $source_phrase = $1 ;
+        $target_filename = $2 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
+        $text_list_of_phrases = $dashrep_replacement{ $source_phrase } ;
+        @list_of_phrases = &dashrep_internal_split_delimited_items( $text_list_of_phrases ) ;
+        if ( open ( OUTFILE , ">" . $target_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            print OUTFILE $all_defs_begin ;
+            foreach $phrase_name ( sort( @list_of_phrases ) )
+            {
+                if ( $phrase_name =~ /[^ ]/ )
+                {
+                    print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $dashrep_replacement{ $phrase_name } . $def_end ;
+                }
+            }
+            print OUTFILE $all_defs_end ;
+        }
+        close( OUTFILE ) ;
+        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        {
+            print "{{trace; wrote listed definitions to file: " . $target_filename . "}}\n" ;
         }
         $input_text = "" ;
 
