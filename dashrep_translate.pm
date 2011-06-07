@@ -2193,7 +2193,6 @@ sub dashrep_top_level_action
     my ( $target_phrase ) ;
     my ( $lines_to_translate ) ;
     my ( $line_count ) ;
-    my ( $text_to_expand ) ;
     my ( @list_of_phrases ) ;
 
 
@@ -2306,8 +2305,7 @@ sub dashrep_top_level_action
         }
         if ( $possible_error_message eq "" )
         {
-            $text_to_expand = "[-" . $dashrep_replacement{ $source_phrase } . "-]" ;
-            $partial_translation = &dashrep_expand_parameters( $text_to_expand );
+            $partial_translation = &dashrep_expand_parameters( $source_phrase );
             $translation = &dashrep_expand_phrases( $partial_translation );
             print OUTFILE $translation . "\n" ;
         }
@@ -2773,13 +2771,17 @@ sub dashrep_linewise_translate
             {
                 print "{{trace; line after parameters expanded: " . $revised_text . "}}\n" ;
             }
-            $revised_text = &dashrep_expand_phrases( $revised_text );
+            $after_possible_action = &dashrep_top_level_action( $revised_text );
+            if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $after_possible_action =~ /^ *$/ ) && ( $revised_text =~ /[^ ]/ ) )
+            {
+                print "{{trace; line after action executed: " . $after_possible_action . "}}\n" ;
+            }
+            $revised_text = &dashrep_expand_phrases( $after_possible_action );
             if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
             {
                 print "{{trace; line after phrases expanded: " . $revised_text . "}}\n" ;
             }
-            $output_text = &dashrep_top_level_action( $revised_text );
-            print $output_text . "\n" ;
+            print $revised_text . "\n" ;
         }
 
 
