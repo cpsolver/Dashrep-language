@@ -1996,7 +1996,7 @@ sub dashrep_xml_tags_to_dashrep
 #  Ignore the opening XML-standard-required
 #  declaration.
 
-    while ( $input_text =~ /^ *([^<>]*)<(\/?)([^ >\?]+[^ >]*)([^>]*)>(.*)$/ )
+    while ( $input_text =~ /^ *([^<>]*)<(\/?)([^ >\?\/]+[^ >\/]*)([^>]*)>(.*)$/ )
     {
         $text_before_tag = $1 ;
         $possible_slash = $2 ;
