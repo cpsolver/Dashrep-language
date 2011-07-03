@@ -104,6 +104,7 @@ my ( @global_list_of_lists_to_generate ) ;
 my ( %dashrep_replacement ) ;
 my ( %replacement_count_for_item_name ) ;
 my ( @xml_tag_at_level_number ) ;
+my ( %global_exists_xml_hyphenated_phrase ) ;
 
 
 #-----------------------------------------------
@@ -269,12 +270,12 @@ sub dashrep_import_replacements
     while ( $replacements_text_to_import =~ /^(.*?)([\*\/]\-\-+)(.*)$/ )
     {
         $text_before = $1 ;
-        $dashrep_replacement{ "comments_ignored" } .= "  " . $2 ;
+        $dashrep_replacement{ "dashrep_internal-comments-ignored" } .= "  " . $2 ;
         $text_including_comment_end = $3 ;
         $text_after = "" ;
         if ( $text_including_comment_end =~ /^(.*?\-\-+[\*\/])(.*)$/ )
         {
-            $dashrep_replacement{ "comments_ignored" } .= $1 . "  " ;
+            $dashrep_replacement{ "dashrep_internal-comments-ignored" } .= $1 . "  " ;
             $text_after = $2 ;
         }
         $replacements_text_to_import = $text_before . " " . $text_after ;
@@ -2040,6 +2041,9 @@ sub dashrep_xml_tags_to_dashrep
             {
                 $output_text .= substr( $spaces , 0 , ( 2 * $xml_level_number ) ) . "[-" ;
                 $output_text .= "end" . $xml_accumulated_sequence_of_tag_names . "-]\n" ;
+                $sequence_without_hyphen_prefix = $xml_accumulated_sequence_of_tag_names ;
+                $sequence_without_hyphen_prefix =~ s/^\-// ;
+                $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
                 $starting_position_of_last_tag_name = length( $xml_accumulated_sequence_of_tag_names ) - length( $xml_tag_at_level_number[ $xml_level_number ] ) - 1 ;
                 if ( $starting_position_of_last_tag_name > 0 )
                 {
@@ -2115,6 +2119,9 @@ sub dashrep_xml_tags_to_dashrep
             {
                 $output_text .= substr( $spaces , 0 , ( 2 * ( $xml_level_number - 1 ) ) ) . "[-" ;
                 $output_text .= "begin" . $xml_accumulated_sequence_of_tag_names . "-]\n" ;
+                $sequence_without_hyphen_prefix = $xml_accumulated_sequence_of_tag_names ;
+                $sequence_without_hyphen_prefix =~ s/^\-// ;
+                $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
             }
         }
 
@@ -2720,6 +2727,11 @@ sub dashrep_top_level_action
             if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
             {
                 print "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
+            }
+            $dashrep_replacement{ "dashrep_internal-list-of-xml-phrases" } = "" ;
+            foreach $xml_hyphenated_phrase ( keys ( %global_exists_xml_hyphenated_phrase ) )
+            {
+                $dashrep_replacement{ "dashrep_internal-list-of-xml-phrases" } .= $xml_hyphenated_phrase . " " ;
             }
         } else
         {
