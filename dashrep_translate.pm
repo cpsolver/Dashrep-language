@@ -1055,13 +1055,16 @@ sub dashrep_expand_parameters
             } elsif ( exists( $dashrep_replacement{ $text_parameter_content } ) )
             {
                 $text_parameter = $dashrep_replacement{ $text_parameter_content } ;
-                $replacement_text = $text_begin . $text_parameter . $text_end ;
-                $loop_status_done = $global_false ;
-                if ( $text_parameter_placeholder =~ /^auto-increment-/ )
+                if ( $text_parameter =~ /[^ ]/ )
                 {
-                    push( @list_of_replacements_to_auto_increment , $text_parameter_placeholder ) ;
-                }
-                $replacement_count_for_item_name{ $text_parameter_placeholder } ++ ;
+                    $replacement_text = $text_begin . $text_parameter . $text_end ;
+                    $loop_status_done = $global_false ;
+                    if ( $text_parameter_placeholder =~ /^auto-increment-/ )
+                    {
+                        push( @list_of_replacements_to_auto_increment , $text_parameter_placeholder ) ;
+                    }
+                    $replacement_count_for_item_name{ $text_parameter } ++ ;
+               }
 
 
 #-----------------------------------------------
@@ -1083,7 +1086,7 @@ sub dashrep_expand_parameters
             if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
             {
                 &dashrep_internal_endless_loop_info( %replacement_count_for_item_name ) ;
-                die "Error: The dashrep_expand_parameters subroutine encountered an endless loop.  Stopped" ;
+                die "Error: The dashrep_expand_parameters subroutine encountered an endless loop." . "\n" . "Stopped" ;
             }
 
 
@@ -1402,7 +1405,7 @@ sub dashrep_expand_phrases_except_special
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( %replacement_count_for_item_name ) ;
-            die "Error: The dashrep_expand_phrases_except_special subroutine encountered an endless loop.  Stopped" ;
+            die "Error: The dashrep_expand_phrases_except_special subroutine encountered an endless loop." . "\n" . "Stopped" ;
         }
 
 
@@ -2729,7 +2732,7 @@ sub dashrep_top_level_action
                 print "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
             }
             $dashrep_replacement{ "dashrep_internal-list-of-xml-phrases" } = "" ;
-            foreach $xml_hyphenated_phrase ( keys ( %global_exists_xml_hyphenated_phrase ) )
+            foreach $xml_hyphenated_phrase ( sort( keys ( %global_exists_xml_hyphenated_phrase ) ) )
             {
                 $dashrep_replacement{ "dashrep_internal-list-of-xml-phrases" } .= $xml_hyphenated_phrase . " " ;
             }
@@ -2908,7 +2911,7 @@ sub dashrep_internal_endless_loop_info
             $highest_usage_item_name = $item_name ;
         }
     }
-    warn "Too many cycles of replacement.\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "" ;
+    warn "Too many cycles of replacement.\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
 
 
 #-----------------------------------------------
