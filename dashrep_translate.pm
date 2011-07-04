@@ -102,7 +102,7 @@ my ( $global_phrase_to_insert_after_next_top_level_line ) ;
 my ( $global_top_line_count_for_insert_phrase ) ;
 my ( @global_list_of_lists_to_generate ) ;
 my ( %dashrep_replacement ) ;
-my ( %replacement_count_for_item_name ) ;
+my ( %global_replacement_count_for_item_name ) ;
 my ( @xml_tag_at_level_number ) ;
 my ( %global_exists_xml_hyphenated_phrase ) ;
 
@@ -122,7 +122,7 @@ BEGIN {
     $global_capture_level = 0 ;
     $xml_level_number = 0 ;
     %dashrep_replacement = ( ) ;
-    %replacement_count_for_item_name = ( ) ;
+    %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @xml_tag_at_level_number = ( ) ;
 }
@@ -344,24 +344,34 @@ sub dashrep_import_replacements
 #  Allow a colon after the hyphenated name.
 #  If this definition name has already been defined,
 #  ignore the earlier definition.
+#  If the name does not contain a hyphen,
+#  prefix the name with "invalid-phrase-name-".
 
         } elsif ( $definition_name eq "" )
         {
             $definition_name = $input_string ;
             $definition_name =~ s/\:$//  ;
+            if ( $definition_name !~ /\-/ )
+            {
+                $definition_name = "invalid-phrase-name-" . $definition_name ;
+            }
             $dashrep_replacement{ $definition_name } = "" ;
             push( @list_of_replacement_names , $definition_name ) ;
 
 
 #-----------------------------------------------
 #  Collect any text that is part of a definition.
+#  But do not allow the definition to include
+#  the name of the phrase being defined (because
+#  that would cause an endless loop when the
+#  phrase is replaced).
 
         } elsif ( $input_string ne "" )
         {
             if ( $input_string eq $definition_name )
             {
-                 $dashrep_replacement{ $definition_name } = "ERROR: Replacement for hyphenated phrase [" . $definition_name . "] includes itself, which would cause an endless replacement loop." . "\n" ;
-                 warn "Warning: Replacement for hyphenated phrase " . $definition_name . " includes itself, which would cause an endless replacement loop." ;
+                 $dashrep_replacement{ $definition_name } = "ERROR: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop." . "\n" ;
+                 warn "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
             } else
             {
                 if ( $dashrep_replacement{ $definition_name } ne "" )
@@ -739,6 +749,29 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  If the parameter is a defined phrase, do the
+#  replacement.
+
+            if ( ( $text_parameter_content !~ / / ) && ( exists( $dashrep_replacement{ $text_parameter_content } ) ) )
+            {
+                $text_parameter = $dashrep_replacement{ $text_parameter_content } ;
+                if ( $text_parameter =~ /[^ ]/ )
+                {
+                    $replacement_text = $text_begin . $text_parameter . $text_end ;
+                    $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
+                    $loop_status_done = $global_false ;
+                    if ( $text_parameter_content =~ /^auto-increment-/ )
+                    {
+                        push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
+                    }
+                } else
+                {
+                    $replacement_text = $text_begin . " " . $text_end ;
+                    $loop_status_done = $global_false ;
+                }
+
+
+#-----------------------------------------------
 #  If there is a parameter value assigned -- as
 #  indicated by an equal sign -- then assign
 #  the value.
@@ -749,7 +782,7 @@ sub dashrep_expand_parameters
 #  replacement name instead of the value of
 #  that replacement.
 
-            if ( $text_parameter_content =~ /^([^ \n\:=]+) *= *([^ \n\:=]+)$/ )
+            } elsif ( $text_parameter_content =~ /^ *([^ \n\:=]+) *= *([^ \n\:=]+) *$/ )
             {
                 $text_parameter_name = $1 ;
                 $text_parameter_value = $2 ;
@@ -757,11 +790,11 @@ sub dashrep_expand_parameters
                 if ( length( $text_parameter_name ) > 0 )
                 {
                     $dashrep_replacement{ $text_parameter_name } = $text_parameter_value ;
-                    $replacement_count_for_item_name{ $text_parameter_name } ++ ;
+                    $global_replacement_count_for_item_name{ $text_parameter_name } ++ ;
                 }
                 $replacement_text = $text_begin . " " . $text_end ;
-                $replacement_count_for_item_name{ $text_parameter_value } ++ ;
-                if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
+                $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
+                if ( ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
                 {
                     print "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
                 }
@@ -776,7 +809,7 @@ sub dashrep_expand_parameters
                 $source_phrase = $1 ;
                 $target_phrase = $2 ;
                 $dashrep_replacement{ $target_phrase } .= " " . $dashrep_replacement{ $source_phrase } ;
-                if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
                 {
                     print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
                 }
@@ -785,8 +818,8 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  If there is an action requested (which
-#  includes a colon between the action and its
-#  operand(s), handle it.
+#  may include a colon between the action and
+#  its operand(s), handle it.
 
             } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *[: ] *([^\n\:=]*)$/ )
             {
@@ -801,7 +834,7 @@ sub dashrep_expand_parameters
                     $second_object_of_action = $2 ;
                 }
 
-                if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+                if ( ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
                 {
                     print "{{trace; action and object: " . $action_name . " : " . $object_of_action . "}}\n";
                 }
@@ -1026,7 +1059,7 @@ sub dashrep_expand_parameters
                     $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
                     $global_top_line_count_for_insert_phrase = 1 ;
                     $replacement_text = $text_begin . " " . $text_end ;
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
                     {
                         print "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
                     }
@@ -1034,13 +1067,14 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Terminate the branching that handles a
-#  parameter of the type that uses a colon to
-#  separate the action name from its required
-#  argument.
+#  parameter that looks like it might begin with
+#  an action name, but doesn't.  Just leave the
+#  text unchanged, but remove the "[-" and "-]"
+#  strings.
 
                 } else
                 {
-                    if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+                    if ( ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
                     {
                         print "{{trace; action not recognized: " . $action_name . "}}\n";
                     }
@@ -1049,26 +1083,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  If the parameter is a defined phrase, do the
-#  replacement.
-
-            } elsif ( exists( $dashrep_replacement{ $text_parameter_content } ) )
-            {
-                $text_parameter = $dashrep_replacement{ $text_parameter_content } ;
-                if ( $text_parameter =~ /[^ ]/ )
-                {
-                    $replacement_text = $text_begin . $text_parameter . $text_end ;
-                    $loop_status_done = $global_false ;
-                    if ( $text_parameter_placeholder =~ /^auto-increment-/ )
-                    {
-                        push( @list_of_replacements_to_auto_increment , $text_parameter_placeholder ) ;
-                    }
-                    $replacement_count_for_item_name{ $text_parameter } ++ ;
-               }
-
-
-#-----------------------------------------------
-#  If the parameter content has been not been
+#  If the parameter content has not been
 #  recognized, simply remove the "[-" and "-]"
 #  strings.
 
@@ -1085,7 +1100,7 @@ sub dashrep_expand_parameters
             $global_endless_loop_counter ++ ;
             if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
             {
-                &dashrep_internal_endless_loop_info( %replacement_count_for_item_name ) ;
+                &dashrep_internal_endless_loop_info( ) ;
                 die "Error: The dashrep_expand_parameters subroutine encountered an endless loop." . "\n" . "Stopped" ;
             }
 
@@ -1404,7 +1419,7 @@ sub dashrep_expand_phrases_except_special
         $global_endless_loop_counter ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
-            &dashrep_internal_endless_loop_info( %replacement_count_for_item_name ) ;
+            &dashrep_internal_endless_loop_info( ) ;
             die "Error: The dashrep_expand_phrases_except_special subroutine encountered an endless loop." . "\n" . "Stopped" ;
         }
 
@@ -1457,7 +1472,7 @@ sub dashrep_expand_phrases_except_special
             {
                 @items_to_add = split( /[ \n\r]+/ , $replacement_item ) ;
                 push( @item_stack , reverse( @items_to_add ) ) ;
-                $replacement_count_for_item_name{ $current_item } ++ ;
+                $global_replacement_count_for_item_name{ $current_item } ++ ;
                 next ;
             }
             next ;
@@ -1842,6 +1857,10 @@ sub dashrep_expand_phrases
 #  Expand the phrase except for special phrases.
 
     $partly_expanded_string = &dashrep_expand_phrases_except_special( $text_string_to_expand ) ;
+    if ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" )
+    {
+        print "{{trace; after non-special phrases expanded: " . $partly_expanded_string . "}}\n" ;
+    }
 
 
 #-----------------------------------------------
@@ -2090,7 +2109,7 @@ sub dashrep_xml_tags_to_dashrep
                     $xml_level_number ++ ;
                     $xml_tag_at_level_number[ $xml_level_number ] = $tag_name ;
                     $xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
                     {
                         print "{{trace; specified top-level tag name: " . $first_tag_name . "}}\n" ;
                     }
@@ -2101,13 +2120,13 @@ sub dashrep_xml_tags_to_dashrep
                     $first_tag_name = $tag_name ;
                     $dashrep_replacement{ "dashrep_internal-first-xml-tag-name" } = $first_tag_name ;
                     $xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
                     {
                         print "{{trace; default top-level tag name: " . $tag_name . "}}\n" ;
                     }
                 } else
                 {
-                    if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+                    if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
                     {
                         print "{{trace; ignored tag: " . $tag_name . "}}\n" ;
                     }
@@ -2278,7 +2297,7 @@ sub dashrep_top_level_action
         $source_phrase = $1 ;
         $target_phrase = $2 ;
         $dashrep_replacement{ $target_phrase } .= " " . $dashrep_replacement{ $source_phrase } ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
         }
@@ -2311,7 +2330,7 @@ sub dashrep_top_level_action
             print OUTFILE "\n" . $dashrep_replacement{ $source_phrase } . "\n" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; copied from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
         }
@@ -2342,11 +2361,15 @@ sub dashrep_top_level_action
         if ( $possible_error_message eq "" )
         {
             $partial_translation = &dashrep_expand_parameters( $source_phrase );
+            if ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
+            }
             $translation = &dashrep_expand_phrases( $partial_translation );
             print OUTFILE $translation . "\n" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; expanded phrase " . $source_phrase . " to file " . $target_filename . "}}\n" ;
         }
@@ -2380,7 +2403,7 @@ sub dashrep_top_level_action
             $dashrep_replacement{ $target_phrase } = $all_lines ;
         }
         close( INFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; copied from file " . $source_filename . " to phrase " . $target_phrase . "}}\n" ;
         }
@@ -2412,7 +2435,7 @@ sub dashrep_top_level_action
             print OUTFILE "" ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; created empty file: " . $target_filename . "}}\n" ;
         }
@@ -2433,7 +2456,7 @@ sub dashrep_top_level_action
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
         unlink $target_filename ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; deleted file: " . $target_filename . "}}\n" ;
         }
@@ -2474,7 +2497,7 @@ sub dashrep_top_level_action
             print OUTFILE $all_defs_end ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; wrote all definitions to file: " . $target_filename . "}}\n" ;
         }
@@ -2496,7 +2519,7 @@ sub dashrep_top_level_action
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
         $text_list_of_phrases = $dashrep_replacement{ $source_phrase } ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; phrase that contains list of phrases to export: " . $source_phrase . "}}\n" ;
             print "{{trace; list of phrases for exporting definitions to file: " . $text_list_of_phrases . "}}\n" ;
@@ -2522,7 +2545,7 @@ sub dashrep_top_level_action
             print OUTFILE $all_defs_end ;
         }
         close( OUTFILE ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; wrote listed definitions to file: " . $target_filename . "}}\n" ;
         }
@@ -2555,7 +2578,7 @@ sub dashrep_top_level_action
         }
         close( INFILE ) ;
         &dashrep_import_replacements( $source_definitions ) ;
-        if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+        if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
         {
             print "{{trace; got definitions from file: " . $source_filename . "}}\n" ;
         }
@@ -2568,7 +2591,7 @@ sub dashrep_top_level_action
 
     } elsif ( $input_text =~ /^ *clear-all-dashrep-phrases *$/ )
     {
-        $tracking_on_or_off = $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } ;
+        $tracking_on_or_off = $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } ;
         &dashrep_delete_all( );
         if ( $tracking_on_or_off eq "on" )
         {
@@ -2618,6 +2641,8 @@ sub dashrep_top_level_action
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
+                $global_endless_loop_counter = 0 ;
+                %global_replacement_count_for_item_name = ( ) ;
                 $lines_to_translate = 1 ;
                 while ( $lines_to_translate > 0 )
                 {
@@ -2674,13 +2699,13 @@ sub dashrep_top_level_action
                     }
                 }
             }
-            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
             }
         } else
         {
-            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
             }
@@ -2724,10 +2749,12 @@ sub dashrep_top_level_action
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
+                $global_endless_loop_counter = 0 ;
+                %global_replacement_count_for_item_name = ( ) ;
                 $translation = &dashrep_xml_tags_to_dashrep( $input_line );
                 print OUTFILE $translation . "\n" ;
             }
-            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
             }
@@ -2738,7 +2765,7 @@ sub dashrep_top_level_action
             }
         } else
         {
-            if ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" )
+            if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; failed to expand source xml file named " . $source_filename . " into dashrep phrases in file named " . $target_filename . "}}\n" ;
             }
@@ -2752,7 +2779,7 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Finish handling a top-level action.
 
-        if ( ( $dashrep_replacement{ "dashrep_internal-tracking-on-or-off" } eq "on" ) && ( $input_text =~ /[^ ]/ ) )
+        if ( ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" ) && ( $input_text =~ /[^ ]/ ) )
         {
             print "{{trace; not recognized as top-level action: " . $input_text . "}}\n" ;
         }
@@ -2838,6 +2865,8 @@ sub dashrep_linewise_translate
 
         } else
         {
+            $global_endless_loop_counter = 0 ;
+            %global_replacement_count_for_item_name = ( ) ;
             $revised_text = &dashrep_expand_parameters( $input_line );
             if ( ( $dashrep_replacement{ "dashrep_internal-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
             {
@@ -2903,15 +2932,15 @@ sub dashrep_internal_endless_loop_info
     my ( $highest_usage_item_name ) ;
 
     $highest_usage_counter = - 1 ;
-    foreach $item_name ( keys( %replacement_count_for_item_name ) )
+    foreach $item_name ( keys( %global_replacement_count_for_item_name ) )
     {
-        if ( $replacement_count_for_item_name{ $item_name } > $highest_usage_counter )
+        if ( $global_replacement_count_for_item_name{ $item_name } > $highest_usage_counter )
         {
-            $highest_usage_counter = $replacement_count_for_item_name{ $item_name } ;
+            $highest_usage_counter = $global_replacement_count_for_item_name{ $item_name } ;
             $highest_usage_item_name = $item_name ;
         }
     }
-    warn "Too many cycles of replacement.\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+    warn "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
 
 
 #-----------------------------------------------
