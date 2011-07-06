@@ -948,7 +948,7 @@ sub dashrep_expand_parameters
 
                 } elsif ( $action_name eq "empty-or-nonempty" )
                 {
-                    if ( $object_of_action =~ /[^ ]/ )
+                    if ( $object_of_action =~ /[^ \n\t]/ )
                     {
                         $empty_or_nonempty = "nonempty" ;
                     } else
