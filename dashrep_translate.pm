@@ -17,7 +17,7 @@ Implements the Dashrep (TM) language, which is a versatile descriptive programmi
 
 See www.Dashrep.org for details.
 
-Note about Version 2: This code has been modified from Version 1.10, which is the code in the Language::Dashrep module in the Perl CPAN archives.  Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the Perl.exe and Perlxxx.dll files are needed to execute this code.)
+Note about Version 2: This code has been modified from Version 1.10, which is the code in the Language::Dashrep module in the Perl CPAN archives.  Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
 
 Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
 
@@ -3064,7 +3064,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 Copyright 2009, 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
-under the Perl Artistic license, a copy
+under the Perl Artistic License 2.0, a copy
 of which is included in the LICENSE file.
 
 Conversions of this code into other languages are also
