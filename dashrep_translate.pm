@@ -1,5 +1,15 @@
 package dashrep_translate;
 
+# For CPAN version:
+# package Language::Dashrep;
+
+
+# For CPAN version:
+# use 5.010;
+# use warnings;
+# use strict;
+# require Exporter;
+
 
 =head1 NAME
 
@@ -11,13 +21,27 @@ Version 2.12
 
 =cut
 
+# For CPAN version:
+# our $VERSION = '2.12';
+
 =head1 SYNOPSIS
 
 Implements the Dashrep (TM) language, which is a versatile descriptive programming language that recursively expands English-like hyphenated phrases, such as B<rectangle-outline-attention-begin>, into any kind of text or code, such as HTML, XML, JavaScript, C (subset), boilerplate-based text, etc.  The resulting expanded text can be an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, etc.
 
+The following sample code executes the actions specified in the standard input file, and writes information (or results) to the standard output file.
+
+    use dashrep_translate;
+# For CPAN version:
+#    use Language::Dashrep;
+
+    &dashrep_translate::dashrep_linewise_translate( );
+# For CPAN version:
+#    &Language::Dashrep::dashrep_linewise_translate( );
+
+
 See www.Dashrep.org for details.
 
-Note about Version 2: This code has been modified from Version 1.10, which is the code in the Language::Dashrep module in the Perl CPAN archives.  Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
+Note about Version 2: Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
 
 Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
 
@@ -67,6 +91,24 @@ The following subroutines are exported.
 =head2 dashrep_top_level_action
 
 =head2 dashrep_linewise_translate
+
+# For CPAN version:
+# our @EXPORT = qw(
+#     dashrep_define
+#     dashrep_import_replacements
+#     dashrep_get_replacement
+#     dashrep_get_list_of_phrases
+#     dashrep_delete
+#     dashrep_delete_all
+#     dashrep_expand_parameters
+#     dashrep_expand_phrases
+#     dashrep_expand_phrases_except_special
+#     dashrep_expand_special_phrases
+#     dashrep_set_runaway_limit
+#     dashrep_xml_tags_to_dashrep
+#     dashrep_top_level_action
+#     dashrep_linewise_translate
+# );
 
 =cut
 
