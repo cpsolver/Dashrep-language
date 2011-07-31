@@ -630,18 +630,6 @@ if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_te
 
 
 #-------------------------------------------
-#  Test setting the runaway limit (to stop
-#  endless loops).
-
-$being_tested = "set new runaway limit -- ";
-$test_number_count ++;
-$string_return_value = &dashrep_translate::dashrep_set_runaway_limit( 7000 );
-if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
 #  Print $html_code to a file with the .html
 #  extension.
 #  As a further test, you can open the file

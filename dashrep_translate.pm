@@ -84,8 +84,6 @@ The following subroutines are exported.
 
 =head2 dashrep_expand_special_phrases
 
-=head2 dashrep_set_runaway_limit
-
 =head2 dashrep_xml_tags_to_dashrep
 
 =head2 dashrep_top_level_action
@@ -104,7 +102,6 @@ The following subroutines are exported.
 #     dashrep_expand_phrases
 #     dashrep_expand_phrases_except_special
 #     dashrep_expand_special_phrases
-#     dashrep_set_runaway_limit
 #     dashrep_xml_tags_to_dashrep
 #     dashrep_top_level_action
 #     dashrep_linewise_translate
@@ -753,6 +750,20 @@ sub dashrep_expand_parameters
 #  encountered that need to be auto-incremented.
 
     @list_of_replacements_to_auto_increment = ( ) ;
+
+
+#-----------------------------------------------
+#  Update the endless loop count limit in case
+#  it has changed.
+
+    if ( $dashrep_replacement{ "dashrep_internal-endless-loop-counter-limit" } =~ /^[0-9]+$/ )
+    {
+        $possible_new_limit = $dashrep_replacement{ "dashrep_internal-endless-loop-counter-limit" } + 0 ;
+        if ( ( $possible_new_limit != $global_endless_loop_counter_limit ) && ( $possible_new_limit > 1000 ) )
+        {
+            $global_endless_loop_counter_limit = $possible_new_limit ;
+        }
+    }
 
 
 #-----------------------------------------------
@@ -1917,79 +1928,6 @@ sub dashrep_expand_phrases
 #  End of subroutine.
 
     return $expanded_string ;
-
-}
-
-
-=head2 dashrep_set_runaway_limit
-
-Specifies the counter limit that attempts to
-identify an endless loop caused by a
-hyphenated phrase that has a replacement
-string that (directly or indirectly) contains
-the same replacement string.
-
-First, and only, parameter is the new value
-to be used as a replacement limit.
-
-Return value is one (1) if the assignment was
-successful.  Return value is zero if there
-is not exactly one parameter, or if the new
-limit does not exceed 5.
-
-=cut
-
-#-----------------------------------------------
-#-----------------------------------------------
-#            dashrep_set_runaway_limit
-#-----------------------------------------------
-#-----------------------------------------------
-
-sub dashrep_set_runaway_limit
-{
-
-    my ( $new_limit ) ;
-
-
-#-----------------------------------------------
-#  Reset the "ignore" and "capture" levels.
-
-    $global_ignore_level = 0 ;
-    $global_capture_level = 0 ;
-
-
-#-----------------------------------------------
-#  Reset the xml-parsing state.
-
-    $xml_level_number = 0 ;
-    @xml_tag_at_level_number = ( ) ;
-
-
-#-----------------------------------------------
-#  Do the assignment.
-
-    if ( scalar( @_ ) == 1 )
-    {
-        $new_limit = $_[ 0 ] ;
-        if ( $new_limit >= 5 )
-        {
-            $global_endless_loop_counter_limit = $new_limit ;
-        } else
-        {
-            warn "Warning: Limit number supplied to dashrep_set_runaway_limit subroutine is too small (less than 5), so limit not changed." ;
-            return 0 ;
-        }
-    } else
-    {
-        warn "Warning: Call to dashrep_set_runaway_limit subroutine does not have exactly one parameter." ;
-        return 0 ;
-    }
-
-
-#-----------------------------------------------
-#  End of subroutine.
-
-    return 1 ;
 
 }
 
