@@ -1992,6 +1992,81 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If a line does not contain the same number
+#  of open angle brackets (<) as close angle
+#  brackets (>), and tracing is on, issue a
+#  warning.
+
+    $open_brackets = $input_text ;
+    $open_brackets =~ s/[^<]//g ;
+    $close_brackets = $input_text ;
+    $close_brackets =~ s/[^>]//g ;
+    if ( length( $open_brackets ) != length( $close_brackets ) )
+    {
+        if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; non-matching angle brackets: " . $input_text . "}}\n" ;
+        }
+    }
+
+
+#-----------------------------------------------
+#  If a tag is identified -- through use of
+#  special hyphenated phrases -- as of the
+#  open-and-close type that may not include a
+#  closing slash (such as "<br>"), then insert
+#  a closing tag.
+#  Note that the match is case-sensitive.
+
+    $remaining_string = $input_text ;
+    $input_text = "" ;
+    while ( $remaining_string =~ /^(.*?)(<[^ <>\/][^>]*[^>\/]>)(.*)$/ )
+    {
+        $prefix_text = $1 ;
+        $tag_full = $2 ;
+        $suffix_text = $3 ;
+        $tag_name = $tag_full ;
+        $tag_name =~ s/^<([^ >\/]+).*>$/$1/ ;
+        if ( $tag_name ne "" )
+        {
+            if ( exists( $dashrep_replacement{ "dashrep_internal-xml-yes-handle-open-close-tag-" . $tag_name } ) )
+            {
+                $tag_full .= '</' . $tag_name . ">" ;
+                if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; open-and-close type xml tag: " . $tag_name . " , modified to include closing tag: " . $tag_full . "}}\n" ;
+                }
+            }
+        }
+        $input_text .= $prefix_text . $tag_full ;
+        $remaining_string = $suffix_text ;
+    }
+    $input_text .= $remaining_string ;
+
+
+#-----------------------------------------------
+#  Expand parameters within a tag into separate
+#  XML tags.
+
+    while ( $input_text =~ /^(.*)(<[^ >\!\?\/][^>]*) ([^ >\=]+)=((\"([^>\"]*)\")|([^ >\"\']+)) *>(.*)$/ )
+    {
+        $text_before_tag = $1 ;
+        $tag_and_possible_parameters = $2 ;
+        $parameter_name = $3 ;
+        $parameter_value = $4 ;
+        $text_after_tag = $8 ;
+        $parameter_value =~ s/^\"(.*)\"$/$1/ ;
+        $parameter_name =~ s/\-/_/g ;
+        $revised_tags = $tag_and_possible_parameters . "><" . $parameter_name . ">" . $parameter_value . '</' . $parameter_name . ">" ;
+        $input_text = $text_before_tag . $revised_tags . $text_after_tag ;
+        if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; after xml parameter extracted: " . $revised_tags . "}}\n" ;
+        }
+    }
+
+
+#-----------------------------------------------
 #  Begin a loop that repeats for each XML tag.
 #
 #  Get the name within a (single) tag, and
@@ -2005,7 +2080,12 @@ sub dashrep_xml_tags_to_dashrep
         $possible_slash = $2 ;
         $tag_name = $3 ;
         $may_include_closing_slash = $4 ;
-        $input_text = $5 ;
+        $suffix_text = $5 ;
+        if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; input line: " . $input_text . "}}\n" ;
+        }
+        $input_text = $suffix_text ;
         if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
         {
             print "{{trace; tag: <" . $possible_slash . $tag_name . ">}}\n" ;
