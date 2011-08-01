@@ -2112,6 +2112,23 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If a specially named Dashrep phrase indicates
+#  that the tag should be ignored, ignore it.
+
+        if ( exists( $dashrep_replacement{ "dashrep_internal-xml-yes-ignore-tag-named-" . $tag_name } ) )
+        {
+            if ( $dashrep_replacement{ "dashrep_internal-xml-yes-ignore-tag-named-" . $tag_name } eq "yes" )
+            {
+                if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; ignoring tag: " . $tag_name . "}}\n" ;
+                }
+                next ;
+            }
+        }
+
+
+#-----------------------------------------------
 #  If the tag is of the "close" type, write the
 #  appropriate dashrep phrase.  Then remove the
 #  lowest-level tag name from the phrase that
