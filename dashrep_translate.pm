@@ -2342,8 +2342,8 @@ sub dashrep_top_level_action
 
 #-----------------------------------------------
 #  In case definitions are exported, specify
-#  which delimiters to use -- based on the value
-#  of the phrase
+#  which delimiters to use -- based on the "yes"
+#  or "no" definition of the phrase
 #  "dashrep_internal-export-delimited-definitions".
 
     if ( $dashrep_replacement{ "dashrep_internal-export-delimited-definitions" } eq "yes" )
