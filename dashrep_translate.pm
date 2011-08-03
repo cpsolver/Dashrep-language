@@ -1348,7 +1348,7 @@ sub dashrep_generate_lists
 
 #-----------------------------------------------
 #  Protect against an endless loop.
-                                                                                                       
+
             $global_endless_loop_counter ++ ;
             if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
             {
@@ -2056,20 +2056,20 @@ sub dashrep_xml_tags_to_dashrep
 #  into separate parameters (with combined
 #  names).
 
-	$previous_input_text = "" ;
-	while ( $input_text ne $previous_input_text )
-	{
-		$previous_input_text = $input_text ;
-		$input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*) *; *([^\">]+)\"([^>]*>)/$1_$2=\"$3\" style=\"$4\"$5/sgi ;
-		$input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*)\"([^>]*>)/$1_$2=\"$3\"$4/sgi ;
-		if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
-		{
-			if ( $previous_input_text ne $input_text )
-			{
-				print "{{trace; after xml sub-parameters extracted: " . $input_text . "}}\n" ;
-			}
-		}
-	}
+    $previous_input_text = "" ;
+    while ( $input_text ne $previous_input_text )
+    {
+        $previous_input_text = $input_text ;
+        $input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*) *; *([^\">]+)\"([^>]*>)/$1_$2=\"$3\" style=\"$4\"$5/sgi ;
+        $input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*)\"([^>]*>)/$1_$2=\"$3\"$4/sgi ;
+        if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+        {
+            if ( $previous_input_text ne $input_text )
+            {
+                print "{{trace; after xml sub-parameters extracted: " . $input_text . "}}\n" ;
+            }
+        }
+    }
 
 
 #-----------------------------------------------
@@ -2157,8 +2157,25 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If a specially named Dashrep phrase indicates
+#  that the tag should be renamed, rename it as
+#  requested.
+
+        if ( exists( $dashrep_replacement{ "dashrep_internal-xml-replacement-name-for-tag-named-" . $tag_name } ) )
+        {
+            $previous_tag_name = $tag_name ;
+            $tag_name = $dashrep_replacement{ "dashrep_internal-xml-replacement-name-for-tag-named-" . $tag_name } ;
+            if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; changing tag name " . $previous_tag_name . " into tag name " . $tag_name . "}}\n" ;
+            }
+        }
+
+
+#-----------------------------------------------
 #  If the tag is of the "close" type, write the
-#  appropriate dashrep phrase.  Then remove the
+#  appropriate dashrep phrase (and indent it to
+#  indicate the nesting level).  Then remove the
 #  lowest-level tag name from the phrase that
 #  contains all the tag names.
 
@@ -2166,21 +2183,30 @@ sub dashrep_xml_tags_to_dashrep
         {
             if ( length( $xml_accumulated_sequence_of_tag_names ) > 0 )
             {
-                $output_text .= substr( $spaces , 0 , ( 2 * $xml_level_number ) ) . "[-" ;
-                $output_text .= "end" . $xml_accumulated_sequence_of_tag_names . "-]\n" ;
-                $sequence_without_hyphen_prefix = $xml_accumulated_sequence_of_tag_names ;
-                $sequence_without_hyphen_prefix =~ s/^\-// ;
-                $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
-                $starting_position_of_last_tag_name = length( $xml_accumulated_sequence_of_tag_names ) - length( $xml_tag_at_level_number[ $xml_level_number ] ) - 1 ;
-                if ( $starting_position_of_last_tag_name > 0 )
+                if ( $xml_tag_at_level_number[ $xml_level_number ] eq $tag_name )
                 {
-                    $xml_accumulated_sequence_of_tag_names = substr( $xml_accumulated_sequence_of_tag_names , 0 , $starting_position_of_last_tag_name ) ;
+                    $output_text .= substr( $spaces , 0 , ( 2 * $xml_level_number ) ) . "[-" ;
+                    $output_text .= "end" . $xml_accumulated_sequence_of_tag_names . "-]\n" ;
+                    $sequence_without_hyphen_prefix = $xml_accumulated_sequence_of_tag_names ;
+                    $sequence_without_hyphen_prefix =~ s/^\-// ;
+                    $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
+                    $starting_position_of_last_tag_name = length( $xml_accumulated_sequence_of_tag_names ) - length( $xml_tag_at_level_number[ $xml_level_number ] ) - 1 ;
+                    if ( $starting_position_of_last_tag_name > 0 )
+                    {
+                        $xml_accumulated_sequence_of_tag_names = substr( $xml_accumulated_sequence_of_tag_names , 0 , $starting_position_of_last_tag_name ) ;
+                    } else
+                    {
+                        $xml_accumulated_sequence_of_tag_names = "" ;
+                    }
+                    $xml_level_number -- ;
                 } else
                 {
-                    $xml_accumulated_sequence_of_tag_names = "" ;
+                    if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+                    {
+                        print "{{trace; close tag " . $tag_name . " ignored because it does not match expected close tag name " . $xml_tag_at_level_number[ $xml_level_number ] . "}}\n" ;
+                    }
                 }
             }
-            $xml_level_number -- ;
 
 
 #-----------------------------------------------
