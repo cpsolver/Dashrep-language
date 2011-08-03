@@ -2045,6 +2045,34 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If one of the parameters within a tag is a
+#  "style" tag that has multiple CSS
+#  parameters with their own parameter values
+#  (with a colon (:) separating each
+#  sub-parameter name from its sub-parameter
+#  value, and with semicolons (;) separating
+#  those name & value pairs within the XML
+#  parameter), split up those sub-parameters
+#  into separate parameters (with combined
+#  names).
+
+	$previous_input_text = "" ;
+	while ( $input_text ne $previous_input_text )
+	{
+		$previous_input_text = $input_text ;
+		$input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*) *; *([^\">]+)\"([^>]*>)/$1_$2=\"$3\" style=\"$4\"$5/sgi ;
+		$input_text =~ s/(<[^>]+ style) *= *\"([^\"\:\;>]+) *: *([^\"\:\;>]*)\"([^>]*>)/$1_$2=\"$3\"$4/sgi ;
+		if ( $dashrep_replacement{ "dashrep_internal-xml-trace-on-or-off" } eq "on" )
+		{
+			if ( $previous_input_text ne $input_text )
+			{
+				print "{{trace; after xml sub-parameters extracted: " . $input_text . "}}\n" ;
+			}
+		}
+	}
+
+
+#-----------------------------------------------
 #  Expand parameters within a tag into separate
 #  XML tags.
 
