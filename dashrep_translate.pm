@@ -998,13 +998,26 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty
-#
-#  If the supplied text is the name of a
-#  hyphenated phrase that is defined, look at
-#  its definition (rather than the phrase name).
 
                 } elsif ( $action_name eq "empty-or-nonempty" )
                 {
+                    if ( $object_of_action =~ /[^ \n\t]/ )
+                    {
+						$empty_or_nonempty = "nonempty" ;
+                    } else
+                    {
+                        $empty_or_nonempty = "empty" ;
+                    }
+                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  empty-or-nonempty-phrase
+
+                } elsif ( $action_name eq "empty-or-nonempty-phrase" )
+                {
+                    $empty_or_nonempty = "empty" ;
                     if ( $object_of_action =~ /[^ \n\t]/ )
                     {
 						if ( exists( $dashrep_replacement{ $object_of_action } ) )
@@ -1012,17 +1025,8 @@ sub dashrep_expand_parameters
 							if ( $dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
 							{
 								$empty_or_nonempty = "nonempty" ;
-							} else
-							{
-								$empty_or_nonempty = "empty" ;
 							}
-						} else
-						{
-							$empty_or_nonempty = "nonempty" ;
 						}
-                    } else
-                    {
-                        $empty_or_nonempty = "empty" ;
                     }
                     $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
 
