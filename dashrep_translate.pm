@@ -2758,6 +2758,7 @@ sub dashrep_top_level_action
             print "{{trace; cleared all definitions}}\n" ;
         }
         $input_text = "" ;
+        $global_endless_loop_counter = 0 ;
 
 
 #-----------------------------------------------
