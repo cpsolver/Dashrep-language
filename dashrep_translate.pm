@@ -762,6 +762,10 @@ sub dashrep_expand_parameters
         if ( ( $possible_new_limit != $global_endless_loop_counter_limit ) && ( $possible_new_limit > 1000 ) )
         {
             $global_endless_loop_counter_limit = $possible_new_limit ;
+			if ( ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
+			{
+				print "{{trace; updated endless loop counter limit: " . $possible_new_limit . "}}\n";
+			}
         }
     }
 
@@ -1003,7 +1007,7 @@ sub dashrep_expand_parameters
                 {
                     if ( $object_of_action =~ /[^ \n\t]/ )
                     {
-						$empty_or_nonempty = "nonempty" ;
+                        $empty_or_nonempty = "nonempty" ;
                     } else
                     {
                         $empty_or_nonempty = "empty" ;
@@ -1020,13 +1024,13 @@ sub dashrep_expand_parameters
                     $empty_or_nonempty = "empty" ;
                     if ( $object_of_action =~ /[^ \n\t]/ )
                     {
-						if ( exists( $dashrep_replacement{ $object_of_action } ) )
-						{
-							if ( $dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
-							{
-								$empty_or_nonempty = "nonempty" ;
-							}
-						}
+                        if ( exists( $dashrep_replacement{ $object_of_action } ) )
+                        {
+                            if ( $dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
+                            {
+                                $empty_or_nonempty = "nonempty" ;
+                            }
+                        }
                     }
                     $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
 
@@ -2098,6 +2102,8 @@ sub dashrep_xml_tags_to_dashrep
 #-----------------------------------------------
 #  Expand parameters within a tag into separate
 #  XML tags.
+#  TODO: Insert "begin-xml-tag-parameters" and
+#  "end-xml-tag-parameters" around parameters.
 
     while ( $input_text =~ /^(.*)(<[^ >\!\?\/][^>]*) ([^ >\=]+)=((\"([^>\"]*)\")|([^ >\"\']+)) *>(.*)$/ )
     {
@@ -2906,31 +2912,31 @@ sub dashrep_top_level_action
         }
         if ( $possible_error_message eq "" )
         {
-			$full_line = "" ;
-			$multi_line_limit = 10 ;
+            $full_line = "" ;
+            $multi_line_limit = 10 ;
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-				if ( $full_line ne "" )
-				{
-					$full_line = $full_line . " " . $input_line ;
-				} else
-				{
-					$full_line = $input_line ;
-				}
-				$open_brackets = $full_line ;
-				$close_brackets = $full_line ;
-				$open_brackets =~ s/[^<]//g ;
-				$close_brackets =~ s/[^>]//g ;
-				if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
-				{
-					next ;
-				}
+                if ( $full_line ne "" )
+                {
+                    $full_line = $full_line . " " . $input_line ;
+                } else
+                {
+                    $full_line = $input_line ;
+                }
+                $open_brackets = $full_line ;
+                $close_brackets = $full_line ;
+                $open_brackets =~ s/[^<]//g ;
+                $close_brackets =~ s/[^>]//g ;
+                if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
+                {
+                    next ;
+                }
                 $global_endless_loop_counter = 0 ;
                 %global_replacement_count_for_item_name = ( ) ;
                 $translation = &dashrep_xml_tags_to_dashrep( $full_line );
                 print OUTFILE $translation . "\n" ;
-				$full_line = "" ;
+                $full_line = "" ;
             }
             if ( $dashrep_replacement{ "dashrep_internal-action-trace-on-or-off" } eq "on" )
             {
