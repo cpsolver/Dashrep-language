@@ -762,10 +762,10 @@ sub dashrep_expand_parameters
         if ( ( $possible_new_limit != $global_endless_loop_counter_limit ) && ( $possible_new_limit > 1000 ) )
         {
             $global_endless_loop_counter_limit = $possible_new_limit ;
-			if ( ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
-			{
-				print "{{trace; updated endless loop counter limit: " . $possible_new_limit . "}}\n";
-			}
+            if ( ( $dashrep_replacement{ "dashrep_internal-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
+            {
+                print "{{trace; updated endless loop counter limit: " . $possible_new_limit . "}}\n";
+            }
         }
     }
 
