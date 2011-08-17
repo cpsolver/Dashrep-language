@@ -1,6 +1,26 @@
 #  Test the dashrep_translate.pm module
 
 
+#-------------------------------------------
+#  For CPAN version, remove code above and
+#  remove this comment and un-comment the
+#  code in this section.
+
+#  #!perl -T
+
+#  use strict;
+#  use warnings;
+#  use Test::More tests => 1;
+
+#  BEGIN {
+
+#  use_ok('Language::Dashrep');
+
+
+#-------------------------------------------
+#  For CPAN version, remove the code in this
+#  section.
+
 use dashrep_translate;
 
 
@@ -742,6 +762,17 @@ if ( $test_OK_counter == $test_number_count )
 {
     print "Failed " . $test_OK_counter . " tests!\n";
 }
+
+
+#-------------------------------------------
+#  For CPAN version, un-comment following
+#  code.
+
+# if ( $test_OK_counter == $test_number_count ) {
+    # pass("Passed all $test_OK_counter tests out of $test_number_count");
+# } else {
+    # fail("Failed $test_OK_counter tests out of $test_number_count, see file output_dashrep_test.txt for details");
+# }
 
 
 #-------------------------------------------

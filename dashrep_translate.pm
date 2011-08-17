@@ -17,7 +17,7 @@ Dashrep is a versatile descriptive programming language based on hyphenated phra
 
 =head1 VERSION
 
-Version 2.12
+Version 2.30
 
 =cut
 
@@ -31,17 +31,16 @@ Implements the Dashrep (TM) language, which is a versatile descriptive programmi
 The following sample code executes the actions specified in the standard input file, and writes information (or results) to the standard output file.
 
     use dashrep_translate;
+    &dashrep_translate::dashrep_linewise_translate( );
+
 # For CPAN version:
 #    use Language::Dashrep;
-
-    &dashrep_translate::dashrep_linewise_translate( );
-# For CPAN version:
 #    &Language::Dashrep::dashrep_linewise_translate( );
 
 
 See www.Dashrep.org for details.
 
-Note about Version 2: Version 2.00 and later can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
+Note about Version 2 and later: These versions, if they are from GitHub instead of CPAN, can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
 
 Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
 
@@ -139,11 +138,11 @@ my ( $global_ignore_level ) ;
 my ( $global_capture_level ) ;
 my ( $global_phrase_to_insert_after_next_top_level_line ) ;
 my ( $global_top_line_count_for_insert_phrase ) ;
-my ( @global_list_of_lists_to_generate ) ;
 my ( %dashrep_replacement ) ;
 my ( %global_replacement_count_for_item_name ) ;
-my ( @xml_tag_at_level_number ) ;
 my ( %global_exists_xml_hyphenated_phrase ) ;
+my ( @global_list_of_lists_to_generate ) ;
+my ( @xml_tag_at_level_number ) ;
 
 
 #-----------------------------------------------
@@ -2427,9 +2426,9 @@ sub dashrep_top_level_action
 #  In case definitions are exported, specify
 #  which delimiters to use -- based on the "yes"
 #  or "no" definition of the phrase
-#  "dashrep_internal-export-delimited-definitions".
+#  "dashrep_internal-yes-or-no-export-delimited-definitions".
 
-    if ( $dashrep_replacement{ "dashrep_internal-export-delimited-definitions" } eq "yes" )
+    if ( $dashrep_replacement{ "dashrep_internal-yes-or-no-export-delimited-definitions" } eq "yes" )
     {
         $all_defs_begin = "export-defs-all-begin\n\n" ;
         $all_defs_end = "export-defs-all-end\n\n" ;
@@ -3246,7 +3245,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009, 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright 2009 through 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
