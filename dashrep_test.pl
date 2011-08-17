@@ -721,7 +721,7 @@ if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_te
 
 $being_tested = "test subroutine named dashrep_xml_tags_to_dashrep -- ";
 $test_number_count ++;
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-internal-first-xml-tag-name" , "xml" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
 $string_return_value = &dashrep_translate::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
 if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
@@ -729,7 +729,7 @@ if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_te
 
 $being_tested = "test top-level action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
 $test_number_count ++;
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep_internal-first-xml-tag-name" , "html" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "html" );
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-xml-phrase" , "" );
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
@@ -743,7 +743,7 @@ if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_te
 
 #-------------------------------------------
 #  Remove temporary files.
-#  (Un-comment if need to view files for debugging.)
+#  (Comment out if need to view files for debugging.)
 
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
@@ -754,13 +754,13 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-fil
 #-------------------------------------------
 #  Indicate count of successful tests.
 
-print "Success for " . $test_OK_counter . " tests, out of " . $test_number_count . "\n";
 if ( $test_OK_counter == $test_number_count )
 {
-    print "All tests were successful!\n";
+    print "All " . $test_OK_counter . " tests were successful!\n";
 } else
 {
-    print "Failed " . $test_OK_counter . " tests!\n";
+    $test_failed_counter = $test_number_count - $test_OK_counter ;
+    print "Failed " . $test_failed_counter . " tests!\nSee test output file for details.\n";
 }
 
 
@@ -771,7 +771,7 @@ if ( $test_OK_counter == $test_number_count )
 # if ( $test_OK_counter == $test_number_count ) {
     # pass("Passed all $test_OK_counter tests out of $test_number_count");
 # } else {
-    # fail("Failed $test_OK_counter tests out of $test_number_count, see file output_dashrep_test.txt for details");
+    # fail("Failed $test_failed_counter tests out of $test_number_count, see file output_dashrep_test.txt for details");
 # }
 
 
