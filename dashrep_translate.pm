@@ -224,11 +224,8 @@ sub dashrep_define
 
 =head2 dashrep_import_replacements
 
-Parses a text string that is written in the
-Dashrep language.  Often the text string is
-the content of a text file.  The text
-specifies the replacement text strings for
-specified hyphenated phrases.
+Parses text that associates Dashrep phrases
+with the definitions for those phrases.
 
 First, and only, parameter is the text
 string that uses the Dashrep language.
