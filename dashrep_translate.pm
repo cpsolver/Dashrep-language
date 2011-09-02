@@ -870,6 +870,39 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle these two-operand actions:
+#  yes-or-no-first-number-equals-second-number
+#  yes-or-no-first-number-greater-than-second-number
+#  yes-or-no-first-number-less-than-second-number
+
+            } elsif ( $text_parameter_content =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number) *: *([0-9\,]+) +([0-9\,]+)$/ )
+            {
+                $comparison_type = $2 ;
+                $first_number_text = $6 ;
+                $second_number_text = $7 ;
+                $first_number = $first_number_text + 0 ;
+                $second_number = $second_number_text + 0 ;
+                if ( ( $comparison_type eq "equals" ) && ( $first_number == $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } elsif ( ( $comparison_type eq "greater-than" ) && ( $first_number > $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } elsif ( ( $comparison_type eq "less-than" ) && ( $first_number < $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } else
+                {
+                    $yes_or_no = "no" ;
+                }
+                if ( $dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; comparison of type " . $comparison_type . " for numbers " . $first_number_text . " and " . $second_number_text . "}}\n" ;
+                }
+                $replacement_text = $text_begin . $yes_or_no . $text_end ;
+
+
+#-----------------------------------------------
 #  If there is an action requested (which
 #  may include a colon between the action and
 #  its operand(s), handle it.

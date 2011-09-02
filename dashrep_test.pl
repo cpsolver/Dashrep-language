@@ -155,6 +155,12 @@ test-of-special-operators:
 [-should-be-sorted = [-sort-numbers: [-list-of-numbers-]-]-]
 [-test-counter = 17-]
 [-test-value = 3-]
+[-test-yes-numbers-equal = [-yes-or-no-first-number-equals-second-number: 16 16-]-]
+[-test-no-numbers-not-equal = [-yes-or-no-first-number-equals-second-number: 18 19-]-]
+[-test-yes-number-greater-than = [-yes-or-no-first-number-greater-than-second-number: 21 20-]-]
+[-test-no-number-not-greater-than = [-yes-or-no-first-number-greater-than-second-number: 20 20-]-]
+[-test-yes-number-less-than = [-yes-or-no-first-number-less-than-second-number: 21 22-]-]
+[-test-no-number-not-less-than = [-yes-or-no-first-number-less-than-second-number: 22 22-]-]
 nothing else
 --------
 
@@ -334,7 +340,7 @@ if ( $string_return_value eq "17" ) { $one_if_ok = 1; } else { $one_if_ok = 0; }
 if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
 
-$being_tested = "test special operator -- ";
+$being_tested = "test zero operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-zero" );
 if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
@@ -436,6 +442,48 @@ $being_tested = "test not same operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-not-same" );
 if ( $string_return_value eq "not-same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test numbers equal operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-numbers-equal" );
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test numbers equal operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-numbers-not-equal" );
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test greater than operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-greater-than" );
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test greater than operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-greater-than" );
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test less than operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-less-than" );
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test less than operator -- ";
+$test_number_count ++;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-less-than" );
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
 
