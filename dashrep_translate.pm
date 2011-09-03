@@ -126,23 +126,23 @@ The following subroutines are exported.
 #-----------------------------------------------
 #  Declare package variables.
 
-my ( $global_true ) ;
-my ( $global_false ) ;
-my ( $global_endless_loop_counter ) ;
-my ( $global_endless_loop_counter_limit ) ;
-my ( $nesting_level_of_file_actions ) ;
-my ( $xml_level_number ) ;
-my ( $xml_accumulated_sequence_of_tag_names ) ;
-my ( $spaces ) ;
-my ( $global_ignore_level ) ;
-my ( $global_capture_level ) ;
-my ( $global_phrase_to_insert_after_next_top_level_line ) ;
-my ( $global_top_line_count_for_insert_phrase ) ;
-my ( %dashrep_replacement ) ;
-my ( %global_replacement_count_for_item_name ) ;
-my ( %global_exists_xml_hyphenated_phrase ) ;
-my ( @global_list_of_lists_to_generate ) ;
-my ( @xml_tag_at_level_number ) ;
+my $global_true ;
+my $global_false ;
+my $global_endless_loop_counter ;
+my $global_endless_loop_counter_limit ;
+my $nesting_level_of_file_actions ;
+my $xml_level_number ;
+my $xml_accumulated_sequence_of_tag_names ;
+my $spaces ;
+my $global_ignore_level ;
+my $global_capture_level ;
+my $global_phrase_to_insert_after_next_top_level_line ;
+my $global_top_line_count_for_insert_phrase ;
+my %dashrep_replacement ;
+my %global_replacement_count_for_item_name ;
+my %global_exists_xml_hyphenated_phrase ;
+my @global_list_of_lists_to_generate ;
+my @xml_tag_at_level_number ;
 
 
 #-----------------------------------------------
@@ -193,8 +193,8 @@ are not exactly two parameters.
 sub dashrep_define
 {
 
-    my ( $phrase_name ) ;
-    my ( $expanded_text ) ;
+    my $phrase_name ;
+    my $expanded_text ;
 
 
 #-----------------------------------------------
@@ -246,17 +246,16 @@ there is not exactly one parameter.
 sub dashrep_import_replacements
 {
 
-    my ( $definition_name ) ;
-    my ( $definition_value ) ;
-    my ( $input_string ) ;
-    my ( $replacements_text_to_import ) ;
-    my ( $text_before ) ;
-    my ( $text_including_comment_end ) ;
-    my ( $text_after ) ;
-    my ( $do_nothing ) ;
-    my ( $temporary_string ) ;
-    my ( @list_of_replacement_names ) ;
-    my ( @list_of_replacement_strings ) ;
+    my $definition_name ;
+    my $definition_value ;
+    my $input_string ;
+    my $replacements_text_to_import ;
+    my $text_before ;
+    my $text_including_comment_end ;
+    my $text_after ;
+    my $do_nothing ;
+    my @list_of_replacement_names ;
+    my @list_of_replacement_strings ;
 
 
 #-----------------------------------------------
@@ -457,8 +456,8 @@ there is not exactly one parameter.
 sub dashrep_get_replacement
 {
 
-    my ( $phrase_name ) ;
-    my ( $expanded_text ) ;
+    my $phrase_name ;
+    my $expanded_text ;
 
 
 #-----------------------------------------------
@@ -519,7 +518,7 @@ not exactly zero parameters.
 sub dashrep_get_list_of_phrases
 {
 
-    my ( @list_of_phrases ) ;
+    my @list_of_phrases ;
 
     if ( scalar( @_ ) != 0 )
     {
@@ -555,8 +554,7 @@ is not exactly one parameter.
 sub dashrep_delete
 {
 
-    my ( $phrase_name ) ;
-    my ( $expanded_text ) ;
+    my $phrase_name ;
 
 
 #-----------------------------------------------
@@ -603,6 +601,9 @@ is not exactly zero parameters.
 
 sub dashrep_delete_all
 {
+
+    my $xml_level_number ;
+    my @xml_tag_at_level_number ;
 
 
 #-----------------------------------------------
@@ -676,33 +677,43 @@ string if there is not exactly one parameter.
 sub dashrep_expand_parameters
 {
 
-    my ( $supplied_text ) ;
-    my ( $replacement_text_name ) ;
-    my ( $replacement_text ) ;
-    my ( $loop_status_done ) ;
-    my ( $text_begin ) ;
-    my ( $text_parameter_name ) ;
-    my ( $text_parameter_value ) ;
-    my ( $text_end ) ;
-    my ( $action_name ) ;
-    my ( $object_of_action ) ;
-    my ( $count ) ;
-    my ( $zero_one_multiple ) ;
-    my ( $empty_or_nonempty ) ;
-    my ( $full_length ) ;
-    my ( $length_half ) ;
-    my ( $string_beginning ) ;
-    my ( $string_end ) ;
-    my ( $same_or_not_same ) ;
-    my ( $sorted_numbers ) ;
-    my ( $text_parameter_placeholder ) ;
-    my ( $text_parameter ) ;
-    my ( $item_name ) ;
-    my ( $name_for_count ) ;
-    my ( $text_for_value ) ;
-    my ( @list ) ;
-    my ( @list_of_sorted_numbers ) ;
-    my ( @list_of_replacements_to_auto_increment ) ;
+    my $supplied_text ;
+    my $replacement_text ;
+    my $loop_status_done ;
+    my $text_begin ;
+    my $text_parameter_name ;
+    my $text_parameter_value ;
+    my $text_end ;
+    my $action_name ;
+    my $object_of_action ;
+    my $count ;
+    my $zero_one_multiple ;
+    my $empty_or_nonempty ;
+    my $full_length ;
+    my $length_half ;
+    my $string_beginning ;
+    my $string_end ;
+    my $same_or_not_same ;
+    my $sorted_numbers ;
+    my $text_parameter_placeholder ;
+    my $text_parameter ;
+    my $name_for_count ;
+    my $text_for_value ;
+    my $possible_new_limit ;
+    my $text_parameter_content ;
+    my $source_phrase ;
+    my $target_phrase ;
+    my $comparison_type ;
+    my $first_number_text ;
+    my $second_number_text ;
+    my $first_number ;
+    my $second_number ;
+    my $yes_or_no ;
+    my $first_object_of_action ;
+    my $second_object_of_action ;
+    my @list ;
+    my @list_of_sorted_numbers ;
+    my @list_of_replacements_to_auto_increment ;
 
 
 #-----------------------------------------------
@@ -1275,20 +1286,20 @@ It is only needed within the Dashrep module.
 sub dashrep_generate_lists
 {
 
-    my ( $list_name ) ;
-    my ( $generated_list_name ) ;
-    my ( $parameter_name ) ;
-    my ( $do_nothing ) ;
-    my ( $list_prefix ) ;
-    my ( $list_separator ) ;
-    my ( $list_suffix ) ;
-    my ( $replacement_name ) ;
-    my ( $delimited_list_of_parameters ) ;
-    my ( $pointer ) ;
-    my ( $parameter ) ;
-    my ( $item_name ) ;
-    my ( @list_of_parameters ) ;
-    my ( %already_generated_list_named ) ;
+    my $list_name ;
+    my $generated_list_name ;
+    my $parameter_name ;
+    my $do_nothing ;
+    my $list_prefix ;
+    my $list_separator ;
+    my $list_suffix ;
+    my $replacement_name ;
+    my $delimited_list_of_parameters ;
+    my $pointer ;
+    my $parameter ;
+    my $item_name ;
+    my @list_of_parameters ;
+    my %already_generated_list_named ;
 
 
 #-----------------------------------------------
@@ -1463,15 +1474,14 @@ is not exactly one parameter.
 sub dashrep_expand_phrases_except_special
 {
 
-    my ( $current_item ) ;
-    my ( $hyphenated_phrase_to_expand ) ;
-    my ( $expanded_output_string ) ;
-    my ( $item_name ) ;
-    my ( $first_item ) ;
-    my ( $remainder ) ;
-    my ( $replacement_item ) ;
-    my ( @item_stack ) ;
-    my ( @items_to_add ) ;
+    my $current_item ;
+    my $hyphenated_phrase_to_expand ;
+    my $expanded_output_string ;
+    my $first_item ;
+    my $remainder ;
+    my $replacement_item ;
+    my @item_stack ;
+    my @items_to_add ;
 
 
 #-----------------------------------------------
@@ -1631,12 +1641,15 @@ is not exactly one parameter.
 sub dashrep_expand_special_phrases
 {
 
-    my ( $expanded_string ) ;
-    my ( $phrase_name ) ;
-    my ( $code_for_non_breaking_space ) ;
-    my ( $code_begin ) ;
-    my ( $code_with_spaces ) ;
-    my ( $code_end ) ;
+    my $expanded_string ;
+    my $phrase_name ;
+    my $code_for_non_breaking_space ;
+    my $code_begin ;
+    my $code_with_spaces ;
+    my $code_end ;
+    my $remaining_string ;
+    my $ignore_directive ;
+    my $capture_directive ;
 
 
 #-----------------------------------------------
@@ -1941,9 +1954,9 @@ exactly one parameter.
 sub dashrep_expand_phrases
 {
 
-    my ( $text_string_to_expand ) ;
-    my ( $partly_expanded_string ) ;
-    my ( $expanded_string ) ;
+    my $text_string_to_expand ;
+    my $partly_expanded_string ;
+    my $expanded_string ;
 
 
 #-----------------------------------------------
@@ -2014,12 +2027,37 @@ tag will not be recognized.
 sub dashrep_xml_tags_to_dashrep
 {
 
+    my $input_text ;
+    my $first_tag_name ;
+    my $output_text ;
+    my $open_brackets ;
+    my $close_brackets ;
+    my $remaining_string ;
+    my $prefix_text ;
+    my $tag_full ;
+    my $suffix_text ;
+    my $tag_name ;
+    my $previous_input_text ;
+    my $text_before_tag ;
+    my $tag_and_possible_parameters ;
+    my $parameter_name ;
+    my $parameter_value ;
+    my $text_after_tag ;
+    my $revised_tags ;
+    my $possible_slash ;
+    my $may_include_closing_slash ;
+    my $previous_tag_name ;
+    my $xml_accumulated_sequence_of_tag_names ;
+    my $xml_level_number ;
+    my $spaces ;
+    my $sequence_without_hyphen_prefix ;
+    my $starting_position_of_last_tag_name ;
+    my @xml_tag_at_level_number ;
+
 
 #-----------------------------------------------
 #  Get the input text.
 
-    my( $input_text ) ;
-    my( $first_tag_name ) ;
     if ( scalar( @_ ) == 1 )
     {
         $input_text = @_[ 0 ] ;
@@ -2401,18 +2439,40 @@ is not exactly one parameter.
 sub dashrep_top_level_action
 {
 
-    my ( $source_definitions ) ;
-    my ( $input_text ) ;
-    my ( $translation ) ;
-    my ( $partial_translation ) ;
-    my ( $source_filename ) ;
-    my ( $target_filename ) ;
-    my ( $source_phrase ) ;
-    my ( $target_phrase ) ;
-    my ( $lines_to_translate ) ;
-    my ( $line_count ) ;
-    my ( $text_list_of_phrases ) ;
-    my ( @list_of_phrases ) ;
+    my $source_definitions ;
+    my $input_text ;
+    my $translation ;
+    my $partial_translation ;
+    my $source_filename ;
+    my $target_filename ;
+    my $source_phrase ;
+    my $target_phrase ;
+    my $lines_to_translate ;
+    my $line_count ;
+    my $text_list_of_phrases ;
+    my $xml_level_number ;
+    my $possible_error_message ;
+    my $nesting_level_of_file_actions ;
+    my $all_defs_begin ;
+    my $all_defs_end ;
+    my $phrase_begin ;
+    my $phrase_end ;
+    my $def_begin ;
+    my $def_end ;
+    my $all_lines ;
+    my $input_line ;
+    my $phrase_name ;
+    my $tracking_on_or_off ;
+    my $qualifier ;
+    my $numeric_return_value ;
+    my $full_line ;
+    my $multi_line_limit ;
+    my $open_brackets ;
+    my $close_brackets ;
+    my $multi_line_count ;
+    my $xml_hyphenated_phrase ;
+    my @list_of_phrases ;
+    my @xml_tag_at_level_number ;
 
 
 #-----------------------------------------------
@@ -3035,7 +3095,13 @@ no errors are defined).
 sub dashrep_linewise_translate
 {
 
-    my ( $input_line ) ;
+    my $input_line ;
+    my $all_lines ;
+    my $line_count ;
+    my $numeric_return_value ;
+    my $revised_text ;
+    my $after_possible_action ;
+    my $error_message ;
 
 
 #-----------------------------------------------
@@ -3141,9 +3207,9 @@ It is only needed within the Dashrep module.
 sub dashrep_internal_endless_loop_info
 {
 
-    my ( $item_name ) ;
-    my ( $highest_usage_counter ) ;
-    my ( $highest_usage_item_name ) ;
+    my $item_name ;
+    my $highest_usage_counter ;
+    my $highest_usage_item_name ;
 
     $highest_usage_counter = - 1 ;
     foreach $item_name ( keys( %global_replacement_count_for_item_name ) )
@@ -3191,8 +3257,8 @@ It is only needed within the Dashrep module.
 
 sub dashrep_internal_split_delimited_items
 {
-    my ( $text_string ) ;
-    my ( @array ) ;
+    my $text_string ;
+    my @array ;
 
     $text_string = $_[ 0 ] ;
 
