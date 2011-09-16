@@ -29,18 +29,19 @@ BEGIN {
 #-------------------------------------------
 #  Declare variables.
 
-my ( $numeric_return_value );
-my ( $string_return_value );
-my ( $list_count );
-my ( $one_if_ok );
-my ( $dashrep_code );
-my ( $content_with_expanded_parameters );
-my ( $html_code );
-my ( $captured_text );
-my ( $being_tested );
-my ( $test_OK_counter );
-my ( $test_number_count );
-my ( @string_array_return_value );
+my $phrase_name;
+my $numeric_return_value;
+my $string_return_value;
+my $list_count;
+my $one_if_ok;
+my $dashrep_code;
+my $content_with_expanded_parameters;
+my $html_code;
+my $captured_text;
+my $being_tested;
+my $test_OK_counter;
+my $test_number_count;
+my @string_array_return_value;
 
 $test_number_count = 0;
 $test_OK_counter = 0;
@@ -220,6 +221,9 @@ intended-result-of-parameter-substitution:
 abc-def-ghi-jkl-mno
 --------
 
+single-phrase-to-replace:
+replaced-phrase
+--------
 
 page-participants-list:
 [-create-list-named: participant-names-full-]
@@ -315,6 +319,15 @@ if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_te
 $being_tested = "expanded parameters in one string -- ";
 $test_number_count ++;
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "test-of-parameter-substitution" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "expanded parameters in one variable-named string -- ";
+$test_number_count ++;
+$phrase_name = "test-of-parameter-substitution" ;
+$content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( $phrase_name );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
 if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
@@ -556,6 +569,14 @@ $being_tested = "test four-space indentation -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
 if ( $string_return_value =~ /abc\n    def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+
+$being_tested = "test single phrase replacement -- ";
+$test_number_count ++;
+$phrase_name = "single-phrase-to-replace";
+$string_return_value = &dashrep_translate::dashrep_expand_phrases( $phrase_name );
+if ( $string_return_value ne "replaced-phrase" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
 

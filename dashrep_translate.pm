@@ -89,7 +89,11 @@ The following subroutines are exported.
 
 =head2 dashrep_linewise_translate
 
+=cut
+
+
 # For CPAN version:
+# our @ISA = qw(Exporter);
 # our @EXPORT = qw(
 #     dashrep_define
 #     dashrep_import_replacements
@@ -105,8 +109,6 @@ The following subroutines are exported.
 #     dashrep_top_level_action
 #     dashrep_linewise_translate
 # );
-
-=cut
 
 
 #-----------------------------------------------
