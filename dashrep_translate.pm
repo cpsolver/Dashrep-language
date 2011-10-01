@@ -13,7 +13,10 @@ package dashrep_translate;
 
 =head1 NAME
 
-Dashrep is a versatile descriptive programming language based on hyphenated phrases being successively expanded into replacement text.  It is a much more flexible alternative to using a template language.  See www.Dashrep.org for details.
+Language::Dashrep - Dashrep language translator/interpreter
+
+=cut
+
 
 =head1 VERSION
 
@@ -24,23 +27,24 @@ Version 2.30
 # For CPAN version:
 # our $VERSION = '2.12';
 
+
 =head1 SYNOPSIS
 
-Implements the Dashrep (TM) language, which is a versatile descriptive programming language that recursively expands English-like hyphenated phrases, such as B<rectangle-outline-attention-begin>, into any kind of text or code, such as HTML, XML, JavaScript, C (subset), boilerplate-based text, etc.  The resulting expanded text can be an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, etc.
+The following sample code executes the Dashrep-language actions specified in the standard input file.
 
-The following sample code executes the actions specified in the standard input file, and writes information (or results) to the standard output file.
+    use Language::Dashrep;
+    &Language::Dashrep::dashrep_linewise_translate( );
 
-    use dashrep_translate;
-    &dashrep_translate::dashrep_linewise_translate( );
+The module also supports direct access to functions that define Dashrep phrases, expand text that contains Dashrep phrases, and more.
 
-# For CPAN version:
-#    use Language::Dashrep;
-#    &Language::Dashrep::dashrep_linewise_translate( );
+=cut
 
 
-See www.Dashrep.org for details.
+=head1 ABOUT
 
-Note about Version 2 and later: These versions, if they are from GitHub instead of CPAN, can be used without involving anything related to CPAN; it only needs the Perl interpreter (which means that on the Windows operating system only the perl.exe and perl512.dll and libgcc_s_sjlj-1.dll files are needed to execute this code.)
+Dashrep (TM) is a versatile descriptive programming language that recognizes hyphenated phrases, such as B<rectangle-outline-attention-begin>, and recursively expands the phrases to generate an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, a template-based email message, or any other text-based content.
+
+See www.Dashrep.org for details about the Dashrep language.
 
 Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
 
@@ -56,7 +60,11 @@ The design goals for the Dashrep language were:
 
 =item * Make the language speakable.  (This characteristic is useful for various purposes, including circumventing keyboard-induced repetitive-stress injury, and using microphone-equipped mobile devices.)
 
+Note about Version 2 and later: These versions, if they are from GitHub instead of CPAN, can be used without the CPAN envioronment.  The GitHub version only needs the Perl interpreter, which means that on the Windows operating system only the I<perl.exe> and I<perl512.dll> and I<libgcc_s_sjlj-1.dll> files (or their more-recent equivalents) are needed.
+
 =back
+
+=cut
 
 
 =head1 EXPORT
@@ -148,7 +156,8 @@ my @global_xml_tag_at_level_number ;
 
 
 #-----------------------------------------------
-#  Define package constants.
+#  Define package constants, and initialize
+#  special phrases.
 
 BEGIN {
     $global_true = 1 ;
@@ -161,14 +170,61 @@ BEGIN {
     $global_ignore_level = 0 ;
     $global_capture_level = 0 ;
     $global_xml_level_number = 0 ;
-    %global_dashrep_replacement = ( ) ;
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
+
+    %global_dashrep_replacement = ( ) ;
+	$global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
+	$global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+	$global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
+	$global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+	$global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
 }
 
 
 =head1 FUNCTIONS
+
+
+=head2 initialize_special_phrases
+
+Initialize the phrases with special "dashrep_..."
+names.
+
+=cut
+
+#-----------------------------------------------
+#-----------------------------------------------
+#                 initialize_special_phrases
+#-----------------------------------------------
+#-----------------------------------------------
+
+sub initialize_special_phrases
+{
+	$global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
+	$global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+	$global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
+	$global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+	$global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+	$global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+}
 
 
 =head2 dashrep_define
@@ -625,6 +681,7 @@ sub dashrep_delete_all
     if ( scalar( @_ ) == 0 )
     {
         %global_dashrep_replacement = ( );
+		&initialize_special_phrases( ) ;
     } else
     {
         warn "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
@@ -1643,12 +1700,16 @@ sub dashrep_expand_special_phrases
     my $expanded_string ;
     my $phrase_name ;
     my $code_for_non_breaking_space ;
-    my $code_begin ;
     my $code_with_spaces ;
+    my $code_begin ;
     my $code_end ;
     my $remaining_string ;
     my $ignore_directive ;
     my $capture_directive ;
+
+    $code_begin = "" ;
+    $code_end = "" ;
+    $remaining_string = "" ;
 
 
 #-----------------------------------------------
@@ -2055,7 +2116,7 @@ sub dashrep_xml_tags_to_dashrep
 
     if ( scalar( @_ ) == 1 )
     {
-        $input_text = @_[ 0 ] ;
+        $input_text = $_[ 0 ] ;
     } else
     {
         warn "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
@@ -2249,7 +2310,7 @@ sub dashrep_xml_tags_to_dashrep
 
 #-----------------------------------------------
 #  If a specially named Dashrep phrase indicates
-#  that the tag should be renamed, rename it as
+#  that the XML tag should be renamed, rename it as
 #  requested.
 
         if ( exists( $global_dashrep_replacement{ "dashrep-xml-replacement-name-for-tag-named-" . $tag_name } ) )
@@ -2479,7 +2540,7 @@ sub dashrep_top_level_action
 
     if ( scalar( @_ ) == 1 )
     {
-        $input_text = @_[ 0 ] ;
+        $input_text = $_[ 0 ] ;
     } else
     {
         warn "Warning: Call to dashrep_top_level_action subroutine does not exactly one parameter." ;

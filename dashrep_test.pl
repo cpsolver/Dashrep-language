@@ -55,8 +55,8 @@ $being_tested = "defined hyphenated phrase -- ";
 $test_number_count ++;
 $numeric_return_value = &dashrep_translate::dashrep_define( "page-name" , "name of page" );
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -66,41 +66,48 @@ $being_tested = "retrieved replacement text -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
 if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "attempt to retrieve undefined phrase -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "phrase-not-defined" );
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
 #  Test defining second phrase and then
 #  getting list of all defined phrases.
 
+@string_array_return_value = &dashrep_translate::dashrep_get_list_of_phrases;
+$prior_list_count = $#string_array_return_value + 1;
+
 $being_tested = "defined hyphenated phrase -- ";
 $test_number_count ++;
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 $numeric_return_value = &dashrep_translate::dashrep_define( "page-name-second" , "name of second page" );
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };;
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };;
 
 $being_tested = "counted defined phrases -- ";
 $test_number_count ++;
 @string_array_return_value = &dashrep_translate::dashrep_get_list_of_phrases;
 $list_count = $#string_array_return_value + 1;
-if ( $list_count eq 2 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $list_count == $prior_list_count + 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "verified name in list of phrase names -- ";
 $test_number_count ++;
-if ( $string_array_return_value[ 1 ] =~ /page/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+$one_if_ok = 0;
+for ( $pointer = 0 ; $pointer <= ( $list_count - 1 ) ; $pointer ++ )
+{
+    if ( $string_array_return_value[ $pointer ] =~ /page/ )	{ $one_if_ok = 1; last; };
+}
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -112,15 +119,15 @@ $being_tested = "deleted hyphenated phrase -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_delete( "temporary-phrase" );
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "attempt to retrieve deleted phrase -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "temporary-phrase" );
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 #-------------------------------------------
 #  Specify Dashrep code that will be used in
@@ -309,8 +316,8 @@ $being_tested = "imported replacements using Dashrep code -- ";
 $test_number_count ++;
 $numeric_return_value = &dashrep_translate::dashrep_import_replacements( $dashrep_code );
 if ( $numeric_return_value > 10 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -321,8 +328,8 @@ $test_number_count ++;
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "test-of-parameter-substitution" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
 if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "expanded parameters in one variable-named string -- ";
 $test_number_count ++;
@@ -330,15 +337,15 @@ $phrase_name = "test-of-parameter-substitution" ;
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( $phrase_name );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
 if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "expanded parameters -- ";
 $test_number_count ++;
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "page-participants-list" );
 if ( $content_with_expanded_parameters =~ /format-begin-heading-level-1 words-web-page-title format-end-heading-level-1 tag-begin ul tag-end generated-list-named-participant-names-full tag-begin .* tag-end/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -350,178 +357,178 @@ $being_tested = "test equal sign assignment -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-17" );
 if ( $string_return_value eq "17" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test zero operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-zero" );
 if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-one" );
 if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test multiple operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-multiple" );
 if ( $string_return_value eq "multiple" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for zero -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-zero" );
 if ( $string_return_value eq "0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for one -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-one" );
 if ( $string_return_value eq "1" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for three -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-three" );
 if ( $string_return_value eq "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test zero count operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-zero" );
 if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one count operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-one" );
 if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test multiple count operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-multiple" );
 if ( $string_return_value eq "multiple" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test first item in list operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-item-three" );
 if ( $string_return_value eq "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test last item in list operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-item-four" );
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test empty operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty" );
 if ( $string_return_value eq "empty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test nonempty operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-nonempty" );
 if ( $string_return_value eq "nonempty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test same operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same" );
 if ( $string_return_value eq "same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test not same operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-not-same" );
 if ( $string_return_value eq "not-same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-numbers-equal" );
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-numbers-not-equal" );
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test greater than operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-greater-than" );
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test greater than operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-greater-than" );
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test less than operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-less-than" );
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test less than operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-less-than" );
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test sort operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-sorted" );
 if ( $string_return_value eq "3,4,7,12,13" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test auto-increment operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-auto-increment" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-counter" );
 if ( $string_return_value eq "18" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test unique-value operator -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-unique-value" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-value" );
 if ( $string_return_value ne "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -531,9 +538,9 @@ $being_tested = "test comment delimiters -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-of-comment-delimiters" );
 if ( $string_return_value !~ /comment/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -543,9 +550,9 @@ $being_tested = "test expansion without special phrases -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases_except_special( "test-of-special-spacing" );
 if ( $string_return_value =~ /abc no\-space def one\-space ghi jkl/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -555,58 +562,58 @@ $being_tested = "test no-space directive -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  no-space  def" );
 if ( $string_return_value =~ /abcdef/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one-space directive -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  one-space  def" );
 if ( $string_return_value =~ /abc def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test four-space indentation -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
 if ( $string_return_value =~ /abc\n    def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test single phrase replacement -- ";
 $test_number_count ++;
 $phrase_name = "single-phrase-to-replace";
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( $phrase_name );
 if ( $string_return_value ne "replaced-phrase" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test non-breaking-space directives -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc non-breaking-space def" );
 if ( $string_return_value =~ /abc&nbsp;def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test non-breaking-spaces-begin/end directive -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx" );
 if ( $string_return_value =~ /jkl mno&nbsp;pqr&nbsp;stu vwx/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test tab-here directive -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc tab-here def" );
 if ( $string_return_value =~ /abc\tdef/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test empty-line and new-line directives -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc empty-line def new-line ghi" );
 if ( $string_return_value =~ /abc\n\ndef\nghi/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -616,15 +623,15 @@ $being_tested = "test line break phrase -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-special-line-phrases" );
 if ( $string_return_value =~ /\n/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test special-phrase line break -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-of-special-line-phrases" );
 if ( $string_return_value =~ /\n/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -634,8 +641,8 @@ $being_tested = "test tab-here phrase -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-tabs" );
 if ( $string_return_value ne "abc\tdef\tghi" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -646,8 +653,8 @@ $being_tested = "test ignore directives on same line -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc ignore-begin-here def ghi ignore-end-here test-jkl" );
 if ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test ignore directives on different lines -- ";
 $test_number_count ++;
@@ -662,8 +669,8 @@ $accumulated_string .= $string_return_value;
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-jkl" );
 $accumulated_string .= $string_return_value;
 if ( $accumulated_string =~ /test-abc[^a-z]*test-jkl/i ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -676,8 +683,8 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc capture-begin-here def ghi capture-end-here test-jkl" );
 $captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
 if ( ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ ) && ( $captured_text =~ /^[^a-z]*def +ghi[^a-z]*$/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test capture directives on different lines -- ";
 $test_number_count ++;
@@ -694,8 +701,8 @@ $accumulated_string .= $string_return_value;
 $captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
 if ( ( $accumulated_string =~ /test-abc *test-jkl/ ) && ( $captured_text =~ /def +ghi/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -708,14 +715,14 @@ $test_number_count ++;
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "entire-standard-web-page" );
 $html_code = &dashrep_translate::dashrep_expand_phrases( $content_with_expanded_parameters );
 if ( length( $html_code ) gt 100 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "found specific expanded text -- ";
 $test_number_count ++;
 if ( ( $html_code =~ /List of participants/ ) && ( $html_code =~ /Nicole/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -739,8 +746,8 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level actions that create file, append to file, and copy from file to phrase -- ";
 $test_number_count ++;
@@ -750,8 +757,8 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: clear-all-dashrep-phrases -- ";
 $test_number_count ++;
@@ -759,16 +766,16 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "write-all-
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "clear-all-dashrep-phrases" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level actions that save and get definitions in file -- ";
 $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "get-definitions-from-file  output_test_definitions_file.txt" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
 if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: linewise-translate-from-file-to-file -- ";
 $test_number_count ++;
@@ -781,8 +788,8 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-t
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
 if ( $string_return_value =~ /replaced content/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -793,8 +800,8 @@ $test_number_count ++;
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
 $string_return_value = &dashrep_translate::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
 if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
 $test_number_count ++;
@@ -806,8 +813,8 @@ $string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-t
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase" );
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-xml-phrase" );
 if ( $string_return_value =~ /begin-html-head.*participants.*end-html-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok eq 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok eq 1 ) { print $being_tested . "OK\n" } else { print . $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { print $being_tested . "OK\n" } else { print $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
