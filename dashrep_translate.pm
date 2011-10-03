@@ -25,7 +25,7 @@ Version 2.30
 =cut
 
 # For CPAN version:
-# our $VERSION = '2.12';
+# our $VERSION = '2.30';
 
 
 =head1 SYNOPSIS
@@ -175,20 +175,20 @@ BEGIN {
     @global_xml_tag_at_level_number = ( ) ;
 
     %global_dashrep_replacement = ( ) ;
-	$global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
-	$global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
-	$global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
-	$global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-	$global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
+    $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+    $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
+    $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+    $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
 }
 
 
@@ -210,20 +210,20 @@ names.
 
 sub initialize_special_phrases
 {
-	$global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
-	$global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
-	$global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
-	$global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
-	$global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-	$global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-	$global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
+    $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+    $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
+    $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
+    $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
 }
 
 
@@ -681,7 +681,7 @@ sub dashrep_delete_all
     if ( scalar( @_ ) == 0 )
     {
         %global_dashrep_replacement = ( );
-		&initialize_special_phrases( ) ;
+        &initialize_special_phrases( ) ;
     } else
     {
         warn "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
@@ -1707,10 +1707,6 @@ sub dashrep_expand_special_phrases
     my $ignore_directive ;
     my $capture_directive ;
 
-    $code_begin = "" ;
-    $code_end = "" ;
-    $remaining_string = "" ;
-
 
 #-----------------------------------------------
 #  Get the starting hyphenated-phrase.
@@ -1722,6 +1718,10 @@ sub dashrep_expand_special_phrases
     {
         $expanded_string = "" ;
         return $expanded_string ;
+    }
+    if ( $expanded_string !~ /[^ ]/ )
+    {
+        return "";
     }
 
 
@@ -1799,11 +1799,11 @@ sub dashrep_expand_special_phrases
         $remaining_string = "" ;
     }
 
-    while ( $remaining_string =~ /^(.*? +)?((ignore-begin-here)|(ignore-end-here))( +.*)?$/si )
+    while ( $remaining_string =~ /^((.*? +)?)((ignore-begin-here)|(ignore-end-here))(( +.*)?)$/si )
     {
         $code_begin = $1 ;
-        $ignore_directive = $2 ;
-        $remaining_string = $5 ;
+        $ignore_directive = $3 ;
+        $remaining_string = $6 ;
 
         if ( $global_ignore_level > 0 )
         {
@@ -1863,11 +1863,11 @@ sub dashrep_expand_special_phrases
         $remaining_string = "" ;
     }
 
-    while ( $remaining_string =~ /^(.*? +)?((capture-begin-here)|(capture-end-here))( +.*)?$/si )
+    while ( $remaining_string =~ /^((.*? +)?)((capture-begin-here)|(capture-end-here))(( +.*)?)$/si )
     {
         $code_begin = $1 ;
-        $capture_directive = $2 ;
-        $remaining_string = $5 ;
+        $capture_directive = $3 ;
+        $remaining_string = $6 ;
 
         if ( $global_capture_level > 0 )
         {
