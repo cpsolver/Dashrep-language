@@ -19,6 +19,8 @@
 #-------------------------------------------
 #  For CPAN version, remove the code in this
 #  section.
+#  Also, in each subroutine call below,
+#  remove the "dashrep_translate::" string.
 
 use dashrep_translate;
 
@@ -46,6 +48,7 @@ my $prior_list_count;
 my $pointer;
 my $accumulated_string;
 my $test_failed_counter;
+my $filename;
 my @string_array_return_value;
 
 $test_number_count = 0;
