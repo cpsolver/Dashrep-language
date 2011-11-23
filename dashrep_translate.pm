@@ -344,10 +344,10 @@ sub dashrep_import_replacements
 
 
 #-----------------------------------------------
-#  Replace line breaks with spaces.
+#  Replace line breaks, and tabs, with spaces.
 
-    $replacements_text_to_import =~ s/[\n\r]/ /sg ;
-    $replacements_text_to_import =~ s/[\n\r]/ /sg ;
+    $replacements_text_to_import =~ s/[\n\r\t]+/ /sg ;
+    $replacements_text_to_import =~ s/[\n\r\t]+/ /sg ;
     $replacements_text_to_import =~ s/  +/ /sg ;
 
 
@@ -2875,7 +2875,10 @@ sub dashrep_top_level_action
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                $source_definitions .= $input_line . " " ;
+                if ( $input_line =~ /[^ ]/ )
+                {
+                    $source_definitions .= $input_line . " " ;
+                }
             }
         }
         close( INFILE ) ;
@@ -2953,14 +2956,17 @@ sub dashrep_top_level_action
                     {
                         $all_lines = "" ;
                         $line_count = 0 ;
-                        while( $input_line = <STDIN> )
+                        while( $input_line = <INFILE> )
                         {
                             chomp( $input_line );
                             if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
                             {
                                 last;
                             }
-                            $all_lines .= $input_line . " " ;
+                            if ( $input_line =~ /[^ ]/ )
+                            {
+                                $all_lines .= $input_line . " " ;
+                            }
                             $line_count ++ ;
                         }
                         $numeric_return_value = &dashrep_import_replacements( $all_lines );
@@ -3183,7 +3189,10 @@ sub dashrep_linewise_translate
                 {
                     last;
                 }
-                $all_lines .= $input_line . " " ;
+                if ( $input_line =~ /[^ ]/ )
+                {
+                    $all_lines .= $input_line . " " ;
+                }
                 $line_count ++ ;
             }
             $numeric_return_value = &dashrep_import_replacements( $all_lines );
