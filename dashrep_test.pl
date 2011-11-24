@@ -1,10 +1,7 @@
 #  Test the dashrep_translate.pm module
 
-#-------------------------------------------
-#  For CPAN version, remove code above and
-#  remove this comment and un-comment the
-#  code in this section.
-
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
 # #!perl -T
 
 # use strict;
@@ -16,11 +13,8 @@
 # use_ok('Language::Dashrep');
 
 
-#-------------------------------------------
-#  For CPAN version, remove the code in this
-#  section.
-#  Also, in each subroutine call below,
-#  remove the "dashrep_translate::" string.
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 
 use dashrep_translate;
 
@@ -28,6 +22,7 @@ use dashrep_translate;
 BEGIN {
 
 
+#  remove-from-cpan-version-end
 #-------------------------------------------
 #  Declare variables.
 
@@ -62,7 +57,12 @@ $results_text = "";
 
 $being_tested = "defined hyphenated phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "page-name" , "name of page" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_translate::dashrep_define( "page-name" , "name of page" );
+#  uncomment-for-cpan-version-end
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -73,14 +73,24 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "retrieved replacement text -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "page-name" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "attempt to retrieve undefined phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "phrase-not-defined" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "phrase-not-defined" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -90,19 +100,34 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  Test defining second phrase and then
 #  getting list of all defined phrases.
 
+#  remove-from-cpan-version-begin
 @string_array_return_value = &dashrep_translate::dashrep_get_list_of_phrases;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# @string_array_return_value = &Dashrep::dashrep_get_list_of_phrases;
+#  uncomment-for-cpan-version-end
 $prior_list_count = $#string_array_return_value + 1;
 
 $being_tested = "defined hyphenated phrase -- ";
 $test_number_count ++;
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "page-name-second" , "name of second page" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "page-name-second" , "name of second page" );
+#  uncomment-for-cpan-version-end
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };;
 
 $being_tested = "counted defined phrases -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 @string_array_return_value = &dashrep_translate::dashrep_get_list_of_phrases;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# @string_array_return_value = &Dashrep::dashrep_get_list_of_phrases;
+#  uncomment-for-cpan-version-end
 $list_count = $#string_array_return_value + 1;
 if ( $list_count == $prior_list_count + 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
@@ -122,18 +147,33 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test deleting hyphenated phrase.
 
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "temporary-phrase" , "anything here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "temporary-phrase" , "anything here" );
+#  uncomment-for-cpan-version-end
 
 $being_tested = "deleted hyphenated phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_delete( "temporary-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_delete( "temporary-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $numeric_return_value eq 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "attempt to retrieve deleted phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "temporary-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "temporary-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -323,7 +363,12 @@ TEXT_TO_IMPORT
 
 $being_tested = "imported replacements using Dashrep code -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_import_replacements( $dashrep_code );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_import_replacements( $dashrep_code );
+#  uncomment-for-cpan-version-end
 if ( $numeric_return_value > 10 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -334,8 +379,18 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "expanded parameters in one string -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "test-of-parameter-substitution" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $content_with_expanded_parameters = &Dashrep::dashrep_expand_parameters( "test-of-parameter-substitution" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+#  uncomment-for-cpan-version-end
 if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -343,15 +398,30 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "expanded parameters in one variable-named string -- ";
 $test_number_count ++;
 $phrase_name = "test-of-parameter-substitution" ;
+#  remove-from-cpan-version-begin
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( $phrase_name );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $content_with_expanded_parameters = &Dashrep::dashrep_expand_parameters( $phrase_name );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "intended-result-of-parameter-substitution" );
+#  uncomment-for-cpan-version-end
 if ( $content_with_expanded_parameters eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "expanded parameters -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "page-participants-list" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $content_with_expanded_parameters = &Dashrep::dashrep_expand_parameters( "page-participants-list" );
+#  uncomment-for-cpan-version-end
 if ( $content_with_expanded_parameters =~ /format-begin-heading-level-1 words-web-page-title format-end-heading-level-1 tag-begin ul tag-end generated-list-named-participant-names-full tag-begin .* tag-end/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -360,181 +430,321 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test special operators.
 
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-special-operators" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_parameters( "test-of-special-operators" );
+#  uncomment-for-cpan-version-end
 
 $being_tested = "test equal sign assignment -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-17" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-17" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "17" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test zero operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-zero" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-zero" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-one" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-one" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test multiple operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-multiple" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-multiple" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "multiple" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for zero -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-zero" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-size-zero" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for one -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-one" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-size-one" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "1" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test list-size operator for three -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-size-three" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-size-three" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test zero count operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-zero" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-count-zero" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one count operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-one" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-count-one" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test multiple count operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-multiple" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-count-multiple" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "multiple" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test first item in list operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-item-three" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-item-three" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test last item in list operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-item-four" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-item-four" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test empty operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-empty" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "empty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test nonempty operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-nonempty" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-nonempty" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "nonempty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test same operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-same" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test not same operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-not-same" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-not-same" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "not-same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-numbers-equal" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-yes-numbers-equal" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-numbers-not-equal" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-no-numbers-not-equal" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test greater than operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-greater-than" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-yes-number-greater-than" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test greater than operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-greater-than" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-no-number-not-greater-than" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test less than operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-less-than" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-yes-number-less-than" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test less than operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-less-than" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-no-number-not-less-than" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test sort operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-sorted" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "should-be-sorted" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "3,4,7,12,13" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test auto-increment operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-auto-increment" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_parameters( "test-of-auto-increment" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-counter" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-counter" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "18" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test unique-value operator -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-unique-value" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_parameters( "test-of-unique-value" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-value" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-value" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value ne "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -545,7 +755,12 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test comment delimiters -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-of-comment-delimiters" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "test-of-comment-delimiters" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value !~ /comment/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
@@ -557,7 +772,12 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test expansion without special phrases -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases_except_special( "test-of-special-spacing" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases_except_special( "test-of-special-spacing" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc no\-space def one\-space ghi jkl/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
@@ -569,21 +789,36 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test no-space directive -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  no-space  def" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( "abc  no-space  def" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abcdef/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test one-space directive -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc  one-space  def" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( "abc  one-space  def" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test four-space indentation -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc\n    def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -591,35 +826,60 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "test single phrase replacement -- ";
 $test_number_count ++;
 $phrase_name = "single-phrase-to-replace";
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( $phrase_name );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( $phrase_name );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value ne "replaced-phrase" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test non-breaking-space directives -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc non-breaking-space def" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "abc non-breaking-space def" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc&nbsp;def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test non-breaking-spaces-begin/end directive -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /jkl mno&nbsp;pqr&nbsp;stu vwx/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test tab-here directive -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc tab-here def" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "abc tab-here def" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc\tdef/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test empty-line and new-line directives -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc empty-line def new-line ghi" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "abc empty-line def new-line ghi" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /abc\n\ndef\nghi/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -630,14 +890,24 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test line break phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-special-line-phrases" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( "test-of-special-line-phrases" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /\n/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test special-phrase line break -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-of-special-line-phrases" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-of-special-line-phrases" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /\n/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -648,7 +918,12 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test tab-here phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-tabs" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_phrases( "test-of-tabs" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value ne "abc\tdef\tghi" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -660,22 +935,52 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test ignore directives on same line -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc ignore-begin-here def ghi ignore-end-here test-jkl" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-abc ignore-begin-here def ghi ignore-end-here test-jkl" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test ignore directives on different lines -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-abc" );
+#  uncomment-for-cpan-version-end
 $accumulated_string = $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "ignore-begin-here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "ignore-begin-here" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "def ghi" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "def ghi" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "ignore-end-here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "ignore-end-here" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-jkl" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-jkl" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
 if ( $accumulated_string =~ /test-abc[^a-z]*test-jkl/i ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
@@ -688,27 +993,77 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test capture directives on same line -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "on" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-tracking-on-or-off" , "on" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc capture-begin-here def ghi capture-end-here test-jkl" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-abc capture-begin-here def ghi capture-end-here test-jkl" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $captured_text = &Dashrep::dashrep_get_replacement( "captured-text" );
+#  uncomment-for-cpan-version-end
 if ( ( $string_return_value =~ /test-abc[^a-z]*test-jkl/ ) && ( $captured_text =~ /^[^a-z]*def +ghi[^a-z]*$/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test capture directives on different lines -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-abc" );
+#  uncomment-for-cpan-version-end
 $accumulated_string = $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "capture-begin-here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "capture-begin-here" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "def ghi" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "def ghi" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "capture-end-here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "capture-end-here" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-jkl" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_expand_special_phrases( "test-jkl" );
+#  uncomment-for-cpan-version-end
 $accumulated_string .= $string_return_value;
+#  remove-from-cpan-version-begin
 $captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $captured_text = &Dashrep::dashrep_get_replacement( "captured-text" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
+#  uncomment-for-cpan-version-end
 if ( ( $accumulated_string =~ /test-abc *test-jkl/ ) && ( $captured_text =~ /def +ghi/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -721,8 +1076,18 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "expanded hyphenated phrase using all replacements -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $content_with_expanded_parameters = &dashrep_translate::dashrep_expand_parameters( "entire-standard-web-page" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $content_with_expanded_parameters = &Dashrep::dashrep_expand_parameters( "entire-standard-web-page" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $html_code = &dashrep_translate::dashrep_expand_phrases( $content_with_expanded_parameters );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $html_code = &Dashrep::dashrep_expand_phrases( $content_with_expanded_parameters );
+#  uncomment-for-cpan-version-end
 if ( length( $html_code ) gt 100 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -751,52 +1116,162 @@ close OUTFILE;
 
 $being_tested = "test top-level action: append-from-phrase-to-phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-test-target-phrase" , "" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level actions that create file, append to file, and copy from file to phrase -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_target_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "create-empty-file output_test_target_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: clear-all-dashrep-phrases -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "write-all-dashrep-definitions-to-file output_test_definitions_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "write-all-dashrep-definitions-to-file output_test_definitions_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "clear-all-dashrep-phrases" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "clear-all-dashrep-phrases" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "page-name" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level actions that save and get definitions in file -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "get-definitions-from-file  output_test_definitions_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "get-definitions-from-file  output_test_definitions_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "page-name" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: linewise-translate-from-file-to-file -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_source_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "create-empty-file output_test_source_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "non-replaced-content" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-test-target-phrase" , "non-replaced-content" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "non-replaced-content" , "replaced content" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "non-replaced-content" , "replaced content" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /replaced content/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -807,21 +1282,66 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "test subroutine named dashrep_xml_tags_to_dashrep -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
 $test_number_count ++;
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "html" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-first-xml-tag-name" , "html" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-xml-phrase" , "" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &Dashrep::dashrep_define( "dashrep-test-xml-phrase" , "" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-xml-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_get_replacement( "dashrep-test-xml-phrase" );
+#  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /begin-html-head.*participants.*end-html-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -831,10 +1351,30 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  Remove temporary files.
 #  (Comment out if need to view files for debugging.)
 
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_definitions_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_definitions_file.txt" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &Dashrep::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+#  uncomment-for-cpan-version-end
 
 
 #-------------------------------------------
@@ -855,6 +1395,7 @@ print OUTFILE $results_text ;
 close OUTFILE;
 
 
+#  uncomment-for-cpan-version-begin
 #-------------------------------------------
 #  For CPAN version, un-comment following
 #  code.
@@ -866,6 +1407,7 @@ close OUTFILE;
 # }
 
 
+#  uncomment-for-cpan-version-end
 #-------------------------------------------
 #  All done testing.
 

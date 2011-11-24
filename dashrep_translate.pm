@@ -1,15 +1,15 @@
 package dashrep_translate;
 
-# For CPAN version:
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
 # package Language::Dashrep;
 
-
-# For CPAN version:
 # use 5.010;
 # use warnings;
 # use strict;
 # require Exporter;
 
+#  uncomment-for-cpan-version-end
 
 =head1 NAME
 
@@ -20,26 +20,43 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 2.30
+Version 2.31
 
 =cut
 
-# For CPAN version:
-# our $VERSION = '2.30';
+#  uncomment-for-cpan-version-begin
+# our $VERSION = '2.31';
 
 
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
 =head1 SYNOPSIS
 
 The following sample code executes the Dashrep-language actions specified in the standard input file.
 
-    use Language::Dashrep;
-    &Language::Dashrep::dashrep_linewise_translate( );
+    use dashrep_translate;
+    &dashrep_translate::dashrep_linewise_translate( );
 
 The module also supports direct access to functions that define Dashrep phrases, expand text that contains Dashrep phrases, and more.
 
 =cut
 
 
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# =head1 SYNOPSIS
+#
+# The following sample code executes the Dashrep-language actions specified in the standard input file.
+#
+#    use Language::Dashrep;
+#    &Dashrep::dashrep_linewise_translate( );
+#
+# The module also supports direct access to functions that define Dashrep phrases, expand text that contains Dashrep phrases, and more.
+#
+# =cut
+#
+#
+#  uncomment-for-cpan-version-end
 =head1 ABOUT
 
 Dashrep (TM) is a versatile descriptive programming language that recognizes hyphenated phrases, such as B<rectangle-outline-attention-begin>, and recursively expands the phrases to generate an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, a template-based email message, or any other text-based content.
@@ -100,7 +117,7 @@ The following subroutines are exported.
 =cut
 
 
-# For CPAN version:
+#  uncomment-for-cpan-version-begin
 # our @ISA = qw(Exporter);
 # our @EXPORT = qw(
 #     dashrep_define
@@ -119,6 +136,7 @@ The following subroutines are exported.
 # );
 
 
+#  uncomment-for-cpan-version-end
 #-----------------------------------------------
 #  This Perl code is intentionally written
 #  in a subset of Perl and uses a C-like
@@ -267,7 +285,12 @@ sub dashrep_define
         $global_dashrep_replacement{ $phrase_name } = $expanded_text ;
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -325,7 +348,12 @@ sub dashrep_import_replacements
         $replacements_text_to_import = $_[ 0 ] ;
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_define subroutine does not have exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_define subroutine does not have exactly one parameter." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -463,7 +491,12 @@ sub dashrep_import_replacements
             if ( $input_string eq $definition_name )
             {
                  $global_dashrep_replacement{ $definition_name } = "ERROR: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop." . "\n" ;
+#  remove-from-cpan-version-begin
                  warn "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#                 carp "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
+#  uncomment-for-cpan-version-end
             } else
             {
                 if ( $global_dashrep_replacement{ $definition_name } ne "" )
@@ -580,7 +613,12 @@ sub dashrep_get_list_of_phrases
 
     if ( scalar( @_ ) != 0 )
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_define subroutine does not have exactly zero parameters." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_define subroutine does not have exactly zero parameters." ;
+#  uncomment-for-cpan-version-end
         @list_of_phrases = ( ) ;
         return @list_of_phrases ;
     }
@@ -626,7 +664,12 @@ sub dashrep_delete
         delete( $global_dashrep_replacement{ $phrase_name } );
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -684,7 +727,12 @@ sub dashrep_delete_all
         &initialize_special_phrases( ) ;
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -2119,7 +2167,12 @@ sub dashrep_xml_tags_to_dashrep
         $input_text = $_[ 0 ] ;
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -2543,7 +2596,12 @@ sub dashrep_top_level_action
         $input_text = $_[ 0 ] ;
     } else
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_top_level_action subroutine does not exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_top_level_action subroutine does not exactly one parameter." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -2560,7 +2618,12 @@ sub dashrep_top_level_action
     $global_nesting_level_of_file_actions ++ ;
     if ( $global_nesting_level_of_file_actions > 1 )
     {
+#  remove-from-cpan-version-begin
         warn "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
+#  uncomment-for-cpan-version-end
         return 0 ;
     }
 
@@ -3282,7 +3345,12 @@ sub dashrep_internal_endless_loop_info
             $highest_usage_item_name = $item_name ;
         }
     }
+#  remove-from-cpan-version-begin
     warn "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#    carp "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+#  uncomment-for-cpan-version-end
 
 
 #-----------------------------------------------
