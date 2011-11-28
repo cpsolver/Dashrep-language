@@ -7,6 +7,7 @@ package dashrep_translate;
 # use 5.010;
 # use warnings;
 # use strict;
+# use Carp;
 # require Exporter;
 
 #  uncomment-for-cpan-version-end
@@ -349,11 +350,33 @@ sub dashrep_import_replacements
     } else
     {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_define subroutine does not have exactly one parameter." ;
+        warn "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_define subroutine does not have exactly one parameter." ;
+#        carp "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
+        return 0 ;
+    }
+    if ( not( defined( $replacements_text_to_import ) ) )
+    {
+        $replacements_text_to_import = "" ;
+        if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; imported zero definitions from empty text}}\n" ;
+        }
+    }
+
+
+#-----------------------------------------------
+#  If the supplied text is empty, indicate this
+#  case and return.
+
+    if ( $replacements_text_to_import !~ /[^ ]/ )
+    {
+        if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+        {
+            print "{{trace; imported zero definitions from empty text}}\n" ;
+        }
         return 0 ;
     }
 
@@ -2597,10 +2620,10 @@ sub dashrep_top_level_action
     } else
     {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_top_level_action subroutine does not exactly one parameter." ;
+        warn "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_top_level_action subroutine does not exactly one parameter." ;
+#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
         return 0 ;
     }
@@ -2924,12 +2947,19 @@ sub dashrep_top_level_action
     } elsif ( $input_text =~ /^ *get-definitions-from-file +([^ \[\]]+) *$/ )
     {
         $source_filename = $1 ;
+        $source_filename =~ s/[ \t]+//g ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
-            $possible_error_message .= "" ;
+            $possible_error_message = "" ;
         } else
         {
-            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+            if ( -e $source_filename )
+            {
+                $possible_error_message .= " [file named " . $source_filename . " found, but could not be opened]" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
+            }
         }
         if ( $possible_error_message eq "" )
         {
@@ -2938,17 +2968,18 @@ sub dashrep_top_level_action
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( $input_line =~ /[^ ]/ )
+                if ( ( defined( $input_line ) ) && ( $input_line =~ /[^ ]/ ) )
                 {
                     $source_definitions .= $input_line . " " ;
                 }
             }
+            close( INFILE ) ;
+            $numeric_return_value = &dashrep_import_replacements( $source_definitions ) ;
         }
         close( INFILE ) ;
-        &dashrep_import_replacements( $source_definitions ) ;
         if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; got definitions from file: " . $source_filename . "}}\n" ;
+            print "{{trace; imported " . $numeric_return_value . " definitions from file: " . $source_filename . "}}\n" ;
         }
         $input_text = "" ;
 
@@ -2986,6 +3017,7 @@ sub dashrep_top_level_action
         $qualifier = $1 ;
         $source_filename = $5 ;
         $target_filename = $6 ;
+        $source_filename =~ s/[ \t]+//g ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
         if ( open ( INFILE , "<" . $source_filename ) )
@@ -2993,7 +3025,13 @@ sub dashrep_top_level_action
             $possible_error_message .= "" ;
         } else
         {
-            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+            if ( -e $source_filename )
+            {
+                $possible_error_message .= " [file named " . $source_filename . " exists, but could not be opened]" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
+            }
         }
         if ( open ( OUTFILE , ">" . $target_filename ) )
         {
@@ -3026,16 +3064,19 @@ sub dashrep_top_level_action
                             {
                                 last;
                             }
-                            if ( $input_line =~ /[^ ]/ )
+                            if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
                             {
                                 $all_lines .= $input_line . " " ;
                             }
                             $line_count ++ ;
                         }
-                        $numeric_return_value = &dashrep_import_replacements( $all_lines );
-                        if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+                        if ( $all_lines =~ /[^ ]/ )
                         {
-                            print "{{trace; definitions found, got definitions from " . $line_count . " lines}}\n" ;
+                            $numeric_return_value = &dashrep_import_replacements( $all_lines );
+                            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+                            {
+                                print "{{trace; definitions found, imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
+                            }
                         }
                         $lines_to_translate = 0 ;
                     } else
@@ -3227,6 +3268,21 @@ sub dashrep_linewise_translate
 
 
 #-----------------------------------------------
+#  Ensure there is no input text.
+
+    if ( scalar( @_ ) != 0 )
+    {
+#  remove-from-cpan-version-begin
+        warn "Warning: Call to dashrep_linewise_translate subroutine does not have exactly zero parameters." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly zero parameters." ;
+#  uncomment-for-cpan-version-end
+        return 0 ;
+    }
+
+
+#-----------------------------------------------
 #  Read each line from the input file.
 
     while( $input_line = <STDIN> )
@@ -3252,16 +3308,19 @@ sub dashrep_linewise_translate
                 {
                     last;
                 }
-                if ( $input_line =~ /[^ ]/ )
+                if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
                 {
                     $all_lines .= $input_line . " " ;
                 }
                 $line_count ++ ;
             }
-            $numeric_return_value = &dashrep_import_replacements( $all_lines );
-            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+            if ( $all_lines =~ /[^ ]/ )
             {
-                print "{{trace; definition line: " . $input_line . " ; got definitions from " . $line_count . " lines}}\n" ;
+                $numeric_return_value = &dashrep_import_replacements( $all_lines );
+                if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+                {
+                    print "{{trace; definition line: " . $input_line . " ; imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
+                }
             }
 
 
