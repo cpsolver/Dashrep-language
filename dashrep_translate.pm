@@ -2443,6 +2443,10 @@ sub dashrep_xml_tags_to_dashrep
                 if ( $global_xml_tag_at_level_number[ $global_xml_level_number ] eq $tag_name )
                 {
                     $full_phrase = "end" . $global_xml_accumulated_sequence_of_tag_names ;
+                    if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                    {
+                        $global_ignore_level = 0 ;
+                    }
                     if ( $global_ignore_level <= 0 )
                     {
                         $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) ;
@@ -2494,6 +2498,10 @@ sub dashrep_xml_tags_to_dashrep
                 if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
                     $global_ignore_level ++ ;
+                }
+                if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                {
+                    $global_ignore_level = 0 ;
                 }
                 if ( $global_ignore_level <= 0 )
                 {
@@ -2567,6 +2575,10 @@ sub dashrep_xml_tags_to_dashrep
                 if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
                     $global_ignore_level ++ ;
+                }
+                if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                {
+                    $global_ignore_level = 0 ;
                 }
                 if ( $global_ignore_level <= 0 )
                 {
