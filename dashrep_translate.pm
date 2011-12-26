@@ -2206,7 +2206,6 @@ sub dashrep_xml_tags_to_dashrep
     my $sequence_without_hyphen_prefix ;
     my $starting_position_of_last_tag_name ;
     my $full_phrase ;
-    my $ignore_content ;
 
 
 #-----------------------------------------------
@@ -2234,12 +2233,6 @@ sub dashrep_xml_tags_to_dashrep
     $input_text =~ s/^ +// ;
     $input_text =~ s/ +$// ;
     $output_text = "" ;
-
-
-#-----------------------------------------------
-#  Assume that no content will be ignored.
-
-    $ignore_content = $global_false ;
 
 
 #-----------------------------------------------
@@ -2396,7 +2389,7 @@ sub dashrep_xml_tags_to_dashrep
 
         if ( $text_before_tag =~ /[^ ]/ )
         {
-            if ( $ignore_content != $global_true )
+            if ( $global_ignore_level <= 0 )
             {
                 $output_text .= $text_before_tag . "\n" ;
             }
@@ -2450,7 +2443,7 @@ sub dashrep_xml_tags_to_dashrep
                 if ( $global_xml_tag_at_level_number[ $global_xml_level_number ] eq $tag_name )
                 {
                     $full_phrase = "end" . $global_xml_accumulated_sequence_of_tag_names ;
-                    if ( $ignore_content != $global_true )
+                    if ( $global_ignore_level <= 0 )
                     {
                         $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) ;
                         $output_text .= "[-" ;
@@ -2463,8 +2456,10 @@ sub dashrep_xml_tags_to_dashrep
                         }
                         $output_text .= "-]" ;
                         $output_text .= "\n" ;
+                    } else
+                    {
+                        $global_ignore_level -- ;
                     }
-                    $ignore_content = $global_false ;
                     $sequence_without_hyphen_prefix = $global_xml_accumulated_sequence_of_tag_names ;
                     $sequence_without_hyphen_prefix =~ s/^\-// ;
                     $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
@@ -2498,9 +2493,9 @@ sub dashrep_xml_tags_to_dashrep
                 $full_phrase = "begin-and-end" . $global_xml_accumulated_sequence_of_tag_names . "-" . $tag_name ;
                 if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
-                    $ignore_content = $global_true ;
+                    $global_ignore_level ++ ;
                 }
-                if ( $ignore_content != $global_true )
+                if ( $global_ignore_level <= 0 )
                 {
                     $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number + 1 ) ) ) ;
                     $output_text .= "[-" ;
@@ -2513,8 +2508,10 @@ sub dashrep_xml_tags_to_dashrep
                     }
                     $output_text .= "-]" ;
                     $output_text .= "\n" ;
+                } else
+                {
+                    $global_ignore_level -- ;
                 }
-                $ignore_content = $global_false ;
             }
 
 
@@ -2569,9 +2566,9 @@ sub dashrep_xml_tags_to_dashrep
                 $full_phrase = "begin" . $global_xml_accumulated_sequence_of_tag_names ;
                 if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
-                    $ignore_content = $global_true ;
+                    $global_ignore_level ++ ;
                 }
-                if ( $ignore_content != $global_true )
+                if ( $global_ignore_level <= 0 )
                 {
                     $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number - 1 ) ) ) ;
                     $output_text .= "[-" ;
