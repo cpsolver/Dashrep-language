@@ -2206,6 +2206,7 @@ sub dashrep_xml_tags_to_dashrep
     my $sequence_without_hyphen_prefix ;
     my $starting_position_of_last_tag_name ;
     my $full_phrase ;
+    my $ignore_content ;
 
 
 #-----------------------------------------------
@@ -2233,6 +2234,12 @@ sub dashrep_xml_tags_to_dashrep
     $input_text =~ s/^ +// ;
     $input_text =~ s/ +$// ;
     $output_text = "" ;
+
+
+#-----------------------------------------------
+#  Assume that no content will be ignored.
+
+    $ignore_content = $global_false ;
 
 
 #-----------------------------------------------
@@ -2389,7 +2396,10 @@ sub dashrep_xml_tags_to_dashrep
 
         if ( $text_before_tag =~ /[^ ]/ )
         {
-            $output_text .= $text_before_tag . "\n" ;
+            if ( $ignore_content != $global_true )
+            {
+                $output_text .= $text_before_tag . "\n" ;
+            }
         }
 
 
@@ -2418,7 +2428,7 @@ sub dashrep_xml_tags_to_dashrep
         if ( exists( $global_dashrep_replacement{ "dashrep-xml-replacement-name-for-tag-named-" . $tag_name } ) )
         {
             $previous_tag_name = $tag_name ;
-            $tag_name = $global_dashrep_replacement{ "dashrep-xml-replacement-name-for-tag-named-" . $tag_name } ;
+            $tag_name = $global_dashrep_replacement{ "dashrep-xml-replacement-name-for-tag-named-" . $previous_tag_name } ;
             if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
             {
                 print "{{trace; changing tag name " . $previous_tag_name . " into tag name " . $tag_name . "}}\n" ;
@@ -2439,14 +2449,22 @@ sub dashrep_xml_tags_to_dashrep
             {
                 if ( $global_xml_tag_at_level_number[ $global_xml_level_number ] eq $tag_name )
                 {
-                    $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) . "[-" ;
                     $full_phrase = "end" . $global_xml_accumulated_sequence_of_tag_names ;
-                    if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                    if ( $ignore_content != $global_true )
                     {
-                        $full_phrase = $global_dashrep_replacement{ $full_phrase } ;
+                        $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) ;
+                        $output_text .= "[-" ;
+                        if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                        {
+                            $output_text .= $global_dashrep_replacement{ $full_phrase } ;
+                        } else
+                        {
+                            $output_text .= $full_phrase ;
+                        }
+                        $output_text .= "-]" ;
+                        $output_text .= "\n" ;
                     }
-                    $output_text .= $full_phrase ;
-                    $output_text .= "-]\n" ;
+                    $ignore_content = $global_false ;
                     $sequence_without_hyphen_prefix = $global_xml_accumulated_sequence_of_tag_names ;
                     $sequence_without_hyphen_prefix =~ s/^\-// ;
                     $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
@@ -2477,14 +2495,26 @@ sub dashrep_xml_tags_to_dashrep
         {
             if ( length( $global_xml_accumulated_sequence_of_tag_names ) > 0 )
             {
-                $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number + 1 ) ) ) . "[-" ;
-                $full_phrase .= "begin-and-end" . $global_xml_accumulated_sequence_of_tag_names . "-" . $tag_name ;
-                if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                $full_phrase = "begin-and-end" . $global_xml_accumulated_sequence_of_tag_names . "-" . $tag_name ;
+                if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
-                    $full_phrase = $global_dashrep_replacement{ $full_phrase } ;
+                    $ignore_content = $global_true ;
                 }
-                $output_text .= $full_phrase ;
-                $output_text .= "-]\n" ;
+                if ( $ignore_content != $global_true )
+                {
+                    $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number + 1 ) ) ) ;
+                    $output_text .= "[-" ;
+                    if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                    {
+                        $output_text .= $global_dashrep_replacement{ $full_phrase } ;
+                    } else
+                    {
+                        $output_text .= $full_phrase ;
+                    }
+                    $output_text .= "-]" ;
+                    $output_text .= "\n" ;
+                }
+                $ignore_content = $global_false ;
             }
 
 
@@ -2536,14 +2566,25 @@ sub dashrep_xml_tags_to_dashrep
             }
             if ( length( $global_xml_accumulated_sequence_of_tag_names ) > 0 )
             {
-                $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number - 1 ) ) ) . "[-" ;
-                $full_phrase .= "begin" . $global_xml_accumulated_sequence_of_tag_names ;
-                if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                $full_phrase = "begin" . $global_xml_accumulated_sequence_of_tag_names ;
+                if ( ( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) && ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } eq "yes" ) && ( not( exists( $global_dashrep_replacement{ $full_phrase } ) ) ) )
                 {
-                    $full_phrase = $global_dashrep_replacement{ $full_phrase } ;
+                    $ignore_content = $global_true ;
                 }
-                $output_text .= $full_phrase ;
-                $output_text .= "-]\n" ;
+                if ( $ignore_content != $global_true )
+                {
+                    $output_text .= substr( $global_spaces , 0 , ( 2 * ( $global_xml_level_number - 1 ) ) ) ;
+                    $output_text .= "[-" ;
+                    if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                    {
+                        $output_text .= $global_dashrep_replacement{ $full_phrase } ;
+                    } else
+                    {
+                        $output_text .= $full_phrase ;
+                    }
+                    $output_text .= "-]" ;
+                    $output_text .= "\n" ;
+                }
                 $sequence_without_hyphen_prefix = $global_xml_accumulated_sequence_of_tag_names ;
                 $sequence_without_hyphen_prefix =~ s/^\-// ;
                 $global_exists_xml_hyphenated_phrase{ $sequence_without_hyphen_prefix } = "exists" ;
@@ -2563,8 +2604,8 @@ sub dashrep_xml_tags_to_dashrep
 #  hyphens, replace them with the phrase
 #  "hypen-here".
 
-        $input_text =~ s/\-/dashrep_internal_hyphen_here/sg ;
-        $input_text =~ s/dashrep_internal_hyphen_here/ hyphen-here /sg ;
+    $input_text =~ s/\-/dashrep_internal_hyphen_here/sg ;
+    $input_text =~ s/dashrep_internal_hyphen_here/ hyphen-here /sg ;
 
 
 #-----------------------------------------------
@@ -3291,6 +3332,10 @@ sub dashrep_top_level_action
                 if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
                 {
                     next ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; accumulated text to convert: " . $full_line . "}}\n" ;
                 }
                 $global_endless_loop_counter = 0 ;
                 %global_replacement_count_for_item_name = ( ) ;
