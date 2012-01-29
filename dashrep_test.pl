@@ -218,6 +218,10 @@ test-of-special-operators:
 [-test-no-number-not-greater-than = [-yes-or-no-first-number-greater-than-second-number: 20 20-]-]
 [-test-yes-number-less-than = [-yes-or-no-first-number-less-than-second-number: 21 22-]-]
 [-test-no-number-not-less-than = [-yes-or-no-first-number-less-than-second-number: 22 22-]-]
+[-test-text-length-0 = ""-]
+[-should-be-length-0 = [-length-of-phrase: test-text-length-0-]-]
+[-test-text-length-7 = "abc def"-]
+[-should-be-length-7 = [-length-of-phrase: test-text-length-7-]-]
 nothing else
 --------
 
@@ -748,6 +752,30 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-value"
 if ( $string_return_value ne "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+# $being_tested = "test text length operator -- ";
+# $test_number_count ++;
+# #  remove-from-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-length-0" );
+# #  remove-from-cpan-version-end
+# #  uncomment-for-cpan-version-begin
+# # $string_return_value = &dashrep_expand_parameters( "should-be-length-0" );
+# #  uncomment-for-cpan-version-end
+# if ( $string_return_value eq "0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+# $being_tested = "test text length operator -- ";
+# $test_number_count ++;
+# #  remove-from-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-length-7" );
+# #  remove-from-cpan-version-end
+# #  uncomment-for-cpan-version-begin
+# # $string_return_value = &dashrep_get_replacement( "should-be-length-7" );
+# #  uncomment-for-cpan-version-end
+# if ( $string_return_value eq "7" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------

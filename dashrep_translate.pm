@@ -1204,6 +1204,26 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  length-of-phrase
+
+#  Not yet debugged.
+
+#                } elsif ( $action_name eq "length-of-phrase" )
+#                {
+#                    $phrase_length = "0" ;
+#                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+#                    {
+#                        $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
+#                        if ( $phrase_length < 1 )
+#                        {
+#                            $phrase_length = "0" ;
+#                        }
+#                    }
+#                    $replacement_text = $text_begin . "<" . $phrase_length . ">[" . $object_of_action . "]". $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  same-or-not-same
 
                 } elsif ( $action_name eq "same-or-not-same" )
