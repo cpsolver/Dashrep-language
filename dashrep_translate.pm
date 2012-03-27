@@ -2992,16 +2992,18 @@ sub dashrep_top_level_action
 
 
 #-----------------------------------------------
-#  Handle the action:
-#  write-all-dashrep-definitions-to-file
+#  Handle the actions:
+#  write-all-dashrep-definitions-to-file and
+#  write-all-dashrep-phrase-names-to-file
 #
 #  The filename is edited to remove any path
 #  specifications, so that only local files
 #  are affected.
 
-    } elsif ( $input_text =~ /^ *write-all-dashrep-definitions-to-file +([^ \[\]]+) *$/ )
+    } elsif ( $input_text =~ /^ *write-all-dashrep-((definitions)|(phrase-names))-to-file +([^ \[\]]+) *$/ )
     {
-        $target_filename = $1 ;
+        $definitions_or_phrases = $1 ;
+        $target_filename = $4 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
         @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
@@ -3023,19 +3025,32 @@ sub dashrep_top_level_action
             if ( $possible_error_message eq "" )
             {
                 $counter = 0 ;
-                print OUTFILE $all_defs_begin ;
-                foreach $phrase_name ( sort( @list_of_phrases ) )
+                if ( $definitions_or_phrases eq "definitions" )
                 {
-                    if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                    print OUTFILE $all_defs_begin ;
+                    foreach $phrase_name ( sort( @list_of_phrases ) )
                     {
-                        print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
-                        $counter ++ ;
+                        if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                        {
+                            print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
+                            $counter ++ ;
+                        }
+                    }
+                    print OUTFILE $all_defs_end ;
+                } else
+                {
+                    foreach $phrase_name ( sort( @list_of_phrases ) )
+                    {
+                        if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                        {
+                            print OUTFILE $phrase_name . "\n" ;
+                            $counter ++ ;
+                        }
                     }
                 }
-                print OUTFILE $all_defs_end ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    print "{{trace; wrote " . $counter . " definitions to file: " . $target_filename . "}}\n" ;
+                    print "{{trace; wrote " . $counter . " " . $definitions_or_phrases . " to file: " . $target_filename . "}}\n" ;
                 }
             } else
             {
