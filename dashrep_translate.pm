@@ -3677,7 +3677,7 @@ sub dashrep_internal_split_delimited_items
 #-----------------------------------------------
 #  Convert all delimiters to single commas.
 
-    if ( $text_string =~ /[\n\r]/ )
+    if ( $text_string =~ /[\n\r]/s )
     {
         $text_string =~ s/[\n\r][\n\r]+/,/gs ;
         $text_string =~ s/[\n\r][\n\r]+/,/gs ;
