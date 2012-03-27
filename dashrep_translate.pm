@@ -2774,12 +2774,12 @@ sub dashrep_top_level_action
 
     if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
     {
-        $all_defs_begin = "export-defs-all-begin\n\n" ;
-        $all_defs_end = "export-defs-all-end\n\n" ;
-        $phrase_begin = "export-defs-phrase-begin " ;
-        $phrase_end = " export-defs-phrase-end\n\n" ;
-        $def_begin = "export-defs-def-begin " ;
-        $def_end = " export-defs-def-end\n\n" ;
+        $all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
+        $all_defs_end = "[-export-defs-all-end-]\n\n" ;
+        $phrase_begin = "[-export-defs-phrase-begin-] " ;
+        $phrase_end = " [-export-defs-phrase-end-]\n\n" ;
+        $def_begin = "[-export-defs-def-begin-] " ;
+        $def_end = " [-export-defs-def-end-]\n\n" ;
     } else
     {
         $all_defs_begin = "dashrep-definitions-begin\n\n" ;
