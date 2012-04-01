@@ -208,6 +208,10 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "empty-text" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-hyphen" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-space" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-linebreak" } = "" ;
 }
 
 
@@ -243,6 +247,10 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "empty-text" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-hyphen" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-space" } = "" ;
+    $global_dashrep_replacement{ "special-replacement-linebreak" } = "" ;
 }
 
 
@@ -838,6 +846,13 @@ sub dashrep_expand_parameters
     my $yes_or_no ;
     my $first_object_of_action ;
     my $second_object_of_action ;
+    my $temp_text ;
+    my $previous_temp_text ;
+    my $action_name_type ;
+    my $linebreak_replacement ;
+    my $space_replacement ;
+    my $hyphen_replacement ;
+    my $phrase_length ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -966,14 +981,9 @@ sub dashrep_expand_parameters
 #  If there is a parameter value assigned -- as
 #  indicated by an equal sign -- then assign
 #  the value.
-#
-#  Problems will arise if the parameter value
-#  contains a space, bracket, colon, or equal
-#  sign, but in those cases just specify a
-#  replacement name instead of the value of
-#  that replacement.
+#  The parameter value cannot contain a line break.
 
-            } elsif ( $text_parameter_content =~ /^ *([^ \n\:=]+) *= *([^ \n\:=]+) *$/ )
+            } elsif ( $text_parameter_content =~ /^ *([^ \:=]+\-[^ \:=]+) *= *([^ ](.*[^ ])?) *$/ )
             {
                 $text_parameter_name = $1 ;
                 $text_parameter_value = $2 ;
@@ -1008,14 +1018,41 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand action:
-#  copy-from-phrase-to-phrase
+#  Handle the two-operand actions:
+#  copy-from-phrase-to-phrase and
+#  copy-from-phrase-to-phrase-with-special-replacements
 
-            } elsif ( $text_parameter_content =~ /^copy-from-phrase-to-phrase *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+            } elsif ( $text_parameter_content =~ /^(copy-from-phrase-to-phrase(-with-special-replacements)?) *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
             {
-                $source_phrase = $1 ;
-                $target_phrase = $2 ;
-                $global_dashrep_replacement{ $target_phrase } = $global_dashrep_replacement{ $source_phrase } ;
+                $action_name_type = $1 ;
+                $source_phrase = $3 ;
+                $target_phrase = $4 ;
+                $temp_text = $global_dashrep_replacement{ $source_phrase } ;
+                if ( $action_name_type =~ /\-with\-special\-replacements/ )
+                {
+                    $linebreak_replacement = $global_dashrep_replacement{ "special-replacement-linebreak" } ;
+                    $space_replacement = $global_dashrep_replacement{ "special-replacement-space" } ;
+                    $hyphen_replacement = $global_dashrep_replacement{ "special-replacement-hyphen" } ;
+                    if ( ( $linebreak_replacement =~ /^[^\-]+$/ ) && ( $linebreak_replacement !~ /  / ) )
+                    {
+                        $temp_text =~ s/^[\n\r]+//s ;
+                        $temp_text = join( $linebreak_replacement , split( /[\n\r]/s , $temp_text ) ) ;
+                    }
+                    if ( $space_replacement =~ /^[^ \-\n\r]+$/ )
+                    {
+                        $previous_temp_text = $temp_text . " " ;
+                        while( $previous_temp_text ne $temp_text )
+                        {
+                            $previous_temp_text = $temp_text ;
+                            $temp_text =~ s/  / ${space_replacement}/sg ;
+                        }
+                    }
+                    if ( $hyphen_replacement =~ /^[^ \-\n\r]+$/ )
+                    {
+                        $temp_text =~ s/-/${hyphen_replacement}/sg ;
+                    }
+                }
+                $global_dashrep_replacement{ $target_phrase } = $temp_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
                     print "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
@@ -1355,17 +1392,17 @@ sub dashrep_expand_parameters
 
                # } elsif ( $action_name =~ /escape-if-((yes)|(no))/ )
                # {
-				   # $yes_or_no = $1 ;
+                   # $yes_or_no = $1 ;
                    # if ( exists( $global_dashrep_replacement{ "escape-text" } ) )
                    # {
                        # if ( ( $object_of_action eq "yes" ) && ( $yes_or_no eq "yes" ) )
                        # {
                            # $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
-# #						   return $replacement_text ;
+# #                           return $replacement_text ;
                        # } elsif ( ( $object_of_action eq "no" ) && ( $yes_or_no eq "no" ) )
-					   # {
+                       # {
                            # $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
-# #						   return $replacement_text ;
+# #                           return $replacement_text ;
                        # }
                    # }
 
@@ -1477,7 +1514,6 @@ sub dashrep_generate_lists
     my $list_name ;
     my $generated_list_name ;
     my $parameter_name ;
-    my $do_nothing ;
     my $list_prefix ;
     my $list_separator ;
     my $list_suffix ;
@@ -2757,6 +2793,7 @@ sub dashrep_top_level_action
     my $multi_line_count ;
     my $xml_hyphenated_phrase ;
     my $counter ;
+    my $definitions_or_phrases ;
     my @list_of_phrases ;
 
 

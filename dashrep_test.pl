@@ -182,7 +182,8 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  Specify Dashrep code that will be used in
 #  tests below.
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "empty-text" , "" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "text-with-special-characters" , "some hyphenated-text \n  with linebreaks\n    and   adjacent    spaces" );
+
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -198,6 +199,10 @@ test-of-special-operators:
 [-append-from-phrase-to-phrase: first-word-phrase copied-text-]
 [-append-from-phrase-to-phrase: second-word-phrase copied-text-]
 [-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
+[-special-replacement-linebreak = <br />-]
+[-special-replacement-hyphen = &ndash;-]
+[-special-replacement-space = &nbsp;-]
+[-copy-from-phrase-to-phrase-with-special-replacements: text-with-special-characters text-with-special-characters-replaced-]
 [-should-be-zero = [-zero-one-multiple: 0-]-]
 [-should-be-one = [-zero-one-multiple: 1-]-]
 [-should-be-multiple = [-zero-one-multiple: 2-]-]
@@ -485,6 +490,19 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-c
 # $string_return_value = &dashrep_get_replacement( "should-be-copied-text" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq " copied text" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test copy with special replacements -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-special-characters-replaced" );
+# $results_text .= "[[" . $string_return_value . "]]" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "text-with-special-characters-replaced" );
+#  uncomment-for-cpan-version-end
+if ( ( $string_return_value =~ /<br \/>/ ) && ( $string_return_value =~ /&nbsp;/ ) && ( $string_return_value =~ /&ndash;/ ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
