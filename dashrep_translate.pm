@@ -995,7 +995,7 @@ sub dashrep_expand_parameters
 #  Handle the two-operand action:
 #  append-from-phrase-to-phrase
 
-            } elsif ( $text_parameter_content =~ /^append-from-phrase-to-phrase *: *([^\n\:=]*) +([^\n\:=]*)$/ )
+            } elsif ( $text_parameter_content =~ /^append-from-phrase-to-phrase *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
             {
                 $source_phrase = $1 ;
                 $target_phrase = $2 ;
@@ -1008,12 +1008,28 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the two-operand action:
+#  copy-from-phrase-to-phrase
+
+            } elsif ( $text_parameter_content =~ /^copy-from-phrase-to-phrase *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+            {
+                $source_phrase = $1 ;
+                $target_phrase = $2 ;
+                $global_dashrep_replacement{ $target_phrase } = $global_dashrep_replacement{ $source_phrase } ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                }
+                $replacement_text = $text_begin . " " . $text_end ;
+
+
+#-----------------------------------------------
 #  Handle these two-operand actions:
 #  yes-or-no-first-number-equals-second-number
 #  yes-or-no-first-number-greater-than-second-number
 #  yes-or-no-first-number-less-than-second-number
 
-            } elsif ( $text_parameter_content =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number) *: *([0-9\,]+) +([0-9\,]+)$/ )
+            } elsif ( $text_parameter_content =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number) *:? *([0-9\,]+) +([0-9\,]+)$/ )
             {
                 $comparison_type = $2 ;
                 $first_number_text = $6 ;
@@ -1045,7 +1061,7 @@ sub dashrep_expand_parameters
 #  may include a colon between the action and
 #  its operand(s), handle it.
 
-            } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *[: ] *([^\n\:=]*)$/ )
+            } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *:? *([^\n\:=]*)$/ )
             {
                 $action_name = $1 ;
                 $object_of_action = $2 ;
@@ -1204,23 +1220,25 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  length-of-phrase
+#  length-of-phrase-definition
 
-#  Not yet debugged.
+               } elsif ( $action_name eq "length-of-phrase-definition" )
 
-#                } elsif ( $action_name eq "length-of-phrase" )
-#                {
-#                    $phrase_length = "0" ;
-#                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-#                    {
-#                        $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
-#                        if ( $phrase_length < 1 )
-#                        {
-#                            $phrase_length = "0" ;
-#                        }
-#                    }
-#                    $replacement_text = $text_begin . "<" . $phrase_length . ">[" . $object_of_action . "]". $text_end ;
+               {
+                   $phrase_length = "0" ;
+                   if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
 
+                   {
+                       $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
+                       if ( $phrase_length < 1 )
+
+                       {
+                           $phrase_length = "0" ;
+
+
+                       }
+                   }
+                   $replacement_text = $text_begin . $phrase_length . $text_end ;
 
 #-----------------------------------------------
 #  Handle the action:

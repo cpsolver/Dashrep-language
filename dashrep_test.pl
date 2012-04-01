@@ -182,6 +182,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  Specify Dashrep code that will be used in
 #  tests below.
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "empty-text" , "" );
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -191,6 +192,12 @@ list-of-numbers: 3,12,7,13,4
 test-of-special-operators:
 [-test-assignment = 17-]
 [-should-be-17 = [-test-assignment-]-]
+[-first-word-phrase = copied-]
+[-second-word-phrase = text-]
+[-copy-from-phrase-to-phrase: empty-text copied-text-]
+[-append-from-phrase-to-phrase: first-word-phrase copied-text-]
+[-append-from-phrase-to-phrase: second-word-phrase copied-text-]
+[-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
 [-should-be-zero = [-zero-one-multiple: 0-]-]
 [-should-be-one = [-zero-one-multiple: 1-]-]
 [-should-be-multiple = [-zero-one-multiple: 2-]-]
@@ -218,10 +225,12 @@ test-of-special-operators:
 [-test-no-number-not-greater-than = [-yes-or-no-first-number-greater-than-second-number: 20 20-]-]
 [-test-yes-number-less-than = [-yes-or-no-first-number-less-than-second-number: 21 22-]-]
 [-test-no-number-not-less-than = [-yes-or-no-first-number-less-than-second-number: 22 22-]-]
-[-test-text-length-0 = ""-]
-[-should-be-length-0 = [-length-of-phrase: test-text-length-0-]-]
-[-test-text-length-7 = "abc def"-]
-[-should-be-length-7 = [-length-of-phrase: test-text-length-7-]-]
+[-copy-from-phrase-to-phrase: empty-text test-text-length-0-]
+[-should-be-length-0 = [-length-of-phrase-definition: test-text-length-0-]-]
+[-test-text-length-1 = a-]
+[-should-be-length-1 = [-length-of-phrase-definition: test-text-length-1-]-]
+[-test-text-length-7 = abcdefg-]
+[-should-be-length-7 = [-length-of-phrase-definition: test-text-length-7-]-]
 nothing else
 --------
 
@@ -283,6 +292,19 @@ abc-def-ghi-jkl-mno
 
 single-phrase-to-replace:
 replaced-phrase
+--------
+
+sample-escape-text:
+command to be executed
+--------
+
+test-of-escape-action:
+[-escape-text = step1-]
+[-escape-if-yes: no-]
+[-copy-from-phrase-to-phrase sample-escape-text escape-text-]
+[-escape-if-yes: yes-]
+[-escape-text = step3-]
+[-escape-if-yes: yes-]
 --------
 
 page-participants-list:
@@ -450,6 +472,19 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-1
 # $string_return_value = &dashrep_get_replacement( "should-be-17" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "17" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test copy and append from phrase to phrase -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-copied-text" );
+# $results_text .= "[[" . $string_return_value . "]]" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "should-be-copied-text" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq " copied text" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -753,29 +788,41 @@ if ( $string_return_value ne "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-# $being_tested = "test text length operator -- ";
-# $test_number_count ++;
-# #  remove-from-cpan-version-begin
-# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-length-0" );
-# #  remove-from-cpan-version-end
-# #  uncomment-for-cpan-version-begin
-# # $string_return_value = &dashrep_expand_parameters( "should-be-length-0" );
-# #  uncomment-for-cpan-version-end
-# if ( $string_return_value eq "0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+$being_tested = "test text length operator, length 0 -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-length-0" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "should-be-length-0" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-# $being_tested = "test text length operator -- ";
-# $test_number_count ++;
-# #  remove-from-cpan-version-begin
-# $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-length-7" );
-# #  remove-from-cpan-version-end
-# #  uncomment-for-cpan-version-begin
-# # $string_return_value = &dashrep_get_replacement( "should-be-length-7" );
-# #  uncomment-for-cpan-version-end
-# if ( $string_return_value eq "7" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+$being_tested = "test text length operator, length 1 -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-length-1" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "should-be-length-1" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "1" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test text length operator, length 7 -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-length-7" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "should-be-length-7" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "7" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -1095,6 +1142,17 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on
 if ( ( $accumulated_string =~ /test-abc *test-jkl/ ) && ( $captured_text =~ /def +ghi/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the escape action.
+
+# $being_tested = "escape action -- ";
+# $test_number_count ++;
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-escape-action" );
+# if ( $string_return_value eq "step2" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
