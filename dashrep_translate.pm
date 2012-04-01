@@ -1223,22 +1223,18 @@ sub dashrep_expand_parameters
 #  length-of-phrase-definition
 
                } elsif ( $action_name eq "length-of-phrase-definition" )
-
                {
                    $phrase_length = "0" ;
                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-
                    {
                        $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
                        if ( $phrase_length < 1 )
-
                        {
                            $phrase_length = "0" ;
-
-
                        }
                    }
                    $replacement_text = $text_begin . $phrase_length . $text_end ;
+
 
 #-----------------------------------------------
 #  Handle the action:
@@ -1345,6 +1341,33 @@ sub dashrep_expand_parameters
                     {
                         print "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
                     }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  escape-if-yes and
+#  escape-if-no
+#
+#  If the escape condition is met, return immediately,
+#  with the content of the "escape-text" phrase as the return value.
+
+#  Not yet debugged.
+
+               # } elsif ( $action_name =~ /escape-if-((yes)|(no))/ )
+               # {
+				   # $yes_or_no = $1 ;
+                   # if ( exists( $global_dashrep_replacement{ "escape-text" } ) )
+                   # {
+                       # if ( ( $object_of_action eq "yes" ) && ( $yes_or_no eq "yes" ) )
+                       # {
+                           # $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
+# #						   return $replacement_text ;
+                       # } elsif ( ( $object_of_action eq "no" ) && ( $yes_or_no eq "no" ) )
+					   # {
+                           # $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
+# #						   return $replacement_text ;
+                       # }
+                   # }
 
 
 #-----------------------------------------------

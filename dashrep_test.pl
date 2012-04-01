@@ -1150,6 +1150,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 # $being_tested = "escape action -- ";
 # $test_number_count ++;
 # $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-escape-action" );
+# $results_text .= "[[" . $string_return_value . "]]" ;
 # if ( $string_return_value eq "step2" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 # if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 # if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
