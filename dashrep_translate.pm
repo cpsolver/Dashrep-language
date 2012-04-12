@@ -1628,6 +1628,12 @@ sub dashrep_generate_lists
 
 
 #-----------------------------------------------
+#  Update the value of the "item-number-in-list-being-generated" phrase.
+
+                $global_dashrep_replacement{ "item-number-in-list-being-generated" } = sprintf( "%d" , $pointer + 1 ) ;
+
+
+#-----------------------------------------------
 #  Add the next item to the list.
 
                 $item_name = "item-for-list-" . $list_name . "-and-parameter-" . $parameter ;
@@ -1670,6 +1676,12 @@ sub dashrep_generate_lists
 #  the list is empty.
 
         }
+
+
+#-----------------------------------------------
+#  Clear the "item-number-in-list-being-generated" phrase.
+
+        $global_dashrep_replacement{ "item-number-in-list-being-generated" } = "" ;
 
 
 #-----------------------------------------------
