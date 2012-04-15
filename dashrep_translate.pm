@@ -3000,10 +3000,21 @@ sub dashrep_top_level_action
         {
             $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
             $all_lines = "" ;
+            if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
+            {
+                $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
+            }
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                $input_line =~ s/[\n\r\f\t]+/ /g ;
+                if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
+                {
+                    $input_line =~ s/[\n\r\f]/ end-of-line-here /g ;
+                } else
+                {
+                    $input_line =~ s/[\n\r\f]+/ /g ;
+                }
+                $input_line =~ s/[\t]+/ /g ;
                 $all_lines .= $input_line . "\n" ;
             }
             $global_dashrep_replacement{ $target_phrase } = $all_lines ;
