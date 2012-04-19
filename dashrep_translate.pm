@@ -1382,6 +1382,38 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  yes-if-not-no
+
+                } elsif ( $action_name eq "yes-if-not-no" )
+                {
+                    if ( $object_of_action =~ /^ *no *$/i )
+                    {
+                        $empty_or_nonempty = "no" ;
+                    } else
+                    {
+                        $empty_or_nonempty = "yes" ;
+                    }
+                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  no-if-not-yes
+
+                } elsif ( $action_name eq "no-if-not-yes" )
+                {
+                    if ( $object_of_action =~ /^ *yes *$/i )
+                    {
+                        $empty_or_nonempty = "yes" ;
+                    } else
+                    {
+                        $empty_or_nonempty = "no" ;
+                    }
+                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  escape-if-yes and
 #  escape-if-no
 #
