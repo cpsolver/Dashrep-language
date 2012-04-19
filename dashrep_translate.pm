@@ -3073,6 +3073,38 @@ sub dashrep_top_level_action
 
 #-----------------------------------------------
 #  Handle the action:
+#  yes-or-no-file-exists
+#
+#  The filename is edited to remove any path
+#  specifications, so that only local files
+#  are affected.
+
+    } elsif ( $input_text =~ /^ *yes-or-no-file-exists +([^ \[\]]+) *$/ )
+    {
+        $target_filename = $1 ;
+        $target_filename =~ s/^.*[\\\/]// ;
+        $target_filename =~ s/^\.+// ;
+        if ( open ( INFILE , "<" . $target_filename ) )
+        {
+            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; file exists: " . $target_filename . "}}\n" ;
+            }
+        } else
+        {
+            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "no" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                print "{{trace; file does not exist: " . $target_filename . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  delete-file
 #
 #  The filename is edited to remove any path
