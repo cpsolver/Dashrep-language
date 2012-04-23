@@ -212,6 +212,8 @@ BEGIN {
     $global_dashrep_replacement{ "special-replacement-hyphen" } = "" ;
     $global_dashrep_replacement{ "special-replacement-space" } = "" ;
     $global_dashrep_replacement{ "special-replacement-linebreak" } = "" ;
+    $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
+    $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
 }
 
 
@@ -251,6 +253,8 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "special-replacement-hyphen" } = "" ;
     $global_dashrep_replacement{ "special-replacement-space" } = "" ;
     $global_dashrep_replacement{ "special-replacement-linebreak" } = "" ;
+    $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
+    $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
 }
 
 
@@ -935,6 +939,15 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Stop translating if requested.
+		
+		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+		{
+			last ;
+		}
+
+
+#-----------------------------------------------
 #  Get the next inner-most parameter syntax --
 #  with "[-" at the beginning and "-]" at the end.
 #  (It must not contain a nested parameter syntax.)
@@ -1094,9 +1107,9 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  If there is an action requested (which
-#  may include a colon between the action and
-#  its operand(s), handle it.
+#  If there is a single-operand action requested
+#  (which may include a colon between the action
+#  and its operand(s), handle it.
 
             } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *:? *([^\n\:=]*)$/ )
             {
@@ -1147,6 +1160,28 @@ sub dashrep_expand_parameters
                         $text_for_value = $list[ $#list ] ;
                     }
                     $replacement_text = $text_begin . $text_for_value . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  remove-last-item-from-phrase-list
+
+#  Not yet debugged.
+
+                # } elsif ( $action_name eq "remove-last-item-from-phrase-list" )
+                # {
+                    # if ( exists( $global_dashrep_replacement{ $text_for_value } ) )
+					# {
+						# if ( $global_dashrep_replacement{ $text_for_value } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
+						# {
+							# $global_dashrep_replacement{ $text_for_value } = $1 ;
+						# } else
+						# {
+							# $global_dashrep_replacement{ $text_for_value } = "" ;
+						# }
+					# }
+					# $text_for_value = "" ;
+                    # $replacement_text = $text_begin . $text_for_value . $text_end ;
 
 
 #-----------------------------------------------
@@ -1414,6 +1449,25 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  calculate-if-empty
+
+#  Not yet debugged.
+
+                # } elsif ( $action_name eq "calculate-if-empty" )
+                # {
+					# $text_for_value = "" ;
+                    # if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+					# {
+						# if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
+						# {
+							# $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+						# }
+                    # }
+                    # $replacement_text = $text_begin . $text_for_value . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  escape-if-yes and
 #  escape-if-no
 #
@@ -1480,15 +1534,16 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Repeat the loop that gets the next inner-most
-#  parameter syntax.
+#  Finish the branch that handles each kind of
+#  action.
 
         }
 
 
 #-----------------------------------------------
 #  Repeat the loop that repeats until no
-#  replacement was done.
+#  replacement was done, or until requested to
+#  stop.
 
     }
 
@@ -1564,6 +1619,15 @@ sub dashrep_generate_lists
 
     foreach $list_name ( @global_list_of_lists_to_generate )
     {
+
+
+#-----------------------------------------------
+#  Stop translating if requested.
+		
+		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+		{
+			last ;
+		}
 
 
 #-----------------------------------------------
@@ -1657,6 +1721,15 @@ sub dashrep_generate_lists
             {
                 $parameter = $list_of_parameters[ $pointer ] ;
                 $global_dashrep_replacement{ $parameter_name } = $parameter ;
+
+
+#-----------------------------------------------
+#  Stop translating if requested.
+		
+				if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+				{
+					last ;
+				}
 
 
 #-----------------------------------------------
@@ -1817,6 +1890,15 @@ sub dashrep_expand_phrases_except_special
 
     while( $#item_stack >= 0 )
     {
+
+
+#-----------------------------------------------
+#  Stop translating if requested.
+		
+		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+		{
+			last ;
+		}
 
 
 #-----------------------------------------------
@@ -2513,6 +2595,15 @@ sub dashrep_xml_tags_to_dashrep
         {
             print "{{trace; tag: <" . $possible_slash . $tag_name . ">}}\n" ;
         }
+
+
+#-----------------------------------------------
+#  Stop translating if requested.
+		
+		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+		{
+			last ;
+		}
 
 
 #-----------------------------------------------
@@ -3678,6 +3769,15 @@ sub dashrep_linewise_translate
         {
             print "{{trace; linewise input line: " . $input_line . "}}\n" ;
         }
+
+
+#-----------------------------------------------
+#  Stop translating if requested.
+		
+		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+		{
+			last ;
+		}
 
 
 #-----------------------------------------------
