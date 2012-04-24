@@ -299,6 +299,14 @@ single-phrase-to-replace:
 replaced-phrase
 --------
 
+text-with-periods:
+12345.67890
+--------
+
+test-of-replace-periods-with-spaces:
+[-replace-periods-with-spaces: [-text-with-periods-]-]
+--------
+
 list-from-which-to-remove-last-item:
 12, 56, 72
 --------
@@ -1201,6 +1209,22 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-from-w
 # $string_return_value = &dashrep_get_replacement( "list-from-which-to-remove-last-item" );
 # uncomment-for-cpan-version-end
 if ( $string_return_value eq "12, 56" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the replace-periods-with-spaces action.
+
+$being_tested = "replace-periods-with-spaces action -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "list-from-which-to-remove-last-item" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value eq "12345 67890" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

@@ -1329,6 +1329,17 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  replace-periods-with-spaces
+
+                } elsif ( $action_name eq "replace-periods-with-spaces" )
+                {
+					$text_for_value = $object_of_action ;
+                    $text_for_value =~ s/\./ /sg ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  sort-numbers
 
                 } elsif ( $action_name eq "sort-numbers" )
