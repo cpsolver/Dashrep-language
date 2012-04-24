@@ -940,11 +940,11 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-		{
-			last ;
-		}
+
+        if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------
@@ -1166,22 +1166,21 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  remove-last-item-from-phrase-list
 
-#  Not yet debugged.
-
-                # } elsif ( $action_name eq "remove-last-item-from-phrase-list" )
-                # {
-                    # if ( exists( $global_dashrep_replacement{ $text_for_value } ) )
-					# {
-						# if ( $global_dashrep_replacement{ $text_for_value } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
-						# {
-							# $global_dashrep_replacement{ $text_for_value } = $1 ;
-						# } else
-						# {
-							# $global_dashrep_replacement{ $text_for_value } = "" ;
-						# }
-					# }
-					# $text_for_value = "" ;
-                    # $replacement_text = $text_begin . $text_for_value . $text_end ;
+                } elsif ( $action_name eq "remove-last-item-from-phrase-list" )
+                {
+                    if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
+                    {
+                        if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
+                        {
+                            $global_dashrep_replacement{ $object_of_action } = $1 ;
+							$global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
+                        } else
+                        {
+                            $global_dashrep_replacement{ $object_of_action } = "" ;
+                        }
+                    }
+                    $text_for_value = "" ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
 
 
 #-----------------------------------------------
@@ -1451,19 +1450,17 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calculate-if-empty
 
-#  Not yet debugged.
-
-                # } elsif ( $action_name eq "calculate-if-empty" )
-                # {
-					# $text_for_value = "" ;
-                    # if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-					# {
-						# if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
-						# {
-							# $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
-						# }
-                    # }
-                    # $replacement_text = $text_begin . $text_for_value . $text_end ;
+                } elsif ( $action_name eq "calculate-if-empty" )
+                {
+                    $text_for_value = "" ;
+                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+                    {
+                        if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
+                        {
+                            $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+                        }
+                    }
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
 
 
 #-----------------------------------------------
@@ -1623,11 +1620,11 @@ sub dashrep_generate_lists
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-		{
-			last ;
-		}
+
+        if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------
@@ -1725,11 +1722,11 @@ sub dashrep_generate_lists
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-				if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-				{
-					last ;
-				}
+
+                if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+                {
+                    last ;
+                }
 
 
 #-----------------------------------------------
@@ -1894,11 +1891,11 @@ sub dashrep_expand_phrases_except_special
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-		{
-			last ;
-		}
+
+        if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------
@@ -2599,11 +2596,11 @@ sub dashrep_xml_tags_to_dashrep
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-		{
-			last ;
-		}
+
+        if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------
@@ -3503,11 +3500,11 @@ sub dashrep_top_level_action
                         $line_count = 0 ;
                         while( $input_line = <INFILE> )
                         {
-                            chomp( $input_line );
+                            chomp( $input_line ) ;
                             $input_line =~ s/[\n\r\f\t]+/ /g ;
                             if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
                             {
-                                last;
+                                last ;
                             }
                             if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
                             {
@@ -3773,11 +3770,11 @@ sub dashrep_linewise_translate
 
 #-----------------------------------------------
 #  Stop translating if requested.
-		
-		if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
-		{
-			last ;
-		}
+
+        if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------

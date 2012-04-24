@@ -303,12 +303,13 @@ list-from-which-to-remove-last-item:
 12, 56, 72
 --------
 
-test-remove-last-item-from-phrase-list:
+test-of-remove-last-item-from-phrase-list:
 [-remove-last-item-from-phrase-list: list-from-which-to-remove-last-item-]
 --------
 
 test-of-calculate-if-empty:
 [-calculate-if-empty: value-of-pi-]
+[-value-of-pi-]
 --------
 
 value-of-pi:
@@ -316,6 +317,11 @@ value-of-pi:
 
 how-to-calculate-value-of-pi:
 [-value-of-pi = 3.14159-]
+--------
+
+test-of-stop-translation:
+[-value-of-pi-]
+[-dashrep-stop-translation = yes-]
 [-value-of-pi-]
 --------
 
@@ -1185,35 +1191,69 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the remove-last-item-from-phrase-list action.
 
-# $being_tested = "remove-last-item-from-phrase-list action -- ";
-# $test_number_count ++;
- # # remove-from-cpan-version-begin
-# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-remove-last-item-from-phrase-list" );
-# $results_text .= "[[" . $string_return_value . "]]" ;
- # # remove-from-cpan-version-end
- # # uncomment-for-cpan-version-begin
-# # $string_return_value = &dashrep_expand_phrases( "test-of-remove-last-item-from-phrase-list" );
- # # uncomment-for-cpan-version-end
-# if ( $string_return_value eq "12, 56" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+$being_tested = "remove-last-item-from-phrase-list action -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-remove-last-item-from-phrase-list" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-from-which-to-remove-last-item" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "list-from-which-to-remove-last-item" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value eq "12, 56" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
 #  Test the calculate-if-empty action.
 
-# $being_tested = "calculate-if-empty action -- ";
-# $test_number_count ++;
- # # remove-from-cpan-version-begin
-# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-calculate-if-empty" );
-# $results_text .= "[[" . $string_return_value . "]]" ;
- # # remove-from-cpan-version-end
- # # uncomment-for-cpan-version-begin
-# # $string_return_value = &dashrep_expand_phrases( "test-of-calculate-if-empty" );
- # # uncomment-for-cpan-version-end
-# if ( $string_return_value eq "  3.14159" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+$being_tested = "calculate-if-empty action -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-calculate-if-empty" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_phrases( "test-of-calculate-if-empty" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value =~ /^ *3\.14159 *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the dashrep-stop-translation action, then test resume translation.
+
+$being_tested = "dashrep-stop-translation action -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-stop-translation" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_phrases( "test-of-stop-translation" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value =~ /^ *3\.14159 *\[-value-of-pi-\]$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+# remove-from-cpan-version-begin
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-stop-translation" , "" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $numeric_return_value = &dashrep_define( "dashrep-stop-translation" , "" );
+# uncomment-for-cpan-version-end
+
+$being_tested = "resume translation -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-one" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-one" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
