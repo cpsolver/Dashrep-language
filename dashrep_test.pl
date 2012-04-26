@@ -184,7 +184,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "text-with-special-characters" , "some hyphenated-text \n  with linebreaks\n    and   adjacent    spaces" );
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "special-replacement-newline", "[eol]" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "special-replacement-newline" , "[eol]" );
 
 $dashrep_code = <<TEXT_TO_IMPORT;
 
@@ -201,9 +201,11 @@ test-of-special-operators:
 [-append-from-phrase-to-phrase: first-word-phrase copied-text-]
 [-append-from-phrase-to-phrase: second-word-phrase copied-text-]
 [-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
+[-special-replacement-adjacent-space = &nbsp;-]
 [-special-replacement-hyphen = &ndash;-]
-[-special-replacement-space = &nbsp;-]
-[-copy-from-phrase-to-phrase-with-special-replacements: text-with-special-characters text-with-special-characters-replaced-]
+[-copy-from-phrase-to-phrase-and-replace-hyphens: text-with-special-characters text-with-hyphens-replaced-]
+[-copy-from-phrase-to-phrase-and-replace-newlines: text-with-special-characters text-with-newlines-replaced-]
+[-copy-from-phrase-to-phrase-and-replace-adjacent-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
 [-should-be-zero = [-zero-one-multiple: 0-]-]
 [-should-be-one = [-zero-one-multiple: 1-]-]
 [-should-be-multiple = [-zero-one-multiple: 2-]-]
@@ -529,16 +531,39 @@ if ( $string_return_value eq " copied text" ) { $one_if_ok = 1; } else { $one_if
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test copy with special replacements -- ";
+$being_tested = "test copy with special replacement of hyphens -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-special-characters-replaced" );
-# $results_text .= "[[" . $string_return_value . "]]" ;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-hyphens-replaced" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "text-with-special-characters-replaced" );
+# $string_return_value = &dashrep_get_replacement( "text-with-hyphens-replaced" );
 #  uncomment-for-cpan-version-end
-if ( ( $string_return_value =~ /\[eol\]/ ) && ( $string_return_value =~ /&nbsp;/ ) && ( $string_return_value =~ /&ndash;/ ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value =~ /\&ndash;/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test copy with special replacement of newlines -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-newlines-replaced" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "text-with-newlines-replaced" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value =~ /\[eol\]/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test copy with special replacement of adjacent spaces -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-adjacent-spaces-replaced" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "text-with-adjacent-spaces-replaced" );
+#  uncomment-for-cpan-version-end
+if ( ( $string_return_value =~ /\&nbsp;/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

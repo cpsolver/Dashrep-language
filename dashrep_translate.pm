@@ -209,9 +209,9 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
-    $global_dashrep_replacement{ "special-replacement-hyphen" } = " special-hypen-here " ;
-    $global_dashrep_replacement{ "special-replacement-space" } = " special-space-here " ;
-    $global_dashrep_replacement{ "special-replacement-newline" } = " special-newline-here " ;
+    $global_dashrep_replacement{ "special-replacement-hyphen" } = "[hyphen]" ;
+    $global_dashrep_replacement{ "special-replacement-adjacent-space" } = "[adjacentspace]" ;
+    $global_dashrep_replacement{ "special-replacement-newline" } = "[newline]" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
 }
@@ -250,9 +250,9 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
-    $global_dashrep_replacement{ "special-replacement-hyphen" } = " special-hypen-here " ;
-    $global_dashrep_replacement{ "special-replacement-space" } = " special-space-here " ;
-    $global_dashrep_replacement{ "special-replacement-newline" } = " special-newline-here " ;
+    $global_dashrep_replacement{ "special-replacement-hyphen" } = "[hyphen]" ;
+    $global_dashrep_replacement{ "special-replacement-adjacent-space" } = "[adjacentspace]" ;
+    $global_dashrep_replacement{ "special-replacement-newline" } = "[newline]" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
 }
@@ -1033,27 +1033,32 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the two-operand actions:
 #  copy-from-phrase-to-phrase and
-#  copy-from-phrase-to-phrase-with-special-replacements
+#  copy-from-phrase-to-phrase-and-replace-hyphens and
+#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces and
+#  copy-from-phrase-to-phrase-and-replace-newlines
 
-            } elsif ( $text_parameter_content =~ /^(copy-from-phrase-to-phrase(-with-special-replacements)?) *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+            } elsif ( $text_parameter_content =~ /^(copy-from-phrase-to-phrase(-and-replace-([a-z\-]+))?) *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
             {
                 $action_name_type = $1 ;
-                $source_phrase = $3 ;
-                $target_phrase = $4 ;
+                $source_phrase = $4 ;
+                $target_phrase = $5 ;
                 $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-                if ( $action_name_type =~ /\-with\-special\-replacements/ )
+                if ( $action_name_type =~ /hyphens/ )
                 {
                     $hyphen_replacement = $global_dashrep_replacement{ "special-replacement-hyphen" } ;
                     $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
+                    $temp_text =~ s/-/${hyphen_replacement}/sg ;
+                } elsif ( $action_name_type =~ /adjacent-spaces/ )
+				{
+                    $space_replacement = $global_dashrep_replacement{ "special-replacement-adjacent-space" } ;
+                    $space_replacement =~ s/ /[space]/sg ;
+                    $temp_text =~ s/  / ${space_replacement}/sg ;
+                } elsif ( $action_name_type =~ /newlines/ )
+				{
                     $newline_replacement = $global_dashrep_replacement{ "special-replacement-newline" } ;
-                    $newline_replacement =~ s/-/${hyphen_replacement}/sg ;
                     $newline_replacement =~ s/[ \-]+//sg ;
                     $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
-                    $space_replacement = $global_dashrep_replacement{ "special-replacement-space" } ;
-                    $space_replacement =~ s/ /[space]/sg ;
                     $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
-                    $temp_text =~ s/-/${hyphen_replacement}/sg ;
-                    $temp_text =~ s/  / ${space_replacement}/sg ;
                 }
                 $global_dashrep_replacement{ $target_phrase } = $temp_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
