@@ -1097,6 +1097,28 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the two-operand action:
+#  from-list-in-phrase-get-item-number
+
+            } elsif ( $text_parameter_content =~ /^from-list-in-phrase-get-item-number *:? *([^ ]+) +([0-9]+)$/ )
+			{
+                $first_object_of_action = $1 ;
+                $second_object_of_action = $2 + 0 ;
+				@list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+				$count = $#list + 1 ;
+				if ( $second_object_of_action > $count )
+				{
+					$second_object_of_action = $count ;
+				}
+				if ( $count < 1 )
+				{
+					$second_object_of_action = 1 ;
+				}
+				$text_for_value = $list[ $second_object_of_action - 1 ] ;
+				$replacement_text = $text_begin . $text_for_value . $text_end ;
+
+
+#-----------------------------------------------
 #  If there is a single-operand action requested
 #  (which may include a colon between the action
 #  and its operand(s), handle it.
