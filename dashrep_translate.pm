@@ -209,11 +209,16 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
-    $global_dashrep_replacement{ "special-replacement-hyphen" } = "[hyphen]" ;
-    $global_dashrep_replacement{ "special-replacement-adjacent-space" } = "[adjacentspace]" ;
-    $global_dashrep_replacement{ "special-replacement-newline" } = "[newline]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } = "[hyphen]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } = "[adjacentspace]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-newline" } = "[newline]" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
+	$global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 }
 
 
@@ -250,11 +255,16 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
-    $global_dashrep_replacement{ "special-replacement-hyphen" } = "[hyphen]" ;
-    $global_dashrep_replacement{ "special-replacement-adjacent-space" } = "[adjacentspace]" ;
-    $global_dashrep_replacement{ "special-replacement-newline" } = "[newline]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } = "[hyphen]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } = "[adjacentspace]" ;
+    $global_dashrep_replacement{ "dashrep-special-replacement-newline" } = "[newline]" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
+	$global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
+    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 }
 
 
@@ -1035,7 +1045,8 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase and
 #  copy-from-phrase-to-phrase-and-replace-hyphens and
 #  copy-from-phrase-to-phrase-and-replace-adjacent-spaces and
-#  copy-from-phrase-to-phrase-and-replace-newlines
+#  copy-from-phrase-to-phrase-and-replace-newlines and
+#  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 
             } elsif ( $text_parameter_content =~ /^(copy-from-phrase-to-phrase(-and-replace-([a-z\-]+))?) *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
             {
@@ -1045,17 +1056,29 @@ sub dashrep_expand_parameters
                 $temp_text = $global_dashrep_replacement{ $source_phrase } ;
                 if ( $action_name_type =~ /hyphens/ )
                 {
-                    $hyphen_replacement = $global_dashrep_replacement{ "special-replacement-hyphen" } ;
+                    $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
                     $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
                     $temp_text =~ s/-/${hyphen_replacement}/sg ;
                 } elsif ( $action_name_type =~ /adjacent-spaces/ )
 				{
-                    $space_replacement = $global_dashrep_replacement{ "special-replacement-adjacent-space" } ;
+                    $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
                     $space_replacement =~ s/ /[space]/sg ;
                     $temp_text =~ s/  / ${space_replacement}/sg ;
+                } elsif ( $action_name_type =~ /html-reserved-characters/ )
+				{
+                    $open_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } ;
+                    $close_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } ;
+                    $quotation_mark_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } ;
+                    $apostrophe_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } ;
+                    $ampersand_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } ;
+                    $temp_text =~ s/</${open_angle_bracket_replacement}/sg ;
+                    $temp_text =~ s/>/${close_angle_bracket_replacement}/sg ;
+                    $temp_text =~ s/\"/${quotation_replacement}/sg ;
+                    $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
+                    $temp_text =~ s/\&/${ampersand_replacement}/sg ;
                 } elsif ( $action_name_type =~ /newlines/ )
 				{
-                    $newline_replacement = $global_dashrep_replacement{ "special-replacement-newline" } ;
+                    $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
                     $newline_replacement =~ s/[ \-]+//sg ;
                     $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
                     $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
@@ -1088,6 +1111,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/dashrep_code_parameter_end/dashrep-code-parameter-end/sg ;
                 $temp_text =~ s/dashrep_code_hyphen_here/dashrep-code-hyphen-here/sg ;
                 $temp_text =~ s/dashrep_code_whitespace_here/dashrep-code-whitespace-here/sg ;
+                $temp_text =~ s/dashrep_code_newline/dashrep-code-newline/sg ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/^ +//sg ;
                 $temp_text =~ s/ +$/ /sg ;

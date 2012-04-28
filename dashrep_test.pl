@@ -184,7 +184,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "text-with-special-characters" , "some hyphenated-text \n  with linebreaks\n    and   adjacent    spaces" );
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "special-replacement-newline" , "[eol]" );
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-special-replacement-newline" , "[eol]" );
 
 $dashrep_code = <<TEXT_TO_IMPORT;
 
@@ -201,8 +201,8 @@ test-of-special-operators:
 [-append-from-phrase-to-phrase: first-word-phrase copied-text-]
 [-append-from-phrase-to-phrase: second-word-phrase copied-text-]
 [-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
-[-special-replacement-adjacent-space = &nbsp;-]
-[-special-replacement-hyphen = &ndash;-]
+[-dashrep-special-replacement-adjacent-space = &nbsp;-]
+[-dashrep-special-replacement-hyphen = &ndash;-]
 [-copy-from-phrase-to-phrase-and-replace-hyphens: text-with-special-characters text-with-hyphens-replaced-]
 [-copy-from-phrase-to-phrase-and-replace-newlines: text-with-special-characters text-with-newlines-replaced-]
 [-copy-from-phrase-to-phrase-and-replace-adjacent-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
@@ -576,7 +576,8 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "tagged-dash
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "tagged-dashrep-code" );
 #  uncomment-for-cpan-version-end
-if ( ( $string_return_value =~ /dashrep-code-hyphen-here/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( ( $string_return_value =~ /dashrep-code-parameter-begin/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
