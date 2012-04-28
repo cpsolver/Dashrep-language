@@ -206,6 +206,7 @@ test-of-special-operators:
 [-copy-from-phrase-to-phrase-and-replace-hyphens: text-with-special-characters text-with-hyphens-replaced-]
 [-copy-from-phrase-to-phrase-and-replace-newlines: text-with-special-characters text-with-newlines-replaced-]
 [-copy-from-phrase-to-phrase-and-replace-adjacent-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
+[-copy-from-phrase-to-phrase-as-tagged-dashrep-code: page-participants-list tagged-dashrep-code-]
 [-should-be-zero = [-zero-one-multiple: 0-]-]
 [-should-be-one = [-zero-one-multiple: 1-]-]
 [-should-be-multiple = [-zero-one-multiple: 2-]-]
@@ -564,6 +565,18 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-a
 # $string_return_value = &dashrep_get_replacement( "text-with-adjacent-spaces-replaced" );
 #  uncomment-for-cpan-version-end
 if ( ( $string_return_value =~ /\&nbsp;/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test copy as tagged dashrep code -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "tagged-dashrep-code" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "tagged-dashrep-code" );
+#  uncomment-for-cpan-version-end
+if ( ( $string_return_value =~ /dashrep-code-hyphen-here/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

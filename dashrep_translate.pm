@@ -1069,6 +1069,37 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the two-operand action:
+#  copy-from-phrase-to-phrase-as-tagged-dashrep-code and
+
+            } elsif ( $text_parameter_content =~ /^copy-from-phrase-to-phrase-as-tagged-dashrep-code *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+            {
+                $source_phrase = $1 ;
+                $target_phrase = $2 ;
+                $temp_text = $global_dashrep_replacement{ $source_phrase } ;
+                $temp_text =~ s/\t+/ /sg ;
+                $temp_text =~ s/ +/_dashrep_code_whitespace_here_/sg ;
+                $temp_text =~ s/_dashrep_code_whitespace_here_/ dashrep_code_whitespace_here /sg ;
+                $temp_text = join( " dashrep_code_newline " , split( /[\n\r]/s , $temp_text ) ) ;
+                $temp_text =~ s/\[-/ dashrep_code_parameter_begin /sg ;
+                $temp_text =~ s/-\]/ dashrep_code_parameter_end /sg ;
+                $temp_text =~ s/-/ dashrep_code_hyphen_here /sg ;
+                $temp_text =~ s/dashrep_code_parameter_begin/dashrep-code-parameter-begin/sg ;
+                $temp_text =~ s/dashrep_code_parameter_end/dashrep-code-parameter-end/sg ;
+                $temp_text =~ s/dashrep_code_hyphen_here/dashrep-code-hyphen-here/sg ;
+                $temp_text =~ s/dashrep_code_whitespace_here/dashrep-code-whitespace-here/sg ;
+                $temp_text =~ s/  +/ /sg ;
+                $temp_text =~ s/^ +//sg ;
+                $temp_text =~ s/ +$/ /sg ;
+                $global_dashrep_replacement{ $target_phrase } = $temp_text ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    print "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                }
+                $replacement_text = $text_begin . " " . $text_end ;
+
+
+#-----------------------------------------------
 #  Handle these two-operand actions:
 #  yes-or-no-first-number-equals-second-number
 #  yes-or-no-first-number-greater-than-second-number
