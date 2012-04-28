@@ -194,6 +194,10 @@ BEGIN {
     @global_xml_tag_at_level_number = ( ) ;
 
     %global_dashrep_replacement = ( ) ;
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
@@ -240,6 +244,10 @@ names.
 
 sub initialize_special_phrases
 {
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
@@ -1064,6 +1072,12 @@ sub dashrep_expand_parameters
                     $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
                     $space_replacement =~ s/ /[space]/sg ;
                     $temp_text =~ s/  / ${space_replacement}/sg ;
+                } elsif ( $action_name_type =~ /newlines/ )
+				{
+                    $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
+                    $newline_replacement =~ s/[ \-]+//sg ;
+                    $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
+                    $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
                 } elsif ( $action_name_type =~ /html-reserved-characters/ )
 				{
                     $open_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } ;
@@ -1076,12 +1090,6 @@ sub dashrep_expand_parameters
                     $temp_text =~ s/\"/${quotation_replacement}/sg ;
                     $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
                     $temp_text =~ s/\&/${ampersand_replacement}/sg ;
-                } elsif ( $action_name_type =~ /newlines/ )
-				{
-                    $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
-                    $newline_replacement =~ s/[ \-]+//sg ;
-                    $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
-                    $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
                 }
                 $global_dashrep_replacement{ $target_phrase } = $temp_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3105,8 +3113,8 @@ sub dashrep_top_level_action
 #  copy-from-phrase-append-to-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *copy-from-phrase-append-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
@@ -3114,13 +3122,20 @@ sub dashrep_top_level_action
         $target_filename = $2 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        if ( open ( OUTFILE , ">>" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-        }
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
+		{
+			if ( open ( OUTFILE , ">>" . $target_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				$possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+			}
+		} else
+		{
+			$possible_error_message .= " [do not have permission to append to file named " . $target_filename . "]" ;
+		}
         if ( $possible_error_message eq "" )
         {
             print OUTFILE "\n" . $global_dashrep_replacement{ $source_phrase } . "\n" ;
@@ -3144,8 +3159,8 @@ sub dashrep_top_level_action
 #  expand-phrase-to-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *expand-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
@@ -3153,13 +3168,20 @@ sub dashrep_top_level_action
         $target_filename = $2 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        if ( open ( OUTFILE , ">" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-        }
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
+		{
+			if ( open ( OUTFILE , ">" . $target_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				$possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+			}
+		} else
+		{
+			$possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
+		}
         if ( $possible_error_message eq "" )
         {
             $partial_translation = &dashrep_expand_parameters( $source_phrase );
@@ -3192,6 +3214,10 @@ sub dashrep_top_level_action
     {
         $source_filename = $1 ;
         $target_phrase = $2 ;
+        $source_filename =~ s/^.*[\\\/]// ;
+        $source_filename =~ s/^\.+// ;
+        $source_filename =~ s/[ \t]+//g ;
+		$source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
@@ -3241,21 +3267,29 @@ sub dashrep_top_level_action
 #  create-empty-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *create-empty-file +([^ \[\]]+) *$/ )
     {
         $target_filename = $1 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        if ( open ( OUTFILE , ">" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be created]" ;
-        }
+        $target_filename =~ s/[ \t]+//g ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
+		{
+			if ( open ( OUTFILE , ">" . $target_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				$possible_error_message .= " [file named " . $target_filename . " could not be created]" ;
+			}
+		} else
+		{
+			$possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
+		}
         if ( $possible_error_message eq "" )
         {
             print OUTFILE "" ;
@@ -3279,27 +3313,29 @@ sub dashrep_top_level_action
 #  yes-or-no-file-exists
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *yes-or-no-file-exists +([^ \[\]]+) *$/ )
     {
-        $target_filename = $1 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        if ( open ( INFILE , "<" . $target_filename ) )
+        $source_filename = $1 ;
+        $source_filename =~ s/^.*[\\\/]// ;
+        $source_filename =~ s/^\.+// ;
+        $source_filename =~ s/[ \t]+//g ;
+		$source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
+        if ( open ( INFILE , "<" . $source_filename ) )
         {
             $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; file exists: " . $target_filename . "}}\n" ;
+                print "{{trace; file exists: " . $source_filename . "}}\n" ;
             }
         } else
         {
             $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "no" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; file does not exist: " . $target_filename . "}}\n" ;
+                print "{{trace; file does not exist: " . $source_filename . "}}\n" ;
             }
         }
         close( INFILE ) ;
@@ -3311,19 +3347,30 @@ sub dashrep_top_level_action
 #  delete-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *delete-file +([^ \[\]]+) *$/ )
     {
         $target_filename = $1 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        unlink $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-        {
-            print "{{trace; deleted file: " . $target_filename . "}}\n" ;
-        }
+        $target_filename =~ s/[ \t]+//g ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
+		{
+			unlink $target_filename ;
+			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+			{
+				print "{{trace; deleted file: " . $target_filename . "}}\n" ;
+			}
+		} else
+		{
+			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+			{
+				print "{{trace; do not have permission to delete file: " . $target_filename . "}}\n" ;
+			}
+		}
         $input_text = "" ;
 
 
@@ -3333,8 +3380,8 @@ sub dashrep_top_level_action
 #  write-all-dashrep-phrase-names-to-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *write-all-dashrep-((definitions)|(phrase-names))-to-file +([^ \[\]]+) *$/ )
     {
@@ -3342,61 +3389,69 @@ sub dashrep_top_level_action
         $target_filename = $4 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
-        if ( $#list_of_phrases < 0 )
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; warning: no phrases to write (to file)}}\n" ;
-            }
-        } else
-        {
-            if ( open ( OUTFILE , ">" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-            }
-            if ( $possible_error_message eq "" )
-            {
-                $counter = 0 ;
-                if ( $definitions_or_phrases eq "definitions" )
-                {
-                    print OUTFILE $all_defs_begin ;
-                    foreach $phrase_name ( sort( @list_of_phrases ) )
-                    {
-                        if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                        {
-                            print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
-                            $counter ++ ;
-                        }
-                    }
-                    print OUTFILE $all_defs_end ;
-                } else
-                {
-                    foreach $phrase_name ( sort( @list_of_phrases ) )
-                    {
-                        if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                        {
-                            print OUTFILE $phrase_name . "\n" ;
-                            $counter ++ ;
-                        }
-                    }
-                }
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; wrote " . $counter . " " . $definitions_or_phrases . " to file: " . $target_filename . "}}\n" ;
-                }
-            } else
-            {
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; error: " . $possible_error_message . "}}\n" ;
-                }
-            }
-        }
-        close( OUTFILE ) ;
+        $target_filename =~ s/[ \t]+//g ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
+		{
+			@list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+			if ( $#list_of_phrases < 0 )
+			{
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; warning: no phrases to write (to file)}}\n" ;
+				}
+			} else
+			{
+				if ( open ( OUTFILE , ">" . $target_filename ) )
+				{
+					$possible_error_message .= "" ;
+				} else
+				{
+					$possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+				}
+				if ( $possible_error_message eq "" )
+				{
+					$counter = 0 ;
+					if ( $definitions_or_phrases eq "definitions" )
+					{
+						print OUTFILE $all_defs_begin ;
+						foreach $phrase_name ( sort( @list_of_phrases ) )
+						{
+							if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+							{
+								print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
+								$counter ++ ;
+							}
+						}
+						print OUTFILE $all_defs_end ;
+					} else
+					{
+						foreach $phrase_name ( sort( @list_of_phrases ) )
+						{
+							if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+							{
+								print OUTFILE $phrase_name . "\n" ;
+								$counter ++ ;
+							}
+						}
+					}
+					if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+					{
+						print "{{trace; wrote " . $counter . " " . $definitions_or_phrases . " to file: " . $target_filename . "}}\n" ;
+					}
+				} else
+				{
+					if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+					{
+						print "{{trace; error: " . $possible_error_message . "}}\n" ;
+					}
+				}
+			}
+			close( OUTFILE ) ;
+		} else
+		{
+			$possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
+		}
         $input_text = "" ;
 
 
@@ -3405,8 +3460,8 @@ sub dashrep_top_level_action
 #  write-dashrep-definitions-listed-in-phrase-to-file
 #
 #  The filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *write-dashrep-definitions-listed-in-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
@@ -3414,56 +3469,71 @@ sub dashrep_top_level_action
         $target_filename = $2 ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        $text_list_of_phrases = $global_dashrep_replacement{ $source_phrase } ;
-        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-        {
-            print "{{trace; phrase that contains list of phrases to export: " . $source_phrase . "}}\n" ;
-            print "{{trace; list of phrases for exporting definitions to file: " . $text_list_of_phrases . "}}\n" ;
-        }
-        @list_of_phrases = &dashrep_internal_split_delimited_items( $text_list_of_phrases ) ;
-        if ( open ( OUTFILE , ">" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $counter = 0 ;
-            print OUTFILE $all_defs_begin ;
-            foreach $phrase_name ( sort( @list_of_phrases ) )
-            {
-                if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                {
-                    print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
-                    $counter ++ ;
-                }
-            }
-            print OUTFILE $all_defs_end ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; wrote " . $counter . " definitions to file: " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( OUTFILE ) ;
+        $target_filename =~ s/[ \t]+//g ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
+		{
+			$text_list_of_phrases = $global_dashrep_replacement{ $source_phrase } ;
+			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+			{
+				print "{{trace; phrase that contains list of phrases to export: " . $source_phrase . "}}\n" ;
+				print "{{trace; list of phrases for exporting definitions to file: " . $text_list_of_phrases . "}}\n" ;
+			}
+			@list_of_phrases = &dashrep_internal_split_delimited_items( $text_list_of_phrases ) ;
+			if ( open ( OUTFILE , ">" . $target_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				$possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+			}
+			if ( $possible_error_message eq "" )
+			{
+				$counter = 0 ;
+				print OUTFILE $all_defs_begin ;
+				foreach $phrase_name ( sort( @list_of_phrases ) )
+				{
+					if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+					{
+						print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
+						$counter ++ ;
+					}
+				}
+				print OUTFILE $all_defs_end ;
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; wrote " . $counter . " definitions to file: " . $target_filename . "}}\n" ;
+				}
+			} else
+			{
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; error: " . $possible_error_message . "}}\n" ;
+				}
+			}
+			close( OUTFILE ) ;
+		} else
+		{
+			$possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
+		}
         $input_text = "" ;
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  get-definitions-from-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 
     } elsif ( $input_text =~ /^ *get-definitions-from-file +([^ \[\]]+) *$/ )
     {
         $source_filename = $1 ;
+        $source_filename =~ s/^.*[\\\/]// ;
+        $source_filename =~ s/^\.+// ;
         $source_filename =~ s/[ \t]+//g ;
+		$source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message = "" ;
@@ -3529,9 +3599,9 @@ sub dashrep_top_level_action
 #  linewise-translate-phrases-only-from-file-to-file
 #  linewise-translate-special-phrases-only-from-file-to-file
 #
-#  The output filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
 #
 #  If there are Dashrep definitions, get them.
 
@@ -3540,119 +3610,130 @@ sub dashrep_top_level_action
         $qualifier = $1 ;
         $source_filename = $6 ;
         $target_filename = $7 ;
+        $source_filename =~ s/^.*[\\\/]// ;
+        $source_filename =~ s/^\.+// ;
         $source_filename =~ s/[ \t]+//g ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            if ( -e $source_filename )
-            {
-                $possible_error_message .= " [file named " . $source_filename . " exists, but could not be opened]" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
-            }
-        }
-        if ( open ( OUTFILE , ">" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $global_ignore_level = 0 ;
-            $global_capture_level = 0 ;
-            $global_top_line_count_for_insert_phrase = 0 ;
-            while( $input_line = <INFILE> )
-            {
-                chomp( $input_line ) ;
-                $input_line =~ s/[\n\r\f\t]+/ /g ;
-                $global_endless_loop_counter = 0 ;
-                %global_replacement_count_for_item_name = ( ) ;
-                $lines_to_translate = 1 ;
-                while ( $lines_to_translate > 0 )
-                {
-                    if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
-                    {
-                        $all_lines = "" ;
-                        $line_count = 0 ;
-                        while( $input_line = <INFILE> )
-                        {
-                            chomp( $input_line ) ;
-                            $input_line =~ s/[\n\r\f\t]+/ /g ;
-                            if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
-                            {
-                                last ;
-                            }
-                            if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
-                            {
-                                $all_lines .= $input_line . " " ;
-                            }
-                            $line_count ++ ;
-                        }
-                        if ( $all_lines =~ /[^ ]/ )
-                        {
-                            $numeric_return_value = &dashrep_import_replacements( $all_lines );
-                            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
-                            {
-                                print "{{trace; definitions found, imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
-                            }
-                        }
-                        $lines_to_translate = 0 ;
-                    } else
-                    {
-                        $lines_to_translate = 0 ;
-                        if ( $qualifier eq "-parameters-only" )
-                        {
-                            $translation = &dashrep_expand_parameters( $input_line );
-                        } elsif ( $qualifier eq "-phrases-only" )
-                        {
-                            $translation = &dashrep_expand_phrases( $input_line );
-                        } elsif ( $qualifier eq "-special-phrases-only" )
-                        {
-                            $translation = &dashrep_expand_special_phrases( $input_line );
-                        } else
-                        {
-                            $partial_translation = &dashrep_expand_parameters( $input_line );
-                            $translation = &dashrep_expand_phrases( $partial_translation );
-                        }
-                        if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
-                        {
-                            print OUTFILE $translation . "\n" ;
-                        }
-                        if ( $global_top_line_count_for_insert_phrase == 1 )
-                        {
-                            $global_top_line_count_for_insert_phrase = 2 ;
-                        } elsif ( $global_top_line_count_for_insert_phrase == 2 )
-                        {
-                            $global_top_line_count_for_insert_phrase = 0 ;
-                            if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
-                            {
-                                $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
-                                $lines_to_translate = 1 ;
-                            }
-                        }
-                    }
-                }
-            }
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
-        close( OUTFILE ) ;
+        $target_filename =~ s/[ \t]+//g ;
+		$source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+	    if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
+		{
+			if ( open ( INFILE , "<" . $source_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				if ( -e $source_filename )
+				{
+					$possible_error_message .= " [file named " . $source_filename . " exists, but could not be opened]" ;
+				} else
+				{
+					$possible_error_message .= " [file named " . $source_filename . " not found]" ;
+				}
+			}
+			if ( open ( OUTFILE , ">" . $target_filename ) )
+			{
+				$possible_error_message .= "" ;
+			} else
+			{
+				$possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+			}
+			if ( $possible_error_message eq "" )
+			{
+				$global_ignore_level = 0 ;
+				$global_capture_level = 0 ;
+				$global_top_line_count_for_insert_phrase = 0 ;
+				while( $input_line = <INFILE> )
+				{
+					chomp( $input_line ) ;
+					$input_line =~ s/[\n\r\f\t]+/ /g ;
+					$global_endless_loop_counter = 0 ;
+					%global_replacement_count_for_item_name = ( ) ;
+					$lines_to_translate = 1 ;
+					while ( $lines_to_translate > 0 )
+					{
+						if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
+						{
+							$all_lines = "" ;
+							$line_count = 0 ;
+							while( $input_line = <INFILE> )
+							{
+								chomp( $input_line ) ;
+								$input_line =~ s/[\n\r\f\t]+/ /g ;
+								if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
+								{
+									last ;
+								}
+								if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
+								{
+									$all_lines .= $input_line . " " ;
+								}
+								$line_count ++ ;
+							}
+							if ( $all_lines =~ /[^ ]/ )
+							{
+								$numeric_return_value = &dashrep_import_replacements( $all_lines );
+								if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+								{
+									print "{{trace; definitions found, imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
+								}
+							}
+							$lines_to_translate = 0 ;
+						} else
+						{
+							$lines_to_translate = 0 ;
+							if ( $qualifier eq "-parameters-only" )
+							{
+								$translation = &dashrep_expand_parameters( $input_line );
+							} elsif ( $qualifier eq "-phrases-only" )
+							{
+								$translation = &dashrep_expand_phrases( $input_line );
+							} elsif ( $qualifier eq "-special-phrases-only" )
+							{
+								$translation = &dashrep_expand_special_phrases( $input_line );
+							} else
+							{
+								$partial_translation = &dashrep_expand_parameters( $input_line );
+								$translation = &dashrep_expand_phrases( $partial_translation );
+							}
+							if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
+							{
+								print OUTFILE $translation . "\n" ;
+							}
+							if ( $global_top_line_count_for_insert_phrase == 1 )
+							{
+								$global_top_line_count_for_insert_phrase = 2 ;
+							} elsif ( $global_top_line_count_for_insert_phrase == 2 )
+							{
+								$global_top_line_count_for_insert_phrase = 0 ;
+								if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
+								{
+									$input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
+									$lines_to_translate = 1 ;
+								}
+							}
+						}
+					}
+				}
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
+				}
+			} else
+			{
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
+				}
+			}
+			close( INFILE ) ;
+			close( OUTFILE ) ;
+		} else
+		{
+			$possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
+		}
         $input_text = "" ;
 
 
@@ -3660,9 +3741,10 @@ sub dashrep_top_level_action
 #  Handle the action:
 #  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
 #
-#  The output filename is edited to remove any path
-#  specifications, so that only local files
-#  are affected.
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+#
 #  If a tag does not end on the same line as it
 #  starts, more lines are read in an attempt
 #  to reach the end of the tag, but this
@@ -3674,8 +3756,14 @@ sub dashrep_top_level_action
     {
         $source_filename = $1 ;
         $target_filename = $2 ;
+        $source_filename =~ s/^.*[\\\/]// ;
+        $source_filename =~ s/^\.+// ;
+        $source_filename =~ s/[ \t]+//g ;
         $target_filename =~ s/^.*[\\\/]// ;
         $target_filename =~ s/^\.+// ;
+        $target_filename =~ s/[ \t]+//g ;
+		$source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
+		$target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
         if ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
