@@ -869,12 +869,19 @@ sub dashrep_expand_parameters
     my $first_object_of_action ;
     my $second_object_of_action ;
     my $temp_text ;
-    my $previous_temp_text ;
     my $action_name_type ;
     my $newline_replacement ;
     my $space_replacement ;
     my $hyphen_replacement ;
     my $phrase_length ;
+    my $open_angle_bracket_replacement ;
+    my $close_angle_bracket_replacement ;
+    my $quotation_mark_replacement ;
+    my $apostrophe_replacement ;
+    my $ampersand_replacement ;
+    my $calculation_type ;
+    my $counter ;
+    my $value ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -1030,6 +1037,36 @@ sub dashrep_expand_parameters
                 {
                     print "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
                 }
+
+
+#-----------------------------------------------
+#  If the word "file" appears in the action name,
+#  execute the appropriate file-related action.
+
+			} elsif ( ( $text_parameter_content =~ /file/ ) && ( $text_parameter_content =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ ) )
+			{
+				$text_returned = &dashrep_file_actions( $text_parameter_content ) ;
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					print "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
+				}
+				$replacement_text = $text_begin . $text_returned . $text_end ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  clear-all-dashrep-phrases
+
+			} elsif ( $text_parameter_content =~ /^clear-all-dashrep-phrases$/ )
+			{
+				$tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
+				&dashrep_delete_all( );
+				if ( $tracking_on_or_off eq "on" )
+				{
+					print "{{trace; cleared all definitions}}\n" ;
+				}
+				$global_endless_loop_counter = 0 ;
+				$replacement_text = "" ;
 
 
 #-----------------------------------------------
@@ -3100,6 +3137,81 @@ is not exactly one parameter.
 sub dashrep_top_level_action
 {
 
+    my $input_text ;
+
+
+#-----------------------------------------------
+#  Reset the xml-parsing state.
+
+    $global_xml_level_number = 0 ;
+    @global_xml_tag_at_level_number = ( ) ;
+
+
+#-----------------------------------------------
+#  Get the input text.
+
+    if ( scalar( @_ ) == 1 )
+    {
+        $input_text = $_[ 0 ] ;
+    } else
+    {
+#  remove-from-cpan-version-begin
+        warn "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
+#  uncomment-for-cpan-version-end
+        return 0 ;
+    }
+
+
+#-----------------------------------------------
+#  Enclose the top-level action in Dashrep
+#  bracket notation, and then call the paramter-
+#  translation subroutine.
+
+	$input_text = "[-" . $input_text . "-]" ;
+	$input_text = &dashrep_expand_parameters( $input_text ) ;
+
+
+#-----------------------------------------------
+#  Return, possibly with an error message.
+
+    return $input_text ;
+
+
+#-----------------------------------------------
+#  End of subroutine.
+
+}
+
+
+=head2 dashrep_file_actions
+
+Handles file-related actions.
+
+First, and only, parameter is the
+text string that contains any text, which
+may include a file-related action.
+
+Return value is the text string after removing
+the executed action, or the original text
+string if there was no action phrase.
+Return value is an empty string if there
+is not exactly one parameter.
+
+=cut
+
+
+#-----------------------------------------------
+#-----------------------------------------------
+#         dashrep_file_actions
+#-----------------------------------------------
+#-----------------------------------------------
+
+sub dashrep_file_actions
+{
+
     my $source_definitions ;
     my $input_text ;
     my $translation ;
@@ -3136,12 +3248,27 @@ sub dashrep_top_level_action
 
 
 #-----------------------------------------------
-#  Reset the xml-parsing state.
+#  Ensure this function is not called recursively.
 
-    $global_xml_level_number = 0 ;
-    @global_xml_tag_at_level_number = ( ) ;
+    # $global_nesting_level_of_file_actions ++ ;
+    # if ( $global_nesting_level_of_file_actions > 1 )
+    # {
+# #  remove-from-cpan-version-begin
+        # warn "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
+# #  remove-from-cpan-version-end
+# #  uncomment-for-cpan-version-begin
+# #        carp "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
+# #  uncomment-for-cpan-version-end
+        # return 0 ;
+    # }
 
 
+#-----------------------------------------------
+#  Initialization.
+
+	$possible_error_message = "" ;
+
+	
 #-----------------------------------------------
 #  Get the input text.
 
@@ -3161,66 +3288,19 @@ sub dashrep_top_level_action
 
 
 #-----------------------------------------------
-#  Clear the error message.
-
-    $possible_error_message = "" ;
-
-
-#-----------------------------------------------
-#  Ensure this function is not called recursively.
-
-    $global_nesting_level_of_file_actions ++ ;
-    if ( $global_nesting_level_of_file_actions > 1 )
-    {
-#  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
-#  uncomment-for-cpan-version-end
-        return 0 ;
-    }
-
-
-#-----------------------------------------------
-#  In case definitions are exported, specify
-#  which delimiters to use -- based on the "yes"
-#  or "no" definition of the phrase
-#  "dashrep-yes-or-no-export-delimited-definitions".
-
-    if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
-    {
-        $all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
-        $all_defs_end = "[-export-defs-all-end-]\n\n" ;
-        $phrase_begin = "[-export-defs-phrase-begin-] " ;
-        $phrase_end = " [-export-defs-phrase-end-]\n\n" ;
-        $def_begin = "[-export-defs-def-begin-] " ;
-        $def_end = " [-export-defs-def-end-]\n\n" ;
-    } else
-    {
-        $all_defs_begin = "dashrep-definitions-begin\n\n" ;
-        $all_defs_end = "dashrep-definitions-end\n\n" ;
-        $phrase_begin = "" ;
-        $phrase_end = ":\n" ;
-        $def_begin = "" ;
-        $def_end = "\n-----\n\n" ;
-    }
-
-
-#-----------------------------------------------
 #  Handle the action:
 #  append-from-phrase-to-phrase
 
-    if ( $input_text =~ /^ *append-from-phrase-to-phrase +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_phrase = $1 ;
-        $target_phrase = $2 ;
-        $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
-        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-        {
-            print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-        }
-        $input_text = "" ;
+    # if ( $input_text =~ /^ *append-from-phrase-to-phrase +([^ \[\]]+) +([^ \[\]]+) *$/ )
+    # {
+        # $source_phrase = $1 ;
+        # $target_phrase = $2 ;
+        # $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
+        # if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        # {
+            # print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+        # }
+        # $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -3231,7 +3311,7 @@ sub dashrep_top_level_action
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( $input_text =~ /^ *copy-from-phrase-append-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
+    if ( $input_text =~ /^ *copy-from-phrase-append-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
     {
         $source_phrase = $1 ;
         $target_filename = $2 ;
@@ -3506,6 +3586,23 @@ sub dashrep_top_level_action
         $target_filename =~ s/^\.+// ;
         $target_filename =~ s/[ \t]+//g ;
         $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+		if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+		{
+			$all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
+			$all_defs_end = "[-export-defs-all-end-]\n\n" ;
+			$phrase_begin = "[-export-defs-phrase-begin-] " ;
+			$phrase_end = " [-export-defs-phrase-end-]\n\n" ;
+			$def_begin = "[-export-defs-def-begin-] " ;
+			$def_end = " [-export-defs-def-end-]\n\n" ;
+		} else
+		{
+			$all_defs_begin = "dashrep-definitions-begin\n\n" ;
+			$all_defs_end = "dashrep-definitions-end\n\n" ;
+			$phrase_begin = "" ;
+			$phrase_end = ":\n" ;
+			$def_begin = "" ;
+			$def_end = "\n-----\n\n" ;
+		}
         if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
         {
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
@@ -3586,6 +3683,23 @@ sub dashrep_top_level_action
         $target_filename =~ s/^\.+// ;
         $target_filename =~ s/[ \t]+//g ;
         $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+		if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+		{
+			$all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
+			$all_defs_end = "[-export-defs-all-end-]\n\n" ;
+			$phrase_begin = "[-export-defs-phrase-begin-] " ;
+			$phrase_end = " [-export-defs-phrase-end-]\n\n" ;
+			$def_begin = "[-export-defs-def-begin-] " ;
+			$def_end = " [-export-defs-def-end-]\n\n" ;
+		} else
+		{
+			$all_defs_begin = "dashrep-definitions-begin\n\n" ;
+			$all_defs_end = "dashrep-definitions-end\n\n" ;
+			$phrase_begin = "" ;
+			$phrase_end = ":\n" ;
+			$def_begin = "" ;
+			$def_end = "\n-----\n\n" ;
+		}
         if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
         {
             $text_list_of_phrases = $global_dashrep_replacement{ $source_phrase } ;
@@ -3688,22 +3802,6 @@ sub dashrep_top_level_action
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  clear-all-dashrep-phrases
-
-    } elsif ( $input_text =~ /^ *clear-all-dashrep-phrases *$/ )
-    {
-        $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
-        &dashrep_delete_all( );
-        if ( $tracking_on_or_off eq "on" )
-        {
-            print "{{trace; cleared all definitions}}\n" ;
-        }
-        $global_endless_loop_counter = 0 ;
         $input_text = "" ;
 
 
@@ -3955,7 +4053,7 @@ sub dashrep_top_level_action
     {
         if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $input_text =~ /[^ ]/ ) )
         {
-            print "{{trace; not recognized as top-level action: " . $input_text . "}}\n" ;
+            print "{{trace; not recognized as file-related action: " . $input_text . "}}\n" ;
         }
     }
 
@@ -3976,7 +4074,7 @@ sub dashrep_top_level_action
 #-----------------------------------------------
 #  Track the nesting level.
 
-    $global_nesting_level_of_file_actions -- ;
+#    $global_nesting_level_of_file_actions -- ;
 
 
 #-----------------------------------------------
