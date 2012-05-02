@@ -21,12 +21,12 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 2.33
+Version 2.35
 
 =cut
 
 #  uncomment-for-cpan-version-begin
-# our $VERSION = '2.33';
+# our $VERSION = '2.35';
 
 
 #  uncomment-for-cpan-version-end
@@ -167,6 +167,7 @@ my $global_ignore_level ;
 my $global_capture_level ;
 my $global_phrase_to_insert_after_next_top_level_line ;
 my $global_top_line_count_for_insert_phrase ;
+my $global_trace_log ;
 my %global_dashrep_replacement ;
 my %global_replacement_count_for_item_name ;
 my %global_exists_xml_hyphenated_phrase ;
@@ -189,15 +190,18 @@ BEGIN {
     $global_ignore_level = 0 ;
     $global_capture_level = 0 ;
     $global_xml_level_number = 0 ;
+    $global_trace_log = "" ;
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
 
     %global_dashrep_replacement = ( ) ;
+
+    $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } = "yes" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
@@ -212,7 +216,6 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
-    $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } = "[hyphen]" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } = "[adjacentspace]" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-newline" } = "[newline]" ;
@@ -231,8 +234,8 @@ BEGIN {
 
 =head2 initialize_special_phrases
 
-Initialize the phrases with special "dashrep_..."
-names.
+Initialize special phrases, especially the ones
+with special "dashrep-..." names.
 
 =cut
 
@@ -244,10 +247,11 @@ names.
 
 sub initialize_special_phrases
 {
+    $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } = "yes" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } = "" ;
@@ -262,7 +266,6 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
-    $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } = "[hyphen]" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } = "[adjacentspace]" ;
     $global_dashrep_replacement{ "dashrep-special-replacement-newline" } = "[newline]" ;
@@ -392,7 +395,7 @@ sub dashrep_import_replacements
         $replacements_text_to_import = "" ;
         if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; imported zero definitions from empty text}}\n" ;
+            $global_trace_log .= "{{trace; imported zero definitions from empty text}}\n" ;
         }
     }
 
@@ -405,7 +408,7 @@ sub dashrep_import_replacements
     {
         if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; imported zero definitions from empty text}}\n" ;
+            $global_trace_log .= "{{trace; imported zero definitions from empty text}}\n" ;
         }
         return 0 ;
     }
@@ -858,6 +861,8 @@ sub dashrep_expand_parameters
     my $text_for_value ;
     my $possible_new_limit ;
     my $text_parameter_content ;
+    my $operand_one ;
+    my $operand_two ;
     my $source_phrase ;
     my $target_phrase ;
     my $comparison_type ;
@@ -882,6 +887,8 @@ sub dashrep_expand_parameters
     my $calculation_type ;
     my $counter ;
     my $value ;
+    my $text_returned ;
+    my $tracking_on_or_off ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -942,7 +949,7 @@ sub dashrep_expand_parameters
             $global_endless_loop_counter_limit = $possible_new_limit ;
             if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
             {
-                print "{{trace; updated endless loop counter limit: " . $possible_new_limit . "}}\n";
+                $global_trace_log .= "{{trace; updated endless loop counter limit: " . $possible_new_limit . "}}\n";
             }
         }
     }
@@ -959,7 +966,7 @@ sub dashrep_expand_parameters
 
         if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) && ( $replacement_text =~ /[^ ]/ ) )
         {
-            print "{{trace; replacement string: " . $replacement_text . "}}\n";
+            $global_trace_log .= "{{trace; replacement string: " . $replacement_text . "}}\n";
         }
 
 
@@ -968,6 +975,10 @@ sub dashrep_expand_parameters
 
         if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
         {
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+            }
             last ;
         }
 
@@ -976,6 +987,9 @@ sub dashrep_expand_parameters
 #  Get the next inner-most parameter syntax --
 #  with "[-" at the beginning and "-]" at the end.
 #  (It must not contain a nested parameter syntax.)
+#  If it contains any line breaks, replace those
+#  with spaces.  If there are no more parameters,
+#  exit the loop.
 
         if ( $replacement_text =~ /^(.*?)\[\-([^\[\]]*)\-\](.*)$/ )
         {
@@ -984,105 +998,149 @@ sub dashrep_expand_parameters
             $text_end = $3 ;
             $text_parameter_content =~ s/^ +// ;
             $text_parameter_content =~ s/ +$// ;
+            $text_parameter_content =~ s/[\r\n\t]/ /sg ;
             $loop_status_done = $global_false ;
-
             if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
             {
-                print "{{trace; innermost parameter: " . $text_parameter_content . "}}\n";
+                $global_trace_log .= "{{trace; innermost parameter: " . $text_parameter_content . "}}\n";
             }
-
-
-#-----------------------------------------------
-#  If the parameter is a defined phrase, do the
-#  replacement.
-
-            if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
-            {
-                $text_parameter = $global_dashrep_replacement{ $text_parameter_content } ;
-                if ( $text_parameter =~ /[^ ]/ )
-                {
-                    $replacement_text = $text_begin . $text_parameter . $text_end ;
-                    $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
-                    $loop_status_done = $global_false ;
-                    if ( $text_parameter_content =~ /^auto-increment-/ )
-                    {
-                        push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
-                    }
-                } else
-                {
-                    $replacement_text = $text_begin . " " . $text_end ;
-                    $loop_status_done = $global_false ;
-                }
+        } else
+        {
+            last ;
+        }
 
 
 #-----------------------------------------------
 #  If there is a parameter value assigned -- as
 #  indicated by an equal sign -- then assign
-#  the value.
+#  the value, and restart the main loop.
 #  The parameter value cannot contain a line break.
 
-            } elsif ( $text_parameter_content =~ /^ *([^ \:=]+\-[^ \:=]+) *= *([^ ](.*[^ ])?) *$/ )
+        if ( $text_parameter_content =~ /^ *([^ \:=]+\-[^ \:=]+) *= *([^ ](.*[^ ])?) *$/ )
+        {
+            $text_parameter_name = $1 ;
+            $text_parameter_value = $2 ;
+            $text_parameter_value =~ s/[\- ]+$// ;
+            if ( length( $text_parameter_name ) > 0 )
             {
-                $text_parameter_name = $1 ;
-                $text_parameter_value = $2 ;
-                $text_parameter_value =~ s/[\- ]+$// ;
-                if ( length( $text_parameter_name ) > 0 )
+                $global_dashrep_replacement{ $text_parameter_name } = $text_parameter_value ;
+                $global_replacement_count_for_item_name{ $text_parameter_name } ++ ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
+            if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
+            {
+                $global_trace_log .= "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
+            }
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  If the parameter is a defined phrase, do the
+#  replacement, then restart the main loop.
+
+        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
+        {
+            $text_parameter = $global_dashrep_replacement{ $text_parameter_content } ;
+            if ( $text_parameter =~ /[^ ]/ )
+            {
+                $replacement_text = $text_begin . $text_parameter . $text_end ;
+                $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
+                $loop_status_done = $global_false ;
+                if ( $text_parameter_content =~ /^auto-increment-/ )
                 {
-                    $global_dashrep_replacement{ $text_parameter_name } = $text_parameter_value ;
-                    $global_replacement_count_for_item_name{ $text_parameter_name } ++ ;
+                    push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
                 }
+            } else
+            {
                 $replacement_text = $text_begin . " " . $text_end ;
-                $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
-                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
-                {
-                    print "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
-                }
+                $loop_status_done = $global_false ;
+            }
+            next ;
+        }
 
 
 #-----------------------------------------------
-#  If the word "file" appears in the action name,
-#  execute the appropriate file-related action.
+#  If a colon follows the action name (or any
+#  phrase name at the beginning), replace it with
+#  a space.
 
-			} elsif ( ( $text_parameter_content =~ /file/ ) && ( $text_parameter_content =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ ) )
-			{
-				$text_returned = &dashrep_file_actions( $text_parameter_content ) ;
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					print "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
-				}
-				$replacement_text = $text_begin . $text_returned . $text_end ;
+        $text_parameter_content =~ s/^([^ \:]+-[^ \:]+) *:/$1 /sg ;
 
 
 #-----------------------------------------------
-#  Handle the action:
+#  Get the action name and the operands.  If there
+#  is not at least one non-space character,
+#  remove the parameter brackets and restart the
+#  main loop.
+
+        $action_name = "" ;
+        $object_of_action = "" ;
+        $operand_one = "" ;
+        $operand_two = "" ;
+        if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
+        {
+            $action_name = $1 ;
+            $object_of_action = $2 ;
+            $action_name =~ s/^ +// ;
+            $action_name =~ s/ +$// ;
+            $action_name =~ s/^\-+// ;
+            $action_name =~ s/\-+$// ;
+            $object_of_action =~ s/^ +// ;
+            $object_of_action =~ s/ +$// ;
+            $object_of_action =~ s/^\-+// ;
+            $object_of_action =~ s/\-+$// ;
+            if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
+            {
+                $operand_one = $1 ;
+                $operand_two = $2 ;
+            }
+        } else
+        {
+            $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
+            next ;
+        }
+        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        {
+            $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $object_of_action . "}}\n";
+        }
+
+
+#-----------------------------------------------
+#  Handle the no-operand action:
 #  clear-all-dashrep-phrases
 
-			} elsif ( $text_parameter_content =~ /^clear-all-dashrep-phrases$/ )
-			{
-				$tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
-				&dashrep_delete_all( );
-				if ( $tracking_on_or_off eq "on" )
-				{
-					print "{{trace; cleared all definitions}}\n" ;
-				}
-				$global_endless_loop_counter = 0 ;
-				$replacement_text = "" ;
+        if ( $action_name eq "clear-all-dashrep-phrases" )
+        {
+            $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
+            &dashrep_delete_all( );
+            if ( $tracking_on_or_off eq "on" )
+            {
+                $global_trace_log .= "{{trace; cleared all definitions}}\n" ;
+            }
+            $global_endless_loop_counter = 0 ;
+            $replacement_text = "" ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the two-operand action:
 #  append-from-phrase-to-phrase
 
-            } elsif ( $text_parameter_content =~ /^append-from-phrase-to-phrase *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+        if ( ( $action_name eq "append-from-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        {
+            $source_phrase = $operand_one ;
+            $target_phrase = $operand_two ;
+            $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                $source_phrase = $1 ;
-                $target_phrase = $2 ;
-                $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-                }
-                $replacement_text = $text_begin . " " . $text_end ;
+                $global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1093,79 +1151,90 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-newlines and
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 
-            } elsif ( $text_parameter_content =~ /^(copy-from-phrase-to-phrase(-and-replace-([a-z\-]+))?) *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        {
+            $source_phrase = $operand_one ;
+            $target_phrase = $operand_two ;
+            if ( $action_name =~ /^(^copy-from-phrase-to-phrase(-and-replace-([a-z\-]+))?)$/ )
             {
                 $action_name_type = $1 ;
-                $source_phrase = $4 ;
-                $target_phrase = $5 ;
-                $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-                if ( $action_name_type =~ /hyphens/ )
-                {
-                    $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
-                    $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
-                    $temp_text =~ s/-/${hyphen_replacement}/sg ;
-                } elsif ( $action_name_type =~ /adjacent-spaces/ )
-                {
-                    $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
-                    $space_replacement =~ s/ /[space]/sg ;
-                    $temp_text =~ s/  / ${space_replacement}/sg ;
-                } elsif ( $action_name_type =~ /newlines/ )
-                {
-                    $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
-                    $newline_replacement =~ s/[ \-]+//sg ;
-                    $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
-                    $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
-                } elsif ( $action_name_type =~ /html-reserved-characters/ )
-                {
-                    $open_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } ;
-                    $close_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } ;
-                    $quotation_mark_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } ;
-                    $apostrophe_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } ;
-                    $ampersand_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } ;
-                    $temp_text =~ s/</${open_angle_bracket_replacement}/sg ;
-                    $temp_text =~ s/>/${close_angle_bracket_replacement}/sg ;
-                    $temp_text =~ s/\"/${quotation_replacement}/sg ;
-                    $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
-                    $temp_text =~ s/\&/${ampersand_replacement}/sg ;
-                }
-                $global_dashrep_replacement{ $target_phrase } = $temp_text ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-                }
-                $replacement_text = $text_begin . " " . $text_end ;
+            }
+            $temp_text = $global_dashrep_replacement{ $source_phrase } ;
+            if ( $action_name_type =~ /hyphens/ )
+            {
+                $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
+                $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
+                $temp_text =~ s/-/${hyphen_replacement}/sg ;
+            } elsif ( $action_name_type =~ /adjacent-spaces/ )
+            {
+                $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
+                $space_replacement =~ s/ /[space]/sg ;
+                $temp_text =~ s/  / ${space_replacement}/sg ;
+            } elsif ( $action_name_type =~ /newlines/ )
+            {
+                $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
+                $newline_replacement =~ s/[ \-]+//sg ;
+                $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
+                $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
+            } elsif ( $action_name_type =~ /html-reserved-characters/ )
+            {
+                $open_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } ;
+                $close_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } ;
+                $quotation_mark_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } ;
+                $apostrophe_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } ;
+                $ampersand_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } ;
+                $temp_text =~ s/</${open_angle_bracket_replacement}/sg ;
+                $temp_text =~ s/>/${close_angle_bracket_replacement}/sg ;
+                $temp_text =~ s/\"/${quotation_replacement}/sg ;
+                $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
+                $temp_text =~ s/\&/${ampersand_replacement}/sg ;
+            }
+            $global_dashrep_replacement{ $target_phrase } = $temp_text ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the two-operand action:
-#  copy-from-phrase-to-phrase-as-tagged-dashrep-code and
+#  copy-from-phrase-to-phrase-as-tagged-dashrep-code
 
-            } elsif ( $text_parameter_content =~ /^copy-from-phrase-to-phrase-as-tagged-dashrep-code *:? *([^\n\:=]*) +([^\n\:=]*)$/ )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-as-tagged-dashrep-code" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        {
+            $source_phrase = $operand_one ;
+            $target_phrase = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase } ) ) )
             {
-                $source_phrase = $1 ;
-                $target_phrase = $2 ;
-                $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-                $temp_text =~ s/\t+/ /sg ;
-                $temp_text =~ s/ +/_dashrep_code_whitespace_here_/sg ;
-                $temp_text =~ s/_dashrep_code_whitespace_here_/ dashrep_code_whitespace_here /sg ;
-                $temp_text = join( " dashrep_code_newline " , split( /[\n\r]/s , $temp_text ) ) ;
-                $temp_text =~ s/\[-/ dashrep_code_parameter_begin /sg ;
-                $temp_text =~ s/-\]/ dashrep_code_parameter_end /sg ;
-                $temp_text =~ s/-/ dashrep_code_hyphen_here /sg ;
-                $temp_text =~ s/dashrep_code_parameter_begin/dashrep-code-parameter-begin/sg ;
-                $temp_text =~ s/dashrep_code_parameter_end/dashrep-code-parameter-end/sg ;
-                $temp_text =~ s/dashrep_code_hyphen_here/dashrep-code-hyphen-here/sg ;
-                $temp_text =~ s/dashrep_code_whitespace_here/dashrep-code-whitespace-here/sg ;
-                $temp_text =~ s/dashrep_code_newline/dashrep-code-newline/sg ;
-                $temp_text =~ s/  +/ /sg ;
-                $temp_text =~ s/^ +//sg ;
-                $temp_text =~ s/ +$/ /sg ;
-                $global_dashrep_replacement{ $target_phrase } = $temp_text ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-                }
-                $replacement_text = $text_begin . " " . $text_end ;
+                $global_dashrep_replacement{ $source_phrase } = "" ;
+            }
+            $temp_text = $global_dashrep_replacement{ $source_phrase } ;
+            $temp_text =~ s/\t+/ /sg ;
+            $temp_text =~ s/ +/_dashrep_code_whitespace_here_/sg ;
+            $temp_text =~ s/_dashrep_code_whitespace_here_/ dashrep_code_whitespace_here /sg ;
+            $temp_text = join( " dashrep_code_newline " , split( /[\n\r]/s , $temp_text ) ) ;
+            $temp_text =~ s/\[-/ dashrep_code_parameter_begin /sg ;
+            $temp_text =~ s/-\]/ dashrep_code_parameter_end /sg ;
+            $temp_text =~ s/-/ dashrep_code_hyphen_here /sg ;
+            $temp_text =~ s/dashrep_code_parameter_begin/dashrep-code-parameter-begin/sg ;
+            $temp_text =~ s/dashrep_code_parameter_end/dashrep-code-parameter-end/sg ;
+            $temp_text =~ s/dashrep_code_hyphen_here/dashrep-code-hyphen-here/sg ;
+            $temp_text =~ s/dashrep_code_whitespace_here/dashrep-code-whitespace-here/sg ;
+            $temp_text =~ s/dashrep_code_newline/dashrep-code-newline/sg ;
+            $temp_text =~ s/  +/ /sg ;
+            $temp_text =~ s/^ +//sg ;
+            $temp_text =~ s/ +$/ /sg ;
+            $global_dashrep_replacement{ $target_phrase } = $temp_text ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1174,11 +1243,13 @@ sub dashrep_expand_parameters
 #  yes-or-no-first-number-greater-than-second-number
 #  yes-or-no-first-number-less-than-second-number
 
-            } elsif ( $text_parameter_content =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number) *:? *([0-9\,]+) +([0-9\,]+)$/ )
+        if ( $action_name =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number)$/ )
+        {
+            $comparison_type = $2 ;
+            $first_number_text = $operand_one ;
+            $second_number_text = $operand_two ;
+            if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
             {
-                $comparison_type = $2 ;
-                $first_number_text = $6 ;
-                $second_number_text = $7 ;
                 $first_number = $first_number_text + 0 ;
                 $second_number = $second_number_text + 0 ;
                 if ( ( $comparison_type eq "equals" ) && ( $first_number == $second_number ) )
@@ -1196,31 +1267,36 @@ sub dashrep_expand_parameters
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    print "{{trace; comparison of type " . $comparison_type . " for numbers " . $first_number_text . " and " . $second_number_text . "}}\n" ;
+                    $global_trace_log .= "{{trace; comparison of type " . $comparison_type . " for numbers " . $first_number_text . " and " . $second_number_text . "}}\n" ;
                 }
                 $replacement_text = $text_begin . $yes_or_no . $text_end ;
+                next ;
+            }
+        }
 
 
 #-----------------------------------------------
 #  Handle the two-operand action:
 #  from-list-in-phrase-get-item-number
 
-            } elsif ( $text_parameter_content =~ /^from-list-in-phrase-get-item-number *:? *([^ ]+) +([0-9]+)$/ )
+        if ( $action_name =~ /^from-list-in-phrase-get-item-number$/ )
+        {
+            $first_object_of_action = $operand_one ;
+            $second_object_of_action = $operand_two + 0 ;
+            @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+            $count = $#list + 1 ;
+            if ( $second_object_of_action > $count )
             {
-                $first_object_of_action = $1 ;
-                $second_object_of_action = $2 + 0 ;
-                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-                $count = $#list + 1 ;
-                if ( $second_object_of_action > $count )
-                {
-                    $second_object_of_action = $count ;
-                }
-                if ( $count < 1 )
-                {
-                    $second_object_of_action = 1 ;
-                }
-                $text_for_value = $list[ $second_object_of_action - 1 ] ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $second_object_of_action = $count ;
+            }
+            if ( $count < 1 )
+            {
+                $second_object_of_action = 1 ;
+            }
+            $text_for_value = $list[ $second_object_of_action - 1 ] ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1228,26 +1304,28 @@ sub dashrep_expand_parameters
 #  yes-or-no-greater-than and
 #  yes-or-no-less-than
 
-            } elsif ( $text_parameter_content =~ /^yes-or-no-((greater)|(less))-than *:? *([\-0-9\.]+) +([\-0-9\.]+)$/ )
+        if ( $action_name =~ /^yes-or-no-((greater)|(less))-than$/ )
+        {
+            $calculation_type = $1 ;
+            $first_object_of_action = $operand_one + 0 ;
+            $second_object_of_action = $operand_two + 0 ;
+            $text_for_value = "no" ;
+            if ( $calculation_type eq "greater" )
             {
-                $calculation_type = $1 ;
-                $first_object_of_action = $4 + 0 ;
-                $second_object_of_action = $5 + 0 ;
-                $text_for_value = "no" ;
-                if ( $calculation_type eq "greater" )
+                if ( $first_object_of_action > $second_object_of_action )
                 {
-                    if ( $first_object_of_action > $second_object_of_action )
-                    {
-                        $text_for_value = "yes" ;
-                    }
-                } elsif ( $calculation_type eq "less" )
-                {
-                    if ( $first_object_of_action < $second_object_of_action )
-                    {
-                        $text_for_value = "yes" ;
-                    }
+                    $text_for_value = "yes" ;
                 }
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+            } elsif ( $calculation_type eq "less" )
+            {
+                if ( $first_object_of_action < $second_object_of_action )
+                {
+                    $text_for_value = "yes" ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1255,282 +1333,288 @@ sub dashrep_expand_parameters
 #  calc-minus and
 #  calc-divide-by
 
-            } elsif ( $text_parameter_content =~ /^calc-((minus)|(divide-by)) *:? *([\-0-9\.]+) +([\-0-9\.]+)$/ )
+        if ( $action_name =~ /^calc-((minus)|(divide-by))$/ )
+        {
+            $calculation_type = $1 ;
+            $first_object_of_action = $operand_one + 0 ;
+            $second_object_of_action = $operand_two + 0 ;
+            $text_for_value = "1" ;
+            if ( $calculation_type eq "minus" )
             {
-                $calculation_type = $1 ;
-                $first_object_of_action = $4 + 0 ;
-                $second_object_of_action = $5 + 0 ;
-                $text_for_value = "1" ;
-                if ( $calculation_type eq "minus" )
+                $text_for_value = $first_object_of_action - $second_object_of_action ;
+            } elsif ( $calculation_type eq "divide-by" )
+            {
+                if ( $second_object_of_action == 0 )
                 {
-                    $text_for_value = $first_object_of_action - $second_object_of_action ;
-                } elsif ( $calculation_type eq "divide-by" )
-                {
-                    if ( $second_object_of_action == 0 )
-                    {
-                        $text_for_value = "infinity" ;
-                    } elsif ( $first_object_of_action = 0 )
-                    {
-                        $text_for_value = "0" ;
-                    } else
-                    {
-                        $text_for_value = $first_object_of_action / $second_object_of_action ;
-                    }
-                }
-                if ( $text_for_value eq "" )
+                    $text_for_value = "infinity" ;
+                } elsif ( $first_object_of_action = 0 )
                 {
                     $text_for_value = "0" ;
-                }
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-
-
-#-----------------------------------------------
-#  If there is an action requested (which may
-#  include a colon between the action and its
-#  operand(s), get the operand (which actually
-#  can be multiple operands), and handle the
-#  action.
-
-            } elsif ( $text_parameter_content =~ /^([^ \n\:=]+-[^ \n\:=]+) *:? *([^\n\:=]*)$/ )
-            {
-                $action_name = $1 ;
-                $object_of_action = $2 ;
-                $object_of_action =~ s/\-+$// ;
-                $object_of_action =~ s/^ +// ;
-                $object_of_action =~ s/ +$// ;
-                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+                } else
                 {
-                    print "{{trace; action and object: " . $action_name . " : " . $object_of_action . "}}\n";
+                    $text_for_value = $first_object_of_action / $second_object_of_action ;
                 }
+            }
+            if ( $text_for_value eq "" )
+            {
+                $text_for_value = "0" ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  first-item-in-list
 
-                if ( $action_name eq "first-item-in-list" )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                    $count = $#list + 1 ;
-                    $text_for_value = " " ;
-                    if ( $count > 0 )
-                    {
-                        $text_for_value = $list[ 0 ] ;
-                    }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+        if ( $action_name eq "first-item-in-list" )
+        {
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ 0 ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  last-item-in-list
 
-                } elsif ( $action_name eq "last-item-in-list" )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                    $count = $#list + 1 ;
-                    $text_for_value = " " ;
-                    if ( $count > 0 )
-                    {
-                        $text_for_value = $list[ $#list ] ;
-                    }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+        if ( $action_name eq "last-item-in-list" )
+        {
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ $#list ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  remove-last-item-from-phrase-list
 
-                } elsif ( $action_name eq "remove-last-item-from-phrase-list" )
+        if ( $action_name eq "remove-last-item-from-phrase-list" )
+        {
+            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
+            {
+                if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
                 {
-                    if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
-                    {
-                        if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
-                        {
-                            $global_dashrep_replacement{ $object_of_action } = $1 ;
-                            $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
-                        } else
-                        {
-                            $global_dashrep_replacement{ $object_of_action } = "" ;
-                        }
-                    }
-                    $text_for_value = "" ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $global_dashrep_replacement{ $object_of_action } = $1 ;
+                    $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
+                } else
+                {
+                    $global_dashrep_replacement{ $object_of_action } = "" ;
+                }
+            }
+            $text_for_value = "" ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  count-of-list
 
-                } elsif ( $action_name eq "count-of-list" )
+        if ( $action_name eq "count-of-list" )
+        {
+            if ( $object_of_action =~ /[^ ]/ )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                $count = $#list + 1 ;
+                if ( $count > 0 )
                 {
-                    if ( $object_of_action =~ /[^ ]/ )
-                    {
-                        @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                        $count = $#list + 1 ;
-                        if ( $count > 0 )
-                        {
-                            $text_for_value = $count ;
-                        } else
-                        {
-                            $text_for_value = "0" ;
-                        }
-                    } else
-                    {
-                        $text_for_value = "0" ;
-                    }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $text_for_value = $count ;
+                } else
+                {
+                    $text_for_value = "0" ;
+                }
+            } else
+            {
+                $text_for_value = "0" ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  zero-one-multiple-count-of-list
 
-                } elsif ( $action_name eq "zero-one-multiple-count-of-list" )
+        if ( $action_name eq "zero-one-multiple-count-of-list" )
+        {
+            if ( $object_of_action =~ /[^ ]/ )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                $count = $#list + 1 ;
+                if ( $count == 0 )
                 {
-                    if ( $object_of_action =~ /[^ ]/ )
-                    {
-                        @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                        $count = $#list + 1 ;
-                        if ( $count == 0 )
-                        {
-                            $name_for_count = "zero" ;
-                        } elsif ( $count == 1 )
-                        {
-                            $name_for_count = "one" ;
-                        } elsif ( $count > 1 )
-                        {
-                            $name_for_count = "multiple" ;
-                        }
-                    } else
-                    {
-                        $name_for_count = "zero" ;
-                    }
-                    $replacement_text = $text_begin . $name_for_count . $text_end ;
+                    $name_for_count = "zero" ;
+                } elsif ( $count == 1 )
+                {
+                    $name_for_count = "one" ;
+                } elsif ( $count > 1 )
+                {
+                    $name_for_count = "multiple" ;
+                }
+            } else
+            {
+                $name_for_count = "zero" ;
+            }
+            $replacement_text = $text_begin . $name_for_count . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  zero-one-multiple
 
-                } elsif ( $action_name eq "zero-one-multiple" )
-                {
-                    if ( $object_of_action + 0 <= 0 )
-                    {
-                        $zero_one_multiple = "zero" ;
-                    } elsif ( $object_of_action + 0 == 1 )
-                    {
-                        $zero_one_multiple = "one" ;
-                    } else
-                    {
-                        $zero_one_multiple = "multiple" ;
-                    }
-                    $replacement_text = $text_begin . $zero_one_multiple . $text_end ;
+        if ( $action_name eq "zero-one-multiple" )
+        {
+            if ( $object_of_action + 0 <= 0 )
+            {
+                $zero_one_multiple = "zero" ;
+            } elsif ( $object_of_action + 0 == 1 )
+            {
+                $zero_one_multiple = "one" ;
+            } else
+            {
+                $zero_one_multiple = "multiple" ;
+            }
+            $replacement_text = $text_begin . $zero_one_multiple . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty
 
-                } elsif ( $action_name eq "empty-or-nonempty" )
-                {
-                    if ( $object_of_action =~ /[^ \n\t]/ )
-                    {
-                        $empty_or_nonempty = "nonempty" ;
-                    } else
-                    {
-                        $empty_or_nonempty = "empty" ;
-                    }
-                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+        if ( $action_name eq "empty-or-nonempty" )
+        {
+            if ( $object_of_action =~ /[^ \n\t]/ )
+            {
+                $empty_or_nonempty = "nonempty" ;
+            } else
+            {
+                $empty_or_nonempty = "empty" ;
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty-phrase
 
-                } elsif ( $action_name eq "empty-or-nonempty-phrase" )
+        if ( $action_name eq "empty-or-nonempty-phrase" )
+        {
+            $empty_or_nonempty = "empty" ;
+            if ( $object_of_action =~ /[^ \n\t]/ )
+            {
+                if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
                 {
-                    $empty_or_nonempty = "empty" ;
-                    if ( $object_of_action =~ /[^ \n\t]/ )
+                    if ( $global_dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
                     {
-                        if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-                        {
-                            if ( $global_dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
-                            {
-                                $empty_or_nonempty = "nonempty" ;
-                            }
-                        }
+                        $empty_or_nonempty = "nonempty" ;
                     }
-                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+                }
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  length-of-phrase-definition
 
-               } elsif ( $action_name eq "length-of-phrase-definition" )
-               {
-                   $phrase_length = "0" ;
-                   if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-                   {
-                       $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
-                       if ( $phrase_length < 1 )
-                       {
-                           $phrase_length = "0" ;
-                       }
-                   }
-                   $replacement_text = $text_begin . $phrase_length . $text_end ;
+       if ( $action_name eq "length-of-phrase-definition" )
+       {
+           $phrase_length = "0" ;
+           if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+           {
+               $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
+                if ( $phrase_length < 1 )
+                {
+                    $phrase_length = "0" ;
+                }
+            }
+            $replacement_text = $text_begin . $phrase_length . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  same-or-not-same
 
-                } elsif ( $action_name eq "same-or-not-same" )
-                {
-                    $full_length = length( $object_of_action ) ;
-                    $length_half = int( $full_length / 2 ) ;
-                    $string_beginning = substr( $object_of_action , 0 , $length_half ) ;
-                    $string_end = substr( $object_of_action , $full_length - $length_half , $length_half ) ;
-                    if ( $string_beginning eq $string_end )
-                    {
-                        $same_or_not_same = "same" ;
-                    } else
-                    {
-                        $same_or_not_same = "not-same" ;
-                    }
-                    $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+        if ( $action_name eq "same-or-not-same" )
+        {
+            $full_length = length( $object_of_action ) ;
+            $length_half = int( $full_length / 2 ) ;
+            $string_beginning = substr( $object_of_action , 0 , $length_half ) ;
+            $string_end = substr( $object_of_action , $full_length - $length_half , $length_half ) ;
+            if ( $string_beginning eq $string_end )
+            {
+                $same_or_not_same = "same" ;
+            } else
+            {
+                $same_or_not_same = "not-same" ;
+            }
+            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  replace-periods-with-spaces
 
-                } elsif ( $action_name eq "replace-periods-with-spaces" )
-                {
-                    $text_for_value = $object_of_action ;
-                    $text_for_value =~ s/\./ /sg ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+        if ( $action_name eq "replace-periods-with-spaces" )
+        {
+            $text_for_value = $object_of_action ;
+            $text_for_value =~ s/\./ /sg ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  sort-numbers
 
-                } elsif ( $action_name eq "sort-numbers" )
-                {
-                    if ( $object_of_action =~ /[1-9]/ )
-                    {
-                        $object_of_action =~ s/ +/,/gs ;
-                        $object_of_action =~ s/^,// ;
-                        $object_of_action =~ s/,$// ;
-                        @list = split( /,+/ , $object_of_action ) ;
-                        @list_of_sorted_numbers = sort { $a <=> $b } @list ;
-                        $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
-                    } else
-                    {
-                        $sorted_numbers = " " ;
-                    }
-                    $replacement_text = $text_begin . $sorted_numbers . $text_end ;
+        if ( $action_name eq "sort-numbers" )
+        {
+            if ( $object_of_action =~ /[1-9]/ )
+            {
+                $object_of_action =~ s/ +/,/gs ;
+                $object_of_action =~ s/^,// ;
+                $object_of_action =~ s/,$// ;
+                @list = split( /,+/ , $object_of_action ) ;
+                @list_of_sorted_numbers = sort { $a <=> $b } @list ;
+                $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
+            } else
+            {
+                $sorted_numbers = " " ;
+            }
+            $replacement_text = $text_begin . $sorted_numbers . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1545,42 +1629,48 @@ sub dashrep_expand_parameters
 #  blocks of numbers assigned to each
 #  processor/process.
 
-                } elsif ( $action_name eq "unique-value" )
-                {
-                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
-                    } else
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = 1 ;
-                    }
-                    $replacement_text = $text_begin . " " . $text_end ;
+        if ( $action_name eq "unique-value" )
+        {
+            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+            {
+                $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
+            } else
+            {
+                $global_dashrep_replacement{ $object_of_action } = 1 ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  auto-increment
 
-                } elsif ( $action_name eq "auto-increment" )
-                {
-                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
-                    } else
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = 1 ;
-                    }
-                    $replacement_text = $text_begin . " " . $text_end ;
+        if ( $action_name eq "auto-increment" )
+        {
+            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+            {
+                $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
+            } else
+            {
+                $global_dashrep_replacement{ $object_of_action } = 1 ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  create-list-named
 
-                } elsif ( $action_name eq "create-list-named" )
-                {
-                    push ( @global_list_of_lists_to_generate , $object_of_action ) ;
-                    $replacement_text = $text_begin . " " . $text_end ;
+        if ( $action_name eq "create-list-named" )
+        {
+            push ( @global_list_of_lists_to_generate , $object_of_action ) ;
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1588,64 +1678,72 @@ sub dashrep_expand_parameters
 #  insert-phrase-with-brackets-after-next-top-line
 #  For now, just get the phrase name.
 
-                } elsif ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
-                {
-                    $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
-                    $global_top_line_count_for_insert_phrase = 1 ;
-                    $replacement_text = $text_begin . " " . $text_end ;
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                    {
-                        print "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
-                    }
+        if ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
+        {
+            $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
+            $global_top_line_count_for_insert_phrase = 1 ;
+            $replacement_text = $text_begin . " " . $text_end ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
+            }
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  yes-if-not-no
 
-                } elsif ( $action_name eq "yes-if-not-no" )
-                {
-                    if ( $object_of_action =~ /^ *no *$/i )
-                    {
-                        $empty_or_nonempty = "no" ;
-                    } else
-                    {
-                        $empty_or_nonempty = "yes" ;
-                    }
-                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+        if ( $action_name eq "yes-if-not-no" )
+        {
+            if ( $object_of_action =~ /^ *no *$/i )
+            {
+                $empty_or_nonempty = "no" ;
+            } else
+            {
+                $empty_or_nonempty = "yes" ;
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  no-if-not-yes
 
-                } elsif ( $action_name eq "no-if-not-yes" )
-                {
-                    if ( $object_of_action =~ /^ *yes *$/i )
-                    {
-                        $empty_or_nonempty = "yes" ;
-                    } else
-                    {
-                        $empty_or_nonempty = "no" ;
-                    }
-                    $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+        if ( $action_name eq "no-if-not-yes" )
+        {
+            if ( $object_of_action =~ /^ *yes *$/i )
+            {
+                $empty_or_nonempty = "yes" ;
+            } else
+            {
+                $empty_or_nonempty = "no" ;
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
 #  Handle the action:
 #  calculate-if-empty
 
-                } elsif ( $action_name eq "calculate-if-empty" )
+        if ( $action_name eq "calculate-if-empty" )
+        {
+            $text_for_value = "" ;
+            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+            {
+                if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
                 {
-                    $text_for_value = "" ;
-                    if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-                    {
-                        if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
-                        {
-                            $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
-                        }
-                    }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1653,30 +1751,32 @@ sub dashrep_expand_parameters
 #  get-left-of-decimal and
 #  get-right-of-decimal
 
-                } elsif ( $action_name =~ /get-((left)|(right))-of-decimal/ )
+        if ( $action_name =~ /get-((left)|(right))-of-decimal/ )
+        {
+            $calculation_type = $1 ;
+            $text_for_value = "" ;
+            if ( $calculation_type eq "left" )
+            {
+                if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
                 {
-                    $calculation_type = $1 ;
-                    $text_for_value = "" ;
-                    if ( $calculation_type eq "left" )
-                    {
-                        if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
-                        {
-                            $text_for_value = $1 ;
-                        } elsif ( $object_of_action =~ /^([0-9]+)\.?$/ )
-                        {
-                            $text_for_value = $1 ;
-                        }
-                    } elsif ( $calculation_type eq "right" )
-                    {
-                        if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
-                        {
-                            $text_for_value = $2 ;
-                        } elsif ( $object_of_action =~ /^\.([0-9]+)$/ )
-                        {
-                            $text_for_value = $1 ;
-                        }
-                    }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $text_for_value = $1 ;
+                } elsif ( $object_of_action =~ /^([0-9]+)\.?$/ )
+                {
+                    $text_for_value = $1 ;
+                }
+            } elsif ( $calculation_type eq "right" )
+            {
+                if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
+                {
+                    $text_for_value = $2 ;
+                } elsif ( $object_of_action =~ /^\.([0-9]+)$/ )
+                {
+                    $text_for_value = $1 ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1684,26 +1784,28 @@ sub dashrep_expand_parameters
 #  calc-add and
 #  calc-multiply
 
-                } elsif ( $action_name =~ /^calc-((add)|(multiply))$/ )
+        if ( $action_name =~ /^calc-((add)|(multiply))$/ )
+        {
+            $calculation_type = $1 ;
+            $text_for_value = "0" ;
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+            {
+                $value = $list[ $#list ] ;
+                if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
                 {
-                    $calculation_type = $1 ;
-                    $text_for_value = "0" ;
-                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                    for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+                    if ( $calculation_type eq "add" )
                     {
-                        $value = $list[ $#list ] ;
-                        if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
-                        {
-                            if ( $calculation_type eq "add" )
-                            {
-                                $text_for_value = $text_for_value + $value ;
-                            } elsif ( $calculation_type eq "multiply" )
-                            {
-                                $text_for_value = $text_for_value * $value ;
-                            }
-                        }
+                        $text_for_value = $text_for_value + $value ;
+                    } elsif ( $calculation_type eq "multiply" )
+                    {
+                        $text_for_value = $text_for_value * $value ;
                     }
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1716,7 +1818,7 @@ sub dashrep_expand_parameters
 
 #  Not yet debugged.
 
-               # } elsif ( $action_name =~ /escape-if-((yes)|(no))/ )
+               # if ( $action_name =~ /escape-if-((yes)|(no))/ )
                # {
                    # $yes_or_no = $1 ;
                    # if ( exists( $global_dashrep_replacement{ "escape-text" } ) )
@@ -1731,23 +1833,28 @@ sub dashrep_expand_parameters
 # #                           return $replacement_text ;
                        # }
                    # }
+#                   next ;
+#                  }
 
 
 #-----------------------------------------------
-#  Terminate the branching that handles a
-#  parameter that looks like it might begin with
-#  an action name, but doesn't.  Just leave the
-#  text unchanged, but remove the "[-" and "-]"
-#  strings.
+#  If the word "file" appears in the action name,
+#  and if the action is recognized as a file-related
+#  action, execute the action.
 
-                } else
+        if ( $action_name =~ /file/ )
+        {
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
+            {
+                $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
-                    {
-                        print "{{trace; action not recognized: " . $action_name . "}}\n";
-                    }
-                    $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
+                    $global_trace_log .= "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
                 }
+                $replacement_text = $text_begin . $text_returned . $text_end ;
+                next ;
+            }
+        }
 
 
 #-----------------------------------------------
@@ -1755,35 +1862,28 @@ sub dashrep_expand_parameters
 #  recognized, simply remove the "[-" and "-]"
 #  strings.
 
-            } else
-            {
-                $replacement_text = $text_begin . $text_parameter_content . $text_end ;
-            }
+        $replacement_text = $text_begin . $text_parameter_content . $text_end ;
+        if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $action_name =~ /[^ ]/ ) )
+        {
+            $global_trace_log .= "{{trace; action not recognized: " . $action_name . "}}\n";
+        }
 
 
 #-----------------------------------------------
 #  Avoid an endless loop (caused by a replacement
 #  containing, at some level, itself).
 
-            $global_endless_loop_counter ++ ;
-            if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
-            {
-                &dashrep_internal_endless_loop_info( ) ;
-                die "Error: The dashrep_expand_parameters subroutine encountered an endless loop." . "\n" . "Stopped" ;
-            }
-
-
-#-----------------------------------------------
-#  Finish the branch that handles each kind of
-#  action.
-
+        $global_endless_loop_counter ++ ;
+        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+        {
+            &dashrep_internal_endless_loop_info( ) ;
+            die "Error: The dashrep_expand_parameters subroutine encountered an endless loop." . "\n" . "Stopped" ;
         }
 
 
 #-----------------------------------------------
-#  Repeat the loop that repeats until no
-#  replacement was done, or until requested to
-#  stop.
+#  Repeat the loop that repeats until no more
+#  parameters remain.
 
     }
 
@@ -1866,6 +1966,10 @@ sub dashrep_generate_lists
 
         if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
         {
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+            }
             last ;
         }
 
@@ -1895,7 +1999,7 @@ sub dashrep_generate_lists
             $parameter_name = "unspecified-parameter-name-for-list-named-" . $list_name ;
             if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; WARNING: phrase  parameter-name-for-list-named-" . $list_name . "  is not defined}}\n";
+                $global_trace_log .= "{{trace; WARNING: phrase  parameter-name-for-list-named-" . $list_name . "  is not defined}}\n";
             }
         }
 
@@ -1947,7 +2051,7 @@ sub dashrep_generate_lists
         {
             if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; list named " . $list_name . "  is empty}}\n";
+                $global_trace_log .= "{{trace; list named " . $list_name . "  is empty}}\n";
             }
         } else
         {
@@ -1968,6 +2072,10 @@ sub dashrep_generate_lists
 
                 if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
                 {
+                    if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+                    }
                     last ;
                 }
 
@@ -2137,6 +2245,10 @@ sub dashrep_expand_phrases_except_special
 
         if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
         {
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+            }
             last ;
         }
 
@@ -2346,10 +2458,10 @@ sub dashrep_expand_special_phrases
     {
         if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
+            $global_trace_log .= "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
             if ( $remaining_string =~ /[^ ]/ )
             {
-                print "{{trace; ignored: " . $remaining_string . "}}\n" ;
+                $global_trace_log .= "{{trace; ignored: " . $remaining_string . "}}\n" ;
             }
         }
         $remaining_string = "" ;
@@ -2365,10 +2477,10 @@ sub dashrep_expand_special_phrases
         {
             if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
+                $global_trace_log .= "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
                 if ( $remaining_string =~ /[^ ]/ )
                 {
-                    print "{{trace; ignored: " . $code_begin . "}}\n" ;
+                    $global_trace_log .= "{{trace; ignored: " . $code_begin . "}}\n" ;
                 }
             }
         } else
@@ -2380,7 +2492,7 @@ sub dashrep_expand_special_phrases
         {
             if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
+                $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
             }
             $global_ignore_level ++ ;
             $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
@@ -2388,7 +2500,7 @@ sub dashrep_expand_special_phrases
         {
             if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
+                $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
             }
             $global_ignore_level -- ;
             $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
@@ -2410,10 +2522,10 @@ sub dashrep_expand_special_phrases
         $global_dashrep_replacement{ "captured-text" } .= " " . $remaining_string ;
         if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; capture level: " . $global_capture_level . "}}\n" ;
+            $global_trace_log .= "{{trace; capture level: " . $global_capture_level . "}}\n" ;
             if ( $remaining_string =~ /[^ ]/ )
             {
-                print "{{trace; captured: " . $remaining_string . "}}\n" ;
+                $global_trace_log .= "{{trace; captured: " . $remaining_string . "}}\n" ;
             }
         }
         $remaining_string = "" ;
@@ -2430,10 +2542,10 @@ sub dashrep_expand_special_phrases
             $global_dashrep_replacement{ "captured-text" } .= " " . $code_begin ;
             if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; capture level: " . $global_capture_level . "}}\n" ;
+                $global_trace_log .= "{{trace; capture level: " . $global_capture_level . "}}\n" ;
                 if ( $remaining_string =~ /[^ ]/ )
                 {
-                    print "{{trace; captured: " . $code_begin . "}}\n" ;
+                    $global_trace_log .= "{{trace; captured: " . $code_begin . "}}\n" ;
                 }
             }
         } else
@@ -2446,7 +2558,7 @@ sub dashrep_expand_special_phrases
             $global_dashrep_replacement{ "captured-text" } = "" ;
             if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+                $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
             }
             $global_capture_level ++ ;
             $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
@@ -2454,7 +2566,7 @@ sub dashrep_expand_special_phrases
         {
             if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+                $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
             }
             $global_capture_level -- ;
             $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
@@ -2594,7 +2706,7 @@ sub dashrep_expand_phrases
     $partly_expanded_string = &dashrep_expand_phrases_except_special( $text_string_to_expand ) ;
     if ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" )
     {
-        print "{{trace; after non-special phrases expanded: " . $partly_expanded_string . "}}\n" ;
+        $global_trace_log .= "{{trace; after non-special phrases expanded: " . $partly_expanded_string . "}}\n" ;
     }
 
 
@@ -2610,6 +2722,859 @@ sub dashrep_expand_phrases
 #  End of subroutine.
 
     return $expanded_string ;
+
+}
+
+
+=head2 dashrep_file_actions
+
+Handles file-related actions.
+
+First, and only, parameter is the
+text string that contains any text, which
+may include a file-related action.
+
+Return value is the text string after removing
+the executed action, or the original text
+string if there was no action phrase.
+Return value is an empty string if there
+is not exactly one parameter.
+
+=cut
+
+
+#-----------------------------------------------
+#-----------------------------------------------
+#         dashrep_file_actions
+#-----------------------------------------------
+#-----------------------------------------------
+
+sub dashrep_file_actions
+{
+
+    my $source_definitions ;
+    my $input_text ;
+    my $translation ;
+    my $partial_translation ;
+    my $source_filename ;
+    my $target_filename ;
+    my $source_phrase ;
+    my $target_phrase ;
+    my $lines_to_translate ;
+    my $line_count ;
+    my $possible_error_message ;
+    my $all_defs_begin ;
+    my $all_defs_end ;
+    my $phrase_begin ;
+    my $phrase_end ;
+    my $def_begin ;
+    my $def_end ;
+    my $all_lines ;
+    my $input_line ;
+    my $phrase_name ;
+    my $qualifier ;
+    my $numeric_return_value ;
+    my $full_line ;
+    my $multi_line_limit ;
+    my $open_brackets ;
+    my $close_brackets ;
+    my $multi_line_count ;
+    my $xml_hyphenated_phrase ;
+    my $counter ;
+    my $definitions_or_phrase_names ;
+    my $action_name ;
+    my $object_of_action ;
+    my $operand_one ;
+    my $operand_two ;
+    my $text_begin ;
+    my $text_end ;
+    my @list_of_phrases ;
+
+
+#-----------------------------------------------
+#  Initialization.
+
+    $possible_error_message = "" ;
+
+
+#-----------------------------------------------
+#  Get the input text.
+
+    if ( scalar( @_ ) == 1 )
+    {
+        $input_text = $_[ 0 ] ;
+    } else
+    {
+#  remove-from-cpan-version-begin
+        warn "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#        carp "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+#  uncomment-for-cpan-version-end
+        return 0 ;
+    }
+
+
+#-----------------------------------------------
+#  Get the action name and the operands.
+
+    $action_name = "" ;
+    $object_of_action = "" ;
+    $operand_one = "" ;
+    $operand_two = "" ;
+    if ( $input_text =~ /^([^ ]+)(.*)$/ )
+    {
+        $action_name = $1 ;
+        $object_of_action = $2 ;
+        $action_name =~ s/^ +// ;
+        $action_name =~ s/ +$// ;
+        $action_name =~ s/^\-+// ;
+        $action_name =~ s/\-+$// ;
+        $object_of_action =~ s/^ +// ;
+        $object_of_action =~ s/ +$// ;
+        $object_of_action =~ s/^\-+// ;
+        $object_of_action =~ s/\-+$// ;
+        if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
+        {
+            $operand_one = $1 ;
+            $operand_two = $2 ;
+        }
+        if ( $object_of_action !~ / / )
+        {
+            $operand_one = $object_of_action ;
+            $operand_two = "" ;
+        }
+    } else
+    {
+        $input_text = $text_begin . " " . $input_text . " " . $text_end ;
+        return $input_text ;
+    }
+    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+    {
+        $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $object_of_action . "}}\n";
+    }
+    $operand_one =~ s/\t+//g ;
+    $operand_two =~ s/\t+//g ;
+    $source_phrase = $operand_one ;
+    $source_filename = $operand_one ;
+    $target_phrase = $operand_two ;
+    $target_filename = $operand_two ;
+    if ( $operand_two eq "" )
+    {
+        $target_phrase = $operand_one ;
+        $target_filename = $operand_one ;
+    }
+    $source_filename =~ s/^.*[\\\/]// ;
+    $source_filename =~ s/^\.+// ;
+    $target_filename =~ s/^.*[\\\/]// ;
+    $target_filename =~ s/^\.+// ;
+    if ( $source_filename ne "" )
+    {
+        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
+    }
+    if ( $target_filename ne "" )
+    {
+        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+    }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-from-file-to-phrase
+
+    if ( ( $action_name eq "copy-from-file-to-phrase" ) && ( $source_filename ne "" ) && ( $target_phrase ne "" ) )
+    {
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
+            $all_lines = "" ;
+            if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
+            {
+                $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
+            }
+            while( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
+                {
+                    $input_line =~ s/[\n\r\f]/ end-of-line-here /g ;
+                } else
+                {
+                    $input_line =~ s/[\n\r\f]+/ /g ;
+                }
+                $input_line =~ s/[\t]+/ /g ;
+                $all_lines .= $input_line . "\n" ;
+            }
+            $global_dashrep_replacement{ $target_phrase } = $all_lines ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; copied from file " . $source_filename . " to phrase " . $target_phrase . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  get-definitions-from-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "get-definitions-from-file" ) && ( $source_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $possible_error_message = "" ;
+        } else
+        {
+            if ( -e $source_filename )
+            {
+                $possible_error_message .= " [file named " . $source_filename . " found, but could not be opened]" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
+            }
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
+            $source_definitions = "" ;
+            while( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                $input_line =~ s/[\n\r\f\t]+/ /g ;
+                if ( ( defined( $input_line ) ) && ( $input_line =~ /[^ ]/ ) )
+                {
+                    $source_definitions .= $input_line . " " ;
+                }
+            }
+            $numeric_return_value = &dashrep_import_replacements( $source_definitions ) ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; imported " . $numeric_return_value . " definitions from file: " . $source_filename . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  yes-or-no-file-exists
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "yes-or-no-file-exists" ) && ( $source_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; file exists: " . $source_filename . "}}\n" ;
+            }
+        } else
+        {
+            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "no" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; file does not exist: " . $source_filename . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-from-phrase-append-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "copy-from-phrase-append-to-file" ) && ( $source_phrase ne "" ) && ( $target_filename ne "" ) )
+    {
+        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } ne "yes" )
+        {
+            $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
+            $possible_error_message .= " [do not have permission to append to files]" ;
+        } elsif ( open ( OUTFILE , ">>" . $target_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            print OUTFILE "\n" . $global_dashrep_replacement{ $source_phrase } . "\n" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( OUTFILE ) ;
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  delete-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "delete-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $global_trace_log .= "{{trace; attempt to delete file: " . $target_filename . "}}\n" ;
+            $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+        } else
+        {
+            unlink $target_filename ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; deleted file: " . $target_filename . "}}\n" ;
+            }
+        }
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  create-empty-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "create-empty-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $global_trace_log .= "{{trace; attempt to create empty file: " . $target_filename . "}}\n" ;
+            $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+        } else
+        {
+            if ( open ( OUTFILE , ">" . $target_filename ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $target_filename . " could not be created]" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                print OUTFILE "" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; created empty file: " . $target_filename . "}}\n" ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+                }
+            }
+            close( OUTFILE ) ;
+        }
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  expand-phrase-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+#
+#  Do not allow any other file-related action to
+#  be used during this action.
+
+    } elsif ( ( $action_name eq "expand-phrase-to-file" ) && ( $source_phrase ne "" ) && ( $target_filename ne "" ) )
+    {
+        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+        } else
+        {
+            if ( open ( OUTFILE , ">" . $target_filename ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                $global_nesting_level_of_file_actions ++ ;
+                if ( $global_nesting_level_of_file_actions > 1 )
+                {
+                    $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
+                }
+                $partial_translation = &dashrep_expand_parameters( $source_phrase );
+                if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
+                }
+                $translation = &dashrep_expand_phrases( $partial_translation );
+                $global_nesting_level_of_file_actions -- ;
+                print OUTFILE $translation . "\n" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; expanded phrase " . $source_phrase . " to file " . $target_filename . "}}\n" ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+                }
+            }
+            close( OUTFILE ) ;
+        }
+        $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+#
+#  If a tag does not end on the same line as it
+#  starts, more lines are read in an attempt
+#  to reach the end of the tag, but this
+#  capability is not robust.  This is done to
+#  accomodate XHTML generated by the "Tidy"
+#  utility.
+
+    } elsif ( ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) && ( $source_filename ne "" ) && ( $target_filename ne "" ) && ( $source_filename ne $target_filename ) )
+    {
+        $global_nesting_level_of_file_actions ++ ;
+        if ( $global_nesting_level_of_file_actions > 1 )
+        {
+            $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            if ( open ( INFILE , "<" . $source_filename ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                if ( open ( OUTFILE , ">" . $target_filename ) )
+                {
+                    $possible_error_message .= "" ;
+                } else
+                {
+                    $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+                }
+            }
+            if ( $possible_error_message eq "" )
+            {
+                $full_line = "" ;
+                $multi_line_limit = 10 ;
+                while( $input_line = <INFILE> )
+                {
+                    chomp( $input_line ) ;
+                    $input_line =~ s/[\n\r\f\t]+/ /g ;
+                    if ( $full_line ne "" )
+                    {
+                        $full_line = $full_line . " " . $input_line ;
+                    } else
+                    {
+                        $full_line = $input_line ;
+                    }
+                    $open_brackets = $full_line ;
+                    $close_brackets = $full_line ;
+                    $open_brackets =~ s/[^<]//g ;
+                    $close_brackets =~ s/[^>]//g ;
+                    if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
+                    {
+                        next ;
+                    }
+                    if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; accumulated text to convert: " . $full_line . "}}\n" ;
+                    }
+                    $global_endless_loop_counter = 0 ;
+                    %global_replacement_count_for_item_name = ( ) ;
+                    $translation = &dashrep_xml_tags_to_dashrep( $full_line );
+                    print OUTFILE $translation . "\n" ;
+                    $full_line = "" ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
+                }
+                $global_dashrep_replacement{ "dashrep-list-of-xml-phrases" } = "" ;
+                foreach $xml_hyphenated_phrase ( sort( keys ( %global_exists_xml_hyphenated_phrase ) ) )
+                {
+                    $global_dashrep_replacement{ "dashrep-list-of-xml-phrases" } .= $xml_hyphenated_phrase . " " ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; failed to expand source xml file named " . $source_filename . " into dashrep phrases in file named " . $target_filename . "}}\n" ;
+                }
+            }
+            close( INFILE ) ;
+            close( OUTFILE ) ;
+        }
+        $global_nesting_level_of_file_actions -- ;
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  End of branching.
+
+    }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  linewise-translate-from-file-to-file and
+#  linewise-translate-parameters-only-from-file-to-file
+#  linewise-translate-phrases-only-from-file-to-file
+#  linewise-translate-special-phrases-only-from-file-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+#
+#  If there are Dashrep definitions, get them.
+#
+#  Do not allow any other file-related action to
+#  be used during this action.
+
+    $qualifier = "" ;
+    if ( $action_name eq "linewise-translate-from-file-to-file" )
+    {
+        $qualifier = "normal" ;
+    } elsif ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" )
+    {
+        $qualifier = "parameters-only" ;
+    } elsif ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" )
+    {
+        $qualifier = "phrases-only" ;
+    } elsif ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" )
+    {
+        $qualifier = "special-phrases-only" ;
+    }
+    if ( ( $qualifier ne "" ) && ( $source_filename ne "" ) && ( $target_filename ne "" ) )
+    {
+        $global_nesting_level_of_file_actions ++ ;
+        if ( $global_nesting_level_of_file_actions > 1 )
+        {
+            $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            if ( open ( INFILE , "<" . $source_filename ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                if ( -e $source_filename )
+                {
+                    $possible_error_message .= " [file named " . $source_filename . " exists, but could not be opened]" ;
+                } else
+                {
+                    $possible_error_message .= " [file named " . $source_filename . " not found]" ;
+                }
+            }
+            if ( open ( OUTFILE , ">" . $target_filename ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                $global_ignore_level = 0 ;
+                $global_capture_level = 0 ;
+                $global_top_line_count_for_insert_phrase = 0 ;
+                while( $input_line = <INFILE> )
+                {
+                    chomp( $input_line ) ;
+                    $input_line =~ s/[\n\r\f\t]+/ /g ;
+                    $global_endless_loop_counter = 0 ;
+                    %global_replacement_count_for_item_name = ( ) ;
+                    $lines_to_translate = 1 ;
+                    while ( $lines_to_translate > 0 )
+                    {
+                        if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
+                        {
+                            $all_lines = "" ;
+                            $line_count = 0 ;
+                            while( $input_line = <INFILE> )
+                            {
+                                chomp( $input_line ) ;
+                                $input_line =~ s/[\n\r\f\t]+/ /g ;
+                                if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
+                                {
+                                    last ;
+                                }
+                                if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
+                                {
+                                    $all_lines .= $input_line . " " ;
+                                }
+                                $line_count ++ ;
+                            }
+                            if ( $all_lines =~ /[^ ]/ )
+                            {
+                                $numeric_return_value = &dashrep_import_replacements( $all_lines ) ;
+                                if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
+                                {
+                                    $global_trace_log .= "{{trace; definitions found, imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
+                                }
+                            }
+                            $lines_to_translate = 0 ;
+                        } else
+                        {
+                            $lines_to_translate = 0 ;
+                            if ( $qualifier eq "-parameters-only" )
+                            {
+                                $translation = &dashrep_expand_parameters( $input_line );
+                            } elsif ( $qualifier eq "-phrases-only" )
+                            {
+                                $translation = &dashrep_expand_phrases( $input_line );
+                            } elsif ( $qualifier eq "-special-phrases-only" )
+                            {
+                                $translation = &dashrep_expand_special_phrases( $input_line );
+                            } else
+                            {
+                                $partial_translation = &dashrep_expand_parameters( $input_line );
+                                $translation = &dashrep_expand_phrases( $partial_translation );
+                            }
+                            if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
+                            {
+                                print OUTFILE $translation . "\n" ;
+                            }
+                            if ( $global_top_line_count_for_insert_phrase == 1 )
+                            {
+                                $global_top_line_count_for_insert_phrase = 2 ;
+                            } elsif ( $global_top_line_count_for_insert_phrase == 2 )
+                            {
+                                $global_top_line_count_for_insert_phrase = 0 ;
+                                if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
+                                {
+                                    $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
+                                    $lines_to_translate = 1 ;
+                                }
+                            }
+                        }
+                    }
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
+                }
+            }
+            close( INFILE ) ;
+            close( OUTFILE ) ;
+        }
+        $global_nesting_level_of_file_actions -- ;
+        $input_text = "" ;
+    }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  write-all-dashrep-definitions-to-file and
+#  write-all-dashrep-phrase-names-to-file
+#  write-dashrep-definitions-listed-in-phrase-to-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    $definitions_or_phrase_names = "" ;
+    if ( ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) && ( $source_phrase ne "" ) && ( $target_filename ne "" ) && ( $operand_two ne "" ) )
+    {
+        @list_of_phrases = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $source_phrase } ) ;
+        $definitions_or_phrase_names = "definitions" ;
+    } elsif ( ( $action_name eq "write-all-dashrep-definitions-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        $definitions_or_phrase_names = "definitions" ;
+        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+    } elsif ( ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    {
+        $definitions_or_phrase_names = "phrase-names" ;
+        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+    }
+    if ( $definitions_or_phrase_names ne "" )
+    {
+        if ( $#list_of_phrases < 0 )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; warning: no phrases to write (to file)}}\n" ;
+            }
+        } else
+        {
+            $global_nesting_level_of_file_actions ++ ;
+            if ( $global_nesting_level_of_file_actions > 1 )
+            {
+                $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
+            } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+            {
+                $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+            {
+                $all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
+                $all_defs_end = "[-export-defs-all-end-]\n\n" ;
+                $phrase_begin = "[-export-defs-phrase-begin-] " ;
+                $phrase_end = " [-export-defs-phrase-end-]\n\n" ;
+                $def_begin = "[-export-defs-def-begin-] " ;
+                $def_end = " [-export-defs-def-end-]\n\n" ;
+            } else
+            {
+                $all_defs_begin = "dashrep-definitions-begin\n\n" ;
+                $all_defs_end = "dashrep-definitions-end\n\n" ;
+                $phrase_begin = "" ;
+                $phrase_end = ":\n" ;
+                $def_begin = "" ;
+                $def_end = "\n-----\n\n" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                if ( open ( OUTFILE , ">" . $target_filename ) )
+                {
+                    $possible_error_message .= "" ;
+                } else
+                {
+                    $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
+                }
+                if ( $possible_error_message eq "" )
+                {
+                    $counter = 0 ;
+                    if ( $definitions_or_phrase_names eq "definitions" )
+                    {
+                        print OUTFILE $all_defs_begin ;
+                        foreach $phrase_name ( sort( @list_of_phrases ) )
+                        {
+                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                            {
+                                print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
+                                $counter ++ ;
+                            }
+                        }
+                        print OUTFILE $all_defs_end ;
+                    } else
+                    {
+                        foreach $phrase_name ( sort( @list_of_phrases ) )
+                        {
+                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                            {
+                                print OUTFILE $phrase_name . "\n" ;
+                                $counter ++ ;
+                            }
+                        }
+                    }
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; wrote " . $counter . " " . $definitions_or_phrase_names . " to file: " . $target_filename . "}}\n" ;
+                    }
+                } else
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+                    }
+                }
+                close( OUTFILE ) ;
+            }
+            $global_nesting_level_of_file_actions -- ;
+        }
+        $input_text = "" ;
+    }
+
+
+#-----------------------------------------------
+#  If there was an error message, put it
+#  into the text that is returned (and remove
+#  the action that caused the error).
+
+    $possible_error_message =~ s/^ +// ;
+    $possible_error_message =~ s/ +$// ;
+    if ( $possible_error_message =~ /[^ ]/ )
+    {
+        $input_text = $possible_error_message ;
+    }
+
+
+#-----------------------------------------------
+#  Return, possibly with an error message.
+
+    return $input_text ;
+
+
+#-----------------------------------------------
+#  End of subroutine.
 
 }
 
@@ -2720,7 +3685,7 @@ sub dashrep_xml_tags_to_dashrep
     {
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; non-matching angle brackets: " . $input_text . "}}\n" ;
+            $global_trace_log .= "{{trace; non-matching angle brackets: " . $input_text . "}}\n" ;
         }
     }
 
@@ -2749,7 +3714,7 @@ sub dashrep_xml_tags_to_dashrep
                 $tag_full .= '</' . $tag_name . ">" ;
                 if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                 {
-                    print "{{trace; open-and-close type xml tag: " . $tag_name . " , modified to include closing tag: " . $tag_full . "}}\n" ;
+                    $global_trace_log .= "{{trace; open-and-close type xml tag: " . $tag_name . " , modified to include closing tag: " . $tag_full . "}}\n" ;
                 }
             }
         }
@@ -2781,7 +3746,7 @@ sub dashrep_xml_tags_to_dashrep
         {
             if ( $previous_input_text ne $input_text )
             {
-                print "{{trace; after xml sub-parameters extracted: " . $input_text . "}}\n" ;
+                $global_trace_log .= "{{trace; after xml sub-parameters extracted: " . $input_text . "}}\n" ;
             }
         }
     }
@@ -2806,7 +3771,7 @@ sub dashrep_xml_tags_to_dashrep
         $input_text = $text_before_tag . $revised_tags . $text_after_tag ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; after xml parameter extracted: " . $revised_tags . "}}\n" ;
+            $global_trace_log .= "{{trace; after xml parameter extracted: " . $revised_tags . "}}\n" ;
         }
     }
 
@@ -2828,12 +3793,12 @@ sub dashrep_xml_tags_to_dashrep
         $suffix_text = $5 ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; input line: " . $input_text . "}}\n" ;
+            $global_trace_log .= "{{trace; input line: " . $input_text . "}}\n" ;
         }
         $input_text = $suffix_text ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
-            print "{{trace; tag: <" . $possible_slash . $tag_name . ">}}\n" ;
+            $global_trace_log .= "{{trace; tag: <" . $possible_slash . $tag_name . ">}}\n" ;
         }
 
 
@@ -2842,6 +3807,10 @@ sub dashrep_xml_tags_to_dashrep
 
         if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
         {
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+            }
             last ;
         }
 
@@ -2878,7 +3847,7 @@ sub dashrep_xml_tags_to_dashrep
             {
                 if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                 {
-                    print "{{trace; ignoring tag: " . $tag_name . "}}\n" ;
+                    $global_trace_log .= "{{trace; ignoring tag: " . $tag_name . "}}\n" ;
                 }
                 next ;
             }
@@ -2896,7 +3865,7 @@ sub dashrep_xml_tags_to_dashrep
             $tag_name = $global_dashrep_replacement{ "dashrep-xml-replacement-name-for-tag-named-" . $previous_tag_name } ;
             if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
             {
-                print "{{trace; changing tag name " . $previous_tag_name . " into tag name " . $tag_name . "}}\n" ;
+                $global_trace_log .= "{{trace; changing tag name " . $previous_tag_name . " into tag name " . $tag_name . "}}\n" ;
             }
         }
 
@@ -2952,7 +3921,7 @@ sub dashrep_xml_tags_to_dashrep
                 {
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
-                        print "{{trace; close tag " . $tag_name . " ignored because it does not match expected close tag name " . $global_xml_tag_at_level_number[ $global_xml_level_number ] . "}}\n" ;
+                        $global_trace_log .= "{{trace; close tag " . $tag_name . " ignored because it does not match expected close tag name " . $global_xml_tag_at_level_number[ $global_xml_level_number ] . "}}\n" ;
                     }
                 }
             }
@@ -3015,7 +3984,7 @@ sub dashrep_xml_tags_to_dashrep
                     $global_xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
-                        print "{{trace; specified top-level tag name: " . $first_tag_name . "}}\n" ;
+                        $global_trace_log .= "{{trace; specified top-level tag name: " . $first_tag_name . "}}\n" ;
                     }
                 } elsif ( $first_tag_name =~ /^ *$/ )
                 {
@@ -3026,13 +3995,13 @@ sub dashrep_xml_tags_to_dashrep
                     $global_xml_accumulated_sequence_of_tag_names = "-" . $tag_name ;
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
-                        print "{{trace; default top-level tag name: " . $tag_name . "}}\n" ;
+                        $global_trace_log .= "{{trace; default top-level tag name: " . $tag_name . "}}\n" ;
                     }
                 } else
                 {
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
-                        print "{{trace; ignored tag: " . $tag_name . "}}\n" ;
+                        $global_trace_log .= "{{trace; ignored tag: " . $tag_name . "}}\n" ;
                     }
                 }
             } else
@@ -3170,911 +4139,8 @@ sub dashrep_top_level_action
 #  bracket notation, and then call the paramter-
 #  translation subroutine.
 
-	$input_text = "[-" . $input_text . "-]" ;
-	$input_text = &dashrep_expand_parameters( $input_text ) ;
-
-
-#-----------------------------------------------
-#  Return, possibly with an error message.
-
-    return $input_text ;
-
-
-#-----------------------------------------------
-#  End of subroutine.
-
-}
-
-
-=head2 dashrep_file_actions
-
-Handles file-related actions.
-
-First, and only, parameter is the
-text string that contains any text, which
-may include a file-related action.
-
-Return value is the text string after removing
-the executed action, or the original text
-string if there was no action phrase.
-Return value is an empty string if there
-is not exactly one parameter.
-
-=cut
-
-
-#-----------------------------------------------
-#-----------------------------------------------
-#         dashrep_file_actions
-#-----------------------------------------------
-#-----------------------------------------------
-
-sub dashrep_file_actions
-{
-
-    my $source_definitions ;
-    my $input_text ;
-    my $translation ;
-    my $partial_translation ;
-    my $source_filename ;
-    my $target_filename ;
-    my $source_phrase ;
-    my $target_phrase ;
-    my $lines_to_translate ;
-    my $line_count ;
-    my $text_list_of_phrases ;
-    my $possible_error_message ;
-    my $all_defs_begin ;
-    my $all_defs_end ;
-    my $phrase_begin ;
-    my $phrase_end ;
-    my $def_begin ;
-    my $def_end ;
-    my $all_lines ;
-    my $input_line ;
-    my $phrase_name ;
-    my $tracking_on_or_off ;
-    my $qualifier ;
-    my $numeric_return_value ;
-    my $full_line ;
-    my $multi_line_limit ;
-    my $open_brackets ;
-    my $close_brackets ;
-    my $multi_line_count ;
-    my $xml_hyphenated_phrase ;
-    my $counter ;
-    my $definitions_or_phrases ;
-    my @list_of_phrases ;
-
-
-#-----------------------------------------------
-#  Ensure this function is not called recursively.
-
-    # $global_nesting_level_of_file_actions ++ ;
-    # if ( $global_nesting_level_of_file_actions > 1 )
-    # {
-# #  remove-from-cpan-version-begin
-        # warn "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
-# #  remove-from-cpan-version-end
-# #  uncomment-for-cpan-version-begin
-# #        carp "Warning: Call to dashrep_top_level_action subroutine called recursivley, which is not allowed." ;
-# #  uncomment-for-cpan-version-end
-        # return 0 ;
-    # }
-
-
-#-----------------------------------------------
-#  Initialization.
-
-	$possible_error_message = "" ;
-
-	
-#-----------------------------------------------
-#  Get the input text.
-
-    if ( scalar( @_ ) == 1 )
-    {
-        $input_text = $_[ 0 ] ;
-    } else
-    {
-#  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
-#  uncomment-for-cpan-version-end
-        return 0 ;
-    }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  append-from-phrase-to-phrase
-
-    # if ( $input_text =~ /^ *append-from-phrase-to-phrase +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    # {
-        # $source_phrase = $1 ;
-        # $target_phrase = $2 ;
-        # $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
-        # if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-        # {
-            # print "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-        # }
-        # $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  copy-from-phrase-append-to-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    if ( $input_text =~ /^ *copy-from-phrase-append-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_phrase = $1 ;
-        $target_filename = $2 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
-        {
-            if ( open ( OUTFILE , ">>" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-            }
-        } else
-        {
-            $possible_error_message .= " [do not have permission to append to file named " . $target_filename . "]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            print OUTFILE "\n" . $global_dashrep_replacement{ $source_phrase } . "\n" ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; copied from phrase " . $source_phrase . " to end of file " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( OUTFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  expand-phrase-to-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *expand-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_phrase = $1 ;
-        $target_filename = $2 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
-        {
-            if ( open ( OUTFILE , ">" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-            }
-        } else
-        {
-            $possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $partial_translation = &dashrep_expand_parameters( $source_phrase );
-            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
-            }
-            $translation = &dashrep_expand_phrases( $partial_translation );
-            print OUTFILE $translation . "\n" ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; expanded phrase " . $source_phrase . " to file " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( OUTFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  copy-from-file-to-phrase
-
-    } elsif ( $input_text =~ /^ *copy-from-file-to-phrase +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_filename = $1 ;
-        $target_phrase = $2 ;
-        $source_filename =~ s/^.*[\\\/]// ;
-        $source_filename =~ s/^\.+// ;
-        $source_filename =~ s/[ \t]+//g ;
-        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
-            $all_lines = "" ;
-            if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
-            {
-                $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
-            }
-            while( $input_line = <INFILE> )
-            {
-                chomp( $input_line ) ;
-                if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
-                {
-                    $input_line =~ s/[\n\r\f]/ end-of-line-here /g ;
-                } else
-                {
-                    $input_line =~ s/[\n\r\f]+/ /g ;
-                }
-                $input_line =~ s/[\t]+/ /g ;
-                $all_lines .= $input_line . "\n" ;
-            }
-            $global_dashrep_replacement{ $target_phrase } = $all_lines ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; copied from file " . $source_filename . " to phrase " . $target_phrase . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  create-empty-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *create-empty-file +([^ \[\]]+) *$/ )
-    {
-        $target_filename = $1 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
-        {
-            if ( open ( OUTFILE , ">" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be created]" ;
-            }
-        } else
-        {
-            $possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            print OUTFILE "" ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; created empty file: " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( OUTFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  yes-or-no-file-exists
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *yes-or-no-file-exists +([^ \[\]]+) *$/ )
-    {
-        $source_filename = $1 ;
-        $source_filename =~ s/^.*[\\\/]// ;
-        $source_filename =~ s/^\.+// ;
-        $source_filename =~ s/[ \t]+//g ;
-        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; file exists: " . $source_filename . "}}\n" ;
-            }
-        } else
-        {
-            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "no" ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; file does not exist: " . $source_filename . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  delete-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *delete-file +([^ \[\]]+) *$/ )
-    {
-        $target_filename = $1 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
-        {
-            unlink $target_filename ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; deleted file: " . $target_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; do not have permission to delete file: " . $target_filename . "}}\n" ;
-            }
-        }
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  write-all-dashrep-definitions-to-file and
-#  write-all-dashrep-phrase-names-to-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *write-all-dashrep-((definitions)|(phrase-names))-to-file +([^ \[\]]+) *$/ )
-    {
-        $definitions_or_phrases = $1 ;
-        $target_filename = $4 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-		if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
-		{
-			$all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
-			$all_defs_end = "[-export-defs-all-end-]\n\n" ;
-			$phrase_begin = "[-export-defs-phrase-begin-] " ;
-			$phrase_end = " [-export-defs-phrase-end-]\n\n" ;
-			$def_begin = "[-export-defs-def-begin-] " ;
-			$def_end = " [-export-defs-def-end-]\n\n" ;
-		} else
-		{
-			$all_defs_begin = "dashrep-definitions-begin\n\n" ;
-			$all_defs_end = "dashrep-definitions-end\n\n" ;
-			$phrase_begin = "" ;
-			$phrase_end = ":\n" ;
-			$def_begin = "" ;
-			$def_end = "\n-----\n\n" ;
-		}
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
-        {
-            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
-            if ( $#list_of_phrases < 0 )
-            {
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; warning: no phrases to write (to file)}}\n" ;
-                }
-            } else
-            {
-                if ( open ( OUTFILE , ">" . $target_filename ) )
-                {
-                    $possible_error_message .= "" ;
-                } else
-                {
-                    $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-                }
-                if ( $possible_error_message eq "" )
-                {
-                    $counter = 0 ;
-                    if ( $definitions_or_phrases eq "definitions" )
-                    {
-                        print OUTFILE $all_defs_begin ;
-                        foreach $phrase_name ( sort( @list_of_phrases ) )
-                        {
-                            if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                            {
-                                print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
-                                $counter ++ ;
-                            }
-                        }
-                        print OUTFILE $all_defs_end ;
-                    } else
-                    {
-                        foreach $phrase_name ( sort( @list_of_phrases ) )
-                        {
-                            if ( ( defined( $phrase_name ) ) &&( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                            {
-                                print OUTFILE $phrase_name . "\n" ;
-                                $counter ++ ;
-                            }
-                        }
-                    }
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                    {
-                        print "{{trace; wrote " . $counter . " " . $definitions_or_phrases . " to file: " . $target_filename . "}}\n" ;
-                    }
-                } else
-                {
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                    {
-                        print "{{trace; error: " . $possible_error_message . "}}\n" ;
-                    }
-                }
-            }
-            close( OUTFILE ) ;
-        } else
-        {
-            $possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
-        }
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  write-dashrep-definitions-listed-in-phrase-to-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *write-dashrep-definitions-listed-in-phrase-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_phrase = $1 ;
-        $target_filename = $2 ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-		if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
-		{
-			$all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
-			$all_defs_end = "[-export-defs-all-end-]\n\n" ;
-			$phrase_begin = "[-export-defs-phrase-begin-] " ;
-			$phrase_end = " [-export-defs-phrase-end-]\n\n" ;
-			$def_begin = "[-export-defs-def-begin-] " ;
-			$def_end = " [-export-defs-def-end-]\n\n" ;
-		} else
-		{
-			$all_defs_begin = "dashrep-definitions-begin\n\n" ;
-			$all_defs_end = "dashrep-definitions-end\n\n" ;
-			$phrase_begin = "" ;
-			$phrase_end = ":\n" ;
-			$def_begin = "" ;
-			$def_end = "\n-----\n\n" ;
-		}
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-files" } eq "yes" )
-        {
-            $text_list_of_phrases = $global_dashrep_replacement{ $source_phrase } ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; phrase that contains list of phrases to export: " . $source_phrase . "}}\n" ;
-                print "{{trace; list of phrases for exporting definitions to file: " . $text_list_of_phrases . "}}\n" ;
-            }
-            @list_of_phrases = &dashrep_internal_split_delimited_items( $text_list_of_phrases ) ;
-            if ( open ( OUTFILE , ">" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-            }
-            if ( $possible_error_message eq "" )
-            {
-                $counter = 0 ;
-                print OUTFILE $all_defs_begin ;
-                foreach $phrase_name ( sort( @list_of_phrases ) )
-                {
-                    if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-                    {
-                        print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
-                        $counter ++ ;
-                    }
-                }
-                print OUTFILE $all_defs_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; wrote " . $counter . " definitions to file: " . $target_filename . "}}\n" ;
-                }
-            } else
-            {
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; error: " . $possible_error_message . "}}\n" ;
-                }
-            }
-            close( OUTFILE ) ;
-        } else
-        {
-            $possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
-        }
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  get-definitions-from-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( $input_text =~ /^ *get-definitions-from-file +([^ \[\]]+) *$/ )
-    {
-        $source_filename = $1 ;
-        $source_filename =~ s/^.*[\\\/]// ;
-        $source_filename =~ s/^\.+// ;
-        $source_filename =~ s/[ \t]+//g ;
-        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $possible_error_message = "" ;
-        } else
-        {
-            if ( -e $source_filename )
-            {
-                $possible_error_message .= " [file named " . $source_filename . " found, but could not be opened]" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
-            }
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
-            $source_definitions = "" ;
-            while( $input_line = <INFILE> )
-            {
-                chomp( $input_line ) ;
-                $input_line =~ s/[\n\r\f\t]+/ /g ;
-                if ( ( defined( $input_line ) ) && ( $input_line =~ /[^ ]/ ) )
-                {
-                    $source_definitions .= $input_line . " " ;
-                }
-            }
-            $numeric_return_value = &dashrep_import_replacements( $source_definitions ) ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; imported " . $numeric_return_value . " definitions from file: " . $source_filename . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  linewise-translate-from-file-to-file and
-#  linewise-translate-parameters-only-from-file-to-file
-#  linewise-translate-phrases-only-from-file-to-file
-#  linewise-translate-special-phrases-only-from-file-to-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-#
-#  If there are Dashrep definitions, get them.
-
-    } elsif ( $input_text =~ /^ *linewise-translate(()|(-parameters-only)|(-phrases-only)|(-special-phrases-only))-from-file-to-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $qualifier = $1 ;
-        $source_filename = $6 ;
-        $target_filename = $7 ;
-        $source_filename =~ s/^.*[\\\/]// ;
-        $source_filename =~ s/^\.+// ;
-        $source_filename =~ s/[ \t]+//g ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files" } eq "yes" )
-        {
-            if ( open ( INFILE , "<" . $source_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                if ( -e $source_filename )
-                {
-                    $possible_error_message .= " [file named " . $source_filename . " exists, but could not be opened]" ;
-                } else
-                {
-                    $possible_error_message .= " [file named " . $source_filename . " not found]" ;
-                }
-            }
-            if ( open ( OUTFILE , ">" . $target_filename ) )
-            {
-                $possible_error_message .= "" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-            }
-            if ( $possible_error_message eq "" )
-            {
-                $global_ignore_level = 0 ;
-                $global_capture_level = 0 ;
-                $global_top_line_count_for_insert_phrase = 0 ;
-                while( $input_line = <INFILE> )
-                {
-                    chomp( $input_line ) ;
-                    $input_line =~ s/[\n\r\f\t]+/ /g ;
-                    $global_endless_loop_counter = 0 ;
-                    %global_replacement_count_for_item_name = ( ) ;
-                    $lines_to_translate = 1 ;
-                    while ( $lines_to_translate > 0 )
-                    {
-                        if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
-                        {
-                            $all_lines = "" ;
-                            $line_count = 0 ;
-                            while( $input_line = <INFILE> )
-                            {
-                                chomp( $input_line ) ;
-                                $input_line =~ s/[\n\r\f\t]+/ /g ;
-                                if ( $input_line =~ /^ *dashrep-definitions-end *$/ )
-                                {
-                                    last ;
-                                }
-                                if ( ( $input_line =~ /[^ ]/ ) && ( defined( $input_line ) ) )
-                                {
-                                    $all_lines .= $input_line . " " ;
-                                }
-                                $line_count ++ ;
-                            }
-                            if ( $all_lines =~ /[^ ]/ )
-                            {
-                                $numeric_return_value = &dashrep_import_replacements( $all_lines );
-                                if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
-                                {
-                                    print "{{trace; definitions found, imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
-                                }
-                            }
-                            $lines_to_translate = 0 ;
-                        } else
-                        {
-                            $lines_to_translate = 0 ;
-                            if ( $qualifier eq "-parameters-only" )
-                            {
-                                $translation = &dashrep_expand_parameters( $input_line );
-                            } elsif ( $qualifier eq "-phrases-only" )
-                            {
-                                $translation = &dashrep_expand_phrases( $input_line );
-                            } elsif ( $qualifier eq "-special-phrases-only" )
-                            {
-                                $translation = &dashrep_expand_special_phrases( $input_line );
-                            } else
-                            {
-                                $partial_translation = &dashrep_expand_parameters( $input_line );
-                                $translation = &dashrep_expand_phrases( $partial_translation );
-                            }
-                            if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
-                            {
-                                print OUTFILE $translation . "\n" ;
-                            }
-                            if ( $global_top_line_count_for_insert_phrase == 1 )
-                            {
-                                $global_top_line_count_for_insert_phrase = 2 ;
-                            } elsif ( $global_top_line_count_for_insert_phrase == 2 )
-                            {
-                                $global_top_line_count_for_insert_phrase = 0 ;
-                                if ( $global_phrase_to_insert_after_next_top_level_line ne "" )
-                                {
-                                    $input_line = "[-" . $global_phrase_to_insert_after_next_top_level_line . "-]" ;
-                                    $lines_to_translate = 1 ;
-                                }
-                            }
-                        }
-                    }
-                }
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; linewise translated from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
-                }
-            } else
-            {
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; failed to linewise translate from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
-                }
-            }
-            close( INFILE ) ;
-            close( OUTFILE ) ;
-        } else
-        {
-            $possible_error_message .= " [do not have permission to overwrite file named " . $target_filename . "]" ;
-        }
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-#
-#  If a tag does not end on the same line as it
-#  starts, more lines are read in an attempt
-#  to reach the end of the tag, but this
-#  capability is not robust.  This is done to
-#  accomodate XHTML generated by the "Tidy"
-#  utility.
-
-    } elsif ( $input_text =~ /^ *linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file +([^ \[\]]+) +([^ \[\]]+) *$/ )
-    {
-        $source_filename = $1 ;
-        $target_filename = $2 ;
-        $source_filename =~ s/^.*[\\\/]// ;
-        $source_filename =~ s/^\.+// ;
-        $source_filename =~ s/[ \t]+//g ;
-        $target_filename =~ s/^.*[\\\/]// ;
-        $target_filename =~ s/^\.+// ;
-        $target_filename =~ s/[ \t]+//g ;
-        $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
-        $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
-        }
-        if ( open ( OUTFILE , ">" . $target_filename ) )
-        {
-            $possible_error_message .= "" ;
-        } else
-        {
-            $possible_error_message .= " [file named " . $target_filename . " could not be opened for writing]" ;
-        }
-        if ( $possible_error_message eq "" )
-        {
-            $full_line = "" ;
-            $multi_line_limit = 10 ;
-            while( $input_line = <INFILE> )
-            {
-                chomp( $input_line ) ;
-                $input_line =~ s/[\n\r\f\t]+/ /g ;
-                if ( $full_line ne "" )
-                {
-                    $full_line = $full_line . " " . $input_line ;
-                } else
-                {
-                    $full_line = $input_line ;
-                }
-                $open_brackets = $full_line ;
-                $close_brackets = $full_line ;
-                $open_brackets =~ s/[^<]//g ;
-                $close_brackets =~ s/[^>]//g ;
-                if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
-                {
-                    next ;
-                }
-                if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
-                {
-                    print "{{trace; accumulated text to convert: " . $full_line . "}}\n" ;
-                }
-                $global_endless_loop_counter = 0 ;
-                %global_replacement_count_for_item_name = ( ) ;
-                $translation = &dashrep_xml_tags_to_dashrep( $full_line );
-                print OUTFILE $translation . "\n" ;
-                $full_line = "" ;
-            }
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; source xml file named " . $source_filename . " expanded into dashrep phrases in file named " . $target_filename . "}}\n" ;
-            }
-            $global_dashrep_replacement{ "dashrep-list-of-xml-phrases" } = "" ;
-            foreach $xml_hyphenated_phrase ( sort( keys ( %global_exists_xml_hyphenated_phrase ) ) )
-            {
-                $global_dashrep_replacement{ "dashrep-list-of-xml-phrases" } .= $xml_hyphenated_phrase . " " ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                print "{{trace; failed to expand source xml file named " . $source_filename . " into dashrep phrases in file named " . $target_filename . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
-        close( OUTFILE ) ;
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle text that was not recognized as an
-#  action.
-
-    } else
-    {
-        if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $input_text =~ /[^ ]/ ) )
-        {
-            print "{{trace; not recognized as file-related action: " . $input_text . "}}\n" ;
-        }
-    }
-
-
-#-----------------------------------------------
-#  If there was an error message, put it
-#  into the text that is returned (and remove
-#  the action that caused the error).
-
-    $possible_error_message =~ s/^ +// ;
-    $possible_error_message =~ s/ +$// ;
-    if ( $possible_error_message =~ /[^ ]/ )
-    {
-        $input_text = $possible_error_message ;
-    }
-
-
-#-----------------------------------------------
-#  Track the nesting level.
-
-#    $global_nesting_level_of_file_actions -- ;
+    $input_text = "[-" . $input_text . "-]" ;
+    $input_text = &dashrep_expand_parameters( $input_text ) ;
 
 
 #-----------------------------------------------
@@ -4122,6 +4188,7 @@ sub dashrep_linewise_translate
     my $revised_text ;
     my $after_possible_action ;
     my $error_message ;
+    my $line_number ;
 
 
 #-----------------------------------------------
@@ -4133,7 +4200,7 @@ sub dashrep_linewise_translate
         warn "Warning: Call to dashrep_linewise_translate subroutine does not have exactly zero parameters." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly zero parameters." ;
+#        carp "Warning: Call to dashrep_linewise_translate subroutine does not have exactly zero parameters." ;
 #  uncomment-for-cpan-version-end
         return 0 ;
     }
@@ -4142,12 +4209,15 @@ sub dashrep_linewise_translate
 #-----------------------------------------------
 #  Read each line from the input file.
 
+    $line_number = 0 ;
     while( $input_line = <STDIN> )
     {
         chomp( $input_line );
+        $line_number ++ ;
         $input_line =~ s/[\n\r\f\t]+/ /g ;
         if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $input_line =~ /[^ ]/ ) )
         {
+            print "{{stdin line number " . $line_number . "\n}}" ;
             print "{{trace; linewise input line: " . $input_line . "}}\n" ;
         }
 
@@ -4157,6 +4227,10 @@ sub dashrep_linewise_translate
 
         if ( $global_dashrep_replacement{ "dashrep-stop-translation" } eq "yes" )
         {
+            if ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; stopping translation as requested}}\n";
+            }
             last ;
         }
 
@@ -4199,22 +4273,19 @@ sub dashrep_linewise_translate
         {
             $global_endless_loop_counter = 0 ;
             %global_replacement_count_for_item_name = ( ) ;
+            $input_line = "[-" . $input_line . "-]" ;
             $revised_text = &dashrep_expand_parameters( $input_line );
-            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
-            {
-                print "{{trace; line after parameters expanded: " . $revised_text . "}}\n" ;
-            }
-            $after_possible_action = &dashrep_top_level_action( $revised_text );
             if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $after_possible_action =~ /^ *$/ ) && ( $revised_text =~ /[^ ]/ ) )
             {
                 print "{{trace; line after action executed: " . $after_possible_action . "}}\n" ;
             }
-            $revised_text = &dashrep_expand_phrases( $after_possible_action );
-            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $revised_text =~ /[^ ]/ ) )
+            if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) || ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) )
             {
-                print "{{trace; line after phrases expanded: " . $revised_text . "}}\n" ;
+                print $global_trace_log . "\n" ;
+                $global_trace_log = "" ;
             }
             print $revised_text . "\n" ;
+
         }
 
 
@@ -4393,7 +4464,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 through 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright 2009 through 2012 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
