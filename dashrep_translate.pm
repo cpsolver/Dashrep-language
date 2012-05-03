@@ -870,6 +870,7 @@ sub dashrep_expand_parameters
     my $second_number_text ;
     my $first_number ;
     my $second_number ;
+	my $epoch_seconds ;
     my $yes_or_no ;
     my $first_object_of_action ;
     my $second_object_of_action ;
@@ -1071,9 +1072,8 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Get the action name and the operands.  If there
-#  is not at least one non-space character,
-#  remove the parameter brackets and restart the
-#  main loop.
+#  are no non-space characters, remove the 
+#  parameter brackets and restart the main loop.
 
         $action_name = "" ;
         $object_of_action = "" ;
@@ -1108,7 +1108,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the no-operand action:
+#  Handle the action:
 #  clear-all-dashrep-phrases
 
         if ( $action_name eq "clear-all-dashrep-phrases" )
@@ -1126,7 +1126,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand action:
+#  Handle the action:
 #  append-from-phrase-to-phrase
 
         if ( ( $action_name eq "append-from-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
@@ -1144,7 +1144,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand actions:
+#  Handle the actions:
 #  copy-from-phrase-to-phrase and
 #  copy-from-phrase-to-phrase-and-replace-hyphens and
 #  copy-from-phrase-to-phrase-and-replace-adjacent-spaces and
@@ -1200,7 +1200,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand action:
+#  Handle the action:
 #  copy-from-phrase-to-phrase-as-tagged-dashrep-code
 
         if ( ( $action_name eq "copy-from-phrase-to-phrase-as-tagged-dashrep-code" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
@@ -1238,7 +1238,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle these two-operand actions:
+#  Handle the actions:
 #  yes-or-no-first-number-equals-second-number
 #  yes-or-no-first-number-greater-than-second-number
 #  yes-or-no-first-number-less-than-second-number
@@ -1276,31 +1276,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand action:
-#  from-list-in-phrase-get-item-number
-
-        if ( $action_name =~ /^from-list-in-phrase-get-item-number$/ )
-        {
-            $first_object_of_action = $operand_one ;
-            $second_object_of_action = $operand_two + 0 ;
-            @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-            $count = $#list + 1 ;
-            if ( $second_object_of_action > $count )
-            {
-                $second_object_of_action = $count ;
-            }
-            if ( $count < 1 )
-            {
-                $second_object_of_action = 1 ;
-            }
-            $text_for_value = $list[ $second_object_of_action - 1 ] ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the two-operand actions:
+#  Handle the actions:
 #  yes-or-no-greater-than and
 #  yes-or-no-less-than
 
@@ -1329,37 +1305,37 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the two-operand actions:
-#  calc-minus and
-#  calc-divide-by
+#  Handle the action:
+#  yes-if-not-no
 
-        if ( $action_name =~ /^calc-((minus)|(divide-by))$/ )
+        if ( $action_name eq "yes-if-not-no" )
         {
-            $calculation_type = $1 ;
-            $first_object_of_action = $operand_one + 0 ;
-            $second_object_of_action = $operand_two + 0 ;
-            $text_for_value = "1" ;
-            if ( $calculation_type eq "minus" )
+            if ( $object_of_action =~ /^ *no *$/i )
             {
-                $text_for_value = $first_object_of_action - $second_object_of_action ;
-            } elsif ( $calculation_type eq "divide-by" )
+                $empty_or_nonempty = "no" ;
+            } else
             {
-                if ( $second_object_of_action == 0 )
-                {
-                    $text_for_value = "infinity" ;
-                } elsif ( $first_object_of_action = 0 )
-                {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $text_for_value = $first_object_of_action / $second_object_of_action ;
-                }
+                $empty_or_nonempty = "yes" ;
             }
-            if ( $text_for_value eq "" )
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  no-if-not-yes
+
+        if ( $action_name eq "no-if-not-yes" )
+        {
+            if ( $object_of_action =~ /^ *yes *$/i )
             {
-                $text_for_value = "0" ;
+                $empty_or_nonempty = "yes" ;
+            } else
+            {
+                $empty_or_nonempty = "no" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
             next ;
         }
 
@@ -1395,6 +1371,30 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = $list[ $#list ] ;
             }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-list-in-phrase-get-item-number
+
+        if ( $action_name =~ /^from-list-in-phrase-get-item-number$/ )
+        {
+            $first_object_of_action = $operand_one ;
+            $second_object_of_action = $operand_two + 0 ;
+            @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+            $count = $#list + 1 ;
+            if ( $second_object_of_action > $count )
+            {
+                $second_object_of_action = $count ;
+            }
+            if ( $count < 1 )
+            {
+                $second_object_of_action = 1 ;
+            }
+            $text_for_value = $list[ $second_object_of_action - 1 ] ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -1582,6 +1582,102 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the actions:
+#  calc-minus and
+#  calc-divide-by
+
+        if ( $action_name =~ /^calc-((minus)|(divide-by))$/ )
+        {
+            $calculation_type = $1 ;
+            $first_object_of_action = $operand_one + 0 ;
+            $second_object_of_action = $operand_two + 0 ;
+            $text_for_value = "1" ;
+            if ( $calculation_type eq "minus" )
+            {
+                $text_for_value = $first_object_of_action - $second_object_of_action ;
+            } elsif ( $calculation_type eq "divide-by" )
+            {
+                if ( $second_object_of_action == 0 )
+                {
+                    $text_for_value = "infinity" ;
+                } elsif ( $first_object_of_action = 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = $first_object_of_action / $second_object_of_action ;
+                }
+            }
+            if ( $text_for_value eq "" )
+            {
+                $text_for_value = "0" ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  calc-add and
+#  calc-multiply
+
+        if ( $action_name =~ /^calc-((add)|(multiply))$/ )
+        {
+            $calculation_type = $1 ;
+            $text_for_value = "0" ;
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+            {
+                $value = $list[ $#list ] ;
+                if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
+                {
+                    if ( $calculation_type eq "add" )
+                    {
+                        $text_for_value = $text_for_value + $value ;
+                    } elsif ( $calculation_type eq "multiply" )
+                    {
+                        $text_for_value = $text_for_value * $value ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  get-current-time-in-epoch-seconds
+#  split-epoch-seconds-into-named-components
+
+        if ( $action_name eq "get-current-time-in-epoch-seconds" )
+        {
+			$epoch_seconds = time ;
+			$text_for_value = sprintf( "%d" , $epoch_seconds ) ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+        if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $operand_one ne "" ) )
+		{			
+			( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
+			$month_number ++ ;
+			$year += 1900 ;
+			$global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
+			$global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
+			$global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
+		    $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
+			$global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
+			$global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
+			$global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
+			$global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
+			$text_for_value = "" ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+		
+		
+#-----------------------------------------------
 #  Handle the action:
 #  replace-periods-with-spaces
 
@@ -1676,6 +1772,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  insert-phrase-with-brackets-after-next-top-line
+#
 #  For now, just get the phrase name.
 
         if ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
@@ -1687,42 +1784,6 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
             }
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  yes-if-not-no
-
-        if ( $action_name eq "yes-if-not-no" )
-        {
-            if ( $object_of_action =~ /^ *no *$/i )
-            {
-                $empty_or_nonempty = "no" ;
-            } else
-            {
-                $empty_or_nonempty = "yes" ;
-            }
-            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  no-if-not-yes
-
-        if ( $action_name eq "no-if-not-yes" )
-        {
-            if ( $object_of_action =~ /^ *yes *$/i )
-            {
-                $empty_or_nonempty = "yes" ;
-            } else
-            {
-                $empty_or_nonempty = "no" ;
-            }
-            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
             next ;
         }
 
@@ -1772,35 +1833,6 @@ sub dashrep_expand_parameters
                 } elsif ( $object_of_action =~ /^\.([0-9]+)$/ )
                 {
                     $text_for_value = $1 ;
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  calc-add and
-#  calc-multiply
-
-        if ( $action_name =~ /^calc-((add)|(multiply))$/ )
-        {
-            $calculation_type = $1 ;
-            $text_for_value = "0" ;
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-            for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
-            {
-                $value = $list[ $#list ] ;
-                if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
-                {
-                    if ( $calculation_type eq "add" )
-                    {
-                        $text_for_value = $text_for_value + $value ;
-                    } elsif ( $calculation_type eq "multiply" )
-                    {
-                        $text_for_value = $text_for_value * $value ;
-                    }
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
