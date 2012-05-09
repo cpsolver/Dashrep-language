@@ -1284,6 +1284,40 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+#  Test append-from-phrase-to-phrase action.
+
+$being_tested = "test top-level action: append-from-phrase-to-phrase -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &dashrep_define( "dashrep-test-source-phrase" , "some content here" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $numeric_return_value = &dashrep_define( "dashrep-test-target-phrase" , "" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "dashrep-test-target-phrase" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
 #  Test the calculate-if-empty action.
 
 $being_tested = "calculate-if-empty action -- ";
@@ -1390,36 +1424,6 @@ close OUTFILE;
 
 #-------------------------------------------
 #  Test top-level actions.
-
-$being_tested = "test top-level action: append-from-phrase-to-phrase -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-test-source-phrase" , "some content here" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-test-target-phrase" , "" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "dashrep-test-target-phrase" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test top-level actions that create file, append to file, and copy from file to phrase -- ";
 $test_number_count ++;
