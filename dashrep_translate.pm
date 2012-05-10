@@ -4307,6 +4307,7 @@ sub dashrep_linewise_translate
             %global_replacement_count_for_item_name = ( ) ;
             $input_line = "[-" . $input_line . "-]" ;
             $revised_text = &dashrep_expand_parameters( $input_line );
+            $revised_text = &dashrep_expand_phrases( $revised_text );
             if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-or-off" } eq "on" ) && ( $after_possible_action =~ /^ *$/ ) && ( $revised_text =~ /[^ ]/ ) )
             {
                 print "{{trace; line after action executed: " . $after_possible_action . "}}\n" ;
