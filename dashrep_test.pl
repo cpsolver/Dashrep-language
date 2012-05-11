@@ -1286,7 +1286,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test append-from-phrase-to-phrase action.
 
-$being_tested = "test top-level action: append-from-phrase-to-phrase -- ";
+$being_tested = "test action: append-from-phrase-to-phrase -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
@@ -1301,10 +1301,10 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target
 # $numeric_return_value = &dashrep_define( "dashrep-test-target-phrase" , "" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase" );
+# $string_return_value = &dashrep_expand_parameters( "[-append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
@@ -1423,33 +1423,33 @@ close OUTFILE;
 
 
 #-------------------------------------------
-#  Test top-level actions.
+#  Test file actions.
 
-$being_tested = "test top-level actions that create file, append to file, and copy from file to phrase -- ";
+$being_tested = "test actions that create file, append to file, and copy from file to phrase -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_target_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-create-empty-file output_test_target_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "create-empty-file output_test_target_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-create-empty-file output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-source-phrase output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+# $string_return_value = &dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
@@ -1461,19 +1461,19 @@ if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $o
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test top-level action: clear-all-dashrep-phrases -- ";
+$being_tested = "test action: clear-all-dashrep-phrases -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "write-all-dashrep-definitions-to-file output_test_definitions_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "write-all-dashrep-definitions-to-file output_test_definitions_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "clear-all-dashrep-phrases" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-clear-all-dashrep-phrases-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "clear-all-dashrep-phrases" );
+# $string_return_value = &dashrep_expand_parameters( "[-clear-all-dashrep-phrases-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
@@ -1485,13 +1485,13 @@ if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test top-level actions that save and get definitions in file -- ";
+$being_tested = "test actions that save and get definitions in file -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "get-definitions-from-file  output_test_definitions_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-get-definitions-from-file  output_test_definitions_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "get-definitions-from-file  output_test_definitions_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-get-definitions-from-file  output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
@@ -1503,19 +1503,19 @@ if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test top-level action: linewise-translate-from-file-to-file -- ";
+$being_tested = "test action: linewise-translate-from-file-to-file -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_source_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-create-empty-file output_test_source_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "create-empty-file output_test_source_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-create-empty-file output_test_source_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "non-replaced-content" );
@@ -1530,22 +1530,22 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "non-replaced-conten
 # $numeric_return_value = &dashrep_define( "non-replaced-content" , "replaced content" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase" );
+# $string_return_value = &dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
@@ -1581,7 +1581,7 @@ if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s ) { $one_if_ok
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test top-level action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
+$being_tested = "test action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "html" );
@@ -1596,28 +1596,28 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-xml-ph
 # $numeric_return_value = &dashrep_define( "dashrep-test-xml-phrase" , "" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-create-empty-file output_test_xml_phrases_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "create-empty-file output_test_xml_phrases_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-create-empty-file output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase" );
+# $string_return_value = &dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-xml-phrase" );
@@ -1635,28 +1635,28 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  (Comment out if need to view files for debugging.)
 
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_source_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_target_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_definitions_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_definitions_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_top_level_action( "delete-file output_test_xml_phrases_file.txt" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
 
 

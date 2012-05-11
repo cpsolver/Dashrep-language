@@ -111,8 +111,6 @@ The following subroutines are exported.
 
 =head2 dashrep_xml_tags_to_dashrep
 
-=head2 dashrep_top_level_action
-
 =head2 dashrep_linewise_translate
 
 =cut
@@ -132,7 +130,6 @@ The following subroutines are exported.
 #     dashrep_expand_phrases_except_special
 #     dashrep_expand_special_phrases
 #     dashrep_xml_tags_to_dashrep
-#     dashrep_top_level_action
 #     dashrep_linewise_translate
 # );
 
@@ -4106,83 +4103,6 @@ sub dashrep_xml_tags_to_dashrep
 #  End of subroutine.
 
     return $output_text ;
-
-}
-
-
-=head2 dashrep_top_level_action
-
-Handles a top-level action such as a transfer
-to and from files.
-
-First, and only, parameter is the
-text string that contains any text, which
-may include one top-level action (which is
-a hyphenated phrase).
-
-Return value is the text string after removing
-the executed action, or the original text
-string if there was no action phrase.
-Return value is an empty string if there
-is not exactly one parameter.
-
-=cut
-
-
-#-----------------------------------------------
-#-----------------------------------------------
-#         dashrep_top_level_action
-#-----------------------------------------------
-#-----------------------------------------------
-
-sub dashrep_top_level_action
-{
-
-    my $input_text ;
-
-
-#-----------------------------------------------
-#  Reset the xml-parsing state.
-
-    $global_xml_level_number = 0 ;
-    @global_xml_tag_at_level_number = ( ) ;
-
-
-#-----------------------------------------------
-#  Get the input text.
-
-    if ( scalar( @_ ) == 1 )
-    {
-        $input_text = $_[ 0 ] ;
-    } else
-    {
-#  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_top_level_action subroutine does not have exactly one parameter." ;
-#  uncomment-for-cpan-version-end
-        return 0 ;
-    }
-
-
-#-----------------------------------------------
-#  Enclose the top-level action in Dashrep
-#  bracket notation, and then call the paramter-
-#  translation subroutine.
-
-    $input_text = "[-" . $input_text . "-]" ;
-    $input_text = &dashrep_expand_parameters( $input_text ) ;
-
-
-#-----------------------------------------------
-#  Return, possibly with an error message.
-
-    return $input_text ;
-
-
-#-----------------------------------------------
-#  End of subroutine.
 
 }
 
