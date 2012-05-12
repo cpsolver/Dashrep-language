@@ -1689,6 +1689,18 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  insert-spaces-to-isolate-characters
+
+        if ( $action_name eq "insert-spaces-to-isolate-characters" )
+        {
+			$text_for_value = join( " " , unpack( "(a1)*" , $object_of_action ) ) ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  sort-numbers
 
         if ( $action_name eq "sort-numbers" )
@@ -2954,6 +2966,53 @@ sub dashrep_file_actions
         }
         close( INFILE ) ;
         $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  find-line-in-file-that-begins-with-phrase
+#
+#  The matching line must have a space at the end of the searched-for string.
+
+    } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-phrase" ) && ( $source_filename ne "" ) && ( $target_phrase ne "" ) )
+    {
+        $input_text = "" ;
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+			$string_to_find = $global_dashrep_replacement{ $target_phrase } ;
+			$string_to_find =~ s/^ +// ;
+			$string_to_find =~ s/ +$// ;
+			$string_to_find .= " " ;
+			$length_of_string = length( $string_to_find ) ;
+			$input_text = "" ;
+            while( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                if ( substr( $input_line , 0 , $length_of_string - 1 ) eq $string_to_find )
+				{
+					$input_text = $input_line ;
+					last ;
+				}
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; searched in file " . $source_filename . " for phrase " . $target_phrase . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
 
 
 #-----------------------------------------------
