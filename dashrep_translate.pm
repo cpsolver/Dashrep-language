@@ -2922,7 +2922,6 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
             $all_lines = "" ;
             if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
             {
@@ -2982,7 +2981,6 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            $possible_error_message .= " [file named " . $source_filename . " found, and opened]" ;
             $source_definitions = "" ;
             while( $input_line = <INFILE> )
             {
