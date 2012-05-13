@@ -1689,9 +1689,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  insert-spaces-to-isolate-characters
+#  split-into-list-of-characters
 
-        if ( $action_name eq "insert-spaces-to-isolate-characters" )
+        if ( $action_name eq "split-into-list-of-characters" )
         {
 			$text_for_value = join( " " , unpack( "(a1)*" , $object_of_action ) ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
