@@ -1885,7 +1885,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /file/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(find-line-in-file-that-begins-with-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -2995,7 +2995,7 @@ sub dashrep_file_actions
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( substr( $input_line , 0 , $length_of_string - 1 ) eq $string_to_find )
+                if ( substr( $input_line , 0 , $length_of_string ) eq $string_to_find )
 				{
 					$input_text = $input_line ;
 					last ;
