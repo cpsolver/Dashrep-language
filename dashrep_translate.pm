@@ -1086,7 +1086,6 @@ sub dashrep_expand_parameters
             $action_name =~ s/\-+$// ;
             $object_of_action =~ s/^ +// ;
             $object_of_action =~ s/ +$// ;
-            $object_of_action =~ s/^\-+// ;
             $object_of_action =~ s/\-+$// ;
             if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
             {
