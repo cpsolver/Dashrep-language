@@ -1818,15 +1818,18 @@ sub dashrep_expand_parameters
         if ( $action_name eq "calculate-if-phrase-empty" )
         {
             $text_for_value = "" ;
-            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } =~ /[^ ]/ ) )
             {
-                if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                    {
-                        $global_trace_log .= "{{trace; phrase " . $global_dashrep_replacement{ $object_of_action } . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
-                    }
+                    $global_trace_log .= "{{trace; phrase " . $object_of_action . " is not empty, so no need to calculate}}\n" ;
+                }
+            } else
+            {
+                $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; phrase " . $object_of_action . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
