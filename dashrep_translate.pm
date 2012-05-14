@@ -562,6 +562,14 @@ sub dashrep_import_replacements
 
 
 #-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
+
+
+#-----------------------------------------------
 #  Repeat the loop for the next string.
 
     }
@@ -867,7 +875,7 @@ sub dashrep_expand_parameters
     my $second_number_text ;
     my $first_number ;
     my $second_number ;
-	my $epoch_seconds ;
+    my $epoch_seconds ;
     my $yes_or_no ;
     my $first_object_of_action ;
     my $second_object_of_action ;
@@ -1069,7 +1077,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Get the action name and the operands.  If there
-#  are no non-space characters, remove the 
+#  are no non-space characters, remove the
 #  parameter brackets and restart the main loop.
 
         $action_name = "" ;
@@ -1649,30 +1657,30 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-current-time-in-epoch-seconds" )
         {
-			$epoch_seconds = time ;
-			$text_for_value = sprintf( "%d" , $epoch_seconds ) ;
+            $epoch_seconds = time ;
+            $text_for_value = sprintf( "%d" , $epoch_seconds ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
         if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $operand_one ne "" ) )
-		{			
-			( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
-			$month_number ++ ;
-			$year += 1900 ;
-			$global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
-			$global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
-			$global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
-		    $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
-			$global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
-			$global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
-			$global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
-			$global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
-			$text_for_value = "" ;
+        {
+            ( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
+            $month_number ++ ;
+            $year += 1900 ;
+            $global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
+            $global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
+            $global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
+            $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
+            $global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
+            $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
+            $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
+            $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
+            $text_for_value = "" ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
-		
-		
+
+
 #-----------------------------------------------
 #  Handle the action:
 #  replace-periods-with-spaces
@@ -1692,7 +1700,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "split-into-list-of-characters" )
         {
-			$text_for_value = join( " " , unpack( "(a1)*" , $object_of_action ) ) ;
+            $text_for_value = join( " " , unpack( "(a1)*" , $object_of_action ) ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -1937,6 +1945,14 @@ sub dashrep_expand_parameters
         $global_dashrep_replacement{ $text_parameter_placeholder } ++ ;
     }
     @list_of_replacements_to_auto_increment = ( ) ;
+
+
+#-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
 
 
 #-----------------------------------------------
@@ -2191,6 +2207,14 @@ sub dashrep_generate_lists
 
 
 #-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
+
+
+#-----------------------------------------------
 #  End of subroutine.
 
     return 1 ;
@@ -2370,6 +2394,14 @@ sub dashrep_expand_phrases_except_special
 #  Repeat the loop for the next replacement.
 
     }
+
+
+#-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
 
 
 #-----------------------------------------------
@@ -2688,6 +2720,14 @@ sub dashrep_expand_special_phrases
 
 
 #-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
+
+
+#-----------------------------------------------
 #  End of subroutine.
 
     return $expanded_string ;
@@ -2756,6 +2796,14 @@ sub dashrep_expand_phrases
 #  "no-space" and "one-space" and others
 
     $expanded_string = &dashrep_expand_special_phrases( $partly_expanded_string ) ;
+
+
+#-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
 
 
 #-----------------------------------------------
@@ -2985,20 +3033,20 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-			$string_to_find = $global_dashrep_replacement{ $target_phrase } ;
-			$string_to_find =~ s/^ +// ;
-			$string_to_find =~ s/ +$// ;
-			$string_to_find .= " " ;
-			$length_of_string = length( $string_to_find ) ;
-			$input_text = "" ;
+            $string_to_find = $global_dashrep_replacement{ $target_phrase } ;
+            $string_to_find =~ s/^ +// ;
+            $string_to_find =~ s/ +$// ;
+            $string_to_find .= " " ;
+            $length_of_string = length( $string_to_find ) ;
+            $input_text = "" ;
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 if ( substr( $input_line , 0 , $length_of_string ) eq $string_to_find )
-				{
-					$input_text = $input_line ;
-					last ;
-				}
+                {
+                    $input_text = $input_line ;
+                    last ;
+                }
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
@@ -3650,6 +3698,14 @@ sub dashrep_file_actions
     {
         $input_text = $possible_error_message ;
     }
+
+
+#-----------------------------------------------
+#  Make the logged debugging (trace) information
+#  available.
+
+    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+    $global_trace_log = "" ;
 
 
 #-----------------------------------------------
