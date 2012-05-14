@@ -321,7 +321,7 @@ test-of-remove-last-item-from-phrase-list:
 --------
 
 test-of-calculate-if-empty:
-[-calculate-if-empty: value-of-pi-]
+[-calculate-if-phrase-empty: value-of-pi-]
 [-value-of-pi-]
 --------
 

@@ -1813,9 +1813,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  calculate-if-empty
+#  calculate-if-phrase-empty
 
-        if ( $action_name eq "calculate-if-empty" )
+        if ( $action_name eq "calculate-if-phrase-empty" )
         {
             $text_for_value = "" ;
             if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
@@ -1823,6 +1823,10 @@ sub dashrep_expand_parameters
                 if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *$/s )
                 {
                     $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; phrase " . $global_dashrep_replacement{ $object_of_action } . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
+                    }
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
