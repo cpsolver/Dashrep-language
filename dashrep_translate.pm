@@ -518,7 +518,9 @@ sub dashrep_import_replacements
 #  If this definition name has already been defined,
 #  ignore the earlier definition.
 #  If the name does not contain a hyphen,
-#  prefix the name with "invalid-phrase-name-".
+#  replace any non-english characters with an
+#  underscore and prefix the name with
+#  "invalid-phrase-name-".
 
         } elsif ( $definition_name eq "" )
         {
@@ -526,6 +528,7 @@ sub dashrep_import_replacements
             $definition_name =~ s/\:$//  ;
             if ( $definition_name !~ /\-/ )
             {
+                $definition_name =~ s/[^a-z0-9_]+/_/sgi  ;
                 $definition_name = "invalid-phrase-name-" . $definition_name ;
             }
             $global_dashrep_replacement{ $definition_name } = "" ;
@@ -4347,6 +4350,7 @@ sub dashrep_linewise_translate
             if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" ) || ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) )
             {
                 print $global_trace_log . "\n" ;
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
                 $global_trace_log = "" ;
             }
             print $revised_text . "\n" ;
