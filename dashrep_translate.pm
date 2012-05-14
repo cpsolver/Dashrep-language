@@ -1061,6 +1061,10 @@ sub dashrep_expand_parameters
                 {
                     push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
                 }
+                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+                {
+                    $global_trace_log .= "{{trace; replaced " . $text_parameter_content . " with its definition" . "}}\n";
+                }
             } else
             {
                 $replacement_text = $text_begin . " " . $text_end ;
