@@ -3372,6 +3372,7 @@ sub dashrep_file_actions
             {
                 $full_line = "" ;
                 $multi_line_limit = 10 ;
+				$multi_line_count = 0 ;
                 while( $input_line = <INFILE> )
                 {
                     chomp( $input_line ) ;
