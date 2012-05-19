@@ -195,6 +195,7 @@ BEGIN {
     %global_dashrep_replacement = ( ) ;
 
     $global_dashrep_replacement{ "empty-text" } = "" ;
+    $global_dashrep_replacement{ "character-single-space" } = " " ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
     $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
@@ -245,6 +246,7 @@ with special "dashrep-..." names.
 sub initialize_special_phrases
 {
     $global_dashrep_replacement{ "empty-text" } = "" ;
+    $global_dashrep_replacement{ "character-single-space" } = " " ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
     $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
