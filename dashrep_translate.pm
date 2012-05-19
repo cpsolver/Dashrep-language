@@ -3373,7 +3373,7 @@ sub dashrep_file_actions
             if ( $possible_error_message eq "" )
             {
                 $full_line = "" ;
-                $multi_line_limit = 10 ;
+                $multi_line_limit = 100 ;
 				$multi_line_count = 0 ;
                 while( $input_line = <INFILE> )
                 {
