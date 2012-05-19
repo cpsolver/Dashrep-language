@@ -900,6 +900,15 @@ sub dashrep_expand_parameters
     my $value ;
     my $text_returned ;
     my $tracking_on_or_off ;
+    my $second_time ;
+    my $minute ;
+    my $hour ;
+    my $day_of_month ;
+    my $month_number ;
+    my $year ;
+    my $weekday ;
+    my $day_of_year ;
+    my $extra_info ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -2892,6 +2901,8 @@ sub dashrep_file_actions
     my $operand_two ;
     my $text_begin ;
     my $text_end ;
+    my $string_to_find ;
+    my $length_of_string ;
     my @list_of_phrases ;
 
 
@@ -3386,14 +3397,20 @@ sub dashrep_file_actions
                     {
                         $full_line = $input_line ;
                     }
-                    $open_brackets = $full_line ;
-                    $close_brackets = $full_line ;
-                    $open_brackets =~ s/[^<]//g ;
-                    $close_brackets =~ s/[^>]//g ;
-                    if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
-                    {
-                        next ;
-                    }
+					if ( ( $full_line =~ /<!\[CDATA\[/ ) && ( $full_line !~ /<!\[CDATA\[.*\]\]>/ ) )
+					{
+						next ;
+					} else
+					{
+						$open_brackets = $full_line ;
+						$close_brackets = $full_line ;
+						$open_brackets =~ s/[^<]//g ;
+						$close_brackets =~ s/[^>]//g ;
+						if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
+						{
+							next ;
+						}
+					}
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
                         $global_trace_log .= "{{trace; accumulated text to convert: " . $full_line . "}}\n" ;
@@ -3792,6 +3809,10 @@ sub dashrep_xml_tags_to_dashrep
     my $sequence_without_hyphen_prefix ;
     my $starting_position_of_last_tag_name ;
     my $full_phrase ;
+    my $text_before_cdata ;
+    my $text_cdata ;
+    my $text_after_cdata ;
+    my $revised_cdata ;
 
 
 #-----------------------------------------------
@@ -3930,6 +3951,27 @@ sub dashrep_xml_tags_to_dashrep
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
             $global_trace_log .= "{{trace; after xml parameter extracted: " . $revised_tags . "}}\n" ;
+        }
+    }
+
+
+#-----------------------------------------------
+#  If the <!CDATA[[ ... ]]> syntax is used,
+#  within the enclosed text, replace angle
+#  brackets with HTML symbol strings.
+
+    while ( $input_text =~ /^(.*?)<!\[CDATA\[(.*?)\]\]>(.*)$/i )
+    {
+        $text_before_cdata = $1 ;
+        $text_cdata = $2 ;
+        $text_after_cdata = $3 ;
+		$revised_cdata = $text_cdata ;
+		$revised_cdata =~ s/</&lt;/ ;
+		$revised_cdata =~ s/>/&gt;/ ;
+        $input_text = $text_before_cdata . "<cdata>" . $revised_cdata . "<\/cdata>" . $text_after_cdata ;
+        if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
+        {
+            $global_trace_log .= "{{trace; CDATA text converted to non-XML: " . $text_cdata . "}}\n" ;
         }
     }
 
