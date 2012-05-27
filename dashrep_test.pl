@@ -186,6 +186,8 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "text-with-special-c
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-special-replacement-newline" , "[eol]" );
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "symbol-space" , " " );
+
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -309,7 +311,7 @@ text-with-periods:
 --------
 
 test-of-replace-periods-with-spaces:
-[-replace-periods-with-spaces: [-text-with-periods-]-]
+[-within-phrase-replace-character-with-text-in-phrase: text-with-periods . symbol-space-]
 --------
 
 list-from-which-to-remove-last-item:
@@ -1268,15 +1270,17 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the replace-periods-with-spaces action.
+#  Test the within-phrase-replace-character-with-text-in-phrase action.
 
-$being_tested = "replace-periods-with-spaces action -- ";
+$being_tested = "within-phrase-replace-character-with-text-in-phrase action -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-periods" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "list-from-which-to-remove-last-item" );
+# $string_return_value = &dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
+# $string_return_value = &dashrep_get_replacement( "text-with-periods" );
 # uncomment-for-cpan-version-end
 if ( $string_return_value eq "12345 67890" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };

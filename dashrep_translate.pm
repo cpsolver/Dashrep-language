@@ -1118,6 +1118,12 @@ sub dashrep_expand_parameters
                 $operand_one = $1 ;
                 $operand_two = $2 ;
             }
+            if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
+            {
+                $operand_one = $1 ;
+                $operand_two = $2 ;
+                $operand_three = $3 ;
+            }
         } else
         {
             $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
@@ -1701,14 +1707,74 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  replace-periods-with-spaces
+#  within-phrase-replace-character-with-text-in-phrase
+#
+#  If the replacement text contains the text to be
+#  replaced, nothing is done because that would 
+#  create endless loop.
+#  If more than one character specified as the
+#  character to replace, just the first character is
+#  used.
 
-        if ( $action_name eq "replace-periods-with-spaces" )
+        if ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" )
         {
-            $text_for_value = $object_of_action ;
-            $text_for_value =~ s/\./ /sg ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
+			$text_for_value = "" ;
+			if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
+			{
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					$global_trace_log .= "{{trace; warning: phrase contains no text, so cannot do replacements}}\n" ;
+				}
+			} else
+			{
+				$phrase_definition_to_modify = $global_dashrep_replacement{ $operand_one } ;
+				$character_to_replace = $operand_two ;
+				if ( length( $character_to_replace ) < 1 )
+				{
+					if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+					{
+						$global_trace_log .= "{{trace; warning: no character being searched for, so cannot do replacements}}\n" ;
+					}
+				} else
+				{
+					if ( length( $character_to_replace ) > 1 )
+					{
+						if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+						{
+							$global_trace_log .= "{{trace; warning: more than one character being searched for, so using only first character}}\n" ;
+						}
+						$character_to_replace = substr( $operand_two , 0 , 1 ) ;
+					}
+					if ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) )
+					{
+						if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+						{
+							$global_trace_log .= "{{trace; warning: replacement phrase contains no text, so cannot do replacements}}\n" ;
+						}
+					} else
+					{
+						$replacement_text = $global_dashrep_replacement{ $operand_three } ;
+						if ( index( $replacement_text , $character_to_replace ) >= 0 )
+						{
+							if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+							{
+								$global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
+							}
+						} else
+						{
+							$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+							while ( $character_position >= 0 )
+							{
+								$phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
+								$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+							}
+							$global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
+						}
+					}
+				}
+			}
+			$replacement_text = $text_begin . $text_for_value . $text_end ;
+			next ;
         }
 
 
