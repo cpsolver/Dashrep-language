@@ -1598,30 +1598,30 @@ sub dashrep_expand_parameters
                 $count_list_two = $#input_list_two + 1 ;
                 if ( ( $count_list_one < 1 ) || ( $count_list_two < 1 ) )
                 {
-					$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
                 } else
                 {
-					$global_dashrep_replacement{ $output_list_one_phrase_name } = "" ;
-					$global_dashrep_replacement{ $output_list_two_phrase_name } = "" ;
-					for ( $counter_one = 1 ; $counter_one <= $count_list_one ; $counter_one ++ )
-					{
-						$value_one = $input_list_one[ $counter_one - 1 ] ;
-						for ( $counter_two = 1 ; $counter_two <= $count_list_two ; $counter_two ++ )
-						{
-							$value_two = $input_list_two[ $counter_two - 1 ] ;
-							if ( ( $counter_one == $count_list_one ) && ( $counter_two == $count_list_two ) )
-							{
-								$separator_one = "" ;
-								$separator_two = "" ;
-							} else
-							{
-								$separator_one = " " ;
-								$separator_two = " " ;
-							}
-							$global_dashrep_replacement{ $output_list_one_phrase_name } .= $value_one . $separator_one ;
-							$global_dashrep_replacement{ $output_list_two_phrase_name } .= $value_two . $separator_two ;
-						}
-					}
+                    $global_dashrep_replacement{ $output_list_one_phrase_name } = "" ;
+                    $global_dashrep_replacement{ $output_list_two_phrase_name } = "" ;
+                    for ( $counter_one = 1 ; $counter_one <= $count_list_one ; $counter_one ++ )
+                    {
+                        $value_one = $input_list_one[ $counter_one - 1 ] ;
+                        for ( $counter_two = 1 ; $counter_two <= $count_list_two ; $counter_two ++ )
+                        {
+                            $value_two = $input_list_two[ $counter_two - 1 ] ;
+                            if ( ( $counter_one == $count_list_one ) && ( $counter_two == $count_list_two ) )
+                            {
+                                $separator_one = "" ;
+                                $separator_two = "" ;
+                            } else
+                            {
+                                $separator_one = " " ;
+                                $separator_two = " " ;
+                            }
+                            $global_dashrep_replacement{ $output_list_one_phrase_name } .= $value_one . $separator_one ;
+                            $global_dashrep_replacement{ $output_list_two_phrase_name } .= $value_two . $separator_two ;
+                        }
+                    }
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -1740,28 +1740,35 @@ sub dashrep_expand_parameters
         if ( $action_name =~ /^calc-((minus)|(divide-by))$/ )
         {
             $calculation_type = $1 ;
-            $first_object_of_action = $operand_one + 0 ;
-            $second_object_of_action = $operand_two + 0 ;
-            $text_for_value = "1" ;
-            if ( $calculation_type eq "minus" )
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) )
             {
-                $text_for_value = $first_object_of_action - $second_object_of_action ;
-            } elsif ( $calculation_type eq "divide-by" )
-            {
-                if ( $second_object_of_action == 0 )
+                $first_object_of_action = $operand_one + 0 ;
+                $second_object_of_action = $operand_two + 0 ;
+                if ( $calculation_type eq "minus" )
                 {
-                    $text_for_value = "infinity" ;
-                } elsif ( $first_object_of_action = 0 )
+                    $numeric_value = $first_object_of_action - $second_object_of_action ;
+                    if ( $numeric_value == 0 )
+                    {
+                        $text_for_value = "0" ;
+                    } else
+                    {
+                        $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                    }
+                } elsif ( $calculation_type eq "divide-by" )
                 {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $text_for_value = $first_object_of_action / $second_object_of_action ;
+                    if ( $second_object_of_action == 0 )
+                    {
+                        $text_for_value = "infinity" ;
+                    } elsif ( $first_object_of_action = 0 )
+                    {
+                        $text_for_value = "0" ;
+                    } else
+                    {
+                        $numeric_value = $first_object_of_action / $second_object_of_action ;
+                        $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                    }
                 }
-            }
-            if ( $text_for_value eq "" )
-            {
-                $text_for_value = "0" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -1777,19 +1784,92 @@ sub dashrep_expand_parameters
         {
             $calculation_type = $1 ;
             $text_for_value = "0" ;
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-            for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+            if ( $object_of_action eq "" )
             {
-                $value = $list[ $#list ] ;
-                if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                if ( $calculation_type eq "add" )
                 {
-                    if ( $calculation_type eq "add" )
+                    $numeric_value = 0 ;
+                } elsif ( $calculation_type eq "multiply" )
+                {
+                    $numeric_value = 1 ;
+                } else
+                {
+                    $numeric_value = 0 ;
+                }
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+                {
+                    $value = $list[ $counter ] ;
+                    if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
                     {
-                        $text_for_value = $text_for_value + $value ;
-                    } elsif ( $calculation_type eq "multiply" )
-                    {
-                        $text_for_value = $text_for_value * $value ;
+                        if ( $calculation_type eq "add" )
+                        {
+                            $numeric_value = $numeric_value + $value ;
+                        } elsif ( $calculation_type eq "multiply" )
+                        {
+                            $numeric_value = $numeric_value * $value ;
+                        }
                     }
+                }
+                if ( $numeric_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  calc-integer
+
+        if ( $action_name eq "calc-integer" )
+        {
+            if ( ( $object_of_action eq "" ) || ( $object_of_action !~ /^[\-0-9\.]+$/ ) )
+            {
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                $operand_value = int( $object_of_action + 0 ) ;
+                if ( $operand_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%d" , $operand_value ) ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  calc-absolute
+
+        if ( $action_name eq "calc-absolute" )
+        {
+            if ( ( $object_of_action eq "" ) || ( $object_of_action !~ /^[\-0-9\.]+$/ ) )
+            {
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                $operand_value = abs( $object_of_action + 0 ) ;
+                if ( $operand_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%d" , $operand_value ) ;
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
