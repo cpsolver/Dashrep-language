@@ -1579,6 +1579,58 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  put-into-two-lists-every-combination-from-two-lists
+
+        if ( $action_name =~ /^put-into-two-lists-every-combination-from-two-lists$/ )
+        {
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) || ( $operand_four eq "" ) || ( not( defined( $global_dashrep_replacement{ $operand_three } )  ) ) || ( not( defined( $global_dashrep_replacement{ $operand_four } ) ) ) )
+            {
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                $output_list_one_phrase_name = $operand_one ;
+                $output_list_two_phrase_name = $operand_two ;
+                $input_list_one_phrase_name = $operand_three ;
+                $input_list_two_phrase_name = $operand_four ;
+                @input_list_one = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $input_list_one_phrase_name } ) ;
+                @input_list_two = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $input_list_two_phrase_name } ) ;
+                $count_list_one = $#input_list_one + 1 ;
+                $count_list_two = $#input_list_two + 1 ;
+                if ( ( $count_list_one < 1 ) || ( $count_list_two < 1 ) )
+                {
+					$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                } else
+                {
+					$global_dashrep_replacement{ $output_list_one_phrase_name } = "" ;
+					$global_dashrep_replacement{ $output_list_two_phrase_name } = "" ;
+					for ( $counter_one = 1 ; $counter_one <= $count_list_one ; $counter_one ++ )
+					{
+						$value_one = $input_list_one[ $counter_one - 1 ] ;
+						for ( $counter_two = 1 ; $counter_two <= $count_list_two ; $counter_two ++ )
+						{
+							$value_two = $input_list_two[ $counter_two - 1 ] ;
+							if ( ( $counter_one == $count_list_one ) && ( $counter_two == $count_list_two ) )
+							{
+								$separator_one = "" ;
+								$separator_two = "" ;
+							} else
+							{
+								$separator_one = " " ;
+								$separator_two = " " ;
+							}
+							$global_dashrep_replacement{ $output_list_one_phrase_name } .= $value_one . $separator_one ;
+							$global_dashrep_replacement{ $output_list_two_phrase_name } .= $value_two . $separator_two ;
+						}
+					}
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  zero-one-multiple
 
         if ( $action_name eq "zero-one-multiple" )

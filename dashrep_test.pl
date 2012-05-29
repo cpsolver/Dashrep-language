@@ -242,7 +242,11 @@ test-of-special-operators:
 [-should-be-length-1 = [-length-of-phrase-definition: test-text-length-1-]-]
 [-test-text-length-7 = abcdefg-]
 [-should-be-length-7 = [-length-of-phrase-definition: test-text-length-7-]-]
-[-should-be-item-with-value-7 = [-from-list-in-phrase-get-item-number: list-of-numbers 3-]-]
+[-should-be-item-with-value-7 = [-from-list-get-item-number: list-of-numbers 3-]-]
+[-put-into-list-counts-from-integer-to-integer: counts-from-0-to-7 0 7-]
+[-put-into-list-counts-from-integer-to-integer: counts-from-5-to-minus-4 5 -4 -]
+[-put-into-two-lists-every-combination-from-two-lists: list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions counts-from-0-to-7 counts-from-5-to-minus-4-]
+[-should-be-counts-3-and-minus-2 = [-from-list-get-item-number list-of-first-items-in-two-dimensions 38-] [-from-list-get-item-number list-of-second-items-in-two-dimensions 38-]-]
 nothing else
 --------
 
@@ -929,6 +933,19 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be
 # $string_return_value = &dashrep_expand_parameters( "should-be-item-with-value-7" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "7" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test counting actions -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-counts-3-and-minus-2" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "should-be-counts-3-and-5" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "3 -2" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
