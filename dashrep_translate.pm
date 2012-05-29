@@ -1406,9 +1406,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  from-list-in-phrase-get-item-number
+#  from-list-get-item-number
 
-        if ( $action_name =~ /^from-list-in-phrase-get-item-number$/ )
+        if ( $action_name =~ /^from-list-get-item-number$/ )
         {
             $first_object_of_action = $operand_one ;
             $second_object_of_action = $operand_two + 0 ;
