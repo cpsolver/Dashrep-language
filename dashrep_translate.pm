@@ -1419,29 +1419,29 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /^from-list-get-item-number$/ )
         {
-			if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
-			{
-				$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-			} else
-			{
-				$first_object_of_action = $operand_one ;
-				$second_object_of_action = $operand_two + 0 ;
-				@list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-				$count = $#list + 1 ;
-				if ( $count < 1 )
-				{
-					$text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
-				} else
-				{
-					if ( $second_object_of_action > $count )
-					{
-						$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-					} else
-					{
-						$text_for_value = $list[ $second_object_of_action - 1 ] ;
-					}
-				}
-			}
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
+            {
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                $first_object_of_action = $operand_one ;
+                $second_object_of_action = $operand_two + 0 ;
+                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
+                } else
+                {
+                    if ( $second_object_of_action > $count )
+                    {
+                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
+                    }
+                }
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -1521,6 +1521,58 @@ sub dashrep_expand_parameters
                 $name_for_count = "zero" ;
             }
             $replacement_text = $text_begin . $name_for_count . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  put-into-list-counts-from-integer-to-integer
+
+        if ( $action_name =~ /^put-into-list-counts-from-integer-to-integer$/ )
+        {
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
+            {
+                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            } else
+            {
+                $phrase_name = $operand_one ;
+                $starting_count = $operand_two + 0 ;
+                $ending_count = $operand_three + 0 ;
+                if ( $starting_count > $ending_count )
+                {
+                    $plus_or_minus_one = -1 ;
+                    $count_range = $starting_count - $ending_count + 1 ;
+                } else
+                {
+                    $plus_or_minus_one = 1 ;
+                    $count_range = $ending_count - $starting_count + 1 ;
+                }
+                if ( $count_range > 99999 )
+                {
+                    $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                } else
+                {
+                    for ( $counter = 1 ; $counter <= $count_range ; $counter ++ )
+                    {
+                        $next_number = $starting_count + ( $plus_or_minus_one * ( $counter - 1 ) );
+                        if ( $next_number == 0 )
+                        {
+                            $text_to_append = "0" ;
+                        } else
+                        {
+                            $text_to_append = sprintf( "%d" , $next_number ) ;
+                        }
+                        if ( $counter < $count_range )
+                        {
+                            $text_to_append .= " " ;
+                        }
+                        $global_dashrep_replacement{ $phrase_name } .= $text_to_append ;
+                    }
+                    $text_for_value = "" ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 
@@ -1729,7 +1781,7 @@ sub dashrep_expand_parameters
 #  within-phrase-replace-character-with-text-in-phrase
 #
 #  If the replacement text contains the text to be
-#  replaced, nothing is done because that would 
+#  replaced, nothing is done because that would
 #  create endless loop.
 #  If more than one character specified as the
 #  character to replace, just the first character is
@@ -1737,63 +1789,63 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" )
         {
-			$text_for_value = "" ;
-			if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
-			{
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; warning: phrase contains no text, so cannot do replacements}}\n" ;
-				}
-			} else
-			{
-				$phrase_definition_to_modify = $global_dashrep_replacement{ $operand_one } ;
-				$character_to_replace = $operand_two ;
-				if ( length( $character_to_replace ) < 1 )
-				{
-					if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-					{
-						$global_trace_log .= "{{trace; warning: no character being searched for, so cannot do replacements}}\n" ;
-					}
-				} else
-				{
-					if ( length( $character_to_replace ) > 1 )
-					{
-						if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-						{
-							$global_trace_log .= "{{trace; warning: more than one character being searched for, so using only first character}}\n" ;
-						}
-						$character_to_replace = substr( $operand_two , 0 , 1 ) ;
-					}
-					if ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) )
-					{
-						if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-						{
-							$global_trace_log .= "{{trace; warning: replacement phrase contains no text, so cannot do replacements}}\n" ;
-						}
-					} else
-					{
-						$replacement_text = $global_dashrep_replacement{ $operand_three } ;
-						if ( index( $replacement_text , $character_to_replace ) >= 0 )
-						{
-							if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-							{
-								$global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
-							}
-						} else
-						{
-							$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-							while ( $character_position >= 0 )
-							{
-								$phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
-								$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-							}
-							$global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
-						}
-					}
-				}
-			}
-			$replacement_text = $text_begin . $text_for_value . $text_end ;
-			next ;
+            $text_for_value = "" ;
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning: phrase contains no text, so cannot do replacements}}\n" ;
+                }
+            } else
+            {
+                $phrase_definition_to_modify = $global_dashrep_replacement{ $operand_one } ;
+                $character_to_replace = $operand_two ;
+                if ( length( $character_to_replace ) < 1 )
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning: no character being searched for, so cannot do replacements}}\n" ;
+                    }
+                } else
+                {
+                    if ( length( $character_to_replace ) > 1 )
+                    {
+                        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                        {
+                            $global_trace_log .= "{{trace; warning: more than one character being searched for, so using only first character}}\n" ;
+                        }
+                        $character_to_replace = substr( $operand_two , 0 , 1 ) ;
+                    }
+                    if ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) )
+                    {
+                        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                        {
+                            $global_trace_log .= "{{trace; warning: replacement phrase contains no text, so cannot do replacements}}\n" ;
+                        }
+                    } else
+                    {
+                        $replacement_text = $global_dashrep_replacement{ $operand_three } ;
+                        if ( index( $replacement_text , $character_to_replace ) >= 0 )
+                        {
+                            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                            {
+                                $global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
+                            }
+                        } else
+                        {
+                            $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                            while ( $character_position >= 0 )
+                            {
+                                $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
+                                $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                            }
+                            $global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
+                        }
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
         }
 
 
@@ -3470,7 +3522,7 @@ sub dashrep_file_actions
             {
                 $full_line = "" ;
                 $multi_line_limit = 100 ;
-				$multi_line_count = 0 ;
+                $multi_line_count = 0 ;
                 while( $input_line = <INFILE> )
                 {
                     chomp( $input_line ) ;
@@ -3482,20 +3534,20 @@ sub dashrep_file_actions
                     {
                         $full_line = $input_line ;
                     }
-					if ( ( $full_line =~ /<!\[CDATA\[/ ) && ( $full_line !~ /<!\[CDATA\[.*\]\]>/ ) )
-					{
-						next ;
-					} else
-					{
-						$open_brackets = $full_line ;
-						$close_brackets = $full_line ;
-						$open_brackets =~ s/[^<]//g ;
-						$close_brackets =~ s/[^>]//g ;
-						if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
-						{
-							next ;
-						}
-					}
+                    if ( ( $full_line =~ /<!\[CDATA\[/ ) && ( $full_line !~ /<!\[CDATA\[.*\]\]>/ ) )
+                    {
+                        next ;
+                    } else
+                    {
+                        $open_brackets = $full_line ;
+                        $close_brackets = $full_line ;
+                        $open_brackets =~ s/[^<]//g ;
+                        $close_brackets =~ s/[^>]//g ;
+                        if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
+                        {
+                            next ;
+                        }
+                    }
                     if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
                     {
                         $global_trace_log .= "{{trace; accumulated text to convert: " . $full_line . "}}\n" ;
@@ -4050,9 +4102,9 @@ sub dashrep_xml_tags_to_dashrep
         $text_before_cdata = $1 ;
         $text_cdata = $2 ;
         $text_after_cdata = $3 ;
-		$revised_cdata = $text_cdata ;
-		$revised_cdata =~ s/</&lt;/ ;
-		$revised_cdata =~ s/>/&gt;/ ;
+        $revised_cdata = $text_cdata ;
+        $revised_cdata =~ s/</&lt;/ ;
+        $revised_cdata =~ s/>/&gt;/ ;
         $input_text = $text_before_cdata . "<cdata>" . $revised_cdata . "<\/cdata>" . $text_after_cdata ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
@@ -4608,8 +4660,8 @@ sub dashrep_internal_split_delimited_items
     if ( ( not( defined( $text_string ) ) ) || ( $text_string =~ /^[ ,]*$/ ) )
     {
         @array = ( ) ;
-		return @array ;
-	}
+        return @array ;
+    }
 
 
 #-----------------------------------------------
@@ -4619,8 +4671,8 @@ sub dashrep_internal_split_delimited_items
     if ( $text_string =~ /^([^ ,]+)$/ )
     {
         @array = ( $1 ) ;
-		return @array ;
-	}
+        return @array ;
+    }
 
 
 #-----------------------------------------------
