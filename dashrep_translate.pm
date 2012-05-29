@@ -2038,39 +2038,6 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the actions:
-#  get-left-of-decimal and
-#  get-right-of-decimal
-
-        if ( $action_name =~ /get-((left)|(right))-of-decimal/ )
-        {
-            $calculation_type = $1 ;
-            $text_for_value = "" ;
-            if ( $calculation_type eq "left" )
-            {
-                if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
-                {
-                    $text_for_value = $1 ;
-                } elsif ( $object_of_action =~ /^([0-9]+)\.?$/ )
-                {
-                    $text_for_value = $1 ;
-                }
-            } elsif ( $calculation_type eq "right" )
-            {
-                if ( $object_of_action =~ /^(\-?[0-9]+)\.([0-9]+)$/ )
-                {
-                    $text_for_value = $2 ;
-                } elsif ( $object_of_action =~ /^\.([0-9]+)$/ )
-                {
-                    $text_for_value = $1 ;
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
 #  Handle the action:
 #  escape-if-yes and
 #  escape-if-no
