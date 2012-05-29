@@ -1102,6 +1102,8 @@ sub dashrep_expand_parameters
         $object_of_action = "" ;
         $operand_one = "" ;
         $operand_two = "" ;
+        $operand_three = "" ;
+        $operand_four = "" ;
         if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
         {
             $action_name = $1 ;
@@ -1123,6 +1125,13 @@ sub dashrep_expand_parameters
                 $operand_one = $1 ;
                 $operand_two = $2 ;
                 $operand_three = $3 ;
+            }
+            if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+)/ )
+            {
+                $operand_one = $1 ;
+                $operand_two = $2 ;
+                $operand_three = $3 ;
+                $operand_four = $4 ;
             }
         } else
         {
@@ -1410,19 +1419,29 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /^from-list-get-item-number$/ )
         {
-            $first_object_of_action = $operand_one ;
-            $second_object_of_action = $operand_two + 0 ;
-            @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-            $count = $#list + 1 ;
-            if ( $second_object_of_action > $count )
-            {
-                $second_object_of_action = $count ;
-            }
-            if ( $count < 1 )
-            {
-                $second_object_of_action = 1 ;
-            }
-            $text_for_value = $list[ $second_object_of_action - 1 ] ;
+			if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
+			{
+				$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+			} else
+			{
+				$first_object_of_action = $operand_one ;
+				$second_object_of_action = $operand_two + 0 ;
+				@list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+				$count = $#list + 1 ;
+				if ( $count < 1 )
+				{
+					$text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
+				} else
+				{
+					if ( $second_object_of_action > $count )
+					{
+						$text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+					} else
+					{
+						$text_for_value = $list[ $second_object_of_action - 1 ] ;
+					}
+				}
+			}
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -4583,6 +4602,28 @@ sub dashrep_internal_split_delimited_items
 
 
 #-----------------------------------------------
+#  If there are only commas and spaces, or
+#  the string is empty, return an empty list.
+
+    if ( ( not( defined( $text_string ) ) ) || ( $text_string =~ /^[ ,]*$/ ) )
+    {
+        @array = ( ) ;
+		return @array ;
+	}
+
+
+#-----------------------------------------------
+#  If there is only one item, return a
+#  single-item list.
+
+    if ( $text_string =~ /^([^ ,]+)$/ )
+    {
+        @array = ( $1 ) ;
+		return @array ;
+	}
+
+
+#-----------------------------------------------
 #  Convert all delimiters to single commas.
 
     $text_string = join( "," , split( /[\n\r]/ , $text_string ) ) ;
@@ -4598,21 +4639,9 @@ sub dashrep_internal_split_delimited_items
 
 
 #-----------------------------------------------
-#  If there are only commas and spaces, or
-#  the string is empty, return an empty list.
-
-    if ( $text_string =~ /^[ ,]*$/ )
-    {
-        @array = ( ) ;
-
-
-#-----------------------------------------------
 #  Split the strings into an array.
 
-    } else
-    {
-        @array = split( /,+/ , $text_string ) ;
-    }
+    @array = split( /,+/ , $text_string ) ;
 
 
 #-----------------------------------------------
