@@ -3643,8 +3643,8 @@ sub dashrep_file_actions
                     {
                         $open_brackets = $full_line ;
                         $close_brackets = $full_line ;
-                        $open_brackets =~ s/[^<]//g ;
-                        $close_brackets =~ s/[^>]//g ;
+                        $open_brackets =~ s/[^<]//sg ;
+                        $close_brackets =~ s/[^>]//sg ;
                         if ( ( length( $open_brackets ) != length( $close_brackets ) ) && ( $multi_line_count < $multi_line_limit ) )
                         {
                             next ;
@@ -4217,12 +4217,12 @@ sub dashrep_xml_tags_to_dashrep
         $text_cdata = $2 ;
         $text_after_cdata = $3 ;
         $revised_cdata = $text_cdata ;
-        $revised_cdata =~ s/</&lt;/g ;
-        $revised_cdata =~ s/>/&gt;/g ;
+        $revised_cdata =~ s/</&lt;/sg ;
+        $revised_cdata =~ s/>/&gt;/sg ;
         $input_text = $text_before_cdata . "<cdata>" . $revised_cdata . "<\/cdata>" . $text_after_cdata ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
-            $global_trace_log .= "{{trace; CDATA text converted to non-XML: " . $text_cdata . "}}\n" ;
+            $global_trace_log .= "{{trace; CDATA text converted to non-XML: " . $revised_cdata . "}}\n" ;
         }
     }
 
