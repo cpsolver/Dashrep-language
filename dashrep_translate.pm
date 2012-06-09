@@ -210,6 +210,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
     $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
@@ -261,6 +262,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } = "" ;
     $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
@@ -781,6 +783,7 @@ sub dashrep_delete_all
 #  Reset the xml-parsing state.
 
     $global_xml_level_number = 0 ;
+    $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
     @global_xml_tag_at_level_number = ( ) ;
 
 
@@ -4076,6 +4079,18 @@ sub dashrep_xml_tags_to_dashrep
     $input_text =~ s/^ +// ;
     $input_text =~ s/ +$// ;
     $output_text = "" ;
+
+
+#-----------------------------------------------
+#  Check for the possibility of the tag level
+#  being reset to zero, which allows multiple 
+#  XML files to be processed in turn.
+
+    if ( $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } =~ /^0+$/ )
+    {
+        $global_xml_level = $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } + 0 ;
+    }
+	$global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
 
 
 #-----------------------------------------------
