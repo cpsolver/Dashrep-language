@@ -4217,8 +4217,8 @@ sub dashrep_xml_tags_to_dashrep
         $text_cdata = $2 ;
         $text_after_cdata = $3 ;
         $revised_cdata = $text_cdata ;
-        $revised_cdata =~ s/</&lt;/ ;
-        $revised_cdata =~ s/>/&gt;/ ;
+        $revised_cdata =~ s/</&lt;/g ;
+        $revised_cdata =~ s/>/&gt;/g ;
         $input_text = $text_before_cdata . "<cdata>" . $revised_cdata . "<\/cdata>" . $text_after_cdata ;
         if ( $global_dashrep_replacement{ "dashrep-xml-trace-on-or-off" } eq "on" )
         {
