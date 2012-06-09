@@ -4083,14 +4083,14 @@ sub dashrep_xml_tags_to_dashrep
 
 #-----------------------------------------------
 #  Check for the possibility of the tag level
-#  being reset to zero, which allows multiple 
+#  being reset to zero, which allows multiple
 #  XML files to be processed in turn.
 
     if ( $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } =~ /^0+$/ )
     {
         $global_xml_level = 0 ;
     }
-	$global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
+    $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
 
 
 #-----------------------------------------------
@@ -4341,17 +4341,20 @@ sub dashrep_xml_tags_to_dashrep
                     }
                     if ( $global_ignore_level <= 0 )
                     {
-                        $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) ;
-                        $output_text .= "[-" ;
-                        if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                        if ( ( not( exists( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-xml-yes-ignore-if-no-tag-replacement" } ne "yes" ) || ( exists( $global_dashrep_replacement{ $full_phrase } ) ) )
                         {
-                            $output_text .= $global_dashrep_replacement{ $full_phrase } ;
-                        } else
-                        {
-                            $output_text .= $full_phrase ;
+                            $output_text .= substr( $global_spaces , 0 , ( 2 * $global_xml_level_number ) ) ;
+                            $output_text .= "[-" ;
+                            if ( exists( $global_dashrep_replacement{ $full_phrase } ) )
+                            {
+                                $output_text .= $global_dashrep_replacement{ $full_phrase } ;
+                            } else
+                            {
+                                $output_text .= $full_phrase ;
+                            }
+                            $output_text .= "-]" ;
+                            $output_text .= "\n" ;
                         }
-                        $output_text .= "-]" ;
-                        $output_text .= "\n" ;
                     } else
                     {
                         $global_ignore_level -- ;
