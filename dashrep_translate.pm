@@ -4088,7 +4088,7 @@ sub dashrep_xml_tags_to_dashrep
 
     if ( $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } =~ /^0+$/ )
     {
-        $global_xml_level = $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } + 0 ;
+        $global_xml_level = 0 ;
     }
 	$global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
 
