@@ -4294,9 +4294,10 @@ sub dashrep_xml_tags_to_dashrep
 
 #-----------------------------------------------
 #  If any text precedes the tag, write it on a
-#  separate line.
+#  separate line.  However, do not write it if
+#  the first tag has not yet been encountered.
 
-        if ( $text_before_tag =~ /[^ ]/ )
+        if ( ( $text_before_tag =~ /[^ ]/ ) && ( $global_xml_level_number > 0 ) )
         {
             if ( $global_ignore_level <= 0 )
             {
@@ -4533,7 +4534,7 @@ sub dashrep_xml_tags_to_dashrep
 #  If any text follows the last tag, write it on a
 #  separate line.
 
-    if ( $input_text =~ /^ *([^ ].*)$/ )
+    if ( ( $input_text =~ /^ *([^ ].*)$/ ) && ( $global_xml_level_number > 0 ) )
     {
         $input_text = $1 ;
         $output_text .= "\n" . $input_text ;
