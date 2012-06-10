@@ -2183,13 +2183,15 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  If there are any spaces at the beginning or
-#  end of the full text, remove those spaces.
-#  However, allow a request for backwards
-#  compatibility.
-#  (The backwards-compatibility option will be
-#  removed later.)
+#  end of the full text, remove those spaces,
+#  but only if requested.
+#  Later, this space removal will become the
+#  default, but for now allow backwards
+#  compatibility.  Eventually the
+#  backwards-compatibility option will be
+#  removed.)
 
-        if ( ( not( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ne "yes" ) )
+        if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
         {
 			$replacement_text =~ s /^ +// ;
 			$replacement_text =~ s / +$// ;
