@@ -4172,6 +4172,15 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If a tag of the open-and-close type does 
+#  not have a space before the closing slash 
+#  (such as "<br/>"), then insert the missing 
+#  space.
+
+    $input_text =~ s/(<[^>]*[^> ])(\/>)/$1 $2/sgi ;
+
+
+#-----------------------------------------------
 #  If one of the parameters within a tag is a
 #  "style" tag that has multiple CSS
 #  parameters with their own parameter values
