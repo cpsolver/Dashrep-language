@@ -4181,6 +4181,16 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  If an open-and-close tag contains parameters
+#  within the tag, convert the tag into an open 
+#  tag immediately followed by its close tag, so
+#  that the parameters within the tag will be
+#  put into separate XML tags.
+	
+    $input_text =~ s/(<([^ >\!\?\/]+)[^>]* [^ >\=]+=[\"\'][^>]+) +\/>/$1><\/$2>/sgi ;
+
+		
+#-----------------------------------------------
 #  If one of the parameters within a tag is a
 #  "style" tag that has multiple CSS
 #  parameters with their own parameter values
