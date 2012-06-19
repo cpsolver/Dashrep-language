@@ -912,6 +912,34 @@ sub dashrep_expand_parameters
     my $weekday ;
     my $day_of_year ;
     my $extra_info ;
+    my $operand_three ;
+    my $operand_four ;
+    my $phrase_name ;
+    my $starting_count ;
+    my $ending_count ;
+    my $plus_or_minus_one ;
+    my $count_range ;
+    my $next_number ;
+    my $text_to_append ;
+    my $output_list_one_phrase_name ;
+    my $output_list_two_phrase_name ;
+    my $input_list_one_phrase_name ;
+    my $input_list_two_phrase_name ;
+    my $input_list_one ;
+    my $input_list_two ;
+    my $count_list_one ;
+    my $count_list_two ;
+    my $counter_one ;
+    my $value_one ;
+    my $counter_two ;
+    my $value_two ;
+    my $separator_one ;
+    my $separator_two ;
+    my $numeric_value ;
+    my $operand_value ;
+    my $phrase_definition_to_modify ;
+    my $character_to_replace ;
+    my $character_position ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -2193,8 +2221,8 @@ sub dashrep_expand_parameters
 
         if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
         {
-			$replacement_text =~ s /^ +// ;
-			$replacement_text =~ s / +$// ;
+            $replacement_text =~ s /^ +// ;
+            $replacement_text =~ s / +$// ;
         }
 
 
@@ -3159,6 +3187,7 @@ sub dashrep_file_actions
     my $text_end ;
     my $string_to_find ;
     my $length_of_string ;
+    my $sequence_of_phrases ;
     my @list_of_phrases ;
 
 
@@ -3877,16 +3906,19 @@ sub dashrep_file_actions
     $definitions_or_phrase_names = "" ;
     if ( ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) && ( $source_phrase ne "" ) && ( $target_filename ne "" ) && ( $operand_two ne "" ) )
     {
-        @list_of_phrases = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $source_phrase } ) ;
         $definitions_or_phrase_names = "definitions" ;
+        @list_of_phrases = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $source_phrase } ) ;
+        @sequence_of_phrases = @list_of_phrases ;
     } elsif ( ( $action_name eq "write-all-dashrep-definitions-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
     {
         $definitions_or_phrase_names = "definitions" ;
         @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+        @sequence_of_phrases = sort( @list_of_phrases ) ;
     } elsif ( ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
     {
         $definitions_or_phrase_names = "phrase-names" ;
         @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+        @sequence_of_phrases = sort( @list_of_phrases ) ;
     }
     if ( $definitions_or_phrase_names ne "" )
     {
@@ -3938,7 +3970,7 @@ sub dashrep_file_actions
                     if ( $definitions_or_phrase_names eq "definitions" )
                     {
                         print OUTFILE $all_defs_begin ;
-                        foreach $phrase_name ( sort( @list_of_phrases ) )
+                        foreach $phrase_name ( @sequence_of_phrases )
                         {
                             if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
                             {
@@ -3949,7 +3981,7 @@ sub dashrep_file_actions
                         print OUTFILE $all_defs_end ;
                     } else
                     {
-                        foreach $phrase_name ( sort( @list_of_phrases ) )
+                        foreach $phrase_name ( @sequence_of_phrases )
                         {
                             if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
                             {
@@ -4172,9 +4204,9 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
-#  If a tag of the open-and-close type does 
-#  not have a space before the closing slash 
-#  (such as "<br/>"), then insert the missing 
+#  If a tag of the open-and-close type does
+#  not have a space before the closing slash
+#  (such as "<br/>"), then insert the missing
 #  space.
 
     $input_text =~ s/(<[^>]*[^> ])(\/>)/$1 $2/sgi ;
@@ -4182,14 +4214,14 @@ sub dashrep_xml_tags_to_dashrep
 
 #-----------------------------------------------
 #  If an open-and-close tag contains parameters
-#  within the tag, convert the tag into an open 
+#  within the tag, convert the tag into an open
 #  tag immediately followed by its close tag, so
 #  that the parameters within the tag will be
 #  put into separate XML tags.
-	
+
     $input_text =~ s/(<([^ >\!\?\/]+)[^>]* [^ >\=]+=[\"\'][^>]+) +\/>/$1><\/$2>/sgi ;
 
-		
+
 #-----------------------------------------------
 #  If one of the parameters within a tag is a
 #  "style" tag that has multiple CSS
