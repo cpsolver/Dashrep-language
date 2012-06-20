@@ -248,6 +248,7 @@ test-of-special-operators:
 [-put-into-two-lists-every-combination-from-two-lists: list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions counts-from-0-to-7 counts-from-5-to-minus-4-]
 [-should-be-counts-3-and-minus-2 = [-from-list-get-item-number list-of-first-items-in-two-dimensions 38-] [-from-list-get-item-number list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-calc-integer [-calc-multiply 3.14 7.39-]-]-]
+[-compare-result = [-calc-equal-greater-less-compare: 23 17-] [-calc-equal-greater-less-compare: 17 17-] [-calc-equal-greater-less-compare: 17 23-]-]
 nothing else
 --------
 
@@ -960,6 +961,19 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "calculati
 # $string_return_value = &dashrep_expand_parameters( "calculation-result" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "23" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test comparison actions -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "compare-result" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "compare-result" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "greater equal less" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
