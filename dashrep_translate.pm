@@ -227,7 +227,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 	
-	$global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-first-number-equals-second-number yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-list last-item-in-list from-list-get-item-number remove-last-item-from-phrase-list count-of-list zero-one-multiple-count-of-list put-into-list-counts-from-integer-to-integer put-into-two-lists-every-combination-from-two-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
+	$global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-first-number-equals-second-number yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-list last-item-in-list from-list-get-item-number remove-last-item-from-phrase-list count-of-list zero-one-multiple-count-of-list put-into-list-counts-from-integer-to-integer put-into-two-lists-every-combination-from-two-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
     $global_dashrep_replacement{ "dashrep-list-of-actions" } = $global_dashrep_text_list_of_actions ;
 
 }
@@ -1766,6 +1766,29 @@ sub dashrep_expand_parameters
                 $same_or_not_same = "not-same" ;
             }
             $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  character-in-phrase-get-at-position
+
+        if ( $action_name eq "character-in-phrase-get-at-position" )
+        {
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $operand_two =~ /^[0-9]+$/ ) )
+			{
+				$string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
+				$phrase_length = length( $string_in_phrase ) ;
+				$character_position = $operand_two + 0 ;
+				if ( $character_position > $phrase_length )
+				{
+					$character_position = $phrase_length ;
+				}
+				$copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+            }
+            $replacement_text = $text_begin . $copied_character . $text_end ;
             next ;
         }
 
