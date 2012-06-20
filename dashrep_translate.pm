@@ -1313,6 +1313,8 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Depricated, will be removed:
+#
 #  Handle the actions:
 #  yes-or-no-first-number-equals-second-number
 #  yes-or-no-first-number-greater-than-second-number
@@ -1323,6 +1325,7 @@ sub dashrep_expand_parameters
             $comparison_type = $2 ;
             $first_number_text = $operand_one ;
             $second_number_text = $operand_two ;
+			$global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number depricated]" ;
             if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
             {
                 $first_number = $first_number_text + 0 ;
@@ -1381,6 +1384,33 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  calc-equal-greater-less-compare
+
+        if ( $action_name =~ /^calc-equal-greater-less-compare$/ )
+        {
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+            {
+                $first_object_of_action = $operand_one + 0 ;
+                $second_object_of_action = $operand_two + 0 ;
+				if ( $first_object_of_action == $second_object_of_action )
+				{
+                    $text_for_value = "equal" ;
+                } elsif ( $first_object_of_action > $second_object_of_action )
+                {
+                    $text_for_value = "greater" ;
+                } else
+                {
+                    $text_for_value = "less" ;
+				}
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  yes-if-not-no
 
         if ( $action_name eq "yes-if-not-no" )
@@ -1417,9 +1447,12 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  first-item-in-list
 
-        if ( $action_name eq "first-item-in-list" )
+#  first-item-in-list  <<-- depricated
+
+#  first-item-in-word-list
+
+        if ( ( $action_name eq "first-item-in-word-list" ) || ( $action_name eq "first-item-in-list" ) )
         {
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
             $count = $#list + 1 ;
@@ -1435,9 +1468,12 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  last-item-in-list
 
-        if ( $action_name eq "last-item-in-list" )
+#  last-item-in-list  <<-- depricated
+
+#  last-item-in-word-list
+
+        if ( ( $action_name eq "last-item-in-word-list" ) || ( $action_name eq "last-item-in-list" ) )
         {
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
             $count = $#list + 1 ;
@@ -1932,33 +1968,6 @@ sub dashrep_expand_parameters
                 {
                     $text_for_value = sprintf( "%d" , $operand_value ) ;
                 }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  calc-equal-greater-less-compare
-
-        if ( $action_name =~ /^calc-equal-greater-less-compare$/ )
-        {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) )
-            {
-                $first_object_of_action = $operand_one + 0 ;
-                $second_object_of_action = $operand_two + 0 ;
-				if ( $first_object_of_action == $second_object_of_action )
-				{
-                    $text_for_value = "equal" ;
-                } elsif ( $first_object_of_action > $second_object_of_action )
-                {
-                    $text_for_value = "greater" ;
-                } else
-                {
-                    $text_for_value = "less" ;
-				}
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
