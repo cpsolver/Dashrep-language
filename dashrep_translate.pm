@@ -227,7 +227,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 	
-	$global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
+	$global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list find-words-in-both-word-lists put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
     $global_dashrep_replacement{ "dashrep-list-of-actions" } = $global_dashrep_text_list_of_actions ;
 
 }
@@ -1641,6 +1641,52 @@ sub dashrep_expand_parameters
 						$text_for_value = sprintf( "%d" , $last_pointer ) ;
 					}
                 }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  find-words-in-both-word-lists
+
+        if ( $action_name eq "find-words-in-both-word-lists" )
+        {
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
+            {
+                $text_for_value = "" ;
+				if ( ( length( $global_dashrep_replacement{ $operand_one } ) ) < ( length( $global_dashrep_replacement{ $operand_two } ) ) )
+				{
+					$phrase_name_shorter_list = $operand_one ;
+					$phrase_name_longer_list = $operand_two ;
+				} else
+				{
+					$phrase_name_shorter_list = $operand_two ;
+					$phrase_name_longer_list = $operand_one ;
+				}
+				@list_of_key_values = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name_shorter_list } ) ;
+				%listed_word = ( ) ;
+				foreach $word ( @list_of_key_values )
+				{
+					$listed_word{ $word } = 0 ;
+				}
+				@list_of_words = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name_longer_list } ) ;
+                $list_longer_length = $#list_of_words + 1 ;
+				for ( $pointer = 1 ; $pointer <= $list_longer_length ; $pointer ++ )
+				{
+					$word = $list_of_words[ $pointer - 1 ] ;
+					if ( exists( $listed_word{ $word } ) )
+					{
+						$listed_word{ $word } ++ ;
+						if ( $listed_word{ $word } < 2 )
+						{
+							$text_for_value .= $word . " " ;
+						}
+					}
+				}
+				$text_for_value =~ s/ +$// ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
