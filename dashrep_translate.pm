@@ -1491,6 +1491,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 
 #  from-list-get-item-number  <<-- depricated
+
 #  from-word-list-get-item-number
 
         if ( ( $action_name eq "from-word-list-get-item-number" ) || ( $action_name eq "from-list-get-item-number" ) )
@@ -1606,6 +1607,42 @@ sub dashrep_expand_parameters
                 $name_for_count = "zero" ;
             }
             $replacement_text = $text_begin . $name_for_count . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  position-of-word-in-word-list
+
+        if ( $action_name eq "position-of-word-in-word-list" )
+        {
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            $phrase_name = $operand_one ;
+            $word_to_find = $operand_two ;
+            if ( ( $phrase_name ne "" ) && ( $word_to_find ne "" ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+            {
+                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name } ) ;
+                $list_length = $#list + 1 ;
+                $text_for_value = "0" ;
+                if ( $list_length >= 1 )
+                {
+					$last_pointer = 0 ;
+					for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )
+					{
+						if ( $list[ $pointer - 1 ] eq $word_to_find )
+						{
+							$last_pointer = $pointer ;
+							last ;
+						}
+                    }
+					if ( $last_pointer > 0 )
+					{
+						$text_for_value = sprintf( "%d" , $last_pointer ) ;
+					}
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 

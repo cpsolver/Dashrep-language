@@ -251,6 +251,8 @@ test-of-special-operators:
 [-compare-result = [-calc-equal-greater-less-compare: 23 17-] [-calc-equal-greater-less-compare: 17 17-] [-calc-equal-greater-less-compare: 17 23-]-]
 [-string-to-test-character-actions = abc123 abc123 abc123-]
 [-character-result = [-character-in-phrase-get-at-position: string-to-test-character-actions 1-][-character-in-phrase-get-at-position: string-to-test-character-actions 2-][-character-in-phrase-get-at-position: string-to-test-character-actions 4-][-character-in-phrase-get-at-position: string-to-test-character-actions 5-][-character-in-phrase-get-at-position: string-to-test-character-actions 20-][-character-in-phrase-get-at-position: string-to-test-character-actions 21-]-]
+[-sample-word-list = alpha beta gamma delta-]
+[-word-list-result = [-position-of-word-in-word-list: sample-word-list alpha-]-[-position-of-word-in-word-list: sample-word-list gamma-]-[-position-of-word-in-word-list: sample-word-list other-]-]
 nothing else
 --------
 
@@ -989,6 +991,19 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "character
 # $string_return_value = &dashrep_expand_parameters( "character-result" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "ab1233" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test word-list actions -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "word-list-result" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "word-list-result" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "1-3-0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
