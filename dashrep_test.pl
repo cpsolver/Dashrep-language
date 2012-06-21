@@ -255,7 +255,7 @@ test-of-special-operators:
 [-word-list-result = [-position-of-word-in-word-list: sample-word-list alpha-]-[-position-of-word-in-word-list: sample-word-list gamma-]-[-position-of-word-in-word-list: sample-word-list other-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
-[-in-both-lists-result = [-find-words-in-both-word-lists: sample-word-list-one sample-word-list-two-]-]
+[-find-in-lists-result = [-find-words-in-both-word-lists: sample-word-list-one sample-word-list-two-] - [-find-words-in-first-list-not-in-second-list: sample-word-list-one sample-word-list-two-]-]
 nothing else
 --------
 
@@ -1011,15 +1011,15 @@ if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
-$being_tested = "test find in both lists action -- ";
+$being_tested = "test find in lists actions -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "in-both-lists-result" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "find-in-lists-result" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "in-both-lists-result" );
+# $string_return_value = &dashrep_expand_parameters( "find-in-lists-result" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "alpha alpha-here beta delta" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "alpha alpha-here beta delta - and gamma" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

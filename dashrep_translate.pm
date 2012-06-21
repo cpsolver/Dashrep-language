@@ -1648,39 +1648,47 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the action:
+#  Handle the actions:
 #  find-words-in-both-word-lists
+#  find-words-in-first-list-not-in-second-list
 
-        if ( $action_name eq "find-words-in-both-word-lists" )
+        if ( ( $action_name eq "find-words-in-both-word-lists" ) || ( $action_name eq "find-words-in-first-list-not-in-second-list" ) )
         {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 $text_for_value = "" ;
-				if ( ( length( $global_dashrep_replacement{ $operand_one } ) ) < ( length( $global_dashrep_replacement{ $operand_two } ) ) )
+				$text_list_loop = $global_dashrep_replacement{ $operand_one } ;
+				$text_list_key = $global_dashrep_replacement{ $operand_two } ;
+				if ( ( $action_name eq "find-words-in-both-word-lists" ) && ( ( length( $text_list_loop ) ) < ( length( $text_list_key ) ) ) )
 				{
-					$phrase_name_shorter_list = $operand_one ;
-					$phrase_name_longer_list = $operand_two ;
-				} else
-				{
-					$phrase_name_shorter_list = $operand_two ;
-					$phrase_name_longer_list = $operand_one ;
+					$temp = $text_list_key ;
+					$text_list_key = $text_list_loop ;
+					$text_list_loop = $temp ;
 				}
-				@list_of_key_values = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name_shorter_list } ) ;
+				@list_of_key_values = &dashrep_internal_split_delimited_items( $text_list_key ) ;
 				%listed_word = ( ) ;
 				foreach $word ( @list_of_key_values )
 				{
 					$listed_word{ $word } = 0 ;
 				}
-				@list_of_words = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name_longer_list } ) ;
-                $list_longer_length = $#list_of_words + 1 ;
-				for ( $pointer = 1 ; $pointer <= $list_longer_length ; $pointer ++ )
+				@list_of_loop_words = &dashrep_internal_split_delimited_items( $text_list_loop ) ;
+                $length_of_loop_list = $#list_of_loop_words + 1 ;
+				%not_listed_word = ( ) ;
+				for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
 				{
-					$word = $list_of_words[ $pointer - 1 ] ;
-					if ( exists( $listed_word{ $word } ) )
+					$word = $list_of_loop_words[ $pointer - 1 ] ;
+					if ( ( exists( $listed_word{ $word } ) ) && ( $action_name eq "find-words-in-both-word-lists" ) )
 					{
 						$listed_word{ $word } ++ ;
 						if ( $listed_word{ $word } < 2 )
+						{
+							$text_for_value .= $word . " " ;
+						}
+					} elsif ( ( not( exists( $listed_word{ $word } ) ) ) && ( $action_name eq "find-words-in-first-list-not-in-second-list" ) )
+					{
+						$not_listed_word{ $word } ++ ;
+						if ( $not_listed_word{ $word } < 2 )
 						{
 							$text_for_value .= $word . " " ;
 						}
