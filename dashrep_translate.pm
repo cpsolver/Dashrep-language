@@ -3690,6 +3690,24 @@ sub dashrep_file_actions
 		}
         $input_text = $write_time ;
 
+		
+#-----------------------------------------------
+#  Handle the action:
+#  size-of-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "size-of-file" ) && ( $source_filename ne "" ) )
+    {
+		$file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
+			print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+		if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+		{
+			$global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+		}
+        $input_text = $file_size ;
 
 
 #-----------------------------------------------
