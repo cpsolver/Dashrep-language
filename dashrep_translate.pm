@@ -2358,7 +2358,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /file/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(find-line-in-file-that-begins-with-phrase)|(create-empty-file)|(yes-or-no-file-exists)|(delete-file)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(put-into-phrase-list-of-files-in-current-read-directory))/ )
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(rename-file-from-to)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3599,7 +3599,6 @@ sub dashrep_file_actions
         $input_text = "" ;
 
 
-
 #-----------------------------------------------
 #  Handle the action:
 #  put-into-phrase-list-of-files-in-current-read-directory
@@ -3671,6 +3670,25 @@ sub dashrep_file_actions
         }
         close( INFILE ) ;
         $input_text = "" ;
+
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  modification-time-of-file
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "modification-time-of-file" ) && ( $source_filename ne "" ) )
+    {
+		( $read_time , $write_time ) = ( stat( $source_filename ) )[8,9] ;
+		if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+		{
+			$global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
+		}
+        $input_text = $write_time ;
 
 
 
