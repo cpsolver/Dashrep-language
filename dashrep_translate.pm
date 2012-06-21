@@ -226,8 +226,8 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-	
-	$global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list find-words-in-both-word-lists put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase find-line-in-file-that-begins-with-phrase create-empty-file yes-or-no-file-exists delete-file write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
+
+    $global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list find-words-in-both-word-lists put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
     $global_dashrep_replacement{ "dashrep-list-of-actions" } = $global_dashrep_text_list_of_actions ;
 
 }
@@ -1325,7 +1325,7 @@ sub dashrep_expand_parameters
             $comparison_type = $2 ;
             $first_number_text = $operand_one ;
             $second_number_text = $operand_two ;
-			$global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number depricated]" ;
+            $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number depricated]" ;
             if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
             {
                 $first_number = $first_number_text + 0 ;
@@ -1393,8 +1393,8 @@ sub dashrep_expand_parameters
             {
                 $first_object_of_action = $operand_one + 0 ;
                 $second_object_of_action = $operand_two + 0 ;
-				if ( $first_object_of_action == $second_object_of_action )
-				{
+                if ( $first_object_of_action == $second_object_of_action )
+                {
                     $text_for_value = "equal" ;
                 } elsif ( $first_object_of_action > $second_object_of_action )
                 {
@@ -1402,7 +1402,7 @@ sub dashrep_expand_parameters
                 } else
                 {
                     $text_for_value = "less" ;
-				}
+                }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -1627,19 +1627,19 @@ sub dashrep_expand_parameters
                 $text_for_value = "0" ;
                 if ( $list_length >= 1 )
                 {
-					$last_pointer = 0 ;
-					for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )
-					{
-						if ( $list[ $pointer - 1 ] eq $word_to_find )
-						{
-							$last_pointer = $pointer ;
-							last ;
-						}
+                    $last_pointer = 0 ;
+                    for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )
+                    {
+                        if ( $list[ $pointer - 1 ] eq $word_to_find )
+                        {
+                            $last_pointer = $pointer ;
+                            last ;
+                        }
                     }
-					if ( $last_pointer > 0 )
-					{
-						$text_for_value = sprintf( "%d" , $last_pointer ) ;
-					}
+                    if ( $last_pointer > 0 )
+                    {
+                        $text_for_value = sprintf( "%d" , $last_pointer ) ;
+                    }
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -1658,43 +1658,43 @@ sub dashrep_expand_parameters
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 $text_for_value = "" ;
-				$text_list_loop = $global_dashrep_replacement{ $operand_one } ;
-				$text_list_key = $global_dashrep_replacement{ $operand_two } ;
-				if ( ( $action_name eq "find-words-in-both-word-lists" ) && ( ( length( $text_list_loop ) ) < ( length( $text_list_key ) ) ) )
-				{
-					$temp = $text_list_key ;
-					$text_list_key = $text_list_loop ;
-					$text_list_loop = $temp ;
-				}
-				@list_of_key_values = &dashrep_internal_split_delimited_items( $text_list_key ) ;
-				%listed_word = ( ) ;
-				foreach $word ( @list_of_key_values )
-				{
-					$listed_word{ $word } = 0 ;
-				}
-				@list_of_loop_words = &dashrep_internal_split_delimited_items( $text_list_loop ) ;
+                $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
+                $text_list_key = $global_dashrep_replacement{ $operand_two } ;
+                if ( ( $action_name eq "find-words-in-both-word-lists" ) && ( ( length( $text_list_loop ) ) < ( length( $text_list_key ) ) ) )
+                {
+                    $temp = $text_list_key ;
+                    $text_list_key = $text_list_loop ;
+                    $text_list_loop = $temp ;
+                }
+                @list_of_key_values = &dashrep_internal_split_delimited_items( $text_list_key ) ;
+                %listed_word = ( ) ;
+                foreach $word ( @list_of_key_values )
+                {
+                    $listed_word{ $word } = 0 ;
+                }
+                @list_of_loop_words = &dashrep_internal_split_delimited_items( $text_list_loop ) ;
                 $length_of_loop_list = $#list_of_loop_words + 1 ;
-				%not_listed_word = ( ) ;
-				for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
-				{
-					$word = $list_of_loop_words[ $pointer - 1 ] ;
-					if ( ( exists( $listed_word{ $word } ) ) && ( $action_name eq "find-words-in-both-word-lists" ) )
-					{
-						$listed_word{ $word } ++ ;
-						if ( $listed_word{ $word } < 2 )
-						{
-							$text_for_value .= $word . " " ;
-						}
-					} elsif ( ( not( exists( $listed_word{ $word } ) ) ) && ( $action_name eq "find-words-in-first-list-not-in-second-list" ) )
-					{
-						$not_listed_word{ $word } ++ ;
-						if ( $not_listed_word{ $word } < 2 )
-						{
-							$text_for_value .= $word . " " ;
-						}
-					}
-				}
-				$text_for_value =~ s/ +$// ;
+                %not_listed_word = ( ) ;
+                for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
+                {
+                    $word = $list_of_loop_words[ $pointer - 1 ] ;
+                    if ( ( exists( $listed_word{ $word } ) ) && ( $action_name eq "find-words-in-both-word-lists" ) )
+                    {
+                        $listed_word{ $word } ++ ;
+                        if ( $listed_word{ $word } < 2 )
+                        {
+                            $text_for_value .= $word . " " ;
+                        }
+                    } elsif ( ( not( exists( $listed_word{ $word } ) ) ) && ( $action_name eq "find-words-in-first-list-not-in-second-list" ) )
+                    {
+                        $not_listed_word{ $word } ++ ;
+                        if ( $not_listed_word{ $word } < 2 )
+                        {
+                            $text_for_value .= $word . " " ;
+                        }
+                    }
+                }
+                $text_for_value =~ s/ +$// ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -1922,15 +1922,15 @@ sub dashrep_expand_parameters
         {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $operand_two =~ /^[0-9]+$/ ) )
-			{
-				$string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
-				$phrase_length = length( $string_in_phrase ) ;
-				$character_position = $operand_two + 0 ;
-				if ( $character_position > $phrase_length )
-				{
-					$character_position = $phrase_length ;
-				}
-				$copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+            {
+                $string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
+                $phrase_length = length( $string_in_phrase ) ;
+                $character_position = $operand_two + 0 ;
+                if ( $character_position > $phrase_length )
+                {
+                    $character_position = $phrase_length ;
+                }
+                $copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
             }
             $replacement_text = $text_begin . $copied_character . $text_end ;
             next ;
@@ -2358,7 +2358,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /file/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(rename-file-from-to)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3609,38 +3609,38 @@ sub dashrep_file_actions
     } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) && ( $object_of_action ne "" ) )
     {
         $input_text = " " . $action_name . " " . $object_of_action . " " ;
-		if ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
-		{
-			$directory = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ;
-			if ( $directory eq "" )
-			{
-				$directory = './' ;
-			}
-			if ( opendir( READDIR , $directory ) )
-			{
-				$input_text = "" ;
-				while ( defined( $file_name = readdir( READDIR ) ) )
-				{
-					if ( $file_name !~ /^\.\.*$/ )
-					{
-						$list_of_file_names .= $file_name . " " ;
-					}
-				}
-				$list_of_file_names =~ s / +$// ;
-				$global_dashrep_replacement{ $object_of_action } = $list_of_file_names ;
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; listed files in directory " . $directory . "}}\n" ;
-				}
-			} else
-			{
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; cannot list files in directory " . $directory . "}}\n" ;
-				}
-			}
-		}
-		closedir( READDIR ) ;
+        if ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
+        {
+            $directory = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ;
+            if ( $directory eq "" )
+            {
+                $directory = './' ;
+            }
+            if ( opendir( READDIR , $directory ) )
+            {
+                $input_text = "" ;
+                while ( defined( $file_name = readdir( READDIR ) ) )
+                {
+                    if ( $file_name !~ /^\.\.*$/ )
+                    {
+                        $list_of_file_names .= $file_name . " " ;
+                    }
+                }
+                $list_of_file_names =~ s / +$// ;
+                $global_dashrep_replacement{ $object_of_action } = $list_of_file_names ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; listed files in directory " . $directory . "}}\n" ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; cannot list files in directory " . $directory . "}}\n" ;
+                }
+            }
+        }
+        closedir( READDIR ) ;
 
 
 #-----------------------------------------------
@@ -3683,14 +3683,14 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "modification-time-of-file" ) && ( $source_filename ne "" ) )
     {
-		( $read_time , $write_time ) = ( stat( $source_filename ) )[8,9] ;
-		if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-		{
-			$global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
-		}
+        ( $read_time , $write_time ) = ( stat( $source_filename ) )[8,9] ;
+        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        {
+            $global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
+        }
         $input_text = $write_time ;
 
-		
+
 #-----------------------------------------------
 #  Handle the action:
 #  size-of-file
@@ -3701,12 +3701,12 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "size-of-file" ) && ( $source_filename ne "" ) )
     {
-		$file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
-			print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
-		if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-		{
-			$global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
-		}
+        $file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
+            print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        {
+            $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+        }
         $input_text = $file_size ;
 
 
