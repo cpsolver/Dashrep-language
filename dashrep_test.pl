@@ -255,7 +255,7 @@ test-of-special-operators:
 [-word-list-result = [-position-of-word-in-word-list: sample-word-list alpha-]-[-position-of-word-in-word-list: sample-word-list gamma-]-[-position-of-word-in-word-list: sample-word-list other-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
-[-find-in-lists-result = [-find-words-in-both-word-lists: sample-word-list-one sample-word-list-two-] - [-find-words-in-first-list-not-in-second-list: sample-word-list-one sample-word-list-two-]-]
+[-find-in-lists-result = [-word-list-create-with-words-found-in-both-word-lists: word-list-in-both sample-word-list-one sample-word-list-two-] [-word-list-create-with-words-found-in-first-but-not-second-word-list: word-list-in-first-only sample-word-list-one sample-word-list-two-] [-word-list-in-both-] - [-word-list-in-first-only-]-]
 nothing else
 --------
 
