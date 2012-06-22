@@ -165,7 +165,7 @@ my $global_capture_level ;
 my $global_phrase_to_insert_after_next_top_level_line ;
 my $global_top_line_count_for_insert_phrase ;
 my $global_trace_log ;
-my $global_dashrep_text_list_of_actions ;
+my $global_dashrep_text_list_of_actions_and_special_phrases ;
 my %global_dashrep_replacement ;
 my %global_replacement_count_for_item_name ;
 my %global_exists_xml_hyphenated_phrase ;
@@ -227,8 +227,9 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 
-    $global_dashrep_text_list_of_actions = "clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list find-words-in-both-word-lists put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
-    $global_dashrep_replacement{ "dashrep-list-of-actions" } = $global_dashrep_text_list_of_actions ;
+	$global_dashrep_text_list_of_actions_and_special_phrases = join( " " , keys( %global_dashrep_replacement ) ) ;
+    $global_dashrep_text_list_of_actions_and_special_phrases .= " clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list find-words-in-both-word-lists put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
+    $global_dashrep_replacement{ "dashrep-list-of-actions-and-special-phrases" } = $global_dashrep_text_list_of_actions_and_special_phrases ;
 
 }
 
@@ -282,7 +283,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-    $global_dashrep_replacement{ "dashrep-list-of-actions" } = $global_dashrep_text_list_of_actions ;
+    $global_dashrep_replacement{ "dashrep-list-of-actions-and-special-phrases" } = $global_dashrep_text_list_of_actions_and_special_phrases ;
 }
 
 
