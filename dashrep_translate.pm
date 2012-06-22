@@ -1585,7 +1585,7 @@ sub dashrep_expand_parameters
 
 #  zero-one-multiple-count-of-list  <<-- depricated
 
-#  zero-one-multiple-count-of-list
+#  zero-one-multiple-count-of-word-list
 
         if ( ( $action_name eq "zero-one-multiple-count-of-word-list" ) || ( $action_name eq "zero-one-multiple-count-of-list" ) )
         {
@@ -1764,9 +1764,9 @@ sub dashrep_expand_parameters
 
 #  put-into-two-lists-every-combination-from-two-lists  <<-- depricated
 
-#  put-into-two-lists-every-combination-from-two-lists
+#  put-into-two-word-lists-every-combination-from-two-word-lists
 
-        if ( ( $action_name eq "put-into-two-word-lists-every-combination-from-two-lists" ) || ( $action_name eq "put-into-two-lists-every-combination-from-two-lists" ) )
+        if ( ( $action_name eq "put-into-two-word-lists-every-combination-from-two-word-lists" ) || ( $action_name eq "put-into-two-lists-every-combination-from-two-lists" ) )
         {
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) || ( $operand_four eq "" ) || ( not( defined( $global_dashrep_replacement{ $operand_three } )  ) ) || ( not( defined( $global_dashrep_replacement{ $operand_four } ) ) ) )
             {
@@ -2116,6 +2116,76 @@ sub dashrep_expand_parameters
         }
 
 
+#-----------------------------------------------
+#  Handle the action:
+#  genlist-create-using-template-and-parameters-put-into-phrase
+#  genlist-create-using-template-and-parameters-put-into-simple-word-list
+
+        if ( ( $action_name eq "genlist-create-using-template-and-parameters-put-into-phrase" ) || ( $action_name eq "genlist-create-using-template-and-parameters-put-into-simple-word-list" ) )
+        {
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( $operand_three ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
+            {
+                $text_for_value = "" ;
+                $template_text = $global_dashrep_replacement{ $operand_one } ;
+                $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
+                $generated_list_name = $operand_three ;
+				$generated_list = "" ;
+				@list_of_parameters = &dashrep_internal_split_delimited_items( $parameter_word_list ) ;
+				$list_length = $#list_of_parameters + 1 ;
+				if ( $list_length < 1 )
+				{
+					if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+					{
+						$global_trace_log .= "{{trace; list named " . $list_name . "  is empty}}\n";
+					}
+				} else
+				{
+					for ( $list_position = 1 ; $list_position <= $list_length ; $list_position ++ )
+					{
+						$parameter = $list_of_parameters[ $list_position - 1 ] ;
+						$item_number = sprintf( "%d" , $list_position ) ;
+						$item_expandable_content = "" ;
+						if ( $action_name eq "genlist-create-using-template-and-parameters-put-into-phrase" )
+						{
+							$item_expandable_content .= "[-genlist-item-number = " . $item_number . "-] " ;
+							$item_expandable_content .= "[-genlist-parameter = " . $parameter . "-] " ;
+							$item_expandable_content .= "[-genlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-] " ;
+							if ( $list_position == 1 )
+							{
+								$item_expandable_content .= "[-genlist-first-yes-or-no = yes-] " ;
+							} else
+							{
+								$item_expandable_content .= "[-genlist-first-yes-or-no = no-] " ;
+							}
+							if ( $list_position == $list_length )
+							{
+								$item_expandable_content .= "[-genlist-last-yes-or-no = yes-] " ;
+							} else
+							{
+								$item_expandable_content .= "[-genlist-last-yes-or-no = no-] " ;
+							}
+						}
+						$item_expandable_content .= "[-" . $template_text . "-]" ;
+						$phrase_name_with_content_to_expand = "content-to-expand-for-item-" . $item_number . "-in-list-named-" . $generated_list_name ;
+						$global_dashrep_replacement{ $phrase_name_with_content_to_expand } = $item_expandable_content ;
+						$item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
+						$generated_list .= "[-expand-phrase-into-phrase " . $phrase_name_with_content_to_expand . " " . $item_name . "-] " ;
+					}
+					$generated_list =~ s/ +$// ;
+					$global_dashrep_replacement{ $generated_list_name } = $generated_list ;
+					if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+					{
+						$global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
+						$global_trace_log .= "{{trace; content for list named " . $list_name . "  was created}}\n";
+					}
+				}
+			}
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+		
 #-----------------------------------------------
 #  Handle the action:
 #  within-phrase-replace-character-with-text-in-phrase
