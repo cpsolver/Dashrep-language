@@ -228,7 +228,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 
 	$global_dashrep_text_list_of_actions_and_special_phrases = join( " " , keys( %global_dashrep_replacement ) ) ;
-    $global_dashrep_text_list_of_actions_and_special_phrases .= " clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list word-list-create-with-words-found-in-both-word-lists word-list-create-with-words-found-in-first-but-not-second-word-list put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
+    $global_dashrep_text_list_of_actions_and_special_phrases .= " clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code expand-phrase-to-phrase yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-item-in-word-list last-item-in-word-list from-word-list-get-item-number remove-last-item-from-word-list count-of-word-list zero-one-multiple-count-of-word-list position-of-word-in-word-list word-list-create-with-words-found-in-both-word-lists word-list-create-with-words-found-in-first-but-not-second-word-list put-into-word-list-counts-from-integer-to-integer put-into-two-word-lists-every-combination-from-two-word-lists zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase length-of-phrase-definition same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds genlist-create-using-template-and-parameters-put-into-phrase genlist-create-using-template-and-parameters-put-into-simple-word-list split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment create-list-named insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
     $global_dashrep_replacement{ "dashrep-list-of-actions-and-special-phrases" } = $global_dashrep_text_list_of_actions_and_special_phrases ;
 
 }
@@ -1311,6 +1311,33 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
         }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  expand-phrase-to-phrase
+
+		if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+		{
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+			if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+			{
+				$text_to_expand = $global_dashrep_replacement{ $operand_one } ;
+				$partial_translation = &dashrep_expand_parameters( $text_to_expand );
+				if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+				{
+					$global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
+				}
+				$translation = &dashrep_expand_phrases( $partial_translation );
+				$global_dashrep_replacement{ $operand_two } = $translation ;
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					$global_trace_log .= "{{trace; expanded phrase " . $text_to_expand . " to phrase " . $operand_two . "}}\n" ;
+				}
+			}
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+			next ;
+		}
 
 
 #-----------------------------------------------
