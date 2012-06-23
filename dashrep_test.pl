@@ -188,6 +188,10 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-special-rep
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "symbol-space" , " " );
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-createlist" , "abc-[-createlist-parameter-]-def" ) ;
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" ) ;
+
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -237,25 +241,33 @@ test-of-special-operators:
 [-test-yes-number-less-than = [-yes-or-no-first-number-less-than-second-number: 21 22-]-]
 [-test-no-number-not-less-than = [-yes-or-no-first-number-less-than-second-number: 22 22-]-]
 [-copy-from-phrase-to-phrase: empty-text test-text-length-0-]
-[-should-be-length-0 = [-length-of-phrase-definition: test-text-length-0-]-]
+[-should-be-length-0 = [-count-of-characters-in-phrase-defintion: test-text-length-0-]-]
 [-test-text-length-1 = a-]
-[-should-be-length-1 = [-length-of-phrase-definition: test-text-length-1-]-]
+[-should-be-length-1 = [-count-of-characters-in-phrase-defintion: test-text-length-1-]-]
 [-test-text-length-7 = abcdefg-]
-[-should-be-length-7 = [-length-of-phrase-definition: test-text-length-7-]-]
+[-should-be-length-7 = [-count-of-characters-in-phrase-defintion: test-text-length-7-]-]
 [-should-be-item-with-value-7 = [-from-list-get-item-number: list-of-numbers 3-]-]
-[-put-into-list-counts-from-integer-to-integer: counts-from-0-to-7 0 7-]
-[-put-into-list-counts-from-integer-to-integer: counts-from-5-to-minus-4 5 -4 -]
-[-put-into-two-lists-every-combination-from-two-lists: list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions counts-from-0-to-7 counts-from-5-to-minus-4-]
+[-counts-from-integer-to-integer-put-into-phrase: 0 7 counts-from-0-to-7-]
+[-counts-from-integer-to-integer-put-into-phrase: 5 -4 counts-from-5-to-minus-4-]
+[-every-combination-of-counts-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
 [-should-be-counts-3-and-minus-2 = [-from-list-get-item-number list-of-first-items-in-two-dimensions 38-] [-from-list-get-item-number list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-calc-integer [-calc-multiply 3.14 7.39-]-]-]
 [-compare-result = [-calc-equal-greater-less-compare: 23 17-] [-calc-equal-greater-less-compare: 17 17-] [-calc-equal-greater-less-compare: 17 23-]-]
 [-string-to-test-character-actions = abc123 abc123 abc123-]
 [-character-result = [-character-in-phrase-get-at-position: string-to-test-character-actions 1-][-character-in-phrase-get-at-position: string-to-test-character-actions 2-][-character-in-phrase-get-at-position: string-to-test-character-actions 4-][-character-in-phrase-get-at-position: string-to-test-character-actions 5-][-character-in-phrase-get-at-position: string-to-test-character-actions 20-][-character-in-phrase-get-at-position: string-to-test-character-actions 21-]-]
 [-sample-word-list = alpha beta gamma delta-]
-[-word-list-result = [-position-of-word-in-word-list: sample-word-list alpha-]-[-position-of-word-in-word-list: sample-word-list gamma-]-[-position-of-word-in-word-list: sample-word-list other-]-]
+[-word-list-result = [-position-of-word-in-phrase: sample-word-list alpha-]-[-position-of-word-in-phrase: sample-word-list gamma-]-[-position-of-word-in-phrase: sample-word-list other-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
-[-find-in-lists-result = [-word-list-create-with-words-found-in-both-word-lists: word-list-in-both sample-word-list-one sample-word-list-two-] [-word-list-create-with-words-found-in-first-but-not-second-word-list: word-list-in-first-only sample-word-list-one sample-word-list-two-] [-word-list-in-both-] - [-word-list-in-first-only-]-]
+[-copy-from-phrase-to-phrase sample-word-list-one list-with-dups-]
+[-append-from-phrase-to-phrase sample-word-list-two list-with-dups-]
+[-find-in-lists-result = [-copy-from-two-phrases-words-found-in-both-to-phrase: sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase: sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-from-phrase-unique-words-to-phrase: list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-first-only-] - [-unique-words-] -]
+[-use-template-and-parameters-to-create-simple-list-with-name: template-for-createlist sample-word-list-one generated-simple-list-]
+[-prefix-for-list-named-generated-full-list = prefix-here-]
+[-suffix-for-list-named-generated-full-list = suffix-here-]
+[-separator-for-list-named-generated-full-list = separator-here-]
+[-use-template-and-parameters-to-create-full-list-with-name: template-for-full-createlist sample-word-list-one generated-full-list-]
+[-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 nothing else
 --------
 
@@ -1019,7 +1031,23 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "find-in-l
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "find-in-lists-result" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "alpha alpha-here beta delta - and gamma" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "alpha alpha-here beta delta - and gamma - alpha alpha-here and beta gamma delta something-here whatever" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test generate-list actions -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-generated-simple-and-full-lists-]" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "[-generated-simple-and-full-lists-]" );
+#  uncomment-for-cpan-version-end
+$string_return_value =~ s/  +/ /g ;
+$string_return_value =~ s/^ +// ;
+$string_return_value =~ s/ +$// ;
+if ( $string_return_value eq "abc-alpha-def abc-alpha-here-def abc-and-def abc-beta-def abc-gamma-def abc-delta-def - prefix-here abc-alpha-def-1of6-ghi separator-here abc-alpha-here-def-2of6-ghi separator-here abc-and-def-3of6-ghi separator-here abc-beta-def-4of6-ghi separator-here abc-gamma-def-5of6-ghi separator-here abc-delta-def-6of6-ghi suffix-here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
