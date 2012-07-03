@@ -227,8 +227,8 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 
-	$global_dashrep_text_list_of_actions_and_special_phrases = join( " " , keys( %global_dashrep_replacement ) ) ;
-    $global_dashrep_text_list_of_actions_and_special_phrases .= " clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-as-tagged-dashrep-code expand-phrase-to-phrase yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase count-of-characters-in-phrase-defintion same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
+    $global_dashrep_text_list_of_actions_and_special_phrases = join( " " , keys( %global_dashrep_replacement ) ) ;
+    $global_dashrep_text_list_of_actions_and_special_phrases .= " clear-all-dashrep-phrases append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-file-to-phrase-and-replace-digits-with-9s copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-to-phrase-as-tagged-dashrep-code expand-phrase-to-phrase yes-or-no-greater-than yes-or-no-less-than yes-if-not-no no-if-not-yes first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases zero-one-multiple empty-or-nonempty empty-or-nonempty-phrase count-of-characters-in-phrase-defintion same-or-not-same character-in-phrase-get-at-position calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare get-current-time-in-epoch-seconds use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name split-epoch-seconds-into-named-components within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters sort-numbers unique-value auto-increment insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
     $global_dashrep_replacement{ "dashrep-list-of-actions-and-special-phrases" } = $global_dashrep_text_list_of_actions_and_special_phrases ;
 
 }
@@ -1226,8 +1226,13 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-adjacent-spaces and
 #  copy-from-phrase-to-phrase-and-replace-newlines and
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
+#  and
+#  copy-from-phrase-to-phrase-and-replace-digits-with-9s
+#  (useful for identifying string patterns that involve digits)
+#  and
+#  copy-from-file-to-phrase-and-replace-spoken-dashrep-words
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
@@ -1264,6 +1269,25 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/\"/${quotation_replacement}/sg ;
                 $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
                 $temp_text =~ s/\&/${ampersand_replacement}/sg ;
+            } elsif ( $action_name_type =~ /digits-with-9s/ )
+            {
+                $temp_text =~ s/[0-8]/9/sg ;
+            } elsif ( $action_name_type =~ /spoken-dashrep-words/ )
+            {
+                # not yet tested
+                $temp_text =~ s/((^)|( +))fen(( +)|($))/-/sg ;
+                $temp_text =~ s/((^)|( +))parambee(( +)|($))/\[-/sg ;
+                $temp_text =~ s/((^)|( +))paramenn(( +)|($))/-\]/sg ;
+                $temp_text =~ s/((^)|( +))commbee(( +)|($))/\*--- /sg ;
+                $temp_text =~ s/((^)|( +))commenn(( +)|($))/ ---\*/sg ;
+                while ( $temp_text =~ /((^)|( +))dashbee +(.+?) +dashenn(( +)|($))/ )
+                {
+                    $prefix = $1 ;
+                    $hyphenated_words = $4 ;
+                    $suffix = $5 ;
+                    $hyphenated_words =~ s/ +/-/sg ;
+                    $temp_text = $prefix . $hyphenated_words . $suffix ;
+                }
             }
             $global_dashrep_replacement{ $target_phrase } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -1317,27 +1341,27 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  expand-phrase-to-phrase
 
-		if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
-		{
+        if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-			if ( exists( $global_dashrep_replacement{ $operand_one } ) )
-			{
-				$text_to_expand = $global_dashrep_replacement{ $operand_one } ;
-				$partial_translation = &dashrep_expand_parameters( $text_to_expand );
-				if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
-				}
-				$translation = &dashrep_expand_phrases( $partial_translation );
-				$global_dashrep_replacement{ $operand_two } = $translation ;
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; expanded phrase " . $text_to_expand . " to phrase " . $operand_two . "}}\n" ;
-				}
-			}
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                $text_to_expand = $global_dashrep_replacement{ $operand_one } ;
+                $partial_translation = &dashrep_expand_parameters( $text_to_expand );
+                if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
+                }
+                $translation = &dashrep_expand_phrases( $partial_translation );
+                $global_dashrep_replacement{ $operand_two } = $translation ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; expanded phrase " . $text_to_expand . " to phrase " . $operand_two . "}}\n" ;
+                }
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
-			next ;
-		}
+            next ;
+        }
 
 
 #-----------------------------------------------
@@ -1685,18 +1709,18 @@ sub dashrep_expand_parameters
         {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) || ( ( $operand_three ne "" ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) ) ) )
-			{
+            {
                 $text_for_value = "" ;
                 $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
-				if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
-				{
-					$text_list_key = "" ;
-					$destination_phrase = $operand_two ;
-				} else
-				{
-					$text_list_key = $global_dashrep_replacement{ $operand_two } ;
-					$destination_phrase = $operand_three ;
-				}
+                if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
+                {
+                    $text_list_key = "" ;
+                    $destination_phrase = $operand_two ;
+                } else
+                {
+                    $text_list_key = $global_dashrep_replacement{ $operand_two } ;
+                    $destination_phrase = $operand_three ;
+                }
                 if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) && ( ( length( $text_list_loop ) ) < ( length( $text_list_key ) ) ) )
                 {
                     $temp = $text_list_key ;
@@ -1712,7 +1736,7 @@ sub dashrep_expand_parameters
                 @list_of_loop_words = &dashrep_internal_split_delimited_items( $text_list_loop ) ;
                 $length_of_loop_list = $#list_of_loop_words + 1 ;
                 %not_listed_word = ( ) ;
-				$result_word_list = "" ;
+                $result_word_list = "" ;
                 for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
                 {
                     $word = $list_of_loop_words[ $pointer - 1 ] ;
@@ -1733,7 +1757,7 @@ sub dashrep_expand_parameters
                     }
                 }
                 $result_word_list =~ s/ +$// ;
-				$global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
+                $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -2161,72 +2185,72 @@ sub dashrep_expand_parameters
                 $template_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
-				$text_that_expands_to_generate_list = "[-copy-from-phrase-to-phrase empty-text " . $generated_list_name . "-]" ;
-				@list_of_parameters = &dashrep_internal_split_delimited_items( $parameter_word_list ) ;
-				$list_length = $#list_of_parameters + 1 ;
-				if ( $list_length < 1 )
-				{
-					if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
-					{
-						$global_trace_log .= "{{trace; list named " . $list_name . "  is empty}}\n";
-					}
-				} else
-				{
-					for ( $list_position = 1 ; $list_position <= $list_length ; $list_position ++ )
-					{
-						$parameter = $list_of_parameters[ $list_position - 1 ] ;
-						$item_number = sprintf( "%d" , $list_position ) ;
-						if ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" )
-						{
-							$item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
-							if ( $list_position == 1 )
-							{
-								$text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
-							}
-							$text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-]" ;
-							$text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
-							$text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
-							if ( $list_position == 1 )
-							{
-								$text_that_expands_to_generate_list .= "[-createlist-first-yes-or-no = yes-]" ;
-							} else
-							{
-								$text_that_expands_to_generate_list .= "[-createlist-first-yes-or-no = no-]" ;
-							}
-							if ( $list_position == $list_length )
-							{
-								$text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = yes-]" ;
-							} else
-							{
-								$text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = no-]" ;
-							}
-							$text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $template_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
-							if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
-							{
-								$text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
-							}
-							if ( $list_position == $list_length )
-							{
-								$text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
-							}
-						} else
-						{
-							$text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $template_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
-						}
-					}
-					$text_for_value = "[-" . $text_that_expands_to_generate_list . "-]" ;
-					if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
-					{
-						$global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
-						$global_trace_log .= "{{trace; content for list named " . $list_name . "  was created}}\n";
-					}
-				}
-			}
+                $text_that_expands_to_generate_list = "[-copy-from-phrase-to-phrase empty-text " . $generated_list_name . "-]" ;
+                @list_of_parameters = &dashrep_internal_split_delimited_items( $parameter_word_list ) ;
+                $list_length = $#list_of_parameters + 1 ;
+                if ( $list_length < 1 )
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; list named " . $list_name . "  is empty}}\n";
+                    }
+                } else
+                {
+                    for ( $list_position = 1 ; $list_position <= $list_length ; $list_position ++ )
+                    {
+                        $parameter = $list_of_parameters[ $list_position - 1 ] ;
+                        $item_number = sprintf( "%d" , $list_position ) ;
+                        if ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" )
+                        {
+                            $item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
+                            if ( $list_position == 1 )
+                            {
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                            }
+                            $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-]" ;
+                            $text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
+                            $text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
+                            if ( $list_position == 1 )
+                            {
+                                $text_that_expands_to_generate_list .= "[-createlist-first-yes-or-no = yes-]" ;
+                            } else
+                            {
+                                $text_that_expands_to_generate_list .= "[-createlist-first-yes-or-no = no-]" ;
+                            }
+                            if ( $list_position == $list_length )
+                            {
+                                $text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = yes-]" ;
+                            } else
+                            {
+                                $text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = no-]" ;
+                            }
+                            $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $template_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
+                            if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
+                            {
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                            }
+                            if ( $list_position == $list_length )
+                            {
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                            }
+                        } else
+                        {
+                            $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $template_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
+                        }
+                    }
+                    $text_for_value = "[-" . $text_that_expands_to_generate_list . "-]" ;
+                    if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
+                        $global_trace_log .= "{{trace; content for list named " . $list_name . "  was created}}\n";
+                    }
+                }
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 
-		
+
 #-----------------------------------------------
 #  Handle the action:
 #  within-phrase-replace-character-with-text-in-phrase
