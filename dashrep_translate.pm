@@ -560,7 +560,9 @@ sub dashrep_import_replacements
 #  Get a definition name.
 #  Allow a colon after the hyphenated name.
 #  If this definition name has already been defined,
-#  ignore the earlier definition.
+#  ignore the earlier definition -- unless the phrase
+#  "dashrep-append-definition-not-replace-for-read-definitions"
+#  is "yes".
 #  If the name does not contain a hyphen,
 #  replace any non-english characters with an
 #  underscore and prefix the name with
@@ -575,7 +577,10 @@ sub dashrep_import_replacements
                 $definition_name =~ s/[^a-z0-9_]+/_/sgi  ;
                 $definition_name = "invalid-phrase-name-" . $definition_name ;
             }
-            $global_dashrep_replacement{ $definition_name } = "" ;
+            if ( ( not( exists( $global_dashrep_replacement{ "dashrep-append-definition-not-replace-for-read-definitions" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-append-definition-not-replace-for-read-definitions" } ne "yes" ) )
+            {
+                $global_dashrep_replacement{ $definition_name } = "" ;
+            }
             push( @list_of_replacement_names , $definition_name ) ;
 
 
