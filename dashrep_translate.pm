@@ -1251,6 +1251,23 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  clear-phrase
+
+        if ( ( $action_name eq "clear-phrase" ) && ( $operand_one ne "" ) )
+        {
+            $phrase_name = $operand_one ;
+            $global_dashrep_replacement{ $phrase_name } = "" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; cleared phrase " . $phrase_name . "}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  clear-all-dashrep-phrases
 
         if ( $action_name eq "clear-all-dashrep-phrases" )
@@ -3829,31 +3846,31 @@ sub dashrep_file_actions
             if ( opendir( READDIR , $directory ) )
             {
                 $input_text = "" ;
-				if ( exists( $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ) )
-				{
-					$files_directories_both = $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ;
-					if ( ( $files_directories_both ne "files" ) && ( $files_directories_both ne "directories" ) && ( $files_directories_both ne "both" ) )
-					{
-						$files_directories_both = "both" ;
-					}
-				} else
-				{
-					$files_directories_both = "both" ;
-				}
+                if ( exists( $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ) )
+                {
+                    $files_directories_both = $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ;
+                    if ( ( $files_directories_both ne "files" ) && ( $files_directories_both ne "directories" ) && ( $files_directories_both ne "both" ) )
+                    {
+                        $files_directories_both = "both" ;
+                    }
+                } else
+                {
+                    $files_directories_both = "both" ;
+                }
                 while ( defined( $file_name = readdir( READDIR ) ) )
                 {
                     if ( $file_name !~ /^\.\.*$/ )
                     {
-						if ( $file_name =~ /\./ )
-						{
-							if ( ( $files_directories_both eq "files" ) || ( $files_directories_both eq "both" ) )
-							{
-								$list_of_file_names .= $file_name . " " ;
-							}
-						} elsif ( ( $files_directories_both eq "directories" ) || ( $files_directories_both eq "both" ) )
-						{
-							$list_of_file_names .= $file_name . " " ;
-						}
+                        if ( $file_name =~ /\./ )
+                        {
+                            if ( ( $files_directories_both eq "files" ) || ( $files_directories_both eq "both" ) )
+                            {
+                                $list_of_file_names .= $file_name . " " ;
+                            }
+                        } elsif ( ( $files_directories_both eq "directories" ) || ( $files_directories_both eq "both" ) )
+                        {
+                            $list_of_file_names .= $file_name . " " ;
+                        }
                     }
                 }
                 $list_of_file_names =~ s / +$// ;
