@@ -3829,11 +3829,31 @@ sub dashrep_file_actions
             if ( opendir( READDIR , $directory ) )
             {
                 $input_text = "" ;
+				if ( exists( $global_dashrep_replacement{ "dashrep-list-files-folders-both" } ) )
+				{
+					$files_folders_both = $global_dashrep_replacement{ "dashrep-list-files-folders-both" } ;
+					if ( ( $files_folders_both ne "files" ) && ( $files_folders_both ne "folders" ) && ( $files_folders_both ne "both" ) )
+					{
+						$files_folders_both = "both" ;
+					}
+				} else
+				{
+					$files_folders_both = "both" ;
+				}
                 while ( defined( $file_name = readdir( READDIR ) ) )
                 {
                     if ( $file_name !~ /^\.\.*$/ )
                     {
-                        $list_of_file_names .= $file_name . " " ;
+						if ( $file_name =~ /\./ )
+						{
+							if ( ( $files_folders_both eq "files" ) || ( $files_folders_both eq "both" ) )
+							{
+								$list_of_file_names .= $file_name . " " ;
+							}
+						} elsif ( ( $files_folders_both eq "folders" ) || ( $files_folders_both eq "both" ) )
+						{
+							$list_of_file_names .= $file_name . " " ;
+						}
                     }
                 }
                 $list_of_file_names =~ s / +$// ;
