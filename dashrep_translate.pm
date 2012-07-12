@@ -241,16 +241,16 @@ BEGIN {
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn parambee paramenn combee comenn fen" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_decision ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-decision" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-numeric" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-time" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-character" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-word" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-list" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-copy_append" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-file" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_fundamental ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_fundamental ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-decision" } = $global_dashrep_text_list_of_phrases_decision ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-numeric" } = $global_dashrep_text_list_of_phrases_numeric ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-time" } = $global_dashrep_text_list_of_phrases_time ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-character" } = $global_dashrep_text_list_of_phrases_character ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-word" } = $global_dashrep_text_list_of_phrases_word ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-list" } = $global_dashrep_text_list_of_phrases_list ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-copy_append" } = $global_dashrep_text_list_of_phrases_copy_append ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-file" } = $global_dashrep_text_list_of_phrases_file ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -306,16 +306,16 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_decision ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-decision" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-numeric" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-time" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-character" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-word" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-list" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-copy_append" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-file" } = $global_dashrep_text_list_of_phrases_fundamental ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_fundamental ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_fundamental ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-decision" } = $global_dashrep_text_list_of_phrases_decision ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-numeric" } = $global_dashrep_text_list_of_phrases_numeric ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-time" } = $global_dashrep_text_list_of_phrases_time ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-character" } = $global_dashrep_text_list_of_phrases_character ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-word" } = $global_dashrep_text_list_of_phrases_word ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-list" } = $global_dashrep_text_list_of_phrases_list ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-copy_append" } = $global_dashrep_text_list_of_phrases_copy_append ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-file" } = $global_dashrep_text_list_of_phrases_file ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
