@@ -3829,16 +3829,16 @@ sub dashrep_file_actions
             if ( opendir( READDIR , $directory ) )
             {
                 $input_text = "" ;
-				if ( exists( $global_dashrep_replacement{ "dashrep-list-files-folders-both" } ) )
+				if ( exists( $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ) )
 				{
-					$files_folders_both = $global_dashrep_replacement{ "dashrep-list-files-folders-both" } ;
-					if ( ( $files_folders_both ne "files" ) && ( $files_folders_both ne "folders" ) && ( $files_folders_both ne "both" ) )
+					$files_directories_both = $global_dashrep_replacement{ "dashrep-list-files-directories-both" } ;
+					if ( ( $files_directories_both ne "files" ) && ( $files_directories_both ne "directories" ) && ( $files_directories_both ne "both" ) )
 					{
-						$files_folders_both = "both" ;
+						$files_directories_both = "both" ;
 					}
 				} else
 				{
-					$files_folders_both = "both" ;
+					$files_directories_both = "both" ;
 				}
                 while ( defined( $file_name = readdir( READDIR ) ) )
                 {
@@ -3846,11 +3846,11 @@ sub dashrep_file_actions
                     {
 						if ( $file_name =~ /\./ )
 						{
-							if ( ( $files_folders_both eq "files" ) || ( $files_folders_both eq "both" ) )
+							if ( ( $files_directories_both eq "files" ) || ( $files_directories_both eq "both" ) )
 							{
 								$list_of_file_names .= $file_name . " " ;
 							}
-						} elsif ( ( $files_folders_both eq "folders" ) || ( $files_folders_both eq "both" ) )
+						} elsif ( ( $files_directories_both eq "directories" ) || ( $files_directories_both eq "both" ) )
 						{
 							$list_of_file_names .= $file_name . " " ;
 						}
