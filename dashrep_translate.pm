@@ -226,7 +226,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
+    $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append file_related advanced" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin  span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here  ignore-end-here capture-begin-here capture-end-here captured-text empty-text" ;
@@ -236,8 +236,8 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
     $global_dashrep_text_list_of_phrases_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases" ;
-    $global_dashrep_text_list_of_phrases_copy_append = "append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-file-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-as-tagged-dashrep-code" ;
-    $global_dashrep_text_list_of_phrases_file = "copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ;
+    $global_dashrep_text_list_of_phrases_copy_append = "append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-as-tagged-dashrep-code" ;
+    $global_dashrep_text_list_of_phrases_file = "copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file copy-from-columns-in-file-to-named-phrases" ;
     $global_dashrep_text_list_of_phrases_advanced .= "clear-all-dashrep-phrases expand-phrase-to-phrase unique-value insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn parambee paramenn combee comenn fen" ;
 
@@ -305,7 +305,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
+    $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_fundamental ;
@@ -412,7 +412,10 @@ sub dashrep_import_replacements
     my $text_including_comment_end ;
     my $text_after ;
     my $do_nothing ;
-	my $number_of_replacement_names ;
+    my $number_of_replacement_names ;
+    my $phrase_prefix ;
+    my $phrase_suffix ;
+    my $yes_append_not_replace ;
     my @list_of_replacement_strings ;
 
 
@@ -468,47 +471,47 @@ sub dashrep_import_replacements
 #  Remove any spaces at the end of the
 #  "list-of-phrases-newly-defined" phrase.
 
-	if ( exists( $global_dashrep_replacement{ "list-of-phrases-newly-defined" } ) )
-	{
-		$global_dashrep_replacement{ "list-of-phrases-newly-defined" } =~ s/ +$// ;
-	} else
-	{
-		$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
-	}
-	
+    if ( exists( $global_dashrep_replacement{ "list-of-phrases-newly-defined" } ) )
+    {
+        $global_dashrep_replacement{ "list-of-phrases-newly-defined" } =~ s/ +$// ;
+    } else
+    {
+        $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
+    }
+
 
 #-----------------------------------------------
 #  If supplied, get requested prefix or suffix
 #  strings, and a flag indicating that definitions
 #  should be appended rather than overwritten.
 
-	if ( exists( $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ) )
-	{
-		$phrase_prefix = $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ;
-	} else
-	{
-		$phrase_prefix = "" ;
-	}
-	if ( exists( $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ) )
-	{
-		$phrase_suffix = $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ;
-	} else
-	{
-		$phrase_suffix = "" ;
-	}
-	if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } eq "yes" ) )
-	{
-		$yes_append_not_replace = "yes" ;
-	} else
-	{
-		$yes_append_not_replace = "" ;
-	}
-	
+    if ( exists( $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ) )
+    {
+        $phrase_prefix = $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ;
+    } else
+    {
+        $phrase_prefix = "" ;
+    }
+    if ( exists( $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ) )
+    {
+        $phrase_suffix = $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ;
+    } else
+    {
+        $phrase_suffix = "" ;
+    }
+    if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } eq "yes" ) )
+    {
+        $yes_append_not_replace = "yes" ;
+    } else
+    {
+        $yes_append_not_replace = "" ;
+    }
+
 
 #-----------------------------------------------
 #  Initialization.
 
-	$number_of_replacement_names = 0 ;
+    $number_of_replacement_names = 0 ;
 
 
 #-----------------------------------------------
@@ -624,8 +627,8 @@ sub dashrep_import_replacements
             {
                 $global_dashrep_replacement{ $definition_name } = "" ;
             }
-			$number_of_replacement_names ++ ;
-			$global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $definition_name ;
+            $number_of_replacement_names ++ ;
+            $global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $definition_name ;
 
 
 #-----------------------------------------------
@@ -674,7 +677,7 @@ sub dashrep_import_replacements
 #-----------------------------------------------
 #  End of subroutine.
 
-	return $number_of_replacement_names ;
+    return $number_of_replacement_names ;
 
 }
 
@@ -1362,7 +1365,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-digits-with-9s
 #  (useful for identifying string patterns that involve digits)
 #  and
-#  copy-from-file-to-phrase-and-replace-spoken-dashrep-words
+#  copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words
 
         if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
@@ -2628,7 +2631,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /file/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file))/ )
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases))/ )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3638,7 +3641,16 @@ sub dashrep_file_actions
     my $read_time ;
     my $write_time ;
     my $file_size ;
+    my $files_directories_both ;
+    my $number_of_column_names ;
+    my $use_two_spaces_as_delimiter ;
+    my $text_item_in_column ;
+    my $number_of_columns ;
+    my $column_pointer ;
+    my $index_name ;
+    my $phrase_naming_convention_for_this_column ;
     my @list_of_phrases ;
+    my @phrase_naming_convention_for_column ;
 
 
 #-----------------------------------------------
@@ -3968,7 +3980,6 @@ sub dashrep_file_actions
         $input_text = "" ;
 
 
-
 #-----------------------------------------------
 #  Handle the action:
 #  modification-time-of-file
@@ -4045,7 +4056,6 @@ sub dashrep_file_actions
         $input_text = "" ;
 
 
-
 #-----------------------------------------------
 #  Handle the action:
 #  delete-file
@@ -4069,7 +4079,6 @@ sub dashrep_file_actions
             }
         }
         $input_text = "" ;
-
 
 
 #-----------------------------------------------
@@ -4112,7 +4121,6 @@ sub dashrep_file_actions
             close( OUTFILE ) ;
         }
         $input_text = "" ;
-
 
 
 #-----------------------------------------------
@@ -4169,7 +4177,6 @@ sub dashrep_file_actions
             close( OUTFILE ) ;
         }
         $input_text = "" ;
-
 
 
 #-----------------------------------------------
@@ -4276,6 +4283,77 @@ sub dashrep_file_actions
             close( OUTFILE ) ;
         }
         $global_nesting_level_of_file_actions -- ;
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-from-columns-in-file-to-named-phrases
+
+    } elsif ( ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) && ( $source_filename ne "" ) && ( $target_phrase ne "" ) )
+    {
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [file named " . $source_filename . " not found, or could not be opened]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            @phrase_naming_convention_for_column = split( / +/ , $global_dashrep_replacement{ $target_phrase } ) ;
+            $number_of_column_names = scalar( @phrase_naming_convention_for_column ) + 1 ;
+            if ( ( exists( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } ) ) && ( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } eq "yes" ) )
+            {
+                $use_two_spaces_as_delimiter = "yes" ;
+            } else
+            {
+                $use_two_spaces_as_delimiter = "no" ;
+            }
+            while( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                if ( $use_two_spaces_as_delimiter eq "yes" )
+                {
+                    @text_item_in_column = split( /  +/ , $input_line ) ;
+                } else
+                {
+                    @text_item_in_column = split( /[\t ]/ , $input_line ) ;
+                }
+                $number_of_columns = scalar( @text_item_in_column ) + 1 ;
+                if ( $number_of_column_names < $number_of_columns )
+                {
+                    $number_of_columns = $number_of_column_names ;
+                }
+                if ( $number_of_columns > 1 )
+                {
+                    for ( $column_pointer = 0 ; $column_pointer <= $number_of_columns - 1 ; $column_pointer ++ )
+                    {
+                        $phrase_naming_convention_for_this_column = $phrase_naming_convention_for_column[ $column_pointer ] ;
+                        if ( $column_pointer == 0 )
+                        {
+                            $index_name = $text_item_in_column[ $column_pointer ] ;
+                            $global_dashrep_replacement{ $phrase_naming_convention_for_column } .= " " . $index_name ;
+                        } else
+                        {
+                            $global_dashrep_replacement{ $phrase_naming_convention_for_column[ $column_pointer ] . "-for-" . $index_name } = $text_item_in_column[ $column_pointer ] ;
+                        }
+                    }
+                }
+                $all_lines .= $input_line . "\n" ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; copied from columns in file " . $source_filename . " to phrase names specified in phrase " . $target_phrase . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
         $input_text = "" ;
 
 
