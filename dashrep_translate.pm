@@ -468,7 +468,41 @@ sub dashrep_import_replacements
 #  Remove any spaces at the end of the
 #  "list-of-phrases-newly-defined" phrase.
 
-	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } =~ s/ +$// ;
+	if ( exists( $global_dashrep_replacement{ "list-of-phrases-newly-defined" } ) )
+	{
+		$global_dashrep_replacement{ "list-of-phrases-newly-defined" } =~ s/ +$// ;
+	} else
+	{
+		$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
+	}
+	
+
+#-----------------------------------------------
+#  If supplied, get requested prefix or suffix
+#  strings, and a flag indicating that definitions
+#  should be appended rather than overwritten.
+
+	if ( exists( $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ) )
+	{
+		$phrase_prefix = $global_dashrep_replacement{ "dashrep-phrase-prefix-for-imported-phrases" } ;
+	} else
+	{
+		$phrase_prefix = "" ;
+	}
+	if ( exists( $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ) )
+	{
+		$phrase_suffix = $global_dashrep_replacement{ "dashrep-phrase-suffix-for-imported-phrases" } ;
+	} else
+	{
+		$phrase_suffix = "" ;
+	}
+	if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } eq "yes" ) )
+	{
+		$yes_append_not_replace = "yes" ;
+	} else
+	{
+		$yes_append_not_replace = "" ;
+	}
 	
 
 #-----------------------------------------------
@@ -570,7 +604,7 @@ sub dashrep_import_replacements
 #  Allow a colon after the hyphenated name.
 #  If this definition name has already been defined,
 #  ignore the earlier definition -- unless the phrase
-#  "dashrep-append-definition-not-replace-for-read-definitions"
+#  "dashrep-yes-append-not-replace-for-imported-phrases"
 #  is "yes".
 #  If the name does not contain a hyphen,
 #  replace any non-english characters with an
@@ -586,7 +620,7 @@ sub dashrep_import_replacements
                 $definition_name =~ s/[^a-z0-9_]+/_/sgi  ;
                 $definition_name = "invalid-phrase-name-" . $definition_name ;
             }
-            if ( ( not( exists( $global_dashrep_replacement{ "dashrep-append-definition-not-replace-for-read-definitions" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-append-definition-not-replace-for-read-definitions" } ne "yes" ) )
+            if ( $yes_append_not_replace ne "yes" )
             {
                 $global_dashrep_replacement{ $definition_name } = "" ;
             }
