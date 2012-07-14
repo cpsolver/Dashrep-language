@@ -226,6 +226,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
+	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append file_related advanced" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin  span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here  ignore-end-here capture-begin-here capture-end-here captured-text empty-text" ;
@@ -304,6 +305,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
+	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_fundamental ;
@@ -410,7 +412,7 @@ sub dashrep_import_replacements
     my $text_including_comment_end ;
     my $text_after ;
     my $do_nothing ;
-    my @list_of_replacement_names ;
+	my $number_of_replacement_names ;
     my @list_of_replacement_strings ;
 
 
@@ -463,9 +465,16 @@ sub dashrep_import_replacements
 
 
 #-----------------------------------------------
+#  Remove any spaces at the end of the
+#  "list-of-phrases-newly-defined" phrase.
+
+	$global_dashrep_replacement{ "list-of-phrases-newly-defined" } =~ s/ +$// ;
+	
+
+#-----------------------------------------------
 #  Initialization.
 
-    @list_of_replacement_names = ( ) ;
+	$number_of_replacement_names = 0 ;
 
 
 #-----------------------------------------------
@@ -581,7 +590,8 @@ sub dashrep_import_replacements
             {
                 $global_dashrep_replacement{ $definition_name } = "" ;
             }
-            push( @list_of_replacement_names , $definition_name ) ;
+			$number_of_replacement_names ++ ;
+			$global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $definition_name ;
 
 
 #-----------------------------------------------
@@ -630,7 +640,7 @@ sub dashrep_import_replacements
 #-----------------------------------------------
 #  End of subroutine.
 
-    return $#list_of_replacement_names + 1 ;
+	return $number_of_replacement_names ;
 
 }
 
