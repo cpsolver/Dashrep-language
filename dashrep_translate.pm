@@ -21,12 +21,12 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 2.45
+Version 2.50
 
 =cut
 
 #  uncomment-for-cpan-version-begin
-# our $VERSION = '2.45';
+# our $VERSION = '2.50';
 
 
 #  uncomment-for-cpan-version-end
@@ -37,6 +37,13 @@ The following sample code executes the Dashrep-language actions specified in the
 
     use dashrep_translate;
     &dashrep_translate::dashrep_linewise_translate( );
+
+The following sample code implements the Dashrep web framework, which allows an interactive portion of a website to be written in the Dashrep language.  (The "cgi_to_dashrep_replacements" module is available on GitHub in the CPSolver account.)
+
+    use dashrep_translate;
+    use cgi_to_dashrep_replacements;
+    $web_page = &dashrep_translate::dashrep_web_framework ;
+    print $web_page ;
 
 The module also supports direct access to functions that define Dashrep phrases, expand text that contains Dashrep phrases, and more.
 
@@ -113,6 +120,8 @@ The following subroutines are exported.
 
 =head2 dashrep_linewise_translate
 
+=head2 dashrep_web_framework
+
 =cut
 
 
@@ -131,6 +140,7 @@ The following subroutines are exported.
 #     dashrep_expand_special_phrases
 #     dashrep_xml_tags_to_dashrep
 #     dashrep_linewise_translate
+#     dashrep_web_framework
 # );
 
 
@@ -162,10 +172,24 @@ my $global_xml_accumulated_sequence_of_tag_names ;
 my $global_spaces ;
 my $global_ignore_level ;
 my $global_capture_level ;
+my $global_xml_level ;
 my $global_phrase_to_insert_after_next_top_level_line ;
 my $global_top_line_count_for_insert_phrase ;
 my $global_trace_log ;
 my $global_dashrep_text_list_of_actions_and_special_phrases ;
+my $global_dashrep_text_list_of_phrase_categories ;
+my $global_dashrep_text_list_of_phrases_fundamental ;
+my $global_dashrep_text_list_of_phrases_decision ;
+my $global_dashrep_text_list_of_phrases_numeric ;
+my $global_dashrep_text_list_of_phrases_time ;
+my $global_dashrep_text_list_of_phrases_character ;
+my $global_dashrep_text_list_of_phrases_word ;
+my $global_dashrep_text_list_of_phrases_generate_list ;
+my $global_dashrep_text_list_of_phrases_copy_append ;
+my $global_dashrep_text_list_of_phrases_file_related ;
+my $global_dashrep_text_list_of_phrases_advanced ;
+my $global_dashrep_text_list_of_spoken_words ;
+my $global_dashrep_text_list_of_phrases_uncategorized ;
 my %global_dashrep_replacement ;
 my %global_replacement_count_for_item_name ;
 my %global_exists_xml_hyphenated_phrase ;
@@ -228,7 +252,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
-	$global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append file_related advanced uncategorized" ;
+    $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append file_related advanced uncategorized" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin  span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here  ignore-end-here capture-begin-here capture-end-here captured-text empty-text" ;
     $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty empty-or-nonempty-phrase same-or-not-same yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple auto-increment sort-numbers yes-or-no-greater-than yes-or-no-less-than calc-minus calc-divide-by calc-add calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare" ;
@@ -240,7 +264,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_file_related = "copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file copy-from-columns-in-file-to-named-phrases" ;
     $global_dashrep_text_list_of_phrases_advanced .= "clear-all-dashrep-phrases expand-phrase-to-phrase unique-value insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn parambee paramenn combee comenn fen" ;
-	
+
     $global_dashrep_text_list_of_phrases_uncategorized = "begin-and-end clear-phrase copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words count-of-list create-list-named createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-temp createlist-total-number-of-items dashrep-action-trace-on-or-off dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-capture-level dashrep-capture-trace-on-or-off dashrep-comments-ignored dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-endless-loop-counter-limit dashrep-first-xml-tag-name dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark dashrep-ignore-level dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off dashrep-list-files-directories-both dashrep-list-of-dashrep-spoken-words dashrep-list-of-xml-phrases dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-stop-translation dashrep-use-two-spaces-as-column-delimiter dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-indicate-line-endings dashrep-yes-or-no-export-delimited-definitions divide-by export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end file-related first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list length-of-phrase-definition less-than list-of-phrases-newly-defined non-matching non-special not-same open-and-close parameters-only phrase-names phrases-only remove-last-item-from-phrase-list special-phrases-only sub-parameters time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year top-level yes-or-no-first-number-equals-second-number yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number zero-one-multiple-count-of-list " ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -5381,6 +5405,112 @@ sub dashrep_linewise_translate
     return $error_message ;
 
 }
+
+
+
+=head2 dashrep_web_framework
+
+Reads Dashrep code from a local bootstrap file
+(named "dashdef_bootstrap.txt"), does the
+specified Dashrep actions and expansions,
+and returns the resulting web page.  If the
+resulting page does not look like a web page,
+an error web page is returned, and the error page
+includes an error number that indicates which
+error file (in a subdirectory named "errors")
+contains the error details.
+
+=cut
+
+#-----------------------------------------------
+#-----------------------------------------------
+#         dashrep_web_framework
+#-----------------------------------------------
+#-----------------------------------------------
+
+sub dashrep_web_framework
+{
+
+    my $generated_web_page ;
+    my $return_text_get_starting_definitions ;
+    my $partially_generated_results ;
+    my $error_file_name ;
+    my $error_epoch_seconds_last_digits ;
+    my $emergency_page ;
+    my $phrase_name ;
+    my $definition ;
+    my $error_message ;
+
+
+#-----------------------------------------------
+#  If specified, get a path for a possible
+#  error file.  Otherwise use a default of a
+#  sub-directory named "errors".
+
+    $error_file_prefix = "errors\\" ;
+    if ( scalar( @_ ) == 1 )
+    {
+        if ( $_[ 0 ] =~ /^[^ ]+[\\\/]$/ )
+        {
+            $error_file_prefix = $_[ 0 ] ;
+        }
+    }
+
+
+#-----------------------------------------------
+#  Load Dashrep definitions from the local
+#  (same-directory) "dashdef_bootstrap.txt" file,
+#  and do the expansion that is specified in
+#  that code, and return with the generated web
+#  page.  The Dashrep code within the bootstrap
+#  file should load additional Dashrep
+#  definitions from additional files.
+
+    $return_text_get_starting_definitions = &dashrep_expand_parameters( "[-get-definitions-from-file dashdef_bootstrap.txt-]" );
+    $partially_generated_results = &dashrep_expand_parameters( "[-bootstrap-start-]" );
+    $generated_web_page = &dashrep_expand_phrases( $partially_generated_results );
+    if ( ( $generated_web_page =~ /<html>.*<body>.*<\/body>.*<\/html>/si ) && ( $return_text_get_starting_definitions !~ /error/ ) )
+    {
+        return $generated_web_page ;
+
+
+#-----------------------------------------------
+#  If the result does not look like a valid
+#  web page, generate an error web page and
+#  write debugging information to a text file
+#  in the specified "errors" directory.
+
+    } else
+    {
+        $time_in_epoch_seconds = time ;
+        $last_digits_of_epoch_seconds = substr( sprintf( "%d" , $time_in_epoch_seconds ) , -3 ) ;
+        $error_file_name = $error_file_prefix . "error_" . $last_digits_of_epoch_seconds . ".txt" ;
+        $emergency_page ="Content-type: text\/html\n\n<html>\n<head>\n<title>Major error<\/title>\n<\/head>\n<body>\n<h1>Major error<\/h1>\n<p>A major error has been encountered.&nbsp; Please use the BACK button on your browser and try again.&nbsp; If this error happens again, please contact technical support and give them this error number: " . $last_digits_of_epoch_seconds . "<\/p>\n<\/body>\n<\/html>\n";
+        open ( ERRFILE , ">" . $error_file_name ) ;
+        print ERRFILE "generated web page:\n" ;
+        print ERRFILE "----------  begin  ----------\n" ;
+        print ERRFILE $generated_web_page ;
+        print ERRFILE "\n" ;
+        print ERRFILE "----------  end    ----------\n" ;
+        print ERRFILE "\n\n" ;
+        print ERRFILE "--------------------\n" ;
+        print ERRFILE "Definition of dashrep-debug-trace-log phrase is shown below. To get more information, turn on trace settings.\n" ;
+        print ERRFILE "--------------------\n" ;
+        print ERRFILE "\n\n" ;
+        $phrase_name = "dashrep-debug-trace-log" ;
+        $definition = &dashrep_get_replacement( $phrase_name ) ;
+        print ERRFILE $definition ;
+        print ERRFILE "\n" ;
+        close ERRFILE ;
+        return $emergency_page;
+    }
+
+
+#-----------------------------------------------
+#  End of subroutine.
+
+}
+
 
 
 =head2 dashrep_internal_endless_loop_info
