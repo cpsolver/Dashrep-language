@@ -1475,21 +1475,20 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase } = "" ;
             }
             $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-            $temp_text =~ s/\t+/ /sg ;
-            $temp_text =~ s/ +/_dashrep_code_whitespace_here_/sg ;
-            $temp_text =~ s/_dashrep_code_whitespace_here_/ dashrep_code_whitespace_here /sg ;
-            $temp_text = join( " dashrep_code_newline " , split( /[\n\r]/s , $temp_text ) ) ;
-            $temp_text =~ s/\[-/ dashrep_code_parameter_begin /sg ;
-            $temp_text =~ s/-\]/ dashrep_code_parameter_end /sg ;
-            $temp_text =~ s/-/ dashrep_code_hyphen_here /sg ;
-            $temp_text =~ s/dashrep_code_parameter_begin/dashrep-code-parameter-begin/sg ;
-            $temp_text =~ s/dashrep_code_parameter_end/dashrep-code-parameter-end/sg ;
-            $temp_text =~ s/dashrep_code_hyphen_here/dashrep-code-hyphen-here/sg ;
-            $temp_text =~ s/dashrep_code_whitespace_here/dashrep-code-whitespace-here/sg ;
-            $temp_text =~ s/dashrep_code_newline/dashrep-code-newline/sg ;
-            $temp_text =~ s/  +/ /sg ;
             $temp_text =~ s/^ +//sg ;
-            $temp_text =~ s/ +$/ /sg ;
+            $temp_text =~ s/ +$//sg ;
+            $temp_text =~ s/\t+/ /sg ;
+            $temp_text =~ s/  +/ /sg ;
+            $temp_text =~ s/[\n\r]/ newline /sg ;
+            $temp_text =~ s/-\[-/ fen \[- /sg ;
+            $temp_text =~ s/-\]-/ -\] fen /sg ;
+            $temp_text =~ s/\[-/ fen parambee /sg ;
+            $temp_text =~ s/-\]/ paramenn /sg ;
+            $temp_text =~ s/ ([^ ]+(-[^ ]+)+) / dashbee $1 dashenn /sg ;
+            $temp_text =~ s/-/ fen /sg ;
+            $temp_text =~ s/^ +//sg ;
+            $temp_text =~ s/ +$//sg ;
+            $temp_text =~ s/  +/ /sg ;
             $global_dashrep_replacement{ $target_phrase } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
