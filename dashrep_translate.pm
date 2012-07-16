@@ -1464,9 +1464,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-as-tagged-dashrep-code
+#  copy-from-phrase-to-phrase-into-spoken-dashrep-code
+#  copy-from-phrase-to-phrase-from-spoken-dashrep-code
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-as-tagged-dashrep-code" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" ) || ( $action_name eq "copy-from-phrase-to-phrase-from-spoken-dashrep-code" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
@@ -1475,24 +1476,61 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase } = "" ;
             }
             $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-            $temp_text =~ s/^ +//sg ;
-            $temp_text =~ s/ +$//sg ;
-            $temp_text =~ s/\t+/ /sg ;
-            $temp_text =~ s/  +/ /sg ;
-            $temp_text =~ s/[\n\r]/ newline /sg ;
-            $temp_text =~ s/-\[-/ fen \[- /sg ;
-            $temp_text =~ s/-\]-/ -\] fen /sg ;
-            $temp_text =~ s/\[-/ fen parambee /sg ;
-            $temp_text =~ s/-\]/ paramenn /sg ;
-            $temp_text =~ s/ ([^ ]+(-[^ ]+)+) / dashbee $1 dashenn /sg ;
-            $temp_text =~ s/-/ fen /sg ;
-            $temp_text =~ s/^ +//sg ;
-            $temp_text =~ s/ +$//sg ;
-            $temp_text =~ s/  +/ /sg ;
+            if ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" )
+            {
+                $temp_text =~ s/^ +//sg ;
+                $temp_text =~ s/ +$//sg ;
+                $temp_text =~ s/\t+/ /sg ;
+                $temp_text =~ s/  +/ /sg ;
+                $temp_text =~ s/[\n\r]/ newline /sg ;
+                $temp_text =~ s/-\[-/ fen \[- /sg ;
+                $temp_text =~ s/-\]-/ -\] fen /sg ;
+                $temp_text =~ s/\[-/ parambee /sg ;
+                $temp_text =~ s/-\]/ paramenn /sg ;
+                $temp_text =~ s/ ([^ ]+(-[^ ]+)+) / dashbee $1 dashenn /sg ;
+                $temp_text =~ s/-/ fen /sg ;
+                $temp_text =~ s/^ +//sg ;
+                $temp_text =~ s/ +$//sg ;
+                $temp_text =~ s/  +/ /sg ;
+            } else
+            {
+                $temp_text =~ s/^ +//sg ;
+                $temp_text =~ s/ +$//sg ;
+                $temp_text =~ s/\t+/ /sg ;
+                $temp_text =~ s/  +/ /sg ;
+                while ( $temp_text =~ /^(.* )dashbee (.+?) dashenn( .*)$/s )
+                {
+                    $prefix = $1 ;
+                    $phrase_words = $2 ;
+                    $suffix = $3 ;
+                    $phrase_words =~ s/ +/-/sg ;
+                    $temp_text = $prefix . $phrase_words . $suffix ;
+                }
+                while ( $temp_text =~ / ((parambee)|(paramenn)|(fen)|(combee)|(comenn)|(newline)) /s )
+                {
+                    $temp_text =~ s/ parambee / \[-/sg ;
+                    $temp_text =~ s/ paramenn /-\] /sg ;
+                    $temp_text =~ s/ fen / - /sg ;
+                    $temp_text =~ s/([^a-z0-9])fen-/$1-/sg ;
+                    $temp_text =~ s/-fen([^a-z0-9])/-$1/sg ;
+                    $temp_text =~ s/ combee / *---- /sg ;
+                    $temp_text =~ s/ comenn / ----* /sg ;
+                    $temp_text =~ s/ newline / \n /sg ;
+                }
+                $temp_text =~ s/\[- /\[-/sg ;
+                $temp_text =~ s/ -\]/-\]/sg ;
+                $temp_text =~ s/ -/-/sg ;
+                $temp_text =~ s/- /-/sg ;
+                $temp_text =~ s/ \n/\n/sg ;
+                $temp_text =~ s/\n /\n/sg ;
+                $temp_text =~ s/^ +//sg ;
+                $temp_text =~ s/ +$//sg ;
+                $temp_text =~ s/  +/ /sg ;
+            }
             $global_dashrep_replacement{ $target_phrase } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . " with translation}}\n" ;
             }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
