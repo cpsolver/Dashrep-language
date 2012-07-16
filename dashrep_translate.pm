@@ -3600,23 +3600,16 @@ sub dashrep_expand_phrases
 
 =head2 dashrep_file_actions
 
-Handles file-related actions.
-
-First, and only, parameter is the
-text string that contains any text, which
-may include a file-related action.
-
-Return value is the text string after removing
-the executed action, or the original text
-string if there was no action phrase.
-Return value is an empty string if there
-is not exactly one parameter.
+Internal subroutine, not exported.
+It is only needed within the Dashrep module.
 
 =cut
 
 
 #-----------------------------------------------
 #-----------------------------------------------
+#         Non-exported subroutine:
+#
 #         dashrep_file_actions
 #-----------------------------------------------
 #-----------------------------------------------
@@ -3968,6 +3961,7 @@ sub dashrep_file_actions
                 {
                     $global_trace_log .= "{{trace; listed files in directory " . $directory . "}}\n" ;
                 }
+                closedir( READDIR ) ;
             } else
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3976,7 +3970,6 @@ sub dashrep_file_actions
                 }
             }
         }
-        closedir( READDIR ) ;
 
 
 #-----------------------------------------------
