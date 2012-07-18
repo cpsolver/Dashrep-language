@@ -1534,7 +1534,7 @@ sub dashrep_expand_parameters
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_to_expand = $global_dashrep_replacement{ $operand_one } ;
-                $partial_translation = &dashrep_expand_parameters( $text_to_expand );
+                $partial_translation = &dashrep_expand_parameters( $text_to_expand ) ;
                 if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
                 {
                     $global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
@@ -2707,7 +2707,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /file/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases))/ )
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases)|(linewise-read-from-file-and-use-template))/ )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3753,6 +3753,7 @@ sub dashrep_file_actions
     $object_of_action = "" ;
     $operand_one = "" ;
     $operand_two = "" ;
+    $operand_three = "" ;
     if ( $input_text =~ /^([^ ]+)(.*)$/ )
     {
         $action_name = $1 ;
@@ -3769,8 +3770,12 @@ sub dashrep_file_actions
         {
             $operand_one = $1 ;
             $operand_two = $2 ;
-        }
-        if ( $object_of_action !~ / / )
+        } elsif ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
+        {
+            $operand_one = $1 ;
+            $operand_two = $2 ;
+            $operand_three = $3 ;
+        } elsif ( $object_of_action !~ / / )
         {
             $operand_one = $object_of_action ;
             $operand_two = "" ;
@@ -4245,6 +4250,58 @@ sub dashrep_file_actions
             }
             close( OUTFILE ) ;
         }
+        $input_text = "" ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  linewise-read-from-file-and-use-template
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( ( $action_name eq "linewise-read-from-file-and-use-template" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+    {
+		$source_filename = $operand_one ;
+		$template_phrase_name = $operand_two ;
+        if ( open ( INFILE , "<" . $source_filename ) )
+        {
+            $possible_error_message = "" ;
+        } else
+        {
+            if ( -e $source_filename )
+            {
+                $possible_error_message .= " [file named " . $source_filename . " found, but could not be opened]" ;
+            } else
+            {
+                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
+            }
+        }
+        if ( $possible_error_message eq "" )
+        {
+            while( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                $input_line =~ s/[\n\r\f\t]+/ /g ;
+				$global_dashrep_replacement{ "file-input-line" } = $input_line ;
+                if ( ( defined( $phrase_name ) ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $global_dashrep_replacement{ $phrase_name } =~ /[^ ]/ ) )
+                {
+                    $result_text = &dashrep_expand_parameters( $global_dashrep_replacement{ $phrase_name } ) ;
+                }
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; linewise read from file " . $source_filename . " using template " . $template_phrase_name . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
         $input_text = "" ;
 
 
