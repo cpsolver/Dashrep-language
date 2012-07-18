@@ -260,7 +260,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
     $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases" ;
-    $global_dashrep_text_list_of_phrases_copy_append = "append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-as-tagged-dashrep-code" ;
+    $global_dashrep_text_list_of_phrases_copy_append = "append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-as-tagged-dashrep-code copy-from-phrase-to-phrase-lowercase-only" ;
     $global_dashrep_text_list_of_phrases_file_related = "copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file copy-from-columns-in-file-to-named-phrases" ;
     $global_dashrep_text_list_of_phrases_advanced .= "clear-all-dashrep-phrases expand-phrase-to-phrase unique-value insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn parambee paramenn combee comenn fen" ;
@@ -1393,9 +1393,9 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-digits-with-9s
 #  (useful for identifying string patterns that involve digits)
 #  and
-#  copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words
+#  copy-from-phrase-to-phrase-lowercase-only
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spoken-dashrep-words" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
@@ -1435,22 +1435,9 @@ sub dashrep_expand_parameters
             } elsif ( $action_name_type =~ /digits-with-9s/ )
             {
                 $temp_text =~ s/[0-8]/9/sg ;
-            } elsif ( $action_name_type =~ /spoken-dashrep-words/ )
+            } elsif ( $action_name_type =~ /lowercase-only/ )
             {
-                # not yet tested
-                $temp_text =~ s/((^)|( +))fen(( +)|($))/-/sg ;
-                $temp_text =~ s/((^)|( +))parambee(( +)|($))/\[-/sg ;
-                $temp_text =~ s/((^)|( +))paramenn(( +)|($))/-\]/sg ;
-                $temp_text =~ s/((^)|( +))commbee(( +)|($))/\*--- /sg ;
-                $temp_text =~ s/((^)|( +))commenn(( +)|($))/ ---\*/sg ;
-                while ( $temp_text =~ /((^)|( +))dashbee +(.+?) +dashenn(( +)|($))/ )
-                {
-                    $prefix = $1 ;
-                    $hyphenated_words = $4 ;
-                    $suffix = $5 ;
-                    $hyphenated_words =~ s/ +/-/sg ;
-                    $temp_text = $prefix . $hyphenated_words . $suffix ;
-                }
+                $temp_text = lc( $temp_text ) ;
             }
             $global_dashrep_replacement{ $target_phrase } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
