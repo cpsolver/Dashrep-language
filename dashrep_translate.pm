@@ -259,7 +259,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
-    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases" ;
+    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase" ;
     $global_dashrep_text_list_of_phrases_copy_append = "append-from-phrase-to-phrase copy-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-as-tagged-dashrep-code copy-from-phrase-to-phrase-lowercase-only" ;
     $global_dashrep_text_list_of_phrases_file_related = "copy-from-file-to-phrase-and-replace-spoken-dashrep-words copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file copy-from-columns-in-file-to-named-phrases" ;
     $global_dashrep_text_list_of_phrases_advanced .= "clear-all-dashrep-phrases expand-phrase-to-phrase unique-value insert-phrase-with-brackets-after-next-top-line calculate-if-phrase-empty escape-if-yes escape-if-no" ;
@@ -2438,6 +2438,30 @@ sub dashrep_expand_parameters
         }
 
 
+#-----------------------------------------------
+#  Handle the action:
+#  write-all-phrase-names-to-phrase
+
+        if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $operand_one ne "" ) )
+        {
+			@list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+			@sequence_of_phrases = sort( @list_of_phrases ) ;
+			foreach $phrase_name ( @sequence_of_phrases )
+			{
+				if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+				{
+					$global_dashrep_replacement{ $operand_one } .= $phrase_name ;
+				}
+			}
+			if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+			{
+				$global_trace_log .= "{{trace; wrote list of all dashrep phrase names to phrase " . $phrase_name . "}}\n";
+			}
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+		
+		
 #-----------------------------------------------
 #  Handle the action:
 #  within-phrase-replace-character-with-text-in-phrase
