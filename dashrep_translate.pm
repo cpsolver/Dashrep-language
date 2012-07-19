@@ -1767,9 +1767,9 @@ sub dashrep_expand_parameters
                     @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
                 } else
                 {
-                    if ( ( $second_object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $second_object_of_action } ) ) )
+                    if ( ( $first_object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $first_object_of_action } ) ) )
                     {
-                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $second_object_of_action } ) ;
+                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
                     } else
                     {
                         @list = ( ) ;
@@ -1929,7 +1929,7 @@ sub dashrep_expand_parameters
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             $word_to_find = $operand_one ;
             $phrase_name = $operand_two ;
-            if ( ( $phrase_name ne "" ) && ( $word_to_find ne "" ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+            if ( ( $word_to_find ne "" ) && ( $phrase_name ne "" ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
             {
                 @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name } ) ;
                 $list_length = $#list + 1 ;
