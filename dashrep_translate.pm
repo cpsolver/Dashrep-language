@@ -1726,7 +1726,19 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "last-word-in-phrase" ) || ( $action_name eq "last-item-in-list" ) )
         {
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            if ( $action_name eq "last-item-in-list" )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            } else
+            {
+                if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
+                } else
+                {
+                    @list = ( ) ;
+                }
+            }
             $count = $#list + 1 ;
             $text_for_value = " " ;
             if ( $count > 0 )
@@ -1754,7 +1766,19 @@ sub dashrep_expand_parameters
             {
                 $first_object_of_action = $operand_one ;
                 $second_object_of_action = $operand_two + 0 ;
-                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                if ( $action_name eq "from-list-get-item-number" )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                } else
+                {
+                    if ( ( $second_object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $second_object_of_action } ) ) )
+                    {
+                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $second_object_of_action } ) ;
+                    } else
+                    {
+                        @list = ( ) ;
+                    }
+                }
                 $count = $#list + 1 ;
                 if ( $count < 1 )
                 {
@@ -1776,23 +1800,37 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the action:
+#  Handle the actions:
 
 #  remove-last-item-from-phrase-list  <<-- depricated
 
+#  remove-first-word-from-phrase
 #  remove-last-word-from-phrase
 
-        if ( ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
+        if ( ( $action_name eq "remove-first-word-from-phrase" ) || ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
         {
             if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
             {
-                if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
+                if ( $action_name eq "remove-first-word-from-phrase" )
                 {
-                    $global_dashrep_replacement{ $object_of_action } = $1 ;
-                    $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
+                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *[^ ]+?[ ,\t\n\r]+(.*[^ ].*)$/s )
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = $1 ;
+                        $global_dashrep_replacement{ $object_of_action } =~ s/^[, ]+// ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = "" ;
+                    }
                 } else
                 {
-                    $global_dashrep_replacement{ $object_of_action } = "" ;
+                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = $1 ;
+                        $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = "" ;
+                    }
                 }
             }
             $text_for_value = "" ;
@@ -1812,7 +1850,19 @@ sub dashrep_expand_parameters
         {
             if ( $object_of_action =~ /[^ ]/ )
             {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                if ( $action_name eq "count-of-list" )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                } else
+                {
+                    if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+                    {
+                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
+                    } else
+                    {
+                        @list = ( ) ;
+                    }
+                }
                 $count = $#list + 1 ;
                 if ( $count > 0 )
                 {
@@ -1841,7 +1891,19 @@ sub dashrep_expand_parameters
         {
             if ( $object_of_action =~ /[^ ]/ )
             {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                if ( $action_name eq "zero-one-multiple-count-of-list" )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                } else
+                {
+                    if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+                    {
+                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
+                    } else
+                    {
+                        @list = ( ) ;
+                    }
+                }
                 $count = $#list + 1 ;
                 if ( $count == 0 )
                 {
@@ -1869,8 +1931,8 @@ sub dashrep_expand_parameters
         if ( $action_name eq "position-of-word-in-phrase" )
         {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            $phrase_name = $operand_one ;
-            $word_to_find = $operand_two ;
+            $word_to_find = $operand_one ;
+            $phrase_name = $operand_two ;
             if ( ( $phrase_name ne "" ) && ( $word_to_find ne "" ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
             {
                 @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name } ) ;

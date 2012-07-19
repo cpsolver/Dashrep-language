@@ -257,7 +257,7 @@ test-of-special-operators:
 [-string-to-test-character-actions = abc123 abc123 abc123-]
 [-character-result = [-character-in-phrase-get-at-position: string-to-test-character-actions 1-][-character-in-phrase-get-at-position: string-to-test-character-actions 2-][-character-in-phrase-get-at-position: string-to-test-character-actions 4-][-character-in-phrase-get-at-position: string-to-test-character-actions 5-][-character-in-phrase-get-at-position: string-to-test-character-actions 20-][-character-in-phrase-get-at-position: string-to-test-character-actions 21-]-]
 [-sample-word-list = alpha beta gamma delta-]
-[-word-list-result = [-position-of-word-in-phrase: sample-word-list alpha-]-[-position-of-word-in-phrase: sample-word-list gamma-]-[-position-of-word-in-phrase: sample-word-list other-]-]
+[-word-list-result = [-position-of-word-in-phrase: alpha sample-word-list-]-[-position-of-word-in-phrase: gamma sample-word-list-]-[-position-of-word-in-phrase: other sample-word-list-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
 [-copy-from-phrase-to-phrase sample-word-list-one list-with-dups-]
