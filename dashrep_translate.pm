@@ -1399,28 +1399,24 @@ sub dashrep_expand_parameters
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
-            if ( $action_name =~ /^(^copy-from-phrase-to-phrase(-and-replace-([a-z\-]+))?)$/ )
-            {
-                $action_name_type = $1 ;
-            }
             $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-            if ( $action_name_type =~ /hyphens/ )
+			if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
             {
                 $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
                 $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
                 $temp_text =~ s/-/${hyphen_replacement}/sg ;
-            } elsif ( $action_name_type =~ /adjacent-spaces/ )
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" )
             {
                 $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
                 $space_replacement =~ s/ /[space]/sg ;
                 $temp_text =~ s/  / ${space_replacement}/sg ;
-            } elsif ( $action_name_type =~ /newlines/ )
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" )
             {
                 $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
                 $newline_replacement =~ s/[ \-]+//sg ;
                 $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
                 $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
-            } elsif ( $action_name_type =~ /html-reserved-characters/ )
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" )
             {
                 $open_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } ;
                 $close_angle_bracket_replacement = $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } ;
@@ -1432,10 +1428,10 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/\"/${quotation_replacement}/sg ;
                 $temp_text =~ s/\'/${apostrophe_replacement}/sg ;
                 $temp_text =~ s/\&/${ampersand_replacement}/sg ;
-            } elsif ( $action_name_type =~ /digits-with-9s/ )
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" )
             {
                 $temp_text =~ s/[0-8]/9/sg ;
-            } elsif ( $action_name_type =~ /lowercase-only/ )
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" )
             {
                 $temp_text = lc( $temp_text ) ;
             }
