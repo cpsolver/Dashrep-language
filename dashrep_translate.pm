@@ -1693,7 +1693,19 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "first-word-in-phrase" ) || ( $action_name eq "first-item-in-list" ) )
         {
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            if ( $action_name eq "first-item-in-list" )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            } else
+            {
+                if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
+                } else
+                {
+                    @list = ( ) ;
+                }
+            }
             $count = $#list + 1 ;
             $text_for_value = " " ;
             if ( $count > 0 )
