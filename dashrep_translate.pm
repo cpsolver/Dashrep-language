@@ -4285,6 +4285,8 @@ sub dashrep_file_actions
                 chomp( $input_line ) ;
                 $input_line =~ s/[\n\r\f\t]+/ /g ;
 				$global_dashrep_replacement{ "file-input-line" } = $input_line ;
+				#  This action might be deprecated ...
+				#  Following code not yet tested ...
                 if ( ( defined( $phrase_name ) ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $global_dashrep_replacement{ $phrase_name } =~ /[^ ]/ ) )
                 {
                     $result_text = &dashrep_expand_parameters( $global_dashrep_replacement{ $phrase_name } ) ;
