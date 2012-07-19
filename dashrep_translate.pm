@@ -2444,24 +2444,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $operand_one ne "" ) )
         {
-			@list_of_phrases = &dashrep_get_list_of_phrases( ) ;
-			@sequence_of_phrases = sort( @list_of_phrases ) ;
-			foreach $phrase_name ( @sequence_of_phrases )
-			{
-				if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
-				{
-					$global_dashrep_replacement{ $operand_one } .= $phrase_name ;
-				}
-			}
-			if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
-			{
-				$global_trace_log .= "{{trace; wrote list of all dashrep phrase names to phrase " . $phrase_name . "}}\n";
-			}
+            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+            @sequence_of_phrases = sort( @list_of_phrases ) ;
+            foreach $phrase_name ( @sequence_of_phrases )
+            {
+                if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                {
+                    $global_dashrep_replacement{ $operand_one } .= $phrase_name ;
+                }
+            }
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; wrote list of all dashrep phrase names to phrase " . $phrase_name . "}}\n";
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
-		
-		
+
+
 #-----------------------------------------------
 #  Handle the action:
 #  within-phrase-replace-character-with-text-in-phrase
@@ -3815,10 +3815,11 @@ sub dashrep_file_actions
 
 
 #-----------------------------------------------
-#  Handle the action:
+#  Handle the actions:
 #  copy-from-file-to-phrase
+#  copy-from-file-to-phrases-line-numbered
 
-    if ( ( $action_name eq "copy-from-file-to-phrase" ) && ( $source_filename ne "" ) && ( $target_phrase ne "" ) )
+    if ( ( ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) ) && ( $source_filename ne "" ) && ( $target_phrase ne "" ) )
     {
         if ( open ( INFILE , "<" . $source_filename ) )
         {
@@ -3830,6 +3831,8 @@ sub dashrep_file_actions
         if ( $possible_error_message eq "" )
         {
             $all_lines = "" ;
+            $line_ending = "" ;
+            $line_number = 0 ;
             if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
             {
                 $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
@@ -3837,15 +3840,21 @@ sub dashrep_file_actions
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
+                $input_line =~ s/[\t\f\n\r]+/ /g ;
+                if ( $action_name eq "copy-from-file-to-phrase" )
                 {
-                    $input_line =~ s/[\n\r\f]/ end-of-line-here /g ;
-                } else
+                    if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
+                    {
+                        $line_ending = " end-of-line-here" ;
+                    }
+                    $all_lines .= $input_line . $line_ending . "\n" ;
+                } elsif ( $action_name eq "copy-from-file-to-phrases-line-numbered" )
                 {
-                    $input_line =~ s/[\n\r\f]+/ /g ;
+                    $line_number ++ ;
+                    $line_number_in_text = sprintf( "%d" , $line_number ) ;
+                    $global_dashrep_replacement{ $target_phrase . "-" . $line_number_in_text } = $input_line ;
+                    $global_dashrep_replacement{ "list-of-line-numbers-for-list-named-" . $target_phrase } .= " " . $line_number_in_text ;
                 }
-                $input_line =~ s/[\t]+/ /g ;
-                $all_lines .= $input_line . "\n" ;
             }
             $global_dashrep_replacement{ $target_phrase } = $all_lines ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -4250,60 +4259,6 @@ sub dashrep_file_actions
             }
             close( OUTFILE ) ;
         }
-        $input_text = "" ;
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  linewise-read-from-file-and-use-template
-#
-#  The filename is edited to remove any path
-#  specifications, and then the prefix in the
-#  appropriate dashrep phrase is used.
-
-    } elsif ( ( $action_name eq "linewise-read-from-file-and-use-template" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
-    {
-		$source_filename = $operand_one ;
-		$template_phrase_name = $operand_two ;
-        if ( open ( INFILE , "<" . $source_filename ) )
-        {
-            $possible_error_message = "" ;
-        } else
-        {
-            if ( -e $source_filename )
-            {
-                $possible_error_message .= " [file named " . $source_filename . " found, but could not be opened]" ;
-            } else
-            {
-                $possible_error_message .= " [file named " . $source_filename . " not found]" ;
-            }
-        }
-        if ( $possible_error_message eq "" )
-        {
-            while( $input_line = <INFILE> )
-            {
-                chomp( $input_line ) ;
-                $input_line =~ s/[\n\r\f\t]+/ /g ;
-				$global_dashrep_replacement{ "file-input-line" } = $input_line ;
-				#  This action might be deprecated ...
-				#  Following code not yet tested ...
-                if ( ( defined( $phrase_name ) ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $global_dashrep_replacement{ $phrase_name } =~ /[^ ]/ ) )
-                {
-                    $result_text = &dashrep_expand_parameters( $global_dashrep_replacement{ $phrase_name } ) ;
-                }
-            }
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                $global_trace_log .= "{{trace; linewise read from file " . $source_filename . " using template " . $template_phrase_name . "}}\n" ;
-            }
-        } else
-        {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                $global_trace_log .= "{{trace; error: " . $possible_error_message . "}}\n" ;
-            }
-        }
-        close( INFILE ) ;
         $input_text = "" ;
 
 
