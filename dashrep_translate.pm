@@ -250,6 +250,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
+	$global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug" ;
@@ -336,6 +337,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
+	$global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
