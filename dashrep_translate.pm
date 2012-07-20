@@ -1013,7 +1013,6 @@ sub dashrep_expand_parameters
     my $first_object_of_action ;
     my $second_object_of_action ;
     my $temp_text ;
-    my $action_name_type ;
     my $newline_replacement ;
     my $space_replacement ;
     my $hyphen_replacement ;
@@ -1066,7 +1065,6 @@ sub dashrep_expand_parameters
     my $character_to_replace ;
     my $character_position ;
     my $prefix ;
-    my $hyphenated_words ;
     my $suffix ;
     my $text_to_expand ;
     my $partial_translation ;
@@ -1098,6 +1096,9 @@ sub dashrep_expand_parameters
     my $parameter ;
     my $item_number ;
     my $item_name ;
+    my $phrase_words ;
+    my $list_of_phrases ;
+    my $sequence_of_phrases ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -3798,6 +3799,10 @@ sub dashrep_file_actions
     my $column_pointer ;
     my $index_name ;
     my $phrase_naming_convention_for_this_column ;
+    my $operand_three ;
+    my $line_ending ;
+    my $line_number ;
+    my $line_number_in_text ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
 
@@ -5570,11 +5575,12 @@ sub dashrep_web_framework
     my $return_text_get_starting_definitions ;
     my $partially_generated_results ;
     my $error_file_name ;
-    my $error_epoch_seconds_last_digits ;
     my $emergency_page ;
     my $phrase_name ;
     my $definition ;
-    my $error_message ;
+    my $error_file_prefix ;
+    my $time_in_epoch_seconds ;
+    my $last_digits_of_epoch_seconds ;
 
 
 #-----------------------------------------------
