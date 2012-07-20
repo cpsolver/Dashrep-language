@@ -259,7 +259,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-first-word-from-phrase remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
-    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase create-list-named createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-temp createlist-total-number-of-items count-of-list zero-one-multiple-count-of-list" ;
+    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase create-list-named createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items count-of-list zero-one-multiple-count-of-list" ;
     $global_dashrep_text_list_of_phrases_copy_append = "copy-from-phrase-to-phrase append-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code" ;
     $global_dashrep_text_list_of_phrases_definitions = "clear-all-dashrep-phrases dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases dashrep-yes-append-not-replace-for-imported-phrases export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end list-of-phrases-newly-defined dashrep-yes-or-no-export-delimited-definitions" ;
     $global_dashrep_text_list_of_phrases_file_related = "dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-list-files-directories-both dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no" ;
@@ -1377,14 +1377,19 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "append-from-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
-            $source_phrase = $operand_one ;
-            $target_phrase = $operand_two ;
-            $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                $global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-            }
-            $replacement_text = $text_begin . " " . $text_end ;
+			$source_phrase = $operand_one ;
+			$target_phrase = $operand_two ;
+            $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
+			if ( exists( $global_dashrep_replacement{ $source_phrase } ) )
+			{
+				$global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
+				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+				{
+					$global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+				}
+				$text_for_value = "" ;
+			}
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 
@@ -2475,7 +2480,7 @@ sub dashrep_expand_parameters
                             $item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
                             if ( $list_position == 1 )
                             {
-                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                             }
                             $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-]" ;
                             $text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
@@ -2497,11 +2502,11 @@ sub dashrep_expand_parameters
                             $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $template_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
                             if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
                             {
-                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                             }
                             if ( $list_position == $list_length )
                             {
-                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " createlist-temp-][-append-from-phrase-to-phrase createlist-temp " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                             }
                         } else
                         {
