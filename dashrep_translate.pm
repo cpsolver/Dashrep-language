@@ -255,7 +255,7 @@ BEGIN {
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text clear-phrase empty-text" ;
-    $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty empty-or-nonempty-phrase same-or-not-same yes-if-not-no no-if-not-yes" ;
+    $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple auto-increment sort-numbers yes-or-no-greater-than yes-or-no-less-than calc-add calc-minus calc-divide-by calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare yes-or-no-first-number-equals-second-number length-of-phrase-definition" ;
     $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
@@ -2230,7 +2230,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  same-or-not-same
+#  same-or-not-same  # depricated
 
         if ( $action_name eq "same-or-not-same" )
         {
@@ -2245,6 +2245,40 @@ sub dashrep_expand_parameters
             {
                 $same_or_not_same = "not-same" ;
             }
+            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  same-or-not-same-two-words
+#  same-or-not-same-two-phrases
+
+        if ( ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "same-or-not-same-two-phrases" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        {
+			if ( $action_name eq "same-or-not-same-two-words" )
+			{
+				if ( $operand_one eq $operand_two )
+				{
+					$same_or_not_same = "same" ;
+				} else
+				{
+					$same_or_not_same = "not-same" ;
+				}
+			} else
+			{
+				if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
+				{
+					$same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
+				} elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
+				{
+					$same_or_not_same = "same" ;
+				} else
+				{
+					$same_or_not_same = "not-same" ;
+				}
+			}
             $replacement_text = $text_begin . $same_or_not_same . $text_end ;
             next ;
         }
