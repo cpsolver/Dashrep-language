@@ -255,7 +255,7 @@ BEGIN {
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug depricated" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text clear-phrase empty-text" ;
-    $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
+    $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty-word empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple auto-increment sort-numbers yes-or-no-greater-than yes-or-no-less-than calc-add calc-minus calc-divide-by calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare yes-or-no-first-number-equals-second-number length-of-phrase-definition" ;
     $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
@@ -268,7 +268,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_html = "dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark" ;
     $global_dashrep_text_list_of_phrases_advanced = "expand-phrase-to-phrase unique-value calculate-if-phrase-empty escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-endless-loop-counter-limit dashrep-capture-level dashrep-ignore-level dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-stop-translation dashrep-use-two-spaces-as-column-delimiter dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
     $global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
-    $global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number" ;
+    $global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number empty-or-nonempty" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -1420,6 +1420,10 @@ sub dashrep_expand_parameters
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase } ) ) )
+            {
+                $global_dashrep_replacement{ $source_phrase } = "" ;
+            }
             $temp_text = $global_dashrep_replacement{ $source_phrase } ;
             if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
             {
@@ -2172,9 +2176,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty
+#  empty-or-nonempty  <--- depricated
+#  empty-or-nonempty-word
 
-        if ( $action_name eq "empty-or-nonempty" )
+        if ( ( $action_name eq "empty-or-nonempty" ) || ( $action_name eq "empty-or-nonempty-word" ) )
         {
             if ( $object_of_action =~ /[^ \n\t]/ )
             {
