@@ -3639,13 +3639,15 @@ sub dashrep_expand_special_phrases
 #  "span-non-breaking-spaces-end"
 
     $code_for_non_breaking_space = $global_dashrep_replacement{ "non-breaking-space" } ;
-    while ( $expanded_string =~ /^(.*)\bspan-non-breaking-spaces-begin\b *(.*?) *\bspan-non-breaking-spaces-end\b(.*)$/sgi )
+    while ( $expanded_string =~ /((^)|((.* +)?))span-non-breaking-spaces-begin( +.*? +)span-non-breaking-spaces-end(( +.*)|($))/sgi )
     {
         $code_begin = $1 ;
-        $code_with_spaces = $2 ;
-        $code_end = $3 ;
-        $code_with_spaces =~ s/ +/ ${code_for_non_breaking_space} /sgi ;
-        $code_with_spaces =~ s/ +//sgi ;
+        $code_with_spaces = $5 ;
+        $code_end = $6 ;
+        $code_with_spaces =~ s/^ +//s ;
+        $code_with_spaces =~ s/ +$//s ;
+        $code_with_spaces =~ s/ +/ ${code_for_non_breaking_space} /sg ;
+        $code_with_spaces =~ s/ +//sg ;
         $expanded_string = $code_begin . $code_with_spaces . $code_end ;
     }
 
