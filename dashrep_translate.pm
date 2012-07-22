@@ -269,7 +269,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_advanced = "expand-phrase-to-phrase unique-value calculate-if-phrase-empty escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-endless-loop-counter-limit dashrep-capture-level dashrep-ignore-level dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-stop-translation dashrep-use-two-spaces-as-column-delimiter dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
     $global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
     $global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number empty-or-nonempty" ;
-    $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon" ;
+    $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon linbray" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-fundamental" } = $global_dashrep_text_list_of_phrases_fundamental ;
@@ -1493,7 +1493,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ +$//sg ;
                 $temp_text =~ s/\t+/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
-                $temp_text =~ s/[\n\r]/ newline /sg ;
+                $temp_text =~ s/[\n\r]/ linbray /sg ;
                 $temp_text =~ s/-\[-/ conparambee /sg ;
                 $temp_text =~ s/-\]-/ paramenncon /sg ;
                 $temp_text =~ s/\[-/ parambee /sg ;
@@ -1505,8 +1505,6 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/  +/ /sg ;
             } else
             {
-                $temp_text =~ s/^ +//sg ;
-                $temp_text =~ s/ +$//sg ;
                 $temp_text =~ s/\t+/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/ dashnex / dashenn dashbee /sg ;
@@ -1527,12 +1525,15 @@ sub dashrep_expand_parameters
                     $temp_text =~ s/-fen([^a-z0-9])/-$1/sg ;
                     $temp_text =~ s/ combee / *---- /sg ;
                     $temp_text =~ s/ comenn / ----* /sg ;
-                    $temp_text =~ s/ newline / \n /sg ;
                 }
                 $temp_text =~ s/\[- /\[-/sg ;
                 $temp_text =~ s/ -\]/-\]/sg ;
                 $temp_text =~ s/ -/-/sg ;
                 $temp_text =~ s/- /-/sg ;
+                while ( $temp_text =~ / linbray /s )
+                {
+                    $temp_text =~ s/ linbray / \n /sg ;
+                }
                 $temp_text =~ s/ \n/\n/sg ;
                 $temp_text =~ s/\n /\n/sg ;
                 $temp_text =~ s/^ +//sg ;
