@@ -253,14 +253,14 @@ BEGIN {
 	$global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
-    $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug" ;
+    $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug depricated" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text clear-phrase empty-text" ;
     $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple auto-increment sort-numbers yes-or-no-greater-than yes-or-no-less-than calc-add calc-minus calc-divide-by calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare yes-or-no-first-number-equals-second-number length-of-phrase-definition" ;
     $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-first-word-from-phrase remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
-    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase create-list-named createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items count-of-list zero-one-multiple-count-of-list" ;
+    $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items count-of-list zero-one-multiple-count-of-list" ;
     $global_dashrep_text_list_of_phrases_copy_append = "copy-from-phrase-to-phrase append-from-phrase-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code" ;
     $global_dashrep_text_list_of_phrases_definitions = "clear-all-dashrep-phrases dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases dashrep-yes-append-not-replace-for-imported-phrases export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end list-of-phrases-newly-defined dashrep-yes-or-no-export-delimited-definitions" ;
     $global_dashrep_text_list_of_phrases_file_related = "dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-list-files-directories-both dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no" ;
@@ -268,6 +268,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_html = "dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark" ;
     $global_dashrep_text_list_of_phrases_advanced = "expand-phrase-to-phrase unique-value calculate-if-phrase-empty escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-endless-loop-counter-limit dashrep-capture-level dashrep-ignore-level dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-stop-translation dashrep-use-two-spaces-as-column-delimiter dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
 	$global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
+	$global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -284,6 +285,8 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-xml" } = $global_dashrep_text_list_of_phrases_xml ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
+	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
+	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -354,6 +357,8 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-xml" } = $global_dashrep_text_list_of_phrases_xml ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
+	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
+	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -2550,7 +2555,7 @@ sub dashrep_expand_parameters
                             $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $template_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
                         }
                     }
-                    $text_for_value = "[-" . $text_that_expands_to_generate_list . "-]" ;
+                    $text_for_value = "" . $text_that_expands_to_generate_list . "" ;
                     if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
                     {
                         $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
