@@ -250,7 +250,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-	$global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
+    $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append definitions file_related xml html advanced debug depricated" ;
@@ -267,8 +267,8 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_xml = "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement" ;
     $global_dashrep_text_list_of_phrases_html = "dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark" ;
     $global_dashrep_text_list_of_phrases_advanced = "expand-phrase-to-phrase unique-value calculate-if-phrase-empty escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-endless-loop-counter-limit dashrep-capture-level dashrep-ignore-level dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-stop-translation dashrep-use-two-spaces-as-column-delimiter dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
-	$global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
-	$global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number" ;
+    $global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
+    $global_dashrep_text_list_of_phrases_depricated = "create-list-named divide-by first-item-in-list from-list-get-item-number greater-than item-number-in-list-being-generated last-item-in-list less-than remove-last-item-from-phrase-list same-or-not-same yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -285,8 +285,8 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-xml" } = $global_dashrep_text_list_of_phrases_xml ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
-	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
-	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -340,7 +340,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
     $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
-	$global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
+    $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -357,8 +357,8 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-xml" } = $global_dashrep_text_list_of_phrases_xml ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
-	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
-	$global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -1384,18 +1384,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "append-from-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
-			$source_phrase = $operand_one ;
-			$target_phrase = $operand_two ;
+            $source_phrase = $operand_one ;
+            $target_phrase = $operand_two ;
             $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
-			if ( exists( $global_dashrep_replacement{ $source_phrase } ) )
-			{
-				$global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
-				if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-				{
-					$global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-				}
-				$text_for_value = "" ;
-			}
+            if ( exists( $global_dashrep_replacement{ $source_phrase } ) )
+            {
+                $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                }
+                $text_for_value = "" ;
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -1421,7 +1421,7 @@ sub dashrep_expand_parameters
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
             $temp_text = $global_dashrep_replacement{ $source_phrase } ;
-			if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
             {
                 $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
                 $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
@@ -1457,7 +1457,7 @@ sub dashrep_expand_parameters
                 $temp_text = lc( $temp_text ) ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" )
             {
-				$temp_text =~ s/ +/-/g ;
+                $temp_text =~ s/ +/-/g ;
             }
             $global_dashrep_replacement{ $target_phrase } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -2262,28 +2262,28 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "same-or-not-same-two-phrases" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
         {
-			if ( $action_name eq "same-or-not-same-two-words" )
-			{
-				if ( $operand_one eq $operand_two )
-				{
-					$same_or_not_same = "same" ;
-				} else
-				{
-					$same_or_not_same = "not-same" ;
-				}
-			} else
-			{
-				if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
-				{
-					$same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
-				} elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
-				{
-					$same_or_not_same = "same" ;
-				} else
-				{
-					$same_or_not_same = "not-same" ;
-				}
-			}
+            if ( $action_name eq "same-or-not-same-two-words" )
+            {
+                if ( $operand_one eq $operand_two )
+                {
+                    $same_or_not_same = "same" ;
+                } else
+                {
+                    $same_or_not_same = "not-same" ;
+                }
+            } else
+            {
+                if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
+                {
+                    $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
+                } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
+                {
+                    $same_or_not_same = "same" ;
+                } else
+                {
+                    $same_or_not_same = "not-same" ;
+                }
+            }
             $replacement_text = $text_begin . $same_or_not_same . $text_end ;
             next ;
         }
@@ -2814,7 +2814,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) )
         {
-			$text_inserted = " action " . $action_name . " not yet implemented " ;
+            $text_inserted = " action " . $action_name . " not yet implemented " ;
             if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
             {
                 if ( ( $object_of_action eq "yes" ) && ( $action_name eq "escape-if-yes" ) )
