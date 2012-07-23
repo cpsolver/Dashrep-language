@@ -1601,6 +1601,10 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; expanded phrase " . $text_to_expand . " to phrase " . $operand_two . "}}\n" ;
                 }
                 $text_for_value = "" ;
+            } else
+            {
+                $global_dashrep_replacement{ $operand_two } = "" ;
+                $text_for_value = "" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
