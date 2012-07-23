@@ -1314,7 +1314,7 @@ sub dashrep_expand_parameters
             $object_of_action =~ s/^ +// ;
             $object_of_action =~ s/ +$// ;
             $object_of_action =~ s/\-+$// ;
-			$operand_one = $object_of_action ;
+            $operand_one = $object_of_action ;
             if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
             {
                 $operand_one = $1 ;
@@ -1393,7 +1393,10 @@ sub dashrep_expand_parameters
             {
                 if ( $action_name eq "append-from-phrase-to-phrase-no-space" )
                 {
-                    $global_dashrep_replacement{ $target_phrase } .= $global_dashrep_replacement{ $source_phrase } ;
+                    $text_string = $global_dashrep_replacement{ $source_phrase } ;
+                    $text_string =~ s/^ +//s ;
+                    $text_string =~ s/ +$//s ;
+                    $global_dashrep_replacement{ $target_phrase } .= $text_string ;
                 } else
                 {
                     $global_dashrep_replacement{ $target_phrase } .= " " . $global_dashrep_replacement{ $source_phrase } ;
