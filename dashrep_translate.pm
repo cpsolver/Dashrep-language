@@ -256,7 +256,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append ignore_capture definitions file_related xml html advanced debug depricated" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase empty-text" ;
     $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty-word empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
-    $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-divide-by calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare auto-increment sort-numbers length-of-phrase-definition" ;
+    $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-divide-by calc-multiply calc-maximum calc-minimum calc-integer calc-absolute calc-equal-greater-less-compare auto-increment sort-numbers length-of-phrase-definition" ;
     $global_dashrep_text_list_of_phrases_time = "get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-first-word-from-phrase remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
@@ -2462,8 +2462,10 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  calc-add and
 #  calc-multiply
+#  calc-maximum
+#  calc-minimum
 
-        if ( $action_name =~ /^calc-((add)|(multiply))$/ )
+        if ( $action_name =~ /^calc-((add)|(multiply)|(maximum)|(minimum))$/ )
         {
             $calculation_type = $1 ;
             $text_for_value = "0" ;
@@ -2478,6 +2480,12 @@ sub dashrep_expand_parameters
                 } elsif ( $calculation_type eq "multiply" )
                 {
                     $numeric_value = 1 ;
+                } elsif ( $calculation_type eq "maximum" )
+                {
+                    $numeric_value = -999999 ;
+                } elsif ( $calculation_type eq "minimum" )
+                {
+                    $numeric_value = 999999 ;
                 } else
                 {
                     $numeric_value = 0 ;
@@ -2494,6 +2502,18 @@ sub dashrep_expand_parameters
                         } elsif ( $calculation_type eq "multiply" )
                         {
                             $numeric_value = $numeric_value * $value ;
+                        } elsif ( $calculation_type eq "maximum" )
+                        {
+							if ( $value > $numeric_value )
+							{
+								$numeric_value = $value ;
+							}
+                        } elsif ( $calculation_type eq "minimum" )
+                        {
+							if ( $value < $numeric_value )
+							{
+								$numeric_value = $value ;
+							}
                         }
                     }
                 }
