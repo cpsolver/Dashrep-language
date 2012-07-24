@@ -257,7 +257,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text clear-phrase empty-text" ;
     $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty-word empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple auto-increment sort-numbers yes-or-no-greater-than yes-or-no-less-than calc-add calc-minus calc-divide-by calc-multiply calc-integer calc-absolute calc-equal-greater-less-compare yes-or-no-first-number-equals-second-number length-of-phrase-definition" ;
-    $global_dashrep_text_list_of_phrases_time = " get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
+    $global_dashrep_text_list_of_phrases_time = "get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year" ;
     $global_dashrep_text_list_of_phrases_character = "within-phrase-replace-character-with-text-in-phrase split-into-list-of-characters count-of-characters-in-phrase-defintion character-in-phrase-get-at-position" ;
     $global_dashrep_text_list_of_phrases_word = "first-word-in-phrase last-word-in-phrase from-phrase-get-word-number remove-first-word-from-phrase remove-last-word-from-phrase count-of-words-in-phrase zero-one-multiple-count-of-words-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase" ;
     $global_dashrep_text_list_of_phrases_generate_list = "use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases write-all-phrase-names-to-phrase createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items count-of-list zero-one-multiple-count-of-list" ;
@@ -1259,7 +1259,7 @@ sub dashrep_expand_parameters
 #  If the parameter is a defined phrase, do the
 #  replacement, then restart the main loop.
 
-        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
+        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) && ( defined( $global_dashrep_replacement{ $text_parameter_content } ) ) )
         {
             $text_parameter = $global_dashrep_replacement{ $text_parameter_content } ;
             if ( $text_parameter =~ /[^ ]/ )
@@ -1389,7 +1389,7 @@ sub dashrep_expand_parameters
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
             $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
-            if ( exists( $global_dashrep_replacement{ $source_phrase } ) )
+            if ( ( exists( $global_dashrep_replacement{ $source_phrase } ) ) && ( defined( $global_dashrep_replacement{ $source_phrase } ) ) )
             {
                 if ( $action_name eq "append-from-phrase-to-phrase-no-space" )
                 {
@@ -1439,42 +1439,52 @@ sub dashrep_expand_parameters
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
-            if ( not( exists( $global_dashrep_replacement{ $source_phrase } ) ) )
+            $source_phrase =~ s/[\n\t\t]//g ;
+            if ( ( $source_phrase !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $source_phrase } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase } ) ) ) )
             {
-                $global_dashrep_replacement{ $source_phrase } = "" ;
+                $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
+            } else
+            {
+                $source_text = $global_dashrep_replacement{ $source_phrase } ;
+                $source_text =~ s/^ +// ;
+                $source_text =~ s/ +$// ;
+                $text_for_value = "" ;
+                if ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" )
+                {
+                    if ( $operand_three =~ /^[0-9]+$/ )
+                    {
+                        $word_position = $operand_three + 0 ;
+                    } else
+                    {
+                        $word_position = 1 ;
+                    }
+                    @list_of_words = split( / +/ , $source_text ) ;
+                    if ( $word_position > scalar( @list_of_words + 1 ) )
+                    {
+                        $word_position = scalar( @list_of_words + 1 ) ;
+                    }
+                    $global_dashrep_replacement{ $target_phrase } = $list_of_words[ $word_position - 1 ] ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; copied word number " . $word_position . " from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                    }
+                } elsif ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" )
+                {
+                    if ( $operand_three =~ /^[^ ]+$/ )
+                    {
+                        $splitting_string = $operand_three ;
+                    } else
+                    {
+                        $splitting_string = "-" ;
+                    }
+                    $global_dashrep_replacement{ $target_phrase } = join( " " , split( $splitting_string , $source_text ) ) ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
+                    }
+                }
             }
-            $source_text = $global_dashrep_replacement{ $source_phrase } ;
-            if ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" )
-            {
-                if ( $operand_three =~ /^[0-9]+$/ )
-                {
-                    $word_position = $operand_three + 0 ;
-                } else
-                {
-                    $word_position = 1 ;
-                }
-                @list_of_words = split( / +/ , $source_text ) ;
-                $global_dashrep_replacement{ $target_phrase } = $list_of_words[ $word_position ] ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; copied word number " . $word_position . " from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-                }
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" )
-            {
-                if ( $operand_three =~ /^[^ ]+$/ )
-                {
-                    $splitting_string = $operand_three ;
-                } else
-                {
-                    $splitting_string = "-" ;
-                }
-                $global_dashrep_replacement{ $target_phrase } = join( " " , split( $splitting_string , $source_text ) ) ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; copied from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
-                }
-            }
-            $replacement_text = $text_begin . " " . $text_end ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 
@@ -3423,7 +3433,7 @@ sub dashrep_expand_phrases_except_special
 #  delimited items on the stack, and repeat
 #  the loop.
 
-        if ( exists( $global_dashrep_replacement{ $current_item } ) )
+        if ( ( exists( $global_dashrep_replacement{ $current_item } ) ) && ( defined( $global_dashrep_replacement{ $current_item } ) ) )
         {
             $replacement_item = $global_dashrep_replacement{ $current_item } ;
             if ( $replacement_item =~ /[^ ]/ )
@@ -3513,7 +3523,7 @@ sub dashrep_expand_special_phrases
         $expanded_string = "" ;
         return $expanded_string ;
     }
-    if ( $expanded_string !~ /[^ ]/ )
+    if ( ( not( defined( $expanded_string ) ) ) || ( $expanded_string !~ /[^ ]/ ) )
     {
         return "";
     }
@@ -3528,7 +3538,7 @@ sub dashrep_expand_special_phrases
     if ( $expanded_string =~ /^ *([^ \[\]]+-[^ \[\]]+) *$/ )
     {
         $phrase_name = $1 ;
-        if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
+        if ( ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( defined( $global_dashrep_replacement{ $phrase_name } ) ) )
         {
             $expanded_string = $global_dashrep_replacement{ $phrase_name } ;
         }
@@ -3577,62 +3587,65 @@ sub dashrep_expand_special_phrases
 #  "ignore-begin-here" and
 #  "ignore-end-here"
 
-    $remaining_string = $expanded_string ;
-    $expanded_string = "" ;
-
-    if ( ( $global_ignore_level > 0 ) && ( $remaining_string !~ /((ignore-begin-here)|(ignore-end-here))/si ) )
+    if ( ( not( exists( $global_dashrep_replacement{ "dashrep-ignore-actions-off-else-on" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-ignore-actions-off-else-on" } ne "off" ) )
     {
-        if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
-        {
-            $global_trace_log .= "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
-            if ( $remaining_string =~ /[^ ]/ )
-            {
-                $global_trace_log .= "{{trace; ignored: " . $remaining_string . "}}\n" ;
-            }
-        }
-        $remaining_string = "" ;
-    }
+        $remaining_string = $expanded_string ;
+        $expanded_string = "" ;
 
-    while ( $remaining_string =~ /^((.*? +)?)((ignore-begin-here)|(ignore-end-here))(( +.*)?)$/si )
-    {
-        $code_begin = $1 ;
-        $ignore_directive = $3 ;
-        $remaining_string = $6 ;
-
-        if ( $global_ignore_level > 0 )
+        if ( ( $global_ignore_level > 0 ) && ( $remaining_string !~ /((ignore-begin-here)|(ignore-end-here))/si ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
                 if ( $remaining_string =~ /[^ ]/ )
                 {
-                    $global_trace_log .= "{{trace; ignored: " . $code_begin . "}}\n" ;
+                    $global_trace_log .= "{{trace; ignored: " . $remaining_string . "}}\n" ;
                 }
             }
-        } else
-        {
-            $expanded_string .= $code_begin . " " ;
+            $remaining_string = "" ;
         }
 
-        if ( $ignore_directive eq "ignore-begin-here" )
+        while ( $remaining_string =~ /^((.*? +)?)((ignore-begin-here)|(ignore-end-here))(( +.*)?)$/si )
         {
-            if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+            $code_begin = $1 ;
+            $ignore_directive = $3 ;
+            $remaining_string = $6 ;
+
+            if ( $global_ignore_level > 0 )
             {
-                $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
-            }
-            $global_ignore_level ++ ;
-            $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
-        } elsif ( $ignore_directive eq "ignore-end-here" )
-        {
-            if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+                if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; ignore level: " . $global_ignore_level . "}}\n" ;
+                    if ( $remaining_string =~ /[^ ]/ )
+                    {
+                        $global_trace_log .= "{{trace; ignored: " . $code_begin . "}}\n" ;
+                    }
+                }
+            } else
             {
-                $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
+                $expanded_string .= $code_begin . " " ;
             }
-            $global_ignore_level -- ;
-            $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
+
+            if ( $ignore_directive eq "ignore-begin-here" )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
+                }
+                $global_ignore_level ++ ;
+                $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
+            } elsif ( $ignore_directive eq "ignore-end-here" )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; ignore directive: " . $ignore_directive . "}}\n" ;
+                }
+                $global_ignore_level -- ;
+                $global_dashrep_replacement{ "dashrep-ignore-level" } = sprintf( "%d" , $global_ignore_level ) ;
+            }
         }
+        $expanded_string .= $remaining_string ;
     }
-    $expanded_string .= $remaining_string ;
 
 
 #-----------------------------------------------
@@ -3640,65 +3653,68 @@ sub dashrep_expand_special_phrases
 #  "capture-begin-here" and
 #  "capture-end-here"
 
-    $remaining_string = $expanded_string ;
-    $expanded_string = "" ;
-
-    if ( ( $global_capture_level > 0 ) && ( $remaining_string !~ /((capture-begin-here)|(capture-end-here))/si ) )
+    if ( ( not( exists( $global_dashrep_replacement{ "dashrep-capture-actions-off-else-on" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-capture-actions-off-else-on" } ne "off" ) )
     {
-        $global_dashrep_replacement{ "captured-text" } .= " " . $remaining_string ;
-        if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
-        {
-            $global_trace_log .= "{{trace; capture level: " . $global_capture_level . "}}\n" ;
-            if ( $remaining_string =~ /[^ ]/ )
-            {
-                $global_trace_log .= "{{trace; captured: " . $remaining_string . "}}\n" ;
-            }
-        }
-        $remaining_string = "" ;
-    }
+        $remaining_string = $expanded_string ;
+        $expanded_string = "" ;
 
-    while ( $remaining_string =~ /^((.*? +)?)((capture-begin-here)|(capture-end-here))(( +.*)?)$/si )
-    {
-        $code_begin = $1 ;
-        $capture_directive = $3 ;
-        $remaining_string = $6 ;
-
-        if ( $global_capture_level > 0 )
+        if ( ( $global_capture_level > 0 ) && ( $remaining_string !~ /((capture-begin-here)|(capture-end-here))/si ) )
         {
-            $global_dashrep_replacement{ "captured-text" } .= " " . $code_begin ;
+            $global_dashrep_replacement{ "captured-text" } .= " " . $remaining_string ;
             if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; capture level: " . $global_capture_level . "}}\n" ;
                 if ( $remaining_string =~ /[^ ]/ )
                 {
-                    $global_trace_log .= "{{trace; captured: " . $code_begin . "}}\n" ;
+                    $global_trace_log .= "{{trace; captured: " . $remaining_string . "}}\n" ;
                 }
             }
-        } else
-        {
-            $expanded_string .= $code_begin . " " ;
+            $remaining_string = "" ;
         }
 
-        if ( $capture_directive eq "capture-begin-here" )
+        while ( $remaining_string =~ /^((.*? +)?)((capture-begin-here)|(capture-end-here))(( +.*)?)$/si )
         {
-            $global_dashrep_replacement{ "captured-text" } = "" ;
-            if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
+            $code_begin = $1 ;
+            $capture_directive = $3 ;
+            $remaining_string = $6 ;
+
+            if ( $global_capture_level > 0 )
             {
-                $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
-            }
-            $global_capture_level ++ ;
-            $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
-        } elsif ( $capture_directive eq "capture-end-here" )
-        {
-            if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
+                $global_dashrep_replacement{ "captured-text" } .= " " . $code_begin ;
+                if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; capture level: " . $global_capture_level . "}}\n" ;
+                    if ( $remaining_string =~ /[^ ]/ )
+                    {
+                        $global_trace_log .= "{{trace; captured: " . $code_begin . "}}\n" ;
+                    }
+                }
+            } else
             {
-                $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+                $expanded_string .= $code_begin . " " ;
             }
-            $global_capture_level -- ;
-            $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
+
+            if ( $capture_directive eq "capture-begin-here" )
+            {
+                $global_dashrep_replacement{ "captured-text" } = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+                }
+                $global_capture_level ++ ;
+                $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
+            } elsif ( $capture_directive eq "capture-end-here" )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-capture-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; capture directive: " . $capture_directive . "}}\n" ;
+                }
+                $global_capture_level -- ;
+                $global_dashrep_replacement{ "dashrep-capture-level" } = sprintf( "%d" , $global_capture_level ) ;
+            }
         }
+        $expanded_string .= $remaining_string ;
     }
-    $expanded_string .= $remaining_string ;
 
 
 #-----------------------------------------------
