@@ -2140,7 +2140,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" )
         {
-            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) || ( $operand_three eq "" ) )
+            if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
                 $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             } else
@@ -4885,12 +4885,48 @@ sub dashrep_file_actions
             }
             if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
             {
-                $all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
-                $all_defs_end = "[-export-defs-all-end-]\n\n" ;
-                $phrase_begin = "[-export-defs-phrase-begin-] " ;
-                $phrase_end = " [-export-defs-phrase-end-]\n\n" ;
-                $def_begin = "[-export-defs-def-begin-] " ;
-                $def_end = " [-export-defs-def-end-]\n\n" ;
+                if ( exists( $global_dashrep_replacement{ "export-defs-all-begin" } ) )
+                {
+                    $all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
+                } else
+                {
+                    $all_defs_begin = "" ;
+                }
+                if ( exists( $global_dashrep_replacement{ "export-defs-all-end" } ) )
+                {
+                    $all_defs_end = "[-export-defs-all-end-]\n\n" ;
+                } else
+                {
+                    $all_defs_end = "" ;
+                }
+                if ( exists( $global_dashrep_replacement{ "export-defs-phrase-begin" } ) )
+                {
+                    $phrase_begin = "[-export-defs-phrase-begin-] " ;
+                } else
+                {
+                    $phrase_begin = "" ;
+                }
+                if ( exists( $global_dashrep_replacement{ "export-defs-phrase-end" } ) )
+                {
+                    $phrase_end = " [-export-defs-phrase-end-]\n\n" ;
+                } else
+                {
+                    $phrase_end = "" ;
+                }
+                if ( exists( $global_dashrep_replacement{ "export-defs-def-begin" } ) )
+                {
+                    $def_begin = "[-export-defs-def-begin-] " ;
+                } else
+                {
+                    $def_begin = "" ;
+                }
+                if ( exists( $global_dashrep_replacement{ "export-defs-def-end" } ) )
+                {
+                    $def_end = " [-export-defs-def-end-]\n\n" ;
+                } else
+                {
+                    $def_end = "" ;
+                }
             } else
             {
                 $all_defs_begin = "dashrep-definitions-begin\n\n" ;
@@ -4917,7 +4953,7 @@ sub dashrep_file_actions
                         print OUTFILE $all_defs_begin ;
                         foreach $phrase_name ( @sequence_of_phrases )
                         {
-                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( defined( $global_dashrep_replacement{ $phrase_name } ) ) )
                             {
                                 print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
                                 $counter ++ ;
