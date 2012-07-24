@@ -2140,7 +2140,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" )
         {
-            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
+            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) || ( $operand_three eq "" ) )
             {
                 $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             } else
@@ -2162,6 +2162,7 @@ sub dashrep_expand_parameters
                     $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
                 } else
                 {
+                    $global_dashrep_replacement{ $phrase_name } = "" ;
                     for ( $counter = 1 ; $counter <= $count_range ; $counter ++ )
                     {
                         $next_number = $starting_count + ( $plus_or_minus_one * ( $counter - 1 ) );
