@@ -253,7 +253,7 @@ BEGIN {
     $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
 
-    $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append ignore_capture definitions file_related xml html advanced debug depricated" ;
+    $global_dashrep_text_list_of_phrase_categories = "fundamental decision numeric time character word generate_list copy_append ignore_capture definitions file_related xml html advanced debug deprecated" ;
     $global_dashrep_text_list_of_phrases_fundamental = "hyphen-here tab-here no-space one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase empty-text expand-phrase-to-phrase calculate-if-phrase-empty" ;
     $global_dashrep_text_list_of_phrases_decision = "empty-or-nonempty-word empty-or-nonempty-phrase same-or-not-same-two-words same-or-not-same-two-phrases yes-if-not-no no-if-not-yes" ;
     $global_dashrep_text_list_of_phrases_numeric = "zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-divide-by calc-multiply calc-maximum calc-minimum calc-integer calc-absolute calc-equal-greater-less-compare auto-increment sort-numbers length-of-phrase-definition" ;
@@ -269,7 +269,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_copy_append = "copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code" ;
     $global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-stop-translation dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
     $global_dashrep_text_list_of_phrases_advanced = "dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
-    $global_dashrep_text_list_of_phrases_depricated = "same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase" ;
+    $global_dashrep_text_list_of_phrases_deprecated = "same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon linbray" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrase-categories" } = $global_dashrep_text_list_of_phrase_categories ;
@@ -288,7 +288,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-deprecated" } = $global_dashrep_text_list_of_phrases_deprecated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -361,7 +361,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-html" } = $global_dashrep_text_list_of_phrases_html ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-advanced" } = $global_dashrep_text_list_of_phrases_advanced ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-debug" } = $global_dashrep_text_list_of_phrases_debug ;
-    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-depricated" } = $global_dashrep_text_list_of_phrases_depricated ;
+    $global_dashrep_replacement{ "dashrep-list-of-dashrep-phrases-in-category-deprecated" } = $global_dashrep_text_list_of_phrases_deprecated ;
     $global_dashrep_replacement{ "dashrep-list-of-dashrep-spoken-words" } = $global_dashrep_text_list_of_spoken_words ;
 }
 
@@ -1671,7 +1671,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Depricated, will be removed:
+#  Deprecated, will be removed:
 #
 #  Handle the actions:
 #  yes-or-no-first-number-equals-second-number
@@ -1683,7 +1683,7 @@ sub dashrep_expand_parameters
             $comparison_type = $2 ;
             $first_number_text = $operand_one ;
             $second_number_text = $operand_two ;
-            $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number depricated]" ;
+            $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number deprecated]" ;
             if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
             {
                 $first_number = $first_number_text + 0 ;
@@ -1806,7 +1806,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  first-item-in-list  <<-- depricated
+#  first-item-in-list  <<-- deprecated
 
 #  first-word-in-phrase
 
@@ -1839,7 +1839,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  last-item-in-list  <<-- depricated
+#  last-item-in-list  <<-- deprecated
 
 #  last-word-in-phrase
 
@@ -1872,7 +1872,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  from-list-get-item-number  <<-- depricated
+#  from-list-get-item-number  <<-- deprecated
 
 #  from-phrase-get-word-number
 
@@ -1921,9 +1921,9 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 
-#  remove-last-item-from-phrase-list  <<-- depricated
-#  remove-first-word-from-phrase  <<-- depricated
-#  remove-last-word-from-phrase  <<-- depricated
+#  remove-last-item-from-phrase-list  <<-- deprecated
+#  remove-first-word-from-phrase  <<-- deprecated
+#  remove-last-word-from-phrase  <<-- deprecated
 
         if ( ( $action_name eq "remove-first-word-from-phrase" ) || ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
         {
@@ -1960,7 +1960,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  count-of-list  <<-- depricated
+#  count-of-list  <<-- deprecated
 
 #  count-of-words-in-phrase
 
@@ -2001,7 +2001,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  zero-one-multiple-count-of-list  <<-- depricated
+#  zero-one-multiple-count-of-list  <<-- deprecated
 
 #  zero-one-multiple-count-of-words-in-phrase
 
@@ -2269,7 +2269,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty  <--- depricated
+#  empty-or-nonempty  <--- deprecated
 #  empty-or-nonempty-word
 
         if ( ( $action_name eq "empty-or-nonempty" ) || ( $action_name eq "empty-or-nonempty-word" ) )
@@ -2311,7 +2311,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 
-#  length-of-phrase-definition  <<-- depricated
+#  length-of-phrase-definition  <<-- deprecated
 
 #  count-of-characters-in-phrase-defintion
 
@@ -2333,7 +2333,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  same-or-not-same  # depricated
+#  same-or-not-same  # deprecated
 
         if ( $action_name eq "same-or-not-same" )
         {
@@ -3052,8 +3052,10 @@ sub dashrep_expand_parameters
 
 =head2 dashrep_generate_lists
 
-Internal subroutine, not exported.
-It is only needed within the Dashrep module.
+Deprecated.  Do not use.
+
+The new list-generation actions do not use 
+this subroutine.
 
 =cut
 
