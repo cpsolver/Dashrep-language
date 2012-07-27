@@ -665,7 +665,7 @@ sub dashrep_import_replacements
             if ( $definition_name !~ /\-/ )
             {
                 $definition_name =~ s/[^a-z0-9_]+/_/sgi  ;
-                $definition_name = "invalid-phrase-name-" . $definition_name ;
+                $definition_name = "unhyphenated-phrase-" . $definition_name ;
             }
             if ( $yes_append_not_replace ne "yes" )
             {
