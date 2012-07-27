@@ -1664,6 +1664,10 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $operand_two } = "" ;
                 $text_for_value = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; cannot expand undefined phrase " . $operand_one . "}}\n" ;
+                }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
