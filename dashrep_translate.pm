@@ -1206,6 +1206,17 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Check for an endless loop.
+
+		$global_endless_loop_counter ++ ;
+		if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+		{
+			&dashrep_internal_endless_loop_info( ) ;
+			die "Error: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+		}
+
+
+#-----------------------------------------------
 #  Get the next inner-most parameter syntax --
 #  with "[-" at the beginning and "-]" at the end.
 #  (It must not contain a nested parameter syntax.)
@@ -1238,15 +1249,14 @@ sub dashrep_expand_parameters
 #  the value, and restart the main loop.
 #  The parameter value cannot contain a line break.
 
-        if ( $text_parameter_content =~ /^ *([^ \:=]+\-[^ \:=]+) *= *([^ ](.*[^ ])?) *$/ )
+        if ( $text_parameter_content =~ /^ *([^ \:=\-]+\-[^ \:=]+) *= *([^ ](.*[^ ])?) *$/ )
         {
             $text_parameter_name = $1 ;
             $text_parameter_value = $2 ;
             $text_parameter_value =~ s/[\- ]+$// ;
-            if ( length( $text_parameter_name ) > 0 )
+            if ( ( length( $text_parameter_name ) > 0 ) && ( $text_parameter_name =~ /^[^\-]+-/ ) )
             {
                 $global_dashrep_replacement{ $text_parameter_name } = $text_parameter_value ;
-                $global_replacement_count_for_item_name{ $text_parameter_name } ++ ;
             }
             $replacement_text = $text_begin . " " . $text_end ;
             $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
@@ -1408,6 +1418,15 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; appended from phrase " . $source_phrase . " to phrase " . $target_phrase . "}}\n" ;
                 }
+                $text_for_value = "" ;
+            } else
+            {
+                $global_dashrep_replacement{ $target_phrase } .= "" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; did not append because phrase " . $source_phrase . " is not defined}}\n" ;
+                }
+				# if next line removed, endless loop can occur if source phrase not defined
                 $text_for_value = "" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
