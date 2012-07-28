@@ -268,7 +268,7 @@ BEGIN {
     $global_dashrep_text_list_of_phrases_ignore_capture = "ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-off-else-on dashrep-capture-actions-off-else-on dashrep-capture-level dashrep-ignore-level" ;
     $global_dashrep_text_list_of_phrases_copy_append = "copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code" ;
     $global_dashrep_text_list_of_phrases_debug = "dashrep-comments-ignored dashrep-stop-translation dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off" ;
-    $global_dashrep_text_list_of_phrases_advanced = "dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end open-and-close insert-phrase-with-brackets-after-next-top-line" ;
+    $global_dashrep_text_list_of_phrases_advanced = "dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end insert-phrase-with-brackets-after-next-top-line" ;
     $global_dashrep_text_list_of_phrases_deprecated = "same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase" ;
     $global_dashrep_text_list_of_spoken_words = "dashbee dashenn dashnex parambee paramenn combee comenn fen conparambee paramenncon linbray" ;
 
@@ -1494,10 +1494,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-from-phrase-to-phrase 
-#  copy-from-phrase-to-phrase-and-replace-hyphens 
-#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces 
-#  copy-from-phrase-to-phrase-and-replace-newlines 
+#  copy-from-phrase-to-phrase
+#  copy-from-phrase-to-phrase-and-replace-hyphens
+#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces
+#  copy-from-phrase-to-phrase-and-replace-newlines
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 #  copy-from-phrase-to-phrase-and-replace-digits-with-9s (useful for identifying string patterns that involve digits)
 #  copy-from-phrase-to-phrase-lowercase-only
@@ -2503,16 +2503,16 @@ sub dashrep_expand_parameters
                             $numeric_value = $numeric_value * $value ;
                         } elsif ( $calculation_type eq "maximum" )
                         {
-							if ( $value > $numeric_value )
-							{
-								$numeric_value = $value ;
-							}
+                            if ( $value > $numeric_value )
+                            {
+                                $numeric_value = $value ;
+                            }
                         } elsif ( $calculation_type eq "minimum" )
                         {
-							if ( $value < $numeric_value )
-							{
-								$numeric_value = $value ;
-							}
+                            if ( $value < $numeric_value )
+                            {
+                                $numeric_value = $value ;
+                            }
                         }
                     }
                 }
@@ -3058,7 +3058,7 @@ sub dashrep_expand_parameters
 
 Deprecated.  Do not use.
 
-The new list-generation actions do not use 
+The new list-generation actions do not use
 this subroutine.
 
 =cut
@@ -3553,15 +3553,15 @@ sub dashrep_expand_special_phrases
         return "";
     }
 
-	
+
 #-----------------------------------------------
 #  If requested, do not expand special phrases.
 
     if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-do-not-expand-special-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-do-not-expand-special-phrases" } eq "yes" ) )
     {
         return $expanded_string ;
-	}
-	
+    }
+
 
 #-----------------------------------------------
 #  If a single hyphenated phrase is supplied and
@@ -4115,17 +4115,25 @@ sub dashrep_file_actions
             {
                 $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
             }
+            if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" ) )
+            {
+                $line_ending = " end-of-line-here " ;
+            } else
+            {
+                $line_ending = " " ;
+            }
             while( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 $input_line =~ s/[\t\f\n\r]+/ /g ;
+                $input_line =~ s/^ +/ / ;
+                $input_line =~ s/ +$/ / ;
                 if ( $action_name eq "copy-from-file-to-phrase" )
                 {
-                    if ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" )
+                    if ( ( $input_line ne "" ) || ( $line_ending ne " " ) )
                     {
-                        $line_ending = " end-of-line-here" ;
+                        $all_lines .= $input_line . $line_ending ;
                     }
-                    $all_lines .= $input_line . $line_ending . "\n" ;
                 } elsif ( $action_name eq "copy-from-file-to-phrases-line-numbered" )
                 {
                     $line_number ++ ;
