@@ -21,12 +21,12 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 2.50
+Version 2.60
 
 =cut
 
 #  uncomment-for-cpan-version-begin
-# our $VERSION = '2.50';
+# our $VERSION = '2.60';
 
 
 #  uncomment-for-cpan-version-end
@@ -1033,7 +1033,6 @@ sub dashrep_expand_parameters
     my $quotation_mark_replacement ;
     my $apostrophe_replacement ;
     my $ampersand_replacement ;
-    my $calculation_type ;
     my $counter ;
     my $value ;
     my $text_returned ;
@@ -1110,6 +1109,15 @@ sub dashrep_expand_parameters
     my $phrase_words ;
     my $list_of_phrases ;
     my $sequence_of_phrases ;
+    my $number_of_operands ;
+    my $list_of_operands ;
+    my $text_string ;
+    my $source_text ;
+    my $word_position ;
+    my $list_of_words ;
+    my $splitting_string ;
+    my $list_of_numbers ;
+    my $text_inserted ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -1208,12 +1216,12 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Check for an endless loop.
 
-		$global_endless_loop_counter ++ ;
-		if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
-		{
-			&dashrep_internal_endless_loop_info( ) ;
-			die "Error: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
-		}
+        $global_endless_loop_counter ++ ;
+        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+        {
+            &dashrep_internal_endless_loop_info( ) ;
+            die "Error: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+        }
 
 
 #-----------------------------------------------
@@ -1280,10 +1288,13 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_parameter . $text_end ;
                 $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
                 $loop_status_done = $global_false ;
+
+                #  Deprecated, remove later.
                 if ( $text_parameter_content =~ /^auto-increment-/ )
                 {
                     push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
                 }
+
                 if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
                 {
                     $global_trace_log .= "{{trace; replaced " . $text_parameter_content . " with its definition" . "}}\n";
@@ -1316,6 +1327,7 @@ sub dashrep_expand_parameters
         $operand_two = "" ;
         $operand_three = "" ;
         $operand_four = "" ;
+        $number_of_operands = 0 ;
         if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
         {
             $action_name = $1 ;
@@ -1327,24 +1339,23 @@ sub dashrep_expand_parameters
             $object_of_action =~ s/^ +// ;
             $object_of_action =~ s/ +$// ;
             $object_of_action =~ s/\-+$// ;
-            $operand_one = $object_of_action ;
-            if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
+            @list_of_operands = split( / +/ , $object_of_action ) ;
+            $number_of_operands = scalar( @list_of_operands ) ;
+            if ( $number_of_operands >= 1 )
             {
-                $operand_one = $1 ;
-                $operand_two = $2 ;
+                $operand_one = $list_of_operands[ 0 ] ;
             }
-            if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
+            if ( $number_of_operands >= 2 )
             {
-                $operand_one = $1 ;
-                $operand_two = $2 ;
-                $operand_three = $3 ;
+                $operand_two = $list_of_operands[ 1 ] ;
             }
-            if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+)/ )
+            if ( $number_of_operands >= 3 )
             {
-                $operand_one = $1 ;
-                $operand_two = $2 ;
-                $operand_three = $3 ;
-                $operand_four = $4 ;
+                $operand_three = $list_of_operands[ 2 ] ;
+            }
+            if ( $number_of_operands >= 4 )
+            {
+                $operand_four = $list_of_operands[ 3 ] ;
             }
         } else
         {
@@ -1353,7 +1364,7 @@ sub dashrep_expand_parameters
         }
         if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
         {
-            $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $object_of_action . "}}\n";
+            $global_trace_log .= "{{trace; action " . $action_name . " has " . $number_of_operands . " operands: " . $object_of_action . "}}\n";
         }
 
 
@@ -1361,7 +1372,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  clear-phrase
 
-        if ( ( $action_name eq "clear-phrase" ) && ( $operand_one ne "" ) )
+        if ( ( $action_name eq "clear-phrase" ) && ( $number_of_operands == 1 ) )
         {
             $phrase_name = $operand_one ;
             $global_dashrep_replacement{ $phrase_name } = "" ;
@@ -1378,7 +1389,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  clear-all-dashrep-phrases
 
-        if ( $action_name eq "clear-all-dashrep-phrases" )
+        if ( ( $action_name eq "clear-all-dashrep-phrases" ) && ( $number_of_operands == 0 ) )
         {
             $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
             &dashrep_delete_all( );
@@ -1397,11 +1408,11 @@ sub dashrep_expand_parameters
 #  append-from-phrase-to-phrase
 #  append-from-phrase-to-phrase-no-space
 
-        if ( ( ( $action_name eq "append-from-phrase-to-phrase" ) || ( $action_name eq "append-from-phrase-to-phrase-no-space" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "append-from-phrase-to-phrase" ) || ( $action_name eq "append-from-phrase-to-phrase-no-space" ) ) && ( $number_of_operands == 2 ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
-            $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
+            $text_for_value = " error-for-action " . $action_name . " " ;
             if ( ( exists( $global_dashrep_replacement{ $source_phrase } ) ) && ( defined( $global_dashrep_replacement{ $source_phrase } ) ) )
             {
                 if ( $action_name eq "append-from-phrase-to-phrase-no-space" )
@@ -1426,7 +1437,7 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; did not append because phrase " . $source_phrase . " is not defined}}\n" ;
                 }
-				# if next line removed, endless loop can occur if source phrase not defined
+                # if next line removed, endless loop can occur if source phrase not defined
                 $text_for_value = "" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -1438,13 +1449,12 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  append-new-line-to-phrase
 
-        if ( ( $action_name eq "append-new-line-to-phrase" ) && ( $operand_one ne "" ) )
+        if ( ( $action_name eq "append-new-line-to-phrase" ) && ( $number_of_operands == 1 ) )
         {
-            $target_phrase = $operand_one ;
-            $global_dashrep_replacement{ $target_phrase } .= "\n" ;
+            $global_dashrep_replacement{ $operand_one } .= "\n" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                $global_trace_log .= "{{trace; appended newline to phrase " . $target_phrase . "}}\n" ;
+                $global_trace_log .= "{{trace; appended newline to phrase " . $operand_one . "}}\n" ;
             }
             $text_for_value = "" ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -1457,14 +1467,14 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-only-word-at-position
 #  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( $operand_three ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) ) && ( $number_of_operands == 3 ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
             $source_phrase =~ s/[\n\t\t]//g ;
             if ( ( $source_phrase !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $source_phrase } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase } ) ) ) )
             {
-                $text_for_value = " " . $action_name . " " . $operand_one . " " . $operand_two . " " ;
+                $text_for_value = " error-for-action " . $action_name . " " ;
             } else
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase } ;
@@ -1522,7 +1532,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-lowercase-only
 #  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) ) && ( $number_of_operands == 2 ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
@@ -1584,7 +1594,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-into-spoken-dashrep-code
 #  copy-from-phrase-to-phrase-from-spoken-dashrep-code
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" ) || ( $action_name eq "copy-from-phrase-to-phrase-from-spoken-dashrep-code" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" ) || ( $action_name eq "copy-from-phrase-to-phrase-from-spoken-dashrep-code" ) ) && ( $number_of_operands == 2 ) )
         {
             $source_phrase = $operand_one ;
             $target_phrase = $operand_two ;
@@ -1661,9 +1671,9 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  expand-phrase-to-phrase
 
-        if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $number_of_operands == 2 ) )
         {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            $text_for_value = " error-for-action " . $action_name . " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_to_expand = $global_dashrep_replacement{ $operand_one } ;
@@ -1735,23 +1745,24 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Deprecated, will be removed:
+#
 #  Handle the actions:
-#  yes-or-no-greater-than and
+#  yes-or-no-greater-than
 #  yes-or-no-less-than
 
-        if ( $action_name =~ /^yes-or-no-((greater)|(less))-than$/ )
+        if ( ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) ) && ( $number_of_operands == 2 ) )
         {
-            $calculation_type = $1 ;
             $first_object_of_action = $operand_one + 0 ;
             $second_object_of_action = $operand_two + 0 ;
             $text_for_value = "no" ;
-            if ( $calculation_type eq "greater" )
+            if ( $action_name eq "yes-or-no-greater-than" )
             {
                 if ( $first_object_of_action > $second_object_of_action )
                 {
                     $text_for_value = "yes" ;
                 }
-            } elsif ( $calculation_type eq "less" )
+            } elsif ( $action_name eq "yes-or-no-less-than" )
             {
                 if ( $first_object_of_action < $second_object_of_action )
                 {
@@ -1767,23 +1778,20 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calc-equal-greater-less-compare
 
-        if ( $action_name eq "calc-equal-greater-less-compare" )
+        if ( ( $action_name eq "calc-equal-greater-less-compare" ) && ( $number_of_operands == 2 ) )
         {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+            $text_for_value = " error-for-action " . $action_name . " " ;
+            $first_object_of_action = $operand_one + 0 ;
+            $second_object_of_action = $operand_two + 0 ;
+            if ( $first_object_of_action == $second_object_of_action )
             {
-                $first_object_of_action = $operand_one + 0 ;
-                $second_object_of_action = $operand_two + 0 ;
-                if ( $first_object_of_action == $second_object_of_action )
-                {
-                    $text_for_value = "equal" ;
-                } elsif ( $first_object_of_action > $second_object_of_action )
-                {
-                    $text_for_value = "greater" ;
-                } else
-                {
-                    $text_for_value = "less" ;
-                }
+                $text_for_value = "equal" ;
+            } elsif ( $first_object_of_action > $second_object_of_action )
+            {
+                $text_for_value = "greater" ;
+            } else
+            {
+                $text_for_value = "less" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -1828,25 +1836,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-
 #  first-item-in-list  <<-- deprecated
 
+        if ( $action_name eq "first-item-in-list" )
+        {
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ 0 ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  first-word-in-phrase
 
-        if ( ( $action_name eq "first-word-in-phrase" ) || ( $action_name eq "first-item-in-list" ) )
+        if ( ( $action_name eq "first-word-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
-            if ( $action_name eq "first-item-in-list" )
+            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
             {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                @list = split( / +/ , $global_dashrep_replacement{ $object_of_action } ) ;
             } else
             {
-                if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
-                } else
-                {
-                    @list = ( ) ;
-                }
+                @list = ( ) ;
             }
             $count = $#list + 1 ;
             $text_for_value = " " ;
@@ -1861,25 +1878,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-
 #  last-item-in-list  <<-- deprecated
 
+        if ( $action_name eq "last-item-in-list" )
+        {
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ $#list ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  last-word-in-phrase
 
-        if ( ( $action_name eq "last-word-in-phrase" ) || ( $action_name eq "last-item-in-list" ) )
+        if ( ( $action_name eq "last-word-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
-            if ( $action_name eq "last-item-in-list" )
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
             } else
             {
-                if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
-                } else
-                {
-                    @list = ( ) ;
-                }
+                @list = ( ) ;
             }
             $count = $#list + 1 ;
             $text_for_value = " " ;
@@ -1894,16 +1920,86 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-
 #  from-list-get-item-number  <<-- deprecated
 
-#  from-phrase-get-word-number
-
-        if ( ( $action_name eq "from-phrase-get-word-number" ) || ( $action_name eq "from-list-get-item-number" ) )
+        if ( ( $action_name eq "from-list-get-item-number" ) )
         {
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
-                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                $text_for_value = " error-for-action " . $action_name . " " ;
+            } else
+            {
+                $first_object_of_action = $operand_one ;
+                $second_object_of_action = $operand_two + 0 ;
+                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
+                } else
+                {
+                    if ( $second_object_of_action > $count )
+                    {
+                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-phrase-get-word-number
+
+        if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
+        {
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ ) || ( ( $operand_two + 0 ) < 1 ) )
+            {
+                $text_for_value = " error-for-action " . $action_name . " " ;
+            } else
+            {
+                $word_number = $operand_two + 0 ;
+                if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+                {
+                    @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
+                } else
+                {
+                    @list = ( ) ;
+                }
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = " " ;
+                } else
+                {
+                    if ( $word_number > $count )
+                    {
+                        $text_for_value = " error-for-action " . $action_name . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $word_number - 1 ] ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-list-get-item-number  <--- Deprecated
+
+        if ( $action_name eq "from-list-get-item-number" )
+        {
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
+            {
+                $text_for_value = " error-for-action " . $action_name . " " ;
             } else
             {
                 $first_object_of_action = $operand_one ;
@@ -1933,6 +2029,45 @@ sub dashrep_expand_parameters
                     } else
                     {
                         $text_for_value = $list[ $second_object_of_action - 1 ] ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-phrase-get-word-number
+
+        if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
+        {
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ )  || ( ( $operand_two + 0 ) < 1 ) )
+            {
+                $text_for_value = " error-for-action " . $action_name . " " ;
+            } else
+            {
+                $word_number = $operand_two + 0 ;
+                if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) )
+                {
+                    @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
+                } else
+                {
+                    @list = ( ) ;
+                }
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = $global_dashrep_replacement{ $operand_one } ;
+                } else
+                {
+                    if ( $word_number > $count )
+                    {
+                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $word_number - 1 ] ;
                     }
                 }
             }
@@ -1982,28 +2117,13 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-
 #  count-of-list  <<-- deprecated
 
-#  count-of-words-in-phrase
-
-        if ( ( $action_name eq "count-of-words-in-phrase" ) || ( $action_name eq "count-of-list" ) )
+        if ( $action_name eq "count-of-list" )
         {
             if ( $object_of_action =~ /[^ ]/ )
             {
-                if ( $action_name eq "count-of-list" )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                } else
-                {
-                    if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
-                    {
-                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
-                    } else
-                    {
-                        @list = ( ) ;
-                    }
-                }
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
                 $count = $#list + 1 ;
                 if ( $count > 0 )
                 {
@@ -2023,27 +2143,73 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  count-of-words-in-phrase
 
+        if ( ( $action_name eq "count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
+            } else
+            {
+                @list = ( ) ;
+            }
+            $count = $#list + 1 ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $count ;
+            } else
+            {
+                $text_for_value = "0" ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  zero-one-multiple-count-of-list  <<-- deprecated
 
-#  zero-one-multiple-count-of-words-in-phrase
-
-        if ( ( $action_name eq "zero-one-multiple-count-of-words-in-phrase" ) || ( $action_name eq "zero-one-multiple-count-of-list" ) )
+        if ( $action_name eq "zero-one-multiple-count-of-list" )
         {
             if ( $object_of_action =~ /[^ ]/ )
             {
-                if ( $action_name eq "zero-one-multiple-count-of-list" )
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                $count = $#list + 1 ;
+                if ( $count == 0 )
                 {
-                    @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                    $name_for_count = "zero" ;
+                } elsif ( $count == 1 )
+                {
+                    $name_for_count = "one" ;
+                } elsif ( $count > 1 )
+                {
+                    $name_for_count = "multiple" ;
+                }
+            } else
+            {
+                $name_for_count = "zero" ;
+            }
+            $replacement_text = $text_begin . $name_for_count . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  zero-one-multiple-count-of-words-in-phrase
+
+        if ( ( $action_name eq "zero-one-multiple-count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $object_of_action =~ /[^ ]/ )
+            {
+                if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+                {
+                    @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
                 } else
                 {
-                    if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
-                    {
-                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $object_of_action } ) ;
-                    } else
-                    {
-                        @list = ( ) ;
-                    }
+                    @list = ( ) ;
                 }
                 $count = $#list + 1 ;
                 if ( $count == 0 )
@@ -2069,14 +2235,14 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  position-of-word-in-phrase
 
-        if ( $action_name eq "position-of-word-in-phrase" )
+        if ( ( $action_name eq "position-of-word-in-phrase" ) && ( $number_of_operands == 2 ) )
         {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            $text_for_value = " error-for-action " . $action_name . " " ;
             $word_to_find = $operand_one ;
             $phrase_name = $operand_two ;
-            if ( ( $word_to_find ne "" ) && ( $phrase_name ne "" ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+            if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
             {
-                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $phrase_name } ) ;
+                @list = split( / +/ , $global_dashrep_replacement{ $phrase_name } ) ;
                 $list_length = $#list + 1 ;
                 $text_for_value = "0" ;
                 if ( $list_length >= 1 )
@@ -2109,7 +2275,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
         {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            $text_for_value = " error-for-action " . $action_name . " " ;
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) || ( ( $operand_three ne "" ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) ) ) )
             {
                 $text_for_value = "" ;
@@ -2129,13 +2295,13 @@ sub dashrep_expand_parameters
                     $text_list_key = $text_list_loop ;
                     $text_list_loop = $temp ;
                 }
-                @list_of_key_values = &dashrep_internal_split_delimited_items( $text_list_key ) ;
+                @list_of_key_values = split( / +/ , $text_list_key ) ;
                 %listed_word = ( ) ;
                 foreach $word ( @list_of_key_values )
                 {
                     $listed_word{ $word } = 0 ;
                 }
-                @list_of_loop_words = &dashrep_internal_split_delimited_items( $text_list_loop ) ;
+                @list_of_loop_words = split( / +/ , $text_list_loop ) ;
                 $length_of_loop_list = $#list_of_loop_words + 1 ;
                 %not_listed_word = ( ) ;
                 $result_word_list = "" ;
@@ -2170,11 +2336,11 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  counts-from-integer-to-integer-put-into-phrase
 
-        if ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" )
+        if ( ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" ) && ( $number_of_operands == 3 ) )
         {
             if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
-                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                $text_for_value = " error-for-action " . $action_name . " " ;
             } else
             {
                 $starting_count = $operand_one + 0 ;
@@ -2223,17 +2389,17 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  every-combination-of-counts-from-two-phrases-put-into-two-phrases
 
-        if ( $action_name eq "every-combination-of-counts-from-two-phrases-put-into-two-phrases" )
+        if ( ( $action_name eq "every-combination-of-counts-from-two-phrases-put-into-two-phrases" ) && ( $number_of_operands == 4 ) )
         {
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( $operand_three ne "" ) && ( $operand_four ne "" ) && ( defined( $global_dashrep_replacement{ $operand_one } ) ) && ( defined( $global_dashrep_replacement{ $operand_two } ) ) )
+            $text_for_value = " error-for-action " . $action_name . " " ;
+            if ( ( defined( $global_dashrep_replacement{ $operand_one } ) ) && ( defined( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 $input_list_one_phrase_name = $operand_one ;
                 $input_list_two_phrase_name = $operand_two ;
                 $output_list_one_phrase_name = $operand_three ;
                 $output_list_two_phrase_name = $operand_four ;
-                @input_list_one = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $input_list_one_phrase_name } ) ;
-                @input_list_two = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $input_list_two_phrase_name } ) ;
+                @input_list_one = split( / +/ , $global_dashrep_replacement{ $input_list_one_phrase_name } ) ;
+                @input_list_two = split( / +/ , $global_dashrep_replacement{ $input_list_two_phrase_name } ) ;
                 $count_list_one = $#input_list_one + 1 ;
                 $count_list_two = $#input_list_two + 1 ;
                 if ( ( $count_list_one < 1 ) || ( $count_list_two < 1 ) )
@@ -2273,12 +2439,12 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  zero-one-multiple
 
-        if ( $action_name eq "zero-one-multiple" )
+        if ( ( $action_name eq "zero-one-multiple" ) && ( $number_of_operands == 1 ) )
         {
-            if ( $object_of_action + 0 <= 0 )
+            if ( ( $operand_one =~ /^[0-9]+$/ ) && ( $operand_one + 0 <= 0 ) )
             {
                 $zero_one_multiple = "zero" ;
-            } elsif ( $object_of_action + 0 == 1 )
+            } elsif ( $operand_one + 0 == 1 )
             {
                 $zero_one_multiple = "one" ;
             } else
@@ -2293,9 +2459,8 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty  <--- deprecated
-#  empty-or-nonempty-word
 
-        if ( ( $action_name eq "empty-or-nonempty" ) || ( $action_name eq "empty-or-nonempty-word" ) )
+        if ( $action_name eq "empty-or-nonempty" )
         {
             if ( $object_of_action =~ /[^ \n\t]/ )
             {
@@ -2311,16 +2476,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  empty-or-nonempty-word
+
+        if ( ( $action_name eq "empty-or-nonempty-word" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $operand_one =~ /[^ \n\t]/ )
+            {
+                $empty_or_nonempty = "nonempty" ;
+            } else
+            {
+                $empty_or_nonempty = "empty" ;
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  empty-or-nonempty-phrase
 
-        if ( $action_name eq "empty-or-nonempty-phrase" )
+        if ( ( $action_name eq "empty-or-nonempty-phrase" ) && ( $number_of_operands == 1 ) )
         {
             $empty_or_nonempty = "empty" ;
-            if ( $object_of_action =~ /[^ \n\t]/ )
+            if ( $operand_one =~ /[^ \n\t]/ )
             {
-                if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+                if ( exists( $global_dashrep_replacement{ $operand_one } ) )
                 {
-                    if ( $global_dashrep_replacement{ $object_of_action } =~ /[^ \n\t]/ )
+                    if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
                     {
                         $empty_or_nonempty = "nonempty" ;
                     }
@@ -2333,17 +2516,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-
 #  length-of-phrase-definition  <<-- deprecated
 
-#  count-of-characters-in-phrase-defintion
-
-       if ( ( $action_name eq "count-of-characters-in-phrase-defintion" ) || ( $action_name eq "length-of-phrase-definition" ) )
+       if ( $action_name eq "length-of-phrase-definition" )
        {
            $phrase_length = "0" ;
            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
            {
                $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
+                if ( $phrase_length < 1 )
+                {
+                    $phrase_length = "0" ;
+                }
+            }
+            $replacement_text = $text_begin . $phrase_length . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  count-of-characters-in-phrase-defintion
+
+       if ( ( $action_name eq "count-of-characters-in-phrase-defintion" ) && ( $number_of_operands == 1 ) )
+       {
+           $phrase_length = "0" ;
+           if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+           {
+               $phrase_length = length( $global_dashrep_replacement{ $operand_one } ) ;
                 if ( $phrase_length < 1 )
                 {
                     $phrase_length = "0" ;
@@ -2379,31 +2579,36 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  same-or-not-same-two-words
-#  same-or-not-same-two-phrases
 
-        if ( ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "same-or-not-same-two-phrases" ) ) && ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+        if ( ( $action_name eq "same-or-not-same-two-words" ) && ( $number_of_operands == 2 ) )
         {
-            if ( $action_name eq "same-or-not-same-two-words" )
+            if ( $operand_one eq $operand_two )
             {
-                if ( $operand_one eq $operand_two )
-                {
-                    $same_or_not_same = "same" ;
-                } else
-                {
-                    $same_or_not_same = "not-same" ;
-                }
+                $same_or_not_same = "same" ;
             } else
             {
-                if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
-                {
-                    $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
-                } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
-                {
-                    $same_or_not_same = "same" ;
-                } else
-                {
-                    $same_or_not_same = "not-same" ;
-                }
+                $same_or_not_same = "not-same" ;
+            }
+            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  same-or-not-same-two-phrases
+
+        if ( ( $action_name eq "same-or-not-same-two-phrases" ) && ( $number_of_operands == 2 ) )
+        {
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
+            {
+                $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
+            } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
+            {
+                $same_or_not_same = "same" ;
+            } else
+            {
+                $same_or_not_same = "not-same" ;
             }
             $replacement_text = $text_begin . $same_or_not_same . $text_end ;
             next ;
@@ -2436,105 +2641,13 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  calc-minus and
-#  calc-divide-by
 
-        if ( $action_name =~ /^calc-((minus)|(divide-by))$/ )
+        if ( ( $action_name eq "calc-minus" ) && ( $number_of_operands == 2 ) )
         {
-            $calculation_type = $1 ;
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) )
+            $text_for_value = " error-for-action " . $action_name . " " ;
+            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
             {
-                $first_object_of_action = $operand_one + 0 ;
-                $second_object_of_action = $operand_two + 0 ;
-                if ( $calculation_type eq "minus" )
-                {
-                    $numeric_value = $first_object_of_action - $second_object_of_action ;
-                    if ( $numeric_value == 0 )
-                    {
-                        $text_for_value = "0" ;
-                    } else
-                    {
-                        $text_for_value = sprintf( "%f" , $numeric_value ) ;
-                    }
-                } elsif ( $calculation_type eq "divide-by" )
-                {
-                    if ( $second_object_of_action == 0 )
-                    {
-                        $text_for_value = "infinity" ;
-                    } elsif ( $first_object_of_action = 0 )
-                    {
-                        $text_for_value = "0" ;
-                    } else
-                    {
-                        $numeric_value = $first_object_of_action / $second_object_of_action ;
-                        $text_for_value = sprintf( "%f" , $numeric_value ) ;
-                    }
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  calc-add and
-#  calc-multiply
-#  calc-maximum
-#  calc-minimum
-
-        if ( $action_name =~ /^calc-((add)|(multiply)|(maximum)|(minimum))$/ )
-        {
-            $calculation_type = $1 ;
-            $text_for_value = "0" ;
-            if ( $object_of_action eq "" )
-            {
-                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            } else
-            {
-                if ( $calculation_type eq "add" )
-                {
-                    $numeric_value = 0 ;
-                } elsif ( $calculation_type eq "multiply" )
-                {
-                    $numeric_value = 1 ;
-                } elsif ( $calculation_type eq "maximum" )
-                {
-                    $numeric_value = -999999 ;
-                } elsif ( $calculation_type eq "minimum" )
-                {
-                    $numeric_value = 999999 ;
-                } else
-                {
-                    $numeric_value = 0 ;
-                }
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
-                {
-                    $value = $list[ $counter ] ;
-                    if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
-                    {
-                        if ( $calculation_type eq "add" )
-                        {
-                            $numeric_value = $numeric_value + $value ;
-                        } elsif ( $calculation_type eq "multiply" )
-                        {
-                            $numeric_value = $numeric_value * $value ;
-                        } elsif ( $calculation_type eq "maximum" )
-                        {
-                            if ( $value > $numeric_value )
-                            {
-                                $numeric_value = $value ;
-                            }
-                        } elsif ( $calculation_type eq "minimum" )
-                        {
-                            if ( $value < $numeric_value )
-                            {
-                                $numeric_value = $value ;
-                            }
-                        }
-                    }
-                }
+                $numeric_value = ( $operand_one + 0 ) - ( $operand_two + 0 ) ;
                 if ( $numeric_value == 0 )
                 {
                     $text_for_value = "0" ;
@@ -2549,17 +2662,108 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the actions:
+#  calc-divide-by
+
+        if ( ( $action_name eq "calc-divide-by" ) && ( $number_of_operands == 2 ) )
+        {
+            $text_for_value = " error-for-action " . $action_name . " " ;
+            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
+            {
+                if ( ( $operand_two + 0 ) == 0 )
+                {
+                    $text_for_value = "infinity" ;
+                } elsif ( $operand_one = 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $numeric_value = ( $operand_one + 0 ) / ( $operand_two + 0 ) ;
+                    $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  calc-add
+#  calc-multiply
+#  calc-maximum
+#  calc-minimum
+
+        if ( ( ( $action_name eq "calc-add" ) || ( $action_name eq "calc-multiply" ) || ( $action_name eq "calc-maximum" ) || ( $action_name eq "calc-minimum" ) ) && ( $number_of_operands >= 1 ) )
+        {
+            $text_for_value = "0" ;
+            if ( $action_name eq "calc-add" )
+            {
+                $numeric_value = 0 ;
+            } elsif ( $action_name eq "calc-multiply" )
+            {
+                $numeric_value = 1 ;
+            } elsif ( $action_name eq "calc-maximum" )
+            {
+                $numeric_value = -999999 ;
+            } elsif ( $action_name eq "calc-minimum" )
+            {
+                $numeric_value = 999999 ;
+            } else
+            {
+                $numeric_value = 0 ;
+            }
+            @list = split( / +/ , $object_of_action ) ;
+            for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
+            {
+                $value = $list[ $counter ] ;
+                if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
+                {
+                    if ( $action_name eq "calc-add" )
+                    {
+                        $numeric_value = $numeric_value + $value ;
+                    } elsif ( $action_name eq "calc-multiply" )
+                    {
+                        $numeric_value = $numeric_value * $value ;
+                    } elsif ( $action_name eq "calc-maximum" )
+                    {
+                        if ( $value > $numeric_value )
+                        {
+                            $numeric_value = $value ;
+                        }
+                    } elsif ( $action_name eq "calc-minimum" )
+                    {
+                        if ( $value < $numeric_value )
+                        {
+                            $numeric_value = $value ;
+                        }
+                    }
+                }
+            }
+            if ( $numeric_value == 0 )
+            {
+                $text_for_value = "0" ;
+            } else
+            {
+                $text_for_value = sprintf( "%f" , $numeric_value ) ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
 #  Handle the action:
 #  calc-integer
 
-        if ( $action_name eq "calc-integer" )
+        if ( ( $action_name eq "calc-integer" ) && ( $number_of_operands == 1 ) )
         {
-            if ( ( $object_of_action eq "" ) || ( $object_of_action !~ /^[\-0-9\.]+$/ ) )
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                $text_for_value = " error-for-action " . $action_name . " " ;
             } else
             {
-                $operand_value = int( $object_of_action + 0 ) ;
+                $operand_value = int( $operand_one + 0 ) ;
                 if ( $operand_value == 0 )
                 {
                     $text_for_value = "0" ;
@@ -2577,14 +2781,14 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calc-absolute
 
-        if ( $action_name eq "calc-absolute" )
+        if ( ( $action_name eq "calc-absolute" ) && ( $number_of_operands == 1 ) )
         {
-            if ( ( $object_of_action eq "" ) || ( $object_of_action !~ /^[\-0-9\.]+$/ ) )
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                $text_for_value = " error-for-action " . $action_name . " " ;
             } else
             {
-                $operand_value = abs( $object_of_action + 0 ) ;
+                $operand_value = abs( $operand_one + 0 ) ;
                 if ( $operand_value == 0 )
                 {
                     $text_for_value = "0" ;
@@ -2603,27 +2807,33 @@ sub dashrep_expand_parameters
 #  get-current-time-in-epoch-seconds
 #  split-epoch-seconds-into-named-components
 
-        if ( $action_name eq "get-current-time-in-epoch-seconds" )
+        if ( ( $action_name eq "get-current-time-in-epoch-seconds" ) && ( $number_of_operands == 0 ) )
         {
             $epoch_seconds = time ;
             $text_for_value = sprintf( "%d" , $epoch_seconds ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
-        if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $operand_one ne "" ) )
+        if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $number_of_operands == 1 ) )
         {
-            ( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
-            $month_number ++ ;
-            $year += 1900 ;
-            $global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
-            $global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
-            $global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
-            $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
-            $global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
-            $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
-            $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
-            $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
-            $text_for_value = "" ;
+            if ( $operand_one !~ /^[0-9]+$/ )
+            {
+                $text_for_value = " error-for-action " . $action_name . " " ;
+            } else
+            {
+                ( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
+                $month_number ++ ;
+                $year += 1900 ;
+                $global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
+                $global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
+                $global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
+                $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
+                $global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
+                $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
+                $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
+                $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
+                $text_for_value = "" ;
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -2634,17 +2844,17 @@ sub dashrep_expand_parameters
 #  use-template-and-parameters-to-create-full-list-with-name
 #  use-template-and-parameters-to-create-simple-list-with-name
 
-        if ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) )
+        if ( ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) ) && ( $number_of_operands == 3 ) )
         {
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( $operand_three ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
+            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 $text_for_value = "" ;
                 $template_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
                 $text_that_expands_to_generate_list = "[-copy-from-phrase-to-phrase empty-text " . $generated_list_name . "-]" ;
-                @list_of_parameters = &dashrep_internal_split_delimited_items( $parameter_word_list ) ;
+                @list_of_parameters = split( / +/ , $parameter_word_list ) ;
                 $list_length = $#list_of_parameters + 1 ;
                 if ( $list_length < 1 )
                 {
@@ -2713,7 +2923,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  write-all-phrase-names-to-phrase
 
-        if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $operand_one ne "" ) )
+        if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $number_of_operands == 1 ) )
         {
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
@@ -2744,7 +2954,7 @@ sub dashrep_expand_parameters
 #  character to replace, just the first character is
 #  used.
 
-        if ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" )
+        if ( ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" ) && ( $number_of_operands == 3 ) )
         {
             $text_for_value = "" ;
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
@@ -2808,7 +3018,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  split-into-list-of-characters
+#  split-into-list-of-characters  <--- Deprecated
 
         if ( $action_name eq "split-into-list-of-characters" )
         {
@@ -2820,7 +3030,23 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  sort-numbers
+#  split-phrase-into-list-of-characters
+
+        if ( ( $action_name eq "split-phrase-into-list-of-characters" ) && ( $number_of_operands == 1 ) )
+        {
+            $text_for_value = " error-for-action " . $action_name . " " ;
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                $text_for_value = join( " " , unpack( "(a1)*" , $global_dashrep_replacement{ $operand_one } ) ) ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  sort-numbers  <--- Deprecated
 
         if ( $action_name eq "sort-numbers" )
         {
@@ -2830,6 +3056,30 @@ sub dashrep_expand_parameters
                 $object_of_action =~ s/^,// ;
                 $object_of_action =~ s/,$// ;
                 @list = split( /,+/ , $object_of_action ) ;
+                @list_of_sorted_numbers = sort { $a <=> $b } @list ;
+                $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
+            } else
+            {
+                $sorted_numbers = " " ;
+            }
+            $replacement_text = $text_begin . $sorted_numbers . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  sort-numbers-in-phrase
+
+        if ( ( $action_name eq "sort-numbers-in-phrase" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /^[ 0-9]+$/ ) )
+            {
+                $list_of_numbers = $global_dashrep_replacement{ $operand_one } ;
+                $list_of_numbers =~ s/ +/,/gs ;
+                $list_of_numbers =~ s/^,// ;
+                $list_of_numbers =~ s/,$// ;
+                @list = split( /,+/ , $list_of_numbers ) ;
                 @list_of_sorted_numbers = sort { $a <=> $b } @list ;
                 $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
             } else
@@ -2871,14 +3121,14 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  auto-increment
 
-        if ( $action_name eq "auto-increment" )
+        if ( ( $action_name eq "auto-increment" ) && ( $number_of_operands == 1 ) )
         {
-            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
-                $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
+                $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
             } else
             {
-                $global_dashrep_replacement{ $object_of_action } = 1 ;
+                $global_dashrep_replacement{ $operand_one } = 1 ;
             }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
@@ -2887,7 +3137,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  create-list-named
+#  create-list-named  <--- Deprecated
 
         if ( $action_name eq "create-list-named" )
         {
@@ -2920,21 +3170,21 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calculate-if-phrase-empty
 
-        if ( $action_name eq "calculate-if-phrase-empty" )
+        if ( ( $action_name eq "calculate-if-phrase-empty" ) && ( $number_of_operands == 1 ) )
         {
             $text_for_value = "" ;
-            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } =~ /[^ ]/ ) )
+            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; phrase " . $object_of_action . " is not empty, so no need to calculate}}\n" ;
+                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is not empty, so no need to calculate}}\n" ;
                 }
             } else
             {
-                $text_for_value = "[-how-to-calculate-" . $object_of_action . "-]" ;
+                $text_for_value = "[-how-to-calculate-" . $operand_one . "-]" ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; phrase " . $object_of_action . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
+                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -2953,7 +3203,7 @@ sub dashrep_expand_parameters
 
 #  Not yet implemented, not yet debugged.
 
-        if ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) )
+        if ( ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) ) && ( $number_of_operands == 1 ) )
         {
             $text_inserted = " action " . $action_name . " not yet implemented " ;
             if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
@@ -3043,6 +3293,8 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Deprecated, remove later.
+#
 #  For each encountered replacement that begins
 #  with "auto-increment-", increment its value.
 
@@ -3085,6 +3337,8 @@ this subroutine.
 
 #-----------------------------------------------
 #-----------------------------------------------
+#         Deprecated.  Do not use.
+#
 #         Non-exported subroutine:
 #
 #         dashrep_generate_lists
@@ -4917,7 +5171,7 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  write-all-dashrep-definitions-to-file and
+#  write-all-dashrep-definitions-to-file
 #  write-all-dashrep-phrase-names-to-file
 #  write-dashrep-definitions-listed-in-phrase-to-file
 #
@@ -4929,7 +5183,7 @@ sub dashrep_file_actions
     if ( ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) && ( $source_phrase ne "" ) && ( $target_filename ne "" ) && ( $operand_two ne "" ) )
     {
         $definitions_or_phrase_names = "definitions" ;
-        @list_of_phrases = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $source_phrase } ) ;
+        @list_of_phrases = split( / +/ , $global_dashrep_replacement{ $source_phrase } ) ;
         @sequence_of_phrases = @list_of_phrases ;
     } elsif ( ( $action_name eq "write-all-dashrep-definitions-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
     {
@@ -5974,6 +6228,8 @@ sub dashrep_internal_endless_loop_info
 
 =head2 dashrep_internal_split_delimited_items
 
+Deprecated.  Do not use.
+
 Internal subroutine, not exported.
 It is only needed within the Dashrep module.
 
@@ -5982,6 +6238,8 @@ It is only needed within the Dashrep module.
 
 #-----------------------------------------------
 #-----------------------------------------------
+#         Deprecated.  Do not use.
+#
 #         Non-exported subroutine:
 #
 #         dashrep_internal_split_delimited_items
