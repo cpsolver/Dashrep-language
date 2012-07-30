@@ -214,7 +214,7 @@ BEGIN {
     $global_capture_level = 0 ;
     $global_xml_level_number = 0 ;
     $global_trace_log = "" ;
-	$global_unique_value = 0 ;
+    $global_unique_value = 0 ;
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
@@ -1327,14 +1327,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             $phrase_name = $operand_one ;
@@ -1356,8 +1364,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 0 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
@@ -1382,20 +1394,32 @@ sub dashrep_expand_parameters
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $source_phrase_name = $operand_one ;
@@ -1443,14 +1467,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             $global_dashrep_replacement{ $operand_one } .= "\n" ;
@@ -1473,20 +1505,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 3 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $source_phrase_name = $operand_one ;
@@ -1556,20 +1600,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $source_phrase_name = $operand_one ;
@@ -1636,20 +1692,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $source_phrase_name = $operand_one ;
@@ -1731,20 +1799,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -1790,8 +1870,12 @@ sub dashrep_expand_parameters
             $comparison_type = $2 ;
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             $first_number_text = $operand_one ;
@@ -1835,8 +1919,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             $first_object_of_action = $operand_one + 0 ;
@@ -1868,20 +1956,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -1910,8 +2010,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $object_of_action =~ /^ *no *$/i )
@@ -1934,8 +2038,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $object_of_action =~ /^ *yes *$/i )
@@ -1958,8 +2066,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
@@ -1982,14 +2094,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
@@ -2018,8 +2138,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
@@ -2042,14 +2166,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -2078,13 +2210,21 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
             } else
             {
                 $first_object_of_action = $operand_one ;
@@ -2118,25 +2258,37 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ ) || ( ( $operand_two + 0 ) < 1 ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
             } else
             {
                 $word_number = $operand_two + 0 ;
@@ -2175,13 +2327,21 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
             } else
             {
                 $first_object_of_action = $operand_one ;
@@ -2227,25 +2387,37 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ )  || ( ( $operand_two + 0 ) < 1 ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
             } else
             {
                 $word_number = $operand_two + 0 ;
@@ -2287,8 +2459,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
@@ -2355,13 +2531,17 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 next ;
             }
@@ -2422,14 +2602,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $object_of_action =~ /[^ ]/ )
@@ -2469,14 +2657,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2582,31 +2778,47 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 3 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
                 next ;
             }
             if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
             } else
             {
                 $starting_count = $operand_one + 0 ;
@@ -2659,32 +2871,52 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 4 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_four =~ /^[-_]/ ) || ( $operand_four =~ /[-_]$/ ) )
+            if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_four . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2739,14 +2971,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( ( $operand_one =~ /^[0-9]+$/ ) && ( $operand_one + 0 <= 0 ) )
@@ -2790,8 +3030,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one =~ /[^ \n\t]/ )
@@ -2814,14 +3058,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             $empty_or_nonempty = "empty" ;
@@ -2845,8 +3097,12 @@ sub dashrep_expand_parameters
        {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
            $phrase_length = "0" ;
@@ -2871,14 +3127,22 @@ sub dashrep_expand_parameters
        {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
            $phrase_length = "0" ;
@@ -2925,8 +3189,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one eq $operand_two )
@@ -2949,25 +3217,41 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
                 $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operands}}\n" ;
+                }
             } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
             {
                 $same_or_not_same = "same" ;
@@ -2988,20 +3272,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
@@ -3029,20 +3325,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one =~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two =~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -3070,20 +3378,32 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 2 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -3117,8 +3437,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands < 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = "0" ;
@@ -3185,29 +3509,31 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            $operand_value = int( $operand_one + 0 ) ;
+            if ( $operand_value == 0 )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "0" ;
             } else
             {
-                $operand_value = int( $operand_one + 0 ) ;
-                if ( $operand_value == 0 )
-                {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $text_for_value = sprintf( "%d" , $operand_value ) ;
-                }
+                $text_for_value = sprintf( "%d" , $operand_value ) ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -3222,29 +3548,31 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            $operand_value = abs( $operand_one + 0 ) ;
+            if ( $operand_value == 0 )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                $text_for_value = "0" ;
             } else
             {
-                $operand_value = abs( $operand_one + 0 ) ;
-                if ( $operand_value == 0 )
-                {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $text_for_value = sprintf( "%d" , $operand_value ) ;
-                }
+                $text_for_value = sprintf( "%d" , $operand_value ) ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -3259,14 +3587,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 0 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[0-9]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             $epoch_seconds = time ;
@@ -3284,34 +3620,36 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( $operand_one !~ /^[0-9]+$/ )
-            {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
-            } else
-            {
-                ( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
-                $month_number ++ ;
-                $year += 1900 ;
-                $global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
-                $global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
-                $global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
-                $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
-                $global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
-                $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
-                $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
-                $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
-                $text_for_value = "" ;
-            }
+            ( $second_time , $minute , $hour , $day_of_month , $month_number , $year , $weekday , $day_of_year , $extra_info ) = localtime( $operand_one ) ;
+            $month_number ++ ;
+            $year += 1900 ;
+            $global_dashrep_replacement{ "time-second" } = sprintf( "%d" , $second_time ) ;
+            $global_dashrep_replacement{ "time-minute" } = sprintf( "%d" , $minute ) ;
+            $global_dashrep_replacement{ "time-hour" } = sprintf( "%d" , $hour ) ;
+            $global_dashrep_replacement{ "time-day-of-month" } = sprintf( "%d" , $day_of_month ) ;
+            $global_dashrep_replacement{ "time-month-number" } = sprintf( "%d" , $month_number ) ;
+            $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
+            $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
+            $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
+            $text_for_value = "" ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -3326,26 +3664,42 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 3 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -3436,14 +3790,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
@@ -3468,6 +3830,8 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  within-phrase-replace-character-with-text-in-phrase
 #
+#  ToDo: Change to copy version
+#
 #  If the replacement text contains the text to be
 #  replaced, nothing is done because that would
 #  create endless loop.
@@ -3479,29 +3843,45 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 3 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( $operand_two !~ /^[^ ]$/ )
             {
-                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
                 next ;
             }
-            $text_for_value = "" ;
+            $text_for_value = " " ;
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3583,14 +3963,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -3636,14 +4024,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /^[ 0-9]+$/ ) )
@@ -3677,7 +4073,7 @@ sub dashrep_expand_parameters
         if ( $action_name eq "unique-value" )
         {
             $global_unique_value ++ ;
-			$unique_value_as_text = sprintf( "%d" , $global_unique_value ) ;
+            $unique_value_as_text = sprintf( "%d" , $global_unique_value ) ;
             $replacement_text = $text_begin . $unique_value_as_text . $text_end ;
             next ;
         }
@@ -3691,14 +4087,22 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3721,8 +4125,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = "dashrep_undefined" ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             push ( @global_list_of_lists_to_generate , $object_of_action ) ;
@@ -3758,17 +4166,25 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
-            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
-            $text_for_value = "" ;
+            $text_for_value = " " ;
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -3803,8 +4219,12 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 1 )
             {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
                 next ;
             }
             $text_inserted = " action " . $action_name . " not yet implemented " ;
