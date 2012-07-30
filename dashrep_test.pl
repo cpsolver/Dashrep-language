@@ -285,7 +285,7 @@ test-of-auto-increment:
 --------
 
 test-of-unique-value:
-[-unique-value: test-value-]
+[-same-or-not-same [-unique-value-] [-unique-value-]-]
 --------
 
 non-breaking-space:
@@ -382,7 +382,7 @@ test-of-escape-action:
 page-participants-list:
 [-create-list-named: participant-names-full-]
 [-auto-increment: test-counter-]
-[-unique-value: test-value-]
+[-unique-value-]
 format-begin-heading-level-1
 words-web-page-title
 format-end-heading-level-1
@@ -899,13 +899,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-u
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "test-of-unique-value" );
 #  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-value" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-value" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value ne "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value ne "same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

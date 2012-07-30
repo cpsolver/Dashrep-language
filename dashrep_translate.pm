@@ -190,6 +190,7 @@ my $global_dashrep_text_list_of_phrases_file_related ;
 my $global_dashrep_text_list_of_phrases_advanced ;
 my $global_dashrep_text_list_of_spoken_words ;
 my $global_dashrep_text_list_of_phrases_uncategorized ;
+my $global_unique_value ;
 my %global_dashrep_replacement ;
 my %global_replacement_count_for_item_name ;
 my %global_exists_xml_hyphenated_phrase ;
@@ -213,6 +214,7 @@ BEGIN {
     $global_capture_level = 0 ;
     $global_xml_level_number = 0 ;
     $global_trace_log = "" ;
+	$global_unique_value = 0 ;
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
@@ -3272,12 +3274,12 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
-		
-		
+
+
 #-----------------------------------------------
 #  Handle the actions:
 #  split-epoch-seconds-into-named-components
-		
+
         if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $number_of_operands == 1 ) )
         {
             if ( $number_of_operands != 1 )
@@ -3666,32 +3668,17 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  unique-value
 #
-#  Currently this action is equivalent to the
-#  auto-increment action.
-#  It can be changed to accomodate a
+#  This action can be changed to accomodate a
 #  parallel-processing environment where the
 #  code here would assign values from separate
 #  blocks of numbers assigned to each
 #  processor/process.
 
-#  ToDo: change to use no operand
-
         if ( $action_name eq "unique-value" )
         {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                next ;
-            }
-            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-            {
-                $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
-            } else
-            {
-                $global_dashrep_replacement{ $object_of_action } = 1 ;
-            }
-            $replacement_text = $text_begin . " " . $text_end ;
+            $global_unique_value ++ ;
+			$unique_value_as_text = sprintf( "%d" , $global_unique_value ) ;
+            $replacement_text = $text_begin . $unique_value_as_text . $text_end ;
             next ;
         }
 
