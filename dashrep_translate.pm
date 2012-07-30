@@ -1323,6 +1323,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "clear-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $phrase_name = $operand_one ;
             $global_dashrep_replacement{ $phrase_name } = "" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -1340,6 +1352,12 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "clear-all-dashrep-phrases" ) && ( $number_of_operands == 0 ) )
         {
+            if ( $number_of_operands != 0 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
             &dashrep_delete_all( );
             if ( $tracking_on_or_off eq "on" )
@@ -1360,12 +1378,21 @@ sub dashrep_expand_parameters
         if ( ( $action_name eq "append-from-phrase-to-phrase" ) || ( $action_name eq "append-from-phrase-to-phrase-no-space" ) )
         {
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
-
-            # ToDo: insert this code into other actions, because action name is OK even if number of operands is incorrect.
-
             if ( $number_of_operands != 2 )
             {
                 $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 next ;
             }
@@ -1373,7 +1400,7 @@ sub dashrep_expand_parameters
             $target_phrase_name = $operand_two ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
-                $global_trace_log .= "{{trace; about to copy from phrase " . $source_phrase_name . " to " . $target_phrase_name . "}}\n" ;
+                $global_trace_log .= "{{trace; about to append from phrase " . $source_phrase_name . " to " . $target_phrase_name . "}}\n" ;
             }
             if ( ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) )
             {
@@ -1412,6 +1439,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "append-new-line-to-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $global_dashrep_replacement{ $operand_one } .= "\n" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
@@ -1430,6 +1469,24 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) ) && ( $number_of_operands == 3 ) )
         {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             $source_phrase_name =~ s/[\n\t\t]//g ;
@@ -1495,6 +1552,24 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
@@ -1557,6 +1632,24 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" ) || ( $action_name eq "copy-from-phrase-to-phrase-from-spoken-dashrep-code" ) ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
@@ -1634,6 +1727,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
@@ -1675,6 +1786,12 @@ sub dashrep_expand_parameters
         if ( $action_name =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number)$/ )
         {
             $comparison_type = $2 ;
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $first_number_text = $operand_one ;
             $second_number_text = $operand_two ;
             $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number deprecated]" ;
@@ -1714,6 +1831,12 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $first_object_of_action = $operand_one + 0 ;
             $second_object_of_action = $operand_two + 0 ;
             $text_for_value = "no" ;
@@ -1741,6 +1864,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calc-equal-greater-less-compare" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             $first_object_of_action = $operand_one + 0 ;
             $second_object_of_action = $operand_two + 0 ;
@@ -1765,6 +1906,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "yes-if-not-no" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $object_of_action =~ /^ *no *$/i )
             {
                 $empty_or_nonempty = "no" ;
@@ -1783,6 +1930,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "no-if-not-yes" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $object_of_action =~ /^ *yes *$/i )
             {
                 $empty_or_nonempty = "yes" ;
@@ -1801,6 +1954,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "first-item-in-list" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
             $count = $#list + 1 ;
             $text_for_value = " " ;
@@ -1819,6 +1978,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "first-word-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
             {
                 @list = split( / +/ , $global_dashrep_replacement{ $object_of_action } ) ;
@@ -1843,6 +2014,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "last-item-in-list" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
             $count = $#list + 1 ;
             $text_for_value = " " ;
@@ -1861,6 +2038,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "last-word-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
@@ -1885,6 +2074,12 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "from-list-get-item-number" ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -1919,6 +2114,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ ) || ( ( $operand_two + 0 ) < 1 ) )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -1958,6 +2171,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "from-list-get-item-number" )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2004,6 +2223,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ )  || ( ( $operand_two + 0 ) < 1 ) )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2046,6 +2283,12 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "remove-first-word-from-phrase" ) || ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
             {
                 if ( $action_name eq "remove-first-word-from-phrase" )
@@ -2108,6 +2351,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 @list = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
@@ -2163,6 +2418,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "zero-one-multiple-count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $object_of_action =~ /[^ ]/ )
             {
                 if ( ( $object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
@@ -2198,6 +2465,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "position-of-word-in-phrase" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             $word_to_find = $operand_one ;
             $phrase_name = $operand_two ;
@@ -2299,6 +2578,30 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" ) && ( $number_of_operands == 3 ) )
         {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2352,6 +2655,36 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "every-combination-of-counts-from-two-phrases-put-into-two-phrases" ) && ( $number_of_operands == 4 ) )
         {
+            if ( $number_of_operands != 4 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_four =~ /^[-_]/ ) || ( $operand_four =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_four . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( ( defined( $global_dashrep_replacement{ $operand_one } ) ) && ( defined( $global_dashrep_replacement{ $operand_two } ) ) )
             {
@@ -2402,6 +2735,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "zero-one-multiple" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( $operand_one =~ /^[0-9]+$/ ) && ( $operand_one + 0 <= 0 ) )
             {
                 $zero_one_multiple = "zero" ;
@@ -2441,6 +2786,12 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "empty-or-nonempty-word" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $operand_one =~ /[^ \n\t]/ )
             {
                 $empty_or_nonempty = "nonempty" ;
@@ -2465,6 +2816,12 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 next ;
             }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $empty_or_nonempty = "empty" ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
@@ -2484,6 +2841,12 @@ sub dashrep_expand_parameters
 
        if ( $action_name eq "length-of-phrase-definition" )
        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
            $phrase_length = "0" ;
            if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
            {
@@ -2504,6 +2867,18 @@ sub dashrep_expand_parameters
 
        if ( ( $action_name eq "count-of-characters-in-phrase-defintion" ) && ( $number_of_operands == 1 ) )
        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
            $phrase_length = "0" ;
            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
            {
@@ -2546,6 +2921,12 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "same-or-not-same-two-words" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $operand_one eq $operand_two )
             {
                 $same_or_not_same = "same" ;
@@ -2564,6 +2945,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "same-or-not-same-two-phrases" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
                 $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
@@ -2585,6 +2984,24 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "character-in-phrase-get-at-position" )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
             if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $operand_two =~ /^[0-9]+$/ ) )
             {
@@ -2604,10 +3021,28 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  calc-minus and
+#  calc-minus
 
         if ( ( $action_name eq "calc-minus" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one =~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two =~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
             {
@@ -2631,6 +3066,24 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calc-divide-by" ) && ( $number_of_operands == 2 ) )
         {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
             {
@@ -2660,6 +3113,12 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "calc-add" ) || ( $action_name eq "calc-multiply" ) || ( $action_name eq "calc-maximum" ) || ( $action_name eq "calc-minimum" ) ) && ( $number_of_operands >= 1 ) )
         {
+            if ( $number_of_operands < 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = "0" ;
             if ( $action_name eq "calc-add" )
             {
@@ -2722,6 +3181,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calc-integer" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2747,6 +3218,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calc-absolute" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2769,17 +3252,46 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  get-current-time-in-epoch-seconds
-#  split-epoch-seconds-into-named-components
 
         if ( ( $action_name eq "get-current-time-in-epoch-seconds" ) && ( $number_of_operands == 0 ) )
         {
+            if ( $number_of_operands != 0 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[0-9]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $epoch_seconds = time ;
             $text_for_value = sprintf( "%d" , $epoch_seconds ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
+		
+		
+#-----------------------------------------------
+#  Handle the actions:
+#  split-epoch-seconds-into-named-components
+		
         if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( $operand_one !~ /^[0-9]+$/ )
             {
                 $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
@@ -2810,6 +3322,30 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) ) && ( $number_of_operands == 3 ) )
         {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_two =~ /^[-_]/ ) || ( $operand_two =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( exists( $global_dashrep_replacement{ $operand_two } ) ) && ( $operand_one ne $operand_two ) )
             {
@@ -2896,6 +3432,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             foreach $phrase_name ( @sequence_of_phrases )
@@ -2927,6 +3475,30 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" ) && ( $number_of_operands == 3 ) )
         {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( $operand_two !~ /^[^ ]$/ )
+            {
+                $text_for_value = " dashrep-error-invalid-operand " . $operand_two . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_three =~ /^[-_]/ ) || ( $operand_three =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_three . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = "" ;
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } eq "" ) )
             {
@@ -3003,8 +3575,22 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  split-phrase-into-list-of-characters
 
+#  ToDo: do as copy, not in-place.
+
         if ( ( $action_name eq "split-phrase-into-list-of-characters" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
@@ -3042,8 +3628,22 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  sort-numbers-in-phrase
 
+#  ToDo: change to copy action
+
         if ( ( $action_name eq "sort-numbers-in-phrase" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /^[ 0-9]+$/ ) )
             {
                 $list_of_numbers = $global_dashrep_replacement{ $operand_one } ;
@@ -3074,8 +3674,16 @@ sub dashrep_expand_parameters
 #  blocks of numbers assigned to each
 #  processor/process.
 
+#  ToDo: change to use no operand
+
         if ( $action_name eq "unique-value" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
             {
                 $global_dashrep_replacement{ $object_of_action } = $global_dashrep_replacement{ $object_of_action } + 1 ;
@@ -3094,6 +3702,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "auto-increment" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
@@ -3112,6 +3732,12 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "create-list-named" )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             push ( @global_list_of_lists_to_generate , $object_of_action ) ;
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
@@ -3143,6 +3769,18 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calculate-if-phrase-empty" ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
+            if ( ( $operand_one =~ /^[-_]/ ) || ( $operand_one =~ /[-_]$/ ) )
+            {
+                $text_for_value = " dashrep-error-invalid-operand-phrase " . $operand_one . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_for_value = "" ;
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
             {
@@ -3176,6 +3814,12 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) ) && ( $number_of_operands == 1 ) )
         {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " dashrep-error-wrong-number-of-operands-for-action " . $action_name . " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                next ;
+            }
             $text_inserted = " action " . $action_name . " not yet implemented " ;
             if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
             {
