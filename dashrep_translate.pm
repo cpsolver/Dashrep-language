@@ -2291,6 +2291,10 @@ sub dashrep_expand_parameters
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ ) || ( ( $operand_two + 0 ) < 1 ) )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operands}}\n" ;
+                }
             } else
             {
                 $word_number = $operand_two + 0 ;
@@ -2420,6 +2424,10 @@ sub dashrep_expand_parameters
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ )  || ( ( $operand_two + 0 ) < 1 ) )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operands}}\n" ;
+                }
             } else
             {
                 $word_number = $operand_two + 0 ;
@@ -2545,6 +2553,10 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $tracking_on_or_off eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
                 next ;
             }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
