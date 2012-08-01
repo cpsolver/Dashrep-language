@@ -11,13 +11,15 @@
 <meta http-equiv="copyright" content="2009 Richard Fobes">
 <meta http-equiv="distribution" content="global">
 
+<style type="text/css"> table { border-width: 1px; border-spacing: 0px; border-style: solid; border-color: black; border-collapse: collapse; background-color: white; } table th { border-width: 1px; padding: 5px; border-style: solid; border-color: black; background-color: rgb(255, 240, 240); -moz-border-radius: ; } table td { border-width: 1px; padding: 5px; border-style: solid; border-color: black; background-color: rgb(240, 240, 255); -moz-border-radius: ; } table { margin-left:30px; } h2 { margin-left:30px; } p { margin-left:60px; } </style>
+
 </head>
 
 <a name="top">
 </a>
 <body>
 
-<p>
+<p style="margin-left:0px;">
 <a href="http://www.Dashrep.org/index.html">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="http://www.Dashrep.org/learn.html">Learn</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="http://www.Dashrep.org/demo.html">Demo</a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -29,6 +31,918 @@
 
 <center><h1>Specifications for the Dashrep<font size="5">&trade;</font> language</h1></center>
 
+<p>This page describes the specifications for the Dashrep language.</p>
+
+<!-- The following content was generated, so DO NOT EDIT here. Instead, edit the source code, which is written using Dashrep phrases to indicate hierarchy and which is generated using a Dashrep script. -->
+
+
+<h1> Fundamental characters &amp; strings </h1> <table>
+<tr><th>Normal <br \> priority</th><th>Name</th><th>Appearance</th><th>Description</th></tr>
+<tr><td>1</td><td>Comment</td><td><b><i>*---&nbsp;</i></b> comment here &nbsp; <b><i>---*</i></b></td><td>Comments are ignored.&nbsp; The <b><i>*---</i></b> string indicates the beginning of a comment, and the <b><i>---*</i></b> string indicates the end of the comment.&nbsp; Comments cannot be nested; if they are, the results are unpredictable.</td></tr>
+<tr><td>1</td><td>Comment</td><td><b><i>/---&nbsp;</i></b> comment here &nbsp; <b><i>---/</i></b></td><td>Alternate written way to indicate a comment.</td></tr>
+<tr><td>2</td><td>Comment</td><td><b><i>comment-begin</i></b> comment here <b><i>comment-end</i></b></td><td>An alternate way &mdash; that is speakable &mdash; to insert a comment.&nbsp; The <b><i>comment-begin</i></b> phrase indicates the beginning of a comment, and the <b><i>comment-end</i></b> phrase indicates the end of the comment.&nbsp; Comments cannot be nested.</td></tr>
+<tr><td>3</td><td>Space</td><td>&nbsp;</td><td>Each space is significant as a delimiter for hyphenated phrases and words (without hyphens).</td></tr>
+<tr><td>4</td><td>Three or more adjacent hyphens</td><td><b><i>----</i></b></td><td>Indicates the end of a definition, in a situation where a hyphenated phrase is defined using the <b><i>begin-...</i></b> directive (or the equivalent).</td></tr>
+<tr><td>5</td><td>Parameter</td><td><b><i>[-</i></b> &nbsp; parameter &nbsp; <b><i>-]</i></b></td><td>A parameter is expanded before the surrounding text is expanded.&nbsp; The first-encountered innermost parameter is expanded first.&nbsp; Spaces at the beginning and end of the parameter are removed, which allows the expanded text to become part of a hyphenated phrase, which in turn enables branching and indexing.</td></tr>
+<tr><td>6</td><td>Assignment</td><td><b><i>[-</i></b> text-container <b><i>=</i></b> new text <b><i>-]</i></b></td><td>If a parameter contains an equal sign (=) and there is one hyphenated phrase between the equal sign and the beginning of the parameter, the text to the right of the equal sign (up to the end of the parameter) is assigned as the definition of the phrase.&nbsp; If the hyphenated phrase already had a definition, that definition is discarded.&nbsp; If the text between the beginning of a parameter and an equal sign is not one hyphenated phrase, the equal sign is not recognized as being part of an assignment.&nbsp; The assignment capability enables the same phrase to produce different results, which is what a "function" does in traditional programming languages.</td></tr>
+<tr><td>5</td><td>Phrase name in parameter brackets</td><td><b><i>[-</i></b> user-phrase-name <b><i>-]</i></b></td><td>A hyphenated phrase within parameter brackets is expanded according to the phrase's definition (which itself can contain parameters).&nbsp; If the phrase name is not defined, it is left as-is, and the parameter brackets are removed.&nbsp; Spaces at the beginning and end of the parameter are removed, which allows the expanded text to become part of a hyphenated phrase, which in turn enables branching and indexing.</td></tr>
+<tr><td>7</td><td>Action</td><td><b><i>[-</i></b> zero-one-multiple 3 <b><i>-]</i></b></td><td>If the first (left-most) hyphenated phrase inside a parameter is one of the recognized actions (listed below), and the action is followed by text that the action knows how to handle, the action is performed.&nbsp; Some actions produce text that becomes the replacement for the parameter, whereas other actions operate on phrases or files and do not produce any text.</td></tr>
+<tr><td>8</td><td>Hyphenated phrase</td><td>needed-text-string</td><td>A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase.</td></tr>
+<tr><td>9</td><td>Colon</td><td>needed-text-string<b><i>:</i></b> definition here &nbsp; <b><i>----</i></b></td><td>When there is text after the <b><i>dashrep-definitions-begin</i></b> directive, a colon can appear at the end of the phrase being defined.&nbsp; This convention is optional.&nbsp; It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used.</td></tr>
+<tr><td>10</td><td>New line or line break</td><td>one line <b><i>line-break</i></b> next line</td><td>When a new line begins, it is replace with a space.&nbsp; When a new line needs to be inserted into the resulting text, the new-line phrase (explained below) can be used.&nbsp; If a line break in the target language (such as HTML) is needed, the phrase line-break can be used to insert the appropriate target-specific code.</td></tr>
+<tr><td>11</td><td>Undefined hyphenated phrase</td><td>quite-talkative parrot</td><td>If a hyphenated phrase has not been defined, it is not translated; it remains unchanged.&nbsp; If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper.</td></tr>
+<tr><td>12</td><td>define-begin</td><td><b><i>define-begin</i></b></td><td>Explained below.</td></tr>
+<tr><td>13</td><td>dashrep-definitions-begin</td><td><b><i>dashrep-definitions-begin</i></b></td><td>Explained below.</td></tr>
+<tr><td>14</td><td>dashrep-definitions-end</td><td><b><i>dashrep-definitions-end</i></b></td><td>Explained below.</td></tr>
+<tr><td>15</td><td>define-end</td><td><b><i>define-end</i></b></td><td>Explained below.</td></tr>
+<tr><td>16</td><td>hyphen-here</td><td><b><i>hyphen-here</i></b></td><td>Explained below.</td></tr>
+<tr><td>17</td><td>non-breaking-space</td><td><b><i>non-breaking-space</i></b></td><td>Explained below.</td></tr>
+<tr><td>18</td><td>span-non-breaking-spaces-begin</td><td><b><i>span-non-breaking-spaces-begin</i></b></td><td>Explained below.</td></tr>
+<tr><td>19</td><td>span-non-breaking-spaces-end</td><td><b><i>span-non-breaking-spaces-end</i></b></td><td>Explained below.</td></tr>
+<tr><td>20</td><td>tab-here</td><td><b><i>tab-here</i></b></td><td>Explained below.</td></tr>
+<tr><td>21</td><td>empty-line</td><td><b><i>empty-line</i></b></td><td>Explained below.</td></tr>
+<tr><td>22</td><td>new-line</td><td><b><i>new-line</i></b></td><td>Explained below.</td></tr>
+<tr><td>23</td><td>no-space</td><td><b><i>no-space</i></b></td><td>Explained below.</td></tr>
+<tr><td>24</td><td>one-space</td><td><b><i>one-space</i></b></td><td>Explained below.</td></tr>
+</table>
+
+
+<h1> Dashrep spoken words </h1> <table>
+<tr><th>Word</th><th>Equivalence</th><th>Description</th></tr>
+<tr><td>combee</td><td>*---</td><td>Indicates the beginning of a comment.</td></tr>
+<tr><td>comenn</td><td>----*</td><td>Indicates the end of a comment.</td></tr>
+<tr><td>fen</td><td>hyphen with no adjacent spaces</td><td>Inserts a hyphen between words (or other adjacent characters).</td></tr>
+<tr><td>dashbee</td><td>(no equivalence)</td><td>Indicates the beginning of a phrase that needs to be hyphenated.&nbsp; For example, <b><i>dashbee words of phrase dashenn</i></b> becomes <b><i>words-of-phrase</i></b> .</td></tr>
+<tr><td>dashenn</td><td>(no equivalence)</td><td>Indicates the end of a phrase that needs to be hyphenated.</td></tr>
+<tr><td>dashnex</td><td>(no equivalence)</td><td>Indicates the end of one phrase that needs to be hyphenated and the beginning of another phrase that needs to be hyphenated.&nbsp; For example, <b><i>dashbee words of phrase dashnex words of another phrase dashenn</i></b> becomes <b><i>words-of-phrase words-of-another-phrase</i></b> .</td></tr>
+<tr><td>parambee</td><td>[-</td><td>Indicates the beginning of a parameter.</td></tr>
+<tr><td>paramenn</td><td>-]</td><td>Indicates the end of a parameter.</td></tr>
+<tr><td>paramnex</td><td>-] [-</td><td>Indicates the end of one parameter and the beginning of another parameter, with a space between the parameters.</td></tr>
+<tr><td>conparambee</td><td>-[-</td><td>Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase.&nbsp; For example, <b><i>info-for-dolphin-named-[-dolphin-name-]</i></b> becomes <b><i>info-for-dolphin-named-leaper</i></b> if <b><i>dolphin-name</i></b> equals <b><i>leaper</i></b> .</td></tr>
+<tr><td>paramenncon</td><td>-]-</td><td>Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase.</td></tr>
+<tr><td>linbray</td><td>(line break)</td><td>Indicates that a line break should be inserted here.&nbsp; If the resulting text goes through additional translation steps, the inserted line break is likely to be converted into a space (rather than remaining as a line break).</td></tr>
+</table>
+
+
+<h1>Fundamental phrases</h1>
+
+
+<h2>hyphen-here</h2>
+<p>Inserts a hyphen, with no adjacent spaces.&nbsp; Internally this phrase is defined as <b><i>no-space - no-space</i></b>.</p>
+
+
+<h2>tab-here</h2>
+<p>Specifies a tab and the removal of adjacent spaces.</p>
+
+
+<h2>no-space</h2>
+<p>Specifies the removal of any spaces (concatenation) after all other phrases have been replaced.&nbsp; If the <b><i>one-space</i></b> directive is adjacent, the <b><i>no-space</i></b> directive is ignored.</p>
+
+
+<h2>one-space</h2>
+<p>Specifies a single space.&nbsp; If the <b><i>no-space</i></b> directive is adjacent, the <b><i>no-space</i></b> directive is ignored.</p>
+
+
+<h2>character-single-space</h2>
+<p>A pre-defined phrase that contains just a single space.</p>
+
+
+<h2>non-breaking-space</h2>
+<p>Specifies a single space that is not removed if the <b><i></i></b> directive is adjacent.</p>
+
+
+<h2>span-non-breaking-spaces-begin</h2>
+<p>When used in conjunction with the phrase <b><i>span-non-breaking-spaces-end</i></b>, requests that non-breaking spaces in the target language, as specified by the definition of the phrase <b><i>non-breaking-space</i></b>, be inserted where spaces appear, and then all the remaining spaces are removed (after expanding any parameters in the text).</p>
+
+
+<h2>span-non-breaking-spaces-end</h2>
+<p>See the description for the phrase <b><i>span-non-breaking-spaces-end</i></b>.</p>
+
+
+<h2>new-line</h2>
+<p>Specifies a line break.</p>
+
+
+<h2>empty-line</h2>
+<p>Specifies an empty line.</p>
+
+
+<h2>line-break</h2>
+<p>Should be used to define a text string that, in turn, specifies a line break in the target language.&nbsp; For example, if the target language is XHTML, normally this phrase should be defined as <b><i>&lt;br /&gt;</i></b> .</p>
+
+
+<h2>dashrep-definitions-begin</h2>
+<p>Specifies that the text that follows are phrases and definitions.&nbsp; These phrases cannot be nested.&nbsp; This change continues until the phrase <b><i>definitions-end</i></b> is encountered.</p>
+
+
+<h2>dashrep-definitions-end</h2>
+<p>Specifies the end of phrases and definitions that began with the <b><i>definitions-begin</i></b> directive.</p>
+
+
+<h2>define-end</h2>
+<p>The same as several hyphens (<b><i>----</i></b>).&nbsp; It is provided as a speakable alternative for ending a definition.</p>
+
+
+<h2>define-begin</h2>
+<p>This phrase is ignored, but is defined for symmetry so that it can be used after the <b><i>define-end</i></b> phrase.&nbsp; It is not needed because the context already determines where a definition begins.</p>
+
+
+<h2>clear-phrase</h2>
+<p>Clears the definition for the specified phrase.&nbsp; This action is equivalent to using the equal-sign notation without any text for the new definition.</p>
+
+
+<h2>empty-text</h2>
+<p>Contains no text.&nbsp; It is useful for clearing a phrase by copying, although the <b><i>clear-phrase</i></b> is a better choice.&nbsp; To test whether a phrase's definition is empty, use the <b><i>empty-or-nonempty-phrase</i></b> action.</p>
+
+
+<h2>expand-phrase-to-phrase</h2>
+<p>Expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices.&nbsp; It is especially useful if the text contains hyphens but is not Dashrep code.</p>
+
+
+<h2>calculate-if-phrase-empty</h2>
+<p>Checks whether the specified phrase is empty, and then if it is empty, replaces the parameter (containing both this action name and the empty phrase name) with a parameterized (bracketed) phrase that begins with <b><i>how-to-calculate-</i></b> and ends with the name of the empty phrase.&nbsp; This action, which would typically precede the use of the phrase's value, makes it easy to let the software determine whether the phrase's value has already been calculated, and provides a way to calculate the value if it is still empty.&nbsp; If a calculated value might be empty (as a valid value), the phrase should be calculated as part of a related calculation, such as <b><i>initialization-done</i></b> with a <b><i>yes</i></b> or <b><i>no</i></b> result.</p>
+
+
+<h1>Decision-related phrases</h1>
+
+
+<h2>empty-or-nonempty-word</h2>
+<p>Equals either <b><i>empty</i></b> or <b><i>nonempty</i></b> depending upon whether the specified phrase has no characters of text (empty) or contains at least one non-whitespace character (nonempty).</p>
+
+
+<h2>empty-or-nonempty-phrase</h2>
+<p>Equals either <b><i>empty</i></b> or <b><i>nonempty</i></b> depending upon whether the hyphenated phrase that follows (after parameterized replacements have been done) has a definition that contains no characters of text (empty) or contains at least one non-whitespace character (nonempty).</p>
+
+
+<h2>same-or-not-same-two-words</h2>
+<p>Equals either <b><i>same</i></b> or <b><i>not-same</i></b> depending upon whether the following two words (space-delimited text strings) have the same definition.</p>
+
+
+<h2>same-or-not-same-two-phrases</h2>
+<p>Equals either <b><i>same</i></b> or <b><i>not-same</i></b> depending upon whether the following two phrases have the same definition.</p>
+
+
+<h2>yes-if-not-no</h2>
+<p>Equals <b><i>no</i></b> if the following word (space-delimited text string) is <b><i>no</i></b>, and is <b><i>yes</i></b> otherwise.&nbsp; This action is useful if the word can be something other than <b><i>yes</i></b> or <b><i>no</i></b>, but only <b><i>no</i></b> is significant.</p>
+
+
+<h2>no-if-not-yes</h2>
+<p>Equals <b><i>yes</i></b> if the following word (space-delimited text string) is <b><i>yes</i></b>, and is <b><i>no</i></b> otherwise.&nbsp; This action is useful if the word can be something other than <b><i>yes</i></b> or <b><i>no</i></b>, but only <b><i>yes</i></b> is significant.</p>
+
+
+<h1>Number-related phrases</h1>
+
+
+<h2>zero-one-multiple</h2>
+<p>Equals either <b><i>zero</i></b> or <b><i>one</i></b> or <b><i>multiple</i></b> depending upon whether the following integer number equals zero, one, or multiple (more than one).&nbsp; This phrase is very useful for choosing between singular and plural forms of words based on a data-supplied count.</p>
+
+
+<h2>yes-or-no-first-number-equals-second-number</h2>
+<p>Equals <b><i>yes</i></b> if the following two numbers are equal, and is <b><i>no</i></b> otherwise.&nbsp; This action is useful if the numbers might contain leading zeros, in which case <b><i>040</i></b> is recognized as being equal to <b><i>40</i></b>.</p>
+
+
+<h2>calc-add</h2>
+<p>Adds the numbers that follow.&nbsp; Two or more integer or decimal numbers numbers must be supplied.&nbsp; Put into heading for "calc" actions: Each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the number of calculations should be limited.&nbsp; Alternate wording:&nbsp; The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized.&nbsp; If there is a negative sign, it must be adjacent to the digits.&nbsp; The numbers are stored as text, not in a binary form, so these calculations are not fast (especially for decimal numbers).&nbsp; If more than a few simple calculations are being done, numerical processing should be done within the host language (such as by using the action [ <b><i>...</i></b> ]).</p>
+
+
+<h2>calc-minus</h2>
+<p>Subtracts the second number from the first number.</p>
+
+
+<h2>calc-divide-by</h2>
+<p>Calculates the result of dividing the first number by the second number.</p>
+
+
+<h2>calc-multiply</h2>
+<p>Multiplies the numbers that follow.&nbsp; Two or more integer or decimal numbers numbers must be supplied.</p>
+
+
+<h2>calc-maximum</h2>
+<p>Determines the maximum number from among a list of numbers.</p>
+
+
+<h2>calc-minimum</h2>
+<p>Determines the minimum number from among a list of numbers.</p>
+
+
+<h2>calc-integer</h2>
+<p>Removes the digits to the right of the decimal point (without rounding and without special handling for negative numbers).</p>
+
+
+<h2>calc-absolute</h2>
+<p>Removes a minus sign if it is at the beginning of an integer or decimal number.</p>
+
+
+<h2>calc-equal-greater-less-compare</h2>
+<p>Equals <b><i>equal</i></b> if the following two numbers are equal, or it equals <b><i>greater</i></b> if the first number is greater than the second number, or it equals <b><i>less</i></b> if the first number is less than the second number.</p>
+
+
+<h2>auto-increment</h2>
+<p>Increments the integer value in the named phrase.&nbsp; This number is incremented each time this special action is encountered.&nbsp; Use of this action should be avoided.&nbsp; Usually the action <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> (or the <b><i>full</i></b> list version) and the <b><i>createlist-item-number</i></b> phrase, or the action [ <b><i>...</i></b> ] can be used instead.</p>
+
+
+<h2>length-of-phrase-definition</h2>
+<p>Equals the number of characters that are contained in the definition of the specified phrase.</p>
+
+
+<h1>Time-related phrases</h1>
+
+
+<h2>get-current-time-in-epoch-seconds</h2>
+<p>Gets the time as an integer number that indicates the number of seconds since January 1, 1970 at midnight GMT (UTC).&nbsp; This convention matches the convention used in Linux and Windows, but not the convention used by Apple.</p>
+
+
+<h2>split-epoch-seconds-into-named-components</h2>
+<p>Uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word <b><i>time</i></b>.&nbsp; The results are specific for the time at the location of the server on which the code is running, which may not match the local time of the user.&nbsp; Simple Dashrep definitions (that use these values) can easily generate nearly any date and time format.</p>
+
+
+<h2>time-day-of-month</h2>
+<p>The day of the month (such as 1, 2, ... 31), based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-day-of-week</h2>
+<p>The numerical day of the month where 1 indicates Monday, 2 indicates Tuesday, and so on, based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-day-of-year</h2>
+<p>The numerical day of the year (1, 2, ... 365, 366), based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-hour</h2>
+<p>The hour of the day, based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-minute</h2>
+<p>The minute of the hour, based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-month-number</h2>
+<p>The numerical month number where 1 indicates January, 2 indicates February, and so on, based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-second</h2>
+<p>The seconds of the minute (0, 1, 2, ... 59), based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h2>time-year</h2>
+<p>The year (such as <b><i>2012</i></b>), based on the epoch seconds supplied to the <b><i>split-epoch-seconds-into-named-components</i></b> action.</p>
+
+
+<h1>Character-related phrases</h1>
+
+
+<h2>within-phrase-replace-character-with-text-in-phrase</h2>
+<p>Replaces each occurrence of the specified character with the definition in the specified phrase.</p>
+
+
+<h2>split-phrase-into-list-of-characters</h2>
+<p>Splits the content of a phrase into separate characters, with a space between each space.&nbsp; At places where there was one space, the word <b><i>one-space-here</i></b> is inserted.</p>
+
+
+<h2>count-of-characters-in-phrase-defintion</h2>
+<p>Counts the number of characters (including spaces) in the specified phrase definition.</p>
+
+
+<h2>character-in-phrase-get-at-position</h2>
+<p>Gets one character from the specified phrase definition, with the character position being specified by an integer number.&nbsp; Position 1 indicates the first character.</p>
+
+
+<h1>Word-related phrases</h1>
+
+
+<h2>first-word-in-phrase</h2>
+<p>Gets the first word from a phrase definition.&nbsp; Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces.</p>
+
+
+<h2>last-word-in-phrase</h2>
+<p>Gets the last word from a phrase definition.&nbsp; Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces.&nbsp; If the definition contains no spaces, the entire definition is supplied.</p>
+
+
+<h2>from-phrase-get-word-number</h2>
+<p>Gets the specified word from a phrase definition, with the position of that word being specified by an integer number.&nbsp; The number 1 specifies the first word.&nbsp; Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces.</p>
+
+
+<h2>count-of-words-in-phrase</h2>
+<p>Counts the number of words in a phrase definition.&nbsp; Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces.&nbsp; If the definition contains only spaces, or is empty, the value <b><i>0</i></b> (zero) is supplied.</p>
+
+
+<h2>zero-one-multiple-count-of-words-in-phrase</h2>
+<p>Equals either <b><i>zero</i></b> or <b><i>one</i></b> or <b><i>multiple</i></b> depending upon whether a phrase definition contains zero words, one word, or multiple (two or more) words.</p>
+
+
+<h2>position-of-word-in-phrase</h2>
+<p>Finds the specified word in a phrase definition and supplies the number that indicates its word position.&nbsp; If the word is not found, the value <b><i>0</i></b> (zero) is supplied.&nbsp; Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces.</p>
+
+
+<h2>copy-from-two-phrases-words-found-in-both-to-phrase</h2>
+<p>Copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions.&nbsp; For example, if the first phrase definition is <b><i>abc 123 def 456</i></b> and the second definition is <b><i>def 789 xyz 123</i></b> then the third phrase is defined as <b><i>def 123</i></b> (or <b><i>123 def</i></b>).</p>
+
+
+<h2>copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase</h2>
+<p>Copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition.&nbsp; For example, if the first phrase definition is <b><i>abc 123 def 456</i></b> and the second definition is <b><i>def 789 xyz 123</i></b> then the third phrase is defined as <b><i>abc 456</i></b> (or <b><i>456 abc</i></b>).</p>
+
+
+<h2>copy-from-phrase-unique-words-to-phrase</h2>
+<p>Copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition.&nbsp; For example, if the first phrase definition is <b><i>abc 123 def 123 abc</i></b> then the second phrase is defined as <b><i>abc 123 def</i></b> (although a specific word order is not guaranteed).</p>
+
+
+<h1>List-generation phrases</h1>
+
+
+<h2>use-template-and-parameters-to-create-simple-list-with-name</h2>
+<p>Generates a list, where the changing value of each item in the list comes from the definition of the second phrase, and where the definition of the first phrase is a template that indicates the what text appears in the final list.&nbsp; The third phrase indicates the name of the generated list.&nbsp; The template should include the bracketed phrase <b><i>createlist-parameter</i></b> wherever the changing value is needed.&nbsp; The definition of the second phrase must contain a list of words (or possibly no words), and each word in that list is used as one of the changing values.&nbsp; If the template includes a separate list-generation request (such as for a nested list), the <b><i>createlist-parameter</i></b> value will lose its expected value, so it should be copied into another phrase prior to requesting the secondary list.</p>
+
+
+<h2>use-template-and-parameters-to-create-full-list-with-name</h2>
+<p>Generates a list in the same way as the <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> action, with one difference and with added capabilities.&nbsp; The difference is that the generated list is a list of phrase names, and those named phrases contain the text of each item.&nbsp; The individual items have phrase names that begin with the specified phrase name, and are followed by the string <b><i>-for-parameter-</i></b> and that is followed by the parameter value.&nbsp; Within the template the phrases [ <b><i>...</i></b> ] have special meanings, which are described separately.&nbsp; The phrases [ <b><i>...</i></b> ] contain prefix, delimiter, and suffix text, and their usage is described with those phrase descriptions.</p>
+
+
+<h2>counts-from-integer-to-integer-put-into-phrase</h2>
+<p>Generates a list of integers and puts them into the definition of the third phrase.&nbsp; The supplied integers indicate the starting and ending values.&nbsp; For example, <b><i>counts-from-integer-to-integer-put-into-phrase 1 10 one-to-ten</i></b> defines the phrase <b><i>one-to-ten</i></b> as <b><i>1 2 3 4 5 6 7 8 9 10</i></b>.</p>
+
+
+<h2>every-combination-of-counts-from-two-phrases-put-into-two-phrases</h2>
+<p>Generates two lists of integers and puts them into the definitions of the third and fourth phrases.&nbsp; Every possible combination of two integers is generated, with the first two phrases supplying to lists of numbers.&nbsp; For example, if the first phrase contains <b><i>-2-1 0 1 2</i></b> and the second phrase contains <b><i>12 17 32 55</i></b> then the third phrase will contain <b><i>-2 -2 -2 -2 -1 -1 -1 -1 0 0 0 0 1 1 1 1 2 2 2 2</i></b> and the fourth phrase will contain <b><i>12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55</i></b> .</p>
+
+
+<h2>write-all-phrase-names-to-phrase</h2>
+<p>Puts into the definition of the second phrase the names (but not the definitions) of all currently defined phrases.</p>
+
+
+<h2>createlist-first-yes-or-no</h2>
+<p>When this appears in a list-generation template (see <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> for details), this phrase is defined as <b><i>yes</i></b> if the list item is the first item in the list, or it is defined as <b><i>no</i></b> otherwise.&nbsp; Outside of a list-generation template this value is not predictable.</p>
+
+
+<h2>createlist-item-next</h2>
+<p>This phrase name is reserved.&nbsp; (It is used internally during the creation of a list.)</p>
+
+
+<h2>createlist-item-number</h2>
+<p>When this appears in a list-generation template (see <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> for details), this phrase is defined as the number of the item in the list, with the first item being numbered <b><i>1</i></b>.&nbsp; Outside of a list-generation template this value is not predictable.</p>
+
+
+<h2>createlist-last-yes-or-no</h2>
+<p>When this appears in a list-generation template (see <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> for details), this phrase is defined as <b><i>yes</i></b> if the list item is the last item in the list, or it is defined as <b><i>no</i></b> otherwise.&nbsp; Outside of a list-generation template this value is not predictable.</p>
+
+
+<h2>createlist-parameter</h2>
+<p>When this appears in a list-generation template (see <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> for details), this phrase is defined as the current parameter, which is different for each item in the generated list.</p>
+
+
+<h2>createlist-total-number-of-items</h2>
+<p>When a list is being generated by the action <b><i>use-template-and-parameters-to-create-simple-list-with-name</i></b> or the action <b><i>use-template-and-parameters-to-create-full-list-with-name</i></b> this phrase equals the total number of items in the generated list.&nbsp; This value is not predictable outside of list generation.&nbsp; This phrase loses its expected value when a different list (such as a sub-list) is generated, so the value should be copied to another phrase before starting to generate a different list.</p>
+
+
+<h1>Phrases for handling (phrase) definitions</h1>
+
+
+<h2>clear-all-dashrep-phrases</h2>
+<p>Clears all the definitions of all the phrases.&nbsp; Remember that this action resets every definition of every phrase, except the phrases that are defined internally.</p>
+
+
+<h2>dashrep-phrase-prefix-for-imported-phrases</h2>
+<p>A prefix placed at the beginning of each newly defined phrase imported from a file.&nbsp; This capability is useful for preventing user-written phrase names from overwriting phrase names that are executed with special permissions.&nbsp; Also this capability is useful for importing phrases from separate files that otherwise might have overlapping phrase names.</p>
+
+
+<h2>dashrep-phrase-suffix-for-imported-phrases</h2>
+<p>A suffix placed at the end of each newly defined phrase imported from a file.&nbsp; See the phrase <b><i>prefix-for-imported-phrases</i></b> for more details.</p>
+
+
+<h2>dashrep-yes-append-not-replace-for-imported-phrases</h2>
+<p>If this phrase equals <b><i>yes</i></b> , and if a phrase definition is being imported from a file and that phrase has the same name as an existing phrase, then the definition is appended to the end of the existing definition, rather than replacing the existing definition.&nbsp; This capability is useful when multiple files contain phrase definitions with the same names, and those definitions artists that should be combined.</p>
+
+
+<h2>export-defs-all-begin</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the action <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> is used, this phrase name (enclosed in brackets) is inserted at the beginning of all the written-to-a-file phrase definitions.&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>export-defs-all-end</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of all the written-to-a-file phrase definitions.&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>export-defs-def-begin</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the beginning of each definition.&nbsp; (A separate phrase is inserted at the beginning of the phrase name).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>export-defs-def-end</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of each definition.&nbsp; (A separate phrase is inserted at the end of the phrase name).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>export-defs-phrase-begin</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the beginning of each phrase name.&nbsp; (A separate phrase is inserted at the beginning of the definition).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>export-defs-phrase-end</h2>
+<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name.&nbsp; (A separate phrase is inserted at the end of the definition).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
+
+
+<h2>list-of-phrases-newly-defined</h2>
+<p>Contains a list of all the hyphenated phrases that have been imported or defined.&nbsp; This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.</p>
+
+
+<h2>dashrep-yes-or-no-export-delimited-definitions</h2>
+<p>If it equals <b><i>yes</i></b> then the action [ <b><i>...</i></b> ] inserts special hyphenated phrases into the exported definitions.&nbsp; Otherwise exported definitions are written using the normal Dashrep convention.&nbsp; This capability enables the exported definitions to be converted into special formats such as HTML or XML.</p>
+
+
+<h1>File-related phrases</h1>
+
+
+<h2>dashrep-path-prefix-for-file-reading</h2>
+<p>Specifies a different (non-local-folder) path for file read operations.&nbsp; If this definition is empty, the local directory is used.&nbsp; If a path prefix is included with any of the file-reading actions, that path is ignored and this path is used.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-writing actions.</p>
+
+
+<h2>dashrep-path-prefix-for-file-writing</h2>
+<p>Specifies a different (non-local-folder) path for file write operations.&nbsp; If this definition is empty, the local directory is used.&nbsp; If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-reading actions.</p>
+
+
+<h2>copy-from-phrase-append-to-file</h2>
+<p>Copies the definition of the hyphenated phrase onto the end of the specified file.</p>
+
+
+<h2>expand-phrase-to-file</h2>
+<p>Does a Dashrep translation of the specified phrase (which is the first item after this action name) and then writes the results to the named file (which is the second item after this action).</p>
+
+
+<h2>copy-from-file-to-phrase</h2>
+<p>Copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The phrase <b><i>no</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered.</p>
+
+
+<h2>copy-from-file-to-phrases-line-numbered</h2>
+<p>Reads from the specified file all the lines in that text file, and puts each line into a separate phrase definition.&nbsp; For each line its phrase name begins with the specified name and ends with the line number.&nbsp; In addition this action creates a phrase that contains a list of the line numbers, with this phrase being named starting with <b><i>list-of-line-numbers-for-list-named-</i></b> and ending with the list name.&nbsp; The file must be in the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; This action is useful for accessing text files that do not contain Dashrep definitions.&nbsp; If the text is in spreadsheet-like columns, the action [ <b><i>...</i></b> ] can be used instead.</p>
+
+
+<h2>put-into-phrase-list-of-files-in-current-read-directory</h2>
+<p>Put into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; If the directory names are also needed, use the action [ <b><i>...</i></b> ] or the action [ <b><i>...</i></b> ].</p>
+
+
+<h2>yes-or-no-file-exists</h2>
+<p>Determines whether the specified file exists, and sets the phrase <b><i>yes-or-no-specified-file-exists</i></b> to either <i>yes</i> or <i>no</i> to indicate the result.</p>
+
+
+<h2>size-of-file</h2>
+<p>Gets the file size &mdash; in bytes &mdash; of the specified file.&nbsp; The current value of the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b> specifies the path name (including the directory name) in which to look for the specified file.</p>
+
+
+<h2>modification-time-of-file</h2>
+<p>Gets the modification time &mdash; in epoch seconds &mdash; of the specified file.&nbsp; The current value of the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b> specifies the path name (including the directory name) in which to look for the specified file.</p>
+
+
+<h2>create-empty-file</h2>
+<p>Creates an empty file using the specified file name, and erases the file if it already exists.</p>
+
+
+<h2>delete-file</h2>
+<p>Deletes the specified file.</p>
+
+
+<h2>find-line-in-file-that-begins-with-phrase</h2>
+<p>Reads the specified file (which must be a text file) and looks for a line that begins with the same text as the definition of the specified phrase.&nbsp; The file must be in the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; This action is useful for quickly finding a matching hyphenated phrase without importing all the phrases in that file.</p>
+
+
+<h2>write-all-dashrep-definitions-to-file</h2>
+<p>Writes all the Dashrep definitions to a new file with the specified file name, and erases the file if it already exists.&nbsp; By default the definitions are written in Dashrep-readable format, which means the phrase being defined appears first, then is followed by the definition, and multiple dashes terminate the definition.&nbsp; If the <b><i></i></b> phrase is set to <i>yes</i> , the exported definitions are delimited by the following phrases at appropriate positions: <b><i>export-defs-all-begin</i></b> , <b><i>export-defs-all-end</i></b> , <b><i>export-defs-phrase-begin</i></b> , <b><i>export-defs-phrase-end</i></b> , <b><i>export-defs-def-begin</i></b> , and <b><i>export-defs-def-end</i></b>.&nbsp; This special format allows a separate Dashrep translation to convert the written definitions into code such as HTML, XML, or SQL.</p>
+
+
+<h2>write-all-dashrep-phrase-names-to-file</h2>
+<p>Writes all the Dashrep phrase names to a new file with the specified file name, and erases the file if it already exists.</p>
+
+
+<h2>write-dashrep-definitions-listed-in-phrase-to-file</h2>
+<p>Writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.</p>
+
+
+<h2>get-definitions-from-file</h2>
+<p>Reads the Dashrep definitions from the specified file, and overwrites any existing definitions that have the same phrase name.</p>
+
+
+<h2>linewise-translate-from-file-to-file</h2>
+<p>Translates, one line at a time, the text from the specified input file into the specified result file, using the currently defined Dashrep phrase definitions.&nbsp; All Dashrep translations, including parameters and special phrases, are performed.&nbsp; The source file must be in the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>, and the target file will be created in the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+
+
+<h2>linewise-translate-parameters-only-from-file-to-file</h2>
+<p>Same as the <b><i>linewise-translate-from-file-to-file</i></b> action except that only the parameters are expanded.&nbsp; This means that phrases that are not enclosed in the square-bracket notation are not expanded.</p>
+
+
+<h2>linewise-translate-phrases-only-from-file-to-file</h2>
+<p>Same as the <b><i>linewise-translate-from-file-to-file</i></b> action except that only phrases are expanded, and actions in the square-bracket notation are not handled.</p>
+
+
+<h2>linewise-translate-special-phrases-only-from-file-to-file</h2>
+<p>Translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as <b><i>no-space</i></b> and <b><i>ignore-begin</i></b> and <b><i>non-breaking-spaces-begin</i></b>.</p>
+
+
+<h2>copy-from-columns-in-file-to-named-phrases</h2>
+<p>Reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name.&nbsp; The specified phrase contains both the prefix for all the names and the name of each column.&nbsp; For example, if the specified phrase is defined as <b><i>cell-contents-for-nickname- phone-number city state</i></b> and one line of text in the file is <b><i>flipper 123-456-7890 san-diego ca</i></b> then the phrase <b><i>cell-contents-for-nickname-flipper-phone-number</i></b> will contain <b><i>123-456-7890</i></b> and the phrase [ <b><i>...</i></b> ] will contain [ <b><i>...</i></b> ] and the phrase [ <b><i>...</i></b> ] will contain [ <b><i>...</i></b> ] .&nbsp; As with all file-access actions, the file must be in the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; This action is useful for reading spreadsheet-like data.&nbsp; The phrase [ <b><i>...</i></b> ] can be useful if any spreadsheet-like cell of data contains any spaces.</p>
+
+
+<h2>dashrep-use-two-spaces-as-column-delimiter</h2>
+<p>Requests that the action [ <b><i>...</i></b> ] regards two adjacent spaces as the delimiter between words.&nbsp; Without this adjustment that action regards a single space as the delimiter between words.&nbsp; This adjustment enables the text in any column of (text) data to contain single spaces.&nbsp; This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.</p>
+
+
+<h2>dashrep-list-files-directories-both</h2>
+<p>Put into the specified phrase a list of all the files and directories ("folders") in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; If only the file names are needed, use the action [ <b><i>...</i></b> ] , or if only the directory names are needed, use the action [ <b><i>...</i></b> ] .</p>
+
+
+<h2>dashrep-permission-to-append-to-files-yes-or-no</h2>
+<p>If it equals <b><i>yes</i></b> then actions have permission to append to existing files.&nbsp; Any other value indicates that actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; For security purposes this value should be set to <b><i>no</i></b> before translating (or expanding) Dashrep code that might be tainted by outside users.</p>
+
+
+<h2>dashrep-permission-to-delete-or-overwrite-files-yes-or-no</h2>
+<p>If it equals <b><i>yes</i></b> then actions have permission to delete or overwrite existing files.&nbsp; Any other value indicates that actions do not have these permissions.&nbsp; This value can be changed as needed.&nbsp; For security purposes this value should be set to <b><i>no</i></b> before translating (or expanding) Dashrep code that might be tainted by outside users.</p>
+
+
+<h1>XML-import phrases</h1>
+
+
+<h2>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</h2>
+<p>Translates XML in the specified input file into Dashrep phrases and puts the results in the specified output file.&nbsp; In the resulting text, phrase names are inserted where XML tags appeared.&nbsp; XML tags are converted into phrase names, where the phrase name is a concatenation (joined version) of the XML tag names.&nbsp; For example, <b><i>begin-xml-peoplelist-person-name</i></b> and <b><i>end-xml-peoplelist-person-name</i></b> surrounds text that was tagged with the XML tag structure <b><i><xml><peoplelist><person><name></i></b>.&nbsp; The prefix <b><i>begin-and-end-</i></b> is used for self-terminating XML tags such as <b><i><br /></i></b> .&nbsp; If the resulting phrase is defined, the definition is inserted instead.&nbsp; If the non-tag content contains any hyphens, they are replaced with the phrase <b><i>hyphen-here</i></b> .&nbsp; If a tag's opening bracket (<) and closing bracket (>) are not both on the same line, the tag will not be recognized.&nbsp; The resulting file, combined with appropriate definitions for those phrase names, enables an XML or XHTML file to be converted into nearly any kind of text file.</p>
+
+
+<h2>dashrep-first-xml-tag-name</h2>
+<p>Supplies an XML tag name (without angle brackets) to the <i>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</i> action to indicate the first XML tag to be recognized.&nbsp; Tags at higher levels within the XML structure are ignored.&nbsp; This tag name becomes the first tag name in the generated phrase names.</p>
+
+
+<h2>dashrep-list-of-xml-phrases</h2>
+<p>contains a list of all the phrase names that were written by the <i>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</i> action.</p>
+
+
+<h2>dashrep-xml-level-reset-if-zero</h2>
+<p>If it equals <b><i>0</i></b> (zero) then the XML handling process resets the translation process so that another XML file can be processed without being affected by effects that arose during the previous translation.</p>
+
+
+<h2>dashrep-xml-trace-on-or-off</h2>
+<p>If it equals <b><i>on</i></b> then XML translations write "trace" messages to the phrase [ <b><i>...</i></b> ] for debugging purposes.&nbsp; Otherwise such "trace" messages are not written.</p>
+
+
+<h2>dashrep-xml-yes-ignore-if-no-tag-replacement</h2>
+<p>If it equals <b><i>yes</i></b> then XML translations ignore data that would be tagged with a hyphenated phrase that is not defined.&nbsp; For example, if the context for XML data is <b><i><xml><dolphin><firstname>Flipper</firstname></dolphin></xml></i></b> and the phrase <b><i>xml-dolphin-firstname</i></b> has not been defined, then this XML data is ignored.&nbsp; The match is case sensitive, which means that a defined phrase of <b><i>XML-Dolphin-Firstname</i></b> would not be sufficient to capture the data in this example.</p>
+
+
+<h1>HTML-output phrases</h1>
+
+
+<h2>dashrep-html-replacement-ampersand</h2>
+<p>Specifies the text that inserted as a replacement for the ampersand (&) character when the action [ <b><i>...</i></b> ] is used.</p>
+
+
+<h2>dashrep-html-replacement-apostrophe</h2>
+<p>Specifies the text that inserted as a replacement for the apostrophe (') character when the action [ <b><i>...</i></b> ] is used.</p>
+
+
+<h2>dashrep-html-replacement-close-angle-bracket</h2>
+<p>Specifies the text that inserted as a replacement for the close angle bracket (>) character when the action [ <b><i>...</i></b> ] is used.</p>
+
+
+<h2>dashrep-html-replacement-open-angle-bracket</h2>
+<p>Specifies the text that inserted as a replacement for the open angle bracket (<) character when the action [ <b><i>...</i></b> ] is used.</p>
+
+
+<h2>dashrep-html-replacement-quotation-mark</h2>
+<p>Specifies the text that inserted as a replacement for the ampersand (&) character when the action [ <b><i>...</i></b> ] is used.</p>
+
+
+<h1>Ignore and capture directives</h1>
+
+
+<h2>ignore-begin-here</h2>
+<p>Specifies the removal of all text between these phrases.&nbsp; These phrases can be nested.&nbsp; These phrases cannot overlap the <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> phrases.</p>
+
+
+<h2>ignore-end-here</h2>
+<p>See description of <b><i>ignore-begin-here</i></b>.</p>
+
+
+<h2>capture-begin-here</h2>
+<p>Requests that the text following this phrase, but before the <b><i>capture-end-here</i></b> phrase be captured and put into the definition of the phrase named <b><i>captured-text</i></b> .&nbsp; The <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> phrases can be nested, but the captured text becomes unpredictable.&nbsp; These phrases cannot overlap the <b><i>ignore-begin-here</i></b> and <b><i>ignore-begin-here</i></b> phrases.</p>
+
+
+<h2>capture-end-here</h2>
+<p>See description of <b><i>capture-begin-here</i></b>.</p>
+
+
+<h2>captured-text</h2>
+<p>Stores the text that is captured by the <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> directives.</p>
+
+
+<h2>dashrep-ignore-actions-off-else-on</h2>
+<p>If this phrase contains <b><i>off</i></b> (and no other text), the <b><i>ignore-begin-here</i></b> and <b><i>ignore-end-here</i></b> directives.&nbsp; This capability is needed if the text contains documentation about these Dashrep phrases.</p>
+
+
+<h2>dashrep-capture-actions-off-else-on</h2>
+<p>If this phrase contains <b><i>off</i></b> (and no other text), the <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> directives.&nbsp; This capability is needed if the text contains documentation about these Dashrep phrases.</p>
+
+
+<h2>dashrep-capture-level</h2>
+<p>Indicates the nesting level for the <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> directives.&nbsp; In addition to reading these values for debugging purposes, this nesting level can be assigned a value, which is useful if one translation sequence is being interrupted by another translation sequence and there is a need to restore the nesting level to the value it had prior to this interruption.</p>
+
+
+<h2>dashrep-ignore-level</h2>
+<p>Indicates the nesting level for the <b><i>ignore-begin-here</i></b> and <b><i>ignore-end-here</i></b> directives.&nbsp; In addition to reading these values for debugging purposes, this nesting level can be assigned a value, which is useful if one translation sequence is being interrupted by another translation sequence and there is a need to restore the nesting level to the value it had prior to this interruption.</p>
+
+
+<h1>Copy and append phrases</h1>
+
+
+<h2>copy-from-phrase-to-phrase</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase.&nbsp; This action is useful in situations where the text includes hyphens, line breaks, multiple adjacent spaces and any other text that cannot be assigned using the equal-sign approach.</p>
+
+
+<h2>append-from-phrase-to-phrase</h2>
+<p>Appends the definition of the first phrase to the end of the definition of the second phrase, and inserts a single space between the existing text and the appended text.</p>
+
+
+<h2>append-from-phrase-to-phrase-no-space</h2>
+<p>Appends the definition of the first phrase to the end of the definition of the second phrase, without inserting a separating space.</p>
+
+
+<h2>append-new-line-to-phrase</h2>
+<p>Appends a line break to the end of a definition.</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-hyphens</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but with each-replaced by the text in the phrase named whatever.</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but each space (or multiple adjacent spaces) is replaced with a hyphen.</p>
+
+
+<h2>copy-from-phrase-to-phrase-only-word-at-position</h2>
+<p>Copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number.&nbsp; A position number of 1 indicates the first word in the definition.&nbsp; The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words.</p>
+
+
+<h2>copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase</h2>
+<p>Splits text at the positions where the specified text string appears, with the results being placed into the definition of the second phrase.&nbsp; For example, if the third string contains the slash character (/), and the first ring contains the text <b><i>path/name/folder/name</i></b>, the second phrase would be defined as <b><i>path name folder name</i></b>.&nbsp; This action allows the individual words to be accessed independently using one of the word-based actions.</p>
+
+
+<h2>copy-from-phrase-to-phrase-remove-first-word-from-phrase</h2>
+<p>Copies a phrase definition to the specified phrase, and removes the first word.</p>
+
+
+<h2>copy-from-phrase-to-phrase-remove-last-word-from-phrase</h2>
+<p>Copies a phrase definition to the specified phrase, and removes the last word.</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-adjacent-spaces</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but multiple adjacent spaces are replaced by a single space.</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-newlines</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but each line break (<b><i>newline</i></b>) is replaced by the definition of the phrase whatever.</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-html-reserved-characters</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but replaces specific HTML reserved characters with text that is specified in specifically named phrases.&nbsp; Specifically the whatever phrase is inserted wherever an open angle bracket (<) appears, the whatever phrase is inserted wherever and a close angle bracket (>) appears, the whatever phrase is inserted ....</p>
+
+
+<h2>copy-from-phrase-to-phrase-and-replace-digits-with-9s</h2>
+<p>Copies the definition of the first phrase into the definition of the second phrase, but replaces any digit with the digit nine (</i></b> 9</i></b>).&nbsp; This action simplifies the process of recognizing specific patterns of numbers and symbols.&nbsp; For example, the text <b><i>123-456-7890</i></b> becomes <b><i>999-999-9999</i></b> and the result can be checked for to see if it matches recognizable or acceptable patterns.</p>
+
+
+<h2>copy-from-phrase-to-phrase-lowercase-only</h2>
+<p>Copies the definition of first phrase into the definition of the second phrase, but changes any uppercase characters (such as <b><i>A</i></b> and <b><i>B</i></b>) into lowercase characters (such as <b><i>a</i></b> and <b><i>b</i></b>).</p>
+
+
+<h2>copy-from-phrase-to-phrase-from-spoken-dashrep-code</h2>
+<p>Copies the definition of first phrase into the definition of the second phrase, but recognizes and translates Dashrep spoken words.&nbsp; Specifically the word <b><i>fen</i></b> and its surrounding spaces are translated into a hyphen (-), the word whatever is translated into ....</p>
+
+
+<h2>copy-from-phrase-to-phrase-into-spoken-dashrep-code</h2>
+<p>Copies the definition of first phrase into the definition of the second phrase, but Dashrep-special characters are translated into Dashrep spoken words.&nbsp; Specifically the text <b><i>-[-</i></b> is translated into the word whatever, ...., and the hyphen symbol (-) is translated into the word <b><i>fen</i></b> surrounded by spaces.</p>
+
+
+<h2>copy-numbers-from-phrase-to-phrase-and-sort</h2>
+<p>[...]</p>
+
+
+<h1>Debugging-support phrases</h1>
+
+
+<h2>dashrep-comments-ignored</h2>
+<p>Contains text that the translation process identified to be comments.&nbsp; Comments are contained within the text strings <b><i>*---</i></b> and <b><i>---*</i></b>, but these strings cannot be nested, so this definition can be useful for debugging purposes.</p>
+
+
+<h2>dashrep-stop-translation</h2>
+<p>Stops the Dashrep translation process if the value is <b><i>yes</i></b> .&nbsp; This phrase also is used internally as part of the (not-yet-implemented) action [ <b><i>...</i></b> ].</p>
+
+
+<h2>dashrep-capture-trace-on-or-off</h2>
+<p>If this phrase contains the word <b><i>on</i></b> (and no other text), then the "trace" messages that track the <b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> directives are written to the <b><i>debug-trace-log</i></b> phrase.&nbsp; If this phrase contains anything other than the word <b><i>on</i></b>, no such messages are written.</p>
+
+
+<h2>dashrep-debug-trace-log</h2>
+<p>Stores the "trace" messages that are generated when those "trace" messages are requested.&nbsp; This information is useful for debugging, and it is automatically included if all the definitions are written to a file as the last translation step.</p>
+
+
+<h2>dashrep-debug-trace-on-or-off</h2>
+<p>If this phrase contains the word <b><i>on</i></b> (and no other text), then the "trace" messages that track some translation activities are written to the <b><i>debug-trace-log</i></b> phrase.&nbsp; If this phrase contains anything other than the word <b><i>on</i></b>, no such messages are written.&nbsp; Tip: Activate this (or any) tracing just before the Dashrep code that is producing unexpected results.</p>
+
+
+<h2>dashrep-action-trace-on-or-off</h2>
+<p>If this phrase contains the word <b><i>on</i></b> (and no other text), then the "trace" messages that track named actions are written to the <b><i>debug-trace-log</i></b> phrase.&nbsp; If this phrase contains anything other than the word <b><i>on</i></b>, no such messages are written.&nbsp; Tip: Activate this (or any) tracing just before the Dashrep code that is producing unexpected results.</p>
+
+
+<h2>dashrep-ignore-trace-on-or-off</h2>
+<p>If this phrase contains the word <b><i>on</i></b> (and no other text), then the "trace" messages that track the <b><i>ignore-begin-here</i></b> and <b><i>ignore-end-here</i></b> directives are written to the <b><i>debug-trace-log</i></b> phrase.&nbsp; If this phrase contains anything other than the word <b><i>on</i></b>, no such messages are written.</p>
+
+
+<h2>dashrep-linewise-trace-on-or-off</h2>
+<p>If this phrase contains the word <b><i>on</i></b> (and no other text), then the "trace" messages that track linewise translations are written to the <b><i>debug-trace-log</i></b> phrase.&nbsp; If this phrase contains anything other than the word <b><i>on</i></b>, no such messages are written.</p>
+
+
+<h1>Advanced phrases</h1>
+
+
+<h2>dashrep-endless-loop-counter-limit</h2>
+<p>Specifies the maximum number of replacement loops allowed during a Dashrep translation.&nbsp; This number can be redefined such as to a larger number.&nbsp; If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times.&nbsp; If large amounts of data are processed, the default number is not going to be large enough.&nbsp; This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.</p>
+
+
+<h2>unique-value</h2>
+<p>Assigns a unique value to the specified phrase.&nbsp; Currently this action is the equivalent to the <b><i>auto-increment</i></b> action, but future versions may use non-sequential numbers (to accomodate parallel processing).</p>
+
+
+<h2>escape-if-yes</h2>
+<p>If the text that follows equals <b><i>yes</i></b> then this action interrupts the translation process and exits from the Dashrep engine.&nbsp; This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code.&nbsp; When this interruption occurs, the text that was being translated is placed into the phrase <b><i>escape-text</i></b> .&nbsp; If no complications arise, the non-Dashrep executable code can resume Dashrep translation by supplying the <b><i>escape-text</i></b> definition as the text to be translated.&nbsp; (One of the expected uses of this action is to implement something similar to a "make" file.)</p>
+
+
+<h2>escape-if-no</h2>
+<p>The <b><i>no</i></b> equivalent of the <b><i>escape-if-yes</i></b> action.&nbsp; See that phrase description for details.</p>
+
+
+<h2>dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no</h2>
+<p>If it equals <b><i>yes</i></b> then backward compatibility is retained for actions and conventions that have been changed recently.</p>
+
+
+<h2>dashrep-special-replacement-adjacent-space</h2>
+<p>Specifies the text that is inserted to replace each space when the <b><i>copy-from-phrase-to-phrase-and-replace-adjacent-spaces</i></b> action is used.</p>
+
+
+<h2>dashrep-special-replacement-hyphen</h2>
+<p>Specifies the text that is inserted to replace each hyphen when the <b><i>copy-from-phrase-to-phrase-and-replace-hyphens</i></b> action is used.</p>
+
+
+<h2>dashrep-special-replacement-newline</h2>
+<p>Specifies the text that is inserted to replace each newline (line break) when the <b><i>copy-from-phrase-to-phrase-and-replace-newlines</i></b> action is used.</p>
+
+
+<h2>dashrep-yes-indicate-line-endings</h2>
+<p>If this phrase is defined as <b><i>yes</i></b>, the actions <b><i>copy-from-file-to-phrase</i></b> and <b><i>copy-from-file-to-phrases-line-numbered</i></b> insert the text <b><i>end-of-line-here</i></b> at line-break positions.&nbsp; The <b><i>end-of-line-here</i></b> phrase does not have a default definition.</p>
+
+
+<h2>begin-and-end</h2>
+<p>[...]</p>
+
+
+<h2>insert-phrase-with-brackets-after-next-top-line</h2>
+<p>During one of the <b><i>linewise</i></b> actions this phrase effectively inserts the specified hyphenated phrase after the next line of text being handled linewise, and that inserted phrase is enclosed within parameter brackets.&nbsp; This action enables the next line of text to be captured and placed into another phrase, and then the captured text can be used as desired.</p>
+
+
+<h1>Deprecated (soon-to-be-obsolete) phrases</h1>
+
+
+<h2>sort-numbers</h2>
+<p>(deprecated)</p>
+
+
+<h2>split-into-list-of-characters</h2>
+<p>(deprecated)</p>
+
+
+<h2>same-or-not-same</h2>
+<p>(deprecated)</p>
+
+
+<h2>empty-or-nonempty</h2>
+<p>(deprecated)</p>
+
+
+<h2>greater-than</h2>
+<p>(deprecated)</p>
+
+
+<h2>less-than</h2>
+<p>(deprecated)</p>
+
+
+<h2>yes-or-no-greater-than</h2>
+<p>(deprecated)</p>
+
+
+<h2>yes-or-no-less-than</h2>
+<p>(deprecated)</p>
+
+
+<h2>divide-by</h2>
+<p>(deprecated)</p>
+
+
+<h2>create-list-named</h2>
+<p>(deprecated)</p>
+
+
+<h2>count-of-list</h2>
+<p>(deprecated)</p>
+
+
+<h2>zero-one-multiple-count-of-list</h2>
+<p>(deprecated)</p>
+
+
+<h2>first-item-in-list</h2>
+<p>(deprecated)</p>
+
+
+<h2>from-list-get-item-number</h2>
+<p>(deprecated)</p>
+
+
+<h2>item-number-in-list-being-generated</h2>
+<p>(deprecated)</p>
+
+
+<h2>last-item-in-list</h2>
+<p>(deprecated)</p>
+
+
+<h2>remove-last-item-from-phrase-list</h2>
+<p>(deprecated)</p>
+
+
+<h2>yes-or-no-first-number-greater-than-second-number</h2>
+<p>(deprecated)</p>
+
+
+<h2>yes-or-no-first-number-less-than-second-number</h2>
+<p>(deprecated)</p>
+
+
+<h2>remove-first-word-from-phrase</h2>
+<p>(deprecated)</p>
+
+
+<h2>remove-last-word-from-phrase</h2>
+<p>(deprecated)</p>
+
+
+<h1>Special Dashrep spoken words</h1>
+
+
+<h2>dashbee</h2>
+<p>(described in table above)</p>
+
+
+<h2>dashenn</h2>
+<p>(described in table above)</p>
+
+
+<h2>dashnex</h2>
+<p>(described in table above)</p>
+
+
+<h2>parambee</h2>
+<p>(described in table above)</p>
+
+
+<h2>paramenn</h2>
+<p>(described in table above)</p>
+
+
+<h2>combee</h2>
+<p>(described in table above)</p>
+
+
+<h2>comenn</h2>
+<p>(described in table above)</p>
+
+
+<h2>fen</h2>
+<p>(described in table above)</p>
+
+
+<h2>conparambee</h2>
+<p>(described in table above)</p>
+
+
+<h2>paramenncon</h2>
+<p>(described in table above)</p>
+
+
+<h2>linbray</h2>
+<p>(described in table above)</p>
+
+
+<!-- The above content was generated, so DO NOT EDIT above text. Instead, edit the source code, which is written using Dashrep phrases to indicate hierarchy and which is generated using a Dashrep script. -->
+
+
+<p>&nbsp;</p>
+
+<h1>Language Perspective</h1>
+
+<h2>Functionality</h2>
+
+<p>Although Dashrep code is not directly executable, it can generate executable code.&nbsp; Although it does not directly define loops, it generates lists in which any space-delimited list of text strings (including integers) can specify the unique values for the list items.&nbsp; Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as <b><i>[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]</i></b>.&nbsp; Also, Dashrep code makes it easier to move data out of executable code (where data does not belong).</p>
+
+
 <a name="goals"></a>
 <h2>Dashrep design goals</h2>
 
@@ -36,364 +950,11 @@
 
 <li>Provide a convenient way to move data out of executable code.&nbsp; This functionality fills a gap that exists in Perl and many other executable programming languages.&nbsp; The separation of data from executable code has many benefits, including allowing executable code to generate results in any sequence instead of the sequence in which they appear in the final result (such as the sequence of items in an HTML file), isolating layout-specific code that non-programmers can edit, switching between different written languages (such as English and French) just by changing a Dashrep phrase's value (such as from "en" to "fr"), switching between different "skins" or appearances using a single Dashrep phrase value, making it easy to switch between singular and plural forms of a word (such as "person" and "people") based on a data-specific count, and supporting complex layouts that go way beyond what templates can handle.</li>
 
-<li>Keep it simple, and keep it flexible.&nbsp; Only a few characters &mdash; space, hyphen/dash, and in some situations square brackets (if they are adjacent to dashes) &mdash; have special significance.&nbsp; These special characters do not overlap with special characters in coding languages such as HTML, XML, JavaScript, etc., so the Dashrep language can more easily generate code in most target languages.</li>
+<li>Keep it simple, and keep it flexible.&nbsp; Only a few characters &mdash; space, hyphen/dash, and in some situations square brackets (if they are adjacent to dashes) &mdash; have special significance.&nbsp; These special characters do not overlap with special characters in coding languages such as HTML, XML, JavaScript, Perl, C++, Python, etc., so the Dashrep language can more easily generate code in most target languages.</li>
 
 <li>Make the language speakable.&nbsp; This provides a step toward bridging the gap between spoken language (e.g. English) which is highly ambiguous (i.e. words, phrases, and sentences can have multiple meanings), and coding languages that are unambiguous.&nbsp; Soon, mobile technology will increase the use of microphones instead of keyboards, and a spoken language such as Dashrep&mdash;in conjunction with a few special words&mdash;can facilitate creating unambiguous content (such as XML-like information, formatted documents, etc.) that computer software can easily interpret.&nbsp; For people with keyboard-related repetitive-stress injury (RSI), a spoken language provides an alternative to typing symbol-intensive code.</li>
 
 </ul>
-
-<p>&nbsp;</p>
-
-<a name="rules"></a>
-<h2>Dashrep rules</h2>
-
-<h3>Special characters</h3>
-
-<ul>
-<li>The hyphen or dash (<b><i>-</i></b>) character, the space &ldquo;character&rdquo;, and the newline &ldquo;character&rdquo; always have special meaning within Dashrep code.</li>
-
-<li>The open square bracket (<b><i>[</i></b>), close square bracket (<b><i>]</i></b>), slash (<b><i>/</i></b>), and asterisk (<b><i>*</i></b>) can have special meaning within Dashrep code, but only if they are adjacent to a hyphen/dash.</li>
-
-<li>A colon (<b><i>:</i></b>) and equal sign (<b><i>=</i></b>) may have special meaning within Dashrep code, depending upon the context.</li>
-
-<li>All other characters are not special within Dashrep code.</li>
-
-<li>The Dashrep language does <i>not</i> have any special meaning for angle brackets, braces, slashes, and other symbols that are commonly used in other coding languages.</li>
-
-<li>The minimal special-character overlap between the Dashrep language and other languages (including written English) makes it easier to use the Dashrep language to translate content into many target languages.</li>
-</ul>
-
-
-<h3>Hyphenated phrases</h3>
-
-<ul>
-
-<li>Each hyphenated phrase is a shortcut for another text string.&nbsp; Within Dashrep code, wherever the hyphenated phrase appears, the hyphenated phrase is replaced with the text that is defined as being associated with that phrase.&nbsp; The replacement text (its definition) can contain anything, including more hyphenated phrases.&nbsp; This approach allows a small amount of code to expand into a large and/or complex text string.&nbsp; The resulting text string can be an HTML web page, an XML-formatted document, a JavaScript program, or any text file in nearly any target language.</li>
-
-<li>If a hyphenated phrase is encountered but has not been defined, no replacement is done, and the hyphenated phrase remains as-is.</li>
-
-<li>A hyphenated phrase must contain at least one hyphen (<b><i>-</i></b>).&nbsp; A hyphen is the same character as a dash.</li>
-
-<li>A hyphenated phrase cannot begin or end with a hyphen.</li>
-
-<li>A hyphenated phrase cannot begin with a digit (0 to 9).</li>
-
-<li>A hyphenated phrase cannot end with a colon (<b><i>:</i></b>).</li>
-
-<li>Spaces and line breaks serve as delimiters for hyphenated phrases.&nbsp; This means that a hyphenated phrase must begin after a space or at the beginning of a line, and the hyphenated phrase must be followed by a space or the end of the line.&nbsp; Elsewhere a hyphenated phrase is not recognized, and therefore not translated.&nbsp; Of course a hyphenated phrase cannot contain a space, and cannot span a line break.</li>
-
-<li>Square brackets (<b><i>[</i></b> and <b><i>]</i></b>) within a hyphenated phrase have a special interpretation that is explained below.</li>
-
-<li>A hyphenated phrase can contain any characters, including unicode characters, that commonly represent spoken sounds.&nbsp; Symbols that have obscure names without also commonly being used to represent spoken sounds (such as punctuation symbols, or Greek letters in English) should be avoided.&nbsp; Besides having unknown or inconsistent pronunciations, symbols may be significant in the target language.&nbsp; This constraint is not enforced as a limit because a symbol can have different functions in different languages.</li>
-
-<li>The preferred convention is to use only lowercase letters (a to z) and avoid uppercase characters (A to Z).&nbsp; Uppercase characters are allowed anywhere within a hyphenated phrase, but the recognition of phrases is case-sensitive, so using only lowercase letters ensures consistency.&nbsp; If using uppercase characters is desired, preprocessing can check for consistency, or convert all uppercase letters to lowercase letters.&nbsp; (This approach preserves execution speeds without enforcing a convention that some writers will want to avoid.)</li>
-
-<li>Recommendation:&nbsp; Within a hyphenated phrase, adjectives should appear after&mdash;not before&mdash;nouns, as in <b><i>rectangle-large-begin</i></b> (rather than <b><i>begin-large-rectangle</i></b>).&nbsp; This convention quickly identifies the most specific part of a phrase at the beginning of the phrase.&nbsp; Although this convention is unfamiliar to English-only speakers, major languages&mdash;including French, Italian, and Spanish&mdash;follow this convention.</li>
-
-</ul>
-
-
-<h3>Two contexts: definitions, and text to be translated</h3>
-
-<p>There are two different kinds of Dashrep code.&nbsp; Dashrep code can be the code that contains hyphenated phrases that are replaced by the definitions for those phrases, and this is the translation context.&nbsp; Or, Dashrep code can define Dashrep phrases by associating each phrase with its definition, and this is the definition context.</p>
-
-<p>Within the translation context, the <b><i>dashrep-definitions-begin</i></b> and <b><i>dashrep-definitions-end</i></b> directives switch the context into, and then back out of, the definition context.&nbsp; If the context begins in the definition context, there are no directives that switch the context into the translation context.</p>
-
-<p>The starting context depends on how the Dashrep engine is accessed.&nbsp; If accessed from executable code, there are multiple Dashrep &ldquo;functions&rdquo; that can be executed, and each function determines how the supplied text is handled.&nbsp; If the Dashrep engine is accessed by supplying it with a text file to translate, the initial context is the translation context, and then the <b><i>dashrep-definitions-begin</i></b> and <b><i>dashrep-definitions-end</i></b> directives can be used to change the context.</p>
-
-
-<h3>Defining a hyphenated phrase</h3>
-
-<ul>
-
-<li>Within the definition context, a hyphenated phrase is defined by following it with the text string that will be replaced wherever the hyphenated name appears.&nbsp; The end of the defined text string must be indicated by three or more successive hyphens (e.g. <b><i>-----</i></b>), or the end of a file, or the phrase <b><i>define-end</i></b>.</li>
-
-<li>After the end of a definition, the next non-commented hyphenated phrase is assumed to be the next hyphenated phrase to be defined.</li>
-
-<li>Within Dashrep code that contains definitions, an optional colon (:) can appear at the end of the hyphenated phrase being defined.&nbsp; The colon is not required, and simply serves to make it visually easier to distinguish a hyphenated phrase from its definition, and easier to find when searching for the definition.</li>
-
-<li>Within executable code, a hyphenated phrase is defined by using the appropriate function or subroutine.&nbsp; The appropriate convention is host-language-specific.</li>
-
-<li>A hyphenated phrase can be redefined at any time within executable program code.&nbsp; When this is done, the hyphenated phrase loses its previous definition.</li>
-
-</ul>
-
-
-<h3>Replacing hyphenated phrases</h3>
-
-<ul>
-
-<li>During translation, whenever a hyphenated phrase is encountered, the hyphenated phrase is replaced by that phrase's definition.</li>
-
-<li>If an encountered hyphenated phrase is not defined, the hyphenated phrase is retained as-is.</li>
-
-<li>When a hyphen is needed within words, the hyphenated phrase <b><i>hyphen-here</i></b> (see below) can be used.</li>
-
-<li>Text that does not look like a hyphenated phrase is retained as-is.</li>
-
-<li>If a hyphenated phrase contains a hyphenated phrase that, after successive replacements, leads back to the same hyphenated phrase, an endless loop could occur.&nbsp; To prevent this, the Dashrep engine stops if the number of replacements reaches a specified limit (which can be changed).&nbsp; If the number of replacements reaches this limit, an error message states which phrase was replaced the most number of times, and usually this is the phrase that either directly or indirectly contains itself.</li>
-
-</ul>
-
-
-
-<h3>Comments</h3>
-
-<ul>
-
-<li>In either the translation or definition context, a comment must begin after a space or at the beginning of a line, and it must start with a slash (/) or an asterisk (*) immediately followed by at least three hyphens (dashes) (e.g. <b><i>/---</i></b> or <b><i>*---</i></b>).</li>
-
-<li>A comment ends with at least three hyphens (dashes) immediately followed by a slash (/) or an asterisk (*) (e.g. <b><i>---/</i></b> or <b><i>---*</i></b>) and then either a space or the end of the line.</li>
-
-<li>The comment can contain anything except the string that identifies the end of the comment.&nbsp; Nesting of comments is not allowed.</li>
-
-<li>Comments are not allowed within a phrase's definition.</li>
-
-</ul>
-
-
-<h3>Special hyphenated phrases</h3>
-
-<ul>
-<li><b><i>hyphen-here</i></b> specifies a hyphen, without adjacent spaces, in the target language.&nbsp; Internally it is defined as <b><i>no-space - no-space</i></b>.</li>
-
-<li><b><i>tab-here</i></b> specifies a tab, without adjacent spaces, in the target code.</li>
-
-<li><b><i>no-space</i></b> specifies the removal of any spaces (concatenation) after all other hyphenated phrases have been replaced.</li>
-
-<li><b><i>one-space</i></b> specifies a single space.</li>
-
-<li><b><i>non-breaking-space</i></b> specifies a single space that is not removed if the <b><i>no-space</i></b> directive is adjacent.</li>
-
-<li><b><i>span-non-breaking-spaces-begin</i></b> and <b><i>span-non-breaking-spaces-end</i></b> requests that non-breaking spaces in the target language, as specified by the definition of the phrase <b><i>non-breaking-space</i></b>, be inserted where spaces appear, and then remove all remaining spaces from the text between these directives (after expanding any parameters in the text).</li>
-
-<li><b><i>new-line</i></b> specifies a line break in the target code.</li>
-
-<li><b><i>empty-line</i></b> specifies an empty line in the target code.</li>
-
-<li><b><i>line-break</i></b> should be used to define a text string that, in turn, specifies a line break in the target language.&nbsp; For example, if the target language is XHTML, normally this phrase should be defined as <b><i>no-space &lt;br /&gt; no-space</i></b>.</li>
-
-<li><b><i>dashrep-definitions-begin</i></b> and <b><i>dashrep-definitions-end</i></b> specify that the text between these phrases are definitions (replacements associated with hyphenated phrases).&nbsp; These phrases cannot be nested.</li>
-
-<li><b><i>define-end</i></b> is the same as several hyphens ("----"), and is provided as a speakable alternative for ending a definition.&nbsp; For symmetry, <b><i>define-begin</i></b> also can be used, but it is ignored (because the context already determines where a definition begins).</li>
-
-<li><b><i>ignore-begin-here</i></b> and <b><i>ignore-end-here</i></b> specify the removal of all text between these phrases.&nbsp; These phrases can be nested.&nbsp; These phrases cannot overlap the <b><i>capture-begin-here</i></b> and <b><i>capture-begin-here</i></b> phrases.</li>
-
-<li><b><i>capture-begin-here</i></b> and <b><i>capture-end-here</i></b> requests that the text between these phrases be captured and put into the definition of the phrase named <b><i>captured-text</i></b>.&nbsp; These phrases can be nested, but the captured text becomes unpredictable.&nbsp; These phrases cannot overlap the <b><i>ignore-begin-here</i></b> and <b><i>ignore-begin-here</i></b> phrases.</li>
-
-<li><b><i>empty-text</i></b> contains no text.&nbsp; It is useful for clearing a phrase by copying.&nbsp; (To test whether a phrase's definition is empty, use the <b><i>empty-or-nonempty-phrase</i></b> action instead.)</li>
-
-</ul>
-
-
-<h3>Parameter expansion</h3>
-
-<ul>
-<li>If a hyphenated phrase appears within square brackets and adjacent inner hyphens (i.e. <b><i>[-</i></b> and <b><i>-]</i></b>) the hyphenated phrase is replaced by its definition before doing replacements of any surrounding text.&nbsp; Such an enclosed hyphenated phrase is called a parameter phrase.</li>
-
-<li>Bracketed parameter phrases can be nested, in which case the replacement process starts with the contents of the innermost brackets.</li>
-
-<li>When parameter phrases appear in sequence (that is, they are not nested), the replacement process starts with the first parameter phrase encountered (which is the left-most).</li>
-
-<li>Some ways of accessing the Dashrep engine do replacements of phrases within the parameter (bracket) notation, but do not also replace phrases that are not within parameter brackets.&nbsp; Other ways of accessing the Dashrep engine do replacements of all phrases, both the ones within the parameter brackets and phrases outside of all parameter brackets, although phrases within parameter brackets are done first.&nbsp; If only parameterized phrases are replaced, the remaining phrases are replaced later, as a separately requested step.</li>
-
-<li>If a parameter phrase expands to text that contains a non-parameter hyphenated phrase, and that non-parameter phrase is later, in a separate step, replaced by text that contains yet another parameter phrase, that isolated parameter phrase will not be expanded in the same step as the original parameter phrase.&nbsp; When parameter phrases are nested to several levels (that is, each definition contains parameter phrases that are expanded in the same step), and parameter brackets are missing at one level of the nesting, this rule can produce results that are unexpected.</li>
-</ul>
-
-
-<h3>Assignment within parameter brackets</h3>
-
-<p>A hyphenated phrase can be defined (or redefined) using the following parameter-notation syntax:  A square open bracket and hyphen (<i>[-</i>), followed by the hyphenated phrase being defined, followed by optional spaces, followed by an equal sign (<i>=</i>), followed by optional spaces, followed by the associated text (which cannot contain parameters), followed by a hyphen and square close bracket (<i>-]</i>).</p>
-
-<p>This kind of assignment, combined with the appropriate use of parameter brackets, allows the same phrase to expand to different text, with each expansion using a different value for the phrase that is assigned this way.&nbsp; Compared to traditional programming languages, the result is analogous to passing different parameter values to a function and getting different results (from the same function).</p>
-
-
-<h3>Special actions</h3>
-
-<li>At the beginning of a parameter bracket notation, the following special actions, which may be followed by an optional colon (:), are allowed:</li>
-
-<ul>
-<li><b><i>empty-or-nonempty</i></b> returns <b><i>empty</i></b> or <b><i>nonempty</i></b> depending upon whether the text that follows (after parameterized replacements have been done) has no characters of text (empty) or contains at least one non-whitespace character (nonempty).</li>
-
-<li><b><i>empty-or-nonempty-phrase</i></b> returns <b><i>empty</i></b> or <b><i>nonempty</i></b> depending upon whether the hyphenated phrase that follows (after parameterized replacements have been done) has a definition that contains no characters of text (empty) or contains at least one non-whitespace character (nonempty).</li>
-
-<li><b><i>same-or-not-same</i></b> returns <b><i>same</i></b> or <b><i>not-same</i></b> depending upon whether the two following parameterized phrases separated by <b><i>-]-[-</i></b> are, after expansion, the same text string or different text strings.</li>
-
-<li><b><i>zero-one-multiple</i></b> returns <b><i>zero</i></b> or <b><i>one</i></b> or <b><i>multiple</i></b> depending upon whether the following number equals zero, one, or multiple (more than one).&nbsp; The number must be in integer text format.</li>
-
-<li><b><i>length-of-text-in-phrase</i></b>, which is followed by a phrase name, returns an integer number that counts the number of characters in the definition of the named phrase.&nbsp; (It is useful for adding leading zeros to integer numbers, and handling monospace fonts.)</li>
-
-<li><b><i>create-list-named</i></b> generates a list using the conventions explained in the section below.</li>
-
-<li><b><i>count-of-list</i></b> returns the number of items in the following list.</li>
-
-<li><b><i>first-item-in-list</i></b> returns the first item in the following list.</li>
-
-<li><b><i>last-item-in-list</i></b> returns the last item in the following list.</li>
-
-<li><b><i>sort-numbers</i></b> returns a numerically sorted list based on the following list.</li>
-
-<li><b><i>unique-value</i></b> generates a unique numeric value and assigns it as the definition of the following hyphenated phrase.&nbsp; Currently this value is a number that is incremented each time this special action is encountered, but future versions may use non-sequential numbers.</li>
-
-<li><b><i>auto-increment</i></b> (which should be used only when really needed) increments the integer value that is named by the following hyphenated phrase.&nbsp; This number is incremented each time this special action is encountered.</li>
-
-<li><b><i>copy-from-phrase-to-phrase</i></b>, which is followed by two phrase names (not one), copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase.&nbsp; The previous definition of the second hyphenated phrase is deleted.</li>
-
-<li><b><i>copy-from-phrase-to-phrase-with-special-replacements</i></b>, which is followed by two phrase names (not one), copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase, but special replacements are done to eliminate hyphens, adjacent spaces, and line breaks.&nbsp; The replacement for hyphens is specified in the <b><i>special-replacement-hyphen</i></b> phrase, the replacement for non-first spaces in adjacent spaces is specified in the <b><i>special-replacement-space</i></b> phrase, and the replacement for line breaks is specified in the <b><i>special-replacement-linebreak</i></b> phrase.&nbsp; If any of the special replacement phrases are empty (which is their default value) or contain a hyphen or adjacent spaces or a line break, that type of special replacement is not done.</li>
-
-<li><b><i>append-from-phrase-to-phrase</i></b>, which is followed by two phrase names (not one), copies the definition of the first hyphenated phrase onto the end of the definition of the second hyphenated phrase.&nbsp; Among other uses, this action can be used to insert text (such as a raw Dashrep definition) within other text without being translated.</li>
-
-<li><b><i>insert-phrase-with-brackets-after-next-top-line</i></b> is a linewise action that effectively inserts the specified hyphenated phrase after the next line of text being handled linewise, and it puts that phrase within parameter brackets.&nbsp; This action enables the next line of text to be captured and placed into another phrase, and then the captured text can be used as desired.</li>
-
-</ul>
-
-
-<h3>Generated lists and list items</h3>
-
-<ul>
-<li>Each list must have a name, which must be a hyphenated phrase.</li>
-
-<li>The parameter action <b><i>create-list-named</i></b> (mentioned above) must be used, and it must be followed by the list's name (e.g. <b><i>[-create-list-named: participant-names-full-]</i></b>).</li>
-
-<li>The template for each item in the list must be the definition for a hyphenated phrase whose name begins with <b><i>template-for-list-named-</i></b> and ends with the list's name.&nbsp; Within the template there must be a parameter phrase (in brackets) where the changing portion of the contents will be inserted.&nbsp; Within this template the phrase <b><i>item-number-in-list-being-generated</i></b> can be used to specify the item number, which equals one (1) for the first item.</li>
-
-<li>The name of the parameter phrase that specifies the changing contents must be specified by a hyphenated phrase that begins with <b><i>parameter-name-for-list-named-</i></b> and end with the list's name.&nbsp; (See <a href="http://www.Dashrep.org/learn.html#exampleoflist">example</a>.)</li>
-
-<li>The list of values to be substituted into the specified parameter phrase (within the template) must be identified as the hyphenated phrase that begins with <b><i>list-of-parameter-values-for-list-named-</i></b> and ends with the list's name.&nbsp; The list of values must be text items (which can be numbers) that are separated by spaces and/or commas.&nbsp; (See <a href="http://www.Dashrep.org/learn.html#exampleoflist">example</a>.)&nbsp; Spaces cannot appear within any list items, although the list item can be a hyphenated phrase that is replaced later, in a separate translation step.</li>
-
-<li>Optionally, a prefix and suffix for each list item can be specified using hyphenated phrases that begin with <b><i>prefix-for-list-named-</i></b> and <b><i>suffix-for-list-named-</i></b>, respectively.</li>
-
-<li>The entire list becomes available as a hyphenated phrase that begins with <b><i>generated-list-named-</i></b> and ends with the list's name.</li>
-
-<li>Each item in the list becomes available as a hyphenated phrase that is a concatenation of <b><i>item-for-list-</i></b> followed by the name of the list and followed by <b><i>-and-parameter-</i></b> and followed by the parameter value for the specified item (in the list).</li>
-
-<li>A phrase with the prefix <b><i>logged-list-of-parameter-values-for-list-named-</i></b> lists the parameter values that are used to create the list.</li>
-</ul>
-
-
-<h3>Top-level (file-related) actions</h3>
-
-<p>For script-like control at the top level (not for nested use), the following actions are available:</p>
-
-<ul>
-<li><b><i>append-from-phrase-to-phrase</i></b> copies the definition of the first specified hyphenated phrase onto the end of the definition of the second specified hyphenated phrase.&nbsp; (This action is equivalent to the same action that is available at all levels.)</li>
-
-<li><b><i>copy-from-phrase-append-to-file</i></b> copies the definition of the hyphenated phrase onto the end of the specified file.&nbsp; The file must be in the local folder/directory, and if a path specification appears at the beginning of the file name that path is ignored.</li>
-
-<li><b><i>expand-phrase-to-file</i></b> does a Dashrep translation of the specified phrase (which is the first item after this action name) and then writes the results to the named file (which is the second item after this action).&nbsp; The created file is placed in the local folder/directory, even if a path specification appears at the beginning of the file name.</li>
-
-<li><b><i>copy-from-file-to-phrase</i></b> copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The source file must be in the local folder/directory, and if a path specification appears at the beginning of the file name it is ignored.</li>
-
-<li><b><i>create-empty-file</i></b> creates an empty file using the specified file name, and erases the file if it already exists.&nbsp; The created file is placed in the local folder/directory, even if a path specification appears at the beginning of the file name.</li>
-
-<li><b><i>delete-file</i></b> deletes the specified file.</li>
-
-<li><b><i>write-all-dashrep-definitions-to-file</i></b> writes all the Dashrep definitions to a new file with the specified file name, and erases the file if it already exists.&nbsp; The created file is placed in the local folder/directory, even if a path specification appears at the beginning of the file name.&nbsp; Normally the definitions are written in Dashrep-readable format, but the <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> phrase, which is explained below, can choose a different delimited format.</li>
-
-<li><b><i>write-all-dashrep-phrase-names-to-file</i></b> writes all the Dashrep phrase names to a new file with the specified file name, and erases the file if it already exists.&nbsp; The created file is placed in the local folder/directory, even if a path specification appears at the beginning of the file name.</li>
-
-<li><b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.&nbsp; The created file is placed in the local folder/directory, even if a path specification appears at the beginning of the file name.</li>
-
-<li><b><i>get-definitions-from-file</i></b> reads the Dashrep definitions from the specified file, and overwrites any existing definitions that have the same phrase name.</li>
-
-<li><b><i>clear-all-dashrep-phrases</i></b> clears all the definitions of all Dashrep phrases.</li>
-
-<li><b><i>linewise-translate-from-file-to-file</i></b> translates, one line at a time, the text from the specified input file into the specified result file, using the currently defined Dashrep phrase definitions.&nbsp; Variations of this action, namely <b><i>linewise-translate-parameters-only-from-file-to-file</i></b> and <b><i>linewise-translate-phrases-only-from-file-to-file</i></b> allow just parameters or just phrases (without parameters) to be translated.</li>
-
-<li><b><i>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</i></b> converts XML in the specified input file into Dashrep phrases where each phrase is a concatenation of the XML tag names (e.g. "begin-xml-peoplelist-person-name" and "end-xml-peoplelist-person-name").&nbsp; This convention, along with appropriate definitions for those phrase names, enables an XML or XHTML file to be converted into any kind of text file.</li>
-</ul>
-
-
-<h3>Internal phrase names</h3>
-
-<p>The following phrases provide internal control of Dashrep translations for handling special situations.</p>
-
-<ul>
-<li><b><i>dashrep-endless-loop-counter-limit</i></b> can be redefined to a different numeric value.&nbsp; The number may need to be increased if a very large number of replacements is normal for the amount of data being processed.</li>
-
-<li><b><i>dashrep-comments-ignored</i></b> contains all the text that were identified as comments.&nbsp; This content can be viewed to verify that non-comments are not mistakenly marked as comments.</li>
-
-<li><b><i>dashrep-ignore-level</i></b> is the numeric count of nested <i>ignore-begin-here</i> and <i>ignore-end-here</i> actions.&nbsp; This number can be saved and restored if one translation task needs to be interrupted and another started or re-started.</li>
-
-<li><b><i>dashrep-capture-level</i></b> is the numeric count of nested <i>capture-begin-here</i> and <i>capture-end-here</i> actions.&nbsp; This number can be saved and restored if one translation task needs to be interrupted and another started or re-started.</li>
-
-<li><b><i>dashrep-first-xml-tag-name</i></b> supplies an XML tag name (without angle brackets) to the <i>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</i> action to indicate the first XML tag to be recognized.&nbsp; Tags at higher levels within the XML structure are ignored.</li>
-
-<li><b><i>dashrep-list-of-xml-phrases</i></b> contains a list of all the phrase names that were written by the <i>linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file</i> action.</li>
-
-<li><b><i>dashrep-xml-yes-handle-open-close-tag-</i></b> is a prefix that can be followed by the name of an XML tag to indicate that the specified tag is to be regarded as both an opening and closing tag.&nbsp; For example, if the phrase <i>dashrep-xml-yes-handle-open-close-tag-img</i> is defined as <i>yes</i>, the <i>img</i> (image) tag within HTML code does not need to be terminated with <i>"/>"</i> in order to be terminated.</li>
-
-<li><b><i>dashrep-xml-yes-ignore-tag-named-</i></b> is a prefix that can be followed by the name of an XML tag that is to be ignored.&nbsp; For example, if the phrase <i>dashrep-xml-yes-ignore-tag-named-div</i> is defined as <i>yes</i>, the <i>div</i> tags within HTML code will be ignored.</li>
-
-<li><b><i>dashrep-xml-replacement-name-for-tag-named-</i></b> is a prefix that can be followed by the name of an XML tag that should be replaced by this phrase's definition.&nbsp; For example, if the phrase <i>dashrep-xml-replacement-name-for-tag-named-th</i> is defined as <i>td</i>, then any <i>th</i> tag is replaced by the <i>td</i> tag in the generated Dashrep phrases.</li>
-
-<li><b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> can be set to <i>yes</i> so that the <i>write-all-dashrep-definitions-to-file</i> action exports definitions that are delimited by the following phrases at appropriate positions: <b><i>export-defs-all-begin</i></b>, <b><i>export-defs-all-end</i></b>, <b><i>export-defs-phrase-begin</i></b>, <b><i>export-defs-phrase-end</i></b>, <b><i>export-defs-def-begin</i></b>, and <b><i>export-defs-def-end</i></b>.&nbsp; This approach allows these phrases to be defined so that a separate Dashrep translation can generate code such as HTML, XML, or SQL.&nbsp; If the value of this phrase is anything other than <i>yes</i>, then the exported definitions use the usual Dashrep convention in which the phrase being defined appears first, then is followed by the definition, and multiple dashes terminate the definition.</li>
-
-<li><b><i>dashrep-xml-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about converting XML code into Dashrep code.&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-linewise-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about the handling of linewise translations.&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-ignore-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about what text is ignored by the <i>ignore-begin-here</i> and <i>ignore-end-here</i> actions.&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-capture-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about what text is captured by the <i>capture-begin-here</i> and <i>capture-end-here</i> actions.&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-action-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about special actions that appear within a parameter (surrounded by <i>[-</i> and <i>-]</i>).&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-debug-trace-on-or-off</i></b> can be defined as <i>on</i> to turn on a debugging trace mode that writes detailed information about other Dashrep translations besides the information for which other tracing can be done.&nbsp; Any value other than <i>on</i> leaves this debugging trace mode turned off.</li>
-
-<li><b><i>dashrep-yes-indicate-line-endings</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered during the <b><i>copy-from-file-to-phrase</i></b> action.</li>
-
-</ul>
-
-
-<h3>Special phrases reserved for future use</h3>
-
-<ul>
-<li>Any hyphenated phrase that begins with <b><i>dashrep-</i></b> is reserved.</li>
-
-<li>The hyphenated phrases <b><i>comment-begin</i></b> and <b><i>comment-end</i></b> are reserved as comment delimiters.&nbsp; This would enable these delimiters to be spoken.</li>
-
-<li>The hyphenated phrases <b><i>yes-if-not-no</i></b>, <b><i>no-if-not-yes</i></b>, <b><i>yes-if-all-yes</i></b>, and <b><i>no-if-all-no</i></b> are reserved to allow better true/false logic.</li>
-
-<li>The hyphenated phrase <b><i>calculate-if-empty</i></b> is reserved to implement an action that checks whether the following phrase is empty, and then if it is empty, replaces the parameter (containing both this action name and the empty phrase name) with a parameterized (bracketed) phrase that begins with <b><i>how-to-calculate-</i></b> and ends with the name of the empty phrase.&nbsp; This action, which would precede the use of the phrase's value, makes it easy to let the software determine whether the phrase's value has already been calculated, and provides a way to calculate the value if it is still empty.&nbsp; If a calculated value might be empty (as a valid value), the phrase should be calculated as part of a related calculation, such as "initialization-done" with a "yes" or "no" result.</li>
-
-<li>The actions <b><i>escape-with-definition-if-not-empty</i></b> and <b><i>resume-after-escape</i></b> are planned as a way to interrupt translation, execute some action that cannot be done using the Dashrep engine, and then resume the Dashrep translation process.&nbsp; Specifically, if the specified phrase is empty, the translation process stops, the partially translated text is stored in the <i>dashrep-translation-before-escape</i> phrase, then just the (non-empty) value of the specified phrase is inserted as the replacement for the entire text being expanded, and then when the Dashrep code executes again, translation resumes where it left off if the <i>resume-after-escape</i> action is the first phrase encountered.&nbsp; (If the <i>resume-after-escape</i> phrase is not the first phrase encountered, the partially translated text is discarded; if the <i>resume-after-escape</i> phrase is encountered at any other time, the action is not recognized, and remains untranslated.)&nbsp; This capability will allow the Dashrep engine to implement powerful functionality, such as implementing an interactive website that dynamically generates diverse, complex web pages, with the dependencies specified in Dashrep code (as data) instead of being written in executable code (which can be very time-consuming to debug).&nbsp; Also this functionality can be used to implement the equivalent of executing a &ldquo;make&rdquo; file, in which case the supplied non-empty text can be the text of an executable command, and the dependencies can be specified in Dashrep phrases.</li>
-
-<li>The actions <b><i>pop-last-item-from-list</i></b> and <b><i>remove-last-item-from-list</i></b> are reserved to handle list items.</li>
-
-<li>The hyphenated phrases <b><i>calc-sum</i></b>, <b><i>calc-multiply</i></b>, <b><i>calc-minus</i></b>, <b><i>calc-divide-by</i></b>, <b><i>calc-truncate-to-integer</i></b>, <b><i>calc-convert-to-dollars-and-cents</i></b> (by rounding if necessary), <b><i>greater-than-yes-or-no</i></b>, and <b><i>less-than-yes-or-no</i></b> are reserved to implement basic calculation capabilities.&nbsp; (The values will be stored as text, not as binary values.)</li>
-
-<li>The hyphenated phrases <b><i>get-time</i></b>, <b><i>get-modification-time-for-file</i></b>, <b><i>time-year-number</i></b>, <b><i>time-month-number</i></b>, <b><i>time-day-number</i></b>,<b><i>time-day-of-week-number</i></b>, <b><i>time-24-hour-number</i></b>, <b><i>time-am-pm</i></b>, <b><i>time-minutes</i></b>, and <b><i>time-seconds</i></b> are reserved to make date and time information available, and in a way that can be combined to produce nearly any format.</li>
-
-<li>Each internet domain name can claim any phrase that begins with the string <b><i>domain-</i></b> followed by the domain name with dots (periods) replaced by hyphens (<i>-</i>) (and followed by a hyphen).  For example, domainname.com can claim any phrase that begins with <i>domain-domainname-com-</i>.</li>
-</ul>
-
-
-<h3>Spoken versions of Dashrep content</h3>
-
-<p>When the Dashrep language is spoken, the following special words should be recognized and handled by the voice-recognition software.&nbsp; They indicate the beginning and ending of hyphenated phrases, parameterized hyphenated phrases, and comments.&nbsp; These words eliminate the need to say the word <b><i>hyphen</i></b> within hyphenated phrases.&nbsp; These names should also be handled when they appear in the text, but the current implementation of the Dashrep language does not yet recognize them.</p>
-
-<ul>
-
-<li><b><i>dashbee</i></b> indicates the beginning of a hyphenated phrase.</li>
-
-<li><b><i>dashenn</i></b> indicates the end of a hyphenated phrase.</li>
-
-<li><b><i>parambee</i></b> indicates the beginning of a parameterized hyphenated phrase (which may be part of a hyphenated phrase).</li>
-
-<li><b><i>paramenn</i></b> indicates the end of a parameterized hyphenated phrase.</li>
-
-<li><b><i>combee</i></b> indicates the beginning of a comment.</li>
-
-<li><b><i>comenn</i></b> indicates the end of a comment.</li>
-
-<li><b><i>fen</i></b> (the last syllable of <b><i>hyphen</i></b>) indicates a hyphen.</li>
-
-</ul>
-
-<h3>Functionality</h3>
-
-<p>Although Dashrep code is not directly executable, it can generate executable code.&nbsp; Although it does not directly define loops, it generates lists in which any space-delimited and/or comma-delimited list of text strings (including integers) can specify the unique values for the list items.&nbsp; Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as <b><i>[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]</i></b>.&nbsp; Also, Dashrep code makes it easier to move data out of executable code (where data does not belong).</p>
 
 <p>&nbsp;</p>
 
@@ -409,10 +970,10 @@
 
 
 <a name="copyright"></a>
-<h2>Copyright and trademark notices</h2>
+<h1>Copyright and trademark notices</h1>
 
 
-<p>&copy; Copyright 2009, 2011 by Richard Fobes at <a href="http://www.Dashrep.org">www.Dashrep.org</a>.&nbsp; All rights reserved.</p>
+<p>&copy; Copyright 2009, 2011, 2012 by Richard Fobes at <a href="http://www.Dashrep.org">www.Dashrep.org</a>.&nbsp; All rights reserved.</p>
 
 <p>The Dashrep language is now in the public domain.</p>
 
