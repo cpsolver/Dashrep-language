@@ -1546,8 +1546,9 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  copy-from-phrase-to-phrase-only-word-at-position
 #  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
+#  copy-from-file-to-phrase-and-insert-phrase
 
-        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) ) && ( $number_of_operands == 3 ) )
+        if ( ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) ) && ( $number_of_operands == 3 ) )
         {
             if ( $number_of_operands != 3 )
             {
@@ -1623,6 +1624,20 @@ sub dashrep_expand_parameters
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                     {
                         $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
+                    }
+                } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" )
+                {
+					if ( ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
+					{
+						$text_to_insert = $global_dashrep_replacement{ $operand_three } ;
+					} else
+					{
+						$text_to_insert = " " ;
+					}
+					$global_dashrep_replacement{ $target_phrase_name } = join( $text_to_insert , split( / insert-here / , $source_text ) ) ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and inserted text from phrase " . $operand_three . "}}\n" ;
                     }
                 }
             }
