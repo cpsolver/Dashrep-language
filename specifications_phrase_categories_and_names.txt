@@ -27,7 +27,8 @@ auto-decrement
 copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase
 copy-from-phrase-to-phrase-and-split-into-list-of-characters
 
-category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phraseposition-of-word-in-phrasecopy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
+category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
+verify-word-in-phraseposition-of-word-in-phrasecopy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 category_generate_listuse-template-and-parameters-to-create-simple-list-with-nameuse-template-and-parameters-to-create-full-list-with-namecounts-from-integer-to-integer-put-into-phraseevery-combination-of-counts-from-two-phrases-put-into-two-phrasescreatelist-first-yes-or-nocreatelist-item-nextcreatelist-item-numbercreatelist-last-yes-or-nocreatelist-parametercreatelist-total-number-of-items
 
