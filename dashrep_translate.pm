@@ -1360,6 +1360,50 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  clear-phrases-listed-in-phrase
+
+        if ( ( $action_name eq "clear-phrases-listed-in-phrase" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            $phrase_name = $operand_one ;
+			@list_of_phrase_names = split( / + / , $global_dashrep_replacement{ $phrase_name } ) ;
+			foreach $phrase_name_to_clear ( @list_of_phrase_names )
+			{
+				if ( exists( $global_dashrep_replacement{ $phrase_name_to_clear } ) )
+				{
+					$global_dashrep_replacement{ $phrase_name_to_clear } = "" ;
+				}
+			}
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; cleared phrases listed in phrase " . $phrase_name . "}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  clear-all-dashrep-phrases
 
         if ( ( $action_name eq "clear-all-dashrep-phrases" ) && ( $number_of_operands == 0 ) )
@@ -1376,9 +1420,9 @@ sub dashrep_expand_parameters
             }
             $tracking_on_or_off = $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } ;
             &dashrep_delete_all( );
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            if ( $tracking_on_or_off eq "on" )
             {
-                $global_trace_log .= "{{trace; cleared all definitions}}\n" ;
+                $global_trace_log .= "{{trace; cleared all definitions, including tracking/trace settings}}\n" ;
             }
             $global_endless_loop_counter = 0 ;
             $replacement_text = "" ;
