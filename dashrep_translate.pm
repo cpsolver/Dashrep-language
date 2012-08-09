@@ -1220,6 +1220,10 @@ sub dashrep_expand_parameters
             }
             $replacement_text = $text_begin . " " . $text_end ;
             $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
+            if ( $global_replacement_count_for_item_name{ $text_parameter_value } == 1 )
+            {
+                $global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $text_parameter_name ;
+            }
             if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_name =~ /[^ ]/ ) )
             {
                 $global_trace_log .= "{{trace; assignment: " . $text_parameter_name . " = " . $text_parameter_value . "}}\n";
@@ -2901,19 +2905,19 @@ sub dashrep_expand_parameters
             {
                 @list = split( / +/ , $global_dashrep_replacement{ $phrase_name } ) ;
                 $list_length = $#list + 1 ;
-				if ( $action_name eq "position-of-word-in-phrase" )
-				{
-				    $text_for_value = "0" ;
-				} else
-				{
-					if ( $list_length >= 0 )
-					{
-						$text_for_value = $list[ 0 ] ;
-					} else
-					{
-						$text_for_value = "notfound" ;
-					}
-				}
+                if ( $action_name eq "position-of-word-in-phrase" )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    if ( $list_length >= 0 )
+                    {
+                        $text_for_value = $list[ 0 ] ;
+                    } else
+                    {
+                        $text_for_value = "notfound" ;
+                    }
+                }
                 if ( $list_length >= 1 )
                 {
                     $last_pointer = 0 ;
@@ -2921,14 +2925,14 @@ sub dashrep_expand_parameters
                     {
                         if ( $list[ $pointer - 1 ] eq $word_to_find )
                         {
-							if ( $action_name eq "position-of-word-in-phrase" )
-							{
-								$last_pointer = $pointer ;
-								$text_for_value = sprintf( "%d" , $last_pointer ) ;
-							} else
-							{
-								$last_pointer = $pointer ;
-							}
+                            if ( $action_name eq "position-of-word-in-phrase" )
+                            {
+                                $last_pointer = $pointer ;
+                                $text_for_value = sprintf( "%d" , $last_pointer ) ;
+                            } else
+                            {
+                                $last_pointer = $pointer ;
+                            }
                             last ;
                         }
                     }
@@ -4018,7 +4022,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  write-all-phrase-names-to-phrase
+#  write-all-phrase-names-to-phrase  <--  Deprecated (for security reasons)
 
         if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $number_of_operands == 1 ) )
         {
@@ -4336,13 +4340,13 @@ sub dashrep_expand_parameters
             }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
-				if ( $action_name eq "auto-increment" )
-				{
-					$global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
-				} elsif ( $global_dashrep_replacement{ $operand_one } > 0 )
-				{
-					$global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } - 1 ;
-				}
+                if ( $action_name eq "auto-increment" )
+                {
+                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
+                } elsif ( $global_dashrep_replacement{ $operand_one } > 0 )
+                {
+                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } - 1 ;
+                }
             } else
             {
                 $global_dashrep_replacement{ $operand_one } = 1 ;
