@@ -1962,8 +1962,18 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
+            if ( not( exists( $global_dashrep_replacement{ $replacement_phrase_name } ) ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
             $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
-            $temp_text = $phrase_definition_to_modify ;
+            $replacement_text = $global_dashrep_replacement{ $replacement_phrase_name } ;
             if ( index( $replacement_text , $character_to_replace ) >= 0 )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -1981,6 +1991,7 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
             }
             $global_dashrep_replacement{ $target_phrase_name } = $temp_text ;
+            $temp_text = $phrase_definition_to_modify ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
