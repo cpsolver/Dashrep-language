@@ -1968,7 +1968,7 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
                 }
                 next ;
             }
@@ -1990,8 +1990,7 @@ sub dashrep_expand_parameters
                 }
                 $global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
             }
-            $global_dashrep_replacement{ $target_phrase_name } = $temp_text ;
-            $temp_text = $phrase_definition_to_modify ;
+            $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
@@ -2887,7 +2886,7 @@ sub dashrep_expand_parameters
 #  position-of-word-in-phrase
 #  verify-word-in-phrase
 
-        if ( ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "verify-word-in-phrase" ) ) && ( $number_of_operands == 2 ) )
+        if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "verify-word-in-phrase" ) )
         {
             if ( $number_of_operands != 2 )
             {
