@@ -1748,6 +1748,8 @@ sub dashrep_expand_parameters
                 $temp_text = " " . $temp_text . " " ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/ dashnex / dashenn dashbee /sg ;
+                $temp_text =~ s/ wunspay / one-space /sg ;
+                $temp_text =~ s/ feneer / hyphen-here /sg ;
                 while ( $temp_text =~ /^(.* )ofo ([^ \]]+?) ofo( .*)$/s )
                 {
                     $prefix = $1 ;
