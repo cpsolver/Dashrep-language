@@ -1328,7 +1328,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  clear-phrase
 
-        if ( ( $action_name eq "clear-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "clear-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -1365,7 +1365,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  clear-phrases-listed-in-phrase
 
-        if ( ( $action_name eq "clear-phrases-listed-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "clear-phrases-listed-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -1409,7 +1409,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  clear-all-dashrep-phrases
 
-        if ( ( $action_name eq "clear-all-dashrep-phrases" ) && ( $number_of_operands == 0 ) )
+        if ( $action_name eq "clear-all-dashrep-phrases" )
         {
             if ( $number_of_operands != 0 )
             {
@@ -2017,7 +2017,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  expand-phrase-to-phrase
 
-        if ( ( $action_name eq "expand-phrase-to-phrase" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "expand-phrase-to-phrase" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -2083,7 +2083,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calc-equal-greater-less-compare
 
-        if ( ( $action_name eq "calc-equal-greater-less-compare" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "calc-equal-greater-less-compare" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -2193,7 +2193,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  first-word-in-phrase
 
-        if ( ( $action_name eq "first-word-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "first-word-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2237,7 +2237,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  last-word-in-phrase
 
-        if ( ( $action_name eq "last-word-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "last-word-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2281,7 +2281,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  from-phrase-get-word-number
 
-        if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "from-phrase-get-word-number" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -2364,7 +2364,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  from-phrase-get-word-number
 
-        if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "from-phrase-get-word-number" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -2437,7 +2437,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  count-of-words-in-phrase
 
-        if ( ( $action_name eq "count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "count-of-words-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2483,7 +2483,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  zero-one-multiple-count-of-words-in-phrase
 
-        if ( ( $action_name eq "zero-one-multiple-count-of-words-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "zero-one-multiple-count-of-words-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2671,7 +2671,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  counts-from-integer-to-integer-put-into-phrase
 
-        if ( ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" ) && ( $number_of_operands == 3 ) )
+        if ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" )
         {
             if ( $number_of_operands != 3 )
             {
@@ -2764,7 +2764,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  every-combination-of-counts-from-two-phrases-put-into-two-phrases
 
-        if ( ( $action_name eq "every-combination-of-counts-from-two-phrases-put-into-two-phrases" ) && ( $number_of_operands == 4 ) )
+        if ( $action_name eq "every-combination-of-counts-from-two-phrases-put-into-two-phrases" )
         {
             if ( $number_of_operands != 4 )
             {
@@ -2864,7 +2864,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  zero-one-multiple
 
-        if ( ( $action_name eq "zero-one-multiple" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "zero-one-multiple" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2905,7 +2905,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  empty-or-nonempty-word
 
-        if ( ( $action_name eq "empty-or-nonempty-word" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "empty-or-nonempty-word" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -2972,7 +2972,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  count-of-characters-in-phrase-defintion
 
-       if ( ( $action_name eq "count-of-characters-in-phrase-defintion" ) && ( $number_of_operands == 1 ) )
+       if ( $action_name eq "count-of-characters-in-phrase-defintion" )
        {
             if ( $number_of_operands != 1 )
             {
@@ -3012,7 +3012,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  same-or-not-same-two-words
 
-        if ( ( $action_name eq "same-or-not-same-two-words" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "same-or-not-same-two-words" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3040,7 +3040,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  same-or-not-same-two-phrases
 
-        if ( ( $action_name eq "same-or-not-same-two-phrases" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "same-or-not-same-two-phrases" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3148,7 +3148,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  calc-minus
 
-        if ( ( $action_name eq "calc-minus" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "calc-minus" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3201,7 +3201,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  calc-divide-by
 
-        if ( ( $action_name eq "calc-divide-by" ) && ( $number_of_operands == 2 ) )
+        if ( $action_name eq "calc-divide-by" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3332,7 +3332,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calc-integer
 
-        if ( ( $action_name eq "calc-integer" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "calc-integer" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3371,7 +3371,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calc-absolute
 
-        if ( ( $action_name eq "calc-absolute" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "calc-absolute" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3410,7 +3410,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  get-current-time-in-epoch-seconds
 
-        if ( ( $action_name eq "get-current-time-in-epoch-seconds" ) && ( $number_of_operands == 0 ) )
+        if ( $action_name eq "get-current-time-in-epoch-seconds" )
         {
             if ( $number_of_operands != 0 )
             {
@@ -3443,7 +3443,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  split-epoch-seconds-into-named-components
 
-        if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "split-epoch-seconds-into-named-components" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3487,7 +3487,7 @@ sub dashrep_expand_parameters
 #  use-template-and-parameters-to-create-full-list-with-name
 #  use-template-and-parameters-to-create-simple-list-with-name
 
-        if ( ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) ) && ( $number_of_operands == 3 ) )
+        if ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) )
         {
             if ( $number_of_operands != 3 )
             {
@@ -3613,7 +3613,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  sort-numbers-in-phrase
 
-        if ( ( $action_name eq "sort-numbers-in-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "sort-numbers-in-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3677,7 +3677,7 @@ sub dashrep_expand_parameters
 #  auto-increment
 #  auto-decrement
 
-        if ( ( ( $action_name eq "auto-increment" ) || ( $action_name eq "auto-decrement" ) ) && ( $number_of_operands == 1 ) )
+        if ( ( $action_name eq "auto-increment" ) || ( $action_name eq "auto-decrement" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3740,7 +3740,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  calculate-if-phrase-empty
 
-        if ( ( $action_name eq "calculate-if-phrase-empty" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "calculate-if-phrase-empty" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3793,7 +3793,7 @@ sub dashrep_expand_parameters
 
 #  Not yet implemented, not yet debugged.
 
-        if ( ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) ) && ( $number_of_operands == 1 ) )
+        if ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3909,7 +3909,7 @@ sub dashrep_expand_parameters
 #  yes-or-no-greater-than
 #  yes-or-no-less-than
 
-        if ( ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) ) && ( $number_of_operands == 2 ) )
+        if ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -4284,7 +4284,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  write-all-phrase-names-to-phrase  <--  Deprecated (for security reasons)
 
-        if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "write-all-phrase-names-to-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -4335,7 +4335,7 @@ sub dashrep_expand_parameters
 #  character to replace, just the first character is
 #  used.
 
-        if ( ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" ) && ( $number_of_operands == 3 ) )
+        if ( $action_name eq "within-phrase-replace-character-with-text-in-phrase" )
         {
             if ( $number_of_operands != 3 )
             {
@@ -4453,7 +4453,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  split-phrase-into-list-of-characters  <--- Deprecated
 
-        if ( ( $action_name eq "split-phrase-into-list-of-characters" ) && ( $number_of_operands == 1 ) )
+        if ( $action_name eq "split-phrase-into-list-of-characters" )
         {
             if ( $number_of_operands != 1 )
             {
