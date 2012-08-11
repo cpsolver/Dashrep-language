@@ -19,6 +19,16 @@
 use dashrep_translate;
 
 
+#  ToDo: remove useage of deprecated actions:
+#  create-list-named count-of-list count-of-list count-of-list zero-one-multiple-count-of-list zero-one-multiple-count-of-list
+#  zero-one-multiple-count-of-list first-item-in-list last-item-in-list empty-or-nonempty empty-or-nonempty same-or-not-same same-or-not-same
+#  input-validated-participantid users-participant-id same-or-not-same action-showothervoterranking-not-same sort-numbers
+#  yes-or-no-first-number-equals-second-number yes-or-no-first-number-equals-second-number yes-or-no-first-number-greater-than-second-number
+#  yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number yes-or-no-first-number-less-than-second-number
+#  from-list-get-item-number from-list-get-item-number from-list-get-item-number same-or-not-same remove-last-item-from-phrase-list
+#  within-phrase-replace-character-with-text-in-phrase create-list-named
+
+
 BEGIN {
 
 
@@ -1776,6 +1786,13 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
+
+
+#-------------------------------------------
+#  Optionally write use of deprecated
+#  action names.
+
+#  $results_text .= "\n\n" . "Useage of deprecated actions:\n" . &dashrep_translate::dashrep_get_replacement( "dashrep-list-of-deprecated-action-useage" ) . "\n\n";
 
 
 #-------------------------------------------

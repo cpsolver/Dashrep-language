@@ -3848,7 +3848,7 @@ sub dashrep_expand_parameters
 #  If an action name has not yet been recognized,
 #  log it as a deprecated action.
 
-        $global_dashrep_replacement{ "dashrep-list-of-deprecated-actions-and-each-use" } .= $action_name . " " ;
+        $global_dashrep_replacement{ "dashrep-list-of-deprecated-action-useage" } .= $action_name . " " ;
 
 
 #-----------------------------------------------
