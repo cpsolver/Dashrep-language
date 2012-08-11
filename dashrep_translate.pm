@@ -2080,97 +2080,6 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Deprecated, will be removed:
-#
-#  Handle the actions:
-#  yes-or-no-first-number-equals-second-number
-#  yes-or-no-first-number-greater-than-second-number
-#  yes-or-no-first-number-less-than-second-number
-
-        if ( $action_name =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number)$/ )
-        {
-            $comparison_type = $2 ;
-            if ( $number_of_operands != 2 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            $first_number_text = $operand_one ;
-            $second_number_text = $operand_two ;
-            $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number deprecated]" ;
-            if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
-            {
-                $first_number = $first_number_text + 0 ;
-                $second_number = $second_number_text + 0 ;
-                if ( ( $comparison_type eq "equals" ) && ( $first_number == $second_number ) )
-                {
-                    $yes_or_no = "yes" ;
-                } elsif ( ( $comparison_type eq "greater-than" ) && ( $first_number > $second_number ) )
-                {
-                    $yes_or_no = "yes" ;
-                } elsif ( ( $comparison_type eq "less-than" ) && ( $first_number < $second_number ) )
-                {
-                    $yes_or_no = "yes" ;
-                } else
-                {
-                    $yes_or_no = "no" ;
-                }
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; comparison of type " . $comparison_type . " for numbers " . $first_number_text . " and " . $second_number_text . "}}\n" ;
-                }
-                $replacement_text = $text_begin . $yes_or_no . $text_end ;
-                next ;
-            }
-        }
-
-
-#-----------------------------------------------
-#  Deprecated, will be removed:
-#
-#  Handle the actions:
-#  yes-or-no-greater-than
-#  yes-or-no-less-than
-
-        if ( ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) ) && ( $number_of_operands == 2 ) )
-        {
-            if ( $number_of_operands != 2 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            $first_object_of_action = $operand_one + 0 ;
-            $second_object_of_action = $operand_two + 0 ;
-            $text_for_value = "no" ;
-            if ( $action_name eq "yes-or-no-greater-than" )
-            {
-                if ( $first_object_of_action > $second_object_of_action )
-                {
-                    $text_for_value = "yes" ;
-                }
-            } elsif ( $action_name eq "yes-or-no-less-than" )
-            {
-                if ( $first_object_of_action < $second_object_of_action )
-                {
-                    $text_for_value = "yes" ;
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
 #  Handle the action:
 #  calc-equal-greater-less-compare
 
@@ -2282,34 +2191,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  first-item-in-list  <<-- deprecated
-
-        if ( $action_name eq "first-item-in-list" )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-            $count = $#list + 1 ;
-            $text_for_value = " " ;
-            if ( $count > 0 )
-            {
-                $text_for_value = $list[ 0 ] ;
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  first-word-in-phrase
 
         if ( ( $action_name eq "first-word-in-phrase" ) && ( $number_of_operands == 1 ) )
@@ -2354,34 +2235,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  last-item-in-list  <<-- deprecated
-
-        if ( $action_name eq "last-item-in-list" )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-            $count = $#list + 1 ;
-            $text_for_value = " " ;
-            if ( $count > 0 )
-            {
-                $text_for_value = $list[ $#list ] ;
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  last-word-in-phrase
 
         if ( ( $action_name eq "last-word-in-phrase" ) && ( $number_of_operands == 1 ) )
@@ -2418,54 +2271,6 @@ sub dashrep_expand_parameters
             if ( $count > 0 )
             {
                 $text_for_value = $list[ $#list ] ;
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  from-list-get-item-number  <<-- deprecated
-
-        if ( ( $action_name eq "from-list-get-item-number" ) )
-        {
-            if ( $number_of_operands != 2 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-            } else
-            {
-                $first_object_of_action = $operand_one ;
-                $second_object_of_action = $operand_two + 0 ;
-                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-                $count = $#list + 1 ;
-                if ( $count < 1 )
-                {
-                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
-                } else
-                {
-                    if ( $second_object_of_action > $count )
-                    {
-                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-                    } else
-                    {
-                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
-                    }
-                }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -2557,66 +2362,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  from-list-get-item-number  <--- Deprecated
-
-        if ( $action_name eq "from-list-get-item-number" )
-        {
-            if ( $number_of_operands != 2 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-            } else
-            {
-                $first_object_of_action = $operand_one ;
-                $second_object_of_action = $operand_two + 0 ;
-                if ( $action_name eq "from-list-get-item-number" )
-                {
-                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-                } else
-                {
-                    if ( ( $first_object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $first_object_of_action } ) ) )
-                    {
-                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
-                    } else
-                    {
-                        @list = ( ) ;
-                    }
-                }
-                $count = $#list + 1 ;
-                if ( $count < 1 )
-                {
-                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
-                } else
-                {
-                    if ( $second_object_of_action > $count )
-                    {
-                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-                    } else
-                    {
-                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
-                    }
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  from-phrase-get-word-number
 
         if ( ( $action_name eq "from-phrase-get-word-number" ) && ( $number_of_operands == 2 ) )
@@ -2689,81 +2434,6 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the actions:
-
-#  remove-last-item-from-phrase-list  <<-- deprecated
-#  remove-first-word-from-phrase  <<-- deprecated
-#  remove-last-word-from-phrase  <<-- deprecated
-
-        if ( ( $action_name eq "remove-first-word-from-phrase" ) || ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
-            {
-                if ( $action_name eq "remove-first-word-from-phrase" )
-                {
-                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *[^ ]+?[ ,\t\n\r]+(.*[^ ].*)$/s )
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = $1 ;
-                        $global_dashrep_replacement{ $object_of_action } =~ s/^[, ]+// ;
-                    } else
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = "" ;
-                    }
-                } else
-                {
-                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = $1 ;
-                        $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
-                    } else
-                    {
-                        $global_dashrep_replacement{ $object_of_action } = "" ;
-                    }
-                }
-            }
-            $text_for_value = "" ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  count-of-list  <<-- deprecated
-
-        if ( $action_name eq "count-of-list" )
-        {
-            if ( $object_of_action =~ /[^ ]/ )
-            {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                $count = $#list + 1 ;
-                if ( $count > 0 )
-                {
-                    $text_for_value = $count ;
-                } else
-                {
-                    $text_for_value = "0" ;
-                }
-            } else
-            {
-                $text_for_value = "0" ;
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
 #  Handle the action:
 #  count-of-words-in-phrase
 
@@ -2805,35 +2475,6 @@ sub dashrep_expand_parameters
                 $text_for_value = "0" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  zero-one-multiple-count-of-list  <<-- deprecated
-
-        if ( $action_name eq "zero-one-multiple-count-of-list" )
-        {
-            if ( $object_of_action =~ /[^ ]/ )
-            {
-                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
-                $count = $#list + 1 ;
-                if ( $count == 0 )
-                {
-                    $name_for_count = "zero" ;
-                } elsif ( $count == 1 )
-                {
-                    $name_for_count = "one" ;
-                } elsif ( $count > 1 )
-                {
-                    $name_for_count = "multiple" ;
-                }
-            } else
-            {
-                $name_for_count = "zero" ;
-            }
-            $replacement_text = $text_begin . $name_for_count . $text_end ;
             next ;
         }
 
@@ -3262,24 +2903,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty  <--- deprecated
-
-        if ( $action_name eq "empty-or-nonempty" )
-        {
-            if ( $object_of_action =~ /[^ \n\t]/ )
-            {
-                $empty_or_nonempty = "nonempty" ;
-            } else
-            {
-                $empty_or_nonempty = "empty" ;
-            }
-            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  empty-or-nonempty-word
 
         if ( ( $action_name eq "empty-or-nonempty-word" ) && ( $number_of_operands == 1 ) )
@@ -3347,36 +2970,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  length-of-phrase-definition  <<-- deprecated
-
-       if ( $action_name eq "length-of-phrase-definition" )
-       {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-           $phrase_length = "0" ;
-           if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
-           {
-               $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
-                if ( $phrase_length < 1 )
-                {
-                    $phrase_length = "0" ;
-                }
-            }
-            $replacement_text = $text_begin . $phrase_length . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  count-of-characters-in-phrase-defintion
 
        if ( ( $action_name eq "count-of-characters-in-phrase-defintion" ) && ( $number_of_operands == 1 ) )
@@ -3411,28 +3004,6 @@ sub dashrep_expand_parameters
                 }
             }
             $replacement_text = $text_begin . $phrase_length . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  same-or-not-same  # deprecated
-
-        if ( $action_name eq "same-or-not-same" )
-        {
-            $full_length = length( $object_of_action ) ;
-            $length_half = int( $full_length / 2 ) ;
-            $string_beginning = substr( $object_of_action , 0 , $length_half ) ;
-            $string_end = substr( $object_of_action , $full_length - $length_half , $length_half ) ;
-            if ( $string_beginning eq $string_end )
-            {
-                $same_or_not_same = "same" ;
-            } else
-            {
-                $same_or_not_same = "not-same" ;
-            }
-            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
             next ;
         }
 
@@ -4040,6 +3611,677 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  sort-numbers-in-phrase
+
+        if ( ( $action_name eq "sort-numbers-in-phrase" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /^[ 0-9]+$/ ) )
+            {
+                $list_of_numbers = $global_dashrep_replacement{ $operand_one } ;
+                $list_of_numbers =~ s/ +/,/gs ;
+                $list_of_numbers =~ s/^,// ;
+                $list_of_numbers =~ s/,$// ;
+                @list = split( /,+/ , $list_of_numbers ) ;
+                @list_of_sorted_numbers = sort { $a <=> $b } @list ;
+                $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
+            } else
+            {
+                $sorted_numbers = " " ;
+            }
+            $replacement_text = $text_begin . $sorted_numbers . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  unique-value
+#
+#  This action can be changed to accomodate a
+#  parallel-processing environment where the
+#  code here would assign values from separate
+#  blocks of numbers assigned to each
+#  processor/process.
+
+        if ( $action_name eq "unique-value" )
+        {
+            $global_unique_value ++ ;
+            $unique_value_as_text = sprintf( "%d" , $global_unique_value ) ;
+            $replacement_text = $text_begin . $unique_value_as_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  auto-increment
+#  auto-decrement
+
+        if ( ( ( $action_name eq "auto-increment" ) || ( $action_name eq "auto-decrement" ) ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                if ( $action_name eq "auto-increment" )
+                {
+                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
+                } elsif ( $global_dashrep_replacement{ $operand_one } > 0 )
+                {
+                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } - 1 ;
+                }
+            } else
+            {
+                $global_dashrep_replacement{ $operand_one } = 1 ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  insert-phrase-with-brackets-after-next-top-line
+#
+#  For now, just get the phrase name.
+
+        if ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
+        {
+            $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
+            $global_top_line_count_for_insert_phrase = 1 ;
+            $replacement_text = $text_begin . " " . $text_end ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
+            }
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  calculate-if-phrase-empty
+
+        if ( ( $action_name eq "calculate-if-phrase-empty" ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            $text_for_value = " " ;
+            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is not empty, so no need to calculate}}\n" ;
+                }
+            } else
+            {
+                $text_for_value = "[-how-to-calculate-" . $operand_one . "-]" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  escape-if-yes
+#  escape-if-no
+#
+#  If the escape condition is met, return immediately,
+#  with the content of the "escape-text" phrase as the return value.
+#  But first save the current text being replaced.
+
+#  Not yet implemented, not yet debugged.
+
+        if ( ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) ) && ( $number_of_operands == 1 ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            $text_inserted = " action " . $action_name . " not yet implemented " ;
+            if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
+            {
+                if ( ( $object_of_action eq "yes" ) && ( $action_name eq "escape-if-yes" ) )
+                {
+#                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
+#                    return $replacement_text ;
+                } elsif ( ( $object_of_action eq "no" ) && ( $action_name eq "escape-if-no" ) )
+                {
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+#                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
+#                    return $replacement_text ;
+                }
+            }
+            $replacement_text = $text_begin . $text_inserted . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  If the word "file" appears in the action name,
+#  and if the action is recognized as a file-related
+#  action, execute the action.
+
+        if ( $action_name =~ /file/ )
+        {
+            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases)|(linewise-read-from-file-and-use-template))/ )
+            {
+                $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
+                }
+                $replacement_text = $text_begin . $text_returned . $text_end ;
+                next ;
+            }
+        }
+
+
+#-----------------------------------------------
+#  If an action name has not yet been recognized,
+#  log it as a deprecated action.
+
+        $global_dashrep_replacement{ "dashrep-list-of-deprecated-actions-and-each-use" } .= $action_name . " " ;
+
+
+#-----------------------------------------------
+#  Deprecated, will be removed:
+#
+#  Handle the actions:
+#  yes-or-no-first-number-equals-second-number
+#  yes-or-no-first-number-greater-than-second-number
+#  yes-or-no-first-number-less-than-second-number
+
+        if ( $action_name =~ /^(yes-or-no-first-number-((equals)|(greater-than)|(less-than))-second-number)$/ )
+        {
+            $comparison_type = $2 ;
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            $first_number_text = $operand_one ;
+            $second_number_text = $operand_two ;
+            $global_dashrep_replacement{ "dashrep_warnings" } .= "[warning: actions yes-or-no-first-number-equals-second-number and yes-or-no-first-number-greater-than-second-number and yes-or-no-first-number-less-than-second-number deprecated]" ;
+            if ( ( $first_number_text =~ /^[0-9\,]+$/ ) && ( $first_number_text =~ /^[0-9\,]+$/ ) )
+            {
+                $first_number = $first_number_text + 0 ;
+                $second_number = $second_number_text + 0 ;
+                if ( ( $comparison_type eq "equals" ) && ( $first_number == $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } elsif ( ( $comparison_type eq "greater-than" ) && ( $first_number > $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } elsif ( ( $comparison_type eq "less-than" ) && ( $first_number < $second_number ) )
+                {
+                    $yes_or_no = "yes" ;
+                } else
+                {
+                    $yes_or_no = "no" ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; comparison of type " . $comparison_type . " for numbers " . $first_number_text . " and " . $second_number_text . "}}\n" ;
+                }
+                $replacement_text = $text_begin . $yes_or_no . $text_end ;
+                next ;
+            }
+        }
+
+
+#-----------------------------------------------
+#  Deprecated, will be removed:
+#
+#  Handle the actions:
+#  yes-or-no-greater-than
+#  yes-or-no-less-than
+
+        if ( ( ( $action_name eq "yes-or-no-greater-than" ) || ( $action_name eq "yes-or-no-less-than" ) ) && ( $number_of_operands == 2 ) )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            $first_object_of_action = $operand_one + 0 ;
+            $second_object_of_action = $operand_two + 0 ;
+            $text_for_value = "no" ;
+            if ( $action_name eq "yes-or-no-greater-than" )
+            {
+                if ( $first_object_of_action > $second_object_of_action )
+                {
+                    $text_for_value = "yes" ;
+                }
+            } elsif ( $action_name eq "yes-or-no-less-than" )
+            {
+                if ( $first_object_of_action < $second_object_of_action )
+                {
+                    $text_for_value = "yes" ;
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  first-item-in-list  <<-- deprecated
+
+        if ( $action_name eq "first-item-in-list" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ 0 ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  last-item-in-list  <<-- deprecated
+
+        if ( $action_name eq "last-item-in-list" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+            $count = $#list + 1 ;
+            $text_for_value = " " ;
+            if ( $count > 0 )
+            {
+                $text_for_value = $list[ $#list ] ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-list-get-item-number  <<-- deprecated
+
+        if ( ( $action_name eq "from-list-get-item-number" ) )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+            } else
+            {
+                $first_object_of_action = $operand_one ;
+                $second_object_of_action = $operand_two + 0 ;
+                @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
+                } else
+                {
+                    if ( $second_object_of_action > $count )
+                    {
+                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  from-list-get-item-number  <--- Deprecated
+
+        if ( $action_name eq "from-list-get-item-number" )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+            } else
+            {
+                $first_object_of_action = $operand_one ;
+                $second_object_of_action = $operand_two + 0 ;
+                if ( $action_name eq "from-list-get-item-number" )
+                {
+                    @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                } else
+                {
+                    if ( ( $first_object_of_action ne "" ) && ( exists( $global_dashrep_replacement{ $first_object_of_action } ) ) )
+                    {
+                        @list = &dashrep_internal_split_delimited_items( $global_dashrep_replacement{ $first_object_of_action } ) ;
+                    } else
+                    {
+                        @list = ( ) ;
+                    }
+                }
+                $count = $#list + 1 ;
+                if ( $count < 1 )
+                {
+                    $text_for_value = $global_dashrep_replacement{ $first_object_of_action } ;
+                } else
+                {
+                    if ( $second_object_of_action > $count )
+                    {
+                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    } else
+                    {
+                        $text_for_value = $list[ $second_object_of_action - 1 ] ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+
+#  remove-last-item-from-phrase-list  <<-- deprecated
+#  remove-first-word-from-phrase  <<-- deprecated
+#  remove-last-word-from-phrase  <<-- deprecated
+
+        if ( ( $action_name eq "remove-first-word-from-phrase" ) || ( $action_name eq "remove-last-word-from-phrase" ) || ( $action_name eq "remove-last-item-from-phrase-list" ) )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) && ( $global_dashrep_replacement{ $object_of_action } ne "" ) )
+            {
+                if ( $action_name eq "remove-first-word-from-phrase" )
+                {
+                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^ *[^ ]+?[ ,\t\n\r]+(.*[^ ].*)$/s )
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = $1 ;
+                        $global_dashrep_replacement{ $object_of_action } =~ s/^[, ]+// ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = "" ;
+                    }
+                } else
+                {
+                    if ( $global_dashrep_replacement{ $object_of_action } =~ /^(.*[^ ].*)[ ,\t\n\r]+[^ ]+ */s )
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = $1 ;
+                        $global_dashrep_replacement{ $object_of_action } =~ s/[, ]+$// ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $object_of_action } = "" ;
+                    }
+                }
+            }
+            $text_for_value = "" ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  count-of-list  <<-- deprecated
+
+        if ( $action_name eq "count-of-list" )
+        {
+            if ( $object_of_action =~ /[^ ]/ )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                $count = $#list + 1 ;
+                if ( $count > 0 )
+                {
+                    $text_for_value = $count ;
+                } else
+                {
+                    $text_for_value = "0" ;
+                }
+            } else
+            {
+                $text_for_value = "0" ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  zero-one-multiple-count-of-list  <<-- deprecated
+
+        if ( $action_name eq "zero-one-multiple-count-of-list" )
+        {
+            if ( $object_of_action =~ /[^ ]/ )
+            {
+                @list = &dashrep_internal_split_delimited_items( $object_of_action ) ;
+                $count = $#list + 1 ;
+                if ( $count == 0 )
+                {
+                    $name_for_count = "zero" ;
+                } elsif ( $count == 1 )
+                {
+                    $name_for_count = "one" ;
+                } elsif ( $count > 1 )
+                {
+                    $name_for_count = "multiple" ;
+                }
+            } else
+            {
+                $name_for_count = "zero" ;
+            }
+            $replacement_text = $text_begin . $name_for_count . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  empty-or-nonempty  <--- deprecated
+
+        if ( $action_name eq "empty-or-nonempty" )
+        {
+            if ( $object_of_action =~ /[^ \n\t]/ )
+            {
+                $empty_or_nonempty = "nonempty" ;
+            } else
+            {
+                $empty_or_nonempty = "empty" ;
+            }
+            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  length-of-phrase-definition  <<-- deprecated
+
+       if ( $action_name eq "length-of-phrase-definition" )
+       {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+           $phrase_length = "0" ;
+           if ( exists( $global_dashrep_replacement{ $object_of_action } ) )
+           {
+               $phrase_length = length( $global_dashrep_replacement{ $object_of_action } ) ;
+                if ( $phrase_length < 1 )
+                {
+                    $phrase_length = "0" ;
+                }
+            }
+            $replacement_text = $text_begin . $phrase_length . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  same-or-not-same  # deprecated
+
+        if ( $action_name eq "same-or-not-same" )
+        {
+            $full_length = length( $object_of_action ) ;
+            $length_half = int( $full_length / 2 ) ;
+            $string_beginning = substr( $object_of_action , 0 , $length_half ) ;
+            $string_end = substr( $object_of_action , $full_length - $length_half , $length_half ) ;
+            if ( $string_beginning eq $string_end )
+            {
+                $same_or_not_same = "same" ;
+            } else
+            {
+                $same_or_not_same = "not-same" ;
+            }
+            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  write-all-phrase-names-to-phrase  <--  Deprecated (for security reasons)
 
         if ( ( $action_name eq "write-all-phrase-names-to-phrase" ) && ( $number_of_operands == 1 ) )
@@ -4268,114 +4510,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  sort-numbers-in-phrase
-
-        if ( ( $action_name eq "sort-numbers-in-phrase" ) && ( $number_of_operands == 1 ) )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /^[ 0-9]+$/ ) )
-            {
-                $list_of_numbers = $global_dashrep_replacement{ $operand_one } ;
-                $list_of_numbers =~ s/ +/,/gs ;
-                $list_of_numbers =~ s/^,// ;
-                $list_of_numbers =~ s/,$// ;
-                @list = split( /,+/ , $list_of_numbers ) ;
-                @list_of_sorted_numbers = sort { $a <=> $b } @list ;
-                $sorted_numbers = join( "," , @list_of_sorted_numbers ) ;
-            } else
-            {
-                $sorted_numbers = " " ;
-            }
-            $replacement_text = $text_begin . $sorted_numbers . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  unique-value
-#
-#  This action can be changed to accomodate a
-#  parallel-processing environment where the
-#  code here would assign values from separate
-#  blocks of numbers assigned to each
-#  processor/process.
-
-        if ( $action_name eq "unique-value" )
-        {
-            $global_unique_value ++ ;
-            $unique_value_as_text = sprintf( "%d" , $global_unique_value ) ;
-            $replacement_text = $text_begin . $unique_value_as_text . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  auto-increment
-#  auto-decrement
-
-        if ( ( ( $action_name eq "auto-increment" ) || ( $action_name eq "auto-decrement" ) ) && ( $number_of_operands == 1 ) )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-                next ;
-            }
-            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
-            {
-                if ( $action_name eq "auto-increment" )
-                {
-                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } + 1 ;
-                } elsif ( $global_dashrep_replacement{ $operand_one } > 0 )
-                {
-                    $global_dashrep_replacement{ $operand_one } = $global_dashrep_replacement{ $operand_one } - 1 ;
-                }
-            } else
-            {
-                $global_dashrep_replacement{ $operand_one } = 1 ;
-            }
-            $replacement_text = $text_begin . " " . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  create-list-named  <--- Deprecated
 
         if ( $action_name eq "create-list-named" )
@@ -4393,133 +4527,6 @@ sub dashrep_expand_parameters
             push ( @global_list_of_lists_to_generate , $object_of_action ) ;
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  insert-phrase-with-brackets-after-next-top-line
-#
-#  For now, just get the phrase name.
-
-        if ( $action_name eq "insert-phrase-with-brackets-after-next-top-line" )
-        {
-            $global_phrase_to_insert_after_next_top_level_line = $object_of_action ;
-            $global_top_line_count_for_insert_phrase = 1 ;
-            $replacement_text = $text_begin . " " . $text_end ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-            {
-                $global_trace_log .= "{{trace; got phrase to insert after next line: " . $global_phrase_to_insert_after_next_top_level_line . "}}\n" ;
-            }
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  calculate-if-phrase-empty
-
-        if ( ( $action_name eq "calculate-if-phrase-empty" ) && ( $number_of_operands == 1 ) )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-                next ;
-            }
-            $text_for_value = " " ;
-            if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
-            {
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is not empty, so no need to calculate}}\n" ;
-                }
-            } else
-            {
-                $text_for_value = "[-how-to-calculate-" . $operand_one . "-]" ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
-                }
-            }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the actions:
-#  escape-if-yes
-#  escape-if-no
-#
-#  If the escape condition is met, return immediately,
-#  with the content of the "escape-text" phrase as the return value.
-#  But first save the current text being replaced.
-
-#  Not yet implemented, not yet debugged.
-
-        if ( ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) ) && ( $number_of_operands == 1 ) )
-        {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            $text_inserted = " action " . $action_name . " not yet implemented " ;
-            if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
-            {
-                if ( ( $object_of_action eq "yes" ) && ( $action_name eq "escape-if-yes" ) )
-                {
-#                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
-#                    return $replacement_text ;
-                } elsif ( ( $object_of_action eq "no" ) && ( $action_name eq "escape-if-no" ) )
-                {
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
-#                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
-#                    return $replacement_text ;
-                }
-            }
-            $replacement_text = $text_begin . $text_inserted . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  If the word "file" appears in the action name,
-#  and if the action is recognized as a file-related
-#  action, execute the action.
-
-        if ( $action_name =~ /file/ )
-        {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases)|(linewise-read-from-file-and-use-template))/ )
-            {
-                $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
-                }
-                $replacement_text = $text_begin . $text_returned . $text_end ;
-                next ;
-            }
         }
 
 
