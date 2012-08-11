@@ -2898,7 +2898,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            if ( ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -2911,40 +2911,36 @@ sub dashrep_expand_parameters
             $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
             $word_to_find = $operand_one ;
             $phrase_name = $operand_two ;
-            if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
+            @list = split( / +/ , $global_dashrep_replacement{ $phrase_name } ) ;
+            $list_length = $#list + 1 ;
+            if ( $action_name eq "position-of-word-in-phrase" )
             {
-                @list = split( / +/ , $global_dashrep_replacement{ $phrase_name } ) ;
-                $list_length = $#list + 1 ;
-                if ( $action_name eq "position-of-word-in-phrase" )
+                $text_for_value = "0" ;
+            } else
+            {
+                if ( $list_length >= 0 )
                 {
-                    $text_for_value = "0" ;
+                    $text_for_value = $list[ 0 ] ;
                 } else
                 {
-                    if ( $list_length >= 0 )
-                    {
-                        $text_for_value = $list[ 0 ] ;
-                    } else
-                    {
-                        $text_for_value = "notfound" ;
-                    }
+                    $text_for_value = "notfound" ;
                 }
-                if ( $list_length >= 1 )
+            }
+            if ( $list_length >= 1 )
+            {
+                $last_pointer = 0 ;
+                for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )
                 {
-                    $last_pointer = 0 ;
-                    for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )
+                    if ( $list[ $pointer - 1 ] eq $word_to_find )
                     {
-                        if ( $list[ $pointer - 1 ] eq $word_to_find )
+                        if ( $action_name eq "position-of-word-in-phrase" )
                         {
-                            if ( $action_name eq "position-of-word-in-phrase" )
-                            {
-                                $last_pointer = $pointer ;
-                                $text_for_value = sprintf( "%d" , $last_pointer ) ;
-                            } else
-                            {
-                                $last_pointer = $pointer ;
-                            }
-                            last ;
+                            $text_for_value = sprintf( "%d" , $pointer ) ;
+                        } else
+                        {
+                            $text_for_value = $word_to_find ;
                         }
+                        last ;
                     }
                 }
             }
