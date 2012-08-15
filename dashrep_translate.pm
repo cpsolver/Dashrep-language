@@ -5838,17 +5838,21 @@ sub dashrep_file_actions
                 $input_text = "" ;
                 while ( defined( $file_name = readdir( READDIR ) ) )
                 {
-                    if ( $file_name !~ /^\.\.*$/ )
+                    if ( $file_name !~ /^\./ )
                     {
-                        if ( $file_name =~ /\./ )
+                        $full_path = $directory . $file_name ;
+                        if ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" )
                         {
-                            if ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" )
+                            if ( -d $full_path )
                             {
                                 $list_of_file_names .= $file_name . " " ;
                             }
-                        } elsif ( $files_directories_both eq "put-into-phrase-list-of-files-in-current-read-directory" )
+                        } elsif ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" )
                         {
-                            $list_of_file_names .= $file_name . " " ;
+                            if ( -f $full_path )
+                            {
+                                $list_of_file_names .= $file_name . " " ;
+                            }
                         }
                     }
                 }
