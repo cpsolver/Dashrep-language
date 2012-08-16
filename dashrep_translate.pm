@@ -2915,7 +2915,7 @@ sub dashrep_expand_parameters
             next ;
         }
 
-
+			
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty-word
@@ -3840,13 +3840,14 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  If the word "file" appears in the action name,
+#  If the word "file" or "files" or "folder" or 
+#  "folders" appears in the action name,
 #  and if the action is recognized as a file-related
 #  action, execute the action.
 
-        if ( $action_name =~ /file/ )
+        if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( $action_name =~ /((copy-from-phrase-append-to-file)|(expand-phrase-to-file)|(copy-from-file-to-phrase)|(put-into-phrase-list-of-files-in-current-read-directory)|(put-into-phrase-list-of-folders-in-current-read-directory)|(yes-or-no-file-exists)|(size-of-file)|(modification-time-of-file)|(create-empty-file)|(delete-file)|(find-line-in-file-that-begins-with-phrase)|(write-all-dashrep-definitions-to-file)|(write-all-dashrep-phrase-names-to-file)|(write-dashrep-definitions-listed-in-phrase-to-file)|(get-definitions-from-file)|(linewise-translate-from-file-to-file)|(linewise-translate-parameters-only-from-file-to-file)|(linewise-translate-phrases-only-from-file-to-file)|(linewise-translate-special-phrases-only-from-file-to-file)|(linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file)|(copy-from-columns-in-file-to-named-phrases)|(linewise-read-from-file-and-use-template))/ )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -5783,6 +5784,7 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
+        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -5850,7 +5852,7 @@ sub dashrep_file_actions
     } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) )
     {
         $input_text = " " . $action_name . " " . $object_of_action . " " ;
-        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
+        if ( ( $operand_one eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
         } elsif ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
@@ -5898,6 +5900,7 @@ sub dashrep_file_actions
                 }
             }
         }
+        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -5910,26 +5913,26 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "yes-or-no-file-exists" )
     {
+        $input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
         } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
-            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
+            $input_text = " yes " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; file exists: " . $source_filename . "}}\n" ;
             }
         } else
         {
-            $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "no" ;
+            $input_text = " no " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; file does not exist: " . $source_filename . "}}\n" ;
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -5942,6 +5945,7 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "modification-time-of-file" )
     {
+		$input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -5953,7 +5957,7 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
             }
         }
-        $input_text = $write_time ;
+        $input_text = " " . $write_time . " " ;
 
 
 #-----------------------------------------------
@@ -5978,7 +5982,7 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
             }
         }
-        $input_text = $file_size ;
+        $input_text = " " . $file_size . " " ;
 
 
 #-----------------------------------------------
