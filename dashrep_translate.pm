@@ -1236,24 +1236,35 @@ sub dashrep_expand_parameters
 #  If the parameter is a defined phrase, do the
 #  replacement, then restart the main loop.
 
-        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) && ( defined( $global_dashrep_replacement{ $text_parameter_content } ) ) )
+        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
         {
-            $text_parameter = $global_dashrep_replacement{ $text_parameter_content } ;
-            if ( $text_parameter =~ /[^ ]/ )
+            if ( defined( $global_dashrep_replacement{ $text_parameter_content } ) )
             {
-                $replacement_text = $text_begin . $text_parameter . $text_end ;
-                $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
-                $loop_status_done = $global_false ;
-
-                #  Deprecated, remove later.
-                if ( $text_parameter_content =~ /^auto-increment-/ )
+                $text_parameter = $global_dashrep_replacement{ $text_parameter_content } ;
+                if ( $text_parameter =~ /[^ ]/ )
                 {
-                    push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
-                }
+                    $replacement_text = $text_begin . $text_parameter . $text_end ;
+                    $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
+                    $loop_status_done = $global_false ;
 
-                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+                    #  Deprecated, remove later.
+                    if ( $text_parameter_content =~ /^auto-increment-/ )
+                    {
+                        push( @list_of_replacements_to_auto_increment , $text_parameter_content ) ;
+                    }
+
+                    if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+                    {
+                        $global_trace_log .= "{{trace; replaced " . $text_parameter_content . " with its definition" . "}}\n";
+                    }
+                } else
                 {
-                    $global_trace_log .= "{{trace; replaced " . $text_parameter_content . " with its definition" . "}}\n";
+                    $replacement_text = $text_begin . " " . $text_end ;
+                    $loop_status_done = $global_false ;
+                    if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+                    {
+                        $global_trace_log .= "{{trace; phrase " . $text_parameter . " is empty, so replaced with single space" . "}}\n";
+                    }
                 }
             } else
             {
@@ -1261,7 +1272,7 @@ sub dashrep_expand_parameters
                 $loop_status_done = $global_false ;
                 if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
                 {
-                    $global_trace_log .= "{{trace; phrase " . $text_parameter . " is empty, so replaced with single space" . "}}\n";
+                    $global_trace_log .= "{{trace; phrase " . $text_parameter . " exists but is not defined, so it may be empty, so replaced with single space" . "}}\n";
                 }
             }
             next ;
@@ -2919,7 +2930,7 @@ sub dashrep_expand_parameters
             next ;
         }
 
-			
+
 #-----------------------------------------------
 #  Handle the action:
 #  empty-or-nonempty-word
@@ -3844,7 +3855,7 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  If the word "file" or "files" or "folder" or 
+#  If the word "file" or "files" or "folder" or
 #  "folders" appears in the action name,
 #  and if the action is recognized as a file-related
 #  action, execute the action.
@@ -5953,7 +5964,7 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "modification-time-of-file" )
     {
-		$input_text = "" ;
+        $input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
