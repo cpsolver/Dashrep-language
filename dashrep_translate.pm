@@ -1259,6 +1259,10 @@ sub dashrep_expand_parameters
             {
                 $replacement_text = $text_begin . " " . $text_end ;
                 $loop_status_done = $global_false ;
+                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+                {
+                    $global_trace_log .= "{{trace; phrase " . $text_parameter . " is empty, so replaced with single space" . "}}\n";
+                }
             }
             next ;
         }
@@ -5893,7 +5897,7 @@ sub dashrep_file_actions
                 $global_dashrep_replacement{ $object_of_action } = $list_of_file_names ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; listed files in directory " . $directory . "}}\n" ;
+                    $global_trace_log .= "{{trace; listed files or folders in directory " . $directory . "}}\n" ;
                 }
                 closedir( READDIR ) ;
             } else
