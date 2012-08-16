@@ -5858,9 +5858,13 @@ sub dashrep_file_actions
         } elsif ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
         {
             $directory = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ;
-            if ( $directory eq "" )
+            if ( ( $directory eq "" ) || ( $directory !~ /[\\\/]$/ ) )
             {
                 $directory = './' ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; directory " . $directory . " is invalid so using local directory}}\n" ;
+                }
             }
             if ( opendir( READDIR , $directory ) )
             {
