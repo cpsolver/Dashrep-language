@@ -5671,9 +5671,12 @@ sub dashrep_file_actions
 #  copy-from-file-to-phrase
 #  copy-from-file-to-phrases-line-numbered
 
-    if ( ( ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) ) && ( $source_filename ne "" ) && ( $target_phrase_name ne "" ) )
+    if ( ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
     {
-        if ( open ( INFILE , "<" . $source_filename ) )
+        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+        } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -5741,7 +5744,10 @@ sub dashrep_file_actions
     } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-phrase" ) && ( $source_filename ne "" ) && ( $target_phrase_name ne "" ) )
     {
         $input_text = "" ;
-        if ( open ( INFILE , "<" . $source_filename ) )
+        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+        } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -5787,9 +5793,12 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "get-definitions-from-file" ) && ( $source_filename ne "" ) && ( $operand_two eq "" ) )
+    } elsif ( $action_name eq "get-definitions-from-file" )
     {
-        if ( open ( INFILE , "<" . $source_filename ) )
+        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message = "" ;
         } else
@@ -5838,10 +5847,13 @@ sub dashrep_file_actions
 #  The current read directory is already specified
 #  in a Dashrep phrase.
 
-    } elsif ( ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) ) && ( $object_of_action ne "" ) )
+    } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) )
     {
         $input_text = " " . $action_name . " " . $object_of_action . " " ;
-        if ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
+        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } elsif ( exists( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ) )
         {
             $directory = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } ;
             if ( $directory eq "" )
@@ -5896,9 +5908,12 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "yes-or-no-file-exists" ) && ( $source_filename ne "" ) && ( $operand_two eq "" ) )
+    } elsif ( $action_name eq "yes-or-no-file-exists" )
     {
-        if ( open ( INFILE , "<" . $source_filename ) )
+        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $global_dashrep_replacement{ "yes-or-no-specified-file-exists" } = "yes" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -5925,12 +5940,18 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "modification-time-of-file" ) && ( $source_filename ne "" ) )
+    } elsif ( $action_name eq "modification-time-of-file" )
     {
-        ( $read_time , $write_time ) = ( stat( $source_filename ) )[8,9] ;
-        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
-            $global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } else
+        {
+            ( $read_time , $write_time ) = ( stat( $source_filename ) )[8,9] ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
+            }
         }
         $input_text = $write_time ;
 
@@ -5943,13 +5964,19 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "size-of-file" ) && ( $source_filename ne "" ) )
+    } elsif ( $action_name eq "size-of-file" )
     {
-        $file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
-            print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
-        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+        if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
-            $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } else
+        {
+            $file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
+                print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
+            }
         }
         $input_text = $file_size ;
 
@@ -5962,9 +5989,12 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "copy-from-phrase-append-to-file" ) && ( $source_phrase_name ne "" ) && ( $target_filename ne "" ) )
+    } elsif ( $action_name eq "copy-from-phrase-append-to-file" )
     {
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } ne "yes" )
+        if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase_name . " to end of file " . $target_filename . "}}\n" ;
             $possible_error_message .= " [do not have permission to append to files]" ;
@@ -6007,9 +6037,12 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "delete-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    } elsif ( $action_name eq "delete-file" )
     {
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to delete file: " . $target_filename . "}}\n" ;
             $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
@@ -6032,9 +6065,12 @@ sub dashrep_file_actions
 #  specifications, and then the prefix in the
 #  appropriate dashrep phrase is used.
 
-    } elsif ( ( $action_name eq "create-empty-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+    } elsif ( $action_name eq "create-empty-file" )
     {
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to create empty file: " . $target_filename . "}}\n" ;
             $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
@@ -6077,9 +6113,12 @@ sub dashrep_file_actions
 #  Do not allow any other file-related action to
 #  be used during this action.
 
-    } elsif ( ( $action_name eq "expand-phrase-to-file" ) && ( $source_phrase_name ne "" ) && ( $target_filename ne "" ) )
+    } elsif ( $action_name eq "expand-phrase-to-file" )
     {
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
         {
             $possible_error_message .= " [do not have permission to delete or overwrite files]" ;
         } else
@@ -6137,10 +6176,13 @@ sub dashrep_file_actions
 #  accomodate XHTML generated by the "Tidy"
 #  utility.
 
-    } elsif ( ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) && ( $source_filename ne "" ) && ( $target_filename ne "" ) && ( $source_filename ne $target_filename ) )
+    } elsif ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" )
     {
         $global_nesting_level_of_file_actions ++ ;
-        if ( $global_nesting_level_of_file_actions > 1 )
+        if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) || ( $source_filename eq $target_filename ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_filename . "]" ;
+        } elsif ( $global_nesting_level_of_file_actions > 1 )
         {
             $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
         } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
@@ -6233,9 +6275,12 @@ sub dashrep_file_actions
 #  Handle the action:
 #  copy-from-columns-in-file-to-named-phrases
 
-    } elsif ( ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) && ( $source_filename ne "" ) && ( $target_phrase_name ne "" ) )
+    } elsif ( $action_name eq "copy-from-columns-in-file-to-named-phrases" )
     {
-        if ( open ( INFILE , "<" . $source_filename ) )
+        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+        } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -6336,10 +6381,13 @@ sub dashrep_file_actions
     {
         $qualifier = "special-phrases-only" ;
     }
-    if ( ( $qualifier ne "" ) && ( $source_filename ne "" ) && ( $target_filename ne "" ) )
+    if ( $qualifier ne "" )
     {
         $global_nesting_level_of_file_actions ++ ;
-        if ( $global_nesting_level_of_file_actions > 1 )
+        if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_filename . "]" ;
+        } elsif ( $global_nesting_level_of_file_actions > 1 )
         {
             $possible_error_message .= " [file-related action called recursivley, which is not allowed]" ;
         } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
@@ -6466,8 +6514,8 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  write-all-dashrep-definitions-to-file
-#  write-all-dashrep-phrase-names-to-file
+#  write-all-dashrep-definitions-to-file  <-- Deprecated
+#  write-all-dashrep-phrase-names-to-file  <-- Deprecated
 #  write-dashrep-definitions-listed-in-phrase-to-file
 #
 #  The filename is edited to remove any path
@@ -6475,21 +6523,39 @@ sub dashrep_file_actions
 #  appropriate dashrep phrase is used.
 
     $definitions_or_phrase_names = "" ;
-    if ( ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) && ( $source_phrase_name ne "" ) && ( $target_filename ne "" ) && ( $operand_two ne "" ) )
+    if ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" )
     {
-        $definitions_or_phrase_names = "definitions" ;
-        @list_of_phrases = split( / +/ , $global_dashrep_replacement{ $source_phrase_name } ) ;
-        @sequence_of_phrases = @list_of_phrases ;
-    } elsif ( ( $action_name eq "write-all-dashrep-definitions-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+        if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) || ( $operand_two eq "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . " and " . $operand_two . "]" ;
+        } else
+        {
+            $definitions_or_phrase_names = "definitions" ;
+            @list_of_phrases = split( / +/ , $global_dashrep_replacement{ $source_phrase_name } ) ;
+            @sequence_of_phrases = @list_of_phrases ;
+        }
+    } elsif ( $action_name eq "write-all-dashrep-definitions-to-file" )
     {
-        $definitions_or_phrase_names = "definitions" ;
-        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
-        @sequence_of_phrases = sort( @list_of_phrases ) ;
-    } elsif ( ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) && ( $target_filename ne "" ) && ( $operand_two eq "" ) )
+        if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
+        } else
+        {
+            $definitions_or_phrase_names = "definitions" ;
+            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+            @sequence_of_phrases = sort( @list_of_phrases ) ;
+        }
+    } elsif ( $action_name eq "write-all-dashrep-phrase-names-to-file" )
     {
-        $definitions_or_phrase_names = "phrase-names" ;
-        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
-        @sequence_of_phrases = sort( @list_of_phrases ) ;
+        if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
+        } else
+        {
+            $definitions_or_phrase_names = "phrase-names" ;
+            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+            @sequence_of_phrases = sort( @list_of_phrases ) ;
+        }
     }
     if ( $definitions_or_phrase_names ne "" )
     {

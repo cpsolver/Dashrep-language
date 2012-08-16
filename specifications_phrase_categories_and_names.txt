@@ -29,6 +29,7 @@ copy-from-phrase-to-phrase-and-split-into-list-of-characters
 category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
 verify-word-in-phraseposition-of-word-in-phrasecopy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
+sort-numbers-in-phrase
 category_generate_listuse-template-and-parameters-to-create-simple-list-with-nameuse-template-and-parameters-to-create-full-list-with-namecounts-from-integer-to-integer-put-into-phraseevery-combination-of-counts-from-two-phrases-put-into-two-phrasescreatelist-first-yes-or-nocreatelist-item-nextcreatelist-item-numbercreatelist-last-yes-or-nocreatelist-parametercreatelist-total-number-of-items
 
 category_file_related
@@ -59,6 +60,8 @@ category_copy_appendcopy-from-phrase-to-phraseappend-from-phrase-to-phraseapp
 copy-from-phrase-to-phrase-but-remove-first-word
 copy-from-phrase-to-phrase-but-remove-last-wordcopy-from-phrase-to-phrase-and-replace-adjacent-spacescopy-from-phrase-to-phrase-and-replace-newlinescopy-from-phrase-to-phrase-and-replace-html-reserved-characterscopy-from-phrase-to-phrase-and-replace-digits-with-9scopy-from-phrase-to-phrase-lowercase-onlycopy-from-phrase-to-phrase-from-spoken-dashrep-codecopy-from-phrase-to-phrase-into-spoken-dashrep-code
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
+copy-from-phrase-to-phrase-and-insert-phrase
+copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_debugdashrep-comments-ignoreddashrep-stop-translationdashrep-capture-trace-on-or-offdashrep-debug-trace-logdashrep-debug-trace-on-or-offdashrep-action-trace-on-or-offdashrep-ignore-trace-on-or-offdashrep-linewise-trace-on-or-off
 
