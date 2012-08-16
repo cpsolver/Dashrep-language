@@ -2030,7 +2030,6 @@ sub dashrep_expand_parameters
                     $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
                     $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
                 }
-                $global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
             }
             $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
