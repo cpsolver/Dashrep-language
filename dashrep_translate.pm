@@ -1497,9 +1497,9 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $target_phrase_name } .= "" ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; did not append because phrase " . $source_phrase_name . " is not defined}}\n" ;
+                    $global_trace_log .= "{{trace; appended nothing because phrase " . $source_phrase_name . " is not defined}}\n" ;
                 }
-                $text_for_value = " unrecognized-phrase-name-" . $source_phrase_name . " " ;
+                $text_for_value = " " ;
             } else
             {
                 if ( $action_name eq "append-from-phrase-to-phrase-no-space" )
@@ -1865,7 +1865,11 @@ sub dashrep_expand_parameters
             $source_phrase_name =~ s/[\n\t\t]//g ;
             if ( ( $source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) )
             {
-                $text_for_value = " dashrep-error-for-action " . $action_name . " " ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; copied nothing because phrase " . $operand_two . " is not defined}}\n" ;
+                }
+                $text_for_value = " " ;
             } else
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
