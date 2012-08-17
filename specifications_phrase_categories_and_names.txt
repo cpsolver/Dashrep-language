@@ -63,6 +63,7 @@ copy-from-phrase-to-phrase-but-remove-last-wordcopy-from-phrase-to-phrase-and-r
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
 copy-from-phrase-to-phrase-and-insert-phrase
 copy-from-phrase-to-phrase-and-tag-parameter-boundaries
+copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
 
 category_debugdashrep-comments-ignoreddashrep-stop-translationdashrep-capture-trace-on-or-offdashrep-debug-trace-logdashrep-debug-trace-on-or-offdashrep-action-trace-on-or-offdashrep-ignore-trace-on-or-offdashrep-linewise-trace-on-or-off
 
