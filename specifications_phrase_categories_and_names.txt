@@ -25,6 +25,7 @@ auto-decrement
 category_charactercount-of-characters-in-phrase-defintioncharacter-in-phrase-get-at-position
 copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase
 copy-from-phrase-to-phrase-and-split-into-list-of-characters
+position-of-string-in-phrase
 
 category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
 verify-word-in-phraseposition-of-word-in-phrasecopy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
