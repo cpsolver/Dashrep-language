@@ -6198,10 +6198,10 @@ sub dashrep_file_actions
         {
             if ( exists( $global_dashrep_replacement{ $source_phrase_name } ) )
             {
-                print OUTFILE "\n" . $global_dashrep_replacement{ $source_phrase_name } . "\n" ;
+                print OUTFILE $global_dashrep_replacement{ $source_phrase_name } . "\n" ;
             } else
             {
-                print OUTFILE "\n" . $source_phrase_name . "\n" ;
+                print OUTFILE $source_phrase_name . "\n" ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
