@@ -1,5 +1,6 @@
 category_hyphens_spaces_lines
 hyphen-here
+character-hyphen
 no-spaceempty-textone-spacecharacter-single-spacenon-breaking-spacespan-non-breaking-spaces-beginspan-non-breaking-spaces-endnew-lineempty-lineline-break
 newline-character
 tab-here
