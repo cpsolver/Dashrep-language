@@ -2197,17 +2197,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "yes-if-not-no" )
         {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( $object_of_action =~ /^ *no *$/i )
+            if ( $object_of_action =~ /no/i )
             {
                 $empty_or_nonempty = "no" ;
             } else
@@ -2225,17 +2215,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "no-if-not-yes" )
         {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; error, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( $object_of_action =~ /^ *yes *$/i )
+            if ( $object_of_action =~ /yes/i )
             {
                 $empty_or_nonempty = "yes" ;
             } else
@@ -2717,9 +2697,8 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $string_to_find = $operand_one ;
-            $phrase_name = $operand_two ;
-            $string_to_search = $global_dashrep_replacement{ $phrase_name } ;
+            $string_to_find = $global_dashrep_replacement{ $operand_one } ;
+            $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $text_for_value = "0" ;
             $phrase_length = length( $string_to_search ) + 1 ;
             $position = index( $string_to_search , $string_to_find ) + 1 ;
