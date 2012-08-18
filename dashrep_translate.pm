@@ -223,6 +223,7 @@ BEGIN {
 
     $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "character-single-space" } = " " ;
+    $global_dashrep_replacement{ "character-hyphen" } = "-" ;
     $global_dashrep_replacement{ "newline-character" } = "\n" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
@@ -283,6 +284,7 @@ sub initialize_special_phrases
 {
     $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "character-single-space" } = " " ;
+    $global_dashrep_replacement{ "character-hyphen" } = "-" ;
     $global_dashrep_replacement{ "newline-character" } = "\n" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
