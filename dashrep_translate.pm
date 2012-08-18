@@ -7654,10 +7654,16 @@ sub dashrep_web_framework
 #  page.  The Dashrep code within the bootstrap
 #  file should load additional Dashrep
 #  definitions from additional files.
+#  If the web-framework trace mode is on,
+#  write the generated web page to the trace log.
 
     $return_text_get_starting_definitions = &dashrep_expand_parameters( "[-get-definitions-from-file dashdef_bootstrap.txt-]" );
     $partially_generated_results = &dashrep_expand_parameters( "[-bootstrap-start-]" );
     $generated_web_page = &dashrep_expand_phrases( $partially_generated_results );
+	if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
+	{
+		$global_trace_log .= "------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
+	}
     if ( ( $generated_web_page =~ /<html>.*<body>.*<\/body>.*<\/html>/si ) && ( $return_text_get_starting_definitions !~ /error/ ) )
     {
         return $generated_web_page ;
