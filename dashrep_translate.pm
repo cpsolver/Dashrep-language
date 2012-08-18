@@ -3041,9 +3041,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty-word
+#  empty-or-nonempty-word  <--- Deprecated
+#  yes-or-no-empty-word
 
-        if ( $action_name eq "empty-or-nonempty-word" )
+        if ( ( $action_name eq "empty-or-nonempty-word" ) || ( $action_name eq "yes-or-no-empty-word" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3057,21 +3058,34 @@ sub dashrep_expand_parameters
             }
             if ( $operand_one =~ /[^ \n\t]/ )
             {
-                $empty_or_nonempty = "nonempty" ;
+                if ( $action_name eq "empty-or-nonempty-word" )
+                {
+                    $result_text = "nonempty" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
             } else
             {
-                $empty_or_nonempty = "empty" ;
+                if ( $action_name eq "empty-or-nonempty-word" )
+                {
+                    $result_text = "empty" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
             }
-            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            $replacement_text = $text_begin . $result_text . $text_end ;
             next ;
         }
 
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty-phrase
+#  empty-or-nonempty-phrase  <--- Deprecated
+#  yes-or-no-empty-phrase
 
-        if ( $action_name eq "empty-or-nonempty-phrase" )
+        if ( ( $action_name eq "empty-or-nonempty-phrase" ) || ( $action_name eq "yes-or-no-empty-phrase" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3093,15 +3107,27 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $empty_or_nonempty = "empty" ;
+            if ( $action_name eq "empty-or-nonempty-word" )
+            {
+                $result_text = "empty" ;
+            } else
+            {
+                $result_text = "yes" ;
+            }
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
                 {
-                    $empty_or_nonempty = "nonempty" ;
+                    if ( $action_name eq "empty-or-nonempty-word" )
+                    {
+                        $result_text = "nonempty" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
                 }
             }
-            $replacement_text = $text_begin . $empty_or_nonempty . $text_end ;
+            $replacement_text = $text_begin . $result_text . $text_end ;
             next ;
         }
 
@@ -3148,9 +3174,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  same-or-not-same-two-words
+#  same-or-not-same-two-words  <--- Deprecated
+#  yes-or-no-same-two-words
 
-        if ( $action_name eq "same-or-not-same-two-words" )
+        if ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "yes-or-no-same-two-words" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3164,21 +3191,34 @@ sub dashrep_expand_parameters
             }
             if ( $operand_one eq $operand_two )
             {
-                $same_or_not_same = "same" ;
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
             } else
             {
-                $same_or_not_same = "not-same" ;
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "not-same" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
             }
-            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            $replacement_text = $text_begin . $result_text . $text_end ;
             next ;
         }
 
 
 #-----------------------------------------------
 #  Handle the action:
-#  same-or-not-same-two-phrases
+#  same-or-not-same-two-phrases  <--- Deprecated
+#  yes-or-no-same-two-phrases
 
-        if ( $action_name eq "same-or-not-same-two-phrases" )
+        if ( ( $action_name eq "same-or-not-same-two-phrases" ) || ( $action_name eq "yes-or-no-same-two-phrases" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3219,12 +3259,24 @@ sub dashrep_expand_parameters
                 }
             } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
             {
-                $same_or_not_same = "same" ;
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
             } else
             {
-                $same_or_not_same = "not-same" ;
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "not-same" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
             }
-            $replacement_text = $text_begin . $same_or_not_same . $text_end ;
+            $replacement_text = $text_begin . $result_text . $text_end ;
             next ;
         }
 
