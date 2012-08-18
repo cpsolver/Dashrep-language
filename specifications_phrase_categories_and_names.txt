@@ -19,7 +19,7 @@ export-defs-def-end
 export-defs-phrase-begin
 export-defs-phrase-end
 
-category_decisionempty-or-nonempty-wordempty-or-nonempty-phrasesame-or-not-same-two-wordssame-or-not-same-two-phrasesyes-if-not-no
+category_decisionyes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-same-two-phrasesyes-if-not-no
 no-if-not-yes
 category_numericzero-one-multipleyes-or-no-first-number-equals-second-numbercalc-addcalc-minuscalc-multiplycalc-divide-bycalc-maximumcalc-minimumcalc-integercalc-absolutecalc-equal-greater-less-compareauto-increment
 auto-decrement
@@ -78,5 +78,9 @@ length-of-phrase-definition
 within-phrase-replace-character-with-text-in-phrase
 split-phrase-into-list-of-characters
 zero-one-multiple-count-of-words-in-phrase
+same-or-not-same-two-words
+same-or-not-same-two-phrases
+empty-or-nonempty-word
+empty-or-nonempty-phrase
 
 category_spoken_wordsdashbeedashenndashnexambeeamenncombeecomennfenconambeeamennconlinbray
