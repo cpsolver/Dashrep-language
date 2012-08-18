@@ -6108,7 +6108,6 @@ sub dashrep_file_actions
         } else
         {
             $file_size = sprintf( "%d" , ( stat( $source_filename ) )[7] ) ;
-                print "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
