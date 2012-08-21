@@ -5643,6 +5643,25 @@ sub dashrep_expand_phrases
 
 
 #-----------------------------------------------
+#  Eliminate any leading and trailing spaces,
+#  which is especially important for web-page
+#  generation (because the leading text must
+#  follow exact specifications).
+#
+#  Later, this space removal will become the
+#  default, but for now allow backwards
+#  compatibility.  Eventually the
+#  backwards-compatibility option will be
+#  removed.)
+
+    if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
+    {
+        $expanded_string =~ s/^ +//s ;
+        $expanded_string =~ s/ +$//s ;
+    }
+
+
+#-----------------------------------------------
 #  Make the logged debugging (trace) information
 #  available.
 
