@@ -1569,20 +1569,22 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  copy-from-phrase-to-phrase
-#  copy-from-phrase-to-phrase-and-replace-hyphens
-#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces
-#  copy-from-phrase-to-phrase-and-replace-newlines
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 #  copy-from-phrase-to-phrase-and-replace-digits-with-9s (useful for identifying string patterns that involve digits)
 #  copy-from-phrase-to-phrase-lowercase-only
-#  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens
+#  copy-from-phrase-to-phrase-uppercase-only
+#  copy-from-phrase-to-phrase-and-remove-extra-spaces
 #  copy-from-phrase-to-phrase-and-numeric-sort-by-word
 #  copy-from-phrase-to-phrase-and-split-into-list-of-characters
 #  copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 #  copy-from-phrase-to-phrase-but-remove-first-word
 #  copy-from-phrase-to-phrase-but-remove-last-word
+#  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-hyphens  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-newlines  <--- Deprecated
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -1626,6 +1628,11 @@ sub dashrep_expand_parameters
                 $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
                 $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
                 $temp_text =~ s/-/${hyphen_replacement}/sg ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" )
+            {
+                $temp_text =~ s/  +/ /sg ;
+                $temp_text =~ s/^ +//s ;
+                $temp_text =~ s/ +$//s ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" )
             {
                 $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
@@ -1655,6 +1662,9 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" )
             {
                 $temp_text = lc( $temp_text ) ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" )
+            {
+                $temp_text = uc( $temp_text ) ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" )
             {
                 $temp_text =~ s/ +/-/sg ;
@@ -1830,11 +1840,12 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  copy-from-phrase-to-phrase-only-word-at-position
-#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
+#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
-#  copy-from-phrase-to-phrase-and-insert-phrase
+#  copy-from-phrase-to-phrase-and-insert-phrase  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
         {
             if ( $number_of_operands != 3 )
             {
@@ -1866,7 +1877,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) )
+            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
             {
                 if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
@@ -1935,6 +1946,28 @@ sub dashrep_expand_parameters
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                     {
                         $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
+                    }
+                } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
+                {
+                    $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
+                    if ( $string_to_be_replaced !~ /^.+$/ )
+                    {
+                        $string_to_be_replaced = "-" ;
+                        if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                        {
+                            $global_trace_log .= "{{trace; warning, string to find is empty, so a hyphen was used instead" . "}}\n" ;
+                        }
+                    }
+                    $character_position = index( $source_text , $string_to_be_replaced ) ;
+                    while ( $character_position >= 0 )
+                    {
+                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + 1 ) ;
+                        $character_position = index( $source_text , $string_to_be_replaced ) ;
+                    }
+                    $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
                     }
                 } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" )
                 {
@@ -3971,7 +4004,7 @@ sub dashrep_expand_parameters
                 $global_trace_log .= "{{trace; clearing all expanded text up to here}}\n" ;
                 $global_trace_log .= "{{trace; the following text was removed:}}\n" ;
                 $global_trace_log .= $text_begin . "\n" ;
-                $global_trace_log .= "{{trace; end of text removed by action clear-all-expanded-text-up-to-here}}\n" ;
+                $global_trace_log .= "{{trace; end of text removed by request}}\n" ;
             }
             $replacement_text = $text_end ;
             next ;
