@@ -3961,6 +3961,24 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle the action:
+#  clear-all-expanded-text-up-to-here
+
+        if ( $action_name eq "clear-all-expanded-text-up-to-here" )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; clearing all expanded text up to here}}\n" ;
+                $global_trace_log .= "{{trace; the following text was removed:}}\n" ;
+                $global_trace_log .= $text_begin . "\n" ;
+                $global_trace_log .= "{{trace; end of text removed by action clear-all-expanded-text-up-to-here}}\n" ;
+            }
+            $replacement_text = $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
 #  Handle the actions:
 #  escape-if-yes
 #  escape-if-no
