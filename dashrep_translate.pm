@@ -1840,12 +1840,12 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  copy-from-phrase-to-phrase-only-word-at-position
-#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
+#
 #  copy-from-phrase-to-phrase-and-insert-phrase  <--- Deprecated
-#  copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
+#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase  <--- Deprecated
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) )
         {
             if ( $number_of_operands != 3 )
             {
@@ -1947,28 +1947,6 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
                     }
-                } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
-                {
-                    $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
-                    if ( $string_to_be_replaced !~ /^.+$/ )
-                    {
-                        $string_to_be_replaced = "-" ;
-                        if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
-                        {
-                            $global_trace_log .= "{{trace; warning, string to find is empty, so a hyphen was used instead" . "}}\n" ;
-                        }
-                    }
-                    $character_position = index( $source_text , $string_to_be_replaced ) ;
-                    while ( $character_position >= 0 )
-                    {
-                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + 1 ) ;
-                        $character_position = index( $source_text , $string_to_be_replaced ) ;
-                    }
-                    $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
-                    {
-                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
-                    }
                 } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" )
                 {
                     if ( ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
@@ -2006,9 +1984,11 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase
+#  copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
+#
+#  copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase  <--- Deprecated
 
-        if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
         {
             if ( $number_of_operands != 4 )
             {
@@ -2040,35 +2020,33 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( length( $operand_three ) != 1 )
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                if ( length( $operand_three ) != 1 )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                    $text_for_value = " " ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                    }
+                    next ;
                 }
-                next ;
+            }
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
+            {
+                if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) || ( length( $global_dashrep_replacement{ $operand_three } ) < 1 ) )
+                {
+                    $text_for_value = " " ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                    }
+                    next ;
+                }
             }
             if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
-                }
-                next ;
-            }
-            $source_phrase_name = $operand_one ;
-            $target_phrase_name = $operand_two ;
-            $character_to_replace = $operand_three ;
-            $replacement_phrase_name = $operand_four ;
-            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
-            {
-                $global_dashrep_replacement{ $source_phrase_name } = "" ;
-            }
-            if ( not( exists( $global_dashrep_replacement{ $replacement_phrase_name } ) ) )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -2078,32 +2056,74 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
-            $replacement_text = $global_dashrep_replacement{ $replacement_phrase_name } ;
-            if ( index( $replacement_text , $character_to_replace ) >= 0 )
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
             {
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
-                }
+                $global_dashrep_replacement{ $source_phrase_name } = "" ;
+            }
+            if ( exists( $global_dashrep_replacement{ $operand_four } ) )
+            {
+                $text_to_insert = $global_dashrep_replacement{ $operand_four } ;
             } else
             {
-                $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-                while ( $character_position >= 0 )
+                $text_to_insert = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                 {
-                    $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
-                    $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_four . " not defined, so replacing with empty text" . "}}\n" ;
                 }
             }
-            $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
             {
-                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
+                $character_to_replace = $operand_three ;
+                $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
+                if ( index( $text_to_insert , $character_to_replace ) >= 0 )
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
+                    }
+                } else
+                {
+                    $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                    while ( $character_position >= 0 )
+                    {
+                        $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
+                        $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                    }
+                }
+                $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
+                }
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
+            {
+                $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+                $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
+                if ( $string_to_be_replaced !~ /^.+$/ )
+                {
+                    $string_to_be_replaced = "-" ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning, string to find is empty, so a hyphen was used instead" . "}}\n" ;
+                    }
+                }
+                $character_position = index( $source_text , $string_to_be_replaced ) ;
+                while ( $character_position >= 0 )
+                {
+                    $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + 1 ) ;
+                    $character_position = index( $source_text , $string_to_be_replaced ) ;
+                }
+                $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
+                }
             }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
         }
-
 
 
 #-----------------------------------------------
