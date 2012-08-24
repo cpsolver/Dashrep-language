@@ -3299,11 +3299,11 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  character-in-phrase-get-at-position
+#  characters-in-phrase-get-from-position-to-position
 
-        if ( $action_name eq "character-in-phrase-get-at-position" )
+        if ( $action_name eq "characters-in-phrase-get-from-position-to-position" )
         {
-            if ( $number_of_operands != 2 )
+            if ( $number_of_operands != 3 )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -3333,17 +3333,42 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
-            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $operand_two =~ /^[0-9]+$/ ) )
+            if ( $operand_three !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
+                next ;
+            }
+            $text_for_value = " " ;
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
                 $phrase_length = length( $string_in_phrase ) ;
-                $character_position = $operand_two + 0 ;
-                if ( $character_position > $phrase_length )
+                $starting_character_position = $operand_two + 0 ;
+                if ( $starting_character_position > $phrase_length )
                 {
-                    $character_position = $phrase_length ;
+                    $starting_character_position = $phrase_length ;
+                } elsif ( $starting_character_position < 0 )
+                {
+                    $starting_character_position = $phrase_length - $starting_character_position + 1 ;
                 }
-                $copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+                $ending_character_position = $operand_three + 0 ;
+                if ( ( $ending_character_position > $phrase_length ) || ( $ending_character_position == 0 ) )
+                {
+                    $ending_character_position = $phrase_length ;
+                } elsif ( $ending_character_position < 0 )
+                {
+                    $ending_character_position = $phrase_length - $ending_character_position + 1 ;
+                }
+                if ( $starting_character_position > $ending_character_position )
+                {
+                    $starting_character_position = $ending_character_position ;
+                }
+                $copied_character = substr( $string_in_phrase , ( $starting_character_position - 1 ) , ( $starting_character_position - $ending_character_position + 1 ) ) ;
             }
             $replacement_text = $text_begin . $copied_character . $text_end ;
             next ;
@@ -4079,6 +4104,61 @@ sub dashrep_expand_parameters
 #  log it as a deprecated action.
 
         $global_dashrep_replacement{ "dashrep-list-of-deprecated-action-useage" } .= $action_name . " " ;
+
+
+#-----------------------------------------------
+#  Deprecated, will be removed:
+#
+#  Handle the action:
+#  character-in-phrase-get-at-position  <--- Deprecated
+
+        if ( $action_name eq "character-in-phrase-get-at-position" )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $operand_two !~ /^[\-0-9]+$/ )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+            if ( ( $operand_one ne "" ) && ( $operand_two ne "" ) && ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $operand_two =~ /^[0-9]+$/ ) )
+            {
+                $string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
+                $phrase_length = length( $string_in_phrase ) ;
+                $character_position = $operand_two + 0 ;
+                if ( $character_position > $phrase_length )
+                {
+                    $character_position = $phrase_length ;
+                }
+                $copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+            }
+            $replacement_text = $text_begin . $copied_character . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------
