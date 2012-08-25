@@ -7823,20 +7823,23 @@ sub dashrep_web_framework
 #  (same-directory) "dashdef_bootstrap.txt" file,
 #  and do the expansion that is specified in
 #  that code, and return with the generated web
-#  page.  The Dashrep code within the bootstrap
-#  file should load additional Dashrep
-#  definitions from additional files.
+#  page, which must be supplied as the definition
+#  of the phrase "generated-web-page".  The
+#  Dashrep code within the bootstrap file should
+#  load additional Dashrep definitions from
+#  additional files.
 #  If the web-framework trace mode is on,
-#  write the generated web page to the trace log.
+#  write debugging information to the trace log.
 
     $return_text_get_starting_definitions = &dashrep_expand_parameters( "[-get-definitions-from-file dashdef_bootstrap.txt-]" );
-    $partially_generated_results = &dashrep_expand_parameters( "[-bootstrap-start-]" );
-    $generated_web_page = &dashrep_expand_phrases( $partially_generated_results );
+    $results_of_expanding_parameters = &dashrep_expand_parameters( "[-bootstrap-start-]" );
+    $results_of_expanding_phrases = &dashrep_expand_phrases( $results_of_expanding_parameters );
+    $generated_web_page = $global_dashrep_replacement{ "generated-web-page" } ;
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_trace_log .= "------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from expanding parameters:\n\n" . $results_of_expanding_parameters . "\n-----\n\n" . "\n------\n" . "Results from expanding phrases:\n\n" . $results_of_expanding_phrases . "\n-----\n\n" . "\n------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
     }
-    if ( ( $generated_web_page =~ /<html>.*<body>.*<\/body>.*<\/html>/si ) && ( $return_text_get_starting_definitions !~ /((error)|(warning))/ ) )
+    if ( ( $return_text_get_starting_definitions !~ /((error)|(warning))/si ) || ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) ) )
     {
         return $generated_web_page ;
 
