@@ -7885,15 +7885,24 @@ sub dashrep_web_framework
 #  If the web-framework trace mode is on,
 #  write debugging information to the trace log.
 
+    $return_text_get_starting_definitions = "" ;
     $return_text_get_starting_definitions = &dashrep_expand_parameters( "[-get-definitions-from-file dashdef_bootstrap.txt-]" );
-    $results_of_expanding_parameters = &dashrep_expand_parameters( "[-bootstrap-start-]" );
+    if ( $return_text_get_starting_definitions =~ /((error)|(warning))/si )
+    {
+        $phrase_name = "empty-text" ;
+    } else
+    {
+        $phrase_name = "[-bootstrap-start-]" ;
+    }
+    $results_of_expanding_parameters = &dashrep_expand_parameters( $phrase_name );
     $results_of_expanding_phrases = &dashrep_expand_phrases( $results_of_expanding_parameters );
-    $generated_web_page = $global_dashrep_replacement{ "generated-web-page" } ;
+    $phrase_name = "generated-web-page" ;
+    $generated_web_page = &dashrep_get_replacement( $phrase_name ) ;
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
         $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from expanding parameters:\n\n" . $results_of_expanding_parameters . "\n-----\n\n" . "\n------\n" . "Results from expanding phrases:\n\n" . $results_of_expanding_phrases . "\n-----\n\n" . "\n------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
     }
-    if ( ( $return_text_get_starting_definitions !~ /((error)|(warning))/si ) || ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) ) )
+    if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
     {
         return $generated_web_page ;
 
