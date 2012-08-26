@@ -2799,7 +2799,7 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands: " . $operand_one . " and " . $operand_two . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands: " . $operand_one . " and " . $operand_two . " and " . $operand_three . "}}\n" ;
                 }
                 next ;
             } else
