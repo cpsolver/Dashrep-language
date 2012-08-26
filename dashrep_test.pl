@@ -389,6 +389,14 @@ test-of-remove-last-item-from-phrase-list:
 [-remove-last-item-from-phrase-list: list-from-which-to-remove-last-item-]
 --------
 
+phrase-that-contains-hyphenated-phrases:
+hyphenated-content-here hyphenated-content-here
+--------
+
+test-of-action-that-replaces-each-hyphen-with-hyphen-here:
+[-copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here phrase-that-contains-hyphenated-phrases resulting-text-with-no-hyphenated-phrases-]
+--------
+
 test-of-calculate-if-empty:
 [-calculate-if-phrase-empty: value-of-pi-]
 [-value-of-pi-]
@@ -1494,6 +1502,25 @@ $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "9 17 65 183 12 34 56 78 90 &lt;xyz&gt;&amp;&lt;/xyz&gt;" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test action: test-of-action-that-replaces-each-hyphen-with-hyphen-here
+
+$being_tested = "test action: test-of-action-that-replaces-each-hyphen-with-hyphen-here -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-test-of-action-that-replaces-each-hyphen-with-hyphen-here-]" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "resulting-text-with-no-hyphenated-phrases" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "[-test-of-action-that-replaces-each-hyphen-with-hyphen-here-]" );
+# $string_return_value = &dashrep_get_replacement( "resulting-text-with-no-hyphenated-phrases" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "hyphenated hyphen-here content hyphen-here here hyphenated hyphen-here content hyphen-here here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

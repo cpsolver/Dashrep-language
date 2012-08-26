@@ -1680,7 +1680,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ +/-/sg ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" )
             {
-                $temp_text =~ s/ - / fen /sg ;
+                $temp_text =~ s/-/ fen /sg ;
                 $temp_text =~ s/ fen / hyphen-here /sg ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" )
             {
