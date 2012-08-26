@@ -1059,7 +1059,6 @@ sub dashrep_expand_parameters
     my $generated_list_name ;
     my $text_that_expands_to_generate_list ;
     my $list_of_parameters ;
-    my $list_name ;
     my $list_position ;
     my $parameter ;
     my $item_number ;
@@ -1076,6 +1075,23 @@ sub dashrep_expand_parameters
     my $splitting_string ;
     my $list_of_numbers ;
     my $text_inserted ;
+    my $list_of_phrase_names ;
+    my $phrase_name_to_clear ;
+    my $parameter_begin ;
+    my $parameter_end ;
+    my $length_of_splitting_string ;
+    my $text_to_insert ;
+    my $length_of_character_to_replace ;
+    my $string_to_be_replaced ;
+    my $word_number ;
+    my $string_to_find ;
+    my $string_to_search ;
+    my $position ;
+    my $result_text ;
+    my $starting_character_position ;
+    my $ending_character_position ;
+    my $unique_value_as_text ;
+    my $text_to_insert_as_replacement ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -5319,6 +5335,10 @@ sub dashrep_expand_phrases_except_special
     } else
     {
         $expanded_output_string = "" ;
+        if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+        {
+            $global_trace_log .= "{{trace; nothing to expand}}\n";
+        }
         return $expanded_output_string ;
     }
 
@@ -5416,6 +5436,10 @@ sub dashrep_expand_phrases_except_special
                 @items_to_add = split( /[ \n\r]+/ , $replacement_item ) ;
                 push( @item_stack , reverse( @items_to_add ) ) ;
                 $global_replacement_count_for_item_name{ $current_item } ++ ;
+                if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; replaced phrase: " . $current_item . "}}\n";
+                }
                 next ;
             }
             next ;
@@ -5945,7 +5969,6 @@ sub dashrep_file_actions
     my $read_time ;
     my $write_time ;
     my $file_size ;
-    my $files_directories_both ;
     my $number_of_column_names ;
     my $use_two_spaces_as_delimiter ;
     my $text_item_in_column ;
@@ -5957,6 +5980,8 @@ sub dashrep_file_actions
     my $line_ending ;
     my $line_number ;
     my $line_number_in_text ;
+    my $full_path ;
+    my $temp_text ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
 
@@ -7846,7 +7871,6 @@ sub dashrep_web_framework
 
     my $generated_web_page ;
     my $return_text_get_starting_definitions ;
-    my $partially_generated_results ;
     my $error_file_name ;
     my $emergency_page ;
     my $phrase_name ;
@@ -7854,6 +7878,8 @@ sub dashrep_web_framework
     my $error_file_prefix ;
     my $time_in_epoch_seconds ;
     my $last_digits_of_epoch_seconds ;
+    my $results_of_expanding_parameters ;
+    my $results_of_expanding_phrases ;
 
 
 #-----------------------------------------------
