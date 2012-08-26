@@ -1570,9 +1570,10 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-remove-extra-spaces
 #  copy-from-phrase-to-phrase-and-numeric-sort-by-word
 #  copy-from-phrase-to-phrase-and-split-into-list-of-characters
-#  copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 #  copy-from-phrase-to-phrase-but-remove-first-word
 #  copy-from-phrase-to-phrase-but-remove-last-word
+#
+#  copy-from-phrase-to-phrase-and-tag-parameter-boundaries  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-adjacent-spaces  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-hyphens  <--- Deprecated
@@ -1806,6 +1807,9 @@ sub dashrep_expand_parameters
                     $temp_text =~ s/-fen([^a-z0-9])/-$1/sg ;
                     $temp_text =~ s/ combee / *---- /sg ;
                     $temp_text =~ s/ comenn / ----* /sg ;
+                    $temp_text =~ s/ conambee /-\[-/sg ;
+                    $temp_text =~ s/ amenncon /-\]-/sg ;
+                    $temp_text =~ s/ newline / linbray /sg ;
                 }
                 $temp_text =~ s/\[- /\[-/sg ;
                 $temp_text =~ s/ -\]/-\]/sg ;
@@ -1922,7 +1926,7 @@ sub dashrep_expand_parameters
                 } elsif ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" )
                 {
                     $splitting_string = $global_dashrep_replacement{ $operand_three } ;
-                    if ( $splitting_string !~ /^[^ ]+$/ )
+                    if ( $splitting_string =~ / / )
                     {
                         $splitting_string = "-" ;
                         if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
@@ -1930,10 +1934,11 @@ sub dashrep_expand_parameters
                             $global_trace_log .= "{{trace; warning, splitting string " . $operand_three . " contains a space, so a hyphen was inserted instead" . "}}\n" ;
                         }
                     }
+                    $length_of_splitting_string = length( $splitting_string ) ;
                     $character_position = index( $source_text , $splitting_string ) ;
                     while ( $character_position >= 0 )
                     {
-                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + 1 ) ;
+                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + $length_of_splitting_string ) ;
                         $character_position = index( $source_text , $splitting_string ) ;
                     }
                     $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
@@ -2079,10 +2084,11 @@ sub dashrep_expand_parameters
                     }
                 } else
                 {
+                    $length_of_character_to_replace = length( $character_to_replace ) ;
                     $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
                     while ( $character_position >= 0 )
                     {
-                        $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
+                        $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace + 1 ) ;
                         $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
                     }
                 }
@@ -4796,8 +4802,8 @@ sub dashrep_expand_parameters
                         }
                     } else
                     {
-                        $replacement_text = $global_dashrep_replacement{ $operand_three } ;
-                        if ( index( $replacement_text , $character_to_replace ) >= 0 )
+                        $text_to_insert_as_replacement = $global_dashrep_replacement{ $operand_three } ;
+                        if ( index( $text_to_insert_as_replacement , $character_to_replace ) >= 0 )
                         {
                             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                             {
@@ -4805,10 +4811,11 @@ sub dashrep_expand_parameters
                             }
                         } else
                         {
+                            $length_of_character_to_replace = length( $character_to_replace ) ;
                             $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
                             while ( $character_position >= 0 )
                             {
-                                $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $replacement_text . substr( $phrase_definition_to_modify , $character_position + 1 ) ;
+                                $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert_as_replacement . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace ) ;
                                 $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
                             }
                             $global_dashrep_replacement{ $operand_one } = $phrase_definition_to_modify ;
@@ -5332,7 +5339,7 @@ sub dashrep_expand_phrases_except_special
 #-----------------------------------------------
 #  Begin a loop that does all the replacements.
 
-    while( $#item_stack >= 0 )
+    while ( $#item_stack >= 0 )
     {
 
 
@@ -5568,7 +5575,6 @@ sub dashrep_expand_special_phrases
     {
         $remaining_string = $expanded_string ;
         $expanded_string = "" ;
-
         if ( ( $global_ignore_level > 0 ) && ( $remaining_string !~ /((ignore-begin-here)|(ignore-end-here))/si ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
@@ -5581,13 +5587,11 @@ sub dashrep_expand_special_phrases
             }
             $remaining_string = "" ;
         }
-
         while ( $remaining_string =~ /^((.*? +)?)((ignore-begin-here)|(ignore-end-here))(( +.*)?)$/si )
         {
             $code_begin = $1 ;
             $ignore_directive = $3 ;
             $remaining_string = $6 ;
-
             if ( $global_ignore_level > 0 )
             {
                 if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
@@ -5602,7 +5606,6 @@ sub dashrep_expand_special_phrases
             {
                 $expanded_string .= $code_begin . " " ;
             }
-
             if ( $ignore_directive eq "ignore-begin-here" )
             {
                 if ( $global_dashrep_replacement{ "dashrep-ignore-trace-on-or-off" } eq "on" )
@@ -5634,7 +5637,6 @@ sub dashrep_expand_special_phrases
     {
         $remaining_string = $expanded_string ;
         $expanded_string = "" ;
-
         if ( ( $global_capture_level > 0 ) && ( $remaining_string !~ /((capture-begin-here)|(capture-end-here))/si ) )
         {
             $global_dashrep_replacement{ "captured-text" } .= " " . $remaining_string ;
@@ -5648,13 +5650,11 @@ sub dashrep_expand_special_phrases
             }
             $remaining_string = "" ;
         }
-
         while ( $remaining_string =~ /^((.*? +)?)((capture-begin-here)|(capture-end-here))(( +.*)?)$/si )
         {
             $code_begin = $1 ;
             $capture_directive = $3 ;
             $remaining_string = $6 ;
-
             if ( $global_capture_level > 0 )
             {
                 $global_dashrep_replacement{ "captured-text" } .= " " . $code_begin ;
@@ -5670,7 +5670,6 @@ sub dashrep_expand_special_phrases
             {
                 $expanded_string .= $code_begin . " " ;
             }
-
             if ( $capture_directive eq "capture-begin-here" )
             {
                 $global_dashrep_replacement{ "captured-text" } = "" ;
@@ -6087,7 +6086,7 @@ sub dashrep_file_actions
             {
                 $line_ending = " " ;
             }
-            while( $input_line = <INFILE> )
+            while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 $input_line =~ s/[\t\f\n\r]+/ /g ;
@@ -6150,7 +6149,7 @@ sub dashrep_file_actions
             $string_to_find .= " " ;
             $length_of_string = length( $string_to_find ) ;
             $input_text = "" ;
-            while( $input_line = <INFILE> )
+            while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 if ( substr( $input_line , 0 , $length_of_string ) eq $string_to_find )
@@ -6203,7 +6202,7 @@ sub dashrep_file_actions
         if ( $possible_error_message eq "" )
         {
             $source_definitions = "" ;
-            while( $input_line = <INFILE> )
+            while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 $input_line =~ s/[\n\r\f\t]+/ /g ;
@@ -6607,7 +6606,7 @@ sub dashrep_file_actions
                 $full_line = "" ;
                 $multi_line_limit = 100 ;
                 $multi_line_count = 0 ;
-                while( $input_line = <INFILE> )
+                while ( $input_line = <INFILE> )
                 {
                     chomp( $input_line ) ;
                     $input_line =~ s/[\n\r\f\t]+/ /g ;
@@ -6695,7 +6694,7 @@ sub dashrep_file_actions
             {
                 $use_two_spaces_as_delimiter = "no" ;
             }
-            while( $input_line = <INFILE> )
+            while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 if ( $use_two_spaces_as_delimiter eq "yes" )
@@ -6818,7 +6817,7 @@ sub dashrep_file_actions
                 $global_ignore_level = 0 ;
                 $global_capture_level = 0 ;
                 $global_top_line_count_for_insert_phrase = 0 ;
-                while( $input_line = <INFILE> )
+                while ( $input_line = <INFILE> )
                 {
                     chomp( $input_line ) ;
                     $input_line =~ s/[\n\r\f\t]+/ /g ;
@@ -6831,7 +6830,7 @@ sub dashrep_file_actions
                         {
                             $all_lines = "" ;
                             $line_count = 0 ;
-                            while( $input_line = <INFILE> )
+                            while ( $input_line = <INFILE> )
                             {
                                 chomp( $input_line ) ;
                                 $input_line =~ s/[\n\r\f\t]+/ /g ;
@@ -7726,7 +7725,7 @@ sub dashrep_linewise_translate
 #  Read each line from the input file.
 
     $line_number = 0 ;
-    while( $input_line = <STDIN> )
+    while ( $input_line = <STDIN> )
     {
         chomp( $input_line );
         $line_number ++ ;
@@ -7758,7 +7757,7 @@ sub dashrep_linewise_translate
         {
             $all_lines = "" ;
             $line_count = 0 ;
-            while( $input_line = <STDIN> )
+            while ( $input_line = <STDIN> )
             {
                 chomp( $input_line );
                 $input_line =~ s/[\n\r\f\t]+/ /g ;
