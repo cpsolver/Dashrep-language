@@ -3,6 +3,8 @@ hyphen-here
 character-hyphen
 no-spaceempty-textone-spacecharacter-single-spacenon-breaking-spacespan-non-breaking-spaces-beginspan-non-breaking-spaces-endnew-lineempty-lineline-break
 newline-character
+character-open-square-bracket
+character-close-square-bracket
 tab-here
 
 category_definitionslist-of-phrases-newly-defineddashrep-definitions-begindashrep-definitions-enddefine-enddefine-begin
