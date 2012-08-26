@@ -198,6 +198,10 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-special-rep
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "symbol-space" , " " );
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "symbol-two-periods" , ".." );
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "text-with-extra-spaces" , "  12 34  56   78   90  " ) ;
+
 $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-createlist" , "abc-[-createlist-parameter-]-def" ) ;
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" ) ;
@@ -348,6 +352,33 @@ text-with-periods:
 
 test-of-replace-periods-with-spaces:
 [-within-phrase-replace-character-with-text-in-phrase: text-with-periods . symbol-space-]
+--------
+
+test-of-replace-spaces-with-phrase:
+[-copy-from-phrase-to-phrase-and-replace-spaces-with-phrase text-with-extra-spaces text-with-spaces-replaced symbol-two-periods-]
+--------
+
+test-of-several-copy-actions:
+[-text-being-copied = abc DEF 123-]
+[-copy-from-phrase-to-phrase text-being-copied text-copied-]
+[-copy-from-phrase-to-phrase-lowercase-only text-being-copied text-copied-lowercase-]
+[-copy-from-phrase-to-phrase-uppercase-only text-being-copied text-copied-uppercase-]
+[-copy-from-phrase-to-phrase-and-replace-digits-with-9s text-being-copied text-copied-with-9s-]
+[-copy-from-phrase-to-phrase-and-split-into-list-of-characters text-being-copied text-copied-separate-characters-]
+[-copy-from-phrase-to-phrase-but-remove-first-word text-being-copied text-copied-without-first-word-]
+[-copy-from-phrase-to-phrase-but-remove-last-word text-being-copied text-copied-without-last-word-]
+[-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
+[-text-copied-with-9s-] [-text-copied-separate-characters-]
+[-text-copied-without-first-word-] [-text-copied-without-last-word-]
+--------
+
+test-of-more-copy-actions:
+[-copy-from-phrase-to-phrase-and-remove-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
+[-text-being-copied = 17 9 183 65-]
+[-copy-from-phrase-to-phrase-and-numeric-sort-by-word text-being-copied text-copied-numeric-sorted-]
+[-text-being-copied = <xyz>&amp;</xyz>-]
+[-copy-from-phrase-to-phrase-and-replace-html-reserved-characters text-being-copied text-copied-html-characters-replaced-]
+[-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-] [-text-copied-html-characters-replaced-]
 --------
 
 list-from-which-to-remove-last-item:
@@ -1379,7 +1410,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the remove-last-item-from-phrase-list action.
 
-$being_tested = "remove-last-item-from-phrase-list action -- ";
+$being_tested = "test action: remove-last-item-from-phrase-list -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-remove-last-item-from-phrase-list" );
@@ -1396,7 +1427,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the within-phrase-replace-character-with-text-in-phrase action.
 
-$being_tested = "within-phrase-replace-character-with-text-in-phrase action -- ";
+$being_tested = "test action: within-phrase-replace-character-with-text-in-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
@@ -1407,6 +1438,62 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-p
 # $string_return_value = &dashrep_get_replacement( "text-with-periods" );
 # uncomment-for-cpan-version-end
 if ( $string_return_value eq "12345 67890" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the copy-from-phrase-to-phrase-and-replace-spaces-with-phrase action.
+
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-spaces-with-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-spaces-with-phrase" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-spaces-replaced" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "test-of-replace-spaces-with-phrase" );
+# $string_return_value = &dashrep_get_replacement( "text-with-spaces-replaced" );
+# uncomment-for-cpan-version-end
+if ( $string_return_value eq "12..34..56..78..90" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test several copy actions.
+
+$being_tested = "test some copy actions -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-several-copy-actions" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "test-of-several-copy-actions" );
+# uncomment-for-cpan-version-end
+$string_return_value =~ s/^ +// ;
+$string_return_value =~ s/ +$// ;
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "abc DEF 123 abc def 123 ABC DEF 123 abc DEF 999 a b c onespace D E F onespace 1 2 3 DEF 123 abc DEF" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test several more copy actions.
+
+$being_tested = "test some more copy actions -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-more-copy-actions" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "test-of-more-copy-actions" );
+# uncomment-for-cpan-version-end
+$string_return_value =~ s/^ +// ;
+$string_return_value =~ s/ +$// ;
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "9 17 65 183 12 34 56 78 90 &lt;xyz&gt;&amp;&lt;/xyz&gt;" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1448,7 +1535,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the calculate-if-empty action.
 
-$being_tested = "calculate-if-empty action -- ";
+$being_tested = "test action: calculate-if-empty -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-calculate-if-empty" );
@@ -1464,7 +1551,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the dashrep-stop-translation action, then test resume translation.
 
-$being_tested = "dashrep-stop-translation action -- ";
+$being_tested = "test action: dashrep-stop-translation -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-stop-translation" );
