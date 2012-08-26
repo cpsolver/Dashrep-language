@@ -7870,7 +7870,6 @@ sub dashrep_web_framework
 {
 
     my $generated_web_page ;
-    my $return_text_get_starting_definitions ;
     my $error_file_name ;
     my $emergency_page ;
     my $phrase_name ;
@@ -7878,8 +7877,10 @@ sub dashrep_web_framework
     my $error_file_prefix ;
     my $time_in_epoch_seconds ;
     my $last_digits_of_epoch_seconds ;
-    my $results_of_expanding_parameters ;
-    my $results_of_expanding_phrases ;
+    my $bootstrap_results ;
+    my $intermediate_results ;
+    my $results_before_generating_web_page ;
+    my $results_after_generating_web_page ;
 
 
 #-----------------------------------------------
@@ -7910,22 +7911,38 @@ sub dashrep_web_framework
 #  If the web-framework trace mode is on,
 #  write debugging information to the trace log.
 
-    $return_text_get_starting_definitions = "" ;
-    $return_text_get_starting_definitions = &dashrep_expand_parameters( "[-get-definitions-from-file dashdef_bootstrap.txt-]" );
-    if ( $return_text_get_starting_definitions =~ /((error)|(warning))/si )
-    {
-        $phrase_name = "empty-text" ;
-    } else
-    {
-        $phrase_name = "[-bootstrap-start-]" ;
-    }
-    $results_of_expanding_parameters = &dashrep_expand_parameters( $phrase_name );
-    $results_of_expanding_phrases = &dashrep_expand_phrases( $results_of_expanding_parameters );
-    $phrase_name = "generated-web-page" ;
-    $generated_web_page = &dashrep_get_replacement( $phrase_name ) ;
+    $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } = "on" ;
+    $phrase_to_expand = "[-get-definitions-from-file dashdef_bootstrap.txt-]" ;
+    $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from expanding parameters:\n\n" . $results_of_expanding_parameters . "\n-----\n\n" . "\n------\n" . "Results from expanding phrases:\n\n" . $results_of_expanding_phrases . "\n-----\n\n" . "\n------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Got definitions from bootstrap file:\n\n" . $global_dashrep_replacement{ "list-of-phrases-newly-defined" } . "\n-----\n\n" . "\n------\n" . "Results from bootstrap step 1:\n\n" . $bootstrap_results_step_1 . "\n-----\n\n" ;
+    }
+    $bootstrap_results_step_2 = &dashrep_expand_parameters( "[-bootstrap-start-]" );
+    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
+    {
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from bootstrap step 2:\n\n" . $bootstrap_results_step_2 . "\n-----\n\n" ;
+    }
+    $phrase_to_expand = "[-do-before-generating-web-page-]" ;
+    $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
+    $results_before_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
+    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
+    {
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from processing done before generating web page:\n\n" . $results_before_generating_web_page . "\n-----\n\n" ;
+    }
+    $phrase_to_expand = "[-generated-web-page-]" ;
+    $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
+    $generated_web_page = &dashrep_expand_phrases( $intermediate_results );
+    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
+    {
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Generated web page:\n\n" . $generated_web_page . "\n-----\n\n" ;
+    }
+    $phrase_to_expand = "[-do-after-generating-web-page-]" ;
+    $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
+    $results_after_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
+    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
+    {
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n------\n" . "Results from processing done after generating web page:\n\n" . $results_after_generating_web_page . "\n-----\n\n" ;
     }
     if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
     {
