@@ -1194,6 +1194,12 @@ sub dashrep_expand_parameters
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_expand_parameters subroutine has encountered an endless loop, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
+        {
             die "Error: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
         }
 
@@ -5086,6 +5092,23 @@ sub dashrep_generate_lists
 
 
 #-----------------------------------------------
+#  Check for an endless loop.
+
+        $global_endless_loop_counter ++ ;
+        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+        {
+            &dashrep_internal_endless_loop_info( ) ;
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_generate_lists subroutine has encountered an endless loop, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
+        {
+            die "Error: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+        }
+
+
+#-----------------------------------------------
 #  Don't generate the same list more than once.
 
         if ( exists( $already_generated_list_named{ $list_name } ) )
@@ -5377,12 +5400,18 @@ sub dashrep_expand_phrases_except_special
 
 
 #-----------------------------------------------
-#  If an endless loop occurs, handle that situation.
+#  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
+        {
             die "Error: The dashrep_expand_phrases_except_special subroutine encountered an endless loop." . "\n" . "Stopped" ;
         }
 
@@ -7429,6 +7458,23 @@ sub dashrep_xml_tags_to_dashrep
 
 
 #-----------------------------------------------
+#  Check for an endless loop.
+
+        $global_endless_loop_counter ++ ;
+        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+        {
+            &dashrep_internal_endless_loop_info( ) ;
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
+        {
+            die "Error: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+        }
+
+
+#-----------------------------------------------
 #  If the non-tag content text contains any
 #  hyphens, replace them with the phrase
 #  "hypen-here".
@@ -7772,6 +7818,23 @@ sub dashrep_linewise_translate
                 $global_trace_log .= "{{trace; stopping translation as requested}}\n";
             }
             last ;
+        }
+
+
+#-----------------------------------------------
+#  Check for an endless loop.
+
+        $global_endless_loop_counter ++ ;
+        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
+        {
+            &dashrep_internal_endless_loop_info( ) ;
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_linewise_translate subroutine has encountered an endless loop, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
+        {
+            die "Error: The dashrep_linewise_translate subroutine has encountered an endless loop." . "\n" . "Stopped" ;
         }
 
 
