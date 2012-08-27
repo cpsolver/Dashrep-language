@@ -1091,6 +1091,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-generat
 $string_return_value =~ s/  +/ /g ;
 $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
 if ( $string_return_value eq "abc-alpha-def abc-alpha-here-def abc-and-def abc-beta-def abc-gamma-def abc-delta-def - prefix-here abc-alpha-def-1of6-ghi separator-here abc-alpha-here-def-2of6-ghi separator-here abc-and-def-3of6-ghi separator-here abc-beta-def-4of6-ghi separator-here abc-gamma-def-5of6-ghi separator-here abc-delta-def-6of6-ghi suffix-here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
