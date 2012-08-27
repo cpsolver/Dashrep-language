@@ -1057,7 +1057,7 @@ sub dashrep_expand_parameters
     my $not_listed_word ;
     my $result_word_list ;
     my $string_in_phrase ;
-    my $copied_character ;
+    my $copied_characters ;
     my $template_phrase_name ;
     my $parameter_word_list ;
     my $generated_list_name ;
@@ -3472,13 +3472,19 @@ sub dashrep_expand_parameters
                 {
                     $ending_character_position = $phrase_length - $ending_character_position + 1 ;
                 }
-                if ( $starting_character_position > $ending_character_position )
+                $number_of_characters_to_get = $ending_character_position - $starting_character_position + 1 ;
+                if ( $number_of_characters_to_get < 1 )
                 {
-                    $starting_character_position = $ending_character_position ;
+                    $number_of_characters_to_get = 1 ;
                 }
-                $copied_character = substr( $string_in_phrase , ( $starting_character_position - 1 ) , ( $starting_character_position - $ending_character_position + 1 ) ) ;
+                $copied_characters = substr( $string_in_phrase , ( $starting_character_position - 1 ) , $number_of_characters_to_get ) ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; action " . $action_name . " got characters " . $copied_characters . "}}\n";
+                }
+                $text_for_value = $copied_characters
             }
-            $replacement_text = $text_begin . $copied_character . $text_end ;
+            $replacement_text = $text_begin . $copied_characters . $text_end ;
             next ;
         }
 
@@ -4283,9 +4289,10 @@ sub dashrep_expand_parameters
                 {
                     $character_position = $phrase_length ;
                 }
-                $copied_character = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+                $copied_characters = substr( $string_in_phrase , ( $character_position - 1 ) , 1 ) ;
+                $text_for_value = $copied_characters ;
             }
-            $replacement_text = $text_begin . $copied_character . $text_end ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
 
@@ -6017,6 +6024,7 @@ sub dashrep_file_actions
     my $text_begin ;
     my $text_end ;
     my $string_to_find ;
+    my $word_to_find ;
     my $length_of_string ;
     my $sequence_of_phrases ;
     my $directory ;
@@ -6086,15 +6094,15 @@ sub dashrep_file_actions
         $object_of_action =~ s/ +$// ;
         $object_of_action =~ s/^\-+// ;
         $object_of_action =~ s/\-+$// ;
-        if ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
-        {
-            $operand_one = $1 ;
-            $operand_two = $2 ;
-        } elsif ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
+        if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
         {
             $operand_one = $1 ;
             $operand_two = $2 ;
             $operand_three = $3 ;
+        } elsif ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
+        {
+            $operand_one = $1 ;
+            $operand_two = $2 ;
         } elsif ( $object_of_action !~ / / )
         {
             $operand_one = $object_of_action ;
@@ -6206,15 +6214,16 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  Handle the action:
 #  find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase
-#
-#  The matching line must have a space at the end of the searched-for word.
 
-    } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase" ) && ( $source_filename ne "" ) && ( $target_phrase_name ne "" ) )
+    } elsif ( $action_name eq "find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase" )
     {
         $input_text = "" ;
-        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
+        if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
-            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
+        } elsif ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) )
+        {
+            $possible_error_message .= " [warning, action " . $action_name . " has empty search word in phrase " . $operand_two . "]" ;
         } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
@@ -6224,21 +6233,21 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            $string_to_find = $global_dashrep_replacement{ $target_phrase_name } ;
-            $string_to_find =~ s/^ +// ;
-            $string_to_find =~ s/ +$// ;
-            $string_to_find .= " " ;
-            $length_of_string = length( $string_to_find ) ;
+            $word_to_find = $global_dashrep_replacement{ $target_phrase_name } ;
+            $word_to_find =~ s/^ +// ;
+            $word_to_find =~ s/ +$// ;
+            $word_to_find .= " " ;
+            $length_of_string = length( $word_to_find ) ;
             $input_text = "" ;
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( substr( $input_line , 0 , $length_of_string ) eq $string_to_find )
+                if ( substr( $input_line , 0 , $length_of_string ) eq $word_to_find )
                 {
-                    $input_text = $input_line ;
+                    $global_dashrep_replacement{ $operand_three } = $input_line ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; in file " . $source_filename . " found starting word " . $string_to_find . "}}\n" ;
+                        $global_trace_log .= "{{trace; in file " . $source_filename . " found starting word " . $word_to_find . "}}\n" ;
                     }
                     last ;
                 }
@@ -6255,6 +6264,7 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
+        $input_text = "" ;
 
 
 #-----------------------------------------------
