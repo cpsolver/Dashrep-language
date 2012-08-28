@@ -261,7 +261,7 @@ BEGIN {
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen no-space empty-text one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break newline-character tab-here category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-words yes-or-no-same-two-phrases yes-if-not-no no-if-not-yes yes-or-no-opposite category_numeric zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-multiply calc-divide-by calc-maximum calc-minimum calc-integer calc-absolute calc-equal-greater-less-compare auto-increment auto-decrement category_character count-of-characters-in-phrase-defintion characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number count-of-words-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items category_file_related dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no category_xml linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-off-else-on dashrep-capture-actions-off-else-on dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-stop-translation dashrep-warning-trace-on-or-off dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off dashrep-web-framework-trace-on-or-off dashrep-warning-for-action category_advanced copy-from-phrase-to-phrase-and-insert-phrase dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no bootstrap-start dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen no-space empty-text one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break newline-character tab-here category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-words yes-or-no-same-two-phrases yes-if-not-no no-if-not-yes yes-or-no-opposite category_numeric zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-multiply calc-divide-by calc-maximum calc-minimum calc-integer calc-absolute calc-equal-greater-less-compare auto-increment auto-decrement category_character count-of-characters-in-phrase-defintion characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number count-of-words-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-combination-of-counts-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items category_file_related dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no category_xml linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-html-safe-definitions-into-already-expanded-phrase category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-off-else-on dashrep-capture-actions-off-else-on dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-stop-translation dashrep-warning-trace-on-or-off dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off dashrep-web-framework-trace-on-or-off dashrep-warning-for-action category_advanced copy-from-phrase-to-phrase-and-insert-phrase dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no bootstrap-start dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
 }
@@ -1860,6 +1860,65 @@ sub dashrep_expand_parameters
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with translation}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  insert-html-safe-definitions-into-already-expanded-phrase
+
+        if ( $action_name eq "insert-html-safe-definitions-into-already-expanded-phrase" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            $phrase_being_edited = $operand_one ;
+            if ( not( exists( $global_dashrep_replacement{ $phrase_being_edited } ) ) )
+            {
+                $global_dashrep_replacement{ $phrase_being_edited } = "" ;
+            }
+            $accumulated_text = "" ;
+            $remaining_text = $global_dashrep_replacement{ $phrase_being_edited } ;
+            $remaining_text =~ s/<hyphen_here>/-/sg ;
+            while ( $remaining_text =~ /^(.*)<([^ _<>]+_[^ <>]+)>(.*)$/s )
+            {
+                $accumulated_text .= $1 ;
+                $possible_phrase_name = $2 ;
+                $remaining_text = $3 ;
+                $phrase_name = $possible_phrase_name ;
+                $phrase_name = s/_/-/g ;
+                if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
+                {
+                    $accumulated_text .= $global_dashrep_replacement{ $phrase_name } ;
+                } else
+                {
+                    $accumulated_text .= "<" . $possible_phrase_name . ">" ;
+                }
+            }
+            $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text . $remaining_text ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; within phrase " . $phrase_being_edited . " replaced translation-safe phrases with their definitions}}\n" ;
             }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
@@ -8002,19 +8061,24 @@ sub dashrep_web_framework
 
 
 #-----------------------------------------------
+#  As the default, supply trace messages for
+#  the web framework.  After debugging a new
+#  website, and before expecting high-volume
+#  demand, turn off these trace messages from
+#  within the Dashrep code.  If needed to debug
+#  some portions of Dashrep code, turn on these
+#  messages just before the problematic code.
+
+    $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } = "on" ;
+
+
+#-----------------------------------------------
 #  Load Dashrep definitions from the local
 #  (same-directory) "dashdef_bootstrap.txt" file,
 #  and do the expansion that is specified in
-#  that code, and return with the generated web
-#  page, which must be supplied as the definition
-#  of the phrase "generated-web-page".  The
-#  Dashrep code within the bootstrap file should
-#  load additional Dashrep definitions from
-#  additional files.
-#  If the web-framework trace mode is on,
-#  write debugging information to the trace log.
+#  that code, which should load additional
+#  definitions from additional files.
 
-    $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } = "on" ;
     $phrase_to_expand = "[-get-definitions-from-file dashdef_bootstrap.txt-]" ;
     $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
@@ -8026,6 +8090,13 @@ sub dashrep_web_framework
     {
         $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from bootstrap step 2:\n\n" . $bootstrap_results_step_2 . "\n======\n\n" ;
     }
+
+
+#-----------------------------------------------
+#  Do the processing needed before generating a
+#  web page.  Typically this processing interprets
+#  what the user has requested.
+
     $phrase_to_expand = "[-do-before-generating-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $results_before_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
@@ -8033,13 +8104,27 @@ sub dashrep_web_framework
     {
         $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from processing done before generating web page:\n\n" . $results_before_generating_web_page . "\n======\n\n" ;
     }
+
+
+#-----------------------------------------------
+#  Generate the web page by expanding the
+#  definition of the phrase "generated-web-page".
+
     $phrase_to_expand = "[-generated-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
-    $generated_web_page = &dashrep_expand_phrases( $intermediate_results );
+    $global_dashrep_replacement{ "dashrep-web-framework-generated-web-page" } = &dashrep_expand_phrases( $intermediate_results );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
         $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Generated web page:\n\n" . $generated_web_page . "\n======\n\n" ;
     }
+
+
+#-----------------------------------------------
+#  Do any additional processing needed, such as
+#  writing the trace messages, and expanding
+#  translation-safe phrases into their HTML-safe
+#  definitions.
+
     $phrase_to_expand = "[-do-after-generating-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $results_after_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
@@ -8047,6 +8132,15 @@ sub dashrep_web_framework
     {
         $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from processing done after generating web page:\n\n" . $results_after_generating_web_page . "\n======\n\n" ;
     }
+
+
+#-----------------------------------------------
+#  If the generated web page looks reasonable,
+#  return with it.  The page is sent from the
+#  user's Perl code with a simple "print"
+#  command.
+
+    $generated_web_page = $global_dashrep_replacement{ "dashrep-web-framework-generated-web-page" } ;
     if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
     {
         return $generated_web_page ;
@@ -8056,7 +8150,9 @@ sub dashrep_web_framework
 #  If the result does not look like a valid
 #  web page, generate an error web page and
 #  write debugging information to a text file
-#  in the specified "errors" directory.
+#  in the specified "errors" directory, and
+#  return with that web page instead of the
+#  generated one.
 
     } else
     {

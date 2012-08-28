@@ -41,7 +41,6 @@ copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 copy-from-phrase-to-phrase-and-replace-digits-with-9s
 copy-from-phrase-to-phrase-lowercase-only
 copy-from-phrase-to-phrase-uppercase-only
-copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here
 copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
@@ -62,6 +61,7 @@ linewise-translate-from-file-to-filelinewise-translate-parameters-only-from-fil
 category_xmllinewise-translate-xml-tags-in-file-to-dashrep-phrases-in-filedashrep-first-xml-tag-namedashrep-list-of-xml-phrasesdashrep-xml-level-reset-if-zerodashrep-xml-trace-on-or-offdashrep-xml-yes-ignore-if-no-tag-replacement
 
 category_htmldashrep-html-replacement-ampersanddashrep-html-replacement-apostrophedashrep-html-replacement-close-angle-bracketdashrep-html-replacement-open-angle-bracketdashrep-html-replacement-quotation-mark
+insert-html-safe-definitions-into-already-expanded-phrase
 
 category_ignore_captureignore-begin-hereignore-end-herecapture-begin-herecapture-end-herecaptured-textdashrep-ignore-actions-off-else-ondashrep-capture-actions-off-else-ondashrep-capture-leveldashrep-ignore-level
 
@@ -133,3 +133,4 @@ same-or-not-same-two-phrases
 empty-or-nonempty-word
 empty-or-nonempty-phrase
 copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase
+copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here
