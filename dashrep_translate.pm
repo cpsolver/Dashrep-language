@@ -1897,8 +1897,8 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $phrase_being_edited } = "" ;
             }
-            $accumulated_text = "" ;
             $remaining_text = $global_dashrep_replacement{ $phrase_being_edited } ;
+            $accumulated_text = "" ;
             $remaining_text =~ s/<hyphen_here>/-/sg ;
             while ( $remaining_text =~ /^(.*)<([^ _<>]+_[^ <>]+)>(.*)$/s )
             {
@@ -8083,12 +8083,12 @@ sub dashrep_web_framework
     $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $global_dashrep_replacement{ "list-of-phrases-newly-defined" } . "\n======\n\n" . "\n======\n" . "Results from bootstrap step 1:\n\n" . $bootstrap_results_step_1 . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $global_dashrep_replacement{ "list-of-phrases-newly-defined" } . "\n======\n\n" . "Results from bootstrap step 1:\n\n" . $bootstrap_results_step_1 . "\n======\n\n" ;
     }
     $bootstrap_results_step_2 = &dashrep_expand_parameters( "[-bootstrap-start-]" );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from bootstrap step 2:\n\n" . $bootstrap_results_step_2 . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Results from bootstrap step 2:\n\n" . $bootstrap_results_step_2 . "\n======\n\n" ;
     }
 
 
@@ -8102,7 +8102,7 @@ sub dashrep_web_framework
     $results_before_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from processing done before generating web page:\n\n" . $results_before_generating_web_page . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Results from processing done before generating web page:\n\n" . $results_before_generating_web_page . "\n======\n\n" ;
     }
 
 
@@ -8115,7 +8115,7 @@ sub dashrep_web_framework
     $global_dashrep_replacement{ "dashrep-web-framework-generated-web-page" } = &dashrep_expand_phrases( $intermediate_results );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Generated web page:\n\n" . $generated_web_page . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Generated web page:\n\n" . $global_dashrep_replacement{ "dashrep-web-framework-generated-web-page" } . "\n======\n\n" ;
     }
 
 
@@ -8130,7 +8130,7 @@ sub dashrep_web_framework
     $results_after_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Results from processing done after generating web page:\n\n" . $results_after_generating_web_page . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Results from processing done after generating web page:\n\n" . $results_after_generating_web_page . "\n======\n\n" ;
     }
 
 
