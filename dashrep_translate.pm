@@ -2573,6 +2573,70 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  copy-from-phrase-to-phrase-with-word-order-reversed
+#  (useful for inserting commas or decimal points into integers)
+
+        if ( $action_name eq "copy-from-phrase-to-phrase-with-word-order-reversed" )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            $text_for_value = " " ;
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/^ +// ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
+            } else
+            {
+                @list = ( ) ;
+            }
+            $count = $#list + 1 ;
+            $temp_text = "" ;
+            if ( $count > 0 )
+            {
+                for ( $word_number = $count ; $word_number >= 1 ; $word_number -- )
+                {
+                    $temp_text .= $list[ $word_number - 1 ] . " " ;
+                }
+                $temp_text =~ s/ +$// ;
+            }
+            $global_dashrep_replacement{ $operand_two } = $temp_text ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  from-phrase-get-word-number
 
         if ( $action_name eq "from-phrase-get-word-number" )
