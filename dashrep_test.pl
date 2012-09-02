@@ -264,7 +264,7 @@ test-of-special-operators:
 [-should-be-item-with-value-7 = [-from-list-get-item-number: list-of-numbers 3-]-]
 [-counts-from-integer-to-integer-put-into-phrase: 0 7 counts-from-0-to-7-]
 [-counts-from-integer-to-integer-put-into-phrase: 5 -4 counts-from-5-to-minus-4-]
-[-every-combination-of-counts-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
+[-every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
 [-should-be-counts-3-and-minus-2 = [-from-list-get-item-number list-of-first-items-in-two-dimensions 38-] [-from-list-get-item-number list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-calc-integer [-calc-multiply 3.14 7.39-]-]-]
 [-compare-result = [-calc-equal-greater-less-compare: 23 17-] [-calc-equal-greater-less-compare: 17 17-] [-calc-equal-greater-less-compare: 17 23-]-]
