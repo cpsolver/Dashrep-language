@@ -3206,19 +3206,21 @@ sub dashrep_expand_parameters
                     $text_for_value = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_one . " does not contain any numbers" . "}}\n" ;
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_one . " does not contain any words" . "}}\n" ;
                     }
                 } elsif ( $count_list_two < 1 )
                 {
                     $text_for_value = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_two . " does not contain any numbers" . "}}\n" ;
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_two . " does not contain any words" . "}}\n" ;
                     }
                 } else
                 {
                     $global_dashrep_replacement{ $output_list_one_phrase_name } = "" ;
                     $global_dashrep_replacement{ $output_list_two_phrase_name } = "" ;
+                    $separator_one = " " ;
+                    $separator_two = " " ;
                     for ( $counter_one = 1 ; $counter_one <= $count_list_one ; $counter_one ++ )
                     {
                         $value_one = $input_list_one[ $counter_one - 1 ] ;
@@ -3229,10 +3231,6 @@ sub dashrep_expand_parameters
                             {
                                 $separator_one = "" ;
                                 $separator_two = "" ;
-                            } else
-                            {
-                                $separator_one = " " ;
-                                $separator_two = " " ;
                             }
                             $global_dashrep_replacement{ $output_list_one_phrase_name } .= $value_one . $separator_one ;
                             $global_dashrep_replacement{ $output_list_two_phrase_name } .= $value_two . $separator_two ;
