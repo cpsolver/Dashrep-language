@@ -261,7 +261,7 @@ BEGIN {
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen no-space empty-text one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break newline-character tab-here category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-words yes-or-no-same-two-phrases yes-if-not-no no-if-not-yes yes-or-no-opposite category_numeric zero-one-multiple yes-or-no-first-number-equals-second-number calc-add calc-minus calc-multiply calc-divide-by calc-maximum calc-minimum calc-integer calc-absolute calc-equal-greater-less-compare auto-increment auto-decrement category_character count-of-characters-in-phrase-defintion characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number count-of-words-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items category_file_related dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no category_xml linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-html-safe-definitions-into-already-expanded-phrase category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-off-else-on dashrep-capture-actions-off-else-on dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-stop-translation dashrep-warning-trace-on-or-off dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off dashrep-web-framework-trace-on-or-off dashrep-warning-for-action category_advanced copy-from-phrase-to-phrase-and-insert-phrase dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no bootstrap-start dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen no-space empty-text one-space character-single-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break newline-character tab-here category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-words yes-or-no-same-two-phrases yes-if-not-no no-if-not-yes yes-or-no-opposite category_numeric zero-one-multiple yes-or-no-first-number-equals-second-number numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare auto-increment auto-decrement category_character count-of-characters-in-phrase-defintion characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number count-of-words-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items category_file_related dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrase copy-from-file-to-phrases-line-numbered put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no category_xml linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-or-off dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-html-safe-definitions-into-already-expanded-phrase category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-off-else-on dashrep-capture-actions-off-else-on dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-stop-translation dashrep-warning-trace-on-or-off dashrep-capture-trace-on-or-off dashrep-debug-trace-log dashrep-debug-trace-on-or-off dashrep-action-trace-on-or-off dashrep-ignore-trace-on-or-off dashrep-linewise-trace-on-or-off dashrep-web-framework-trace-on-or-off dashrep-warning-for-action category_advanced copy-from-phrase-to-phrase-and-insert-phrase dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no bootstrap-start dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings begin-and-end insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty greater-than less-than yes-or-no-greater-than yes-or-no-less-than divide-by create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
 }
@@ -2282,9 +2282,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  calc-equal-greater-less-compare
+#  numeric-equal-greater-less-compare
 
-        if ( $action_name eq "calc-equal-greater-less-compare" )
+        if ( $action_name eq "numeric-equal-greater-less-compare" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3614,9 +3614,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  calc-minus
+#  numeric-minus
 
-        if ( $action_name eq "calc-minus" )
+        if ( $action_name eq "numeric-minus" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3666,9 +3666,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  calc-divide-by
+#  numeric-divide-by
 
-        if ( $action_name eq "calc-divide-by" )
+        if ( $action_name eq "numeric-divide-by" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -3721,12 +3721,12 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  calc-add
-#  calc-multiply
-#  calc-maximum
-#  calc-minimum
+#  numeric-add
+#  numeric-multiply
+#  numeric-maximum
+#  numeric-minimum
 
-        if ( ( ( $action_name eq "calc-add" ) || ( $action_name eq "calc-multiply" ) || ( $action_name eq "calc-maximum" ) || ( $action_name eq "calc-minimum" ) ) && ( $number_of_operands >= 1 ) )
+        if ( ( ( $action_name eq "numeric-add" ) || ( $action_name eq "numeric-multiply" ) || ( $action_name eq "numeric-maximum" ) || ( $action_name eq "numeric-minimum" ) ) && ( $number_of_operands >= 1 ) )
         {
             if ( $number_of_operands < 1 )
             {
@@ -3739,16 +3739,16 @@ sub dashrep_expand_parameters
                 next ;
             }
             $text_for_value = "0" ;
-            if ( $action_name eq "calc-add" )
+            if ( $action_name eq "numeric-add" )
             {
                 $numeric_value = 0 ;
-            } elsif ( $action_name eq "calc-multiply" )
+            } elsif ( $action_name eq "numeric-multiply" )
             {
                 $numeric_value = 1 ;
-            } elsif ( $action_name eq "calc-maximum" )
+            } elsif ( $action_name eq "numeric-maximum" )
             {
                 $numeric_value = -999999 ;
-            } elsif ( $action_name eq "calc-minimum" )
+            } elsif ( $action_name eq "numeric-minimum" )
             {
                 $numeric_value = 999999 ;
             } else
@@ -3764,19 +3764,19 @@ sub dashrep_expand_parameters
                 $value = $list[ $counter ] ;
                 if ( $value =~ /^-?[0-9]+(\.[0-9]*)?$/ )
                 {
-                    if ( $action_name eq "calc-add" )
+                    if ( $action_name eq "numeric-add" )
                     {
                         $numeric_value = $numeric_value + $value ;
-                    } elsif ( $action_name eq "calc-multiply" )
+                    } elsif ( $action_name eq "numeric-multiply" )
                     {
                         $numeric_value = $numeric_value * $value ;
-                    } elsif ( $action_name eq "calc-maximum" )
+                    } elsif ( $action_name eq "numeric-maximum" )
                     {
                         if ( $value > $numeric_value )
                         {
                             $numeric_value = $value ;
                         }
-                    } elsif ( $action_name eq "calc-minimum" )
+                    } elsif ( $action_name eq "numeric-minimum" )
                     {
                         if ( $value < $numeric_value )
                         {
@@ -3799,9 +3799,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  calc-integer
+#  numeric-integer
 
-        if ( $action_name eq "calc-integer" )
+        if ( $action_name eq "numeric-integer" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3838,9 +3838,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  calc-absolute
+#  numeric-absolute
 
-        if ( $action_name eq "calc-absolute" )
+        if ( $action_name eq "numeric-absolute" )
         {
             if ( $number_of_operands != 1 )
             {
