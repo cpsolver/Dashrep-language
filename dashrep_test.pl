@@ -23,7 +23,7 @@ use dashrep_translate;
 #  create-list-named count-of-list count-of-list count-of-list zero-one-multiple-count-of-list zero-one-multiple-count-of-list
 #  zero-one-multiple-count-of-list first-item-in-list last-item-in-list empty-or-nonempty empty-or-nonempty same-or-not-same same-or-not-same
 #  input-validated-participantid users-participant-id same-or-not-same action-showothervoterranking-not-same sort-numbers
-#  yes-or-no-first-number-equals-second-number yes-or-no-first-number-equals-second-number yes-or-no-first-number-greater-than-second-number
+#  yes-or-no-first-number-greater-than-second-number
 #  yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number yes-or-no-first-number-less-than-second-number
 #  from-list-get-item-number from-list-get-item-number from-list-get-item-number same-or-not-same remove-last-item-from-phrase-list
 #  within-phrase-replace-character-with-text-in-phrase create-list-named
@@ -249,12 +249,12 @@ test-of-special-operators:
 [-should-be-sorted = [-sort-numbers: [-list-of-numbers-]-]-]
 [-test-counter = 17-]
 [-test-value = 3-]
-[-test-yes-numbers-equal = [-yes-or-no-first-number-equals-second-number: 16 16-]-]
-[-test-no-numbers-not-equal = [-yes-or-no-first-number-equals-second-number: 18 19-]-]
-[-test-yes-number-greater-than = [-yes-or-no-first-number-greater-than-second-number: 21 20-]-]
-[-test-no-number-not-greater-than = [-yes-or-no-first-number-greater-than-second-number: 20 20-]-]
-[-test-yes-number-less-than = [-yes-or-no-first-number-less-than-second-number: 21 22-]-]
-[-test-no-number-not-less-than = [-yes-or-no-first-number-less-than-second-number: 22 22-]-]
+[-test-yes-numbers-equal = [-yes-or-no-numeric-equal: 16 16-]-]
+[-test-no-numbers-not-equal = [-yes-or-no-numeric-equal: 18 19-]-]
+[-test-yes-number-greater-than = [-yes-or-no-numeric-greater-than: 21 20-]-]
+[-test-no-number-not-greater-than = [-yes-or-no-numeric-greater-than: 20 20-]-]
+[-test-yes-number-less-than = [-yes-or-no-numeric-less-than: 21 22-]-]
+[-test-no-number-not-less-than = [-yes-or-no-numeric-less-than: 22 22-]-]
 [-copy-from-phrase-to-phrase: empty-text test-text-length-0-]
 [-should-be-length-0 = [-count-of-characters-in-phrase-defintion: test-text-length-0-]-]
 [-test-text-length-1 = a-]
