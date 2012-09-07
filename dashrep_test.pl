@@ -20,13 +20,13 @@ use dashrep_translate;
 
 
 #  ToDo: remove useage of deprecated actions:
-#  create-list-named count-of-list count-of-list count-of-list zero-one-multiple-count-of-list zero-one-multiple-count-of-list
-#  zero-one-multiple-count-of-list first-item-in-list last-item-in-list empty-or-nonempty empty-or-nonempty same-or-not-same same-or-not-same
-#  input-validated-participantid users-participant-id same-or-not-same action-showothervoterranking-not-same sort-numbers
+#  create-list-named count-of-list count-of-list zero-one-multiple-count-of-list
+#  first-item-in-list last-item-in-list empty-or-nonempty same-or-not-same
 #  yes-or-no-first-number-greater-than-second-number
-#  yes-or-no-first-number-greater-than-second-number yes-or-no-first-number-less-than-second-number yes-or-no-first-number-less-than-second-number
-#  from-list-get-item-number from-list-get-item-number from-list-get-item-number same-or-not-same remove-last-item-from-phrase-list
-#  within-phrase-replace-character-with-text-in-phrase create-list-named
+#  yes-or-no-first-number-less-than-second-number
+#  from-list-get-item-number same-or-not-same remove-last-item-from-phrase-list
+#  within-phrase-replace-character-with-text-in-phrase
+#  sort-numbers
 
 
 BEGIN {
@@ -286,6 +286,8 @@ test-of-special-operators:
 [-hyphen-here-translation-safe = <hyphen_here>-]
 [-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-here-translation-safe-]
 [-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
+[-already-expanded-phrase = one<hyphen_here>two<hyphen_here>three <item_one>-]
+[-insert-html-safe-definitions-into-already-expanded-phrase already-expanded-phrase-]
 nothing else
 --------
 
@@ -1594,6 +1596,23 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-tran
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "abc<hyphen_here>[<hyphen_here>createlist<hyphen_here>parameter<hyphen_here>]<hyphen_here>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "insert-html-safe-definitions-into-already-expanded-phrase"
+
+$being_tested = "test action: insert-html-safe-definitions-into-already-expanded-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "already-expanded-phrase" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_phrases( "already-expanded-phrase" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "one-two-three waltz" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
