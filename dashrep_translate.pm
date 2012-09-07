@@ -1906,7 +1906,7 @@ sub dashrep_expand_parameters
                 $possible_phrase_name = $2 ;
                 $remaining_text = $3 ;
                 $phrase_name = $possible_phrase_name ;
-                $phrase_name = s/_/-/g ;
+                $phrase_name =~ s/_/-/g ;
                 if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
                 {
                     $accumulated_text .= $global_dashrep_replacement{ $phrase_name } ;
