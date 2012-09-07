@@ -285,6 +285,7 @@ test-of-special-operators:
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-here-translation-safe = <hyphen_here>-]
 [-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-here-translation-safe-]
+[-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
 nothing else
 --------
 
@@ -1526,6 +1527,24 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "resulting-t
 if ( $string_return_value eq "hyphenated hyphen-here content hyphen-here here hyphenated hyphen-here content hyphen-here here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test action: copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
+
+$being_tested = "test action: copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-inserted-spaces" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "test-inserted-spaces" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "abc [ createlist parameter ] def [ createlist item number ]of[ createlist total number of items ] ghi" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
 
 
 #-------------------------------------------
