@@ -1914,6 +1914,14 @@ sub dashrep_expand_parameters
                 {
                     $accumulated_text .= "<" . $possible_phrase_name . ">" ;
                 }
+				$global_endless_loop_counter ++ ;
+				if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+				{
+					$global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got too within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+					$accumulated_text .= $remaining_text ;
+					$remaining_text = "" ;
+					last ;
+				}
             }
             $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text . $remaining_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
