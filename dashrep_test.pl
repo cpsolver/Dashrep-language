@@ -283,6 +283,8 @@ test-of-special-operators:
 [-separator-for-list-named-generated-full-list = separator-here-]
 [-use-template-and-parameters-to-create-full-list-with-name: template-for-full-createlist sample-word-list-one generated-full-list-]
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
+[-hyphen-here-translation-safe = <hyphen_here>-]
+[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-here-translation-safe-]
 nothing else
 --------
 
@@ -1556,6 +1558,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-tes
 # $string_return_value = &dashrep_get_replacement( "dashrep-test-target-phrase" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" action.
+
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-translation-safe" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_phrases( "text-translation-safe" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "abc<hyphen_here>[<hyphen_here>createlist<hyphen_here>parameter<hyphen_here>]<hyphen_here>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
