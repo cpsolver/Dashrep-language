@@ -3114,8 +3114,9 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
+#  every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
 
-        if ( $action_name eq "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" )
+        if ( ( $action_name eq "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" ) || ( $action_name eq "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" ) )
         {
             if ( $number_of_operands != 4 )
             {
@@ -3221,13 +3222,23 @@ sub dashrep_expand_parameters
                     $global_dashrep_replacement{ $output_list_two_phrase_name } = "" ;
                     $separator_one = " " ;
                     $separator_two = " " ;
-                    for ( $counter_one = 1 ; $counter_one <= $count_list_one ; $counter_one ++ )
+                    $ending_first_count = $count_list_one ;
+                    $starting_second_count = 1 ;
+                    if ( $action_name eq "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" )
+                    {
+                        $ending_first_count -- ;
+                    }
+                    for ( $counter_one = 1 ; $counter_one <= $ending_first_count ; $counter_one ++ )
                     {
                         $value_one = $input_list_one[ $counter_one - 1 ] ;
-                        for ( $counter_two = 1 ; $counter_two <= $count_list_two ; $counter_two ++ )
+                        if ( $ending_first_count != $count_list_one )
+                        {
+                            $starting_second_count = $counter_one + 1 ;
+                        }
+                        for ( $counter_two = $starting_second_count ; $counter_two <= $count_list_two ; $counter_two ++ )
                         {
                             $value_two = $input_list_two[ $counter_two - 1 ] ;
-                            if ( ( $counter_one == $count_list_one ) && ( $counter_two == $count_list_two ) )
+                            if ( ( $counter_one == $ending_first_count ) && ( $counter_two == $count_list_two ) )
                             {
                                 $separator_one = "" ;
                                 $separator_two = "" ;
