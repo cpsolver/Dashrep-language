@@ -1914,14 +1914,14 @@ sub dashrep_expand_parameters
                 {
                     $accumulated_text .= "<" . $possible_phrase_name . ">" ;
                 }
-				$global_endless_loop_counter ++ ;
-				if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
-				{
-					$global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got too within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-					$accumulated_text .= $remaining_text ;
-					$remaining_text = "" ;
-					last ;
-				}
+                $global_endless_loop_counter ++ ;
+                if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+                {
+                    $global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got too within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                    $accumulated_text .= $remaining_text ;
+                    $remaining_text = "" ;
+                    last ;
+                }
             }
             $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text . $remaining_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -4071,8 +4071,9 @@ sub dashrep_expand_parameters
                                 {
                                     $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
-                                $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-]" ;
                                 $text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
+                                $global_dashrep_replacement{ "dashrep-createlist-parameter-number-" . $item_number } = $parameter ;
+                                $text_that_expands_to_generate_list .= "[-copy-from-phrase-to-phrase dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
                                 $text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
                                 if ( $list_position == 1 )
                                 {
