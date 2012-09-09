@@ -4058,6 +4058,14 @@ sub dashrep_expand_parameters
                     }
                 } else
                 {
+                    $text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
+                    if ( exists( $global_dashrep_replacement{ "separator-for-list-named-" . $generated_list_name } ) )
+                    {
+                        $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-separator-]" ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ "dashrep-list-info-temporary-storage-separator" } = "" ;
+                    }
                     for ( $list_position = 1 ; $list_position <= $list_length ; $list_position ++ )
                     {
                         $parameter = $list_of_parameters[ $list_position - 1 ] ;
@@ -4072,9 +4080,6 @@ sub dashrep_expand_parameters
                                     $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
                                 $text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
-                                $global_dashrep_replacement{ "dashrep-createlist-parameter-number-" . $item_number } = $parameter ;
-                                $text_that_expands_to_generate_list .= "[-copy-from-phrase-to-phrase dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
-                                $text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
                                 if ( $list_position == 1 )
                                 {
                                     $text_that_expands_to_generate_list .= "[-createlist-first-yes-or-no = yes-]" ;
@@ -4089,23 +4094,34 @@ sub dashrep_expand_parameters
                                 {
                                     $text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = no-]" ;
                                 }
+                                $global_dashrep_replacement{ "dashrep-createlist-parameter-number-" . $item_number } = $parameter ;
+                                $text_that_expands_to_generate_list .= "[-copy-from-phrase-to-phrase dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
                                 $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $template_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
                                 if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
                                 {
-                                    $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
+                                    $text_that_expands_to_generate_list .= "[-append-from-phrase-to-phrase dashrep-list-info-temporary-storage-separator " . $generated_list_name . "-]" ;
                                 }
                                 if ( $list_position == $list_length )
                                 {
                                     $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
+                                $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-createlist-parameter-number-" . $item_number . "-]" ;
                             } else
                             {
                                 $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $template_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
+                                if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" ) && ( $parameter =~ /-/ ) )
+                                {
+                                    $global_trace_log .= "{{warning; parameter (" . $parameter . ") contains hyphens, so the full version, not this simple version, should be used to generate this list" . "}}\n";
+                                }
                             }
                         } else
                         {
                             $text_that_expands_to_generate_list .= " dashrep-warning-parameter-for-list-generation-contains-invalid-characters " ;
                         }
+                    }
+                    if ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" )
+                    {
+                        $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-list-info-temporary-storage-separator-]" ;
                     }
                     $text_for_value = "" . $text_that_expands_to_generate_list . "" ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
