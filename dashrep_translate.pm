@@ -3717,19 +3717,24 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
+            if ( ( $operand_two + 0 ) == 0 )
             {
-                if ( ( $operand_two + 0 ) == 0 )
-                {
-                    $text_for_value = "infinity" ;
-                } elsif ( $operand_one = 0 )
-                {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $numeric_value = ( $operand_one + 0 ) / ( $operand_two + 0 ) ;
-                    $text_for_value = sprintf( "%f" , $numeric_value ) ;
-                }
+                $text_for_value = "infinity" ;
+            } elsif ( ( $operand_one + 0 ) == 0 )
+            {
+                $text_for_value = "0" ;
+            } else
+            {
+                $numeric_value = ( $operand_one + 0 ) / ( $operand_two + 0 ) ;
+                $text_for_value = sprintf( "%f" , $numeric_value ) ;
+            }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; operands for action " . $action_name . " are " . $operand_one . " and " . $operand_two . " , and result is " . $numeric_value . "}}\n" ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -3809,6 +3814,10 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -3847,6 +3856,10 @@ sub dashrep_expand_parameters
             } else
             {
                 $text_for_value = sprintf( "%d" , $operand_value ) ;
+            }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
