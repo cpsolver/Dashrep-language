@@ -2397,6 +2397,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  if-word-is-yes-then-first-else-second
+
+        if ( $action_name eq "if-word-is-yes-then-first-else-second" )
+        {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $operand_one =~ /yes/i )
+            {
+                $text_for_value = $operand_two ;
+            } else
+            {
+                $text_for_value = $operand_three ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  first-word-in-phrase
 
         if ( $action_name eq "first-word-in-phrase" )
