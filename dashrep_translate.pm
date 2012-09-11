@@ -1917,7 +1917,7 @@ sub dashrep_expand_parameters
                 $global_endless_loop_counter ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
-                    $global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got too within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                    $global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
                     $accumulated_text .= $remaining_text ;
                     $remaining_text = "" ;
                     last ;
@@ -2207,11 +2207,28 @@ sub dashrep_expand_parameters
                         $global_trace_log .= "{{trace; warning, string to find is empty, so a hyphen was used instead" . "}}\n" ;
                     }
                 }
-                $character_position = index( $source_text , $string_to_be_replaced ) ;
-                while ( $character_position >= 0 )
+                if ( index( $text_to_insert , $string_to_be_replaced ) >= 0 )
                 {
-                    $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + 1 ) ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning: replacement phrase contains string to replace, so no replacements done}}\n" ;
+                    }
+                } else
+                {
                     $character_position = index( $source_text , $string_to_be_replaced ) ;
+                    while ( $character_position >= 0 )
+                    {
+                        $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + 1 ) ;
+                        $character_position = index( $source_text , $string_to_be_replaced ) ;
+                        $global_endless_loop_counter ++ ;
+                        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+                        {
+                            $global_trace_log .= "{{trace; Error: During the action copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                            $accumulated_text .= $remaining_text ;
+                            $remaining_text = "" ;
+                            last ;
+                        }
+                    }
                 }
                 $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
