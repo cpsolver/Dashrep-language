@@ -1973,7 +1973,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
+            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) )
             {
                 if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
@@ -2215,10 +2215,11 @@ sub dashrep_expand_parameters
                     }
                 } else
                 {
+                    $length_of_string_to_be_replaced = length( $string_to_be_replaced ) ;
                     $character_position = index( $source_text , $string_to_be_replaced ) ;
                     while ( $character_position >= 0 )
                     {
-                        $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + 1 ) ;
+                        $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
                         $character_position = index( $source_text , $string_to_be_replaced ) ;
                         $global_endless_loop_counter ++ ;
                         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
