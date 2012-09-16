@@ -1869,6 +1869,58 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  xml-move-attributes-into-tag-elements-within-phrase
+
+        if ( $action_name eq "xml-move-attributes-into-tag-elements-within-phrase" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , empty operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            $phrase_being_edited = $operand_one ;
+            $text_being_edited = $global_dashrep_replacement{ $phrase_being_edited } ;
+            $text_being_edited =~ s/ *\/> *<attribute ([^>]+)>/ $1\/>/sg ;
+            $text_being_edited =~ s/ *\/> *<attribute ([^>]+)>/ $1\/>/sg ;
+            $text_being_edited =~ s/ *> *<attribute ([^>]+)>/ $1>/sg ;
+            $text_being_edited =~ s/ *> *<attribute ([^>]+)>/ $1>/sg ;
+            $global_dashrep_replacement{ $phrase_being_edited } = $text_being_edited ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
+            {
+                $global_trace_log .= "{{trace; within phrase " . $phrase_being_edited . " moved attributes into tag elements}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  insert-html-safe-definitions-into-already-expanded-phrase
 
         if ( $action_name eq "insert-html-safe-definitions-into-already-expanded-phrase" )
