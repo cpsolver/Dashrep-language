@@ -1195,6 +1195,7 @@ sub dashrep_expand_parameters
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "expand parameters subroutine" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -1915,6 +1916,7 @@ sub dashrep_expand_parameters
                     $accumulated_text .= "<" . $possible_phrase_name . ">" ;
                 }
                 $global_endless_loop_counter ++ ;
+                $global_replacement_count_for_item_name{ "loop within action insert-html-safe-definitions-into-already-expanded-phrase" } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
                     $global_trace_log .= "{{trace; Error: During the action insert-html-safe-definitions-into-already-expanded-phrase the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
@@ -2222,6 +2224,7 @@ sub dashrep_expand_parameters
                         $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
                         $character_position = index( $source_text , $string_to_be_replaced ) ;
                         $global_endless_loop_counter ++ ;
+                        $global_replacement_count_for_item_name{ "loop within action insert-html-safe-definitions-into-already-expanded-phrase" } ++ ;
                         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                         {
                             $global_trace_log .= "{{trace; Error: During the action copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
@@ -4437,7 +4440,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-word-in-phrase-and-put-into-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
             {
                 $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
@@ -5226,6 +5229,7 @@ sub dashrep_expand_parameters
 #  containing, at some level, itself).
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "unknown action" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -5344,6 +5348,7 @@ sub dashrep_generate_lists
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -5495,6 +5500,7 @@ sub dashrep_generate_lists
 #  Protect against an endless loop.
 
                 $global_endless_loop_counter ++ ;
+                $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
                 {
                     die "Error: The dashrep_generate_lists subroutine encountered an endless loop.  Stopped" ;
@@ -5652,6 +5658,7 @@ sub dashrep_expand_phrases_except_special
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -7716,6 +7723,7 @@ sub dashrep_xml_tags_to_dashrep
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "XML parsing subroutine" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -8080,6 +8088,7 @@ sub dashrep_linewise_translate
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
+        $global_replacement_count_for_item_name{ "loop within linewise translation subroutine" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -8383,6 +8392,27 @@ sub dashrep_internal_endless_loop_info
             $highest_usage_item_name = $item_name ;
         }
     }
+
+    if ( $highest_usage_item_name =~ / / )
+    {
+        @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+        $endless_loop_debug_info_filename = "output_endless_loop_debug_info.txt" ;
+        if ( open ( OUTFILE , ">" . $endless_loop_debug_info_filename ) )
+        {
+            print OUTFILE "All definitions:\n\n" ;
+            foreach $phrase_name ( @list_of_phrases )
+            {
+                if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( defined( $global_dashrep_replacement{ $phrase_name } ) ) )
+                {
+                    print OUTFILE $phrase_name . ":\n" . $global_dashrep_replacement{ $phrase_name } . "\n----\n\n" ;
+                    $counter ++ ;
+                }
+            }
+            close( OUTFILE ) ;
+            print "Endless loop debug info written to file " . $endless_loop_debug_info_filename . "\n" ;
+        }
+    }
+
 #  remove-from-cpan-version-begin
     warn "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
 #  remove-from-cpan-version-end
