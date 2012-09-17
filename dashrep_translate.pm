@@ -1808,6 +1808,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ dashnex / dashenn dashbee /sg ;
                 $temp_text =~ s/ wunspay / one-space /sg ;
                 $temp_text =~ s/ feneer / hyphen-here /sg ;
+                $temp_text =~ s/ senek / sentence-next /sg ;
                 while ( $temp_text =~ /^(.* )ofo ([^ \]]+?) ofo( .*)$/s )
                 {
                     $prefix = $1 ;
