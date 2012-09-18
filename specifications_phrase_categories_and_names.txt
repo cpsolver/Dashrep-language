@@ -31,7 +31,8 @@ no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
 
-category_numericzero-one-multiplenumeric-addnumeric-minusnumeric-multiplynumeric-divide-bynumeric-maximumnumeric-minimumnumeric-integernumeric-absolutenumeric-equal-greater-less-compareauto-increment
+category_numericzero-one-multiple
+zero-or-nonzeronumeric-addnumeric-minusnumeric-multiplynumeric-divide-bynumeric-maximumnumeric-minimumnumeric-integernumeric-absolutenumeric-equal-greater-less-compareauto-increment
 auto-decrement
 category_charactercount-of-characters-in-phrase-defintioncharacters-in-phrase-get-from-position-to-position
 position-of-string-in-phrase-within-phrase
