@@ -12,7 +12,6 @@ clear-phrase
 clear-phrases-listed-in-phrase
 clear-all-dashrep-phrases
 expand-phrase-to-phrase
-calculate-if-phrase-empty
 dashrep-yes-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
 export-defs-all-begin
@@ -26,7 +25,8 @@ append-from-phrase-to-phrase
 append-from-phrase-to-phrase-no-space
 append-new-line-to-phrase
 
-category_decisionyes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-same-two-phrasesyes-if-not-no
+category_decision
+calculate-if-phrase-emptyyes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-same-two-phrasesyes-if-not-no
 no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
@@ -46,7 +46,7 @@ copy-from-phrase-to-phrase-uppercase-only
 copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
-verify-word-in-phraseposition-of-word-in-phraseyes-or-no-word-in-phrase
+position-of-word-in-phraseyes-or-no-word-in-phrase
 copy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
@@ -68,7 +68,7 @@ category_xmlxml-move-attributes-into-tag-elements-within-phrase
 linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-filedashrep-first-xml-tag-namedashrep-list-of-xml-phrasesdashrep-xml-level-reset-if-zerodashrep-xml-trace-on-or-offdashrep-xml-yes-ignore-if-no-tag-replacement
 
 category_htmldashrep-html-replacement-ampersanddashrep-html-replacement-apostrophedashrep-html-replacement-close-angle-bracketdashrep-html-replacement-open-angle-bracketdashrep-html-replacement-quotation-mark
-insert-html-safe-definitions-into-already-expanded-phrase
+insert-angle-bracketed-definitions-into-already-expanded-phrase
 
 category_web_framework
 generated-web-page
@@ -81,14 +81,14 @@ category_ignore_captureignore-begin-hereignore-end-herecapture-begin-herecap
 category_time
 get-current-time-in-epoch-seconds
 split-epoch-seconds-into-named-components
+time-year
+time-month-number
 time-day-of-month
 time-day-of-week
 time-day-of-year
 time-hour
 time-minute
-time-month-number
 time-second
-time-year
 
 category_debugdashrep-comments-ignoreddashrep-warning-trace-on-or-offdashrep-capture-trace-on-or-offdashrep-debug-trace-logdashrep-debug-trace-on-or-offdashrep-action-trace-on-or-offdashrep-ignore-trace-on-or-off
 dashrep-linewise-trace-on-or-off
@@ -97,8 +97,8 @@ dashrep-warning-for-action
 
 category_advanceddashrep-stop-translation
 dashrep-endless-loop-counter-limit
-copy-from-phrase-to-phrase-and-insert-phraseunique-valueescape-if-yesescape-if-nobootstrap-start
-dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-nodashrep-special-replacement-adjacent-spacedashrep-special-replacement-hyphendashrep-special-replacement-newlinedashrep-yes-indicate-line-endingsbegin-and-endinsert-phrase-with-brackets-after-next-top-line
+unique-valueescape-if-yesescape-if-nobootstrap-start
+dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-nodashrep-special-replacement-adjacent-spacedashrep-special-replacement-hyphendashrep-special-replacement-newlinedashrep-yes-indicate-line-endingsbegin-and-end (prefix)insert-phrase-with-brackets-after-next-top-line
 clear-all-expanded-text-up-to-here
 dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
@@ -106,6 +106,7 @@ dashrep-list-of-recognized-phrase-names
 category_spoken_wordscopy-from-phrase-to-phrase-from-spoken-dashrep-code
 copy-from-phrase-to-phrase-into-spoken-dashrep-code
 dashbeedashenndashnexambeeamenncombeecomennfenconambeeamennconlinbray
+senek
 
 category_do_not_use
 dashrep-list-info-temporary-storage
@@ -120,6 +121,7 @@ copy-from-phrase-to-phrase-and-replace-newlines
 copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
 copy-from-phrase-to-phrase-and-replace-hyphens
 copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens
+copy-from-phrase-to-phrase-and-insert-phrase
 write-all-phrase-names-to-phrase
 sort-numbers
 split-into-list-of-characters

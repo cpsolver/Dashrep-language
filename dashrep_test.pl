@@ -287,7 +287,7 @@ test-of-special-operators:
 [-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-here-translation-safe-]
 [-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
 [-already-expanded-phrase = one<hyphen_here>two<hyphen_here>three <item_one>-]
-[-insert-html-safe-definitions-into-already-expanded-phrase already-expanded-phrase-]
+[-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 nothing else
 --------
 
