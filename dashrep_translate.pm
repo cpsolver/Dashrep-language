@@ -1956,7 +1956,6 @@ sub dashrep_expand_parameters
             $remaining_text = $global_dashrep_replacement{ $phrase_being_edited } ;
             $accumulated_text = "" ;
             $remaining_text =~ s/<character_hyphen>/-/sg ;
-            $remaining_text =~ s/ *<no_space> *//sg ;
             while ( $remaining_text =~ /^(.*?)<([^ _<>]+_[^ <>]+)>(.*)$/s )
             {
                 $accumulated_text .= $1 ;
@@ -1981,7 +1980,9 @@ sub dashrep_expand_parameters
                     last ;
                 }
             }
-            $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text . $remaining_text ;
+            $accumulated_text .= $remaining_text ;
+            $accumulated_text =~ s/ *<no_space> *//sg ;
+            $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-or-off" } eq "on" )
             {
                 $global_trace_log .= "{{trace; within phrase " . $phrase_being_edited . " replaced translation-safe phrases with their definitions}}\n" ;
