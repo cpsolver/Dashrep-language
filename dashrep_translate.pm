@@ -228,6 +228,7 @@ BEGIN {
     $global_dashrep_replacement{ "character-open-square-bracket" } = "[" ;
     $global_dashrep_replacement{ "character-close-square-bracket" } = "]" ;
     $global_dashrep_replacement{ "character-tab" } = "\t" ;
+    $global_dashrep_replacement{ "four-hyphens" } = "----" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
     $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
@@ -293,6 +294,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "character-open-square-bracket" } = "[" ;
     $global_dashrep_replacement{ "character-close-square-bracket" } = "]" ;
     $global_dashrep_replacement{ "character-tab" } = "\t" ;
+    $global_dashrep_replacement{ "four-hyphens" } = "----" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
     $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
@@ -5035,7 +5037,7 @@ sub dashrep_expand_parameters
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             foreach $phrase_name ( @sequence_of_phrases )
             {
-                if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                 {
                     $global_dashrep_replacement{ $operand_one } .= $phrase_name ;
                 }
@@ -7411,7 +7413,7 @@ sub dashrep_file_actions
                         print OUTFILE $all_defs_begin ;
                         foreach $phrase_name ( @sequence_of_phrases )
                         {
-                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( defined( $global_dashrep_replacement{ $phrase_name } ) ) )
+                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( defined( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                             {
                                 print OUTFILE $phrase_begin . $phrase_name . $phrase_end . $def_begin . $global_dashrep_replacement{ $phrase_name } . $def_end ;
                                 $counter ++ ;
@@ -7422,7 +7424,7 @@ sub dashrep_file_actions
                     {
                         foreach $phrase_name ( @sequence_of_phrases )
                         {
-                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
+                            if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                             {
                                 print OUTFILE $phrase_name . "\n" ;
                                 $counter ++ ;

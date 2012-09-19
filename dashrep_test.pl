@@ -1569,9 +1569,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "insert-html-safe-definitions-into-already-expanded-phrase"
+#  Test the action "insert-angle-bracketed-definitions-into-already-expanded-phrase"
 
-$being_tested = "test action: insert-html-safe-definitions-into-already-expanded-phrase -- ";
+$being_tested = "test action: insert-angle-bracketed-definitions-into-already-expanded-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "already-expanded-phrase" );
