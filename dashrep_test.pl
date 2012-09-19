@@ -283,10 +283,10 @@ test-of-special-operators:
 [-separator-for-list-named-generated-full-list = separator-here-]
 [-use-template-and-parameters-to-create-full-list-with-name: template-for-full-createlist sample-word-list-one generated-full-list-]
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
-[-hyphen-here-translation-safe = <hyphen_here>-]
-[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-here-translation-safe-]
+[-hyphen-translation-safe = <character_hyphen>-]
+[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
-[-already-expanded-phrase = one<hyphen_here>two<hyphen_here>three <item_one>-]
+[-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 nothing else
 --------
@@ -321,10 +321,6 @@ empty-line
 def
 new-line
 ghi
---------
-
-test-of-tabs:
-abc tab-here def tab-here ghi
 --------
 
 test-of-parameter-substitution:
@@ -1212,18 +1208,6 @@ if ( $string_return_value =~ /jkl mno&nbsp;pqr&nbsp;stu vwx/ ) { $one_if_ok = 1;
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test tab-here directive -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "abc tab-here def" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_special_phrases( "abc tab-here def" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /abc\tdef/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
 $being_tested = "test empty-line and new-line directives -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
@@ -1261,22 +1245,6 @@ $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test
 # $string_return_value = &dashrep_expand_special_phrases( "test-of-special-line-phrases" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value =~ /\n/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test tab-here phrase.
-
-$being_tested = "test tab-here phrase -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-tabs" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( "test-of-tabs" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value ne "abc\tdef\tghi" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1595,7 +1563,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-tran
 # $string_return_value = &dashrep_expand_phrases( "text-translation-safe" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "abc<hyphen_here>[<hyphen_here>createlist<hyphen_here>parameter<hyphen_here>]<hyphen_here>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "abc<character_hyphen>[<character_hyphen>createlist<character_hyphen>parameter<character_hyphen>]<character_hyphen>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
