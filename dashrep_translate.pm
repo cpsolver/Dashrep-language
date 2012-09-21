@@ -2194,13 +2194,24 @@ sub dashrep_expand_parameters
             }
             if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
-                if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) || ( length( $global_dashrep_replacement{ $operand_three } ) < 1 ) )
+                if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
                     $text_for_value = " " ;
                     $replacement_text = $text_begin . $text_for_value . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_three . " is not a valid phrase name or phrase does not exist" . "}}\n" ;
+                    }
+                    next ;
+                }
+                $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
+                if ( length( $string_to_be_replaced ) < 1 )
+                {
+                    $text_for_value = " " ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , search string in phrase " . $operand_three . " is not at least one character long" . "}}\n" ;
                     }
                     next ;
                 }
@@ -2260,15 +2271,6 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
-                if ( $string_to_be_replaced !~ /^.+$/ )
-                {
-                    $string_to_be_replaced = "-" ;
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
-                    {
-                        $global_trace_log .= "{{trace; warning, string to find is empty, so a hyphen was used instead" . "}}\n" ;
-                    }
-                }
                 if ( index( $text_to_insert , $string_to_be_replaced ) >= 0 )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
