@@ -19,15 +19,6 @@
 use dashrep_translate;
 
 
-#  ToDo: remove useage of deprecated actions:
-#  create-list-named count-of-list count-of-list zero-one-multiple-count-of-list
-#  first-item-in-list last-item-in-list empty-or-nonempty same-or-not-same
-#  yes-or-no-first-number-greater-than-second-number
-#  yes-or-no-first-number-less-than-second-number
-#  from-list-get-item-number same-or-not-same remove-last-item-from-phrase-list
-#  within-phrase-replace-character-with-text-in-phrase
-#  sort-numbers
-
 
 BEGIN {
 
@@ -209,7 +200,7 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-c
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
-list-of-numbers: 3,12,7,13,4
+list-of-numbers: 3 12 7 13 4
 --------
 
 test-of-special-operators:
@@ -231,45 +222,38 @@ test-of-special-operators:
 [-should-be-zero = [-zero-one-multiple: 0-]-]
 [-should-be-one = [-zero-one-multiple: 1-]-]
 [-should-be-multiple = [-zero-one-multiple: 2-]-]
-[-should-be-size-zero = [-count-of-list: -]-]
-[-should-be-size-one = [-count-of-list: 4-]-]
-[-should-be-size-three = [-count-of-list: 4,5,6-]-]
-[-should-be-count-zero = [-zero-one-multiple-count-of-list: -]-]
-[-should-be-count-one = [-zero-one-multiple-count-of-list: 12-]-]
-[-should-be-count-multiple = [-zero-one-multiple-count-of-list: [-list-of-numbers-]-]-]
-[-should-be-item-three = [-first-item-in-list: [-list-of-numbers-]-]-]
-[-should-be-item-four = [-last-item-in-list: [-list-of-numbers-]-]-]
-[-should-be-empty = [-empty-or-nonempty: -]-]
-[-should-be-nonempty = [-empty-or-nonempty: something-]-]
+[-should-be-size-zero = [-count-of-words-in-phrase: empty-text-]-]
+[-should-be-size-one = [-count-of-words-in-phrase: should-be-17-]-]
+[-list-of-size-three = 4 5 6-]
+[-should-be-size-three = [-count-of-words-in-phrase: list-of-size-three-]-]
+[-should-be-item-three = [-first-word-in-phrase: list-of-numbers-]-]
+[-should-be-item-four = [-last-word-in-phrase: list-of-numbers-]-]
+[-should-be-empty-yes = [-yes-or-no-empty-word: -]-]
+[-should-be-empty-no = [-yes-or-no-empty-word: something-]-]
 [-item-one = waltz-]
 [-item-two = dance-]
-[-should-be-same = [-same-or-not-same: [-item-one-]-[-item-one-]-]-]
-[-should-be-not-same = [-same-or-not-same: [-item-one-]-[-item-two-]-]-]
-[-action-showothervoterranking-[-same-or-not-same: [-input-validated-participantid-]-[-users-participant-id-]-]-]
-[-should-be-sorted = [-sort-numbers: [-list-of-numbers-]-]-]
+[-should-be-same-yes = [-yes-or-no-same-two-words: [-item-one-] [-item-one-]-]-]
+[-should-be-same-no = [-yes-or-no-same-two-words: [-item-one-] [-item-two-]-]-]
 [-test-counter = 17-]
 [-test-value = 3-]
-[-test-yes-numbers-equal = [-yes-or-no-numeric-equal: 16 16-]-]
-[-test-no-numbers-not-equal = [-yes-or-no-numeric-equal: 18 19-]-]
-[-test-yes-number-greater-than = [-yes-or-no-numeric-greater-than: 21 20-]-]
-[-test-no-number-not-greater-than = [-yes-or-no-numeric-greater-than: 20 20-]-]
-[-test-yes-number-less-than = [-yes-or-no-numeric-less-than: 21 22-]-]
-[-test-no-number-not-less-than = [-yes-or-no-numeric-less-than: 22 22-]-]
+[-compare-numbers-equal = [-numeric-equal-greater-less-compare: 16 16-]-]
+[-compare-numbers-less = [-numeric-equal-greater-less-compare: 18 19-]-]
+[-compare-numbers-greater = [-numeric-equal-greater-less-compare: 21 20-]-]
 [-copy-from-phrase-to-phrase: empty-text test-text-length-0-]
 [-should-be-length-0 = [-count-of-characters-in-phrase-defintion: test-text-length-0-]-]
 [-test-text-length-1 = a-]
 [-should-be-length-1 = [-count-of-characters-in-phrase-defintion: test-text-length-1-]-]
 [-test-text-length-7 = abcdefg-]
 [-should-be-length-7 = [-count-of-characters-in-phrase-defintion: test-text-length-7-]-]
-[-should-be-item-with-value-7 = [-from-list-get-item-number: list-of-numbers 3-]-]
+[-should-be-item-with-value-7 = [-from-phrase-get-word-number: list-of-numbers 3-]-]
 [-counts-from-integer-to-integer-put-into-phrase: 0 7 counts-from-0-to-7-]
 [-counts-from-integer-to-integer-put-into-phrase: 5 -4 counts-from-5-to-minus-4-]
 [-every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
-[-should-be-counts-3-and-minus-2 = [-from-list-get-item-number list-of-first-items-in-two-dimensions 38-] [-from-list-get-item-number list-of-second-items-in-two-dimensions 38-]-]
+[-should-be-counts-3-and-minus-2 = [-from-phrase-get-word-number list-of-first-items-in-two-dimensions 38-] [-from-phrase-get-word-number list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-numeric-integer [-numeric-multiply 3.14 7.39-]-]-]
 [-compare-result = [-numeric-equal-greater-less-compare: 23 17-] [-numeric-equal-greater-less-compare: 17 17-] [-numeric-equal-greater-less-compare: 17 23-]-]
 [-string-to-test-character-actions = abc123 abc123 abc123-]
-[-character-result = [-character-in-phrase-get-at-position: string-to-test-character-actions 1-][-character-in-phrase-get-at-position: string-to-test-character-actions 2-][-character-in-phrase-get-at-position: string-to-test-character-actions 4-][-character-in-phrase-get-at-position: string-to-test-character-actions 5-][-character-in-phrase-get-at-position: string-to-test-character-actions 20-][-character-in-phrase-get-at-position: string-to-test-character-actions 21-]-]
+[-character-result = [-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 1 1-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 2 2-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 4 4-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 5 5-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 20 20-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 21 21-]-]
 [-sample-word-list = alpha beta gamma delta-]
 [-word-list-result = [-position-of-word-in-phrase: alpha sample-word-list-]-[-position-of-word-in-phrase: gamma sample-word-list-]-[-position-of-word-in-phrase: other sample-word-list-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
@@ -304,7 +288,9 @@ test-of-auto-increment:
 --------
 
 test-of-unique-value:
-[-same-or-not-same [-unique-value-] [-unique-value-]-]
+[-first-unique-value = [-unique-value-]-]
+[-second-unique-value = [-unique-value-]-]
+[-yes-or-no-same-phrase: first-unique-value second-unique-value-]
 --------
 
 non-breaking-space:
@@ -348,11 +334,15 @@ replaced-phrase
 --------
 
 text-with-periods:
-12345.67890
+12345.67890.54321
+--------
+
+character-period:
+.
 --------
 
 test-of-replace-periods-with-spaces:
-[-within-phrase-replace-character-with-text-in-phrase: text-with-periods . symbol-space-]
+[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase: text-with-periods text-with-spaces character-period character-space-]
 --------
 
 test-of-replace-spaces-with-phrase:
@@ -384,10 +374,6 @@ test-of-more-copy-actions:
 
 list-from-which-to-remove-last-item:
 12, 56, 72
---------
-
-test-of-remove-last-item-from-phrase-list:
-[-remove-last-item-from-phrase-list: list-from-which-to-remove-last-item-]
 --------
 
 phrase-that-contains-hyphenated-phrases:
@@ -430,9 +416,9 @@ test-of-escape-action:
 --------
 
 page-participants-list:
-[-create-list-named: participant-names-full-]
+[-list-of-parameter-values-for-list-named-participant-names-full = [-case-info-idlistparticipants-]-]
+[-use-template-and-parameters-to-create-full-list-with-name template-for-list-named-participant-names-full list-of-parameter-values-for-list-named-participant-names-full generated-list-named-participant-names-full-]
 [-auto-increment: test-counter-]
-[-unique-value-]
 format-begin-heading-level-1
 words-web-page-title
 format-end-heading-level-1
@@ -476,16 +462,10 @@ tag-begin h1 tag-end no-space
 format-end-heading-level-1:
 no-space  tag-begin /h1 tag-end
 --------
-
-case-info-idlistparticipants: [-list-of-numbers-]
+case-info-idlistparticipants:
+[-list-of-numbers-]
 --------
-template-for-list-named-participant-names-full: tag-begin li tag-end no-space participant-fullname-for-participantid-[-parameter-participant-id-] no-space tag-begin /li tag-end
---------
-parameter-name-for-list-named-participant-names-full:
-parameter-participant-id
---------
-list-of-parameter-values-for-list-named-participant-names-full:
-[-case-info-idlistparticipants-]
+template-for-list-named-participant-names-full: tag-begin li tag-end no-space participant-fullname-for-participantid-[-createlist-parameter-] no-space tag-begin /li tag-end
 --------
 participant-fullname-for-participantid-3
 James (Conservative)
@@ -731,42 +711,6 @@ if ( $string_return_value eq "3" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test zero count operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-zero" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-count-zero" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "zero" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test one count operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-one" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-count-one" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "one" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test multiple count operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-count-multiple" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-count-multiple" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "multiple" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
 $being_tested = "test first item in list operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
@@ -794,132 +738,84 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "test empty operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty-yes" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-empty" );
+# $string_return_value = &dashrep_get_replacement( "should-be-empty-yes" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "empty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test nonempty operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-nonempty" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty-no" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-nonempty" );
+# $string_return_value = &dashrep_get_replacement( "should-be-empty-no" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "nonempty" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test same operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same-yes" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-same" );
+# $string_return_value = &dashrep_get_replacement( "should-be-same-yes" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test not same operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-not-same" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same-no" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-not-same" );
+# $string_return_value = &dashrep_get_replacement( "should-be-same-no" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "not-same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-numbers-equal" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "compare-numbers-equal" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-yes-numbers-equal" );
+# $string_return_value = &dashrep_get_replacement( "compare-numbers-equal" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "equal" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test numbers equal operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-numbers-not-equal" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "compare-numbers-less" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-no-numbers-not-equal" );
+# $string_return_value = &dashrep_get_replacement( "compare-numbers-less" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "less" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 $being_tested = "test greater than operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-greater-than" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "compare-numbers-greater" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-yes-number-greater-than" );
+# $string_return_value = &dashrep_get_replacement( "compare-numbers-greater" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test greater than operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-greater-than" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-no-number-not-greater-than" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test less than operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-yes-number-less-than" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-yes-number-less-than" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test less than operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-no-number-not-less-than" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-no-number-not-less-than" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test sort operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-sorted" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-sorted" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "3,4,7,12,13" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "greater" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -949,7 +845,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-u
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "test-of-unique-value" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value ne "same" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value ne "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1390,36 +1286,19 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the remove-last-item-from-phrase-list action.
+#  Test the copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase action.
 
-$being_tested = "test action: remove-last-item-from-phrase-list -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-remove-last-item-from-phrase-list" );
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-from-which-to-remove-last-item" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "list-from-which-to-remove-last-item" );
-# uncomment-for-cpan-version-end
-if ( $string_return_value eq "12, 56" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test the within-phrase-replace-character-with-text-in-phrase action.
-
-$being_tested = "test action: within-phrase-replace-character-with-text-in-phrase -- ";
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-periods" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-spaces" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
-# $string_return_value = &dashrep_get_replacement( "text-with-periods" );
+# $string_return_value = &dashrep_get_replacement( "text-with-spaces" );
 # uncomment-for-cpan-version-end
-if ( $string_return_value eq "12345 67890" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "12345 67890 54321" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1670,7 +1549,6 @@ $html_code = &dashrep_translate::dashrep_expand_phrases( $content_with_expanded_
 if ( length( $html_code ) gt 100 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
 $being_tested = "found specific expanded text, including list items -- ";
 $test_number_count ++;
 if ( ( $html_code =~ /List of participants/ ) && ( $html_code =~ /Nicole/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };

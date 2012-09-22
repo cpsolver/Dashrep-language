@@ -21,12 +21,12 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 2.65
+Version 2.70
 
 =cut
 
 #  uncomment-for-cpan-version-begin
-# our $VERSION = '2.65';
+# our $VERSION = '2.70';
 
 
 #  uncomment-for-cpan-version-end
@@ -2289,7 +2289,7 @@ sub dashrep_expand_parameters
                         $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
                         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                         {
-                            $global_trace_log .= "{{trace; Error: During the action copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                            $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
                             $accumulated_text .= $remaining_text ;
                             $remaining_text = "" ;
                             last ;
@@ -3420,31 +3420,13 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  empty-or-nonempty-word  <--- Deprecated
 #  yes-or-no-empty-word
+
+#  empty-or-nonempty-word  <--- Deprecated
 
         if ( ( $action_name eq "empty-or-nonempty-word" ) || ( $action_name eq "yes-or-no-empty-word" ) )
         {
-            if ( $number_of_operands != 1 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
-                {
-                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( $operand_one =~ /[^ \n\t]/ )
-            {
-                if ( $action_name eq "empty-or-nonempty-word" )
-                {
-                    $result_text = "nonempty" ;
-                } else
-                {
-                    $result_text = "no" ;
-                }
-            } else
+            if ( $number_of_operands == 0 )
             {
                 if ( $action_name eq "empty-or-nonempty-word" )
                 {
@@ -3452,6 +3434,15 @@ sub dashrep_expand_parameters
                 } else
                 {
                     $result_text = "yes" ;
+                }
+            } else
+            {
+                if ( $action_name eq "empty-or-nonempty-word" )
+                {
+                    $result_text = "nonempty" ;
+                } else
+                {
+                    $result_text = "no" ;
                 }
             }
             $replacement_text = $text_begin . $result_text . $text_end ;
@@ -3553,8 +3544,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  same-or-not-same-two-words  <--- Deprecated
 #  yes-or-no-same-two-words
+
+#  same-or-not-same-two-words  <--- Deprecated
 
         if ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "yes-or-no-same-two-words" ) )
         {
