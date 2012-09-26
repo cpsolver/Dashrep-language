@@ -8472,6 +8472,7 @@ sub dashrep_internal_endless_loop_info
         $endless_loop_debug_info_filename = "output_endless_loop_debug_info.txt" ;
         if ( open ( OUTFILE , ">" . $endless_loop_debug_info_filename ) )
         {
+            print OUTFILE "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n\n" ;
             print OUTFILE "All definitions:\n\n" ;
             foreach $phrase_name ( @list_of_phrases )
             {
