@@ -47,6 +47,7 @@ copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_wordfirst-word-in-phraselast-word-in-phrasefrom-phrase-get-word-numbercount-of-words-in-phrase
 position-of-word-in-phraseyes-or-no-word-in-phrase
+copy-from-phrase-to-phrase-words-from-position-to-position
 copy-from-two-phrases-words-found-in-both-to-phrasecopy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
