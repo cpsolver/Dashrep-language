@@ -7299,8 +7299,8 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  write-all-dashrep-definitions-to-file  <-- Deprecated
-#  write-all-dashrep-phrase-names-to-file  <-- Deprecated
+#  write-all-dashrep-definitions-to-file
+#  write-all-dashrep-phrase-names-to-file
 #  write-dashrep-definitions-listed-in-phrase-to-file
 #
 #  The filename is edited to remove any path
