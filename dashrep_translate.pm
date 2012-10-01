@@ -8589,10 +8589,15 @@ sub dashrep_internal_endless_loop_info
     $highest_usage_counter = - 1 ;
     foreach $item_name ( keys( %global_replacement_count_for_item_name ) )
     {
-        if ( $global_replacement_count_for_item_name{ $item_name } > $highest_usage_counter )
+        $replacement_count = $global_replacement_count_for_item_name{ $item_name } ;
+        if ( $replacement_count > $highest_usage_counter )
         {
-            $highest_usage_counter = $global_replacement_count_for_item_name{ $item_name } ;
+            $highest_usage_counter = $replacement_count ;
             $highest_usage_item_name = $item_name ;
+        }
+        if ( $replacement_count > 10 )
+        {
+            $endless_loop_replacements_with_count{ sprintf( "%d" , $replacement_count ) } .= $item_name . " " ;
         }
     }
 
@@ -8603,6 +8608,10 @@ sub dashrep_internal_endless_loop_info
         if ( open ( OUTFILE , ">" . $endless_loop_debug_info_filename ) )
         {
             print OUTFILE "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n\n" ;
+            foreach $replacement_count ( sort( keys( %endless_loop_replacements_with_count ) ) )
+            {
+                print OUTFILE "Had " . $replacement_count . " replacements:" . "\n" . $endless_loop_replacements_with_count{ $replacement_count } . "\n\n" ;
+            }
             print OUTFILE "All definitions:\n\n" ;
             foreach $phrase_name ( @list_of_phrases )
             {
