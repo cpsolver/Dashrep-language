@@ -981,7 +981,6 @@ sub dashrep_expand_parameters
     my $operand_two ;
     my $source_phrase_name ;
     my $target_phrase_name ;
-    my $comparison_type ;
     my $first_number_text ;
     my $second_number_text ;
     my $first_number ;
@@ -1101,6 +1100,19 @@ sub dashrep_expand_parameters
     my $ending_character_position ;
     my $unique_value_as_text ;
     my $text_to_insert_as_replacement ;
+    my $phrase_being_edited ;
+    my $text_being_edited ;
+    my $remaining_text ;
+    my $accumulated_text ;
+    my $possible_phrase_name ;
+    my $length_of_string_to_be_replaced ;
+    my $word_number_begin ;
+    my $word_number_end ;
+    my $word_count ;
+    my $separator ;
+    my $ending_first_count ;
+    my $starting_second_count ;
+    my $number_of_characters_to_get ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -6427,7 +6439,6 @@ sub dashrep_file_actions
     my $text_begin ;
     my $text_end ;
     my $string_to_find ;
-    my $word_to_find ;
     my $length_of_string ;
     my $sequence_of_phrases ;
     my $directory ;
@@ -6449,6 +6460,11 @@ sub dashrep_file_actions
     my $line_number_in_text ;
     my $full_path ;
     my $temp_text ;
+    my $list_of_words ;
+    my $word ;
+    my $matching_text ;
+    my $possible_match ;
+    my $storage_name ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
 
@@ -8378,11 +8394,14 @@ sub dashrep_linewise_translate
 
 =head2 dashrep_web_framework
 
-Reads Dashrep code from a local bootstrap file
-(named "dashdef_bootstrap.txt"), does the
-specified Dashrep actions and expansions,
-and returns the resulting web page.  If the
-resulting page does not look like a web page,
+Reads Dashrep code from a file that contains
+Dashrep definitions, or if that file is not
+specified or does not exist, then a local
+bootstrap file named "dashdef_bootstrap.txt" is
+read, then the specified Dashrep actions and
+expansions are done, and then the resulting
+web page is returned.
+If the resulting page does not look like a web page,
 an error web page is returned, and the error page
 includes an error number that indicates which
 error file (in a subdirectory named "errors")
@@ -8407,10 +8426,14 @@ sub dashrep_web_framework
     my $error_file_prefix ;
     my $time_in_epoch_seconds ;
     my $last_digits_of_epoch_seconds ;
-    my $bootstrap_results ;
     my $intermediate_results ;
     my $results_before_generating_web_page ;
     my $results_after_generating_web_page ;
+    my $path_to_file_containing_definitions ;
+    my $file_containing_definitions ;
+    my $phrase_to_expand ;
+    my $bootstrap_results_step_1 ;
+    my $bootstrap_results_step_2 ;
 
 
 #-----------------------------------------------
@@ -8441,13 +8464,28 @@ sub dashrep_web_framework
 
 
 #-----------------------------------------------
-#  Load Dashrep definitions from the local
-#  (same-directory) "dashdef_bootstrap.txt" file,
-#  and do the expansion that is specified in
-#  that code, which should load additional
+#  Determine which file to read for the Dashrep
+#  definitions.
+
+    $path_to_file_containing_definitions = "" ;
+    $file_containing_definitions = "dashdef_bootstrap.txt" ;
+    if ( ( exists( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+    {
+        $file_containing_definitions = $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ;
+    }
+    if ( ( exists( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+    {
+        $path_to_file_containing_definitions = $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ;
+    }
+
+
+#-----------------------------------------------
+#  Load Dashrep definitions from the specified
+#  file, and do the expansion that is specified
+#  in that code, which should load additional
 #  definitions from additional files.
 
-    $phrase_to_expand = "[-get-definitions-from-file dashdef_bootstrap.txt-]" ;
+    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-]" ;
     $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
@@ -8585,6 +8623,12 @@ sub dashrep_internal_endless_loop_info
     my $item_name ;
     my $highest_usage_counter ;
     my $highest_usage_item_name ;
+    my $replacement_count ;
+    my $endless_loop_replacements_with_count ;
+    my $list_of_phrases ;
+    my $endless_loop_debug_info_filename ;
+    my $phrase_name ;
+    my $counter ;
 
     $highest_usage_counter = - 1 ;
     foreach $item_name ( keys( %global_replacement_count_for_item_name ) )
