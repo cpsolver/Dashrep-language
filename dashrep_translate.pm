@@ -8485,16 +8485,11 @@ sub dashrep_web_framework
 #  in that code, which should load additional
 #  definitions from additional files.
 
-    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-]" ;
+    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-][-bootstrap-start-]" ;
     $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
     {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $global_dashrep_replacement{ "list-of-phrases-newly-defined" } . "\n======\n\n" . "Results from bootstrap step 1:\n\n" . $bootstrap_results_step_1 . "\n======\n\n" ;
-    }
-    $bootstrap_results_step_2 = &dashrep_expand_parameters( "[-bootstrap-start-]" );
-    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-or-off" } eq "on" )
-    {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Results from bootstrap step 2:\n\n" . $bootstrap_results_step_2 . "\n======\n\n" ;
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $path_to_file_containing_definitions . "\n======\n\n" . "Results from bootstrap:\n\n" . $bootstrap_results . "\n======\n\n" ;
     }
 
 
