@@ -2257,9 +2257,13 @@ sub dashrep_expand_parameters
             }
             if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
             {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                {
+                    $global_trace_log .= "{{trace; warning, action " . $action_name . " is deprecated" . "}}\n" ;
+                }
                 $character_to_replace = $operand_three ;
                 $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
-                if ( ( index( $text_to_insert , $character_to_replace ) >= 0 ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
+                if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
@@ -2283,7 +2287,7 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                if ( ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) || ( ( length( $string_to_be_replaced ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) ) )
+                if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) ) || ( ( length( $string_to_be_replaced ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) ) )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
@@ -5277,7 +5281,7 @@ sub dashrep_expand_parameters
                     } else
                     {
                         $text_to_insert_as_replacement = $global_dashrep_replacement{ $operand_three } ;
-                        if ( ( index( $text_to_insert_as_replacement , $character_to_replace ) >= 0 ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert_as_replacement ) >= 0 ) ) )
+                        if ( ( ( length( $text_to_insert_as_replacement ) > 0 ) && ( index( $text_to_insert_as_replacement , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert_as_replacement ) >= 0 ) ) )
                         {
                             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                             {
