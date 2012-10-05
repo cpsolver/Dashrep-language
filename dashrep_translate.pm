@@ -2267,7 +2267,7 @@ sub dashrep_expand_parameters
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
+                        $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
                     }
                 } else
                 {
@@ -2291,7 +2291,7 @@ sub dashrep_expand_parameters
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning: replacement phrase contains string to replace, so no replacements done}}\n" ;
+                        $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
                     }
                 } else
                 {
@@ -3187,10 +3187,13 @@ sub dashrep_expand_parameters
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $text_for_value = "0" ;
             $phrase_length = length( $string_to_search ) + 1 ;
-            $position = index( $string_to_search , $string_to_find ) + 1 ;
-            if ( $position > 0 )
+            if ( $phrase_length > 0 )
             {
-                $text_for_value = sprintf( "%d" , $position ) ;
+                $position = index( $string_to_search , $string_to_find ) + 1 ;
+                if ( $position > 0 )
+                {
+                    $text_for_value = sprintf( "%d" , $position ) ;
+                }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -5285,7 +5288,7 @@ sub dashrep_expand_parameters
                         {
                             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                             {
-                                $global_trace_log .= "{{trace; warning: replacement phrase contains character to replace, so no replacements done}}\n" ;
+                                $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert_as_replacement . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
                             }
                         } else
                         {
