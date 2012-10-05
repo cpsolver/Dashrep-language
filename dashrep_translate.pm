@@ -2287,11 +2287,17 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) ) || ( ( length( $string_to_be_replaced ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) ) )
+                if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
                     {
-                        $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
+                        $global_trace_log .= "{{trace; warning: replacement string (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
+                    }
+                } elsif ( ( length( $string_to_be_replaced ) >= length( $text_to_insert ) ) && ( length( $text_to_insert ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) )
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-or-off" } eq "on" )
+                    {
+                        $global_trace_log .= "{{trace; warning: string to replace (" . $string_to_be_replaced . ") contains replacement string (" . $text_to_insert . "), so no replacements done}}\n" ;
                     }
                 } else
                 {
