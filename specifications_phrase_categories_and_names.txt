@@ -26,7 +26,8 @@ append-from-phrase-to-phrase-no-space
 append-new-line-to-phrase
 
 category_decision
-calculate-if-phrase-emptyyes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-same-two-phrasesyes-if-not-no
+calculate-if-phrase-emptycalculate-if-empty-then-use-phrase
+yes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-same-two-phrase-definitionsyes-if-not-no
 no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
