@@ -1224,12 +1224,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "test capture directives on same line -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "on" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-tracking-on-or-off" , "on" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_special_phrases( "test-abc capture-begin-here def ghi capture-end-here test-jkl" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
@@ -1287,12 +1281,6 @@ $captured_text = &dashrep_translate::dashrep_get_replacement( "captured-text" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 # $captured_text = &dashrep_get_replacement( "captured-text" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-tracking-on-or-off" , "off" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-tracking-on-or-off" , "off" );
 #  uncomment-for-cpan-version-end
 if ( ( $accumulated_string =~ /test-abc *test-jkl/ ) && ( $captured_text =~ /def +ghi/ ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
