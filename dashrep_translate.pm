@@ -3927,16 +3927,13 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_one !~ /^[0-9]+$/ ) || ( $operand_two !~ /^[0-9]+$/ ) )
+            $numeric_value = ( $operand_one + 0 ) - ( $operand_two + 0 ) ;
+            if ( $numeric_value == 0 )
             {
-                $numeric_value = ( $operand_one + 0 ) - ( $operand_two + 0 ) ;
-                if ( $numeric_value == 0 )
-                {
-                    $text_for_value = "0" ;
-                } else
-                {
-                    $text_for_value = sprintf( "%f" , $numeric_value ) ;
-                }
+                $text_for_value = "0" ;
+            } else
+            {
+                $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
