@@ -1613,6 +1613,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-uppercase-only
 #  copy-from-phrase-to-phrase-and-remove-extra-spaces
 #  copy-from-phrase-to-phrase-and-numeric-sort-by-word
+#  copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
 #  copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here
 #  copy-from-phrase-to-phrase-and-split-into-list-of-characters
 #  copy-from-phrase-to-phrase-but-remove-first-word
@@ -1624,7 +1625,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-hyphens  <--- Deprecated
 #  copy-from-phrase-to-phrase-and-replace-newlines  <--- Deprecated
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -1719,6 +1720,14 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ +$// ;
                 @list = split( / +/ , $temp_text ) ;
                 @list_of_sorted_numbers = sort { $a <=> $b } @list ;
+                $temp_text = join( " " , @list_of_sorted_numbers ) ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" )
+            {
+                $temp_text =~ s/[\n\r\t]+/ /sg ;
+                $temp_text =~ s/^ +// ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
+                @list_of_sorted_numbers = sort( @list ) ;
                 $temp_text = join( " " , @list_of_sorted_numbers ) ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" )
             {
