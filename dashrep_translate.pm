@@ -7285,12 +7285,17 @@ sub dashrep_file_actions
             {
                 $use_two_spaces_as_delimiter = "no" ;
             }
+            $name_of_phrase_that_contains_list_of_index_keys = $phrase_naming_convention_for_column[ 0 ] ;
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
                 if ( $use_two_spaces_as_delimiter eq "yes" )
                 {
                     @text_item_in_column = split( /  +/ , $input_line ) ;
+                    if ( $text_item_in_column[ 0 ] =~ / / )
+                    {
+                        $text_item_in_column[ 0 ] =~ s/ +/_/g ;
+                    }
                 } else
                 {
                     @text_item_in_column = split( /[\t ]/ , $input_line ) ;
@@ -7308,10 +7313,10 @@ sub dashrep_file_actions
                         if ( $column_pointer == 0 )
                         {
                             $index_name = $text_item_in_column[ $column_pointer ] ;
-                            $global_dashrep_replacement{ $phrase_naming_convention_for_column } .= " " . $index_name ;
+                            $global_dashrep_replacement{ $name_of_phrase_that_contains_list_of_index_keys } .= " " . $index_name ;
                         } else
                         {
-                            $global_dashrep_replacement{ $phrase_naming_convention_for_column[ $column_pointer ] . "-for-" . $index_name } = $text_item_in_column[ $column_pointer ] ;
+                            $global_dashrep_replacement{ $phrase_naming_convention_for_this_column . "-for-" . $index_name } = $text_item_in_column[ $column_pointer ] ;
                         }
                     }
                 }
