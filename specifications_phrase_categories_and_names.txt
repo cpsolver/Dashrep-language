@@ -32,6 +32,7 @@ yes-or-no-empty-wordyes-or-no-empty-phraseyes-or-no-same-two-wordsyes-or-no-s
 no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
+if-word-is-no-then-first-else-second
 
 category_numericzero-one-multiple
 zero-or-nonzeronumeric-addnumeric-minusnumeric-multiplynumeric-divide-bynumeric-maximumnumeric-minimumnumeric-integernumeric-absolutenumeric-equal-greater-less-compareauto-increment
