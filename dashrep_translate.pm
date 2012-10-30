@@ -4595,7 +4595,7 @@ sub dashrep_expand_parameters
                 }
             } else
             {
-                $text_for_value = "[-how-to-calculate-" . $operand_one . "-]" ;
+                $text_for_value = "[-calculate-" . $operand_one . "-]" ;
                 if ( $action_name eq "calculate-if-empty-then-use-here" )
                 {
                     $text_for_value .= "[-" . $operand_one . "-]" ;

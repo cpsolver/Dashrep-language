@@ -393,7 +393,7 @@ test-of-calculate-if-empty:
 value-of-pi:
 --------
 
-how-to-calculate-value-of-pi:
+calculate-value-of-pi:
 [-value-of-pi = 3.14159-]
 --------
 
