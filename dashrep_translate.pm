@@ -1270,6 +1270,7 @@ sub dashrep_expand_parameters
             }
             $replacement_text = $text_begin . " " . $text_end ;
             $global_replacement_count_for_item_name{ $text_parameter_value } ++ ;
+            $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             if ( $global_replacement_count_for_item_name{ $text_parameter_value } == 1 )
             {
                 $global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $text_parameter_name ;
@@ -1295,6 +1296,7 @@ sub dashrep_expand_parameters
                 {
                     $replacement_text = $text_begin . $text_parameter . $text_end ;
                     $global_replacement_count_for_item_name{ $text_parameter_content } ++ ;
+                    $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
                     $loop_status_done = $global_false ;
 
                     #  Deprecated, remove later.
@@ -2389,6 +2391,8 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; expanded phrase " . $operand_one . " into phrase " . $operand_two . "}}\n" ;
                 }
+                $global_replacement_count_for_item_name{ $operand_one } ++ ;
+                $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             } else
             {
                 $global_dashrep_replacement{ $operand_two } = "" ;
@@ -4409,6 +4413,8 @@ sub dashrep_expand_parameters
                         $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-list-info-temporary-storage-separator-]" ;
                     }
                     $text_for_value = "" . $text_that_expands_to_generate_list . "" ;
+                    $global_replacement_count_for_item_name{ "action generate list" } ++ ;
+                    $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
@@ -4600,6 +4606,8 @@ sub dashrep_expand_parameters
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $global_replacement_count_for_item_name{ "action how to calculate" } ++ ;
+            $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             next ;
         }
 
@@ -4660,6 +4668,8 @@ sub dashrep_expand_parameters
                 }
             }
             $replacement_text = $text_begin . $text_inserted . $text_end ;
+            $global_replacement_count_for_item_name{ "action escape" } ++ ;
+            $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             next ;
         }
 
