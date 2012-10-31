@@ -8572,7 +8572,15 @@ sub dashrep_web_framework
 #  Do the processing needed before generating a
 #  web page.  Typically this processing interprets
 #  what the user has requested.
+#
+#  If the endless loop counter has exceeded its
+#  limit, allow an additional 1000 loops for this
+#  step, so that a web page can still be delivered.
 
+    if ( $global_endless_loop_counter >= $global_endless_loop_counter_limit )
+    {
+        $global_endless_loop_counter = $global_endless_loop_counter_limit - 1000 ;
+    }
     $phrase_to_expand = "[-do-before-generating-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $results_before_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
@@ -8585,7 +8593,15 @@ sub dashrep_web_framework
 #-----------------------------------------------
 #  Generate the web page by expanding the
 #  definition of the phrase "generated-web-page".
+#
+#  If the endless loop counter has exceeded its
+#  limit, allow an additional 1000 loops for this
+#  step, so that a web page can still be delivered.
 
+    if ( $global_endless_loop_counter >= $global_endless_loop_counter_limit )
+    {
+        $global_endless_loop_counter = $global_endless_loop_counter_limit - 1000 ;
+    }
     $phrase_to_expand = "[-generated-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $global_dashrep_replacement{ "web-framework-generated-web-page" } = &dashrep_expand_phrases( $intermediate_results );
@@ -8600,7 +8616,15 @@ sub dashrep_web_framework
 #  writing the trace messages, and expanding
 #  translation-safe phrases into their HTML-safe
 #  definitions.
+#
+#  If the endless loop counter has exceeded its
+#  limit, allow an additional 1000 loops for this
+#  step, so that a web page can still be delivered.
 
+    if ( $global_endless_loop_counter >= $global_endless_loop_counter_limit )
+    {
+        $global_endless_loop_counter = $global_endless_loop_counter_limit - 1000 ;
+    }
     $phrase_to_expand = "[-do-after-generating-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $results_after_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
