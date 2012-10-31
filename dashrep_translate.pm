@@ -1222,7 +1222,13 @@ sub dashrep_expand_parameters
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
-            die "Error: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
@@ -1313,6 +1319,8 @@ sub dashrep_expand_parameters
                 {
                     $replacement_text = $text_begin . " " . $text_end ;
                     $loop_status_done = $global_false ;
+                    $global_replacement_count_for_item_name{ "undefined or empty parameter named " . $text_parameter_content } ++ ;
+                    $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
                     if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" ) && ( $text_parameter_content =~ /[^ ]/ ) )
                     {
                         $global_trace_log .= "{{trace; phrase " . $text_parameter . " is empty, so replaced with single space" . "}}\n";
@@ -5475,7 +5483,13 @@ sub dashrep_expand_parameters
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
-            die "Error: The dashrep_expand_parameters subroutine encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
@@ -5600,7 +5614,13 @@ sub dashrep_generate_lists
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
-            die "Error: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
@@ -5745,7 +5765,13 @@ sub dashrep_generate_lists
                 $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
                 {
-                    die "Error: The dashrep_generate_lists subroutine encountered an endless loop.  Stopped" ;
+#  remove-from-cpan-version-begin
+                    warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#                    carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+                    return 0 ;
                 }
 
 
@@ -5910,7 +5936,13 @@ sub dashrep_expand_phrases_except_special
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
-            die "Error: The dashrep_expand_phrases_except_special subroutine encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
@@ -8027,7 +8059,13 @@ sub dashrep_xml_tags_to_dashrep
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
-            die "Error: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
@@ -8392,7 +8430,13 @@ sub dashrep_linewise_translate
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
-            die "Error: The dashrep_linewise_translate subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_linewise_translate subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_linewise_translate subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
         }
 
 
