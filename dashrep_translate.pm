@@ -373,12 +373,18 @@ sub dashrep_define
         $global_dashrep_replacement{ $phrase_name } = $expanded_text ;
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
+            warn "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
+#            carp "Warning: Call to dashrep_define subroutine does not have exactly two parameters." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
 
@@ -439,12 +445,18 @@ sub dashrep_import_replacements
         $replacements_text_to_import = $_[ 0 ] ;
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
+            warn "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
+#            carp "Warning: Call to dashrep_import_replacements subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
     if ( not( defined( $replacements_text_to_import ) ) )
@@ -653,13 +665,19 @@ sub dashrep_import_replacements
         {
             if ( $input_string eq $definition_name )
             {
-                 $global_dashrep_replacement{ $definition_name } = "ERROR: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop." . "\n" ;
+                $global_dashrep_replacement{ $definition_name } = "ERROR: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop." . "\n" ;
+                if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+                {
+                    $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
+                } else
+                {
 #  remove-from-cpan-version-begin
-                 warn "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
+                    warn "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#                 carp "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
+#                    carp "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
 #  uncomment-for-cpan-version-end
+                }
             } else
             {
                 if ( $global_dashrep_replacement{ $definition_name } ne "" )
@@ -784,12 +802,18 @@ sub dashrep_get_list_of_phrases
 
     if ( scalar( @_ ) != 0 )
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to dashrep_get_list_of_phrases subroutine does not have exactly zero parameters." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_define subroutine does not have exactly zero parameters." ;
+            warn "Warning: Call to dashrep_get_list_of_phrases subroutine does not have exactly zero parameters." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_define subroutine does not have exactly zero parameters." ;
+#            carp "Warning: Call to dashrep_get_list_of_phrases subroutine does not have exactly zero parameters." ;
 #  uncomment-for-cpan-version-end
+        }
         @list_of_phrases = ( ) ;
         return @list_of_phrases ;
     }
@@ -835,12 +859,18 @@ sub dashrep_delete
         delete( $global_dashrep_replacement{ $phrase_name } );
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
+            warn "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
+#            carp "Warning: Call to dashrep_delete subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
 
@@ -899,12 +929,18 @@ sub dashrep_delete_all
         &initialize_special_phrases( ) ;
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to dashrep_delete_all subroutine does not have exactly one parameter." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
+            warn "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
+#            carp "Warning: Call to dashrep_delete_all subroutine does not have exactly zero parameters." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
 
@@ -1222,12 +1258,18 @@ sub dashrep_expand_parameters
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
+            if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+            } else
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+            }
             return 0 ;
         }
 
@@ -1397,6 +1439,8 @@ sub dashrep_expand_parameters
         {
             $global_trace_log .= "{{trace; action " . $action_name . " has " . $number_of_operands . " operands: " . $object_of_action . "}}\n";
         }
+        $global_replacement_count_for_item_name{ "action " . $action_name } ++ ;
+        $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
 
 
 #-----------------------------------------------
@@ -5483,12 +5527,18 @@ sub dashrep_expand_parameters
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
+            if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+            } else
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+            }
             return 0 ;
         }
 
@@ -5614,12 +5664,18 @@ sub dashrep_generate_lists
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
+            if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+            } else
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+            }
             return 0 ;
         }
 
@@ -5765,12 +5821,18 @@ sub dashrep_generate_lists
                 $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
                 {
+                    if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+                    {
+                        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                    } else
+                    {
 #  remove-from-cpan-version-begin
-                    warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                        warn "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#                    carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                        carp "Warning: The dashrep_generate_lists subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+                    }
                     return 0 ;
                 }
 
@@ -5936,12 +5998,18 @@ sub dashrep_expand_phrases_except_special
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
+            if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+            } else
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+            }
             return 0 ;
         }
 
@@ -6557,12 +6625,18 @@ sub dashrep_file_actions
         $input_text = $_[ 0 ] ;
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+            warn "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+#            carp "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
 
@@ -7822,12 +7896,18 @@ sub dashrep_xml_tags_to_dashrep
         $input_text = $_[ 0 ] ;
     } else
     {
+        if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
+        } else
+        {
 #  remove-from-cpan-version-begin
-        warn "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
+            warn "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
+#            carp "Warning: Call to xml_tags_to_dashrep subroutine does not have exactly one parameter." ;
 #  uncomment-for-cpan-version-end
+        }
         return 0 ;
     }
 
@@ -8059,12 +8139,18 @@ sub dashrep_xml_tags_to_dashrep
         }
         if ( $global_endless_loop_counter > ( $global_endless_loop_counter_limit + 100 ) )
         {
+            if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+            } else
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_xml_tags_to_dashrep subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
+            }
             return 0 ;
         }
 
@@ -8556,6 +8642,14 @@ sub dashrep_web_framework
 
 
 #-----------------------------------------------
+#  Specify that the web framework is being used,
+#  so that error messages are not written to
+#  the standard output, or to the error output.
+
+    $global_dashrep_replacement{ "web-framework-in-use" } = "yes" ;
+
+
+#-----------------------------------------------
 #  If specified, get a path for a possible
 #  error file.  Otherwise use a default of a
 #  sub-directory named "errors".
@@ -8680,9 +8774,8 @@ sub dashrep_web_framework
 
 #-----------------------------------------------
 #  If the generated web page looks reasonable,
-#  return with it.  The page is sent from the
-#  user's Perl code with a simple "print"
-#  command.
+#  return with it.  The page is sent to the
+#  browser with a simple "print" command.
 
     $generated_web_page = $global_dashrep_replacement{ "web-framework-generated-web-page" } ;
     if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
@@ -8808,12 +8901,18 @@ sub dashrep_internal_endless_loop_info
         }
     }
 
+    if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
+    {
+        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+    } else
+    {
 #  remove-from-cpan-version-begin
-    warn "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+        warn "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#    carp "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
+#        carp "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n" ;
 #  uncomment-for-cpan-version-end
+    }
 
 
 #-----------------------------------------------
