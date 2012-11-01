@@ -2443,8 +2443,6 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; expanded phrase " . $operand_one . " into phrase " . $operand_two . "}}\n" ;
                 }
-                $global_replacement_count_for_item_name{ $operand_one } ++ ;
-                $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             } else
             {
                 $global_dashrep_replacement{ $operand_two } = "" ;
@@ -4465,8 +4463,6 @@ sub dashrep_expand_parameters
                         $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-list-info-temporary-storage-separator-]" ;
                     }
                     $text_for_value = "" . $text_that_expands_to_generate_list . "" ;
-                    $global_replacement_count_for_item_name{ "action generate list" } ++ ;
-                    $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
@@ -4658,8 +4654,6 @@ sub dashrep_expand_parameters
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
-            $global_replacement_count_for_item_name{ "action how to calculate" } ++ ;
-            $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             next ;
         }
 
@@ -4720,8 +4714,6 @@ sub dashrep_expand_parameters
                 }
             }
             $replacement_text = $text_begin . $text_inserted . $text_end ;
-            $global_replacement_count_for_item_name{ "action escape" } ++ ;
-            $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
             next ;
         }
 
@@ -8694,11 +8686,9 @@ sub dashrep_web_framework
 
 #-----------------------------------------------
 #  Load Dashrep definitions from the specified
-#  file, and do the expansion that is specified
-#  in that code, which should load additional
-#  definitions from additional files.
+#  file.
 
-    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-][-bootstrap-start-]" ;
+    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-]" ;
     $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
     if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } eq "yes" )
     {
@@ -8709,16 +8699,9 @@ sub dashrep_web_framework
 #-----------------------------------------------
 #  Do the processing needed before generating a
 #  web page.  Typically this processing interprets
-#  what the user has requested.
-#
-#  If the endless loop counter has exceeded its
-#  limit, allow an additional 1000 loops for this
-#  step, so that a web page can still be delivered.
+#  what the user has requested.  It might involve
+#  loading additional Dashrep definitions.
 
-    if ( $global_endless_loop_counter >= $global_endless_loop_counter_limit )
-    {
-        $global_endless_loop_counter = $global_endless_loop_counter_limit - 1000 ;
-    }
     $phrase_to_expand = "[-do-before-generating-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
     $results_before_generating_web_page = &dashrep_expand_phrases( $intermediate_results );
