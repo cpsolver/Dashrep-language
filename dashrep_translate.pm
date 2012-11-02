@@ -1440,6 +1440,7 @@ sub dashrep_expand_parameters
             $global_trace_log .= "{{trace; action " . $action_name . " has " . $number_of_operands . " operands: " . $object_of_action . "}}\n";
         }
         $global_replacement_count_for_item_name{ "action " . $action_name } ++ ;
+        $global_replacement_count_for_item_name{ "text parameter content " . $text_parameter_content } ++ ;
         $global_replacement_count_for_item_name{ "expand parameters subroutine" } -- ;
 
 
@@ -4357,6 +4358,7 @@ sub dashrep_expand_parameters
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
                 $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " is empty or does not exist" . "}}\n" ;
@@ -4365,6 +4367,7 @@ sub dashrep_expand_parameters
             } elsif ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_two . " is empty or does not exist" . "}}\n" ;
@@ -4373,6 +4376,7 @@ sub dashrep_expand_parameters
             } elsif ( $operand_one eq $operand_two )
             {
                 $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operands " . $operand_one . " and " . $operand_two . " are the same, which is meaningless" . "}}\n" ;
@@ -4384,6 +4388,7 @@ sub dashrep_expand_parameters
                 $template_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
+                $global_replacement_count_for_item_name{ "generating list named " . $generated_list_name } ++ ;
                 $text_that_expands_to_generate_list = "[-copy-from-phrase-to-phrase empty-text " . $generated_list_name . "-]" ;
                 $parameter_word_list =~ s/^ +// ;
                 $parameter_word_list =~ s/ +$// ;
@@ -4409,6 +4414,7 @@ sub dashrep_expand_parameters
                     {
                         $parameter = $list_of_parameters[ $list_position - 1 ] ;
                         $item_number = sprintf( "%d" , $list_position ) ;
+                        $global_replacement_count_for_item_name{ "next item in list named " . $generated_list_name } ++ ;
                         if ( ( $parameter !~ /\[-/ ) && ( $parameter !~ /-\[/ ) )
                         {
                             if ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" )
@@ -5646,7 +5652,7 @@ sub dashrep_generate_lists
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
-        $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
+        $global_replacement_count_for_item_name{ "generate list subroutine , list named " . $list_name } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -5810,7 +5816,7 @@ sub dashrep_generate_lists
 #  Protect against an endless loop.
 
                 $global_endless_loop_counter ++ ;
-                $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
+                $global_replacement_count_for_item_name{ "generate list subroutine , list named " . $list_name } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
                 {
                     if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
@@ -5980,7 +5986,7 @@ sub dashrep_expand_phrases_except_special
 #  Check for an endless loop.
 
         $global_endless_loop_counter ++ ;
-        $global_replacement_count_for_item_name{ "generate list subroutine" } ++ ;
+        $global_replacement_count_for_item_name{ "expand phrases except special" } ++ ;
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
         {
             &dashrep_internal_endless_loop_info( ) ;
@@ -8855,7 +8861,7 @@ sub dashrep_internal_endless_loop_info
         }
         if ( $replacement_count > 10 )
         {
-            $endless_loop_replacements_with_count{ sprintf( "%d" , $replacement_count ) } .= $item_name . " " ;
+            $endless_loop_replacements_with_count{ sprintf( "%d" , $replacement_count ) } .= $item_name . "\n" ;
         }
     }
 
@@ -8866,7 +8872,7 @@ sub dashrep_internal_endless_loop_info
         if ( open ( OUTFILE , ">" . $endless_loop_debug_info_filename ) )
         {
             print OUTFILE "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n\n" ;
-            foreach $replacement_count ( sort( keys( %endless_loop_replacements_with_count ) ) )
+            foreach $replacement_count ( reverse( sort( keys( %endless_loop_replacements_with_count ) ) ) )
             {
                 print OUTFILE "Had " . $replacement_count . " replacements:" . "\n" . $endless_loop_replacements_with_count{ $replacement_count } . "\n\n" ;
             }
