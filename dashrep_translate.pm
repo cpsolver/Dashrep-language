@@ -4157,8 +4157,9 @@ sub dashrep_expand_parameters
 #  numeric-cosine
 #  numeric-logarithm-base-e
 #  numeric-logarithm-base-10
+#  numeric-y-map-tile-number-based-on-latitude
 
-        if ( ( $action_name eq "numeric-integer" ) || ( $action_name eq "numeric-sine" ) || ( $action_name eq "numeric-cosine" ) || ( $action_name eq "numeric-logarithm-base-e" ) || ( $action_name eq "numeric-logarithm-base-10" ) )
+        if ( ( $action_name eq "numeric-integer" ) || ( $action_name eq "numeric-sine" ) || ( $action_name eq "numeric-cosine" ) || ( $action_name eq "numeric-logarithm-base-e" ) || ( $action_name eq "numeric-logarithm-base-10" ) || ( $action_name eq "numeric-y-map-tile-number-based-on-latitude" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -4239,6 +4240,42 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "numeric-logarithm-base-10" )
             {
                 $result_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                }
+            } elsif ( $action_name eq "numeric-y-map-tile-number-based-on-latitude" )
+            {
+                if ( ( $operand_one > 85.0 ) || ( $operand_one < -85.0 ) )
+                {
+                    $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , angle is outside of valid range: " . $operand_one . "}}\n" ;
+                    }
+                    next ;
+                }
+                if ( ( exists( $global_dashrep_replacement{ "numeric-map-tile-zoom" } ) ) && ( $global_dashrep_replacement{ "numeric-map-tile-zoom" } =~ /^[0-9]+$/ ) )
+                {
+                    $map_tile_zoom = $1 + 0 ;
+                } else
+                {
+                    $map_tile_zoom = 16 ;
+                }
+                $map_tile_n = 2 ** $map_tile_zoom ;
+                $pi =  3.1415926535 ;
+                $angle_in_radians = ( $operand_one + 0.0 ) * $pi / 180.0 ;
+                $sine_of_angle = sin( $angle_in_radians ) ;
+                $cosine_of_angle = cos( $angle_in_radians ) ;
+                $result_value = $map_tile_n * ( 1.0 - ( log( ( $sine_of_angle / $cosine_of_angle ) + ( 1 / $cosine_of_angle ) ) / $pi ) ) / 2.0 ;
                 if ( $result_value == 0 )
                 {
                     $text_for_value = "0" ;
