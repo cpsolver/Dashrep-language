@@ -1072,7 +1072,7 @@ sub dashrep_expand_parameters
     my $separator_one ;
     my $separator_two ;
     my $numeric_value ;
-    my $operand_value ;
+    my $result_value ;
     my $phrase_definition_to_modify ;
     my $character_to_replace ;
     my $character_position ;
@@ -4182,13 +4182,13 @@ sub dashrep_expand_parameters
             }
             if ( $action_name eq "numeric-integer" )
             {
-                $operand_value = int( $operand_one + 0 ) ;
-                if ( $operand_value == 0 )
+                $result_value = int( $operand_one + 0 ) ;
+                if ( $result_value == 0 )
                 {
                     $text_for_value = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%d" , $operand_value ) ;
+                    $text_for_value = sprintf( "%d" , $result_value ) ;
                 }
                 if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
                 {
@@ -4196,20 +4196,60 @@ sub dashrep_expand_parameters
                 }
             } elsif ( $action_name eq "numeric-sine" )
             {
-                $operand_value = sin( $operand_one + 0.0 ) ;
-                $text_for_value = sprintf( "%d" , $operand_value ) ;
+                $result_value = sin( $operand_one + 0.0 ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                }
             } elsif ( $action_name eq "numeric-cosine" )
             {
-                $operand_value = cos( $operand_one + 0.0 ) ;
-                $text_for_value = sprintf( "%d" , $operand_value ) ;
+                $result_value = cos( $operand_one + 0.0 ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                }
             } elsif ( $action_name eq "numeric-logarithm-base-e" )
             {
-                $operand_value = log( $operand_one + 0.0 ) ;
-                $text_for_value = sprintf( "%d" , $operand_value ) ;
+                $result_value = log( $operand_one + 0.0 ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                }
             } elsif ( $action_name eq "numeric-logarithm-base-10" )
             {
-                $operand_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
-                $text_for_value = sprintf( "%d" , $operand_value ) ;
+                $result_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "0" ;
+                } else
+                {
+                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                }
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
@@ -4242,13 +4282,13 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $operand_value = abs( $operand_one + 0 ) ;
-            if ( $operand_value == 0 )
+            $result_value = abs( $operand_one + 0 ) ;
+            if ( $result_value == 0 )
             {
                 $text_for_value = "0" ;
             } else
             {
-                $text_for_value = sprintf( "%d" , $operand_value ) ;
+                $text_for_value = sprintf( "%d" , $result_value ) ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
