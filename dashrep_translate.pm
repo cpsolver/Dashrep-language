@@ -4265,7 +4265,7 @@ sub dashrep_expand_parameters
                 }
                 if ( ( exists( $global_dashrep_replacement{ "numeric-map-tile-zoom" } ) ) && ( $global_dashrep_replacement{ "numeric-map-tile-zoom" } =~ /^[0-9]+$/ ) )
                 {
-                    $map_tile_zoom = $1 + 0 ;
+                    $map_tile_zoom = $global_dashrep_replacement{ "numeric-map-tile-zoom" } + 0 ;
                 } else
                 {
                     $map_tile_zoom = 16 ;
