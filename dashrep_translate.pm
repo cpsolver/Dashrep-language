@@ -4286,6 +4286,7 @@ sub dashrep_expand_parameters
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; for action " . $action_name . " and input value " . $operand_one . " , result is " . $result_value . "}}\n" ;
+                    $global_trace_log .= "{{trace; calculation details, zoom = " . $map_tile_zoom . " , n = " . $map_tile_n . " , angle in radians = " . $angle_in_radians . " , sine = " . $sine_of_angle . " , cosine = " . $cosine_of_angle . " , pi = " . $pi . "}}\n" ;
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
