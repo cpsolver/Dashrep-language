@@ -4271,7 +4271,8 @@ sub dashrep_expand_parameters
                     $map_tile_zoom = 16 ;
                 }
                 $map_tile_n = 2 ** $map_tile_zoom ;
-                $pi =  3.1415926535 ;
+                $pi = 4.0 * atan2( 1.0 , 1.0 ) ;
+                $global_dashrep_replacement{ "numeric-pi" } = sprintf( "%f" , $pi ) ;
                 $angle_in_radians = ( $operand_one + 0.0 ) * $pi / 180.0 ;
                 $sine_of_angle = sin( $angle_in_radians ) ;
                 $cosine_of_angle = cos( $angle_in_radians ) ;
