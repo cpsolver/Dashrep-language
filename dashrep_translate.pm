@@ -1763,16 +1763,16 @@ sub dashrep_expand_parameters
                 $temp_text = uc( $temp_text ) ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" )
             {
-				$remaining_text = ucfirst( $temp_text ) ;
-				$accumulated_text = "" ;
-				while ( $remaining_text =~ /^(.*?[^a-zA-Z])([a-z])(.*)$/s )
-				{
-					$accumulated_text .= $1 ;
-					$letter_to_capitalize = $2 ;
-					$remaining_text = $3 ;
-					$accumulated_text .= uc( $letter_to_capitalize ) ;
-				}
-				$temp_text = $accumulated_text . $remaining_text ;
+                $remaining_text = ucfirst( $temp_text ) ;
+                $accumulated_text = "" ;
+                while ( $remaining_text =~ /^(.*?[^a-zA-Z])([a-z])(.*)$/s )
+                {
+                    $accumulated_text .= $1 ;
+                    $letter_to_capitalize = $2 ;
+                    $remaining_text = $3 ;
+                    $accumulated_text .= uc( $letter_to_capitalize ) ;
+                }
+                $temp_text = $accumulated_text . $remaining_text ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" )
             {
                 $temp_text =~ s/ +/-/sg ;
