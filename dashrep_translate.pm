@@ -8782,18 +8782,21 @@ sub dashrep_linewise_translate
 
 =head2 dashrep_web_framework
 
-Reads Dashrep code from a file that contains
-Dashrep definitions, or if that file is not
-specified or does not exist, then a local
-bootstrap file named "dashdef_bootstrap.txt" is
-read, then the specified Dashrep actions and
-expansions are done, and then the resulting
+Reads Dashrep code and does the specified Dashrep
+actions and expansions, and then the resulting
 web page is returned.
+If the Dashrep code is not directly supplied
+prior to calling this subroutine, that codes
+comes from a local file, the default name for
+which is "dashdef_bootstrap.txt".
 If the resulting page does not look like a web page,
 an error web page is returned, and the error page
 includes an error number that indicates which
-error file (in a subdirectory named "errors")
-contains the error details.
+error file contains the error details.  That
+error file is put into the subdirectory specified
+as the only parameter passed to this subroutine
+(and typically would be "errors"), or else is
+put into the local directory.
 
 =cut
 
@@ -8833,7 +8836,20 @@ sub dashrep_web_framework
 
 
 #-----------------------------------------------
-#  If specified, get a path for a possible
+#  As the default, supply trace messages for
+#  the web framework.  After debugging a new
+#  website, and before expecting high-volume
+#  demand, turn off these trace messages from
+#  within the Dashrep code.  If needed to debug
+#  some portions of Dashrep code, turn on these
+#  messages just before the problematic code.
+
+    $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } = "yes" ;
+
+
+#-----------------------------------------------
+#  If specified -- as the only parameter passed
+#  to this subroutine -- get a path for a possible
 #  error file.  Otherwise use a default of a
 #  sub-directory named "errors".
 
@@ -8848,42 +8864,39 @@ sub dashrep_web_framework
 
 
 #-----------------------------------------------
-#  As the default, supply trace messages for
-#  the web framework.  After debugging a new
-#  website, and before expecting high-volume
-#  demand, turn off these trace messages from
-#  within the Dashrep code.  If needed to debug
-#  some portions of Dashrep code, turn on these
-#  messages just before the problematic code.
+#  If the phrases "do-before-generating-web-page"
+#  and "generated-web-page" are both empty (or
+#  undefined), determine which file to read for
+#  the Dashrep definitions, and then load the
+#  Dashrep definitions from the specified file.
 
-    $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } = "yes" ;
-
-
-#-----------------------------------------------
-#  Determine which file to read for the Dashrep
-#  definitions.
-
-    $path_to_file_containing_definitions = "" ;
-    $file_containing_definitions = "dashdef_bootstrap.txt" ;
-    if ( ( exists( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+    if ( ( ( exists( $global_dashrep_replacement{ "do-before-generating-web-page" } ) ) && ( $global_dashrep_replacement{ "do-before-generating-web-page" } =~ /[^ ]/ ) ) || ( ( exists( $global_dashrep_replacement{ "generated-web-page" } ) ) && ( $global_dashrep_replacement{ "generated-web-page" } =~ /[^ ]/ ) ) )
     {
-        $file_containing_definitions = $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ;
-    }
-    if ( ( exists( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+        if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } eq "yes" )
+        {
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Either do-before-generating-web-page or generated-web-page phrase is defined and non-empty, so not getting definitions from file(s)" . "\n======\n\n" ;
+        }
+    } else
     {
-        $path_to_file_containing_definitions = $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ;
-    }
-
-
-#-----------------------------------------------
-#  Load Dashrep definitions from the specified
-#  file.
-
-    $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-]" ;
-    $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
-    if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } eq "yes" )
-    {
-        $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $path_to_file_containing_definitions . "\n======\n\n" . "Results from bootstrap:\n\n" . $bootstrap_results . "\n======\n\n" ;
+        $path_to_file_containing_definitions = "" ;
+        $file_containing_definitions = "dashdef_bootstrap.txt" ;
+        if ( ( exists( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+        {
+            $file_containing_definitions = $global_dashrep_replacement{ "filename-for-initial-dashrep-definitions" } ;
+        }
+        if ( ( exists( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ) ) && ( $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } =~ /^[^ ]+$/ ) )
+        {
+            $path_to_file_containing_definitions = $global_dashrep_replacement{ "path-to-initial-dashrep-definitions" } ;
+        }
+        if ( $file_containing_definitions =~ /^[^ ]+$/ )
+        {
+            $phrase_to_expand = "[-dashrep-path-prefix-for-file-reading = " . $path_to_file_containing_definitions . "-][-get-definitions-from-file " . $file_containing_definitions . "-]" ;
+            $bootstrap_results_step_1 = &dashrep_expand_parameters( $phrase_to_expand );
+            if ( $global_dashrep_replacement{ "dashrep-web-framework-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "\n======\n" . "Got definitions from bootstrap file:\n\n" . $path_to_file_containing_definitions . "\n======\n\n" . "Results from bootstrap:\n\n" . $bootstrap_results . "\n======\n\n" ;
+            }
+        }
     }
 
 
