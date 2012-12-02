@@ -54,6 +54,7 @@ no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
 if-word-is-no-then-first-else-second
+ignore-action-operands
 
 category_numeric
 zero-one-multiple
