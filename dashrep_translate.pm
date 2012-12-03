@@ -4043,6 +4043,10 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -4330,6 +4334,10 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; calculation details, zoom = " . $map_tile_zoom . " , n = " . $map_tile_n . " , angle in radians = " . $angle_in_radians . " , sine = " . $sine_of_angle . " , cosine = " . $cosine_of_angle . " , pi = " . $pi . "}}\n" ;
                 }
             }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
+            }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
@@ -4368,6 +4376,10 @@ sub dashrep_expand_parameters
             } else
             {
                 $text_for_value = sprintf( "%d" , $result_value ) ;
+            }
+            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
