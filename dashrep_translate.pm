@@ -4044,7 +4044,7 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
             {
                 $text_for_value = $1 ;
             }
@@ -4100,7 +4100,7 @@ sub dashrep_expand_parameters
                 $numeric_value = ( $operand_one + 0 ) / ( $operand_two + 0 ) ;
                 $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
             {
                 $text_for_value = $1 ;
             }
@@ -4186,7 +4186,7 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
             {
                 $text_for_value = $1 ;
             }
@@ -4236,7 +4236,7 @@ sub dashrep_expand_parameters
                 {
                     $text_for_value = sprintf( "%d" , $result_value ) ;
                 }
-                if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+                if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
                 {
                     $text_for_value = $1 ;
                 }
@@ -4335,7 +4335,7 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; calculation details, zoom = " . $map_tile_zoom . " , n = " . $map_tile_n . " , angle in radians = " . $angle_in_radians . " , sine = " . $sine_of_angle . " , cosine = " . $cosine_of_angle . " , pi = " . $pi . "}}\n" ;
                 }
             }
-            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
             {
                 $text_for_value = $1 ;
             }
@@ -4378,7 +4378,7 @@ sub dashrep_expand_parameters
             {
                 $text_for_value = sprintf( "%d" , $result_value ) ;
             }
-            if ( $text_for_value =~ /^([0-9]+)\.0*$/ )
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
             {
                 $text_for_value = $1 ;
             }
