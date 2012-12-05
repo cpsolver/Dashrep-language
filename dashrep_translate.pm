@@ -2888,7 +2888,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_three !~ /^[0-9]+$/ ) || ( ( $operand_three + 0 ) < 1 ) )
+            if ( ( $operand_three !~ /^[\-0-9]+$/ ) || ( ( $operand_three + 0 ) < 1 ) )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -2898,7 +2898,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_four !~ /^[0-9]+$/ ) || ( ( $operand_four + 0 ) < 1 ) )
+            if ( ( $operand_four !~ /^[\-0-9]+$/ ) || ( ( $operand_four + 0 ) < 1 ) )
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
