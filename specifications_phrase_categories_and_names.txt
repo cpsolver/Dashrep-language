@@ -100,6 +100,7 @@ copy-from-phrase-to-phrase-words-from-position-to-position
 count-of-words-in-phrase
 position-of-word-in-phrase
 yes-or-no-word-in-phrase
+position-of-word-in-phrase-within-phrase
 copy-from-two-phrases-words-found-in-both-to-phrase
 copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
