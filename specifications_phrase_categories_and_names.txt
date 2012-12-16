@@ -54,6 +54,8 @@ no-if-not-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
 if-word-is-no-then-first-else-second
+if-first-word-is-yes-then-keep-remainder-else-empty
+if-first-word-is-no-then-keep-remainder-else-empty
 ignore-action-operands
 
 category_numeric
@@ -115,6 +117,7 @@ category_generate_list
 use-template-and-parameters-to-create-simple-list-with-name
 use-template-and-parameters-to-create-full-list-with-name
 counts-from-integer-to-integer-put-into-phrase
+create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase
 every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
 every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
 createlist-first-yes-or-no
