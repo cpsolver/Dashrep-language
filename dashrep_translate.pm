@@ -1893,6 +1893,7 @@ sub dashrep_expand_parameters
             {
                 $temp_text =~ s/^ +//sg ;
                 $temp_text =~ s/ +$//sg ;
+                $temp_text = " " . $temp_text . " " ;
                 $temp_text =~ s/\t+/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/[\n\r]/ linbray /sg ;
