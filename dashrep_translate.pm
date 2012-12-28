@@ -4531,16 +4531,6 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( $operand_one !~ /^[0-9]+$/ )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
-                }
-                next ;
-            }
             $epoch_seconds = time ;
             $text_for_value = sprintf( "%d" , $epoch_seconds ) ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
