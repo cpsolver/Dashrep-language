@@ -3413,6 +3413,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  copy-from-two-phrases-words-found-in-both-to-phrase
 #  copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
+#      (order of items in first list are preserved)
 #  copy-from-phrase-unique-words-to-phrase
 
         if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
@@ -3448,13 +3449,6 @@ sub dashrep_expand_parameters
                     $text_list_key = $global_dashrep_replacement{ $operand_two } ;
                     $destination_phrase = $operand_three ;
                 }
-#  remove following commented-out code to preserve order of items in first list, even though slower
-#                if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) && ( ( length( $text_list_loop ) ) < ( length( $text_list_key ) ) ) )
-#                {
-#                    $temp = $text_list_key ;
-#                    $text_list_key = $text_list_loop ;
-#                    $text_list_loop = $temp ;
-#                }
                 $text_list_key =~ s/^ +// ;
                 $text_list_key =~ s/ +$// ;
                 @list_of_key_values = split( / +/ , $text_list_key ) ;
