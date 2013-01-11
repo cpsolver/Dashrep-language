@@ -92,6 +92,7 @@ copy-from-phrase-to-phrase-and-replace-digits-with-9s
 copy-from-phrase-to-phrase-lowercase-only
 copy-from-phrase-to-phrase-uppercase-only
 copy-from-phrase-to-phrase-initial-caps
+copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_word
