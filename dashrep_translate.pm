@@ -2028,7 +2028,7 @@ sub dashrep_expand_parameters
             $text_being_edited = $global_dashrep_replacement{ $phrase_being_edited } ;
             while( $text_being_edited =~ / *\/> *<attribute ([^>]+)>/sg )
             {
-                $text_being_edited =~ s/ *\/> *<attribute ([^>]+)>/ $1\/>/sg ;
+                $text_being_edited =~ s/ *\/> *<attribute ([^>]+)>/ $1 \/>/sg ;
                 $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
@@ -9511,7 +9511,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 through 2012 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright 2009 through 2013 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
