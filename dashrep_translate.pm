@@ -1783,7 +1783,7 @@ sub dashrep_expand_parameters
                     $accumulated_text .= $1 ;
                     $character_to_replace = $2 ;
                     $remaining_text = $3 ;
-                    $accumulated_text .= sprintf( "%%%02x" , chr( $character_to_replace ) ) ;
+                    $accumulated_text .= '%' . sprintf( "%02x" , ord( $character_to_replace ) ) ;
                 }
                 $accumulated_text .= $remaining_text ;
                 $temp_text = $accumulated_text ;
