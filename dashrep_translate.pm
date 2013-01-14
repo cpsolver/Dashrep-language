@@ -2257,18 +2257,28 @@ sub dashrep_expand_parameters
                 } elsif ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" )
                 {
                     @list_of_words = split( / +/ , $source_text ) ;
-                    for ( $word_position = 1 ; $word_position <= ( $#list_of_words + 1 ) ; $word_position ++ )
+                    @list_indicating_sort_order = split( / +/ , $global_dashrep_replacement{ $operand_three } ) ;
+                    @sort_order = sort( @list_indicating_sort_order ) ;
+                    $extra_words_without_sort_value = "" ;
+                    if ( $#list_indicating_sort_order < $#list_of_words )
+                    {
+                        for ( $word_position = ( $list_indicating_sort_order + 2 ) ; $word_position <= ( $#list_of_words + 1 ) ; $word_position ++ )
+                        {
+                            $extra_words_without_sort_value .= $list_of_words[ $word_position - 1 ] . " " ;
+                        }
+                    }
+                    for ( $word_position = 1 ; $word_position <= ( $#list_indicating_sort_order + 1 ) ; $word_position ++ )
                     {
                         $words_at_numeric_value{ $numeric_value } .= $list_of_words[ $word_position - 1 ] . " " ;
                     }
-                    @list_indicating_sort_order = split( / +/ , $global_dashrep_replacement{ $operand_three } ) ;
-                    @sort_order = sort( @list_indicating_sort_order ) ;
                     $text_string = "" ;
                     foreach $numeric_value ( @sort_order )
                     {
                         $text_string .= $words_at_numeric_value{ $numeric_value } . " " ;
                     }
-                    $text_string =~ s/ +$// ;
+                    $text_string .= " " . $extra_words_without_sort_value ;
+                    $text_string =~ s/ +/ /g ;
+                    $text_string =~ s/ $// ;
                     $global_dashrep_replacement{ $target_phrase_name } = $text_string ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
