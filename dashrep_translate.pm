@@ -1776,6 +1776,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ +$// ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" )
             {
+                $temp_text =~ s/ /\+/sg ;
                 $remaining_text = $temp_text ;
                 $accumulated_text = "" ;
                 while ( $remaining_text =~ /^(.*?)([^a-zA-Z0-9])(.*)$/s )
@@ -7226,6 +7227,10 @@ sub dashrep_file_actions
         {
             if ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" )
             {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; searching in file " . $source_filename . " for string " . $string_to_find . "}}\n" ;
+                }
                 $string_to_find = $global_dashrep_replacement{ $operand_two } ;
                 $length_of_string = length( $string_to_find ) ;
                 $input_text = "" ;
@@ -7245,6 +7250,10 @@ sub dashrep_file_actions
                 }
             } else
             {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; searching in file " . $source_filename . " for words in phrase " . $operand_two . "}}\n" ;
+                }
                 @list_of_words = split( / +/ , $global_dashrep_replacement{ $operand_two } ) ;
                 foreach $word ( @list_of_words )
                 {
@@ -7290,7 +7299,7 @@ sub dashrep_file_actions
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; searched in file " . $source_filename . " for string or list of words " . $operand_two . "}}\n" ;
+                $global_trace_log .= "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;
             }
         } else
         {
