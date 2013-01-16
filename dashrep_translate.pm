@@ -4953,7 +4953,7 @@ sub dashrep_expand_parameters
         {
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+                if ( ( $operand_one !~ /^[\-_]/ ) && ( $operand_one !~ /[\-_]$/ ) )
                 {
                     if ( exists( $global_dashrep_replacement{ $operand_one } ) )
                     {
