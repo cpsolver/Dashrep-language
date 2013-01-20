@@ -4085,12 +4085,56 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) && ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                $same_or_not_same = " " . $action_name . " " . $object_of_action . " " ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                if ( $action_name eq "same-or-not-same-two-words" )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands}}\n" ;
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
+            } elsif ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
+            {
+                if ( $global_dashrep_replacement{ $operand_two } eq "" )
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "same" ;
+                    } else
+                    {
+                        $result_text = "yes" ;
+                    }
+                } else
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "not-same" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
+                }
+            } elsif ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
+            {
+                if ( $global_dashrep_replacement{ $operand_one } eq "" )
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "same" ;
+                    } else
+                    {
+                        $result_text = "yes" ;
+                    }
+                } else
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "not-same" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
                 }
             } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
             {
