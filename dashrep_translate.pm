@@ -264,7 +264,7 @@ BEGIN {
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty calculate-if-empty-then-use-here dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-words yes-or-no-same-two-phrase-definitions yes-if-not-no no-if-not-yes yes-or-no-opposite if-word-is-yes-then-first-else-second if-word-is-no-then-first-else-second if-first-word-is-yes-then-keep-remainder-else-empty if-first-word-is-no-then-keep-remainder-else-empty ignore-action-operands category_numeric zero-one-multiple zero-or-nonzero numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-map-tile-zoom numeric-y-map-tile-number-based-on-latitude auto-increment auto-decrement category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number copy-from-phrase-to-phrase-words-from-position-to-position count-of-words-in-phrase position-of-word-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase-within-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word copy-from-phrase-to-phrase-with-word-order-reversed use-template-with-each-word-in-phrase category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items dashrep-warning-parameter-for-list-generation-contains-invalid-characters category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-read-from-file-and-use-template storage-input-line-from-file input-line-count category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement dashrep-tag-parameter-boundary-begin dashrep-tag-parameter-boundary-end category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-on-yes-or-no dashrep-capture-actions-on-yes-or-no dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-warning-trace-on-yes-or-no dashrep-capture-trace-on-yes-or-no dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-ignore-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-trace-show-definition category_advanced dashrep-stop-translation dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-translation-before-escape escape-text dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings end-of-line-here insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names dashrep-undefined category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_do_not_use dashrep-list-info-temporary-storage dashrep-list-info-temporary-storage-separator category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty yes-or-no-greater-than yes-or-no-less-than create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-numeric-equal yes-or-no-numeric-greater-than yes-or-no-numeric-less-than remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-and-insert-phrase dashrep-list-of-deprecated-action-useage dashrep-warning-for-deprecated-action" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty calculate-if-empty-then-use-here dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-word yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-if-not-no no-if-not-yes yes-or-no-opposite if-word-is-yes-then-first-else-second if-word-is-no-then-first-else-second if-first-word-is-yes-then-keep-remainder-else-empty if-first-word-is-no-then-keep-remainder-else-empty ignore-action-operands category_numeric zero-one-multiple zero-or-nonzero numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-map-tile-zoom numeric-y-map-tile-number-based-on-latitude auto-increment auto-decrement category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-tag-parameter-boundaries category_word first-word-in-phrase last-word-in-phrase from-phrase-get-word-number copy-from-phrase-to-phrase-words-from-position-to-position count-of-words-in-phrase position-of-word-in-phrase yes-or-no-word-in-phrase position-of-word-in-phrase-within-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word copy-from-phrase-to-phrase-with-word-order-reversed use-template-with-each-word-in-phrase category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items dashrep-warning-parameter-for-list-generation-contains-invalid-characters category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists size-of-file modification-time-of-file create-empty-file delete-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-read-from-file-and-use-template storage-input-line-from-file input-line-count category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement dashrep-tag-parameter-boundary-begin dashrep-tag-parameter-boundary-end category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-on-yes-or-no dashrep-capture-actions-on-yes-or-no dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-warning-trace-on-yes-or-no dashrep-capture-trace-on-yes-or-no dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-ignore-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-trace-show-definition category_advanced dashrep-stop-translation dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-translation-before-escape escape-text dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings end-of-line-here insert-phrase-with-brackets-after-next-top-line clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names dashrep-undefined category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_do_not_use dashrep-list-info-temporary-storage dashrep-list-info-temporary-storage-separator category_deprecated character-in-phrase-get-at-position copy-from-phrase-to-phrase-and-replace-adjacent-spaces copy-from-phrase-to-phrase-and-replace-spaces-with-phrase sort-numbers-in-phrase copy-from-phrase-to-phrase-and-replace-newlines copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase copy-from-phrase-to-phrase-and-replace-hyphens copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens write-all-phrase-names-to-phrase sort-numbers split-into-list-of-characters same-or-not-same empty-or-nonempty yes-or-no-greater-than yes-or-no-less-than create-list-named count-of-list zero-one-multiple-count-of-list first-item-in-list from-list-get-item-number item-number-in-list-being-generated last-item-in-list remove-last-item-from-phrase-list yes-or-no-numeric-equal yes-or-no-numeric-greater-than yes-or-no-numeric-less-than remove-first-word-from-phrase remove-last-word-from-phrase length-of-phrase-definition within-phrase-replace-character-with-text-in-phrase split-phrase-into-list-of-characters zero-one-multiple-count-of-words-in-phrase same-or-not-same-two-words same-or-not-same-two-phrases empty-or-nonempty-word empty-or-nonempty-phrase copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here copy-from-phrase-to-phrase-and-insert-phrase dashrep-list-of-deprecated-action-useage dashrep-warning-for-deprecated-action" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
 }
@@ -1686,14 +1686,8 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-but-remove-first-word
 #  copy-from-phrase-to-phrase-but-remove-last-word
 #  copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
-#
-#  copy-from-phrase-to-phrase-and-tag-parameter-boundaries  <--- Deprecated
-#  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens  <--- Deprecated
-#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces  <--- Deprecated
-#  copy-from-phrase-to-phrase-and-replace-hyphens  <--- Deprecated
-#  copy-from-phrase-to-phrase-and-replace-newlines  <--- Deprecated
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -1732,21 +1726,11 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
             $temp_text = $global_dashrep_replacement{ $source_phrase_name } ;
-            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
-            {
-                $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
-                $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
-                $temp_text =~ s/-/${hyphen_replacement}/sg ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" )
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" )
             {
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/^ +//s ;
                 $temp_text =~ s/ +$//s ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" )
-            {
-                $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
-                $space_replacement =~ s/ /[space]/sg ;
-                $temp_text =~ s/  / ${space_replacement}/sg ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" )
             {
                 $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
@@ -1788,9 +1772,6 @@ sub dashrep_expand_parameters
                 }
                 $accumulated_text .= $remaining_text ;
                 $temp_text = $accumulated_text ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" )
-            {
-                $temp_text =~ s/ +/-/sg ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here" )
             {
                 $temp_text =~ s/-/ fen /sg ;
@@ -1827,20 +1808,6 @@ sub dashrep_expand_parameters
             {
                 $temp_text = join( " " , unpack( "(a1)*" , $temp_text ) ) ;
                 $temp_text =~ s/   / onespace /g ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" )
-            {
-                $parameter_begin = $global_dashrep_replacement{ "dashrep-tag-parameter-boundary-begin" } ;
-                if ( $parameter_begin !~ />$/ )
-                {
-                    $parameter_begin .= ">" ;
-                }
-                $temp_text =~ s/([^>])(\[-)/$1${parameter_begin}$2/g ;
-                $parameter_end = $global_dashrep_replacement{ "dashrep-tag-parameter-boundary-end" } ;
-                if ( $parameter_end !~ /^</ )
-                {
-                    $parameter_begin = "<" . $parameter_end ;
-                }
-                $temp_text =~ s/(-\])([^<])/$1${parameter_end}$2/g ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" )
             {
                 $temp_text =~ s/[\n\r\t]+/ /sg ;
@@ -2139,10 +2106,7 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
 #  copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
 #
-#  copy-from-phrase-to-phrase-and-insert-phrase  <--- Deprecated
-#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase  <--- Deprecated
-
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
         {
             if ( $number_of_operands != 3 )
             {
@@ -2174,7 +2138,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
+            if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
             {
                 if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
@@ -2232,29 +2196,6 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; copied word number " . $word_position . " from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
                     }
-                } elsif ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" )
-                {
-                    $splitting_string = $global_dashrep_replacement{ $operand_three } ;
-                    if ( $splitting_string =~ / / )
-                    {
-                        $splitting_string = "-" ;
-                        if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                        {
-                            $global_trace_log .= "{{trace; warning, splitting string " . $operand_three . " contains a space, so a hyphen was inserted instead" . "}}\n" ;
-                        }
-                    }
-                    $length_of_splitting_string = length( $splitting_string ) ;
-                    $character_position = index( $source_text , $splitting_string ) ;
-                    while ( $character_position >= 0 )
-                    {
-                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + $length_of_splitting_string ) ;
-                        $character_position = index( $source_text , $splitting_string ) ;
-                    }
-                    $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
-                    }
                 } elsif ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" )
                 {
                     @list_of_words = split( / +/ , $source_text ) ;
@@ -2285,20 +2226,6 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; copied words from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " in order specified numeric content in phrase " . $operand_three . "}}\n" ;
                     }
-                } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" )
-                {
-                    if ( ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
-                    {
-                        $text_to_insert = $global_dashrep_replacement{ $operand_three } ;
-                    } else
-                    {
-                        $text_to_insert = " " ;
-                    }
-                    $global_dashrep_replacement{ $target_phrase_name } = join( $text_to_insert , split( / insert-here / , $source_text ) ) ;
-                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and inserted text from phrase " . $operand_three . "}}\n" ;
-                    }
                 } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-phrase" )
                 {
                     if ( ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
@@ -2323,10 +2250,8 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
-#
-#  copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase  <--- Deprecated
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
+        if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
         {
             if ( $number_of_operands != 4 )
             {
@@ -2357,19 +2282,6 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
                 }
                 next ;
-            }
-            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
-            {
-                if ( length( $operand_three ) != 1 )
-                {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
-                    }
-                    next ;
-                }
             }
             if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
@@ -2422,36 +2334,7 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_four . " not defined, so replacing with empty text" . "}}\n" ;
                 }
             }
-            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
-            {
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, action " . $action_name . " is deprecated" . "}}\n" ;
-                }
-                $character_to_replace = $operand_three ;
-                $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
-                if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
-                {
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
-                    }
-                } else
-                {
-                    $length_of_character_to_replace = length( $character_to_replace ) ;
-                    $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-                    while ( $character_position >= 0 )
-                    {
-                        $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace + 1 ) ;
-                        $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-                    }
-                }
-                $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
-                }
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
                 if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
@@ -3884,42 +3767,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  yes-or-no-empty-word
-
-#  empty-or-nonempty-word  <--- Deprecated
-
-        if ( ( $action_name eq "empty-or-nonempty-word" ) || ( $action_name eq "yes-or-no-empty-word" ) )
-        {
-            if ( $number_of_operands == 0 )
-            {
-                if ( $action_name eq "empty-or-nonempty-word" )
-                {
-                    $result_text = "empty" ;
-                } else
-                {
-                    $result_text = "yes" ;
-                }
-            } else
-            {
-                if ( $action_name eq "empty-or-nonempty-word" )
-                {
-                    $result_text = "nonempty" ;
-                } else
-                {
-                    $result_text = "no" ;
-                }
-            }
-            $replacement_text = $text_begin . $result_text . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  empty-or-nonempty-phrase  <--- Deprecated
 #  yes-or-no-empty-phrase
 
-        if ( ( $action_name eq "empty-or-nonempty-phrase" ) || ( $action_name eq "yes-or-no-empty-phrase" ) )
+        if ( $action_name eq "yes-or-no-empty-phrase" )
         {
             if ( $number_of_operands != 1 )
             {
@@ -3941,24 +3791,12 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( $action_name eq "empty-or-nonempty-word" )
-            {
-                $result_text = "empty" ;
-            } else
-            {
-                $result_text = "yes" ;
-            }
+            $result_text = "yes" ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
                 {
-                    if ( $action_name eq "empty-or-nonempty-word" )
-                    {
-                        $result_text = "nonempty" ;
-                    } else
-                    {
-                        $result_text = "no" ;
-                    }
+                    $result_text = "no" ;
                 }
             }
             $replacement_text = $text_begin . $result_text . $text_end ;
@@ -4008,52 +3846,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  yes-or-no-same-two-words
-
-#  same-or-not-same-two-words  <--- Deprecated
-
-        if ( ( $action_name eq "same-or-not-same-two-words" ) || ( $action_name eq "yes-or-no-same-two-words" ) )
-        {
-            if ( $number_of_operands != 2 )
-            {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
-                }
-                next ;
-            }
-            if ( $operand_one eq $operand_two )
-            {
-                if ( $action_name eq "same-or-not-same-two-words" )
-                {
-                    $result_text = "same" ;
-                } else
-                {
-                    $result_text = "yes" ;
-                }
-            } else
-            {
-                if ( $action_name eq "same-or-not-same-two-words" )
-                {
-                    $result_text = "not-same" ;
-                } else
-                {
-                    $result_text = "no" ;
-                }
-            }
-            $replacement_text = $text_begin . $result_text . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
-#  same-or-not-same-two-phrases  <--- Deprecated
 #  yes-or-no-same-two-phrase-definitions
 
-        if ( ( $action_name eq "same-or-not-same-two-phrases" ) || ( $action_name eq "yes-or-no-same-two-phrase-definitions" ) )
+        if ( $action_name eq "yes-or-no-same-two-phrase-definitions" )
         {
             if ( $number_of_operands != 2 )
             {
@@ -4087,73 +3882,31 @@ sub dashrep_expand_parameters
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) && ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                if ( $action_name eq "same-or-not-same-two-words" )
-                {
-                    $result_text = "same" ;
-                } else
-                {
-                    $result_text = "yes" ;
-                }
+                $result_text = "yes" ;
             } elsif ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
                 if ( $global_dashrep_replacement{ $operand_two } eq "" )
                 {
-                    if ( $action_name eq "same-or-not-same-two-words" )
-                    {
-                        $result_text = "same" ;
-                    } else
-                    {
-                        $result_text = "yes" ;
-                    }
+                    $result_text = "yes" ;
                 } else
                 {
-                    if ( $action_name eq "same-or-not-same-two-words" )
-                    {
-                        $result_text = "not-same" ;
-                    } else
-                    {
-                        $result_text = "no" ;
-                    }
+                    $result_text = "no" ;
                 }
             } elsif ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
                 if ( $global_dashrep_replacement{ $operand_one } eq "" )
                 {
-                    if ( $action_name eq "same-or-not-same-two-words" )
-                    {
-                        $result_text = "same" ;
-                    } else
-                    {
-                        $result_text = "yes" ;
-                    }
-                } else
-                {
-                    if ( $action_name eq "same-or-not-same-two-words" )
-                    {
-                        $result_text = "not-same" ;
-                    } else
-                    {
-                        $result_text = "no" ;
-                    }
-                }
-            } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
-            {
-                if ( $action_name eq "same-or-not-same-two-words" )
-                {
-                    $result_text = "same" ;
-                } else
-                {
                     $result_text = "yes" ;
-                }
-            } else
-            {
-                if ( $action_name eq "same-or-not-same-two-words" )
-                {
-                    $result_text = "not-same" ;
                 } else
                 {
                     $result_text = "no" ;
                 }
+            } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
+            {
+                $result_text = "yes" ;
+            } else
+            {
+                $result_text = "no" ;
             }
             $replacement_text = $text_begin . $result_text . $text_end ;
             next ;
@@ -5250,6 +5003,548 @@ sub dashrep_expand_parameters
 #  log it as a deprecated action.
 
         $global_dashrep_replacement{ "dashrep-list-of-deprecated-action-useage" } .= $action_name . " " ;
+
+
+#-----------------------------------------------
+#  Handle the actions:
+
+#  copy-from-phrase-to-phrase-and-insert-phrase  <--- Deprecated
+#  copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase  <--- Deprecated
+
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) )
+        {
+            if ( $number_of_operands != 3 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" ) )
+            {
+                if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
+                {
+                    $text_for_value = " " ;
+                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                    }
+                    next ;
+                }
+            }
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            $source_phrase_name =~ s/[\n\t\t]//g ;
+            if ( ( $source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; copied nothing because phrase " . $operand_one . " is not defined}}\n" ;
+                }
+                $text_for_value = " " ;
+            } else
+            {
+                $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+                $source_text =~ s/^ +// ;
+                $source_text =~ s/ +$// ;
+                $text_for_value = "" ;
+                if ( $action_name eq "copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase" )
+                {
+                    $splitting_string = $global_dashrep_replacement{ $operand_three } ;
+                    if ( $splitting_string =~ / / )
+                    {
+                        $splitting_string = "-" ;
+                        if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                        {
+                            $global_trace_log .= "{{trace; warning, splitting string " . $operand_three . " contains a space, so a hyphen was inserted instead" . "}}\n" ;
+                        }
+                    }
+                    $length_of_splitting_string = length( $splitting_string ) ;
+                    $character_position = index( $source_text , $splitting_string ) ;
+                    while ( $character_position >= 0 )
+                    {
+                        $source_text = substr( $source_text , 0 , $character_position ) . " " . substr( $source_text , $character_position + $length_of_splitting_string ) ;
+                        $character_position = index( $source_text , $splitting_string ) ;
+                    }
+                    $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
+                    }
+                } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-insert-phrase" )
+                {
+                    if ( ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
+                    {
+                        $text_to_insert = $global_dashrep_replacement{ $operand_three } ;
+                    } else
+                    {
+                        $text_to_insert = " " ;
+                    }
+                    $global_dashrep_replacement{ $target_phrase_name } = join( $text_to_insert , split( / insert-here / , $source_text ) ) ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and inserted text from phrase " . $operand_three . "}}\n" ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  same-or-not-same-two-phrases  <--- Deprecated
+
+        if ( ( $action_name eq "same-or-not-same-two-phrases" ) || ( $action_name eq "yes-or-no-same-two-phrase-definitions" ) )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) && ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
+            {
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
+            } elsif ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
+            {
+                if ( $global_dashrep_replacement{ $operand_two } eq "" )
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "same" ;
+                    } else
+                    {
+                        $result_text = "yes" ;
+                    }
+                } else
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "not-same" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
+                }
+            } elsif ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
+            {
+                if ( $global_dashrep_replacement{ $operand_one } eq "" )
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "same" ;
+                    } else
+                    {
+                        $result_text = "yes" ;
+                    }
+                } else
+                {
+                    if ( $action_name eq "same-or-not-same-two-words" )
+                    {
+                        $result_text = "not-same" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
+                }
+            } elsif ( ( $global_dashrep_replacement{ $operand_one } eq $global_dashrep_replacement{ $operand_two } ) )
+            {
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
+            } else
+            {
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "not-same" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
+            }
+            $replacement_text = $text_begin . $result_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+
+#  same-or-not-same-two-words  <--- Deprecated
+
+        if ( $action_name eq "same-or-not-same-two-words" )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $operand_one eq $operand_two )
+            {
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "same" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
+            } else
+            {
+                if ( $action_name eq "same-or-not-same-two-words" )
+                {
+                    $result_text = "not-same" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
+            }
+            $replacement_text = $text_begin . $result_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  empty-or-nonempty-phrase  <--- Deprecated
+
+        if ( $action_name eq "empty-or-nonempty-phrase" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $action_name eq "empty-or-nonempty-word" )
+            {
+                $result_text = "empty" ;
+            } else
+            {
+                $result_text = "yes" ;
+            }
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
+                {
+                    if ( $action_name eq "empty-or-nonempty-word" )
+                    {
+                        $result_text = "nonempty" ;
+                    } else
+                    {
+                        $result_text = "no" ;
+                    }
+                }
+            }
+            $replacement_text = $text_begin . $result_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+
+#  empty-or-nonempty-word  <--- Deprecated
+
+        if ( $action_name eq "empty-or-nonempty-word" )
+        {
+            if ( $number_of_operands == 0 )
+            {
+                if ( $action_name eq "empty-or-nonempty-word" )
+                {
+                    $result_text = "empty" ;
+                } else
+                {
+                    $result_text = "yes" ;
+                }
+            } else
+            {
+                if ( $action_name eq "empty-or-nonempty-word" )
+                {
+                    $result_text = "nonempty" ;
+                } else
+                {
+                    $result_text = "no" ;
+                }
+            }
+            $replacement_text = $text_begin . $result_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase  <--- Deprecated
+
+        if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase" )
+        {
+            if ( $number_of_operands != 4 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+			if ( length( $operand_three ) != 1 )
+			{
+				$text_for_value = " " ;
+				$replacement_text = $text_begin . $text_for_value . $text_end ;
+				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+				{
+					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+				}
+				next ;
+			}
+            if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
+                }
+                next ;
+            }
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
+            {
+                $global_dashrep_replacement{ $source_phrase_name } = "" ;
+            }
+            if ( exists( $global_dashrep_replacement{ $operand_four } ) )
+            {
+                $text_to_insert = $global_dashrep_replacement{ $operand_four } ;
+            } else
+            {
+                $text_to_insert = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_four . " not defined, so replacing with empty text" . "}}\n" ;
+                }
+            }
+			if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+			{
+				$global_trace_log .= "{{trace; warning, action " . $action_name . " is deprecated" . "}}\n" ;
+			}
+			$character_to_replace = $operand_three ;
+			$phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
+			if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
+			{
+				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+				{
+					$global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
+				}
+			} else
+			{
+				$length_of_character_to_replace = length( $character_to_replace ) ;
+				$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+				while ( $character_position >= 0 )
+				{
+					$phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace + 1 ) ;
+					$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+				}
+			}
+			$global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
+			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+			{
+				$global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
+			}
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Deprecated, will be removed:
+#
+#  copy-from-phrase-to-phrase-and-tag-parameter-boundaries  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-adjacent-spaces  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-hyphens  <--- Deprecated
+#  copy-from-phrase-to-phrase-and-replace-newlines  <--- Deprecated
+
+        if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" ) )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
+            {
+                $global_dashrep_replacement{ $source_phrase_name } = "" ;
+            }
+            $temp_text = $global_dashrep_replacement{ $source_phrase_name } ;
+            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-hyphens" )
+            {
+                $hyphen_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-hyphen" } ;
+                $hyphen_replacement =~ s/[\-\n\r]+/ /sg ;
+                $temp_text =~ s/-/${hyphen_replacement}/sg ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-adjacent-spaces" )
+            {
+                $space_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-adjacent-space" } ;
+                $space_replacement =~ s/ /[space]/sg ;
+                $temp_text =~ s/  / ${space_replacement}/sg ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-newlines" )
+            {
+                $newline_replacement = $global_dashrep_replacement{ "dashrep-special-replacement-newline" } ;
+                $newline_replacement =~ s/[ \-]+//sg ;
+                $newline_replacement =~ s/[\n\r]+/[newline]/sg ;
+                $temp_text = join( $newline_replacement , split( /[\n\r]/s , $temp_text ) ) ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-spaces-with-hyphens" )
+            {
+                $temp_text =~ s/ +/-/sg ;
+            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-tag-parameter-boundaries" )
+            {
+                $parameter_begin = $global_dashrep_replacement{ "dashrep-tag-parameter-boundary-begin" } ;
+                if ( $parameter_begin !~ />$/ )
+                {
+                    $parameter_begin .= ">" ;
+                }
+                $temp_text =~ s/([^>])(\[-)/$1${parameter_begin}$2/g ;
+                $parameter_end = $global_dashrep_replacement{ "dashrep-tag-parameter-boundary-end" } ;
+                if ( $parameter_end !~ /^</ )
+                {
+                    $parameter_begin = "<" . $parameter_end ;
+                }
+                $temp_text =~ s/(-\])([^<])/$1${parameter_end}$2/g ;
+            }
+            $global_dashrep_replacement{ $target_phrase_name } = $temp_text ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with any specified changes}}\n" ;
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
+            next ;
+        }
 
 
 #-----------------------------------------------

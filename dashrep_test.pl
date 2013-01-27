@@ -228,12 +228,10 @@ test-of-special-operators:
 [-should-be-size-three = [-count-of-words-in-phrase: list-of-size-three-]-]
 [-should-be-item-three = [-first-word-in-phrase: list-of-numbers-]-]
 [-should-be-item-four = [-last-word-in-phrase: list-of-numbers-]-]
-[-should-be-empty-yes = [-yes-or-no-empty-word: -]-]
-[-should-be-empty-no = [-yes-or-no-empty-word: something-]-]
 [-item-one = waltz-]
 [-item-two = dance-]
-[-should-be-same-yes = [-yes-or-no-same-two-words: [-item-one-] [-item-one-]-]-]
-[-should-be-same-no = [-yes-or-no-same-two-words: [-item-one-] [-item-two-]-]-]
+[-should-be-same-yes = [-yes-or-no-same-two-phrase-definitions: item-one item-one-]-]
+[-should-be-same-no = [-yes-or-no-same-two-phrase-definitions: item-one item-two-]-]
 [-test-counter = 17-]
 [-test-value = 3-]
 [-compare-numbers-equal = [-numeric-equal-greater-less-compare: 16 16-]-]
@@ -733,30 +731,6 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-i
 # $string_return_value = &dashrep_get_replacement( "should-be-item-four" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test empty operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty-yes" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-empty-yes" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test nonempty operator -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-empty-no" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-empty-no" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
