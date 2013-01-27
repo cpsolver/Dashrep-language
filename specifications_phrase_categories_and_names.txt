@@ -27,8 +27,6 @@ clear-phrase
 clear-phrases-listed-in-phrase
 clear-all-dashrep-phrases
 expand-phrase-to-phrase
-calculate-if-phrase-empty
-calculate-if-empty-then-use-here
 dashrep-yes-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
 export-defs-all-begin
@@ -269,6 +267,8 @@ dashrep-list-info-temporary-storage
 dashrep-list-info-temporary-storage-separator
 
 category_deprecated
+calculate-if-phrase-empty
+calculate-if-empty-then-use-here
 character-in-phrase-get-at-position
 copy-from-phrase-to-phrase-and-replace-adjacent-spaces
 copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
