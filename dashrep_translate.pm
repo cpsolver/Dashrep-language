@@ -3915,6 +3915,34 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  yes-or-no-same-two-words
+
+        if ( $action_name eq "yes-or-no-same-two-words" )
+        {
+            if ( $number_of_operands != 2 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $operand_one eq $operand_two )
+            {
+                $result_text = "yes" ;
+            } else
+            {
+                $result_text = "no" ;
+            }
+            $replacement_text = $text_begin . $result_text . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  characters-in-phrase-get-from-position-to-position
 
         if ( $action_name eq "characters-in-phrase-get-from-position-to-position" )
@@ -5120,7 +5148,7 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  same-or-not-same-two-phrases  <--- Deprecated
 
-        if ( ( $action_name eq "same-or-not-same-two-phrases" ) || ( $action_name eq "yes-or-no-same-two-phrase-definitions" ) )
+        if ( ( $action_name eq "same-or-not-same-two-phrases" ) || ( $action_name eq "yes-or-no-same-two-words" ) )
         {
             if ( $number_of_operands != 2 )
             {
@@ -5386,16 +5414,16 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-			if ( length( $operand_three ) != 1 )
-			{
-				$text_for_value = " " ;
-				$replacement_text = $text_begin . $text_for_value . $text_end ;
-				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-				{
-					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
-				}
-				next ;
-			}
+            if ( length( $operand_three ) != 1 )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
+                next ;
+            }
             if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
             {
                 $text_for_value = " " ;
@@ -5423,33 +5451,33 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_four . " not defined, so replacing with empty text" . "}}\n" ;
                 }
             }
-			if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-			{
-				$global_trace_log .= "{{trace; warning, action " . $action_name . " is deprecated" . "}}\n" ;
-			}
-			$character_to_replace = $operand_three ;
-			$phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
-			if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
-			{
-				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-				{
-					$global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
-				}
-			} else
-			{
-				$length_of_character_to_replace = length( $character_to_replace ) ;
-				$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-				while ( $character_position >= 0 )
-				{
-					$phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace + 1 ) ;
-					$character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
-				}
-			}
-			$global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
-			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-			{
-				$global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
-			}
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning, action " . $action_name . " is deprecated" . "}}\n" ;
+            }
+            $character_to_replace = $operand_three ;
+            $phrase_definition_to_modify = $global_dashrep_replacement{ $source_phrase_name } ;
+            if ( ( ( length( $text_to_insert ) > 0 ) && ( index( $text_to_insert , $character_to_replace ) >= 0 ) ) || ( ( length( $character_to_replace ) > 0 ) && ( index( $character_to_replace , $text_to_insert ) >= 0 ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: replacement phrase (" . $text_to_insert . ") contains character to replace (" . $character_to_replace . "), so no replacements done}}\n" ;
+                }
+            } else
+            {
+                $length_of_character_to_replace = length( $character_to_replace ) ;
+                $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                while ( $character_position >= 0 )
+                {
+                    $phrase_definition_to_modify = substr( $phrase_definition_to_modify , 0 , $character_position ) . $text_to_insert . substr( $phrase_definition_to_modify , $character_position + $length_of_character_to_replace + 1 ) ;
+                    $character_position = index( $phrase_definition_to_modify , $character_to_replace ) ;
+                }
+            }
+            $global_dashrep_replacement{ $target_phrase_name } = $phrase_definition_to_modify ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " and replaced character " . $character_to_replace . " with definition of phrase " . $operand_four . "}}\n" ;
+            }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;
         }

@@ -228,6 +228,8 @@ test-of-special-operators:
 [-should-be-size-three = [-count-of-words-in-phrase: list-of-size-three-]-]
 [-should-be-item-three = [-first-word-in-phrase: list-of-numbers-]-]
 [-should-be-item-four = [-last-word-in-phrase: list-of-numbers-]-]
+[-should-be-same-words-yes = [-yes-or-no-same-two-words waltz waltz-]-]
+[-should-be-same-words-no = [-yes-or-no-same-two-words waltz dance-]-]
 [-item-one = waltz-]
 [-item-two = dance-]
 [-should-be-same-yes = [-yes-or-no-same-two-phrase-definitions: item-one item-one-]-]
@@ -731,6 +733,30 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-i
 # $string_return_value = &dashrep_get_replacement( "should-be-item-four" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test same word operator -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same-words-yes" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "should-be-same-words-yes" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+$being_tested = "test not same word operator -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-same-words-no" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "should-be-same-words-no" );
+#  uncomment-for-cpan-version-end
+if ( $string_return_value eq "no" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
