@@ -121,7 +121,11 @@ An action that gets the space hyphen-here delimited words in the first phrase, a
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-encode-as-cgi-parameter:
-An action that converts symbols and other non hyphen-here alphabetic and non hyphen-here digit characters into the special format that allows the string to be passed to a web server as a CGI parameter. s-n As an example, a space character is represented as b-b %20 b-e no-space .
+An action that converts symbols and other non hyphen-here alphabetic and non hyphen-here digit characters into the special format that allows the string to be passed to a web server as a CGI parameter. s-n As an example, a comma is represented as b-b %2c b-e no-space .
+-----
+
+description-for-phrase-copy-from-phrase-to-phrase-and-decode-from-cgi-parameter:
+An action that converts a CGI parameter into normal (non h-h encoded) characters. sentence-next This action is the inverse of the b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h encode h-h as h-h cgi h-h parameter b-i-e action. s-n As an example, the string b-b %2c b-e is converted into a space character.
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-remove-extra-spaces:
@@ -286,14 +290,23 @@ A phrase that ...
 
 description-for-phrase-find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase:
 An action that ...
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase:
 An action that ...
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase:
 An action that ...
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-four-hyphens:
@@ -318,23 +331,23 @@ A phrase that ...
 -----
 
 description-for-phrase-if-first-word-is-no-then-keep-remainder-else-empty:
-An action that ...
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b no b-i-e then this action supplies all the text that remains within the parameter brackets. sentence-next If the first word that follows is not b-i-b no b-i-e no-space , then no text is supplied. sentence-next When used at or near the end of a phrase, this action can provide a major branching capability.
 -----
 
 description-for-phrase-if-first-word-is-yes-then-keep-remainder-else-empty:
-An action that ...
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies all the text that remains within the parameter brackets. sentence-next If the first word that follows is not b-i-b yes b-i-e no-space , then no text is supplied. sentence-next When used at or near the end of a phrase, this action can provide a major branching capability.
 -----
 
 description-for-phrase-if-word-is-no-then-first-else-second:
-An action that ...
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next See b-i-b if h-h word h-h is h-h yes h-h then h-h first h-h else h-h second b-i-e for more information.
 -----
 
 description-for-phrase-if-word-is-yes-then-first-else-second:
-An action that ...
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next This action can provide a major branching capability when it appears at or near the end of a phrase, or it can provide an "inline" selection that affects which operand another action uses. sentence-next If the second or third word is b-i-b empty hyphen-here text b-i-e no-space , then the action b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e (or b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e no-space ) is a better choice.
 -----
 
 description-for-phrase-ignore-action-operands:
-An action that ...
+deprecated
 -----
 
 description-for-phrase-input-line-count:
@@ -347,10 +360,13 @@ An action that ...
 
 description-for-phrase-linewise-read-from-file-and-use-template:
 An action that ...
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-numeric-absolute:
-An action that calculates ...
+An action that calculates the absolute value of the number that follows, and supplies the result.
 -----
 
 description-for-phrase-numeric-add:
@@ -358,27 +374,27 @@ An action that add the numbers that follow, and supplies the result. s-n
 -----
 
 description-for-phrase-numeric-cosine:
-An action that calculates the (trigonometric) cosine of the number that follows.
+An action that calculates the (trigonometric) cosine of the number that follows, and supplies the result.
 -----
 
 description-for-phrase-numeric-divide-by:
-An action that divides the first number by the second number.
+An action that divides the first number by the second number, and supplies the result.
 -----
 
 description-for-phrase-numeric-equal-greater-less-compare:
-An action that is produces the word b-i-b equal b-i-e if the two numbers that follow are numerically equal, or produces the word b-i-b greater b-i-e if the first number is greater than the second number, or produces the word b-i-b less b-i-e if the first number is less than the second number. 
+An action that supplies the word b-i-b equal b-i-e if the two numbers that follow are numerically equal, or supplies the word b-i-b greater b-i-e if the first number is greater than the second number, or supplies the word b-i-b less b-i-e if the first number is less than the second number. 
 -----
 
 description-for-phrase-numeric-integer:
-An action that calculates the integer value of a real number. s-n If an integer is supplied, the same integer is returned (although leading zeros, if present, are removed).
+An action that calculates the integer value of a real number, and supplies the result. s-n If an integer is supplied, the same integer is returned (although leading zeros, if present, are removed).
 -----
 
 description-for-phrase-numeric-logarithm-base-10:
-An action that calculates the base-10 logarithm of the specified number.
+An action that calculates the base-10 logarithm of the specified number, and supplies the result.
 -----
 
 description-for-phrase-numeric-logarithm-base-e:
-An action that calculates the base-e logarithm of the specified number.
+An action that calculates the base-e logarithm of the specified number, and supplies the result.
 -----
 
 description-for-phrase-numeric-map-tile-zoom:
@@ -387,19 +403,19 @@ b-i-b numeric-y-map-tile-number-based-on-latitude b-i-e no-space .
 -----
 
 description-for-phrase-numeric-maximum:
-An action that determines the maximum value of the numbers that follow.
+An action that determines the maximum value of the numbers that follow, and supplies the result.
 -----
 
 description-for-phrase-numeric-minimum:
-An action that determines the minimum value of the numbers that follow.
+An action that determines the minimum value of the numbers that follow, and supplies the result.
 -----
 
 description-for-phrase-numeric-minus:
-An action that subtracts the second number from the first number.
+An action that subtracts the second number from the first number, and supplies the result.
 -----
 
 description-for-phrase-numeric-multiply:
-An action that multiplies the first number times the second number.
+An action that multiplies the first number times the second number, and supplies the result.
 -----
 
 description-for-phrase-numeric-pi:
@@ -407,11 +423,11 @@ An action that supplies the text representation for the value of pi.
 -----
 
 description-for-phrase-numeric-sine:
-An action that calculates the (trigonometric) sine of the number that follows.
+An action that calculates the (trigonometric) sine of the number that follows, and supplies the result.
 -----
 
 description-for-phrase-numeric-y-map-tile-number-based-on-latitude:
-An action that calculates the "y" value for the upper-left corner of the Open Street Maps map tile, based on the latitude that is supplied, and based on the zoom value in the phrase b-i-b numeric-map-tile-zoom b-i-e no-space .
+An action that calculates the "y" value for the upper-left corner of the Open Street Maps map tile, based on the latitude that is supplied, and based on the zoom value in the phrase b-i-b numeric-map-tile-zoom b-i-e no-space , and supplies the result.
 -----
 
 description-for-phrase-path-to-initial-dashrep-definitions:
@@ -419,11 +435,11 @@ A phrase that ...
 -----
 
 description-for-phrase-position-of-string-in-phrase-within-phrase:
-An action that ...
+An action that searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The character positions are numbered starting at 1 in the first character position.
 -----
 
 description-for-phrase-position-of-word-in-phrase-within-phrase:
-An action that ...
+An action that searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position.
 -----
 
 description-for-phrase-prepend-from-phrase-to-phrase-no-space:
@@ -440,10 +456,13 @@ deprecated
 
 description-for-phrase-storage-input-line-from-file:
 A phrase that ...
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-use-template-with-each-word-in-phrase:
-An action that ...
+An action that expands the named template multiple times, once for each word in the second phrase. s-n Each time the template is expanded, the phrase b-i-b word-to-use-in-template b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the template needs to store any changes in specified phrases (or in specified files). s-n See the list h-h generation phrases for similar actions that do put results into a specified phrase.
 -----
 
 description-for-phrase-web-framework-generated-web-page:
@@ -479,23 +498,23 @@ deprecated
 -----
 
 description-for-phrase-yes-or-no-opposite:
-An action that ...
+An action that supplies b-i-b no b-i-e if the text that follows contains the text string b-i-b yes b-i-e no-space , and otherwise supplies b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-same-two-phrase-definitions:
-An action that ...
+An action that supplies b-i-b yes b-i-e if the following two phrase contain the same text, and supplies b-i-b no b-i-e otherwise.
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
-An action that ...
+An action that supplies b-i-b yes b-i-e if the following two space-delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If either word might be empty, then a warning is put into the trace information because the number of operands is not two.
 -----
 
-description-for-phrase-yes-or-no-word-in-phrase:
-An action that ...
+description-for-phrase-yes-or-no-word-is-in-phrase:
+An action that supplies b-i-b yes b-i-e if the following first word is one of the words in the following phrase, and supplies b-i-b no b-i-e otherwise.  If the first word is a phrase name in parameter brackets and that phrase is empty, then a warning is put into the trace information because the number of operands is not two.
 -----
 
 description-for-phrase-zero-or-nonzero:
-An action that ...
+An action that supplies either b-i-b zero b-i-e or b-i-b nonzero b-i-e depending upon whether the following integer number equals zero. s-n This phrase is useful when a value of zero requires special handling.
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-insert-phrase:
@@ -503,7 +522,7 @@ deprecated
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-tag-parameter-boundaries:
-An action that ...
+deprecated
 -----
 
 description-for-phrase-copy-numbers-from-phrase-to-phrase-and-sort:
@@ -601,7 +620,12 @@ Gets the modification time em-dash in epoch seconds em-dash of the specified fil
 ----
 
 description-for-phrase-find-line-in-file-that-begins-with-phrase:
-Reads the specified file (which must be a text file) and looks for a line that begins with the same text as the definition of the specified phrase. s-n The file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space . s-n This action can quickly find a matching hyphenated phrase without importing all the phrases in that file.
+Reads the specified file (which must be a text file) and looks for a line that begins with the same text as the definition of the specified phrase. s-n
+This action can quickly find specific information (that occurs at the beginning of a line) without importing all the lines in that file. s-n
+If only full words are of interest, include a space at the end of the search text.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 ----
 
 description-for-phrase-dashrep-use-two-spaces-as-column-delimiter:
@@ -609,11 +633,17 @@ Requests that the action b-i-b copy hyphen-here from hyphen-here columns hyphen-
 ----
 
 description-for-phrase-copy-from-file-to-phrases-line-numbered:
-Reads from the specified file all the lines in that text file, and puts each line into a separate phrase definition. s-n For each line its phrase name begins with the specified name and ends with the line number. s-n In addition, this action creates a phrase that contains a list of the line numbers, with this phrase being named starting with b-i-b list h-h of h-h line h-h numbers h-h for h-h list h-h named h-h b-i-e and ending with the list name. s-n The file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space . s-n This action is useful for accessing text files that do not contain Dashrep definitions. s-n If the text is in spreadsheet-like columns, the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e can be used instead.
+Reads from the specified file all the lines in that text file, and puts each line into a separate phrase definition. s-n For each line its phrase name begins with the specified name and ends with the line number. s-n In addition, this action creates a phrase that contains a list of the line numbers, with this phrase being named starting with b-i-b list h-h of h-h line h-h numbers h-h for h-h list h-h named h-h b-i-e and ending with the list name. s-n This action is useful for accessing text files that do not contain Dashrep definitions. s-n If the text is in spreadsheet-like columns, the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e can be used instead.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 ----
 
 description-for-phrase-copy-from-columns-in-file-to-named-phrases:
-Reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name. s-n The specified phrase contains both the prefix for all the names and the name of each column. s-n For example, if the specified phrase is defined as b-i-b cell h-h contents h-h for h-h nickname h-h one-space phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n As with all file-access actions, the file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space . s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b ... b-i-e can be useful if any spreadsheet-like cell of data contains any spaces.
+Reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name. s-n The specified phrase contains both the prefix for all the names and the name of each column. s-n For example, if the specified phrase is defined as b-i-b cell h-h contents h-h for h-h nickname h-h one-space phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 ----
 
 description-for-phrase-list-of-phrases-newly-defined:
@@ -712,6 +742,11 @@ During one of the b-i-b linewise b-i-e actions this phrase effectively inserts t
 
 description-for-phrase-linewise-translate-special-phrases-only-from-file-to-file:
 Translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as b-i-b no h-h space b-i-e and b-i-b ignore h-h begin b-i-e and b-i-b non h-h breaking h-h spaces h-h begin b-i-e no-space .
+s-n
+The location of the source file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space ,
+and the location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 ----
 
 description-for-phrase-dashrep-phrase-prefix-for-imported-phrases:
@@ -1061,25 +1096,7 @@ deprecated
 
 
 description-for-phrase-zero-one-multiple:
-An action that supplies either
-bold-begin
-italics-begin
-zero
-italics-end
-bold-end
-or
-bold-begin
-italics-begin
-one
-italics-end
-bold-end
-or
-bold-begin
-italics-begin
-multiple
-italics-end
-bold-end
-depending upon whether the following integer number equals zero, one, or multiple (more than one). s-n This phrase is very useful for choosing between singular and plural forms of words based on a data-supplied count.
+An action that supplies either b-i-b zero b-i-e or b-i-b one b-i-e or b-i-b multiple b-i-e depending upon whether the following integer number equals zero, one, or multiple (more than one). s-n This phrase is very useful for choosing between singular and plural forms of words based on a data-supplied count.
 -----
 
 
@@ -1150,18 +1167,29 @@ Specifies a different (non-local-folder) path for file write operations. s-n If 
 
 
 description-for-phrase-get-definitions-from-file:
-Reads the Dashrep definitions from the specified file, and overwrites any existing definitions that have the same phrase name.
+Reads the Dashrep definitions from the specified file.
+s-n
+This action overwrites any existing definitions that have the same phrase name.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 
 description-for-phrase-yes-or-no-file-exists:
 Determines whether the specified file exists, and supplies either
 b-i-b yes b-i-e or b-i-b no b-i-e to indicate whether the file exists.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 
 description-for-phrase-delete-file:
 Deletes the specified file.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
@@ -1189,34 +1217,46 @@ italics-begin
 end-of-line-here
 italics-end
 bold-end
-at each line break that is encountered.
+at each line break that is encountered. s-n
+The location of the source file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 
 description-for-phrase-copy-from-phrase-append-to-file:
-Copies the definition of the hyphenated phrase onto the end of the specified file. s-n No separation is inserted (either at the beginning or at the end.
+Copies the definition of the hyphenated phrase onto the end of the specified file. s-n No separation is inserted (either at the beginning or at the end. s-n
+The location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
 description-for-phrase-expand-phrase-to-file:
-Does a Dashrep translation (expansion) of the specified phrase and writes the results to the named file.
+Does a Dashrep translation (expansion) of the specified phrase and writes the results to the named file. s-n
+The location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
 description-for-phrase-write-all-dashrep-phrase-names-to-file:
 Writes all the Dashrep phrase names to a new file with the specified file name, and erases the file if it already exists.
-s-n For security purposes this action can be disabled.
+s-n For security purposes this action can be disabled. s-n
+The location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
 description-for-phrase-write-dashrep-definitions-listed-in-phrase-to-file:
-Writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.
+Writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase. s-n
+The location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
 
 description-for-phrase-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file:
-Translates XML in the specified input file into Dashrep phrases and puts the results in the specified output file. s-n In the resulting text, phrase names are inserted where XML tags appeared. s-n XML tags are converted into phrase names, where the phrase name is a concatenation (joined version) of the XML tag names. s-n For example, b-i-b begin h-h xml h-h peoplelist h-h person h-h name b-i-e and b-i-b end h-h xml h-h peoplelist h-h person h-h name b-i-e surrounds text that was tagged with the XML tag structure b-i-b &lt;xml&gt;&lt;peoplelist&gt;&lt;person&gt;&lt;name&gt; b-i-e no-space . s-n The prefix b-i-b begin h-h and h-h end h-h b-i-e is used for self-terminating XML tags such as b-i-b &lt;br /&gt; b-i-e . s-n If the resulting phrase is defined, the definition is inserted instead. s-n If the non-tag content contains any hyphens, they are replaced with the phrase b-i-b hyphen h-h here b-i-e . s-n If a tag's opening bracket (&lt;) and closing bracket (&gt;) are not both on the same line, the tag will not be recognized. s-n The resulting file, combined with appropriate definitions for those phrase names, enables an XML or XHTML file to be converted into nearly any kind of text file.
+Translates XML in the specified input file into Dashrep phrases and puts the results in the specified output file. s-n In the resulting text, phrase names are inserted where XML tags appeared. s-n XML tags are converted into phrase names, where the phrase name is a concatenation (joined version) of the XML tag names. s-n For example, b-i-b begin h-h xml h-h peoplelist h-h person h-h name b-i-e and b-i-b end h-h xml h-h peoplelist h-h person h-h name b-i-e surrounds text that was tagged with the XML tag structure b-i-b &lt;xml&gt;&lt;peoplelist&gt;&lt;person&gt;&lt;name&gt; b-i-e no-space . s-n The prefix b-i-b begin h-h and h-h end h-h b-i-e is used for self-terminating XML tags such as b-i-b &lt;br /&gt; b-i-e . s-n If the resulting phrase is defined, the definition is inserted instead. s-n If the non-tag content contains any hyphens, they are replaced with the phrase b-i-b hyphen h-h here b-i-e . s-n If a tag's opening bracket (&lt;) and closing bracket (&gt;) are not both on the same line, the tag will not be recognized. s-n The resulting file, combined with appropriate definitions for those phrase names, enables an XML or XHTML file to be converted into nearly any kind of text file. s-n
+The location of the target file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
@@ -1402,6 +1442,7 @@ linewise-translate-from-file-to-file
 italics-end
 bold-end
 action except that only the parameters are expanded. s-n This means that phrases that are not enclosed in the square-bracket notation are not expanded.
+s-n The source file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the target file will be created in the directory specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 ----
 
 
@@ -1413,7 +1454,8 @@ italics-begin
 linewise-translate-from-file-to-file
 italics-end
 bold-end
-action except that only phrases are expanded, and actions in the square-bracket notation are not handled.
+action except that only phrases are expanded, and parameters (in the square-bracket notation) are not handled.
+s-n The source file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the target file will be created in the directory specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 
