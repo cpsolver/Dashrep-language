@@ -273,6 +273,9 @@ test-of-special-operators:
 [-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
+[-yes-or-no-allow-user-defined-actions = yes-]
+[-sample-user-defined-action = user-defined-action-operand-two user-defined-action-operand-one-]
+[-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
 nothing else
 --------
 
@@ -291,7 +294,7 @@ test-of-auto-increment:
 test-of-unique-value:
 [-first-unique-value = [-unique-value-]-]
 [-second-unique-value = [-unique-value-]-]
-[-yes-or-no-same-phrase: first-unique-value second-unique-value-]
+[-yes-or-no-same-two-phrase-definitions: first-unique-value second-unique-value-]
 --------
 
 non-breaking-space:
@@ -385,16 +388,8 @@ test-of-action-that-replaces-each-hyphen-with-hyphen-here:
 [-copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here phrase-that-contains-hyphenated-phrases resulting-text-with-no-hyphenated-phrases-]
 --------
 
-test-of-calculate-if-empty:
-[-calculate-if-phrase-empty: value-of-pi-]
-[-value-of-pi-]
---------
-
 value-of-pi:
---------
-
-calculate-value-of-pi:
-[-value-of-pi = 3.14159-]
+3.14159
 --------
 
 test-of-stop-translation:
@@ -1467,19 +1462,24 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the calculate-if-empty action.
+#  Test a user-defined action.
 
-$being_tested = "test action: calculate-if-empty -- ";
-$test_number_count ++;
+#    $being_tested = "test action: user-defined action -- ";
+#    $test_number_count ++;
 # remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-calculate-if-empty" );
+#    $string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-456-space-123" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( "test-of-calculate-if-empty" );
+# $string_return_value = &dashrep_expand_phrases( "should-be-456-space-123" );
 # uncomment-for-cpan-version-end
-if ( $string_return_value =~ /^ *3\.14159 *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+#     $results_text .= "[[" . $string_return_value . "]]" ;
+
+#     $results_text .= &dashrep_translate::dashrep_get_replacement( "debug-now" ) ;
+
+#    if ( $string_return_value =~ /^456 123$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+#    if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+#    if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------

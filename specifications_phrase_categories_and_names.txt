@@ -247,6 +247,7 @@ clear-all-expanded-text-up-to-here
 dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
 dashrep-undefined
+yes-or-no-allow-user-defined-actions
 
 category_spoken_words
 copy-from-phrase-to-phrase-from-spoken-dashrep-code
