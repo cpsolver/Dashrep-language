@@ -2619,22 +2619,6 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  ignore-action-operands
-
-        if ( $action_name eq "ignore-action-operands" )
-        {
-            $text_for_value = " " ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-            {
-                $global_trace_log .= "{{trace; ignoring operands " . $object_of_action . "}}\n" ;
-            }
-            next ;
-        }
-
-
-#-----------------------------------------------
-#  Handle the action:
 #  first-word-in-phrase
 
         if ( $action_name eq "first-word-in-phrase" )
@@ -5046,6 +5030,22 @@ sub dashrep_expand_parameters
 #  log it as a deprecated action.
 
         $global_dashrep_replacement{ "dashrep-list-of-deprecated-action-useage" } .= $action_name . " " ;
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  ignore-action-operands  <--- Deprecated
+
+        if ( $action_name eq "ignore-action-operands" )
+        {
+            $text_for_value = " " ;
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; ignoring operands " . $object_of_action . "}}\n" ;
+            }
+            next ;
+        }
 
 
 #-----------------------------------------------

@@ -54,7 +54,6 @@ if-word-is-yes-then-first-else-second
 if-word-is-no-then-first-else-second
 if-first-word-is-yes-then-keep-remainder-else-empty
 if-first-word-is-no-then-keep-remainder-else-empty
-ignore-action-operands
 
 category_numeric
 zero-one-multiple
@@ -269,6 +268,7 @@ dashrep-list-info-temporary-storage
 dashrep-list-info-temporary-storage-separator
 
 category_deprecated
+ignore-action-operands
 calculate-if-phrase-empty
 calculate-if-empty-then-use-here
 character-in-phrase-get-at-position
