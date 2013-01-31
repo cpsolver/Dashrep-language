@@ -91,7 +91,6 @@ copy-from-phrase-to-phrase-uppercase-only
 copy-from-phrase-to-phrase-initial-caps
 copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
-copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 
 category_word
 first-word-in-phrase
@@ -268,6 +267,7 @@ dashrep-list-info-temporary-storage
 dashrep-list-info-temporary-storage-separator
 
 category_deprecated
+copy-from-phrase-to-phrase-and-tag-parameter-boundaries
 ignore-action-operands
 calculate-if-phrase-empty
 calculate-if-empty-then-use-here
