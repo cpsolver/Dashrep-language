@@ -6344,25 +6344,25 @@ sub dashrep_expand_parameters
 #  make the operands available, and then insert
 #  the action name, by itself, in parameter brackets.
 
-        if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } eq "yes" ) && ( $global_dashrep_replacement{ $action_name } =~ /^[^ ]+-[^ ]+$/ ) )
+        if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } eq "yes" ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
         {
+            $text_for_value = "" ;
             if ( $number_of_operands >= 1 )
             {
-                $global_dashrep_replacement{ "user-defined-action-operand-one" } = $operand_one ;
+                $text_for_value .= "[-user-defined-action-operand-one = " . $operand_one . "-]" ;
             }
             if ( $number_of_operands >= 2 )
             {
-                $global_dashrep_replacement{ "user-defined-action-operand-two" } = $operand_two ;
+                $text_for_value .= "[-user-defined-action-operand-two = " . $operand_two . "-]" ;
             }
             if ( $number_of_operands >= 3 )
             {
-                $global_dashrep_replacement{ "user-defined-action-operand-three" } = $operand_three ;
+                $text_for_value .= "[-user-defined-action-operand-three = " . $operand_three . "-]" ;
             }
             if ( $number_of_operands >= 4 )
             {
-                $global_dashrep_replacement{ "user-defined-action-operand-four" } = $operand_four ;
+                $text_for_value .= "[-user-defined-action-operand-four = " . $operand_four . "-]" ;
             }
-            $text_for_value = " {{trace; recognized user-defined action " . $action_name . "}} " ;
             $text_for_value .= "[-" . $action_name . "-]" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {

@@ -197,6 +197,8 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-create
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" ) ;
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "sample-user-defined-action" , "[-user-defined-action-operand-two-] [-user-defined-action-operand-one-]" ) ;
+
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -274,7 +276,6 @@ test-of-special-operators:
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
-[-sample-user-defined-action = user-defined-action-operand-two user-defined-action-operand-one-]
 [-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
 nothing else
 --------
@@ -1464,22 +1465,17 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test a user-defined action.
 
-#    $being_tested = "test action: user-defined action -- ";
-#    $test_number_count ++;
+$being_tested = "test action: user-defined action -- ";
+$test_number_count ++;
 # remove-from-cpan-version-begin
-#    $string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-456-space-123" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-456-space-123" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( "should-be-456-space-123" );
+# $string_return_value = &dashrep_get_replacement( "should-be-456-space-123" );
 # uncomment-for-cpan-version-end
-
-#     $results_text .= "[[" . $string_return_value . "]]" ;
-
-#     $results_text .= &dashrep_translate::dashrep_get_replacement( "debug-now" ) ;
-
-#    if ( $string_return_value =~ /^456 123$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-#    if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-#    if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+if ( $string_return_value =~ /^456 123$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -1795,7 +1791,9 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 # $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
+
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
+
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
