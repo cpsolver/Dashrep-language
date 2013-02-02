@@ -4222,13 +4222,14 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  numeric-integer
+#  numeric-odd-or-even
 #  numeric-sine
 #  numeric-cosine
 #  numeric-logarithm-base-e
 #  numeric-logarithm-base-10
 #  numeric-y-map-tile-number-based-on-latitude
 
-        if ( ( $action_name eq "numeric-integer" ) || ( $action_name eq "numeric-sine" ) || ( $action_name eq "numeric-cosine" ) || ( $action_name eq "numeric-logarithm-base-e" ) || ( $action_name eq "numeric-logarithm-base-10" ) || ( $action_name eq "numeric-y-map-tile-number-based-on-latitude" ) )
+        if ( ( $action_name eq "numeric-integer" ) || ( $action_name eq "numeric-sine" ) || ( $action_name eq "numeric-cosine" ) || ( $action_name eq "numeric-logarithm-base-e" ) || ( $action_name eq "numeric-logarithm-base-10" ) || ( $action_name eq "numeric-y-map-tile-number-based-on-latitude" )|| ( $action_name eq "numeric-odd-or-even" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -4263,6 +4264,17 @@ sub dashrep_expand_parameters
                 if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
                 {
                     $text_for_value = $1 ;
+                }
+            } elsif ( $action_name eq "numeric-odd-or-even" )
+            {
+                $result_value = int( $operand_one + 0 ) ;
+                $result_value = $result_value - int( ( $result_value * 2 ) / 2 ) ;
+                if ( $result_value == 0 )
+                {
+                    $text_for_value = "even" ;
+                } else
+                {
+                    $text_for_value = "odd" ;
                 }
             } elsif ( $action_name eq "numeric-sine" )
             {
