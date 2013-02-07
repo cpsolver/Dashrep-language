@@ -1465,7 +1465,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test a user-defined action.
 
-$being_tested = "test action: user-defined action -- ";
+$being_tested = "test user-defined action -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-456-space-123" );

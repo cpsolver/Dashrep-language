@@ -6344,9 +6344,18 @@ sub dashrep_expand_parameters
 #  make the operands available, and then insert
 #  the action name, by itself, in parameter brackets.
 
-        if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } eq "yes" ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
+        if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
         {
             $text_for_value = "" ;
+            if ( ( not( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) ) || ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ne "yes" ) )
+            {
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, no permission to handle user-defined action: " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
             if ( $number_of_operands >= 1 )
             {
                 $text_for_value .= "[-user-defined-action-operand-one = " . $operand_one . "-]" ;
