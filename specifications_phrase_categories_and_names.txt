@@ -171,8 +171,6 @@ dashrep-list-of-xml-phrases
 dashrep-xml-level-reset-if-zero
 dashrep-xml-trace-on-yes-or-no
 dashrep-xml-yes-ignore-if-no-tag-replacement
-dashrep-tag-parameter-boundary-begin
-dashrep-tag-parameter-boundary-end
 
 category_html
 dashrep-html-replacement-ampersand
@@ -312,3 +310,5 @@ copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here
 copy-from-phrase-to-phrase-and-insert-phrase
 dashrep-list-of-deprecated-action-useage
 dashrep-warning-for-deprecated-action
+dashrep-tag-parameter-boundary-begin
+dashrep-tag-parameter-boundary-end
