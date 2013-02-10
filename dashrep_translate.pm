@@ -4675,7 +4675,7 @@ sub dashrep_expand_parameters
                             if ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" )
                             {
                                 $item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
-                                if ( $list_position == 1 )
+                                if ( ( $list_position == 1 ) && ( exists( $global_dashrep_replacement{ "prefix-for-list-named-" . $generated_list_name } ) ) )
                                 {
                                     $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
@@ -4701,7 +4701,7 @@ sub dashrep_expand_parameters
                                 {
                                     $text_that_expands_to_generate_list .= "[-append-from-phrase-to-phrase dashrep-list-info-temporary-storage-separator " . $generated_list_name . "-]" ;
                                 }
-                                if ( $list_position == $list_length )
+                                if ( ( $list_position == $list_length ) && ( exists( $global_dashrep_replacement{ "suffix-for-list-named-" . $generated_list_name } ) ) )
                                 {
                                     $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
