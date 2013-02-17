@@ -2344,10 +2344,6 @@ sub dashrep_expand_parameters
             } else
             {
                 $text_to_insert = "" ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_four . " not defined, so replacing with empty text" . "}}\n" ;
-                }
             }
             if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" )
             {
