@@ -67,6 +67,7 @@ numeric-minimum
 numeric-integer
 numeric-absolute
 numeric-equal-greater-less-compare
+numeric-odd-or-even
 numeric-sine
 numeric-cosine
 numeric-logarithm-base-e
@@ -238,7 +239,6 @@ dashrep-special-replacement-hyphen
 dashrep-special-replacement-newline
 dashrep-yes-indicate-line-endings
 end-of-line-here
-insert-phrase-with-brackets-after-next-top-line
 clear-all-expanded-text-up-to-here
 dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
@@ -312,3 +312,4 @@ dashrep-list-of-deprecated-action-useage
 dashrep-warning-for-deprecated-action
 dashrep-tag-parameter-boundary-begin
 dashrep-tag-parameter-boundary-end
+insert-phrase-with-brackets-after-next-top-line
