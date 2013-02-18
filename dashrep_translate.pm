@@ -2016,8 +2016,6 @@ sub dashrep_expand_parameters
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
                     $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-                    $accumulated_text .= $remaining_text ;
-                    $remaining_text = "" ;
                     last ;
                 }
                 $global_endless_loop_counter ++ ;
@@ -2029,8 +2027,6 @@ sub dashrep_expand_parameters
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
                     $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-                    $accumulated_text .= $remaining_text ;
-                    $remaining_text = "" ;
                     last ;
                 }
                 $global_endless_loop_counter ++ ;
@@ -2373,8 +2369,6 @@ sub dashrep_expand_parameters
                         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                         {
                             $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-                            $accumulated_text .= $remaining_text ;
-                            $remaining_text = "" ;
                             last ;
                         }
                     }
