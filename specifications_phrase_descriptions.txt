@@ -875,6 +875,10 @@ This action must be followed by two phrase names, not one. s-n
 Among other uses, this action can be used to build a list of items, or to insert text (such as a raw Dashrep definition) within other text without being translated.
 -----
 
+description-for-phrase-append-word-to-phrase:
+An action that copies the first word onto the end of the definition of the second hyphenated phrase. s-n Do not use this action if the first word might be empty because that causes an error (because the wrong number of operands are supplied).
+-----
+
 description-for-phrase-copy-from-phrase-to-phrase-with-special-replacements:
 An action that copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase, but special replacements are done to eliminate hyphens, adjacent spaces, and line breaks.
 This action must be followed by two phrase names, not one. s-n 

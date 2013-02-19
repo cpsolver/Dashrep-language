@@ -102,6 +102,7 @@ count-of-words-in-phrase
 position-of-word-in-phrase
 yes-or-no-word-is-in-phrase
 position-of-word-in-phrase-within-phrase
+append-word-to-phrase
 copy-from-two-phrases-words-found-in-both-to-phrase
 copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
