@@ -16,6 +16,8 @@ character-newline
 character-open-square-bracket
 character-close-square-bracket
 character-tab
+delayed-nospace
+delayed-newline
 
 category_definitions
 list-of-phrases-newly-defined

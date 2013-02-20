@@ -48,6 +48,14 @@ An action is not recognized if it is not within parameter brackets, or if it is 
 phrase-description-end
 -----
 
+description-for-phrase-delayed-nospace:
+This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b no h-h space b-i-e needs to be inserted later, after other replacements have been done. s-n When ready, this phrase should be defined as b-i-b no h-h space b-i-e just before the final translation step.
+-----
+
+description-for-phrase-delayed-newline:
+This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b new h-h line b-i-e needs to be inserted later, after other replacements have been done. s-n When ready, this phrase should be defined as b-i-b new h-h line b-i-e just before the final translation step.
+-----
+
 description-for-phrase-calculate-if-empty-then-use-here:
 deprecated
 -----
