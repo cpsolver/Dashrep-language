@@ -28,7 +28,7 @@ phrase-heading-end
 phrase-description-begin
 A b-b phrase b-e is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.
 s-n
-Phrases are recognized regardless of whether or not they appear within parameter brackets.
+Directives are recognized regardless of whether or not they appear within parameter brackets.
 phrase-description-end
 phrase-heading-begin
 Directive
