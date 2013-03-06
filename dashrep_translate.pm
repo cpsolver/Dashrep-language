@@ -9425,6 +9425,12 @@ sub dashrep_linewise_translate
 
 
 #-----------------------------------------------
+#  Initialization.
+
+    $after_possible_action = "" ;
+
+
+#-----------------------------------------------
 #  Read each line from the input file.
 
     $line_number = 0 ;
@@ -9435,7 +9441,7 @@ sub dashrep_linewise_translate
         $input_line =~ s/[\n\r\f\t]+/ /g ;
         if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } eq "yes" ) && ( $input_line =~ /[^ ]/ ) )
         {
-            print "{{stdin line number " . $line_number . "\n}}" ;
+            print "{{stdin line number " . $line_number . "}}\n" ;
             print "{{trace; linewise input line: " . $input_line . "}}\n" ;
         }
 
@@ -9478,6 +9484,13 @@ sub dashrep_linewise_translate
 
 
 #-----------------------------------------------
+#  Remove any comments that begin and end on
+#  this line.
+
+        $input_line =~ s/\*---+.*?---+\*/ /sg ;
+
+
+#-----------------------------------------------
 #  If there are Dashrep definitions, get them.
 
         if ( $input_line =~ /^ *dashrep-definitions-begin *$/ )
@@ -9504,6 +9517,35 @@ sub dashrep_linewise_translate
                 if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } eq "yes" ) && ( $input_line =~ /[^ ]/ ) )
                 {
                     print "{{trace; definition line: " . $input_line . " ; imported " . $numeric_return_value . " definitions from " . $line_count . " lines}}\n" ;
+                }
+            }
+
+
+#-----------------------------------------------
+#  If this line begins a multi-line comment,
+#  ignore all the comment lines.
+
+        } elsif ( $input_line =~ /^ *\*---+ *$/ )
+        {
+            if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } eq "yes" ) && ( $input_line =~ /[^ ]/ ) )
+            {
+                print "{{trace; linewise comment begins: " . $input_line . "}}\n" ;
+            }
+            while ( $input_line = <STDIN> )
+            {
+                chomp( $input_line );
+                $input_line =~ s/[\n\r\f\t]+/ /g ;
+                if ( $input_line =~ /^ *---+\* *$/ )
+                {
+                    if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } eq "yes" ) && ( $input_line =~ /[^ ]/ ) )
+                    {
+                        print "{{trace; linewise comment ends: " . $input_line . "}}\n" ;
+                    }
+                    last;
+                }
+                if ( ( $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } eq "yes" ) && ( $input_line =~ /[^ ]/ ) )
+                {
+                    print "{{trace; linewise comment ignored: " . $input_line . "}}\n" ;
                 }
             }
 
