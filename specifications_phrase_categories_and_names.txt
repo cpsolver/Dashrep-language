@@ -77,8 +77,8 @@ numeric-logarithm-base-10
 numeric-pi
 numeric-map-tile-zoom
 numeric-y-map-tile-number-based-on-latitude
-auto-increment
-auto-decrement
+numeric-increment
+numeric-decrement
 
 category_character
 count-of-characters-in-phrase-definition
@@ -316,3 +316,5 @@ dashrep-warning-for-deprecated-action
 dashrep-tag-parameter-boundary-begin
 dashrep-tag-parameter-boundary-end
 insert-phrase-with-brackets-after-next-top-line
+auto-increment
+auto-decrement
