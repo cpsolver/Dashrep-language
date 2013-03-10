@@ -510,7 +510,7 @@ description-for-phrase-verify-word-in-phrase:
 Verify that the specified word appears in a list of words in a phrase definition, and supply the word if it is found. s-n If the word is not found, the first word in the list of words is supplied. s-n Words are regarded as text strings that do not contain any spaces, and which are separated by one (or more) spaces. s-n For example, if the word b-i-b 999-9999 b-i-e is to be verified as being in the list b-i-b invalid-format 999-999-9999 999-9999 (999)999-9999 b-i-e no-space , this action supplies the word b-i-b 999-9999 b-i-e as the result.
 -----
 
-description-for-phrase-auto-decrement:
+description-for-phrase-numeric-decrement:
 Decrements (reduces by one) the integer value in the named phrase. s-n This number is decremented each time this special action is encountered. s-n 
 Use of this action should be avoided. s-n It is useful for debugging situations that loop many more times than expected.
 -----
@@ -953,7 +953,7 @@ description-for-phrase-create-list-named:
 deprecated
 -----
 
-description-for-phrase-auto-increment:
+description-for-phrase-numeric-increment:
 An action that increments the integer value in the named phrase. s-n This action does not supply the result. s-n This number is incremented each time this special action is encountered. s-n 
 Use of this action should be avoided. s-n Usually the action b-i-b use h-h template h-h and h-h parameters h-h to h-h create h-h simple h-h list h-h with h-h name b-i-e (or the b-i-b full b-i-e list version) and the b-i-b createlist h-h item h-h number b-i-e phrase, or the action b-i-b unique hyphen-here value b-i-e can be used instead.
 -----
