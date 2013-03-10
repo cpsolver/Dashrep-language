@@ -288,8 +288,8 @@ middle text
 ending text
 --------
 
-test-of-auto-increment:
-[-auto-increment: test-counter-]
+test-of-numeric-increment:
+[-numeric-increment: test-counter-]
 --------
 
 test-of-unique-value:
@@ -415,7 +415,7 @@ test-of-escape-action:
 page-participants-list:
 [-list-of-parameter-values-for-list-named-participant-names-full = [-case-info-idlistparticipants-]-]
 [-use-template-and-parameters-to-create-full-list-with-name template-for-list-named-participant-names-full list-of-parameter-values-for-list-named-participant-names-full generated-list-named-participant-names-full-]
-[-auto-increment: test-counter-]
+[-numeric-increment: test-counter-]
 format-begin-heading-level-1
 words-web-page-title
 format-end-heading-level-1
@@ -816,13 +816,13 @@ if ( $string_return_value eq "greater" ) { $one_if_ok = 1; } else { $one_if_ok =
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test auto-increment operator -- ";
+$being_tested = "test numeric-increment operator -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-auto-increment" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-numeric-increment" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "test-of-auto-increment" );
+# $string_return_value = &dashrep_expand_parameters( "test-of-numeric-increment" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "test-counter" );
