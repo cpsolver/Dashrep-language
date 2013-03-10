@@ -336,7 +336,7 @@ See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h us
 -----
 
 description-for-phrase-insert-angle-bracketed-definitions-into-already-expanded-phrase:
-An action that modifies the specified phrase by replacing each occurrence of a specially identified hyphenated phrase with the definition of that phrase. s-n the specially identified hyphenated phrases begin and end with angle brackets ( no-space b-i-b < b-i-e and b-i-b > b-i-e no-space ) and contain at least one underscore ( no-space b-i-b _ b-i-e no-space ), such as b-i-b <special_content> b-i-e no-space . s-n For each such specially identified hyphenated phrase, the underscores are replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase. s-n The special string b-i-b <hyphen_here> b-i-e is replaced by a hyphen ( no-space b-i-b - b-i-e no-space ) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.
+An action that modifies the specified phrase by replacing each occurrence of a specially identified hyphenated phrase with the definition of that phrase. s-n the specially identified hyphenated phrases begin and end with angle brackets ( no-space b-i-b &lt; b-i-e and b-i-b &gt; b-i-e no-space ) and contain at least one underscore ( no-space b-i-b _ b-i-e no-space ), such as b-i-b &lt;special_content&gt; b-i-e no-space . s-n For each such specially identified hyphenated phrase, the underscores are replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase. s-n The special string b-i-b &lt;hyphen_here&gt; b-i-e is replaced by a hyphen ( no-space b-i-b - b-i-e no-space ) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.
 -----
 
 description-for-phrase-linewise-read-from-file-and-use-template:
@@ -451,7 +451,7 @@ A phrase that equals b-i-b yes b-i-e if the web framework (which is accessed usi
 -----
 
 description-for-phrase-xml-move-attributes-into-tag-elements-within-phrase:
-An action that moves the content of an b-i-b attribute b-i-e tag inside the preceding tag. s-n For example, it converts the string b-i-b <img /><attribute href="image.jpg"><attribute alt="image"> b-i-e into the string b-i-b <img href="image.jpg" alt="image" /> b-i-e no-space . s-n This functionality is useful for generating XML and XHTML code by using hyphenated phrases such as b-i-b image-here specify-href image.jpg specify-end specify-alt image specify-end b-i-e (instead of having to specify the nesting of the beginning and ending of a tag, such as b-i-b image-here-begin b-i-e and b-i-b image-here-end b-i-e no-space ).
+An action that moves the content of an b-i-b attribute b-i-e tag inside the preceding tag. s-n For example, it converts the string b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the string b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space . s-n This functionality is useful for generating XML and XHTML code by using hyphenated phrases such as b-i-b image-here specify-href image.jpg specify-end specify-alt image specify-end b-i-e (instead of having to specify the nesting of the beginning and ending of a tag, such as b-i-b image-here-begin b-i-e and b-i-b image-here-end b-i-e no-space ).
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
