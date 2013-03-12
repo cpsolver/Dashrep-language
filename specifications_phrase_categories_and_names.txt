@@ -23,6 +23,7 @@ category_definitions
 list-of-phrases-newly-defined
 dashrep-definitions-begin
 dashrep-definitions-end
+dashrep-definition-append-next
 define-end
 define-begin
 clear-phrase
