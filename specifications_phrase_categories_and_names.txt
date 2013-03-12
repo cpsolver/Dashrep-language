@@ -116,6 +116,7 @@ copy-from-phrase-to-phrase-but-remove-first-word
 copy-from-phrase-to-phrase-but-remove-last-word
 copy-from-phrase-to-phrase-with-word-order-reversed
 use-template-with-each-word-in-phrase
+word-to-use-in-template
 
 category_generate_list
 use-template-and-parameters-to-create-simple-list-with-name
@@ -247,6 +248,10 @@ dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
 dashrep-undefined
 yes-or-no-allow-user-defined-actions
+user-defined-action-operand-one
+user-defined-action-operand-two
+user-defined-action-operand-three
+user-defined-action-operand-four
 
 category_spoken_words
 copy-from-phrase-to-phrase-from-spoken-dashrep-code
