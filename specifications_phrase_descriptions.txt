@@ -48,6 +48,36 @@ An action is not recognized if it is not within parameter brackets, or if it is 
 phrase-description-end
 -----
 
+description-for-phrase-yes-or-no-allow-user-defined-actions:
+If this phrase is b-i-b yes b-i-e then a user h-h defined phrase can be used as an action. s-n Otherwise a user h-h defined action will not be recognized. s-n When a user h-h defined action is encountered, the first four space h-h delimited words that follow the (hyphenated) action name become available as the definitions of the phrases
+b-i-b user h-h defined h-h action h-h operand h-h one b-i-e no-space ,
+b-i-b user h-h defined h-h action h-h operand h-h two b-i-e no-space ,
+b-i-b user h-h defined h-h action h-h operand h-h three b-i-e no-space ,
+and
+b-i-b user h-h defined h-h action h-h operand h-h four b-i-e no-space . s-n
+If user h-h defined actions are allowed, the actions do not need to be defined in any special way. s-n A user h-h defined action is simply a hyphenated phrase that can immediately follow an opening parameter bracket ( no-space b-i-b [ no-space h-h b-i-e no-space ) and the hyphenated phrase can use the special operand phrase names to access the words that follow the user h-h defined action phrase (up to the closing parameter bracket ( b-i-b h-h no-space ] b-i-e no-space ) no-space .
+-----
+
+description-for-phrase-user-defined-action-operand-one:
+See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
+-----
+
+description-for-phrase-user-defined-action-operand-two:
+See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
+-----
+
+description-for-phrase-user-defined-action-operand-three:
+See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
+-----
+
+description-for-phrase-user-defined-action-operand-four:
+See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
+-----
+
+description-for-phrase-dashrep-definition-append-next:
+This directive requests that the next definition be appended to the existing definition of the specified phrase. s-n This directive allows a list to be created during the reading of definitions because it overrides the normal convention of replacing the existing definition (when the same phrase name is defined more than once).
+-----
+
 description-for-phrase-delayed-nospace:
 This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b no h-h space b-i-e needs to be inserted later, after other replacements have been done. s-n When ready, this phrase should be defined as b-i-b no h-h space b-i-e just before the final translation step.
 -----
@@ -675,7 +705,7 @@ If this user hyphen-here defined phrase equals b-i-b yes b-i-e then backward com
 ----
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
-A user-defined phrase that specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
+A user h-h defined phrase that specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
 ----
 
 description-for-phrase-dashrep-special-replacement-adjacent-space:
