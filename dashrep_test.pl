@@ -216,9 +216,7 @@ test-of-special-operators:
 [-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
 [-dashrep-special-replacement-adjacent-space = &nbsp;-]
 [-dashrep-special-replacement-hyphen = &ndash;-]
-[-copy-from-phrase-to-phrase-and-replace-hyphens: text-with-special-characters text-with-hyphens-replaced-]
-[-copy-from-phrase-to-phrase-and-replace-newlines: text-with-special-characters text-with-newlines-replaced-]
-[-copy-from-phrase-to-phrase-and-replace-adjacent-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
+[-copy-from-phrase-to-phrase-and-remove-extra-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
 [-copy-from-phrase-to-phrase-into-spoken-dashrep-code: page-participants-list tagged-dashrep-code-]
 [-copy-from-phrase-to-phrase-from-spoken-dashrep-code: tagged-dashrep-code regenerated-page-participants-list-]
 [-should-be-zero = [-zero-one-multiple: 0-]-]
@@ -272,7 +270,6 @@ test-of-special-operators:
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-translation-safe = <character_hyphen>-]
 [-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
-[-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase template-for-full-createlist test-inserted-spaces character-hyphen-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
@@ -350,10 +347,6 @@ test-of-replace-periods-with-spaces:
 [-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase: text-with-periods text-with-spaces character-period character-space-]
 --------
 
-test-of-replace-spaces-with-phrase:
-[-copy-from-phrase-to-phrase-and-replace-spaces-with-phrase text-with-extra-spaces text-with-spaces-replaced symbol-two-periods-]
---------
-
 test-of-several-copy-actions:
 [-text-being-copied = abc DEF 123-]
 [-copy-from-phrase-to-phrase text-being-copied text-copied-]
@@ -383,10 +376,6 @@ list-from-which-to-remove-last-item:
 
 phrase-that-contains-hyphenated-phrases:
 hyphenated-content-here hyphenated-content-here
---------
-
-test-of-action-that-replaces-each-hyphen-with-hyphen-here:
-[-copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here phrase-that-contains-hyphenated-phrases resulting-text-with-no-hyphenated-phrases-]
 --------
 
 value-of-pi:
@@ -587,30 +576,6 @@ if ( $string_return_value eq " copied text" ) { $one_if_ok = 1; } else { $one_if
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test copy with special replacement of hyphens -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-hyphens-replaced" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "text-with-hyphens-replaced" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /\&ndash;/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test copy with special replacement of newlines -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-newlines-replaced" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "text-with-newlines-replaced" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /\[eol\]/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
 $being_tested = "test copy with special replacement of adjacent spaces -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
@@ -619,7 +584,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-a
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "text-with-adjacent-spaces-replaced" );
 #  uncomment-for-cpan-version-end
-if ( ( $string_return_value =~ /\&nbsp;/s ) && ( $string_return_value !~ /  / ) ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value !~ /  / ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1302,24 +1267,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the copy-from-phrase-to-phrase-and-replace-spaces-with-phrase action.
-
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-spaces-with-phrase -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-spaces-with-phrase" );
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-spaces-replaced" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "test-of-replace-spaces-with-phrase" );
-# $string_return_value = &dashrep_get_replacement( "text-with-spaces-replaced" );
-# uncomment-for-cpan-version-end
-if ( $string_return_value eq "12..34..56..78..90" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
 #  Test several copy actions.
 
 $being_tested = "test some copy actions -- ";
@@ -1355,43 +1302,6 @@ $string_return_value =~ s/ +$// ;
 if ( $string_return_value eq "9 17 65 183 12 34 56 78 90 &lt;xyz&gt;&amp;&lt;/xyz&gt;" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test action: test-of-action-that-replaces-each-hyphen-with-hyphen-here
-
-$being_tested = "test action: test-of-action-that-replaces-each-hyphen-with-hyphen-here -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-test-of-action-that-replaces-each-hyphen-with-hyphen-here-]" );
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "resulting-text-with-no-hyphenated-phrases" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-test-of-action-that-replaces-each-hyphen-with-hyphen-here-]" );
-# $string_return_value = &dashrep_get_replacement( "resulting-text-with-no-hyphenated-phrases" );
-# uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "hyphenated hyphen-here content hyphen-here here hyphenated hyphen-here content hyphen-here here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test action: copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase
-
-$being_tested = "test action: copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "test-inserted-spaces" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "test-inserted-spaces" );
-# uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "abc [ createlist parameter ] def [ createlist item number ]of[ createlist total number of items ] ghi" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
 
 
 #-------------------------------------------
