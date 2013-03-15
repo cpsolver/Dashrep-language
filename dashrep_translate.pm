@@ -4942,11 +4942,11 @@ sub dashrep_expand_parameters
 #  backwards-compatibility option will be
 #  removed.)
 
-        if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
-        {
-            $replacement_text =~ s /^ +// ;
-            $replacement_text =~ s / +$// ;
-        }
+#        if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
+#        {
+#            $replacement_text =~ s /^ +// ;
+#            $replacement_text =~ s / +$// ;
+#        }
 
 
 #-----------------------------------------------
@@ -5612,11 +5612,11 @@ sub dashrep_expand_phrases
 #  backwards-compatibility option will be
 #  removed.)
 
-    if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
-    {
-        $expanded_string =~ s/^ +//s ;
-        $expanded_string =~ s/ +$//s ;
-    }
+#    if ( ( exists( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } ) ) && ( $global_dashrep_replacement{ "dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no" } eq "no" ) )
+#    {
+#        $expanded_string =~ s/^ +//s ;
+#        $expanded_string =~ s/ +$//s ;
+#    }
 
 
 #-----------------------------------------------
