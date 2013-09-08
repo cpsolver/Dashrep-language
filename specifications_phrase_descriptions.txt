@@ -1475,6 +1475,10 @@ description-for-phrase-dashrep-yes-indicate-line-endings:
 If this phrase is defined as b-i-b yes b-i-e no-space , the actions b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e and b-i-b copy h-h from h-h file h-h to h-h phrases h-h line h-h numbered b-i-e insert the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
 ----
 
+description-for-insert-codeview-tags-into-phrase:
+Inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b <dashrep_codeview_action_begin> b-i-e and b-i-b <dashrep_codeview_action_middle_1> b-i-e no-space , are expected to be replaced by the strings in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
+----
+
 description-for-phrase-dashbee:
 (described in table above)
 -----
@@ -1734,7 +1738,9 @@ template-for-category:
 -----
 
 template-for-phrase:
-[-append-from-phrase-to-phrase-no-space phrase-heading-begin full-contents-final-]
+[-append-from-phrase-to-phrase-no-space phrase-heading-begin-before-id full-contents-final-]
+[-append-from-phrase-to-phrase-no-space category-or-phrase-name full-contents-final-]
+[-append-from-phrase-to-phrase-no-space phrase-heading-begin-after-id full-contents-final-]
 [-append-from-phrase-to-phrase-no-space category-or-phrase-name full-contents-final-]
 [-append-from-phrase-to-phrase-no-space phrase-heading-end full-contents-final-]
 [-append-new-line-to-phrase full-contents-final-]
@@ -1779,6 +1785,14 @@ category-heading-end:
 
 phrase-heading-begin:
 <h2>
+-----
+
+phrase-heading-begin-before-id:
+<h2 id="
+-----
+
+phrase-heading-begin-after-id:
+">
 -----
 
 phrase-heading-end:
@@ -1847,10 +1861,6 @@ bold-end
 
 h-h:
 hyphen-here
------
-
-prefix-for-phrase-description-name:
-description-for-phrase-
 -----
 
 colon-only:

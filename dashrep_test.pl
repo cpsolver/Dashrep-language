@@ -382,6 +382,11 @@ value-of-pi:
 3.14159
 --------
 
+test-of-insert-codeview-tags:
+[-copy-from-phrase-to-phrase test-of-more-copy-actions dashrep-code-with-inserted-codeview-tags-]
+[-insert-codeview-tags-into-phrase dashrep-code-with-inserted-codeview-tags-]
+--------
+
 test-of-stop-translation:
 [-value-of-pi-]
 [-dashrep-stop-translation = yes-]
@@ -1368,6 +1373,25 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "already-e
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "one-two-three waltz" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "insert-codeview-tags-into-phrase"
+
+$being_tested = "test action: insert-codeview-tags-into-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
+# $string_return_value = &dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-from-phrase-to-phrase-and-remove-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

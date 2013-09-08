@@ -248,6 +248,7 @@ clear-all-expanded-text-up-to-here
 dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
 dashrep-undefined
+insert-codeview-tags-into-phrase
 yes-or-no-allow-user-defined-actions
 user-defined-action-operand-one
 user-defined-action-operand-two
