@@ -4891,12 +4891,15 @@ sub dashrep_expand_parameters
                     $remaining_text = $3 ;
                     if ( exists( $action_name_exists{ $phrase_name } ) && ( $action_name_exists{ $phrase_name } eq "yes" ) )
                     {
-                        $word_phrase_or_action = "action" ;
+                        $phrase_type = "action" ;
+                    } elsif ( exists( $global_dashrep_replacement{ $phrase_name } ) && ( $global_dashrep_replacement{ $phrase_name } ne "" ) )
+                    {
+                        $phrase_type = "phrase_defined" ;
                     } else
                     {
-                        $word_phrase_or_action = "phrase" ;
+                        $phrase_type = "phrase" ;
                     }
-                    $accumulated_text = $accumulated_text . $prefix_text . "<dashrep_codeview_tag_" . $word_phrase_or_action . "_begin>" . $phrase_name . "<dashrep_codeview_tag_" . $word_phrase_or_action . "_middle_1>" . $phrase_name . "<dashrep_codeview_tag_" . $word_phrase_or_action . "_middle_2>" . $phrase_name . "<dashrep_codeview_tag_" . $word_phrase_or_action . "_end>" ;
+                    $accumulated_text = $accumulated_text . $prefix_text . "<dashrep_codeview_tag_" . $phrase_type . "_begin>" . $phrase_name . "<dashrep_codeview_tag_" . $phrase_type . "_middle_1>" . $phrase_name . "<dashrep_codeview_tag_" . $phrase_type . "_middle_2>" . $phrase_name . "<dashrep_codeview_tag_" . $phrase_type . "_end>" ;
                 }
                 $string_in_phrase = $accumulated_text . $remaining_text ;
                 $global_dashrep_replacement{ $operand_one } = $string_in_phrase ;
