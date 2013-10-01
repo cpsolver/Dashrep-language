@@ -4689,28 +4689,25 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "dashrep-trace-show-definition" )
         {
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            if ( ( $operand_one !~ /^[\-_]/ ) && ( $operand_one !~ /[\-_]$/ ) )
             {
-                if ( ( $operand_one !~ /^[\-_]/ ) && ( $operand_one !~ /[\-_]$/ ) )
+                if ( exists( $global_dashrep_replacement{ $operand_one } ) )
                 {
-                    if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+                    $value_of_operand_one = $global_dashrep_replacement{ $operand_one } ;
+                    if ( $value_of_operand_one =~ /[^ ]/s )
                     {
-                        $value_of_operand_one = $global_dashrep_replacement{ $operand_one } ;
-                        if ( $value_of_operand_one =~ /[^ ]/s )
-                        {
-                            $global_trace_log .= "{{trace; ******* " . $operand_one . " = " . $value_of_operand_one . " *******" . "}}\n";
-                        } else
-                        {
-                            $global_trace_log .= "{{trace; ******* " . $operand_one . " is empty *******" . "}}\n";
-                        }
+                        $global_trace_log .= "{{trace; ******* " . $operand_one . " = " . $value_of_operand_one . " *******" . "}}\n";
                     } else
                     {
-                        $global_trace_log .= "{{trace; ******* " . $operand_one . " is not defined *******" . "}}\n";
+                        $global_trace_log .= "{{trace; ******* " . $operand_one . " is empty *******" . "}}\n";
                     }
                 } else
                 {
-                    $global_trace_log .= "{{trace; ******* " . $operand_one . " does not look like a valid phrase name *******" . "}}\n";
+                    $global_trace_log .= "{{trace; ******* " . $operand_one . " is not defined *******" . "}}\n";
                 }
+            } else
+            {
+                $global_trace_log .= "{{trace; ******* " . $operand_one . " does not look like a valid phrase name *******" . "}}\n";
             }
             $replacement_text = $text_begin . $text_end ;
             next ;
