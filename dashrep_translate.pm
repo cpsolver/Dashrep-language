@@ -4709,6 +4709,8 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; ******* " . $operand_one . " does not look like a valid phrase name *******" . "}}\n";
             }
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
+            $global_trace_log = "" ;
             $replacement_text = $text_begin . $text_end ;
             next ;
         }
