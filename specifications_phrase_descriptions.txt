@@ -638,6 +638,22 @@ description-for-phrase-copy-from-columns-in-file-to-named-phrases:
 Reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name. s-n The specified phrase contains both the prefix for all the names and the name of each column. s-n For example, if the specified phrase is defined as b-i-b cell h-h contents h-h for h-h nickname h-h one-space phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
 ----
 
+description-for-phrase-gather-tagged-info-from-file:
+Reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h begin b-i-e phrase (which has a default value of b-i-b entry_begin b-i-e ), a new set of related items begins, and when the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h end b-i-e phrase (which has a default value of b-i-b entry_end b-i-e ), that set of items ends. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h unique b-i-e phrase (which has a default value of b-i-b url b-i-e no-space , and which must appear within a set of items), the remainder of that line (with any internal spaces replaced by underscores) is used as the unique identifier for the items in that set. s-n If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier. s-n Each generated phrase name begins with the tag name (that preceded that item) followed by the string b-i-b h-h value h-h for h-h unique h-h id h-h b-i-e and then followed by the unique value. s-n This action is useful for accessing database h-h like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record. s-n This action is also useful for spreadsheet h-h like information where the tag names are analogous to single h-h word column titles, and one row of spreadsheet data is split into multiple lines, with each cell's content on a separate (labelled) line. s-n The order of the items within each set is not significant, and the order does not need to be the same from one set to another. s-n This action does not require that each set of items use the same first words that are used in other sets, but using the generated phrases would require checking for undefined (empty) phrase definitions. s-n The location of the (source) file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
+----
+
+description-for-phrase-dashrep-gather-tag-begin:
+See the description for the action b-i-b gather h-h tagged h-h info h-h from h-h file b-i-e no-space .
+----
+
+description-for-phrase-dashrep-gather-tag-end:
+See the description for the action b-i-b gather h-h tagged h-h info h-h from h-h file b-i-e no-space .
+----
+
+description-for-phrase-dashrep-gather-tag-unique:
+See the description for the action b-i-b gather h-h tagged h-h info h-h from h-h file b-i-e no-space .
+----
+
 description-for-phrase-list-of-phrases-newly-defined:
 A phrase that contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
 ----

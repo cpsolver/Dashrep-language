@@ -154,6 +154,10 @@ find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-
 find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase
 copy-from-columns-in-file-to-named-phrases
 dashrep-use-two-spaces-as-column-delimiter
+gather-tagged-info-from-file
+dashrep-gather-tag-begin
+dashrep-gather-tag-end
+dashrep-gather-tag-unique
 put-into-phrase-list-of-files-in-current-read-directory
 put-into-phrase-list-of-folders-in-current-read-directory
 yes-or-no-file-exists
