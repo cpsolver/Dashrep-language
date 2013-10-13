@@ -154,7 +154,7 @@ find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-
 find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase
 copy-from-columns-in-file-to-named-phrases
 dashrep-use-two-spaces-as-column-delimiter
-gather-tagged-info-from-file
+gather-tagged-info-from-file-and-put-unique-values-into-phrase
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
 dashrep-gather-tag-unique
