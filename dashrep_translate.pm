@@ -6723,6 +6723,7 @@ sub dashrep_file_actions
             }
             $unique_value = "" ;
             %content_for_tag = ( ) ;
+            %found_unique_value = ( ) ;
             $line_status = "between" ;
             while ( $input_line = <INFILE> )
             {
