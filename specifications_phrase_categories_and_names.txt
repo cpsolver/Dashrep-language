@@ -161,6 +161,7 @@ dashrep-gather-tag-unique
 put-into-phrase-list-of-files-in-current-read-directory
 put-into-phrase-list-of-folders-in-current-read-directory
 yes-or-no-file-exists
+yes-or-no-folder-in-phrase-exists
 size-of-file
 modification-time-of-file
 create-empty-file

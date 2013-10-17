@@ -1029,6 +1029,14 @@ The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
 
+description-for-phrase-yes-or-no-folder-in-phrase-exists:
+Determines whether a folder exists em-dash where the folder is specified in a phrase em-dash and supplies either
+b-i-b yes b-i-e or b-i-b no b-i-e to indicate whether the folder exists.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-read-directory no-space .
+-----
+
 description-for-phrase-delete-file:
 Deletes the specified file.
 s-n
@@ -1044,7 +1052,7 @@ name-of-phrase-that-specifies-write-directory no-space .
 
 description-for-phrase-copy-from-file-to-phrase:
 Copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition). s-n The phrase
-bold-begin italics-begin dashrep-yes-indicate-line-endings italics-end bold-end
+bold-begin italics-begin dashrep h-h yes h-h indicate h-h line h-h endings italics-end bold-end
 can be defined as
 italics-begin yes italics-end
 to insert the phrase
