@@ -6772,13 +6772,16 @@ sub dashrep_file_actions
                             {
                                 $global_trace_log .= " [warning, action " . $action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items]" ;
                             }
-                            $unique_value = "" ;
-                            %content_for_tag = ( ) ;
-                            $line_status = "between" ;
+                        } elsif ( $line_status eq "within_multiline" )
+                        {
+                            $global_trace_log .= " [warning, action " . $action_name . " encountered the end of a set of items without first encountering the end of a multi-line item; the items in this set have not been added]" ;
                         } else
                         {
-                            $global_trace_log .= " [warning, action " . $action_name . " encountered the end of a set of items without first encountering the tag at the beginning]" ;
+                            $global_trace_log .= " [warning, action " . $action_name . " encountered the end of a set of items without first encountering the tag at the beginning; the items in this set have not been added]" ;
                         }
+                        $unique_value = "" ;
+                        %content_for_tag = ( ) ;
+                        $line_status = "between" ;
                     } elsif ( $first_word eq $entry_begin )
                     {
                         if ( $line_status eq "between" )
@@ -6790,10 +6793,16 @@ sub dashrep_file_actions
                         {
                             $global_trace_log .= " [warning, action " . $action_name . " encountered the beginning of a set of items without first encountering the tag at the end of the previous set of items]" ;
                         }
+                    } elsif ( $first_word eq "multi_line_end" )
+                    {
+                        $line_status = "within" ;
                     } else
                     {
                         $content_for_tag{ $first_word } = "" ;
                     }
+                } elsif ( $line_status eq "within_multiline" )
+                {
+                    $content_for_tag{ $multiline_value_name } .= $input_line . " " ;
                 } elsif ( $input_line =~ /^ *([^ ]+) +([^ ].*)$/ )
                 {
                     $first_word = $1 ;
@@ -6806,6 +6815,11 @@ sub dashrep_file_actions
                         {
                             $found_unique_value{ $unique_value } = "found" ;
                         }
+                    } elsif ( $remainder_of_line =~ /^ *multi_line_begin/ )
+                    {
+                        $line_status = "within_multiline" ;
+                        $multiline_value_name = $first_word ;
+                        $content_for_tag{ $multiline_value_name } = "" ;
                     } else
                     {
                         $content_for_tag{ $first_word } = $remainder_of_line ;
