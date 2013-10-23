@@ -4499,15 +4499,19 @@ sub dashrep_expand_parameters
             }
             $template_phrase_name = $operand_one ;
             $text_to_expand = " " ;
-            @list_of_words = split( / +/ , $global_dashrep_replacement{ $operand_two } ) ;
+            $list_of_words_as_text = $global_dashrep_replacement{ $operand_two } ;
+            $list_of_words_as_text =~ s/^ +//s ;
+            $list_of_words_as_text =~ s/ +$//s ;
+            @list_of_words = split( / +/ , $list_of_words_as_text ) ;
             for ( $word_number = 1 ; $word_number <= $#list_of_words + 1 ; $word_number ++ )
             {
-                $text_to_expand .= "[-word-to-use-in-template = " . $list_of_words[ $word_number - 1 ] . "-][-" . $template_phrase_name . "-]" ;
+                $text_to_expand .= "[-copy-from-phrase-to-phrase-only-word-at-position " . $operand_two . " word-to-use-in-template " . $word_number . "-][-" . $template_phrase_name . "-]" ;
             }
             $text_to_expand .= " " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; action " . $action_name . " created code that will use template " . $operand_one . " with each word in phrase " . $operand_two . "}}\n";
+                $global_trace_log .= "{{trace; list of words: " . $global_dashrep_replacement{ $operand_two } . "}}\n";
                 $global_trace_log .= "{{trace; text that will be expanded: " . $text_to_expand . "}}\n";
             }
             $replacement_text = $text_begin . $text_to_expand . $text_end ;
