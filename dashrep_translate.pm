@@ -218,6 +218,7 @@ BEGIN {
     $global_trace_log = "" ;
     $global_unique_value = 0 ;
     $global_storage_number = 1 ;
+    $file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
@@ -6392,6 +6393,13 @@ sub dashrep_file_actions
             }
         }
         close( OUTFILE ) ;
+        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+            }
+        }
         $input_text = "" ;
 
 
@@ -6464,6 +6472,13 @@ sub dashrep_file_actions
                 }
             }
             close( OUTFILE ) ;
+            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                }
+            }
         }
         $input_text = "" ;
 
@@ -6523,6 +6538,13 @@ sub dashrep_file_actions
                 }
             }
             close( OUTFILE ) ;
+            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                }
+            }
         }
         $input_text = "" ;
 
@@ -6632,6 +6654,13 @@ sub dashrep_file_actions
             }
             close( INFILE ) ;
             close( OUTFILE ) ;
+            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                }
+            }
         }
         $global_nesting_level_of_file_actions -- ;
         $input_text = "" ;
@@ -7069,6 +7098,13 @@ sub dashrep_file_actions
             }
             close( INFILE ) ;
             close( OUTFILE ) ;
+            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                }
+            }
         }
         $global_nesting_level_of_file_actions -- ;
         $input_text = "" ;
@@ -7238,6 +7274,13 @@ sub dashrep_file_actions
                     }
                 }
                 close( OUTFILE ) ;
+                if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                    }
+                }
             }
             $global_nesting_level_of_file_actions -- ;
         }
@@ -8309,6 +8352,7 @@ sub dashrep_web_framework
         print ERRFILE $definition ;
         print ERRFILE "\n" ;
         close ERRFILE ;
+        chmod( $file_write_protection_mode , $error_file_name ) ;
         return $emergency_page;
     }
 
@@ -8394,6 +8438,7 @@ sub dashrep_internal_endless_loop_info
             }
             close( OUTFILE ) ;
             print "Endless loop debug info written to file " . $endless_loop_debug_info_filename . "\n" ;
+            chmod( $file_write_protection_mode , $endless_loop_debug_info_filename ) ;
         }
     }
 
