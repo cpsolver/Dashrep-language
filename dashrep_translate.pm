@@ -8317,7 +8317,7 @@ sub dashrep_web_framework
 #  browser with a simple "print" command.
 
     $generated_web_page = $global_dashrep_replacement{ "web-framework-generated-web-page" } ;
-    if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
+    if ( ( ( $generated_web_page =~ /^Content.type. +text.html/si ) && ( $generated_web_page =~ /<html>.*<body.*>/si ) ) || ( $generated_web_page =~ /^HTTP/si ) )
     {
         return $generated_web_page ;
 
