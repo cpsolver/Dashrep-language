@@ -1052,11 +1052,11 @@ name-of-phrase-that-specifies-write-directory no-space .
 
 description-for-phrase-copy-from-file-to-phrase:
 Copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition). s-n The phrase
-bold-begin italics-begin dashrep h-h yes h-h indicate h-h line h-h endings italics-end bold-end
+b-i-b dashrep h-h yes h-h indicate h-h line h-h endings b-i-e
 can be defined as
 italics-begin yes italics-end
 to insert the phrase
-bold-begin italics-begin end-of-line-here italics-end bold-end
+b-i-b end h-h of h-h line h-h here b-i-e
 at each line break that is encountered. s-n
 The location of the source file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
