@@ -2013,9 +2013,9 @@ sub dashrep_expand_parameters
             }
             $phrase_being_edited = $operand_one ;
             $text_being_edited = $global_dashrep_replacement{ $phrase_being_edited } ;
-            while( $text_being_edited =~ / *\/> *<attribute ([^>]+)>/sg )
+            while( $text_being_edited =~ / *\/> *<((attribute)|(specify)) ([^>]+)>/sg )
             {
-                $text_being_edited =~ s/ *\/> *<attribute ([^>]+)>/ $1 \/>/sg ;
+                $text_being_edited =~ s/ *\/> *<((attribute)|(specify)) ([^>]+)>/ $4 \/>/sg ;
                 $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
@@ -2024,9 +2024,9 @@ sub dashrep_expand_parameters
                 }
                 $global_endless_loop_counter ++ ;
             }
-            while( $text_being_edited =~ / *> *<attribute ([^>]+)>/sg )
+            while( $text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
             {
-                $text_being_edited =~ s/ *> *<attribute ([^>]+)>/ $1>/sg ;
+                $text_being_edited =~ s/ *> *<((attribute)|(specify)) ([^>]+)>/ $4>/sg ;
                 $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
                 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
                 {
