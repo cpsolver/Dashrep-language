@@ -716,10 +716,6 @@ description-for-phrase-escape-text:
 Contains the text that was being translated at the time an b-i-b escape h-h if h-h yes b-i-e or b-i-b escape h-h if h-h no b-i-e action was encountered. s-n See the b-i-b escape h-h if h-h yes b-i-e description for details.
 ----
 
-description-for-phrase-dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no:
-If this user hyphen-here defined phrase equals b-i-b yes b-i-e then backward compatibility is retained for actions and conventions that have been changed recently.
-----
-
 description-for-phrase-dashrep-endless-loop-counter-limit:
 A user h-h defined phrase that specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
 ----

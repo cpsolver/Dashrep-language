@@ -243,7 +243,6 @@ escape-if-yes
 escape-if-no
 dashrep-translation-before-escape
 escape-text
-dashrep-backwards-compatibility-keep-spaces-in-parameter-yes-or-no
 dashrep-special-replacement-adjacent-space
 dashrep-special-replacement-hyphen
 dashrep-special-replacement-newline
