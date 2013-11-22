@@ -970,8 +970,16 @@ An action that supplies b-i-b no b-i-e if the following word (space h-h delimite
 ----
 
 
+description-for-phrase-yes-if-any-yes:
+An action that is the same as the action b-i-b yes h-h if h-h not h-h no b-i-e no-space .
+----
+
 description-for-phrase-no-if-not-yes:
 An action that supplies b-i-b yes b-i-e if the following word (space h-h delimited text string) is b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b yes b-i-e is significant.
+----
+
+description-for-phrase-no-if-any-no:
+An action that is the same as the action b-i-b no h-h if h-h not h-h yes b-i-e no-space .
 ----
 
 

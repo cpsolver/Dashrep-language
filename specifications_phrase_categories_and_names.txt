@@ -51,7 +51,9 @@ yes-or-no-empty-phrase
 yes-or-no-same-two-words
 yes-or-no-same-two-phrase-definitions
 yes-if-not-no
+no-if-any-no
 no-if-not-yes
+yes-if-any-yes
 yes-or-no-opposite
 if-word-is-yes-then-first-else-second
 if-word-is-no-then-first-else-second
