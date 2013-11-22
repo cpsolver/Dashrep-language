@@ -3248,51 +3248,45 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
         {
-            if ( ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) && ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) ) )
+            $text_for_value = "" ;
+            $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
+            if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands: " . $operand_one . " and " . $operand_two . "}}\n" ;
-                }
-                next ;
-            } elsif ( ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) ) && ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) ) )
-            {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands: " . $operand_one . " and " . $operand_two . " and " . $operand_three . "}}\n" ;
-                }
-                next ;
+                $text_list_key = "" ;
+                $destination_phrase = $operand_two ;
             } else
             {
-                $text_for_value = "" ;
-                $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
-                if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
-                {
-                    $text_list_key = "" ;
-                    $destination_phrase = $operand_two ;
-                } else
-                {
-                    $text_list_key = $global_dashrep_replacement{ $operand_two } ;
-                    $destination_phrase = $operand_three ;
-                }
-                $text_list_key =~ s/^ +// ;
-                $text_list_key =~ s/ +$// ;
+                $text_list_key = $global_dashrep_replacement{ $operand_two } ;
+                $destination_phrase = $operand_three ;
+            }
+            $text_list_key =~ s/^ +// ;
+            $text_list_key =~ s/ +$// ;
+            if ( $text_list_key eq "" )
+            {
+                @list_of_key_values = ( ) ;
+            } else
+            {
                 @list_of_key_values = split( / +/ , $text_list_key ) ;
-                %listed_word = ( ) ;
-                foreach $word ( @list_of_key_values )
-                {
-                    $listed_word{ $word } = 0 ;
-                }
-                $text_list_loop =~ s/^ +// ;
-                $text_list_loop =~ s/ +$// ;
+            }
+            %listed_word = ( ) ;
+            foreach $word ( @list_of_key_values )
+            {
+                $listed_word{ $word } = 0 ;
+            }
+            $text_list_loop =~ s/^ +// ;
+            $text_list_loop =~ s/ +$// ;
+            if ( $text_list_loop eq "" )
+            {
+                @list_of_loop_words = ( ) ;
+            } else
+            {
                 @list_of_loop_words = split( / +/ , $text_list_loop ) ;
-                $length_of_loop_list = $#list_of_loop_words + 1 ;
-                %not_listed_word = ( ) ;
-                $result_word_list = "" ;
+            }
+            $length_of_loop_list = $#list_of_loop_words + 1 ;
+            %not_listed_word = ( ) ;
+            $result_word_list = "" ;
+            if ( $length_of_loop_list > 0 )
+            {
                 for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
                 {
                     $word = $list_of_loop_words[ $pointer - 1 ] ;
@@ -3314,9 +3308,9 @@ sub dashrep_expand_parameters
                         }
                     }
                 }
-                $result_word_list =~ s/ +$// ;
-                $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
             }
+            $result_word_list =~ s/ +$// ;
+            $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
         }
