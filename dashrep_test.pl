@@ -387,6 +387,18 @@ test-of-insert-codeview-tags:
 [-insert-codeview-tags-into-phrase dashrep-code-with-inserted-codeview-tags-]
 --------
 
+input-right-values:
+12 -3 6 23 15 9 22 17 2
+--------
+
+input-down-values:
+8 -9 4 2 18 3 11 9 12
+--------
+
+two-dimensional-sort:
+[-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-down-values results-of-two-dimensional-sort-]
+--------
+
 test-of-stop-translation:
 [-value-of-pi-]
 [-dashrep-stop-translation = yes-]
@@ -1392,6 +1404,25 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-cod
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-from-phrase-to-phrase-and-remove-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "numeric-two-dimensional-sort-into-columns-and-rows"
+
+$being_tested = "test action: numeric-two-dimensional-sort-into-columns-and-rows -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "two-dimensional-sort" ) ;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "results-of-two-dimensional-sort" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_expand_parameters( "two-dimensional-sort" ) ;
+# $string_return_value = dashrep_get_replacement( "results-of-two-dimensional-sort" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value =~ /row-3-column-1 row-2-column-3 row-2-column-1/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

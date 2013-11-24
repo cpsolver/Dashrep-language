@@ -80,6 +80,7 @@ numeric-logarithm-base-10
 numeric-pi
 numeric-map-tile-zoom
 numeric-y-map-tile-number-based-on-latitude
+numeric-two-dimensional-sort-into-columns-and-rows
 numeric-increment
 numeric-decrement
 

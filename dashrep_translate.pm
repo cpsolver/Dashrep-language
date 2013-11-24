@@ -271,7 +271,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-gather-tag-unique" } = "url" ;
     $global_dashrep_replacement{ "dashrep-omit-web-page-from-trace-log-yes-or-no" } = "no" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty calculate-if-empty-then-use-here dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-if-not-no no-if-any-no no-if-not-yes yes-if-any-yes yes-or-no-opposite if-word-is-yes-then-first-else-second if-word-is-no-then-first-else-second if-first-word-is-yes-then-keep-remainder-else-empty if-first-word-is-no-then-keep-remainder-else-empty category_numeric zero-one-multiple zero-or-nonzero numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-map-tile-zoom numeric-y-map-tile-number-based-on-latitude numeric-increment numeric-decrement category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word yes-or-no-same-two-words first-word-in-phrase last-word-in-phrase from-phrase-get-word-number copy-from-phrase-to-phrase-words-from-position-to-position count-of-words-in-phrase position-of-word-in-phrase yes-or-no-word-is-in-phrase position-of-word-in-phrase-within-phrase append-word-to-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word copy-from-phrase-to-phrase-with-word-order-reversed use-template-with-each-word-in-phrase word-to-use-in-template category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items dashrep-warning-parameter-for-list-generation-contains-invalid-characters category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file delete-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-read-from-file-and-use-template storage-input-line-from-file input-line-count category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-on-yes-or-no dashrep-capture-actions-on-yes-or-no dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-warning-trace-on-yes-or-no dashrep-capture-trace-on-yes-or-no dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-ignore-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-trace-show-definition category_advanced dashrep-stop-translation dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-translation-before-escape escape-text dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings end-of-line-here clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names dashrep-undefined insert-codeview-tags-into-phrase yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_do_not_use dashrep-list-info-temporary-storage dashrep-list-info-temporary-storage-separator" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase calculate-if-phrase-empty calculate-if-empty-then-use-here dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-if-not-no no-if-any-no no-if-not-yes yes-if-any-yes yes-or-no-opposite if-word-is-yes-then-first-else-second if-word-is-no-then-first-else-second if-first-word-is-yes-then-keep-remainder-else-empty if-first-word-is-no-then-keep-remainder-else-empty category_numeric zero-one-multiple zero-or-nonzero numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-map-tile-zoom numeric-y-map-tile-number-based-on-latitude numeric-two-dimensional-sort-into-columns-and-rows numeric-increment numeric-decrement category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word yes-or-no-same-two-words first-word-in-phrase last-word-in-phrase from-phrase-get-word-number copy-from-phrase-to-phrase-words-from-position-to-position count-of-words-in-phrase position-of-word-in-phrase yes-or-no-word-is-in-phrase position-of-word-in-phrase-within-phrase append-word-to-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word copy-from-phrase-to-phrase-with-word-order-reversed use-template-with-each-word-in-phrase word-to-use-in-template category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items dashrep-warning-parameter-for-list-generation-contains-invalid-characters category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file delete-file linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-read-from-file-and-use-template storage-input-line-from-file input-line-count category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-on-yes-or-no dashrep-capture-actions-on-yes-or-no dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-warning-trace-on-yes-or-no dashrep-capture-trace-on-yes-or-no dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-ignore-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-trace-show-definition category_advanced dashrep-stop-translation dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-translation-before-escape escape-text dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings end-of-line-here clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names dashrep-undefined insert-codeview-tags-into-phrase yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_do_not_use dashrep-list-info-temporary-storage dashrep-list-info-temporary-storage-separator" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
 }
@@ -1031,7 +1031,6 @@ sub dashrep_expand_parameters
     my $object_of_action ;
     my $count ;
     my $zero_one_multiple ;
-    my $empty_or_nonempty ;
     my $yes_or_no ;
     my $text_parameter ;
     my $text_for_value ;
@@ -1169,10 +1168,69 @@ sub dashrep_expand_parameters
     my $sine_of_angle ;
     my $cosine_of_angle ;
     my $value_of_operand_one ;
+    my $number_of_columns ;
+    my $number_of_items ;
+    my $number_of_items_in_bottom_row ;
+    my $number_of_full_rows ;
+    my $number_of_rows ;
+    my $down_direction_minimum_value ;
+    my $down_direction_maximum_value ;
+    my $right_direction_minimum_value ;
+    my $right_direction_maximum_value ;
+    my $range_of_down_direction_values ;
+    my $range_of_right_direction_values ;
+    my $top_row_number ;
+    my $bottom_row_number ;
+    my $fill_direction_top_left ;
+    my $fill_direction_bottom_right ;
+    my $fill_direction_bottom_left ;
+    my $fill_direction_top_right ;
+    my $need_maximum ;
+    my $need_minimum ;
+    my $value_direction_right_and_down ;
+    my $value_direction_left_and_down ;
+    my $value_direction_down ;
+    my $value_direction_right ;
+    my $top_left_open_column ;
+    my $top_right_open_column ;
+    my $bottom_left_open_column ;
+    my $bottom_right_open_column ;
+    my $fill_direction ;
+    my $target_row_number ;
+    my $target_column_number ;
+    my $need_maximum_or_minimum ;
+    my $final_result ;
+    my $row_number ;
+    my $column_number ;
+    my $next_value_to_compare ;
+    my $use_value_direction ;
+    my $max_or_min_value ;
+    my $action_name_exists ;
+    my $parameter_level ;
+    my $parameter_begin_or_end_string ;
+    my $phrase_type ;
+    my $prefix_text ;
+    my $list_of_words_as_text ;
+    my $odd_or_even_based_on_zero_or_one ;
+    my $item_number_at_min_or_max ;
+    my $multiplier_for_down_direction_values ;
+    my $multiplier_for_right_direction_values ;
+    my $text_for_down_direction_values ;
+    my $text_for_right_direction_values ;
     my @words_at_numeric_value ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
+    my @list_of_action_names ;
+    my @zero_if_not_remaining_item_number ;
+    my @right_and_down_direction_value_for_item_number ;
+    my @left_and_down_direction_value_for_item_number ;
+    my @column_position_for_item_number ;
+    my @row_position_for_item_number ;
+    my @list_of_remaining_item_numbers ;
+    my @down_direction_value_for_item_number ;
+    my @right_direction_value_for_item_number ;
+    my %item_number_at_row_column ;
 
 
 #-----------------------------------------------
@@ -4173,6 +4231,49 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
+#  numeric-absolute
+
+        if ( $action_name eq "numeric-absolute" )
+        {
+            if ( $number_of_operands != 1 )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            {
+                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            $result_value = abs( $operand_one + 0 ) ;
+            if ( $result_value == 0 )
+            {
+                $text_for_value = "0" ;
+            } else
+            {
+                $text_for_value = sprintf( "%d" , $result_value ) ;
+            }
+            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            {
+                $text_for_value = $1 ;
+            }
+            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
 #  numeric-integer
 #  numeric-odd-or-even
 #  numeric-sine
@@ -4334,43 +4435,358 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  numeric-absolute
+#  numeric-two-dimensional-sort-into-columns-and-rows
+#
+#  operand order:
+#    number of columns
+#    word-based (space-delimited) list of column-direction values for sorting (increasing to right)
+#    word-based (space-delimited) list of row-direction values for sorting (increasing to bottom)
+#    name of phrase into which to put the results, which are space-delimited strings such as "row-3-column-2" and "row-1-column-1"
+#
+#  number of rows is calculated based on number of values
 
-        if ( $action_name eq "numeric-absolute" )
+        if ( $action_name eq "numeric-two-dimensional-sort-into-columns-and-rows" )
         {
-            if ( $number_of_operands != 1 )
+            if ( $number_of_operands != 4 )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, wrong number of operands (" . $number_of_operands . " instead of 4) for action " . $action_name . "}}\n" ;
                 }
                 next ;
             }
-            if ( $operand_one !~ /^[\-0-9\.]+$/ )
+            if ( $operand_one !~ /^[0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid number of columns: " . $operand_one . "}}\n" ;
                 }
                 next ;
             }
-            $result_value = abs( $operand_one + 0 ) ;
-            if ( $result_value == 0 )
+            if ( ( $operand_one + 0 ) < 1 )
             {
-                $text_for_value = "0" ;
-            } else
-            {
-                $text_for_value = sprintf( "%d" , $result_value ) ;
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , number of columns (" . $operand_one . ") is less than 1" . "}}\n" ;
+                }
+                next ;
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                $text_for_value = $1 ;
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid second operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid third operand: " . $operand_three . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $global_dashrep_replacement{ $operand_two } !~ /^[\-0-9\. ]+$/ )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , second operand contains invalid values: " . $global_dashrep_replacement{ $operand_two } . "}}\n" ;
+                }
+                next ;
+            }
+            if ( $global_dashrep_replacement{ $operand_three } !~ /^[\-0-9\. ]+$/ )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , third operand contains invalid values: " . $global_dashrep_replacement{ $operand_three } . "}}\n" ;
+                }
+                next ;
+            }
+            $number_of_columns = $operand_one ;
+            $text_for_down_direction_values = $global_dashrep_replacement{ $operand_two } ;
+            $text_for_right_direction_values = $global_dashrep_replacement{ $operand_three } ;
+            @down_direction_value_for_item_number = split( / +/s , $text_for_down_direction_values ) ;
+            unshift( @down_direction_value_for_item_number , 0 ) ;
+            @right_direction_value_for_item_number = split( / +/s , $text_for_right_direction_values ) ;
+            unshift( @right_direction_value_for_item_number , 0 ) ;
+            $number_of_items = $#down_direction_value_for_item_number ;
+            if ( ( $#down_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , second operand (" . $operand_two . ") and third operand (". $operand_three . ") do not have the same number of values" . "}}\n" ;
+                }
+                next ;
+            }
+            $number_of_items_in_bottom_row = $number_of_columns ;
+            $number_of_full_rows = int( $number_of_items / $number_of_columns ) ;
+            $number_of_rows = $number_of_full_rows ;
+            if ( ( $number_of_full_rows * $number_of_columns ) < $number_of_items )
+            {
+                $number_of_rows ++ ;
+                $number_of_items_in_bottom_row = $number_of_items - ( $number_of_full_rows * $number_of_columns ) ;
+            }
+            @list_of_remaining_item_numbers = ( ) ;
+            $down_direction_minimum_value = 999999 ;
+            $down_direction_maximum_value = -999999 ;
+            $right_direction_minimum_value = 999999 ;
+            $right_direction_maximum_value = -999999 ;
+            for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
+            {
+                $zero_if_not_remaining_item_number[ $item_number ] = $item_number ;
+                if ( $down_direction_value_for_item_number[ $item_number ] < $down_direction_minimum_value )
+                {
+                    $down_direction_minimum_value = $down_direction_value_for_item_number[ $item_number ] ;
+                }
+                if ( $down_direction_value_for_item_number[ $item_number ] > $down_direction_maximum_value )
+                {
+                    $down_direction_maximum_value = $down_direction_value_for_item_number[ $item_number ] ;
+                }
+                if ( $right_direction_value_for_item_number[ $item_number ] < $right_direction_minimum_value )
+                {
+                    $right_direction_minimum_value = $right_direction_value_for_item_number[ $item_number ] ;
+                }
+                if ( $right_direction_value_for_item_number[ $item_number ] > $right_direction_maximum_value )
+                {
+                    $right_direction_maximum_value = $right_direction_value_for_item_number[ $item_number ] ;
+                }
+                push( @list_of_remaining_item_numbers , $item_number ) ;
+            }
+            $range_of_down_direction_values = $down_direction_maximum_value - $down_direction_minimum_value ;
+            $range_of_right_direction_values = $right_direction_maximum_value - $right_direction_minimum_value ;
+            $multiplier_for_down_direction_values = 100.00 / $range_of_down_direction_values ;
+            $multiplier_for_right_direction_values = 100.00 / $range_of_right_direction_values ;
+            for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
+            {
+                $down_direction_value_for_item_number[ $item_number ] = ( $down_direction_value_for_item_number[ $item_number ] - $down_direction_minimum_value ) * $multiplier_for_down_direction_values ;
+                $right_direction_value_for_item_number[ $item_number ] = ( $right_direction_value_for_item_number[ $item_number ] - $right_direction_minimum_value ) * $multiplier_for_right_direction_values ;
+            }
+            for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
+            {
+                $right_and_down_direction_value_for_item_number[ $item_number ] = $right_direction_value_for_item_number[ $item_number ] + $down_direction_value_for_item_number[ $item_number ] ;
+                $left_and_down_direction_value_for_item_number[ $item_number ] = - $right_direction_value_for_item_number[ $item_number ] + $down_direction_value_for_item_number[ $item_number ] ;
+            }
+            $top_row_number = 1 ;
+            $bottom_row_number = $number_of_rows ;
+            $fill_direction_top_left = 1 ;
+            $fill_direction_bottom_right = 2 ;
+            $fill_direction_bottom_left = 3 ;
+            $fill_direction_top_right = 4 ;
+            $need_maximum = 1 ;
+            $need_minimum = 2 ;
+            $value_direction_right_and_down = 1 ;
+            $value_direction_left_and_down = 2 ;
+            $value_direction_down = 3 ;
+            $value_direction_right = 4 ;
+            $top_left_open_column = 1 ;
+            $top_right_open_column = $number_of_columns ;
+            $bottom_left_open_column = 1 ;
+            $bottom_right_open_column = $number_of_columns ;
+            while ( $top_row_number <= $bottom_row_number )
+            {
+                for ( $fill_direction = $fill_direction_top_left ; $fill_direction <= $fill_direction_top_right ; $fill_direction ++ )
+                {
+                    if ( $fill_direction == $fill_direction_top_left )
+                    {
+                        $target_row_number = $top_row_number ;
+                        $target_column_number = $top_left_open_column ;
+                        if ( $top_row_number == $bottom_row_number )
+                        {
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_right ;
+                        } elsif ( $top_left_open_column < $top_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_right_and_down ;
+                        } elsif ( $top_left_open_column == $top_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_down ;
+                        } else
+                        {
+                            next ;
+                        }
+                    } elsif ( $fill_direction == $fill_direction_bottom_right )
+                    {
+                        $target_row_number = $bottom_row_number ;
+                        $target_column_number = $bottom_right_open_column ;
+                        if ( $top_row_number == $bottom_row_number )
+                        {
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_right ;
+                        } elsif ( ( $bottom_row_number == $number_of_rows ) && ( $bottom_right_open_column > $number_of_items_in_bottom_row ) )
+                        {
+                            $bottom_right_open_column -- ;
+                            next ;
+                        } elsif ( $bottom_left_open_column < $bottom_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_right_and_down ;
+                        } elsif ( $bottom_left_open_column == $bottom_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_down ;
+                        } else
+                        {
+                            next ;
+                        }
+                    } elsif ( $fill_direction == $fill_direction_bottom_left )
+                    {
+                        $target_row_number = $bottom_row_number ;
+                        $target_column_number = $bottom_left_open_column ;
+                        if ( $top_row_number == $bottom_row_number )
+                        {
+                            next ;
+                        } elsif ( ( $bottom_row_number == $number_of_rows ) && ( $bottom_left_open_column > $number_of_items_in_bottom_row ) )
+                        {
+                            $bottom_left_open_column ++ ;
+                            next ;
+                        } elsif ( $bottom_left_open_column < $bottom_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_left_and_down ;
+                        } elsif ( $bottom_left_open_column == $bottom_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_down ;
+                        } else
+                        {
+                            next ;
+                        }
+                    } elsif ( $fill_direction == $fill_direction_top_right )
+                    {
+                        $target_row_number = $top_row_number ;
+                        $target_column_number = $top_right_open_column ;
+                        if ( $top_row_number == $bottom_row_number )
+                        {
+                            next ;
+                        } elsif ( $top_left_open_column < $top_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_left_and_down ;
+                        } elsif ( $top_left_open_column == $top_right_open_column )
+                        {
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_down ;
+                        } else
+                        {
+                            next ;
+                        }
+                    }
+                    if ( $need_maximum_or_minimum == $need_maximum )
+                    {
+                        $max_or_min_value = -999999 ;
+                    } else
+                    {
+                        $max_or_min_value = 999999 ;
+                    }
+                    $item_number_at_min_or_max = 0 ;
+                    foreach ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
+                    {
+                        if ( $zero_if_not_remaining_item_number[ $item_number ] >= 1 )
+                        {
+                            if ( $use_value_direction == $value_direction_right_and_down )
+                            {
+                                $next_value_to_compare = $right_and_down_direction_value_for_item_number[ $item_number ] ;
+                            } elsif ( $use_value_direction == $value_direction_left_and_down )
+                            {
+                                $next_value_to_compare = $left_and_down_direction_value_for_item_number[ $item_number ] ;
+                            } elsif ( $use_value_direction == $value_direction_down )
+                            {
+                                $next_value_to_compare = $down_direction_value_for_item_number[ $item_number ] ;
+                            } elsif ( $use_value_direction == $value_direction_right )
+                            {
+                                $next_value_to_compare = $right_direction_value_for_item_number[ $item_number ] ;
+                            } else
+                            {
+                                next ;
+                            }
+                            if ( $need_maximum_or_minimum == $need_maximum )
+                            {
+                                if ( $next_value_to_compare > $max_or_min_value )
+                                {
+                                    $max_or_min_value = $next_value_to_compare ;
+                                    $item_number_at_min_or_max = $item_number ;
+                                }
+                            } else
+                            {
+                                if ( $next_value_to_compare < $max_or_min_value )
+                                {
+                                    $max_or_min_value = $next_value_to_compare ;
+                                    $item_number_at_min_or_max = $item_number ;
+                                }
+                            }
+                        }
+                    }
+                    $column_position_for_item_number[ $item_number_at_min_or_max ] = $target_column_number ;
+                    $row_position_for_item_number[ $item_number_at_min_or_max ] = $target_row_number ;
+                    if ( $fill_direction == $fill_direction_top_left )
+                    {
+                        $top_left_open_column ++ ;
+                    } elsif ( $fill_direction == $fill_direction_bottom_right )
+                    {
+                        $bottom_right_open_column -- ;
+                    } elsif ( $fill_direction == $fill_direction_bottom_left )
+                    {
+                        $bottom_left_open_column ++ ;
+                    } elsif ( $fill_direction == $fill_direction_top_right )
+                    {
+                        $top_right_open_column -- ;
+                    }
+                    $zero_if_not_remaining_item_number[ $item_number_at_min_or_max ] = 0 ;
+                }
+                if ( ( $top_left_open_column > $top_right_open_column ) && ( $bottom_left_open_column > $bottom_right_open_column ) )
+                {
+                    $top_row_number ++ ;
+                    $bottom_row_number -- ;
+                    $top_left_open_column = 1 ;
+                    $top_right_open_column = $number_of_columns ;
+                    $bottom_left_open_column = 1 ;
+                    $bottom_right_open_column = $number_of_columns ;
+                }
+            }
+            $final_result = "" ;
+            for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
+            {
+                $row_number = $row_position_for_item_number[ $item_number ] ;
+                $column_number = $column_position_for_item_number[ $item_number ] ;
+                $final_result .= "row-" . $row_number . "-column-" . $column_number . " " ;
+                $item_number_at_row_column{ $row_number . "" . $column_number } = $item_number ;
+            }
+            $final_result =~ s/ +$// ;
+            $global_dashrep_replacement{ $operand_four } = $final_result ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; two-dimensionally sorted items}}\n" ;
+                for ( $row_number = 1 ; $row_number <= $number_of_rows ; $row_number ++ )
+                {
+                    $global_trace_log .= "{{row " . $row_number . ":  " ;
+                    for ( $column_number = 1 ; $column_number <= $number_of_columns ; $column_number ++ )
+                    {
+                        $item_number = $item_number_at_row_column{ $row_number . "" . $column_number } ;
+                        $global_trace_log .= "item " . $item_number . " (" . $down_direction_value_for_item_number[ $item_number ] . " " . $right_direction_value_for_item_number[ $item_number ] . ") " ;
+                    }
+                    $global_trace_log .= "}}\n" ;
+                }
+            }
+            $replacement_text = $text_begin . " " . $text_end ;
             next ;
         }
 
@@ -5798,8 +6214,20 @@ sub dashrep_file_actions
     my $length_of_first_word ;
     my $second_word ;
     my $name_of_phrase_that_contains_list_of_index_keys ;
+    my $first_word ;
+    my $entry_begin ;
+    my $entry_end ;
+    my $entry_unique ;
+    my $unique_value ;
+    my $list_of_unique_values ;
+    my $found_unique_value ;
+    my $line_status ;
+    my $tag_name ;
+    my $multiline_value_name ;
+    my $remainder_of_line ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
+    my %content_for_tag ;
 
 
 #-----------------------------------------------
