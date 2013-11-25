@@ -4520,6 +4520,10 @@ sub dashrep_expand_parameters
             $number_of_columns = $operand_one ;
             $text_for_down_direction_values = $global_dashrep_replacement{ $operand_two } ;
             $text_for_right_direction_values = $global_dashrep_replacement{ $operand_three } ;
+            $text_for_down_direction_values =~ s/^ +//s ;
+            $text_for_down_direction_values =~ s/ +$//s ;
+            $text_for_right_direction_values =~ s/^ +//s ;
+            $text_for_right_direction_values =~ s/ +$//s ;
             @down_direction_value_for_item_number = split( / +/s , $text_for_down_direction_values ) ;
             unshift( @down_direction_value_for_item_number , 0 ) ;
             @right_direction_value_for_item_number = split( / +/s , $text_for_right_direction_values ) ;
@@ -4571,8 +4575,22 @@ sub dashrep_expand_parameters
             }
             $range_of_down_direction_values = $down_direction_maximum_value - $down_direction_minimum_value ;
             $range_of_right_direction_values = $right_direction_maximum_value - $right_direction_minimum_value ;
-            $multiplier_for_down_direction_values = 100.00 / $range_of_down_direction_values ;
-            $multiplier_for_right_direction_values = 100.00 / $range_of_right_direction_values ;
+            if ( $range_of_down_direction_values > 0.0001 )
+            {
+                $multiplier_for_down_direction_values = 100.00 / $range_of_down_direction_values ;
+            } else
+            {
+                $multiplier_for_down_direction_values = 1.0 ;
+                $down_direction_minimum_value = $down_direction_minimum_value - 1.0 ;
+            }
+            if ( $range_of_right_direction_values > 0.0001 )
+            {
+                $multiplier_for_right_direction_values = 100.00 / $range_of_right_direction_values ;
+            } else
+            {
+                $multiplier_for_right_direction_values = 1.0 ;
+                $right_direction_minimum_value = $right_direction_minimum_value - 1.0 ;
+            }
             for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
             {
                 $down_direction_value_for_item_number[ $item_number ] = ( $down_direction_value_for_item_number[ $item_number ] - $down_direction_minimum_value ) * $multiplier_for_down_direction_values ;
@@ -4774,14 +4792,18 @@ sub dashrep_expand_parameters
             $global_dashrep_replacement{ $operand_four } = $final_result ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
+                $global_trace_log .= "{{trace; " . $number_of_items . " items , " . $number_of_columns . " columns , " . $number_of_rows . " rows , " . $number_of_items_in_bottom_row . " items in bottom row}}\n" ;
                 $global_trace_log .= "{{trace; two-dimensionally sorted items}}\n" ;
                 for ( $row_number = 1 ; $row_number <= $number_of_rows ; $row_number ++ )
                 {
                     $global_trace_log .= "{{row " . $row_number . ":  " ;
                     for ( $column_number = 1 ; $column_number <= $number_of_columns ; $column_number ++ )
                     {
-                        $item_number = $item_number_at_row_column{ $row_number . "" . $column_number } ;
-                        $global_trace_log .= "item " . $item_number . " (" . $down_direction_value_for_item_number[ $item_number ] . " " . $right_direction_value_for_item_number[ $item_number ] . ") " ;
+                        if ( ( $row_number < $number_of_rows ) || ( ( $row_number == $number_of_rows ) && ( $column_number <= $number_of_items_in_bottom_row ) ) )
+                        {
+                            $item_number = $item_number_at_row_column{ $row_number . "" . $column_number } ;
+                            $global_trace_log .= "item " . $item_number . " (" . $down_direction_value_for_item_number[ $item_number ] . " " . $right_direction_value_for_item_number[ $item_number ] . ") " ;
+                        }
                     }
                     $global_trace_log .= "}}\n" ;
                 }
