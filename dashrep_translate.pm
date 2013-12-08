@@ -2166,6 +2166,7 @@ sub dashrep_expand_parameters
             }
             $accumulated_text .= $remaining_text ;
             $accumulated_text =~ s/ *<no_space> *//sg ;
+            $accumulated_text =~ s/<new_line>/\n/sg ;
             $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -4921,7 +4922,7 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_two . " does not exist or is empty" . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_one . " does not exist or is empty" . "}}\n" ;
                 }
                 next ;
             }
