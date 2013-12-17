@@ -2166,7 +2166,7 @@ sub dashrep_expand_parameters
             }
             $accumulated_text .= $remaining_text ;
             $accumulated_text =~ s/ *<no_space> *//sg ;
-            $accumulated_text =~ s/<new_line>/\n/sg ;
+            $accumulated_text =~ s/ *<new_line> */\n/sg ;
             $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
