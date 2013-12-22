@@ -8686,12 +8686,12 @@ sub dashrep_web_framework
 #  definition of the phrase "generated-web-page".
 #
 #  If the endless loop counter has exceeded its
-#  limit, allow an additional 1000 loops for this
+#  limit, allow an additional 10000 loops for this
 #  step, so that a web page can still be delivered.
 
     if ( $global_endless_loop_counter >= $global_endless_loop_counter_limit )
     {
-        $global_endless_loop_counter = $global_endless_loop_counter_limit - 1000 ;
+        $global_endless_loop_counter = $global_endless_loop_counter_limit - 10000 ;
     }
     $phrase_to_expand = "[-generated-web-page-]" ;
     $intermediate_results = &dashrep_expand_parameters( $phrase_to_expand );
