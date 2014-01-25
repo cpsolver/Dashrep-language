@@ -1820,14 +1820,23 @@ sub dashrep_expand_parameters
             {
                 $temp_text =~ s/^ +// ;
                 $temp_text =~ s/ +$// ;
-                @list_of_words = split( / +/ , $temp_text ) ;
+                $remaining_text = $temp_text ;
                 $accumulated_text = "" ;
-                foreach $word ( @list_of_words )
+                if ( $remaining_text =~ /^([a-z])(.*)$/s )
                 {
-                    $accumulated_text .= uc( substr( $word , 0 , 1 ) ) . substr( $word , 1 , 999 ) . " " ;
+                    $character_to_capitalize = $1 ;
+                    $remaining_text = $2 ;
+                    $accumulated_text .= uc( $character_to_capitalize ) ;
                 }
-                $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$// ;
+                while ( $remaining_text =~ /^(.*?) ([a-z])(.*)$/s )
+                {
+                    $accumulated_text .= $1 ;
+                    $character_to_capitalize = $2 ;
+                    $remaining_text = $3 ;
+                    $accumulated_text .= " " . uc( $character_to_capitalize ) ;
+                }
+                $accumulated_text .= $remaining_text ;
+                $temp_text = $accumulated_text ;
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" )
             {
                 $temp_text =~ s/ /\+/sg ;
