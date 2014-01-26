@@ -169,6 +169,7 @@ size-of-file
 modification-time-of-file
 create-empty-file
 delete-file
+create-empty-sub-folder
 linewise-translate-from-file-to-file
 linewise-translate-parameters-only-from-file-to-file
 linewise-translate-phrases-only-from-file-to-file

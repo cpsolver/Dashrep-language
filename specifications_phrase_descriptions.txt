@@ -1062,6 +1062,13 @@ The location of the created file is specified by the phrase
 name-of-phrase-that-specifies-write-directory no-space .
 -----
 
+description-for-phrase-create-empty-sub-folder:
+Creates an empty folder (directory) using the specified folder name, or does nothing if the sub h-h folder (directory) already exists. s-n
+The sub h-h folder must be directly beneath the directory specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space . s-n
+The specified name must contain only letters (a to z and A to Z) and digits and underscores and hyphens; any other characters, including slashes or backslashes, are not allowed.
+-----
+
 description-for-phrase-copy-from-file-to-phrase:
 Copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition). s-n The phrase
 b-i-b dashrep h-h yes h-h indicate h-h line h-h endings b-i-e

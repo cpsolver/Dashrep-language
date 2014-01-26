@@ -6915,7 +6915,7 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "create-empty-sub-folder" )
     {
-        if ( ( $operand_one eq "" ) || ( $operand_one !~ /^[a-z0-9_]+$/i ) )
+        if ( ( $operand_one eq "" ) || ( $operand_one !~ /^[a-z0-9_\-]+$/i ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operand " . $operand_one . "]" ;
         } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
@@ -6935,23 +6935,30 @@ sub dashrep_file_actions
             $target_sub_folder .= $slash_or_backslash_for_path ;
             if ( -d $target_sub_folder )
             {
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; sub-folder " . $target_sub_folder . " already exists, so not created". "}}\n" ;
+                }
                 $possible_error_message .= "" ;
             } else
             {
                 umask( 0077 ) ;
-                if ( not( mkdir( $target_sub_folder ) ) )
+                if ( mkdir( $target_sub_folder ) )
                 {
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; sub-folder " . $target_sub_folder . " created". "}}\n" ;
+                    }
+                } else
+                {
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; sub-folder " . $target_sub_folder . " could not be created". "}}\n" ;
+                    }
                     $possible_error_message .= " [warning, sub-folder named " . $target_sub_folder . " could not be created]" ;
                 }
             }
-            if ( $possible_error_message eq "" )
-            {
-                print OUTFILE "" ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; created empty sub-folder: " . $target_sub_folder . "}}\n" ;
-                }
-            } else
+            if ( $possible_error_message ne "" )
             {
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
