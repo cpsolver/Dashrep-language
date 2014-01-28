@@ -517,7 +517,7 @@ An action that supplies b-i-b yes b-i-e if the following two phrase contain the 
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
-An action that supplies b-i-b yes b-i-e if the following two space-delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If either word might be empty, then a warning is put into the trace information because the number of operands is not two.
+An action that supplies b-i-b yes b-i-e if the following two space h-h delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If either word might be empty, then a warning is put into the trace information because the number of operands is not two.
 -----
 
 description-for-phrase-yes-or-no-word-is-in-phrase:
@@ -639,7 +639,7 @@ Reads from the specified file all the lines in that text file, and puts each lin
 ----
 
 description-for-phrase-copy-from-columns-in-file-to-named-phrases:
-Reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name. s-n The specified phrase contains both the prefix for all the names and the name of each column. s-n For example, if the specified phrase is defined as b-i-b cell h-h contents h-h for h-h nickname h-h one-space phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
+Reads from the specified file all the spreadsheet-like lines of text, and puts each (space h-h delimited) word into a phrase that has a special name. s-n The specified phrase must begin with the (space h-h delimited) prefix for all the names, is followed by the (space h-h delimited) name of each column. s-n For example, if the specified phrase is defined as b-i-b cell h-h contents h-h for h-h nickname h-h one-space phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n A third operand is the name of a phrase that lists the unique values, where the first word in a line must be the unique value. s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space . s-n If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.
 ----
 
 description-for-phrase-gather-tagged-info-from-file-and-put-unique-values-into-phrase:
@@ -1258,7 +1258,7 @@ deprecated
 
 
 description-for-phrase-copy-from-phrase-to-phrase-and-split-into-list-of-characters:
-Copies a phrase definition to the specified phrase, but splits all the characters into a (space-delimited) list of characters. s-n Where there is a space, the word b-i-e onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
+Copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-e onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
 ----
 
 
@@ -1395,7 +1395,7 @@ An action that supplies b-i-b equal b-i-e if the following two numbers are equal
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-numeric-sort-by-word:
-Copies from a phrase definition to the specified phrase and numerically sorts the list of (space-delimited) numbers. s-n The two phrase names can be the same.
+Copies from a phrase definition to the specified phrase and numerically sorts the list of (space h-h delimited) numbers. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-length-of-phrase-definition:

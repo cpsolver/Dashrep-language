@@ -192,6 +192,7 @@ my $global_dashrep_text_list_of_spoken_words ;
 my $global_dashrep_text_list_of_phrases_uncategorized ;
 my $global_unique_value ;
 my $global_storage_number ;
+my $file_write_protection_mode ;
 my $global_dashrep_text_list_of_phrase_names ;
 my %global_dashrep_replacement ;
 my %global_replacement_count_for_item_name ;
@@ -1217,6 +1218,7 @@ sub dashrep_expand_parameters
     my $multiplier_for_right_direction_values ;
     my $text_for_down_direction_values ;
     my $text_for_right_direction_values ;
+    my $character_to_capitalize ;
     my @words_at_numeric_value ;
     my @list ;
     my @list_of_sorted_numbers ;
@@ -6229,7 +6231,7 @@ sub dashrep_file_actions
     my $text_item_in_column ;
     my $number_of_columns ;
     my $column_pointer ;
-    my $index_name ;
+    my $unique_value ;
     my $phrase_naming_convention_for_this_column ;
     my $operand_three ;
     my $line_ending ;
@@ -6245,18 +6247,20 @@ sub dashrep_file_actions
     my $words_to_match ;
     my $length_of_first_word ;
     my $second_word ;
-    my $name_of_phrase_that_contains_list_of_index_keys ;
+    my $name_of_phrase_that_contains_list_of_index_values ;
     my $first_word ;
     my $entry_begin ;
     my $entry_end ;
     my $entry_unique ;
-    my $unique_value ;
     my $list_of_unique_values ;
     my $found_unique_value ;
     my $line_status ;
     my $tag_name ;
     my $multiline_value_name ;
     my $remainder_of_line ;
+    my $prefix_text ;
+    my $target_sub_folder ;
+    my $slash_or_backslash_for_path ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
     my %content_for_tag ;
@@ -6337,6 +6341,7 @@ sub dashrep_file_actions
     }
     $operand_one =~ s/\t+//g ;
     $operand_two =~ s/\t+//g ;
+    $operand_three =~ s/\t+//g ;
     $source_phrase_name = $operand_one ;
     $source_filename = $operand_one ;
     $target_phrase_name = $operand_two ;
@@ -7158,9 +7163,9 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "copy-from-columns-in-file-to-named-phrases" )
     {
-        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
+        if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
-            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
         } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
@@ -7170,11 +7175,28 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            $temp_text = $global_dashrep_replacement{ $target_phrase_name } ;
+            $temp_text = $global_dashrep_replacement{ $operand_two } ;
             $temp_text =~ s/^ +// ;
             $temp_text =~ s/ +$// ;
             @phrase_naming_convention_for_column = split( / +/ , $temp_text ) ;
-            $number_of_column_names = scalar( @phrase_naming_convention_for_column ) + 1 ;
+            $number_of_column_names = scalar( @phrase_naming_convention_for_column ) ;
+            $prefix_text = $phrase_naming_convention_for_column[ 0 ] ;
+            if ( $prefix_text !~ /^[^ ]+$/ )
+            {
+                $possible_error_message .= " [warning, action " . $action_name . " has prefix of " . $prefix_text . " that is not valid]" ;
+            }
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $name_of_phrase_that_contains_list_of_index_values = $operand_three ;
+            if ( $name_of_phrase_that_contains_list_of_index_values !~ /^[a-z0-9_\-]+$/i )
+            {
+                $possible_error_message .= " [warning, action " . $action_name . " has invalid third operand " . $name_of_phrase_that_contains_list_of_index_values . "]" ;
+            }
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $list_of_unique_values = "" ;
             if ( ( exists( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } ) ) && ( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } eq "yes" ) )
             {
                 $use_two_spaces_as_delimiter = "yes" ;
@@ -7182,48 +7204,52 @@ sub dashrep_file_actions
             {
                 $use_two_spaces_as_delimiter = "no" ;
             }
-            $name_of_phrase_that_contains_list_of_index_keys = $phrase_naming_convention_for_column[ 0 ] ;
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
+                $input_line =~ s/ +$// ;
                 if ( $use_two_spaces_as_delimiter eq "yes" )
                 {
                     @text_item_in_column = split( /  +/ , $input_line ) ;
-                    if ( $text_item_in_column[ 0 ] =~ / / )
-                    {
-                        $text_item_in_column[ 0 ] =~ s/ +/_/g ;
-                    }
                 } else
                 {
                     @text_item_in_column = split( /[\t ]/ , $input_line ) ;
                 }
-                $number_of_columns = scalar( @text_item_in_column ) + 1 ;
-                if ( $number_of_column_names < $number_of_columns )
+                $unique_value = $text_item_in_column[ 0 ] ;
+                if ( $unique_value =~ / / )
+                {
+                    $unique_value =~ s/ +/_/g ;
+                }
+                $number_of_columns = scalar( @text_item_in_column ) ;
+                if ( $number_of_columns > $number_of_column_names )
                 {
                     $number_of_columns = $number_of_column_names ;
                 }
-                if ( $number_of_columns > 1 )
+                if ( $number_of_columns > 0 )
                 {
-                    for ( $column_pointer = 0 ; $column_pointer <= $number_of_columns - 1 ; $column_pointer ++ )
+                    $list_of_unique_values .= " " . $unique_value ;
+                    for ( $column_pointer = 2 ; $column_pointer <= $number_of_column_names ; $column_pointer ++ )
                     {
-                        $phrase_naming_convention_for_this_column = $phrase_naming_convention_for_column[ $column_pointer ] ;
-                        if ( $column_pointer == 0 )
+                        if ( $column_pointer <= $number_of_columns )
                         {
-                            $index_name = $text_item_in_column[ $column_pointer ] ;
-                            $global_dashrep_replacement{ $name_of_phrase_that_contains_list_of_index_keys } .= " " . $index_name ;
+                            $phrase_naming_convention_for_this_column = $prefix_text . "-" . $unique_value . "-" . $phrase_naming_convention_for_column[ $column_pointer - 1 ] ;
+                            $global_dashrep_replacement{ $phrase_naming_convention_for_this_column } = $text_item_in_column[ $column_pointer - 1 ] ;
                         } else
                         {
-                            $global_dashrep_replacement{ $phrase_naming_convention_for_this_column . "-for-" . $index_name } = $text_item_in_column[ $column_pointer ] ;
+                            $phrase_naming_convention_for_this_column = $prefix_text . "-" . $unique_value . "-" . $phrase_naming_convention_for_column[ $column_pointer - 1 ] ;
+                            $global_dashrep_replacement{ $phrase_naming_convention_for_this_column } = "" ;
                         }
                     }
                 }
-                $all_lines .= $input_line . "\n" ;
             }
+            $list_of_unique_values =~ s/^ +// ;
+            $global_dashrep_replacement{ $name_of_phrase_that_contains_list_of_index_values } = $list_of_unique_values ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; copied from columns in file " . $source_filename . " to phrase names specified in phrase " . $target_phrase_name . "}}\n" ;
             }
-        } else
+        }
+        if ( $possible_error_message ne "" )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
