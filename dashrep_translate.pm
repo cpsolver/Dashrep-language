@@ -7197,6 +7197,7 @@ sub dashrep_file_actions
         if ( $possible_error_message eq "" )
         {
             $list_of_unique_values = "" ;
+            $global_dashrep_replacement{ $name_of_phrase_that_contains_list_of_index_values } = $list_of_unique_values ;
             if ( ( exists( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } ) ) && ( $global_dashrep_replacement{ "dashrep-use-two-spaces-as-column-delimiter" } eq "yes" ) )
             {
                 $use_two_spaces_as_delimiter = "yes" ;
