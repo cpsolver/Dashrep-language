@@ -5161,6 +5161,9 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; ******* " . $operand_one . " is empty *******" . "}}\n";
                     }
+                } elsif ( $operand_one eq "endless-loop-counter" )
+                {
+                    $global_trace_log .= "{{trace; ******* " . "endless-loop-counter" . " = " . $global_endless_loop_counter . " *******" . "}}\n";
                 } else
                 {
                     $global_trace_log .= "{{trace; ******* " . $operand_one . " is not defined *******" . "}}\n";

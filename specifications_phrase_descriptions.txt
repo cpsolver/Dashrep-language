@@ -251,7 +251,7 @@ deprecated
 -----
 
 description-for-phrase-dashrep-trace-show-definition:
-A phrase that requests that the value of the specified phrase be indicated in the trace log. s-n These requests are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep-action-trace-on-yes-or-no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
+A phrase that requests that the value of the specified phrase be indicated in the trace log. s-n These requests are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep-action-trace-on-yes-or-no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space . s-n If the otherwise h-h undefined phrase b-i-b endless h-h loop h-h counter b-i-e is specified, the internal endless h-h loop counter is shown.
 -----
 
 description-for-phrase-dashrep-translation-before-escape:
