@@ -187,7 +187,7 @@ An action that gets the space hyphen-here delimited words from the first phrase 
 -----
 
 description-for-phrase-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase:
-An action that gets the space hyphen-here delimited words in the first phrase, and sorts those words numerically, and puts the sorted words into the second phrase. s-n If any of the words are not numbers, those words are placed at the end. s-n The two phrase names can be the same.
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numerical sort order specified in the third phrase. s-n As an example, of the first phrase contains the string b-i-b seven one five three b-i-e and the third phrase contains the string b-i-b 7 1 5 3 b-i-e then the string placed into the second phrase will be b-i-b one three five seven b-i-e no-space . s-n If any of the words are not numbers, those words are placed at the end. s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
