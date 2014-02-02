@@ -2981,13 +2981,16 @@ sub dashrep_expand_parameters
                     }
                 } else
                 {
+                    $result_text = "" ;
                     $separator = "" ;
                     $global_dashrep_replacement{ $operand_two } = "" ;
                     for ( $word_number = $word_number_begin ; $word_number <= $word_number_end ; $word_number ++ )
                     {
-                        $global_dashrep_replacement{ $operand_two } .= $separator . $list[ $word_number - 1 ] ;
+                        $result_text .= $separator . $list[ $word_number - 1 ] ;
                         $separator = " " ;
                     }
+                    $result_text =~ s/ +$// ;
+                    $global_dashrep_replacement{ $operand_two } = $result_text ;
                 }
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
