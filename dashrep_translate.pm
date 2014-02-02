@@ -2238,7 +2238,7 @@ sub dashrep_expand_parameters
                     next ;
                 }
             }
-            if ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) && ( $operand_three =~ /[^0-9\.\-]/ ) )
+            if ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) && ( $operand_three =~ /[^0-9\.\- ]/ ) )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
