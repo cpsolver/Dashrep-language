@@ -1219,7 +1219,7 @@ sub dashrep_expand_parameters
     my $text_for_down_direction_values ;
     my $text_for_right_direction_values ;
     my $character_to_capitalize ;
-    my @words_at_numeric_value ;
+    my $list_indicating_sort_order_text_string ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -1232,6 +1232,7 @@ sub dashrep_expand_parameters
     my @list_of_remaining_item_numbers ;
     my @down_direction_value_for_item_number ;
     my @right_direction_value_for_item_number ;
+    my %words_at_numeric_value ;
     my %item_number_at_row_column ;
 
 
@@ -2238,13 +2239,13 @@ sub dashrep_expand_parameters
                     next ;
                 }
             }
-            if ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) && ( $operand_three =~ /[^0-9\.\- ]/ ) )
+            if ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) && ( $global_dashrep_replacement{ $operand_three } =~ /[^0-9\.\- ]/ ) )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand contains non-numeric content: " . $operand_three . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " contains non-numeric content: " . $global_dashrep_replacement{ $operand_three } . "}}\n" ;
                 }
                 next ;
             }
@@ -2286,24 +2287,33 @@ sub dashrep_expand_parameters
                 } elsif ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" )
                 {
                     @list_of_words = split( / +/ , $source_text ) ;
-                    @list_indicating_sort_order = split( / +/ , $global_dashrep_replacement{ $operand_three } ) ;
+                    $list_indicating_sort_order_text_string = $global_dashrep_replacement{ $operand_three } ;
+                    $list_indicating_sort_order_text_string =~ s/^ +// ;
+                    $list_indicating_sort_order_text_string =~ s/ +$// ;
+                    @list_indicating_sort_order = split( / +/ , $list_indicating_sort_order_text_string ) ;
                     @sort_order = sort( @list_indicating_sort_order ) ;
                     $extra_words_without_sort_value = "" ;
                     if ( $#list_indicating_sort_order < $#list_of_words )
                     {
-                        for ( $word_position = ( $list_indicating_sort_order + 2 ) ; $word_position <= ( $#list_of_words + 1 ) ; $word_position ++ )
+                        for ( $word_position = ( $#list_indicating_sort_order + 2 ) ; $word_position <= ( $#list_of_words + 1 ) ; $word_position ++ )
                         {
                             $extra_words_without_sort_value .= $list_of_words[ $word_position - 1 ] . " " ;
                         }
                     }
+                    %words_at_numeric_value = ( ) ;
                     for ( $word_position = 1 ; $word_position <= ( $#list_indicating_sort_order + 1 ) ; $word_position ++ )
                     {
+                        $numeric_value = $list_indicating_sort_order[ $word_position - 1 ] ;
                         $words_at_numeric_value{ $numeric_value } .= $list_of_words[ $word_position - 1 ] . " " ;
                     }
                     $text_string = "" ;
                     foreach $numeric_value ( @sort_order )
                     {
-                        $text_string .= $words_at_numeric_value{ $numeric_value } . " " ;
+                        if ( $words_at_numeric_value{ $numeric_value } =~ /[^ ]/ )
+                        {
+                            $text_string .= $words_at_numeric_value{ $numeric_value } . " " ;
+                            $words_at_numeric_value{ $numeric_value } = "" ;
+                        }
                     }
                     $text_string .= " " . $extra_words_without_sort_value ;
                     $text_string =~ s/ +/ /g ;
