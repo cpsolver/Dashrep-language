@@ -8950,9 +8950,9 @@ sub dashrep_internal_endless_loop_info
             $highest_usage_counter = $replacement_count ;
             $highest_usage_item_name = $item_name ;
         }
-        if ( $replacement_count > 10 )
+        if ( $replacement_count > 100 )
         {
-            $endless_loop_replacements_with_count{ sprintf( "%d" , $replacement_count ) } .= $item_name . "\n" ;
+            $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } .= $item_name . "\n" ;
         }
     }
 
@@ -9035,7 +9035,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 through 2013 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright 2009 through 2014 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
