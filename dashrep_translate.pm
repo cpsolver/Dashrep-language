@@ -5174,9 +5174,9 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; ******* " . $operand_one . " is empty *******" . "}}\n";
                     }
-                } elsif ( $operand_one eq "endless-loop-counter" )
-                {
-                    $global_trace_log .= "{{trace; ******* " . "endless-loop-counter" . " = " . $global_endless_loop_counter . " *******" . "}}\n";
+#                } elsif ( $operand_one eq "endless-loop-counter" )
+#                {
+#                    $global_trace_log .= "{{trace; ******* " . "endless-loop-counter" . " = " . $global_endless_loop_counter . " *******" . "}}\n";
                 } else
                 {
                     $global_trace_log .= "{{trace; ******* " . $operand_one . " is not defined *******" . "}}\n";
@@ -5451,6 +5451,17 @@ sub dashrep_expand_parameters
                 $replacement_text = $text_begin . $text_returned . $text_end ;
                 next ;
             }
+        }
+
+
+#-----------------------------------------------
+#  Make the endless loop counter value available
+#  -- on a read-only basis -- for debugging.
+
+        if ( $action_name eq "dashrep-endless-loop-counter" )
+        {
+            $replacement_text = $text_begin . $global_endless_loop_counter . $text_end ;
+            next ;
         }
 
 
