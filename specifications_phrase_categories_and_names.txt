@@ -242,6 +242,7 @@ dashrep-trace-show-definition
 category_advanced
 dashrep-stop-translation
 dashrep-endless-loop-counter-limit
+dashrep-endless-loop-count
 unique-value
 escape-if-yes
 escape-if-no

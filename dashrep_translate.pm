@@ -5458,7 +5458,7 @@ sub dashrep_expand_parameters
 #  Make the endless loop counter value available
 #  -- on a read-only basis -- for debugging.
 
-        if ( $action_name eq "dashrep-endless-loop-counter" )
+        if ( $action_name eq "dashrep-endless-loop-count" )
         {
             $replacement_text = $text_begin . $global_endless_loop_counter . $text_end ;
             next ;
