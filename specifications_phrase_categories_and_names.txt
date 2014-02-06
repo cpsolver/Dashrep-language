@@ -114,7 +114,7 @@ copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
 copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
+copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
 copy-from-phrase-to-phrase-only-word-at-position
 copy-from-phrase-to-phrase-but-remove-first-word
 copy-from-phrase-to-phrase-but-remove-last-word

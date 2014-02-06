@@ -186,8 +186,8 @@ description-for-phrase-copy-from-phrase-to-phrase-words-from-position-to-positio
 An action that gets the space hyphen-here delimited words from the first phrase starting at the position indicated by the first number (which is the second paramter), and ending at the position indicated by the second number (which is the third parameter). s-n The word positions are numbered starting at 1 the beginning. s-n If the second number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase). s-n The two phrase names can be the same.
 -----
 
-description-for-phrase-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase:
-An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numerical sort order specified in the third phrase. s-n As an example, of the first phrase contains the string b-i-b seven one five three b-i-e and the third phrase contains the string b-i-b 7 1 5 3 b-i-e then the string placed into the second phrase will be b-i-b one three five seven b-i-e no-space . s-n If any of the words are not numbers, those words are placed at the end. s-n The first two phrase names can be the same.
+description-for-phrase-copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase:
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, of the first phrase contains the string b-i-b seven one five three twelve b-i-e and the third phrase contains the string b-i-b 07 01 05 03 12 b-i-e then the string placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
