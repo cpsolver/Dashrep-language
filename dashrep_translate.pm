@@ -1907,7 +1907,13 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" )
             {
                 $temp_text =~ s/[\n\r\t]+/ /sg ;
-                $temp_text =~ s/ +[^ ]+ *$// ;
+                if ( $temp_text =~ / / )
+                {
+                    $temp_text =~ s/ +[^ ]+ *$// ;
+                } else
+                {
+                    $temp_text = "" ;
+                }
             }
             $global_dashrep_replacement{ $target_phrase_name } = $temp_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
