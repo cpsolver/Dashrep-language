@@ -4488,7 +4488,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $numeric_value = int( sqrt( ( ( ( $x2 - $x1 ) * $scale_x ) ** 2 ) + ( ( ( $y2 - $y1 ) * $scale_y ) ** 2 ) ) ) ;
+            $numeric_value = int( sqrt( ( ( ( $x2 - $x1 ) * $scale_x ) ** 2 ) + ( ( ( $y2 - $y1 ) * $scale_y ) ** 2 ) ) + 0.5 ) ;
             if ( $numeric_value == 0 )
             {
                 $text_for_value = "0" ;
