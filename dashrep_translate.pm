@@ -7878,6 +7878,7 @@ sub dashrep_file_actions
     {
         $input_text = $possible_error_message ;
     }
+    $possible_error_message = "" ;
 
 
 #-----------------------------------------------
