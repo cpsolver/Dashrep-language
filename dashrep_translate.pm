@@ -7339,13 +7339,13 @@ sub dashrep_file_actions
     {
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
-            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
+            $possible_error_message .= " [trace; warning: action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name  . "]\n" ;
         } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
         {
-            $possible_error_message .= " [warning, file named " . $source_filename . " not found, or could not be opened]" ;
+            $possible_error_message .= " [trace; warning: file named " . $source_filename . " not found, or could not be opened" . "]\n" ;
         }
         if ( $possible_error_message eq "" )
         {
@@ -7374,44 +7374,33 @@ sub dashrep_file_actions
                 if ( $input_line =~ /^ *([^ ]+) *$/ )
                 {
                     $first_word = $1 ;
-                    if ( $first_word eq $entry_end )
+                    if ( $first_word eq "multi_line_end" )
                     {
-                        if ( $line_status eq "within" )
+                        $line_status = "within" ;
+                    } elsif ( ( $first_word eq $entry_end ) || ( $first_word eq $entry_begin ) )
+                    {
+                        if ( $unique_value =~ /^[^ ]+$/ )
                         {
-                            if ( $unique_value =~ /^[^ ]+$/ )
+                            foreach $tag_name ( keys( %content_for_tag ) )
                             {
-                                foreach $tag_name ( keys( %content_for_tag ) )
-                                {
-                                    $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
-                                }
-                            } else
-                            {
-                                $global_trace_log .= " [warning, action " . $action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items]" ;
+                                $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
                             }
-                        } elsif ( $line_status eq "within_multiline" )
+                        } elsif ( $first_word eq $entry_end )
                         {
-                            $global_trace_log .= " [warning, action " . $action_name . " encountered the end of a set of items without first encountering the end of a multi-line item; the items in this set have not been added]" ;
-                        } else
-                        {
-                            $global_trace_log .= " [warning, action " . $action_name . " encountered the end of a set of items without first encountering the tag at the beginning; the items in this set have not been added]" ;
+                            $global_trace_log .= "{{trace; warning: action " . $action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items" . "}}\n" ;
                         }
                         $unique_value = "" ;
                         %content_for_tag = ( ) ;
-                        $line_status = "between" ;
-                    } elsif ( $first_word eq $entry_begin )
-                    {
-                        if ( $line_status eq "between" )
+                        if ( $first_word eq $entry_begin )
                         {
-                            $unique_value = "" ;
-                            %content_for_tag = ( ) ;
                             $line_status = "within" ;
                         } else
                         {
-                            $global_trace_log .= " [warning, action " . $action_name . " encountered the beginning of a set of items without first encountering the tag at the end of the previous set of items]" ;
+                            $line_status = "between" ;
                         }
-                    } elsif ( $first_word eq "multi_line_end" )
+                    } elsif ( $line_status eq "within_multiline" )
                     {
-                        $line_status = "within" ;
+                        $content_for_tag{ $multiline_value_name } .= $input_line . " " ;
                     } else
                     {
                         $content_for_tag{ $first_word } = "" ;
@@ -7440,6 +7429,13 @@ sub dashrep_file_actions
                     {
                         $content_for_tag{ $first_word } = $remainder_of_line ;
                     }
+                }
+            }
+            if ( $unique_value =~ /^[^ ]+$/ )
+            {
+                foreach $tag_name ( keys( %content_for_tag ) )
+                {
+                    $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
                 }
             }
             $list_of_unique_values = "" ;
