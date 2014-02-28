@@ -7339,13 +7339,13 @@ sub dashrep_file_actions
     {
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
-            $possible_error_message .= " [trace; warning: action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name  . "]\n" ;
+            $possible_error_message .= " [warning: action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name  . "]\n" ;
         } elsif ( open ( INFILE , "<" . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
         {
-            $possible_error_message .= " [trace; warning: file named " . $source_filename . " not found, or could not be opened" . "]\n" ;
+            $possible_error_message .= " [warning: file named " . $source_filename . " not found, or could not be opened" . "]\n" ;
         }
         if ( $possible_error_message eq "" )
         {
