@@ -2158,7 +2158,7 @@ sub dashrep_expand_parameters
             $remaining_text = $global_dashrep_replacement{ $phrase_being_edited } ;
             $accumulated_text = "" ;
             $remaining_text =~ s/<character_hyphen>/-/sg ;
-            while ( $remaining_text =~ /^(.*?)<([^ _<>]+_[^ <>]+)>(.*)$/s )
+            while ( $remaining_text =~ /^(.*?)<([^ _<>;:=,\-]+_[^ <>;:=,\-]+)>(.*)$/s )
             {
                 $accumulated_text .= $1 ;
                 $possible_phrase_name = $2 ;
