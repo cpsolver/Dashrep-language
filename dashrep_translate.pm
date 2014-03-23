@@ -3507,7 +3507,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" )
         {
-            if ( $number_of_operands != 1 )
+            if ( $number_of_operands != 2 )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -3557,7 +3557,8 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $length_of_string = length( $operand_one ) ;
+            $string_to_search = $global_dashrep_replacement{ $operand_one } ;
+            $length_of_string = length( $string_to_search ) ;
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             $counter = 0 ;
@@ -3566,7 +3567,7 @@ sub dashrep_expand_parameters
             {
                 if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) )
                 {
-                    if ( substr( $phrase_name , 0 , $length_of_string ) eq $operand_one )
+                    if ( substr( $phrase_name , 0 , $length_of_string ) eq $string_to_search )
                     {
                         $generated_list .= $phrase_name . " " ;
                         $counter ++ ;
