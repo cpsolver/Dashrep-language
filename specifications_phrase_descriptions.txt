@@ -170,12 +170,16 @@ description-for-phrase-copy-from-phrase-to-phrase-but-remove-last-word:
 An action that copies the text in the first phrase into the second phrase but omits the last space hyphen-here delimited word. s-n The two phrase names can be the same.
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-initial-caps:
-An action that copies text from the first phrase into the second phrase while converting all uppercase (A to Z) characters into lowercase characters (a to z). s-n The two phrase names can be the same.
------
+description-for-phrase-copy-from-phrase-to-phrase-lowercase-only:
+An action that copies the definition of the first phrase into the definition of the second phrase, but changes any uppercase characters (such as b-i-b A b-i-e and b-i-b B b-i-e no-space ) into lowercase characters (such as b-i-b a b-i-e and b-i-b b b-i-e no-space ). s-n The two phrase names can be the same.
+----
 
 description-for-phrase-copy-from-phrase-to-phrase-uppercase-only:
-An action that copies text from the first phrase into the second phrase while converting all lowercase (a to z) characters into uppercase characters (A to Z). s-n The two phrase names can be the same.
+An action that copies the definition of the first phrase into the definition of the second phrase, but changes any lowercase characters (such as b-i-b a b-i-e and b-i-b b b-i-e no-space ) into uppercase characters (such as b-i-b A b-i-e and b-i-b B b-i-e no-space ). s-n The two phrase names can be the same.
+-----
+
+description-for-phrase-copy-from-phrase-to-phrase-initial-caps:
+An action that copies the definition of the first phrase into the definition of the second phrase, but changes the first letter of each space hyphen-here delimited word into its equivalent uppercase letter. s-n The remaining letters within the same word are not changed. s-n If the first character after a space is a symbol or digit, that word remains unchanged. s-n If the definition begins with a letter, that letter is converted to uppercase, even though it does not follow a space. s-n The two phrase names can be the same.
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-with-word-order-reversed:
@@ -1171,10 +1175,6 @@ An action that copies the definition of the first phrase into the definition of 
 
 description-for-phrase-copy-from-phrase-to-phrase-and-replace-digits-with-9s:
 An action that copies the definition of the first phrase into the definition of the second phrase, but replaces any digit with the digit nine ( no-space b-i-e 9 b-i-e no-space ). s-n This action simplifies the process of recognizing specific patterns of numbers and symbols. s-n For example, the text b-i-b 123 h-h 456 h-h 7890 b-i-e becomes b-i-b 999 h-h 999 h-h 9999 b-i-e and the result can be checked for to see if it matches recognizable or acceptable patterns. s-n The two phrase names can be the same.
-----
-
-description-for-phrase-copy-from-phrase-to-phrase-lowercase-only:
-An action that copies the definition of first phrase into the definition of the second phrase, but changes any uppercase characters (such as b-i-b A b-i-e and b-i-b B b-i-e no-space ) into lowercase characters (such as b-i-b a b-i-e and b-i-b b b-i-e no-space ). s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-from-spoken-dashrep-code:
