@@ -239,6 +239,7 @@ dashrep-ignore-trace-on-yes-or-no
 dashrep-linewise-trace-on-yes-or-no
 dashrep-web-framework-trace-on-yes-or-no
 dashrep-trace-show-definition
+dashrep-recent-phrase-name-replaced
 
 category_advanced
 dashrep-stop-translation

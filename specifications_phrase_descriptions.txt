@@ -1334,6 +1334,10 @@ based-on-epoch-seconds
 ----
 
 
+description-for-phrase-dashrep-recent-phrase-name-replaced:
+A phrase that contains the most recently replaced phrase name that was replaced when it appeared in parameter brackets. s-n This phrase definition is useful for debugging by showing its definition at the beginning of the replaced phrase.
+----
+
 description-for-phrase-dashrep-debug-trace-log:
 A phrase that contains the "trace" messages that are written when "trace" and warning messages are requested. s-n This information is useful for debugging. s-n This phrase should be used on a read h-h only basis.
 ----
