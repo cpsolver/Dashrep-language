@@ -699,7 +699,10 @@ sub dashrep_import_replacements
         {
             if ( $input_string eq $definition_name )
             {
-                $global_dashrep_replacement{ $definition_name } = "ERROR: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop." . "\n" ;
+                $modified_input_string = $input_string ;
+                $modified_input_string =~ s/-/ _ /g ;
+                $modified_input_string =~ s/ _ / - /g ;
+                $global_dashrep_replacement{ $definition_name } .= " " . $modified_input_string . " " ;
                 if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
                 {
                     $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Replacement for the hyphenated phrase:\n    " . $definition_name . "\n" . "includes itself, which would cause an endless replacement loop.". "\n" . "Error occurred " ;
