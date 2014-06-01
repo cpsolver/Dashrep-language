@@ -1816,6 +1816,7 @@ sub dashrep_expand_parameters
             $temp_text = $global_dashrep_replacement{ $source_phrase_name } ;
             if ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" )
             {
+                $temp_text =~ s/[\r\n\t]/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/^ +//s ;
                 $temp_text =~ s/ +$//s ;
@@ -2974,6 +2975,7 @@ sub dashrep_expand_parameters
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/[\n\r\t]/ /sg ;
                 $temp_text =~ s/^ +// ;
                 $temp_text =~ s/ +$// ;
                 @list = split( / +/ , $temp_text ) ;
