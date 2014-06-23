@@ -39,6 +39,7 @@ export-defs-def-end
 export-defs-phrase-begin
 export-defs-phrase-end
 copy-from-phrase-to-phrase
+copy-phrase-name-to-phrase
 append-from-phrase-to-phrase
 append-from-phrase-to-phrase-no-space
 prepend-from-phrase-to-phrase
