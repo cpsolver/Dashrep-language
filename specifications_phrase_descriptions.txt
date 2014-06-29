@@ -162,6 +162,10 @@ description-for-phrase-copy-from-phrase-to-phrase-and-replace-string-in-phrase-w
 An action that replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The two phrase names can be the same.
 -----
 
+description-for-phrase-copy-from-phrase-to-phrase-characters-from-position-to-position:
+An action that copies specified characters from the first phrase to the second phrase. s-n The third and fourth operands indicate the starting and ending character positions, with the first character position being numbered one (1). s-n The starting character position must not be larger than the ending character position. s-n The two phrase names can be the same.
+-----
+
 description-for-phrase-copy-from-phrase-to-phrase-but-remove-first-word:
 An action that copies the text in the first phrase into the second phrase but omits the first space hyphen-here delimited word. s-n The two phrase names can be the same.
 -----
