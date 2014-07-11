@@ -1566,10 +1566,11 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the action:
+#  Handle the actions:
 #  clear-phrases-listed-in-phrase
+#  delete-phrases-listed-in-phrase
 
-        if ( $action_name eq "clear-phrases-listed-in-phrase" )
+        if ( ( $action_name eq "clear-phrases-listed-in-phrase" ) || ( $action_name eq "delete-phrases-listed-in-phrase" ) )
         {
             if ( $number_of_operands != 1 )
             {
@@ -1597,12 +1598,24 @@ sub dashrep_expand_parameters
             {
                 if ( exists( $global_dashrep_replacement{ $phrase_name_to_clear } ) )
                 {
-                    $global_dashrep_replacement{ $phrase_name_to_clear } = "" ;
+                    if ( $action_name eq "delete-phrases-listed-in-phrase" )
+                    {
+                        delete( $global_dashrep_replacement{ $phrase_name_to_clear } ) ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $phrase_name_to_clear } = "" ;
+                    }
                 }
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; cleared phrases listed in phrase " . $phrase_name . "}}\n" ;
+                if ( $action_name eq "delete-phrases-listed-in-phrase" )
+                {
+                    $global_trace_log .= "{{trace; deleted phrases listed in phrase " . $phrase_name . "}}\n" ;
+                } else
+                {
+                    $global_trace_log .= "{{trace; cleared phrases listed in phrase " . $phrase_name . "}}\n" ;
+                }
             }
             $replacement_text = $text_begin . " " . $text_end ;
             next ;

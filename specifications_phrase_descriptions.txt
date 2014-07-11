@@ -1269,13 +1269,18 @@ An action that clears the definitions for the phrases that are named in the spec
 ----
 
 
+description-for-phrase-delete-phrases-listed-in-phrase:
+An action that deletes (removes) the phrases that are named in the specified phrase. s-n This phrase is related to the action b-i-b clear-phrases-listed-in-phrase b-i-e except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized. s-n This action is useful for creating a template in which the listed phrases will be replaced by varying definitions at later times.
+----
+
+
 description-for-phrase-copy-from-phrase-to-phrase-and-replace-character-with-text-in-phrase:
 deprecated
 ----
 
 
 description-for-phrase-copy-from-phrase-to-phrase-and-split-into-list-of-characters:
-Copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-e onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
+Copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-b onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
 ----
 
 

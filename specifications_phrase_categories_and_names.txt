@@ -29,6 +29,7 @@ define-begin
 clear-phrase
 clear-phrases-listed-in-phrase
 clear-all-dashrep-phrases
+delete-phrases-listed-in-phrase
 expand-phrase-to-phrase
 dashrep-yes-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
