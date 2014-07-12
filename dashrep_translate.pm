@@ -12,6 +12,7 @@ package dashrep_translate;
 
 #  uncomment-for-cpan-version-end
 
+
 =head1 NAME
 
 Language::Dashrep - Dashrep language translator/interpreter
@@ -6503,7 +6504,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -6580,7 +6581,7 @@ sub dashrep_file_actions
         } elsif ( ( ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) ) && ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has no search words in phrase " . $operand_two . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -6689,7 +6690,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message = "" ;
         } else
@@ -6810,7 +6811,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $input_text = " yes " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
@@ -6921,7 +6922,7 @@ sub dashrep_file_actions
         {
             $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase_name . " to end of file " . $target_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to append to files]" ;
-        } elsif ( open ( OUTFILE , ">>" . $target_filename ) )
+        } elsif ( open ( OUTFILE , '>>' . $target_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -7006,7 +7007,7 @@ sub dashrep_file_actions
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
         } else
         {
-            if ( open ( OUTFILE , ">" . $target_filename ) )
+            if ( open ( OUTFILE , '>' . $target_filename ) )
             {
                 $possible_error_message .= "" ;
             } else
@@ -7123,7 +7124,7 @@ sub dashrep_file_actions
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
         } else
         {
-            if ( open ( OUTFILE , ">" . $target_filename ) )
+            if ( open ( OUTFILE , '>' . $target_filename ) )
             {
                 $possible_error_message .= "" ;
             } else
@@ -7198,7 +7199,7 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            if ( open ( INFILE , "<" . $source_filename ) )
+            if ( open ( INFILE , '<' . $source_filename ) )
             {
                 $possible_error_message .= "" ;
             } else
@@ -7207,7 +7208,7 @@ sub dashrep_file_actions
             }
             if ( $possible_error_message eq "" )
             {
-                if ( open ( OUTFILE , ">" . $target_filename ) )
+                if ( open ( OUTFILE , '>' . $target_filename ) )
                 {
                     $possible_error_message .= "" ;
                 } else
@@ -7294,7 +7295,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -7398,7 +7399,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
             $possible_error_message .= " [warning: action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name  . "]\n" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -7527,7 +7528,7 @@ sub dashrep_file_actions
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
-        } elsif ( open ( INFILE , "<" . $source_filename ) )
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -7625,7 +7626,7 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            if ( open ( INFILE , "<" . $source_filename ) )
+            if ( open ( INFILE , '<' . $source_filename ) )
             {
                 $possible_error_message .= "" ;
             } else
@@ -7638,7 +7639,7 @@ sub dashrep_file_actions
                     $possible_error_message .= " [warning, file named " . $source_filename . " not found]" ;
                 }
             }
-            if ( open ( OUTFILE , ">" . $target_filename ) )
+            if ( open ( OUTFILE , '>' . $target_filename ) )
             {
                 $possible_error_message .= "" ;
             } else
@@ -7866,7 +7867,7 @@ sub dashrep_file_actions
             }
             if ( $possible_error_message eq "" )
             {
-                if ( open ( OUTFILE , ">" . $target_filename ) )
+                if ( open ( OUTFILE , '>' . $target_filename ) )
                 {
                     $possible_error_message .= "" ;
                 } else
@@ -8974,7 +8975,7 @@ sub dashrep_web_framework
         $last_digits_of_epoch_seconds = substr( sprintf( "%d" , $time_in_epoch_seconds ) , -3 ) ;
         $error_file_name = $error_file_prefix . "error_" . $last_digits_of_epoch_seconds . ".txt" ;
         $emergency_page ="Content-type: text\/html\n\n<html>\n<head>\n<title>Major error<\/title>\n<\/head>\n<body>\n<h1>Major error<\/h1>\n<p>A major error has been encountered.&nbsp; Please use the BACK button on your browser and try again.&nbsp; If this error happens again, please contact technical support and give them this error number: " . $last_digits_of_epoch_seconds . "<\/p>\n<\/body>\n<\/html>\n";
-        open ( ERRFILE , ">" . $error_file_name ) ;
+        open ( ERRFILE , '>' . $error_file_name ) ;
         print ERRFILE "generated web page:\n" ;
         print ERRFILE "----------  begin  ----------\n" ;
         print ERRFILE $generated_web_page ;
@@ -9058,7 +9059,7 @@ sub dashrep_internal_endless_loop_info
     {
         @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
         $endless_loop_debug_info_filename = "output_endless_loop_debug_info.txt" ;
-        if ( open ( OUTFILE , ">" . $endless_loop_debug_info_filename ) )
+        if ( open ( OUTFILE , '>' . $endless_loop_debug_info_filename ) )
         {
             print OUTFILE "Too many cycles of replacement (" . $global_endless_loop_counter . ").\n" . "Hyphenated phrase with highest replacement count (" . $highest_usage_counter . ") is:\n" . "    " . $highest_usage_item_name . "\n\n" ;
             foreach $replacement_count ( reverse( sort( keys( %endless_loop_replacements_with_count ) ) ) )
