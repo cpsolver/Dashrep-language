@@ -1497,7 +1497,7 @@ Generates a list, where the changing value of each item in the list comes from t
 ----
 
 description-for-phrase-use-template-and-parameters-to-create-full-list-with-name:
-Generates a list in the same way as the action b-i-b use h-h template h-h and h-h parameters h-h to h-h create h-h simple h-h list h-h with h-h name b-i-e no-space , with one difference and with added capabilities. s-n The difference is that the generated list is a list of phrase names, and those named phrases contain the text of each item; in contrast, the other action puts all the results into a single phrase. s-n The individual items have phrase names that begin with the specified phrase name, and are followed by the string b-i-b -for-parameter- b-i-e and that is followed by the parameter value. s-n Within the template the phrases b-i-b createlist hyphen-here first hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here last hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here item hyphen-here number b-i-e and b-i-b createlist hyphen-here total hyphen-here number hyphen-here of hyphen-here items b-i-e have special meanings, which are described separately.
+DEPRECATED. s-n Use b-i-b use-template-with-each-word-in-phrase b-i-e or b-i-b use-template-and-parameters-to-create-simple-list-with-name b-i-e instead. s-n Generates a list in the same way as the action b-i-b use h-h template h-h and h-h parameters h-h to h-h create h-h simple h-h list h-h with h-h name b-i-e no-space , with one difference and with added capabilities. s-n The difference is that the generated list is a list of phrase names, and those named phrases contain the text of each item; in contrast, the other action puts all the results into a single phrase. s-n The individual items have phrase names that begin with the specified phrase name, and are followed by the string b-i-b -for-parameter- b-i-e and that is followed by the parameter value. s-n Within the template the phrases b-i-b createlist hyphen-here first hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here last hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here item hyphen-here number b-i-e and b-i-b createlist hyphen-here total hyphen-here number hyphen-here of hyphen-here items b-i-e have special meanings, which are described separately.
 ----
 
 description-for-phrase-counts-from-integer-to-integer-put-into-phrase:
@@ -1547,6 +1547,10 @@ If this phrase is defined as b-i-b yes b-i-e no-space , the actions b-i-b copy h
 description-for-phrase-insert-codeview-tags-into-phrase:
 Inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the strings in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
 ----
+
+description-for-phrase-merge-phrase-with-utf8-encoded-definitions-in-file-and-write-to-file
+Merges the specified phrase with file h-h supplied UTF h-h 8 text and writes the merged result to the specified file. s-n The phrase must contain angle h-h bracketed strings of the form b-i-b <string_here> b-i-e no-space , and those strings are replaced with the appropriate hyphenated phrase defintion supplied in the UTF h-h 8 file. s-n The definitions in the UTF h-h 8 file are b-b not b-e interpreted except to replace newlines with spaces, which means that Dashrep comments are not removed, and the only Dashrep replacements that are done are for angle h-h bracketed phrases such as b-i-b <new_line> b-i-e and < no-space b-i-b hyphen_here no-space > b-i-e no-space .
+-----
 
 description-for-phrase-dashbee:
 (described in table above)

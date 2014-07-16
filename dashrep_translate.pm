@@ -7951,7 +7951,189 @@ sub dashrep_file_actions
 #  Handle the action:
 #  merge-phrase-with-utf8-encoded-definitions-in-file-and-write-to-file
 
-#  being developed
+    if ( $action_name eq "merge-phrase-with-utf8-encoded-definitions-in-file-and-write-to-file" )
+    {
+        $global_nesting_level_of_file_actions ++ ;
+        if ( ( $operand_one eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
+        {
+            $possible_error_message .= " [warning, action " . $action_name . " has one or more empty operands]" ;
+        } elsif ( $global_nesting_level_of_file_actions > 1 )
+        {
+            $possible_error_message .= " [warning, file-related action called recursivley, which is not allowed]" ;
+        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        {
+            $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $source_filename = $operand_two ;
+            $target_filename = $operand_three ;
+            $source_filename =~ s/^.*[\\\/]// ;
+            $source_filename =~ s/^\.+// ;
+            $target_filename =~ s/^.*[\\\/]// ;
+            $target_filename =~ s/^\.+// ;
+            if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) )
+            {
+                $possible_error_message .= " [warning, action " . $action_name . " has an invalid source or target filename]" ;
+            } else
+            {
+                $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
+                $target_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_filename ;
+            }
+        }
+        if ( $possible_error_message eq "" )
+        {
+            if ( ( open ( INUTF8 , '<' . $source_filename ) ) && ( binmode INUTF8 , ':utf8' ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                if ( -e $source_filename )
+                {
+                    $possible_error_message .= " [warning, file named " . $source_filename . " exists, but could not be opened]" ;
+                } else
+                {
+                    $possible_error_message .= " [warning, file named " . $source_filename . " not found]" ;
+                }
+            }
+            if ( ( open ( OUTUTF8 , '>' . $target_filename ) ) && ( binmode OUTUTF8 , ':utf8' ) )
+            {
+                $possible_error_message .= "" ;
+            } else
+            {
+                $possible_error_message .= " [warning, file named " . $target_filename . " could not be opened for writing UTF-8 content]" ;
+            }
+            if ( $possible_error_message eq "" )
+            {
+                $phrase_name = "" ;
+                $accumulated_definition = "" ;
+                $getting_definition_status = "transition" ;
+                while ( $input_line = <INUTF8> )
+                {
+                    chomp( $input_line ) ;
+                    while ( substr( $input_line , 0 , 1 ) eq " " )
+                    {
+                        $input_line = substr( $input_line , 1 ) ;
+                    }
+                    while ( substr( $input_line , length( $input_line ) , 1 ) eq " " )
+                    {
+                        $input_line = substr( $input_line , 0 , length( $input_line ) - 1 ) ;
+                    }
+                    if ( substr( $input_line , 0 , 3 ) eq "---" )
+                    {
+                        if ( $getting_definition_status ne "transition" )
+                        {
+                            $dashdef_definition_utf8_encoded{ $phrase_name } = $accumulated_definition ;
+                            $phrase_name = "" ;
+                            $accumulated_definition = "" ;
+                            $getting_definition_status = "transition" ;
+                        }
+                    } elsif ( $getting_definition_status eq "transition" )
+                    {
+                        if ( $input_line ne "" )
+                        {
+                            $phrase_name = $input_line ;
+                            if ( substr( $phrase_name , length( $phrase_name ) , 1 ) eq ":" )
+                            {
+                                $phrase_name = substr( $phrase_name , 0 , length( $phrase_name ) ) ;
+                            }
+                            $accumulated_definition = "" ;
+                            if ( index( $phrase_name , "-" ) > 0 )
+                            {
+                                $getting_definition_status = "within_def" ;
+                            } else
+                            {
+                                $phrase_name = "" ;
+                            }
+                        }
+                    } else
+                    {
+                        if ( $accumulated_definition eq "" )
+                        {
+                            $accumulated_definition .= $input_line ;
+                        } else
+                        {
+                            $accumulated_definition .= " " . $input_line ;
+                        }
+                    }
+                }
+                if ( ( $phrase_name ne "" ) && ( $accumulated_definition ne "" ) )
+                {
+                    $dashdef_definition_utf8_encoded{ $phrase_name } = $accumulated_definition ;
+                }
+                $content_to_write = "" ;
+                $remainder_of_string = $global_dashrep_replacement{ $operand_one } ;
+                $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                while ( $pointer_to_next_open_angle_bracket >= 0 )
+                {
+                    $global_endless_loop_counter ++ ;
+                    $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
+                    if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+                    {
+                        $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                        last ;
+                    }
+                    if ( $pointer_to_next_open_angle_bracket > 0 )
+                    {
+                        $content_to_write .= substr( $remainder_of_string , 0 , $pointer_to_next_open_angle_bracket ) ;
+                        $remainder_of_string = substr( $remainder_of_string , $pointer_to_next_open_angle_bracket ) ;
+                        $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                        next ;
+                    }
+                    $pointer_to_next_space = index( $remainder_of_string , " " ) ;
+                    $pointer_to_next_close_angle_bracket = index( $remainder_of_string , ">" ) ;
+                    if ( $pointer_to_next_space < $pointer_to_next_close_angle_bracket )
+                    {
+                        $content_to_write .= substr( $remainder_of_string , 0 , $pointer_to_next_space ) ;
+                        $remainder_of_string = substr( $remainder_of_string , $pointer_to_next_space ) ;
+                        $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                        next ;
+                    }
+                    $possible_phrase_name = substr( $remainder_of_string , 1 , $pointer_to_next_close_angle_bracket - 1 ) ;
+                    $possible_phrase_name =~ s/_/-/g ;
+                    if ( exists( $dashdef_definition_utf8_encoded{ $possible_phrase_name } ) )
+                    {
+                        $remainder_of_string = $dashdef_definition_utf8_encoded{ $possible_phrase_name } . substr( $remainder_of_string , $pointer_to_next_close_angle_bracket + 1 ) ;
+                        $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                        next ;
+                    }
+                    if ( exists( $global_dashrep_replacement{ $possible_phrase_name } ) )
+                    {
+                        $remainder_of_string = $global_dashrep_replacement{ $possible_phrase_name } . substr( $remainder_of_string , $pointer_to_next_close_angle_bracket + 1 ) ;
+                        $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                        next ;
+                    }
+                    $content_to_write .= substr( $remainder_of_string , 0 , $pointer_to_next_space - 1 ) ;
+                    $remainder_of_string = substr( $remainder_of_string , $pointer_to_next_space ) ;
+                    $pointer_to_next_open_angle_bracket = index( $remainder_of_string , "<" ) ;
+                }
+                $content_to_write .= $remainder_of_string ;
+                $remainder_of_string = "" ;
+                print OUTUTF8 $content_to_write . "\n" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; merged phrase " . $operand_one . " with UTF-8 content in file " . $source_filename . " and wrote to file " . $target_filename . "}}\n" ;
+                }
+            } else
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; failed to merge phrase " . $operand_one . " with UTF-8 content in file " . $operand_two . " and write to file " . $operand_three . "}}\n" ;
+                }
+            }
+            close( INUTF8 ) ;
+            close( OUTUTF8 ) ;
+            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+                }
+            }
+        }
+        $global_nesting_level_of_file_actions -- ;
+        $input_text = "" ;
+    }
 
 
 #-----------------------------------------------
