@@ -130,7 +130,6 @@ word-to-use-in-template
 
 category_generate_list
 use-template-and-parameters-to-create-simple-list-with-name
-use-template-and-parameters-to-create-full-list-with-name
 counts-from-integer-to-integer-put-into-phrase
 create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase
 every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases

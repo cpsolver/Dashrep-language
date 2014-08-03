@@ -492,8 +492,16 @@ description-for-phrase-use-handler-with-each-word-in-phrase:
 An action that expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase. s-n Each time the handler is expanded, the phrase b-i-b word-to-use-in-handler b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the handler needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done.
 -----
 
+description-for-phrase-word-to-use-in-handler:
+A phrase that is used with the action b-i-b use-handler-with-each-word-in-phrase b-i-e no-space .
+-----
+
 description-for-phrase-use-template-with-each-word-in-phrase:
 Deprecated: s-n An alias for the action b-i-b use-handler-with-each-word-in-phrase b-i-e no-space . s-n The changing (parameter) value is available in the phrase b-i-b word-to-use-in-template b-i-e no-space . s-n This action name is kept for backward compatibility.
+-----
+
+description-for-phrase-word-to-use-in-template:
+Deprecated: s-n See the action b-i-b use-template-with-each-word-in-phrase b-i-e no-space .
 -----
 
 description-for-phrase-web-framework-generated-web-page:
@@ -1500,10 +1508,6 @@ description-for-phrase-use-template-and-parameters-to-create-simple-list-with-na
 Generates a list, where the changing value of each item in the list comes from the definition of the second phrase, and where the definition of the first phrase is a template that indicates what text appears in the final list. s-n The third phrase is the name of the generated list. s-n The template should include the bracketed phrase b-i-b [-createlist h-h parameter-] b-i-e wherever the changing value is needed. s-n The definition of the second phrase must contain a list of words (or possibly no words), and each word in that list is used as one of the changing values. s-n The template can include a separate list-generation request to handle a nested list, but then the b-i-b createlist h-h parameter b-i-e value will lose its expected value, so it should be copied into another phrase prior to requesting the secondary list. s-n There is no limit on the number of nested lists, but each added level dramatically increases execution time.
 ----
 
-description-for-phrase-use-template-and-parameters-to-create-full-list-with-name:
-DEPRECATED. s-n Use b-i-b use-template-with-each-word-in-phrase b-i-e or b-i-b use-template-and-parameters-to-create-simple-list-with-name b-i-e instead. s-n Generates a list in the same way as the action b-i-b use h-h template h-h and h-h parameters h-h to h-h create h-h simple h-h list h-h with h-h name b-i-e no-space , with one difference and with added capabilities. s-n The difference is that the generated list is a list of phrase names, and those named phrases contain the text of each item; in contrast, the other action puts all the results into a single phrase. s-n The individual items have phrase names that begin with the specified phrase name, and are followed by the string b-i-b -for-parameter- b-i-e and that is followed by the parameter value. s-n Within the template the phrases b-i-b createlist hyphen-here first hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here last hyphen-here yes hyphen-here or hyphen-here no b-i-e and b-i-b createlist hyphen-here item hyphen-here number b-i-e and b-i-b createlist hyphen-here total hyphen-here number hyphen-here of hyphen-here items b-i-e have special meanings, which are described separately.
-----
-
 description-for-phrase-counts-from-integer-to-integer-put-into-phrase:
 Generates a list of integers and puts them into the definition of the third phrase. s-n The supplied integers indicate the starting and ending values. s-n For example, b-i-b [-counts h-h from h-h integer h-h to h-h integer h-h put h-h into h-h phrase 1 10 one h-h to h-h ten-] b-i-e defines the phrase b-i-b one h-h to h-h ten b-i-e as b-i-b 1 2 3 4 5 6 7 8 9 10 b-i-e no-space .
 ----
@@ -1766,9 +1770,6 @@ heading-for-phrases-in-category_do_not_use:
 Reserved for internal use, do not use
 -----
 
-heading-for-phrases-in-category_deprecated:
-[DEPRECATED, DO NOT INCLUDE IN SPECIFICATIONS PAGE]
------
 
 
 dashrep-definitions-end
