@@ -6402,15 +6402,6 @@ sub dashrep_file_actions
     my $prefix_text ;
     my $target_sub_folder ;
     my $slash_or_backslash_for_path ;
-    my $accumulated_definition ;
-    my $getting_definition_status ;
-    my $dashdef_definition_utf8_encoded ;
-    my $content_to_write ;
-    my $remainder_of_string ;
-    my $pointer_to_next_open_angle_bracket ;
-    my $pointer_to_next_close_angle_bracket ;
-    my $pointer_to_next_space ;
-    my $possible_phrase_name ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
     my %content_for_tag ;
