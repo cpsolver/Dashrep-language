@@ -1548,10 +1548,6 @@ description-for-phrase-insert-codeview-tags-into-phrase:
 Inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the strings in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
 ----
 
-description-for-phrase-merge-phrase-with-utf8-encoded-definitions-in-file-and-write-to-file
-Merges the specified phrase with file h-h supplied UTF h-h 8 text and writes the merged result to the specified file. s-n The phrase must contain angle h-h bracketed strings of the form b-i-b <string_here> b-i-e no-space , and those strings are replaced with the appropriate hyphenated phrase defintion supplied in the UTF h-h 8 file. s-n The definitions in the UTF h-h 8 file are b-b not b-e interpreted except to replace newlines with spaces, which means that Dashrep comments are not removed, and the only Dashrep replacements that are done are for angle h-h bracketed phrases such as b-i-b <new_line> b-i-e and < no-space b-i-b hyphen_here no-space > b-i-e no-space .
------
-
 description-for-phrase-dashbee:
 (described in table above)
 -----

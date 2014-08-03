@@ -181,7 +181,6 @@ linewise-translate-special-phrases-only-from-file-to-file
 linewise-read-from-file-and-use-template
 storage-input-line-from-file
 input-line-count
-merge-phrase-with-utf8-encoded-definitions-in-file-and-write-to-file
 
 category_xml
 xml-move-attributes-into-tag-elements-within-phrase
