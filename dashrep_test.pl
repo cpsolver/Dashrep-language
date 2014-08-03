@@ -1745,7 +1745,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 #  remove-from-cpan-version-begin
 
-#$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
 
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
@@ -1754,7 +1754,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  remove-from-cpan-version-begin
 
 
-#$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_target_file.txt-]" );
 
 
 #  remove-from-cpan-version-end
@@ -1764,7 +1764,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  remove-from-cpan-version-begin
 
 
-# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
+ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
 
 
 #  remove-from-cpan-version-end
@@ -1774,7 +1774,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  remove-from-cpan-version-begin
 
 
-#$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 
 
 #  remove-from-cpan-version-end
