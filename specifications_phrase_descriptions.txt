@@ -488,8 +488,12 @@ description-for-phrase-storage-input-line-from-file:
 See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h use h-h template b-i-e no-space .
 -----
 
+description-for-phrase-use-handler-with-each-word-in-phrase:
+An action that expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase. s-n Each time the handler is expanded, the phrase b-i-b word-to-use-in-handler b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the handler needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done.
+-----
+
 description-for-phrase-use-template-with-each-word-in-phrase:
-An action that expands the named template multiple times, once for each word in the second phrase. s-n Each time the template is expanded, the phrase b-i-b word-to-use-in-template b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the template needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done. s-n See the list h-h generation phrases for similar actions that do put results into a specified phrase.
+Deprecated: s-n An alias for the action b-i-b use-handler-with-each-word-in-phrase b-i-e no-space . s-n The changing (parameter) value is available in the phrase b-i-b word-to-use-in-template b-i-e no-space . s-n This action name is kept for backward compatibility.
 -----
 
 description-for-phrase-web-framework-generated-web-page:

@@ -123,6 +123,8 @@ copy-from-phrase-to-phrase-only-word-at-position
 copy-from-phrase-to-phrase-but-remove-first-word
 copy-from-phrase-to-phrase-but-remove-last-word
 copy-from-phrase-to-phrase-with-word-order-reversed
+use-handler-with-each-word-in-phrase
+word-to-use-in-handler
 use-template-with-each-word-in-phrase
 word-to-use-in-template
 
