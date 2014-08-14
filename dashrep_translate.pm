@@ -2853,8 +2853,6 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  from-phrase-get-word-number
-#
-#  Todo: have this action create the equivalent action that uses the new "copy-from-phrase-to-phrase-words-from-position-to-position" action
 
         if ( $action_name eq "from-phrase-get-word-number" )
         {
@@ -8199,7 +8197,7 @@ sub dashrep_xml_tags_to_dashrep
 #-----------------------------------------------
 #  Expand parameters within a tag into separate
 #  XML tags.
-#  TODO: Insert "begin-xml-tag-parameters" and
+#  Possibly do later: Insert "begin-xml-tag-parameters" and
 #  "end-xml-tag-parameters" around parameters.
 
     while ( $input_text =~ /^(.*)(<[^ >\!\?\/][^>]*) ([^ >\=]+)=((\"([^>\"]*)\")|([^ >\"\']+)) *>(.*)$/ )
