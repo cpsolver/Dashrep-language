@@ -95,6 +95,7 @@ copy-from-phrase-to-phrase-and-remove-extra-spaces
 copy-from-phrase-to-phrase-characters-from-position-to-position
 copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
 copy-from-phrase-to-phrase-and-split-into-list-of-characters
+copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string
 copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 copy-from-phrase-to-phrase-and-replace-digits-with-9s
 copy-from-phrase-to-phrase-lowercase-only

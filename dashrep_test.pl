@@ -399,6 +399,10 @@ two-dimensional-sort:
 [-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-down-values results-of-two-dimensional-sort-]
 --------
 
+character-string-source:
+some words here
+--------
+
 test-of-stop-translation:
 [-value-of-pi-]
 [-dashrep-stop-translation = yes-]
@@ -1364,10 +1368,35 @@ $test_number_count ++;
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-translation-safe" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( "text-translation-safe" );
+# $string_return_value = &dashrep_expand_parameters( "text-translation-safe" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "abc<character_hyphen>[<character_hyphen>createlist<character_hyphen>parameter<character_hyphen>]<character_hyphen>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" action.
+
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$numeric_return_value = &dashrep_translate::dashrep_define( "string-of-characters-to-match" , "aeiou " ) ;
+$numeric_return_value = &dashrep_translate::dashrep_define( "string-of-characters-to-replace" , "@*!0^" ) ;
+$numeric_return_value = &dashrep_translate::dashrep_define( "test-action-copy-and-replace-characters" , "[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string character-string-source character-string-source string-of-characters-to-match string-of-characters-to-replace-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-action-copy-and-replace-characters" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "character-string-source" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $numeric_return_value = &dashrep_define( "string-of-characters-to-match" , "aeiou " ) ;
+# $numeric_return_value = &dashrep_define( "string-of-characters-to-replace" , "@*!0^" ) ;
+# $numeric_return_value = &dashrep_define( "test-action-copy-and-replace-characters" , "[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string character-string-source character-string-source string-of-characters-to-match string-of-characters-to-replace-]" );
+# $string_return_value = &dashrep_expand_parameters( "test-action-copy-and-replace-characters" );
+# $string_return_value = &dashrep_get_replacement( "character-string-source" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "s0m*w0rdsh*r*" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
