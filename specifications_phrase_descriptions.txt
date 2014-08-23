@@ -163,7 +163,7 @@ An action that replaces each occurrence of the third phrase with the text in the
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string:
-An action that replaces some (or all or no) characters in the first phrase if the character appears in the third phrase, where the replacement character is in the fourth phrase at the same sequence position, and the result is put into the second phrase. s-n For example, if the first and second phrase names are the same, and that phrase contains the characters b-i-b abcdefghijklm b-i-e no-space , and the third phrase contains the characters b-i-b aeiou b-i-e no-space , and the fourth phrase contains b-i-b 12345 b-i-e no-space , then the result (in the named phrase) will be b-i-b 1bcd2fgh3jklm b-i-e no-space . s-n If there are fewer replacement characters than characters to match, then the characters at the end of the third phrase will be removed, instead of being replaced.
+An action that replaces some (or all or no) characters in the first phrase if the character appears in the third phrase, where the replacement character is in the fourth phrase at the same sequence position, and the result is put into the second phrase. s-n For example, if the first and second phrase names are the same, and that phrase contains the characters b-i-b abcdefghijklm b-i-e no-space , and the third phrase contains the characters b-i-b aeiou b-i-e no-space , and the fourth phrase contains b-i-b 12345 b-i-e no-space , then the result (in the named phrase) will be b-i-b 1bcd2fgh3jklm b-i-e no-space . s-n If there are fewer replacement characters than characters to match, then the characters at the end of the third phrase will be removed, instead of being replaced. s-n As another example, if the digits zero (0) through eight (8) are replaced by the digit nine (9), the result can be checked to see if it matches a recognizable or acceptable pattern.
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-characters-from-position-to-position:
@@ -1199,7 +1199,7 @@ An action that copies the definition of the first phrase into the definition of 
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-replace-digits-with-9s:
-An action that copies the definition of the first phrase into the definition of the second phrase, but replaces any digit with the digit nine ( no-space b-i-e 9 b-i-e no-space ). s-n This action simplifies the process of recognizing specific patterns of numbers and symbols. s-n For example, the text b-i-b 123 h-h 456 h-h 7890 b-i-e becomes b-i-b 999 h-h 999 h-h 9999 b-i-e and the result can be checked for to see if it matches recognizable or acceptable patterns. s-n The two phrase names can be the same.
+Deprecated: s-n Use b-i-b copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string b-i-e instead. s-n This action copies the definition of the first phrase into the definition of the second phrase, but replaces any digit with the digit nine ( no-space b-i-e 9 b-i-e no-space ). s-n This action simplifies the process of recognizing specific patterns of numbers and symbols. s-n For example, the text b-i-b 123 h-h 456 h-h 7890 b-i-e becomes b-i-b 999 h-h 999 h-h 9999 b-i-e and the result can be checked to see if it matches recognizable or acceptable patterns. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-from-spoken-dashrep-code:
