@@ -2527,7 +2527,7 @@ sub dashrep_expand_parameters
                     }
                     next ;
                 }
-                $global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - 1 ) ) ;
+                $global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - $pointer_one + 1 ) ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
