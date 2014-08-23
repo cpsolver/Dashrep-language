@@ -732,6 +732,10 @@ description-for-phrase-expand-phrase-to-phrase:
 An action that expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices. s-n It is especially useful if the text contains hyphens but is not Dashrep code.
 ----
 
+description-for-phrase-expand-only-parameters-in-phrase-to-phrase:
+An action that expands ("translates") any parameters in the first phrase and puts the results into the second phrase. s-n Unlike the related action b-i-b expand h-h phrase h-h to h-h phrase b-i-e no-space , this action does not expand any phrases (except the starting named phrase) that appear outside of parameter brackets. s-n This action is especially useful if there needs to be a delay in expanding the non h-h parameter phrases.
+----
+
 description-for-phrase-unique-value:
 A special phrase that contains a unique value each time this phrase appears in parameter brackets. s-n Currently this action simply supplies a number that is incremented, but future versions may use non-sequential numbers (to accomodate parallel processing).
 ----
