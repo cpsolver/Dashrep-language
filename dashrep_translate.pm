@@ -1182,11 +1182,11 @@ sub dashrep_expand_parameters
     my $number_of_items_in_bottom_row ;
     my $number_of_full_rows ;
     my $number_of_rows ;
-    my $down_direction_minimum_value ;
-    my $down_direction_maximum_value ;
+    my $up_direction_minimum_value ;
+    my $up_direction_maximum_value ;
     my $right_direction_minimum_value ;
     my $right_direction_maximum_value ;
-    my $range_of_down_direction_values ;
+    my $range_of_up_direction_values ;
     my $range_of_right_direction_values ;
     my $top_row_number ;
     my $bottom_row_number ;
@@ -1196,9 +1196,9 @@ sub dashrep_expand_parameters
     my $fill_direction_top_right ;
     my $need_maximum ;
     my $need_minimum ;
-    my $value_direction_right_and_down ;
-    my $value_direction_left_and_down ;
-    my $value_direction_down ;
+    my $value_direction_right_and_up ;
+    my $value_direction_left_and_up ;
+    my $value_direction_up ;
     my $value_direction_right ;
     my $top_left_open_column ;
     my $top_right_open_column ;
@@ -1222,9 +1222,9 @@ sub dashrep_expand_parameters
     my $list_of_words_as_text ;
     my $odd_or_even_based_on_zero_or_one ;
     my $item_number_at_min_or_max ;
-    my $multiplier_for_down_direction_values ;
+    my $multiplier_for_up_direction_values ;
     my $multiplier_for_right_direction_values ;
-    my $text_for_down_direction_values ;
+    my $text_for_up_direction_values ;
     my $text_for_right_direction_values ;
     my $character_to_capitalize ;
     my $list_indicating_sort_order_text_string ;
@@ -1246,12 +1246,12 @@ sub dashrep_expand_parameters
     my @list_of_replacements_to_auto_increment ;
     my @list_of_action_names ;
     my @zero_if_not_remaining_item_number ;
-    my @right_and_down_direction_value_for_item_number ;
-    my @left_and_down_direction_value_for_item_number ;
+    my @right_and_up_direction_value_for_item_number ;
+    my @left_and_up_direction_value_for_item_number ;
     my @column_position_for_item_number ;
     my @row_position_for_item_number ;
     my @list_of_remaining_item_numbers ;
-    my @down_direction_value_for_item_number ;
+    my @up_direction_value_for_item_number ;
     my @right_direction_value_for_item_number ;
     my %words_at_numeric_value ;
     my %item_number_at_row_column ;
@@ -4623,7 +4623,7 @@ sub dashrep_expand_parameters
 #  operand order:
 #    number of columns
 #    word-based (space-delimited) list of column-direction values for sorting (increasing to right)
-#    word-based (space-delimited) list of row-direction values for sorting (increasing to bottom)
+#    word-based (space-delimited) list of row-direction values for sorting (increasing to top)
 #    name of phrase into which to put the results, which are space-delimited strings such as "row-3-column-2" and "row-1-column-1"
 #
 #  number of rows is calculated based on number of values
@@ -4701,18 +4701,18 @@ sub dashrep_expand_parameters
                 next ;
             }
             $number_of_columns = $operand_one ;
-            $text_for_down_direction_values = $global_dashrep_replacement{ $operand_two } ;
+            $text_for_up_direction_values = $global_dashrep_replacement{ $operand_two } ;
             $text_for_right_direction_values = $global_dashrep_replacement{ $operand_three } ;
-            $text_for_down_direction_values =~ s/^ +//s ;
-            $text_for_down_direction_values =~ s/ +$//s ;
+            $text_for_up_direction_values =~ s/^ +//s ;
+            $text_for_up_direction_values =~ s/ +$//s ;
             $text_for_right_direction_values =~ s/^ +//s ;
             $text_for_right_direction_values =~ s/ +$//s ;
-            @down_direction_value_for_item_number = split( / +/s , $text_for_down_direction_values ) ;
-            unshift( @down_direction_value_for_item_number , 0 ) ;
+            @up_direction_value_for_item_number = split( / +/s , $text_for_up_direction_values ) ;
+            unshift( @up_direction_value_for_item_number , 0 ) ;
             @right_direction_value_for_item_number = split( / +/s , $text_for_right_direction_values ) ;
             unshift( @right_direction_value_for_item_number , 0 ) ;
-            $number_of_items = $#down_direction_value_for_item_number ;
-            if ( ( $#down_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
+            $number_of_items = $#up_direction_value_for_item_number ;
+            if ( ( $#up_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -4731,20 +4731,20 @@ sub dashrep_expand_parameters
                 $number_of_items_in_bottom_row = $number_of_items - ( $number_of_full_rows * $number_of_columns ) ;
             }
             @list_of_remaining_item_numbers = ( ) ;
-            $down_direction_minimum_value = 999999 ;
-            $down_direction_maximum_value = -999999 ;
+            $up_direction_minimum_value = 999999 ;
+            $up_direction_maximum_value = -999999 ;
             $right_direction_minimum_value = 999999 ;
             $right_direction_maximum_value = -999999 ;
             for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
             {
                 $zero_if_not_remaining_item_number[ $item_number ] = $item_number ;
-                if ( $down_direction_value_for_item_number[ $item_number ] < $down_direction_minimum_value )
+                if ( $up_direction_value_for_item_number[ $item_number ] < $up_direction_minimum_value )
                 {
-                    $down_direction_minimum_value = $down_direction_value_for_item_number[ $item_number ] ;
+                    $up_direction_minimum_value = $up_direction_value_for_item_number[ $item_number ] ;
                 }
-                if ( $down_direction_value_for_item_number[ $item_number ] > $down_direction_maximum_value )
+                if ( $up_direction_value_for_item_number[ $item_number ] > $up_direction_maximum_value )
                 {
-                    $down_direction_maximum_value = $down_direction_value_for_item_number[ $item_number ] ;
+                    $up_direction_maximum_value = $up_direction_value_for_item_number[ $item_number ] ;
                 }
                 if ( $right_direction_value_for_item_number[ $item_number ] < $right_direction_minimum_value )
                 {
@@ -4756,15 +4756,15 @@ sub dashrep_expand_parameters
                 }
                 push( @list_of_remaining_item_numbers , $item_number ) ;
             }
-            $range_of_down_direction_values = $down_direction_maximum_value - $down_direction_minimum_value ;
+            $range_of_up_direction_values = $up_direction_maximum_value - $up_direction_minimum_value ;
             $range_of_right_direction_values = $right_direction_maximum_value - $right_direction_minimum_value ;
-            if ( $range_of_down_direction_values > 0.0001 )
+            if ( $range_of_up_direction_values > 0.0001 )
             {
-                $multiplier_for_down_direction_values = 100.00 / $range_of_down_direction_values ;
+                $multiplier_for_up_direction_values = 100.00 / $range_of_up_direction_values ;
             } else
             {
-                $multiplier_for_down_direction_values = 1.0 ;
-                $down_direction_minimum_value = $down_direction_minimum_value - 1.0 ;
+                $multiplier_for_up_direction_values = 1.0 ;
+                $up_direction_minimum_value = $up_direction_minimum_value - 1.0 ;
             }
             if ( $range_of_right_direction_values > 0.0001 )
             {
@@ -4776,13 +4776,13 @@ sub dashrep_expand_parameters
             }
             for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
             {
-                $down_direction_value_for_item_number[ $item_number ] = ( $down_direction_value_for_item_number[ $item_number ] - $down_direction_minimum_value ) * $multiplier_for_down_direction_values ;
+                $up_direction_value_for_item_number[ $item_number ] = ( $up_direction_value_for_item_number[ $item_number ] - $up_direction_minimum_value ) * $multiplier_for_up_direction_values ;
                 $right_direction_value_for_item_number[ $item_number ] = ( $right_direction_value_for_item_number[ $item_number ] - $right_direction_minimum_value ) * $multiplier_for_right_direction_values ;
             }
             for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
             {
-                $right_and_down_direction_value_for_item_number[ $item_number ] = $right_direction_value_for_item_number[ $item_number ] + $down_direction_value_for_item_number[ $item_number ] ;
-                $left_and_down_direction_value_for_item_number[ $item_number ] = - $right_direction_value_for_item_number[ $item_number ] + $down_direction_value_for_item_number[ $item_number ] ;
+                $right_and_up_direction_value_for_item_number[ $item_number ] = $right_direction_value_for_item_number[ $item_number ] + $up_direction_value_for_item_number[ $item_number ] ;
+                $left_and_up_direction_value_for_item_number[ $item_number ] = - $right_direction_value_for_item_number[ $item_number ] + $up_direction_value_for_item_number[ $item_number ] ;
             }
             $top_row_number = 1 ;
             $bottom_row_number = $number_of_rows ;
@@ -4792,9 +4792,9 @@ sub dashrep_expand_parameters
             $fill_direction_top_right = 4 ;
             $need_maximum = 1 ;
             $need_minimum = 2 ;
-            $value_direction_right_and_down = 1 ;
-            $value_direction_left_and_down = 2 ;
-            $value_direction_down = 3 ;
+            $value_direction_right_and_up = 1 ;
+            $value_direction_left_and_up = 2 ;
+            $value_direction_up = 3 ;
             $value_direction_right = 4 ;
             $top_left_open_column = 1 ;
             $top_right_open_column = $number_of_columns ;
@@ -4815,11 +4815,11 @@ sub dashrep_expand_parameters
                         } elsif ( $top_left_open_column < $top_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_minimum ;
-                            $use_value_direction = $value_direction_right_and_down ;
+                            $use_value_direction = $value_direction_right_and_up ;
                         } elsif ( $top_left_open_column == $top_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_minimum ;
-                            $use_value_direction = $value_direction_down ;
+                            $use_value_direction = $value_direction_up ;
                         } else
                         {
                             next ;
@@ -4839,11 +4839,11 @@ sub dashrep_expand_parameters
                         } elsif ( $bottom_left_open_column < $bottom_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_right_and_down ;
+                            $use_value_direction = $value_direction_right_and_up ;
                         } elsif ( $bottom_left_open_column == $bottom_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_down ;
+                            $use_value_direction = $value_direction_up ;
                         } else
                         {
                             next ;
@@ -4862,11 +4862,11 @@ sub dashrep_expand_parameters
                         } elsif ( $bottom_left_open_column < $bottom_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_left_and_down ;
+                            $use_value_direction = $value_direction_left_and_up ;
                         } elsif ( $bottom_left_open_column == $bottom_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_down ;
+                            $use_value_direction = $value_direction_up ;
                         } else
                         {
                             next ;
@@ -4881,11 +4881,11 @@ sub dashrep_expand_parameters
                         } elsif ( $top_left_open_column < $top_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_minimum ;
-                            $use_value_direction = $value_direction_left_and_down ;
+                            $use_value_direction = $value_direction_left_and_up ;
                         } elsif ( $top_left_open_column == $top_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_minimum ;
-                            $use_value_direction = $value_direction_down ;
+                            $use_value_direction = $value_direction_up ;
                         } else
                         {
                             next ;
@@ -4903,15 +4903,15 @@ sub dashrep_expand_parameters
                     {
                         if ( $zero_if_not_remaining_item_number[ $item_number ] >= 1 )
                         {
-                            if ( $use_value_direction == $value_direction_right_and_down )
+                            if ( $use_value_direction == $value_direction_right_and_up )
                             {
-                                $next_value_to_compare = $right_and_down_direction_value_for_item_number[ $item_number ] ;
-                            } elsif ( $use_value_direction == $value_direction_left_and_down )
+                                $next_value_to_compare = $right_and_up_direction_value_for_item_number[ $item_number ] ;
+                            } elsif ( $use_value_direction == $value_direction_left_and_up )
                             {
-                                $next_value_to_compare = $left_and_down_direction_value_for_item_number[ $item_number ] ;
-                            } elsif ( $use_value_direction == $value_direction_down )
+                                $next_value_to_compare = $left_and_up_direction_value_for_item_number[ $item_number ] ;
+                            } elsif ( $use_value_direction == $value_direction_up )
                             {
-                                $next_value_to_compare = $down_direction_value_for_item_number[ $item_number ] ;
+                                $next_value_to_compare = $up_direction_value_for_item_number[ $item_number ] ;
                             } elsif ( $use_value_direction == $value_direction_right )
                             {
                                 $next_value_to_compare = $right_direction_value_for_item_number[ $item_number ] ;
@@ -4985,7 +4985,7 @@ sub dashrep_expand_parameters
                         if ( ( $row_number < $number_of_rows ) || ( ( $row_number == $number_of_rows ) && ( $column_number <= $number_of_items_in_bottom_row ) ) )
                         {
                             $item_number = $item_number_at_row_column{ $row_number . "" . $column_number } ;
-                            $global_trace_log .= "item " . $item_number . " (" . $down_direction_value_for_item_number[ $item_number ] . " " . $right_direction_value_for_item_number[ $item_number ] . ") " ;
+                            $global_trace_log .= "item " . $item_number . " (" . $up_direction_value_for_item_number[ $item_number ] . " " . $right_direction_value_for_item_number[ $item_number ] . ") " ;
                         }
                     }
                     $global_trace_log .= "}}\n" ;
