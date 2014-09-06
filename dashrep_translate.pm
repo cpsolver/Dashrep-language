@@ -1072,6 +1072,7 @@ sub dashrep_expand_parameters
     my $extra_info ;
     my $operand_three ;
     my $operand_four ;
+    my $operand_five ;
     my $phrase_name ;
     my $starting_count ;
     my $ending_count ;
@@ -1241,6 +1242,11 @@ sub dashrep_expand_parameters
     my $pointer_to_matching_character ;
     my $character_to_insert ;
     my $name_of_parameter_for_template_or_handler ;
+    my $list_of_x_values_as_text ;
+    my $list_of_y_values_as_text ;
+    my $pair_pointer ;
+    my @list_of_x_values ;
+    my @list_of_y_values ;
     my @list ;
     my @list_of_sorted_numbers ;
     my @list_of_replacements_to_auto_increment ;
@@ -1500,6 +1506,7 @@ sub dashrep_expand_parameters
         $operand_two = "" ;
         $operand_three = "" ;
         $operand_four = "" ;
+        $operand_five = "" ;
         $number_of_operands = 0 ;
         if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
         {
@@ -1529,6 +1536,10 @@ sub dashrep_expand_parameters
             if ( $number_of_operands >= 4 )
             {
                 $operand_four = $list_of_operands[ 3 ] ;
+            }
+            if ( $number_of_operands >= 5 )
+            {
+                $operand_five = $list_of_operands[ 4 ] ;
             }
         } else
         {
@@ -4581,35 +4592,102 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  numeric-calculate-distance-scaled
+#  numeric-calculate-distances-scaled
 
-        if ( $action_name eq "numeric-calculate-distance-scaled" )
+        if ( $action_name eq "numeric-calculate-distances-scaled" )
         {
-            if ( $object_of_action =~ /^ *([0-9\.\-]+) +([0-9\.\-]+) +([0-9\.\-]+) +([0-9\.\-]+) +([0-9\.\-]+) +([0-9\.\-]+) *$/ )
+            if ( $number_of_operands != 5 )
             {
-                $x1 = $1 ;
-                $y1 = $2 ;
-                $x2 = $3 ;
-                $y2 = $4 ;
-                $scale_x = $5 ;
-                $scale_y = $6 ;
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /^ *-?[0-9\.]+( +(-?[0-9\.]+)+) *$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /^ *-?[0-9\.]+( +(-?[0-9\.]+)+) *$/ ) )
+            {
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            }
+            if ( ( $operand_three =~ /^-?[0-9\.]+$/ ) && ( $operand_four =~ /^-?[0-9\.]+$/ ) )
+            {
+                $scale_x = $operand_three + 0 ;
+                $scale_y = $operand_four + 0 ;
             } else
             {
                 $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; warning, the operands for action " . $action_name . " either has fewer than 6, or more than 6, operands, or the operands contain at least one non-number character" . "}}\n" ;
+                    $global_trace_log .= "{{trace; warning, the third and fourth operands for action " . $action_name . " are not numbers" . "}}\n" ;
                 }
                 next ;
             }
-            $numeric_value = int( sqrt( ( ( ( $x2 - $x1 ) * $scale_x ) ** 2 ) + ( ( ( $y2 - $y1 ) * $scale_y ) ** 2 ) ) + 0.5 ) ;
-            if ( $numeric_value == 0 )
+            if ( ( $operand_five =~ /^[\-_]/ ) || ( $operand_five =~ /[\-_]$/ ) )
             {
-                $text_for_value = "0" ;
-            } else
+                $text_for_value = " " ;
+                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_five . "}}\n" ;
+                }
+                next ;
+            }
+            $text_for_value = " " ;
+            $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
+            $list_of_x_values_as_text =~ s/^ +//s ;
+            $list_of_x_values_as_text =~ s/ +$//s ;
+            @list_of_x_values = split( / +/s , $list_of_x_values_as_text ) ;
+            $list_of_y_values_as_text = $global_dashrep_replacement{ $operand_one } ;
+            $list_of_y_values_as_text =~ s/^ +//s ;
+            $list_of_y_values_as_text =~ s/ +$//s ;
+            @list_of_y_values = split( / +/s , $list_of_y_values_as_text ) ;
+            $x1 = 0 ;
+            $y1 = 0 ;
+            $x2 = 0 ;
+            $y2 = 0 ;
+            $global_dashrep_replacement{ $operand_five } = "" ;
+            for( $pair_pointer = 0 ; $pair_pointer <= $#list_of_x_values ; $pair_pointer ++ )
             {
-                $text_for_value = sprintf( "%d" , $numeric_value ) ;
+                if ( $pair_pointer == 0 )
+                {
+                    $x1 = $list_of_x_values[ 0 ] + 0 ;
+                    $y1 = $list_of_y_values[ 0 ] + 0 ;
+                } else
+                {
+                    $x2 = $list_of_x_values[ $pair_pointer ] + 0 ;
+                    $y2 = $list_of_y_values[ $pair_pointer ] + 0 ;
+                    $numeric_value = int( sqrt( ( ( ( $x2 - $x1 ) * $scale_x ) ** 2 ) + ( ( ( $y2 - $y1 ) * $scale_y ) ** 2 ) ) + 0.5 ) ;
+                    if ( $numeric_value == 0 )
+                    {
+                        $global_dashrep_replacement{ $operand_five } .= "0 " ;
+                    } else
+                    {
+                        $global_dashrep_replacement{ $operand_five } .= sprintf( "%d" , $numeric_value ) . " " ;
+                    }
+                }
+            }
+            $global_dashrep_replacement{ $operand_five } =~ s/ +$// ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; action " . $action_name . " calculated distances and put the results into " . $operand_five . "}}\n";
             }
             $replacement_text = $text_begin . $text_for_value . $text_end ;
             next ;
