@@ -3320,9 +3320,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  position-of-word-in-phrase
 #  yes-or-no-word-is-in-phrase
 #  position-of-word-in-phrase-within-phrase
+#
+#  Deprecated: position-of-word-in-phrase
 
         if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "yes-or-no-word-is-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
         {

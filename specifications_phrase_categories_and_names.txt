@@ -111,7 +111,6 @@ last-word-in-phrase
 from-phrase-get-word-number
 copy-from-phrase-to-phrase-words-from-position-to-position
 count-of-words-in-phrase
-position-of-word-in-phrase
 yes-or-no-word-is-in-phrase
 position-of-word-in-phrase-within-phrase
 append-word-to-phrase
