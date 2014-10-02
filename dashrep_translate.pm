@@ -2634,6 +2634,11 @@ sub dashrep_expand_parameters
                 {
                     $translation = &dashrep_expand_phrases( $partial_translation );
                 }
+
+#  causes bug in some Dashrep code, so this update not yet implemented:
+#                $translation =~ s/^ +// ;
+#                $translation =~ s/ +$// ;
+
                 $global_dashrep_replacement{ $operand_two } = $translation ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -7482,7 +7487,7 @@ sub dashrep_file_actions
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                $input_line =~ s/ +$// ;
+                $input_line =~ s/[ \n\t]+$// ;
                 if ( $use_two_spaces_as_delimiter eq "yes" )
                 {
                     @text_item_in_column = split( /  +/ , $input_line ) ;
