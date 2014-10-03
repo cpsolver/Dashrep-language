@@ -969,6 +969,10 @@ This action must be followed by two phrase names, not one. s-n
 Among other uses, this action can be used to build a list of items, or to insert text (such as a raw Dashrep definition) within other text without being translated.
 -----
 
+description-for-phrase-append-multiple-using-prefix-word-list-suffix-to-phrase:
+An action that copies multiple phrase definitions onto the end of the definition of the fourth phrase. s-n The name of each of the multiple phrases is created by combining the contents of the first phrase, one space h-h delimited word from the second phrase, and the contents of the third phrase. s-n The word in the second phrase changes each time appending is done, so that each word in phrase two becomes the middle of the phrase name that determines what gets appended. s-n As an example, if the first phrase contains the string b-i-b item- b-i-e and the second phrase contains the string b-i-b one two three b-i-e and the third phrase is named b-i-b empty h-h text b-i-e and the fourth phrase already contains the string b-i-b dolphin b-i-e and the phrase b-i-b item h-h one b-i-e contains b-i-b buffalo b-i-e and the phrase b-i-b item h-h two b-i-e contains b-i-b bear b-i-e and the phrase b-i-b item h-h three b-i-e contains b-i-b eagle b-i-e then the fourth phrase will contain b-i-b dolphin buffalo bear eagle b-i-e no-space . s-n This action is useful for building a long list fast, without needing to use a separate Dashrep action for each item appended.
+-----
+
 description-for-phrase-append-word-to-phrase:
 An action that copies the first word onto the end of the definition of the second hyphenated phrase. s-n Do not use this action if the first word might be empty because that causes an error (because the wrong number of operands are supplied).
 -----
