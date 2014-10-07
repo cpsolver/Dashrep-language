@@ -28,7 +28,7 @@ phrase-heading-end
 phrase-description-begin
 A b-b phrase b-e is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.
 s-n
-Directives are recognized regardless of whether or not they appear within parameter brackets.
+Phrases are recognized regardless of whether or not they appear within parameter brackets.
 phrase-description-end
 phrase-heading-begin
 Directive
@@ -36,7 +36,7 @@ phrase-heading-end
 phrase-description-begin
 A b-b directive b-e is a hyphenated phrase that triggers a special functionality in the translation.
 s-n
-Phrases are recognized regardless of whether or not they appear within parameter brackets.
+Directives are not recognized if they appear within parameter brackets.
 phrase-description-end
 phrase-heading-begin
 Action
@@ -199,7 +199,11 @@ An action that gets the space hyphen-here delimited words from the first phrase 
 -----
 
 description-for-phrase-copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase:
-An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, of the first phrase contains the string b-i-b seven one five three twelve b-i-e and the third phrase contains the string b-i-b 07 01 05 03 12 b-i-e then the string placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n As an example, if the first phrase contains the string b-i-b Nikola_Tesla Abe_Lincoln Thomas_Jefferson Benjamin_Franklin b-i-e and the third phrase contains the string b-i-b Nikola_Tesla Thomas_Jefferson Paul_MacCready Leonardo_da_Vinci b-i-e then the string placed into the second phrase will be b-i-b da_vinci_leonardo jefferson_thomas maccready_paul tesla_nikola b-i-e no-space . s-n The first two phrase names can be the same.
+-----
+
+description-for-phrase-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase:
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, if the first phrase contains the string b-i-b seven one five three twelve b-i-e and the third phrase contains the string b-i-b 7 1 5 3 12 b-i-e then the string placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
@@ -517,7 +521,7 @@ A phrase that equals b-i-b yes b-i-e if the web framework (which is accessed usi
 -----
 
 description-for-phrase-xml-move-attributes-into-tag-elements-within-phrase:
-An action that moves the content of an b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding tag. s-n For example, it converts the string b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the string b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space . s-n The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and XHTML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e (instead of having to specify the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space ).
+An action that moves the content of an b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding tag. s-n For example, it converts the string b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the string b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space . s-n The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e (instead of having to specify the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space ).
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
@@ -884,7 +888,7 @@ A directive that inserts a single space. s-n If the b-i-b no h-h space b-i-e dir
 -----
 
 description-for-phrase-non-breaking-space:
-A directive that inserts a single space em-dash as defined in a target language. s-n This string is inserted even if the bold-begin italics-begin no hyphen-here space italics-end bold-end directive is adjacent. s-n The default, which is intended for use in XHTML, is bold-begin italics-begin &amp; no-space nbsp; italics-end bold-end no-space .
+A directive that inserts a single space em-dash as defined in a target language. s-n This string is inserted even if the bold-begin italics-begin no hyphen-here space italics-end bold-end directive is adjacent. s-n The default, which is intended for use in HTML, is bold-begin italics-begin &amp; no-space nbsp; italics-end bold-end no-space .
 -----
 
 description-for-phrase-span-non-breaking-spaces-begin:
@@ -900,7 +904,7 @@ A directive that inserts a
 bold-begin italics-begin newline italics-end bold-end
 character, which specifies the start of a new line.
 s-n
-If the target language, such as XHTML, ignores line breaks, the line break will not be visible in the displayed result.
+If the target language, such as HTML, ignores line breaks, the line break will not be visible in the displayed result.
 -----
 
 description-for-phrase-empty-line:
@@ -910,7 +914,7 @@ directives.
 -----
 
 description-for-phrase-line-break:
-A phrase that should be defined as a text string that, in turn, specifies a line break in the target language. s-n For example, if the target language is XHTML, normally this phrase would be defined as
+A phrase that should be defined as a text string that, in turn, specifies a line break in the target language. s-n For example, if the target language is HTML, normally this phrase would be defined as
 bold-begin italics-begin &lt;br&nbsp;/&gt; italics-end bold-end
 no-space .
 -----
@@ -1145,7 +1149,7 @@ Writes (in Dashrep-readable form) the definitions of the phrases that are named 
 -----
 
 description-for-phrase-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file:
-Translates XML in the specified input file into Dashrep phrases and puts the results in the specified output file. s-n In the resulting text, phrase names are inserted where XML tags appeared. s-n XML tags are converted into phrase names, where the phrase name is a concatenation (joined version) of the XML tag names. s-n For example, b-i-b begin h-h xml h-h peoplelist h-h person h-h name b-i-e and b-i-b end h-h xml h-h peoplelist h-h person h-h name b-i-e surrounds text that was tagged with the XML tag structure b-i-b &lt;xml&gt;&lt;peoplelist&gt;&lt;person&gt;&lt;name&gt; b-i-e no-space . s-n The prefix b-i-b begin h-h and h-h end h-h b-i-e is used for self-terminating XML tags such as b-i-b &lt;br /&gt; b-i-e no-space . s-n If the resulting phrase is defined, the definition is inserted instead. s-n If the non-tag content contains any hyphens, they are replaced with the phrase b-i-b hyphen h-h here b-i-e no-space . s-n If a tag's opening bracket (&lt;) and closing bracket (&gt;) are not both on the same line, the tag will not be recognized. s-n The resulting file, combined with appropriate definitions for those phrase names, enables an XML or XHTML file to be converted into nearly any kind of text file. s-n The location of the target file is specified by the phrase b-i-b name-of-phrase-that-specifies-write-directory b-i-e no-space .
+Translates XML in the specified input file into Dashrep phrases and puts the results in the specified output file. s-n In the resulting text, phrase names are inserted where XML tags appeared. s-n XML tags are converted into phrase names, where the phrase name is a concatenation (joined version) of the XML tag names. s-n For example, b-i-b begin h-h xml h-h peoplelist h-h person h-h name b-i-e and b-i-b end h-h xml h-h peoplelist h-h person h-h name b-i-e surrounds text that was tagged with the XML tag structure b-i-b &lt;xml&gt;&lt;peoplelist&gt;&lt;person&gt;&lt;name&gt; b-i-e no-space . s-n The prefix b-i-b begin h-h and h-h end h-h b-i-e is used for self-terminating XML tags such as b-i-b &lt;br /&gt; b-i-e no-space . s-n If the resulting phrase is defined, the definition is inserted instead. s-n If the non-tag content contains any hyphens, they are replaced with the phrase b-i-b hyphen h-h here b-i-e no-space . s-n If a tag's opening bracket (&lt;) and closing bracket (&gt;) are not both on the same line, the tag will not be recognized. s-n The resulting file, combined with appropriate definitions for those phrase names, enables an XML or HTML file to be converted into nearly any kind of text file. s-n The location of the target file is specified by the phrase b-i-b name-of-phrase-that-specifies-write-directory b-i-e no-space .
 -----
 
 description-for-phrase-dashrep-first-xml-tag-name:
@@ -1635,7 +1639,7 @@ r-b c-b 8 c-n Hyphenated phrase c-n needed h-h text h-h string c-n A hyphen surr
 
 r-b c-b 9 c-n Colon c-n needed h-h text h-h string no-space b-i-b : b-i-e definition here non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n When there is text after the b-i-b dashrep h-h definitions h-h begin b-i-e directive, a colon can appear at the end of the phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
 
-r-b c-b 10 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replace with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code. c-e r-e
+r-b c-b 10 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code (which in HTML is the b-i-b <br \> b-i-e tag). c-e r-e
 
 r-b c-b 11 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
 
@@ -1695,7 +1699,7 @@ r-b c-b amenn c-n h-h ] c-n Indicates the end of a parameter. c-e r-e
 
 r-b c-b ofo c-n (no equivalence) c-n Indicates that an operand (for an action) follows, and that the words (up to the next b-i-b ofo b-i-e or b-i-b amenn b-i-e no-space ) should be hyphenated. c-e r-e
 
-r-b c-b conambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named h-h [ h-h dolphin h-h name h-h ] b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
+r-b c-b conambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named con no-space ambee dolphin h-h name amen no-space con b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
 
 r-b c-b amenncon c-n h-h ] h-h c-n Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase. c-e r-e
 
