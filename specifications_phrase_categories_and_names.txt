@@ -47,7 +47,7 @@ append-from-phrase-to-phrase-no-space
 prepend-from-phrase-to-phrase
 prepend-from-phrase-to-phrase-no-space
 append-new-line-to-phrase
-append-multiple-using-prefix-word-list-suffix-to-phrase
+append-multiple-from-phrases-named-in-pattern-to-phrase
 
 category_decision
 yes-or-no-empty-word
