@@ -2816,6 +2816,9 @@ sub dashrep_expand_parameters
                 if ( $action_name ne "expand-only-parameters-in-phrase-to-phrase" )
                 {
                     $translation = &dashrep_expand_phrases( $partial_translation );
+                } else
+                {
+                    $translation = $partial_translation ;
                 }
 
 #  causes bug in some Dashrep code, so this update not yet implemented:
