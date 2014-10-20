@@ -1818,7 +1818,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /^[^ ]+-[^ ]+$/ ) )
+            if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /[^ \t\n]/ ) )
             {
                 $text_for_value = " " ;
                 $replacement_text = $text_begin . $text_for_value . $text_end ;
@@ -1840,28 +1840,17 @@ sub dashrep_expand_parameters
             }
             if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
             {
-                if ( ( not( defined( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /^[^ ]+-[^ ]+$/ ) )
-                {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
-                    }
-                    next ;
-                }
-            }
-            if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
-            {
                 $phrase_name_containing_source_words = $operand_one ;
                 $phrase_name_containing_pattern = $operand_two ;
+                $target_phrase_name = "" ;
             } else
             {
                 $phrase_name_containing_pattern = $operand_one ;
                 $target_phrase_name = $operand_two ;
+                $phrase_name_containing_source_words = "" ;
             }
             $text_for_value = "" ;
-            if ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /$([^ ]*)ambee-([^ ]*)-amenn([^ ]*)$/ )
+            if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)ambee-([^ ]*)-amenn([^ ]*)$/ ) )
             {
                 $prefix = $1 ;
                 $phrase_name_containing_parameter_list = $2 ;
@@ -1894,9 +1883,9 @@ sub dashrep_expand_parameters
                 next ;
             }
             $list_of_words_as_text = $global_dashrep_replacement{ $phrase_name_containing_parameter_list } ;
-            $list_of_words_as_text =~ s/^[ \n\t]+// ;
-            $list_of_words_as_text =~ s/[ \n\t]+$// ;
             $list_of_words_as_text =~ s/[\n\t]+/ /g ;
+            $list_of_words_as_text =~ s/^ +// ;
+            $list_of_words_as_text =~ s/ +$// ;
             if ( $list_of_words_as_text !~ /[^ ]/ )
             {
                 $text_for_value = " " ;
@@ -1924,9 +1913,9 @@ sub dashrep_expand_parameters
                     next ;
                 }
                 $list_of_words_as_text = $global_dashrep_replacement{ $phrase_name_containing_source_words } ;
-                $list_of_words_as_text =~ s/^[ \n\t]+// ;
-                $list_of_words_as_text =~ s/[ \n\t]+$// ;
                 $list_of_words_as_text =~ s/[\n\t]+/ /g ;
+                $list_of_words_as_text =~ s/^ +// ;
+                $list_of_words_as_text =~ s/ +$// ;
                 if ( $list_of_words_as_text !~ /[^ ]/ )
                 {
                     $text_for_value = " " ;
@@ -1937,21 +1926,11 @@ sub dashrep_expand_parameters
                     }
                     next ;
                 }
-                @list_of_source_words = split( /[ \n\t]+/ , $list_of_words_as_text ) ;
+                @list_of_source_words = split( / +/ , $list_of_words_as_text ) ;
             }
-            for ( $pointer = 0 ; $pointer <= $#list_of_parameter_words ; $pointer ++ )
+            if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
             {
-                if ( $action_name eq "append-multiple-from-phrases-named-in-pattern-to-phrase" )
-                {
-                    $source_phrase_name = $prefix . $list_of_parameter_words[ $pointer ] . $suffix ;
-                    if ( ( $source_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) )
-                    {
-                        $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
-                        $text_string =~ s/^[ \n\t]+//s ;
-                        $text_string =~ s/[ \n\t]+$//s ;
-                        $global_dashrep_replacement{ $target_phrase_name } .= " " . $text_string ;
-                    }
-                } else
+                for ( $pointer = 0 ; $pointer <= $#list_of_parameter_words ; $pointer ++ )
                 {
                     if ( $pointer <= $#list_of_source_words )
                     {
@@ -1959,8 +1938,9 @@ sub dashrep_expand_parameters
                         if ( ( $target_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $target_phrase_name } ) ) )
                         {
                             $text_string = $list_of_source_words[ $pointer ] ;
-                            $text_string =~ s/^[ \n\t]+//s ;
-                            $text_string =~ s/[ \n\t]+$//s ;
+                            $text_string =~ s/[\n\t]+/ /sg ;
+                            $text_string =~ s/^ +//s ;
+                            $text_string =~ s/ +$//s ;
                             $global_dashrep_replacement{ $target_phrase_name } = $text_string ;
                         } else
                         {
@@ -1970,6 +1950,20 @@ sub dashrep_expand_parameters
                             }
                             last ;
                         }
+                    }
+                }
+            } else
+            {
+                for ( $pointer = 0 ; $pointer <= $#list_of_parameter_words ; $pointer ++ )
+                {
+                    $source_phrase_name = $prefix . $list_of_parameter_words[ $pointer ] . $suffix ;
+                    if ( ( $source_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) )
+                    {
+                        $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
+                        $text_string =~ s/[\n\t]+/ /sg ;
+                        $text_string =~ s/^ +//s ;
+                        $text_string =~ s/ +$//s ;
+                        $global_dashrep_replacement{ $target_phrase_name } .= " " . $text_string ;
                     }
                 }
             }
