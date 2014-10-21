@@ -32,14 +32,6 @@ clear-all-dashrep-phrases
 delete-phrases-listed-in-phrase
 expand-phrase-to-phrase
 expand-only-parameters-in-phrase-to-phrase
-dashrep-yes-append-not-replace-for-imported-phrases
-dashrep-yes-or-no-export-delimited-definitions
-export-defs-all-begin
-export-defs-all-end
-export-defs-def-begin
-export-defs-def-end
-export-defs-phrase-begin
-export-defs-phrase-end
 copy-from-phrase-to-phrase
 copy-phrase-name-to-phrase
 append-from-phrase-to-phrase
@@ -49,6 +41,14 @@ prepend-from-phrase-to-phrase-no-space
 append-new-line-to-phrase
 copy-multiple-words-in-phrase-to-phrases-named-in-pattern
 append-multiple-from-phrases-named-in-pattern-to-phrase
+dashrep-yes-append-not-replace-for-imported-phrases
+dashrep-yes-or-no-export-delimited-definitions
+export-defs-all-begin
+export-defs-all-end
+export-defs-def-begin
+export-defs-def-end
+export-defs-phrase-begin
+export-defs-phrase-end
 
 category_decision
 yes-or-no-empty-word

@@ -1850,11 +1850,11 @@ sub dashrep_expand_parameters
                 $phrase_name_containing_source_words = "" ;
             }
             $text_for_value = "" ;
-            if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)ambee-([^ ]*)-amenn([^ ]*)$/ ) )
+            if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)((ambee)|(conambee))-([^ ]*)-((amenn)|(amenncon))([^ ]*)$/ ) )
             {
                 $prefix = $1 ;
-                $phrase_name_containing_parameter_list = $2 ;
-                $suffix = $3 ;
+                $phrase_name_containing_parameter_list = $5 ;
+                $suffix = $9 ;
             } else
             {
                 $text_for_value = " " ;
