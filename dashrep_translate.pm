@@ -1935,21 +1935,21 @@ sub dashrep_expand_parameters
                     if ( $pointer <= $#list_of_source_words )
                     {
                         $target_phrase_name = $prefix . $list_of_parameter_words[ $pointer ] . $suffix ;
-                        if ( ( $target_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $target_phrase_name } ) ) )
+                        if ( $target_phrase_name =~ /^[^ \-][^ ]*-[^ ]*[^ \-]$/ )
                         {
                             $text_string = $list_of_source_words[ $pointer ] ;
                             $text_string =~ s/[\n\t]+/ /sg ;
                             $text_string =~ s/^ +//s ;
                             $text_string =~ s/ +$//s ;
                             $global_dashrep_replacement{ $target_phrase_name } = $text_string ;
-                        } else
-                        {
-                            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                            {
-                                $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the number of words in the source list " . $phrase_name_containing_source_words . " is less than the number of phrase names based on the parameter values in the list " . $phrase_name_containing_parameter_list . " so not all the copies were created" . "}}\n" ;
-                            }
-                            last ;
                         }
+                    } else
+                    {
+                        if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                        {
+                            $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the number of words in the source list " . $phrase_name_containing_source_words . " is less than the number of phrase names based on the parameter values in the list " . $phrase_name_containing_parameter_list . " so not all the copies were created" . "}}\n" ;
+                        }
+                        last ;
                     }
                 }
             } else
