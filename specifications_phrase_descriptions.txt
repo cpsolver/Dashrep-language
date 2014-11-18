@@ -327,7 +327,7 @@ description-for-phrase-every-pairwise-combination-of-words-from-two-phrases-put-
 An action that generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible combination of words listed in the first phrase and the second phrase. s-n For example, if the first phrase contains b-i-b dolphin eagle bear b-i-e and the second phrase contains b-i-b leaps flies ambles b-i-e then the third phrase will contain b-i-b
 dolphin dolphin dolphin eagle eagle eagle bear bear bear
 b-i-e and the fourth phrase will contain b-i-b
-leaps leaps leaps flies flies flies ambles ambles ambles
+leaps flies ambles leaps flies ambles leaps flies ambles
 b-i-e no-space .
 -----
 
