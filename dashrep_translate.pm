@@ -1135,7 +1135,7 @@ sub dashrep_expand_parameters
     my $zero_one_multiple ;
     my $yes_or_no ;
     my $text_parameter ;
-    my $text_for_value ;
+    my $action_result ;
     my $possible_new_limit ;
     my $text_parameter_content ;
     my $operand_one ;
@@ -1655,8 +1655,8 @@ sub dashrep_expand_parameters
 
         if ( ( exists( $required_number_of_operands_for_action{ $action_name } ) ) && ( $required_number_of_operands_for_action{ $action_name } != $number_of_operands ) )
         {
-            $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; warning, wrong number of operands for action " . $action_name . "}}\n" ;
@@ -1665,8 +1665,8 @@ sub dashrep_expand_parameters
         }
         if ( ( exists( $minimum_number_of_operands_for_action{ $action_name } ) ) && ( $minimum_number_of_operands_for_action{ $action_name } >= $number_of_operands ) )
         {
-            $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; warning, not enough operands for action " . $action_name . "}}\n" ;
@@ -1683,8 +1683,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -1711,8 +1711,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -1782,8 +1782,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -1792,8 +1792,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -1802,7 +1802,7 @@ sub dashrep_expand_parameters
             }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
-            $text_for_value = "" ;
+            $action_result = "" ;
             if ( ( $action_name ne "append-word-to-phrase" ) && ( ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) ) )
             {
                 $global_dashrep_replacement{ $target_phrase_name } .= "" ;
@@ -1839,7 +1839,7 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; did action " . $action_name . " from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -1852,8 +1852,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -1865,8 +1865,8 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; appended newline to phrase " . $operand_one . "}}\n" ;
             }
-            $text_for_value = "" ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = "" ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -1880,8 +1880,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /[^ \t\n]/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -1890,8 +1890,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -1909,7 +1909,7 @@ sub dashrep_expand_parameters
                 $target_phrase_name = $operand_two ;
                 $phrase_name_containing_source_words = "" ;
             }
-            $text_for_value = "" ;
+            $action_result = "" ;
             if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)((ambee)|(conambee))-([^ ]*)-((amenn)|(amenncon))([^ ]*)$/ ) )
             {
                 $prefix = $1 ;
@@ -1917,8 +1917,8 @@ sub dashrep_expand_parameters
                 $suffix = $9 ;
             } else
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $phrase_name_containing_pattern . "}}\n" ;
@@ -1934,8 +1934,8 @@ sub dashrep_expand_parameters
             $phrase_name_containing_parameter_list =~ s/-+$// ;
             if ( not( defined( $global_dashrep_replacement{ $phrase_name_containing_parameter_list } ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the operand " . $phrase_name_containing_parameter_list . " is not defined, so nothing was done" . "}}\n" ;
@@ -1948,8 +1948,8 @@ sub dashrep_expand_parameters
             $list_of_words_as_text =~ s/ +$// ;
             if ( $list_of_words_as_text !~ /[^ ]/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the operand " . $phrase_name_containing_parameter_list . " does not contain any words, so nothing was done" . "}}\n" ;
@@ -1964,8 +1964,8 @@ sub dashrep_expand_parameters
                 $phrase_name_containing_source_words =~ s/-+$// ;
                 if ( not( defined( $global_dashrep_replacement{ $phrase_name_containing_source_words } ) ) )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the operand " . $phrase_name_containing_source_words . " is not defined, so no copying was done" . "}}\n" ;
@@ -1978,8 +1978,8 @@ sub dashrep_expand_parameters
                 $list_of_words_as_text =~ s/ +$// ;
                 if ( $list_of_words_as_text !~ /[^ ]/ )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , the operand " . $phrase_name_containing_source_words . " does not contain any words, so no copying was done" . "}}\n" ;
@@ -2031,7 +2031,7 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; did action " . $action_name . " for phrases named " . $operand_one . " and " . $operand_two . "}}\n" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2058,8 +2058,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2068,8 +2068,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -2216,8 +2216,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2226,8 +2226,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -2334,8 +2334,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2344,8 +2344,8 @@ sub dashrep_expand_parameters
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , empty operand: " . $operand_one . "}}\n" ;
@@ -2394,8 +2394,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2457,8 +2457,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2467,8 +2467,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -2479,8 +2479,8 @@ sub dashrep_expand_parameters
             {
                 if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -2490,8 +2490,8 @@ sub dashrep_expand_parameters
             }
             if ( ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) ) && ( $global_dashrep_replacement{ $operand_three } =~ /[^0-9\.\- ]/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " contains non-numeric content: " . $global_dashrep_replacement{ $operand_three } . "}}\n" ;
@@ -2507,13 +2507,13 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; copied nothing because phrase " . $operand_one . " is not defined}}\n" ;
                 }
-                $text_for_value = " " ;
+                $action_result = " " ;
             } else
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
                 $source_text =~ s/^ +// ;
                 $source_text =~ s/ +$// ;
-                $text_for_value = "" ;
+                $action_result = "" ;
                 if ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" )
                 {
                     if ( $operand_three =~ /^[0-9]+$/ )
@@ -2581,7 +2581,7 @@ sub dashrep_expand_parameters
                     }
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2596,8 +2596,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2606,8 +2606,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -2618,8 +2618,8 @@ sub dashrep_expand_parameters
             {
                 if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase " . $operand_three . " is not a valid phrase name or phrase does not exist" . "}}\n" ;
@@ -2629,8 +2629,8 @@ sub dashrep_expand_parameters
                 $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
                 if ( length( $string_to_be_replaced ) < 1 )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , search string in phrase " . $operand_three . " is not at least one character long" . "}}\n" ;
@@ -2640,8 +2640,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
@@ -2713,8 +2713,8 @@ sub dashrep_expand_parameters
                 }
                 if ( ( $pointer_one == -1 ) || ( $pointer_two == -1 ) || ( $pointer_one > $pointer_two ) )
                 {
-                    $text_for_value = " " ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = " " ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number" . "}}\n" ;
@@ -2776,8 +2776,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2786,15 +2786,15 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_to_expand = $global_dashrep_replacement{ $operand_one } ;
@@ -2828,7 +2828,7 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; warning, cannot expand undefined phrase " . $operand_one . "}}\n" ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2841,8 +2841,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -2851,8 +2851,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -2863,15 +2863,15 @@ sub dashrep_expand_parameters
             $second_object_of_action = $operand_two + 0 ;
             if ( $first_object_of_action == $second_object_of_action )
             {
-                $text_for_value = "equal" ;
+                $action_result = "equal" ;
             } elsif ( $first_object_of_action > $second_object_of_action )
             {
-                $text_for_value = "greater" ;
+                $action_result = "greater" ;
             } else
             {
-                $text_for_value = "less" ;
+                $action_result = "less" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2941,15 +2941,15 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /yes/i ) && ( $action_name eq "if-word-is-yes-then-first-else-second" ) )
             {
-                $text_for_value = $operand_two ;
+                $action_result = $operand_two ;
             } elsif ( ( $operand_one =~ /no/i ) && ( $action_name eq "if-word-is-no-then-first-else-second" ) )
             {
-                $text_for_value = $operand_two ;
+                $action_result = $operand_two ;
             } else
             {
-                $text_for_value = $operand_three ;
+                $action_result = $operand_three ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2963,13 +2963,13 @@ sub dashrep_expand_parameters
         {
             if ( ( ( $operands_all =~ /^ *yes /i ) && ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) ) || ( ( $operands_all =~ /^ *no /i ) && ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) ) )
             {
-                $text_for_value = $operands_all ;
-                $text_for_value =~ s/^ *[a-z]+ //i ;
+                $action_result = $operands_all ;
+                $action_result =~ s/^ *[a-z]+ //i ;
             } else
             {
-                $text_for_value = "" ;
+                $action_result = "" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -2982,8 +2982,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3001,12 +3001,12 @@ sub dashrep_expand_parameters
                 @list = ( ) ;
             }
             $count = $#list + 1 ;
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( $count > 0 )
             {
-                $text_for_value = $list[ 0 ] ;
+                $action_result = $list[ 0 ] ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3019,8 +3019,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3038,12 +3038,12 @@ sub dashrep_expand_parameters
                 @list = ( ) ;
             }
             $count = $#list + 1 ;
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( $count > 0 )
             {
-                $text_for_value = $list[ $#list ] ;
+                $action_result = $list[ $#list ] ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3056,8 +3056,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3066,8 +3066,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3076,8 +3076,8 @@ sub dashrep_expand_parameters
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3086,8 +3086,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two !~ /^[0-9]+$/ ) || ( ( $operand_two + 0 ) < 1 ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3108,22 +3108,22 @@ sub dashrep_expand_parameters
             $count = $#list + 1 ;
             if ( $count < 1 )
             {
-                $text_for_value = " " ;
+                $action_result = " " ;
             } else
             {
                 if ( $word_number > $count )
                 {
-                    $text_for_value = " " ;
+                    $action_result = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " exceeds number of words in phrase, so no word supplied" . "}}\n" ;
                     }
                 } else
                 {
-                    $text_for_value = $list[ $word_number - 1 ] ;
+                    $action_result = $list[ $word_number - 1 ] ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3136,8 +3136,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3146,8 +3146,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3156,8 +3156,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_three !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -3166,8 +3166,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_four !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
@@ -3176,8 +3176,8 @@ sub dashrep_expand_parameters
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3186,8 +3186,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_three !~ /^[\-0-9]+$/ ) || ( ( $operand_three + 0 ) < 1 ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -3196,15 +3196,15 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_four !~ /^[\-0-9]+$/ ) || ( ( $operand_four + 0 ) < 1 ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = "" ;
+            $action_result = "" ;
             $word_number_begin = $operand_three + 0 ;
             $word_number_end = $operand_four + 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3245,7 +3245,7 @@ sub dashrep_expand_parameters
                     $global_dashrep_replacement{ $operand_two } = $result_text ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3259,8 +3259,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3269,15 +3269,15 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
@@ -3299,7 +3299,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/ +$// ;
             }
             $global_dashrep_replacement{ $operand_two } = $temp_text ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3312,8 +3312,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3322,8 +3322,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3332,7 +3332,7 @@ sub dashrep_expand_parameters
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $operand_two !~ /^[0-9+]$/ )  || ( ( $operand_two + 0 ) < 1 ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operands}}\n" ;
@@ -3353,19 +3353,19 @@ sub dashrep_expand_parameters
                 $count = $#list + 1 ;
                 if ( $count < 1 )
                 {
-                    $text_for_value = $global_dashrep_replacement{ $operand_one } ;
+                    $action_result = $global_dashrep_replacement{ $operand_one } ;
                 } else
                 {
                     if ( $word_number > $count )
                     {
-                        $text_for_value = " " . $action_name . " " . $operands_all . " " ;
+                        $action_result = " " . $action_name . " " . $operands_all . " " ;
                     } else
                     {
-                        $text_for_value = $list[ $word_number - 1 ] ;
+                        $action_result = $list[ $word_number - 1 ] ;
                     }
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3378,8 +3378,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3399,12 +3399,12 @@ sub dashrep_expand_parameters
             $count = $#list + 1 ;
             if ( $count > 0 )
             {
-                $text_for_value = $count ;
+                $action_result = $count ;
             } else
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3420,8 +3420,8 @@ sub dashrep_expand_parameters
         {
             if ( ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3430,8 +3430,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $action_name eq "position-of-word-in-phrase-within-phrase" ) && ( ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3453,10 +3453,10 @@ sub dashrep_expand_parameters
             $list_length = $#list + 1 ;
             if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             } else
             {
-                $text_for_value = "no" ;
+                $action_result = "no" ;
             }
             if ( $list_length >= 1 )
             {
@@ -3467,16 +3467,16 @@ sub dashrep_expand_parameters
                     {
                         if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
                         {
-                            $text_for_value = sprintf( "%d" , $pointer ) ;
+                            $action_result = sprintf( "%d" , $pointer ) ;
                         } else
                         {
-                            $text_for_value = "yes" ;
+                            $action_result = "yes" ;
                         }
                         last ;
                     }
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3489,8 +3489,8 @@ sub dashrep_expand_parameters
         {
             if ( ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) ) || ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3499,8 +3499,8 @@ sub dashrep_expand_parameters
             }
             if ( ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3509,21 +3509,21 @@ sub dashrep_expand_parameters
             }
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
-            $text_for_value = "0" ;
+            $action_result = "0" ;
             $phrase_length = length( $string_to_search ) + 1 ;
             if ( $phrase_length > 0 )
             {
                 $position = index( $string_to_search , $string_to_find ) + 1 ;
                 if ( $position > 0 )
                 {
-                    $text_for_value = sprintf( "%d" , $position ) ;
+                    $action_result = sprintf( "%d" , $position ) ;
                 }
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; action " . $action_name . " searched for " . $string_to_find . " within " . $string_to_search . " and found at character position " . $text_for_value . "}}\n";
+                $global_trace_log .= "{{trace; action " . $action_name . " searched for " . $string_to_find . " within " . $string_to_search . " and found at character position " . $action_result . "}}\n";
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3537,7 +3537,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
         {
-            $text_for_value = "" ;
+            $action_result = "" ;
             $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
             if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
             {
@@ -3600,7 +3600,7 @@ sub dashrep_expand_parameters
             }
             $result_word_list =~ s/ +$// ;
             $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3613,8 +3613,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3623,8 +3623,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3633,8 +3633,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -3643,7 +3643,7 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
-                $text_for_value = " " ;
+                $action_result = " " ;
             } else
             {
                 $starting_count = $operand_one + 0 ;
@@ -3660,7 +3660,7 @@ sub dashrep_expand_parameters
                 }
                 if ( $count_range > 99999 )
                 {
-                    $text_for_value = " " . $action_name . " " . $operands_all . " " ;
+                    $action_result = " " . $action_name . " " . $operands_all . " " ;
                 } else
                 {
                     $global_dashrep_replacement{ $phrase_name } = "" ;
@@ -3680,10 +3680,10 @@ sub dashrep_expand_parameters
                         }
                         $global_dashrep_replacement{ $phrase_name } .= $text_to_append ;
                     }
-                    $text_for_value = "" ;
+                    $action_result = "" ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3696,8 +3696,8 @@ sub dashrep_expand_parameters
         {
             if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, permission denied to use action " . $action_name . "}}\n" ;
@@ -3706,8 +3706,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_one =~ /^[\-_]/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3716,8 +3716,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_one !~ /^[^ ]+-[^ ]+-[^ ]/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " does not contain at least two hyphens" . "}}\n" ;
@@ -3726,8 +3726,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3757,8 +3757,8 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; wrote " . $counter . " phrase names to phrase " . $operand_one . "}}\n" ;
             }
-            $text_for_value = "" ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = "" ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3772,8 +3772,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3782,8 +3782,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -3792,8 +3792,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -3802,8 +3802,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_four . "}}\n" ;
@@ -3812,8 +3812,8 @@ sub dashrep_expand_parameters
             }
             if ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " not defined" . "}}\n" ;
@@ -3821,8 +3821,8 @@ sub dashrep_expand_parameters
                 next ;
             } elsif ( not( defined( $global_dashrep_replacement{ $operand_two } ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_two . " not defined" . "}}\n" ;
@@ -3846,14 +3846,14 @@ sub dashrep_expand_parameters
                 $count_list_two = $#input_list_two + 1 ;
                 if ( $count_list_one < 1 )
                 {
-                    $text_for_value = " " ;
+                    $action_result = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_one . " does not contain any words" . "}}\n" ;
                     }
                 } elsif ( $count_list_two < 1 )
                 {
-                    $text_for_value = " " ;
+                    $action_result = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand " . $operand_two . " does not contain any words" . "}}\n" ;
@@ -3891,7 +3891,7 @@ sub dashrep_expand_parameters
                     }
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -3905,8 +3905,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3939,8 +3939,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -3970,8 +3970,8 @@ sub dashrep_expand_parameters
        {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4030,8 +4030,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4040,8 +4040,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -4107,8 +4107,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4117,8 +4117,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -4127,15 +4127,15 @@ sub dashrep_expand_parameters
             }
             if ( $operand_three !~ /^[\-0-9]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
@@ -4166,7 +4166,7 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; action " . $action_name . " got characters " . $copied_characters . "}}\n";
                 }
-                $text_for_value = $copied_characters
+                $action_result = $copied_characters
             }
             $replacement_text = $text_begin . $copied_characters . $text_end ;
             next ;
@@ -4181,8 +4181,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4191,8 +4191,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -4202,16 +4202,16 @@ sub dashrep_expand_parameters
             $numeric_value = ( $operand_one + 0 ) - ( $operand_two + 0 ) ;
             if ( $numeric_value == 0 )
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             } else
             {
-                $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                $action_result = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
             {
-                $text_for_value = $1 ;
+                $action_result = $1 ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4224,8 +4224,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4234,8 +4234,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_two !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -4244,24 +4244,24 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two + 0 ) == 0 )
             {
-                $text_for_value = "infinity" ;
+                $action_result = "infinity" ;
             } elsif ( ( $operand_one + 0 ) == 0 )
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             } else
             {
                 $numeric_value = ( $operand_one + 0 ) / ( $operand_two + 0 ) ;
-                $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                $action_result = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
             {
-                $text_for_value = $1 ;
+                $action_result = $1 ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; operands for action " . $action_name . " are " . $operand_one . " and " . $operand_two . " , and result is " . $numeric_value . "}}\n" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4275,7 +4275,7 @@ sub dashrep_expand_parameters
 
         if ( ( ( $action_name eq "numeric-add" ) || ( $action_name eq "numeric-multiply" ) || ( $action_name eq "numeric-maximum" ) || ( $action_name eq "numeric-minimum" ) ) && ( $number_of_operands >= 1 ) )
         {
-            $text_for_value = "0" ;
+            $action_result = "0" ;
             if ( $action_name eq "numeric-add" )
             {
                 $numeric_value = 0 ;
@@ -4324,16 +4324,16 @@ sub dashrep_expand_parameters
             }
             if ( $numeric_value == 0 )
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             } else
             {
-                $text_for_value = sprintf( "%f" , $numeric_value ) ;
+                $action_result = sprintf( "%f" , $numeric_value ) ;
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
             {
-                $text_for_value = $1 ;
+                $action_result = $1 ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4346,8 +4346,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4357,16 +4357,16 @@ sub dashrep_expand_parameters
             $result_value = abs( $operand_one + 0 ) ;
             if ( $result_value == 0 )
             {
-                $text_for_value = "0" ;
+                $action_result = "0" ;
             } else
             {
-                $text_for_value = sprintf( "%d" , $result_value ) ;
+                $action_result = sprintf( "%d" , $result_value ) ;
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
             {
-                $text_for_value = $1 ;
+                $action_result = $1 ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4385,8 +4385,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4398,14 +4398,14 @@ sub dashrep_expand_parameters
                 $result_value = int( $operand_one + 0 ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%d" , $result_value ) ;
+                    $action_result = sprintf( "%d" , $result_value ) ;
                 }
-                if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+                if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
                 {
-                    $text_for_value = $1 ;
+                    $action_result = $1 ;
                 }
             } elsif ( $action_name eq "numeric-odd-or-even" )
             {
@@ -4413,20 +4413,20 @@ sub dashrep_expand_parameters
                 $result_value = $result_value - int( ( $result_value * 2 ) / 2 ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "even" ;
+                    $action_result = "even" ;
                 } else
                 {
-                    $text_for_value = "odd" ;
+                    $action_result = "odd" ;
                 }
             } elsif ( $action_name eq "numeric-sine" )
             {
                 $result_value = sin( $operand_one + 0.0 ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                    $action_result = sprintf( "%f" , $result_value ) ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4437,10 +4437,10 @@ sub dashrep_expand_parameters
                 $result_value = cos( $operand_one + 0.0 ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                    $action_result = sprintf( "%f" , $result_value ) ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4451,10 +4451,10 @@ sub dashrep_expand_parameters
                 $result_value = log( $operand_one + 0.0 ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                    $action_result = sprintf( "%f" , $result_value ) ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4465,10 +4465,10 @@ sub dashrep_expand_parameters
                 $result_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                    $action_result = sprintf( "%f" , $result_value ) ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4478,8 +4478,8 @@ sub dashrep_expand_parameters
             {
                 if ( ( $operand_one > 85.0 ) || ( $operand_one < -85.0 ) )
                 {
-                    $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , angle is outside of valid range: " . $operand_one . "}}\n" ;
@@ -4502,10 +4502,10 @@ sub dashrep_expand_parameters
                 $result_value = $map_tile_n * ( 1.0 - ( log( ( $sine_of_angle / $cosine_of_angle ) + ( 1 / $cosine_of_angle ) ) / $pi ) ) / 2.0 ;
                 if ( $result_value == 0 )
                 {
-                    $text_for_value = "0" ;
+                    $action_result = "0" ;
                 } else
                 {
-                    $text_for_value = sprintf( "%f" , $result_value ) ;
+                    $action_result = sprintf( "%f" , $result_value ) ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4513,11 +4513,11 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; calculation details, zoom = " . $map_tile_zoom . " , n = " . $map_tile_n . " , angle in radians = " . $angle_in_radians . " , sine = " . $sine_of_angle . " , cosine = " . $cosine_of_angle . " , pi = " . $pi . "}}\n" ;
                 }
             }
-            if ( $text_for_value =~ /^(-?[0-9]+)\.0*$/ )
+            if ( $action_result =~ /^(-?[0-9]+)\.0*$/ )
             {
-                $text_for_value = $1 ;
+                $action_result = $1 ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4530,8 +4530,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /^[ \-0-9\.]+$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -4540,8 +4540,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /^[ \-0-9\.]+$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -4554,8 +4554,8 @@ sub dashrep_expand_parameters
                 $scale_y = $operand_four + 0 ;
             } else
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, the third and fourth operands for action " . $action_name . " are not numbers" . "}}\n" ;
@@ -4564,15 +4564,15 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_five =~ /^[\-_]/ ) || ( $operand_five =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_five . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = " " ;
+            $action_result = " " ;
             $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_x_values_as_text =~ s/^ +//s ;
             $list_of_x_values_as_text =~ s/ +$//s ;
@@ -4611,7 +4611,7 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; action " . $action_name . " calculated distances and put the results into " . $operand_five . "}}\n";
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -4632,8 +4632,8 @@ sub dashrep_expand_parameters
         {
             if ( $number_of_operands != 4 )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, wrong number of operands (" . $number_of_operands . " instead of 4) for action " . $action_name . "}}\n" ;
@@ -4642,8 +4642,8 @@ sub dashrep_expand_parameters
             }
             if ( $operand_one !~ /^[0-9]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid number of columns: " . $operand_one . "}}\n" ;
@@ -4652,8 +4652,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_one + 0 ) < 1 )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , number of columns (" . $operand_one . ") is less than 1" . "}}\n" ;
@@ -4662,8 +4662,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid second operand: " . $operand_two . "}}\n" ;
@@ -4672,8 +4672,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) || ( not( exists( $global_dashrep_replacement{ $operand_three } ) ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid third operand: " . $operand_three . "}}\n" ;
@@ -4682,8 +4682,8 @@ sub dashrep_expand_parameters
             }
             if ( $global_dashrep_replacement{ $operand_two } !~ /^[\-0-9\. ]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , second operand contains invalid values: " . $global_dashrep_replacement{ $operand_two } . "}}\n" ;
@@ -4692,8 +4692,8 @@ sub dashrep_expand_parameters
             }
             if ( $global_dashrep_replacement{ $operand_three } !~ /^[\-0-9\. ]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , third operand contains invalid values: " . $global_dashrep_replacement{ $operand_three } . "}}\n" ;
@@ -4714,8 +4714,8 @@ sub dashrep_expand_parameters
             $number_of_items = $#up_direction_value_for_item_number ;
             if ( ( $#up_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , second operand (" . $operand_two . ") and third operand (". $operand_three . ") do not have the same number of values" . "}}\n" ;
@@ -5003,8 +5003,8 @@ sub dashrep_expand_parameters
         if ( $action_name eq "get-current-time-in-epoch-seconds" )
         {
             $epoch_seconds = time ;
-            $text_for_value = sprintf( "%d" , $epoch_seconds ) ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = sprintf( "%d" , $epoch_seconds ) ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -5017,8 +5017,8 @@ sub dashrep_expand_parameters
         {
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -5036,8 +5036,8 @@ sub dashrep_expand_parameters
             $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
             $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
             $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
-            $text_for_value = "" ;
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $action_result = "" ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -5055,8 +5055,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -5065,8 +5065,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -5075,8 +5075,8 @@ sub dashrep_expand_parameters
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } =~ /^ *$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_one . " does not exist or is empty" . "}}\n" ;
@@ -5085,8 +5085,8 @@ sub dashrep_expand_parameters
             }
             if ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } =~ /^ *$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_two . " does not exist or is empty" . "}}\n" ;
@@ -5129,8 +5129,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -5139,8 +5139,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
@@ -5149,8 +5149,8 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
@@ -5159,8 +5159,8 @@ sub dashrep_expand_parameters
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " is empty or does not exist" . "}}\n" ;
@@ -5168,8 +5168,8 @@ sub dashrep_expand_parameters
                 next ;
             } elsif ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_two . " is empty or does not exist" . "}}\n" ;
@@ -5177,8 +5177,8 @@ sub dashrep_expand_parameters
                 next ;
             } elsif ( $operand_one eq $operand_two )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operands " . $operand_one . " and " . $operand_two . " are the same, which is meaningless" . "}}\n" ;
@@ -5186,7 +5186,7 @@ sub dashrep_expand_parameters
                 next ;
             } else
             {
-                $text_for_value = "" ;
+                $action_result = "" ;
                 $template_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
@@ -5270,7 +5270,7 @@ sub dashrep_expand_parameters
                     {
                         $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-list-info-temporary-storage-separator-]" ;
                     }
-                    $text_for_value = "" . $text_that_expands_to_generate_list . "" ;
+                    $action_result = "" . $text_that_expands_to_generate_list . "" ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
@@ -5279,7 +5279,7 @@ sub dashrep_expand_parameters
                     }
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -5348,20 +5348,20 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = " " ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = " " ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
                 }
                 next ;
             }
-            $text_for_value = " " ;
+            $action_result = " " ;
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
             {
                 if ( $action_name eq "calculate-if-empty-then-use-here" )
                 {
-                    $text_for_value = "[-" . $operand_one . "-]" ;
+                    $action_result = "[-" . $operand_one . "-]" ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -5369,17 +5369,17 @@ sub dashrep_expand_parameters
                 }
             } else
             {
-                $text_for_value = "[-calculate-" . $operand_one . "-]" ;
+                $action_result = "[-calculate-" . $operand_one . "-]" ;
                 if ( $action_name eq "calculate-if-empty-then-use-here" )
                 {
-                    $text_for_value .= "[-" . $operand_one . "-]" ;
+                    $action_result .= "[-" . $operand_one . "-]" ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is empty, so inserting phrase " . $text_for_value . "}}\n" ;
+                    $global_trace_log .= "{{trace; phrase " . $operand_one . " is empty, so inserting phrase " . $action_result . "}}\n" ;
                 }
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
@@ -5410,8 +5410,8 @@ sub dashrep_expand_parameters
         {
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) )
             {
-                $text_for_value = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_one . "}}\n" ;
@@ -5519,7 +5519,7 @@ sub dashrep_expand_parameters
 #                    return $replacement_text ;
                 } elsif ( ( $operands_all eq "no" ) && ( $action_name eq "escape-if-no" ) )
                 {
-                    $replacement_text = $text_begin . $text_for_value . $text_end ;
+                    $replacement_text = $text_begin . $action_result . $text_end ;
 #                    $global_dashrep_replacement{ "dashrep-translation-before-escape" } = $replacement_text ;
 #                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
 #                    return $replacement_text ;
@@ -5572,10 +5572,10 @@ sub dashrep_expand_parameters
 
         if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
         {
-            $text_for_value = "" ;
+            $action_result = "" ;
             if ( ( not( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) ) || ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ne "yes" ) )
             {
-                $replacement_text = $text_begin . $text_for_value . $text_end ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; warning, no permission to handle user-defined action: " . $action_name . "}}\n" ;
@@ -5584,26 +5584,26 @@ sub dashrep_expand_parameters
             }
             if ( $number_of_operands >= 1 )
             {
-                $text_for_value .= "[-user-defined-action-operand-one = " . $operand_one . "-]" ;
+                $action_result .= "[-user-defined-action-operand-one = " . $operand_one . "-]" ;
             }
             if ( $number_of_operands >= 2 )
             {
-                $text_for_value .= "[-user-defined-action-operand-two = " . $operand_two . "-]" ;
+                $action_result .= "[-user-defined-action-operand-two = " . $operand_two . "-]" ;
             }
             if ( $number_of_operands >= 3 )
             {
-                $text_for_value .= "[-user-defined-action-operand-three = " . $operand_three . "-]" ;
+                $action_result .= "[-user-defined-action-operand-three = " . $operand_three . "-]" ;
             }
             if ( $number_of_operands >= 4 )
             {
-                $text_for_value .= "[-user-defined-action-operand-four = " . $operand_four . "-]" ;
+                $action_result .= "[-user-defined-action-operand-four = " . $operand_four . "-]" ;
             }
-            $text_for_value .= "[-" . $action_name . "-]" ;
+            $action_result .= "[-" . $action_name . "-]" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; recognized user-defined action " . $action_name . "}}\n" ;
             }
-            $replacement_text = $text_begin . $text_for_value . $text_end ;
+            $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
 
