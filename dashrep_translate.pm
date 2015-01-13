@@ -1130,7 +1130,7 @@ sub dashrep_expand_parameters
     my $text_parameter_value ;
     my $text_end ;
     my $action_name ;
-    my $object_of_action ;
+    my $operands_all ;
     my $count ;
     my $zero_one_multiple ;
     my $yes_or_no ;
@@ -1595,7 +1595,7 @@ sub dashrep_expand_parameters
 #  parameter brackets and restart the main loop.
 
         $action_name = "" ;
-        $object_of_action = "" ;
+        $operands_all = "" ;
         $operand_one = "" ;
         $operand_two = "" ;
         $operand_three = "" ;
@@ -1605,15 +1605,15 @@ sub dashrep_expand_parameters
         if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
         {
             $action_name = $1 ;
-            $object_of_action = $2 ;
+            $operands_all = $2 ;
             $action_name =~ s/^ +// ;
             $action_name =~ s/ +$// ;
             $action_name =~ s/^\-+// ;
             $action_name =~ s/\-+$// ;
-            $object_of_action =~ s/^ +// ;
-            $object_of_action =~ s/ +$// ;
-            $object_of_action =~ s/\-+$// ;
-            @list_of_operands = split( / +/ , $object_of_action ) ;
+            $operands_all =~ s/^ +// ;
+            $operands_all =~ s/ +$// ;
+            $operands_all =~ s/\-+$// ;
+            @list_of_operands = split( / +/ , $operands_all ) ;
             $number_of_operands = scalar( @list_of_operands ) ;
             if ( $number_of_operands >= 1 )
             {
@@ -1642,7 +1642,7 @@ sub dashrep_expand_parameters
         }
         if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
         {
-            $global_trace_log .= "{{trace; action " . $action_name . " has " . $number_of_operands . " operands: " . $object_of_action . "}}\n";
+            $global_trace_log .= "{{trace; action " . $action_name . " has " . $number_of_operands . " operands: " . $operands_all . "}}\n";
         }
         $global_replacement_count_for_item_name{ "action " . $action_name } ++ ;
         $global_replacement_count_for_item_name{ "text parameter content " . $text_parameter_content } ++ ;
@@ -2883,7 +2883,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "yes-if-not-no" ) || ( $action_name eq "no-if-any-no" ) )
         {
-            if ( $object_of_action =~ /no/i )
+            if ( $operands_all =~ /no/i )
             {
                 $yes_or_no = "no" ;
             } else
@@ -2902,7 +2902,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "no-if-not-yes" ) || ( $action_name eq "yes-if-any-yes" ) )
         {
-            if ( $object_of_action =~ /yes/i )
+            if ( $operands_all =~ /yes/i )
             {
                 $yes_or_no = "yes" ;
             } else
@@ -2920,7 +2920,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "yes-or-no-opposite" )
         {
-            if ( $object_of_action =~ /yes/i )
+            if ( $operands_all =~ /yes/i )
             {
                 $yes_or_no = "no" ;
             } else
@@ -2961,9 +2961,9 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) || ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) )
         {
-            if ( ( ( $object_of_action =~ /^ *yes /i ) && ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) ) || ( ( $object_of_action =~ /^ *no /i ) && ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) ) )
+            if ( ( ( $operands_all =~ /^ *yes /i ) && ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) ) || ( ( $operands_all =~ /^ *no /i ) && ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) ) )
             {
-                $text_for_value = $object_of_action ;
+                $text_for_value = $operands_all ;
                 $text_for_value =~ s/^ *[a-z]+ //i ;
             } else
             {
@@ -2990,9 +2990,9 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            if ( ( exists( $global_dashrep_replacement{ $object_of_action } ) ) )
+            if ( ( exists( $global_dashrep_replacement{ $operands_all } ) ) )
             {
-                $temp_text = $global_dashrep_replacement{ $object_of_action } ;
+                $temp_text = $global_dashrep_replacement{ $operands_all } ;
                 $temp_text =~ s/^ +// ;
                 $temp_text =~ s/ +$// ;
                 @list = split( / +/ , $temp_text ) ;
@@ -3358,7 +3358,7 @@ sub dashrep_expand_parameters
                 {
                     if ( $word_number > $count )
                     {
-                        $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                        $text_for_value = " " . $action_name . " " . $operands_all . " " ;
                     } else
                     {
                         $text_for_value = $list[ $word_number - 1 ] ;
@@ -3660,7 +3660,7 @@ sub dashrep_expand_parameters
                 }
                 if ( $count_range > 99999 )
                 {
-                    $text_for_value = " " . $action_name . " " . $object_of_action . " " ;
+                    $text_for_value = " " . $action_name . " " . $operands_all . " " ;
                 } else
                 {
                     $global_dashrep_replacement{ $phrase_name } = "" ;
@@ -4292,7 +4292,7 @@ sub dashrep_expand_parameters
             {
                 $numeric_value = 0 ;
             }
-            $temp_text = $object_of_action ;
+            $temp_text = $operands_all ;
             $temp_text =~ s/^ +// ;
             $temp_text =~ s/ +$// ;
             @list = split( / +/ , $temp_text ) ;
@@ -5512,12 +5512,12 @@ sub dashrep_expand_parameters
             $text_inserted = " action " . $action_name . " not yet implemented " ;
             if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
             {
-                if ( ( $object_of_action eq "yes" ) && ( $action_name eq "escape-if-yes" ) )
+                if ( ( $operands_all eq "yes" ) && ( $action_name eq "escape-if-yes" ) )
                 {
 #                    $global_dashrep_replacement{ "dashrep-translation-before-escape" } = $replacement_text ;
 #                    $replacement_text = $global_dashrep_replacement{ "escape-text" } ;
 #                    return $replacement_text ;
-                } elsif ( ( $object_of_action eq "no" ) && ( $action_name eq "escape-if-no" ) )
+                } elsif ( ( $operands_all eq "no" ) && ( $action_name eq "escape-if-no" ) )
                 {
                     $replacement_text = $text_begin . $text_for_value . $text_end ;
 #                    $global_dashrep_replacement{ "dashrep-translation-before-escape" } = $replacement_text ;
@@ -6337,7 +6337,7 @@ sub dashrep_file_actions
     my $counter ;
     my $definitions_or_phrase_names ;
     my $action_name ;
-    my $object_of_action ;
+    my $operands_all ;
     my $operand_one ;
     my $operand_two ;
     my $text_begin ;
@@ -6425,34 +6425,34 @@ sub dashrep_file_actions
 #  Get the action name and the operands.
 
     $action_name = "" ;
-    $object_of_action = "" ;
+    $operands_all = "" ;
     $operand_one = "" ;
     $operand_two = "" ;
     $operand_three = "" ;
     if ( $input_text =~ /^([^ ]+)(.*)$/ )
     {
         $action_name = $1 ;
-        $object_of_action = $2 ;
+        $operands_all = $2 ;
         $action_name =~ s/^ +// ;
         $action_name =~ s/ +$// ;
         $action_name =~ s/^\-+// ;
         $action_name =~ s/\-+$// ;
-        $object_of_action =~ s/^ +// ;
-        $object_of_action =~ s/ +$// ;
-        $object_of_action =~ s/^\-+// ;
-        $object_of_action =~ s/\-+$// ;
-        if ( $object_of_action =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
+        $operands_all =~ s/^ +// ;
+        $operands_all =~ s/ +$// ;
+        $operands_all =~ s/^\-+// ;
+        $operands_all =~ s/\-+$// ;
+        if ( $operands_all =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
         {
             $operand_one = $1 ;
             $operand_two = $2 ;
             $operand_three = $3 ;
-        } elsif ( $object_of_action =~ /^([^ ]+) +([^ ]+)/ )
+        } elsif ( $operands_all =~ /^([^ ]+) +([^ ]+)/ )
         {
             $operand_one = $1 ;
             $operand_two = $2 ;
-        } elsif ( $object_of_action !~ / / )
+        } elsif ( $operands_all !~ / / )
         {
-            $operand_one = $object_of_action ;
+            $operand_one = $operands_all ;
             $operand_two = "" ;
         }
     } else
@@ -6462,7 +6462,7 @@ sub dashrep_file_actions
     }
     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
     {
-        $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $object_of_action . "}}\n";
+        $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $operands_all . "}}\n";
     }
     $operand_one =~ s/\t+//g ;
     $operand_two =~ s/\t+//g ;
@@ -6737,7 +6737,7 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) )
     {
-        $input_text = " " . $action_name . " " . $object_of_action . " " ;
+        $input_text = " " . $action_name . " " . $operands_all . " " ;
         if ( ( $operand_one eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -6776,7 +6776,7 @@ sub dashrep_file_actions
                     }
                 }
                 $list_of_file_names =~ s / +$// ;
-                $global_dashrep_replacement{ $object_of_action } = $list_of_file_names ;
+                $global_dashrep_replacement{ $operands_all } = $list_of_file_names ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; listed files or folders in directory " . $directory . "}}\n" ;
