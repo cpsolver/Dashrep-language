@@ -1590,6 +1590,17 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Replace any tabs with spaces, and replace
+#  multiple adjacent spaces with a single space,
+#  and remove leading and trailing spaces.
+
+        $text_parameter_content =~ s/\t+//g ;
+        $text_parameter_content =~ s/  +/ /g ;
+        $text_parameter_content =~ s/^ // ;
+        $text_parameter_content =~ s/ $// ;
+
+
+#-----------------------------------------------
 #  Get the action name and the operands.  If there
 #  are no non-space characters, remove the
 #  parameter brackets and restart the main loop.
@@ -1606,12 +1617,9 @@ sub dashrep_expand_parameters
         {
             $action_name = $1 ;
             $operands_all = $2 ;
-            $action_name =~ s/^ +// ;
-            $action_name =~ s/ +$// ;
             $action_name =~ s/^\-+// ;
             $action_name =~ s/\-+$// ;
             $operands_all =~ s/^ +// ;
-            $operands_all =~ s/ +$// ;
             $operands_all =~ s/\-+$// ;
             @list_of_operands = split( / +/ , $operands_all ) ;
             $number_of_operands = scalar( @list_of_operands ) ;
@@ -1673,6 +1681,15 @@ sub dashrep_expand_parameters
             }
             next ;
         }
+
+
+#-----------------------------------------------
+#  Clear the result text.
+#  Include a space so that if this result is
+#  inserted between phrases, the phrases will not
+#  be joined.
+
+        $action_result = " " ;
 
 
 #-----------------------------------------------
@@ -1802,7 +1819,7 @@ sub dashrep_expand_parameters
             }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
-            $action_result = "" ;
+#            $action_result = "" ;
             if ( ( $action_name ne "append-word-to-phrase" ) && ( ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) ) )
             {
                 $global_dashrep_replacement{ $target_phrase_name } .= "" ;
@@ -1865,7 +1882,7 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; appended newline to phrase " . $operand_one . "}}\n" ;
             }
-            $action_result = "" ;
+#            $action_result = "" ;
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
@@ -1909,7 +1926,7 @@ sub dashrep_expand_parameters
                 $target_phrase_name = $operand_two ;
                 $phrase_name_containing_source_words = "" ;
             }
-            $action_result = "" ;
+#            $action_result = "" ;
             if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)((ambee)|(conambee))-([^ ]*)-((amenn)|(amenncon))([^ ]*)$/ ) )
             {
                 $prefix = $1 ;
@@ -2513,7 +2530,7 @@ sub dashrep_expand_parameters
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
                 $source_text =~ s/^ +// ;
                 $source_text =~ s/ +$// ;
-                $action_result = "" ;
+#                $action_result = "" ;
                 if ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" )
                 {
                     if ( $operand_three =~ /^[0-9]+$/ )
@@ -2967,7 +2984,7 @@ sub dashrep_expand_parameters
                 $action_result =~ s/^ *[a-z]+ //i ;
             } else
             {
-                $action_result = "" ;
+#                $action_result = "" ;
             }
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
@@ -3204,7 +3221,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $action_result = "" ;
+#            $action_result = "" ;
             $word_number_begin = $operand_three + 0 ;
             $word_number_end = $operand_four + 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3537,7 +3554,7 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
         {
-            $action_result = "" ;
+#            $action_result = "" ;
             $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
             if ( $action_name eq "copy-from-phrase-unique-words-to-phrase" )
             {
@@ -3680,7 +3697,7 @@ sub dashrep_expand_parameters
                         }
                         $global_dashrep_replacement{ $phrase_name } .= $text_to_append ;
                     }
-                    $action_result = "" ;
+#                    $action_result = "" ;
                 }
             }
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -3757,7 +3774,7 @@ sub dashrep_expand_parameters
             {
                 $global_trace_log .= "{{trace; wrote " . $counter . " phrase names to phrase " . $operand_one . "}}\n" ;
             }
-            $action_result = "" ;
+#            $action_result = "" ;
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
@@ -5036,7 +5053,7 @@ sub dashrep_expand_parameters
             $global_dashrep_replacement{ "time-year" } = sprintf( "%d" , $year ) ;
             $global_dashrep_replacement{ "time-day-of-week" } = sprintf( "%d" , $weekday ) ;
             $global_dashrep_replacement{ "time-day-of-year" } = sprintf( "%d" , $day_of_year ) ;
-            $action_result = "" ;
+#            $action_result = "" ;
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
@@ -5186,7 +5203,7 @@ sub dashrep_expand_parameters
                 next ;
             } else
             {
-                $action_result = "" ;
+#                $action_result = "" ;
                 $template_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
@@ -5270,7 +5287,7 @@ sub dashrep_expand_parameters
                     {
                         $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-list-info-temporary-storage-separator-]" ;
                     }
-                    $action_result = "" . $text_that_expands_to_generate_list . "" ;
+                    $action_result = " " . $text_that_expands_to_generate_list . " " ;
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; parameters used to create list: " . join( "," , @list_of_parameters ) . "}}\n";
@@ -5541,7 +5558,7 @@ sub dashrep_expand_parameters
         {
             if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
             {
-                $text_returned = &dashrep_file_actions( $text_parameter_content ) ;
+                $text_returned = &dashrep_file_actions( ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
@@ -5572,7 +5589,7 @@ sub dashrep_expand_parameters
 
         if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
         {
-            $action_result = "" ;
+#            $action_result = "" ;
             if ( ( not( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) ) || ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ne "yes" ) )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -6388,77 +6405,28 @@ sub dashrep_file_actions
 #  Initialization.
 
     $possible_error_message = "" ;
+    $input_text = "" ;
 
 
 #-----------------------------------------------
 #  Get the input text.
 
-    if ( scalar( @_ ) == 1 )
-    {
-        $input_text = $_[ 0 ] ;
-    } else
+    if ( scalar( @_ ) != 0 )
     {
         if ( ( exists( $global_dashrep_replacement{ "web-framework-in-use" } ) ) && ( $global_dashrep_replacement{ "web-framework-in-use" } eq "yes" ) )
         {
-            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+            $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= "Warning: Call to File-related action subroutine does not have zero parameters." ;
         } else
         {
 #  remove-from-cpan-version-begin
-            warn "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+            warn "Warning: Call to File-related action subroutine does not have zero parameters." ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: Call to File-related action subroutine does not have exactly one parameter." ;
+#            carp "Warning: Call to File-related action subroutine does not have exactly zero parameters." ;
 #  uncomment-for-cpan-version-end
         }
         return 0 ;
     }
-
-
-#-----------------------------------------------
-#  Get the action name and the operands.
-
-    $action_name = "" ;
-    $operands_all = "" ;
-    $operand_one = "" ;
-    $operand_two = "" ;
-    $operand_three = "" ;
-    if ( $input_text =~ /^([^ ]+)(.*)$/ )
-    {
-        $action_name = $1 ;
-        $operands_all = $2 ;
-        $action_name =~ s/^ +// ;
-        $action_name =~ s/ +$// ;
-        $action_name =~ s/^\-+// ;
-        $action_name =~ s/\-+$// ;
-        $operands_all =~ s/^ +// ;
-        $operands_all =~ s/ +$// ;
-        $operands_all =~ s/^\-+// ;
-        $operands_all =~ s/\-+$// ;
-        if ( $operands_all =~ /^([^ ]+) +([^ ]+) +([^ ]+)/ )
-        {
-            $operand_one = $1 ;
-            $operand_two = $2 ;
-            $operand_three = $3 ;
-        } elsif ( $operands_all =~ /^([^ ]+) +([^ ]+)/ )
-        {
-            $operand_one = $1 ;
-            $operand_two = $2 ;
-        } elsif ( $operands_all !~ / / )
-        {
-            $operand_one = $operands_all ;
-            $operand_two = "" ;
-        }
-    } else
-    {
-        return $input_text ;
-    }
-    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-    {
-        $global_trace_log .= "{{trace; action and object: " . $action_name . "  " . $operands_all . "}}\n";
-    }
-    $operand_one =~ s/\t+//g ;
-    $operand_two =~ s/\t+//g ;
-    $operand_three =~ s/\t+//g ;
 
 
 #-----------------------------------------------
