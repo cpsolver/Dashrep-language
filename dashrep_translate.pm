@@ -5558,12 +5558,12 @@ sub dashrep_expand_parameters
         {
             if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
             {
-                $text_returned = &dashrep_file_actions( ) ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
-                    $global_trace_log .= "{{trace; file-related action encountered: " . $text_parameter_content . "}}\n" ;
+                    $global_trace_log .= "{{trace; file-related action encountered: " . $action_name . " " . $operands_all . "}}\n" ;
                 }
-                $replacement_text = $text_begin . $text_returned . $text_end ;
+                &dashrep_file_actions( ) ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 next ;
             }
         }
@@ -6405,7 +6405,7 @@ sub dashrep_file_actions
 #  Initialization.
 
     $possible_error_message = "" ;
-    $input_text = "" ;
+    $action_result = " " ;
 
 
 #-----------------------------------------------
@@ -6528,7 +6528,7 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
+        $action_result = " " ;
 
 
 #-----------------------------------------------
@@ -6539,7 +6539,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) )
     {
-        $input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
@@ -6566,7 +6565,6 @@ sub dashrep_file_actions
                 }
                 $string_to_find = $global_dashrep_replacement{ $operand_two } ;
                 $length_of_string = length( $string_to_find ) ;
-                $input_text = "" ;
                 while ( $input_line = <INFILE> )
                 {
                     chomp( $input_line ) ;
@@ -6592,7 +6590,6 @@ sub dashrep_file_actions
                 {
                     $matching_text{ $word } = "match" ;
                 }
-                $input_text = "" ;
                 if ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" )
                 {
                     $words_to_match = 1 ;
@@ -6642,7 +6639,6 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -6696,7 +6692,6 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -6709,7 +6704,7 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) )
     {
-        $input_text = " " . $action_name . " " . $operands_all . " " ;
+#        $action_result = " " . $action_name . " " . $operands_all . " " ;
         if ( ( $operand_one eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -6726,7 +6721,7 @@ sub dashrep_file_actions
             }
             if ( opendir( READDIR , $directory ) )
             {
-                $input_text = "" ;
+#                $action_result = " " ;
                 while ( defined( $file_name = readdir( READDIR ) ) )
                 {
                     if ( $file_name !~ /^\./ )
@@ -6762,7 +6757,7 @@ sub dashrep_file_actions
                 }
             }
         }
-        $input_text = "" ;
+#        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -6775,20 +6770,19 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "yes-or-no-file-exists" )
     {
-        $input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
         } elsif ( open ( INFILE , '<' . $source_filename ) )
         {
-            $input_text = " yes " ;
+            $action_result = " yes " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; file exists: " . $source_filename . "}}\n" ;
             }
         } else
         {
-            $input_text = " no " ;
+            $action_result = " no " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; file does not exist: " . $source_filename . "}}\n" ;
@@ -6803,20 +6797,19 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "yes-or-no-folder-in-phrase-exists" )
     {
-        $input_text = "" ;
         if ( $operand_one eq "" )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has empty operand " . $operand_one . "]" ;
         } elsif ( -d $operand_one )
         {
-            $input_text = " yes " ;
+            $action_result = " yes " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; folder exists: " . $operand_one . "}}\n" ;
             }
         } else
         {
-            $input_text = " no " ;
+            $action_result = " no " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; folder does not exist: " . $operand_one . "}}\n" ;
@@ -6834,7 +6827,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "modification-time-of-file" )
     {
-        $input_text = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -6846,7 +6838,7 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; modification time of file " . $source_filename . " is " . $write_time . "}}\n" ;
             }
         }
-        $input_text = " " . $write_time . " " ;
+        $action_result = " " . $write_time . " " ;
 
 
 #-----------------------------------------------
@@ -6870,7 +6862,7 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; size of file " . $source_filename . " is " . $file_size . "}}\n" ;
             }
         }
-        $input_text = " " . $file_size . " " ;
+        $action_result = " " . $file_size . " " ;
 
 
 #-----------------------------------------------
@@ -6925,7 +6917,6 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
             }
         }
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -6953,7 +6944,6 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; deleted file: " . $target_filename . "}}\n" ;
             }
         }
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7005,7 +6995,6 @@ sub dashrep_file_actions
                 }
             }
         }
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7068,7 +7057,6 @@ sub dashrep_file_actions
                 }
             }
         }
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7134,7 +7122,6 @@ sub dashrep_file_actions
                 }
             }
         }
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7251,7 +7238,6 @@ sub dashrep_file_actions
             }
         }
         $global_nesting_level_of_file_actions -- ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7355,7 +7341,6 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7484,7 +7469,6 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7541,7 +7525,6 @@ sub dashrep_file_actions
             }
         }
         close( INFILE ) ;
-        $input_text = "" ;
 
 
 #-----------------------------------------------
@@ -7714,7 +7697,6 @@ sub dashrep_file_actions
             }
         }
         $global_nesting_level_of_file_actions -- ;
-        $input_text = "" ;
     }
 
 
@@ -7891,20 +7873,19 @@ sub dashrep_file_actions
             }
             $global_nesting_level_of_file_actions -- ;
         }
-        $input_text = "" ;
     }
 
 
 #-----------------------------------------------
 #  If there was an error message, put it
-#  into the text that is returned (and remove
-#  the action that caused the error).
+#  into the text that is returned as the
+#  result.
 
     $possible_error_message =~ s/^ +// ;
     $possible_error_message =~ s/ +$// ;
     if ( $possible_error_message =~ /[^ ]/ )
     {
-        $input_text = $possible_error_message ;
+        $action_result = " " . $possible_error_message . " " ;
     }
     $possible_error_message = "" ;
 
@@ -7918,9 +7899,11 @@ sub dashrep_file_actions
 
 
 #-----------------------------------------------
-#  Return, possibly with an error message.
+#  Return.
+#  The calling subroutine will return the value
+#  of the "action_result" variable.
 
-    return $input_text ;
+    return ;
 
 
 #-----------------------------------------------
