@@ -6459,6 +6459,13 @@ sub dashrep_file_actions
     $operand_one =~ s/\t+//g ;
     $operand_two =~ s/\t+//g ;
     $operand_three =~ s/\t+//g ;
+
+
+#-----------------------------------------------
+#  Define filename variables and phrase name
+#  variables based on the contents of the
+#  operands.
+
     $source_phrase_name = $operand_one ;
     $source_filename = $operand_one ;
     $target_phrase_name = $operand_two ;
@@ -6472,6 +6479,11 @@ sub dashrep_file_actions
     $source_filename =~ s/^\.+// ;
     $target_filename =~ s/^.*[\\\/]// ;
     $target_filename =~ s/^\.+// ;
+
+
+#-----------------------------------------------
+#  Insert the path into the filename variables.
+
     if ( $source_filename ne "" )
     {
         $source_filename = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } . $source_filename ;
