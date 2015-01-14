@@ -6340,8 +6340,6 @@ sub dashrep_file_actions
     my $operands_all ;
     my $operand_one ;
     my $operand_two ;
-    my $text_begin ;
-    my $text_end ;
     my $string_to_find ;
     my $length_of_string ;
     my $sequence_of_phrases ;
@@ -6457,7 +6455,6 @@ sub dashrep_file_actions
         }
     } else
     {
-        $input_text = $text_begin . " " . $input_text . " " . $text_end ;
         return $input_text ;
     }
     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
