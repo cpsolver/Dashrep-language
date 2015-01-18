@@ -1716,7 +1716,7 @@ sub dashrep_expand_parameters
 
 #    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
 #    {
-        $global_trace_log .= "{{trace; action " . $action_name . " has operand one " . $operand_one . " has operand two " . $operand_two . " has operand three " . $operand_three . " has operand four " . $operand_four . " has operand five " . $operand_five . " has default result " . $action_result . "}}\n" ;
+#        $global_trace_log .= "{{trace; action " . $action_name . " has operand one " . $operand_one . " has operand two " . $operand_two . " has operand three " . $operand_three . " has operand four " . $operand_four . " has operand five " . $operand_five . " has default result " . $action_result . "}}\n" ;
 #    }
 
 
