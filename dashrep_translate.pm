@@ -1846,7 +1846,6 @@ sub dashrep_expand_parameters
             }
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
-#            $action_result = "" ;
             if ( ( $action_name ne "append-word-to-phrase" ) && ( ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) ) )
             {
                 $global_dashrep_replacement{ $target_phrase_name } .= "" ;
@@ -2552,7 +2551,6 @@ sub dashrep_expand_parameters
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
                 $source_text =~ s/^ +// ;
                 $source_text =~ s/ +$// ;
-#                $action_result = "" ;
                 if ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" )
                 {
                     if ( $operand_three =~ /^[0-9]+$/ )
@@ -2998,13 +2996,11 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) || ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) )
         {
+            $action_result = " " ;
             if ( ( ( $operands_all =~ /^ *yes /i ) && ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) ) || ( ( $operands_all =~ /^ *no /i ) && ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) ) )
             {
                 $action_result = $operands_all ;
                 $action_result =~ s/^ *[a-z]+ //i ;
-            } else
-            {
-#                $action_result = "" ;
             }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -3247,7 +3243,6 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-#            $action_result = "" ;
             $word_number_begin = $operand_three + 0 ;
             $word_number_end = $operand_four + 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3732,7 +3727,6 @@ sub dashrep_expand_parameters
                         }
                         $global_dashrep_replacement{ $phrase_name } .= $text_to_append ;
                     }
-#                    $action_result = "" ;
                 }
             }
 #  end of action code
@@ -5386,7 +5380,6 @@ sub dashrep_expand_parameters
             $global_dashrep_replacement{ "dashrep-debug-trace-log" } .= $global_trace_log ;
             $global_trace_log = "" ;
 #  end of action code
-            $action_result = "" ;
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
@@ -7857,7 +7850,6 @@ sub dashrep_file_actions
 #  appropriate dashrep phrase is used.
 
     $definitions_or_phrase_names = "" ;
-    $action_result = " " ;
     if ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" )
     {
         if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) || ( $operand_two eq "" ) )
@@ -7894,6 +7886,7 @@ sub dashrep_file_actions
     }
     if ( $definitions_or_phrase_names ne "" )
     {
+        $action_result = " " ;
         if ( $#list_of_phrases < 0 )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
