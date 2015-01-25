@@ -60,6 +60,10 @@ no-if-any-no
 no-if-not-yes
 yes-if-any-yes
 yes-or-no-opposite
+if-yes-begin
+if-no-begin
+if-else
+if-end
 if-word-is-yes-then-first-else-second
 if-word-is-no-then-first-else-second
 if-first-word-is-yes-then-keep-remainder-else-empty

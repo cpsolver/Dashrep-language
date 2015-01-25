@@ -361,6 +361,22 @@ description-for-phrase-generated-web-page:
 A phrase that is expanded to generate a web page, if the web framework is being used.  s-n The web framework is accessed by using the b-i-b dashrep_web_framework b-i-e subroutine.
 -----
 
+description-for-phrase-if-yes-begin:
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e (or contains that character string) then this action removes all the text between the next occurrences of b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e (and removes the b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e text strings). sentence-next Otherwise (if the first word that follows does not contain b-i-b yes b-i-e no-space ) then this action removes all the text between itself (the action name) and the next occurrence of b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e (and removes the b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e text strings. sentence-next This action provides a major branching capability. sentence-next However, the b-i-b if hyphen-here yes hyphen-here begin b-i-e action and the b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e text string and the b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e text string b-b cannot b-e be nested (as allowed in most programming languages). sentence-next If nested branching is needed, each level of branching must be done in a different phrase definition (which improves documentation if meaningful phrase names are used).
+-----
+
+description-for-phrase-if-no-begin:
+An action that works similar to the action b-i-b if hyphen-here yes hyphen-here begin b-i-e except that the string b-i-b no b-i-e is used, instead of the string b-i-b yes b-i-e no-space .
+-----
+
+description-for-phrase-if-else:
+A special text string that is recognized by the b-i-b if hyphen-here yes hyphen-here begin b-i-e action and the b-i-b if hyphen-here no hyphen-here begin b-i-e action. sentence-next It must be enclosed by parameter brackets in order to be recognized.
+-----
+
+description-for-phrase-if-end:
+A special text string that is recognized by the b-i-b if hyphen-here yes hyphen-here begin b-i-e action and the b-i-b if hyphen-here no hyphen-here begin b-i-e action. sentence-next It must be enclosed by parameter brackets in order to be recognized.
+-----
+
 description-for-phrase-if-first-word-is-no-then-keep-remainder-else-empty:
 An action that looks at the first space hyphen-here delimited word, and if it is b-i-b no b-i-e then this action supplies all the text that remains within the parameter brackets. sentence-next If the first word that follows is not b-i-b no b-i-e no-space , then no text is supplied. sentence-next When used at or near the end of a phrase, this action can provide a major branching capability.
 -----
@@ -1471,7 +1487,7 @@ description-for-phrase-sort-numbers:
 deprecated
 ----
 
-description-for-phrase-count-of-characters-in-phrase-defintion:
+description-for-phrase-count-of-characters-in-phrase-definition:
 Counts the number of characters (including spaces) in the specified phrase definition.
 ----
 
