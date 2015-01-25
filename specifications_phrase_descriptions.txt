@@ -1169,9 +1169,8 @@ An action that copies the definition of the first hyphenated phrase into the def
 This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted. s-n This action is useful in situations where the text includes hyphens, line breaks, multiple adjacent spaces and any other text that cannot be assigned using the equal h-h sign approach.
 -----
 
-description-for-phrase-copy-phrase-name-to-phrase:
-An action that copies the name of the first hyphenated phrase into the definition of the second hyphenated phrase. s-n 
-The previous definition of the second hyphenated phrase is deleted. s-n This action is needed in situations where the phrase name is needed, but that phrase name must not be expanded yet.
+description-for-phrase-copy-to-phrase-from-following-text:
+An action that copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored. s-n This action is useful in situations where a phrase name is needed, but that phrase name must not be expanded yet.
 -----
 
 description-for-phrase-append-from-phrase-to-phrase:

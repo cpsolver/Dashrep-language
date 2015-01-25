@@ -33,7 +33,7 @@ delete-phrases-listed-in-phrase
 expand-phrase-to-phrase
 expand-only-parameters-in-phrase-to-phrase
 copy-from-phrase-to-phrase
-copy-phrase-name-to-phrase
+copy-to-phrase-from-following-text
 append-from-phrase-to-phrase
 append-from-phrase-to-phrase-no-space
 prepend-from-phrase-to-phrase
