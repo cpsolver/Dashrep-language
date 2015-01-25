@@ -381,7 +381,7 @@ description-for-phrase-ignore-action-operands:
 deprecated
 -----
 
-description-for-phrase-input-line-count:
+description-for-phrase-linewise-input-line-count:
 See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h use h-h template b-i-e no-space .
 -----
 

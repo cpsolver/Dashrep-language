@@ -185,7 +185,7 @@ linewise-translate-phrases-only-from-file-to-file
 linewise-translate-special-phrases-only-from-file-to-file
 linewise-read-from-file-and-use-handler
 storage-input-line-from-file
-input-line-count
+linewise-input-line-count
 
 category_xml
 xml-move-attributes-into-tag-elements-within-phrase
