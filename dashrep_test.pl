@@ -53,6 +53,12 @@ $results_text = "";
 
 
 #-------------------------------------------
+#  Optionally test the new expansion code.
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "yes-or-no-use-faster-subset-expand" , "yes" );
+
+
+#-------------------------------------------
 #  Test defining a hyphenated phrase
 #  to be associated with its replacement text.
 
@@ -397,6 +403,10 @@ input-down-values:
 
 two-dimensional-sort:
 [-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-down-values results-of-two-dimensional-sort-]
+--------
+
+test-if-begin-actions:
+[-result-of-testing-if-begin-actions = [-if-yes-begin yes-] one [-if-else-] two [-if-end-] [-if-yes-begin no-] three [-if-else-] four [-if-end-] [-if-no-begin yes-] five [-if-else-] six [-if-end-] [-if-no-begin no-] seven [-if-else-] eight [-if-end-] -]
 --------
 
 character-string-source:
@@ -1051,30 +1061,35 @@ if ( $string_return_value =~ /abc def/ ) { $one_if_ok = 1; } else { $one_if_ok =
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test four-space indentation -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /abc\n    def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test single phrase replacement -- ";
-$test_number_count ++;
-$phrase_name = "single-phrase-to-replace";
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_phrases( $phrase_name );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_phrases( $phrase_name );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value ne "replaced-phrase" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "yes-or-no-use-faster-subset-expand" );
+if ( $string_return_value ne "yes" )
+{
+    $being_tested = "test four-space indentation -- ";
+    $test_number_count ++;
+    #  remove-from-cpan-version-begin
+    $string_return_value = &dashrep_translate::dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
+    #  remove-from-cpan-version-end
+    #  uncomment-for-cpan-version-begin
+    # $string_return_value = &dashrep_expand_phrases( "abc new-line  no-space  one-space  one-space  one-space  one-space  no-space  def" );
+    #  uncomment-for-cpan-version-end
+    if ( $string_return_value =~ /abc\n    def/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+    if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+    if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+    $being_tested = "test single phrase replacement -- ";
+    $test_number_count ++;
+    $phrase_name = "single-phrase-to-replace";
+    #  remove-from-cpan-version-begin
+    $string_return_value = &dashrep_translate::dashrep_expand_phrases( $phrase_name );
+    #  remove-from-cpan-version-end
+    #  uncomment-for-cpan-version-begin
+    # $string_return_value = &dashrep_expand_phrases( $phrase_name );
+    #  uncomment-for-cpan-version-end
+    if ( $string_return_value ne "replaced-phrase" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+    if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+    if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+}
 
 $being_tested = "test non-breaking-space directives -- ";
 $test_number_count ++;
@@ -1452,6 +1467,25 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-of-
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value =~ /row-3-column-1 row-2-column-3 row-2-column-1/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the actions "if-yes-begin" and "if-no-begin"
+
+$being_tested = "test actions: if-yes-begin and if-no-begin -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-if-begin-actions" ) ;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "result-of-testing-if-begin-actions" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_expand_parameters( "test-if-begin-actions" ) ;
+# $string_return_value = dashrep_get_replacement( "result-of-testing-if-begin-actions" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value =~ / *one +four +six +seven */ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

@@ -283,6 +283,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-gather-tag-unique" } = "url" ;
     $global_dashrep_replacement{ "dashrep-omit-web-page-from-trace-log-yes-or-no" } = "no" ;
     $global_dashrep_replacement{ "dashrep-recent-phrase-name-replaced" } = "" ;
+    $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
 
     $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space span-non-breaking-spaces-begin span-non-breaking-spaces-end new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases expand-phrase-to-phrase expand-only-parameters-in-phrase-to-phrase calculate-if-phrase-empty calculate-if-empty-then-use-here dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase category_decision yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-if-not-no no-if-any-no no-if-not-yes yes-if-any-yes yes-or-no-opposite if-word-is-yes-then-first-else-second if-word-is-no-then-first-else-second if-first-word-is-yes-then-keep-remainder-else-empty if-first-word-is-no-then-keep-remainder-else-empty if-yes-begin if-no-begin category_numeric zero-one-multiple zero-or-nonzero numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-integer numeric-absolute numeric-equal-greater-less-compare numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-map-tile-zoom numeric-y-map-tile-number-based-on-latitude numeric-calculate-distances-scaled numeric-two-dimensional-sort-into-columns-and-rows numeric-increment numeric-decrement category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word yes-or-no-same-two-words first-word-in-phrase last-word-in-phrase from-phrase-get-word-number copy-from-phrase-to-phrase-words-from-position-to-position count-of-words-in-phrase position-of-word-in-phrase yes-or-no-word-is-in-phrase position-of-word-in-phrase-within-phrase append-word-to-phrase copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word copy-from-phrase-to-phrase-with-word-order-reversed use-template-with-each-word-in-phrase use-handler-with-each-word-in-phrase word-to-use-in-template category_generate_list use-template-and-parameters-to-create-simple-list-with-name use-template-and-parameters-to-create-full-list-with-name counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases createlist-first-yes-or-no createlist-item-next createlist-item-number createlist-last-yes-or-no createlist-parameter createlist-total-number-of-items dashrep-warning-parameter-for-list-generation-contains-invalid-characters category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file delete-file create-empty-sub-folder linewise-translate-from-file-to-file linewise-translate-parameters-only-from-file-to-file linewise-translate-phrases-only-from-file-to-file linewise-translate-special-phrases-only-from-file-to-file linewise-read-from-file-and-use-handler linewise-read-from-file-and-use-template storage-input-line-from-file linewise-input-line-count category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_ignore_capture ignore-begin-here ignore-end-here capture-begin-here capture-end-here captured-text dashrep-ignore-actions-on-yes-or-no dashrep-capture-actions-on-yes-or-no dashrep-capture-level dashrep-ignore-level category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-comments-ignored dashrep-warning-trace-on-yes-or-no dashrep-capture-trace-on-yes-or-no dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-ignore-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-trace-show-definition category_advanced dashrep-stop-translation dashrep-endless-loop-counter-limit unique-value escape-if-yes escape-if-no dashrep-translation-before-escape escape-text dashrep-special-replacement-adjacent-space dashrep-special-replacement-hyphen dashrep-special-replacement-newline dashrep-yes-indicate-line-endings end-of-line-here clear-all-expanded-text-up-to-here dashrep-yes-do-not-expand-special-phrases dashrep-list-of-recognized-phrase-names dashrep-undefined insert-codeview-tags-into-phrase yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray category_do_not_use dashrep-list-info-temporary-storage dashrep-list-info-temporary-storage-separator" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
@@ -1149,7 +1150,6 @@ sub dashrep_expand_parameters
     my $operands_all ;
     my $action_result ;
     my $count ;
-    my $zero_one_multiple ;
     my $yes_or_no ;
     my $text_parameter ;
     my $possible_new_limit ;
@@ -1222,7 +1222,6 @@ sub dashrep_expand_parameters
     my $not_listed_word ;
     my $result_word_list ;
     my $string_in_phrase ;
-    my $copied_characters ;
     my $template_phrase_name ;
     my $parameter_word_list ;
     my $generated_list_name ;
@@ -1254,7 +1253,6 @@ sub dashrep_expand_parameters
     my $result_text ;
     my $starting_character_position ;
     my $ending_character_position ;
-    my $unique_value_as_text ;
     my $phrase_being_edited ;
     my $text_being_edited ;
     my $remaining_text ;
@@ -1352,6 +1350,7 @@ sub dashrep_expand_parameters
     my $phrase_name_containing_source_words ;
     my $phrase_name_containing_pattern ;
     my $phrase_name_containing_parameter_list ;
+    my $first_or_second ;
     my @list_of_x_values ;
     my @list_of_y_values ;
     my @list ;
@@ -6387,6 +6386,19 @@ sub dashrep_expand_phrases
 
 
 #-----------------------------------------------
+#  If requested, use the faster, newer code
+#  for doing the expansion.  It handles
+#  line and space directives as part of the
+#  expansion.
+
+    if ( ( exists( $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } eq "yes" ) )
+    {
+        $expanded_string = &dashrep_internal_expand_phrases_faster_subset( $text_string_to_expand ) ;
+        return $expanded_string ;
+    }
+
+
+#-----------------------------------------------
 #  Expand the phrase except for special phrases.
 
     $partly_expanded_string = &dashrep_expand_phrases_except_special( $text_string_to_expand ) ;
@@ -8925,6 +8937,380 @@ sub dashrep_linewise_translate
 #  End of subroutine.
 
     return $error_message ;
+
+}
+
+
+
+=head2 dashrep_internal_expand_phrases_faster_subset
+
+Internal subroutine, not exported.
+It is only needed within the Dashrep module.
+
+=cut
+
+#-----------------------------------------------
+#-----------------------------------------------
+#         Non-exported subroutine:
+#
+#      dashrep_internal_expand_phrases_faster_subset
+#-----------------------------------------------
+#-----------------------------------------------
+#  This subroutine expands Dashrep code using
+#  faster code that implements a subset of what
+#  the full version handles.
+
+#  This subroutine is not exported because it
+#  is only needed within this Dashrep module.
+
+sub dashrep_internal_expand_phrases_faster_subset
+{
+
+    my $endless_cycle_count_maximum ;
+    my $supplied_text ;
+    my $current_phrase ;
+    my $result_text ;
+    my $output_buffer ;
+    my $number_of_times_encountered_phrase_named ;
+    my $space_directive ;
+    my $endless_loop_counter ;
+    my $recursion_level ;
+    my $pointer_to_phrase_begin ;
+    my $pointer_to_next_space ;
+    my $pointer_to_phrase_end ;
+    my $definition_of_phrase ;
+    my $prior_length ;
+    my $prefix ;
+    my $possible_phrase_name_with_underscores ;
+    my $pointer_to_tag_with_underscores ;
+    my $length_of_tag ;
+    my $new_output_buffer ;
+    my $pointer_to_remainder_of_output_buffer ;
+    my $possible_phrase_name_with_hyphens ;
+    my $pointer_to_close_angle_bracket ;
+    my $string_of_spaces ;
+    my $length_of_code_at_recursion_level_current ;
+    my @code_at_recursion_level ;
+    my @length_of_code_at_recursion_level ;
+    my @pointer_to_remainder_of_code_at_recursion_level ;
+
+
+#-----------------------------------------------
+#  Initialization.
+
+    $endless_cycle_count_maximum = 100000 ;
+    $string_of_spaces = "                                                                                              " ;
+
+
+#-----------------------------------------------
+#  Get the hyphenated phrase or supplied string.
+
+    if ( scalar( @_ ) == 1 )
+    {
+        $supplied_text = $_[ 0 ] ;
+    } else
+    {
+        $result_text = "" ;
+        return $result_text ;
+    }
+
+
+#----------------------------------------------------
+#  Begin a loop that handles each space-delimited string
+#  in the phrase definition.
+
+    $result_text = "" ;
+    $output_buffer = "" ;
+    %number_of_times_encountered_phrase_named = ( ) ;
+    $space_directive = "begin" ;
+    $endless_loop_counter = 0 ;
+    @code_at_recursion_level = ( ) ;
+    @length_of_code_at_recursion_level = ( ) ;
+    @pointer_to_remainder_of_code_at_recursion_level = ( ) ;
+    $code_at_recursion_level[ 0 ] = "unused" ;
+    $code_at_recursion_level[ 1 ] = $supplied_text ;
+    for ( $recursion_level = 1 ; $recursion_level <= 1 ; $recursion_level ++ )
+    {
+        $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;
+        $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ;
+    }
+    $recursion_level = 1 ;
+    while ( ( $recursion_level > 0 ) && ( $endless_loop_counter <= $endless_cycle_count_maximum ) )
+    {
+        $endless_loop_counter ++ ;
+
+
+#----------------------------------------------------
+#  Get the next phrase name.
+#  If there is no more code at the current recursion
+#  level, shift back to the previous recursion level.
+#  When the recursion_level reaches zero, the loop
+#  will end.
+
+#        print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#        print ".........." . "\n" ;
+#        print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#        print "remainder: " . substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] , 100 ) . " ...\n" ;
+        $length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ;
+        if ( $length_of_code_at_recursion_level_current == 0 )
+        {
+#            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#            print "empty definition, nothing to append" . "\n" ;
+            $recursion_level -- ;
+            next ;
+        }
+        $pointer_to_phrase_begin = $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] ;
+        while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq " " ) )
+        {
+            $pointer_to_phrase_begin ++ ;
+        }
+        $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;
+        if ( $pointer_to_next_space == -1 )
+        {
+#            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#            print "no more spaces in definition" . "\n" ;
+            $pointer_to_phrase_end = $length_of_code_at_recursion_level_current - 1 ;
+            $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ;
+        } else
+        {
+#            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#            print "definition contains another space in middle of three characters: " . substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_next_space - 1 , 3 ) . "\n" ;
+            $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;
+            if ( $pointer_to_next_space > $pointer_to_phrase_begin )
+            {
+                $pointer_to_phrase_end = $pointer_to_next_space - 1 ;
+                $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_next_space ;
+            } else
+            {
+                $pointer_to_phrase_end = -2 ;
+            }
+        }
+#        print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#        print "pointers to phrase begin and end: " . $pointer_to_phrase_begin . " " . $pointer_to_phrase_end . "\n" ;
+        if ( $pointer_to_phrase_begin > $pointer_to_phrase_end )
+        {
+            $recursion_level -- ;
+            next ;
+        }
+        $current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end - $pointer_to_phrase_begin + 1 ) ) ;
+#        print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#        print "current_phrase: " . $current_phrase . "\n" ;
+
+
+#----------------------------------------------------
+#  Check for an endless loop.
+#  If the same phrase name has been encountered too
+#  many times, exit the endless loop.
+
+        $number_of_times_encountered_phrase_named{ $current_phrase } ++ ;
+        if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $endless_cycle_count_maximum )
+        {
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_internal_expand_phrases_faster_subset subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#           carp "Warning: The dashrep_internal_expand_phrases_faster_subset subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
+        }
+
+
+#----------------------------------------------------
+#  If the phrase name is a Dashrep-defined directive,
+#  handle it.
+#  Ignore directives and capture directives are not
+#  supported by this expansion code.
+
+        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
+        {
+            $space_directive = "none" ;
+        } elsif ( $current_phrase eq "one-space" )
+        {
+            $space_directive = "one_requested" ;
+        } elsif ( $current_phrase eq "new-line" )
+        {
+            $output_buffer .= "<new_line>" ;
+            $space_directive = "none" ;
+        } elsif ( $current_phrase eq "empty-line" )
+        {
+            $output_buffer .= "<new_line><new_line>" ;
+            $space_directive = "none" ;
+        } elsif ( $current_phrase eq "hyphen-here" )
+        {
+            $output_buffer .= "-" ;
+            $space_directive = "none" ;
+
+
+#----------------------------------------------------
+#  If the phrase name has a definition (which can be
+#  empty), insert its definition into the text being
+#  expanded, and remove the phrase name.
+
+        } elsif ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) )
+        {
+            $recursion_level ++ ;
+#            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+#            print "inserting definition of phrase: " . $current_phrase . "\n" ;
+            $code_at_recursion_level[ $recursion_level ] = $global_dashrep_replacement{ $current_phrase } ;
+            $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ;
+            $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;
+
+
+#----------------------------------------------------
+#  If the phrase name does not have a definition,
+#  begin to handle the phrase directly.
+
+        } else
+        {
+
+
+#----------------------------------------------------
+#  If a space should be inserted here, insert it.
+
+            if ( $space_directive eq "begin" )
+            {
+                $space_directive = "none" ;
+            } elsif ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) )
+            {
+                $output_buffer .= " " ;
+                $space_directive = "none" ;
+            }
+
+
+#----------------------------------------------------
+#  If the current text string is not the name of a
+#  defined phrase, just use the text string.
+
+            $output_buffer .= $current_phrase ;
+            $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;
+
+
+#----------------------------------------------------
+#  Terminate the branching that handles a string that
+#  is not a defined phrase.
+
+            $space_directive = "one" ;
+        }
+
+
+#----------------------------------------------------
+#  If there is a "<specify " string that needs to be
+#  combined with the preceding tag, combine it into
+#  a single XML or HTML tag.
+#  Handle tags of type "<xyz />" as well as "<xyz>".
+
+        if ( index( $output_buffer , "<specify " ) > 0 )
+        {
+            $prior_length = 0 ;
+            while ( length( $output_buffer ) != $prior_length )
+            {
+                $prior_length = length( $output_buffer ) ;
+                $output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
+            }
+            if ( index( $output_buffer , "<specify " ) > 0 )
+            {
+                $prior_length = 0 ;
+                while ( length( $output_buffer ) != $prior_length )
+                {
+                    $prior_length = length( $output_buffer ) ;
+                    $output_buffer =~ s/ *> *<specify +/ / ;
+                }
+            }
+        }
+
+
+#----------------------------------------------------
+#  If the output buffer contains a recognized phrase
+#  name using underscores instead of hyphens, and it
+#  is enclosed in angle brackets (with no spaces),
+#  then replace that text with the definition of the
+#  specified phrase.
+
+        if ( $output_buffer =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
+        {
+            $prefix = $1 ;
+            $possible_phrase_name_with_underscores = $2 ;
+            $pointer_to_tag_with_underscores = length( $prefix ) ;
+            $length_of_tag = length( $possible_phrase_name_with_underscores ) ;
+            $new_output_buffer = "" ;
+            $pointer_to_remainder_of_output_buffer = 0 ;
+            while ( $pointer_to_tag_with_underscores >= 0 )
+            {
+                if ( $pointer_to_tag_with_underscores > $pointer_to_remainder_of_output_buffer )
+                {
+                    $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer , $pointer_to_tag_with_underscores - $pointer_to_remainder_of_output_buffer ) ;
+                }
+                $pointer_to_remainder_of_output_buffer = $pointer_to_tag_with_underscores + $length_of_tag + 3 ;
+                if ( $pointer_to_remainder_of_output_buffer >= length( $output_buffer ) )
+                {
+                    last ;
+                }
+                if ( $possible_phrase_name_with_underscores eq "hyphen_here" )
+                {
+                    $new_output_buffer .= "-" ;
+                } elsif ( $possible_phrase_name_with_underscores eq "new_line" )
+                {
+                    $new_output_buffer .= "\n" ;
+                } else
+                {
+                    $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
+                    $possible_phrase_name_with_hyphens =~ s/_/-/g ;
+                    if ( exists( $definition_of_phrase{ $possible_phrase_name_with_hyphens } ) )
+                    {
+                        $new_output_buffer .= $definition_of_phrase{ $possible_phrase_name_with_hyphens } ;
+                    } else
+                    {
+                        $new_output_buffer .= $possible_phrase_name_with_underscores ;
+                    }
+                }
+                if ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^\->]+_[^\->]+)>/ )
+                {
+                    $prefix = $1 ;
+                    $possible_phrase_name_with_underscores = $2 ;
+                    $pointer_to_tag_with_underscores = $pointer_to_remainder_of_output_buffer + length( $prefix ) ;
+                } else
+                {
+                    $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
+                    last ;
+                }
+            }
+            $output_buffer = $new_output_buffer ;
+        }
+
+
+#----------------------------------------------------
+#  If the output buffer does not contain any text
+#  that might need to be revised, then append it to
+#  the result text.
+
+        $pointer_to_close_angle_bracket = index( $output_buffer , ">" ) ;
+        if ( $pointer_to_close_angle_bracket < 0 )
+        {
+            $result_text .= $output_buffer ;
+            $output_buffer = "" ;
+        } elsif ( length( $output_buffer ) > 1000 )
+        {
+            $result_text .= substr( $output_buffer , 0 , 500 ) ;
+            $output_buffer = substr( $output_buffer , 500 ) ;
+        }
+
+
+#----------------------------------------------------
+#  Repeat the loop that handles each space-delimited string
+#  in the phrase definition.
+
+    }
+
+
+#----------------------------------------------------
+#  Supply the results for one definition.
+
+    $result_text .= $output_buffer ;
+    return $result_text ;
+
+
+#-----------------------------------------------
+#  End of subroutine.
 
 }
 

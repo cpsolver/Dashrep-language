@@ -386,7 +386,7 @@ An action that looks at the first space hyphen-here delimited word, and if it is
 -----
 
 description-for-phrase-if-word-is-no-then-first-else-second:
-An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next See b-i-b if h-h word h-h is h-h yes h-h then h-h first h-h else h-h second b-i-e for more information.
+An action that looks at the first space hyphen-here delimited word, and if it is b-i-b no b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next See b-i-b if h-h word h-h is h-h yes h-h then h-h first h-h else h-h second b-i-e for more information.
 -----
 
 description-for-phrase-if-word-is-yes-then-first-else-second:
@@ -1581,6 +1581,10 @@ If this phrase is defined as b-i-b yes b-i-e no-space , the actions b-i-b copy h
 
 description-for-phrase-insert-codeview-tags-into-phrase:
 Inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the strings in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
+----
+
+description-for-phrase-yes-or-no-use-faster-subset-expand:
+If this phrase is defined as b-i-b yes b-i-e no-space , a newer and faster section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next This code does not handle ignore directives and capture directives and some other directives, but it does handle the b-i-b no hyphen-here space b-i-e and b-i-b one hyphen-here space b-i-e and b-i-b new hyphen-here line b-i-e and b-i-b empty hyphen-here line b-i-e directives. sentence-next This code is useful for increasing the speed of a server response for a website. sentence-next The original code is still available for uses that require handling all Dashrep conventions and that do not require fast execution times.
 ----
 
 description-for-phrase-dashbee:
