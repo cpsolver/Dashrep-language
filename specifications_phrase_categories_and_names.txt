@@ -278,6 +278,7 @@ user-defined-action-operand-two
 user-defined-action-operand-three
 user-defined-action-operand-four
 dashrep-omit-web-page-from-trace-log-yes-or-no
+yes-or-no-use-faster-subset-expand
 
 category_spoken_words
 copy-from-phrase-to-phrase-from-spoken-dashrep-code

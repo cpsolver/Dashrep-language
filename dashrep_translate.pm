@@ -6626,10 +6626,10 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  If requested, log the action details.
 
-#    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-#    {
+    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+    {
         $global_trace_log .= "{{trace; action " . $action_name . " has operand one " . $operand_one . " has operand two " . $operand_two . " has operand three " . $operand_three . " has operand four " . $operand_four . " has operand five " . $operand_five . " has default result " . $action_result . " has source_filename " . $source_filename . " has target_filename " . $target_filename . " has source_phrase_name " . $source_phrase_name . " has target_phrase_name " . $target_phrase_name . "}}\n" ;
-#    }
+    }
 
 
 #-----------------------------------------------
@@ -8966,40 +8966,37 @@ It is only needed within the Dashrep module.
 sub dashrep_internal_expand_phrases_faster_subset
 {
 
-    my $endless_cycle_count_maximum ;
+    my $expand_endless_cycle_count_maximum ;
     my $supplied_text ;
     my $current_phrase ;
     my $result_text ;
     my $output_buffer ;
-    my $number_of_times_encountered_phrase_named ;
     my $space_directive ;
-    my $endless_loop_counter ;
+    my $expand_endless_loop_counter ;
+    my $expand_endless_loop_counter_maximum ;
     my $recursion_level ;
     my $pointer_to_phrase_begin ;
     my $pointer_to_next_space ;
     my $pointer_to_phrase_end ;
-    my $definition_of_phrase ;
     my $prior_length ;
     my $prefix ;
     my $possible_phrase_name_with_underscores ;
-    my $pointer_to_tag_with_underscores ;
     my $length_of_tag ;
     my $new_output_buffer ;
     my $pointer_to_remainder_of_output_buffer ;
     my $possible_phrase_name_with_hyphens ;
     my $pointer_to_close_angle_bracket ;
     my $string_of_spaces ;
+    my $length_of_output_buffer ;
+    my $maximum_cycle_count ;
+    my $phrase_name ;
+    my $cycle_count ;
+    my $phrase_name_with_highest_cycle_count ;
     my $length_of_code_at_recursion_level_current ;
     my @code_at_recursion_level ;
     my @length_of_code_at_recursion_level ;
     my @pointer_to_remainder_of_code_at_recursion_level ;
-
-
-#-----------------------------------------------
-#  Initialization.
-
-    $endless_cycle_count_maximum = 100000 ;
-    $string_of_spaces = "                                                                                              " ;
+    my %number_of_times_encountered_phrase_named ;
 
 
 #-----------------------------------------------
@@ -9015,29 +9012,36 @@ sub dashrep_internal_expand_phrases_faster_subset
     }
 
 
-#----------------------------------------------------
-#  Begin a loop that handles each space-delimited string
-#  in the phrase definition.
+#-----------------------------------------------
+#  Initialization.
 
+    $space_directive = "begin" ;
     $result_text = "" ;
     $output_buffer = "" ;
+    $string_of_spaces = "                                                                                              " ;
+    $expand_endless_loop_counter = 0 ;
+    $expand_endless_loop_counter_maximum = 100000 ;
     %number_of_times_encountered_phrase_named = ( ) ;
-    $space_directive = "begin" ;
-    $endless_loop_counter = 0 ;
+    $expand_endless_cycle_count_maximum = 100000 ;
     @code_at_recursion_level = ( ) ;
     @length_of_code_at_recursion_level = ( ) ;
     @pointer_to_remainder_of_code_at_recursion_level = ( ) ;
     $code_at_recursion_level[ 0 ] = "unused" ;
+    $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;
+    $length_of_code_at_recursion_level[ 0 ] = 0 ;
+
+
+#----------------------------------------------------
+#  Begin a loop that handles each space-delimited string
+#  in the phrase definition.
+
     $code_at_recursion_level[ 1 ] = $supplied_text ;
-    for ( $recursion_level = 1 ; $recursion_level <= 1 ; $recursion_level ++ )
-    {
-        $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;
-        $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ;
-    }
+    $pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
+    $length_of_code_at_recursion_level[ 1 ] = length( $code_at_recursion_level[ 1 ] ) ;
     $recursion_level = 1 ;
-    while ( ( $recursion_level > 0 ) && ( $endless_loop_counter <= $endless_cycle_count_maximum ) )
+    while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) )
     {
-        $endless_loop_counter ++ ;
+        $expand_endless_loop_counter ++ ;
 
 
 #----------------------------------------------------
@@ -9098,28 +9102,42 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 #----------------------------------------------------
-#  Check for an endless loop.
-#  If the same phrase name has been encountered too
-#  many times, exit the endless loop.
+#  Check for an endless loop caused by the same
+#  phrase name being encountered too many times.
+#  If this occurs, exit the endless loop.
 
         $number_of_times_encountered_phrase_named{ $current_phrase } ++ ;
-        if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $endless_cycle_count_maximum )
+        if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum )
         {
+            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
+            {
+                $maximum_cycle_count = 0 ;
+                foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) )
+                {
+                    $cycle_count = $number_of_times_encountered_phrase_named{ $phrase_name } ;
+                    if ( $cycle_count > $maximum_cycle_count )
+                    {
+                        $maximum_cycle_count = $cycle_count ;
+                        $phrase_name = $phrase_name_with_highest_cycle_count ;
+                    }
+                }
+                $global_trace_log .= "{{trace; in subroutine dashrep_internal_expand_phrases_faster_subset encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}\n" ;
+            }
 #  remove-from-cpan-version-begin
             warn "Warning: The dashrep_internal_expand_phrases_faster_subset subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 #           carp "Warning: The dashrep_internal_expand_phrases_faster_subset subroutine has encountered an endless loop." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
-            return 0 ;
+            return "" ;
         }
 
 
 #----------------------------------------------------
 #  If the phrase name is a Dashrep-defined directive,
 #  handle it.
-#  Ignore directives and capture directives are not
-#  supported by this expansion code.
+#  This expansion code does not support the "ignore"
+#  directives or the "capture" directives.
 
         if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
         {
@@ -9166,15 +9184,14 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 #----------------------------------------------------
 #  If a space should be inserted here, insert it.
+#  Specify a default of inserting one space after
+#  the next phrase insertion.
 
-            if ( $space_directive eq "begin" )
-            {
-                $space_directive = "none" ;
-            } elsif ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) )
+            if ( ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) && ( $space_directive ne "begin" ) )
             {
                 $output_buffer .= " " ;
-                $space_directive = "none" ;
             }
+            $space_directive = "one" ;
 
 
 #----------------------------------------------------
@@ -9189,7 +9206,6 @@ sub dashrep_internal_expand_phrases_faster_subset
 #  Terminate the branching that handles a string that
 #  is not a defined phrase.
 
-            $space_directive = "one" ;
         }
 
 
@@ -9230,21 +9246,21 @@ sub dashrep_internal_expand_phrases_faster_subset
         {
             $prefix = $1 ;
             $possible_phrase_name_with_underscores = $2 ;
-            $pointer_to_tag_with_underscores = length( $prefix ) ;
+            $length_of_output_buffer = length( $output_buffer ) ;
+            $new_output_buffer = $prefix ;
             $length_of_tag = length( $possible_phrase_name_with_underscores ) ;
-            $new_output_buffer = "" ;
-            $pointer_to_remainder_of_output_buffer = 0 ;
-            while ( $pointer_to_tag_with_underscores >= 0 )
+            $pointer_to_remainder_of_output_buffer = length( $prefix ) + $length_of_tag + 2 ;
+
+#        print "output_buffer: " . $output_buffer . "\n" ;
+
+            while ( $pointer_to_remainder_of_output_buffer < $length_of_output_buffer )
             {
-                if ( $pointer_to_tag_with_underscores > $pointer_to_remainder_of_output_buffer )
-                {
-                    $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer , $pointer_to_tag_with_underscores - $pointer_to_remainder_of_output_buffer ) ;
-                }
-                $pointer_to_remainder_of_output_buffer = $pointer_to_tag_with_underscores + $length_of_tag + 3 ;
-                if ( $pointer_to_remainder_of_output_buffer >= length( $output_buffer ) )
-                {
-                    last ;
-                }
+                $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer , $length_of_output_buffer - $pointer_to_remainder_of_output_buffer + 1 ) ;
+
+#        print "............. " . "\n" ;
+#        print "remainder of output buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
+#        print "new_output_buffer: " . $new_output_buffer . "\n" ;
+
                 if ( $possible_phrase_name_with_underscores eq "hyphen_here" )
                 {
                     $new_output_buffer .= "-" ;
@@ -9255,19 +9271,21 @@ sub dashrep_internal_expand_phrases_faster_subset
                 {
                     $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
                     $possible_phrase_name_with_hyphens =~ s/_/-/g ;
-                    if ( exists( $definition_of_phrase{ $possible_phrase_name_with_hyphens } ) )
+                    if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
                     {
-                        $new_output_buffer .= $definition_of_phrase{ $possible_phrase_name_with_hyphens } ;
+                        $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
                     } else
                     {
-                        $new_output_buffer .= $possible_phrase_name_with_underscores ;
+                        $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
                     }
                 }
-                if ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^\->]+_[^\->]+)>/ )
+                if ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
                 {
                     $prefix = $1 ;
                     $possible_phrase_name_with_underscores = $2 ;
-                    $pointer_to_tag_with_underscores = $pointer_to_remainder_of_output_buffer + length( $prefix ) ;
+                    $new_output_buffer .= $prefix ;
+                    $length_of_tag = length( $possible_phrase_name_with_underscores ) ;
+                    $pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 5 ;
                 } else
                 {
                     $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
@@ -9275,6 +9293,9 @@ sub dashrep_internal_expand_phrases_faster_subset
                 }
             }
             $output_buffer = $new_output_buffer ;
+
+#        print "output_buffer: " . $output_buffer . "\n" ;
+
         }
 
 
@@ -9296,14 +9317,14 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 #----------------------------------------------------
-#  Repeat the loop that handles each space-delimited string
-#  in the phrase definition.
+#  Repeat the loop that handles each space-delimited
+#  string.
 
     }
 
 
 #----------------------------------------------------
-#  Supply the results for one definition.
+#  Supply the results.
 
     $result_text .= $output_buffer ;
     return $result_text ;

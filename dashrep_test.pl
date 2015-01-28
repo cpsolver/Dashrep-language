@@ -520,6 +520,10 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+# Test action: expand-phrase-to-phrase
+
+
+#-------------------------------------------
 #  Test expanding parameters.
 
 $being_tested = "expanded parameters in one string -- ";
@@ -1572,6 +1576,7 @@ $html_code = &dashrep_translate::dashrep_expand_phrases( $content_with_expanded_
 #  uncomment-for-cpan-version-begin
 # $html_code = &dashrep_expand_phrases( $content_with_expanded_parameters );
 #  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $html_code . "]]" ;
 if ( length( $html_code ) gt 100 ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
