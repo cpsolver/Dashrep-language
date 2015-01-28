@@ -9018,6 +9018,9 @@ sub dashrep_internal_expand_phrases_faster_subset
     $space_directive = "begin" ;
     $result_text = "" ;
     $output_buffer = "" ;
+    $pointer_to_remainder_of_output_buffer = 0 ;
+    $new_output_buffer = "" ;
+    $possible_phrase_name_with_underscores = "" ;
     $string_of_spaces = "                                                                                              " ;
     $expand_endless_loop_counter = 0 ;
     $expand_endless_loop_counter_maximum = 100000 ;
@@ -9242,60 +9245,55 @@ sub dashrep_internal_expand_phrases_faster_subset
 #  then replace that text with the definition of the
 #  specified phrase.
 
-        if ( $output_buffer =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
+        $length_of_output_buffer = -1 ;
+        $pointer_to_remainder_of_output_buffer = 0 ;
+        while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
         {
             $prefix = $1 ;
             $possible_phrase_name_with_underscores = $2 ;
             $length_of_output_buffer = length( $output_buffer ) ;
-            $new_output_buffer = $prefix ;
+            $new_output_buffer .= $prefix ;
             $length_of_tag = length( $possible_phrase_name_with_underscores ) ;
-            $pointer_to_remainder_of_output_buffer = length( $prefix ) + $length_of_tag + 2 ;
+            $pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 2 ;
 
-#        print "output_buffer: " . $output_buffer . "\n" ;
+#            print "............. " . "\n" ;
+#            print "current_phrase: " . $current_phrase . "\n" ;
+#            print "output_buffer: " . $output_buffer . "\n" ;
+#            print "remainder of output_buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
+#            print "possible_phrase_name_with_underscores: " . $possible_phrase_name_with_underscores . "\n" ;
+#            print "remainder of output buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
 
-            while ( $pointer_to_remainder_of_output_buffer < $length_of_output_buffer )
+            if ( $possible_phrase_name_with_underscores eq "hyphen_here" )
             {
-                $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer , $length_of_output_buffer - $pointer_to_remainder_of_output_buffer + 1 ) ;
-
-#        print "............. " . "\n" ;
-#        print "remainder of output buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
-#        print "new_output_buffer: " . $new_output_buffer . "\n" ;
-
-                if ( $possible_phrase_name_with_underscores eq "hyphen_here" )
+                $new_output_buffer .= "-" ;
+            } elsif ( $possible_phrase_name_with_underscores eq "new_line" )
+            {
+                $new_output_buffer .= "\n" ;
+            } else
+            {
+                $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
+                $possible_phrase_name_with_hyphens =~ s/_/-/g ;
+                if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
                 {
-                    $new_output_buffer .= "-" ;
-                } elsif ( $possible_phrase_name_with_underscores eq "new_line" )
-                {
-                    $new_output_buffer .= "\n" ;
+                    $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
                 } else
                 {
-                    $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
-                    $possible_phrase_name_with_hyphens =~ s/_/-/g ;
-                    if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
-                    {
-                        $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
-                    } else
-                    {
-                        $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
-                    }
-                }
-                if ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
-                {
-                    $prefix = $1 ;
-                    $possible_phrase_name_with_underscores = $2 ;
-                    $new_output_buffer .= $prefix ;
-                    $length_of_tag = length( $possible_phrase_name_with_underscores ) ;
-                    $pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 5 ;
-                } else
-                {
-                    $new_output_buffer .= substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
-                    last ;
+                    $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
                 }
             }
-            $output_buffer = $new_output_buffer ;
 
-#        print "output_buffer: " . $output_buffer . "\n" ;
+#            print "new_output_buffer: " . $new_output_buffer . "\n" ;
 
+        }
+        if ( $length_of_output_buffer != -1 )
+        {
+            $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
+
+#            print "output_buffer: " . $output_buffer . "\n" ;
+#            print "==============" . "\n" ;
+
+            $new_output_buffer = "" ;
+            $possible_phrase_name_with_underscores = "" ;
         }
 
 
