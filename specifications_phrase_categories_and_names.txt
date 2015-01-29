@@ -7,8 +7,6 @@ empty-text
 one-space
 character-space
 non-breaking-space
-span-non-breaking-spaces-begin
-span-non-breaking-spaces-end
 new-line
 empty-line
 line-break

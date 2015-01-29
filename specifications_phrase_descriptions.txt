@@ -907,11 +907,11 @@ description-for-phrase-non-breaking-space:
 A directive that inserts a single space em-dash as defined in a target language. s-n This string is inserted even if the bold-begin italics-begin no hyphen-here space italics-end bold-end directive is adjacent. s-n The default, which is intended for use in HTML, is bold-begin italics-begin &amp; no-space nbsp; italics-end bold-end no-space .
 -----
 
-description-for-phrase-span-non-breaking-spaces-begin:
+deprecated-description-for-phrase-span-non-breaking-spaces-begin:
 When used in conjunction with the directive bold-begin italics-begin span h-h non h-h breaking h-h spaces-end italics-end bold-end no-space , this directive requests that non-breaking spaces in the target language, as specified by the definition of the phrase bold-begin italics-begin non h-h breaking h-h space italics-end bold-end no-space , be inserted where spaces appear, and then all the remaining spaces are removed (after expanding any parameters in the text).
 -----
 
-description-for-phrase-span-non-breaking-spaces-end:
+deprecated-description-for-phrase-span-non-breaking-spaces-end:
 See the description for the directive bold-begin italics-begin span h-h non h-h breaking h-h spaces h-h begin italics-end bold-end no-space .
 -----
 
