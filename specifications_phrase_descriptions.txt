@@ -900,7 +900,7 @@ A directive that removes any spaces (concatenation) after all other phrases have
 -----
 
 description-for-phrase-one-space:
-A directive that inserts a single space. s-n If the b-i-b no h-h space b-i-e directive is adjacent, the b-i-b no h-h space b-i-e directive is ignored.
+A directive that inserts a single space. s-n If the b-i-b no h-h space b-i-e directive is adjacent, the b-i-b no h-h space b-i-e directive is ignored. sentence-next Repeating this directive does not insert multiple adjacent spaces, just a single space. sentence-next If multiple spaces are needed, a phrase such as b-i-b four hyphen-here spaces b-i-e can be defined as multiple spaces, and then those spaces will be inserted where the string b-i-b <four_spaces> b-i-e appears.
 -----
 
 description-for-phrase-non-breaking-space:
