@@ -9015,7 +9015,7 @@ sub dashrep_internal_expand_phrases_faster_subset
 #-----------------------------------------------
 #  Initialization.
 
-    $space_directive = "begin" ;
+    $space_directive = "none" ;
     $result_text = "" ;
     $output_buffer = "" ;
     $pointer_to_remainder_of_output_buffer = 0 ;
@@ -9137,12 +9137,68 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 #----------------------------------------------------
+#  If the phrase name is a hyphen directive, or a
+#  space directive, or a line directive, handle it.
+
+        if ( $current_phrase eq "hyphen-here" )
+        {
+            $output_buffer .= "-" ;
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
+        {
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( $current_phrase eq "<no_space>" )
+        {
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( $current_phrase eq "one-space" )
+        {
+            $space_directive = "one_requested" ;
+            next ;
+        }
+        if ( $current_phrase eq "<one_space>" )
+        {
+            $space_directive = "one_requested" ;
+            next ;
+        }
+        if ( $current_phrase eq "new-line" )
+        {
+            $output_buffer .= "\n" ;
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( $current_phrase eq "<new_line>" )
+        {
+            $output_buffer .= "\n" ;
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( $current_phrase eq "empty-line" )
+        {
+            $output_buffer .= "\n\n" ;
+            $space_directive = "none" ;
+            next ;
+        }
+        if ( $current_phrase eq "<empty_line>" )
+        {
+            $output_buffer .= "\n\n" ;
+            $space_directive = "none" ;
+            next ;
+        }
+
+
+#----------------------------------------------------
 #  If the phrase name has a definition (which can be
 #  empty), and it is not a space directive or line
 #  directive, insert phrase definition into the text
 #  being expanded, and remove the phrase name.
 
-        if ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) && ( $current_phrase ne "no-space" ) && ( $current_phrase ne "one-space" ) && ( $current_phrase ne "new-line" ) && ( $current_phrase ne "empty-line" ) && ( $current_phrase ne "hyphen-here" ) )
+        if ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) )
         {
             $recursion_level ++ ;
 #            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
@@ -9155,66 +9211,12 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 #----------------------------------------------------
-#  At this point the phrase name does not have a
-#  definition, so begin to handle the phrase directly.
-
-
-#----------------------------------------------------
-#  Handle any "hypen-here" directives within the string.
-
-        $current_phrase =~ s/ +hyphen-here +/-/sg ;
-
-
-#----------------------------------------------------
-#  If the phrase name is a space directive
-#  or line directive, handle it.
-
-        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
-        {
-            $space_directive = "none" ;
-            next ;
-        } elsif ( $current_phrase eq "<no_space>" )
-        {
-            $space_directive = "none" ;
-            next ;
-        } elsif ( $current_phrase eq "one-space" )
-        {
-            $space_directive = "one_requested" ;
-            next ;
-        } elsif ( $current_phrase eq "<one_space>" )
-        {
-            $space_directive = "one_requested" ;
-            next ;
-        } elsif ( $current_phrase eq "new-line" )
-        {
-            $output_buffer .= "\n" ;
-            $space_directive = "none" ;
-            next ;
-        } elsif ( $current_phrase eq "<new_line>" )
-        {
-            $output_buffer .= "\n" ;
-            $space_directive = "none" ;
-            next ;
-        } elsif ( $current_phrase eq "empty-line" )
-        {
-            $output_buffer .= "\n\n" ;
-            $space_directive = "none" ;
-            next ;
-        } elsif ( $current_phrase eq "<empty_line>" )
-        {
-            $output_buffer .= "\n\n" ;
-            $space_directive = "none" ;
-            next ;
-        }
-
-
-#----------------------------------------------------
 #  If a space should be inserted here, insert it.
 #  Specify a default of inserting one space after
 #  the next phrase insertion.
 
 #        print "space_directive: " . $space_directive . "\n" ;
-        if ( ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) && ( $space_directive ne "begin" ) )
+        if ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) )
         {
             $output_buffer .= " " ;
         }

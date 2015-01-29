@@ -329,8 +329,8 @@ Content-type: text/html
 <new_line>
 --------
 
-web-page-title
-No title
+web-page-title:
+No hyphen-here title
 --------
 
 test-of-parameter-substitution:
@@ -1160,7 +1160,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_phrases( "test-of-spac
 # $string_return_value = &dashrep_expand_phrases( "test-of-space-and-line-directives" );
 #  uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value =~ /^Content-type: text\/html\n\n<!DOCTYPE html>\n<head>\n<title>No title<\/title>/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value =~ /^Content-type: text\/html\n\n<!DOCTYPE html>\n<head>\n<title>No-title<\/title>/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
