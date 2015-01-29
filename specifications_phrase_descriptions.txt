@@ -218,23 +218,23 @@ description-for-phrase-dashrep-action-trace-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that each encountered action add a message to the trace log to indicate which action occurred, and a b-i-b no b-i-e value keeps silent when each encountered action is handled. s-n For some actions, additional information about the action is included.
 -----
 
-description-for-phrase-dashrep-capture-actions-on-yes-or-no:
+deprecated-description-for-phrase-dashrep-capture-actions-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that the b-i-b capture b-i-e directives should be recognized and acted on, and a b-i-b no b-i-e value disables capture directives (so that they do not work).
 -----
 
-description-for-phrase-dashrep-capture-trace-on-yes-or-no:
+deprecated-description-for-phrase-dashrep-capture-trace-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that each encountered b-i-b capture b-i-e directive add a message to the trace log to indicate which text is captured, and a b-i-b no b-i-e value keeps silent when each encountered capture directive is handled.
 -----
 
 description-for-phrase-dashrep-debug-trace-on-yes-or-no:
-A b-i-b yes b-i-e value for this phrase requests that each encountered b-i-b capture b-i-e directive add a message to the trace log to indicate which text is captured, and a b-i-b no b-i-e value keeps silent when each encountered capture directive is handled.
+A b-i-b yes b-i-e value for this phrase requests that trace messages be added to the trace log, and a b-i-b no b-i-e value keeps silent when a trace message would otherwise be written.
 -----
 
-description-for-phrase-dashrep-ignore-actions-on-yes-or-no:
+deprecated-description-for-phrase-dashrep-ignore-actions-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that the b-i-b ignore b-i-e directives should be recognized and acted on, and a b-i-b no b-i-e value disables ignore directives (so that they do not work). s-n This capability is needed if the text being expanded contains documentation about the b-b ignore b-e directives.
 -----
 
-description-for-phrase-dashrep-ignore-trace-on-yes-or-no:
+deprecated-description-for-phrase-dashrep-ignore-trace-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that each encountered b-i-b ignore b-i-e directive add a message to the trace log to indicate which text is ignored, and a b-i-b no b-i-e value keeps silent when each encountered ignore directive is handled.
 -----
 
@@ -393,7 +393,7 @@ description-for-phrase-if-word-is-yes-then-first-else-second:
 An action that looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next This action can provide a major branching capability when it appears at or near the end of a phrase, or it can provide an "inline" selection that affects which operand another action uses. sentence-next If the second or third word is b-i-b empty hyphen-here text b-i-e no-space , then the action b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e (or b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e no-space ) is a better choice.
 -----
 
-description-for-phrase-ignore-action-operands:
+deprecated-description-for-phrase-ignore-action-operands:
 deprecated
 -----
 
@@ -625,7 +625,7 @@ description-for-phrase-split-phrase-into-list-of-characters:
 deprecated 
 -----
 
-description-for-phrase-dashrep-capture-trace-on-or-off:
+deprecated-description-for-phrase-dashrep-capture-trace-on-or-off:
 If this phrase contains the word b-i-b on b-i-e (and no other text), then the "trace" messages that track the b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e directives are written to the bold-begin italics-begin debug-trace-log italics-end bold-end phrase. s-n If this phrase contains anything other than the word b-i-b on b-i-e no-space , no such messages are written.
 ----
 
@@ -804,12 +804,12 @@ description-for-phrase-dashrep-yes-indicate-line-endings:
 If this user hyphen-here defined phrase equals b-i-b yes b-i-e then the actions b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e and b-i-b copy h-h from h-h file h-h to h-h phrases h-h line h-h numbered b-i-e replace line breaks (newlines) with the text b-i-b end h-h of h-h line h-h here b-i-e .
 ----
 
-description-for-phrase-insert-phrase-with-brackets-after-next-top-line:
+deprecated-description-for-phrase-insert-phrase-with-brackets-after-next-top-line:
 During one of the b-i-b linewise b-i-e actions this phrase effectively inserts the specified hyphenated phrase after the next line of text being handled linewise, and that inserted phrase is enclosed within parameter brackets. s-n This action enables the next line of text to be captured and placed into another phrase, and then the captured text can be used as desired.
 ----
 
 description-for-phrase-linewise-translate-special-phrases-only-from-file-to-file:
-Translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as b-i-b no h-h space b-i-e and b-i-b ignore h-h begin b-i-e and b-i-b non h-h breaking h-h spaces h-h begin b-i-e no-space . s-n The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
+Translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e and b-i-b non h-h breaking h-h spaces h-h begin b-i-e no-space . s-n The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 ----
 
 description-for-phrase-dashrep-phrase-prefix-for-imported-phrases:
@@ -967,19 +967,19 @@ bold-begin italics-begin dashrep h-h definitions h-h begin italics-end bold-end
 no-space .
 -----
 
-description-for-phrase-ignore-begin-here:
+deprecated-description-for-phrase-ignore-begin-here:
 This directive requests the removal of the text that follows this directive up to the next b-i-b ignore-end-here b-i-e directive . s-n These directives can be nested. s-n These phrases cannot overlap the b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e phrases.
 -----
 
-description-for-phrase-ignore-end-here:
+deprecated-description-for-phrase-ignore-end-here:
 See the description of the directive b-i-b ignore h-h begin h-h here b-i-e no-space .
 -----
 
-description-for-phrase-capture-begin-here:
+deprecated-description-for-phrase-capture-begin-here:
 This directive requests that the text following this directive, but before the directive b-i-b capture h-h end h-h here b-i-e be captured and put into the definition of the phrase named b-i-b captured h-h text b-i-e no-space . s-n The b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e directives can be nested, but the captured text becomes unpredictable. s-n These phrases cannot overlap the b-i-b ignore h-h begin h-h here b-i-e and b-i-b ignore h-h begin h-h here b-i-e directives.
 -----
 
-description-for-phrase-capture-end-here:
+deprecated-description-for-phrase-capture-end-here:
 See the description of the directive b-i-b capture h-h begin h-h here b-i-e no-space .
 -----
 
@@ -1415,27 +1415,27 @@ description-for-phrase-dashrep-linewise-trace-on-or-off:
 If this phrase contains the word b-i-b on b-i-e (and no other text), then the "trace" messages that track linewise translations are written to the bold-begin italics-begin debug-trace-log italics-end bold-end phrase. s-n If this phrase contains anything other than the word b-i-b on b-i-e no-space , no such messages are written.
 ----
 
-description-for-phrase-dashrep-ignore-trace-on-or-off:
+deprecated-description-for-phrase-dashrep-ignore-trace-on-or-off:
 If this phrase contains the word b-i-b on b-i-e (and no other text), then the "trace" messages that track the b-i-b ignore h-h begin h-h here b-i-e and b-i-b ignore h-h end h-h here b-i-e directives are written to the bold-begin italics-begin debug-trace-log italics-end bold-end phrase. s-n If this phrase contains anything other than the word b-i-b on b-i-e no-space , no such messages are written.
 ----
 
-description-for-phrase-captured-text:
+deprecated-description-for-phrase-captured-text:
 This phrase stores the text that is captured by the directives b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e no-space .
 ----
 
-description-for-phrase-dashrep-ignore-actions-off-else-on:
+deprecated-description-for-phrase-dashrep-ignore-actions-off-else-on:
 If this phrase contains b-i-b off b-i-e (and no other text), the b-i-b ignore h-h begin h-h here b-i-e and b-i-b ignore h-h end h-h here b-i-e directives. s-n This capability is needed if the text contains documentation about these Dashrep phrases.
 ----
 
-description-for-phrase-dashrep-capture-actions-off-else-on:
+deprecated-description-for-phrase-dashrep-capture-actions-off-else-on:
 If this phrase contains b-i-b off b-i-e (and no other text), the b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e directives. s-n This capability is needed if the text contains documentation about these Dashrep phrases.
 ----
 
-description-for-phrase-dashrep-capture-level:
+deprecated-description-for-phrase-dashrep-capture-level:
 A phrase that indicates the current nesting level for the directives b-i-b capture h-h begin h-h here b-i-e and b-i-b capture h-h end h-h here b-i-e no-space . s-n This value can be checked for debugging purposes. s-n Also this nesting level can be assigned a value, which is useful if one translation sequence is being interrupted by another translation sequence and there is a need to restore the nesting level to the value it had prior to this interruption.
 ----
 
-description-for-phrase-dashrep-ignore-level:
+deprecated-description-for-phrase-dashrep-ignore-level:
 A phrase that indicates the current nesting level for the directives b-i-b ignore h-h begin h-h here b-i-e and b-i-b ignore h-h end h-h here b-i-e no-space . s-n This value can be checked for debugging purposes. s-n Also, this nesting level can be assigned a value, which is useful if one translation sequence is being interrupted by another translation sequence and there is a need to restore the nesting level to the value it had prior to this interruption.
 ----
 
@@ -1584,7 +1584,7 @@ Inserts into the specified phrase definition special tags that enable the raw Da
 ----
 
 description-for-phrase-yes-or-no-use-faster-subset-expand:
-If this phrase is defined as b-i-b yes b-i-e no-space , a newer and faster section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next This code does not handle ignore directives and capture directives and some other directives, but it does handle the b-i-b no hyphen-here space b-i-e and b-i-b one hyphen-here space b-i-e and b-i-b new hyphen-here line b-i-e and b-i-b empty hyphen-here line b-i-e directives. sentence-next This code is useful for increasing the speed of a server response for a website. sentence-next The original code is still available for uses that require handling all Dashrep conventions and that do not require fast execution times.
+If this phrase is defined as b-i-b yes b-i-e no-space , a newer and faster section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next This code handles the directives b-i-b no hyphen-here space b-i-e and b-i-b one hyphen-here space b-i-e and b-i-b new hyphen-here line b-i-e and b-i-b empty hyphen-here line b-i-e no-space . sentence-next This code is useful for increasing the speed of a server response for a website. sentence-next The original code is still available for uses that require handling all Dashrep conventions and that do not require fast execution times.
 ----
 
 description-for-phrase-dashbee:

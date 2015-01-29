@@ -217,17 +217,6 @@ web-framework-generated-web-page
 path-to-initial-dashrep-definitions
 filename-for-initial-dashrep-definitions
 
-category_ignore_capture
-ignore-begin-here
-ignore-end-here
-capture-begin-here
-capture-end-here
-captured-text
-dashrep-ignore-actions-on-yes-or-no
-dashrep-capture-actions-on-yes-or-no
-dashrep-capture-level
-dashrep-ignore-level
-
 category_time
 get-current-time-in-epoch-seconds
 split-epoch-seconds-into-named-components
@@ -243,11 +232,9 @@ time-year
 category_debug
 dashrep-comments-ignored
 dashrep-warning-trace-on-yes-or-no
-dashrep-capture-trace-on-yes-or-no
 dashrep-debug-trace-log
 dashrep-debug-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
-dashrep-ignore-trace-on-yes-or-no
 dashrep-linewise-trace-on-yes-or-no
 dashrep-web-framework-trace-on-yes-or-no
 dashrep-trace-show-definition
