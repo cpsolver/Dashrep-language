@@ -9137,37 +9137,12 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 #----------------------------------------------------
-#  If the phrase name is a Dashrep-defined directive,
-#  handle it.
-#  This expansion code does not support the "ignore"
-#  directives or the "capture" directives.
-
-        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
-        {
-            $space_directive = "none" ;
-        } elsif ( $current_phrase eq "one-space" )
-        {
-            $space_directive = "one_requested" ;
-        } elsif ( $current_phrase eq "new-line" )
-        {
-            $output_buffer .= "<new_line>" ;
-            $space_directive = "none" ;
-        } elsif ( $current_phrase eq "empty-line" )
-        {
-            $output_buffer .= "<new_line><new_line>" ;
-            $space_directive = "none" ;
-        } elsif ( $current_phrase eq "hyphen-here" )
-        {
-            $output_buffer .= "-" ;
-            $space_directive = "none" ;
-
-
-#----------------------------------------------------
 #  If the phrase name has a definition (which can be
-#  empty), insert its definition into the text being
-#  expanded, and remove the phrase name.
+#  empty), and it is not a space directive or line
+#  directive, insert phrase definition into the text
+#  being expanded, and remove the phrase name.
 
-        } elsif ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) )
+        if ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) && ( $current_phrase ne "no-space" ) && ( $current_phrase ne "one-space" ) && ( $current_phrase ne "new-line" ) && ( $current_phrase ne "empty-line" ) && ( $current_phrase ne "hyphen-here" ) )
         {
             $recursion_level ++ ;
 #            print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
@@ -9175,14 +9150,62 @@ sub dashrep_internal_expand_phrases_faster_subset
             $code_at_recursion_level[ $recursion_level ] = $global_dashrep_replacement{ $current_phrase } ;
             $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ;
             $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;
+            next ;
+        }
 
 
 #----------------------------------------------------
-#  If the phrase name does not have a definition,
-#  begin to handle the phrase directly.
+#  At this point the phrase name does not have a
+#  definition, so begin to handle the phrase directly.
 
-        } else
+
+#----------------------------------------------------
+#  Handle any "hypen-here" directives within the string.
+
+        $current_phrase =~ s/ +hyphen-here +/-/sg ;
+
+
+#----------------------------------------------------
+#  If the phrase name is a space directive
+#  or line directive, handle it.
+
+        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
         {
+            $space_directive = "none" ;
+            next ;
+        } elsif ( $current_phrase eq "<no_space>" )
+        {
+            $space_directive = "none" ;
+            next ;
+        } elsif ( $current_phrase eq "one-space" )
+        {
+            $space_directive = "one_requested" ;
+            next ;
+        } elsif ( $current_phrase eq "<one_space>" )
+        {
+            $space_directive = "one_requested" ;
+            next ;
+        } elsif ( $current_phrase eq "new-line" )
+        {
+            $output_buffer .= "\n" ;
+            $space_directive = "none" ;
+            next ;
+        } elsif ( $current_phrase eq "<new_line>" )
+        {
+            $output_buffer .= "\n" ;
+            $space_directive = "none" ;
+            next ;
+        } elsif ( $current_phrase eq "empty-line" )
+        {
+            $output_buffer .= "\n\n" ;
+            $space_directive = "none" ;
+            next ;
+        } elsif ( $current_phrase eq "<empty_line>" )
+        {
+            $output_buffer .= "\n\n" ;
+            $space_directive = "none" ;
+            next ;
+        }
 
 
 #----------------------------------------------------
@@ -9190,30 +9213,25 @@ sub dashrep_internal_expand_phrases_faster_subset
 #  Specify a default of inserting one space after
 #  the next phrase insertion.
 
-            if ( ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) && ( $space_directive ne "begin" ) )
-            {
-                $output_buffer .= " " ;
-            }
-            $space_directive = "one" ;
-
-
-#----------------------------------------------------
-#  If the current text string is not the name of a
-#  defined phrase, just use the text string.
-
-            $output_buffer .= $current_phrase ;
-            $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;
-
-
-#----------------------------------------------------
-#  Terminate the branching that handles a string that
-#  is not a defined phrase.
-
+#        print "space_directive: " . $space_directive . "\n" ;
+        if ( ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) && ( $space_directive ne "begin" ) )
+        {
+            $output_buffer .= " " ;
         }
+        $space_directive = "one" ;
 
 
 #----------------------------------------------------
-#  If there is a "<specify " string that needs to be
+#  At this point the current text string is not the
+#  name of a defined phrase, so just use the text string.
+
+        $output_buffer .= $current_phrase ;
+        $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;
+
+
+#----------------------------------------------------
+#  In the output buffer, if there is a
+#  "<specify " string that needs to be
 #  combined with the preceding tag, combine it into
 #  a single XML or HTML tag.
 #  Handle tags of type "<xyz />" as well as "<xyz>".
@@ -9245,9 +9263,20 @@ sub dashrep_internal_expand_phrases_faster_subset
 #  then replace that text with the definition of the
 #  specified phrase.
 
+#        print "--------------" . "\n" ;
+#        print "output_buffer: " . $output_buffer . "\n" ;
+#        $output_buffer =~ s/ *<no_space> *//sg ;
+        $output_buffer =~ s/ *<hyphen_here> */-/sg ;
+        $output_buffer =~ s/ *<new_line> */\n/sg ;
+        $output_buffer =~ s/ *<empty_line> */\n/sg ;
+        if ( $output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ )
+        {
+            $space_directive = "none" ;
+        }
+#        print "output_buffer: " . $output_buffer . "\n" ;
         $length_of_output_buffer = -1 ;
         $pointer_to_remainder_of_output_buffer = 0 ;
-        while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/ )
+        while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s )
         {
             $prefix = $1 ;
             $possible_phrase_name_with_underscores = $2 ;
@@ -9263,23 +9292,14 @@ sub dashrep_internal_expand_phrases_faster_subset
 #            print "possible_phrase_name_with_underscores: " . $possible_phrase_name_with_underscores . "\n" ;
 #            print "remainder of output buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
 
-            if ( $possible_phrase_name_with_underscores eq "hyphen_here" )
+            $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
+            $possible_phrase_name_with_hyphens =~ s/_/-/g ;
+            if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
             {
-                $new_output_buffer .= "-" ;
-            } elsif ( $possible_phrase_name_with_underscores eq "new_line" )
-            {
-                $new_output_buffer .= "\n" ;
+                $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
             } else
             {
-                $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
-                $possible_phrase_name_with_hyphens =~ s/_/-/g ;
-                if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
-                {
-                    $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
-                } else
-                {
-                    $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
-                }
+                $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
             }
 
 #            print "new_output_buffer: " . $new_output_buffer . "\n" ;
@@ -9290,7 +9310,6 @@ sub dashrep_internal_expand_phrases_faster_subset
             $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
 
 #            print "output_buffer: " . $output_buffer . "\n" ;
-#            print "==============" . "\n" ;
 
             $new_output_buffer = "" ;
             $possible_phrase_name_with_underscores = "" ;
@@ -9312,6 +9331,7 @@ sub dashrep_internal_expand_phrases_faster_subset
             $result_text .= substr( $output_buffer , 0 , 500 ) ;
             $output_buffer = substr( $output_buffer , 500 ) ;
         }
+#        print "==============" . "\n" ;
 
 
 #----------------------------------------------------

@@ -630,7 +630,7 @@ If this phrase contains the word b-i-b on b-i-e (and no other text), then the "t
 ----
 
 description-for-phrase-dashrep-yes-do-not-expand-special-phrases:
-If this user hyphen-here defined phrase equals b-i-b yes b-i-e then the following special phrases are not handled: b-i-b non h-h breaking h-h space b-i-e no-space , b-i-b span h-h non h-h breaking h-h spaces h-h begin b-i-e no-space , b-i-b span h-h non h-h breaking h-h spaces h-h end b-i-e no-space , b-i-b tab h-h here b-i-e no-space , b-i-b empty h-h line b-i-e no-space , b-i-b new h-h line b-i-e no-space , b-i-b no h-h space b-i-e no-space , and b-i-b one h-h space b-i-e .
+If this user hyphen-here defined phrase equals b-i-b yes b-i-e then the following special phrases are not handled: b-i-b non h-h breaking h-h space b-i-e no-space , b-i-b tab h-h here b-i-e no-space , b-i-b empty h-h line b-i-e no-space , b-i-b new h-h line b-i-e no-space , b-i-b no h-h space b-i-e no-space , and b-i-b one h-h space b-i-e .
 ----
 
 description-for-phrase-createlist-total-number-of-items:
@@ -1677,10 +1677,6 @@ r-b c-b 15 c-n define h-h end c-n b-i-b define h-h end b-i-e c-n Explained below
 r-b c-b 16 c-n hyphen h-h here c-n b-i-b hyphen h-h here b-i-e c-n Explained below. c-e r-e
 
 r-b c-b 17 c-n non h-h breaking h-h space c-n b-i-b non h-h breaking h-h space b-i-e c-n Explained below. c-e r-e
-
-r-b c-b 18 c-n span h-h non h-h breaking h-h spaces h-h begin c-n b-i-b span h-h non h-h breaking h-h spaces h-h begin b-i-e c-n Explained below. c-e r-e
-
-r-b c-b 19 c-n span h-h non h-h breaking h-h spaces h-h end c-n b-i-b span h-h non h-h breaking h-h spaces h-h end b-i-e c-n Explained below. c-e r-e
 
 r-b c-b 20 c-n tab h-h here c-n b-i-b tab h-h here b-i-e c-n Explained below. c-e r-e
 
