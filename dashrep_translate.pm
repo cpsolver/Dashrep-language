@@ -2970,8 +2970,8 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  if-word-is-yes-then-first-else-second
-#  if-word-is-no-then-first-else-second
+#  if-word-is-yes-then-first-else-second -- Deprecated
+#  if-word-is-no-then-first-else-second -- Deprecated
 
         if ( ( $action_name eq "if-word-is-yes-then-first-else-second" ) || ( $action_name eq "if-word-is-no-then-first-else-second" ) )
         {
@@ -2993,8 +2993,8 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  if-first-word-is-yes-then-keep-remainder-else-empty
-#  if-first-word-is-no-then-keep-remainder-else-empty
+#  if-first-word-is-yes-then-keep-remainder-else-empty -- Deprecated
+#  if-first-word-is-no-then-keep-remainder-else-empty -- Deprecated
 
         if ( ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) || ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) )
         {
@@ -5112,12 +5112,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  use-template-with-each-word-in-phrase
 #  use-handler-with-each-word-in-phrase
 #
-#  Both actions are the same.  The "handler" name
-#  is recommended. The "template" name is kept
-#  for backwards compatibility.
+#  use-template-with-each-word-in-phrase -- Deprecated
 
         if ( ( $action_name eq "use-template-with-each-word-in-phrase" ) || ( $action_name eq "use-handler-with-each-word-in-phrase" ) )
         {
@@ -5192,8 +5189,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  use-template-and-parameters-to-create-full-list-with-name
-#  use-template-and-parameters-to-create-simple-list-with-name
+#  use-template-and-parameters-to-create-simple-list-with-name -- Deprecated
+#
+#  use-template-and-parameters-to-create-full-list-with-name -- Deprecated
 
         if ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) )
         {
@@ -6134,6 +6132,8 @@ sub dashrep_expand_special_phrases
 #  Handle the directives:
 #  "ignore-begin-here" and
 #  "ignore-end-here"
+#
+#  which are now deprecated
 
     if ( ( not( exists( $global_dashrep_replacement{ "dashrep-ignore-actions-on-yes-or-no" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-ignore-actions-on-yes-or-no" } ne "no" ) )
     {
@@ -6196,6 +6196,8 @@ sub dashrep_expand_special_phrases
 #  Handle the directives:
 #  "capture-begin-here" and
 #  "capture-end-here"
+#
+#  which are now deprecated
 
     if ( ( not( exists( $global_dashrep_replacement{ "dashrep-capture-actions-on-yes-or-no" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-capture-actions-on-yes-or-no" } ne "no" ) )
     {
@@ -7672,7 +7674,7 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  Handle the actions:
 #  linewise-read-from-file-and-use-handler
-#  linewise-read-from-file-and-use-template  (deprecated, but retained for backward compatibility)
+#  linewise-read-from-file-and-use-template -- Deprecated
 
     } elsif ( ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) )
     {
@@ -7735,10 +7737,11 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  linewise-translate-from-file-to-file and
-#  linewise-translate-parameters-only-from-file-to-file
-#  linewise-translate-phrases-only-from-file-to-file
-#  linewise-translate-special-phrases-only-from-file-to-file
+#  linewise-translate-from-file-to-file -- Deprecated, but still used in test, so keep until test is updated to use linewise-read-from-file-and-use-handler
+#
+#  linewise-translate-parameters-only-from-file-to-file -- Deprecated
+#  linewise-translate-phrases-only-from-file-to-file -- Deprecated
+#  linewise-translate-special-phrases-only-from-file-to-file -- Deprecated
 #
 #  The filename is edited to remove any path
 #  specifications, and then the prefix in the
