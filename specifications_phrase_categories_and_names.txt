@@ -28,8 +28,6 @@ clear-phrase
 clear-phrases-listed-in-phrase
 clear-all-dashrep-phrases
 delete-phrases-listed-in-phrase
-expand-phrase-to-phrase
-expand-only-parameters-in-phrase-to-phrase
 copy-from-phrase-to-phrase
 copy-to-phrase-from-following-text
 append-from-phrase-to-phrase
@@ -37,6 +35,9 @@ append-from-phrase-to-phrase-no-space
 prepend-from-phrase-to-phrase
 prepend-from-phrase-to-phrase-no-space
 append-new-line-to-phrase
+insert-definition-of-phrase
+expand-phrase-to-phrase
+expand-only-parameters-in-phrase-to-phrase
 copy-multiple-words-in-phrase-to-phrases-named-in-pattern
 append-multiple-from-phrases-named-in-pattern-to-phrase
 dashrep-yes-append-not-replace-for-imported-phrases
@@ -72,6 +73,8 @@ numeric-multiply
 numeric-divide-by
 numeric-maximum
 numeric-minimum
+numeric-increment
+numeric-decrement
 numeric-integer
 numeric-absolute
 numeric-equal-greater-less-compare
@@ -85,8 +88,6 @@ numeric-map-tile-zoom
 numeric-y-map-tile-number-based-on-latitude
 numeric-calculate-distances-scaled
 numeric-two-dimensional-sort-into-columns-and-rows
-numeric-increment
-numeric-decrement
 
 category_character
 count-of-characters-in-phrase-definition
@@ -95,36 +96,36 @@ position-of-string-in-phrase-within-phrase
 copy-from-phrase-to-phrase-and-remove-extra-spaces
 copy-from-phrase-to-phrase-characters-from-position-to-position
 copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
-copy-from-phrase-to-phrase-and-split-into-list-of-characters
 copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string
 copy-from-phrase-to-phrase-and-replace-html-reserved-characters
 copy-from-phrase-to-phrase-and-replace-digits-with-9s
 copy-from-phrase-to-phrase-lowercase-only
 copy-from-phrase-to-phrase-uppercase-only
 copy-from-phrase-to-phrase-initial-caps
+copy-from-phrase-to-phrase-and-split-into-list-of-characters
 copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
 
 category_word
-first-word-in-phrase
-last-word-in-phrase
 from-phrase-get-word-number
+copy-from-phrase-to-phrase-only-word-at-position
 copy-from-phrase-to-phrase-words-from-position-to-position
-count-of-words-in-phrase
-yes-or-no-word-is-in-phrase
-position-of-word-in-phrase-within-phrase
-append-word-to-phrase
 copy-from-two-phrases-words-found-in-both-to-phrase
 copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
 copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
-copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
 copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
-copy-from-phrase-to-phrase-only-word-at-position
+copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
+copy-from-phrase-to-phrase-with-word-order-reversed
+count-of-words-in-phrase
+yes-or-no-word-is-in-phrase
+position-of-word-in-phrase-within-phrase
+first-word-in-phrase
+last-word-in-phrase
 copy-from-phrase-to-phrase-but-remove-first-word
 copy-from-phrase-to-phrase-but-remove-last-word
-copy-from-phrase-to-phrase-with-word-order-reversed
+append-word-to-phrase
 
 category_loop
 use-handler-with-each-word-in-phrase
@@ -151,6 +152,9 @@ copy-from-file-to-phrase
 copy-from-phrase-append-to-file
 expand-phrase-to-file
 copy-from-file-to-phrases-line-numbered
+linewise-read-from-file-and-use-handler
+storage-input-line-from-file
+linewise-input-line-count
 find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase
 find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase
 find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase
@@ -169,9 +173,6 @@ modification-time-of-file
 create-empty-file
 delete-file
 create-empty-sub-folder
-linewise-read-from-file-and-use-handler
-storage-input-line-from-file
-linewise-input-line-count
 
 category_xml
 xml-move-attributes-into-tag-elements-within-phrase
