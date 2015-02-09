@@ -9204,9 +9204,12 @@ sub dashrep_internal_expand_phrases_faster_subset
             $space_directive = "none" ;
             next ;
         }
-        if ( ( $current_phrase eq "no-space" ) && ( $space_directive ne "one_requested" ) )
+        if ( $current_phrase eq "no-space" )
         {
-            $space_directive = "none" ;
+            if ( $space_directive ne "one_requested" )
+            {
+               $space_directive = "none" ;
+            }
             next ;
         }
         if ( $current_phrase eq "<no_space>" )

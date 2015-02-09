@@ -330,7 +330,7 @@ Content-type: text/html
 --------
 
 web-page-title:
-No hyphen-here title
+No hyphen-here title no-space
 --------
 
 test-of-parameter-substitution:
