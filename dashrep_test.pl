@@ -422,7 +422,7 @@ two-dimensional-sort:
 --------
 
 test-if-begin-actions:
-[-result-of-testing-if-begin-actions = [-if-yes-begin yes-] one [-if-else-] two [-if-end-] [-if-yes-begin no-] three [-if-else-] four [-if-end-] [-if-no-begin yes-] five [-if-else-] six [-if-end-] [-if-no-begin no-] seven [-if-else-] eight [-if-end-] -]
+[-result-of-testing-if-begin-actions = [-if-yes-begin yes-] one [-if-else-] two [-if-end-] [-if-yes-begin no-] three [-if-else-] four [-if-end-] [-if-no-begin yes-] five [-if-else-] six [-if-end-] [-if-no-begin no-] seven [-if-else-] eight [-if-end-] [-if-yes-begin yes-] nine [-if-end-] [-if-yes-begin no-] ten [-if-end-] [-if-no-begin no-] eleven [-if-end-] [-if-no-begin yes-] twelve [-if-end-] -]
 --------
 
 character-string-source:
@@ -1378,7 +1378,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "result-of-t
 # $string_return_value = dashrep_get_replacement( "result-of-testing-if-begin-actions" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value =~ / *one +four +six +seven */ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value =~ /^ *one +four +six +seven *nine *eleven *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
