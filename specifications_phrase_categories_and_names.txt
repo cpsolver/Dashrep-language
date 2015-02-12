@@ -203,6 +203,7 @@ filename-for-initial-dashrep-definitions
 category_time
 get-current-time-in-epoch-seconds
 split-epoch-seconds-into-named-components
+split-epoch-seconds-into-named-components-for-zero-meridian
 time-day-of-month
 time-day-of-week
 time-day-of-year

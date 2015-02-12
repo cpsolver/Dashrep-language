@@ -1352,7 +1352,11 @@ Gets the current time as an integer number that indicates the number of seconds 
 -----
 
 description-for-phrase-split-epoch-seconds-into-named-components:
-Uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word b-i-b time b-i-e no-space . s-n The results are specific for UTC. s-n Addition and substraction can be used to convert to a specific time zone. s-n Simple Dashrep definitions can use these values to easily generate nearly any date and time format.
+Uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word b-i-b time b-i-e no-space . s-n The results are specific to local time at the server location. s-n Simple Dashrep definitions can use these values to easily generate nearly any date and time format. s-n See also b-i-b split h-h epoch h-h seconds h-h into h-h named h-h components h-h for h-h zero h-h meridian b-i-e no-space , which applies to the time at zero meridian.
+-----
+
+description-for-phrase-split-epoch-seconds-into-named-components-for-zero-meridian:
+Uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word b-i-b time b-i-e no-space . s-n The results are specific for UTC. s-n Addition and substraction can be used to convert to a specific time zone. s-n Simple Dashrep definitions can use these values to easily generate nearly any date and time format. s-n See also b-i-b split h-h epoch h-h seconds h-h into h-h named h-h components b-i-e no-space , which applies to local time at the server.
 -----
 
 description-for-phrase-time-am-or-pm:
