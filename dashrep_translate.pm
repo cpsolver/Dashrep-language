@@ -3568,7 +3568,7 @@ sub dashrep_expand_parameters
                     }
                 }
             }
-            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            if ( ( $action_name eq "position-of-word-in-phrase" ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
             {
                 $global_trace_log .= "{{trace; warning: action " . $action_name . " is deprecated, and will not exist in future versions" . "}}\n" ;
             }
