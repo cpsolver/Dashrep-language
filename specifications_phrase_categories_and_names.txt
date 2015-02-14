@@ -58,11 +58,11 @@ yes-or-no-empty-word
 yes-or-no-empty-phrase
 yes-or-no-same-two-words
 yes-or-no-same-two-phrase-definitions
-yes-if-not-no
-no-if-any-no
-no-if-not-yes
-yes-if-any-yes
 yes-or-no-opposite
+yes-if-any-yes
+no-if-any-no
+yes-if-not-no
+no-if-not-yes
 
 category_numeric
 zero-one-multiple
@@ -229,16 +229,11 @@ dashrep-stop-translation
 dashrep-endless-loop-counter-limit
 dashrep-endless-loop-count
 unique-value
-escape-if-yes
-escape-if-no
-dashrep-translation-before-escape
-escape-text
 dashrep-special-replacement-adjacent-space
 dashrep-special-replacement-hyphen
 dashrep-special-replacement-newline
 dashrep-yes-indicate-line-endings
 end-of-line-here
-clear-all-expanded-text-up-to-here
 dashrep-yes-do-not-expand-special-phrases
 dashrep-list-of-recognized-phrase-names
 dashrep-undefined

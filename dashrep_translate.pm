@@ -5607,7 +5607,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  clear-all-expanded-text-up-to-here
+#  clear-all-expanded-text-up-to-here  -- Deprecated
 
         if ( $action_name eq "clear-all-expanded-text-up-to-here" )
         {
@@ -5618,6 +5618,10 @@ sub dashrep_expand_parameters
                 $global_trace_log .= "{{trace; the following text was removed:}}\n" ;
                 $global_trace_log .= $text_begin . "\n" ;
                 $global_trace_log .= "{{trace; end of text removed by request}}\n" ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: action " . $action_name . " is deprecated, and will not exist in future versions" . "}}\n" ;
             }
 #  end of action code
             $replacement_text = $text_end ;
@@ -5723,8 +5727,8 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  escape-if-yes
-#  escape-if-no
+#  escape-if-yes -- Deprecated
+#  escape-if-no -- Deprecated
 #
 #  If the escape condition is met, return immediately,
 #  with the content of the "escape-text" phrase as the return value.
