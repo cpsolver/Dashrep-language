@@ -1224,6 +1224,10 @@ description-for-phrase-copy-from-phrase-to-phrase-only-word-at-position:
 An action that copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number. s-n A position number of 1 indicates the first word in the definition. s-n The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words.
 ----
 
+description-for-phrase-copy-from-phrase-to-phrase-and-zero-pad-left-to-length:
+An action that copies text from the definition of the first phrase into the definition of the second phrase and inserts zeros ( no-space b-i-b 0 b-i-e no-space ) to the left of the copied characters. s-n The resulting padded text has the length specified by the number in the third operand. s-n Normally this action is used with numbers, but the action does not check whether the copied text is a number.
+----
+
 description-for-phrase-copy-from-phrase-to-phrase-split-into-words-at-string-in-phrase:
 deprecated
 ----
