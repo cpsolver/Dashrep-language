@@ -280,6 +280,8 @@ test-of-special-operators:
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
 [-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
+[-string-123 = 123 -]
+[-copy-from-phrase-to-phrase-and-zero-pad-left-to-length string-123 string-123-padded 5 -]
 nothing else
 --------
 
@@ -1016,6 +1018,20 @@ $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
 # $results_text .= "[[" . $string_return_value . "]]\n" ;
 if ( $string_return_value eq "abc-alpha-def abc-alpha-here-def abc-and-def abc-beta-def abc-gamma-def abc-delta-def - prefix-here abc-alpha-def-1of6-ghi separator-here abc-alpha-here-def-2of6-ghi separator-here abc-and-def-3of6-ghi separator-here abc-beta-def-4of6-ghi separator-here abc-gamma-def-5of6-ghi separator-here abc-delta-def-6of6-ghi suffix-here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test action copy-from-phrase-to-phrase-and-zero-pad-left-to-length -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "string-123-padded" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-123-padded" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq "00123" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
