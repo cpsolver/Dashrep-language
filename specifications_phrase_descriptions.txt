@@ -1659,7 +1659,7 @@ t-b
 
 r-b th-b Normal l-b priority th-n Name th-n Appearance th-n Description th-e r-e
 
-r-b c-b 1 c-n Comment c-n b-i-b * h-h h-h h-h non-breaking-space b-i-e comment here non-breaking-space b-i-b h-h h-h h-h * b-i-e c-n Comments are ignored. s-n The b-i-b * no-space h-h h-h h-h no-space b-i-e string indicates the beginning of a comment, and the b-i-b no-space h-h h-h h-h no-space * b-i-e string indicates the end of the comment. s-n Comments cannot be nested; if they are, the results are unpredictable. c-e r-e
+r-b c-b 1 c-n Comment c-n b-i-b * h-h h-h h-h non-breaking-space b-i-e comment here non-breaking-space b-i-b h-h h-h h-h * b-i-e c-n Comments are ignored. s-n The b-i-b * no-space h-h h-h h-h no-space b-i-e string indicates the beginning of a comment, and the b-i-b no-space h-h h-h h-h no-space * b-i-e string indicates the end of the comment. s-n Comments cannot be nested; if they are, the results are unpredictable. s-n The comment directives are not recognized if they appear within parameter brackets. c-e r-e
 
 r-b c-b 1 c-n Comment c-n b-i-b / h-h h-h h-h non-breaking-space b-i-e comment here non-breaking-space b-i-b h-h h-h h-h / b-i-e c-n Alternate written way to indicate a comment. c-e r-e
 
