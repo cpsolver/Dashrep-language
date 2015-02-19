@@ -90,7 +90,6 @@ numeric-vectors-add
 numeric-vectors-from-delta-values-calculate-distances
 numeric-map-tile-zoom
 numeric-y-map-tile-number-based-on-latitude
-numeric-calculate-distances-scaled
 numeric-two-dimensional-sort-into-columns-and-rows
 
 category_character

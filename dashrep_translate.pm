@@ -4820,7 +4820,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  numeric-calculate-distances-scaled
+#  numeric-calculate-distances-scaled -- Deprecated
 
         if ( $action_name eq "numeric-calculate-distances-scaled" )
         {
