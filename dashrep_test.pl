@@ -282,6 +282,12 @@ test-of-special-operators:
 [-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
 [-string-123 = 123 -]
 [-copy-from-phrase-to-phrase-and-zero-pad-left-to-length string-123 string-123-padded 5 -]
+[-vector-one = 17 23 -4 -]
+[-vector-two = 21 -9 0 -]
+[-numeric-vector-add-number vector-one -7 vector-result-add-number-]
+[-numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number-]
+[-numeric-vectors-add vector-one vector-two vector-result-addition-]
+[-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 nothing else
 --------
 
@@ -1032,6 +1038,62 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-123-
 #  uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]\n" ;
 if ( $string_return_value eq "00123" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test action numeric-vector-add-number -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-add-number" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-add-number" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq "10 16 -11" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test action numeric-vector-multiply-by-number -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-multiply-by-number" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-multiply-by-number" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq "119 161 -28" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test action numeric-vectors-add -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-addition" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-addition" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq "38 14 -4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+$being_tested = "test action numeric-vectors-from-delta-values-calculate-distances -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-distances" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "vector-result-distances" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq "27 25 4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
