@@ -54,10 +54,10 @@ if-yes-begin
 if-no-begin
 if-else
 if-end
-yes-or-no-empty-word
 yes-or-no-empty-phrase
-yes-or-no-same-two-words
 yes-or-no-same-two-phrase-definitions
+yes-or-no-same-two-words
+yes-or-no-word-is-in-phrase
 yes-or-no-opposite
 yes-if-any-yes
 no-if-any-no
@@ -65,8 +65,9 @@ yes-if-not-no
 no-if-not-yes
 
 category_numeric
-zero-one-multiple
 zero-or-nonzero
+zero-one-multiple
+numeric-equal-greater-less-compare
 numeric-add
 numeric-minus
 numeric-multiply
@@ -77,7 +78,6 @@ numeric-increment
 numeric-decrement
 numeric-integer
 numeric-absolute
-numeric-equal-greater-less-compare
 numeric-odd-or-even
 numeric-sine
 numeric-cosine
@@ -88,9 +88,9 @@ numeric-vector-add-number
 numeric-vector-multiply-by-number
 numeric-vectors-add
 numeric-vectors-from-delta-values-calculate-distances
-numeric-map-tile-zoom
-numeric-y-map-tile-number-based-on-latitude
 numeric-two-dimensional-sort-into-columns-and-rows
+numeric-y-map-tile-number-based-on-latitude
+numeric-map-tile-zoom
 
 category_character
 count-of-characters-in-phrase-definition
@@ -123,7 +123,6 @@ copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
 copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
 copy-from-phrase-to-phrase-with-word-order-reversed
 count-of-words-in-phrase
-yes-or-no-word-is-in-phrase
 position-of-word-in-phrase-within-phrase
 first-word-in-phrase
 last-word-in-phrase
@@ -218,37 +217,33 @@ time-second
 time-year
 
 category_debug
-dashrep-comments-ignored
-dashrep-warning-trace-on-yes-or-no
 dashrep-debug-trace-log
 dashrep-debug-trace-on-yes-or-no
+dashrep-trace-show-definition
+dashrep-recent-phrase-name-replaced
+dashrep-warning-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
 dashrep-linewise-trace-on-yes-or-no
 dashrep-web-framework-trace-on-yes-or-no
-dashrep-trace-show-definition
-dashrep-recent-phrase-name-replaced
+dashrep-omit-web-page-from-trace-log-yes-or-no
+dashrep-comments-ignored
 
 category_advanced
-dashrep-stop-translation
+dashrep-undefined
 dashrep-endless-loop-counter-limit
 dashrep-endless-loop-count
-unique-value
-dashrep-special-replacement-adjacent-space
-dashrep-special-replacement-hyphen
-dashrep-special-replacement-newline
-dashrep-yes-indicate-line-endings
-end-of-line-here
-dashrep-yes-do-not-expand-special-phrases
-dashrep-list-of-recognized-phrase-names
-dashrep-undefined
 insert-codeview-tags-into-phrase
+end-of-line-here
+unique-value
+dashrep-list-of-recognized-phrase-names
+dashrep-yes-indicate-line-endings
+yes-or-no-use-faster-subset-expand
+dashrep-yes-do-not-expand-special-phrases
 yes-or-no-allow-user-defined-actions
 user-defined-action-operand-one
 user-defined-action-operand-two
 user-defined-action-operand-three
 user-defined-action-operand-four
-dashrep-omit-web-page-from-trace-log-yes-or-no
-yes-or-no-use-faster-subset-expand
 
 category_spoken_words
 copy-from-phrase-to-phrase-from-spoken-dashrep-code

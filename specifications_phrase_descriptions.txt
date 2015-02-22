@@ -86,10 +86,6 @@ description-for-phrase-delayed-newline:
 This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b new h-h line b-i-e needs to be inserted later, after other replacements have been done. s-n When ready, this phrase should be defined as b-i-b new h-h line b-i-e just before the final translation step.
 -----
 
-description-for-phrase-calculate-if-empty-then-use-here:
-deprecated
------
-
 description-for-phrase-character-close-square-bracket:
 A phrase that contains the close h-h square h-h bracket character ( no-space b-b ] b-e no-space ).
 -----
@@ -195,15 +191,15 @@ An action that gets the space hyphen-here delimited words in the first phrase, a
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-words-from-position-to-position:
-An action that gets the space hyphen-here delimited words from the first phrase starting at the position indicated by the first number (which is the second paramter), and ending at the position indicated by the second number (which is the third parameter). s-n The word positions are numbered starting at 1 the beginning. s-n If the second number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase). s-n The two phrase names can be the same.
+An action that gets the space hyphen-here delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter. s-n The word positions are numbered starting at 1 the beginning. s-n If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase). s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase:
-An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n As an example, if the first phrase contains the string b-i-b Nikola_Tesla Abe_Lincoln Thomas_Jefferson Benjamin_Franklin b-i-e and the third phrase contains the string b-i-b Nikola_Tesla Thomas_Jefferson Paul_MacCready Leonardo_da_Vinci b-i-e then the string placed into the second phrase will be b-i-b da_vinci_leonardo jefferson_thomas maccready_paul tesla_nikola b-i-e no-space . s-n The first two phrase names can be the same.
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase. s-n As an example, if the first phrase contains the string b-i-b Nikola_Tesla Abe_Lincoln Thomas_Jefferson Benjamin_Franklin b-i-e and the third phrase contains the string b-i-b tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul b-i-e then the string placed into the second phrase will be b-i-b Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla b-i-e no-space . s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase:
-An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, if the first phrase contains the string b-i-b seven one five three twelve b-i-e and the third phrase contains the string b-i-b 7 1 5 3 12 b-i-e then the string placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
+An action that gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, if the first phrase contains the string b-i-b seven one five three twelve b-i-e and the third phrase contains the string b-i-b 7 1 5 3 12 b-i-e then the string placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
@@ -416,7 +412,7 @@ An action that calculates the absolute value of the number that follows, and sup
 -----
 
 description-for-phrase-numeric-add:
-An action that add the numbers that follow, and supplies the result. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages. s-n If more than a few simple calculations are being done, consider using the b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h no b-i-e actions so that numerical processing can be done within the host language.
+An action that add the numbers that follow, and supplies the result. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages. s-n If more than a few simple calculations are being done, consider doing the intensive numerical processing in a different programming language.
 ----
 
 description-for-phrase-numeric-cosine:
@@ -565,10 +561,6 @@ An action that moves the content of an b-i-b attribute b-i-e tag or a b-i-b spec
 
 description-for-phrase-yes-or-no-empty-phrase:
 An action that supplies b-i-b yes b-i-e if the following specified phrase is empty no-space , and supplies b-i-b no b-i-e otherwise. s-n A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined.
------
-
-description-for-phrase-yes-or-no-empty-word:
-An action that supplies b-i-b yes b-i-e if no non hyphen-here space characters follow the action (up to the closing parameter brackets), and supplies b-i-b no b-i-e if at least one non hyphen-here space character appears before the closing parameter brackets.
 -----
 
 description-for-phrase-yes-or-no-numeric-equal:
@@ -787,10 +779,6 @@ description-for-phrase-unique-value:
 A special phrase that contains a unique value each time this phrase appears in parameter brackets. s-n Currently this action simply supplies a number that is incremented, but future versions may use non-sequential numbers (to accomodate parallel processing).
 ----
 
-description-for-phrase-calculate-if-phrase-empty:
-deprecated
-----
-
 description-for-phrase-escape-if-yes:
 This action looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non-Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
 ----
@@ -809,18 +797,6 @@ A special phrase that eliminates the expanded web page from appearing in the tra
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
 A user h-h defined phrase that specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
-----
-
-description-for-phrase-dashrep-special-replacement-adjacent-space:
-A phrase that contains the text that is inserted to replace each space when the b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h replace h-h adjacent h-h spaces b-i-e action is used.
-----
-
-description-for-phrase-dashrep-special-replacement-hyphen:
-A phrase that contains the text that is inserted to replace each hyphen when the b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h replace h-h hyphens b-i-e action is used.
-----
-
-description-for-phrase-dashrep-special-replacement-newline:
-A phrase that contains the text that is inserted to replace each newline (line break) when the b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h replace h-h newlines b-i-e action is used.
 ----
 
 description-for-phrase-dashrep-stop-translation:
@@ -1028,18 +1004,6 @@ description-for-phrase-append-word-to-phrase:
 An action that copies the first word onto the end of the definition of the second hyphenated phrase. s-n Do not use this action if the first word might be empty because that causes an error (because the wrong number of operands are supplied).
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-with-special-replacements:
-An action that copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase, but special replacements are done to eliminate hyphens, adjacent spaces, and line breaks.
-This action must be followed by two phrase names, not one. s-n 
-s-n The replacement for hyphens is specified in the
-bold-begin italics-begin special h-h replacement h-h hyphen italics-end bold-end
-phrase, the replacement for non h-h first spaces in adjacent spaces is specified in the
-bold-begin italics-begin special h-h replacement h-h space italics-end bold-end
-phrase, and the replacement for line breaks is specified in the
-bold-begin italics-begin special h-h replacement h-h linebreak italics-end bold-end
-phrase. s-n If any of the special replacement phrases are empty (which is their default value) or contain a hyphen or adjacent spaces or a line break, that type of special replacement is not done.
------
-
 description-for-phrase-empty-or-nonempty:
 deprecated
 -----
@@ -1105,6 +1069,10 @@ deprecated
 description-for-phrase-numeric-increment:
 An action that increments the integer value in the named phrase. s-n This action does not supply the result. s-n This number is incremented each time this special action is encountered. s-n 
 Use of this action should be avoided. s-n Usually the action b-i-b use h-h template h-h and h-h parameters h-h to h-h create h-h simple h-h list h-h with h-h name b-i-e (or the b-i-b full b-i-e list version) and the b-i-b createlist h-h item h-h number b-i-e phrase, or the action b-i-b unique hyphen-here value b-i-e can be used instead.
+-----
+
+description-for-phrase-numeric-odd-or-even:
+An action that supplies the word b-i-b odd b-i-e or b-i-b even b-i-e based on whether the value of the following operand is an odd or even integer. s-n It is useful for handling row (or column) numbers in a table. s-n The result is unpredictable if the operand is not a positive integer.
 -----
 
 description-for-phrase-dashrep-path-prefix-for-file-reading:
@@ -1765,7 +1733,7 @@ t-e
 
 
 heading-for-phrases-in-category_hyphens_spaces_lines:
-Hyphens, spaces, & lines
+Hyphens, spaces, lines, & square brackets
 -----
 
 heading-for-phrases-in-category_definitions:
