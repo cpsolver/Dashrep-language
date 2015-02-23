@@ -1368,7 +1368,6 @@ sub dashrep_expand_parameters
     my $number_of_zeros_needed ;
     my $zero_padding ;
     my $single_value ;
-    my $operand_output ;
     my @list_of_x_values ;
     my @list_of_y_values ;
     my @list ;
@@ -1652,6 +1651,7 @@ sub dashrep_expand_parameters
             $action_name =~ s/^\-+// ;
             $action_name =~ s/\-+$// ;
             $operands_all =~ s/^ +// ;
+            $operands_all =~ s/ +$// ;
             $operands_all =~ s/\-+$// ;
             @list_of_operands = split( / +/ , $operands_all ) ;
             $number_of_operands = scalar( @list_of_operands ) ;
@@ -4468,7 +4468,7 @@ sub dashrep_expand_parameters
 #  numeric-maximum
 #  numeric-minimum
 
-        if ( ( ( $action_name eq "numeric-add" ) || ( $action_name eq "numeric-multiply" ) || ( $action_name eq "numeric-maximum" ) || ( $action_name eq "numeric-minimum" ) ) && ( $number_of_operands >= 1 ) )
+        if ( ( $action_name eq "numeric-add" ) || ( $action_name eq "numeric-multiply" ) || ( $action_name eq "numeric-maximum" ) || ( $action_name eq "numeric-minimum" ) )
         {
             $action_result = "0" ;
             if ( $action_name eq "numeric-add" )
@@ -4488,9 +4488,15 @@ sub dashrep_expand_parameters
                 $numeric_value = 0 ;
             }
             $temp_text = $operands_all ;
-            $temp_text =~ s/^ +// ;
-            $temp_text =~ s/ +$// ;
-            @list = split( / +/ , $temp_text ) ;
+#            $temp_text =~ s/^ +// ;
+#            $temp_text =~ s/ +$// ;
+            if ( $temp_text =~ / / )
+            {
+                @list = split( / +/ , $temp_text ) ;
+            } else
+            {
+                $list[ 0 ] = $temp_text ;
+            }
             for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
             {
                 $value = $list[ $counter ] ;
