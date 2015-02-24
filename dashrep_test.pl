@@ -254,7 +254,7 @@ test-of-special-operators:
 [-should-be-item-with-value-7 = [-from-phrase-get-word-number: list-of-numbers 3-]-]
 [-counts-from-integer-to-integer-put-into-phrase: 0 7 counts-from-0-to-7-]
 [-counts-from-integer-to-integer-put-into-phrase: 5 -4 counts-from-5-to-minus-4-]
-[-minimum-maximum-with-single-operand = [-numeric-minimum [-numeric-maximum 10 -]-]-]
+[-minimum-maximum-result = [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -]-]
 [-every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
 [-should-be-counts-3-and-minus-2 = [-from-phrase-get-word-number list-of-first-items-in-two-dimensions 38-] [-from-phrase-get-word-number list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-numeric-integer [-numeric-multiply 3.14 7.39-]-]-]
@@ -960,23 +960,18 @@ if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
-# $being_tested = "test minimum and maximum actions with single value -- ";
-# $test_number_count ++;
+$being_tested = "test minimum and maximum actions with single value -- ";
+$test_number_count ++;
 #  remove-from-cpan-version-begin
-# $string_return_value = &dashrep_translate::dashrep_get_replacement( "minimum-maximum-with-single-operand" );
-
-# print &dashrep_translate::dashrep_get_replacement( "dashrep-debug-trace-log" );
-
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "minimum-maximum-result" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "minimum-maximum-with-single-operand" );
+# $string_return_value = &dashrep_get_replacement( "minimum-maximum-result" );
 #  uncomment-for-cpan-version-end
-
 # $results_text .= "[[" . $string_return_value . "]]\n" ;
-
-# if ( $string_return_value eq "10" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+if ( $string_return_value eq "2 8 3 4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 $being_tested = "test character actions -- ";

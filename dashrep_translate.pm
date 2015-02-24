@@ -1703,7 +1703,7 @@ sub dashrep_expand_parameters
             }
             next ;
         }
-        if ( ( exists( $global_minimum_number_of_operands_for_action{ $action_name } ) ) && ( $global_minimum_number_of_operands_for_action{ $action_name } >= $number_of_operands ) )
+        if ( ( exists( $global_minimum_number_of_operands_for_action{ $action_name } ) ) && ( $number_of_operands < $global_minimum_number_of_operands_for_action{ $action_name } ) )
         {
             $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -4488,15 +4488,7 @@ sub dashrep_expand_parameters
                 $numeric_value = 0 ;
             }
             $temp_text = $operands_all ;
-#            $temp_text =~ s/^ +// ;
-#            $temp_text =~ s/ +$// ;
-            if ( $temp_text =~ / / )
-            {
-                @list = split( / +/ , $temp_text ) ;
-            } else
-            {
-                $list[ 0 ] = $temp_text ;
-            }
+            @list = split( / +/ , $temp_text ) ;
             for ( $counter = 0 ; $counter <= $#list ; $counter ++ )
             {
                 $value = $list[ $counter ] ;
