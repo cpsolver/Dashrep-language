@@ -367,8 +367,8 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "numeric-vector-add-number" } = 3 ;
     $global_required_number_of_operands_for_action{ "numeric-vector-multiply-by-number" } = 3 ;
     $global_required_number_of_operands_for_action{ "numeric-vectors-add" } = 3 ;
-    $global_required_number_of_operands_for_action{ "numeric-vector-integers" } = 1 ;
-    $global_required_number_of_operands_for_action{ "numeric-vector-absolutes" } = 1 ;
+    $global_required_number_of_operands_for_action{ "numeric-vector-integers" } = 2 ;
+    $global_required_number_of_operands_for_action{ "numeric-vector-absolutes" } = 2 ;
     $global_required_number_of_operands_for_action{ "numeric-vectors-from-delta-values-calculate-distances" } = 3 ;
     $global_required_number_of_operands_for_action{ "numeric-pi" } = 0 ;
     $global_required_number_of_operands_for_action{ "numeric-y-map-tile-number-based-on-latitude" } = 1 ;
@@ -4730,12 +4730,22 @@ sub dashrep_expand_parameters
 #  numeric-vectors-from-delta-values-calculate-distances
 #  numeric-vector-integers
 #  numeric-vector-absolutes
+#  numeric-vector-opposite-positive-versus-negative -- Removed, instead, multiply by minus one
 
         if ( ( $action_name eq "numeric-vector-add-number" ) || ( $action_name eq "numeric-vector-multiply-by-number" ) || ( $action_name eq "numeric-vectors-add" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) || ( $action_name eq "numeric-vector-integers" ) || ( $action_name eq "numeric-vector-absolutes" ) )
         {
             $action_result = " " ;
+            $required_number_of_operands = $global_required_number_of_operands_for_action{ $action_name } ;
+            if ( $required_number_of_operands == 3 )
+            {
+                $target_operand = $operand_three ;
+            } else
+            {
+                $target_operand = $operand_two ;
+            }
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /^[ \-0-9\.]+$/ ) )
             {
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4745,6 +4755,7 @@ sub dashrep_expand_parameters
             }
             if ( ( ( $action_name eq "numeric-vectors-add" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) ) && ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /^[ \-0-9\.]+$/ ) ) )
             {
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -4768,6 +4779,25 @@ sub dashrep_expand_parameters
                     }
                     next ;
                 }
+            }
+            if ( ( ( $action_name eq "numeric-vector-integers" ) || ( $action_name eq "numeric-vector-absolutes" ) ) && ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) ) )
+            {
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_two . "}}\n" ;
+                }
+                next ;
+            } elsif ( ( ( $action_name eq "numeric-vector-add-number" ) || ( $action_name eq "numeric-vector-multiply-by-number" ) || ( $action_name eq "numeric-vectors-add" ) ) && ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) ) )
+            {
+                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
+                $replacement_text = $text_begin . $action_result . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , invalid operand: " . $operand_three . "}}\n" ;
+                }
+                next ;
             }
             $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_x_values_as_text =~ s/^ +//s ;
@@ -4803,10 +4833,10 @@ sub dashrep_expand_parameters
                 }
                 if ( $numeric_value == 0 )
                 {
-                    $global_dashrep_replacement{ $operand_three } .= "0 " ;
+                    $global_dashrep_replacement{ $target_operand } .= "0 " ;
                 } else
                 {
-                    $global_dashrep_replacement{ $operand_three } .= sprintf( "%d" , $numeric_value ) . " " ;
+                    $global_dashrep_replacement{ $target_operand } .= sprintf( "%d" , $numeric_value ) . " " ;
                 }
             }
             $global_dashrep_replacement{ $operand_three } =~ s/ +$// ;
