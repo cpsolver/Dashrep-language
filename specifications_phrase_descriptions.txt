@@ -439,6 +439,14 @@ description-for-phrase-numeric-vector-multiply-by-number:
 An action that multiplies a vector times a single number and produces a resulting vector. s-n Each vector is a space h-h delimited list of numbers. s-n The vector in the definition of the first operand is multiplied by the second operand, and the resulting vector is put into the definition of the third operand. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.
 ----
 
+description-for-phrase-numeric-vector-integers:
+An action that converts into integers the real numbers that are supplied in the vector that is named in the first operand. s-n The vector is a space h-h delimited list of numbers, which can include integers as well as real numbers. s-n The resulting vector is put into the definition of the second operand. s-n Floating-point numbers are not recognized.
+----
+
+description-for-phrase-numeric-vector-absolutes:
+An action that converts a list of numbers within a vector into their absolute values, and puts the resulting list into the definition of the second operand. s-n The vector is a space h-h delimited list of numbers, which can include integers as well as real numbers. s-n Floating-point numbers are not recognized.
+----
+
 description-for-phrase-numeric-vectors-add:
 An action that adds two vectors and produces a vector sum. s-n Each vector is a space h-h delimited list of numbers. s-n The vector in the definition of the first operand is added to the vector in the definition of the second operand, and the resulting vector is put into the definition of the third operand. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.
 ----
