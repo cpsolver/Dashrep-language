@@ -1973,7 +1973,7 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . $action_result . $text_end ;
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand one (" . $operand_one . ") does not exist" . "}}\n" ;
+                $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand one (" . $operand_one . ") does not exist, or is empty" . "}}\n" ;
             }
             next ;
         }
@@ -1983,7 +1983,7 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . $action_result . $text_end ;
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand two (" . $operand_two . ") does not exist" . "}}\n" ;
+                $global_trace_log .= "{{trace; warning, for action " . $action_name . ", operand two (" . $operand_two . ") does not exist, or is empty" . "}}\n" ;
             }
             next ;
         }
