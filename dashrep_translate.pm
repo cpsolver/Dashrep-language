@@ -457,7 +457,6 @@ BEGIN {
     $global_check_operand_two_phrase_is_not_empty_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "from-phrase-get-word-number" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
