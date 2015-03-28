@@ -169,6 +169,7 @@ gather-tagged-info-from-file-and-put-unique-values-into-phrase
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
 dashrep-gather-tag-unique
+dashrep-gather-tag-delete
 put-into-phrase-list-of-files-in-current-read-directory
 put-into-phrase-list-of-folders-in-current-read-directory
 yes-or-no-file-exists
