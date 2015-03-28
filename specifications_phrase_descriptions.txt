@@ -1908,19 +1908,19 @@ n-y-w:
 -----
 
 category-heading-begin:
-<h1>
------
-
-category-heading-end:
-</h1>
------
-
-phrase-heading-begin:
 <h2>
 -----
 
+category-heading-end:
+</h2>
+-----
+
+phrase-heading-begin:
+<h3>
+-----
+
 phrase-heading-begin-before-id:
-<h2 id="
+<h3 id="
 -----
 
 phrase-heading-begin-after-id:
@@ -1928,7 +1928,7 @@ phrase-heading-begin-after-id:
 -----
 
 phrase-heading-end:
-</h2>
+</h3>
 -----
 
 phrase-description-begin:
@@ -2073,6 +2073,16 @@ new-line
 new-line
 <title>HTML code for Dashrep Specifications page</title>
 new-line
+<meta name="copyright" content="Copyright 2015 by Richard Fobes at www.Dashrep.org" />
+new-line
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+new-line
+<meta name="description" content="Dashrep language specifications page" />
+new-line
+<meta name="author" content="Richard Fobes" />
+new-line
+<meta http-equiv="copyright" content="Richard Fobes 2015" />
+new-line
 <style type="text/css">
 table {
 	border-width: 1px;
@@ -2101,7 +2111,13 @@ table td {
 table {
 	margin-left:30px;
 }
+h1 {
+	margin-left:0px;
+}
 h2 {
+	margin-left:0px;
+}
+h3 {
 	margin-left:30px;
 }
 p {
@@ -2111,12 +2127,21 @@ p {
 </head>
 new-line
 <body>
+<h1 style="margin-left:80px;">Dashrep language specifications</h1>
+new-line
+<p>&nbsp;</p>
 new-line
 new-line
 -----
 
 web-page-end:
 
+<p>&nbsp;</p>
+new-line
+<p>&nbsp;</p>
+new-line
+<p style="margin-left:0px;">Copyright 2015 by Richard Fobes at www.Dashrep.org</p>
+new-line
 new-line
 </body>
 new-line
