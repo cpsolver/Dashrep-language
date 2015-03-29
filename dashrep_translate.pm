@@ -22,12 +22,12 @@ Language::Dashrep - Dashrep language translator/interpreter
 
 =head1 VERSION
 
-Version 3.02
+Version 3.03
 
 =cut
 
 #  uncomment-for-cpan-version-begin
-# our $VERSION = '3.02';
+# our $VERSION = '3.03';
 
 
 #  uncomment-for-cpan-version-end

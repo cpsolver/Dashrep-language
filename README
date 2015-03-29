@@ -5,7 +5,7 @@ Dashrep is a versatile descriptive programming language based on hyphenated phra
 See www.Dashrep.org for details.
 
 
-Version 2.30
+Version 3.03
 
 
 RUNNING
@@ -29,7 +29,7 @@ You can find documentation for the Dashrep language at:
 
 COPYRIGHT AND LICENCE
 
-Copyright (c) 2009, 2011 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright (c) 2009-2015 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
