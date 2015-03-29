@@ -294,12 +294,13 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-gather-tag-begin" } = "entry_begin" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-end" } = "entry_end" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-unique" } = "url" ;
+    $global_dashrep_replacement{ "dashrep-gather-tag-matching-id" } = "1" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-delete" } = "delete_id" ;
     $global_dashrep_replacement{ "dashrep-omit-web-page-from-trace-log-yes-or-no" } = "no" ;
     $global_dashrep_replacement{ "dashrep-recent-phrase-name-replaced" } = "" ;
     $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-phrases-listed-in-phrase copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase insert-definition-of-phrase expand-phrase-to-phrase expand-only-parameters-in-phrase-to-phrase copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word from-phrase-get-word-number copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-words-from-position-to-position copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-from-phrase-to-phrase-with-word-order-reversed count-of-words-in-phrase position-of-word-in-phrase-within-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase word-to-use-in-handler category_generate_list counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-delete put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names dashrep-yes-indicate-line-endings yes-or-no-use-faster-subset-expand dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-phrases-listed-in-phrase copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase insert-definition-of-phrase expand-phrase-to-phrase expand-only-parameters-in-phrase-to-phrase copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-string-in-phrase-within-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word from-phrase-get-word-number copy-from-phrase-to-phrase-only-word-at-position copy-from-phrase-to-phrase-words-from-position-to-position copy-from-two-phrases-words-found-in-both-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-from-phrase-to-phrase-with-word-order-reversed count-of-words-in-phrase position-of-word-in-phrase-within-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase word-to-use-in-handler category_generate_list counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-one-entry-from-tagged-file-and-put-into-phrase put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements-within-phrase linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names dashrep-yes-indicate-line-endings yes-or-no-use-faster-subset-expand dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
@@ -426,6 +427,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-named-phrases" } = 3 ;
     $global_required_number_of_operands_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = 2 ;
     $global_required_number_of_operands_for_action{ "linewise-read-from-file-and-use-handler" } = 2 ;
     $global_required_number_of_operands_for_action{ "write-all-dashrep-definitions-to-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "write-all-dashrep-phrase-names-to-file" } = 1 ;
@@ -623,6 +625,7 @@ BEGIN {
     $global_check_operand_one_is_phrase_name_for_action{ "put-into-phrase-list-of-files-in-current-read-directory" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "put-into-phrase-list-of-folders-in-current-read-directory" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = "yes" ;
 
     $global_check_operand_one_is_file_name_for_action{ "get-definitions-from-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "yes-or-no-file-exists" } = "yes" ;
@@ -636,6 +639,7 @@ BEGIN {
     $global_check_operand_two_is_file_name_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-named-phrases" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = "yes" ;
+    $global_check_operand_one_is_file_name_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-definitions-to-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-phrase-names-to-file" } = "yes" ;
@@ -703,6 +707,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-gather-tag-begin" } = "entry_begin" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-end" } = "entry_end" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-unique" } = "url" ;
+    $global_dashrep_replacement{ "dashrep-gather-tag-matching-id" } = "1" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-delete" } = "delete_id" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
     $global_dashrep_replacement{ "dashrep-omit-web-page-from-trace-log-yes-or-no" } = "no" ;
@@ -5435,7 +5440,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -7319,14 +7324,13 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  Handle the action:
 #  gather-tagged-info-from-file-and-put-unique-values-into-phrase
+#  gather-one-entry-from-tagged-file-and-put-into-phrase
 
-    } elsif ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" )
+    } elsif ( ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" ) )
     {
         $action_result = " " ;
-        if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
-        {
-            $possible_error_message .= " [warning: action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name  . "]\n" ;
-        } elsif ( open ( INFILE , '<' . $source_filename ) )
+        $accumulated_matching_entry_info = "" ;
+        if ( open ( INFILE , '<' . $source_filename ) )
         {
             $possible_error_message .= "" ;
         } else
@@ -7355,6 +7359,19 @@ sub dashrep_file_actions
             {
                 $entry_delete = "delete_id" ;
             }
+            if ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" )
+            {
+                $entry_matching_id = $global_dashrep_replacement{ "dashrep-gather-tag-matching-id" } ;
+                if ( $entry_matching_id !~ /^[^ ]+$/ )
+                {
+                    $entry_matching_id = "1" ;
+                }
+            } elsif ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" )
+            {
+                $entry_matching_id = "" ;
+            }
+            $accumulated_matching_entry_info = "" ;
+            $possible_matching_entry_info = "" ;
             $unique_value = "" ;
             %content_for_tag = ( ) ;
             %found_unique_value = ( ) ;
@@ -7362,94 +7379,160 @@ sub dashrep_file_actions
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                if ( $input_line =~ /^ *([^ ]+) *$/ )
+                if ( $entry_matching_id ne "" )
                 {
-                    $first_word = $1 ;
-                    if ( $first_word eq "multi_line_end" )
+#                   This section of code applies to action: gather-one-entry-from-tagged-file-and-put-into-phrase
+                    if ( $input_line =~ /^ *([^ ]+) *$/ )
                     {
-                        $line_status = "within" ;
-                    } elsif ( ( $first_word eq $entry_end ) || ( $first_word eq $entry_begin ) )
-                    {
-                        if ( $unique_value =~ /^[^ ]+$/ )
-                        {
-                            foreach $tag_name ( keys( %content_for_tag ) )
-                            {
-                                $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
-                            }
-                        } elsif ( $first_word eq $entry_end )
-                        {
-                            $global_trace_log .= "{{trace; warning: action " . $action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items" . "}}\n" ;
-                        }
-                        $unique_value = "" ;
-                        %content_for_tag = ( ) ;
+                        $first_word = $1 ;
                         if ( $first_word eq $entry_begin )
                         {
                             $line_status = "within" ;
-                        } else
+                            $possible_matching_entry_info = "" ;
+                        } elsif ( $first_word eq $entry_end )
                         {
+                            if ( $line_status eq "within-matching" )
+                            {
+                                $accumulated_matching_entry_info .= $possible_matching_entry_info ;
+                            }
+                            $possible_matching_entry_info = "" ;
                             $line_status = "between" ;
-                        }
-                    } elsif ( $line_status eq "within_multiline" )
-                    {
-                        $content_for_tag{ $multiline_value_name } .= $input_line . " " ;
-                    } else
-                    {
-                        $content_for_tag{ $first_word } = "" ;
-                    }
-                } elsif ( $line_status eq "within_multiline" )
-                {
-                    $content_for_tag{ $multiline_value_name } .= $input_line . " " ;
-                } elsif ( $input_line =~ /^ *([^ ]+) +([^ ].*)$/ )
-                {
-                    $first_word = $1 ;
-                    $remainder_of_line = $2 ;
-                    if ( $first_word eq $entry_unique )
-                    {
-                        $unique_value = $remainder_of_line ;
-                        $unique_value =~ s/ +/_/g ;
-                        if ( not( exists( $found_unique_value{ $unique_value } ) ) )
+                        } elsif ( ( $line_status eq "within" ) || ( $line_status eq "within-matching" ) )
                         {
-                            $found_unique_value{ $unique_value } = "found" ;
+                            $possible_matching_entry_info .= $input_line . "\n" ;
                         }
-                    } elsif ( $first_word eq $entry_delete )
+
+                    } elsif ( $input_line =~ /^ *([^ ]+) +([^ ]+) *$/ )
                     {
-                        $unique_value = $remainder_of_line ;
-                        $unique_value =~ s/ +/_/g ;
-                        $found_unique_value{ $unique_value } = "delete" ;
-                    } elsif ( $remainder_of_line =~ /^ *multi_line_begin/ )
+                        $first_word = $1 ;
+                        $second_word = $2 ;
+                        if ( $first_word eq $entry_unique )
+                        {
+                            if ( $second_word eq $entry_matching_id )
+                            {
+                                $line_status = "within-matching" ;
+                                $possible_matching_entry_info .= $input_line . "\n" ;
+                            } else
+                            {
+                                $line_status = "within-not-matching" ;
+                                $possible_matching_entry_info = "" ;
+                            }
+                        } elsif ( $first_word eq $entry_delete )
+                        {
+                            if ( $second_word eq $entry_matching_id )
+                            {
+                                $accumulated_matching_entry_info = "" ;
+                            } else
+                            {
+                                $possible_matching_entry_info = "" ;
+                                $line_status = "between" ;
+                            }
+                        } elsif ( ( $line_status eq "within" ) || ( $line_status eq "within-matching" ) )
+                        {
+                            $possible_matching_entry_info .= $input_line . "\n" ;
+                        }
+                    } elsif ( ( $line_status eq "within" ) || ( $line_status eq "within-matching" ) )
                     {
-                        $line_status = "within_multiline" ;
-                        $multiline_value_name = $first_word ;
-                        $content_for_tag{ $multiline_value_name } = "" ;
-                    } else
+                        $possible_matching_entry_info .= $input_line . "\n" ;
+                    }
+                } else
+                {
+#                   This section of code applies to action: gather-tagged-info-from-file-and-put-unique-values-into-phrase
+                    if ( $input_line =~ /^ *([^ ]+) *$/ )
                     {
-                        $content_for_tag{ $first_word } = $remainder_of_line ;
+                        $first_word = $1 ;
+						if ( $first_word eq "multi_line_end" )
+						{
+							$line_status = "within" ;
+						} elsif ( ( $first_word eq $entry_end ) || ( $first_word eq $entry_begin ) )
+						{
+							if ( $unique_value =~ /^[^ ]+$/ )
+							{
+								foreach $tag_name ( keys( %content_for_tag ) )
+								{
+									$global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
+								}
+							} elsif ( ( $entry_matching_id eq "" ) && ( $first_word eq $entry_end ) )
+							{
+								$global_trace_log .= "{{trace; warning: action " . $action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items" . "}}\n" ;
+							}
+							$unique_value = "" ;
+							%content_for_tag = ( ) ;
+							if ( $first_word eq $entry_begin )
+							{
+								$line_status = "within" ;
+							} else
+							{
+								$line_status = "between" ;
+							}
+						} elsif ( $line_status eq "within_multiline" )
+						{
+							$content_for_tag{ $multiline_value_name } .= $input_line . " " ;
+						} else
+						{
+							$content_for_tag{ $first_word } = "" ;
+						}
+					} elsif ( $line_status eq "within_multiline" )
+					{
+						$content_for_tag{ $multiline_value_name } .= $input_line . " " ;
+					} elsif ( $input_line =~ /^ *([^ ]+) +([^ ].*)$/ )
+					{
+						$first_word = $1 ;
+						$remainder_of_line = $2 ;
+						if ( $first_word eq $entry_unique )
+						{
+							$unique_value = $remainder_of_line ;
+							$unique_value =~ s/ +/_/g ;
+							if ( not( exists( $found_unique_value{ $unique_value } ) ) )
+							{
+								$found_unique_value{ $unique_value } = "found" ;
+							}
+						} elsif ( $first_word eq $entry_delete )
+						{
+							$unique_value = $remainder_of_line ;
+							$unique_value =~ s/ +/_/g ;
+							$found_unique_value{ $unique_value } = "delete" ;
+						} elsif ( $remainder_of_line =~ /^ *multi_line_begin/ )
+						{
+							$line_status = "within_multiline" ;
+							$multiline_value_name = $first_word ;
+							$content_for_tag{ $multiline_value_name } = "" ;
+						} else
+						{
+							$content_for_tag{ $first_word } = $remainder_of_line ;
+						}
+					}
+                }
+            }
+            if ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" )
+            {
+                $global_dashrep_replacement{ $target_phrase_name } = $accumulated_matching_entry_info ;
+            } elsif ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" )
+            {
+                if ( $unique_value =~ /^[^ ]+$/ )
+                {
+                    foreach $tag_name ( keys( %content_for_tag ) )
+                    {
+                        $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
                     }
                 }
-            }
-            if ( $unique_value =~ /^[^ ]+$/ )
-            {
-                foreach $tag_name ( keys( %content_for_tag ) )
+                $list_of_unique_values = "" ;
+                foreach $unique_value ( keys( %found_unique_value ) )
                 {
-                    $global_dashrep_replacement{ $tag_name . "-value-for-unique-id-" . $unique_value } = $content_for_tag{ $tag_name } ;
-                }
-            }
-            $list_of_unique_values = "" ;
-            foreach $unique_value ( keys( %found_unique_value ) )
-            {
-                if ( $found_unique_value{ $unique_value } ne "delete" )
-                {
-                    if ( $list_of_unique_values ne "" )
+                    if ( $found_unique_value{ $unique_value } ne "delete" )
                     {
-                        $list_of_unique_values .= " " ;
+                        if ( $list_of_unique_values ne "" )
+                        {
+                            $list_of_unique_values .= " " ;
+                        }
+                        $list_of_unique_values .= $unique_value ;
                     }
-                    $list_of_unique_values .= $unique_value ;
                 }
+                $global_dashrep_replacement{ $target_phrase_name } = $list_of_unique_values ;
             }
-            $global_dashrep_replacement{ $target_phrase_name } = $list_of_unique_values ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; gathered tagged info from file " . $source_filename . " to various phrase names, and unique values put into phrase " . $target_phrase_name . "}}\n" ;
+                $global_trace_log .= "{{trace; did action " . $action_name ." with file " . $source_filename . " and target phrase " . $target_phrase_name . "}}\n" ;
             }
         } else
         {

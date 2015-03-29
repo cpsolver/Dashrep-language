@@ -749,6 +749,14 @@ description-for-phrase-dashrep-gather-tag-delete:
 See the description for the action b-i-b gather h-h tagged h-h info h-h from h-h file b-i-e no-space .
 ----
 
+description-for-phrase-gather-one-entry-from-tagged-file-and-put-into-phrase:
+Reads from a file that also can be read by the action b-i-b gather h-h tagged h-h info h-h from h-h file h-h and h-h put h-h unique h-h values h-h into h-h phrase b-i-e but only gets a single entry and puts that entry into the phrase that is named as the second operand. s-n The selected entry is specified by a value in the phrase b-i-b dashrep h-h gather h-h tag h-h matching h-h id b-i-e no-space . s-n If the string that is defined in the phrase b-i-b dashrep h-h gather h-h tag h-h delete b-i-e appears within the file and applies to the selected entry, then the content prior to that point is deleted, although later entries (after the last deletion) with the same matching value are recognized.
+----
+
+description-for-phrase-dashrep-gather-tag-matching-id:
+See the description for the action b-i-b gather h-h one h-h entry h-h from h-h tagged h-h file h-h and h-h put h-h into h-h phrase b-i-e no-space .
+----
+
 description-for-phrase-list-of-phrases-newly-defined:
 A phrase that contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
 ----
