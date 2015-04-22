@@ -6313,6 +6313,11 @@ sub dashrep_file_actions
     my $prefix_text ;
     my $target_sub_folder ;
     my $slash_or_backslash_for_path ;
+    my $accumulated_matching_entry_info ;
+    my $entry_delete ;
+    my $entry_matching_id ;
+    my $possible_matching_entry_info ;
+    my $pointer ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
     my %content_for_tag ;
@@ -7379,6 +7384,11 @@ sub dashrep_file_actions
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
+                $pointer = index( $input_line , "\r" ) ;
+                if ( $pointer >= 0 )
+                {
+                    $input_line =~ s/[\r\n]+//gs ;
+                }
                 if ( $entry_matching_id ne "" )
                 {
 #                   This section of code applies to action: gather-one-entry-from-tagged-file-and-put-into-phrase
