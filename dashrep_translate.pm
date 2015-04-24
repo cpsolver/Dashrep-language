@@ -7414,7 +7414,7 @@ sub dashrep_file_actions
                             $possible_matching_entry_info .= $input_line . "\n" ;
                         }
 
-                    } elsif ( $input_line =~ /^ *([^ ]+) +([^ ]+) *$/ )
+                    } elsif ( $input_line =~ /^ *([^ ]+) +([^ \t\n\r]+) *$/ )
                     {
                         $first_word = $1 ;
                         $second_word = $2 ;
@@ -7494,7 +7494,7 @@ sub dashrep_file_actions
 						if ( $first_word eq $entry_unique )
 						{
 							$unique_value = $remainder_of_line ;
-							$unique_value =~ s/ +/_/g ;
+							$unique_value =~ s/[ \t\n\r]+/_/g ;
 							if ( not( exists( $found_unique_value{ $unique_value } ) ) )
 							{
 								$found_unique_value{ $unique_value } = "found" ;
@@ -7502,7 +7502,7 @@ sub dashrep_file_actions
 						} elsif ( $first_word eq $entry_delete )
 						{
 							$unique_value = $remainder_of_line ;
-							$unique_value =~ s/ +/_/g ;
+							$unique_value =~ s/[ \t\n\r]+/_/g ;
 							$found_unique_value{ $unique_value } = "delete" ;
 						} elsif ( $remainder_of_line =~ /^ *multi_line_begin/ )
 						{
