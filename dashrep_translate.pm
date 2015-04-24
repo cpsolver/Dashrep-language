@@ -6555,11 +6555,11 @@ sub dashrep_file_actions
         {
             if ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" )
             {
+                $string_to_find = $global_dashrep_replacement{ $operand_two } ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; searching in file " . $source_filename . " for string " . $string_to_find . "}}\n" ;
                 }
-                $string_to_find = $global_dashrep_replacement{ $operand_two } ;
                 $length_of_string = length( $string_to_find ) ;
                 while ( $input_line = <INFILE> )
                 {
