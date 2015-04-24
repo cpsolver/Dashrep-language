@@ -6320,6 +6320,8 @@ sub dashrep_file_actions
     my $entry_matching_id ;
     my $possible_matching_entry_info ;
     my $pointer ;
+    my $list_of_storage_names ;
+    my $list_of_words_as_text ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
     my %content_for_tag ;
@@ -6500,6 +6502,7 @@ sub dashrep_file_actions
     } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) )
     {
         $action_result = " " ;
+        $list_of_storage_names = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
@@ -6546,7 +6549,10 @@ sub dashrep_file_actions
                 {
                     $global_trace_log .= "{{trace; searching in file " . $source_filename . " for words in phrase " . $operand_two . "}}\n" ;
                 }
-                @list_of_words = split( / +/ , $global_dashrep_replacement{ $operand_two } ) ;
+                $list_of_words_as_text = $global_dashrep_replacement{ $operand_two } ;
+                $list_of_words_as_text =~ s/^ +// ;
+                $list_of_words_as_text =~ s/ +$// ;
+                @list_of_words = split( / +/ , $list_of_words_as_text ) ;
                 foreach $word ( @list_of_words )
                 {
                     $matching_text{ $word } = "match" ;
@@ -6580,7 +6586,13 @@ sub dashrep_file_actions
                                 {
                                     $storage_name = "dashrep-storage-" . sprintf( "%d" , $global_storage_number ) ;
                                     $global_storage_number ++ ;
-                                    $global_dashrep_replacement{ $operand_three } .= $storage_name . " " ;
+                                    if ( $list_of_storage_names eq "" )
+                                    {
+                                        $list_of_storage_names = $storage_name . " " ;
+                                    } else
+                                    {
+                                        $list_of_storage_names .= $storage_name . " " ;
+                                    }
                                     $global_dashrep_replacement{ $storage_name } = $input_line ;
                                 }
                             }
@@ -6588,6 +6600,8 @@ sub dashrep_file_actions
                     }
                 }
             }
+            $list_of_storage_names =~ s/ +$// ;
+            $global_dashrep_replacement{ $operand_three } = $list_of_storage_names ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;
