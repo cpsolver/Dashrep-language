@@ -6631,9 +6631,9 @@ sub dashrep_file_actions
                         }
                     }
                 }
+                $list_of_storage_names =~ s/ +$// ;
+                $global_dashrep_replacement{ $operand_three } = $list_of_storage_names ;
             }
-            $list_of_storage_names =~ s/ +$// ;
-            $global_dashrep_replacement{ $operand_three } = $list_of_storage_names ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;
