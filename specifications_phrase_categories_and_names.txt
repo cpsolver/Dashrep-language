@@ -199,15 +199,6 @@ dashrep-html-replacement-open-angle-bracket
 dashrep-html-replacement-quotation-mark
 insert-angle-bracketed-definitions-into-already-expanded-phrase
 
-category_web_framework
-web-framework-in-use
-generated-web-page
-do-before-generating-web-page
-do-after-generating-web-page
-web-framework-generated-web-page
-path-to-initial-dashrep-definitions
-filename-for-initial-dashrep-definitions
-
 category_time
 get-current-time-in-epoch-seconds
 split-epoch-seconds-into-named-components
@@ -229,7 +220,6 @@ dashrep-recent-phrase-name-replaced
 dashrep-warning-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
 dashrep-linewise-trace-on-yes-or-no
-dashrep-web-framework-trace-on-yes-or-no
 dashrep-omit-web-page-from-trace-log-yes-or-no
 dashrep-comments-ignored
 

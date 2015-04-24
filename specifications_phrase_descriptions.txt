@@ -291,7 +291,7 @@ If this user h-h defined phrase equals b-i-b yes b-i-e no-space , then warning m
 -----
 
 description-for-phrase-dashrep-web-framework-trace-on-yes-or-no:
-If this user h-h defined phrase equals b-i-b yes b-i-e no-space , then messages are written to the phrase b-i-b dashrep h-h debug h-h trace h-h log b-i-e during the processing doing in the web framework, and if this phrase equals b-i-b no b-i-e (or any other value), those messages are not written.
+deprecated
 -----
 
 description-for-phrase-dashrep-xml-trace-on-yes-or-no:
@@ -299,11 +299,11 @@ If this user h-h defined phrase equals b-i-b yes b-i-e no-space , then messages 
 -----
 
 description-for-phrase-do-after-generating-web-page:
-A phrase that contains actions that are processed after expanding the phrase that generates a web page in the web framework, but before the web page is sent to the browser. s-n Typically this processing does some final changes that handle special needs, such as using the b-i-b whatever b-i-e actions.
+deprecated
 -----
 
 description-for-phrase-do-before-generating-web-page:
-A phrase that contains actions that are processed before expanding the phrase that generates a web page in the web framework. s-n Typically this processing interprets what the user has requested. s-n It might involve loading additional Dashrep definitions.
+deprecated
 -----
 
 description-for-phrase-end-of-line-here:
@@ -328,7 +328,7 @@ b-i-e no-space .
 -----
 
 description-for-phrase-filename-for-initial-dashrep-definitions:
-A phrase that contains the name of a file that is used in the web framework if, but only if, the phrases b-i-b do h-h before h-h generating h-h web h-h page b-i-e b-i-b generated h-h web h-h page b-i-e are both empty. s-n If used, the contents of this file must contain Dashrep definitions, and one of those definitions must be the phrase b-i-b generated h-h web h-h page b-i-e no-space .
+deprecated
 -----
 
 description-for-phrase-find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase:
@@ -354,7 +354,7 @@ A phrase that contains four adjacent hyphen characters ( no-space bold-begin ita
 -----
 
 description-for-phrase-generated-web-page:
-A phrase that is expanded to generate a web page, if the web framework is being used.  s-n The web framework is accessed by using the b-i-b dashrep_web_framework b-i-e subroutine.
+deprecated
 -----
 
 description-for-phrase-if-yes-begin:
@@ -556,11 +556,11 @@ Deprecated: s-n See the action b-i-b use-template-with-each-word-in-phrase b-i-e
 -----
 
 description-for-phrase-web-framework-generated-web-page:
-A phrase that contains the results of expanding the phrase b-i-b generated h-h web h-h page b-i-e no-space , when using the web framework.
+deprecated
 -----
 
 description-for-phrase-web-framework-in-use:
-A phrase that equals b-i-b yes b-i-e if the web framework (which is accessed using the b-i-b dashrep_web_framework b-i-e subroutine) is being used, and otherwise equals b-i-b no b-i-e no-space .
+deprecated
 -----
 
 description-for-phrase-xml-move-attributes-into-tag-elements-within-phrase:
@@ -1806,10 +1806,6 @@ XML-import phrases
 
 heading-for-phrases-in-category_html:
 HTML-output phrases
------
-
-heading-for-phrases-in-category_web_framework:
-Web-framework phrases
 -----
 
 heading-for-phrases-in-category_ignore_capture:

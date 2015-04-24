@@ -39,12 +39,14 @@ The following sample code executes the Dashrep-language actions specified in the
     use dashrep_translate;
     &dashrep_translate::dashrep_linewise_translate( );
 
-The following sample code implements the Dashrep web framework, which allows an interactive portion of a website to be written in the Dashrep language.  (The "cgi_to_dashrep_replacements" module is available on GitHub in the CPSolver account.)
+The following sample code implements a Dashrep web framework, which allows the interactive portion of a website to be written in the Dashrep language.  (The "cgi_to_dashrep_replacements" module is available on GitHub in the CPSolver account.)  The web page is not returned by the first function call because the beginning portion of a web page has very rigorous requirements.
 
     use dashrep_translate;
     use cgi_to_dashrep_replacements;
-    $web_page = &dashrep_translate::dashrep_web_framework ;
+    $should_be_empty = &dashrep_translate::dashrep_expand_parameters( '[-dashrep-path-prefix-for-file-reading = /home/username/dashrepcode/ -][-get-definitions-from-file dashrepcode.txt-][-start-here-]' ) ;
+    $web_page = &dashrep_translate::dashrep_get_replacement( 'generated-web-page' ) ;
     print $web_page ;
+    $should_be_empty = &dashrep_translate::dashrep_expand_parameters( '[-do-after-sending-web-page-]' ) ;
 
 The module also supports direct access to functions that define Dashrep phrases, expand text that contains Dashrep phrases, and more.
 
@@ -9252,6 +9254,8 @@ sub dashrep_internal_expand_phrases_faster_subset
 
 
 =head2 dashrep_web_framework
+
+Deprecated
 
 Reads Dashrep code and does the specified Dashrep
 actions and expansions, and then the resulting
