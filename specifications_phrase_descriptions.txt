@@ -306,6 +306,10 @@ description-for-phrase-do-before-generating-web-page:
 deprecated
 -----
 
+description-for-phrase-put-into-phrase-linewise-usage-counts-for-phrase-names:
+This action puts into the specified phrase a list of counts for how many times each phrase name was replaced. s-n Each count and its associated phrase name are separated from the next count and phrase name by a newline character. s-n The phrases are sorted by the count number, with the highest counts appearing first. s-n Within each count, the order is alphabetical.
+-----
+
 description-for-phrase-end-of-line-here:
 A phrase that is inserted at the end of each line when the actions
 b-i-b copy-from-file-to-phrase b-i-e or b-i-b copy h-h from h-h file h-h to h-h phrases h-h line h-h numbered b-i-e are used, and if the phrase b-i-b dashrep h-h yes h-h indicate h-h line h-h endings b-i-e equals b-i-b yes b-i-e no-space .

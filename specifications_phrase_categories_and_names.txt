@@ -222,6 +222,7 @@ dashrep-action-trace-on-yes-or-no
 dashrep-linewise-trace-on-yes-or-no
 dashrep-omit-web-page-from-trace-log-yes-or-no
 dashrep-comments-ignored
+put-into-phrase-linewise-usage-counts-for-phrase-names
 
 category_advanced
 dashrep-undefined
