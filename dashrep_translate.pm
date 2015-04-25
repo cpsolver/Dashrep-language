@@ -5156,14 +5156,18 @@ sub dashrep_expand_parameters
             foreach $phrase_name ( keys( %global_replacement_count_for_item_name ) )
             {
                 $replacement_count = $global_replacement_count_for_item_name{ $phrase_name } ;
-                $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } .= $phrase_name . "\n" ;
+                if ( $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } ne "" )
+                {
+                    $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } .= "\n" ;
+                }
+                $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } .= $phrase_name ;
             }
-            foreach $replacement_count ( reverse( sort( keys( %endless_loop_replacements_with_count ) ) ) )
+            foreach $replacement_count_text ( reverse( sort( keys( %endless_loop_replacements_with_count ) ) ) )
             {
-                @list_of_phrase_names = sort( split( / +/ , $endless_loop_replacements_with_count{ $replacement_count } ) ) ;
+                @list_of_phrase_names = sort( split( /\n/ , $endless_loop_replacements_with_count{ $replacement_count_text } ) ) ;
                 foreach $phrase_name ( @list_of_phrase_names )
                 {
-                    $result_text .= $replacement_count . " " . $phrase_name  . "\n" ;
+                    $result_text .= $replacement_count_text . " " . $phrase_name  . "\n" ;
                 }
             }
             $global_dashrep_replacement{ $operand_one } = $result_text ;
