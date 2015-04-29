@@ -516,8 +516,8 @@ description-for-phrase-position-of-string-in-phrase-within-phrase:
 An action that searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The character positions are numbered starting at 1 in the first character position.
 -----
 
-description-for-phrase-position-of-string-in-phrase-within-phrase-starting-after-character-position:
-An action that searches for the characters specified in the first phrase, and performs the search within the second phrase, and starts after (not at) the character position specified in the third operand, and supplies the character position of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The character positions are numbered starting at 1 in the first character position. sentence-next If b-i-b 0 b-i-e (zero) is used as the starting position, the entire phrase is searched.
+description-for-phrase-positions-multiple-of-string-in-phrase-within-phrase-put-into-phrase:
+An action that searches for the characters from the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches. sentence-next If there is no match, the list is empty. sentence-next The character positions are numbered starting at 1 in the first character position.
 -----
 
 description-for-phrase-position-of-word-in-phrase-within-phrase:

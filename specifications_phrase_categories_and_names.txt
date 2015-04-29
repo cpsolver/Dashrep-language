@@ -98,7 +98,7 @@ category_character
 count-of-characters-in-phrase-definition
 characters-in-phrase-get-from-position-to-position
 position-of-string-in-phrase-within-phrase
-position-of-string-in-phrase-within-phrase-starting-after-character-position
+positions-multiple-of-string-in-phrase-within-phrase-put-into-phrase
 copy-from-phrase-to-phrase-and-remove-extra-spaces
 copy-from-phrase-to-phrase-characters-from-position-to-position
 copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase
