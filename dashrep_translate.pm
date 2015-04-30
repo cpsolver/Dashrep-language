@@ -2257,7 +2257,10 @@ sub dashrep_expand_parameters
                     $global_dashrep_replacement{ $target_phrase_name } .= $text_string ;
                 } elsif ( $action_name eq "append-from-phrase-to-phrase" )
                 {
-                    $global_dashrep_replacement{ $target_phrase_name } .= " " . $global_dashrep_replacement{ $source_phrase_name } ;
+                    $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
+                    $text_string =~ s/^ +//s ;
+                    $text_string =~ s/ +$//s ;
+                    $global_dashrep_replacement{ $target_phrase_name } .= " " . $text_string ;
                 } elsif ( $action_name eq "prepend-from-phrase-to-phrase-no-space" )
                 {
                     $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
@@ -4448,6 +4451,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
+            $global_dashrep_replacement{ $target_operand } = "" ;
             $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_x_values_as_text =~ s/^ +//s ;
             $list_of_x_values_as_text =~ s/ +$//s ;
