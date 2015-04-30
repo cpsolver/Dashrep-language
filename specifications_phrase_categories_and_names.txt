@@ -32,6 +32,7 @@ copy-from-phrase-to-phrase
 copy-to-phrase-from-following-text
 append-from-phrase-to-phrase
 append-from-phrase-to-phrase-no-space
+repeatedly-append-from-phrase-to-phrase-using-repeat-count
 prepend-from-phrase-to-phrase
 prepend-from-phrase-to-phrase-no-space
 append-new-line-to-phrase

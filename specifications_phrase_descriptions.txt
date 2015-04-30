@@ -1032,6 +1032,13 @@ This action must be followed by two phrase names, not one. s-n
 Among other uses, this action can be used to build a list of items, or to insert text (such as a raw Dashrep definition) within other text without being translated.
 -----
 
+description-for-phrase-repeatedly-append-from-phrase-to-phrase-using-repeat-count:
+An action that repeatedly copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase, until the number of copies specified in the third operand have been inserted. s-n
+Spaces separate the copied text strings. s-n
+This action must be followed by two phrase names and a positive integer number. s-n 
+This action avoids complications that can arise if the text being copied should not be expanded.
+-----
+
 description-for-phrase-append-multiple-from-phrases-named-in-pattern-to-phrase:
 An action that appends multiple phrase definitions onto the end of the definition of the second phrase. s-n The pattern for the multiple phrase names is specified in the first phrase. s-n The pattern must contain characters between the string b-i-b ambee hyphen-here no-space b-i-e (or b-i-b conambee hyphen-here no-space b-i-e no-space ) and the string b-i-b no-space hyphen-here amenn b-i-e (or b-i-b amenncon hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the word list contains only a string without any spaces (a single word), then only one item will be appended. s-n If the list is empty, nothing will be appended. s-n As an example of this action, if the first phrase contains the string b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the string b-i-b one two three b-i-e and the second phrase already contains the string b-i-b dolphin b-i-e and the phrase b-i-b item h-h one b-i-e contains b-i-b buffalo b-i-e and the phrase b-i-b item h-h two b-i-e contains b-i-b bear b-i-e and the phrase b-i-b item h-h three b-i-e contains b-i-b eagle b-i-e then the second phrase will contain b-i-b dolphin buffalo bear eagle b-i-e no-space . s-n This action is useful for building a long list fast, without needing to use a separate Dashrep action for each item appended.
 -----
