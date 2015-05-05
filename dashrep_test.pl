@@ -1477,6 +1477,27 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+#  Test the action "use-handler-with-each-word-in-phrase"
+
+$being_tested = "test action use-handler-with-each-word-in-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-from-phrase-to-phrase word-to-use-in-handler string-generated-by-use-handler-action-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-use-handler-with-each-word-in-phrase parameter-phrase-to-repeat sample-word-list-]" ) ;
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "string-generated-by-use-handler-action" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-from-phrase-to-phrase word-to-use-in-handler string-generated-by-use-handler-action-]" );
+# $string_return_value = dashrep_expand_parameters( "[-use-handler-with-each-word-in-phrase parameter-phrase-to-repeat sample-word-list-]" ) ;
+# $string_return_value = dashrep_get_replacement( "string-generated-by-use-handler-action" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value =~ /^ *delta gamma beta alpha *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
 #  Test a user-defined action.
 
 $being_tested = "test user-defined action -- ";
