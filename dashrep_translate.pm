@@ -446,6 +446,8 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "yes-if-any-yes" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "no-if-any-no" } = 1 ;
 
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-add-number" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
@@ -1495,7 +1497,7 @@ sub dashrep_expand_parameters
     my $not_listed_word ;
     my $result_word_list ;
     my $string_in_phrase ;
-    my $template_phrase_name ;
+    my $handler_phrase_name ;
     my $parameter_word_list ;
     my $generated_list_name ;
     my $text_that_expands_to_generate_list ;
@@ -1615,7 +1617,7 @@ sub dashrep_expand_parameters
     my $character_to_possibly_replace ;
     my $pointer_to_matching_character ;
     my $character_to_insert ;
-    my $name_of_parameter_for_template_or_handler ;
+    my $name_of_parameter_for_handler ;
     my $list_of_x_values_as_text ;
     my $list_of_y_values_as_text ;
     my $pair_pointer ;
@@ -5008,47 +5010,28 @@ sub dashrep_expand_parameters
         if ( ( $action_name eq "use-template-with-each-word-in-phrase" ) || ( $action_name eq "use-handler-with-each-word-in-phrase" ) )
         {
             $action_result = " " ;
-            if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } =~ /^ *$/ ) )
-            {
-                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $action_result . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_one . " does not exist or is empty" . "}}\n" ;
-                }
-                next ;
-            }
-            if ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } =~ /^ *$/ ) )
-            {
-                $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
-                $replacement_text = $text_begin . $action_result . $text_end ;
-                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , phrase named " . $operand_two . " does not exist or is empty" . "}}\n" ;
-                }
-                next ;
-            }
-            $name_of_parameter_for_template_or_handler = "word-to-use-in-handler" ;
+            $name_of_parameter_for_handler = "word-to-use-in-handler" ;
             if ( $action_name eq "use-template-with-each-word-in-phrase" )
             {
-                $name_of_parameter_for_template_or_handler = "word-to-use-in-template" ;
+                $name_of_parameter_for_handler = "word-to-use-in-template" ;
             }
-            $template_phrase_name = $operand_one ;
+            $handler_phrase_name = $operand_one ;
             $text_to_expand = " " ;
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_two } ;
-            $list_of_words_as_text =~ s/^ +//s ;
-            $list_of_words_as_text =~ s/ +$//s ;
+            if ( ( $list_of_words_as_text =~ /^ / ) || ( $list_of_words_as_text =~ / $/ ) )
+            {
+                $list_of_words_as_text =~ s/^ +//s ;
+                $list_of_words_as_text =~ s/ +$//s ;
+            }
             @list_of_words = split( / +/ , $list_of_words_as_text ) ;
             for ( $word_number = 1 ; $word_number <= $#list_of_words + 1 ; $word_number ++ )
             {
-                $text_to_expand .= "[-copy-from-phrase-to-phrase-only-word-at-position " . $operand_two . " " . $name_of_parameter_for_template_or_handler . " " . $word_number . "-][-" . $template_phrase_name . "-]" ;
+                $text_to_expand .= "[-copy-from-phrase-to-phrase-only-word-at-position " . $operand_two . " " . $name_of_parameter_for_handler . " " . $word_number . "-][-" . $handler_phrase_name . "-]" ;
             }
             $text_to_expand .= " " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; action " . $action_name . " created code that will use template " . $operand_one . " with each word in phrase " . $operand_two . "}}\n";
-                $global_trace_log .= "{{trace; list of words: " . $global_dashrep_replacement{ $operand_two } . "}}\n";
-                $global_trace_log .= "{{trace; text that will be expanded: " . $text_to_expand . "}}\n";
+                $global_trace_log .= "{{trace; action " . $action_name . " created code that will use handler " . $operand_one . " with each word in phrase " . $operand_two . "}}\n";
                 if ( $action_name eq "use-template-with-each-word-in-phrase" )
                 {
                     $global_trace_log .= "{{trace; warning: action " . $action_name . " is deprecated, and will not exist in future versions" . "}}\n" ;
@@ -5079,7 +5062,7 @@ sub dashrep_expand_parameters
                 next ;
             } else
             {
-                $template_phrase_name = $operand_one ;
+                $handler_phrase_name = $operand_one ;
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
                 $global_replacement_count_for_item_name{ "generating list named " . $generated_list_name } ++ ;
@@ -5135,7 +5118,7 @@ sub dashrep_expand_parameters
                                 }
                                 $global_dashrep_replacement{ "dashrep-createlist-parameter-number-" . $item_number } = $parameter ;
                                 $text_that_expands_to_generate_list .= "[-copy-from-phrase-to-phrase dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
-                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $template_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $handler_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
                                 if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
                                 {
                                     $text_that_expands_to_generate_list .= "[-append-from-phrase-to-phrase dashrep-list-info-temporary-storage-separator " . $generated_list_name . "-]" ;
@@ -5147,7 +5130,7 @@ sub dashrep_expand_parameters
                                 $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-createlist-parameter-number-" . $item_number . "-]" ;
                             } else
                             {
-                                $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $template_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $handler_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
                                 if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" ) && ( $parameter =~ /-/ ) )
                                 {
                                     $global_trace_log .= "{{warning; parameter (" . $parameter . ") contains hyphens, so the full version, not this simple version, should be used to generate this list" . "}}\n";
