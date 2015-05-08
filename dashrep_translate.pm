@@ -2238,8 +2238,9 @@ sub dashrep_expand_parameters
 #  append-from-phrase-to-phrase-no-space
 #  prepend-from-phrase-to-phrase
 #  prepend-from-phrase-to-phrase-no-space
-#  append-word-to-phrase
 #  repeatedly-append-from-phrase-to-phrase-using-repeat-count
+#
+#  append-word-to-phrase -- Deprecated, because is equivalent to normal append action
 
         if ( ( $action_name eq "append-from-phrase-to-phrase" ) || ( $action_name eq "append-from-phrase-to-phrase-no-space" ) || ( $action_name eq "prepend-from-phrase-to-phrase" ) || ( $action_name eq "prepend-from-phrase-to-phrase-no-space" ) || ( $action_name eq "append-word-to-phrase" ) || ( $action_name eq "repeatedly-append-from-phrase-to-phrase-using-repeat-count" ) )
         {
@@ -2490,10 +2491,11 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-numeric-sort-by-word
 #  copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
 #  copy-from-phrase-to-phrase-and-split-into-list-of-characters
-#  copy-from-phrase-to-phrase-but-remove-first-word
-#  copy-from-phrase-to-phrase-but-remove-last-word
 #  copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 #  copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
+#
+#  copy-from-phrase-to-phrase-but-remove-first-word -- Deprecated, because its functionality overlaps another words-copy action
+#  copy-from-phrase-to-phrase-but-remove-last-word -- Deprecated, because its functionality overlaps another words-copy action
 
         if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" ) )
         {
@@ -3303,7 +3305,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  first-word-in-phrase
+#  first-word-in-phrase -- Deprecated, because its functionality overlaps another words-copy action
 
         if ( $action_name eq "first-word-in-phrase" )
         {
@@ -3331,7 +3333,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  last-word-in-phrase
+#  last-word-in-phrase -- Deprecated, because its functionality overlaps another words-copy action
 
         if ( $action_name eq "last-word-in-phrase" )
         {

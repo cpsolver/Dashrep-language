@@ -115,6 +115,8 @@ copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
 
 category_word
+count-of-words-in-phrase
+position-of-word-in-phrase-within-phrase
 from-phrase-get-word-number
 copy-from-phrase-to-phrase-only-word-at-position
 copy-from-phrase-to-phrase-words-from-position-to-position
@@ -126,13 +128,6 @@ copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
 copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
 copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
 copy-from-phrase-to-phrase-with-word-order-reversed
-count-of-words-in-phrase
-position-of-word-in-phrase-within-phrase
-first-word-in-phrase
-last-word-in-phrase
-copy-from-phrase-to-phrase-but-remove-first-word
-copy-from-phrase-to-phrase-but-remove-last-word
-append-word-to-phrase
 
 category_loop
 use-handler-with-each-word-in-phrase
