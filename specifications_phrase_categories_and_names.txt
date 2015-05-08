@@ -96,7 +96,7 @@ numeric-y-map-tile-number-based-on-latitude
 numeric-map-tile-zoom
 
 category_character
-count-of-characters-in-phrase-definition
+count-of-characters-in-phrase
 characters-in-phrase-get-from-position-to-position
 position-of-string-in-phrase-within-phrase
 positions-multiple-of-string-in-phrase-within-phrase-put-into-phrase

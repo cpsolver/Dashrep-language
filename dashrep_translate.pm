@@ -3983,10 +3983,12 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the action:
-#  count-of-characters-in-phrase-definition
+#  Handle the actions:
+#  count-of-characters-in-phrase
+#
+#  count-of-characters-in-phrase-definition -- Deprecated, because is older name
 
-       if ( $action_name eq "count-of-characters-in-phrase-definition" )
+       if ( ( $action_name eq "count-of-characters-in-phrase" ) || ( $action_name eq "count-of-characters-in-phrase-definition" ) )
        {
             $action_result = "0" ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
