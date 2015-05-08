@@ -1492,6 +1492,8 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-gene
 # $string_return_value = dashrep_get_replacement( "string-generated-by-use-handler-action" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
+# $special_trace_value = &dashrep_translate::dashrep_get_replacement( "special-trace-value" );
+# $results_text .= "[[" . $special_trace_value . "]]" ;
 if ( $string_return_value =~ /^ *delta gamma beta alpha *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
