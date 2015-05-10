@@ -289,6 +289,8 @@ test-of-special-operators:
 [-numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number-]
 [-numeric-vectors-add vector-one vector-two vector-result-addition-]
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
+[-text-to-repeat = number 9 -]
+[-repeatedly-append-from-phrase-to-phrase-using-repeat-count text-to-repeat list-of-repeated-text 9 -]
 nothing else
 --------
 
@@ -1495,6 +1497,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-gene
 # $special_trace_value = &dashrep_translate::dashrep_get_replacement( "special-trace-value" );
 # $results_text .= "[[" . $special_trace_value . "]]" ;
 if ( $string_return_value =~ /^ *delta gamma beta alpha *$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "repeatedly-append-from-phrase-to-phrase-using-repeat-count"
+
+$being_tested = "test action repeatedly-append-from-phrase-to-phrase-using-repeat-count -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-repeated-text" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "list-of-repeated-text" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
