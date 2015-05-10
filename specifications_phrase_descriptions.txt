@@ -1039,7 +1039,7 @@ description-for-phrase-repeatedly-append-from-phrase-to-phrase-using-repeat-coun
 An action that repeatedly copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase, until the number of copies specified in the third operand have been inserted. s-n
 Spaces separate the copied text strings. s-n
 This action must be followed by two phrase names and a positive integer number. s-n 
-This action avoids complications that can arise if the text being copied should not be expanded.
+This action avoids complications that can arise if the text being copied should not be expanded, and is much faster than using the b-i-b use h-h handler h-h with h-h each h-h word h-h in h-h phrase b-i-e no-space .
 -----
 
 description-for-phrase-append-multiple-from-phrases-named-in-pattern-to-phrase:

@@ -632,7 +632,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-c
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "should-be-copied-text" );
 #  uncomment-for-cpan-version-end
-if ( $string_return_value eq " copied text" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "copied text" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
