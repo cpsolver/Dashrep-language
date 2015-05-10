@@ -926,10 +926,10 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "test counting actions -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "should-be-counts-3-and-minus-2" );
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-counts-3-and-minus-2" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "should-be-counts-3-and-5" );
+# $string_return_value = &dashrep_get_replacement( "should-be-counts-3-and-5" );
 #  uncomment-for-cpan-version-end
 if ( $string_return_value eq "3 -2" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };

@@ -3867,7 +3867,7 @@ sub dashrep_expand_parameters
                     $plus_or_minus_one = 1 ;
                     $count_range = $ending_count - $starting_count + 1 ;
                 }
-                if ( $count_range > 99999 )
+                if ( $count_range > 9999999 )
                 {
                     $action_result = " " . $action_name . " " . $operands_all . " " ;
                 } else
