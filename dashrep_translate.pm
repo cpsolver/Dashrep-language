@@ -2302,19 +2302,22 @@ sub dashrep_expand_parameters
                 {
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
-                        $global_trace_log .= "{{trace; did action " . $action_name . " from phrase " . $operand_one . " to phrase " . $operand_two . "}}\n" ;
+                        $global_trace_log .= "{{trace; action " . $action_name . " has repeat count less than one (" . $operand_two . ")" . "}}\n" ;
                     }
-                    exit ;
+                    next ;
                 }
                 if ( $global_dashrep_replacement{ $operand_two } eq "" )
                 {
                     $growing_text_to_append = $text_to_append ;
+                } else
+                {
+                    $growing_text_to_append = " " . $text_to_append ;
                 }
                 for ( $count = 2 ; $count <= $repeat_count ; $count ++ )
                 {
                     $growing_text_to_append .= " " . $text_to_append ;
                 }
-                $global_dashrep_replacement{ $operand_two } = $growing_text_to_append ;
+                $global_dashrep_replacement{ $operand_two } .= $growing_text_to_append ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
