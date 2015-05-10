@@ -210,6 +210,10 @@ description-for-phrase-create-list-of-phrase-names-that-begin-with-text-in-phras
 An action that looks at all the defined phrases and identifies the ones whose name begins with the text in the first phrase, and puts those phrase names into the second phrase, with a space between each phrase name.
 -----
 
+description-for-phrase-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase
+An action that looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially matching words into the second phrase, with a space between each phrase name.
+-----
+
 description-for-phrase-dashrep-action-trace-on-yes-or-no:
 A b-i-b yes b-i-e value for this phrase requests that each encountered action add a message to the trace log to indicate which action occurred, and a b-i-b no b-i-e value keeps silent when each encountered action is handled. s-n For some actions, additional information about the action is included.
 -----

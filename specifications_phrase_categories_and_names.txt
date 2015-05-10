@@ -129,6 +129,7 @@ copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
 copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
 copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
 copy-from-phrase-to-phrase-with-word-order-reversed
+copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase
 
 category_loop
 use-handler-with-each-word-in-phrase
@@ -136,7 +137,6 @@ word-to-use-in-handler
 
 category_generate_list
 counts-from-integer-to-integer-put-into-phrase
-create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase
 every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
 every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
 
