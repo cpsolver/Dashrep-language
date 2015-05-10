@@ -2258,7 +2258,11 @@ sub dashrep_expand_parameters
                 $text_to_append = $global_dashrep_replacement{ $operand_one } ;
             } else
             {
-                $text_to_append = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; action " . $action_name . " has nothing to append, because operand one -- " . $operand_one . " -- is empty" . "}}\n" ;
+                }
+                next ;
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
             {
@@ -2296,28 +2300,37 @@ sub dashrep_expand_parameters
             {
                 $text_to_append =~ s/^ +//s ;
                 $text_to_append =~ s/ +$//s ;
-                $repeat_count = $operand_three + 0 ;
-                $growing_text_to_append = "" ;
-                if ( $repeat_count < 1 )
+                if ( $operand_three eq "0" )
+                {
+                    $repeat_count = 0 ;
+                } else
+                {
+                    $repeat_count = $operand_three + 0 ;
+                }
+                if ( ( $repeat_count < 1 ) || ( $repeat_count > 99999 ) )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                     {
-                        $global_trace_log .= "{{trace; action " . $action_name . " has repeat count less than one (" . $operand_two . ")" . "}}\n" ;
+                        $global_trace_log .= "{{trace; action " . $action_name . " has repeat count (" . $repeat_count . ") that is less than one or is too large" . "}}\n" ;
                     }
+                    $replacement_text = $text_begin . $action_result . $text_end ;
                     next ;
-                }
-                if ( $global_dashrep_replacement{ $operand_two } eq "" )
-                {
-                    $growing_text_to_append = $text_to_append ;
                 } else
                 {
-                    $growing_text_to_append = " " . $text_to_append ;
+                    $growing_text_to_append = "" ;
+                    if ( $global_dashrep_replacement{ $operand_two } eq "" )
+                    {
+                        $growing_text_to_append = $text_to_append ;
+                    } else
+                    {
+                        $growing_text_to_append = " " . $text_to_append ;
+                    }
+                    for ( $count = 2 ; $count <= $repeat_count ; $count ++ )
+                    {
+                        $growing_text_to_append .= " " . $text_to_append ;
+                    }
+                    $global_dashrep_replacement{ $operand_two } .= $growing_text_to_append ;
                 }
-                for ( $count = 2 ; $count <= $repeat_count ; $count ++ )
-                {
-                    $growing_text_to_append .= " " . $text_to_append ;
-                }
-                $global_dashrep_replacement{ $operand_two } .= $growing_text_to_append ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
