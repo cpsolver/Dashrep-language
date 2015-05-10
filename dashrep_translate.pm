@@ -2262,6 +2262,7 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; action " . $action_name . " has nothing to append, because operand one -- " . $operand_one . " -- is empty" . "}}\n" ;
                 }
+                $replacement_text = $text_begin . $action_result . $text_end ;
                 next ;
             }
             if ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) )
