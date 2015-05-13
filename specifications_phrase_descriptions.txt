@@ -1218,11 +1218,11 @@ Translates XML in the specified input file into Dashrep phrases and puts the res
 -----
 
 description-for-phrase-dashrep-first-xml-tag-name:
-A phrase that supplies an XML tag name (without angle brackets) that indicates the first XML tag to be recognized when using the action i-b linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file i-e no-space . s-n Tags at higher levels within the XML structure are ignored. s-n This tag name becomes the first tag name in the generated phrase names.
+A phrase that supplies an XML tag name (without angle brackets) that indicates the first XML tag to be recognized when using the action b-i-b linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file b-i-e no-space . s-n Tags at higher levels within the XML structure are ignored. s-n This tag name becomes the first tag name in the generated phrase names.
 -----
 
 description-for-phrase-dashrep-list-of-xml-phrases:
-A phrase that is filled with a list of all the phrase names that were written by the action i-b linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file i-e no-space .
+A phrase that is filled with a list of all the phrase names that were written by the action b-i-b linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file b-i-e no-space .
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase:
