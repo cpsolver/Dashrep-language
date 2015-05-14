@@ -276,7 +276,7 @@ test-of-special-operators:
 [-use-template-and-parameters-to-create-full-list-with-name: template-for-full-createlist sample-word-list-one generated-full-list-]
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-translation-safe = <character_hyphen>-]
-[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
+[-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
@@ -377,7 +377,7 @@ character-period:
 --------
 
 test-of-replace-periods-with-spaces:
-[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase: text-with-periods text-with-spaces character-period character-space-]
+[-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase: text-with-periods text-with-spaces character-period character-space-]
 --------
 
 test-of-several-copy-actions:
