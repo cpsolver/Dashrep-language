@@ -519,7 +519,7 @@ description-for-phrase-path-to-initial-dashrep-definitions:
 A phrase that contains the path for the file named in the phrase b-i-b filename h-h for h-h initial h-h dashrep h-h definitions b-i-e no-space . s-n See b-i-b filename h-h for h-h initial h-h dashrep h-h definitions b-i-e for details.
 -----
 
-description-for-phrase-position-of-string-in-phrase-within-phrase:
+description-for-phrase-position-of-text-in-phrase-within-phrase:
 An action that searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The character positions are numbered starting at 1 in the first character position.
 -----
 

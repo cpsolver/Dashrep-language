@@ -98,7 +98,7 @@ numeric-map-tile-zoom
 category_character
 count-of-characters-in-phrase
 characters-in-phrase-get-from-position-to-position
-position-of-string-in-phrase-within-phrase
+position-of-text-in-phrase-within-phrase
 positions-multiple-of-delimiter-within-phrase-put-into-phrase
 positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase
 copy-from-phrase-to-phrase-and-remove-extra-spaces

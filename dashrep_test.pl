@@ -1274,9 +1274,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase action.
+#  Test the copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase action.
 
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase -- ";
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
@@ -1364,9 +1364,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" action.
+#  Test the "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" action.
 
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase -- ";
+$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-translation-safe" );
