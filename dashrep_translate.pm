@@ -2563,7 +2563,6 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase
 #  copy-to-phrase-from-following-text
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
-#  copy-from-phrase-to-phrase-and-replace-digits-with-9s (useful for identifying string patterns that involve digits)
 #  copy-from-phrase-to-phrase-lowercase-only
 #  copy-from-phrase-to-phrase-uppercase-only
 #  copy-from-phrase-to-phrase-initial-caps
@@ -2576,6 +2575,7 @@ sub dashrep_expand_parameters
 #
 #  copy-from-phrase-to-phrase-but-remove-first-word -- Deprecated, because its functionality overlaps another words-copy action
 #  copy-from-phrase-to-phrase-but-remove-last-word -- Deprecated, because its functionality overlaps another words-copy action
+#  copy-from-phrase-to-phrase-and-replace-digits-with-9s -- Deprecated, use copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string instead
 
         if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" ) )
         {
