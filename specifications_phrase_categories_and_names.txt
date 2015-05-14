@@ -158,7 +158,7 @@ copy-from-file-to-phrases-line-numbered
 linewise-read-from-file-and-use-handler
 storage-input-line-from-file
 linewise-input-line-count
-find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase
+find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase
 find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase
 find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase
 copy-from-columns-in-file-to-named-phrases
