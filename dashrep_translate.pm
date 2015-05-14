@@ -4634,6 +4634,8 @@ sub dashrep_expand_parameters
 #  numeric-vector-integers
 #  numeric-vector-absolutes
 #  numeric-vector-opposite-positive-versus-negative -- Removed, instead, multiply by minus one
+#
+#  Reminder: target phrase name might be the same as the source phrase name
 
         if ( ( $action_name eq "numeric-vector-add-number" ) || ( $action_name eq "numeric-vector-multiply-by-number" ) || ( $action_name eq "numeric-vectors-add" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) || ( $action_name eq "numeric-vector-integers" ) || ( $action_name eq "numeric-vector-absolutes" ) )
         {
@@ -4661,11 +4663,11 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            $global_dashrep_replacement{ $target_operand } = "" ;
             $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_x_values_as_text =~ s/^ +//s ;
             $list_of_x_values_as_text =~ s/ +$//s ;
             @list_of_x_values = split( / +/s , $list_of_x_values_as_text ) ;
+            $global_dashrep_replacement{ $target_operand } = "" ;
             if ( ( $action_name eq "numeric-vectors-add" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) )
             {
                 $list_of_y_values_as_text = $global_dashrep_replacement{ $operand_two } ;
