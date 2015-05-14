@@ -847,7 +847,7 @@ Contains the text that was being translated at the time an b-i-b escape h-h if h
 ----
 
 description-for-phrase-dashrep-omit-web-page-from-trace-log-yes-or-no:
-A special phrase that eliminates the expanded web page from appearing in the trace log. s-n This option is useful when the trace log is displayed as part of a generated web page.
+deprecated
 ---
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
