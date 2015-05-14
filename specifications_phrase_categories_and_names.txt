@@ -225,6 +225,7 @@ unique-value
 dashrep-list-of-recognized-phrase-names
 dashrep-yes-indicate-line-endings
 yes-or-no-use-faster-subset-expand
+yes-or-no-use-slower-subset-expand
 dashrep-yes-do-not-expand-special-phrases
 yes-or-no-allow-user-defined-actions
 user-defined-action-operand-one

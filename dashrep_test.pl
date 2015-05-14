@@ -55,6 +55,7 @@ $results_text = "";
 #-------------------------------------------
 #  Optionally test the new expansion code.
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "yes-or-no-use-slower-subset-expand" , "no" );
 $numeric_return_value = &dashrep_translate::dashrep_define( "yes-or-no-use-faster-subset-expand" , "yes" );
 
 

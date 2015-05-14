@@ -1668,6 +1668,10 @@ description-for-phrase-yes-or-no-use-faster-subset-expand:
 If this phrase is defined as b-i-b yes b-i-e no-space , a newer and faster section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next This code handles the directives b-i-b no hyphen-here space b-i-e and b-i-b one hyphen-here space b-i-e and b-i-b new hyphen-here line b-i-e and b-i-b empty hyphen-here line b-i-e no-space . sentence-next This code is useful for increasing the speed of a server response for a website. sentence-next The original code is still available for uses that require handling all Dashrep conventions and that do not require fast execution times.
 ----
 
+description-for-phrase-yes-or-no-use-slower-subset-expand:
+If this phrase is defined as b-i-b no b-i-e no-space , an older and slower section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next See b-i-b yes h-h or h-h no h-h use h-h faster h-h subset h-h expand b-i-e for details.
+----
+
 description-for-phrase-dashbee:
 (described in table above)
 -----
