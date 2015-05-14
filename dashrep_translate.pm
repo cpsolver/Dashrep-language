@@ -7373,7 +7373,7 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the action:
-#  expand-phrase-to-file
+#  expand-phrase-to-file -- Deprecated, just use normal expand and then write to file
 #
 #  The filename is edited to remove any path
 #  specifications, and then the prefix in the
