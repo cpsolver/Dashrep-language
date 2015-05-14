@@ -7440,7 +7440,7 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the action:
-#  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
+#  linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- Deprecated, will be replaced by simpler approach
 #
 #  The filename is edited to remove any path
 #  specifications, and then the prefix in the
