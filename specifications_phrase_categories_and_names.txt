@@ -154,7 +154,6 @@ write-all-dashrep-phrase-names-to-file
 write-dashrep-definitions-listed-in-phrase-to-file
 copy-from-file-to-phrase
 copy-from-phrase-append-to-file
-expand-phrase-to-file
 copy-from-file-to-phrases-line-numbered
 linewise-read-from-file-and-use-handler
 storage-input-line-from-file
@@ -183,12 +182,6 @@ create-empty-sub-folder
 
 category_xml
 xml-move-attributes-into-tag-elements-within-phrase
-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file
-dashrep-first-xml-tag-name
-dashrep-list-of-xml-phrases
-dashrep-xml-level-reset-if-zero
-dashrep-xml-trace-on-yes-or-no
-dashrep-xml-yes-ignore-if-no-tag-replacement
 
 category_html
 dashrep-html-replacement-ampersand
