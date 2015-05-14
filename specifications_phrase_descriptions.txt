@@ -111,7 +111,7 @@ A phrase that contains the open h-h square h-h bracket character ( no-space b-b 
 description-for-phrase-character-space:
 A phrase that contains one space character. s-n
 This phrase is useful when using the action
-b-i-b copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase b-i-e
+b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h replace h-h text h-h in h-h phrase h-h with h-h phrase b-i-e
 no-space .
 -----
 
@@ -154,7 +154,7 @@ description-for-phrase-copy-from-phrase-to-phrase-and-replace-spaces-with-phrase
 deprecated
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase:
+description-for-phrase-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase:
 An action that replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The two phrase names can be the same.
 -----
 
@@ -342,7 +342,7 @@ description-for-phrase-filename-for-initial-dashrep-definitions:
 deprecated
 -----
 
-description-for-phrase-find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase:
+description-for-phrase-find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase:
 Reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase. s-n If none of the lines in the file begin with the specified text, then the third phrase will be empty. s-n The text being searched for can contain a trailing space, which is useful when full h-h word matches are needed. s-n
 The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
@@ -995,7 +995,7 @@ no-space .
 
 description-for-phrase-empty-text:
 A pre-defined phrase that contains no text. s-n It is useful with the action
-b-i-b copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase b-i-e
+b-i-b copy h-h from h-h phrase h-h to h-h phrase h-h and h-h replace h-h text h-h in h-h phrase h-h with h-h phrase b-i-e
 no-space . s-n
 To clear a phrase, use the action b-i-b clear h-h phrase b-i-e no-space . s-n To test whether a phrase's definition is empty, use the action
 b-i-b yes h-h or h-h no h-h empty h-h phrase b-i-e
