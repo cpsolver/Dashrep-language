@@ -41,6 +41,7 @@ expand-phrase-to-phrase
 expand-only-parameters-in-phrase-to-phrase
 copy-multiple-words-in-phrase-to-phrases-named-in-pattern
 append-multiple-from-phrases-named-in-pattern-to-phrase
+insert-angle-bracketed-definitions-into-already-expanded-phrase
 dashrep-yes-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
 export-defs-all-begin
@@ -117,6 +118,7 @@ copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
 category_word
 count-of-words-in-phrase
 position-of-word-in-phrase-within-phrase
+positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase
 from-phrase-get-word-number
 copy-from-phrase-to-phrase-only-word-at-position
 copy-from-phrase-to-phrase-words-from-position-to-position
@@ -188,7 +190,6 @@ dashrep-html-replacement-apostrophe
 dashrep-html-replacement-close-angle-bracket
 dashrep-html-replacement-open-angle-bracket
 dashrep-html-replacement-quotation-mark
-insert-angle-bracketed-definitions-into-already-expanded-phrase
 
 category_time
 get-current-time-in-epoch-seconds
