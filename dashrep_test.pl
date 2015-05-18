@@ -295,6 +295,8 @@ test-of-special-operators:
 [-list-of-words-to-filter = dolphin bear dolphin buffalo bear eagle-]
 [-list-of-words-that-match = dolphin eagle-]
 [-positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
+[-text-with-named-html-entities = abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def -]
+[-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions text-with-named-html-entities text-with-modified-html-entities-]
 nothing else
 --------
 
@@ -1538,6 +1540,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-poi
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "1 3 6" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions"
+
+$being_tested = "test action copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-modified-html-entities" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "text-with-modified-html-entities" );
+# uncomment-for-cpan-version-end
+ #$results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "abc &#38; &#39; &#60; &#62; &#8220; &#8221; &#34; def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
