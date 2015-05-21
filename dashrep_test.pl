@@ -302,6 +302,9 @@ test-of-special-operators:
 [-list-of-words-to-search-based-on-prefix = here-is-something here-is-something-else hereis-something-else and-something-else-]
 [-text-begins-with = here-is-]
 [-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
+[-text-for-multiple-find = fish bird-]
+[-text-for-multiple-search = birds songbird fish clownfish-]
+[-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
 nothing else
 --------
 
@@ -1596,6 +1599,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-wor
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "here-is-something here-is-something-else" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase"
+
+$being_tested = "test action positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "pointers-to-multiple-matching-words" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "pointers-to-multiple-matching-words" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "1 4 11 14 16 19 26 29" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

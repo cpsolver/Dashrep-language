@@ -535,6 +535,10 @@ description-for-phrase-positions-multiple-of-first-matching-delimiter-within-phr
 An action that searches for the text contained in the first phrase, and performs repeated searches within the second phrase, but starts each search at the positions listed in the third phrase, and only finds the first match after that position, and puts into the fourth phrase the list of character positions of all the matches. sentence-next If there is no match, the list is empty. sentence-next The character positions are numbered starting at 1 in the first character position, and the numbers indicate the position of the first character in the matching text.
 -----
 
+description-for-phrase-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase:
+An action that searches for any of the space h-h delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches. s-n The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match. s-n As an example, if the first phrase contains b-i-b fish bird b-i-e and the second phrase contains b-i-b birds songbird fish clownfish b-i-e then the third phrase will contain b-i-b 1 4 11 14 16 19 26 29 b-i-e no-space . sentence-next If there is no match, the list is empty. sentence-next The character positions are numbered starting at 1 in the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text.
+-----
+
 description-for-phrase-position-of-word-in-phrase-within-phrase:
 An action that searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position.
 -----

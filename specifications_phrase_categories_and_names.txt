@@ -102,6 +102,7 @@ characters-in-phrase-get-from-position-to-position
 position-of-text-in-phrase-within-phrase
 positions-multiple-of-delimiter-within-phrase-put-into-phrase
 positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase
+positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase
 copy-from-phrase-to-phrase-and-remove-extra-spaces
 copy-from-phrase-to-phrase-characters-from-position-to-position
 copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase
