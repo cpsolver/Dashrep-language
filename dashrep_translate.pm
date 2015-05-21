@@ -2922,6 +2922,8 @@ sub dashrep_expand_parameters
             $action_result = " " ;
             $text_being_edited = $global_dashrep_replacement{ $operand_one } ;
             $text_being_edited =~ s/< *(\/?) *([a-zA-Z]+)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;
+            $text_being_edited =~ s/><!\[CDATA\[/>/gi ;
+            $text_being_edited =~ s/\]\]></</gi ;
             $global_dashrep_replacement{ $operand_two } = $text_being_edited ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
