@@ -297,6 +297,11 @@ test-of-special-operators:
 [-positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
 [-text-with-named-html-entities = abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def -]
 [-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions text-with-named-html-entities text-with-modified-html-entities-]
+[-text-with-tag-and-attribute = <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> -]
+[-copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
+[-list-of-words-to-search-based-on-prefix = here-is-something here-is-something-else hereis-something-else and-something-else-]
+[-text-begins-with = here-is-]
+[-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
 nothing else
 --------
 
@@ -1557,6 +1562,40 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-m
 # uncomment-for-cpan-version-end
  #$results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "abc &#38; &#39; &#60; &#62; &#8220; &#8221; &#34; def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags"
+
+$being_tested = "test action copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-tag" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "text-with-tag" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "<p>... and a <span>wet</span> dolphin ...<br/>...</p>" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase"
+
+$being_tested = "test action copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-words-that-begin-with-text" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "list-of-words-that-begin-with-text" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "here-is-something here-is-something-else" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

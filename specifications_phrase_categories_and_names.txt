@@ -184,6 +184,7 @@ create-empty-sub-folder
 
 category_xml
 xml-move-attributes-into-tag-elements-within-phrase
+copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags
 
 category_html
 dashrep-html-replacement-ampersand
