@@ -89,6 +89,8 @@ numeric-pi
 numeric-vector-add-number
 numeric-vector-multiply-by-number
 numeric-vectors-add
+numeric-vectors-multiply
+numeric-vectors-divide-by
 numeric-vector-integers
 numeric-vector-absolutes
 numeric-vectors-from-delta-values-calculate-distances
