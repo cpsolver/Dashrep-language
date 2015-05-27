@@ -182,6 +182,7 @@ yes-or-no-folder-in-phrase-exists
 size-of-file
 modification-time-of-file
 create-empty-file
+rename-file
 delete-file
 create-empty-sub-folder
 

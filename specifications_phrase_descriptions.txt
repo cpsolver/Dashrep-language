@@ -1182,6 +1182,15 @@ The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
 
+description-for-phrase-rename-file:
+Renames the specified file.
+s-n
+The first operand is the old filename, and the second operand is the new filename.
+s-n
+The location of the file is specified by the phrase
+name-of-phrase-that-specifies-write-directory no-space .
+-----
+
 description-for-phrase-delete-file:
 Deletes the specified file.
 s-n
