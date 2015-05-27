@@ -430,6 +430,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "dashrep-trace-show-definition" } = 1 ;
     $global_required_number_of_operands_for_action{ "put-into-phrase-linewise-usage-counts-for-phrase-names" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-from-two-phrases-words-found-in-both-to-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-from-two-phrases-words-found-in-either-to-phrase" } = 3 ;
 
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
@@ -697,6 +698,8 @@ BEGIN {
     $global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
@@ -4006,7 +4009,7 @@ sub dashrep_expand_parameters
             %listed_word = ( ) ;
             foreach $word ( @list_of_key_values )
             {
-                $listed_word{ $word } = 0 ;
+                $listed_word{ $word } = 1 ;
             }
             $text_list_loop =~ s/^ +// ;
             $text_list_loop =~ s/ +$// ;
@@ -4046,6 +4049,10 @@ sub dashrep_expand_parameters
             }
             $result_word_list =~ s/ +$// ;
             $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
+#            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+#            {
+                $global_trace_log .= "{{trace; action " . $action_name . " done" . "}}\n";
+#            }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
