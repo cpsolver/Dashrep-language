@@ -4049,10 +4049,10 @@ sub dashrep_expand_parameters
             }
             $result_word_list =~ s/ +$// ;
             $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
-#            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-#            {
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
                 $global_trace_log .= "{{trace; action " . $action_name . " done" . "}}\n";
-#            }
+            }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
