@@ -452,7 +452,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "create-empty-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "create-empty-sub-folder" } = 1 ;
     $global_required_number_of_operands_for_action{ "expand-phrase-to-file" } = 2 ;
-    $global_required_number_of_operands_for_action{ "create-empty-sub-folder" } = 1 ;
     $global_required_number_of_operands_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-named-phrases" } = 3 ;
     $global_required_number_of_operands_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = 2 ;
@@ -7595,7 +7594,7 @@ sub dashrep_file_actions
             $possible_error_message .= " [warning, do not have permission to create files or folders]" ;
         } else
         {
-            $target_sub_folder = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $target_sub_folder ;
+            $target_sub_folder = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $operand_one ;
             if ( $target_sub_folder =~ /([\/\\])/ )
             {
                 $slash_or_backslash_for_path = $1 ;
@@ -7603,7 +7602,10 @@ sub dashrep_file_actions
             {
                 $slash_or_backslash_for_path = '/' ;
             }
-            $target_sub_folder .= $slash_or_backslash_for_path ;
+            if ( $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } !~ /[\/\\]$/ )
+            {
+                $target_sub_folder = $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . $slash_or_backslash_for_path . $operand_one ;
+            }
             if ( -d $target_sub_folder )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
