@@ -238,6 +238,8 @@ user-defined-action-operand-one
 user-defined-action-operand-two
 user-defined-action-operand-three
 user-defined-action-operand-four
+escape-from-dashrep-replacements
+unexpanded-dashrep-replacements-to-resume-after-escape
 
 category_spoken_words
 copy-from-phrase-to-phrase-from-spoken-dashrep-code

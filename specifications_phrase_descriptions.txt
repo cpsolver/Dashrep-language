@@ -278,10 +278,6 @@ description-for-phrase-dashrep-endless-loop-count:
 An action that supplies the current value of the internal endless h-h loop counter. s-n This special action, which has no operands, supplies the count on a read h-h only basis.
 -----
 
-description-for-phrase-dashrep-translation-before-escape:
-A phrase that contains the current text being expanded at the time the actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h yes b-i-e are encountered.
------
-
 description-for-phrase-dashrep-undefined:
 A phrase that contains the text that is inserted in some cases when the result of an action is undefined. s-n The default value is b-i-b dashrep_undefined b-i-e no-space .
 -----
@@ -846,8 +842,16 @@ description-for-phrase-unique-value:
 A special phrase that contains a unique value each time this phrase appears in parameter brackets. s-n Currently this action simply supplies a number that is incremented, but future versions may use non-sequential numbers (to accomodate parallel processing).
 ----
 
+description-for-phrase-escape-from-dashrep-replacements:
+This action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b unexpanded h-h dashrep h-h replacements h-h to h-h resume h-h after h-h escape b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the phrase b-i-b unexpanded h-h dashrep h-h replacements h-h to h-h resume h-h after h-h escape b-i-e within parameter brackets as the text to be expanded. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
+----
+
+description-for-phrase-unexpanded-dashrep-replacements-to-resume-after-escape:
+A phrase that contains the text that remained to be expanded at the time the action b-i-b escape h-h from h-h dashrep h-h replacements b-i-e was encountered.
+----
+
 description-for-phrase-escape-if-yes:
-This action looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non-Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
+This action looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
 ----
 
 description-for-phrase-escape-if-no:
@@ -857,6 +861,10 @@ The b-i-b no b-i-e equivalent of the b-i-b escape h-h if h-h yes b-i-e action. s
 description-for-phrase-escape-text:
 Contains the text that was being translated at the time an b-i-b escape h-h if h-h yes b-i-e or b-i-b escape h-h if h-h no b-i-e action was encountered. s-n See the b-i-b escape h-h if h-h yes b-i-e description for details.
 ----
+
+description-for-phrase-dashrep-translation-before-escape:
+A phrase that contains the current text being expanded at the time the actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h yes b-i-e are encountered.
+-----
 
 description-for-phrase-dashrep-omit-web-page-from-trace-log-yes-or-no:
 deprecated
