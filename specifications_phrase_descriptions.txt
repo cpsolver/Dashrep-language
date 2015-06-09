@@ -842,8 +842,12 @@ description-for-phrase-unique-value:
 A special phrase that contains a unique value each time this phrase appears in parameter brackets. s-n Currently this action simply supplies a number that is incremented, but future versions may use non-sequential numbers (to accomodate parallel processing).
 ----
 
-description-for-phrase-escape-from-dashrep-replacements:
-This action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b unexpanded h-h dashrep h-h replacements h-h to h-h resume h-h after h-h escape b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the phrase b-i-b unexpanded h-h dashrep h-h replacements h-h to h-h resume h-h after h-h escape b-i-e within parameter brackets as the text to be expanded. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
+description-for-phrase-dashrep-stop-translation:
+This action interrupts the translation process and exits from the Dashrep engine. s-n The action b-i-b copy h-h current h-h replacement h-h results h-h into h-h phrase b-i-e is useful for resuming replacements after a planned interruption. 
+----
+
+description-for-phrase-copy-current-replacement-results-into-phrase:
+This action copies into the specified phrase the text that is being expanded. s-n Typically the text will be only partially expanded. s-n This action can be used for debugging. s-n Yet more importantly, this action combined with the action b-i-b dashrep h-h stop h-h translation b-i-e can be used to run software that is written in a different coding language, which makes it useful for purposes such as implementing the equivalent of a b-i-b make b-i-e files and batch scripts.
 ----
 
 description-for-phrase-unexpanded-dashrep-replacements-to-resume-after-escape:
@@ -872,10 +876,6 @@ deprecated
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
 A user h-h defined phrase that specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
-----
-
-description-for-phrase-dashrep-stop-translation:
-Stops the Dashrep translation process if the value is b-i-b yes b-i-e . s-n This phrase also is used internally as part of the (not-yet-implemented) actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h no b-i-e no-space.
 ----
 
 description-for-phrase-dashrep-yes-indicate-line-endings:
