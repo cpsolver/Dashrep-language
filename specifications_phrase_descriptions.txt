@@ -843,11 +843,11 @@ A special phrase that contains a unique value each time this phrase appears in p
 ----
 
 description-for-phrase-dashrep-stop-translation:
-If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. 
+If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. s-n If this phrase contains anything other than b-i-b yes b-i-e then the Dashrep translation process continues.
 ----
 
 description-for-phrase-copy-current-replacement-results-into-phrase-then-escape-from-dashrep:
-This action copies into the specified phrase the text that is being expanded, and then the Dashrep translation process is stopped, and there is an exit from the Dashrep engine. s-n Typically the copied text will be only partially expanded. s-n Although this action can be used for debugging, this action is primarily intended for running software that is written in a different coding language, which makes this action useful for implementing b-i-b make b-i-e files and batch scripts.
+This action copies into the specified phrase the text that is being expanded, and then the Dashrep translation process is stopped, and there is an exit from the Dashrep engine. s-n Typically the copied text will be only partially expanded. s-n Although this action can be used for debugging, this action is primarily intended for running software that is written in a different coding language, which makes this action useful for implementing b-i-b make b-i-e files and batch scripts. s-n If this action is used, it is very important that the external Perl code clear the specified phrase because otherwise an endless loop will occur. s-n Clearing the specified phrase cannot be done within the Dashrep code because the action that would attempt to clear the specified phrase would not be executed until the loop has already started to repeat. 
 ----
 
 description-for-phrase-unexpanded-dashrep-replacements-to-resume-after-escape:
