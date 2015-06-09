@@ -231,7 +231,7 @@ unique-value
 dashrep-list-of-recognized-phrase-names
 dashrep-yes-indicate-line-endings
 dashrep-stop-translation
-copy-current-replacement-results-into-phrase
+copy-current-replacement-results-into-phrase-then-escape-from-dashrep
 yes-or-no-use-faster-subset-expand
 yes-or-no-use-slower-subset-expand
 dashrep-yes-do-not-expand-special-phrases

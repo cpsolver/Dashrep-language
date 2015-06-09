@@ -843,11 +843,11 @@ A special phrase that contains a unique value each time this phrase appears in p
 ----
 
 description-for-phrase-dashrep-stop-translation:
-This action interrupts the translation process and exits from the Dashrep engine. s-n The action b-i-b copy h-h current h-h replacement h-h results h-h into h-h phrase b-i-e is useful for resuming replacements after a planned interruption. 
+If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. 
 ----
 
-description-for-phrase-copy-current-replacement-results-into-phrase:
-This action copies into the specified phrase the text that is being expanded. s-n Typically the text will be only partially expanded. s-n This action can be used for debugging. s-n Yet more importantly, this action combined with the action b-i-b dashrep h-h stop h-h translation b-i-e can be used to run software that is written in a different coding language, which makes it useful for purposes such as implementing the equivalent of a b-i-b make b-i-e files and batch scripts.
+description-for-phrase-copy-current-replacement-results-into-phrase-then-escape-from-dashrep:
+This action copies into the specified phrase the text that is being expanded, and then the Dashrep translation process is stopped, and there is an exit from the Dashrep engine. s-n Typically the copied text will be only partially expanded. s-n Although this action can be used for debugging, this action is primarily intended for running software that is written in a different coding language, which makes this action useful for implementing b-i-b make b-i-e files and batch scripts.
 ----
 
 description-for-phrase-unexpanded-dashrep-replacements-to-resume-after-escape:
