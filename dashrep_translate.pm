@@ -1997,7 +1997,7 @@ sub dashrep_expand_parameters
 #  multiple adjacent spaces with a single space,
 #  and remove leading and trailing spaces.
 
-        $text_parameter_content =~ s/\t+//g ;
+        $text_parameter_content =~ s/\t+/ /g ;
         $text_parameter_content =~ s/  +/ /g ;
         $text_parameter_content =~ s/^ // ;
         $text_parameter_content =~ s/ $// ;
