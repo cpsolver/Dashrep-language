@@ -846,12 +846,16 @@ description-for-phrase-dashrep-stop-translation:
 If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. s-n If this phrase contains anything other than b-i-b yes b-i-e then the Dashrep translation process continues.
 ----
 
-description-for-phrase-copy-current-replacement-results-into-phrase-then-escape-from-dashrep:
-This action copies into the specified phrase the text that is being expanded, and then the Dashrep translation process is stopped, and there is an exit from the Dashrep engine. s-n Typically the copied text will be only partially expanded. s-n Although this action can be used for debugging, this action is primarily intended for running software that is written in a different coding language, which makes this action useful for implementing b-i-b make b-i-e files and batch scripts. s-n If this action is used, it is very important that the external Perl code clear the specified phrase because otherwise an endless loop will occur. s-n Clearing the specified phrase cannot be done within the Dashrep code because the action that would attempt to clear the specified phrase would not be executed until the loop has already started to repeat. 
+description-for-phrase-escape-from-dashrep:
+This action saves a copy of the current replacement results em-dash in the phrase b-i-b dashrep h-h replacement h-h results h-h at h-h time h-h of h-h escape b-i-e em-dash and exits the Dashrep engine. s-n The Dashrep translation process can be resumed using the action b-i-b resume h-h after h-h escape h-h from h-h dashrep b-i-e no-space . s-n This action is intended for running software that is written in a different coding language, which makes this action useful for implementing b-i-b make b-i-e files and batch scripts. s-n This action also can be used for debugging, in which case this action serves as a breakpoint.
 ----
 
-description-for-phrase-unexpanded-dashrep-replacements-to-resume-after-escape:
-A phrase that contains the text that remained to be expanded at the time the action b-i-b escape h-h from h-h dashrep h-h replacements b-i-e was encountered.
+description-for-phrase-resume-after-escape-from-dashrep:
+This action resumes (restarts) the Dashrep translation process using the contents of the phrase b-i-b dashrep h-h replacement h-h results h-h at h-h time h-h of h-h escape b-i-e as the starting point. s-n Typically this action is invoked from Perl code outside the Dashrep engine, after the action b-i-b escape h-h from h-h dashrep b-i-e was used. s-n This action is useful after running software that is written in a different coding language, which makes this action em-dash and the action b-i-b escape h-h from h-h dashrep b-i-e em-dash useful for implementing b-i-b make b-i-e files and batch scripts.
+----
+
+description-for-phrase-dashrep-replacement-results-at-time-of-escape:
+A phrase that is used by the actions b-i-b escape h-h from h-h dashrep b-i-e and b-i-b resume h-h after h-h escape h-h from h-h dashrep b-i-e no-space . s-n This phrase can be viewed (outside of the Dashrep code) for debugging purposes, in which case the first h-h encountered occurrence of the action b-i-b escape h-h from h-h dashrep b-i-e serves as a breakpoint.
 ----
 
 description-for-phrase-escape-if-yes:
