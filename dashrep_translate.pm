@@ -1732,6 +1732,14 @@ sub dashrep_expand_parameters
     my $matching_word ;
     my $list_length_words_to_find ;
     my $list_of_pointers ;
+    my $text_list_of_start_matching_positions ;
+    my $list_of_text_items_to_find ;
+    my $text_to_find_at_position ;
+    my $number_of_items_to_find ;
+    my $text_to_find ;
+    my $position_of_text_found ;
+    my $position_as_string ;
+    my @item_number_found_at_position ;
     my @list_of_start_matching_positions ;
     my @list_of_words_to_search ;
     my @list_length_words_to_search ;
@@ -3889,15 +3897,24 @@ sub dashrep_expand_parameters
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $list_of_positions = "" ;
             $phrase_length = length( $string_to_search ) + 1 ;
-            if ( $phrase_length > 0 )
+            if ( ( $phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
             {
-                @list_of_start_matching_positions = split( / +/ , $global_dashrep_replacement{ $operand_three } ) ;
+                $text_list_of_start_matching_positions = $global_dashrep_replacement{ $operand_three } ;
+                $text_list_of_start_matching_positions =~ s/^ +// ;
+                $text_list_of_start_matching_positions =~ s/ +$// ;
+                if ( $text_list_of_start_matching_positions =~ /[0-9 ]+/ )
+                {
+                    @list_of_start_matching_positions = split( / +/ , $text_list_of_start_matching_positions ) ;
+                } else
+                {
+                    @list_of_start_matching_positions = ( ) ;
+                }
                 foreach $search_starting_position ( @list_of_start_matching_positions )
                 {
                     $position = index( $string_to_search , $string_to_find , $search_starting_position ) ;
                     if ( $position < 0 )
                     {
-                        $position = 0 ;
+                        $position = -1 ;
                     }
                     if ( $list_of_positions ne "" )
                     {
@@ -3905,11 +3922,11 @@ sub dashrep_expand_parameters
                     }
                     $list_of_positions .= sprintf( "%d" , ( $position + 1 ) ) ;
                 }
-                $global_dashrep_replacement{ $operand_four } = $list_of_positions ;
             }
+            $global_dashrep_replacement{ $operand_four } = $list_of_positions ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                $global_trace_log .= "{{trace; action " . $action_name . " searched for " . $string_to_find . " within " . $string_to_search . " and found matches at character positions " . $action_result . "}}\n";
+                $global_trace_log .= "{{trace; action " . $action_name . " searched for " . $string_to_find . " within " . $string_to_search . " following postions " . $text_list_of_start_matching_positions . " and found matches at character positions " . $list_of_positions . "}}\n";
             }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -5994,6 +6011,7 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ "dashrep-replacement-results-at-time-of-escape" } = "" ;
             }
             $text_end = $global_dashrep_replacement{ "dashrep-replacement-results-at-time-of-escape" } ;
+            $global_dashrep_replacement{ "dashrep-replacement-results-at-time-of-escape" } = "" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; action " . $action_name . " started expanding text in phrase dashrep-replacement-results-at-time-of-escape" . "}}\n";
