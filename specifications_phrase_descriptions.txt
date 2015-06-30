@@ -756,6 +756,10 @@ If a normal (non h-h multi) line begins with the definition of b-i-b dashrep h-h
 
 paragraph-next
 
+A list of the encountered tag names is put into the phrase b-i-b dashrep h-h gathered h-h tag h-h names b-i-e no-space . s-n The order of the list is the order in which the tag names were first encountered.
+
+paragraph-next
+
 This "gather" action is useful for accessing database h-h like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record. s-n This action is also useful for spreadsheet h-h like information where the tag names are analogous to single h-h word column titles, and one row of spreadsheet data is stored in multiple lines, with each cell's content on a separate (labelled) line. s-n The order of the items within each set is not significant, and the order does not need to be the same from one set to another. s-n This action does not require that each set of items use the same first words that are used in other sets, but in that case the generated phrases should be checked for undefined (empty) phrase definitions. s-n The location of the (source) file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
 ----
 

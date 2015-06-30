@@ -4226,6 +4226,10 @@ sub dashrep_expand_parameters
                 {
                     if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                     {
+                        if ( $global_dashrep_replacement{ $operand_two } ne "" )
+                        {
+                            $global_dashrep_replacement{ $operand_two } .= " " ;
+                        }
                         $global_dashrep_replacement{ $operand_two } .= $phrase_name ;
                         $counter ++ ;
                     }
@@ -8108,6 +8112,7 @@ sub dashrep_file_actions
             $unique_value = "" ;
             %content_for_tag = ( ) ;
             %found_unique_value = ( ) ;
+            %exists_tag_name = ( ) ;
             $line_status = "between" ;
             while ( $input_line = <INFILE> )
             {
@@ -8238,6 +8243,10 @@ sub dashrep_file_actions
                         } else
                         {
                             $content_for_tag{ $first_word } = $remainder_of_line ;
+                            if ( not( exists( $exists_tag_name{ $first_word } ) ) )
+                            {
+                                $exists_tag_name{ $first_word } = "yes" ;
+                            }
                         }
                     }
                 }
@@ -8267,6 +8276,16 @@ sub dashrep_file_actions
                     }
                 }
                 $global_dashrep_replacement{ $target_phrase_name } = $list_of_unique_values ;
+                $list_of_tag_names = "" ;
+                foreach $tag_name ( keys( %exists_tag_name ) )
+                {
+                    if ( $list_of_tag_names ne "" )
+                    {
+                        $list_of_tag_names .= " " ;
+                    }
+                    $list_of_tag_names .= $tag_name ;
+                }
+                $global_dashrep_replacement{ "dashrep-gathered-tag-names" } = $list_of_tag_names ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
