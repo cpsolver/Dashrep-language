@@ -212,9 +212,9 @@ time-second
 time-year
 
 category_debug
+trace-show
 dashrep-debug-trace-log
 dashrep-debug-trace-on-yes-or-no
-dashrep-trace-show-definition
 dashrep-recent-phrase-name-replaced
 dashrep-warning-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
