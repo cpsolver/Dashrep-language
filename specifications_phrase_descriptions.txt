@@ -1110,13 +1110,16 @@ description-for-phrase-length-of-text-in-phrase:
 Counts the number of characters in the definition of the named phrase. s-n It is useful for adding leading zeros to integer numbers, and handling monospace fonts.
 -----
 
-description-for-phrase-yes-if-not-no:
-An action that supplies b-i-b no b-i-e if the following word (space h-h delimited characters) is b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b no b-i-e is significant.
+description-for-phrase-yes-if-all-yes:
+An action that supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e or any number of b-i-b yes b-i-e words (either with or without separating spaces), and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic AND operator in other languages.
 ----
 
-
 description-for-phrase-yes-if-any-yes:
-An action that is the same as the action b-i-b yes h-h if h-h not h-h no b-i-e no-space .
+An action that supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic OR operator in other languages.
+----
+
+description-for-phrase-yes-if-not-no:
+An action that supplies b-i-b no b-i-e if the following word (space h-h delimited characters) is b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b no b-i-e is significant.
 ----
 
 description-for-phrase-no-if-not-yes:

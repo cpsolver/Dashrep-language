@@ -61,6 +61,7 @@ yes-or-no-same-two-phrase-definitions
 yes-or-no-same-two-words
 yes-or-no-word-is-in-phrase
 yes-or-no-opposite
+yes-if-all-yes
 yes-if-any-yes
 no-if-any-no
 yes-if-not-no
