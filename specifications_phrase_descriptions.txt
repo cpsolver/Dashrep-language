@@ -735,6 +735,7 @@ Requests that the action b-i-b copy hyphen-here from hyphen-here columns hyphen-
 ----
 
 description-for-phrase-copy-from-file-to-phrases-line-numbered:
+Deprecated, instead use b-i-b linewise-read-from-file-and-use-handler b-i-e no-space. s-n
 Reads from the specified file all the lines in that text file, and puts each line into a separate phrase definition. s-n For each line its phrase name begins with the specified name and ends with the line number. s-n In addition, this action creates a phrase that contains a list of the line numbers, with this phrase being named starting with b-i-b list h-h of h-h line h-h numbers h-h for h-h list h-h named h-h b-i-e and ending with the list name. s-n This action is useful for accessing text files that do not contain Dashrep definitions. s-n If the text is in spreadsheet-like columns, the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e can be used instead. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
 ----
 

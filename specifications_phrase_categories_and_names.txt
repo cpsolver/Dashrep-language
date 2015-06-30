@@ -160,7 +160,6 @@ write-all-dashrep-phrase-names-to-file
 write-dashrep-definitions-listed-in-phrase-to-file
 copy-from-file-to-phrase
 copy-from-phrase-append-to-file
-copy-from-file-to-phrases-line-numbered
 linewise-read-from-file-and-use-handler
 storage-input-line-from-file
 linewise-input-line-count

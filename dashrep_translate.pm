@@ -7075,7 +7075,7 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  Handle the actions:
 #  copy-from-file-to-phrase
-#  copy-from-file-to-phrases-line-numbered
+#  copy-from-file-to-phrases-line-numbered -- deprecated, instead use linewise-read-from-file-and-use-handler
 
     if ( ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
     {
