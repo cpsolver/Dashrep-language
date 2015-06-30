@@ -147,7 +147,7 @@ An action that removes multiple adjacent spaces so that only single spaces occur
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags
-An action that removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same. s-n As an example of the attribute removal, if the specified phrase contains b-i-b and a <span style="whatever">dolphin</span> b-i-e no-space , the result is b-i-b and a <span>dolphin</span> b-i-e no-space . s-n The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b > b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
+An action that removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same. s-n As an example of the attribute removal, if the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space . s-n The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
 -----
 
 description-for-phrase-copy-from-phrase-to-phrase-and-replace-each-hyphen-with-hypen-here:
@@ -1254,11 +1254,9 @@ name-of-phrase-that-specifies-write-directory no-space .
 ---*
 -----
 
-description-for-phrase-write-all-dashrep-phrase-names-to-file:
-Writes all the Dashrep phrase names to a new file with the specified file name, and erases the file if it already exists.
-s-n For security purposes this action can be disabled. s-n
-The location of the target file is specified by the phrase
-name-of-phrase-that-specifies-write-directory no-space .
+description-for-phrase-write-all-dashrep-phrase-names-to-phrase:
+Writes all the Dashrep phrase names to the specified phrase.
+s-n For security purposes this action can be disabled.
 -----
 
 description-for-phrase-write-dashrep-definitions-listed-in-phrase-to-file:

@@ -28,6 +28,7 @@ clear-phrase
 clear-phrases-listed-in-phrase
 clear-all-dashrep-phrases
 delete-phrases-listed-in-phrase
+write-all-dashrep-phrase-names-to-phrase
 copy-from-phrase-to-phrase
 copy-to-phrase-from-following-text
 append-from-phrase-to-phrase
@@ -156,7 +157,6 @@ get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 write-all-dashrep-definitions-to-file
-write-all-dashrep-phrase-names-to-file
 write-dashrep-definitions-listed-in-phrase-to-file
 copy-from-file-to-phrase
 copy-from-phrase-append-to-file
