@@ -2647,8 +2647,6 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  copy-from-phrase-to-phrase
 #  copy-to-phrase-from-following-text
-#  copy-from-phrase-to-phrase-and-replace-html-reserved-characters
-#  copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions
 #  copy-from-phrase-to-phrase-lowercase-only
 #  copy-from-phrase-to-phrase-uppercase-only
 #  copy-from-phrase-to-phrase-initial-caps
@@ -2659,6 +2657,8 @@ sub dashrep_expand_parameters
 #  copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
 #  copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
 #
+#  copy-from-phrase-to-phrase-and-replace-html-reserved-characters -- Deprecated, instead use action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
+#  copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- Deprecated, instead use action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
 #  copy-from-phrase-to-phrase-but-remove-first-word -- Deprecated, because its functionality overlaps another words-copy action
 #  copy-from-phrase-to-phrase-but-remove-last-word -- Deprecated, because its functionality overlaps another words-copy action
 #  copy-from-phrase-to-phrase-and-replace-digits-with-9s -- Deprecated, use copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string instead

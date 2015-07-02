@@ -112,8 +112,6 @@ copy-from-phrase-to-phrase-characters-from-position-to-position
 copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase
 copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string
 copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
-copy-from-phrase-to-phrase-and-replace-html-reserved-characters
-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions
 copy-from-phrase-to-phrase-and-zero-pad-left-to-length
 copy-from-phrase-to-phrase-lowercase-only
 copy-from-phrase-to-phrase-uppercase-only
