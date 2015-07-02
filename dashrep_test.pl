@@ -305,6 +305,8 @@ test-of-special-operators:
 [-text-for-multiple-find = fish bird-]
 [-text-for-multiple-search = birds songbird fish clownfish-]
 [-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
+[-paired-words-for-replacements = bird flier fish swimmer-]
+[-copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
 nothing else
 --------
 
@@ -1616,6 +1618,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "pointers-to
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "1 4 11 14 16 19 26 29" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list"
+
+$being_tested = "test action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "results-replacements-using-paired-words" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "results-replacements-using-paired-words" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "fliers songflier swimmer clownswimmer" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
