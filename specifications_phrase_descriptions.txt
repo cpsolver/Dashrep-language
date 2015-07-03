@@ -1194,7 +1194,7 @@ The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
 
-description-for-phrase-yes-or-no-folder-in-phrase-exists:
+description-for-phrase-yes-or-no-folder-exists:
 Determines whether a folder exists em-dash where the folder is specified in a phrase em-dash and supplies either
 b-i-b yes b-i-e or b-i-b no b-i-e to indicate whether the folder exists.
 s-n
@@ -1868,7 +1868,7 @@ Word-related phrases
 -----
 
 heading-for-phrases-in-category_loop:
-Loop-related (& list-related) phrases
+Loop-related phrases
 -----
 
 heading-for-phrases-in-category_generate_list:
@@ -1880,7 +1880,7 @@ File-related phrases
 -----
 
 heading-for-phrases-in-category_xml:
-XML-import phrases
+XML-related phrases
 -----
 
 heading-for-phrases-in-category_html:
