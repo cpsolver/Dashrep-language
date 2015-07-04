@@ -3079,7 +3079,14 @@ sub dashrep_expand_parameters
                     {
                         $word_position = 1 ;
                     }
-                    @list_of_words = split( / +/ , $source_text ) ;
+                    if ( $source_text =~ / / )
+                    {
+                        @list_of_words = split( / +/ , $source_text ) ;
+                    } else
+                    {
+                        @list_of_words = ( ) ;
+                        $list_of_words[ 0 ] = $source_text ;
+                    }
                     if ( $word_position > scalar( @list_of_words + 1 ) )
                     {
                         $word_position = scalar( @list_of_words + 1 ) ;
