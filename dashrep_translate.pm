@@ -4048,7 +4048,14 @@ sub dashrep_expand_parameters
             $list_of_positions = "" ;
             $words_to_find =~ s/^ +// ;
             $words_to_find =~ s/ +$// ;
-            @list_of_text_items_to_find = split( / +/ , $words_to_find ) ;
+            if ( $words_to_find =~ / / )
+            {
+                @list_of_text_items_to_find = split( / +/ , $words_to_find ) ;
+            } else
+            {
+                @list_of_text_items_to_find = ( ) ;
+                $list_of_text_items_to_find[ 0 ] = $words_to_find ;
+            }
             %text_to_find_at_position = ( ) ;
             $number_of_items_to_find = $#list_of_text_items_to_find + 1 ;
             if ( $number_of_items_to_find > 0 )
