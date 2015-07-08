@@ -1757,6 +1757,7 @@ sub dashrep_expand_parameters
     my $pair_status ;
     my $pair_pointer_offset_zero ;
     my $string_to_insert ;
+    my $position_end ;
     my @list_of_paired_words ;
     my @item_number_found_at_position ;
     my @list_of_start_matching_positions ;
@@ -4088,14 +4089,19 @@ sub dashrep_expand_parameters
                     }
                 }
             }
+            $position_end = -1 ;
             foreach $position_of_text_found ( sort( keys( %text_to_find_at_position ) ) )
             {
-                if ( $list_of_positions ne "" )
+                if ( ( $position_of_text_found + 1 ) >= $position_end )
                 {
-                    $list_of_positions .= " " ;
+                    if ( $list_of_positions ne "" )
+                    {
+                        $list_of_positions .= " " ;
+                    }
+                    $list_of_positions .= $position_of_text_found + 1 ;
+                    $position_end = ( $position_of_text_found + length( $list_of_text_items_to_find[ $item_number_found_at_position{ $position_of_text_found } - 1 ] ) ) ;
+                    $list_of_positions .= " " . $position_end  ;
                 }
-                $list_of_positions .= $position_of_text_found + 1 ;
-                $list_of_positions .= " " . ( $position_of_text_found + length( $list_of_text_items_to_find[ $item_number_found_at_position{ $position_of_text_found } - 1 ] ) ) ;
             }
             $global_dashrep_replacement{ $operand_three } = $list_of_positions ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
