@@ -1649,7 +1649,7 @@ description-for-phrase-copy-words-found-in-both-phrases-to-phrase:
 Copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b def 123 b-i-e (or b-i-b 123 def b-i-e no-space ).
 ----
 
-description-for-phrase-copy-from-two-phrases-words-found-in-either-to-phrase:
+description-for-phrase-copy-words-found-in-either-phrase-to-phrase:
 Copies into the definition of the third phrase the words that appear in either of the indicated phrase definitions, without repeating any word. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 123 def 456 xyz 789 b-i-e (although the word order can be different).
 ----
 

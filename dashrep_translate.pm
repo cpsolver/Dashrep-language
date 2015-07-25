@@ -318,6 +318,16 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
     $alias_for_action_name{ "copy-from-two-phrases-words-found-in-both-to-phrase" } = "copy-words-found-in-both-phrases-to-phrase" ;
+    $alias_for_action_name{ "copy-from-two-phrases-words-found-in-either-to-phrase" } = "copy-words-found-in-either-phrase-to-phrase" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "" } = "" ;
 
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "clear-phrases-listed-in-phrase" } = 1 ;
@@ -441,7 +451,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "put-into-phrase-linewise-usage-counts-for-phrase-names" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-words-found-in-both-phrases-to-phrase" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-from-two-phrases-words-found-in-either-to-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-found-in-either-phrase-to-phrase" } = 3 ;
 
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrases-line-numbered" } = 2 ;
@@ -4216,9 +4226,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-two-phrases-words-found-in-either-to-phrase
+#  copy-words-found-in-either-phrase-to-phrase
+#  copy-from-two-phrases-words-found-in-either-to-phrase -- Deprecated version of action name
 
-        if ( $action_name eq "copy-from-two-phrases-words-found-in-either-to-phrase" )
+        if ( $action_name eq "copy-words-found-in-either-phrase-to-phrase" )
         {
             $action_result = " " ;
             $text_list_key = $global_dashrep_replacement{ $operand_one } . " " . $global_dashrep_replacement{ $operand_two } ;

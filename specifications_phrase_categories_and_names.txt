@@ -76,7 +76,7 @@ word-to-use-in-handler
 category_generate_list
 counts-from-integer-to-integer-put-into-phrase
 copy-words-found-in-both-phrases-to-phrase
-copy-from-two-phrases-words-found-in-either-to-phrase
+copy-words-found-in-either-phrase-to-phrase
 copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
