@@ -194,7 +194,7 @@ description-for-phrase-copy-from-phrase-to-phrase-with-word-order-reversed:
 An action that gets the space hyphen-here delimited words in the first phrase, and reverses their order (sequence), and puts those reverse-ordered words into the second phrase. s-n The two phrase names can be the same.
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-words-from-position-to-position:
+description-for-phrase-copy-words-from-position-to-position:
 An action that gets the space hyphen-here delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter. s-n The word positions are numbered starting at 1 the beginning. s-n If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase). s-n The first two phrase names can be the same.
 -----
 
@@ -214,7 +214,7 @@ description-for-phrase-create-list-of-phrase-names-that-begin-with-text-in-phras
 An action that looks at all the defined phrases and identifies the ones whose name begins with the text in the first phrase, and puts those phrase names into the second phrase, with a space between each phrase name.
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase
+description-for-phrase-copy-words-that-begin-with-text-in-phrase
 An action that looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially matching words into the second phrase, with a space between each phrase name.
 -----
 
@@ -1317,7 +1317,7 @@ description-for-phrase-copy-from-phrase-to-phrase-and-replace-spaces-with-hyphen
 deprecated
 ----
 
-description-for-phrase-copy-from-phrase-to-phrase-only-word-at-position:
+description-for-phrase-copy-only-word-at-position:
 An action that copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number. s-n A position number of 1 indicates the first word in the definition. s-n The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words.
 ----
 

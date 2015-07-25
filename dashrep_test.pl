@@ -263,7 +263,7 @@ test-of-special-operators:
 [-string-to-test-character-actions = abc123 abc123 abc123-]
 [-character-result = [-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 1 1-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 2 2-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 4 4-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 5 5-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 20 20-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 21 21-]-]
 [-sample-word-list = alpha beta gamma delta-]
-[-copy-from-phrase-to-phrase-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
+[-copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
 [-word-list-result = [-position-of-word-in-phrase: alpha sample-word-list-]-[-position-of-word-in-phrase: gamma sample-word-list-]-[-position-of-word-in-phrase: other sample-word-list-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
@@ -301,7 +301,7 @@ test-of-special-operators:
 [-copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
 [-list-of-words-to-search-based-on-prefix = here-is-something here-is-something-else hereis-something-else and-something-else-]
 [-text-begins-with = here-is-]
-[-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
+[-copy-words-that-begin-with-text-in-phrase list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
 [-text-for-multiple-find = fish bird-]
 [-text-for-multiple-search = birds songbird fish clownfish-]
 [-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
@@ -1589,9 +1589,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase"
+#  Test the action "copy-words-that-begin-with-text-in-phrase"
 
-$being_tested = "test action copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase -- ";
+$being_tested = "test action copy-words-that-begin-with-text-in-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-words-that-begin-with-text" );

@@ -109,12 +109,12 @@ copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
 
 category_word
 count-of-words-in-phrase
+from-phrase-get-word-number
 position-of-word-in-phrase-within-phrase
 positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase
-from-phrase-get-word-number
-copy-from-phrase-to-phrase-only-word-at-position
-copy-from-phrase-to-phrase-words-from-position-to-position
-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase
+copy-only-word-at-position
+copy-words-from-position-to-position
+copy-words-that-begin-with-text-in-phrase
 
 category_time
 get-current-time-in-epoch-seconds
