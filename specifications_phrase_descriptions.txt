@@ -1645,7 +1645,7 @@ description-for-phrase-count-of-words-in-phrase:
 Counts the number of words in a phrase definition. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n If the definition contains only spaces, or is empty, the value b-i-b 0 b-i-e (zero) is supplied.
 ----
 
-description-for-phrase-copy-from-two-phrases-words-found-in-both-to-phrase:
+description-for-phrase-copy-words-found-in-both-phrases-to-phrase:
 Copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b def 123 b-i-e (or b-i-b 123 def b-i-e no-space ).
 ----
 
