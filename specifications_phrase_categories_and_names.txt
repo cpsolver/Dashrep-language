@@ -77,7 +77,7 @@ category_generate_list
 counts-from-integer-to-integer-put-into-phrase
 copy-words-found-in-both-phrases-to-phrase
 copy-words-found-in-either-phrase-to-phrase
-copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase
+copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase
 copy-from-phrase-unique-words-to-phrase
 copy-from-phrase-to-phrase-and-numeric-sort-by-word
 copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
