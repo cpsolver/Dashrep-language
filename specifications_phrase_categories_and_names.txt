@@ -227,8 +227,6 @@ dashrep-stop-translation
 escape-from-dashrep
 resume-after-escape-from-dashrep
 dashrep-replacement-results-at-time-of-escape
-yes-or-no-use-faster-subset-expand
-yes-or-no-use-slower-subset-expand
 dashrep-yes-do-not-expand-special-phrases
 yes-or-no-allow-user-defined-actions
 user-defined-action-operand-one
