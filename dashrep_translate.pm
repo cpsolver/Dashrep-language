@@ -314,66 +314,122 @@ BEGIN {
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-phrases-listed-in-phrase write-all-dashrep-phrase-names-to-phrase copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-from-phrase-to-phrase append-from-phrase-to-phrase-no-space repeatedly-append-from-phrase-to-phrase-using-repeat-count prepend-from-phrase-to-phrase prepend-from-phrase-to-phrase-no-space append-new-line-to-phrase insert-definition-of-phrase expand-phrase-to-phrase expand-only-parameters-in-phrase-to-phrase copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters-in-phrase count-of-characters-in-phrase-definition characters-in-phrase-get-from-position-to-position position-of-text-in-phrase-within-phrase position-of-string-in-phrase-within-phrase positions-multiple-of-delimiter-within-phrase-put-into-phrase positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase copy-from-phrase-to-phrase-and-remove-extra-spaces copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-from-phrase-to-phrase-lowercase-only copy-from-phrase-to-phrase-uppercase-only copy-from-phrase-to-phrase-initial-caps copy-from-phrase-to-phrase-and-split-into-list-of-characters copy-from-phrase-to-phrase-and-encode-as-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word from-phrase-get-word-number copy-only-word-at-position copy-from-phrase-to-phrase-only-word-at-position copy-words-from-position-to-position copy-from-phrase-to-phrase-words-from-position-to-position copy-words-found-in-both-phrases-to-phrase copy-from-two-phrases-words-found-in-both-to-phrase copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-words-unique-only copy-from-phrase-unique-words-to-phrase copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-from-phrase-to-phrase-with-word-order-reversed copy-words-that-begin-with-text-in-phrase copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase count-of-words-in-phrase position-of-word-in-phrase-within-phrase positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase use-handler-with-each-word-in-phrase-currently-at-character-position word-to-use-in-handler category_generate_list counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-one-entry-from-tagged-file-and-put-into-phrase put-into-phrase-list-of-files-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file rename-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements-within-phrase copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no trace-show dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no put-into-phrase-linewise-usage-counts-for-phrase-names dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names dashrep-yes-indicate-line-endings escape-from-dashrep resume-after-escape-from-dashrep yes-or-no-use-faster-subset-expand yes-or-no-use-slower-subset-expand dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words copy-from-phrase-to-phrase-from-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-listed-phrases clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-listed-phrases delete-phrases-listed-in-phrase generate-list-of-all-dashrep-phrases write-all-dashrep-phrase-names-to-phrase copy-text copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-text append-from-phrase-to-phrase append-text-no-space append-from-phrase-to-phrase-no-space repeatedly-append-text-using-repeat-count repeatedly-append-from-phrase-to-phrase-using-repeat-count prepend-text prepend-from-phrase-to-phrase prepend-text-no-space prepend-from-phrase-to-phrase-no-space append-new-line append-new-line-to-phrase insert-phrase-definition-without-expanding insert-definition-of-phrase expand-text expand-phrase-to-phrase expand-parameters-only expand-only-parameters-in-phrase-to-phrase copy-listed-words-to-phrases-named-in-pattern copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters count-of-characters-in-phrase count-of-characters-in-phrase-definition get-characters-from-position-to-position characters-in-phrase-get-from-position-to-position position-of-matching-text position-of-text-in-phrase-within-phrase position-of-string-in-phrase-within-phrase generate-positions-of-delimiter positions-multiple-of-delimiter-within-phrase-put-into-phrase generate-positions-of-first-matching-delimiter-after-listed-positions positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase generate-positions-of-listed-words positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase copy-without-extra-spaces copy-from-phrase-to-phrase-and-remove-extra-spaces copy-characters-from-position-to-position copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-and-replace-matching-text copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-and-replace-using-paired-listed-words copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-zero-pad-left-to-length copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-lowercase-only copy-from-phrase-to-phrase-lowercase-only copy-uppercase-only copy-from-phrase-to-phrase-uppercase-only copy-initial-caps copy-from-phrase-to-phrase-initial-caps split-into-list-of-characters copy-from-phrase-to-phrase-and-split-into-list-of-characters encode-as-cgi-parameter copy-from-phrase-to-phrase-and-encode-as-cgi-parameter decode-from-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word get-word-at-position from-phrase-get-word-number copy-word-at-position copy-from-phrase-to-phrase-only-word-at-position copy-words-from-position-to-position copy-from-phrase-to-phrase-words-from-position-to-position copy-words-found-in-both-lists copy-from-two-phrases-words-found-in-both-to-phrase copy-words-found-only-in-first-list copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-words-unique-only copy-from-phrase-unique-words-to-phrase copy-words-sort-numeric copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-words-sort-alphabetic copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-rearrange-using-order-sort-numeric copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-rearrange-using-order-sort-alphabetic copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-words-order-reversed copy-from-phrase-to-phrase-with-word-order-reversed copy-words-that-begin-with-text copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase count-of-words count-of-words-in-phrase get-position-of-word position-of-word-in-phrase-within-phrase generate-positions-of-words-that-match-any-listed-word positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase use-handler-with-each-word-in-phrase-currently-at-character-position word-to-use-in-handler category_generate_list generate-counts-from-integer-to-integer counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase generate-every-pairwise-combination-of-words every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases generate-every-ordered-pairwise-combination-of-words every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-text find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-listed find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-one-entry-from-tagged-file gather-one-entry-from-tagged-file-and-put-into-phrase generate-list-of-files-in-current-read-directory put-into-phrase-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file rename-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements xml-move-attributes-into-tag-elements-within-phrase copy-and-remove-attributes-from-xml-tags copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no trace-show dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no generate-phrase-usage-counts put-into-phrase-linewise-usage-counts-for-phrase-names dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names dashrep-yes-indicate-line-endings escape-from-dashrep resume-after-escape-from-dashrep yes-or-no-use-faster-subset-expand yes-or-no-use-slower-subset-expand dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words convert-from-spoken-dashrep-code copy-from-phrase-to-phrase-from-spoken-dashrep-code convert-into-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
-    $alias_for_action_name{ "copy-from-two-phrases-words-found-in-both-to-phrase" } = "copy-words-found-in-both-phrases-to-phrase" ;
-    $alias_for_action_name{ "copy-from-two-phrases-words-found-in-either-to-phrase" } = "copy-words-found-in-either-phrase-to-phrase" ;
-    $alias_for_action_name{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" ;
+    $alias_for_action_name{ "copy-from-two-phrases-words-found-in-both-to-phrase" } = "copy-words-found-in-both-lists" ;
+    $alias_for_action_name{ "copy-from-two-phrases-words-found-in-either-to-phrase" } = "copy-words-found-in-either-list" ;
+    $alias_for_action_name{ "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" } = "copy-words-found-only-in-first-list" ;
     $alias_for_action_name{ "copy-from-phrase-unique-words-to-phrase" } = "copy-words-unique-only" ;
-    $alias_for_action_name{ "copy-from-phrase-to-phrase-only-word-at-position" } = "copy-only-word-at-position" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-only-word-at-position" } = "copy-word-at-position" ;
     $alias_for_action_name{ "copy-from-phrase-to-phrase-words-from-position-to-position" } = "copy-words-from-position-to-position" ;
-    $alias_for_action_name{ "copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase" } = "copy-words-that-begin-with-text-in-phrase" ;
-    $alias_for_action_name{ "" } = "" ;
-    $alias_for_action_name{ "" } = "" ;
-    $alias_for_action_name{ "" } = "" ;
-    $alias_for_action_name{ "" } = "" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase" } = "copy-words-that-begin-with-text" ;
+    $alias_for_action_name{ "clear-phrases-listed-in-phrase" } = "clear-listed-phrases" ;
+    $alias_for_action_name{ "delete-phrases-listed-in-phrase" } = "delete-listed-phrases" ;
+    $alias_for_action_name{ "write-all-dashrep-phrase-names-to-phrase" } = "generate-list-of-all-dashrep-phrases" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase" } = "copy-text" ;
+    $alias_for_action_name{ "append-from-phrase-to-phrase" } = "append-text" ;
+    $alias_for_action_name{ "append-from-phrase-to-phrase-no-space" } = "append-text-no-space" ;
+    $alias_for_action_name{ "prepend-from-phrase-to-phrase" } = "prepend-text" ;
+    $alias_for_action_name{ "prepend-from-phrase-to-phrase-no-space" } = "prepend-text-no-space" ;
+    $alias_for_action_name{ "repeatedly-append-from-phrase-to-phrase-using-repeat-count" } = "repeatedly-append-text-using-repeat-count" ;
+    $alias_for_action_name{ "append-new-line-to-phrase" } = "append-new-line" ;
+    $alias_for_action_name{ "insert-definition-of-phrase" } = "insert-phrase-definition-without-expanding" ;
+    $alias_for_action_name{ "expand-phrase-to-phrase" } = "expand-text" ;
+    $alias_for_action_name{ "expand-only-parameters-in-phrase-to-phrase" } = "expand-parameters-only" ;
+    $alias_for_action_name{ "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" } = "copy-listed-words-to-phrases-named-in-pattern" ;
+    $alias_for_action_name{ "append-multiple-from-phrases-named-in-pattern-to-phrase" } = "append-multiple-from-phrases-named-in-pattern" ;
+    $alias_for_action_name{ "insert-angle-bracketed-definitions-into-already-expanded-phrase" } = "insert-angle-bracketed-definitions" ;
+    $alias_for_action_name{ "counts-from-integer-to-integer-put-into-phrase" } = "generate-counts-from-integer-to-integer" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-with-word-order-reversed" } = "copy-words-order-reversed" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-numeric-sort-by-word" } = "copy-words-sort-numeric" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" } = "copy-words-sort-alphabetic" ;
+    $alias_for_action_name{ "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" } = "copy-words-rearrange-using-order-sort-numeric" ;
+    $alias_for_action_name{ "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" } = "copy-words-rearrange-using-order-sort-alphabetic" ;
+    $alias_for_action_name{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "generate-every-pairwise-combination-of-words" ;
+    $alias_for_action_name{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "generate-every-ordered-pairwise-combination-of-words" ;
+    $alias_for_action_name{ "count-of-characters-in-phrase" } = "count-of-characters" ;
+    $alias_for_action_name{ "characters-in-phrase-get-from-position-to-position" } = "get-characters-from-position-to-position" ;
+    $alias_for_action_name{ "position-of-text-in-phrase-within-phrase" } = "position-of-matching-text" ;
+    $alias_for_action_name{ "positions-multiple-of-delimiter-within-phrase-put-into-phrase" } = "generate-positions-of-delimiter" ;
+    $alias_for_action_name{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = "generate-positions-of-first-matching-delimiter-after-listed-positions" ;
+    $alias_for_action_name{ "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" } = "generate-positions-of-listed-words" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-remove-extra-spaces" } = "copy-without-extra-spaces" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "copy-characters-from-position-to-position" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "copy-and-replace-matching-text" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" } = "copy-and-replace-using-paired-listed-words" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" } = "copy-zero-pad-left-to-length" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-lowercase-only" } = "copy-lowercase-only" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-uppercase-only" } = "copy-uppercase-only" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-initial-caps" } = "copy-initial-caps" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-split-into-list-of-characters" } = "split-into-list-of-characters" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" } = "encode-as-cgi-parameter" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" } = "decode-from-cgi-parameter" ;
+    $alias_for_action_name{ "count-of-words-in-phrase" } = "count-of-words" ;
+    $alias_for_action_name{ "from-phrase-get-word-number" } = "get-word-at-position" ;
+    $alias_for_action_name{ "position-of-word-in-phrase-within-phrase" } = "get-position-of-word" ;
+    $alias_for_action_name{ "position-of-word-in-phrase" } = "get-position-of-word" ;
+    $alias_for_action_name{ "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" } = "generate-positions-of-words-that-match-any-listed-word" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags" } = "copy-and-remove-attributes-from-xml-tags" ;
+    $alias_for_action_name{ "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" } = "find-line-in-file-that-begins-with-text" ;
+    $alias_for_action_name{ "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" } = "find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names" ;
+    $alias_for_action_name{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = "gather-tagged-info-from-file" ;
+    $alias_for_action_name{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = "gather-one-entry-from-tagged-file" ;
+    $alias_for_action_name{ "put-into-phrase-list-of-files-in-current-read-directory" } = "generate-list-of-files-in-current-read-directory" ;
+    $alias_for_action_name{ "put-into-phrase-list-of-folders-in-current-read-directory" } = "generate-list-of-folders-in-current-read-directory" ;
+    $alias_for_action_name{ "put-into-phrase-linewise-usage-counts-for-phrase-names" } = "generate-phrase-usage-counts" ;
+    $alias_for_action_name{ "xml-move-attributes-into-tag-elements-within-phrase" } = "xml-move-attributes-into-tag-elements" ;
+    $alias_for_action_name{ "find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names" } = "find-lines-in-file-that-begin-with-any-listed-word" ;
+    $alias_for_action_name{ "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" } = "find-lines-in-file-that-begin-with-any-two-words-listed" ;
+    $alias_for_action_name{ "insert-codeview-tags-into-phrase" } = "insert-codeview-tags" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-from-spoken-dashrep-code" } = "convert-from-spoken-dashrep-code" ;
+    $alias_for_action_name{ "copy-from-phrase-to-phrase-into-spoken-dashrep-code" } = "convert-into-spoken-dashrep-code" ;
 
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "clear-phrases-listed-in-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "delete-phrases-listed-in-phrase" } = 1 ;
+    $global_required_number_of_operands_for_action{ "clear-listed-phrases" } = 1 ;
+    $global_required_number_of_operands_for_action{ "delete-listed-phrases" } = 1 ;
     $global_required_number_of_operands_for_action{ "clear-all-dashrep-phrases" } = 0 ;
-    $global_required_number_of_operands_for_action{ "append-from-phrase-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "append-from-phrase-to-phrase-no-space" } = 2 ;
-    $global_required_number_of_operands_for_action{ "repeatedly-append-from-phrase-to-phrase-using-repeat-count" } = 3 ;
-    $global_required_number_of_operands_for_action{ "prepend-from-phrase-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "prepend-from-phrase-to-phrase-no-space" } = 2 ;
+    $global_required_number_of_operands_for_action{ "append-text" } = 2 ;
+    $global_required_number_of_operands_for_action{ "append-text-no-space" } = 2 ;
+    $global_required_number_of_operands_for_action{ "repeatedly-append-text-using-repeat-count" } = 3 ;
+    $global_required_number_of_operands_for_action{ "prepend-text" } = 2 ;
+    $global_required_number_of_operands_for_action{ "prepend-text-no-space" } = 2 ;
     $global_required_number_of_operands_for_action{ "append-word-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "append-new-line-to-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" } = 2 ;
-    $global_required_number_of_operands_for_action{ "append-multiple-from-phrases-named-in-pattern-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-remove-extra-spaces" } = 2 ;
+    $global_required_number_of_operands_for_action{ "append-new-line" } = 1 ;
+    $global_required_number_of_operands_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = 2 ;
+    $global_required_number_of_operands_for_action{ "append-multiple-from-phrases-named-in-pattern" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-text" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-without-extra-spaces" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-digits-with-9s" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-lowercase-only" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-uppercase-only" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-initial-caps" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-numeric-sort-by-word" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-split-into-list-of-characters" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-lowercase-only" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-uppercase-only" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-initial-caps" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-words-sort-numeric" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-words-sort-alphabetic" } = 2 ;
+    $global_required_number_of_operands_for_action{ "split-into-list-of-characters" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-but-remove-first-word" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-but-remove-last-word" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-into-spoken-dashrep-code" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-from-spoken-dashrep-code" } = 2 ;
-    $global_required_number_of_operands_for_action{ "xml-move-attributes-into-tag-elements-within-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags" } = 2 ;
-    $global_required_number_of_operands_for_action{ "insert-angle-bracketed-definitions-into-already-expanded-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "copy-only-word-at-position" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = 4 ;
+    $global_required_number_of_operands_for_action{ "encode-as-cgi-parameter" } = 2 ;
+    $global_required_number_of_operands_for_action{ "decode-from-cgi-parameter" } = 2 ;
+    $global_required_number_of_operands_for_action{ "convert-into-spoken-dashrep-code" } = 2 ;
+    $global_required_number_of_operands_for_action{ "convert-from-spoken-dashrep-code" } = 2 ;
+    $global_required_number_of_operands_for_action{ "xml-move-attributes-into-tag-elements" } = 1 ;
+    $global_required_number_of_operands_for_action{ "copy-and-remove-attributes-from-xml-tags" } = 2 ;
+    $global_required_number_of_operands_for_action{ "insert-angle-bracketed-definitions" } = 1 ;
+    $global_required_number_of_operands_for_action{ "copy-word-at-position" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-zero-pad-left-to-length" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-and-replace-matching-text" } = 4 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = 4 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = 4 ;
+    $global_required_number_of_operands_for_action{ "copy-characters-from-position-to-position" } = 4 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = 4 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" } = 3 ;
-    $global_required_number_of_operands_for_action{ "expand-phrase-to-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "insert-definition-of-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "expand-only-parameters-in-phrase-to-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-and-replace-using-paired-listed-words" } = 3 ;
+    $global_required_number_of_operands_for_action{ "expand-text" } = 2 ;
+    $global_required_number_of_operands_for_action{ "insert-phrase-definition-without-expanding" } = 1 ;
+    $global_required_number_of_operands_for_action{ "expand-parameters-only" } = 2 ;
     $global_required_number_of_operands_for_action{ "numeric-equal-greater-less-compare" } = 2 ;
     $global_required_number_of_operands_for_action{ "if-word-is-yes-then-first-else-second" } = 3 ;
     $global_required_number_of_operands_for_action{ "if-word-is-no-then-first-else-second" } = 3 ;
@@ -383,34 +439,33 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "if-end" } = 0 ;
     $global_required_number_of_operands_for_action{ "first-word-in-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "last-word-in-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "from-phrase-get-word-number" } = 2 ;
+    $global_required_number_of_operands_for_action{ "get-word-at-position" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-words-from-position-to-position" } = 4 ;
-    $global_required_number_of_operands_for_action{ "copy-from-phrase-to-phrase-with-word-order-reversed" } = 2 ;
-    $global_required_number_of_operands_for_action{ "count-of-words-in-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "position-of-word-in-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-words-order-reversed" } = 2 ;
+    $global_required_number_of_operands_for_action{ "count-of-words" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-word-is-in-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "position-of-word-in-phrase-within-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "position-of-text-in-phrase-within-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "get-position-of-word" } = 2 ;
+    $global_required_number_of_operands_for_action{ "generate-positions-of-words-that-match-any-listed-word" } = 3 ;
+    $global_required_number_of_operands_for_action{ "position-of-matching-text" } = 2 ;
     $global_required_number_of_operands_for_action{ "position-of-string-in-phrase-within-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "positions-multiple-of-delimiter-within-phrase-put-into-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = 4 ;
-    $global_required_number_of_operands_for_action{ "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "counts-from-integer-to-integer-put-into-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "generate-positions-of-delimiter" } = 3 ;
+    $global_required_number_of_operands_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = 4 ;
+    $global_required_number_of_operands_for_action{ "generate-positions-of-listed-words" } = 3 ;
+    $global_required_number_of_operands_for_action{ "generate-counts-from-integer-to-integer" } = 3 ;
     $global_required_number_of_operands_for_action{ "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "copy-words-that-begin-with-text-in-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = 4 ;
-    $global_required_number_of_operands_for_action{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = 4 ;
+    $global_required_number_of_operands_for_action{ "copy-words-that-begin-with-text" } = 3 ;
+    $global_required_number_of_operands_for_action{ "generate-every-pairwise-combination-of-words" } = 4 ;
+    $global_required_number_of_operands_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "zero-one-multiple" } = 1 ;
     $global_required_number_of_operands_for_action{ "zero-or-nonzero" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 1 ;
-    $global_required_number_of_operands_for_action{ "count-of-characters-in-phrase" } = 1 ;
+    $global_required_number_of_operands_for_action{ "count-of-characters" } = 1 ;
     $global_required_number_of_operands_for_action{ "count-of-characters-in-phrase-definition" } = 1 ;
     $global_required_number_of_operands_for_action{ "numeric-increment" } = 1 ;
     $global_required_number_of_operands_for_action{ "numeric-decrement" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-same-two-phrase-definitions" } = 2 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 2 ;
-    $global_required_number_of_operands_for_action{ "characters-in-phrase-get-from-position-to-position" } = 3 ;
+    $global_required_number_of_operands_for_action{ "get-characters-from-position-to-position" } = 3 ;
     $global_required_number_of_operands_for_action{ "numeric-minus" } = 2 ;
     $global_required_number_of_operands_for_action{ "numeric-divide-by" } = 2 ;
     $global_required_number_of_operands_for_action{ "numeric-absolute" } = 1 ;
@@ -441,27 +496,27 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "use-template-and-parameters-to-create-simple-list-with-name" } = 3 ;
     $global_required_number_of_operands_for_action{ "calculate-if-phrase-empty" } = 1 ;
     $global_required_number_of_operands_for_action{ "calculate-if-empty-then-use-here" } = 1 ;
-    $global_required_number_of_operands_for_action{ "insert-codeview-tags-into-phrase" } = 1 ;
+    $global_required_number_of_operands_for_action{ "insert-codeview-tags" } = 1 ;
     $global_required_number_of_operands_for_action{ "escape-from-dashrep" } = 0 ;
     $global_required_number_of_operands_for_action{ "resume-after-escape-from-dashrep" } = 0 ;
     $global_required_number_of_operands_for_action{ "escape-if-yes" } = 1 ;
     $global_required_number_of_operands_for_action{ "escape-if-no" } = 1 ;
     $global_required_number_of_operands_for_action{ "trace-show" } = 1 ;
     $global_required_number_of_operands_for_action{ "dashrep-trace-show-definition" } = 1 ;
-    $global_required_number_of_operands_for_action{ "put-into-phrase-linewise-usage-counts-for-phrase-names" } = 1 ;
-    $global_required_number_of_operands_for_action{ "copy-words-found-in-both-phrases-to-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "copy-words-found-in-either-phrase-to-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "generate-phrase-usage-counts" } = 1 ;
+    $global_required_number_of_operands_for_action{ "copy-words-found-in-both-lists" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-found-only-in-first-list" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-found-in-either-list" } = 3 ;
 
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrases-line-numbered" } = 2 ;
-    $global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-text" } = 3 ;
     $global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" } = 3 ;
-    $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" } = 3 ;
+    $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = 3 ;
+    $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = 3 ;
     $global_required_number_of_operands_for_action{ "get-definitions-from-file" } = 1 ;
-    $global_required_number_of_operands_for_action{ "put-into-phrase-list-of-files-in-current-read-directory" } = 1 ;
-    $global_required_number_of_operands_for_action{ "put-into-phrase-list-of-folders-in-current-read-directory" } = 1 ;
+    $global_required_number_of_operands_for_action{ "generate-list-of-files-in-current-read-directory" } = 1 ;
+    $global_required_number_of_operands_for_action{ "generate-list-of-folders-in-current-read-directory" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-file-exists" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-folder-exists" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-folder-in-phrase-exists" } = 1 ;
@@ -475,11 +530,11 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "expand-phrase-to-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-named-phrases" } = 3 ;
-    $global_required_number_of_operands_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = 2 ;
-    $global_required_number_of_operands_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "gather-tagged-info-from-file" } = 2 ;
+    $global_required_number_of_operands_for_action{ "gather-one-entry-from-tagged-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "linewise-read-from-file-and-use-handler" } = 2 ;
     $global_required_number_of_operands_for_action{ "write-all-dashrep-definitions-to-file" } = 1 ;
-    $global_required_number_of_operands_for_action{ "write-all-dashrep-phrase-names-to-phrase" } = 1 ;
+    $global_required_number_of_operands_for_action{ "generate-list-of-all-dashrep-phrases" } = 1 ;
     $global_required_number_of_operands_for_action{ "write-all-dashrep-phrase-names-to-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = 2 ;
 
@@ -496,53 +551,51 @@ BEGIN {
     $global_check_operand_two_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-add-number" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "append-multiple-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-line-in-file-that-begins-with-text" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "yes-or-no-folder-exists" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "yes-or-no-folder-in-phrase-exists" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "expand-phrase-to-file" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "from-phrase-get-word-number" } = "yes" ;
-    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "get-word-at-position" } = "yes" ;
+    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-and-replace-matching-text" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
-    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "position-of-word-in-phrase" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "position-of-word-in-phrase-within-phrase" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "position-of-word-in-phrase-within-phrase" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "positions-multiple-of-delimiter-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = "yes" ;
-    $global_check_operand_one_phrase_is_not_empty_for_action{ "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "positions-multiple-of-delimiter-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_two_phrase_is_not_empty_for_action{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-text-in-phrase" } = "yes" ;
+    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "get-position-of-word" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+    $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
 
-    $global_check_operand_two_is_positive_integer_for_action{ "from-phrase-get-word-number" } = "yes" ;
-    $global_check_operand_three_is_positive_integer_for_action{ "copy-only-word-at-position" } = "yes" ;
-    $global_check_operand_three_is_positive_integer_for_action{ "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" } = "yes" ;
-    $global_check_operand_three_is_positive_integer_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_four_is_positive_integer_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_two_is_positive_integer_for_action{ "get-word-at-position" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "copy-word-at-position" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_four_is_positive_integer_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_three_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
     $global_check_operand_four_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
     $global_check_operand_one_is_positive_integer_for_action{ "zero-one-multiple" } = "yes" ;
     $global_check_operand_one_is_positive_integer_for_action{ "zero-or-nonzero" } = "yes" ;
-    $global_check_operand_two_is_positive_integer_for_action{ "characters-in-phrase-get-from-position-to-position" } = "yes" ;
-    $global_check_operand_three_is_positive_integer_for_action{ "characters-in-phrase-get-from-position-to-position" } = "yes" ;
+    $global_check_operand_two_is_positive_integer_for_action{ "get-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "get-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_one_is_positive_integer_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
-    $global_check_operand_three_is_positive_integer_for_action{ "repeatedly-append-from-phrase-to-phrase-using-repeat-count" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "repeatedly-append-text-using-repeat-count" } = "yes" ;
     $global_check_operand_three_is_positive_integer_for_action{ "use-handler-with-each-word-in-phrase-currently-at-character-position" } = "yes" ;
 
     $global_check_operand_one_is_real_number_for_action{ "numeric-equal-greater-less-compare" } = "yes" ;
@@ -564,126 +617,126 @@ BEGIN {
     $global_check_operand_one_is_real_number_for_action{ "split-epoch-seconds-into-named-components" } = "yes" ;
 
     $global_check_operand_one_is_phrase_name_for_action{ "clear-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "clear-phrases-listed-in-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "delete-phrases-listed-in-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "append-from-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "append-from-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "append-from-phrase-to-phrase-no-space" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "append-from-phrase-to-phrase-no-space" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "repeatedly-append-from-phrase-to-phrase-using-repeat-count" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "repeatedly-append-from-phrase-to-phrase-using-repeat-count" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "prepend-from-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "prepend-from-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "prepend-from-phrase-to-phrase-no-space" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "prepend-from-phrase-to-phrase-no-space" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "clear-listed-phrases" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "delete-listed-phrases" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "append-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "append-text" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "append-text-no-space" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "append-text-no-space" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "repeatedly-append-text-using-repeat-count" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "repeatedly-append-text-using-repeat-count" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "prepend-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "prepend-text" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "prepend-text-no-space" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "prepend-text-no-space" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "append-word-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "append-word-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "append-new-line-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "append-new-line" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "append-multiple-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-text" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-digits-with-9s" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-digits-with-9s" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-lowercase-only" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-lowercase-only" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-uppercase-only" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-uppercase-only" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-initial-caps" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-initial-caps" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-remove-extra-spaces" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-remove-extra-spaces" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-numeric-sort-by-word" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-numeric-sort-by-word" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-split-into-list-of-characters" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-split-into-list-of-characters" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-lowercase-only" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-lowercase-only" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-uppercase-only" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-uppercase-only" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-initial-caps" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-initial-caps" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-without-extra-spaces" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-without-extra-spaces" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-sort-numeric" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-sort-numeric" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-sort-alphabetic" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-sort-alphabetic" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "split-into-list-of-characters" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "split-into-list-of-characters" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-but-remove-first-word" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-but-remove-first-word" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-but-remove-last-word" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-but-remove-last-word" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-into-spoken-dashrep-code" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-into-spoken-dashrep-code" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-from-spoken-dashrep-code" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-from-spoken-dashrep-code" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "xml-move-attributes-into-tag-elements-within-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "insert-angle-bracketed-definitions-into-already-expanded-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-only-word-at-position" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-only-word-at-position" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "encode-as-cgi-parameter" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "encode-as-cgi-parameter" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "decode-from-cgi-parameter" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "decode-from-cgi-parameter" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "convert-into-spoken-dashrep-code" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "convert-into-spoken-dashrep-code" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "xml-move-attributes-into-tag-elements" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "insert-angle-bracketed-definitions" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace-matching-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace-matching-text" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "copy-and-replace-matching-text" } = "yes" ;
+    $global_check_operand_four_is_phrase_name_for_action{ "copy-and-replace-matching-text" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
     $global_check_operand_four_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+    $global_check_operand_four_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
     $global_check_operand_four_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "expand-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "expand-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "expand-only-parameters-in-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "expand-only-parameters-in-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "insert-definition-of-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "expand-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "expand-text" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "insert-phrase-definition-without-expanding" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "first-word-in-phrase" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "last-word-in-phrase" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-with-word-order-reversed" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-from-phrase-to-phrase-with-word-order-reversed" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "count-of-words-in-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "position-of-text-in-phrase-within-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "position-of-text-in-phrase-within-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "count-of-words" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "position-of-matching-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "position-of-matching-text" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "position-of-string-in-phrase-within-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "position-of-string-in-phrase-within-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "positions-multiple-of-delimiter-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "counts-from-integer-to-integer-put-into-phrase" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+    $global_check_operand_four_is_phrase_name_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-counts-from-integer-to-integer" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-text-in-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-text-in-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_four_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+    $global_check_operand_four_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "yes-or-no-empty-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "count-of-characters-in-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "count-of-characters" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "count-of-characters-in-phrase-definition" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "numeric-increment" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "yes-or-no-same-two-phrase-definitions" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "yes-or-no-same-two-phrase-definitions" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "characters-in-phrase-get-from-position-to-position" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "get-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "numeric-vector-add-number" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "numeric-vectors-add" } = "yes" ;
@@ -709,31 +762,31 @@ BEGIN {
     $global_check_operand_three_is_phrase_name_for_action{ "use-template-and-parameters-to-create-full-list-with-name" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "trace-show" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "dashrep-trace-show-definition" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "put-into-phrase-linewise-usage-counts-for-phrase-names" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "generate-phrase-usage-counts" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "calculate-if-phrase-empty" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "insert-codeview-tags-into-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "insert-codeview-tags" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-file-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-from-file-to-phrases-line-numbered" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "find-line-in-file-that-begins-with-text" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "put-into-phrase-list-of-files-in-current-read-directory" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "put-into-phrase-list-of-folders-in-current-read-directory" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-files-in-current-read-directory" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-folders-in-current-read-directory" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "gather-tagged-info-from-file" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "gather-one-entry-from-tagged-file" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-found-only-in-first-list" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-found-only-in-first-list" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_two_is_phrase_name_for_action{ "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "write-all-dashrep-phrase-names-to-phrase" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "generate-positions-of-words-that-match-any-listed-word" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "generate-positions-of-words-that-match-any-listed-word" } = "yes" ;
+    $global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-words-that-match-any-listed-word" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-all-dashrep-phrases" } = "yes" ;
 
     $global_check_operand_one_is_file_name_for_action{ "get-definitions-from-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "yes-or-no-file-exists" } = "yes" ;
@@ -748,8 +801,8 @@ BEGIN {
     $global_check_operand_one_is_file_name_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-named-phrases" } = "yes" ;
-    $global_check_operand_one_is_file_name_for_action{ "gather-tagged-info-from-file-and-put-unique-values-into-phrase" } = "yes" ;
-    $global_check_operand_one_is_file_name_for_action{ "gather-one-entry-from-tagged-file-and-put-into-phrase" } = "yes" ;
+    $global_check_operand_one_is_file_name_for_action{ "gather-tagged-info-from-file" } = "yes" ;
+    $global_check_operand_one_is_file_name_for_action{ "gather-one-entry-from-tagged-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-definitions-to-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-phrase-names-to-file" } = "yes" ;
@@ -2316,10 +2369,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  clear-phrases-listed-in-phrase
-#  delete-phrases-listed-in-phrase
+#  clear-listed-phrases
+#  delete-listed-phrases
 
-        if ( ( $action_name eq "clear-phrases-listed-in-phrase" ) || ( $action_name eq "delete-phrases-listed-in-phrase" ) )
+        if ( ( $action_name eq "clear-listed-phrases" ) || ( $action_name eq "delete-listed-phrases" ) )
         {
             $action_result = " " ;
             $phrase_name = $operand_one ;
@@ -2328,10 +2381,10 @@ sub dashrep_expand_parameters
             {
                 if ( exists( $global_dashrep_replacement{ $phrase_name_to_clear } ) )
                 {
-                    if ( $action_name eq "delete-phrases-listed-in-phrase" )
+                    if ( $action_name eq "delete-listed-phrases" )
                     {
                         delete( $global_dashrep_replacement{ $phrase_name_to_clear } ) ;
-                    } elsif ( $action_name eq "clear-phrases-listed-in-phrase" )
+                    } elsif ( $action_name eq "clear-listed-phrases" )
                     {
                         $global_dashrep_replacement{ $phrase_name_to_clear } = "" ;
 
@@ -2342,7 +2395,7 @@ sub dashrep_expand_parameters
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
-                if ( $action_name eq "delete-phrases-listed-in-phrase" )
+                if ( $action_name eq "delete-listed-phrases" )
                 {
                     $global_trace_log .= "{{trace; deleted phrases listed in phrase " . $phrase_name . "}}\n" ;
                 } else
@@ -2379,13 +2432,13 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  append-from-phrase-to-phrase
-#  append-from-phrase-to-phrase-no-space
-#  prepend-from-phrase-to-phrase
-#  prepend-from-phrase-to-phrase-no-space
-#  repeatedly-append-from-phrase-to-phrase-using-repeat-count
+#  append-text
+#  append-text-no-space
+#  prepend-text
+#  prepend-text-no-space
+#  repeatedly-append-text-using-repeat-count
 
-        if ( ( $action_name eq "append-from-phrase-to-phrase" ) || ( $action_name eq "append-from-phrase-to-phrase-no-space" ) || ( $action_name eq "prepend-from-phrase-to-phrase" ) || ( $action_name eq "prepend-from-phrase-to-phrase-no-space" ) || ( $action_name eq "repeatedly-append-from-phrase-to-phrase-using-repeat-count" ) )
+        if ( ( $action_name eq "append-text" ) || ( $action_name eq "append-text-no-space" ) || ( $action_name eq "prepend-text" ) || ( $action_name eq "prepend-text-no-space" ) || ( $action_name eq "repeatedly-append-text-using-repeat-count" ) )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -2404,13 +2457,13 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $operand_two } = "" ;
             }
-            if ( $action_name eq "append-from-phrase-to-phrase-no-space" )
+            if ( $action_name eq "append-text-no-space" )
             {
                 $global_dashrep_replacement{ $operand_two } .= $text_to_append ;
-            } elsif ( $action_name eq "prepend-from-phrase-to-phrase-no-space" )
+            } elsif ( $action_name eq "prepend-text-no-space" )
             {
                 $global_dashrep_replacement{ $operand_two } = $text_to_append . $global_dashrep_replacement{ $operand_two } ;
-            } elsif ( $action_name eq "append-from-phrase-to-phrase" )
+            } elsif ( $action_name eq "append-text" )
             {
                 $text_to_append =~ s/^ +//s ;
                 $text_to_append =~ s/ +$//s ;
@@ -2421,7 +2474,7 @@ sub dashrep_expand_parameters
                 {
                     $global_dashrep_replacement{ $operand_two } .= " " . $text_to_append ;
                 }
-            } elsif ( $action_name eq "prepend-from-phrase-to-phrase" )
+            } elsif ( $action_name eq "prepend-text" )
             {
                 $text_to_append =~ s/^ +//s ;
                 $text_to_append =~ s/ +$//s ;
@@ -2432,7 +2485,7 @@ sub dashrep_expand_parameters
                 {
                     $global_dashrep_replacement{ $operand_two } = $text_to_append . " " . $global_dashrep_replacement{ $operand_two } ;
                 }
-            } elsif ( $action_name eq "repeatedly-append-from-phrase-to-phrase-using-repeat-count" )
+            } elsif ( $action_name eq "repeatedly-append-text-using-repeat-count" )
             {
                 $text_to_append =~ s/^ +//s ;
                 $text_to_append =~ s/ +$//s ;
@@ -2514,9 +2567,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  append-new-line-to-phrase
+#  append-new-line
 
-        if ( $action_name eq "append-new-line-to-phrase" )
+        if ( $action_name eq "append-new-line" )
         {
             $action_result = " " ;
             $global_dashrep_replacement{ $operand_one } .= "\n" ;
@@ -2532,13 +2585,13 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-multiple-words-in-phrase-to-phrases-named-in-pattern
-#  append-multiple-from-phrases-named-in-pattern-to-phrase
+#  copy-listed-words-to-phrases-named-in-pattern
+#  append-multiple-from-phrases-named-in-pattern
 
-        if ( ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" ) || ( $action_name eq "append-multiple-from-phrases-named-in-pattern-to-phrase" ) )
+        if ( ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" ) || ( $action_name eq "append-multiple-from-phrases-named-in-pattern" ) )
         {
             $action_result = " " ;
-            if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
+            if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
                 $phrase_name_containing_source_words = $operand_one ;
                 $phrase_name_containing_pattern = $operand_two ;
@@ -2594,7 +2647,7 @@ sub dashrep_expand_parameters
                 next ;
             }
             @list_of_parameter_words = split( /[ \n\t]+/ , $list_of_words_as_text ) ;
-            if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
+            if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
                 $phrase_name_containing_source_words =~ s/[ \n\t]+//g ;
                 $phrase_name_containing_source_words =~ s/^-+// ;
@@ -2624,7 +2677,7 @@ sub dashrep_expand_parameters
                 }
                 @list_of_source_words = split( / +/ , $list_of_words_as_text ) ;
             }
-            if ( $action_name eq "copy-multiple-words-in-phrase-to-phrases-named-in-pattern" )
+            if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
                 for ( $pointer = 0 ; $pointer <= $#list_of_parameter_words ; $pointer ++ )
                 {
@@ -2675,25 +2728,25 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-from-phrase-to-phrase
+#  copy-text
 #  copy-to-phrase-from-following-text
-#  copy-from-phrase-to-phrase-lowercase-only
-#  copy-from-phrase-to-phrase-uppercase-only
-#  copy-from-phrase-to-phrase-initial-caps
-#  copy-from-phrase-to-phrase-and-remove-extra-spaces
-#  copy-from-phrase-to-phrase-and-numeric-sort-by-word
-#  copy-from-phrase-to-phrase-and-alphabetic-sort-by-word
-#  copy-from-phrase-to-phrase-and-split-into-list-of-characters
-#  copy-from-phrase-to-phrase-and-encode-as-cgi-parameter
-#  copy-from-phrase-to-phrase-and-decode-from-cgi-parameter
+#  copy-lowercase-only
+#  copy-uppercase-only
+#  copy-initial-caps
+#  copy-without-extra-spaces
+#  copy-words-sort-numeric
+#  copy-words-sort-alphabetic
+#  split-into-list-of-characters
+#  encode-as-cgi-parameter
+#  decode-from-cgi-parameter
 #
-#  copy-from-phrase-to-phrase-and-replace-html-reserved-characters -- Deprecated, instead use action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
-#  copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- Deprecated, instead use action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
+#  copy-from-phrase-to-phrase-and-replace-html-reserved-characters -- Deprecated, instead use action copy-and-replace-using-paired-listed-words
+#  copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- Deprecated, instead use action copy-and-replace-using-paired-listed-words
 #  copy-from-phrase-to-phrase-but-remove-first-word -- Deprecated, because its functionality overlaps another words-copy action
 #  copy-from-phrase-to-phrase-but-remove-last-word -- Deprecated, because its functionality overlaps another words-copy action
-#  copy-from-phrase-to-phrase-and-replace-digits-with-9s -- Deprecated, use copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string instead
+#  copy-from-phrase-to-phrase-and-replace-digits-with-9s -- Deprecated, use copy-and-replace-using-paired-listed-words instead
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" ) || ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" ) )
+        if ( ( $action_name eq "copy-text" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-without-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-lowercase-only" ) || ( $action_name eq "copy-uppercase-only" ) || ( $action_name eq "copy-initial-caps" ) || ( $action_name eq "copy-words-sort-numeric" ) || ( $action_name eq "copy-words-sort-alphabetic" ) || ( $action_name eq "split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "encode-as-cgi-parameter" ) || ( $action_name eq "decode-from-cgi-parameter" ) )
         {
             $action_result = " " ;
             $source_phrase_name = $operand_one ;
@@ -2703,7 +2756,7 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
             $temp_text = $global_dashrep_replacement{ $source_phrase_name } ;
-            if ( $action_name eq "copy-from-phrase-to-phrase-and-remove-extra-spaces" )
+            if ( $action_name eq "copy-without-extra-spaces" )
             {
                 $temp_text =~ s/[\r\n\t]/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
@@ -2712,10 +2765,10 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" )
             {
                 $temp_text =~ s/[0-8]/9/sg ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-lowercase-only" )
+            } elsif ( $action_name eq "copy-lowercase-only" )
             {
                 $temp_text = lc( $temp_text ) ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-uppercase-only" )
+            } elsif ( $action_name eq "copy-uppercase-only" )
             {
                 $temp_text = uc( $temp_text ) ;
             } elsif ( $action_name eq "copy-to-phrase-from-following-text" )
@@ -2723,7 +2776,7 @@ sub dashrep_expand_parameters
                 $temp_text = $operands_all ;
                 $temp_text =~ s/^ *[^ ]+ +// ;
                 $target_phrase_name = $operand_one ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-initial-caps" )
+            } elsif ( $action_name eq "copy-initial-caps" )
             {
                 $temp_text =~ s/^ +// ;
                 $temp_text =~ s/ +$// ;
@@ -2744,7 +2797,7 @@ sub dashrep_expand_parameters
                 }
                 $accumulated_text .= $remaining_text ;
                 $temp_text = $accumulated_text ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-encode-as-cgi-parameter" )
+            } elsif ( $action_name eq "encode-as-cgi-parameter" )
             {
                 $temp_text =~ s/ /\+/sg ;
                 $remaining_text = $temp_text ;
@@ -2758,7 +2811,7 @@ sub dashrep_expand_parameters
                 }
                 $accumulated_text .= $remaining_text ;
                 $temp_text = $accumulated_text ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-decode-from-cgi-parameter" )
+            } elsif ( $action_name eq "decode-from-cgi-parameter" )
             {
                 $temp_text =~ s/\+/ /sg ;
                 $remaining_text = $temp_text ;
@@ -2802,7 +2855,7 @@ sub dashrep_expand_parameters
                     }
                 }
                 $temp_text .= $remaining_string ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-numeric-sort-by-word" )
+            } elsif ( $action_name eq "copy-words-sort-numeric" )
             {
                 $temp_text =~ s/[\n\r\t]+/ /sg ;
                 $temp_text =~ s/^ +// ;
@@ -2810,7 +2863,7 @@ sub dashrep_expand_parameters
                 @list = split( / +/ , $temp_text ) ;
                 @list_of_sorted_numbers = sort { $a <=> $b } @list ;
                 $temp_text = join( " " , @list_of_sorted_numbers ) ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-alphabetic-sort-by-word" )
+            } elsif ( $action_name eq "copy-words-sort-alphabetic" )
             {
                 $temp_text =~ s/[\n\r\t]+/ /sg ;
                 $temp_text =~ s/^ +// ;
@@ -2818,7 +2871,7 @@ sub dashrep_expand_parameters
                 @list = split( / +/ , $temp_text ) ;
                 @list_of_sorted_numbers = sort( @list ) ;
                 $temp_text = join( " " , @list_of_sorted_numbers ) ;
-            } elsif ( $action_name eq "copy-from-phrase-to-phrase-and-split-into-list-of-characters" )
+            } elsif ( $action_name eq "split-into-list-of-characters" )
             {
                 $temp_text = join( " " , unpack( "(a1)*" , $temp_text ) ) ;
                 $temp_text =~ s/   / onespace /g ;
@@ -2850,10 +2903,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-from-phrase-to-phrase-into-spoken-dashrep-code
-#  copy-from-phrase-to-phrase-from-spoken-dashrep-code
+#  convert-into-spoken-dashrep-code
+#  convert-from-spoken-dashrep-code
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" ) || ( $action_name eq "copy-from-phrase-to-phrase-from-spoken-dashrep-code" ) )
+        if ( ( $action_name eq "convert-into-spoken-dashrep-code" ) || ( $action_name eq "convert-from-spoken-dashrep-code" ) )
         {
             $action_result = " " ;
             $source_phrase_name = $operand_one ;
@@ -2863,7 +2916,7 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
             $temp_text = $global_dashrep_replacement{ $source_phrase_name } ;
-            if ( $action_name eq "copy-from-phrase-to-phrase-into-spoken-dashrep-code" )
+            if ( $action_name eq "convert-into-spoken-dashrep-code" )
             {
                 $temp_text =~ s/^ +//sg ;
                 $temp_text =~ s/ +$//sg ;
@@ -2951,9 +3004,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  xml-move-attributes-into-tag-elements-within-phrase
+#  xml-move-attributes-into-tag-elements
 
-        if ( $action_name eq "xml-move-attributes-into-tag-elements-within-phrase" )
+        if ( $action_name eq "xml-move-attributes-into-tag-elements" )
         {
             $action_result = " " ;
             $phrase_being_edited = $operand_one ;
@@ -2993,9 +3046,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags
+#  copy-and-remove-attributes-from-xml-tags
 
-        if ( $action_name eq "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags" )
+        if ( $action_name eq "copy-and-remove-attributes-from-xml-tags" )
         {
             $action_result = " " ;
             $text_being_edited = $global_dashrep_replacement{ $operand_one } ;
@@ -3015,9 +3068,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  insert-angle-bracketed-definitions-into-already-expanded-phrase
+#  insert-angle-bracketed-definitions
 
-        if ( $action_name eq "insert-angle-bracketed-definitions-into-already-expanded-phrase" )
+        if ( $action_name eq "insert-angle-bracketed-definitions" )
         {
             $action_result = " " ;
             $phrase_being_edited = $operand_one ;
@@ -3068,15 +3121,14 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-only-word-at-position
-#  copy-from-phrase-to-phrase-only-word-at-position -- deprecated in favor of better name
-#  copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase
-#  copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase
+#  copy-word-at-position
+#  copy-words-rearrange-using-order-sort-alphabetic
+#  copy-words-rearrange-using-order-sort-numeric
 
-        if ( ( $action_name eq "copy-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
+        if ( ( $action_name eq "copy-word-at-position" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-alphabetic" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) )
         {
             $action_result = " " ;
-            if ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) && ( $global_dashrep_replacement{ $operand_three } =~ /[^0-9\.\- ]/ ) )
+            if ( ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) && ( $global_dashrep_replacement{ $operand_three } =~ /[^0-9\.\- ]/ ) )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
@@ -3099,7 +3151,7 @@ sub dashrep_expand_parameters
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
                 $source_text =~ s/^ +// ;
                 $source_text =~ s/ +$// ;
-                if ( ( $action_name eq "copy-only-word-at-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-only-word-at-position" ) )
+                if ( $action_name eq "copy-word-at-position" )
                 {
                     if ( $operand_three =~ /^[0-9]+$/ )
                     {
@@ -3125,7 +3177,7 @@ sub dashrep_expand_parameters
                     {
                         $global_trace_log .= "{{trace; copied word number " . $word_position . " from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
                     }
-                } elsif ( ( $action_name eq "copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase" ) || ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" ) )
+                } elsif ( ( $action_name eq "copy-words-rearrange-using-order-sort-alphabetic" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) )
                 {
                     @list_of_words = split( / +/ , $source_text ) ;
                     $list_indicating_sort_order_text_string = $global_dashrep_replacement{ $operand_three } ;
@@ -3133,7 +3185,7 @@ sub dashrep_expand_parameters
                     $list_indicating_sort_order_text_string =~ s/ +$// ;
                     @list_indicating_sort_order = split( / +/ , $list_indicating_sort_order_text_string ) ;
 
-                    if ( $action_name eq "copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase" )
+                    if ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" )
                     {
                         @sort_order = sort { $a <=> $b } @list_indicating_sort_order ;
                     } else
@@ -3181,9 +3233,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-and-zero-pad-left-to-length
+#  copy-zero-pad-left-to-length
 
-        if ( $action_name eq "copy-from-phrase-to-phrase-and-zero-pad-left-to-length" )
+        if ( $action_name eq "copy-zero-pad-left-to-length" )
         {
             $action_result = " " ;
             $source_phrase_name = $operand_one ;
@@ -3221,12 +3273,13 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase
+#  copy-and-replace-matching-text
+#  copy-characters-from-position-to-position
+#
+#  copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string -- Deprecated, use copy-and-replace-using-paired-listed-words instead
 #  copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase -- Deprecated
-#  copy-from-phrase-to-phrase-characters-from-position-to-position
-#  copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string
 
-        if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-characters-from-position-to-position" )  || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" ) )
+        if ( ( $action_name eq "copy-and-replace-matching-text" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) || ( $action_name eq "copy-characters-from-position-to-position" )  || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" ) )
         {
             $action_result = " " ;
             $source_phrase_name = $operand_one ;
@@ -3235,7 +3288,7 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
-            if ( ( $action_name eq "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
+            if ( ( $action_name eq "copy-and-replace-matching-text" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) )
             {
                 $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
                 if ( exists( $global_dashrep_replacement{ $operand_four } ) )
@@ -3281,7 +3334,7 @@ sub dashrep_expand_parameters
                     $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
                 }
             }
-            if ( $action_name eq "copy-from-phrase-to-phrase-characters-from-position-to-position" )
+            if ( $action_name eq "copy-characters-from-position-to-position" )
             {
                 $pointer_one = -1 ;
                 $pointer_two = -1 ;
@@ -3352,9 +3405,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list
+#  copy-and-replace-using-paired-listed-words
 
-        if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list" )
+        if ( $action_name eq "copy-and-replace-using-paired-listed-words" )
         {
             $action_result = " " ;
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
@@ -3410,10 +3463,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  expand-phrase-to-phrase
-#  expand-only-parameters-in-phrase-to-phrase
+#  expand-text
+#  expand-parameters-only
 
-        if ( ( $action_name eq "expand-phrase-to-phrase" ) || ( $action_name eq "expand-only-parameters-in-phrase-to-phrase" ) )
+        if ( ( $action_name eq "expand-text" ) || ( $action_name eq "expand-parameters-only" ) )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3426,7 +3479,7 @@ sub dashrep_expand_parameters
                 {
                     $global_trace_log .= "{{trace; after parameters expanded: " . $partial_translation . "}}\n" ;
                 }
-                if ( $action_name ne "expand-only-parameters-in-phrase-to-phrase" )
+                if ( $action_name ne "expand-parameters-only" )
                 {
                     $translation = &dashrep_expand_phrases( $partial_translation );
                 } else
@@ -3459,9 +3512,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  insert-definition-of-phrase
+#  insert-phrase-definition-without-expanding
 
-        if ( $action_name eq "insert-definition-of-phrase" )
+        if ( $action_name eq "insert-phrase-definition-without-expanding" )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3684,9 +3737,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  from-phrase-get-word-number
+#  get-word-at-position
 
-        if ( $action_name eq "from-phrase-get-word-number" )
+        if ( $action_name eq "get-word-at-position" )
         {
             $action_result = " " ;
             $word_number = $operand_two + 0 ;
@@ -3727,9 +3780,8 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  copy-words-from-position-to-position
-#  copy-from-phrase-to-phrase-words-from-position-to-position -- deprecated in favor of better name
 
-        if ( ( $action_name eq "copy-words-from-position-to-position" ) || ( $action_name eq "copy-from-phrase-to-phrase-words-from-position-to-position" ) )
+        if ( $action_name eq "copy-words-from-position-to-position" )
         {
             $action_result = " " ;
             $word_number_begin = $operand_three + 0 ;
@@ -3780,10 +3832,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-from-phrase-to-phrase-with-word-order-reversed
+#  copy-words-order-reversed
 #  (useful for inserting commas or decimal points into integers)
 
-        if ( $action_name eq "copy-from-phrase-to-phrase-with-word-order-reversed" )
+        if ( $action_name eq "copy-words-order-reversed" )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3815,9 +3867,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  count-of-words-in-phrase
+#  count-of-words
 
-        if ( $action_name eq "count-of-words-in-phrase" )
+        if ( $action_name eq "count-of-words" )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -3847,27 +3899,25 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  yes-or-no-word-is-in-phrase
-#  position-of-word-in-phrase-within-phrase
-#
-#  Deprecated: position-of-word-in-phrase
+#  get-position-of-word
 
-        if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "yes-or-no-word-is-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
+        if ( ( $action_name eq "yes-or-no-word-is-in-phrase" ) || ( $action_name eq "get-position-of-word" ) )
         {
             $action_result = " " ;
-            if ( $action_name eq "position-of-word-in-phrase-within-phrase" )
-            {
-                $word_to_find = $global_dashrep_replacement{ $operand_one } ;
-            } else
-            {
+#            if ( $action_name eq "get-position-of-word" )
+#            {
+#                $word_to_find = $global_dashrep_replacement{ $operand_one } ;
+#            } else
+#            {
                 $word_to_find = $operand_one ;
-            }
+#            }
             $phrase_name = $operand_two ;
             $temp_text = $global_dashrep_replacement{ $phrase_name } ;
             $temp_text =~ s/^ +// ;
             $temp_text =~ s/ +$// ;
             @list = split( / +/ , $temp_text ) ;
             $list_length = $#list + 1 ;
-            if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
+            if ( $action_name eq "get-position-of-word" )
             {
                 $action_result = "0" ;
             } else
@@ -3881,7 +3931,7 @@ sub dashrep_expand_parameters
                 {
                     if ( $list[ $pointer - 1 ] eq $word_to_find )
                     {
-                        if ( ( $action_name eq "position-of-word-in-phrase" ) || ( $action_name eq "position-of-word-in-phrase-within-phrase" ) )
+                        if ( $action_name eq "get-position-of-word" )
                         {
                             $action_result = sprintf( "%d" , $pointer ) ;
                         } else
@@ -3892,10 +3942,6 @@ sub dashrep_expand_parameters
                     }
                 }
             }
-            if ( ( $action_name eq "position-of-word-in-phrase" ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
-            {
-                $global_trace_log .= "{{trace; warning: action " . $action_name . " is deprecated, and will not exist in future versions" . "}}\n" ;
-            }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
@@ -3904,9 +3950,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#    positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase
+#    generate-positions-of-words-that-match-any-listed-word
 
-        if ( $action_name eq "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase" )
+        if ( $action_name eq "generate-positions-of-words-that-match-any-listed-word" )
         {
             $action_result = " " ;
             $words_to_search = $global_dashrep_replacement{ $operand_one } ;
@@ -3949,10 +3995,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  position-of-text-in-phrase-within-phrase
-#  position-of-string-in-phrase-within-phrase -- Deprecated
+#  position-of-matching-text
 
-        if ( ( $action_name eq "position-of-text-in-phrase-within-phrase" ) || ( $action_name eq "position-of-string-in-phrase-within-phrase" ) )
+        if ( $action_name eq "position-of-matching-text" )
         {
             $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
@@ -3980,9 +4025,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  positions-multiple-of-delimiter-within-phrase-put-into-phrase
+#  generate-positions-of-delimiter
 
-        if ( $action_name eq "positions-multiple-of-delimiter-within-phrase-put-into-phrase" )
+        if ( $action_name eq "generate-positions-of-delimiter" )
         {
             $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
@@ -4020,9 +4065,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase
+#  generate-positions-of-first-matching-delimiter-after-listed-positions
 
-        if ( $action_name eq "positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase" )
+        if ( $action_name eq "generate-positions-of-first-matching-delimiter-after-listed-positions" )
         {
             $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
@@ -4068,9 +4113,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase
+#  generate-positions-of-listed-words
 
-        if ( $action_name eq "positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase" )
+        if ( $action_name eq "generate-positions-of-listed-words" )
         {
             $action_result = " " ;
             $words_to_find = $global_dashrep_replacement{ $operand_one } ;
@@ -4145,19 +4190,16 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-words-found-in-both-phrases-to-phrase
-#  copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase
+#  copy-words-found-in-both-lists
+#  copy-words-found-only-in-first-list
 #      (order of items in first list are preserved)
 #  copy-words-unique-only
-#  copy-from-phrase-unique-words-to-phrase -- deprecated in favor of better name
-#  copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase -- deprecated in favor of better name
-#  copy-from-two-phrases-words-found-in-both-to-phrase -- deprecated in favor of better name
 
-        if ( ( $action_name eq "copy-words-found-in-both-phrases-to-phrase" ) || ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-words-unique-only" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
+        if ( ( $action_name eq "copy-words-found-in-both-lists" ) || ( $action_name eq "copy-words-found-only-in-first-list" ) || ( $action_name eq "copy-words-unique-only" ) )
         {
             $action_result = " " ;
             $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
-            if ( ( $action_name eq "copy-words-unique-only" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
+            if ( $action_name eq "copy-words-unique-only" )
             {
                 $text_list_key = "" ;
                 $destination_phrase = $operand_two ;
@@ -4197,15 +4239,15 @@ sub dashrep_expand_parameters
                 for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
                 {
                     $word = $list_of_loop_words[ $pointer - 1 ] ;
-                    if ( ( exists( $listed_word{ $word } ) ) && ( ( $action_name eq "copy-from-two-phrases-words-found-in-both-to-phrase" ) || ( $action_name eq "copy-words-found-in-both-phrases-to-phrase" ) ) )
+                    if ( ( exists( $listed_word{ $word } ) ) && ( $action_name eq "copy-words-found-in-both-lists" ) )
                     {
                         $result_word_list .= $word . " " ;
                     } elsif ( not( exists( $listed_word{ $word } ) ) )
                     {
-                        if ( ( $action_name eq "copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase" ) || ( $action_name eq "copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase" ) )
+                        if ( $action_name eq "copy-words-found-only-in-first-list" )
                         {
                             $result_word_list .= $word . " " ;
-                        } elsif ( ( $action_name eq "copy-words-unique-only" ) || ( $action_name eq "copy-from-phrase-unique-words-to-phrase" ) )
+                        } elsif ( $action_name eq "copy-words-unique-only" )
                         {
                             $not_listed_word{ $word } ++ ;
                             if ( $not_listed_word{ $word } < 2 )
@@ -4230,10 +4272,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-words-found-in-either-phrase-to-phrase
-#  copy-from-two-phrases-words-found-in-either-to-phrase -- Deprecated version of action name
+#  copy-words-found-in-either-list
 
-        if ( $action_name eq "copy-words-found-in-either-phrase-to-phrase" )
+        if ( $action_name eq "copy-words-found-in-either-list" )
         {
             $action_result = " " ;
             $text_list_key = $global_dashrep_replacement{ $operand_one } . " " . $global_dashrep_replacement{ $operand_two } ;
@@ -4263,9 +4304,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  counts-from-integer-to-integer-put-into-phrase
+#  generate-counts-from-integer-to-integer
 
-        if ( $action_name eq "counts-from-integer-to-integer-put-into-phrase" )
+        if ( $action_name eq "generate-counts-from-integer-to-integer" )
         {
             $action_result = " " ;
             if ( $operand_one !~ /^[\-0-9]+$/ )
@@ -4335,7 +4376,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  write-all-dashrep-phrase-names-to-phrase
+#  generate-list-of-all-dashrep-phrases
 
         if ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-phrase" )
         {
@@ -4433,10 +4474,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  copy-words-that-begin-with-text-in-phrase
-#  copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase -- deprecated in favor of better name
+#  copy-words-that-begin-with-text
 
-        if ( ( $action_name eq "copy-words-that-begin-with-text-in-phrase" ) || ( $action_name eq "copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase" ) )
+        if ( $action_name eq "copy-words-that-begin-with-text" )
         {
             $action_result = " " ;
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
@@ -4463,10 +4503,10 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
-#  every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases
+#  generate-every-pairwise-combination-of-words
+#  generate-every-ordered-pairwise-combination-of-words
 
-        if ( ( $action_name eq "every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" ) || ( $action_name eq "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" ) )
+        if ( ( $action_name eq "generate-every-pairwise-combination-of-words" ) || ( $action_name eq "generate-every-ordered-pairwise-combination-of-words" ) )
         {
             $action_result = " " ;
             $input_list_one_phrase_name = $operand_one ;
@@ -4504,7 +4544,7 @@ sub dashrep_expand_parameters
                 $separator_two = " " ;
                 $ending_first_count = $count_list_one ;
                 $starting_second_count = 1 ;
-                if ( $action_name eq "every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases" )
+                if ( $action_name eq "generate-every-ordered-pairwise-combination-of-words" )
                 {
                     $ending_first_count -- ;
                 }
@@ -4584,11 +4624,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  count-of-characters-in-phrase
-#
-#  count-of-characters-in-phrase-definition -- Deprecated, because is older name
+#  count-of-characters
 
-       if ( ( $action_name eq "count-of-characters-in-phrase" ) || ( $action_name eq "count-of-characters-in-phrase-definition" ) )
+       if ( $action_name eq "count-of-characters" )
        {
             $action_result = "0" ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -4702,9 +4740,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  characters-in-phrase-get-from-position-to-position
+#  get-characters-from-position-to-position
 
-        if ( $action_name eq "characters-in-phrase-get-from-position-to-position" )
+        if ( $action_name eq "get-characters-from-position-to-position" )
         {
             $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -5674,7 +5712,7 @@ sub dashrep_expand_parameters
                 @list_of_words = split( / +/ , $global_dashrep_replacement{ $operand_two } ) ;
                 for ( $word_number = 1 ; $word_number <= $#list_of_words + 1 ; $word_number ++ )
                 {
-                    $text_to_expand .= "[-copy-only-word-at-position " . $operand_two . " " . $name_of_parameter_for_handler . " " . $word_number . "-][-" . $handler_phrase_name . "-]" ;
+                    $text_to_expand .= "[-copy-word-at-position " . $operand_two . " " . $name_of_parameter_for_handler . " " . $word_number . "-][-" . $handler_phrase_name . "-]" ;
                 }
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -5743,7 +5781,7 @@ sub dashrep_expand_parameters
                 $parameter_word_list = $global_dashrep_replacement{ $operand_two } ;
                 $generated_list_name = $operand_three ;
                 $global_replacement_count_for_item_name{ "generating list named " . $generated_list_name } ++ ;
-                $text_that_expands_to_generate_list = "[-copy-from-phrase-to-phrase empty-text " . $generated_list_name . "-]" ;
+                $text_that_expands_to_generate_list = "[-copy-text empty-text " . $generated_list_name . "-]" ;
                 $parameter_word_list =~ s/^ +// ;
                 $parameter_word_list =~ s/ +$// ;
                 @list_of_parameters = split( / +/ , $parameter_word_list ) ;
@@ -5759,7 +5797,7 @@ sub dashrep_expand_parameters
                     $text_that_expands_to_generate_list .= "[-createlist-total-number-of-items = " . sprintf( "%d" , $list_length ) . "-]" ;
                     if ( exists( $global_dashrep_replacement{ "separator-for-list-named-" . $generated_list_name } ) )
                     {
-                        $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase separator-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-separator-]" ;
+                        $text_that_expands_to_generate_list .= "[-expand-text separator-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-separator-]" ;
                     } else
                     {
                         $global_dashrep_replacement{ "dashrep-list-info-temporary-storage-separator" } = "" ;
@@ -5776,7 +5814,7 @@ sub dashrep_expand_parameters
                                 $item_name = "item-for-list-named-" . $generated_list_name . "-and-parameter-" . $parameter ;
                                 if ( ( $list_position == 1 ) && ( exists( $global_dashrep_replacement{ "prefix-for-list-named-" . $generated_list_name } ) ) )
                                 {
-                                    $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
+                                    $text_that_expands_to_generate_list .= "[-expand-text prefix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-text dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
                                 $text_that_expands_to_generate_list .= "[-createlist-item-number = " . $item_number . "-]" ;
                                 if ( $list_position == 1 )
@@ -5794,20 +5832,20 @@ sub dashrep_expand_parameters
                                     $text_that_expands_to_generate_list .= "[-createlist-last-yes-or-no = no-]" ;
                                 }
                                 $global_dashrep_replacement{ "dashrep-createlist-parameter-number-" . $item_number } = $parameter ;
-                                $text_that_expands_to_generate_list .= "[-copy-from-phrase-to-phrase dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
-                                $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase " . $handler_phrase_name . " " . $item_name . "-][-append-from-phrase-to-phrase " . $item_name . " " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-copy-text dashrep-createlist-parameter-number-" . $item_number . " createlist-parameter-]" ;
+                                $text_that_expands_to_generate_list .= "[-expand-text " . $handler_phrase_name . " " . $item_name . "-][-append-text " . $item_name . " " . $generated_list_name . "-]" ;
                                 if ( ( $list_length > 1 ) && ( $list_position < $list_length ) )
                                 {
-                                    $text_that_expands_to_generate_list .= "[-append-from-phrase-to-phrase dashrep-list-info-temporary-storage-separator " . $generated_list_name . "-]" ;
+                                    $text_that_expands_to_generate_list .= "[-append-text dashrep-list-info-temporary-storage-separator " . $generated_list_name . "-]" ;
                                 }
                                 if ( ( $list_position == $list_length ) && ( exists( $global_dashrep_replacement{ "suffix-for-list-named-" . $generated_list_name } ) ) )
                                 {
-                                    $text_that_expands_to_generate_list .= "[-expand-phrase-to-phrase suffix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-from-phrase-to-phrase dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
+                                    $text_that_expands_to_generate_list .= "[-expand-text suffix-for-list-named-" . $generated_list_name . " dashrep-list-info-temporary-storage-][-append-text dashrep-list-info-temporary-storage " . $generated_list_name . "-]" ;
                                 }
                                 $text_that_expands_to_generate_list .= "[-clear-phrase dashrep-createlist-parameter-number-" . $item_number . "-]" ;
                             } else
                             {
-                                $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-phrase-to-phrase " . $handler_phrase_name . " createlist-item-next-][-append-from-phrase-to-phrase createlist-item-next " . $generated_list_name . "-]" ;
+                                $text_that_expands_to_generate_list .= "[-createlist-parameter = " . $parameter . "-][-expand-text " . $handler_phrase_name . " createlist-item-next-][-append-text createlist-item-next " . $generated_list_name . "-]" ;
                                 if ( ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" ) && ( $parameter =~ /-/ ) )
                                 {
                                     $global_trace_log .= "{{warning; parameter (" . $parameter . ") contains hyphens, so the full version, not this simple version, should be used to generate this list" . "}}\n";
@@ -5879,9 +5917,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  put-into-phrase-linewise-usage-counts-for-phrase-names
+#  generate-phrase-usage-counts
 
-       if ( $action_name eq "put-into-phrase-linewise-usage-counts-for-phrase-names" )
+       if ( $action_name eq "generate-phrase-usage-counts" )
        {
             $action_result = " " ;
             $result_text = "" ;
@@ -6081,9 +6119,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the action:
-#  insert-codeview-tags-into-phrase
+#  insert-codeview-tags
 
-        if ( $action_name eq "insert-codeview-tags-into-phrase" )
+        if ( $action_name eq "insert-codeview-tags" )
         {
             $action_result = " " ;
             if ( not( exists( $action_name_exists{ "no-space" } ) ) || ( $action_name_exists{ "no-space" } ne "yes" ) )
@@ -6252,7 +6290,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "expand-phrase-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-all-dashrep-phrase-names-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "gather-one-entry-from-tagged-file" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -7307,22 +7345,23 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase
+#  find-line-in-file-that-begins-with-text
+#  find-lines-in-file-that-begin-with-any-listed-word
+#  find-lines-in-file-that-begin-with-any-two-words-listed
+#
 #  find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase -- Deprecated
-#  find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase
-#  find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase
 
-    } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) )
+    } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) )
     {
         $action_result = " " ;
         $list_of_storage_names = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
-        } elsif ( ( ( $action_name eq "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) ) && ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) ) )
+        } elsif ( ( ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) ) && ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has empty search word in phrase " . $operand_two . "]" ;
-        } elsif ( ( ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase" ) ) && ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) ) )
+        } elsif ( ( ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) ) && ( ( not( exists( $global_dashrep_replacement{ $operand_two } ) ) ) || ( $global_dashrep_replacement{ $operand_two } !~ /[^ ]/ ) ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has no search words in phrase " . $operand_two . "]" ;
         } elsif ( open ( INFILE , '<' . $source_filename ) )
@@ -7334,7 +7373,7 @@ sub dashrep_file_actions
         }
         if ( $possible_error_message eq "" )
         {
-            if ( ( $action_name eq "find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) )
+            if ( ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) )
             {
                 $string_to_find = $global_dashrep_replacement{ $operand_two } ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
@@ -7370,7 +7409,7 @@ sub dashrep_file_actions
                 {
                     $matching_text{ $word } = "match" ;
                 }
-                if ( $action_name eq "find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase" )
+                if ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" )
                 {
                     $words_to_match = 1 ;
                 } else
@@ -7487,13 +7526,13 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  put-into-phrase-list-of-files-in-current-read-directory
-#  put-into-phrase-list-of-folders-in-current-read-directory
+#  generate-list-of-files-in-current-read-directory
+#  generate-list-of-folders-in-current-read-directory
 #
 #  The current read directory is already specified
 #  in a Dashrep phrase.
 
-    } elsif ( ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" ) || ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" ) )
+    } elsif ( ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) )
     {
         $action_result = " " ;
         if ( ( $operand_one eq "" ) || ( $operand_two ne "" ) )
@@ -7517,13 +7556,13 @@ sub dashrep_file_actions
                     if ( $file_name !~ /^\./ )
                     {
                         $full_path = $directory . $file_name ;
-                        if ( $action_name eq "put-into-phrase-list-of-folders-in-current-read-directory" )
+                        if ( $action_name eq "generate-list-of-folders-in-current-read-directory" )
                         {
                             if ( -d $full_path )
                             {
                                 $list_of_file_names .= $file_name . " " ;
                             }
-                        } elsif ( $action_name eq "put-into-phrase-list-of-files-in-current-read-directory" )
+                        } elsif ( $action_name eq "generate-list-of-files-in-current-read-directory" )
                         {
                             if ( -f $full_path )
                             {
@@ -8187,10 +8226,10 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the action:
-#  gather-tagged-info-from-file-and-put-unique-values-into-phrase
-#  gather-one-entry-from-tagged-file-and-put-into-phrase
+#  gather-tagged-info-from-file
+#  gather-one-entry-from-tagged-file
 
-    } elsif ( ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" ) || ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" ) )
+    } elsif ( ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "gather-one-entry-from-tagged-file" ) )
     {
         $action_result = " " ;
         $accumulated_matching_entry_info = "" ;
@@ -8223,14 +8262,14 @@ sub dashrep_file_actions
             {
                 $entry_delete = "delete_id" ;
             }
-            if ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" )
+            if ( $action_name eq "gather-one-entry-from-tagged-file" )
             {
                 $entry_matching_id = $global_dashrep_replacement{ "dashrep-gather-tag-matching-id" } ;
                 if ( $entry_matching_id !~ /^[^ ]+$/ )
                 {
                     $entry_matching_id = "1" ;
                 }
-            } elsif ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" )
+            } elsif ( $action_name eq "gather-tagged-info-from-file" )
             {
                 $entry_matching_id = "" ;
             }
@@ -8251,7 +8290,7 @@ sub dashrep_file_actions
                 }
                 if ( $entry_matching_id ne "" )
                 {
-#                   This section of code applies to action: gather-one-entry-from-tagged-file-and-put-into-phrase
+#                   This section of code applies to action: gather-one-entry-from-tagged-file
                     if ( $input_line =~ /^ *([^ ]+) *$/ )
                     {
                         $first_word = $1 ;
@@ -8307,7 +8346,7 @@ sub dashrep_file_actions
                     }
                 } else
                 {
-#                   This section of code applies to action: gather-tagged-info-from-file-and-put-unique-values-into-phrase
+#                   This section of code applies to action: gather-tagged-info-from-file
                     if ( $input_line =~ /^ *([^ ]+) *$/ )
                     {
                         $first_word = $1 ;
@@ -8378,10 +8417,10 @@ sub dashrep_file_actions
                     }
                 }
             }
-            if ( $action_name eq "gather-one-entry-from-tagged-file-and-put-into-phrase" )
+            if ( $action_name eq "gather-one-entry-from-tagged-file" )
             {
                 $global_dashrep_replacement{ $target_phrase_name } = $accumulated_matching_entry_info ;
-            } elsif ( $action_name eq "gather-tagged-info-from-file-and-put-unique-values-into-phrase" )
+            } elsif ( $action_name eq "gather-tagged-info-from-file" )
             {
                 if ( $unique_value =~ /^[^ ]+$/ )
                 {
@@ -8671,7 +8710,6 @@ sub dashrep_file_actions
 #  Handle the actions:
 #  write-all-dashrep-definitions-to-file
 #  write-dashrep-definitions-listed-in-phrase-to-file
-#  write-all-dashrep-phrase-names-to-file -- Deprecated, instead use write-all-dashrep-phrase-names-to-phrase
 #
 #  The filename is edited to remove any path
 #  specifications, and then the prefix in the

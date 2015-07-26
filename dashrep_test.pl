@@ -190,6 +190,10 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #  Specify Dashrep code that will be used in
 #  tests below.
 
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-action-trace-on-yes-or-no" , "yes" );
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-warning-trace-on-yes-or-no" , "yes" );
+
 $numeric_return_value = &dashrep_translate::dashrep_define( "text-with-special-characters" , "some hyphenated-text \n  with linebreaks\n    and   adjacent    spaces" );
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-special-replacement-newline" , "[eol]" );
@@ -209,7 +213,7 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "sample-user-defined
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
-list-of-numbers: 3 12 7 13 4
+list-of-numbers 3 12 7 13 4
 --------
 
 test-of-special-operators:
@@ -217,73 +221,76 @@ test-of-special-operators:
 [-should-be-17 = [-test-assignment-]-]
 [-first-word-phrase = copied-]
 [-second-word-phrase = text-]
-[-copy-from-phrase-to-phrase: empty-text copied-text-]
-[-append-from-phrase-to-phrase: first-word-phrase copied-text-]
-[-append-from-phrase-to-phrase: second-word-phrase copied-text-]
-[-copy-from-phrase-to-phrase: copied-text should-be-copied-text-]
+[-copy-text empty-text copied-text-]
+[-append-text first-word-phrase copied-text-]
+[-append-text second-word-phrase copied-text-]
+[-copy-text copied-text should-be-copied-text-]
 [-dashrep-special-replacement-adjacent-space = &nbsp;-]
 [-dashrep-special-replacement-hyphen = &ndash;-]
-[-copy-from-phrase-to-phrase-and-remove-extra-spaces: text-with-special-characters text-with-adjacent-spaces-replaced-]
-[-copy-from-phrase-to-phrase-into-spoken-dashrep-code: page-participants-list tagged-dashrep-code-]
-[-copy-from-phrase-to-phrase-from-spoken-dashrep-code: tagged-dashrep-code regenerated-page-participants-list-]
-[-should-be-zero = [-zero-one-multiple: 0-]-]
-[-should-be-one = [-zero-one-multiple: 1-]-]
-[-should-be-multiple = [-zero-one-multiple: 2-]-]
-[-should-be-size-zero = [-count-of-words-in-phrase: empty-text-]-]
-[-should-be-size-one = [-count-of-words-in-phrase: should-be-17-]-]
+[-copy-without-extra-spaces text-with-special-characters text-with-adjacent-spaces-replaced-]
+[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
+[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
+[-should-be-zero = [-zero-one-multiple 0-]-]
+[-should-be-one = [-zero-one-multiple 1-]-]
+[-should-be-multiple = [-zero-one-multiple 2-]-]
+[-should-be-size-zero = [-count-of-words empty-text-]-]
+[-should-be-size-one = [-count-of-words should-be-17-]-]
 [-list-of-size-three = 4 5 6-]
-[-should-be-size-three = [-count-of-words-in-phrase: list-of-size-three-]-]
-[-should-be-item-three = [-first-word-in-phrase: list-of-numbers-]-]
-[-should-be-item-four = [-last-word-in-phrase: list-of-numbers-]-]
+[-should-be-size-three = [-count-of-words list-of-size-three-]-]
+[-should-be-item-three = [-first-word-in-phrase list-of-numbers-]-]
+[-should-be-item-four = [-last-word-in-phrase list-of-numbers-]-]
 [-should-be-same-words-yes = [-yes-or-no-same-two-words waltz waltz-]-]
 [-should-be-same-words-no = [-yes-or-no-same-two-words waltz dance-]-]
 [-item-one = waltz-]
 [-item-two = dance-]
-[-should-be-same-yes = [-yes-or-no-same-two-phrase-definitions: item-one item-one-]-]
-[-should-be-same-no = [-yes-or-no-same-two-phrase-definitions: item-one item-two-]-]
+[-should-be-same-yes = [-yes-or-no-same-two-phrase-definitions item-one item-one-]-]
+[-should-be-same-no = [-yes-or-no-same-two-phrase-definitions item-one item-two-]-]
 [-test-counter = 17-]
 [-test-value = 3-]
-[-compare-numbers-equal = [-numeric-equal-greater-less-compare: 16 16-]-]
-[-compare-numbers-less = [-numeric-equal-greater-less-compare: 18 19-]-]
-[-compare-numbers-greater = [-numeric-equal-greater-less-compare: 21 20-]-]
-[-copy-from-phrase-to-phrase: empty-text test-text-length-0-]
-[-should-be-length-0 = [-count-of-characters-in-phrase: test-text-length-0-]-]
+[-compare-numbers-equal = [-numeric-equal-greater-less-compare 16 16-]-]
+[-compare-numbers-less = [-numeric-equal-greater-less-compare 18 19-]-]
+[-compare-numbers-greater = [-numeric-equal-greater-less-compare 21 20-]-]
+[-copy-text empty-text test-text-length-0-]
+[-should-be-length-0 = [-count-of-characters test-text-length-0-]-]
 [-test-text-length-1 = a-]
-[-should-be-length-1 = [-count-of-characters-in-phrase: test-text-length-1-]-]
+[-should-be-length-1 = [-count-of-characters test-text-length-1-]-]
 [-test-text-length-7 = abcdefg-]
-[-should-be-length-7 = [-count-of-characters-in-phrase: test-text-length-7-]-]
-[-should-be-item-with-value-7 = [-from-phrase-get-word-number: list-of-numbers 3-]-]
-[-counts-from-integer-to-integer-put-into-phrase: 0 7 counts-from-0-to-7-]
-[-counts-from-integer-to-integer-put-into-phrase: 5 -4 counts-from-5-to-minus-4-]
+[-should-be-length-7 = [-count-of-characters test-text-length-7-]-]
+[-should-be-item-with-value-7 = [-get-word-at-position list-of-numbers 3-]-]
+[-generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7-]
+[-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4-]
 [-minimum-maximum-result = [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -]-]
-[-every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases: counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
-[-should-be-counts-3-and-minus-2 = [-from-phrase-get-word-number list-of-first-items-in-two-dimensions 38-] [-from-phrase-get-word-number list-of-second-items-in-two-dimensions 38-]-]
+[-generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
+[-should-be-counts-3-and-minus-2 = [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38-]-]
 [-calculation-result = [-numeric-integer [-numeric-multiply 3.14 7.39-]-]-]
-[-compare-result = [-numeric-equal-greater-less-compare: 23 17-] [-numeric-equal-greater-less-compare: 17 17-] [-numeric-equal-greater-less-compare: 17 23-]-]
+[-compare-result = [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17-] [-numeric-equal-greater-less-compare 17 23-]-]
 [-string-to-test-character-actions = abc123 abc123 abc123-]
-[-character-result = [-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 1 1-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 2 2-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 4 4-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 5 5-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 20 20-][-characters-in-phrase-get-from-position-to-position: string-to-test-character-actions 21 21-]-]
+[-character-result = [-get-characters-from-position-to-position string-to-test-character-actions 1 1-][-get-characters-from-position-to-position string-to-test-character-actions 2 2-][-get-characters-from-position-to-position string-to-test-character-actions 4 4-][-get-characters-from-position-to-position string-to-test-character-actions 5 5-][-get-characters-from-position-to-position string-to-test-character-actions 20 20-][-get-characters-from-position-to-position string-to-test-character-actions 21 21-]-]
 [-sample-word-list = alpha beta gamma delta-]
 [-copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
-[-word-list-result = [-position-of-word-in-phrase: alpha sample-word-list-]-[-position-of-word-in-phrase: gamma sample-word-list-]-[-position-of-word-in-phrase: other sample-word-list-]-]
+[-word-list-result = [-get-position-of-word alpha sample-word-list-]-[-get-position-of-word gamma sample-word-list-]-[-get-position-of-word other sample-word-list-]-]
 [-sample-word-list-one = alpha alpha-here and beta gamma delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
-[-copy-from-phrase-to-phrase sample-word-list-one list-with-dups-]
-[-append-from-phrase-to-phrase sample-word-list-two list-with-dups-]
-[-find-in-lists-result = [-copy-words-found-in-both-phrases-to-phrase: sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-phrase-to-phrase: sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-in-first-phrase-not-found-in-second-phrase-to-phrase: sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-words-unique-only: list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] -]
-[-use-template-and-parameters-to-create-simple-list-with-name: template-for-createlist sample-word-list-one generated-simple-list-]
+[-copy-text sample-word-list-one list-with-dups-]
+[-append-text sample-word-list-two list-with-dups-]
+[-find-in-lists-result = [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] -]
+[-use-template-and-parameters-to-create-simple-list-with-name template-for-createlist sample-word-list-one generated-simple-list-]
 [-prefix-for-list-named-generated-full-list = prefix-here-]
 [-suffix-for-list-named-generated-full-list = suffix-here-]
 [-separator-for-list-named-generated-full-list = separator-here-]
-[-use-template-and-parameters-to-create-full-list-with-name: template-for-full-createlist sample-word-list-one generated-full-list-]
+
+[-comment-text = action in next line is deprecated -]
+[-use-template-and-parameters-to-create-full-list-with-name template-for-full-createlist sample-word-list-one generated-full-list-]
+
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-translation-safe = <character_hyphen>-]
-[-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
+[-copy-and-replace-matching-text template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
-[-insert-angle-bracketed-definitions-into-already-expanded-phrase already-expanded-phrase-]
+[-insert-angle-bracketed-definitions already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
 [-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
 [-string-123 = 123 -]
-[-copy-from-phrase-to-phrase-and-zero-pad-left-to-length string-123 string-123-padded 5 -]
+[-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
 [-vector-one = 17 23 -4 -]
 [-vector-two = 21 -9 0 -]
 [-numeric-vector-add-number vector-one -7 vector-result-add-number-]
@@ -291,22 +298,22 @@ test-of-special-operators:
 [-numeric-vectors-add vector-one vector-two vector-result-addition-]
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 [-text-to-repeat = number 9 -]
-[-repeatedly-append-from-phrase-to-phrase-using-repeat-count text-to-repeat list-of-repeated-text 9 -]
+[-repeatedly-append-text-using-repeat-count text-to-repeat list-of-repeated-text 9 -]
 [-list-of-words-to-filter = dolphin bear dolphin buffalo bear eagle-]
 [-list-of-words-that-match = dolphin eagle-]
-[-positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
+[-generate-positions-of-words-that-match-any-listed-word list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
 [-text-with-named-html-entities = abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def -]
 [-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions text-with-named-html-entities text-with-modified-html-entities-]
 [-text-with-tag-and-attribute = <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> -]
-[-copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
+[-copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
 [-list-of-words-to-search-based-on-prefix = here-is-something here-is-something-else hereis-something-else and-something-else-]
 [-text-begins-with = here-is-]
-[-copy-words-that-begin-with-text-in-phrase list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
+[-copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
 [-text-for-multiple-find = fish bird-]
 [-text-for-multiple-search = birds songbird fish clownfish-]
-[-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
+[-generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
 [-paired-words-for-replacements = bird flier fish swimmer-]
-[-copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
+[-copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
 nothing else
 --------
 
@@ -319,13 +326,13 @@ ending text
 --------
 
 test-of-numeric-increment:
-[-numeric-increment: test-counter-]
+[-numeric-increment test-counter-]
 --------
 
 test-of-unique-value:
 [-first-unique-value = [-unique-value-]-]
 [-second-unique-value = [-unique-value-]-]
-[-yes-or-no-same-two-phrase-definitions: first-unique-value second-unique-value-]
+[-yes-or-no-same-two-phrase-definitions first-unique-value second-unique-value-]
 --------
 
 non-breaking-space:
@@ -393,18 +400,18 @@ character-period:
 --------
 
 test-of-replace-periods-with-spaces:
-[-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase: text-with-periods text-with-spaces character-period character-space-]
+[-copy-and-replace-matching-text text-with-periods text-with-spaces character-period character-space-]
 --------
 
 test-of-several-copy-actions:
 [-text-being-copied = abc DEF 123-]
-[-copy-from-phrase-to-phrase text-being-copied text-copied-]
-[-copy-from-phrase-to-phrase-lowercase-only text-being-copied text-copied-lowercase-]
-[-copy-from-phrase-to-phrase-uppercase-only text-being-copied text-copied-uppercase-]
+[-copy-text text-being-copied text-copied-]
+[-copy-lowercase-only text-being-copied text-copied-lowercase-]
+[-copy-uppercase-only text-being-copied text-copied-uppercase-]
 [-string-0-to-8 = 012345678-]
 [-string-of-9s = 9999999999-]
 [-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string text-being-copied text-copied-with-9s string-0-to-8 string-of-9s-]
-[-copy-from-phrase-to-phrase-and-split-into-list-of-characters text-being-copied text-copied-separate-characters-]
+[-split-into-list-of-characters text-being-copied text-copied-separate-characters-]
 [-copy-from-phrase-to-phrase-but-remove-first-word text-being-copied text-copied-without-first-word-]
 [-copy-from-phrase-to-phrase-but-remove-last-word text-being-copied text-copied-without-last-word-]
 [-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
@@ -413,9 +420,9 @@ test-of-several-copy-actions:
 --------
 
 test-of-more-copy-actions:
-[-copy-from-phrase-to-phrase-and-remove-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
+[-copy-without-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
 [-text-being-copied = 17 9 183 65-]
-[-copy-from-phrase-to-phrase-and-numeric-sort-by-word text-being-copied text-copied-numeric-sorted-]
+[-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
 [-text-being-copied = <xyz>&amp;</xyz>-]
 [-copy-from-phrase-to-phrase-and-replace-html-reserved-characters text-being-copied text-copied-html-characters-replaced-]
 [-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-] [-text-copied-html-characters-replaced-]
@@ -434,8 +441,8 @@ value-of-pi:
 --------
 
 test-of-insert-codeview-tags:
-[-copy-from-phrase-to-phrase test-of-more-copy-actions dashrep-code-with-inserted-codeview-tags-]
-[-insert-codeview-tags-into-phrase dashrep-code-with-inserted-codeview-tags-]
+[-copy-text test-of-more-copy-actions dashrep-code-with-inserted-codeview-tags-]
+[-insert-codeview-tags dashrep-code-with-inserted-codeview-tags-]
 --------
 
 input-right-values:
@@ -470,17 +477,20 @@ command to be executed
 
 test-of-escape-action:
 [-escape-text = step1-]
-[-escape-if-yes: no-]
-[-copy-from-phrase-to-phrase sample-escape-text escape-text-]
-[-escape-if-yes: yes-]
+[-escape-if-yes no-]
+[-copy-text sample-escape-text escape-text-]
+[-escape-if-yes yes-]
 [-escape-text = step3-]
-[-escape-if-yes: yes-]
+[-escape-if-yes yes-]
 --------
 
 page-participants-list:
 [-list-of-parameter-values-for-list-named-participant-names-full = [-case-info-idlistparticipants-]-]
+
+[-comment-text = action in next line is deprecated -]
 [-use-template-and-parameters-to-create-full-list-with-name template-for-list-named-participant-names-full list-of-parameter-values-for-list-named-participant-names-full generated-list-named-participant-names-full-]
-[-numeric-increment: test-counter-]
+
+[-numeric-increment test-counter-]
 format-begin-heading-level-1
 words-web-page-title
 format-end-heading-level-1
@@ -565,7 +575,7 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-# Test action: expand-phrase-to-phrase
+# Test action: expand-text
 
 
 #-------------------------------------------
@@ -1028,6 +1038,9 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "word-list
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "word-list-result" );
 #  uncomment-for-cpan-version-end
+
+$results_text .= $string_return_value . "   " ;
+
 if ( $string_return_value eq "1-3-0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -1064,7 +1077,7 @@ if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
-$being_tested = "test action copy-from-phrase-to-phrase-and-zero-pad-left-to-length -- ";
+$being_tested = "test action copy-zero-pad-left-to-length -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-123-padded" );
@@ -1292,9 +1305,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase action.
+#  Test the copy-and-replace-matching-text action.
 
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase -- ";
+$being_tested = "test action: copy-and-replace-matching-text -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
@@ -1348,9 +1361,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test append-from-phrase-to-phrase action.
+#  Test append-text action.
 
-$being_tested = "test action: append-from-phrase-to-phrase -- ";
+$being_tested = "test action: append-text -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
 $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-source-phrase" , "some content here" );
@@ -1365,10 +1378,10 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target
 # $numeric_return_value = &dashrep_define( "dashrep-test-target-phrase" , "" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-append-text dashrep-test-source-phrase dashrep-test-target-phrase-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-append-from-phrase-to-phrase dashrep-test-source-phrase dashrep-test-target-phrase-]" );
+# $string_return_value = &dashrep_expand_parameters( "[-append-text dashrep-test-source-phrase dashrep-test-target-phrase-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
@@ -1382,9 +1395,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the "copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase" action.
+#  Test the "copy-and-replace-matching-text" action.
 
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase -- ";
+$being_tested = "test action: copy-and-replace-matching-text (again) -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-translation-safe" );
@@ -1424,9 +1437,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "insert-angle-bracketed-definitions-into-already-expanded-phrase"
+#  Test the action "insert-angle-bracketed-definitions"
 
-$being_tested = "test action: insert-angle-bracketed-definitions-into-already-expanded-phrase -- ";
+$being_tested = "test action: insert-angle-bracketed-definitions -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "already-expanded-phrase" );
@@ -1441,9 +1454,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "insert-codeview-tags-into-phrase"
+#  Test the action "insert-codeview-tags"
 
-$being_tested = "test action: insert-codeview-tags-into-phrase -- ";
+$being_tested = "test action: insert-codeview-tags -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
@@ -1454,7 +1467,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-cod
 # $string_return_value = &dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-from-phrase-to-phrase-and-remove-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-without-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1503,12 +1516,12 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 $being_tested = "test action use-handler-with-each-word-in-phrase -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-from-phrase-to-phrase word-to-use-in-handler string-generated-by-use-handler-action-]" );
+$string_return_value = &dashrep_translate::dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-text word-to-use-in-handler string-generated-by-use-handler-action-]" );
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-use-handler-with-each-word-in-phrase parameter-phrase-to-repeat sample-word-list-]" ) ;
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "string-generated-by-use-handler-action" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
-# $string_return_value = dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-from-phrase-to-phrase word-to-use-in-handler string-generated-by-use-handler-action-]" );
+# $string_return_value = dashrep_define( "parameter-phrase-to-repeat" , "[-prepend-text word-to-use-in-handler string-generated-by-use-handler-action-]" );
 # $string_return_value = dashrep_expand_parameters( "[-use-handler-with-each-word-in-phrase parameter-phrase-to-repeat sample-word-list-]" ) ;
 # $string_return_value = dashrep_get_replacement( "string-generated-by-use-handler-action" );
 # uncomment-for-cpan-version-end
@@ -1521,9 +1534,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "repeatedly-append-from-phrase-to-phrase-using-repeat-count"
+#  Test the action "repeatedly-append-text-using-repeat-count"
 
-$being_tested = "test action repeatedly-append-from-phrase-to-phrase-using-repeat-count -- ";
+$being_tested = "test action repeatedly-append-text-using-repeat-count -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-repeated-text" );
@@ -1538,9 +1551,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase"
+#  Test the action "generate-positions-of-words-that-match-any-listed-word"
 
-$being_tested = "test action positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase -- ";
+$being_tested = "test action generate-positions-of-words-that-match-any-listed-word -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-pointers-to-matching-words" );
@@ -1572,9 +1585,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags"
+#  Test the action "copy-and-remove-attributes-from-xml-tags"
 
-$being_tested = "test action copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags -- ";
+$being_tested = "test action copy-and-remove-attributes-from-xml-tags -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-tag" );
@@ -1589,9 +1602,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "copy-words-that-begin-with-text-in-phrase"
+#  Test the action "copy-words-that-begin-with-text"
 
-$being_tested = "test action copy-words-that-begin-with-text-in-phrase -- ";
+$being_tested = "test action copy-words-that-begin-with-text -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-words-that-begin-with-text" );
@@ -1623,9 +1636,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list"
+#  Test the action "copy-and-replace-using-paired-listed-words"
 
-$being_tested = "test action copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list -- ";
+$being_tested = "test action copy-and-replace-using-paired-listed-words -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-replacements-using-paired-words" );
@@ -1825,6 +1838,10 @@ if ( $string_return_value eq "name of page" ) { $one_if_ok = 1; } else { $one_if
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
+
+#-------------------------------------------
+#  Note, linewise-translate-from-file-to-file is deprecated, so revise this text to use current actions
+
 $being_tested = "test action: linewise-translate-from-file-to-file -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
@@ -2001,6 +2018,13 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 #  action names.
 
 #  $results_text .= "\n\n" . "Useage of deprecated actions:\n" . &dashrep_translate::dashrep_get_replacement( "dashrep-list-of-deprecated-action-useage" ) . "\n\n";
+
+
+#-------------------------------------------
+#  Write the trace log to a file.
+
+$trace_log = &dashrep_translate::dashrep_get_replacement( "dashrep-debug-trace-log" );
+print $trace_log . "\n\n";
 
 
 #-------------------------------------------
