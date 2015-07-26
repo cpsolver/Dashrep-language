@@ -74,15 +74,11 @@ word-to-use-in-handler
 
 category_generate_list
 generate-counts-from-integer-to-integer
+copy-words-order-reversed
 copy-words-found-in-both-lists
 copy-words-found-in-either-list
 copy-words-found-only-in-first-list
 copy-words-unique-only
-copy-words-sort-numeric
-copy-words-sort-alphabetic
-copy-words-rearrange-using-order-sort-numeric
-copy-words-rearrange-using-order-sort-alphabetic
-copy-words-order-reversed
 generate-every-pairwise-combination-of-words
 generate-every-ordered-pairwise-combination-of-words
 
@@ -108,10 +104,10 @@ decode-from-cgi-parameter
 category_word
 count-of-words
 get-word-at-position
-get-position-of-word (wordstring,notphrasename)
-generate-positions-of-words-that-match-any-listed-word
 copy-word-at-position
 copy-words-from-position-to-position
+get-position-of-word
+generate-positions-of-words-that-match-any-listed-word
 copy-words-that-begin-with-text
 
 category_time
@@ -130,6 +126,8 @@ time-year
 category_numeric
 zero-or-nonzero
 zero-one-multiple
+copy-words-sort-numeric
+copy-words-rearrange-using-order-sort-numeric
 numeric-equal-greater-less-compare
 numeric-add
 numeric-minus
@@ -158,6 +156,10 @@ numeric-vectors-from-delta-values-calculate-distances
 numeric-two-dimensional-sort-into-columns-and-rows
 numeric-y-map-tile-number-based-on-latitude
 numeric-map-tile-zoom
+
+category_alphabetic
+copy-words-sort-alphabetic
+copy-words-rearrange-using-order-sort-alphabetic
 
 category_xml
 xml-move-attributes-into-tag-elements

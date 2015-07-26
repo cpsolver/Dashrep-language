@@ -154,7 +154,7 @@ description-for-phrase-copy-and-replace-matching-text:
 An action that replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The two phrase names can be the same.
 -----
 
-description-for-phrase-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string:
+deprecated-description-for-phrase-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string:
 An action that replaces some (or all or no) characters in the first phrase if the character appears in the third phrase, where the replacement character is in the fourth phrase at the same sequence position, and the result is put into the second phrase. s-n For example, if the first and second phrase names are the same, and that phrase contains the characters b-i-b abcdefghijklm b-i-e no-space , and the third phrase contains the characters b-i-b aeiou b-i-e no-space , and the fourth phrase contains b-i-b 12345 b-i-e no-space , then the result (in the named phrase) will be b-i-b 1bcd2fgh3jklm b-i-e no-space . s-n If there are fewer replacement characters than characters to match, then the characters at the end of the third phrase will be removed, instead of being replaced. s-n As another example, if the digits zero (0) through eight (8) are replaced by the digit nine (9), the result can be checked to see if it matches a recognizable or acceptable pattern.
 -----
 
@@ -211,23 +211,15 @@ An action that looks at all the words in the first phrase and identifies the wor
 -----
 
 description-for-phrase-dashrep-action-trace-on-yes-or-no:
-A b-i-b yes b-i-e value for this phrase requests that each encountered action add a message to the trace log to indicate which action occurred, and a b-i-b no b-i-e value keeps silent when each encountered action is handled. s-n For some actions, additional information about the action is included.
+If this user h-h defined value equals b-i-b yes b-i-e then each encountered action adds a message to the trace log to indicate which action occurred. s-n Any other value causes silence when each encountered action is handled. s-n For some actions, additional information about the action is included.
 -----
 
 description-for-phrase-dashrep-debug-trace-on-yes-or-no:
-A b-i-b yes b-i-e value for this phrase requests that trace messages be added to the trace log, and a b-i-b no b-i-e value keeps silent when a trace message would otherwise be written.
+If this user h-h defined phrase equals b-i-b yes b-i-e then trace messages are added to the trace log. s-n Any other value causes silence when a trace message would otherwise be written.
 -----
 
 description-for-phrase-dashrep-linewise-trace-on-yes-or-no:
-A b-i-b yes b-i-e value for this phrase requests that b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing, and a b-i-b no b-i-e value keeps silent when linewise actions are handled.
------
-
-description-for-phrase-dashrep-list-info-temporary-storage-separator:
-A phrase that is used to store text while a list is being generated
------
-
-description-for-phrase-dashrep-list-info-temporary-storage:
-A phrase that is used to store text while a list is being generated
+If this user h-h defined phrase equals b-i-b yes b-i-e then b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing. s-n Any other value causes silence when linewise actions are handled.
 -----
 
 description-for-phrase-dashrep-list-of-recognized-phrase-names:
@@ -276,19 +268,19 @@ b-i-e no-space .
 -----
 
 description-for-phrase-find-line-in-file-that-begins-with-text:
-Reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase. s-n If none of the lines in the file begin with the specified text, then the third phrase will be empty. s-n The text being searched for can contain a trailing space, which is useful when full h-h word matches are needed. s-n
+An action that reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase. s-n If none of the lines in the file begin with the specified text, then the third phrase will be empty. s-n The text being searched for can contain a trailing space, which is useful when full h-h word matches are needed. s-n
 The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-find-lines-in-file-that-begin-with-any-two-words-listed:
-Reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines. s-n If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty. s-n A line is regarded as a match if the first two words are the same, and if that word is in the specified word list. s-n
+An action that reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines. s-n If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty. s-n A line is regarded as a match if the first two words are the same, and if that word is in the specified word list. s-n
 The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-find-lines-in-file-that-begin-with-any-listed-word:
-Reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines. s-n If none of the lines in the file begin with any of the specified words, then the third phrase will be empty. s-n
+An action that reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines. s-n If none of the lines in the file begin with any of the specified words, then the third phrase will be empty. s-n
 The location of the file is specified by the phrase
 name-of-phrase-that-specifies-read-directory no-space .
 -----
@@ -348,7 +340,7 @@ An action that calculates the absolute value of the number that follows, and sup
 -----
 
 description-for-phrase-numeric-add:
-An action that add the numbers that follow, and supplies the result. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages. s-n If more than a few simple calculations are being done, consider doing the intensive numerical processing in a different programming language.
+An action that adds the numbers that follow, and supplies the result. s-n The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages. s-n If more than a few simple calculations are being done, consider doing the intensive numerical processing in a different programming language.
 ----
 
 description-for-phrase-numeric-cosine:
@@ -469,7 +461,7 @@ An action that searches for any of the space h-h delimited words contained in th
 -----
 
 description-for-phrase-get-position-of-word:
-An action that searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position.
+An action that searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position. s-n The supplied word is the word that follows this action name; a phrase definition is not used to supply the word.
 -----
 
 description-for-phrase-generate-positions-of-words-that-match-any-listed-word:
@@ -535,8 +527,7 @@ Verify that the specified word appears in a list of words in a phrase definition
 -----
 
 description-for-phrase-numeric-decrement:
-Decrements (reduces by one) the integer value in the named phrase. s-n This number is decremented each time this special action is encountered. s-n 
-Use of this action should be avoided. s-n It is useful for debugging situations that loop many more times than expected.
+An action that decrements (reduces by one) the integer value in the named phrase. s-n This number is decremented each time this special action is encountered. s-n Use of this action should be avoided. s-n It is useful for debugging situations that loop many more times than expected.
 -----
 
 description-for-phrase-hyphen-here:
@@ -544,11 +535,11 @@ A directive that inserts a hyphen, with no adjacent spaces. s-n Internally this 
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-remove-first-word-from-phrase:
-Copies a phrase definition to the specified phrase, and removes the first word. s-n The two phrase names can be the same.
+An action that copies a phrase definition to the specified phrase, and removes the first word. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-copy-from-phrase-to-phrase-remove-last-word-from-phrase:
-Copies a phrase definition to the specified phrase, and removes the last word. s-n The two phrase names can be the same.
+An action that copies a phrase definition to the specified phrase, and removes the last word. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-dashrep-yes-do-not-expand-special-phrases:
@@ -576,36 +567,35 @@ If this user hyphen-here defined phrase equals b-i-b yes b-i-e then actions have
 ----
 
 description-for-phrase-generate-list-of-files-in-current-read-directory:
-Put into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory no-space .
+An action that puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory no-space .
 ----
 
 description-for-phrase-generate-list-of-folders-in-current-read-directory:
-Put into the specified phrase a list of all the folders (directories) that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory no-space .
+An action that puts into the specified phrase a list of all the folders (directories) that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory no-space .
 -----
 
-
 description-for-phrase-size-of-file:
-Gets the file size em-dash in bytes em-dash of the specified file. s-n The current value of the phrase name-of-phrase-that-specifies-read-directory specifies the directory in which to look for the specified file.
+An action that gets the file size em-dash in bytes em-dash of the specified file. s-n The current value of the phrase name-of-phrase-that-specifies-read-directory specifies the directory in which to look for the specified file.
 ----
 
 description-for-phrase-modification-time-of-file:
-Gets the modification time em-dash in epoch seconds em-dash of the specified file. s-n The current value of the phrase name-of-phrase-that-specifies-read-directory specifies the directory in which to look for the specified file.
+An action that gets the modification time em-dash in epoch seconds em-dash of the specified file. s-n The current value of the phrase name-of-phrase-that-specifies-read-directory specifies the directory in which to look for the specified file.
 ----
 
 description-for-phrase-find-line-in-file-that-begins-with-phrase:
-Reads the specified file (which must be a text file) and looks for a line that begins with the same text as the definition of the specified phrase. s-n This action can quickly find specific information (that occurs at the beginning of a line) without importing all the lines in that file. s-n If only full words are of interest, include a space at the end of the search text. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
+An action that reads the specified file (which must be a text file) and looks for a line that begins with the same text as the definition of the specified phrase. s-n This action can quickly find specific information (that occurs at the beginning of a line) without importing all the lines in that file. s-n If only full words are of interest, include a space at the end of the search text. s-n The location of the file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space .
 ----
 
 description-for-phrase-dashrep-use-two-spaces-as-column-delimiter:
-Requests that the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e regards two adjacent spaces as the delimiter between words. s-n Without this adjustment that action regards a single space as the delimiter between words. s-n This adjustment enables the text in any column of (text) data to contain single spaces. s-n This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.
+If this user h-h defined phrase equals b-i-b yes b-i-e then the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e regards two adjacent spaces as the delimiter between words. s-n Any other value for this phrase causes a single space to be regarded as the delimiter between words. s-n This adjustment enables the text in any column of (text) data to contain single spaces. s-n This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.
 ----
 
 description-for-phrase-copy-from-columns-in-file-to-named-phrases:
-Reads from the specified file all the spreadsheet-like lines of text, and puts each (space h-h delimited) word into a phrase that has a special name. s-n The specified phrase must begin with the (space h-h delimited) prefix for all the names, is followed by the (space h-h delimited) name of each column. s-n For example, if the second operand is a phrase that contains b-i-b cell h-h contents h-h for h-h nickname phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n A third operand is the name of a phrase that will contain the list of unique values, where b-i-b flipper b-i-e is the unique value in this example, that come from the first word in each line. s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory no-space . s-n If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.
+An action that reads from the specified file all the spreadsheet-like lines of text, and puts each (space h-h delimited) word into a phrase that has a special name. s-n The specified phrase must begin with the (space h-h delimited) prefix for all the names, is followed by the (space h-h delimited) name of each column. s-n For example, if the second operand is a phrase that contains b-i-b cell h-h contents h-h for h-h nickname phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n A third operand is the name of a phrase that will contain the list of unique values, where b-i-b flipper b-i-e is the unique value in this example, that come from the first word in each line. s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory no-space . s-n If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.
 ----
 
 description-for-phrase-gather-tagged-info-from-file:
-Reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h begin b-i-e phrase (which has a default value of b-i-b entry_begin b-i-e ), a new set of related items begins, and when the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h end b-i-e phrase (which has a default value of b-i-b entry_end b-i-e ), that set of items ends. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h unique b-i-e phrase (which has a default value of b-i-b url b-i-e no-space , and which must appear within a set of items), the next (space h-h delimited) word in that line is used as the unique identifier for the items in that set. s-n If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier. s-n Each generated phrase name begins with the tag name (that preceded that item) followed by the text b-i-b h-h value h-h for h-h unique h-h id h-h b-i-e and then followed by the unique value. s-n The list of encountered unique values is put into the second hyphen-here operand phrase. 
+An action that reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h begin b-i-e phrase (which has a default value of b-i-b entry_begin b-i-e ), a new set of related items begins, and when the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h end b-i-e phrase (which has a default value of b-i-b entry_end b-i-e ), that set of items ends. s-n When the first word (of a line) matches the definition of the b-i-b dashrep h-h gather h-h tag h-h unique b-i-e phrase (which has a default value of b-i-b url b-i-e no-space , and which must appear within a set of items), the next (space h-h delimited) word in that line is used as the unique identifier for the items in that set. s-n If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier. s-n Each generated phrase name begins with the tag name (that preceded that item) followed by the text b-i-b h-h value h-h for h-h unique h-h id h-h b-i-e and then followed by the unique value. s-n The list of encountered unique values is put into the second hyphen-here operand phrase. 
 
 paragraph-next
 
@@ -641,7 +631,7 @@ See the description for the action b-i-b gather h-h tagged h-h info h-h from h-h
 ----
 
 description-for-phrase-gather-one-entry-from-tagged-file:
-Reads from a file that also can be read by the action b-i-b gather h-h tagged h-h info h-h from h-h file h-h and h-h put h-h unique h-h values h-h into h-h phrase b-i-e but only gets a single entry and puts that entry into the phrase that is named as the second operand. s-n The selected entry is specified by a value in the phrase b-i-b dashrep h-h gather h-h tag h-h matching h-h id b-i-e no-space . s-n If the text that is defined in the phrase b-i-b dashrep h-h gather h-h tag h-h delete b-i-e appears within the file and applies to the selected entry, then the content prior to that point is deleted, although later entries (after the last deletion) with the same matching value are recognized.
+An action that reads from a file that also can be read by the action b-i-b gather h-h tagged h-h info h-h from h-h file h-h and h-h put h-h unique h-h values h-h into h-h phrase b-i-e but only gets a single entry and puts that entry into the phrase that is named as the second operand. s-n The selected entry is specified by a value in the phrase b-i-b dashrep h-h gather h-h tag h-h matching h-h id b-i-e no-space . s-n If the text that is defined in the phrase b-i-b dashrep h-h gather h-h tag h-h delete b-i-e appears within the file and applies to the selected entry, then the content prior to that point is deleted, although later entries (after the last deletion) with the same matching value are recognized.
 ----
 
 description-for-phrase-dashrep-gather-tag-matching-id:
@@ -649,11 +639,11 @@ See the description for the action b-i-b gather h-h one h-h entry h-h from h-h t
 ----
 
 description-for-phrase-list-of-phrases-newly-defined:
-A phrase that contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
+An automatically generated phrase that contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
 ----
 
 description-for-phrase-dashrep-yes-or-no-export-delimited-definitions:
-If this phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e or the action b-i-b write h-h all h-h dashrep h-h phrase h-h names h-h to h-h file b-i-e or the action b-i-b write h-h dashrep h-h definitions h-h listed h-h in h-h phrase h-h to h-h file b-i-e action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name. s-n
+If this user h-h defined phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e or the action b-i-b write h-h all h-h dashrep h-h phrase h-h names h-h to h-h file b-i-e or the action b-i-b write h-h dashrep h-h definitions h-h listed h-h in h-h phrase h-h to h-h file b-i-e action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name. s-n
 Otherwise exported definitions are written using the normal Dashrep convention. s-n This capability enables the exported definitions to be converted into special formats such as HTML or XML.
 ----
 
@@ -695,7 +685,7 @@ A special phrase that contains a unique value each time this phrase appears in p
 ----
 
 description-for-phrase-dashrep-stop-translation:
-If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. s-n If this phrase contains anything other than b-i-b yes b-i-e then the Dashrep translation process continues.
+If this user h-h defined phrase is b-i-b yes b-i-e then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine. s-n If this phrase contains anything other than b-i-b yes b-i-e then the Dashrep translation process continues.
 ----
 
 description-for-phrase-escape-from-dashrep:
@@ -707,11 +697,11 @@ This action resumes (restarts) the Dashrep translation process using the content
 ----
 
 description-for-phrase-dashrep-replacement-results-at-time-of-escape:
-A phrase that is used by the actions b-i-b escape h-h from h-h dashrep b-i-e and b-i-b resume h-h after h-h escape h-h from h-h dashrep b-i-e no-space . s-n This phrase can be viewed (outside of the Dashrep code) for debugging purposes, in which case the first h-h encountered occurrence of the action b-i-b escape h-h from h-h dashrep b-i-e serves as a breakpoint.
+An automatically generated phrase that is used by the actions b-i-b escape h-h from h-h dashrep b-i-e and b-i-b resume h-h after h-h escape h-h from h-h dashrep b-i-e no-space . s-n This phrase can be viewed (outside of the Dashrep code) for debugging purposes, in which case the first h-h encountered occurrence of the action b-i-b escape h-h from h-h dashrep b-i-e serves as a breakpoint.
 ----
 
 description-for-phrase-escape-if-yes:
-This action looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
+An action that looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
 ----
 
 description-for-phrase-escape-if-no:
@@ -723,7 +713,7 @@ Contains the text that was being translated at the time an b-i-b escape h-h if h
 ----
 
 description-for-phrase-dashrep-translation-before-escape:
-A phrase that contains the current text being expanded at the time the actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h yes b-i-e are encountered.
+An automatically generated phrase that contains the current text being expanded at the time the actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h yes b-i-e are encountered.
 -----
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
@@ -731,11 +721,11 @@ A user h-h defined phrase that specifies the maximum number of replacements allo
 ----
 
 description-for-phrase-dashrep-yes-indicate-line-endings:
-If this user hyphen-here defined phrase equals b-i-b yes b-i-e then the actions b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e and b-i-b copy h-h from h-h file h-h to h-h phrases h-h line h-h numbered b-i-e replace line breaks (newlines) with the text b-i-b end h-h of h-h line h-h here b-i-e .
+If this user hyphen-here defined phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
 ----
 
 description-for-phrase-linewise-translate-special-phrases-only-from-file-to-file:
-Translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e and b-i-b non h-h breaking h-h spaces h-h begin b-i-e no-space . s-n The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
+An action that translates, one line at a time, the text from the specified input file into the specified result file, but only translates special Dashrep phrases such as b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e and b-i-b non h-h breaking h-h spaces h-h begin b-i-e no-space . s-n The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 ----
 
 description-for-phrase-dashrep-phrase-prefix-for-imported-phrases:
@@ -912,15 +902,15 @@ An action that supplies the word b-i-b odd b-i-e or b-i-b even b-i-e based on wh
 -----
 
 description-for-phrase-dashrep-path-prefix-for-file-reading:
-Specifies a different (non-local-folder) path for file read operations. s-n If this definition is empty (which is the default value), the local directory is used. s-n If a path prefix is included with any of the file-reading actions, that path is ignored and this path is used instead. s-n This approach limits the chances of intentional or accidental access to files that should not be accessed. s-n A different path is used for file-writing actions.
+This user h-h defined phrase specifies a different (non-local-folder) path for file read operations. s-n If this definition is empty (which is the default value), the local directory is used. s-n If a path prefix is included with any of the file-reading actions, that path is ignored and this path is used instead. s-n This approach limits the chances of intentional or accidental access to files that should not be accessed. s-n A different path is used for file-writing actions.
 -----
 
 description-for-phrase-dashrep-path-prefix-for-file-writing:
-Specifies a different (non-local-folder) path for file write operations. s-n If this definition is empty (which is the default value), the local directory is used. s-n If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead. s-n This approach limits the chances of intentional or accidental access to files that should not be accessed. s-n A different path is used for file-reading actions.
+This user h-h defined phrase specifies a different (non-local-folder) path for file write operations. s-n If this definition is empty (which is the default value), the local directory is used. s-n If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead. s-n This approach limits the chances of intentional or accidental access to files that should not be accessed. s-n A different path is used for file-reading actions.
 -----
 
 description-for-phrase-get-definitions-from-file:
-Reads the Dashrep definitions from the specified file.
+An action that reads the Dashrep definitions from the specified file.
 s-n
 This action overwrites any existing definitions that have the same phrase name.
 s-n
@@ -929,7 +919,7 @@ name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-yes-or-no-file-exists:
-Determines whether the specified file exists, and supplies either
+An action that determines whether the specified file exists, and supplies either
 b-i-b yes b-i-e or b-i-b no b-i-e to indicate whether the file exists.
 s-n
 The location of the file is specified by the phrase
@@ -937,7 +927,7 @@ name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-yes-or-no-folder-exists:
-Determines whether a folder exists em-dash where the folder is specified in a phrase em-dash and supplies either
+An action that determines whether a folder exists em-dash where the folder is specified in a phrase em-dash and supplies either
 b-i-b yes b-i-e or b-i-b no b-i-e to indicate whether the folder exists.
 s-n
 The location of the file is specified by the phrase
@@ -945,7 +935,7 @@ name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-rename-file:
-Renames the specified file.
+An action that renames the specified file.
 s-n
 The first operand is the old filename, and the second operand is the new filename.
 s-n
@@ -954,27 +944,27 @@ name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 description-for-phrase-delete-file:
-Deletes the specified file.
+An action that deletes the specified file.
 s-n
 The location of the file is specified by the phrase
 name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 description-for-phrase-create-empty-file:
-Creates an empty file using the specified file name, and erases the file if it already exists. s-n
+An action that creates an empty file using the specified file name, and erases the file if it already exists. s-n
 The location of the created file is specified by the phrase
 name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 description-for-phrase-create-empty-sub-folder:
-Creates an empty folder (directory) using the specified folder name, or does nothing if the sub h-h folder (directory) already exists. s-n
+An action that creates an empty folder (directory) using the specified folder name, or does nothing if the sub h-h folder (directory) already exists. s-n
 The sub h-h folder must be directly beneath the directory specified by the phrase
 name-of-phrase-that-specifies-write-directory no-space . s-n
 The specified name must contain only letters (a to z and A to Z) and digits and underscores and hyphens; any other characters, including slashes or backslashes, are not allowed.
 -----
 
 description-for-phrase-copy-from-file-to-phrase:
-Copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition). s-n The phrase
+An action that copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition). s-n The phrase
 b-i-b dashrep h-h yes h-h indicate h-h line h-h endings b-i-e
 can be defined as
 italics-begin yes italics-end
@@ -986,18 +976,18 @@ name-of-phrase-that-specifies-read-directory no-space .
 -----
 
 description-for-phrase-copy-from-phrase-append-to-file:
-Copies the definition of the hyphenated phrase onto the end of the specified file. s-n No separation is inserted (either at the beginning or at the end. s-n
+An action that copies the definition of the hyphenated phrase onto the end of the specified file. s-n No separation is inserted (either at the beginning or at the end. s-n
 The location of the target file is specified by the phrase
 name-of-phrase-that-specifies-write-directory no-space .
 -----
 
 description-for-phrase-generate-list-of-all-dashrep-phrases:
-Writes all the Dashrep phrase names to the specified phrase.
+An action that writes all the Dashrep phrase names to the specified phrase.
 s-n For security purposes this action can be disabled.
 -----
 
 description-for-phrase-write-dashrep-definitions-listed-in-phrase-to-file:
-Writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase. s-n The location of the target file is specified by the phrase b-i-b name-of-phrase-that-specifies-write-directory b-i-e no-space .
+An action that writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase. s-n The location of the target file is specified by the phrase b-i-b name-of-phrase-that-specifies-write-directory b-i-e no-space .
 -----
 
 description-for-phrase-copy-text:
@@ -1082,7 +1072,7 @@ resume-after-escape
 -----
 
 description-for-phrase-write-all-dashrep-definitions-to-file:
-Writes all the Dashrep definitions to a new file with the specified file name, and erases the file if it already exists. s-n By default the definitions are written in Dashrep-readable format, which means the phrase being defined appears first, then is followed by the definition, and multiple dashes terminate the definition. s-n If the
+An action that writes all the Dashrep definitions to a new file with the specified file name, and erases the file if it already exists. s-n By default the definitions are written in Dashrep-readable format, which means the phrase being defined appears first, then is followed by the definition, and multiple dashes terminate the definition. s-n If the
 b-i-b dashrep h-h yes h-h or h-h no h-h export h-h delimited h-h definitions b-i-e
 phrase is set to
 italics-begin yes italics-end
@@ -1102,12 +1092,12 @@ no-space
 . s-n This special format allows a separate Dashrep translation to convert the written definitions into code such as HTML, XML, or SQL.
 -----
 
-description-for-phrase-linewise-translate-from-file-to-file:
+deprecated-description-for-phrase-linewise-translate-from-file-to-file:
 Translates, one line at a time, the text from the specified input file into the specified result file, using the currently defined Dashrep phrase definitions. s-n All Dashrep translations, including parameters and special phrases, are performed. s-n The source file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the target file will be created in the directory specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 ----
 
 
-description-for-phrase-linewise-translate-parameters-only-from-file-to-file:
+deprecated-description-for-phrase-linewise-translate-parameters-only-from-file-to-file:
 Same as the b-i-b linewise-translate-from-file-to-file b-i-e action except that only the parameters are expanded. s-n This means that phrases that are not enclosed in the square-bracket notation are not expanded. s-n The source file must be in the directory specified by the phrase name-of-phrase-that-specifies-read-directory no-space , and the target file will be created in the directory specified by the phrase name-of-phrase-that-specifies-write-directory no-space .
 ----
 
@@ -1203,13 +1193,12 @@ The year (such as b-i-b 2012 b-i-e no-space ),
 based-on-epoch-seconds
 ----
 
-
 description-for-phrase-dashrep-recent-phrase-name-replaced:
 A phrase that contains the most recently replaced phrase name that was replaced when it appeared in parameter brackets. s-n This phrase definition is useful for debugging by showing its definition at the beginning of the replaced phrase.
 ----
 
 description-for-phrase-dashrep-debug-trace-log:
-A phrase that contains the "trace" messages that are written when "trace" and warning messages are requested. s-n This information is useful for debugging. s-n This phrase should be used on a read h-h only basis.
+An automatically generated phrase that contains the "trace" messages that are written when "trace" and warning messages are requested. s-n This information is useful for debugging. s-n This phrase should be used on a read h-h only basis.
 ----
 
 description-for-phrase-dashrep-debug-trace-on-or-off:
@@ -1229,7 +1218,7 @@ An action that supplies b-i-b yes b-i-e if the following two numbers are equal, 
 ----
 
 description-for-phrase-calc-divide-by:
-Calculates the result of dividing the first number by the second number.
+An action that calculates the result of dividing the first number by the second number.
 ----
 
 description-for-phrase-calc-absolute:
@@ -1241,11 +1230,11 @@ An action that supplies b-i-b equal b-i-e if the following two numbers are equal
 ----
 
 description-for-phrase-copy-words-sort-numeric:
-Copies from a phrase definition to the specified phrase and numerically sorts the list of (space h-h delimited) numbers. s-n The two phrase names can be the same.
+An action that copies from a phrase definition to the specified phrase and numerically sorts the list of (space h-h delimited) numbers. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
-Counts the number of characters (including spaces) in the specified phrase definition.
+An action that counts the number of characters (including spaces) in the specified phrase definition.
 ----
 
 description-for-phrase-first-word-in-phrase:
@@ -1273,7 +1262,7 @@ Copies into the definition of the third phrase the words that appear in either o
 ----
 
 description-for-phrase-copy-words-found-only-in-first-list:
-Copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 b-i-e (or b-i-b 456 abc b-i-e no-space ).
+Copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 b-i-e no-space . s-n The order of words in the result matches the order of words in the first list.
 ----
 
 description-for-phrase-copy-words-unique-only:
@@ -1297,15 +1286,11 @@ An action that clears all the definitions of all the phrases. s-n Remember that 
 ----
 
 description-for-phrase-dashrep-comments-ignored:
-Contains text that the translation process identified to be comments. s-n Comments are contained within the text b-i-b * no-space h-h h-h h-h no-space b-i-e and b-i-b no-space h-h h-h h-h no-space * b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
-----
-
-description-for-phrase-dashrep-yes-indicate-line-endings:
-If this phrase is defined as b-i-b yes b-i-e no-space , the actions b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e and b-i-b copy h-h from h-h file h-h to h-h phrases h-h line h-h numbered b-i-e insert the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
+An automatically generated phrase that contains text that the translation process identified to be comments. s-n Comments are contained within the text b-i-b * no-space h-h h-h h-h no-space b-i-e and b-i-b no-space h-h h-h h-h no-space * b-i-e no-space , but these delimiters cannot be nested, so this definition can be useful for debugging.
 ----
 
 description-for-phrase-insert-codeview-tags:
-Inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the text items in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
+An action that inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the text items in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
 ----
 
 description-for-phrase-yes-or-no-use-faster-subset-expand:
@@ -1472,6 +1457,10 @@ Decision-related phrases
 
 heading-for-phrases-in-category_numeric:
 Number-related phrases
+-----
+
+heading-for-phrases-in-category_alphabetic:
+Alphabetical-order-related phrases
 -----
 
 heading-for-phrases-in-category_character:
