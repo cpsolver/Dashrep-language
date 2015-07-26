@@ -408,14 +408,11 @@ test-of-several-copy-actions:
 [-copy-text text-being-copied text-copied-]
 [-copy-lowercase-only text-being-copied text-copied-lowercase-]
 [-copy-uppercase-only text-being-copied text-copied-uppercase-]
-[-string-0-to-8 = 012345678-]
-[-string-of-9s = 9999999999-]
-[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string text-being-copied text-copied-with-9s string-0-to-8 string-of-9s-]
 [-split-into-list-of-characters text-being-copied text-copied-separate-characters-]
 [-copy-from-phrase-to-phrase-but-remove-first-word text-being-copied text-copied-without-first-word-]
 [-copy-from-phrase-to-phrase-but-remove-last-word text-being-copied text-copied-without-last-word-]
 [-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
-[-text-copied-with-9s-] [-text-copied-separate-characters-]
+[-text-copied-separate-characters-]
 [-text-copied-without-first-word-] [-text-copied-without-last-word-]
 --------
 
@@ -1336,7 +1333,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-s
 $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "abc DEF 123 abc def 123 ABC DEF 123 abc DEF 999 a b c onespace D E F onespace 1 2 3 DEF 123 abc DEF" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "abc DEF 123 abc def 123 ABC DEF 123 a b c onespace D E F onespace 1 2 3 DEF 123 abc DEF" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1407,31 +1404,6 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-tran
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "abc<character_hyphen>[<character_hyphen>createlist<character_hyphen>parameter<character_hyphen>]<character_hyphen>def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test the "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" action.
-
-$being_tested = "test action: copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "string-of-characters-to-match" , "aeiou " ) ;
-$numeric_return_value = &dashrep_translate::dashrep_define( "string-of-characters-to-replace" , "@*!0^" ) ;
-$numeric_return_value = &dashrep_translate::dashrep_define( "test-action-copy-and-replace-characters" , "[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string character-string-source character-string-source string-of-characters-to-match string-of-characters-to-replace-]" );
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-action-copy-and-replace-characters" );
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "character-string-source" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "string-of-characters-to-match" , "aeiou " ) ;
-# $numeric_return_value = &dashrep_define( "string-of-characters-to-replace" , "@*!0^" ) ;
-# $numeric_return_value = &dashrep_define( "test-action-copy-and-replace-characters" , "[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string character-string-source character-string-source string-of-characters-to-match string-of-characters-to-replace-]" );
-# $string_return_value = &dashrep_expand_parameters( "test-action-copy-and-replace-characters" );
-# $string_return_value = &dashrep_get_replacement( "character-string-source" );
-# uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "s0m*w0rdsh*r*" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
