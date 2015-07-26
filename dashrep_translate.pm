@@ -8535,7 +8535,6 @@ sub dashrep_file_actions
 #-----------------------------------------------
 #  Handle the actions:
 #  linewise-translate-from-file-to-file -- Deprecated, but still used in test, so keep until test is updated to use linewise-read-from-file-and-use-handler
-#
 #  linewise-translate-parameters-only-from-file-to-file -- Deprecated
 #  linewise-translate-phrases-only-from-file-to-file -- Deprecated
 #  linewise-translate-special-phrases-only-from-file-to-file -- Deprecated
