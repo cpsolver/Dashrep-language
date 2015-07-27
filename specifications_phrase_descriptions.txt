@@ -1169,7 +1169,10 @@ based-on-epoch-seconds
 description-for-phrase-time-hour:
 This phrase contains the hour of the day,
 based-on-epoch-seconds
-s-n The 24-hour notation is used, so conversion into a 12-hour format is needed, and can be done by defining phrases that handle each case for the 24 cases.
+s-n The 24-hour notation is used. s-n
+If a 12-hour format is needed, this can be done by defining phrases that handle each case for the 24 cases,
+such as by defining b-i-b am h-h or h-h pm h-h for h-h hour h-h 17 b-i-e to equal b-i-b pm b-i-e
+and defining b-i-b adjusted h-h hour h-h for h-h hour h-h 17 b-i-e to equal b-i-b 5 b-i-e no-space .
 ----
 
 description-for-phrase-time-minute:
