@@ -268,8 +268,8 @@ BEGIN {
     $global_dashrep_replacement{ "four-hyphens" } = "----" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } = "yes" ;
+    $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } = "yes" ;
+    $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
@@ -285,7 +285,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-    $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
@@ -313,8 +313,9 @@ BEGIN {
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;
+    $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
 
-    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-listed-phrases clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-listed-phrases delete-phrases-listed-in-phrase generate-list-of-all-dashrep-phrases write-all-dashrep-phrase-names-to-phrase copy-text copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-text append-from-phrase-to-phrase append-text-no-space append-from-phrase-to-phrase-no-space repeatedly-append-text-using-repeat-count repeatedly-append-from-phrase-to-phrase-using-repeat-count prepend-text prepend-from-phrase-to-phrase prepend-text-no-space prepend-from-phrase-to-phrase-no-space append-new-line append-new-line-to-phrase insert-phrase-definition-without-expanding insert-definition-of-phrase expand-text expand-phrase-to-phrase expand-parameters-only expand-only-parameters-in-phrase-to-phrase copy-listed-words-to-phrases-named-in-pattern copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase dashrep-yes-append-not-replace-for-imported-phrases dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters count-of-characters-in-phrase count-of-characters-in-phrase-definition get-characters-from-position-to-position characters-in-phrase-get-from-position-to-position position-of-matching-text position-of-text-in-phrase-within-phrase position-of-string-in-phrase-within-phrase generate-positions-of-delimiter positions-multiple-of-delimiter-within-phrase-put-into-phrase generate-positions-of-first-matching-delimiter-after-listed-positions positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase generate-positions-of-listed-words positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase copy-without-extra-spaces copy-from-phrase-to-phrase-and-remove-extra-spaces copy-characters-from-position-to-position copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-and-replace-matching-text copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-and-replace-using-paired-listed-words copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-zero-pad-left-to-length copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-lowercase-only copy-from-phrase-to-phrase-lowercase-only copy-uppercase-only copy-from-phrase-to-phrase-uppercase-only copy-initial-caps copy-from-phrase-to-phrase-initial-caps split-into-list-of-characters copy-from-phrase-to-phrase-and-split-into-list-of-characters encode-as-cgi-parameter copy-from-phrase-to-phrase-and-encode-as-cgi-parameter decode-from-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word get-word-at-position from-phrase-get-word-number copy-word-at-position copy-from-phrase-to-phrase-only-word-at-position copy-words-from-position-to-position copy-from-phrase-to-phrase-words-from-position-to-position copy-words-found-in-both-lists copy-from-two-phrases-words-found-in-both-to-phrase copy-words-found-only-in-first-list copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-words-unique-only copy-from-phrase-unique-words-to-phrase copy-words-sort-numeric copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-words-sort-alphabetic copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-rearrange-using-order-sort-numeric copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-rearrange-using-order-sort-alphabetic copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-words-order-reversed copy-from-phrase-to-phrase-with-word-order-reversed copy-words-that-begin-with-text copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase count-of-words count-of-words-in-phrase get-position-of-word position-of-word-in-phrase-within-phrase generate-positions-of-words-that-match-any-listed-word positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase use-handler-with-each-word-in-phrase-currently-at-character-position word-to-use-in-handler category_generate_list generate-counts-from-integer-to-integer counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase generate-every-pairwise-combination-of-words every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases generate-every-ordered-pairwise-combination-of-words every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related dashrep-permission-to-append-to-files-yes-or-no dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-text find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-listed find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-one-entry-from-tagged-file gather-one-entry-from-tagged-file-and-put-into-phrase generate-list-of-files-in-current-read-directory put-into-phrase-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file rename-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements xml-move-attributes-into-tag-elements-within-phrase copy-and-remove-attributes-from-xml-tags copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no trace-show dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no generate-phrase-usage-counts put-into-phrase-linewise-usage-counts-for-phrase-names dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names dashrep-yes-indicate-line-endings escape-from-dashrep resume-after-escape-from-dashrep yes-or-no-use-faster-subset-expand yes-or-no-use-slower-subset-expand dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words convert-from-spoken-dashrep-code copy-from-phrase-to-phrase-from-spoken-dashrep-code convert-into-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
+    $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-listed-phrases clear-phrases-listed-in-phrase clear-all-dashrep-phrases delete-listed-phrases delete-phrases-listed-in-phrase generate-list-of-all-dashrep-phrases write-all-dashrep-phrase-names-to-phrase copy-text copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-text append-from-phrase-to-phrase append-text-no-space append-from-phrase-to-phrase-no-space repeatedly-append-text-using-repeat-count repeatedly-append-from-phrase-to-phrase-using-repeat-count prepend-text prepend-from-phrase-to-phrase prepend-text-no-space prepend-from-phrase-to-phrase-no-space append-new-line append-new-line-to-phrase insert-phrase-definition-without-expanding insert-definition-of-phrase expand-text expand-phrase-to-phrase expand-parameters-only expand-only-parameters-in-phrase-to-phrase copy-listed-words-to-phrases-named-in-pattern copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase yes-or-no-append-not-replace-for-imported-phrases dashrep-yes-append-not-replace-for-imported-phrases yes-or-no-export-delimited-definitions dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character count-of-characters count-of-characters-in-phrase count-of-characters-in-phrase-definition get-characters-from-position-to-position characters-in-phrase-get-from-position-to-position position-of-matching-text position-of-text-in-phrase-within-phrase position-of-string-in-phrase-within-phrase generate-positions-of-delimiter positions-multiple-of-delimiter-within-phrase-put-into-phrase generate-positions-of-first-matching-delimiter-after-listed-positions positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase generate-positions-of-listed-words positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase copy-without-extra-spaces copy-from-phrase-to-phrase-and-remove-extra-spaces copy-characters-from-position-to-position copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-and-replace-matching-text copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-and-replace-using-paired-listed-words copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-zero-pad-left-to-length copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-lowercase-only copy-from-phrase-to-phrase-lowercase-only copy-uppercase-only copy-from-phrase-to-phrase-uppercase-only copy-initial-caps copy-from-phrase-to-phrase-initial-caps split-into-list-of-characters copy-from-phrase-to-phrase-and-split-into-list-of-characters encode-as-cgi-parameter copy-from-phrase-to-phrase-and-encode-as-cgi-parameter decode-from-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word get-word-at-position from-phrase-get-word-number copy-word-at-position copy-from-phrase-to-phrase-only-word-at-position copy-words-from-position-to-position copy-from-phrase-to-phrase-words-from-position-to-position copy-words-found-in-both-lists copy-from-two-phrases-words-found-in-both-to-phrase copy-words-found-only-in-first-list copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-words-unique-only copy-from-phrase-unique-words-to-phrase copy-words-sort-numeric copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-words-sort-alphabetic copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-rearrange-using-order-sort-numeric copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-rearrange-using-order-sort-alphabetic copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-words-order-reversed copy-from-phrase-to-phrase-with-word-order-reversed copy-words-that-begin-with-text copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase count-of-words count-of-words-in-phrase get-position-of-word position-of-word-in-phrase-within-phrase generate-positions-of-words-that-match-any-listed-word positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase use-handler-with-each-word-in-phrase-currently-at-character-position word-to-use-in-handler category_generate_list generate-counts-from-integer-to-integer counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase generate-every-pairwise-combination-of-words every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases generate-every-ordered-pairwise-combination-of-words every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related yes-or-no-permission-to-append-to-files dashrep-permission-to-append-to-files-yes-or-no yes-or-no-permission-to-delete-or-overwrite-files dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-text find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-listed find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-one-entry-from-tagged-file gather-one-entry-from-tagged-file-and-put-into-phrase generate-list-of-files-in-current-read-directory put-into-phrase-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file rename-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements xml-move-attributes-into-tag-elements-within-phrase copy-and-remove-attributes-from-xml-tags copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no trace-show dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no generate-phrase-usage-counts put-into-phrase-linewise-usage-counts-for-phrase-names dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names yes-or-no-indicate-line-endings dashrep-yes-indicate-line-endings escape-from-dashrep resume-after-escape-from-dashrep yes-or-no-use-faster-subset-expand yes-or-no-use-slower-subset-expand yes-or-no-expand-special-phrases dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words convert-from-spoken-dashrep-code copy-from-phrase-to-phrase-from-spoken-dashrep-code convert-into-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen conambee amenncon linbray" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
     $alias_for_action_name{ "copy-from-two-phrases-words-found-in-both-to-phrase" } = "copy-words-found-in-both-lists" ;
@@ -384,6 +385,13 @@ BEGIN {
     $alias_for_action_name{ "insert-codeview-tags-into-phrase" } = "insert-codeview-tags" ;
     $alias_for_action_name{ "copy-from-phrase-to-phrase-from-spoken-dashrep-code" } = "convert-from-spoken-dashrep-code" ;
     $alias_for_action_name{ "copy-from-phrase-to-phrase-into-spoken-dashrep-code" } = "convert-into-spoken-dashrep-code" ;
+
+    $alias_for_action_name{ "dashrep-yes-append-not-replace-for-imported-phrases" } = "yes-or-no-append-not-replace-for-imported-phrases" ;
+    $alias_for_action_name{ "dashrep-yes-or-no-export-delimited-definitions" } = "yes-or-no-export-delimited-definitions" ;
+    $alias_for_action_name{ "dashrep-permission-to-append-to-files-yes-or-no" } = "yes-or-no-permission-to-append-to-files" ;
+    $alias_for_action_name{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes-or-no-permission-to-delete-or-overwrite-files" ;
+    $alias_for_action_name{ "dashrep-yes-indicate-line-endings" } = "yes-or-no-indicate-line-endings" ;
+    $alias_for_action_name{ "dashrep-yes-do-not-expand-special-phrases" } = "yes-or-no-expand-special-phrases" ;
 
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "clear-listed-phrases" } = 1 ;
@@ -839,8 +847,8 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "four-hyphens" } = "----" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;
     $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } = "yes" ;
-    $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } = "yes" ;
+    $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } = "yes" ;
+    $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
@@ -856,7 +864,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-yes-handle-open-close-tag-" } = "" ;
-    $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } = "" ;
+    $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
     $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
@@ -885,6 +893,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;
+    $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
 }
 
 
@@ -1079,7 +1088,7 @@ sub dashrep_import_replacements
     {
         $phrase_suffix = "" ;
     }
-    if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-append-not-replace-for-imported-phrases" } eq "yes" ) )
+    if ( ( exists( $global_dashrep_replacement{ "yes-or-no-append-not-replace-for-imported-phrases" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-append-not-replace-for-imported-phrases" } eq "yes" ) )
     {
         $yes_append_not_replace = "yes" ;
     } else
@@ -1199,7 +1208,7 @@ sub dashrep_import_replacements
 #  Allow a colon after the hyphenated name.
 #  If this definition name has already been defined,
 #  ignore the earlier definition -- unless the phrase
-#  "dashrep-yes-append-not-replace-for-imported-phrases"
+#  "yes-or-no-append-not-replace-for-imported-phrases"
 #  is "yes" or the "dashrep-definition-append-next"
 #  directive preceded this definition.
 #  If the name does not contain a hyphen,
@@ -4384,7 +4393,7 @@ sub dashrep_expand_parameters
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             $counter = 0 ;
-            if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+            if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
             {
                 foreach $phrase_name ( @sequence_of_phrases )
                 {
@@ -4416,7 +4425,7 @@ sub dashrep_expand_parameters
         if ( $action_name eq "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" )
         {
             $action_result = " " ;
-            if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+            if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
@@ -6699,7 +6708,7 @@ sub dashrep_expand_special_phrases
 #-----------------------------------------------
 #  If requested, do not expand special phrases.
 
-    if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-do-not-expand-special-phrases" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-do-not-expand-special-phrases" } eq "yes" ) )
+    if ( ( exists( $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } eq "no" ) )
     {
         return $expanded_string ;
     }
@@ -7296,11 +7305,11 @@ sub dashrep_file_actions
             $all_lines = "" ;
             $line_ending = "" ;
             $line_number = 0 ;
-            if ( not( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) )
+            if ( not( exists( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } ) ) )
             {
-                $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } = "no" ;
+                $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } = "no" ;
             }
-            if ( ( exists( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } ) ) && ( $global_dashrep_replacement{ "dashrep-yes-indicate-line-endings" } eq "yes" ) )
+            if ( ( exists( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } eq "yes" ) )
             {
                 $line_ending = " end-of-line-here " ;
             } else
@@ -7717,7 +7726,7 @@ sub dashrep_file_actions
         if ( $target_filename eq "" )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-append-to-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase_name . " to end of file " . $target_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to append to files]" ;
@@ -7773,7 +7782,7 @@ sub dashrep_file_actions
         if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to delete file: " . $target_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
@@ -7799,7 +7808,7 @@ sub dashrep_file_actions
     } elsif ( $action_name eq "rename-file" )
     {
         $action_result = " " ;
-        if ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        if ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to rename file: " . $source_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to delete or overwrite or rename files]" ;
@@ -7828,7 +7837,7 @@ sub dashrep_file_actions
         if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to create empty file: " . $target_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
@@ -7880,7 +7889,7 @@ sub dashrep_file_actions
         if ( ( $operand_one eq "" ) || ( $operand_one !~ /^[a-z0-9_\-]+$/i ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operand " . $operand_one . "]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to create empty folder: " . $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to create files or folders]" ;
@@ -7951,7 +7960,7 @@ sub dashrep_file_actions
         if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
         } else
@@ -8026,7 +8035,7 @@ sub dashrep_file_actions
         } elsif ( $global_nesting_level_of_file_actions > 1 )
         {
             $possible_error_message .= " [warning, file-related action called recursivley, which is not allowed]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
         }
@@ -8572,7 +8581,7 @@ sub dashrep_file_actions
         } elsif ( $global_nesting_level_of_file_actions > 1 )
         {
             $possible_error_message .= " [warning, file-related action called recursivley, which is not allowed]" ;
-        } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
         }
@@ -8764,11 +8773,11 @@ sub dashrep_file_actions
             if ( $global_nesting_level_of_file_actions > 1 )
             {
                 $possible_error_message .= " [warning, file-related action called recursivley, which is not allowed]" ;
-            } elsif ( $global_dashrep_replacement{ "dashrep-permission-to-delete-or-overwrite-files-yes-or-no" } ne "yes" )
+            } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
             {
                 $possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;
             }
-            if ( $global_dashrep_replacement{ "dashrep-yes-or-no-export-delimited-definitions" } eq "yes" )
+            if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
             {
                 if ( exists( $global_dashrep_replacement{ "export-defs-all-begin" } ) )
                 {

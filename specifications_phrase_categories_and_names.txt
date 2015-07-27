@@ -26,7 +26,7 @@ define-begin
 list-of-phrases-newly-defined
 generate-list-of-all-dashrep-phrases
 clear-all-dashrep-phrases
-dashrep-yes-append-not-replace-for-imported-phrases
+yes-or-no-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
 export-defs-all-begin
 export-defs-all-end
@@ -172,8 +172,8 @@ xml-move-attributes-into-tag-elements
 copy-and-remove-attributes-from-xml-tags
 
 category_file_related
-dashrep-permission-to-append-to-files-yes-or-no
-dashrep-permission-to-delete-or-overwrite-files-yes-or-no
+yes-or-no-permission-to-append-to-files
+yes-or-no-permission-to-delete-or-overwrite-files
 dashrep-path-prefix-for-file-reading
 dashrep-path-prefix-for-file-writing
 get-definitions-from-file
@@ -228,12 +228,12 @@ insert-codeview-tags
 end-of-line-here
 unique-value
 dashrep-list-of-recognized-phrase-names
-dashrep-yes-indicate-line-endings
+yes-or-no-indicate-line-endings
 dashrep-stop-translation
 escape-from-dashrep
 resume-after-escape-from-dashrep
 dashrep-replacement-results-at-time-of-escape
-dashrep-yes-do-not-expand-special-phrases
+yes-or-no-expand-special-phrases
 yes-or-no-allow-user-defined-actions
 user-defined-action-operand-one
 user-defined-action-operand-two

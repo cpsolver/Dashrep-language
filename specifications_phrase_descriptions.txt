@@ -549,8 +549,8 @@ description-for-phrase-copy-from-phrase-to-phrase-remove-last-word-from-phrase:
 This action copies a phrase definition to the specified phrase, and removes the last word. s-n The two phrase names can be the same.
 ----
 
-description-for-phrase-dashrep-yes-do-not-expand-special-phrases:
-If this phrase equals b-i-b yes b-i-e then the following special phrases are not handled: b-i-b non h-h breaking h-h space b-i-e no-space , b-i-b tab h-h here b-i-e no-space , b-i-b empty h-h line b-i-e no-space , b-i-b new h-h line b-i-e no-space , b-i-b no h-h space b-i-e no-space , and b-i-b one h-h space b-i-e .
+description-for-phrase-yes-or-no-expand-special-phrases:
+If this phrase equals b-i-b no b-i-e then the following special phrases are not handled: b-i-b non h-h breaking h-h space b-i-e no-space , b-i-b tab h-h here b-i-e no-space , b-i-b empty h-h line b-i-e no-space , b-i-b new h-h line b-i-e no-space , b-i-b no h-h space b-i-e no-space , and b-i-b one h-h space b-i-e  no-space . s-n Any other value causes these special phrases to be handled. s-n The default value is b-i-b yes b-i-e no-space .
 ----
 
 description-for-phrase-define-begin:
@@ -577,11 +577,11 @@ name-of-phrase-that-specifies-write-directory
 no-space .
 ----
 
-description-for-phrase-dashrep-permission-to-append-to-files-yes-or-no:
+description-for-phrase-yes-or-no-permission-to-append-to-files:
 If this phrase equals b-i-b yes b-i-e then actions have permission to append to existing files. s-n Any other value indicates that actions do not have this permission. s-n This value can be changed as needed. s-n For security purposes this value should be set to b-i-b no b-i-e before translating (or expanding) Dashrep code that might be tainted by outside users.
 ----
 
-description-for-phrase-dashrep-permission-to-delete-or-overwrite-files-yes-or-no:
+description-for-phrase-yes-or-no-permission-to-delete-or-overwrite-files:
 If this phrase equals b-i-b yes b-i-e then actions have permission to delete or overwrite existing files. s-n Any other value indicates that actions do not have these permissions. s-n This value can be changed as needed. s-n For security purposes this value should be set to b-i-b no b-i-e before translating (or expanding) Dashrep code that might be tainted by outside users.
 ----
 
@@ -668,7 +668,7 @@ description-for-phrase-list-of-phrases-newly-defined:
 This phrase contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
 ----
 
-description-for-phrase-dashrep-yes-or-no-export-delimited-definitions:
+description-for-phrase-yes-or-no-export-delimited-definitions:
 If this phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e or the action b-i-b write h-h all h-h dashrep h-h phrase h-h names h-h to h-h file b-i-e or the action b-i-b write h-h dashrep h-h definitions h-h listed h-h in h-h phrase h-h to h-h file b-i-e action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name. s-n
 Otherwise exported definitions are written using the normal Dashrep convention. s-n This capability enables the exported definitions to be converted into special formats such as HTML or XML.
 ----
@@ -746,7 +746,7 @@ description-for-phrase-dashrep-endless-loop-counter-limit:
 This phrase specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined, such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
 ----
 
-description-for-phrase-dashrep-yes-indicate-line-endings:
+description-for-phrase-yes-or-no-indicate-line-endings:
 If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
 ----
 
@@ -758,7 +758,7 @@ description-for-phrase-dashrep-phrase-suffix-for-imported-phrases:
 This suffix is placed at the end of each newly defined phrase imported from a file. s-n See the phrase b-i-b prefix h-h for h-h imported h-h phrases b-i-e for more details.
 ----
 
-description-for-phrase-dashrep-yes-append-not-replace-for-imported-phrases:
+description-for-phrase-yes-or-no-append-not-replace-for-imported-phrases:
 If this phrase equals b-i-b yes b-i-e no-space , and if a phrase definition is being imported from a file, and if that phrase has the same name as an existing phrase, then the definition is appended to the end of the existing definition, rather than replacing the existing definition. s-n A space is inserted to separate the two definitions. s-n This capability is useful when multiple files contain phrase definitions with the same names, and those definitions are lists that should be combined.
 ----
 
