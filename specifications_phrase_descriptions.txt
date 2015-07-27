@@ -195,8 +195,8 @@ description-for-phrase-copy-words-rearrange-using-order-sort-numeric:
 This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, if the first phrase contains the text b-i-b seven one five three twelve b-i-e and the third phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the text placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
 -----
 
-description-for-phrase-count-of-characters:
-This action counts the number of characters in the definition that is associated with the specified phrase. s-n Spaces and non-visible characters (such as the newline character) are included in the count.
+description-for-phrase-get-count-of-characters:
+This action counts the number of characters in the definition that is associated with the specified phrase, and supplies the number as its result. s-n Spaces and non-visible characters (such as the newline character) are included in the count.
 -----
 
 description-for-phrase-create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase:
@@ -437,7 +437,7 @@ description-for-phrase-path-to-initial-dashrep-definitions:
 This phrase contains the path for the file named in the phrase b-i-b filename h-h for h-h initial h-h dashrep h-h definitions b-i-e no-space . s-n See b-i-b filename h-h for h-h initial h-h dashrep h-h definitions b-i-e for details.
 -----
 
-description-for-phrase-position-of-matching-text:
+description-for-phrase-get-position-of-matching-text:
 This action searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The character positions are numbered starting at 1 in the first character position.
 -----
 
@@ -608,7 +608,7 @@ This action reads the specified file (which must be a text file) and looks for a
 location-of-read-file
 ----
 
-description-for-phrase-dashrep-use-two-spaces-as-column-delimiter:
+description-for-phrase-yes-or-no-use-two-spaces-as-column-delimiter:
 If this phrase equals b-i-b yes b-i-e then the action b-i-b copy hyphen-here from hyphen-here columns hyphen-here in hyphen-here file hyphen-here to hyphen-here named hyphen-here phrases b-i-e regards two adjacent spaces as the delimiter between words. s-n Any other value for this phrase causes a single space to be regarded as the delimiter between words. s-n This adjustment enables the text in any column of (text) data to contain single spaces. s-n This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.
 ----
 
@@ -1244,7 +1244,7 @@ description-for-phrase-get-word-at-position:
 This action supplies the specified word from a specified phrase, with the position of that word being specified by an integer number. s-n The number 1 specifies the first word. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
 ----
 
-description-for-phrase-count-of-words:
+description-for-phrase-get-count-of-words:
 This action counts the number of words in the definition of a specified phrase, and supplies the count as its result. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n If the definition contains only spaces, or is empty, the value b-i-b 0 b-i-e (zero) is supplied.
 ----
 
