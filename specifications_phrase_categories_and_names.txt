@@ -25,7 +25,6 @@ define-end
 define-begin
 list-of-phrases-newly-defined
 generate-list-of-all-dashrep-phrases
-clear-all-dashrep-phrases
 yes-or-no-append-not-replace-for-imported-phrases
 dashrep-yes-or-no-export-delimited-definitions
 export-defs-all-begin
@@ -35,15 +34,18 @@ export-defs-def-end
 export-defs-phrase-begin
 export-defs-phrase-end
 
+category_clear_delete
+clear-phrase
+clear-listed-phrases
+delete-listed-phrases
+delete-all-dashrep-phrases
+
 category_expand
 expand-text
 expand-parameters-only
 insert-angle-bracketed-definitions
 
 category_transfer
-clear-phrase
-clear-listed-phrases
-delete-listed-phrases
 copy-text
 append-text
 append-text-no-space

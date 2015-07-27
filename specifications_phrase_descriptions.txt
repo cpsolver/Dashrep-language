@@ -1107,15 +1107,19 @@ location-of-write-file
 -----
 
 description-for-phrase-clear-phrase:
-This action clears the definition for the specified phrase. s-n This action is equivalent to using the equal h-h sign notation without any text for the new definition.
+This action clears the definition for the specified phrase. s-n
+The specified phrase continues to be defined, but the definition is empty. s-n
+This action is equivalent to using the equal h-h sign notation without any text for the new definition.
 ----
 
 description-for-phrase-clear-listed-phrases:
-This action clears the definitions for the phrases that are named in the specified phrase.
+This action clears the definitions for the phrases that are named in the specified phrase. s-n
+The phrases continue to exist, but their definitions are empty.
 ----
 
 description-for-phrase-delete-listed-phrases:
-This action deletes (removes) the phrases that are named in the specified phrase. s-n This phrase is related to the action b-i-b clear h-h listed h-h phrases b-i-e except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized. s-n This action is useful for creating a template in which the listed phrases will be replaced by varying definitions at later times.
+This action deletes (removes) the phrases that are named in the specified phrase. s-n This phrase is related to the action b-i-b clear h-h listed h-h phrases b-i-e except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized. s-n
+This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.
 ----
 
 description-for-phrase-split-into-list-of-characters:
@@ -1272,8 +1276,8 @@ description-for-phrase-every-combination-of-words-from-two-phrases-put-into-two-
 This action generates two lists of words and puts them into the definitions of the third and fourth phrases. s-n Every possible combination of two words is generated, with the first two phrases supplying the lists of words. s-n For example, if the first phrase contains b-i-b h-h no-space 2 h-h no-space 1 0 1 2 b-i-e and the second phrase contains b-i-b 12 17 32 55 b-i-e then the third phrase will contain b-i-b h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 1 one-space h-h 1 one-space h-h 1 one-space h-h 1 0 0 0 0 1 1 1 1 2 2 2 2 b-i-e and the fourth phrase will contain b-i-b 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 b-i-e . s-n (The words do not have to be numbers.)
 ----
 
-description-for-phrase-clear-all-dashrep-phrases:
-This action clears all the definitions of all the phrases. s-n Remember that this action resets every definition of every phrase, except the phrases that are defined internally.
+description-for-phrase-delete-all-dashrep-phrases:
+This action deletes all the definitions of all the phrases. s-n Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally.
 ----
 
 description-for-phrase-dashrep-comments-ignored:
@@ -1440,6 +1444,10 @@ Hyphens, spaces, lines, & square brackets
 
 heading-for-phrases-in-category_definitions:
 Definition-related phrases
+-----
+
+heading-for-phrases-in-category_clear_delete:
+Clear & delete phrases
 -----
 
 heading-for-phrases-in-category_expand:
@@ -1858,7 +1866,7 @@ dashrep-definitions-end
 [-append-new-line-to-phrase full-contents-final-]
 [-expand-text section-directive-phrase-action expanded-section-directive-phrase-action-]
 [-append-from-phrase-to-phrase-no-space expanded-section-directive-phrase-action full-contents-final-]
-[-item-count = [-count-of-words all-phrases-and-categories-]-]
+[-item-count = [-get-count-of-words all-phrases-and-categories-]-]
 [-generate-counts-from-integer-to-integer 1 [-item-count-] list-of-position-numbers-]
 [-dashrep-action-trace-on-or-off =off-]
 [-use-template-and-parameters-to-create-simple-list-with-name  template-for-category-and-phrase-list  list-of-position-numbers  unused-generated-list-]
