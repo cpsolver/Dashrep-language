@@ -674,7 +674,7 @@ The second operand is the name of the target file. s-n
 location-of-read-file s-n
 This action uses the list of tag names in the phrase
 b-i-b dashrep h-h gathered h-h tag h-h names h-h in h-h sequence b-i-e
-to determine which entries to use, and the sequence in which they are written.
+to determine which tag names to use, and the sequence in which they are written.
 ----
 
 description-for-phrase-list-of-phrases-newly-defined:
