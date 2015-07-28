@@ -219,7 +219,7 @@ description-for-phrase-dashrep-linewise-trace-on-yes-or-no:
 If this phrase equals b-i-b yes b-i-e then b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing. s-n Any other value causes silence when linewise actions are handled.
 -----
 
-description-for-phrase-dashrep-list-of-recognized-phrase-names:
+deprecated-description-for-phrase-dashrep-list-of-recognized-phrase-names:
 This action gets all the defined phrase names, and puts those phrase names into the second phrase, with a space between each phrase name. s-n For security purposes this action can be disabled.
 -----
 
@@ -1007,8 +1007,8 @@ location-of-write-file
 -----
 
 description-for-phrase-generate-list-of-all-dashrep-phrases:
-This action writes all the Dashrep phrase names to the specified phrase.
-s-n For security purposes this action can be disabled.
+This action generates a list of all the defined phrase names, using a space between adjacent phrase names,
+and puts that list into the specified phrase name. s-n For security purposes this action can be disabled.
 -----
 
 description-for-phrase-write-dashrep-definitions-listed-in-phrase-to-file:
@@ -1510,16 +1510,12 @@ heading-for-phrases-in-category_file_related:
 File-related phrases
 -----
 
+heading-for-phrases-in-category_data:
+Data-related phrases
+-----
+
 heading-for-phrases-in-category_xml:
 XML-related phrases
------
-
-heading-for-phrases-in-category_html:
-HTML-output phrases
------
-
-heading-for-phrases-in-category_ignore_capture:
-Ignore and capture directives
 -----
 
 heading-for-phrases-in-category_time:
@@ -1536,10 +1532,6 @@ Advanced phrases
 
 heading-for-phrases-in-category_spoken_words:
 Special Dashrep spoken words
------
-
-heading-for-phrases-in-category_do_not_use:
-Reserved for internal use, do not use
 -----
 
 
