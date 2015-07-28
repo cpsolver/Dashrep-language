@@ -284,7 +284,7 @@ test-of-special-operators:
 
 [-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-translation-safe = <character_hyphen>-]
-[-copy-and-replace-matching-text template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
+[-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
@@ -298,7 +298,7 @@ test-of-special-operators:
 [-numeric-vectors-add vector-one vector-two vector-result-addition-]
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 [-text-to-repeat = number 9 -]
-[-repeatedly-append-text-using-repeat-count text-to-repeat list-of-repeated-text 9 -]
+[-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
 [-list-of-words-to-filter = dolphin bear dolphin buffalo bear eagle-]
 [-list-of-words-that-match = dolphin eagle-]
 [-generate-positions-of-words-that-match-any-listed-word list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
@@ -400,7 +400,7 @@ character-period:
 --------
 
 test-of-replace-periods-with-spaces:
-[-copy-and-replace-matching-text text-with-periods text-with-spaces character-period character-space-]
+[-copy-and-replace text-with-periods text-with-spaces character-period character-space-]
 --------
 
 test-of-several-copy-actions:
@@ -1300,9 +1300,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the copy-and-replace-matching-text action.
+#  Test the copy-and-replace action.
 
-$being_tested = "test action: copy-and-replace-matching-text -- ";
+$being_tested = "test action: copy-and-replace -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-replace-periods-with-spaces" );
@@ -1390,9 +1390,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the "copy-and-replace-matching-text" action.
+#  Test the "copy-and-replace" action.
 
-$being_tested = "test action: copy-and-replace-matching-text (again) -- ";
+$being_tested = "test action: copy-and-replace (again) -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "text-translation-safe" );
@@ -1504,9 +1504,9 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "repeatedly-append-text-using-repeat-count"
+#  Test the action "append-repeatedly-using-count"
 
-$being_tested = "test action repeatedly-append-text-using-repeat-count -- ";
+$being_tested = "test action append-repeatedly-using-count -- ";
 $test_number_count ++;
 # remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-repeated-text" );

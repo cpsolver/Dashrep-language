@@ -46,18 +46,14 @@ expand-parameters-only
 insert-angle-bracketed-definitions
 
 category_transfer
+get-phrase-definition-without-expanding
 copy-text
 copy-to-phrase-from-following-text
 copy-listed-words-to-phrases-named-in-pattern
-
-insert-phrase-definition-without-expanding
-
 append-text
 append-text-no-space
 append-new-line
-
-repeatedly-append-text-using-repeat-count
-
+append-repeatedly-using-count
 append-multiple-from-phrases-named-in-pattern
 prepend-text
 prepend-text-no-space
@@ -106,11 +102,9 @@ encode-as-cgi-parameter
 decode-from-cgi-parameter
 
 category_search_replace
-
-copy-and-replace-matching-text
-
-copy-and-replace-using-paired-listed-words
 get-position-of-matching-text
+copy-and-replace
+copy-and-replace-using-paired-listed-words
 generate-positions-of-delimiter
 generate-positions-of-listed-words
 generate-positions-of-first-matching-delimiter-after-listed-positions
@@ -118,9 +112,9 @@ generate-positions-of-first-matching-delimiter-after-listed-positions
 category_word
 get-count-of-words
 get-word-at-position
+get-position-of-word
 copy-word-at-position
 copy-words-from-position-to-position
-get-position-of-word
 copy-words-that-begin-with-text
 generate-positions-of-words-that-match-any-listed-word
 
