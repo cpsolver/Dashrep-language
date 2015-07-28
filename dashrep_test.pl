@@ -1035,9 +1035,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "word-list
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "word-list-result" );
 #  uncomment-for-cpan-version-end
-
-$results_text .= $string_return_value . "   " ;
-
+# $results_text .= $string_return_value . "   " ;
 if ( $string_return_value eq "1-3-0" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -1622,6 +1620,14 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-rep
 if ( $string_return_value eq "fliers songflier swimmer clownswimmer" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "write-gathered-listed-items-to-end-of-file"
+
+# $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-gathered-tag-names-in-sequence" , "url whatever2" );
+# $numeric_return_value = &dashrep_translate::dashrep_define( "list-of-unique-values" , "aaa bbb ccc" );
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-gathered-listed-items-to-end-of-file list-of-unique-values filename_unused.txt-]" ) ;
 
 
 #-------------------------------------------

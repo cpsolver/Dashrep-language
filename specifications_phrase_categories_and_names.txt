@@ -26,7 +26,7 @@ define-begin
 list-of-phrases-newly-defined
 generate-list-of-all-dashrep-phrases
 yes-or-no-append-not-replace-for-imported-phrases
-dashrep-yes-or-no-export-delimited-definitions
+yes-or-no-export-delimited-definitions
 export-defs-all-begin
 export-defs-all-end
 export-defs-def-begin
@@ -194,11 +194,12 @@ find-lines-in-file-that-begin-with-any-two-words-listed
 copy-from-columns-in-file-to-named-phrases
 yes-or-no-use-two-spaces-as-column-delimiter
 gather-tagged-info-from-file
+gather-one-entry-from-tagged-file
+write-gathered-listed-items-to-end-of-file
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
 dashrep-gather-tag-unique
 dashrep-gather-tag-delete
-gather-one-entry-from-tagged-file
 dashrep-gather-tag-matching-id
 generate-list-of-files-in-current-read-directory
 generate-list-of-folders-in-current-read-directory

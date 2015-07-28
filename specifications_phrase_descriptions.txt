@@ -664,6 +664,19 @@ description-for-phrase-dashrep-gather-tag-matching-id:
 See the description for the action b-i-b gather h-h one h-h entry h-h from h-h tagged h-h file h-h and h-h put h-h into h-h phrase b-i-e no-space .
 ----
 
+description-for-phrase-write-gathered-listed-items-to-end-of-file:
+This action writes to the end of the specified file all or most of the information that was recently gathered using the action 
+b-i-b gather h-h tagged h-h info h-h from h-h file b-i-e no-space . s-n
+The first operand specifies a phrase that contains the list of unique values for the gathered items to be written,
+which allows some of the items to be omitted. s-n
+This action, unlike the "gather" action, does not support the use of multi-line entries. s-n
+The second operand is the name of the target file. s-n
+location-of-read-file s-n
+This action uses the list of tag names in the phrase
+b-i-b dashrep h-h gathered h-h tag h-h names h-h in h-h sequence b-i-e
+to determine which entries to use, and the sequence in which they are written.
+----
+
 description-for-phrase-list-of-phrases-newly-defined:
 This phrase contains a list of all the hyphenated phrases that have been imported or defined. s-n This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.
 ----
