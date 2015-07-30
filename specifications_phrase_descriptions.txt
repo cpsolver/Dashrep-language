@@ -216,7 +216,7 @@ If this phrase equals b-i-b yes b-i-e then trace messages are added to the trace
 -----
 
 description-for-phrase-dashrep-linewise-trace-on-yes-or-no:
-If this phrase equals b-i-b yes b-i-e then b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing. s-n Any other value causes silence when linewise actions are handled.
+Deprecated: If this phrase equals b-i-b yes b-i-e then b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing. s-n Any other value causes silence when linewise actions are handled.
 -----
 
 deprecated-description-for-phrase-dashrep-list-of-recognized-phrase-names:

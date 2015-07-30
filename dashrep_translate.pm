@@ -275,7 +275,7 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
     $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;
@@ -857,7 +857,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
     $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;
