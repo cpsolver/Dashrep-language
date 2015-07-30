@@ -204,7 +204,7 @@ category_data
 copy-from-columns-in-file-to-named-phrases
 yes-or-no-use-two-spaces-as-column-delimiter
 gather-tagged-info-from-file
-gather-one-entry-from-tagged-file
+gather-from-tagged-file-one-entry
 write-gathered-listed-items-to-end-of-file
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
