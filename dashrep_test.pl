@@ -299,9 +299,6 @@ test-of-special-operators:
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 [-text-to-repeat = number 9 -]
 [-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
-[-list-of-words-to-filter = dolphin bear dolphin buffalo bear eagle-]
-[-list-of-words-that-match = dolphin eagle-]
-[-generate-positions-of-words-that-match-any-listed-word list-of-words-to-filter list-of-words-that-match list-of-pointers-to-matching-words-]
 [-text-with-named-html-entities = abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def -]
 [-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions text-with-named-html-entities text-with-modified-html-entities-]
 [-text-with-tag-and-attribute = <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> -]
@@ -1514,23 +1511,6 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-rep
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
-#  Test the action "generate-positions-of-words-that-match-any-listed-word"
-
-$being_tested = "test action generate-positions-of-words-that-match-any-listed-word -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-pointers-to-matching-words" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = dashrep_get_replacement( "list-of-pointers-to-matching-words" );
-# uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "1 3 6" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

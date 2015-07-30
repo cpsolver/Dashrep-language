@@ -3962,7 +3962,7 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#    generate-positions-of-words-that-match-any-listed-word
+#  generate-positions-of-words-that-match-any-listed-word -- Deprecated
 
         if ( $action_name eq "generate-positions-of-words-that-match-any-listed-word" )
         {

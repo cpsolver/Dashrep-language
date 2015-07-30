@@ -115,7 +115,6 @@ get-position-of-word
 copy-word-at-position
 copy-words-from-position-to-position
 copy-words-that-begin-with-text
-generate-positions-of-words-that-match-any-listed-word
 
 category_time
 get-current-time-in-epoch-seconds
