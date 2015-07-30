@@ -2748,9 +2748,9 @@ sub dashrep_expand_parameters
 #  copy-without-extra-spaces
 #  copy-words-sort-numeric
 #  copy-words-sort-alphabetic
-#  split-into-list-of-characters
 #  encode-as-cgi-parameter
 #  decode-from-cgi-parameter
+#  split-into-list-of-characters -- Deprecated
 #
 #  copy-from-phrase-to-phrase-and-replace-html-reserved-characters -- Deprecated, instead use action copy-and-replace-using-paired-listed-words
 #  copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- Deprecated, instead use action copy-and-replace-using-paired-listed-words

@@ -408,11 +408,9 @@ test-of-several-copy-actions:
 [-copy-text text-being-copied text-copied-]
 [-copy-lowercase-only text-being-copied text-copied-lowercase-]
 [-copy-uppercase-only text-being-copied text-copied-uppercase-]
-[-split-into-list-of-characters text-being-copied text-copied-separate-characters-]
 [-copy-from-phrase-to-phrase-but-remove-first-word text-being-copied text-copied-without-first-word-]
 [-copy-from-phrase-to-phrase-but-remove-last-word text-being-copied text-copied-without-last-word-]
 [-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
-[-text-copied-separate-characters-]
 [-text-copied-without-first-word-] [-text-copied-without-last-word-]
 --------
 
@@ -1331,7 +1329,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-s
 $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "abc DEF 123 abc def 123 ABC DEF 123 a b c onespace D E F onespace 1 2 3 DEF 123 abc DEF" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "abc DEF 123 abc def 123 ABC DEF 123 DEF 123 abc DEF" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

@@ -1136,7 +1136,7 @@ This action is useful when the text being expanded contains phrases that should 
 ----
 
 description-for-phrase-split-into-list-of-characters:
-This action copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-b onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
+Deprecated: This action copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-b onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-character-single-space:

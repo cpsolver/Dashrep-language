@@ -97,7 +97,6 @@ copy-lowercase-only
 copy-uppercase-only
 copy-initial-caps
 copy-zero-pad-left-to-length
-split-into-list-of-characters
 encode-as-cgi-parameter
 decode-from-cgi-parameter
 
