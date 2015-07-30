@@ -8537,11 +8537,11 @@ sub dashrep_file_actions
             {
                 foreach $tag_name ( @list_of_tag_names )
                 {
-                    $phrase_name = "tag-" . $tag_name . "-id-" . $unique_value ;
-#                    if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
-#                    {
-                        $accumulated_text .= $tag_name . " " . $phrase_name . "\n" ;
-#                    }
+                    $phrase_name = $tag_name . "-value-for-unique-id-" . $unique_value ;
+                    if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
+                    {
+                        $accumulated_text .= $tag_name . " " . $global_dashrep_replacement{ $phrase_name } . "\n" ;
+                    }
                 }
             }
             $accumulated_text .= "\n" ;
