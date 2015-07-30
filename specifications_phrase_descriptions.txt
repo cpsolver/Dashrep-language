@@ -469,7 +469,7 @@ description-for-phrase-prepend-text:
 This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, without inserting a separating space. s-n If the target phrase is initially empty, the space is not inserted.
 -----
 
-description-for-phrase-storage-input-line-from-file:
+description-for-phrase-linewise-input-line-from-file:
 See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h use h-h handler b-i-e no-space .
 -----
 

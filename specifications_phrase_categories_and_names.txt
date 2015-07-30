@@ -189,7 +189,7 @@ create-empty-sub-folder
 copy-from-file-to-phrase
 copy-from-phrase-append-to-file
 linewise-read-from-file-and-use-handler
-storage-input-line-from-file
+linewise-input-line-from-file
 linewise-input-line-count
 get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
