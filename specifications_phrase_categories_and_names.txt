@@ -221,7 +221,6 @@ dashrep-debug-trace-on-yes-or-no
 dashrep-recent-phrase-name-replaced
 dashrep-warning-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
-dashrep-linewise-trace-on-yes-or-no
 
 category_advanced
 unique-value
@@ -253,6 +252,6 @@ amenn
 combee
 comenn
 fen
-conambee
-amenncon
+fenambee
+amennfen
 linbray
