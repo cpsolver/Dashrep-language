@@ -1069,8 +1069,8 @@ b-i-b a no-space m no-space b no-space e no-space e b-i-e
 b-i-b a no-space m no-space e no-space n no-space n b-i-e
 b-i-b c no-space o no-space m no-space b no-space e no-space e b-i-e
 b-i-b c no-space o no-space m no-space e no-space n no-space n b-i-e
-b-i-b c no-space o no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n no-space c no-space o no-space n b-i-e
+b-i-b f no-space e no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
+b-i-b a no-space m no-space e no-space n no-space n no-space f no-space e no-space n b-i-e
 b-i-b l no-space i no-space n no-space b no-space r no-space a no-space y b-i-e
 are translated.
 ----
@@ -1085,8 +1085,8 @@ b-i-b a no-space m no-space b no-space e no-space e b-i-e
 b-i-b a no-space m no-space e no-space n no-space n b-i-e
 b-i-b c no-space o no-space m no-space b no-space e no-space e b-i-e
 b-i-b c no-space o no-space m no-space e no-space n no-space n b-i-e
-b-i-b c no-space o no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n no-space c no-space o no-space n b-i-e
+b-i-b f no-space e no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
+b-i-b a no-space m no-space e no-space n no-space n no-space f no-space e no-space n b-i-e
 b-i-b l no-space i no-space n no-space b no-space r no-space a no-space y b-i-e
 are inserted where appropriate.
 ----
@@ -1443,7 +1443,7 @@ r-b c-b amenn c-n h-h ] c-n Indicates the end of a parameter. c-e r-e
 
 r-b c-b ofo c-n (no equivalence) c-n Indicates that an operand (for an action) follows, and that the words (up to the next b-i-b ofo b-i-e or b-i-b amenn b-i-e no-space ) should be hyphenated. c-e r-e
 
-r-b c-b fenambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named con no-space ambee dolphin h-h name amen no-space con b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
+r-b c-b fenambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named fen no-space ambee dolphin h-h name amenn no-space fen b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
 
 r-b c-b amennfen c-n h-h ] h-h c-n Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase. c-e r-e
 
