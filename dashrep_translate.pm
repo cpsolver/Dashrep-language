@@ -3922,13 +3922,13 @@ sub dashrep_expand_parameters
         if ( ( $action_name eq "yes-or-no-word-is-in-phrase" ) || ( $action_name eq "get-position-of-word" ) )
         {
             $action_result = " " ;
-#            if ( $action_name eq "get-position-of-word" )
-#            {
-#                $word_to_find = $global_dashrep_replacement{ $operand_one } ;
-#            } else
-#            {
+            if ( $action_name eq "get-position-of-word" )
+            {
+                $word_to_find = $global_dashrep_replacement{ $operand_one } ;
+            } else
+            {
                 $word_to_find = $operand_one ;
-#            }
+            }
             $phrase_name = $operand_two ;
             $temp_text = $global_dashrep_replacement{ $phrase_name } ;
             $temp_text =~ s/^ +// ;
