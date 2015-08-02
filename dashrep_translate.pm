@@ -2620,7 +2620,7 @@ sub dashrep_expand_parameters
                 $target_phrase_name = $operand_two ;
                 $phrase_name_containing_source_words = "" ;
             }
-            if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)((ambee)|(conambee)|(fenambee))-([^ ]*)-((amenn)|(amenncon)|(amennfen))([^ ]*)$/ ) )
+            if ( ( defined( $global_dashrep_replacement{ $phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $phrase_name_containing_pattern } =~ /^([^ ]*)((ambee)|(conambee))-([^ ]*)-((amenn)|(amenncon))([^ ]*)$/ ) )
             {
                 $prefix = $1 ;
                 $phrase_name_containing_parameter_list = $5 ;
