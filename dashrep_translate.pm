@@ -7189,7 +7189,7 @@ sub dashrep_file_actions
     my $list_of_storage_names ;
     my $list_of_words_as_text ;
     my $accumulated_text ;
-    my @list_of_key_values_in_sequence_encountered ;
+    my @list_of_tag_values_in_sequence_encountered ;
     my @list_of_tag_names ;
     my @list_of_phrases ;
     my @phrase_naming_convention_for_column ;
@@ -8296,7 +8296,7 @@ sub dashrep_file_actions
             $accumulated_matching_entry_info = "" ;
             $possible_matching_entry_info = "" ;
             $unique_value = "" ;
-            $list_of_key_values_in_sequence_encountered = "" ;
+            $list_of_tag_values_in_sequence_encountered = "" ;
             %content_for_tag = ( ) ;
             %found_unique_value = ( ) ;
             %exists_tag_name = ( ) ;
@@ -8416,11 +8416,6 @@ sub dashrep_file_actions
                             if ( not( exists( $found_unique_value{ $unique_value } ) ) )
                             {
                                 $found_unique_value{ $unique_value } = "found" ;
-                                if ( $list_of_key_values_in_sequence_encountered ne "" )
-                                {
-                                    $list_of_key_values_in_sequence_encountered .= "" ;
-                                }
-                                $list_of_key_values_in_sequence_encountered .= $unique_value ;
                             }
                         } elsif ( $first_word eq $entry_delete )
                         {
@@ -8438,6 +8433,14 @@ sub dashrep_file_actions
                             if ( not( exists( $exists_tag_name{ $first_word } ) ) )
                             {
                                 $exists_tag_name{ $first_word } = "yes" ;
+                                if ( $list_of_tag_values_in_sequence_encountered eq "" )
+                                {
+                                    $list_of_tag_values_in_sequence_encountered = $entry_unique . " " ;
+                                } else
+                                {
+                                    $list_of_tag_values_in_sequence_encountered .= " " ;
+                                }
+                                $list_of_tag_values_in_sequence_encountered .= $first_word ;
                             }
                         }
                     }
@@ -8478,7 +8481,7 @@ sub dashrep_file_actions
                     $list_of_tag_names .= $tag_name ;
                 }
                 $global_dashrep_replacement{ "dashrep-gathered-tag-names" } = $list_of_tag_names ;
-                $global_dashrep_replacement{ "dashrep-gathered-tag-names-in-sequence" } = $list_of_key_values_in_sequence_encountered ;
+                $global_dashrep_replacement{ "dashrep-gathered-tag-names-in-sequence" } = $list_of_tag_values_in_sequence_encountered ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -8510,16 +8513,13 @@ sub dashrep_file_actions
         {
             $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase_name . " to end of file " . $target_filename . "}}\n" ;
             $possible_error_message .= " [warning, do not have permission to append to files]" ;
-#        } elsif ( open ( OUTFILE , '>>' . $target_filename ) )
-#        {
-#            $possible_error_message .= "" ;
+        } elsif ( open ( OUTFILE , '>>' . $target_filename ) )
+        {
+            $possible_error_message .= "" ;
         } else
         {
             $possible_error_message .= " [warning, file named " . $target_filename . " could not be opened for writing]" ;
         }
-
-        $possible_error_message = "" ;
-
         if ( $possible_error_message eq "" )
         {
             $entry_begin = $global_dashrep_replacement{ "dashrep-gather-tag-begin" } ;
@@ -8535,12 +8535,10 @@ sub dashrep_file_actions
             {
                 @list_of_unique_values = split( / +/ , $global_dashrep_replacement{ $operand_one } ) ;
             }
-            if ( $accumulated_text ne "" )
-            {
-                $accumulated_text .= $tag_name . " " . $phrase_name . "\n" ;
-            }
             foreach $unique_value ( @list_of_unique_values )
             {
+                $accumulated_text .= $entry_begin . "\n" ;
+                $accumulated_text .= $entry_unique . " " . $unique_value . "\n" ;
                 foreach $tag_name ( @list_of_tag_names )
                 {
                     $phrase_name = $tag_name . "-value-for-unique-id-" . $unique_value ;
@@ -8549,11 +8547,9 @@ sub dashrep_file_actions
                         $accumulated_text .= $tag_name . " " . $global_dashrep_replacement{ $phrase_name } . "\n" ;
                     }
                 }
+                $accumulated_text .= $entry_end . "\n\n" ;
             }
-            $accumulated_text .= "\n" ;
-
-            $global_trace_log .= "{{trace: " . $accumulated_text . "}}\n" ;
-#            print OUTFILE $accumulated_text . "\n" ;
+            print OUTFILE $accumulated_text . "\n" ;
 
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -8566,9 +8562,8 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; warning: " . $possible_error_message . "}}\n" ;
             }
         }
-#        close( OUTFILE ) ;
-        if ( 1 == 2 )
-#        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        close( OUTFILE ) ;
+        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
