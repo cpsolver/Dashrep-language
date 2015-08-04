@@ -235,11 +235,6 @@ dashrep-stop-translation
 escape-from-dashrep
 resume-after-escape-from-dashrep
 dashrep-replacement-results-at-time-of-escape
-yes-or-no-allow-user-defined-actions
-user-defined-action-operand-one
-user-defined-action-operand-two
-user-defined-action-operand-three
-user-defined-action-operand-four
 
 category_spoken_words
 convert-from-spoken-dashrep-code

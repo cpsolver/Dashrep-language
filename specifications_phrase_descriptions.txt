@@ -48,7 +48,7 @@ An action is not recognized if it is not within parameter brackets, or if it is 
 phrase-description-end
 -----
 
-description-for-phrase-yes-or-no-allow-user-defined-actions:
+deprecated-description-for-phrase-yes-or-no-allow-user-defined-actions:
 If this phrase is b-i-b yes b-i-e then a user h-h defined phrase can be used as an action. s-n Otherwise a user h-h defined action will not be recognized. s-n When a user h-h defined action is encountered, the first four space h-h delimited words that follow the (hyphenated) action name become available as the definitions of the phrases
 b-i-b user h-h defined h-h action h-h operand h-h one b-i-e no-space ,
 b-i-b user h-h defined h-h action h-h operand h-h two b-i-e no-space ,
@@ -58,19 +58,19 @@ b-i-b user h-h defined h-h action h-h operand h-h four b-i-e no-space . s-n
 If user h-h defined actions are allowed, the actions do not need to be defined in any special way. s-n A user h-h defined action is simply a hyphenated phrase that can immediately follow an opening parameter bracket ( no-space b-i-b [ no-space h-h b-i-e no-space ) and the hyphenated phrase can use the special operand phrase names to access the words that follow the user h-h defined action phrase (up to the closing parameter bracket ( b-i-b h-h no-space ] b-i-e no-space ) no-space .
 -----
 
-description-for-phrase-user-defined-action-operand-one:
+deprecated-description-for-phrase-user-defined-action-operand-one:
 See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
 -----
 
-description-for-phrase-user-defined-action-operand-two:
+deprecated-description-for-phrase-user-defined-action-operand-two:
 See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
 -----
 
-description-for-phrase-user-defined-action-operand-three:
+deprecated-description-for-phrase-user-defined-action-operand-three:
 See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
 -----
 
-description-for-phrase-user-defined-action-operand-four:
+deprecated-description-for-phrase-user-defined-action-operand-four:
 See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
 -----
 

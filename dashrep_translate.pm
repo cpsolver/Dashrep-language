@@ -6516,6 +6516,11 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Handle user-defined actions.
+#
+#  Deprecated -- because was never needed, and could lead to divergent languages.
+#  Instead, if simple, flexible, new actions are needed, just add them.  If not simple and flexible, then is too context-specific.
+#
 #  Handle a user-defined action -- if the
 #  "yes-or-no-allow-user-defined-actions" phrase
 #  equals "yes".  Specifically,
