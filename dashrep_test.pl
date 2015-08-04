@@ -469,13 +469,13 @@ test-of-escape-action:
 [-escape-text = step3-]
 [-escape-if-yes yes-]
 --------
-
+handle-one-named-participant:
+[-expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant-]
+[-append-text expanded-content-for-named-participant generated-list-named-participant-names-full-]
+--------
 page-participants-list:
 [-list-of-parameter-values-for-list-named-participant-names-full = [-case-info-idlistparticipants-]-]
-
-[-comment-text = action in next line is deprecated -]
-[-use-template-and-parameters-to-create-full-list-with-name template-for-list-named-participant-names-full list-of-parameter-values-for-list-named-participant-names-full generated-list-named-participant-names-full-]
-
+[-use-handler-with-each-word-in-phrase handle-one-named-participant list-of-parameter-values-for-list-named-participant-names-full-]
 [-numeric-increment test-counter-]
 format-begin-heading-level-1
 words-web-page-title
@@ -523,7 +523,7 @@ no-space  tag-begin /h1 tag-end
 case-info-idlistparticipants:
 [-list-of-numbers-]
 --------
-template-for-list-named-participant-names-full: tag-begin li tag-end no-space participant-fullname-for-participantid-[-createlist-parameter-] no-space tag-begin /li tag-end
+template-for-list-named-participant-names-full: tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler-] no-space tag-begin /li tag-end
 --------
 participant-fullname-for-participantid-3
 James (Conservative)
@@ -1889,13 +1889,6 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
 #  uncomment-for-cpan-version-end
-
-
-#-------------------------------------------
-#  Optionally write use of deprecated
-#  action names.
-
-#  $results_text .= "\n\n" . "Useage of deprecated actions:\n" . &dashrep_translate::dashrep_get_replacement( "dashrep-list-of-deprecated-action-useage" ) . "\n\n";
 
 
 #-------------------------------------------
