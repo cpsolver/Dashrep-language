@@ -826,6 +826,179 @@ BEGIN {
 
 }
 
+#-----------------------------------------------
+#-----------------------------------------------
+#  Storage area for code that can be used to
+#  update old action names to new action names.
+
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-replace-html-reserved-characters " } = " error here, using deprecated action: copy-from-phrase-to-phrase-and-replace-html-reserved-characters " ;
+
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-but-remove-first-word " } = " error here, using deprecated action: copy-from-phrase-to-phrase-but-remove-first-word " ;
+
+#    $replacement_for_search_string{ "[-dashrep-trace-show-definition " } = "[-trace-show " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string " } = "[-copy-and-replace " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase " } = "[-copy-and-replace " ;
+#    $replacement_for_search_string{ "[-copy-from-two-phrases-words-found-in-both-to-phrase " } = "[-copy-words-found-in-both-lists " ;
+#    $replacement_for_search_string{ "[-copy-from-two-phrases-words-found-in-either-to-phrase " } = "[-copy-words-found-in-either-list " ;
+#    $replacement_for_search_string{ "[-copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase " } = "[-copy-words-found-only-in-first-list " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-unique-words-to-phrase " } = "[-copy-words-unique-only " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-only-word-at-position " } = "[-copy-word-at-position " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-words-from-position-to-position " } = "[-copy-words-from-position-to-position " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase " } = "[-copy-words-that-begin-with-text " ;
+#    $replacement_for_search_string{ "[-clear-phrases-listed-in-phrase " } = "[-clear-listed-phrases " ;
+#    $replacement_for_search_string{ "[-delete-phrases-listed-in-phrase " } = "[-delete-listed-phrases " ;
+#    $replacement_for_search_string{ "[-write-all-dashrep-phrase-names-to-phrase " } = "[-generate-list-of-all-dashrep-phrases " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase " } = "[-copy-text " ;
+#    $replacement_for_search_string{ "[-append-from-phrase-to-phrase " } = "[-append-text " ;
+#    $replacement_for_search_string{ "[-append-from-phrase-to-phrase-no-space " } = "[-append-text-no-space " ;
+#    $replacement_for_search_string{ "[-prepend-from-phrase-to-phrase " } = "[-prepend-text " ;
+#    $replacement_for_search_string{ "[-prepend-from-phrase-to-phrase-no-space " } = "[-prepend-text-no-space " ;
+#    $replacement_for_search_string{ "[-repeatedly-append-from-phrase-to-phrase-using-repeat-count " } = "[-append-repeatedly-using-count " ;
+#    $replacement_for_search_string{ "[-append-new-line-to-phrase " } = "[-append-new-line " ;
+#    $replacement_for_search_string{ "[-insert-definition-of-phrase " } = "[-get-phrase-definition-without-expanding " ;
+#    $replacement_for_search_string{ "[-expand-phrase-to-phrase " } = "[-expand-text " ;
+#    $replacement_for_search_string{ "[-expand-only-parameters-in-phrase-to-phrase " } = "[-expand-parameters-only " ;
+#    $replacement_for_search_string{ "[-copy-multiple-words-in-phrase-to-phrases-named-in-pattern " } = "[-copy-listed-words-to-phrases-named-in-pattern " ;
+#    $replacement_for_search_string{ "[-append-multiple-from-phrases-named-in-pattern-to-phrase " } = "[-append-multiple-from-phrases-named-in-pattern " ;
+#    $replacement_for_search_string{ "[-insert-angle-bracketed-definitions-into-already-expanded-phrase " } = "[-insert-angle-bracketed-definitions " ;
+#    $replacement_for_search_string{ "[-counts-from-integer-to-integer-put-into-phrase " } = "[-generate-counts-from-integer-to-integer " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-with-word-order-reversed " } = "[-copy-words-order-reversed " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-numeric-sort-by-word " } = "[-copy-words-sort-numeric " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-alphabetic-sort-by-word " } = "[-copy-words-sort-alphabetic " ;
+#    $replacement_for_search_string{ "[-copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase " } = "[-copy-words-rearrange-using-order-sort-numeric " ;
+#    $replacement_for_search_string{ "[-copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase " } = "[-copy-words-rearrange-using-order-sort-alphabetic " ;
+#    $replacement_for_search_string{ "[-every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases " } = "[-generate-every-pairwise-combination-of-words " ;
+#    $replacement_for_search_string{ "[-every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases " } = "[-generate-every-ordered-pairwise-combination-of-words " ;
+#    $replacement_for_search_string{ "[-count-of-characters-in-phrase " } = "[-get-count-of-characters " ;
+#    $replacement_for_search_string{ "[-characters-in-phrase-get-from-position-to-position " } = "[-get-characters-from-position-to-position " ;
+#    $replacement_for_search_string{ "[-position-of-text-in-phrase-within-phrase " } = "[-get-position-of-matching-text " ;
+#    $replacement_for_search_string{ "[-positions-multiple-of-delimiter-within-phrase-put-into-phrase " } = "[-generate-positions-of-delimiter " ;
+#    $replacement_for_search_string{ "[-positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase " } = "[-generate-positions-of-first-matching-delimiter-after-listed-positions " ;
+#    $replacement_for_search_string{ "[-positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase " } = "[-generate-positions-of-listed-words " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-remove-extra-spaces " } = "[-copy-without-extra-spaces " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-characters-from-position-to-position " } = "[-copy-characters-from-position-to-position " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase " } = "[-copy-and-replace " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list " } = "[-copy-and-replace-using-paired-listed-words " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-zero-pad-left-to-length " } = "[-copy-zero-pad-left-to-length " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-lowercase-only " } = "[-copy-lowercase-only " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-uppercase-only " } = "[-copy-uppercase-only " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-initial-caps " } = "[-copy-initial-caps " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-split-into-list-of-characters " } = "[-split-into-list-of-characters " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-encode-as-cgi-parameter " } = "[-encode-as-cgi-parameter " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-decode-from-cgi-parameter " } = "[-decode-from-cgi-parameter " ;
+#    $replacement_for_search_string{ "[-count-of-words-in-phrase " } = "[-get-count-of-words " ;
+#    $replacement_for_search_string{ "[-from-phrase-get-word-number " } = "[-get-word-at-position " ;
+#    $replacement_for_search_string{ "[-position-of-word-in-phrase-within-phrase " } = "[-get-position-of-word " ;
+#    $replacement_for_search_string{ "[-position-of-word-in-phrase " } = "[-get-position-of-word " ;
+#    $replacement_for_search_string{ "[-positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase " } = "[-generate-positions-of-words-that-match-any-listed-word " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags " } = "[-copy-and-remove-attributes-from-xml-tags " ;
+#    $replacement_for_search_string{ "[-find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase " } = "[-find-line-in-file-that-begins-with-text " ;
+#    $replacement_for_search_string{ "[-find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase " } = "[-find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names " ;
+#    $replacement_for_search_string{ "[-gather-tagged-info-from-file-and-put-unique-values-into-phrase " } = "[-gather-tagged-info-from-file " ;
+#    $replacement_for_search_string{ "[-gather-one-entry-from-tagged-file-and-put-into-phrase " } = "[-gather-from-tagged-file-one-entry " ;
+#    $replacement_for_search_string{ "[-put-into-phrase-list-of-files-in-current-read-directory " } = "[-generate-list-of-files-in-current-read-directory " ;
+#    $replacement_for_search_string{ "[-put-into-phrase-list-of-folders-in-current-read-directory " } = "[-generate-list-of-folders-in-current-read-directory " ;
+#    $replacement_for_search_string{ "[-put-into-phrase-linewise-usage-counts-for-phrase-names " } = "[-generate-phrase-usage-counts " ;
+#    $replacement_for_search_string{ "[-xml-move-attributes-into-tag-elements-within-phrase " } = "[-xml-move-attributes-into-tag-elements " ;
+#    $replacement_for_search_string{ "[-find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names " } = "[-find-lines-in-file-that-begin-with-any-listed-word " ;
+#    $replacement_for_search_string{ "[-find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase " } = "[-find-lines-in-file-that-begin-with-any-two-words-listed " ;
+#    $replacement_for_search_string{ "[-insert-codeview-tags-into-phrase " } = "[-insert-codeview-tags " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-from-spoken-dashrep-code " } = "[-convert-from-spoken-dashrep-code " ;
+#    $replacement_for_search_string{ "[-copy-from-phrase-to-phrase-into-spoken-dashrep-code " } = "[-convert-into-spoken-dashrep-code " ;
+#    $replacement_for_search_string{ "[-dashrep-yes-append-not-replace-for-imported-phrases " } = "[-yes-or-no-append-not-replace-for-imported-phrases " ;
+#    $replacement_for_search_string{ "[-dashrep-yes-or-no-export-delimited-definitions " } = "[-yes-or-no-export-delimited-definitions " ;
+#    $replacement_for_search_string{ "[-dashrep-permission-to-append-to-files-yes-or-no " } = "[-yes-or-no-permission-to-append-to-files " ;
+#    $replacement_for_search_string{ "[-dashrep-permission-to-delete-or-overwrite-files-yes-or-no " } = "[-yes-or-no-permission-to-delete-or-overwrite-files " ;
+#    $replacement_for_search_string{ "[-dashrep-yes-indicate-line-endings " } = "[-yes-or-no-indicate-line-endings " ;
+#    $replacement_for_search_string{ "[-dashrep-yes-do-not-expand-special-phrases " } = "[-yes-or-no-expand-special-phrases " ;
+#    $replacement_for_search_string{ "[-dashrep-use-two-spaces-as-column-delimiter " } = "[-yes-or-no-use-two-spaces-as-column-delimiter " ;
+#    $replacement_for_search_string{ "[-clear-all-dashrep-phrases " } = "[-delete-all-dashrep-phrases " ;
+
+#    $replacement_for_search_string{ "conambee" } = "fenambee" ;
+#    $replacement_for_search_string{ "amenncon" } = "amennfen" ;
+
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string " } = " copy-and-replace " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase " } = " copy-and-replace " ;
+#    $replacement_for_search_string{ " copy-from-two-phrases-words-found-in-both-to-phrase " } = " copy-words-found-in-both-lists " ;
+#    $replacement_for_search_string{ " copy-from-two-phrases-words-found-in-either-to-phrase " } = " copy-words-found-in-either-list " ;
+#    $replacement_for_search_string{ " copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase " } = " copy-words-found-only-in-first-list " ;
+#    $replacement_for_search_string{ " copy-from-phrase-unique-words-to-phrase " } = " copy-words-unique-only " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-only-word-at-position " } = " copy-word-at-position " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-words-from-position-to-position " } = " copy-words-from-position-to-position " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase " } = " copy-words-that-begin-with-text " ;
+#    $replacement_for_search_string{ " clear-phrases-listed-in-phrase " } = " clear-listed-phrases " ;
+#    $replacement_for_search_string{ " delete-phrases-listed-in-phrase " } = " delete-listed-phrases " ;
+#    $replacement_for_search_string{ " write-all-dashrep-phrase-names-to-phrase " } = " generate-list-of-all-dashrep-phrases " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase " } = " copy-text " ;
+#    $replacement_for_search_string{ " append-from-phrase-to-phrase " } = " append-text " ;
+#    $replacement_for_search_string{ " append-from-phrase-to-phrase-no-space " } = " append-text-no-space " ;
+#    $replacement_for_search_string{ " prepend-from-phrase-to-phrase " } = " prepend-text " ;
+#    $replacement_for_search_string{ " prepend-from-phrase-to-phrase-no-space " } = " prepend-text-no-space " ;
+#    $replacement_for_search_string{ " repeatedly-append-from-phrase-to-phrase-using-repeat-count " } = " append-repeatedly-using-count " ;
+#    $replacement_for_search_string{ " append-new-line-to-phrase " } = " append-new-line " ;
+#    $replacement_for_search_string{ " insert-definition-of-phrase " } = " get-phrase-definition-without-expanding " ;
+#    $replacement_for_search_string{ " expand-phrase-to-phrase " } = " expand-text " ;
+#    $replacement_for_search_string{ " expand-only-parameters-in-phrase-to-phrase " } = " expand-parameters-only " ;
+#    $replacement_for_search_string{ " copy-multiple-words-in-phrase-to-phrases-named-in-pattern " } = " copy-listed-words-to-phrases-named-in-pattern " ;
+#    $replacement_for_search_string{ " append-multiple-from-phrases-named-in-pattern-to-phrase " } = " append-multiple-from-phrases-named-in-pattern " ;
+#    $replacement_for_search_string{ " insert-angle-bracketed-definitions-into-already-expanded-phrase " } = " insert-angle-bracketed-definitions " ;
+#    $replacement_for_search_string{ " counts-from-integer-to-integer-put-into-phrase " } = " generate-counts-from-integer-to-integer " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-with-word-order-reversed " } = " copy-words-order-reversed " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-numeric-sort-by-word " } = " copy-words-sort-numeric " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-alphabetic-sort-by-word " } = " copy-words-sort-alphabetic " ;
+#    $replacement_for_search_string{ " copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase " } = " copy-words-rearrange-using-order-sort-numeric " ;
+#    $replacement_for_search_string{ " copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase " } = " copy-words-rearrange-using-order-sort-alphabetic " ;
+#    $replacement_for_search_string{ " every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases " } = " generate-every-pairwise-combination-of-words " ;
+#    $replacement_for_search_string{ " every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases " } = " generate-every-ordered-pairwise-combination-of-words " ;
+#    $replacement_for_search_string{ " count-of-characters-in-phrase " } = " get-count-of-characters " ;
+#    $replacement_for_search_string{ " characters-in-phrase-get-from-position-to-position " } = " get-characters-from-position-to-position " ;
+#    $replacement_for_search_string{ " position-of-text-in-phrase-within-phrase " } = " get-position-of-matching-text " ;
+#    $replacement_for_search_string{ " positions-multiple-of-delimiter-within-phrase-put-into-phrase " } = " generate-positions-of-delimiter " ;
+#    $replacement_for_search_string{ " positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase " } = " generate-positions-of-first-matching-delimiter-after-listed-positions " ;
+#    $replacement_for_search_string{ " positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase " } = " generate-positions-of-listed-words " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-remove-extra-spaces " } = " copy-without-extra-spaces " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-characters-from-position-to-position " } = " copy-characters-from-position-to-position " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase " } = " copy-and-replace " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list " } = " copy-and-replace-using-paired-listed-words " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-zero-pad-left-to-length " } = " copy-zero-pad-left-to-length " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-lowercase-only " } = " copy-lowercase-only " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-uppercase-only " } = " copy-uppercase-only " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-initial-caps " } = " copy-initial-caps " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-split-into-list-of-characters " } = " split-into-list-of-characters " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-encode-as-cgi-parameter " } = " encode-as-cgi-parameter " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-decode-from-cgi-parameter " } = " decode-from-cgi-parameter " ;
+#    $replacement_for_search_string{ " count-of-words-in-phrase " } = " get-count-of-words " ;
+#    $replacement_for_search_string{ " from-phrase-get-word-number " } = " get-word-at-position " ;
+#    $replacement_for_search_string{ " position-of-word-in-phrase-within-phrase " } = " get-position-of-word " ;
+#    $replacement_for_search_string{ " position-of-word-in-phrase " } = " get-position-of-word " ;
+#    $replacement_for_search_string{ " positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase " } = " generate-positions-of-words-that-match-any-listed-word " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags " } = " copy-and-remove-attributes-from-xml-tags " ;
+#    $replacement_for_search_string{ " find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase " } = " find-line-in-file-that-begins-with-text " ;
+#    $replacement_for_search_string{ " find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase " } = " find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names " ;
+#    $replacement_for_search_string{ " gather-tagged-info-from-file-and-put-unique-values-into-phrase " } = " gather-tagged-info-from-file " ;
+#    $replacement_for_search_string{ " gather-one-entry-from-tagged-file-and-put-into-phrase " } = " gather-from-tagged-file-one-entry " ;
+#    $replacement_for_search_string{ " put-into-phrase-list-of-files-in-current-read-directory " } = " generate-list-of-files-in-current-read-directory " ;
+#    $replacement_for_search_string{ " put-into-phrase-list-of-folders-in-current-read-directory " } = " generate-list-of-folders-in-current-read-directory " ;
+#    $replacement_for_search_string{ " put-into-phrase-linewise-usage-counts-for-phrase-names " } = " generate-phrase-usage-counts " ;
+#    $replacement_for_search_string{ " xml-move-attributes-into-tag-elements-within-phrase " } = " xml-move-attributes-into-tag-elements " ;
+#    $replacement_for_search_string{ " find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names " } = " find-lines-in-file-that-begin-with-any-listed-word " ;
+#    $replacement_for_search_string{ " find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase " } = " find-lines-in-file-that-begin-with-any-two-words-listed " ;
+#    $replacement_for_search_string{ " insert-codeview-tags-into-phrase " } = " insert-codeview-tags " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-from-spoken-dashrep-code " } = " convert-from-spoken-dashrep-code " ;
+#    $replacement_for_search_string{ " copy-from-phrase-to-phrase-into-spoken-dashrep-code " } = " convert-into-spoken-dashrep-code " ;
+#    $replacement_for_search_string{ " dashrep-yes-append-not-replace-for-imported-phrases " } = " yes-or-no-append-not-replace-for-imported-phrases " ;
+#    $replacement_for_search_string{ " dashrep-yes-or-no-export-delimited-definitions " } = " yes-or-no-export-delimited-definitions " ;
+#    $replacement_for_search_string{ " dashrep-permission-to-append-to-files-yes-or-no " } = " yes-or-no-permission-to-append-to-files " ;
+#    $replacement_for_search_string{ " dashrep-permission-to-delete-or-overwrite-files-yes-or-no " } = " yes-or-no-permission-to-delete-or-overwrite-files " ;
+#    $replacement_for_search_string{ " dashrep-yes-indicate-line-endings " } = " yes-or-no-indicate-line-endings " ;
+#    $replacement_for_search_string{ " dashrep-yes-do-not-expand-special-phrases " } = " yes-or-no-expand-special-phrases " ;
+#    $replacement_for_search_string{ " dashrep-use-two-spaces-as-column-delimiter " } = " yes-or-no-use-two-spaces-as-column-delimiter " ;
+#    $replacement_for_search_string{ " clear-all-dashrep-phrases " } = " delete-all-dashrep-phrases " ;
+
+
+#-----------------------------------------------
+
+
 
 =head1 FUNCTIONS
 
