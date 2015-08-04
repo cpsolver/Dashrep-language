@@ -277,11 +277,6 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
-    $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
-    $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
@@ -290,11 +285,6 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
     $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
@@ -307,15 +297,33 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-recent-phrase-name-replaced" } = "" ;
     $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "yes" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-amp" } = "38" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-apos" } = "39" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-lt" } = "60" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-gt" } = "62" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-ldquo" } = "8220" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
+
+    $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-amp" } = "38" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-apos" } = "39" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-lt" } = "60" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-gt" } = "62" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-ldquo" } = "8220" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;  # deprecated
+
+    $list_of_predefined_phrases = "" ;
+    foreach $phrase_name ( keys( %global_dashrep_replacement ) )
+    {
+        $list_of_predefined_phrases .= " " . $phrase_name ;
+    }
+    $global_dashrep_replacement{ "dashrep-list-of-predefined-phrases" } = $list_of_predefined_phrases ;
 
     $global_dashrep_text_list_of_phrase_names = "category_hyphens_spaces_lines hyphen-here character-hyphen four-hyphens no-space empty-text one-space character-space non-breaking-space new-line empty-line line-break character-newline character-open-square-bracket character-close-square-bracket character-tab delayed-nospace delayed-newline category_definitions list-of-phrases-newly-defined dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin clear-phrase clear-listed-phrases clear-phrases-listed-in-phrase delete-all-dashrep-phrases clear-all-dashrep-phrases delete-listed-phrases delete-phrases-listed-in-phrase generate-list-of-all-dashrep-phrases write-all-dashrep-phrase-names-to-phrase copy-text copy-from-phrase-to-phrase copy-to-phrase-from-following-text append-text append-from-phrase-to-phrase append-text-no-space append-from-phrase-to-phrase-no-space append-repeatedly-using-count repeatedly-append-from-phrase-to-phrase-using-repeat-count prepend-text prepend-from-phrase-to-phrase prepend-text-no-space prepend-from-phrase-to-phrase-no-space append-new-line append-new-line-to-phrase get-phrase-definition-without-expanding insert-definition-of-phrase expand-text expand-phrase-to-phrase expand-parameters-only expand-only-parameters-in-phrase-to-phrase copy-listed-words-to-phrases-named-in-pattern copy-multiple-words-in-phrase-to-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern append-multiple-from-phrases-named-in-pattern-to-phrase yes-or-no-append-not-replace-for-imported-phrases dashrep-yes-append-not-replace-for-imported-phrases yes-or-no-export-delimited-definitions dashrep-yes-or-no-export-delimited-definitions export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end category_decision if-yes-begin if-no-begin if-else if-end yes-or-no-empty-phrase yes-or-no-same-two-phrase-definitions yes-or-no-same-two-words yes-or-no-word-is-in-phrase yes-or-no-opposite yes-if-all-yes yes-if-any-yes no-if-any-no yes-if-not-no no-if-not-yes category_numeric zero-or-nonzero zero-one-multiple numeric-equal-greater-less-compare numeric-add numeric-minus numeric-multiply numeric-divide-by numeric-maximum numeric-minimum numeric-increment numeric-decrement numeric-integer numeric-absolute numeric-odd-or-even numeric-sine numeric-cosine numeric-logarithm-base-e numeric-logarithm-base-10 numeric-pi numeric-vector-add-number numeric-vector-multiply-by-number numeric-vectors-add numeric-vectors-multiply numeric-vectors-divide-by numeric-vector-integers numeric-vector-absolutes numeric-vectors-from-delta-values-calculate-distances numeric-two-dimensional-sort-into-columns-and-rows numeric-y-map-tile-number-based-on-latitude numeric-map-tile-zoom category_character get-count-of-characters count-of-characters-in-phrase get-characters-from-position-to-position characters-in-phrase-get-from-position-to-position get-position-of-matching-text position-of-text-in-phrase-within-phrase position-of-string-in-phrase-within-phrase generate-positions-of-delimiter positions-multiple-of-delimiter-within-phrase-put-into-phrase generate-positions-of-first-matching-delimiter-after-listed-positions positions-multiple-of-first-matching-delimiter-within-phrase-after-listed-positions-put-into-phrase generate-positions-of-listed-words positions-multiple-of-words-in-phrase-within-phrase-put-into-phrase copy-without-extra-spaces copy-from-phrase-to-phrase-and-remove-extra-spaces copy-characters-from-position-to-position copy-from-phrase-to-phrase-characters-from-position-to-position copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase copy-and-replace copy-from-phrase-to-phrase-and-replace-text-in-phrase-with-phrase copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string copy-and-replace-using-paired-listed-words copy-from-phrase-to-phrase-and-replace-using-paired-words-in-list copy-from-phrase-to-phrase-and-replace-html-reserved-characters copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions copy-from-phrase-to-phrase-and-replace-digits-with-9s copy-zero-pad-left-to-length copy-from-phrase-to-phrase-and-zero-pad-left-to-length copy-lowercase-only copy-from-phrase-to-phrase-lowercase-only copy-uppercase-only copy-from-phrase-to-phrase-uppercase-only copy-initial-caps copy-from-phrase-to-phrase-initial-caps split-into-list-of-characters copy-from-phrase-to-phrase-and-split-into-list-of-characters encode-as-cgi-parameter copy-from-phrase-to-phrase-and-encode-as-cgi-parameter decode-from-cgi-parameter copy-from-phrase-to-phrase-and-decode-from-cgi-parameter category_word get-word-at-position from-phrase-get-word-number copy-word-at-position copy-from-phrase-to-phrase-only-word-at-position copy-words-from-position-to-position copy-from-phrase-to-phrase-words-from-position-to-position copy-words-found-in-both-lists copy-from-two-phrases-words-found-in-both-to-phrase copy-words-found-only-in-first-list copy-from-first-phrase-words-not-found-in-second-phrase-to-phrase copy-words-unique-only copy-from-phrase-unique-words-to-phrase copy-words-sort-numeric copy-from-phrase-to-phrase-and-numeric-sort-by-word copy-words-sort-alphabetic copy-from-phrase-to-phrase-and-alphabetic-sort-by-word copy-words-rearrange-using-order-sort-numeric copy-words-from-phrase-to-phrase-using-numeric-sort-order-specified-in-phrase copy-words-rearrange-using-order-sort-alphabetic copy-words-from-phrase-to-phrase-using-alpha-sort-order-specified-in-phrase copy-words-order-reversed copy-from-phrase-to-phrase-with-word-order-reversed copy-words-that-begin-with-text copy-from-phrase-to-phrase-words-that-begin-with-text-in-phrase get-count-of-words count-of-words-in-phrase get-position-of-word position-of-word-in-phrase-within-phrase generate-positions-of-words-that-match-any-listed-word positions-of-words-in-phrase-that-match-any-word-in-phrase-put-into-phrase first-word-in-phrase last-word-in-phrase copy-from-phrase-to-phrase-but-remove-first-word copy-from-phrase-to-phrase-but-remove-last-word append-word-to-phrase category_loop use-handler-with-each-word-in-phrase use-handler-with-each-word-in-phrase-currently-at-character-position word-to-use-in-handler category_generate_list generate-counts-from-integer-to-integer counts-from-integer-to-integer-put-into-phrase create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase generate-every-pairwise-combination-of-words every-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases generate-every-ordered-pairwise-combination-of-words every-ordered-pairwise-combination-of-words-from-two-phrases-put-into-two-phrases category_file_related yes-or-no-permission-to-append-to-files dashrep-permission-to-append-to-files-yes-or-no yes-or-no-permission-to-delete-or-overwrite-files dashrep-permission-to-delete-or-overwrite-files-yes-or-no dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing get-definitions-from-file dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases write-all-dashrep-definitions-to-file write-all-dashrep-phrase-names-to-file write-dashrep-definitions-listed-in-phrase-to-file copy-from-file-to-phrase copy-from-phrase-append-to-file expand-phrase-to-file copy-from-file-to-phrases-line-numbered linewise-read-from-file-and-use-handler linewise-input-line-from-file storage-input-line-from-file linewise-input-line-count find-line-in-file-that-begins-with-text find-line-in-file-that-begins-with-text-in-phrase-and-put-into-phrase find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase find-lines-in-file-that-begin-with-any-listed-word find-lines-in-file-that-begin-with-any-listed-word-and-append-storage-phrase-names find-lines-in-file-that-begin-with-any-word-in-phrase-and-append-storage-phrase-names-to-phrase find-lines-in-file-that-begin-with-any-two-words-listed find-lines-in-file-that-begin-with-any-two-words-in-phrase-and-append-storage-phrase-names-to-phrase copy-from-columns-in-file-to-named-phrases yes-or-no-use-two-spaces-as-column-delimiter dashrep-use-two-spaces-as-column-delimiter gather-tagged-info-from-file gather-tagged-info-from-file-and-put-unique-values-into-phrase dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-unique dashrep-gather-tag-matching-id dashrep-gather-tag-delete gather-from-tagged-file-one-entry gather-one-entry-from-tagged-file-and-put-into-phrase write-gathered-listed-items-to-end-of-file generate-list-of-files-in-current-read-directory put-into-phrase-list-of-files-in-current-read-directory generate-list-of-folders-in-current-read-directory put-into-phrase-list-of-folders-in-current-read-directory yes-or-no-file-exists yes-or-no-folder-exists yes-or-no-folder-in-phrase-exists size-of-file modification-time-of-file create-empty-file rename-file delete-file create-empty-sub-folder category_xml xml-move-attributes-into-tag-elements xml-move-attributes-into-tag-elements-within-phrase copy-and-remove-attributes-from-xml-tags copy-from-phrase-to-phrase-and-remove-attributes-from-xml-tags linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file dashrep-first-xml-tag-name dashrep-list-of-xml-phrases dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement category_html dashrep-html-replacement-ampersand dashrep-html-replacement-apostrophe dashrep-html-replacement-close-angle-bracket dashrep-html-replacement-open-angle-bracket dashrep-html-replacement-quotation-mark insert-angle-bracketed-definitions insert-angle-bracketed-definitions-into-already-expanded-phrase category_web_framework web-framework-in-use generated-web-page do-before-generating-web-page do-after-generating-web-page web-framework-generated-web-page path-to-initial-dashrep-definitions filename-for-initial-dashrep-definitions category_time get-current-time-in-epoch-seconds split-epoch-seconds-into-named-components split-epoch-seconds-into-named-components-for-zero-meridian time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year category_debug dashrep-debug-trace-log dashrep-debug-trace-on-yes-or-no trace-show dashrep-trace-show-definition dashrep-recent-phrase-name-replaced dashrep-warning-trace-on-yes-or-no dashrep-action-trace-on-yes-or-no dashrep-linewise-trace-on-yes-or-no generate-phrase-usage-counts put-into-phrase-linewise-usage-counts-for-phrase-names dashrep-web-framework-trace-on-yes-or-no dashrep-omit-web-page-from-trace-log-yes-or-no dashrep-comments-ignored category_advanced dashrep-undefined dashrep-endless-loop-counter-limit dashrep-endless-loop-count insert-codeview-tags insert-codeview-tags-into-phrase end-of-line-here unique-value dashrep-list-of-recognized-phrase-names yes-or-no-indicate-line-endings dashrep-yes-indicate-line-endings escape-from-dashrep resume-after-escape-from-dashrep yes-or-no-use-faster-subset-expand yes-or-no-use-slower-subset-expand yes-or-no-expand-special-phrases dashrep-yes-do-not-expand-special-phrases yes-or-no-allow-user-defined-actions user-defined-action-operand-one user-defined-action-operand-two user-defined-action-operand-three user-defined-action-operand-four category_spoken_words convert-from-spoken-dashrep-code copy-from-phrase-to-phrase-from-spoken-dashrep-code convert-into-spoken-dashrep-code copy-from-phrase-to-phrase-into-spoken-dashrep-code dashbee dashenn dashnex ambee amenn combee comenn fen fenambee conambee amennfen amenncon linbray" ;
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
@@ -1037,11 +1045,6 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
-    $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;
-    $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;
-    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
@@ -1050,11 +1053,6 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
     $global_dashrep_replacement{ "dashrep-translation-before-escape" } = "" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;
-    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;
     $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
@@ -1068,15 +1066,33 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-recent-phrase-name-replaced" } = "" ;
     $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "yes" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-amp" } = "38" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-apos" } = "39" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-lt" } = "60" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-gt" } = "62" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-ldquo" } = "8220" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;
-    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
+
+    $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-quotation-mark" } = '"' ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-apostrophe" } = "'" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-html-replacement-ampersand" } = "&" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-ignore-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-ignore-level" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-capture-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-capture-level" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "dashrep-linewise-trace-on-yes-or-no" } = "" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-amp" } = "38" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-apos" } = "39" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-lt" } = "60" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-gt" } = "62" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-ldquo" } = "8220" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;  # deprecated
+    $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;  # deprecated
+
+    $list_of_predefined_phrases = "" ;
+    foreach $phrase_name ( keys( %global_dashrep_replacement ) )
+    {
+        $list_of_predefined_phrases .= " " . $phrase_name ;
+    }
+    $global_dashrep_replacement{ "dashrep-list-of-predefined-phrases" } = $list_of_predefined_phrases ;
 }
 
 
@@ -1234,6 +1250,8 @@ sub dashrep_import_replacements
 
 #-----------------------------------------------
 #  Reset the "ignore" and "capture" levels.
+#
+#  Deprecated
 
     $global_ignore_level = 0 ;
     $global_capture_level = 0 ;
@@ -1678,6 +1696,8 @@ sub dashrep_delete_all
 
 #-----------------------------------------------
 #  Reset the "ignore" and "capture" levels.
+#
+#  Deprecated
 
     $global_ignore_level = 0 ;
     $global_capture_level = 0 ;
@@ -6926,6 +6946,8 @@ sub dashrep_expand_special_phrases
 #  from outside this subroutine in case multiple
 #  streams of Dashrep code are being processed
 #  in turn.
+#
+#  Deprecated
 
     if ( $global_dashrep_replacement{ "dashrep-ignore-level" } =~ /^[0-9]+$/ )
     {
@@ -6938,6 +6960,8 @@ sub dashrep_expand_special_phrases
 #  from outside this subroutine in case multiple
 #  streams of Dashrep code are being processed
 #  in turn.
+#
+#  Deprecated
 
     if ( $global_dashrep_replacement{ "dashrep-capture-level" } =~ /^[0-9]+$/ )
     {
@@ -6949,6 +6973,8 @@ sub dashrep_expand_special_phrases
 #  If the ignore level and capture level are both
 #  non-zero, indicate an error (because they
 #  overlap).
+#
+#  Deprecated
 
     if ( ( $global_ignore_level > 0 ) && ( $global_capture_level > 0 ) )
     {
@@ -6963,7 +6989,7 @@ sub dashrep_expand_special_phrases
 #  "ignore-begin-here" and
 #  "ignore-end-here"
 #
-#  which are now deprecated
+#  Deprecated
 
     if ( ( not( exists( $global_dashrep_replacement{ "dashrep-ignore-actions-on-yes-or-no" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-ignore-actions-on-yes-or-no" } ne "no" ) )
     {
@@ -7027,7 +7053,7 @@ sub dashrep_expand_special_phrases
 #  "capture-begin-here" and
 #  "capture-end-here"
 #
-#  which are now deprecated
+#  Deprecated
 
     if ( ( not( exists( $global_dashrep_replacement{ "dashrep-capture-actions-on-yes-or-no" } ) ) ) || ( $global_dashrep_replacement{ "dashrep-capture-actions-on-yes-or-no" } ne "no" ) )
     {
@@ -8889,8 +8915,8 @@ sub dashrep_file_actions
             }
             if ( $possible_error_message eq "" )
             {
-                $global_ignore_level = 0 ;
-                $global_capture_level = 0 ;
+                $global_ignore_level = 0 ;  # deprecated
+                $global_capture_level = 0 ;  # deprecated
                 $global_top_line_count_for_insert_phrase = 0 ;
                 while ( $input_line = <INFILE> )
                 {
@@ -8945,7 +8971,7 @@ sub dashrep_file_actions
                                 $partial_translation = &dashrep_expand_parameters( $input_line );
                                 $translation = &dashrep_expand_phrases( $partial_translation );
                             }
-                            if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )
+                            if ( ( $translation =~ /[^ ]/ ) && ( ( $global_ignore_level < 1 ) || ( $global_capture_level < 1 ) ) )  # deprecated
                             {
                                 print OUTFILE $translation . "\n" ;
                             }
