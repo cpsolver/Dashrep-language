@@ -321,6 +321,10 @@ BEGIN {
     $list_of_predefined_phrases = "" ;
     foreach $phrase_name ( keys( %global_dashrep_replacement ) )
     {
+        if ( $list_of_predefined_phrases ne "" )
+        {
+            $list_of_predefined_phrases .= " " ;
+        }
         $list_of_predefined_phrases .= " " . $phrase_name ;
     }
     $global_dashrep_replacement{ "dashrep-list-of-predefined-phrases" } = $list_of_predefined_phrases ;
@@ -405,9 +409,16 @@ BEGIN {
     $alias_for_action_name{ "dashrep-use-two-spaces-as-column-delimiter" } = "yes-or-no-use-two-spaces-as-column-delimiter" ;
     $alias_for_action_name{ "clear-all-dashrep-phrases" } = "delete-all-dashrep-phrases" ;
 
-#  also renamed:
-#    conambee renamed to fenambee
-#    amenncon renamed to amennfen
+    $list_of_action_names_as_text = "" ;
+    foreach $phrase_name ( keys( %global_dashrep_replacement ) )
+    {
+        if ( $list_of_action_names_as_text ne "" )
+        {
+            $list_of_action_names_as_text .= " " ;
+        }
+        $list_of_action_names_as_text .= $phrase_name ;
+    }
+    $global_dashrep_replacement{ "dashrep-list-of-action-names" } = $list_of_action_names_as_text ;
 
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "clear-listed-phrases" } = 1 ;
