@@ -277,15 +277,6 @@ test-of-special-operators:
 [-copy-text sample-word-list-one list-with-dups-]
 [-append-text sample-word-list-two list-with-dups-]
 [-find-in-lists-result = [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] -]
-[-use-template-and-parameters-to-create-simple-list-with-name template-for-createlist sample-word-list-one generated-simple-list-]
-[-prefix-for-list-named-generated-full-list = prefix-here-]
-[-suffix-for-list-named-generated-full-list = suffix-here-]
-[-separator-for-list-named-generated-full-list = separator-here-]
-
-[-comment-text = action in next line is deprecated -]
-[-use-template-and-parameters-to-create-full-list-with-name template-for-full-createlist sample-word-list-one generated-full-list-]
-
-[-generated-simple-and-full-lists = [-generated-simple-list-] - [-generated-full-list-]-]
 [-hyphen-translation-safe = <character_hyphen>-]
 [-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
@@ -1053,23 +1044,6 @@ if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
-$being_tested = "test generate-list actions -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-generated-simple-and-full-lists-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-generated-simple-and-full-lists-]" );
-#  uncomment-for-cpan-version-end
-$string_return_value =~ s/  +/ /g ;
-$string_return_value =~ s/^ +// ;
-$string_return_value =~ s/ +$// ;
-# $results_text .= "[[" . $string_return_value . "]]\n" ;
-if ( $string_return_value eq "abc-alpha-def abc-alpha-here-def abc-and-def abc-beta-def abc-gamma-def abc-delta-def - prefix-here abc-alpha-def-1of6-ghi separator-here abc-alpha-here-def-2of6-ghi separator-here abc-and-def-3of6-ghi separator-here abc-beta-def-4of6-ghi separator-here abc-gamma-def-5of6-ghi separator-here abc-delta-def-6of6-ghi suffix-here" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
 $being_tested = "test action copy-zero-pad-left-to-length -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
@@ -1799,63 +1773,8 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Note, linewise-translate-from-file-to-file is deprecated, so revise this text to use current actions
-
-$being_tested = "test action: linewise-translate-from-file-to-file -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_source_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-create-empty-file output_test_source_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-create-empty-file output_test_source_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-target-phrase" , "non-replaced-content" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-test-target-phrase" , "non-replaced-content" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "non-replaced-content" , "replaced content" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "non-replaced-content" , "replaced content" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-copy-from-phrase-append-to-file dashrep-test-target-phrase output_test_source_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-linewise-translate-from-file-to-file output_test_source_file.txt output_test_target_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_target_file.txt dashrep-test-target-phrase-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-target-phrase" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "dashrep-test-target-phrase" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /replaced content/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-# Subroutine dashrep_linewise_translate is NOT tested because it uses STDIN and STDOUT.
+#  Note:
+#  Subroutine dashrep_linewise_translate is NOT tested because it uses STDIN and STDOUT.
 
 
 #-------------------------------------------
