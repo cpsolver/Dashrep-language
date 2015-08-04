@@ -74,7 +74,9 @@ Dashrep (TM) is a versatile descriptive programming language that recognizes hyp
 
 See www.Dashrep.org for details about the Dashrep language.
 
-Although Dashrep code is not directly executable, it can generate executable code.  Although it does not directly define loops, it generates lists in which any delimited (using commas and/or spaces) list of text strings (including integers) specifies the unique values for the list items.  Although the Dashrep language does not directly implement a branching structure, the translated code can be completely changed at any level (including within lists) based on parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>.
+The Dashrep language implements branching by using parameterized hyphenated phrases such as B<[-template-for-move-proposal-link-for-action-[-output-requested-action-]-]>. The language also provides a simple "if-then-else" functionality that handles simple cases in which branching involves only two branches.
+
+The Dashrep language has actions that make it easy to generate and manipulate lists, where the list contains space-delimited words. These lists can be used as values that can be accessed within loops, which are always invoked using the same simple action.
 
 The Dashrep language has been used to convert text files into MML- and XML-format files (for two books, I<The Creative Problem Solver's Toolbox> and I<Ending The Hidden Unfairness In U.S. Elections>), specify dynamically generated HTML pages (at www.VoteFair.org and www.NegotiationTool.com), generate JavaScript code (that Adobe Illustrator executed to generate vector graphics for use in the book I<Ending The Hidden Unfairness In U.S. Elections>), generate invoices and packing slips, expand boilerplate-like text, and more.
 
@@ -10812,7 +10814,7 @@ of the book titled The Creative Problem Solver's Toolbox.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 through 2014 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright 2009 through 2015 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
