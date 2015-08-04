@@ -235,6 +235,9 @@ dashrep-stop-translation
 escape-from-dashrep
 resume-after-escape-from-dashrep
 dashrep-replacement-results-at-time-of-escape
+dashrep-list-of-action-names
+dashrep-list-of-predefined-phrases
+dashrep-list-of-special-phrases
 
 category_spoken_words
 convert-from-spoken-dashrep-code

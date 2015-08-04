@@ -409,17 +409,6 @@ BEGIN {
     $alias_for_action_name{ "dashrep-use-two-spaces-as-column-delimiter" } = "yes-or-no-use-two-spaces-as-column-delimiter" ;
     $alias_for_action_name{ "clear-all-dashrep-phrases" } = "delete-all-dashrep-phrases" ;
 
-    $list_of_action_names_as_text = "" ;
-    foreach $phrase_name ( keys( %global_dashrep_replacement ) )
-    {
-        if ( $list_of_action_names_as_text ne "" )
-        {
-            $list_of_action_names_as_text .= " " ;
-        }
-        $list_of_action_names_as_text .= $phrase_name ;
-    }
-    $global_dashrep_replacement{ "dashrep-list-of-action-names" } = $list_of_action_names_as_text ;
-
     $global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "clear-listed-phrases" } = 1 ;
     $global_required_number_of_operands_for_action{ "delete-listed-phrases" } = 1 ;
@@ -844,6 +833,26 @@ BEGIN {
     $global_check_operand_two_is_file_name_for_action{ "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "write-gathered-listed-items-to-end-of-file" } = "yes" ;
+
+    $list_of_action_names_as_text = "" ;
+    foreach $phrase_name ( keys( %global_required_number_of_operands_for_action ) )
+    {
+        if ( $list_of_action_names_as_text ne "" )
+        {
+            $list_of_action_names_as_text .= " " ;
+        }
+        $list_of_action_names_as_text .= $phrase_name ;
+    }
+    foreach $phrase_name ( keys( %global_minimum_number_of_operands_for_action ) )
+    {
+        if ( $list_of_action_names_as_text ne "" )
+        {
+            $list_of_action_names_as_text .= " " ;
+        }
+        $list_of_action_names_as_text .= $phrase_name ;
+    }
+    $global_dashrep_replacement{ "dashrep-list-of-action-names" } = $list_of_action_names_as_text ;
+    $global_dashrep_replacement{ "dashrep-list-of-special-phrases" } = "" ;
 
 }
 
