@@ -1773,6 +1773,33 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+#  Compare lists of action names and predefined phrases and all Dashrep-recognized phrases.
+
+$being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
+$test_number_count ++;
+$code_for_this_test = "[-string-category-underscore = category_ -] [-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-] [-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-] [-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-] [-spoken-words = dashbee dashenn dashnex ambee amenn combee comenn fen fenambee amennfen linbray-] [-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-] [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-action-names documented-phrase-names-] [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-predefined-phrases documented-phrase-names-] [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-special-phrases documented-phrase-names-]" ;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( $code_for_this_test );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_expand_parameters( $code_for_this_test );
+#  uncomment-for-cpan-version-end
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "documented-phrase-names" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "documented-phrase-names" );
+#  uncomment-for-cpan-version-end
+
+# $results_text .= "[[" . $string_return_value . "]]" ;
+
+if ( $string_return_value eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+
+#-------------------------------------------
 #  Note:
 #  Subroutine dashrep_linewise_translate is NOT tested because it uses STDIN and STDOUT.
 
