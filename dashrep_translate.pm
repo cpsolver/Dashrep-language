@@ -530,7 +530,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "copy-words-found-in-both-lists" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-found-only-in-first-list" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-found-in-either-list" } = 3 ;
-
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrases-line-numbered" } = 2 ;
     $global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-text" } = 3 ;
@@ -561,6 +560,12 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "generate-list-of-all-dashrep-phrases" } = 1 ;
     $global_required_number_of_operands_for_action{ "write-all-dashrep-phrase-names-to-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = 2 ;
+    $global_required_number_of_operands_for_action{ "unique-value" } = 0 ;
+    $global_required_number_of_operands_for_action{ "numeric-odd-or-even" } = 1 ;
+    $global_required_number_of_operands_for_action{ "copy-words-unique-only" } = 2 ;
+    $global_required_number_of_operands_for_action{ "yes-or-no-opposite" } = 1 ;
+    $global_required_number_of_operands_for_action{ "yes-if-not-no" } = 1 ;
+    $global_required_number_of_operands_for_action{ "no-if-not-yes" } = 1 ;
 
     $global_minimum_number_of_operands_for_action{ "numeric-add" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-multiply" } = 1 ;
@@ -852,7 +857,7 @@ BEGIN {
         $list_of_action_names_as_text .= $phrase_name ;
     }
     $global_dashrep_replacement{ "dashrep-list-of-action-names" } = $list_of_action_names_as_text ;
-    $global_dashrep_replacement{ "dashrep-list-of-special-phrases" } = "" ;
+    $global_dashrep_replacement{ "dashrep-list-of-special-phrases" } = "hyphen-here no-space one-space new-line empty-line line-break delayed-nospace delayed-newline dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin yes-or-no-append-not-replace-for-imported-phrases export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end word-to-use-in-handler time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year linewise-input-line-from-file linewise-input-line-count dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases yes-or-no-use-two-spaces-as-column-delimiter dashrep-debug-trace-log dashrep-endless-loop-count end-of-line-here yes-or-no-indicate-line-endings dashrep-replacement-results-at-time-of-escape dashrep-list-of-action-names dashrep-list-of-predefined-phrases dashrep-list-of-special-phrases numeric-map-tile-zoom" ;
 
 }
 
