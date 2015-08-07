@@ -305,6 +305,19 @@ test-of-special-operators:
 [-generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
 [-paired-words-for-replacements = bird flier fish swimmer-]
 [-copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
+[-string-category-underscore = category_ -]
+[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
+[-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
+[-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
+[-spoken-words = dashbee dashenn dashnex ambee amenn combee comenn fen fenambee amennfen linbray-]
+[-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
+[-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
+[-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
+[-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 nothing else
 --------
 
@@ -1777,23 +1790,14 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 $being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
 $test_number_count ++;
-$code_for_this_test = "[-string-category-underscore = category_ -] [-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-] [-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-] [-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-] [-spoken-words = dashbee dashenn dashnex ambee amenn combee comenn fen fenambee amennfen linbray-] [-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]     [-copy-text documented-phrase-names list-of-phrase-names-documented-plus-deprecated-] [-append-text dashrep-list-of-deprecated-phrases list-of-phrase-names-documented-plus-deprecated-] [-copy-words-found-only-in-first-list list-of-phrase-names-documented-plus-deprecated dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-plus-deprecated-minus-recognized-] [-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-plus-deprecated list-of-phrase-names-recognized-minus-documented-minus-deprecated-]    [-copy-text list-of-phrase-names-documented-plus-deprecated-minus-recognized list-of-phrase-names-difference-] [-append-text character-period list-of-phrase-names-difference-] [-append-text character-period list-of-phrase-names-difference-] [-append-text list-of-phrase-names-recognized-minus-documented-minus-deprecated list-of-phrase-names-difference-]" ;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( $code_for_this_test );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( $code_for_this_test );
-#  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phrase-names-difference" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
 #  uncomment-for-cpan-version-end
-
- $results_text .= "[[" . $string_return_value . "]]" ;
-
-if ( $string_return_value eq $string_return_value ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
