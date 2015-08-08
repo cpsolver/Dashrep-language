@@ -1113,13 +1113,6 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-rdquo" } = "8221" ;  # deprecated
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-quot" } = "34" ;  # deprecated
     $global_dashrep_replacement{ "unicode-decimal-number-for-html-entity-nbsp" } = "160" ;  # deprecated
-
-    $list_of_predefined_phrases = "" ;
-    foreach $phrase_name ( keys( %global_dashrep_replacement ) )
-    {
-        $list_of_predefined_phrases .= " " . $phrase_name ;
-    }
-    $global_dashrep_replacement{ "dashrep-list-of-predefined-phrases" } = $list_of_predefined_phrases ;
 }
 
 
@@ -2593,7 +2586,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "clear-phrase" )
         {
-            $action_result = " " ;
             $phrase_name = $operand_one ;
             $global_dashrep_replacement{ $phrase_name } = "" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
@@ -2613,7 +2605,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "clear-listed-phrases" ) || ( $action_name eq "delete-listed-phrases" ) )
         {
-            $action_result = " " ;
             $phrase_name = $operand_one ;
             @list_of_phrase_names = split( / + / , $global_dashrep_replacement{ $phrase_name } ) ;
             foreach $phrase_name_to_clear ( @list_of_phrase_names )
@@ -2654,7 +2645,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "delete-all-dashrep-phrases" )
         {
-            $action_result = " " ;
             $tracking_on_yes_or_no = $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } ;
             $undeleted_phrase_content = "" ;
             if ( ( exists( $global_dashrep_replacement{ "undeleted-phrase" } ) ) && ( $global_dashrep_replacement{ "undeleted-phrase" } =~ /[^ ]/ ) )
@@ -2671,7 +2661,7 @@ sub dashrep_expand_parameters
                 $global_trace_log .= "{{trace; cleared all definitions, including tracking/trace settings}}\n" ;
             }
             $global_endless_loop_counter = 0 ;
-            $replacement_text = "" ;
+            $replacement_text = " " ;
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
@@ -2688,7 +2678,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "append-text" ) || ( $action_name eq "append-text-no-space" ) || ( $action_name eq "prepend-text" ) || ( $action_name eq "prepend-text-no-space" ) || ( $action_name eq "append-repeatedly-using-count" ) )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_to_append = $global_dashrep_replacement{ $operand_one } ;
@@ -2785,7 +2774,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "append-word-to-phrase" )
         {
-            $action_result = " " ;
             if ( ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) )
             {
                 $global_dashrep_replacement{ $operand_two } .= "" ;
@@ -2819,7 +2807,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "append-new-line" )
         {
-            $action_result = " " ;
             $global_dashrep_replacement{ $operand_one } .= "\n" ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -2840,7 +2827,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" ) || ( $action_name eq "append-multiple-from-phrases-named-in-pattern" ) )
         {
-            $action_result = " " ;
             if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
                 $phrase_name_containing_source_words = $operand_one ;
@@ -2875,7 +2861,6 @@ sub dashrep_expand_parameters
             $phrase_name_containing_parameter_list =~ s/-+$// ;
             if ( not( defined( $global_dashrep_replacement{ $phrase_name_containing_parameter_list } ) ) )
             {
-                $action_result = " " ;
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -2904,7 +2889,6 @@ sub dashrep_expand_parameters
                 $phrase_name_containing_source_words =~ s/-+$// ;
                 if ( not( defined( $global_dashrep_replacement{ $phrase_name_containing_source_words } ) ) )
                 {
-                    $action_result = " " ;
                     $replacement_text = $text_begin . $action_result . $text_end ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
@@ -2998,7 +2982,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-text" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-without-extra-spaces" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-html-reserved-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-digits-with-9s" ) || ( $action_name eq "copy-lowercase-only" ) || ( $action_name eq "copy-uppercase-only" ) || ( $action_name eq "copy-initial-caps" ) || ( $action_name eq "copy-words-sort-numeric" ) || ( $action_name eq "copy-words-sort-alphabetic" ) || ( $action_name eq "split-into-list-of-characters" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-first-word" ) || ( $action_name eq "copy-from-phrase-to-phrase-but-remove-last-word" ) || ( $action_name eq "encode-as-cgi-parameter" ) || ( $action_name eq "decode-from-cgi-parameter" ) )
         {
-            $action_result = " " ;
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
@@ -3158,7 +3141,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "convert-into-spoken-dashrep-code" ) || ( $action_name eq "convert-from-spoken-dashrep-code" ) )
         {
-            $action_result = " " ;
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
@@ -3258,7 +3240,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "xml-move-attributes-into-tag-elements" )
         {
-            $action_result = " " ;
             $phrase_being_edited = $operand_one ;
             $text_being_edited = $global_dashrep_replacement{ $phrase_being_edited } ;
             while( $text_being_edited =~ / *\/> *<((attribute)|(specify)) ([^>]+)>/sg )
@@ -3300,7 +3281,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-and-remove-attributes-from-xml-tags" )
         {
-            $action_result = " " ;
             $text_being_edited = $global_dashrep_replacement{ $operand_one } ;
             $text_being_edited =~ s/< *(\/?) *([a-zA-Z]+)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;
             $text_being_edited =~ s/><!\[CDATA\[/>/gi ;
@@ -3322,7 +3302,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "insert-angle-bracketed-definitions" )
         {
-            $action_result = " " ;
             $phrase_being_edited = $operand_one ;
             if ( not( exists( $global_dashrep_replacement{ $phrase_being_edited } ) ) )
             {
@@ -3377,7 +3356,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-word-at-position" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-alphabetic" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) )
         {
-            $action_result = " " ;
             if ( ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) && ( $global_dashrep_replacement{ $operand_three } =~ /[^0-9\.\- ]/ ) )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -3487,7 +3465,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-zero-pad-left-to-length" )
         {
-            $action_result = " " ;
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( ( $source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) ) )
@@ -3531,7 +3508,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-and-replace" ) || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-string-in-phrase-with-phrase" ) || ( $action_name eq "copy-characters-from-position-to-position" )  || ( $action_name eq "copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string" ) )
         {
-            $action_result = " " ;
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
             if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
@@ -3659,7 +3635,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-and-replace-using-paired-listed-words" )
         {
-            $action_result = " " ;
             if ( not( exists( $global_dashrep_replacement{ $operand_one } ) ) )
             {
                 $global_dashrep_replacement{ $operand_one } = "" ;
@@ -3718,7 +3693,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "expand-text" ) || ( $action_name eq "expand-parameters-only" ) )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_to_expand = $global_dashrep_replacement{ $operand_one } ;
@@ -3766,7 +3740,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-phrase-definition-without-expanding" )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $action_result = $global_dashrep_replacement{ $operand_one } ;
@@ -3913,7 +3886,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) || ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) )
         {
-            $action_result = " " ;
             if ( ( ( $operands_all =~ /^ *yes /i ) && ( $action_name eq "if-first-word-is-yes-then-keep-remainder-else-empty" ) ) || ( ( $operands_all =~ /^ *no /i ) && ( $action_name eq "if-first-word-is-no-then-keep-remainder-else-empty" ) ) )
             {
                 $action_result = $operands_all ;
@@ -3935,7 +3907,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "first-word-in-phrase" )
         {
-            $action_result = " " ;
             if ( ( exists( $global_dashrep_replacement{ $operands_all } ) ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operands_all } ;
@@ -3963,7 +3934,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "last-word-in-phrase" )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
@@ -3991,7 +3961,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-word-at-position" )
         {
-            $action_result = " " ;
             $word_number = $operand_two + 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
@@ -4004,14 +3973,10 @@ sub dashrep_expand_parameters
                 @list = ( ) ;
             }
             $count = $#list + 1 ;
-            if ( $count < 1 )
-            {
-                $action_result = " " ;
-            } else
+            if ( $count >= 1 )
             {
                 if ( $word_number > $count )
                 {
-                    $action_result = " " ;
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
                         $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_one . " exceeds number of words in phrase, so no word supplied" . "}}\n" ;
@@ -4033,7 +3998,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-words-from-position-to-position" )
         {
-            $action_result = " " ;
             $word_number_begin = $operand_three + 0 ;
             $word_number_end = $operand_four + 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -4087,7 +4051,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-words-order-reversed" )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
@@ -4121,7 +4084,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-count-of-words" )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
@@ -4153,7 +4115,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "yes-or-no-word-is-in-phrase" ) || ( $action_name eq "get-position-of-word" ) )
         {
-            $action_result = " " ;
             if ( $action_name eq "get-position-of-word" )
             {
                 $word_to_find = $global_dashrep_replacement{ $operand_one } ;
@@ -4204,7 +4165,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-positions-of-words-that-match-any-listed-word" )
         {
-            $action_result = " " ;
             $words_to_search = $global_dashrep_replacement{ $operand_one } ;
             $words_to_find = $global_dashrep_replacement{ $operand_two } ;
             $global_dashrep_replacement{ $operand_three } = "" ;
@@ -4249,7 +4209,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-position-of-matching-text" )
         {
-            $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $search_starting_position = 0 ;
@@ -4279,7 +4238,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-positions-of-delimiter" )
         {
-            $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $search_starting_position = 0 ;
@@ -4319,7 +4277,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-positions-of-first-matching-delimiter-after-listed-positions" )
         {
-            $action_result = " " ;
             $string_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $list_of_positions = "" ;
@@ -4367,7 +4324,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-positions-of-listed-words" )
         {
-            $action_result = " " ;
             $words_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $list_of_positions = "" ;
@@ -4447,7 +4403,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "copy-words-found-in-both-lists" ) || ( $action_name eq "copy-words-found-only-in-first-list" ) || ( $action_name eq "copy-words-unique-only" ) )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $text_list_loop = $global_dashrep_replacement{ $operand_one } ;
@@ -4538,7 +4493,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-words-found-in-either-list" )
         {
-            $action_result = " " ;
             $text_list_key = $global_dashrep_replacement{ $operand_one } . " " . $global_dashrep_replacement{ $operand_two } ;
             $text_list_key =~ s/^ +// ;
             $text_list_key =~ s/ +$// ;
@@ -4570,7 +4524,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-counts-from-integer-to-integer" )
         {
-            $action_result = " " ;
             if ( $operand_one !~ /^[\-0-9]+$/ )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -4591,7 +4544,7 @@ sub dashrep_expand_parameters
             }
             if ( ( $operand_one !~ /^[\-0-9]+$/ ) || ( $operand_two !~ /^[\-0-9]+$/ ) || ( $operand_three eq "" ) )
             {
-                $action_result = " " ;
+                $do_nothing ++ ;
             } else
             {
                 $starting_count = $operand_one + 0 ;
@@ -4642,7 +4595,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-phrase" )
         {
-            $action_result = " " ;
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             $counter = 0 ;
@@ -4677,7 +4629,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase" )
         {
-            $action_result = " " ;
             if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -4740,7 +4691,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-words-that-begin-with-text" )
         {
-            $action_result = " " ;
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_words_as_text =~ s/^ +// ;
             $list_of_words_as_text =~ s/ +$// ;
@@ -4770,7 +4720,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "generate-every-pairwise-combination-of-words" ) || ( $action_name eq "generate-every-ordered-pairwise-combination-of-words" ) )
         {
-            $action_result = " " ;
             $input_list_one_phrase_name = $operand_one ;
             $input_list_two_phrase_name = $operand_two ;
             $output_list_one_phrase_name = $operand_three ;
@@ -4785,7 +4734,6 @@ sub dashrep_expand_parameters
             @input_list_two = split( / +/ , $temp_text ) ;
             $count_list_one = $#input_list_one + 1 ;
             $count_list_two = $#input_list_two + 1 ;
-            $action_result = " " ;
             if ( $count_list_one < 1 )
             {
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
@@ -4843,7 +4791,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "zero-one-multiple" ) || ( $action_name eq "zero-or-nonzero" ) )
         {
-            $action_result = " " ;
             if ( ( $operand_one =~ /^[0-9]+$/ ) && ( $operand_one + 0 <= 0 ) )
             {
                 $action_result = "zero" ;
@@ -4869,7 +4816,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "yes-or-no-empty-phrase" )
         {
-            $action_result = " " ;
             $action_result = "yes" ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
@@ -4912,7 +4858,6 @@ sub dashrep_expand_parameters
 
        if ( ( $action_name eq "numeric-increment" ) || ( $action_name eq "numeric-decrement" ) )
        {
-            $action_result = " " ;
             $result_value = 0 ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) && ( $global_dashrep_replacement{ $operand_one } =~ /^ *-?[0-9]+ *$/ ) )
             {
@@ -5006,7 +4951,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-characters-from-position-to-position" )
         {
-            $action_result = " " ;
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $string_in_phrase = $global_dashrep_replacement{ $operand_one } ;
@@ -5050,7 +4994,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "numeric-minus" )
         {
-            $action_result = " " ;
             $numeric_value = ( $operand_one + 0 ) - ( $operand_two + 0 ) ;
             if ( $numeric_value == 0 )
             {
@@ -5075,7 +5018,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "numeric-divide-by" )
         {
-            $action_result = " " ;
             if ( ( $operand_two + 0 ) == 0 )
             {
                 $action_result = "infinity" ;
@@ -5178,7 +5120,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "numeric-absolute" )
         {
-            $action_result = " " ;
             $result_value = abs( $operand_one + 0 ) ;
             if ( $result_value == 0 )
             {
@@ -5209,7 +5150,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "numeric-integer" ) || ( $action_name eq "numeric-sine" ) || ( $action_name eq "numeric-cosine" ) || ( $action_name eq "numeric-logarithm-base-e" ) || ( $action_name eq "numeric-logarithm-base-10" ) || ( $action_name eq "numeric-y-map-tile-number-based-on-latitude" )|| ( $action_name eq "numeric-odd-or-even" ) )
         {
-            $action_result = " " ;
             if ( $action_name eq "numeric-integer" )
             {
                 $result_value = int( $operand_one + 0 ) ;
@@ -5356,7 +5296,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "numeric-vector-add-number" ) || ( $action_name eq "numeric-vector-multiply-by-number" ) || ( $action_name eq "numeric-vectors-add" ) ||  ( $action_name eq "numeric-vectors-multiply" ) ||  ( $action_name eq "numeric-vectors-divide-by" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) || ( $action_name eq "numeric-vector-integers" ) || ( $action_name eq "numeric-vector-absolutes" ) )
         {
-            $action_result = " " ;
             $single_value = 0 ;
             $required_number_of_operands = $global_required_number_of_operands_for_action{ $action_name } ;
             if ( $required_number_of_operands == 3 )
@@ -5450,7 +5389,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "numeric-calculate-distances-scaled" )
         {
-            $action_result = " " ;
             if ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) || ( not( defined( $global_dashrep_replacement{ $operand_one } ) ) ) || ( $global_dashrep_replacement{ $operand_one } !~ /^[ \-0-9\.]+$/ ) )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -5550,7 +5488,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "numeric-two-dimensional-sort-into-columns-and-rows" )
         {
-            $action_result = " " ;
             if ( ( $operand_one + 0 ) < 1 )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -5592,7 +5529,6 @@ sub dashrep_expand_parameters
             $number_of_items = $#up_direction_value_for_item_number ;
             if ( ( $#up_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
             {
-                $action_result = " " ;
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -5602,7 +5538,6 @@ sub dashrep_expand_parameters
             }
             if ( ( $number_of_items == 0 ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
             {
-                $action_result = " " ;
                 $replacement_text = $text_begin . $action_result . $text_end ;
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -5891,7 +5826,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "get-current-time-in-epoch-seconds" )
         {
-            $action_result = " " ;
             $epoch_seconds = time ;
             $action_result = sprintf( "%d" , $epoch_seconds ) ;
 #  end of action code
@@ -5907,7 +5841,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "split-epoch-seconds-into-named-components" ) || ( $action_name eq "split-epoch-seconds-into-named-components-for-zero-meridian" ) )
         {
-            $action_result = " " ;
             if ( $operand_one !~ /^[\-0-9\.]+$/ )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -5954,7 +5887,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "use-template-with-each-word-in-phrase" ) || ( $action_name eq "use-handler-with-each-word-in-phrase" ) || ( $action_name eq "use-handler-with-each-word-in-phrase-currently-at-character-position" ) )
         {
-            $action_result = " " ;
             $name_of_parameter_for_handler = "word-to-use-in-handler" ;
             if ( $action_name eq "use-template-with-each-word-in-phrase" )
             {
@@ -6028,7 +5960,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "use-template-and-parameters-to-create-full-list-with-name" ) || ( $action_name eq "use-template-and-parameters-to-create-simple-list-with-name" ) )
         {
-            $action_result = " " ;
             if ( $operand_one eq $operand_two )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -6149,7 +6080,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "trace-show" )
         {
-            $action_result = " " ;
             if ( ( $operand_one !~ /^[\-_]/ ) && ( $operand_one !~ /[\-_]$/ ) )
             {
                 if ( exists( $global_dashrep_replacement{ $operand_one } ) )
@@ -6184,7 +6114,6 @@ sub dashrep_expand_parameters
 
        if ( $action_name eq "generate-phrase-usage-counts" )
        {
-            $action_result = " " ;
             $result_text = "" ;
             foreach $phrase_name ( keys( %global_replacement_count_for_item_name ) )
             {
@@ -6221,7 +6150,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "if-yes-begin" ) || ( $action_name eq "if-no-begin" ) )
         {
-            $action_result = " " ;
             if ( $action_name eq "if-yes-begin" )
             {
                 if ( $operand_one =~ /yes/i )
@@ -6311,7 +6239,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "unique-value" )
         {
-            $action_result = " " ;
             $global_unique_value ++ ;
             $action_result = sprintf( "%d" , $global_unique_value ) ;
 #  end of action code
@@ -6327,7 +6254,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "calculate-if-phrase-empty" ) || ( $action_name eq "calculate-if-empty-then-use-here" ) )
         {
-            $action_result = " " ;
             if ( ( exists( $global_dashrep_replacement{ $operand_one } ) ) && ( $global_dashrep_replacement{ $operand_one } =~ /[^ ]/ ) )
             {
                 if ( $action_name eq "calculate-if-empty-then-use-here" )
@@ -6362,7 +6288,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "clear-all-expanded-text-up-to-here" )
         {
-            $action_result = " " ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; clearing all expanded text up to here}}\n" ;
@@ -6386,7 +6311,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "insert-codeview-tags" )
         {
-            $action_result = " " ;
             if ( not( exists( $action_name_exists{ "no-space" } ) ) || ( $action_name_exists{ "no-space" } ne "yes" ) )
             {
                 @list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;
@@ -6472,7 +6396,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "escape-from-dashrep" )
         {
-            $action_result = " " ;
             $global_dashrep_replacement{ "dashrep-replacement-results-at-time-of-escape" } = $text_begin . $action_result . $text_end ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -6490,7 +6413,6 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "resume-after-escape-from-dashrep" )
         {
-            $action_result = " " ;
             $text_begin = "" ;
             if ( not( defined( $global_dashrep_replacement{ "dashrep-replacement-results-at-time-of-escape" } ) ) )
             {
@@ -6521,7 +6443,6 @@ sub dashrep_expand_parameters
 
         if ( ( $action_name eq "escape-if-yes" ) || ( $action_name eq "escape-if-no" ) )
         {
-            $action_result = " " ;
             $text_inserted = " action " . $action_name . " not yet implemented " ;
             if ( ( exists( $global_dashrep_replacement{ "escape-text" } ) ) && ( $global_dashrep_replacement{ "escape-text" } ne "" ) )
             {
@@ -6599,7 +6520,6 @@ sub dashrep_expand_parameters
 
         if ( ( exists( $global_dashrep_replacement{ $action_name } ) ) && ( $global_dashrep_replacement{ $action_name } =~ /-/ ) )
         {
-            $action_result = " " ;
             if ( ( not( exists( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ) ) ) || ( $global_dashrep_replacement{ "yes-or-no-allow-user-defined-actions" } ne "yes" ) )
             {
                 $replacement_text = $text_begin . $action_result . $text_end ;
@@ -7556,7 +7476,6 @@ sub dashrep_file_actions
 
     if ( ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-from-file-to-phrases-line-numbered" ) )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
@@ -7629,7 +7548,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-line-in-file-that-begins-with-string-in-phrase-and-put-into-phrase" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) )
     {
-        $action_result = " " ;
         $list_of_storage_names = "" ;
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
@@ -7755,7 +7673,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "get-definitions-from-file" )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -7810,7 +7727,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) )
     {
-        $action_result = " " ;
         if ( ( $operand_one eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -7875,7 +7791,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "yes-or-no-file-exists" )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -7905,7 +7820,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "yes-or-no-folder-in-phrase-exists" ) )
     {
-        $action_result = " " ;
         if ( $operand_one eq "" )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has empty operand " . $operand_one . "]" ;
@@ -7937,7 +7851,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "modification-time-of-file" )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -7963,7 +7876,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "size-of-file" )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
@@ -7989,7 +7901,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "copy-from-phrase-append-to-file" )
     {
-        $action_result = " " ;
         if ( $target_filename eq "" )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
@@ -8045,7 +7956,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "delete-file" )
     {
-        $action_result = " " ;
         if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
@@ -8074,7 +7984,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "rename-file" )
     {
-        $action_result = " " ;
         if ( $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } ne "yes" )
         {
             $global_trace_log .= "{{trace; attempt to rename file: " . $source_filename . "}}\n" ;
@@ -8100,7 +8009,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "create-empty-file" )
     {
-        $action_result = " " ;
         if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
@@ -8152,7 +8060,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "create-empty-sub-folder" )
     {
-        $action_result = " " ;
         if ( ( $operand_one eq "" ) || ( $operand_one !~ /^[a-z0-9_\-]+$/i ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operand " . $operand_one . "]" ;
@@ -8223,7 +8130,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "expand-phrase-to-file" )
     {
-        $action_result = " " ;
         if ( ( $source_phrase_name eq "" ) || ( $target_filename eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_phrase_name . " and " . $target_filename . "]" ;
@@ -8294,7 +8200,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file" )
     {
-        $action_result = " " ;
         $global_nesting_level_of_file_actions ++ ;
         if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) || ( $source_filename eq $target_filename ) )
         {
@@ -8401,7 +8306,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "copy-from-columns-in-file-to-named-phrases" )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) || ( $operand_three eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . " and " . $operand_three . "]" ;
@@ -8507,7 +8411,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) )
     {
-        $action_result = " " ;
         $accumulated_matching_entry_info = "" ;
         if ( open ( INFILE , '<' . $source_filename ) )
         {
@@ -8760,7 +8663,6 @@ sub dashrep_file_actions
 
     } elsif ( $action_name eq "write-gathered-listed-items-to-end-of-file" )
     {
-        $action_result = " " ;
         $accumulated_text = "" ;
         if ( $target_filename eq "" )
         {
@@ -8837,7 +8739,6 @@ sub dashrep_file_actions
 
     } elsif ( ( $action_name eq "linewise-read-from-file-and-use-handler" ) || ( $action_name eq "linewise-read-from-file-and-use-template" ) )
     {
-        $action_result = " " ;
         if ( ( $source_filename eq "" ) || ( $target_phrase_name eq "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_phrase_name . "]" ;
@@ -8897,7 +8798,7 @@ sub dashrep_file_actions
 
 #-----------------------------------------------
 #  Handle the actions:
-#  linewise-translate-from-file-to-file -- Deprecated, but still used in test, so keep until test is updated to use linewise-read-from-file-and-use-handler
+#  linewise-translate-from-file-to-file -- Deprecated
 #  linewise-translate-parameters-only-from-file-to-file -- Deprecated
 #  linewise-translate-phrases-only-from-file-to-file -- Deprecated
 #  linewise-translate-special-phrases-only-from-file-to-file -- Deprecated
@@ -8927,7 +8828,6 @@ sub dashrep_file_actions
     }
     if ( $qualifier ne "" )
     {
-        $action_result = " " ;
         $global_nesting_level_of_file_actions ++ ;
         if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) )
         {
@@ -9115,7 +9015,6 @@ sub dashrep_file_actions
     }
     if ( $definitions_or_phrase_names ne "" )
     {
-        $action_result = " " ;
         if ( $#list_of_phrases < 0 )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
