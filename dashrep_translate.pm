@@ -296,6 +296,7 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "yes" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
 
     $global_dashrep_replacement{ "dashrep-html-replacement-open-angle-bracket" } = "&lt;" ;  # deprecated
     $global_dashrep_replacement{ "dashrep-html-replacement-close-angle-bracket" } = "&gt;" ;  # deprecated
@@ -1090,6 +1091,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-use-faster-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "yes" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
+    $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 
@@ -9097,6 +9099,7 @@ sub dashrep_file_actions
             $definitions_or_phrase_names = "definitions" ;
             @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
+            unshift( @sequence_of_phrases , "dashrep-language-yes" ) ;
         }
     } elsif ( $action_name eq "write-all-dashrep-phrase-names-to-file" )
     {

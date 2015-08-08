@@ -224,6 +224,7 @@ dashrep-warning-trace-on-yes-or-no
 dashrep-action-trace-on-yes-or-no
 
 category_advanced
+dashrep-language-yes
 unique-value
 dashrep-undefined
 yes-or-no-expand-special-phrases

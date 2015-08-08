@@ -1137,6 +1137,10 @@ no-space
 location-of-write-file
 -----
 
+description-for-phrase-dashrep-language-yes:
+This phrase is written to the beginning of the Dashrep phrase definitions that are written by the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e so that the first word of the containing file can be used to identify that the file contains code written in the Dashrep language. s-n The default value for this phrase is b-i-b yes b-i-e no-space , but this definition is not used.
+----
+
 description-for-phrase-clear-phrase:
 This action clears the definition for the specified phrase. s-n
 The specified phrase continues to be defined, but the definition is empty. s-n
