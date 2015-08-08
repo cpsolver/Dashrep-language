@@ -143,6 +143,10 @@ description-for-phrase-copy-without-extra-spaces:
 This action removes multiple adjacent spaces so that only single spaces occur, and removes all spaces at the beginning and end of the text. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same.
 -----
 
+description-for-phrase-undeleted-phrase:
+See the action b-i-b delete h-h all h-h dashrep h-h phrases b-i-e for details.
+-----
+
 description-for-phrase-copy-and-remove-attributes-from-xml-tags
 This action removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same. s-n As an example of the attribute removal, if the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space . s-n The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
 -----
@@ -1307,7 +1311,7 @@ This action generates two lists of words and puts them into the definitions of t
 ----
 
 description-for-phrase-delete-all-dashrep-phrases:
-This action deletes all the definitions of all the phrases. s-n Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally.
+This action deletes all the definitions of all the phrases. s-n Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally. s-n If the phrase b-i-b undeleted h-h phrase b-i-e exists and contains at least one non h-h space character, the contents of this special phrase is restored after all the phrases have been deleted. s-n The phrase b-i-b undeleted h-h phrase b-i-e is useful for holding instructions that can be executed after this action has deleted all other phrases.
 ----
 
 description-for-phrase-dashrep-comments-ignored:

@@ -39,6 +39,7 @@ clear-phrase
 clear-listed-phrases
 delete-listed-phrases
 delete-all-dashrep-phrases
+undeleted-phrase
 
 category_expand
 expand-text
