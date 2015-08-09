@@ -208,8 +208,6 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-create
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" ) ;
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "sample-user-defined-action" , "[-user-defined-action-operand-two-] [-user-defined-action-operand-one-]" ) ;
-
 $dashrep_code = <<TEXT_TO_IMPORT;
 
 *---- Do NOT change the following numbers or the tests will fail ----*
@@ -237,8 +235,8 @@ test-of-special-operators:
 [-should-be-size-one = [-get-count-of-words should-be-17-]-]
 [-list-of-size-three = 4 5 6-]
 [-should-be-size-three = [-get-count-of-words list-of-size-three-]-]
-[-should-be-item-three = [-first-word-in-phrase list-of-numbers-]-]
-[-should-be-item-four = [-last-word-in-phrase list-of-numbers-]-]
+[-should-be-item-three = [-get-word-at-position list-of-numbers 1 -]-]
+[-should-be-item-four = [-get-word-at-position list-of-numbers 999 -]-]
 [-should-be-same-words-yes = [-yes-or-no-same-two-words waltz waltz-]-]
 [-should-be-same-words-no = [-yes-or-no-same-two-words waltz dance-]-]
 [-item-one = waltz-]
@@ -282,7 +280,6 @@ test-of-special-operators:
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
 [-insert-angle-bracketed-definitions already-expanded-phrase-]
 [-yes-or-no-allow-user-defined-actions = yes-]
-[-should-be-456-space-123 = [-sample-user-defined-action 123 456-]-]
 [-string-123 = 123 -]
 [-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
 [-vector-one = 17 23 -4 -]
@@ -294,7 +291,6 @@ test-of-special-operators:
 [-text-to-repeat = number 9 -]
 [-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
 [-text-with-named-html-entities = abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def -]
-[-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions text-with-named-html-entities text-with-modified-html-entities-]
 [-text-with-tag-and-attribute = <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> -]
 [-copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
 [-list-of-words-to-search-based-on-prefix = here-is-something here-is-something-else hereis-something-else and-something-else-]
@@ -412,8 +408,8 @@ test-of-several-copy-actions:
 [-copy-text text-being-copied text-copied-]
 [-copy-lowercase-only text-being-copied text-copied-lowercase-]
 [-copy-uppercase-only text-being-copied text-copied-uppercase-]
-[-copy-from-phrase-to-phrase-but-remove-first-word text-being-copied text-copied-without-first-word-]
-[-copy-from-phrase-to-phrase-but-remove-last-word text-being-copied text-copied-without-last-word-]
+[-copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999 -]
+[-copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2 -]
 [-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
 [-text-copied-without-first-word-] [-text-copied-without-last-word-]
 --------
@@ -422,9 +418,7 @@ test-of-more-copy-actions:
 [-copy-without-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
 [-text-being-copied = 17 9 183 65-]
 [-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
-[-text-being-copied = <xyz>&amp;</xyz>-]
-[-copy-from-phrase-to-phrase-and-replace-html-reserved-characters text-being-copied text-copied-html-characters-replaced-]
-[-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-] [-text-copied-html-characters-replaced-]
+[-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-]
 --------
 
 list-from-which-to-remove-last-item:
@@ -440,7 +434,8 @@ value-of-pi:
 --------
 
 test-of-insert-codeview-tags:
-[-copy-text test-of-more-copy-actions dashrep-code-with-inserted-codeview-tags-]
+[-text-being-codified = <xyz>&amp;</xyz>-]
+[-copy-text text-being-codified dashrep-code-with-inserted-codeview-tags-]
 [-insert-codeview-tags dashrep-code-with-inserted-codeview-tags-]
 --------
 
@@ -1335,7 +1330,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-m
 $string_return_value =~ s/^ +// ;
 $string_return_value =~ s/ +$// ;
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "9 17 65 183 12 34 56 78 90 &lt;xyz&gt;&amp;&lt;/xyz&gt;" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "9 17 65 183 12 34 56 78 90" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
@@ -1411,20 +1406,20 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the action "insert-codeview-tags"
 
-$being_tested = "test action: insert-codeview-tags -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
-# $string_return_value = &dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
-# uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-without-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+# $being_tested = "test action: insert-codeview-tags -- ";
+# $test_number_count ++;
+# # remove-from-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
+# # remove-from-cpan-version-end
+# # uncomment-for-cpan-version-begin
+# # $string_return_value = &dashrep_expand_parameters( "test-of-insert-codeview-tags" ) ;
+# # $string_return_value = &dashrep_get_replacement( "dashrep-code-with-inserted-codeview-tags" );
+# # uncomment-for-cpan-version-end
+ # $results_text .= "[[" . $string_return_value . "]]" ;
+# if ( $string_return_value =~ /<dashrep_codeview_tag_action_begin>copy-without-extra-spaces</ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -1506,23 +1501,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Test the action "copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions"
-
-$being_tested = "test action copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-with-modified-html-entities" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = dashrep_get_replacement( "text-with-modified-html-entities" );
-# uncomment-for-cpan-version-end
- #$results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "abc &#38; &#39; &#60; &#62; &#8220; &#8221; &#34; def" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-#-------------------------------------------
 #  Test the action "copy-and-remove-attributes-from-xml-tags"
 
 $being_tested = "test action copy-and-remove-attributes-from-xml-tags -- ";
@@ -1596,22 +1574,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 # $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-gathered-tag-names-in-sequence" , "url whatever2" );
 # $numeric_return_value = &dashrep_translate::dashrep_define( "list-of-unique-values" , "aaa bbb ccc" );
 # $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-gathered-listed-items-to-end-of-file list-of-unique-values filename_unused.txt-]" ) ;
-
-
-#-------------------------------------------
-#  Test a user-defined action.
-
-$being_tested = "test user-defined action -- ";
-$test_number_count ++;
-# remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "should-be-456-space-123" );
-# remove-from-cpan-version-end
-# uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "should-be-456-space-123" );
-# uncomment-for-cpan-version-end
-if ( $string_return_value =~ /^456 123$/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
@@ -1742,7 +1704,7 @@ if ( $string_return_value =~ /some content here/ ) { $one_if_ok = 1; } else { $o
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
-$being_tested = "test action: clear-all-dashrep-phrases -- ";
+$being_tested = "test action: delete-all-dashrep-phrases -- ";
 $test_number_count ++;
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
@@ -1751,10 +1713,10 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-a
 # $string_return_value = &dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-clear-all-dashrep-phrases-]" );
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-all-dashrep-phrases-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-clear-all-dashrep-phrases-]" );
+# $string_return_value = &dashrep_expand_parameters( "[-delete-all-dashrep-phrases-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
 $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" );
@@ -1762,6 +1724,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "page-name" 
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "page-name" );
 #  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -1796,7 +1759,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phr
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
 #  uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" ;
+ $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
 if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
@@ -1806,76 +1769,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Note:
 #  Subroutine dashrep_linewise_translate is NOT tested because it uses STDIN and STDOUT.
-
-
-#-------------------------------------------
-#  Test xml-to-dashrep translation.
-
-$being_tested = "test subroutine named dashrep_xml_tags_to_dashrep -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-first-xml-tag-name" , "xml" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_xml_tags_to_dashrep( "<xml><head>xyz</head></xml>" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /begin-xml-head.*xyz.*end-xml-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-$being_tested = "test action: linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-first-xml-tag-name" , "html" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-first-xml-tag-name" , "html" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-test-xml-phrase" , "" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $numeric_return_value = &dashrep_define( "dashrep-test-xml-phrase" , "" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_xml_phrases_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-create-empty-file output_test_xml_phrases_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-create-empty-file output_test_xml_phrases_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-linewise-translate-xml-tags-in-file-to-dashrep-phrases-in-file output_test_web_page.html output_test_xml_phrases_file.txt-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase-]" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_expand_parameters( "[-copy-from-file-to-phrase output_test_xml_phrases_file.txt dashrep-test-xml-phrase-]" );
-#  uncomment-for-cpan-version-end
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "dashrep-test-xml-phrase" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "dashrep-test-xml-phrase" );
-#  uncomment-for-cpan-version-end
-if ( $string_return_value =~ /begin-html-head.*participants.*end-html-head/s ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------

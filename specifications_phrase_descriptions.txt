@@ -48,32 +48,6 @@ An action is not recognized if it is not within parameter brackets, or if it is 
 phrase-description-end
 -----
 
-deprecated-description-for-phrase-yes-or-no-allow-user-defined-actions:
-If this phrase is b-i-b yes b-i-e then a user h-h defined phrase can be used as an action. s-n Otherwise a user h-h defined action will not be recognized. s-n When a user h-h defined action is encountered, the first four space h-h delimited words that follow the (hyphenated) action name become available as the definitions of the phrases
-b-i-b user h-h defined h-h action h-h operand h-h one b-i-e no-space ,
-b-i-b user h-h defined h-h action h-h operand h-h two b-i-e no-space ,
-b-i-b user h-h defined h-h action h-h operand h-h three b-i-e no-space ,
-and
-b-i-b user h-h defined h-h action h-h operand h-h four b-i-e no-space . s-n
-If user h-h defined actions are allowed, the actions do not need to be defined in any special way. s-n A user h-h defined action is simply a hyphenated phrase that can immediately follow an opening parameter bracket ( no-space b-i-b [ no-space h-h b-i-e no-space ) and the hyphenated phrase can use the special operand phrase names to access the words that follow the user h-h defined action phrase (up to the closing parameter bracket ( b-i-b h-h no-space ] b-i-e no-space ) no-space .
------
-
-deprecated-description-for-phrase-user-defined-action-operand-one:
-See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
------
-
-deprecated-description-for-phrase-user-defined-action-operand-two:
-See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
------
-
-deprecated-description-for-phrase-user-defined-action-operand-three:
-See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
------
-
-deprecated-description-for-phrase-user-defined-action-operand-four:
-See description of b-i-b yes h-h or h-h no h-h allow h-h user h-h defined h-h actions b-i-e for details.
------
-
 description-for-phrase-dashrep-definition-append-next:
 This directive requests that the next definition be appended to the existing definition of the specified phrase. s-n This directive allows a list to be created during the reading of definitions because it overrides the normal convention of replacing the existing definition (when the same phrase name is defined more than once).
 -----
@@ -147,7 +121,7 @@ description-for-phrase-undeleted-phrase:
 See the action b-i-b delete h-h all h-h dashrep h-h phrases b-i-e for details.
 -----
 
-description-for-phrase-copy-and-remove-attributes-from-xml-tags
+description-for-phrase-copy-and-remove-attributes-from-xml-tags:
 This action removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same. s-n As an example of the attribute removal, if the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space . s-n The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
 -----
 
@@ -155,20 +129,8 @@ description-for-phrase-copy-and-replace:
 This action replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The two phrase names can be the same.
 -----
 
-deprecated-description-for-phrase-copy-from-phrase-to-phrase-and-replace-characters-in-string-with-characters-in-string:
-This action replaces some (or all or no) characters in the first phrase if the character appears in the third phrase, where the replacement character is in the fourth phrase at the same sequence position, and the result is put into the second phrase. s-n For example, if the first and second phrase names are the same, and that phrase contains the characters b-i-b abcdefghijklm b-i-e no-space , and the third phrase contains the characters b-i-b aeiou b-i-e no-space , and the fourth phrase contains b-i-b 12345 b-i-e no-space , then the result (in the named phrase) will be b-i-b 1bcd2fgh3jklm b-i-e no-space . s-n If there are fewer replacement characters than characters to match, then the characters at the end of the third phrase will be removed, instead of being replaced. s-n As another example, if the digits zero (0) through eight (8) are replaced by the digit nine (9), the result can be checked to see if it matches a recognizable or acceptable pattern.
------
-
 description-for-phrase-copy-characters-from-position-to-position:
 This action copies specified characters from the first phrase to the second phrase. s-n The third and fourth operands indicate the starting and ending character positions, with the first character position being numbered one (1). s-n The starting character position must not be larger than the ending character position. s-n The two phrase names can be the same.
------
-
-deprecated-description-for-phrase-copy-from-phrase-to-phrase-but-remove-first-word:
-This action copies the text in the first phrase into the second phrase but omits the first space hyphen-here delimited word. s-n The two phrase names can be the same.
------
-
-deprecated-description-for-phrase-copy-from-phrase-to-phrase-but-remove-last-word:
-This action copies the text in the first phrase into the second phrase but omits the last space hyphen-here delimited word. s-n The two phrase names can be the same.
 -----
 
 description-for-phrase-copy-lowercase-only:
@@ -203,10 +165,6 @@ description-for-phrase-get-count-of-characters:
 This action counts the number of characters in the definition that is associated with the specified phrase, and supplies the number as its result. s-n Spaces and non-visible characters (such as the newline character) are included in the count.
 -----
 
-deprecated-description-for-phrase-create-list-of-phrase-names-that-begin-with-text-in-phrase-and-put-into-phrase:
-This action looks at all the defined phrases and identifies the ones whose name begins with the text in the first phrase, and puts those phrase names into the second phrase, with a space between each phrase name.
------
-
 description-for-phrase-copy-words-that-begin-with-text
 This action looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially matching words into the second phrase, with a space between each phrase name.
 -----
@@ -217,14 +175,6 @@ If this phrase equals b-i-b yes b-i-e then each encountered action adds a messag
 
 description-for-phrase-dashrep-debug-trace-on-yes-or-no:
 If this phrase equals b-i-b yes b-i-e then trace messages are added to the trace log. s-n Any other value causes silence when a trace message would otherwise be written.
------
-
-deprecated-description-for-phrase-dashrep-linewise-trace-on-yes-or-no:
-Deprecated: If this phrase equals b-i-b yes b-i-e then b-i-b linewise b-i-e actions (which include the word b-i-b linewise b-i-e no-space ) add messages to the trace log to indicate what they are doing. s-n Any other value causes silence when linewise actions are handled.
------
-
-deprecated-description-for-phrase-dashrep-list-of-recognized-phrase-names:
-This action gets all the defined phrase names, and puts those phrase names into the second phrase, with a space between each phrase name. s-n For security purposes this action can be disabled.
 -----
 
 description-for-phrase-trace-show:
@@ -309,14 +259,6 @@ This action looks at the first space hyphen-here delimited word, and if it is b-
 
 description-for-phrase-if-first-word-is-yes-then-keep-remainder-else-empty:
 This action looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies all the text that remains within the parameter brackets. sentence-next If the first word that follows is not b-i-b yes b-i-e no-space , then no text is supplied. sentence-next When used at or near the end of a phrase, this action can provide a major branching capability.
------
-
-deprecated-description-for-phrase-if-word-is-no-then-first-else-second:
-This action looks at the first space hyphen-here delimited word, and if it is b-i-b no b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next See b-i-b if h-h word h-h is h-h yes h-h then h-h first h-h else h-h second b-i-e for more information.
------
-
-deprecated-description-for-phrase-if-word-is-yes-then-first-else-second:
-This action looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e then this action supplies the second space hyphen-here delimited word that follows, or else (if the first word is not b-i-b yes b-i-e no-space ) then this action supplies the third space hyphen-here delimited word that follows.  sentence-next This action can provide a major branching capability when it appears at or near the end of a phrase, or it can provide an "inline" selection that affects which operand another action uses. sentence-next If the second or third word is b-i-b empty hyphen-here text b-i-e no-space , then the action b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e (or b-i-b if h-h first h-h word h-h is h-h yes h-h then h-h keep h-h remainder h-h else h-h empty b-i-e no-space ) is a better choice.
 -----
 
 description-for-phrase-linewise-input-line-count:
@@ -429,10 +371,6 @@ description-for-phrase-numeric-y-map-tile-number-based-on-latitude:
 This action calculates the "y" value for the upper-left corner of the Open Street Maps map tile, based on the latitude that is supplied, and based on the zoom value in the phrase b-i-b numeric-map-tile-zoom b-i-e no-space , and supplies the result.
 -----
 
-deprecated-description-for-phrase-numeric-calculate-distances-scaled
-This action calculates the distance between points, with separate scale numbers for the "x" and "y" dimensions. s-n The first phrase contains the list of coordinates in the x direction, and the second phrase contains the list of coordinates in the y direction. s-n The first item in each coordinate list is the x and y coordinate of a center point, and the remaining pairs of values indicate the coordinates for positions at various distances from the center point. s-n The third and fourth operands are the x and y scale numbers, which can be decimal values, and they are used to convert from units that are different from the calculated distance unit. s-n The x and y scale values can be different from one another to accomodate different units being used for the x and y dimensions. s-n The list of distance result values are put into the definition of the fifth phrase name. s-n The distances are truncated to integer values. s-n If decimal numbers are needed, the scale numbers can be increased to produce a result that is tenths or hundredths of a unit, and a decimal point can be inserted to produce the desired decimal result. s-n The length of the result list is one item shorter than the length of each coordinate list.
------
-
 description-for-phrase-numeric-two-dimensional-sort-into-columns-and-rows:
 This action arranges a set of items into a table of rows and columns based on numeric values along two dimensions. s-n The resulting arrangement roughly arranges the items from left to right according to one set of numeric values and arranges the items from bottom to top according to a second (independent) set of numeric values. s-n This action requires four operands, where the first operand is the number of columns, the second operand is the name of a phrase that contains space h-h delimited numbers that affect horizontal (left h-h to h-h right) placement, the third operand is the name of a phrase that contains space h-h delimited numbers that affect vertical (top h-h to h-h bottom) placement, and the fourth operand is the name of the phrase into which the results are placed. s-n The result contains a sequence of words such as b-i-b row h-h 3 h-h column h-h 2 b-i-e that indicate the sorted position of each item, with the result sequence being the same sequence as the two lists of numeric values. s-n The number of items to be sorted is determined by the number of values in the two numeric lists (which must be the same length). s-n (Originally the vertical sorting used the document h-h oriented convention of placing larger values at the bottom, but now this action uses the natural h-h world h-h oriented convention of placing larger values at the top.)
 ----
@@ -459,10 +397,6 @@ This action searches for any of the space h-h delimited words contained in the f
 
 description-for-phrase-get-position-of-word:
 This action searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position. s-n The supplied word is the word that follows this action name; a phrase definition is not used to supply the word.
------
-
-deprecated-description-for-phrase-generate-positions-of-words-that-match-any-listed-word:
-Deprecated: This action searches for (space h-h delimited) words in the first phrase that match any word in the second phrase, and puts the b-b word b-e positions (not character positions) of the matches into the third phrase. sentence-next If there are no matches, the third phrase is empty. sentence-next The word positions are numbered starting at 1 as the first word position. s-n For example, if the first phrase contains b-i-b dolphin bear dolphin buffalo bear eagle b-i-e and the second phrase contains b-i-b dolphin eagle b-i-e then the third phrase will contain b-i-b 1 3 6 b-i-e no-space , which are the positions of the matching words in the first phrase. s-n This action is useful for filtering data, and is analogous to the way matching records are found in a database. 
 -----
 
 description-for-phrase-prepend-text-no-space:
@@ -702,27 +636,6 @@ If this phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h da
 Otherwise exported definitions are written using the normal Dashrep convention. s-n This capability enables the exported definitions to be converted into special formats such as HTML or XML.
 ----
 
-deprecated-description-for-phrase-dashrep-html-replacement-ampersand:
-This phrase contains the text that is inserted as a replacement for the ampersand (&) character when the action b-i-b copy hyphen-here from hyphen-here phrase hyphen-here to hyphen-here phrase hyphen-here and hyphen-here replace hyphen-here html hyphen-here reserved hyphen-here characters b-i-e is used.
-----
-
-deprecated-description-for-phrase-dashrep-html-replacement-apostrophe:
-This phrase contains the text that is inserted as a replacement for the apostrophe (') character when the action b-i-b copy hyphen-here from hyphen-here phrase hyphen-here to hyphen-here phrase hyphen-here and hyphen-here replace hyphen-here html hyphen-here reserved hyphen-here characters b-i-e is used.
-----
-
-deprecated-description-for-phrase-dashrep-html-replacement-close-angle-bracket:
-This phrase contains the text that is inserted as a replacement for the close angle bracket (&gt;) character when the action b-i-b copy hyphen-here from hyphen-here phrase hyphen-here to hyphen-here phrase hyphen-here and hyphen-here replace hyphen-here html hyphen-here reserved hyphen-here characters b-i-e is used.
-----
-
-deprecated-description-for-phrase-dashrep-html-replacement-open-angle-bracket:
-This phrase contains the text that is inserted as a replacement for the open angle bracket (&lt;) character when the action b-i-b copy hyphen-here from hyphen-here phrase hyphen-here to hyphen-here phrase hyphen-here and hyphen-here replace hyphen-here html hyphen-here reserved hyphen-here characters b-i-e is used.
-----
-
-deprecated-description-for-phrase-dashrep-html-replacement-quotation-mark:
-This phrase contains the text that is inserted as a replacement for the ampersand (&) character when the action b-i-b copy hyphen-here from hyphen-here phrase hyphen-here to hyphen-here phrase hyphen-here and hyphen-here replace hyphen-here html hyphen-here reserved hyphen-here characters b-i-e is used.
-----
-
-
 description-for-phrase-expand-text:
 This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices. s-n It is especially useful if the text contains hyphens but is not Dashrep code.
 ----
@@ -755,21 +668,9 @@ description-for-phrase-dashrep-replacement-results-at-time-of-escape:
 This special phrase is used by the actions b-i-b escape h-h from h-h dashrep b-i-e and b-i-b resume h-h after h-h escape h-h from h-h dashrep b-i-e no-space . s-n This phrase can be viewed (outside of the Dashrep code) for debugging purposes, in which case the first h-h encountered occurrence of the action b-i-b escape h-h from h-h dashrep b-i-e serves as a breakpoint.
 ----
 
-deprecated-description-for-phrase-escape-if-yes:
-This action looks at the text that follows, and if that text equals b-i-b yes b-i-e then this action interrupts the translation process and exits from the Dashrep engine. s-n This capability allows switching between executable code in the host language (which is currently Perl) and translating Dashrep code. s-n When this interruption occurs, the text that was being translated is placed into the phrase b-i-b escape h-h text b-i-e . s-n If no complications arise, the non h-h Dashrep executable code can resume Dashrep translation by supplying the b-i-b escape h-h text b-i-e definition as the text to be translated. s-n (One of the expected uses of this action is to implement something similar to a "make" file.)
-----
-
-deprecated-description-for-phrase-escape-if-no:
-The b-i-b no b-i-e equivalent of the b-i-b escape h-h if h-h yes b-i-e action. s-n See that phrase description for details.
-----
-
 description-for-phrase-escape-text:
 Contains the text that was being translated at the time an b-i-b escape h-h if h-h yes b-i-e or b-i-b escape h-h if h-h no b-i-e action was encountered. s-n See the b-i-b escape h-h if h-h yes b-i-e description for details.
 ----
-
-deprecated-description-for-phrase-dashrep-translation-before-escape:
-An automatically generated phrase that contains the current text being expanded at the time the actions b-i-b escape h-h if h-h yes b-i-e and b-i-b escape h-h if h-h yes b-i-e are encountered.
------
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
 This phrase specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined, such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
@@ -911,8 +812,32 @@ description-for-phrase-copy-listed-words-to-phrases-named-in-pattern:
 This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b ambee hyphen-here no-space b-i-e (or b-i-b fenambee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here amenn b-i-e (or b-i-b amennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If that list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n As an example of this action, if the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the secomd phrase contains b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
 -----
 
-deprecated-description-for-phrase-append-word-to-phrase:
-This action copies the first word onto the end of the definition of the second hyphenated phrase. s-n Do not use this action if the first word might be empty because that causes an error (because the wrong number of operands are supplied).
+description-for-phrase-yes-or-no-use-slower-subset-expand:
+If this phrase equals b-i-b yes b-i-e then older and slower code is used to do expansions. s-n Any other value causes the newer and faster expansion code to be used.
+-----
+
+description-for-phrase-dashrep-xml-trace-on-yes-or-no:
+If this phrase equals b-i-b yes b-i-e then trace messages are written during use of the subroutine b-i-b dashrep_xml_tags_to_dashrep b-i-e no-space . s-n Any other value results in those trace messages not being written.
+-----
+
+description-for-phrase-use-handler-with-each-word-in-phrase-currently-at-character-position:
+This action is for internal use only. s-n It should not be used.
+-----
+
+description-for-phrase-dashrep-first-xml-tag-name:
+This phrase will no longer be recognized when the deprecated subroutine b-i-b dashrep_xml_tags_to_dashrep b-i-e has been removed.
+-----
+
+description-for-phrase-dashrep-xml-level-reset-if-zero:
+This phrase will no longer be recognized when the deprecated subroutine b-i-b dashrep_xml_tags_to_dashrep b-i-e has been removed.
+-----
+
+description-for-phrase-dashrep-xml-trace-on-yes-or-no:
+This phrase will no longer be recognized when the deprecated subroutine b-i-b dashrep_xml_tags_to_dashrep b-i-e has been removed.
+-----
+
+description-for-phrase-dashrep-xml-yes-ignore-if-no-tag-replacement:
+This phrase will no longer be recognized when the deprecated subroutine b-i-b dashrep_xml_tags_to_dashrep b-i-e has been removed.
 -----
 
 description-for-phrase-zero-one-multiple:
@@ -1069,14 +994,6 @@ This action copies the definition of the first phrase into the definition of the
 b-i-e s-n As this example illustrates, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The two phrase names can be the same.
 ----
 
-deprecated-description-for-phrase-copy-from-phrase-to-phrase-and-replace-html-reserved-characters:
-This action copies the definition of the first phrase into the definition of the second phrase, but replaces specific HTML reserved characters with text that is specified in specifically named phrases. s-n Specifically the phrase b-i-b dashrep hyphen-here html hyphen-here replacement hyphen-here open hyphen-here angle hyphen-here bracket b-i-e is inserted wherever an open angle bracket (&lt;) appears, the b-i-b dashrep hyphen-here html hyphen-here replacement hyphen-here close hyphen-here angle hyphen-here bracket b-i-e phrase is inserted wherever and a close angle bracket (&gt;) appears, the b-i-b dashrep hyphen-here html hyphen-here replacement hyphen-here ampersand b-i-e phrase is inserted wherever and an ampersand (&gt;) appears, the b-i-b dashrep hyphen-here html hyphen-here replacement hyphen-here apostrophe b-i-e phrase is inserted wherever an apostrophe (&apos;) appears, the b-i-b dashrep hyphen-here html hyphen-here replacement hyphen-here quotation hyphen-here mark b-i-e phrase is inserted wherever and a quotation mark (&dquo;) appears. s-n The two phrase names can be the same.
-----
-
-deprecated-description-for-phrase-copy-from-phrase-to-phrase-and-replace-named-html-entities-with-unicode-versions
-This action copies the definition of the first phrase into the definition of the second phrase, but replaces named HTML entities with their Unicode versions if those Unicode numbers are defined in specially named phrases. s-n Specifically, if the phrase being copied contains the text b-i-b &#38; no-space amp; b-i-e and the phrase named b-i-b unicode h-h decimal h-h number h-h for h-h html h-h entity h-h amp b-i-e is defined as b-i-b 38 b-i-e no-space , then the text b-i-b &#38; no-space #38; b-i-e is inserted where that HTML entity appears. s-n Default Unicode decimal values are supplied for the HTML entity names b-i-b amp b-i-e no-space , b-i-b apos b-i-e no-space , b-i-b gt b-i-e no-space , b-i-b lt b-i-e no-space , b-i-b ldquo b-i-e no-space , b-i-b rdquo b-i-e no-space , b-i-b quot b-i-e no-space , and b-i-b nbsp b-i-e no-space , yet Unicode numbers for additional entity names can be supplied. s-n If the Unicode number for a named entity is not defined, or if the named entity uses any uppercase letters, that entity is not replaced.
-----
-
 description-for-phrase-convert-from-spoken-dashrep-code:
 This action copies the definition of the first phrase into the definition of the second phrase, but recognizes and translates Dashrep spoken words. s-n Specifically the words
 b-i-b f no-space e no-space n b-i-e
@@ -1138,7 +1055,7 @@ location-of-write-file
 -----
 
 description-for-phrase-dashrep-language-yes:
-This phrase is written to the beginning of the Dashrep phrase definitions that are written by the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e so that the first word of the containing file can be used to identify that the file contains code written in the Dashrep language. s-n The default value for this phrase is b-i-b yes b-i-e no-space , but this definition is not used.
+This phrase is written to the beginning of the file created by the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e so that the first word identifies the file contents to be written in the Dashrep language. s-n The default value for this phrase is b-i-b yes b-i-e no-space , but this definition is not used.
 ----
 
 description-for-phrase-clear-phrase:
@@ -1155,10 +1072,6 @@ The phrases continue to exist, but their definitions are empty.
 description-for-phrase-delete-listed-phrases:
 This action deletes (removes) the phrases that are named in the specified phrase. s-n This phrase is related to the action b-i-b clear h-h listed h-h phrases b-i-e except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized. s-n
 This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.
-----
-
-deprecated-description-for-phrase-split-into-list-of-characters:
-Deprecated: This action copies a phrase definition to the specified phrase, but splits all the characters into a (space h-h delimited) list of characters. s-n Where there is a space, the word b-i-b onespace b-i-e is inserted instead. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-character-single-space:
@@ -1274,14 +1187,6 @@ description-for-phrase-count-of-characters-in-phrase-definition:
 This action counts the number of characters (including spaces) in the specified phrase definition.
 ----
 
-deprecated-description-for-phrase-first-word-in-phrase:
-This action supplies the first word from the specified phrase. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n If the definition contains no spaces, the entire phrase definition is supplied.
-----
-
-deprecated-description-for-phrase-last-word-in-phrase:
-This action supplies the last word from the specified phrase. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n If the definition contains no spaces, the entire phrase definition is supplied.
-----
-
 description-for-phrase-get-word-at-position:
 This action supplies the specified word from a specified phrase, with the position of that word being specified by an integer number. s-n The number 1 specifies the first word. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
 ----
@@ -1324,14 +1229,6 @@ This phrase contains text that the translation process has identified as comment
 
 description-for-phrase-insert-codeview-tags:
 This action inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the text items in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
-----
-
-deprecated-description-for-phrase-yes-or-no-use-faster-subset-expand:
-If this phrase is defined as b-i-b yes b-i-e no-space , a newer and faster section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next This code handles the directives b-i-b no hyphen-here space b-i-e and b-i-b one hyphen-here space b-i-e and b-i-b new hyphen-here line b-i-e and b-i-b empty hyphen-here line b-i-e no-space . sentence-next This code is useful for increasing the speed of a server response for a website. sentence-next The original code is still available for uses that require handling all Dashrep conventions and that do not require fast execution times.
-----
-
-deprecated-description-for-phrase-yes-or-no-use-slower-subset-expand:
-If this phrase is defined as b-i-b no b-i-e no-space , an older and slower section of code is used to expand Dashrep code (that does not contain parameter brackets). sentence-next See b-i-b yes h-h or h-h no h-h use h-h faster h-h subset h-h expand b-i-e for details.
 ----
 
 description-for-phrase-dashbee:
@@ -1572,13 +1469,13 @@ dashrep-definitions-end
 
 dashrep-definitions-begin
 
-template-for-category-and-phrase-list:
-[-category-or-phrase-name = [-get-word-at-position all-phrases-and-categories [-createlist-parameter-]-]-]
+handler-for-category-and-phrase-list:
+[-category-or-phrase-name = [-get-word-at-position all-phrases-and-categories [-word-to-use-in-handler-]-]-]
 [-dashrep-action-trace-on-or-off =on-]
 [-category-or-phrase = [-type-if-[-yes-or-no-empty-phrase heading-for-phrases-in-[-category-or-phrase-name-]-]-empty-]-]
 [-template-for-[-category-or-phrase-]-]
-[-append-new-line-to-phrase full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
+[-append-new-line full-contents-final-]
+[-append-new-line full-contents-final-]
 -----
 
 type-if-no-empty:
@@ -1594,34 +1491,34 @@ undefined
 -----
 
 template-for-category:
-[-append-from-phrase-to-phrase-no-space category-heading-begin full-contents-final-]
-[-append-from-phrase-to-phrase-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
-[-append-from-phrase-to-phrase-no-space category-heading-end full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
+[-append-text-no-space category-heading-begin full-contents-final-]
+[-append-text-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
+[-append-text-no-space category-heading-end full-contents-final-]
+[-append-new-line full-contents-final-]
 -----
 
 template-for-phrase:
-[-append-from-phrase-to-phrase-no-space phrase-heading-begin-before-id full-contents-final-]
-[-append-from-phrase-to-phrase-no-space category-or-phrase-name full-contents-final-]
-[-append-from-phrase-to-phrase-no-space phrase-heading-begin-after-id full-contents-final-]
-[-append-from-phrase-to-phrase-no-space category-or-phrase-name full-contents-final-]
-[-append-from-phrase-to-phrase-no-space phrase-heading-end full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
-[-append-from-phrase-to-phrase-no-space phrase-description-begin full-contents-final-]
+[-append-text-no-space phrase-heading-begin-before-id full-contents-final-]
+[-append-text-no-space category-or-phrase-name full-contents-final-]
+[-append-text-no-space phrase-heading-begin-after-id full-contents-final-]
+[-append-text-no-space category-or-phrase-name full-contents-final-]
+[-append-text-no-space phrase-heading-end full-contents-final-]
+[-append-new-line full-contents-final-]
+[-append-text-no-space phrase-description-begin full-contents-final-]
 [-dashrep-action-trace-on-or-off = on-]
 [-dashrep-ignore-actions-off-else-on = off-]
 [-dashrep-capture-actions-off-else-on = off-]
 [-expand-text description-for-phrase-[-category-or-phrase-name-] description-translated-]
-[-append-from-phrase-to-phrase-no-space description-translated full-contents-final-]
+[-append-text-no-space description-translated full-contents-final-]
 [-dashrep-action-trace-on-or-off = off-]
-[-append-from-phrase-to-phrase-no-space phrase-description-end full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
+[-append-text-no-space phrase-description-end full-contents-final-]
+[-append-new-line full-contents-final-]
 -----
 
 template-for-undefined:
-[-append-from-phrase-to-phrase-no-space category-heading-begin full-contents-final-]
-[-append-from-phrase-to-phrase-no-space words-undefined full-contents-final-]
-[-append-from-phrase-to-phrase-no-space category-heading-end full-contents-final-]
+[-append-text-no-space category-heading-begin full-contents-final-]
+[-append-text-no-space words-undefined full-contents-final-]
+[-append-text-no-space category-heading-end full-contents-final-]
 -----
 
 words-undefined:
@@ -1633,7 +1530,7 @@ heading-for-phrases-in-dashrep_undefined:
 -----
 
 n-y-w:
-[-append-from-phrase-to-phrase-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
+[-append-text-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
 [-expand-text description-for-phrase-[-category-or-phrase-name-] expanded-description-]
 [-convert-from-spoken-dashrep-code expanded-description description-with-hyphens-handled-]
 -----
@@ -1888,22 +1785,22 @@ dashrep-definitions-end
 [-dashrep-ignore-actions-off-else-on = off-]
 [-dashrep-capture-actions-off-else-on = off-]
 [-expand-text web-page-begin expanded-web-page-begin-]
-[-append-from-phrase-to-phrase-no-space expanded-web-page-begin full-contents-final-]
+[-append-text-no-space expanded-web-page-begin full-contents-final-]
 [-expand-text table-of-fundamental-text-items expanded-table-of-fundamental-text-items-]
-[-append-from-phrase-to-phrase-no-space expanded-table-of-fundamental-text-items full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
+[-append-text-no-space expanded-table-of-fundamental-text-items full-contents-final-]
+[-append-new-line full-contents-final-]
+[-append-new-line full-contents-final-]
 [-expand-text table-of-dashrep-spoken-words expanded-table-of-dashrep-spoken-words-]
-[-append-from-phrase-to-phrase-no-space expanded-table-of-dashrep-spoken-words full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
-[-append-new-line-to-phrase full-contents-final-]
+[-append-text-no-space expanded-table-of-dashrep-spoken-words full-contents-final-]
+[-append-new-line full-contents-final-]
+[-append-new-line full-contents-final-]
 [-expand-text section-directive-phrase-action expanded-section-directive-phrase-action-]
-[-append-from-phrase-to-phrase-no-space expanded-section-directive-phrase-action full-contents-final-]
+[-append-text-no-space expanded-section-directive-phrase-action full-contents-final-]
 [-item-count = [-get-count-of-words all-phrases-and-categories-]-]
 [-generate-counts-from-integer-to-integer 1 [-item-count-] list-of-position-numbers-]
 [-dashrep-action-trace-on-or-off =off-]
-[-use-template-and-parameters-to-create-simple-list-with-name  template-for-category-and-phrase-list  list-of-position-numbers  unused-generated-list-]
+[-use-handler-with-each-word-in-phrase  handler-for-category-and-phrase-list  list-of-position-numbers-]
 [-expand-text web-page-end expanded-web-page-end-]
-[-append-from-phrase-to-phrase-no-space expanded-web-page-end full-contents-final-]
+[-append-text-no-space expanded-web-page-end full-contents-final-]
 [-delete-file output_specifications_documentation.html-]
 [-copy-from-phrase-append-to-file  full-contents-final  output_specifications_documentation.html-]
