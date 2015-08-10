@@ -989,9 +989,16 @@ This action copies text from the definition of the first phrase into the definit
 ----
 
 description-for-phrase-copy-and-replace-using-paired-listed-words:
-This action copies the definition of the first phrase into the definition of the second phrase, but replaces some text strings with associated text strings, using paired words in the third operand. s-n The paired words in the third operand are delimited by spaces, and the first word in each pair specifies what text to find, and the second word in each pair specifies the replacement text for that found word. s-n For example, to replace named HTML entities and some special characters with their unicode equivalent entities, the third phrase can contain text such as the following: b-i-b
+This action copies the definition of the first phrase into the definition of the second phrase, but replaces some text strings with associated text strings, using paired words in the third operand. s-n The paired words in the third operand are delimited by spaces, and the first word in each pair specifies what text to find, and the second word in each pair specifies the replacement text for that found word.
+paragraph-next
+Example: To replace named HTML entities and some special characters with their unicode equivalent entities, the third phrase can contain text such as the following: b-i-b
 &#38;amp; &#38;#38; &#38;lt; &#38;#60; < &#38;#60 &#38;gt; &#38;#62; > &#38;#62; &#38;ldquo; &#38;#8220; &#38;rdquo; &#38;#8221; &#38;lsquo; &#38;#8216; &#38;rsquo; &#38;#8217; &#38;quot; &#38;#34; " &#38;#34; &#38;apos; &#38;#39; ' &#38;#39; &#38;nbsp; &#38;#160;
-b-i-e s-n As this example illustrates, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The two phrase names can be the same.
+b-i-e
+paragraph-next
+Another example: To identify a numeric pattern by converting all digits into the digit nine, the third phrase can contain the following text:
+b-i-b 0 9 1 9 2 9 3 9 4 9 5 9 6 9 7 9 8 9 b-i-e s-n
+paragraph-next
+As these examples illustrate, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-convert-from-spoken-dashrep-code:
@@ -1220,7 +1227,7 @@ This action generates two lists of words and puts them into the definitions of t
 ----
 
 description-for-phrase-delete-all-dashrep-phrases:
-This action deletes all the definitions of all the phrases. s-n Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally. s-n If the phrase b-i-b undeleted h-h phrase b-i-e exists and contains at least one non h-h space character, the contents of this special phrase is restored after all the phrases have been deleted. s-n The phrase b-i-b undeleted h-h phrase b-i-e is useful for holding instructions that can be executed after this action has deleted all other phrases.
+This action deletes all the definitions of all the phrases. s-n Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally. s-n If the phrase b-i-b undeleted h-h phrase b-i-e exists and contains at least one non h-h space character, the contents of this special phrase is restored after all the phrases have been deleted. s-n The phrase b-i-b undeleted h-h phrase b-i-e is useful for holding instructions that need to be executed after this action has deleted all other phrases.
 ----
 
 description-for-phrase-dashrep-comments-ignored:
