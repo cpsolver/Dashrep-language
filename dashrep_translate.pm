@@ -1921,6 +1921,23 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  If the action name is not recognized, leave
+#  the text as-is, but omit the brackets,
+#  and indicate this situation, which is not
+#  necessarily an error.
+
+        if ( ( not( exists( $global_required_number_of_operands_for_action{ $action_name } ) ) ) && ( not( ( exists( $global_minimum_number_of_operands_for_action{ $action_name } ) ) ) ) )
+        {
+            $replacement_text = $text_begin . $text_parameter_content . $text_end ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning, first word in parameter brackets is not a recognized action name: " . $action_name . "}}\n" ;
+            }
+            next ;
+        }
+
+
+#-----------------------------------------------
 #  Keep track of some info.
 
         if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
