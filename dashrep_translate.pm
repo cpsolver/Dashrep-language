@@ -4821,7 +4821,11 @@ sub dashrep_expand_parameters
                             next ;
                         } elsif ( ( $bottom_row_number == $number_of_rows ) && ( $bottom_left_open_column > $number_of_items_in_bottom_row ) )
                         {
-                            next ;
+                            $bottom_row_number -- ;
+                            $bottom_left_open_column = 1 ;
+                            $bottom_right_open_column = $number_of_columns ;
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_right_and_up ;
                         } elsif ( $bottom_left_open_column < $bottom_right_open_column )
                         {
                             $need_maximum_or_minimum = $need_minimum ;
