@@ -440,15 +440,15 @@ test-of-insert-codeview-tags:
 --------
 
 input-right-values:
-12 -3 6 23 15 9 22 17 2
+12 -3 6 23 15 9 22 17 2 -5 10
 --------
 
-input-down-values:
-8 -9 4 2 18 3 11 9 12
+input-up-values:
+8 -9 4 2 18 3 11 9 12 6 7
 --------
 
 two-dimensional-sort:
-[-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-down-values results-of-two-dimensional-sort-]
+[-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort-]
 --------
 
 test-if-begin-actions:
@@ -1436,7 +1436,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-of-
 # $string_return_value = dashrep_get_replacement( "results-of-two-dimensional-sort" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value =~ /row-3-column-1 row-2-column-3 row-2-column-1/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value =~ /row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1/ ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

@@ -4657,8 +4657,8 @@ sub dashrep_expand_parameters
                 next ;
             }
             $number_of_columns = $operand_one ;
-            $text_for_up_direction_values = $global_dashrep_replacement{ $operand_two } ;
-            $text_for_right_direction_values = $global_dashrep_replacement{ $operand_three } ;
+            $text_for_right_direction_values = $global_dashrep_replacement{ $operand_two } ;
+            $text_for_up_direction_values = $global_dashrep_replacement{ $operand_three } ;
             $text_for_up_direction_values =~ s/^ +//s ;
             $text_for_up_direction_values =~ s/ +$//s ;
             $text_for_right_direction_values =~ s/^ +//s ;
@@ -4724,18 +4724,18 @@ sub dashrep_expand_parameters
             $range_of_right_direction_values = $right_direction_maximum_value - $right_direction_minimum_value ;
             if ( $range_of_up_direction_values > 0.0001 )
             {
-                $multiplier_for_up_direction_values = 100.00 / $range_of_up_direction_values ;
+                $multiplier_for_up_direction_values = $number_of_rows * 100.00 / $range_of_up_direction_values ;
             } else
             {
-                $multiplier_for_up_direction_values = 1.0 ;
+                $multiplier_for_up_direction_values = $number_of_rows * 1.0 ;
                 $up_direction_minimum_value = $up_direction_minimum_value - 1.0 ;
             }
             if ( $range_of_right_direction_values > 0.0001 )
             {
-                $multiplier_for_right_direction_values = 100.00 / $range_of_right_direction_values ;
+                $multiplier_for_right_direction_values = $number_of_columns * 100.00 / $range_of_right_direction_values ;
             } else
             {
-                $multiplier_for_right_direction_values = 1.0 ;
+                $multiplier_for_right_direction_values = $number_of_columns * 1.0 ;
                 $right_direction_minimum_value = $right_direction_minimum_value - 1.0 ;
             }
             for ( $item_number = 1 ; $item_number <= $number_of_items ; $item_number ++ )
@@ -4763,7 +4763,7 @@ sub dashrep_expand_parameters
             $top_left_open_column = 1 ;
             $top_right_open_column = $number_of_columns ;
             $bottom_left_open_column = 1 ;
-            $bottom_right_open_column = $number_of_columns ;
+            $bottom_right_open_column = $number_of_items_in_bottom_row ;
             while ( $top_row_number <= $bottom_row_number )
             {
                 for ( $fill_direction = $fill_direction_top_left ; $fill_direction <= $fill_direction_top_right ; $fill_direction ++ )
@@ -4778,11 +4778,11 @@ sub dashrep_expand_parameters
                             $use_value_direction = $value_direction_right ;
                         } elsif ( $top_left_open_column < $top_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_minimum ;
-                            $use_value_direction = $value_direction_right_and_up ;
+                            $need_maximum_or_minimum = $need_maximum ;
+                            $use_value_direction = $value_direction_left_and_up ;
                         } elsif ( $top_left_open_column == $top_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_minimum ;
+                            $need_maximum_or_minimum = $need_maximum ;
                             $use_value_direction = $value_direction_up ;
                         } else
                         {
@@ -4802,11 +4802,11 @@ sub dashrep_expand_parameters
                             next ;
                         } elsif ( $bottom_left_open_column < $bottom_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_right_and_up ;
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_left_and_up ;
                         } elsif ( $bottom_left_open_column == $bottom_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_maximum ;
+                            $need_maximum_or_minimum = $need_minimum ;
                             $use_value_direction = $value_direction_up ;
                         } else
                         {
@@ -4821,15 +4821,14 @@ sub dashrep_expand_parameters
                             next ;
                         } elsif ( ( $bottom_row_number == $number_of_rows ) && ( $bottom_left_open_column > $number_of_items_in_bottom_row ) )
                         {
-                            $bottom_left_open_column ++ ;
                             next ;
                         } elsif ( $bottom_left_open_column < $bottom_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_maximum ;
-                            $use_value_direction = $value_direction_left_and_up ;
+                            $need_maximum_or_minimum = $need_minimum ;
+                            $use_value_direction = $value_direction_right_and_up ;
                         } elsif ( $bottom_left_open_column == $bottom_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_maximum ;
+                            $need_maximum_or_minimum = $need_minimum ;
                             $use_value_direction = $value_direction_up ;
                         } else
                         {
@@ -4844,11 +4843,11 @@ sub dashrep_expand_parameters
                             next ;
                         } elsif ( $top_left_open_column < $top_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_minimum ;
+                            $need_maximum_or_minimum = $need_maximum ;
                             $use_value_direction = $value_direction_left_and_up ;
                         } elsif ( $top_left_open_column == $top_right_open_column )
                         {
-                            $need_maximum_or_minimum = $need_minimum ;
+                            $need_maximum_or_minimum = $need_maximum ;
                             $use_value_direction = $value_direction_up ;
                         } else
                         {
@@ -4917,12 +4916,15 @@ sub dashrep_expand_parameters
                     }
                     $zero_if_not_remaining_item_number[ $item_number_at_min_or_max ] = 0 ;
                 }
-                if ( ( $top_left_open_column > $top_right_open_column ) && ( $bottom_left_open_column > $bottom_right_open_column ) )
+                if ( $top_left_open_column > $top_right_open_column )
                 {
                     $top_row_number ++ ;
-                    $bottom_row_number -- ;
                     $top_left_open_column = 1 ;
                     $top_right_open_column = $number_of_columns ;
+                }
+                if ( $bottom_left_open_column > $bottom_right_open_column )
+                {
+                    $bottom_row_number -- ;
                     $bottom_left_open_column = 1 ;
                     $bottom_right_open_column = $number_of_columns ;
                 }
