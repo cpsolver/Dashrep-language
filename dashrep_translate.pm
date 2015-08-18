@@ -360,6 +360,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "generate-positions-of-listed-words" } = 3 ;
     $global_required_number_of_operands_for_action{ "generate-counts-from-integer-to-integer" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-that-begin-with-text" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-that-contain-listed-words" } = 3 ;
     $global_required_number_of_operands_for_action{ "generate-every-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "zero-one-multiple" } = 1 ;
@@ -472,6 +473,7 @@ BEGIN {
     $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-delimiter" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
 
     $global_check_operand_two_is_positive_integer_for_action{ "get-word-at-position" } = "yes" ;
     $global_check_operand_three_is_positive_integer_for_action{ "copy-word-at-position" } = "yes" ;
@@ -588,6 +590,8 @@ BEGIN {
     $global_check_operand_three_is_phrase_name_for_action{ "generate-counts-from-integer-to-integer" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_four_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
@@ -1606,6 +1610,10 @@ sub dashrep_expand_parameters
     my $pair_pointer_offset_zero ;
     my $string_to_insert ;
     my $position_end ;
+    my $word_to_check ;
+    my $string_to_match ;
+    my @list_of_words_to_check ;
+    my @list_of_strings_to_match ;
     my @list_of_paired_words ;
     my @item_number_found_at_position ;
     my @list_of_start_matching_positions ;
@@ -3936,6 +3944,40 @@ sub dashrep_expand_parameters
                 if ( substr( $word , 0 , $length_of_string ) eq $string_to_search )
                 {
                     $generated_list .= $word . " " ;
+                }
+            }
+            $generated_list =~ s/ +$// ;
+            $global_dashrep_replacement{ $operand_two } = $generated_list ;
+#  end of action code
+            $replacement_text = $text_begin . $action_result . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-words-that-contain-listed-words
+
+        if ( $action_name eq "copy-words-that-contain-listed-words" )
+        {
+            $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
+            $list_of_words_as_text =~ s/^ +// ;
+            $list_of_words_as_text =~ s/ +$// ;
+            @list_of_words_to_check = split( / +/ , $list_of_words_as_text ) ;
+            $list_of_words_as_text = $global_dashrep_replacement{ $operand_three } ;
+            $list_of_words_as_text =~ s/^ +// ;
+            $list_of_words_as_text =~ s/ +$// ;
+            @list_of_strings_to_match = split( / +/ , $list_of_words_as_text ) ;
+            $generated_list = "" ;
+            foreach $word_to_check ( @list_of_words_to_check )
+            {
+                foreach $string_to_match ( @list_of_strings_to_match )
+                {
+                    if ( index( $word_to_check , $string_to_match ) > 0 )
+                    {
+                        $generated_list .= $word_to_check . " " ;
+                        last ;
+                    }
                 }
             }
             $generated_list =~ s/ +$// ;
