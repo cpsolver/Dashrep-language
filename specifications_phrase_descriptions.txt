@@ -122,7 +122,11 @@ See the action b-i-b delete h-h all h-h dashrep h-h phrases b-i-e for details.
 -----
 
 description-for-phrase-copy-and-remove-attributes-from-xml-tags:
-This action removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same. s-n As an example of the attribute removal, if the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space . s-n The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
+This action removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same.
+paragraph-next
+Example: If the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space .
+paragraph-next
+The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
 -----
 
 description-for-phrase-copy-and-replace:
@@ -147,6 +151,8 @@ This action copies the definition of the first phrase into the definition of the
 
 description-for-phrase-copy-words-order-reversed:
 This action gets the space hyphen-here delimited words in the first phrase, and reverses their order (sequence), and puts those reverse-ordered words into the second phrase. s-n The two phrase names can be the same.
+paragraph-next
+Example: If the first phrase contains b-i-b dolphin whale octopus b-i-e then the second phrase will contain b-i-b octopus whale dolphin b-i-e no-space .
 -----
 
 description-for-phrase-copy-words-from-position-to-position:
@@ -154,11 +160,15 @@ This action gets the space hyphen-here delimited words from the first phrase sta
 -----
 
 description-for-phrase-copy-words-rearrange-using-order-sort-alphabetic:
-This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase. s-n As an example, if the first phrase contains the text b-i-b Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready b-i-e and the third phrase contains the text b-i-b tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul b-i-e then the text placed into the second phrase will be b-i-b Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla b-i-e no-space . s-n The first two phrase names can be the same.
+This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase. s-n The first two phrase names can be the same.
+paragraph-next
+Example: If the first phrase contains the text b-i-b Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready b-i-e and the third phrase contains the text b-i-b tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul b-i-e then the text placed into the second phrase will be b-i-b Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla b-i-e no-space .
 -----
 
 description-for-phrase-copy-words-rearrange-using-order-sort-numeric:
-This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n As an example, if the first phrase contains the text b-i-b seven one five three twelve b-i-e and the third phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the text placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space . s-n The first two phrase names can be the same.
+This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n The first two phrase names can be the same.
+paragraph-next
+Example: If the first phrase contains the text b-i-b seven one five three twelve b-i-e and the third phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the text placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space .
 -----
 
 description-for-phrase-get-count-of-characters:
@@ -167,6 +177,8 @@ This action counts the number of characters in the definition that is associated
 
 description-for-phrase-copy-words-that-begin-with-text
 This action looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name.
+paragraph-next
+Example: If the first phrase contains b-i-b honeybees bees honey hives beehives b-i-e and the third phrase contains b-i-b bee b-i-e then the second phrase will contain b-i-b bees beehives b-i-e no-space .
 -----
 
 description-for-phrase-copy-words-that-contain-listed-words
@@ -209,7 +221,9 @@ b-i-b copy-from-file-to-phrase b-i-e is used, and if the phrase b-i-b dashrep h-
 -----
 
 description-for-phrase-generate-every-ordered-pairwise-combination-of-words:
-This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible b-b ordered b-e combination of words listed in the first phrase and the second phrase. s-n For example, if the first phrase contains b-i-b dolphin eagle bear b-i-e and the second phrase contains b-i-b leaps flies ambles b-i-e then the third phrase will contain b-i-b
+This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible b-b ordered b-e combination of words listed in the first phrase and the second phrase.
+paragraph-next
+Example: If the first phrase contains b-i-b dolphin eagle bear b-i-e and the second phrase contains b-i-b leaps flies ambles b-i-e then the third phrase will contain b-i-b
 dolphin eagle bear eagle bear bear
 b-i-e and the fourth phrase will contain b-i-b
 leaps leaps leaps flies flies ambles
@@ -217,7 +231,9 @@ b-i-e no-space .
 -----
 
 description-for-phrase-generate-every-pairwise-combination-of-words:
-This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible combination of words listed in the first phrase and the second phrase. s-n For example, if the first phrase contains b-i-b dolphin eagle bear b-i-e and the second phrase contains b-i-b leaps flies ambles b-i-e then the third phrase will contain b-i-b
+This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible combination of words listed in the first phrase and the second phrase.
+paragraph-next
+Example: If the first phrase contains b-i-b dolphin eagle bear b-i-e and the second phrase contains b-i-b leaps flies ambles b-i-e then the third phrase will contain b-i-b
 dolphin dolphin dolphin eagle eagle eagle bear bear bear
 b-i-e and the fourth phrase will contain b-i-b
 leaps flies ambles leaps flies ambles leaps flies ambles
@@ -398,7 +414,9 @@ This action searches for the text contained in the first phrase, and performs re
 -----
 
 description-for-phrase-generate-positions-of-listed-words:
-This action searches for any of the space h-h delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches. s-n The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match. s-n As an example, if the first phrase contains b-i-b fish bird b-i-e and the second phrase contains b-i-b birds songbird fish clownfish b-i-e then the third phrase will contain b-i-b 1 4 11 14 16 19 26 29 b-i-e no-space . sentence-next If there is no match, the list is empty. sentence-next The character positions are numbered starting at 1 in the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text.
+This action searches for any of the space h-h delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches. s-n The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match. s-n If there is no match, the generated list is empty. sentence-next The character positions are numbered starting at 1 in the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text.
+paragraph-next
+Example: If the first phrase contains b-i-b fish bird b-i-e and the second phrase contains b-i-b birds songbird fish clownfish b-i-e then the third phrase will contain b-i-b 1 4 11 14 16 19 26 29 b-i-e no-space .
 -----
 
 description-for-phrase-get-position-of-word:
@@ -428,7 +446,11 @@ This phrase is used with the action b-i-b use-handler-with-each-word-in-phrase b
 -----
 
 description-for-phrase-xml-move-attributes-into-tag-elements:
-This action moves the content of an b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding tag. s-n For example, it converts the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space . s-n The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
+This action moves the content of an b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding tag.
+paragraph-next
+Example: it converts the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
+paragraph-next
+The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
@@ -460,7 +482,9 @@ This action reads a list of numbers (as space h-h delimited words) from the firs
 -----
 
 description-for-phrase-verify-word-in-phrase:
-Verify that the specified word appears in a list of words in a phrase definition, and supply the word if it is found. s-n If the word is not found, the first word in the list of words is supplied. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n For example, if the word b-i-b 999-9999 b-i-e is to be verified as being in the list b-i-b invalid-format 999-999-9999 999-9999 (999)999-9999 b-i-e no-space , this action supplies the word b-i-b 999-9999 b-i-e as the result.
+Verify that the specified word appears in a list of words in a phrase definition, and supply the word if it is found. s-n If the word is not found, the first word in the list of words is supplied. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
+paragraph-next
+Example: If the word b-i-b 999-9999 b-i-e is to be verified as being in the list b-i-b invalid-format 999-999-9999 999-9999 (999)999-9999 b-i-e no-space , this action supplies the word b-i-b 999-9999 b-i-e as the result.
 -----
 
 description-for-phrase-numeric-increment:
@@ -557,7 +581,11 @@ If this phrase equals b-i-b yes b-i-e then the action b-i-b copy hyphen-here fro
 ----
 
 description-for-phrase-copy-from-columns-in-file-to-named-phrases:
-This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space h-h delimited) word into a phrase that has a special name. s-n The specified phrase must begin with the (space h-h delimited) prefix for all the names, is followed by the (space h-h delimited) name of each column. s-n For example, if the second operand is a phrase that contains b-i-b cell h-h contents h-h for h-h nickname phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space . s-n A third operand is the name of a phrase that will contain the list of unique values, where b-i-b flipper b-i-e is the unique value in this example, that come from the first word in each line. s-n This action is useful for reading spreadsheet-like data. s-n The phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e can be useful if any spreadsheet-like cell of data contains any spaces. s-n The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory no-space . s-n If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.
+This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space h-h delimited) word into a phrase that has a special name. s-n The specified phrase must begin with the (space h-h delimited) prefix for all the names, is followed by the (space h-h delimited) name of each column. s-n The third operand is the name of a phrase that will contain the list of unique values that come from the first word in each line. s-n This action is useful for reading spreadsheet-like data. s-n If a unique value is used more than once, the information in the last occurrence overwrites the earlier information. s-n The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory no-space .
+paragraph-next
+Example: If the second operand is a phrase that contains b-i-b cell h-h contents h-h for h-h nickname phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space .
+paragraph-next
+If the phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e is defined as b-i-b yes b-i-e no-space , then two spaces (instead of one) are required between cells. s-n This option is useful if the spreadsheet-like cell of data might contain any spaces.
 ----
 
 description-for-phrase-gather-tagged-info-from-file:
@@ -760,7 +788,9 @@ directives.
 -----
 
 description-for-phrase-line-break:
-This phrase should be defined as text that, in turn, specifies a line break in the target language. s-n For example, if the target language is HTML, normally this phrase would be defined as
+This phrase should be defined as text that, in turn, specifies a line break in the target language.
+paragraph-next
+Example: If the target language is HTML, normally this phrase would be defined as
 b-i-b &lt;br&nbsp;/&gt; b-i-e
 no-space .
 -----
@@ -815,7 +845,9 @@ Example: s-n If the first phrase contains the text b-i-b item h-h ambee h-h list
 -----
 
 description-for-phrase-copy-listed-words-to-phrases-named-in-pattern:
-This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b ambee hyphen-here no-space b-i-e (or b-i-b fenambee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here amenn b-i-e (or b-i-b amennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If that list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n As an example of this action, if the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the secomd phrase contains b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
+This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b ambee hyphen-here no-space b-i-e (or b-i-b fenambee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here amenn b-i-e (or b-i-b amennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If that list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
+paragraph-next
+Example: If the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the secomd phrase contains b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space.
 -----
 
 description-for-phrase-yes-or-no-use-slower-subset-expand:
@@ -1209,27 +1241,39 @@ This action counts the number of words in the definition of a specified phrase, 
 ----
 
 description-for-phrase-copy-words-found-in-both-lists:
-This action copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b def 123 b-i-e (or b-i-b 123 def b-i-e no-space ).
+This action copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions.
+paragraph-next
+Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b def 123 b-i-e (or b-i-b 123 def b-i-e no-space ).
 ----
 
 description-for-phrase-copy-words-found-in-either-list:
-This action copies into the definition of the third phrase the words that appear in either of the indicated phrase definitions, without repeating any word. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 123 def 456 xyz 789 b-i-e (although the word order can be different).
+This action copies into the definition of the third phrase the words that appear in either of the indicated phrase definitions, without repeating any word.
+paragraph-next
+Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 123 def 456 xyz 789 b-i-e (although the word order can be different).
 ----
 
 description-for-phrase-copy-words-found-only-in-first-list:
-This action copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition. s-n For example, if the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 b-i-e no-space . s-n The order of words in the target phrase matches the order of words in the first list.
+This action copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition.
+paragraph-next
+Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 b-i-e no-space . s-n The order of words in the target phrase matches the order of words in the first list.
 ----
 
 description-for-phrase-copy-words-unique-only:
-This action copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition. s-n For example, if the first phrase definition is b-i-b abc 123 def 123 abc b-i-e then the second phrase is defined as b-i-b abc 123 def b-i-e (although a specific word order is not guaranteed).
+This action copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition.
+paragraph-next
+Example: If the first phrase definition is b-i-b abc 123 def 123 abc b-i-e then the second phrase is defined as b-i-b abc 123 def b-i-e (although a specific word order is not guaranteed).
 ----
 
 description-for-phrase-generate-counts-from-integer-to-integer:
-This action generates a list of integers and puts them into the definition of the third phrase. s-n The supplied integers indicate the starting and ending values. s-n For example, b-i-b [-counts h-h from h-h integer h-h to h-h integer h-h put h-h into h-h phrase 1 10 one h-h to h-h ten-] b-i-e defines the phrase b-i-b one h-h to h-h ten b-i-e as b-i-b 1 2 3 4 5 6 7 8 9 10 b-i-e no-space .
+This action generates a list of integers and puts them into the definition of the third phrase. s-n The supplied integers indicate the starting and ending values.
+paragraph-next
+Example: b-i-b [-counts h-h from h-h integer h-h to h-h integer h-h put h-h into h-h phrase 1 10 one h-h to h-h ten-] b-i-e defines the phrase b-i-b one h-h to h-h ten b-i-e as b-i-b 1 2 3 4 5 6 7 8 9 10 b-i-e no-space .
 ----
 
 description-for-phrase-every-combination-of-words-from-two-phrases-put-into-two-phrases:
-This action generates two lists of words and puts them into the definitions of the third and fourth phrases. s-n Every possible combination of two words is generated, with the first two phrases supplying the lists of words. s-n For example, if the first phrase contains b-i-b h-h no-space 2 h-h no-space 1 0 1 2 b-i-e and the second phrase contains b-i-b 12 17 32 55 b-i-e then the third phrase will contain b-i-b h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 1 one-space h-h 1 one-space h-h 1 one-space h-h 1 0 0 0 0 1 1 1 1 2 2 2 2 b-i-e and the fourth phrase will contain b-i-b 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 b-i-e . s-n (The words do not have to be numbers.)
+This action generates two lists of words and puts them into the definitions of the third and fourth phrases. s-n Every possible combination of two words is generated, with the first two phrases supplying the lists of words.
+paragraph-next
+Example: If the first phrase contains b-i-b h-h no-space 2 h-h no-space 1 0 1 2 b-i-e and the second phrase contains b-i-b 12 17 32 55 b-i-e then the third phrase will contain b-i-b h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 2 one-space h-h 1 one-space h-h 1 one-space h-h 1 one-space h-h 1 0 0 0 0 1 1 1 1 2 2 2 2 b-i-e and the fourth phrase will contain b-i-b 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 12 17 32 55 b-i-e . s-n (The words do not have to be numbers.)
 ----
 
 description-for-phrase-delete-all-dashrep-phrases:
@@ -1434,8 +1478,8 @@ heading-for-phrases-in-category_loop:
 Loop-related phrases
 -----
 
-heading-for-phrases-in-category_generate_list:
-List-generation phrases
+heading-for-phrases-in-category_manipulate_list:
+List-manipulation phrases
 -----
 
 heading-for-phrases-in-category_file_related:
