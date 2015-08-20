@@ -175,16 +175,22 @@ description-for-phrase-get-count-of-characters:
 This action counts the number of characters in the definition that is associated with the specified phrase, and supplies the number as its result. s-n Spaces and non-visible characters (such as the newline character) are included in the count.
 -----
 
-description-for-phrase-copy-words-that-begin-with-text
+description-for-phrase-copy-words-that-begin-with-text:
 This action looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name.
 paragraph-next
 Example: If the first phrase contains b-i-b honeybees bees honey hives beehives b-i-e and the third phrase contains b-i-b bee b-i-e then the second phrase will contain b-i-b bees beehives b-i-e no-space .
 -----
 
-description-for-phrase-copy-words-that-contain-listed-words
+description-for-phrase-copy-words-that-contain-listed-words:
 This action looks at all the words in the first phrase and identifies the words that contain text that match any of the words listed in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name.
 paragraph-next
 Example: If the first phrase contains b-i-b honeybees bees honey hives beehives b-i-e and the third phrase contains b-i-b bee hive b-i-e then the second phrase will contain b-i-b honeybees bees hives beehives b-i-e (but not b-i-b honey b-i-e ) no-space .
+-----
+
+description-for-phrase-copy-words-that-begin-with-listed-words:
+This action looks at all the words in the first phrase and identifies the words that begin with text that match any of the words listed in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name.
+paragraph-next
+Example: If the first phrase contains b-i-b honeybees bees honey hives beehives b-i-e and the third phrase contains b-i-b bee hive b-i-e then the second phrase will contain b-i-b bees hives beehives b-i-e no-space .
 -----
 
 description-for-phrase-dashrep-action-trace-on-yes-or-no:

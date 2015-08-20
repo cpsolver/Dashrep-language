@@ -91,6 +91,7 @@ copy-words-found-in-both-lists
 copy-words-found-in-either-list
 copy-words-found-only-in-first-list
 copy-words-that-begin-with-text
+copy-words-that-begin-with-listed-words
 copy-words-that-contain-listed-words
 copy-words-unique-only
 copy-words-order-reversed

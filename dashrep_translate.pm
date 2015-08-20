@@ -361,6 +361,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "generate-counts-from-integer-to-integer" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-that-begin-with-text" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-that-contain-listed-words" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-words-that-begin-with-listed-words" } = 3 ;
     $global_required_number_of_operands_for_action{ "generate-every-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "zero-one-multiple" } = 1 ;
@@ -474,6 +475,7 @@ BEGIN {
     $global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
     $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+    $global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
 
     $global_check_operand_two_is_positive_integer_for_action{ "get-word-at-position" } = "yes" ;
     $global_check_operand_three_is_positive_integer_for_action{ "copy-word-at-position" } = "yes" ;
@@ -592,6 +594,8 @@ BEGIN {
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_four_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
@@ -3957,8 +3961,9 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the action:
 #  copy-words-that-contain-listed-words
+#  copy-words-that-begin-with-listed-words
 
-        if ( $action_name eq "copy-words-that-contain-listed-words" )
+        if ( ( $action_name eq "copy-words-that-contain-listed-words" ) || ( $action_name eq "copy-words-that-begin-with-listed-words" ) )
         {
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_words_as_text =~ s/^ +// ;
@@ -3973,10 +3978,18 @@ sub dashrep_expand_parameters
             {
                 foreach $string_to_match ( @list_of_strings_to_match )
                 {
-                    if ( index( $word_to_check , $string_to_match ) > 0 )
+                    $pointer_to_matching_text = index( $word_to_check , $string_to_match ) ;
+                    if ( $pointer_to_matching_text >= 0 )
                     {
-                        $generated_list .= $word_to_check . " " ;
-                        last ;
+                        if ( $action_name eq "copy-words-that-contain-listed-words" )
+                        {
+                            $generated_list .= $word_to_check . " " ;
+                            last ;
+                        } elsif ( $pointer_to_matching_text == 0 )
+                        {
+                            $generated_list .= $word_to_check . " " ;
+                            last ;
+                        }
                     }
                 }
             }
