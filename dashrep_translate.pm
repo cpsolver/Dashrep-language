@@ -432,8 +432,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "numeric-odd-or-even" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-words-unique-only" } = 2 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-opposite" } = 1 ;
-    $global_required_number_of_operands_for_action{ "yes-if-not-no" } = 1 ;
-    $global_required_number_of_operands_for_action{ "no-if-not-yes" } = 1 ;
 
     $global_minimum_number_of_operands_for_action{ "numeric-add" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-multiply" } = 1 ;
@@ -441,6 +439,8 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "numeric-minimum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
     $global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 1 ;
+    $global_minimum_number_of_operands_for_action{ "yes-if-not-no" } = 1 ;
+    $global_minimum_number_of_operands_for_action{ "no-if-not-yes" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "yes-if-any-yes" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "no-if-any-no" } = 1 ;
 
