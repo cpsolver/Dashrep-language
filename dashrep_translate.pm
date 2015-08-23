@@ -3900,9 +3900,9 @@ sub dashrep_expand_parameters
 #  Handle the action:
 #  generate-list-of-all-dashrep-phrases
 
-        if ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-phrase" )
+        if ( $action_name eq "generate-list-of-all-dashrep-phrases" )
         {
-            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+            @list_of_phrases = keys( %global_dashrep_replacement ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             $counter = 0 ;
             if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
@@ -3911,18 +3911,25 @@ sub dashrep_expand_parameters
                 {
                     if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                     {
-                        if ( $global_dashrep_replacement{ $operand_two } ne "" )
+                        if ( $global_dashrep_replacement{ $operand_one } ne "" )
                         {
-                            $global_dashrep_replacement{ $operand_two } .= " " ;
+                            $global_dashrep_replacement{ $operand_one } .= " " ;
                         }
-                        $global_dashrep_replacement{ $operand_two } .= $phrase_name ;
+                        $global_dashrep_replacement{ $operand_one } .= $phrase_name ;
                         $counter ++ ;
                     }
                 }
-            }
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; wrote " . $counter . " phrase names to phrase " . $operand_one . "}}\n" ;
+                }
+            } else
             {
-                $global_trace_log .= "{{trace; wrote " . $counter . " phrases to phrase " . $operand_one . "}}\n" ;
+                $global_dashrep_replacement{ $operand_one } = "" ;
+                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; value of yes-or-no-export-delimited-definitions is not yes, so wrote no phrase names to phrase " . $operand_one . "}}\n" ;
+                }
             }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
