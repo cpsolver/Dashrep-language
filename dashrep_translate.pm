@@ -6846,9 +6846,17 @@ sub dashrep_file_actions
             $temp_text = $global_dashrep_replacement{ $operand_two } ;
             $temp_text =~ s/^ +// ;
             $temp_text =~ s/ +$// ;
-            @phrase_naming_convention_for_column = split( / +/ , $temp_text ) ;
-            $number_of_column_names = scalar( @phrase_naming_convention_for_column ) ;
-            $prefix_text = $phrase_naming_convention_for_column[ 0 ] ;
+            if ( $temp_text =~ / / )
+            {
+                @phrase_naming_convention_for_column = split( / +/ , $temp_text ) ;
+                $number_of_column_names = scalar( @phrase_naming_convention_for_column ) ;
+                $prefix_text = $phrase_naming_convention_for_column[ 0 ] ;
+            } else
+            {
+                $phrase_naming_convention_for_column[ 1 ] = "" ;
+                $number_of_column_names = 2 ;
+                $prefix_text = $temp_text ;
+            }
             if ( $prefix_text !~ /^[^ ]+$/ )
             {
                 $possible_error_message .= " [warning, action " . $action_name . " has prefix of " . $prefix_text . " that is not valid]" ;
@@ -6899,13 +6907,18 @@ sub dashrep_file_actions
                     $list_of_unique_values .= " " . $unique_value ;
                     for ( $column_pointer = 2 ; $column_pointer <= $number_of_column_names ; $column_pointer ++ )
                     {
-                        if ( $column_pointer <= $number_of_columns )
+                        if ( $phrase_naming_convention_for_column[ $column_pointer - 1 ] ne "" )
                         {
                             $phrase_naming_convention_for_this_column = $prefix_text . "-" . $unique_value . "-" . $phrase_naming_convention_for_column[ $column_pointer - 1 ] ;
+                        } else
+                        {
+                            $phrase_naming_convention_for_this_column = $prefix_text . "-" . $unique_value ;
+                        }
+                        if ( $column_pointer <= $number_of_columns )
+                        {
                             $global_dashrep_replacement{ $phrase_naming_convention_for_this_column } = $text_item_in_column[ $column_pointer - 1 ] ;
                         } else
                         {
-                            $phrase_naming_convention_for_this_column = $prefix_text . "-" . $unique_value . "-" . $phrase_naming_convention_for_column[ $column_pointer - 1 ] ;
                             $global_dashrep_replacement{ $phrase_naming_convention_for_this_column } = "" ;
                         }
                     }
