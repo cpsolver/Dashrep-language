@@ -592,6 +592,8 @@ paragraph-next
 Example: If the second operand is a phrase that contains b-i-b cell h-h contents h-h for h-h nickname phone-number city state b-i-e and one line of text in the file is b-i-b flipper 123-456-7890 san-diego ca b-i-e then the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h phone h-h number b-i-e will contain b-i-b 123 h-h 456 h-h 7890 b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h city b-i-e will contain b-i-b san h-h diego b-i-e and the phrase b-i-b cell h-h contents h-h for h-h nickname h-h flipper h-h state b-i-e will contain b-i-b ca b-i-e no-space .
 paragraph-next
 If the phrase b-i-b dashrep h-h use h-h two h-h spaces h-h as h-h column h-h delimiter b-i-e is defined as b-i-b yes b-i-e no-space , then two spaces (instead of one) are required between cells. s-n This option is useful if the spreadsheet-like cell of data might contain any spaces.
+paragraph-next
+If the second phrase contains only a single word, then the file is assumed to contain only two columns of data on each line, and a suffix is not appended to the end of the generated phrase names.
 ----
 
 description-for-phrase-gather-tagged-info-from-file:
