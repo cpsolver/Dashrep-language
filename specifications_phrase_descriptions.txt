@@ -166,7 +166,7 @@ Example: If the first phrase contains the text b-i-b Nikola_Tesla Abe_Lincoln Th
 -----
 
 description-for-phrase-copy-words-rearrange-using-order-sort-numeric:
-This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n If numerical sorting is needed, leading zeros (that give every number the same number of digits) must be included in the numbers. s-n The first two phrase names can be the same.
+This action gets the space hyphen-here delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase. s-n The first two phrase names can be the same.
 paragraph-next
 Example: If the first phrase contains the text b-i-b seven one five three twelve b-i-e and the third phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the text placed into the second phrase will be b-i-b one three five seven twelve b-i-e no-space .
 -----
