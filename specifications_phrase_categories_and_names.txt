@@ -191,6 +191,7 @@ delete-file
 create-empty-sub-folder
 copy-from-file-to-phrase
 copy-from-phrase-append-to-file
+copy-append-file-to-file
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count

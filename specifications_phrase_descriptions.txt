@@ -995,6 +995,14 @@ This action copies the definition of the hyphenated phrase onto the end of the s
 location-of-write-file
 -----
 
+description-for-phrase-copy-append-file-to-file:
+This action gets the text from the source file and appends a copy of that text to the end of the target file. s-n The location of the source file is specified by the phrase 
+name-of-phrase-that-specifies-read-directory
+no-space , and the location of the target file is specified by the phrase 
+name-of-phrase-that-specifies-write-directory
+no-space .
+-----
+
 description-for-phrase-generate-list-of-all-dashrep-phrases:
 This action generates a list of all the defined phrase names, using a space between adjacent phrase names,
 and puts that list into the specified phrase name. s-n For security purposes this action can be disabled.

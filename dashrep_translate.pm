@@ -406,6 +406,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "copy-words-found-only-in-first-list" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-found-in-either-list" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
+    $global_required_number_of_operands_for_action{ "copy-append-file-to-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-text" } = 3 ;
     $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = 3 ;
     $global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = 3 ;
@@ -656,7 +657,8 @@ BEGIN {
     $global_check_operand_one_is_file_name_for_action{ "gather-from-tagged-file-one-entry" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-definitions-to-file" } = "yes" ;
-
+    $global_check_operand_one_is_file_name_for_action{ "copy-append-file-to-file" } = "yes" ;
+    $global_check_operand_two_is_file_name_for_action{ "copy-append-file-to-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "rename-file" } = "yes" ;
     $global_check_operand_two_is_file_name_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
@@ -5447,7 +5449,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-append-file-to-file" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -6643,6 +6645,68 @@ sub dashrep_file_actions
                 $global_trace_log .= "{{trace; warning: " . $possible_error_message . "}}\n" ;
             }
         }
+        close( OUTFILE ) ;
+        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: protection of output file " . $target_filename . "  not successful}}\n" ;
+            }
+        }
+#  end of action code
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-append-file-to-file
+#
+#  The filenames are edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( $action_name eq "copy-append-file-to-file" )
+    {
+        if ( ( $source_filename eq "" ) || ( $target_filename eq "" ) )
+        {
+            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $target_filename . "]" ;
+        } elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } ne "yes" )
+        {
+            $global_trace_log .= "{{trace; attempt to copy from phrase " . $source_phrase_name . " to end of file " . $target_filename . "}}\n" ;
+            $possible_error_message .= " [warning, do not have permission to append to files]" ;
+        }
+        if ( open ( INFILE , '<' . $source_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [warning, file named " . $source_filename . " not found, or could not be opened]" ;
+        }
+        if ( open ( OUTFILE , '>>' . $target_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [warning, file named " . $target_filename . " could not be opened for writing]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            while ( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                print $input_line . "\n" ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied from file " . $source_filename . " to file " . $target_filename . "}}\n" ;
+            }
+        } else
+        {
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
         close( OUTFILE ) ;
         if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
         {
