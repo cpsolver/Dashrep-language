@@ -6693,7 +6693,7 @@ sub dashrep_file_actions
             while ( $input_line = <INFILE> )
             {
                 chomp( $input_line ) ;
-                print $input_line . "\n" ;
+                print OUTFILE $input_line . "\n" ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
