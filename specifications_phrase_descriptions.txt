@@ -476,7 +476,11 @@ This action supplies b-i-b yes b-i-e if the following two space h-h delimited wo
 -----
 
 description-for-phrase-yes-or-no-word-is-in-phrase:
-This action supplies b-i-b yes b-i-e if the following first word is one of the words in the following phrase, and supplies b-i-b no b-i-e otherwise.  If the first word is a phrase name in parameter brackets and that phrase is empty, then a warning is put into the trace information because the number of operands is not two.
+This action supplies b-i-b yes b-i-e if the following first word is one of the words in the following phrase, and supplies b-i-b no b-i-e otherwise.  If the first word is a phrase name in parameter brackets and that phrase is empty, then a warning is put into the trace information because the number of operands is not two. s-n A match does not occur if the word is contained within a longer word, or if the word is not isolated by spaces.
+paragraph-next
+Example: If the first operand is the word b-i-b dolphin b-i-e and the second phrase contains b-i-b dolphin tuna b-i-e then the result is b-i-b yes b-i-e no-space .
+paragraph-next
+Example: If the first operand is the word b-i-b dolphin b-i-e and the second phrase contains b-i-b dolphin h-h oriented b-i-e then the result is b-i-b no b-i-e no-space .
 -----
 
 description-for-phrase-zero-or-nonzero:

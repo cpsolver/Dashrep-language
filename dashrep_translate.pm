@@ -644,6 +644,7 @@ BEGIN {
     $global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-all-dashrep-phrases" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "yes-or-no-word-is-in-phrase" } = "yes" ;
 
     $global_check_operand_one_is_file_name_for_action{ "get-definitions-from-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "yes-or-no-file-exists" } = "yes" ;
