@@ -569,8 +569,6 @@ BEGIN {
     $global_check_operand_four_is_phrase_name_for_action{ "copy-and-replace" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_three_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
-    $global_check_operand_four_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "expand-text" } = "yes" ;
@@ -3054,41 +3052,6 @@ sub dashrep_expand_parameters
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
-                }
-            }
-            if ( $action_name eq "copy-from-phrase-to-phrase-and-replace-characters-in-text-with-characters-in-string" )
-            {
-                $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
-                if ( exists( $global_dashrep_replacement{ $operand_four } ) )
-                {
-                    $characters_to_insert = $global_dashrep_replacement{ $operand_four } ;
-                } else
-                {
-                    $characters_to_insert = "" ;
-                }
-                $string_containing_characters_to_replace = $string_to_be_replaced ;
-                $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                $result_text = "" ;
-                for ( $character_position = 0 ; $character_position < length( $source_text ) ; $character_position ++ )
-                {
-                    $character_to_possibly_replace = substr( $source_text , $character_position , 1 ) ;
-                    $pointer_to_matching_character = index( $string_containing_characters_to_replace , $character_to_possibly_replace ) ;
-                    if ( $pointer_to_matching_character >= 0 )
-                    {
-                        if ( $pointer_to_matching_character < length( $characters_to_insert ) )
-                        {
-                            $character_to_insert = substr( $characters_to_insert , $pointer_to_matching_character , 1 ) ;
-                            $result_text .= $character_to_insert ;
-                        }
-                    } else
-                    {
-                        $result_text .= $character_to_possibly_replace ;
-                    }
-                }
-                $global_dashrep_replacement{ $target_phrase_name } = $result_text ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
                 }
             }
 #  end of action code
