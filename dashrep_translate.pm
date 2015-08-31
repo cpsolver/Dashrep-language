@@ -2969,10 +2969,9 @@ sub dashrep_expand_parameters
 
 #-----------------------------------------------
 #  Handle the actions:
-#  copy-and-replace
 #  copy-characters-from-position-to-position
 
-        if ( ( $action_name eq "copy-and-replace" ) || ( $action_name eq "copy-characters-from-position-to-position" ) )
+        if ( $action_name eq "copy-characters-from-position-to-position" )
         {
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
@@ -2980,78 +2979,90 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
-            if ( $action_name eq "copy-and-replace" )
+			$pointer_one = -1 ;
+			$pointer_two = -1 ;
+			if ( $operand_three =~ /^([0-9]+)$/ )
+			{
+				$pointer_one = $1 ;
+			}
+			if ( $operand_four =~ /^([0-9]+)$/ )
+			{
+				$pointer_two = $1 ;
+			}
+			if ( ( $pointer_one == -1 ) || ( $pointer_two == -1 ) || ( $pointer_one > $pointer_two ) )
+			{
+				$replacement_text = $text_begin . $action_result . $text_end ;
+				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+				{
+					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number" . "}}\n" ;
+				}
+				next ;
+			}
+			$source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+			$global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - $pointer_one + 1 ) ) ;
+			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+			{
+				$global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
+			}
+#  end of action code
+            $replacement_text = $text_begin . $action_result . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the actions:
+#  copy-and-replace
+
+        if ( $action_name eq "copy-and-replace" )
+        {
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
             {
-                $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
-                if ( exists( $global_dashrep_replacement{ $operand_four } ) )
-                {
-                    $text_to_insert = $global_dashrep_replacement{ $operand_four } ;
-                } else
-                {
-                    $text_to_insert = "" ;
-                }
-                $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
-                {
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning: replacement string (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
-                    }
-                } elsif ( ( length( $string_to_be_replaced ) >= length( $text_to_insert ) ) && ( length( $text_to_insert ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) )
-                {
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning: string to replace (" . $string_to_be_replaced . ") contains replacement string (" . $text_to_insert . "), so no replacements done}}\n" ;
-                    }
-                } else
-                {
-                    $length_of_string_to_be_replaced = length( $string_to_be_replaced ) ;
-                    $character_position = index( $source_text , $string_to_be_replaced ) ;
-                    while ( $character_position >= 0 )
-                    {
-                        $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
-                        $character_position = index( $source_text , $string_to_be_replaced ) ;
-                        $global_endless_loop_counter ++ ;
-                        $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
-                        if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
-                        {
-                            $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-                            last ;
-                        }
-                    }
-                }
+                $global_dashrep_replacement{ $source_phrase_name } = "" ;
+            }
+			$string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
+			if ( exists( $global_dashrep_replacement{ $operand_four } ) )
+			{
+				$text_to_insert = $global_dashrep_replacement{ $operand_four } ;
+			} else
+			{
+				$text_to_insert = "" ;
+			}
+			$source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+			if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
+			{
+				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+				{
+					$global_trace_log .= "{{trace; warning: replacement string (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
+				}
+			} elsif ( ( length( $string_to_be_replaced ) >= length( $text_to_insert ) ) && ( length( $text_to_insert ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) )
+			{
+				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+				{
+					$global_trace_log .= "{{trace; warning: string to replace (" . $string_to_be_replaced . ") contains replacement string (" . $text_to_insert . "), so no replacements done}}\n" ;
+				}
+			} else
+			{
+				$length_of_string_to_be_replaced = length( $string_to_be_replaced ) ;
+				$character_position = index( $source_text , $string_to_be_replaced ) ;
+				while ( $character_position >= 0 )
+				{
+					$source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
+					$character_position = index( $source_text , $string_to_be_replaced ) ;
+					$global_endless_loop_counter ++ ;
+					$global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
+					if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+					{
+						$global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+						last ;
+					}
+				}
                 $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
                     $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with replacements}}\n" ;
-                }
-            }
-            if ( $action_name eq "copy-characters-from-position-to-position" )
-            {
-                $pointer_one = -1 ;
-                $pointer_two = -1 ;
-                if ( $operand_three =~ /^([0-9]+)$/ )
-                {
-                    $pointer_one = $1 ;
-                }
-                if ( $operand_four =~ /^([0-9]+)$/ )
-                {
-                    $pointer_two = $1 ;
-                }
-                if ( ( $pointer_one == -1 ) || ( $pointer_two == -1 ) || ( $pointer_one > $pointer_two ) )
-                {
-                    $replacement_text = $text_begin . $action_result . $text_end ;
-                    if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-                    {
-                        $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number" . "}}\n" ;
-                    }
-                    next ;
-                }
-                $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-                $global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - $pointer_one + 1 ) ) ;
-                if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-                {
-                    $global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
                 }
             }
 #  end of action code
