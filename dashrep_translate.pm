@@ -2994,7 +2994,7 @@ sub dashrep_expand_parameters
 				$replacement_text = $text_begin . $action_result . $text_end ;
 				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
 				{
-					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number" . "}}\n" ;
+					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number (context: operand one is " . $operand_one . " and operand two is " . $operand_two . ")" . "}}\n" ;
 				}
 				next ;
 			}
