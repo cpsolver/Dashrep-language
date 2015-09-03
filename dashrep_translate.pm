@@ -1479,7 +1479,6 @@ sub dashrep_expand_parameters
     my $list_of_words ;
     my $phrase_name_to_clear ;
     my $text_to_insert ;
-    my $characters_to_insert ;
     my $string_to_be_replaced ;
     my $word_number ;
     my $string_to_find ;
@@ -1568,11 +1567,7 @@ sub dashrep_expand_parameters
     my $list_indicating_sort_order_text_string ;
     my $pointer_one ;
     my $pointer_two ;
-    my $string_containing_characters_to_replace ;
-    my $character_to_possibly_replace ;
-    my $pointer_to_matching_character ;
     my $pointer_to_matching_text ;
-    my $character_to_insert ;
     my $name_of_parameter_for_handler ;
     my $list_of_x_values_as_text ;
     my $list_of_y_values_as_text ;
@@ -1617,6 +1612,7 @@ sub dashrep_expand_parameters
     my $position_end ;
     my $word_to_check ;
     my $string_to_match ;
+    my $number_of_unique_words ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
     my @list_of_paired_words ;
@@ -1639,7 +1635,7 @@ sub dashrep_expand_parameters
     my @right_direction_value_for_item_number ;
     my @list_of_parameter_words ;
     my @list_of_source_words ;
-    my %not_listed_word ;
+    my %occurrence_count_for_word ;
     my %listed_word ;
     my %words_at_numeric_value ;
     my %item_number_at_row_column ;
@@ -3733,25 +3729,29 @@ sub dashrep_expand_parameters
                 @list_of_loop_words = split( / +/ , $text_list_loop ) ;
             }
             $length_of_loop_list = $#list_of_loop_words + 1 ;
-            %not_listed_word = ( ) ;
+            %occurrence_count_for_word = ( ) ;
+            $number_of_unique_words = 0 ;
             $result_word_list = "" ;
             if ( $length_of_loop_list > 0 )
             {
                 for ( $pointer = 1 ; $pointer <= $length_of_loop_list ; $pointer ++ )
                 {
                     $word = $list_of_loop_words[ $pointer - 1 ] ;
-                    if ( ( exists( $listed_word{ $word } ) ) && ( $action_name eq "copy-words-found-in-both-lists" ) )
+                    $occurrence_count_for_word{ $word } ++ ;
+                    if ( exists( $listed_word{ $word } ) )
                     {
-                        $result_word_list .= $word . " " ;
-                    } elsif ( not( exists( $listed_word{ $word } ) ) )
+                        if ( ( $action_name eq "copy-words-found-in-both-lists" ) && ( $occurrence_count_for_word{ $word } == 1 ) )
+                        {
+                            $result_word_list .= $word . " " ;
+                        }
+                    } else
                     {
                         if ( $action_name eq "copy-words-found-only-in-first-list" )
                         {
                             $result_word_list .= $word . " " ;
                         } elsif ( $action_name eq "copy-words-unique-only" )
                         {
-                            $not_listed_word{ $word } ++ ;
-                            if ( $not_listed_word{ $word } < 2 )
+                            if ( $occurrence_count_for_word{ $word } == 1 )
                             {
                                 $result_word_list .= $word . " " ;
                             }

@@ -270,7 +270,7 @@ test-of-special-operators:
 [-word-gamma = gamma -]
 [-word-other = other -]
 [-word-list-result = [-get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list-]-]
-[-sample-word-list-one = alpha alpha-here and beta gamma delta-]
+[-sample-word-list-one = alpha alpha-here and beta gamma beta delta-]
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
 [-copy-text sample-word-list-one list-with-dups-]
 [-append-text sample-word-list-two list-with-dups-]
