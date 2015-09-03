@@ -274,7 +274,7 @@ test-of-special-operators:
 [-sample-word-list-two = something-here alpha alpha-here beta delta whatever-]
 [-copy-text sample-word-list-one list-with-dups-]
 [-append-text sample-word-list-two list-with-dups-]
-[-find-in-lists-result = [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] -]
+[-find-in-lists-result = [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list sample-word-list-one sample-word-list-two word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] - [-list-of-unique-word-counts-] -]
 [-hyphen-translation-safe = <character_hyphen>-]
 [-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
 [-already-expanded-phrase = one<character_hyphen>two<character_hyphen>three <item_one>-]
@@ -1051,7 +1051,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "find-in-l
 # $string_return_value = &dashrep_expand_parameters( "find-in-lists-result" );
 #  uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]\n" ;
-if ( $string_return_value eq "alpha alpha-here beta delta - beta whatever something-here gamma alpha-here alpha delta and - and gamma - alpha alpha-here and beta gamma delta something-here whatever" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $string_return_value eq "alpha alpha-here beta delta - beta whatever something-here gamma alpha-here alpha delta and - and gamma - alpha alpha-here and beta gamma delta something-here whatever - 2 2 1 3 1 2 1 1" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

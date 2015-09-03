@@ -94,6 +94,7 @@ copy-words-that-begin-with-text
 copy-words-that-begin-with-listed-words
 copy-words-that-contain-listed-words
 copy-words-unique-only
+list-of-unique-word-counts
 copy-words-order-reversed
 generate-counts-from-integer-to-integer
 generate-every-pairwise-combination-of-words

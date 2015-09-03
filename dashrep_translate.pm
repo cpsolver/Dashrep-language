@@ -296,6 +296,7 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
+    $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;
 
     $global_list_of_predefined_phrases_as_text = "" ;
     foreach $phrase_name ( keys( %global_dashrep_replacement ) )
@@ -747,6 +748,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "no" ;
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
+    $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 }
@@ -1613,6 +1615,7 @@ sub dashrep_expand_parameters
     my $word_to_check ;
     my $string_to_match ;
     my $number_of_unique_words ;
+    my $text_list_of_unique_word_counts ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
     my @list_of_paired_words ;
@@ -1635,6 +1638,7 @@ sub dashrep_expand_parameters
     my @right_direction_value_for_item_number ;
     my @list_of_parameter_words ;
     my @list_of_source_words ;
+    my @unique_word_at_position ;
     my %occurrence_count_for_word ;
     my %listed_word ;
     my %words_at_numeric_value ;
@@ -3731,6 +3735,8 @@ sub dashrep_expand_parameters
             $length_of_loop_list = $#list_of_loop_words + 1 ;
             %occurrence_count_for_word = ( ) ;
             $number_of_unique_words = 0 ;
+            @unique_word_at_position = ( ) ;
+            $unique_word_at_position[ 0 ] = "" ;
             $result_word_list = "" ;
             if ( $length_of_loop_list > 0 )
             {
@@ -3749,18 +3755,30 @@ sub dashrep_expand_parameters
                         if ( $action_name eq "copy-words-found-only-in-first-list" )
                         {
                             $result_word_list .= $word . " " ;
-                        } elsif ( $action_name eq "copy-words-unique-only" )
+                        } elsif ( ( $action_name eq "copy-words-unique-only" ) && ( $occurrence_count_for_word{ $word } == 1 ) )
                         {
-                            if ( $occurrence_count_for_word{ $word } == 1 )
-                            {
-                                $result_word_list .= $word . " " ;
-                            }
+                            $result_word_list .= $word . " " ;
+                            $number_of_unique_words ++ ;
+                            $unique_word_at_position[ $number_of_unique_words ] = $word ;
                         }
                     }
                 }
             }
             $result_word_list =~ s/ +$// ;
             $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
+            if ( $action_name eq "copy-words-unique-only" )
+            {
+                $text_list_of_unique_word_counts = "" ;
+                for ( $pointer = 1 ; $pointer <= $number_of_unique_words ; $pointer ++ )
+                {
+                    if ( $pointer > 1 )
+                    {
+                        $text_list_of_unique_word_counts .= " " ;
+                    }
+                    $text_list_of_unique_word_counts .= sprintf( "%d" , $occurrence_count_for_word{ $unique_word_at_position[ $pointer ] } ) ;
+                }
+                $global_dashrep_replacement{ "list-of-unique-word-counts" } = $text_list_of_unique_word_counts ;
+            }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; action " . $action_name . " done" . "}}\n";

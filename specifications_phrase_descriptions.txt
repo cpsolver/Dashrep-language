@@ -1279,9 +1279,13 @@ Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the s
 ----
 
 description-for-phrase-copy-words-unique-only:
-This action copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition.
+This action copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition. s-n The position of the first occurrence of a word determines the position of that word in the result list. s-n In addition, the special phrase b-i-b list h-h of h-h unique h-h word h-h counts b-i-e contains a list of counts that indicate how many times each word occurs in the original list.
 paragraph-next
-Example: If the first phrase definition is b-i-b abc 123 def 123 abc b-i-e then the second phrase is defined as b-i-b abc 123 def b-i-e (although a specific word order is not guaranteed).
+Example: If the first phrase definition is b-i-b dolphin whale starfish whale dolphin b-i-e then the second phrase is defined as b-i-b dolphin whale starfish b-i-e no-space . s-n In addition, the phrase b-i-b list h-h of h-h unique h-h word h-h counts b-i-e contains b-i-b 2 2 1 b-i-e no-space .
+----
+
+description-for-phrase-list-of-unique-word-counts:
+This phrase contains a list of word counts for the unique words found by the most recent use of the action b-i-b copy h-h words h-h unique h-h only b-i-e no-space . s-n If that action has not yet been used, this phrase is empty. s-n See b-i-b copy h-h words h-h unique h-h only b-i-e for details.
 ----
 
 description-for-phrase-generate-counts-from-integer-to-integer:
