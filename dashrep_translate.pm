@@ -3987,7 +3987,7 @@ sub dashrep_expand_parameters
                         {
                             $generated_list .= $word_to_check . " " ;
                             last ;
-                        } elsif ( $pointer_to_matching_text == 0 )
+                        } elsif ( ( $pointer_to_matching_text == 0 ) && ( $action_name eq "copy-words-that-begin-with-listed-words" ) )
                         {
                             $generated_list .= $word_to_check . " " ;
                             last ;

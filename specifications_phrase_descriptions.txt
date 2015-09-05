@@ -1261,7 +1261,7 @@ This action counts the number of words in the definition of a specified phrase, 
 ----
 
 description-for-phrase-copy-words-found-in-both-lists:
-This action copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions.
+This action copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions. s-n If a word appears more than once in either list, and it appears in both lists, it appears only once in the result. s-n The order of the words in the result is not assured.
 paragraph-next
 Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b def 123 b-i-e (or b-i-b 123 def b-i-e no-space ).
 ----
@@ -1273,9 +1273,9 @@ Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the s
 ----
 
 description-for-phrase-copy-words-found-only-in-first-list:
-This action copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition.
+This action copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition. s-n The order of words in the target phrase matches the order of words in the first list. s-n If a word appears multiple times in the first list and it qualifies to appear in the result, that word appears multiple times, in the same order as in the first list. s-n The action b-i-b copy h-h words h-h unique h-h only b-i-e can be used to eliminate duplicate words.
 paragraph-next
-Example: If the first phrase definition is b-i-b abc 123 def 456 b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 b-i-e no-space . s-n The order of words in the target phrase matches the order of words in the first list.
+Example: If the first phrase definition is b-i-b abc 123 def 456 abc b-i-e and the second definition is b-i-b def 789 xyz 123 b-i-e then the third phrase is defined as b-i-b abc 456 abc b-i-e no-space .
 ----
 
 description-for-phrase-copy-words-unique-only:
