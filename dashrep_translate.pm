@@ -4495,7 +4495,13 @@ sub dashrep_expand_parameters
                 }
             } elsif ( $action_name eq "numeric-logarithm-base-e" )
             {
-                $result_value = log( $operand_one + 0.0 ) ;
+                if ( $operand_one + 0.0 < 0.000001 )
+                {
+                    $result_value = -999999 ;
+                } else
+                {
+                    $result_value = log( $operand_one + 0.0 ) ;
+                }
                 if ( $result_value == 0 )
                 {
                     $action_result = "0" ;
@@ -4509,7 +4515,13 @@ sub dashrep_expand_parameters
                 }
             } elsif ( $action_name eq "numeric-logarithm-base-10" )
             {
-                $result_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
+                if ( $operand_one + 0.0 < 0.000001 )
+                {
+                    $result_value = -999999 ;
+                } else
+                {
+                    $result_value = ( log( $operand_one + 0.0 ) ) / ( log( 10.0 ) ) ;
+                }
                 if ( $result_value == 0 )
                 {
                     $action_result = "0" ;

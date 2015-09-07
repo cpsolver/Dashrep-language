@@ -186,6 +186,17 @@ if ( $string_return_value eq "" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
+
+#-------------------------------------------
+#  Ensure non-error handling of some calculations
+#  does not cause crash or major error.
+
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-numeric-logarithm-base-e 0 -]" );
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+$string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-numeric-logarithm-base-10 0 -]" );
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+
+
 #-------------------------------------------
 #  Specify Dashrep code that will be used in
 #  tests below.

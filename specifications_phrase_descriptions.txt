@@ -359,11 +359,11 @@ This action gets the list of space h-h delimited delta X integer numbers in the 
 ----
 
 description-for-phrase-numeric-logarithm-base-10:
-This action calculates the base-10 logarithm of the specified number, and supplies the result.
+This action calculates the base-10 logarithm of the specified number, and supplies the result. s-n The number is assumed to be a positive number. s-n If the supplied value is a very small number less than one (typically less than 0.000001) then the result is a large negative number such as -999999 no-space .
 -----
 
 description-for-phrase-numeric-logarithm-base-e:
-This action calculates the base-e logarithm of the specified number, and supplies the result.
+This action calculates the base-e logarithm of the specified number, and supplies the result. s-n The number is assumed to be a positive number. s-n If the supplied value is a very small number less than one (typically less than 0.000001) then the result is a large negative number such as -999999 no-space .
 -----
 
 description-for-phrase-numeric-map-tile-zoom:
