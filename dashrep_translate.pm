@@ -2875,7 +2875,14 @@ sub dashrep_expand_parameters
                     }
                 } elsif ( ( $action_name eq "copy-words-rearrange-using-order-sort-alphabetic" ) || ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" ) )
                 {
-                    @list_of_words = split( / +/ , $source_text ) ;
+                    if ( $source_text =~ / / )
+                    {
+                        @list_of_words = split( / +/ , $source_text ) ;
+                    } else
+                    {
+                        @list_of_words = ( ) ;
+                        $list_of_words[ 0 ] = $source_text ;
+                    }
                     $list_indicating_sort_order_text_string = $global_dashrep_replacement{ $operand_three } ;
                     $list_indicating_sort_order_text_string =~ s/^ +// ;
                     $list_indicating_sort_order_text_string =~ s/ +$// ;
@@ -2978,31 +2985,31 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
-			$pointer_one = -1 ;
-			$pointer_two = -1 ;
-			if ( $operand_three =~ /^([0-9]+)$/ )
-			{
-				$pointer_one = $1 ;
-			}
-			if ( $operand_four =~ /^([0-9]+)$/ )
-			{
-				$pointer_two = $1 ;
-			}
-			if ( ( $pointer_one == -1 ) || ( $pointer_two == -1 ) || ( $pointer_one > $pointer_two ) )
-			{
-				$replacement_text = $text_begin . $action_result . $text_end ;
-				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-				{
-					$global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number (context: operand one is " . $operand_one . " and operand two is " . $operand_two . ")" . "}}\n" ;
-				}
-				next ;
-			}
-			$source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-			$global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - $pointer_one + 1 ) ) ;
-			if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-			{
-				$global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
-			}
+            $pointer_one = -1 ;
+            $pointer_two = -1 ;
+            if ( $operand_three =~ /^([0-9]+)$/ )
+            {
+                $pointer_one = $1 ;
+            }
+            if ( $operand_four =~ /^([0-9]+)$/ )
+            {
+                $pointer_two = $1 ;
+            }
+            if ( ( $pointer_one == -1 ) || ( $pointer_two == -1 ) || ( $pointer_one > $pointer_two ) )
+            {
+                $replacement_text = $text_begin . $action_result . $text_end ;
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning, for action " . $action_name . " , operand " . $operand_three . " or operand " . $operand_four . " is not a positive integer number, or the first number is larger than the second number (context: operand one is " . $operand_one . " and operand two is " . $operand_two . ")" . "}}\n" ;
+                }
+                next ;
+            }
+            $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+            $global_dashrep_replacement{ $target_phrase_name } = substr( $source_text , ( $pointer_one - 1 ) , ( $pointer_two - $pointer_one + 1 ) ) ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied some characters from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . "}}\n" ;
+            }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
@@ -3021,43 +3028,43 @@ sub dashrep_expand_parameters
             {
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
-			$string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
-			if ( exists( $global_dashrep_replacement{ $operand_four } ) )
-			{
-				$text_to_insert = $global_dashrep_replacement{ $operand_four } ;
-			} else
-			{
-				$text_to_insert = "" ;
-			}
-			$source_text = $global_dashrep_replacement{ $source_phrase_name } ;
-			if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
-			{
-				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-				{
-					$global_trace_log .= "{{trace; warning: replacement string (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
-				}
-			} elsif ( ( length( $string_to_be_replaced ) >= length( $text_to_insert ) ) && ( length( $text_to_insert ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) )
-			{
-				if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
-				{
-					$global_trace_log .= "{{trace; warning: string to replace (" . $string_to_be_replaced . ") contains replacement string (" . $text_to_insert . "), so no replacements done}}\n" ;
-				}
-			} else
-			{
-				$length_of_string_to_be_replaced = length( $string_to_be_replaced ) ;
-				$character_position = index( $source_text , $string_to_be_replaced ) ;
-				while ( $character_position >= 0 )
-				{
-					$source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
-					$character_position = index( $source_text , $string_to_be_replaced ) ;
-					$global_endless_loop_counter ++ ;
-					$global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
-					if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
-					{
-						$global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-						last ;
-					}
-				}
+            $string_to_be_replaced = $global_dashrep_replacement{ $operand_three } ;
+            if ( exists( $global_dashrep_replacement{ $operand_four } ) )
+            {
+                $text_to_insert = $global_dashrep_replacement{ $operand_four } ;
+            } else
+            {
+                $text_to_insert = "" ;
+            }
+            $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+            if ( ( length( $text_to_insert ) >= length( $string_to_be_replaced ) ) && ( index( $text_to_insert , $string_to_be_replaced ) >= 0 ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: replacement string (" . $text_to_insert . ") contains string to replace (" . $string_to_be_replaced . "), so no replacements done}}\n" ;
+                }
+            } elsif ( ( length( $string_to_be_replaced ) >= length( $text_to_insert ) ) && ( length( $text_to_insert ) > 0 ) && ( index( $string_to_be_replaced , $text_to_insert ) >= 0 ) )
+            {
+                if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+                {
+                    $global_trace_log .= "{{trace; warning: string to replace (" . $string_to_be_replaced . ") contains replacement string (" . $text_to_insert . "), so no replacements done}}\n" ;
+                }
+            } else
+            {
+                $length_of_string_to_be_replaced = length( $string_to_be_replaced ) ;
+                $character_position = index( $source_text , $string_to_be_replaced ) ;
+                while ( $character_position >= 0 )
+                {
+                    $source_text = substr( $source_text , 0 , $character_position ) . $text_to_insert . substr( $source_text , $character_position + $length_of_string_to_be_replaced ) ;
+                    $character_position = index( $source_text , $string_to_be_replaced ) ;
+                    $global_endless_loop_counter ++ ;
+                    $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
+                    if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
+                    {
+                        $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
+                        last ;
+                    }
+                }
                 $global_dashrep_replacement{ $target_phrase_name } = $source_text ;
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -3940,7 +3947,14 @@ sub dashrep_expand_parameters
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
             $list_of_words_as_text =~ s/^ +// ;
             $list_of_words_as_text =~ s/ +$// ;
-            @list_of_words = split( / +/ , $list_of_words_as_text ) ;
+            if ( $list_of_words_as_text =~ / / )
+            {
+                @list_of_words = split( / +/ , $list_of_words_as_text ) ;
+            } else
+            {
+                @list_of_words = ( ) ;
+                $list_of_words[ 0 ] = $list_of_words_as_text ;
+            }
             $string_to_search = $global_dashrep_replacement{ $operand_three } ;
             $length_of_string = length( $string_to_search ) ;
             $generated_list = "" ;
@@ -6313,7 +6327,14 @@ sub dashrep_file_actions
                 $list_of_words_as_text = $global_dashrep_replacement{ $operand_two } ;
                 $list_of_words_as_text =~ s/^ +// ;
                 $list_of_words_as_text =~ s/ +$// ;
-                @list_of_words = split( / +/ , $list_of_words_as_text ) ;
+                if ( $list_of_words_as_text =~ / / )
+                {
+                    @list_of_words = split( / +/ , $list_of_words_as_text ) ;
+                } else
+                {
+                    @list_of_words = ( ) ;
+                    $list_of_words[ 0 ] = $list_of_words_as_text ;
+                }
                 foreach $word ( @list_of_words )
                 {
                     $matching_text{ $word } = "match" ;
