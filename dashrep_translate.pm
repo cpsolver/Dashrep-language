@@ -6357,8 +6357,8 @@ sub dashrep_file_actions
                         {
                             $storage_name = "dashrep-storage-" . sprintf( "%d" , $global_storage_number ) ;
                             $global_storage_number ++ ;
-                            $global_dashrep_replacement{ $operand_three } .= $storage_name . " " ;
                             $global_dashrep_replacement{ $storage_name } = $input_line ;
+                            $list_of_storage_names .= $storage_name . " " ;
                         } else
                         {
                             if ( $input_line =~ /^[^ ]+ +([^ ]+)(( )|($))/ )
