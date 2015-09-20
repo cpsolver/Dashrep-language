@@ -4989,7 +4989,7 @@ sub dashrep_expand_parameters
                     $row_position_for_item_number[ $item_number_at_min_or_max ] = $target_row_number ;
 #                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
 #                    {
-                        $global_trace_log .= "{{trace; 2-d info: " . $item_number_at_min_or_max . " " . $target_column_number . " " . $target_row_number . " " . $top_row_number . " " . $bottom_row_number . " " . $top_left_open_column . " " . $top_right_open_column . " " . $bottom_left_open_column . " " . $bottom_right_open_column . " " . $fill_direction . " " . $need_maximum_or_minimum . "}}\n" ;
+                        $global_trace_log .= "{{trace; 2-d info: " . $item_number_at_min_or_max . " " . $target_row_number . " " . $target_column_number . " " . $top_row_number . " " . $bottom_row_number . " " . $top_left_open_column . " " . $top_right_open_column . " " . $bottom_left_open_column . " " . $bottom_right_open_column . " " . $fill_direction . " " . $need_maximum_or_minimum . "}}\n" ;
 #                    }
                     if ( $fill_direction == $fill_direction_top_left )
                     {
@@ -5017,6 +5017,25 @@ sub dashrep_expand_parameters
                     $bottom_row_number -- ;
                     $bottom_left_open_column = 1 ;
                     $bottom_right_open_column = $number_of_columns ;
+                }
+                if ( $top_row_number == $bottom_row_number )
+                {
+                    if ( $top_left_open_column > $bottom_left_open_column )
+                    {
+                        $bottom_left_open_column = $top_left_open_column ;
+                    }
+                    if ( $top_left_open_column < $bottom_left_open_column )
+                    {
+                        $top_left_open_column = $bottom_left_open_column ;
+                    }
+                    if ( $top_right_open_column > $bottom_right_open_column )
+                    {
+                        $top_right_open_column = $bottom_right_open_column ;
+                    }
+                    if ( $top_right_open_column < $bottom_right_open_column )
+                    {
+                        $bottom_right_open_column = $top_right_open_column ;
+                    }
                 }
             }
             $final_result = "" ;
