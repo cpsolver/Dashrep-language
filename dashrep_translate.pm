@@ -4994,16 +4994,16 @@ sub dashrep_expand_parameters
                     }
                     $column_position_for_item_number[ $item_number_at_min_or_max ] = $target_column_number ;
                     $row_position_for_item_number[ $item_number_at_min_or_max ] = $target_row_number ;
+                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+                    {
+                        $global_trace_log .= "{{trace; 2-d info: " . $item_number_at_min_or_max . " " . $target_row_number . " " . $target_column_number . " " . $top_row_number . " " . $bottom_row_number . " " . $top_left_open_column . " " . $top_right_open_column . " " . $bottom_left_open_column . " " . $bottom_right_open_column . " " . $fill_direction . " " . $need_maximum_or_minimum . "}}\n" ;
+                    }
 #                   Do NOT change (or remove) next line, else endless loop is likely:
                     $number_of_items_remaining -- ;
                     if ( $number_of_items_remaining < 1 )
                     {
                         last ;
                     }
-#                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-#                    {
-                        $global_trace_log .= "{{trace; 2-d info: " . $item_number_at_min_or_max . " " . $target_row_number . " " . $target_column_number . " " . $top_row_number . " " . $bottom_row_number . " " . $top_left_open_column . " " . $top_right_open_column . " " . $bottom_left_open_column . " " . $bottom_right_open_column . " " . $fill_direction . " " . $need_maximum_or_minimum . "}}\n" ;
-#                    }
                     if ( $fill_direction == $fill_direction_top_left )
                     {
                         $top_left_open_column ++ ;
@@ -5018,6 +5018,10 @@ sub dashrep_expand_parameters
                         $top_right_open_column -- ;
                     }
                     $zero_if_not_remaining_item_number[ $item_number_at_min_or_max ] = 0 ;
+                }
+                if ( $number_of_items_remaining < 1 )
+                {
+                    last ;
                 }
                 if ( $top_left_open_column > $top_right_open_column )
                 {
