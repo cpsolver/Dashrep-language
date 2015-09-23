@@ -1615,6 +1615,7 @@ sub dashrep_expand_parameters
     my $string_to_match ;
     my $number_of_unique_words ;
     my $text_list_of_unique_word_counts ;
+    my $number_of_items_remaining ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
     my @list_of_paired_words ;
@@ -4852,7 +4853,7 @@ sub dashrep_expand_parameters
             $bottom_left_open_column = 1 ;
             $bottom_right_open_column = $number_of_items_in_bottom_row ;
             $number_of_items_remaining = $number_of_items ;
-            while ( ( $top_row_number <= $bottom_row_number ) && ( $number_of_items_remaining > 0 ) )
+            while ( $number_of_items_remaining > 0 )
             {
                 for ( $fill_direction = $fill_direction_top_left ; $fill_direction <= $fill_direction_top_right ; $fill_direction ++ )
                 {
@@ -4993,6 +4994,7 @@ sub dashrep_expand_parameters
                     }
                     $column_position_for_item_number[ $item_number_at_min_or_max ] = $target_column_number ;
                     $row_position_for_item_number[ $item_number_at_min_or_max ] = $target_row_number ;
+#                   Do NOT change (or remove) next line, else endless loop is likely:
                     $number_of_items_remaining -- ;
 #                    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
 #                    {
