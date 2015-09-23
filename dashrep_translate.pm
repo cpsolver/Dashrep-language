@@ -3622,13 +3622,18 @@ sub dashrep_expand_parameters
             if ( $words_to_find =~ / / )
             {
                 @list_of_text_items_to_find = split( / +/ , $words_to_find ) ;
-            } else
+                $number_of_items_to_find = $#list_of_text_items_to_find + 1 ;
+            } elsif ( $words_to_find =~ /^[^ ]+$/ )
             {
                 @list_of_text_items_to_find = ( ) ;
                 $list_of_text_items_to_find[ 0 ] = $words_to_find ;
+                $number_of_items_to_find = 1 ;
+            } else
+            {
+                @list_of_text_items_to_find = ( ) ;
+                $number_of_items_to_find = 0 ;
             }
             %text_to_find_at_position = ( ) ;
-            $number_of_items_to_find = $#list_of_text_items_to_find + 1 ;
             if ( $number_of_items_to_find > 0 )
             {
                 for ( $item_number = 1 ; $item_number <= $number_of_items_to_find ; $item_number ++ )
