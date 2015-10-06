@@ -426,7 +426,8 @@ Example: If the first phrase contains b-i-b fish bird b-i-e and the second phras
 -----
 
 description-for-phrase-get-position-of-word:
-This action searches for the first (space h-h delimited) word as one of the words in the second phrase, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position. s-n The supplied word is the word that follows this action name; a phrase definition is not used to supply the word.
+This action searches for a specified word within text that contains the space h-h delimited word, and supplies the b-b word b-e position (not character position) of the first match. sentence-next If there is no match, a b-i-b 0 b-i-e (zero) is supplied. sentence-next The word positions are numbered starting at 1 as the first word position. s-n The supplied word is the word in the first phrase.
+Example: If the first phrase contains the word b-i-b dolphin b-i-e and the second phrase contains b-i-b whale dolphin starfish jellyfish dolphin b-i-e then the supplied value is b-i-b 2 b-i-e no-space .
 -----
 
 description-for-phrase-prepend-text-no-space:
@@ -1253,8 +1254,9 @@ This action counts the number of characters (including spaces) in the specified 
 ----
 
 description-for-phrase-get-word-at-position:
-This action supplies the word position that is occupied by the first h-h operand word within a list of words that are in the definition of the second h-h operand phrase. s-n The position of the word is supplied as an integer number. s-n Position number 1 specifies the first word. s-n A value of zero ( no-space b-i-b 0 b-i-e no-space ) indicates the word was not found. s-n If the list contains more than one occurrence of the word being found, only the first occurrence is indicated. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
-Example: If the first operand is the word b-i-b dolphin b-i-e and the second operand is a phrase that contains b-i-b whale dolphin starfish jellyfish dolphin b-i-e then the supplied value is b-i-b 2 b-i-e no-space .
+This action supplies a word that is contained at the specified b-i-b word b-i-e position (not character position) within the second phrase. s-n The word position is supplied as an integer number. s-n The word positions are numbered starting at 1 as the first word position. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
+Example: If the first phrase contains b-i-b whale dolphin starfish jellyfish dolphin b-i-e and the second operand is b-i-b 2 b-i-e
+then the supplied value is b-i-b dolphin b-i-e no-space .
 ----
 
 description-for-phrase-get-count-of-words:
