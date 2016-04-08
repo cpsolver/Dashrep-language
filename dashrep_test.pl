@@ -330,6 +330,8 @@ test-of-special-operators:
 [-append-text character-period list-of-phrase-names-difference-]
 [-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
+[-text-containing-period = abc.def.ghi -]
+[-results-position-of-matching-text = [-get-position-of-matching-text character-period text-containing-period-]-]
 nothing else
 --------
 
@@ -1619,6 +1621,23 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+#  Test the action "get-position-of-matching-text"
+
+$being_tested = "test action get-position-of-matching-text -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "results-position-of-matching-text" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "results-position-of-matching-text" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
 #  Test the action "write-gathered-listed-items-to-end-of-file"
 
 # $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-gathered-tag-names-in-sequence" , "url whatever2" );
@@ -1809,7 +1828,8 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phr
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
 #  uncomment-for-cpan-version-end
- $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
+#
+# $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
 if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
