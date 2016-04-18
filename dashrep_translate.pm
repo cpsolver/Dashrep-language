@@ -2062,7 +2062,7 @@ sub dashrep_expand_parameters
             }
             next ;
         }
-        if ( ( exists( $global_check_operand_one_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_one =~ /^[\-_]/ ) || ( $operand_one =~ /[\-_]$/ ) ) )
+        if ( ( exists( $global_check_operand_one_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_one =~ /^[\-]/ ) || ( $operand_one =~ /[\-]$/ ) ) )
         {
             $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -2072,7 +2072,7 @@ sub dashrep_expand_parameters
             }
             next ;
         }
-        if ( ( exists( $global_check_operand_two_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_two =~ /^[\-_]/ ) || ( $operand_two =~ /[\-_]$/ ) ) )
+        if ( ( exists( $global_check_operand_two_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_two =~ /^[\-]/ ) || ( $operand_two =~ /[\-]$/ ) ) )
         {
             $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -2082,7 +2082,7 @@ sub dashrep_expand_parameters
             }
             next ;
         }
-        if ( ( exists( $global_check_operand_three_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_three =~ /^[\-_]/ ) || ( $operand_three =~ /[\-_]$/ ) ) )
+        if ( ( exists( $global_check_operand_three_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_three =~ /^[\-]/ ) || ( $operand_three =~ /[\-]$/ ) ) )
         {
             $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
             $replacement_text = $text_begin . $action_result . $text_end ;
@@ -2092,7 +2092,7 @@ sub dashrep_expand_parameters
             }
             next ;
         }
-        if ( ( exists( $global_check_operand_four_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_four =~ /^[\-_]/ ) || ( $operand_four =~ /[\-_]$/ ) ) )
+        if ( ( exists( $global_check_operand_four_is_phrase_name_for_action{ $action_name } ) ) && ( ( $operand_four =~ /^[\-]/ ) || ( $operand_four =~ /[\-]$/ ) ) )
         {
             $action_result = $global_dashrep_replacement{ "dashrep-undefined" } ;
             $replacement_text = $text_begin . $action_result . $text_end ;
