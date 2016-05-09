@@ -207,6 +207,7 @@ find-lines-in-file-that-begin-with-any-two-words-listed
 
 category_data
 copy-from-columns-in-file-to-named-phrases
+copy-from-columns-in-file-to-column-lists
 yes-or-no-use-two-spaces-as-column-delimiter
 gather-tagged-info-from-file
 gather-from-tagged-file-one-entry

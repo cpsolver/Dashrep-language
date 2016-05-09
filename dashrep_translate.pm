@@ -424,6 +424,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "create-empty-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "create-empty-sub-folder" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-named-phrases" } = 3 ;
+    $global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-column-lists" } = 2 ;
     $global_required_number_of_operands_for_action{ "gather-tagged-info-from-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "write-gathered-listed-items-to-end-of-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "gather-from-tagged-file-one-entry" } = 2 ;
@@ -652,6 +653,7 @@ BEGIN {
     $global_check_operand_one_is_file_name_for_action{ "rename-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "create-empty-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-named-phrases" } = "yes" ;
+    $global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-column-lists" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "gather-tagged-info-from-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "gather-from-tagged-file-one-entry" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
@@ -5508,7 +5510,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-append-file-to-file" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-append-file-to-file" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "copy-from-columns-in-file-to-column-lists" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -6120,6 +6122,7 @@ sub dashrep_file_actions
     my $line_number ;
     my $full_path ;
     my $temp_text ;
+    my $list_name_prefix ;
     my $list_of_words ;
     my $word ;
     my $matching_text ;
@@ -6150,6 +6153,9 @@ sub dashrep_file_actions
     my $list_of_storage_names ;
     my $list_of_words_as_text ;
     my $accumulated_text ;
+    my $minimum_number_of_columns ;
+    my @list_of_values_in_column ;
+    my @value_in_column ;
     my @list_of_tag_values_in_sequence_encountered ;
     my @list_of_tag_names ;
     my @list_of_phrases ;
@@ -7059,6 +7065,71 @@ sub dashrep_file_actions
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; copied from columns in file " . $source_filename . " to phrase names specified in phrase " . $target_phrase_name . "}}\n" ;
+            }
+        }
+        if ( $possible_error_message ne "" )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: " . $possible_error_message . "}}\n" ;
+            }
+        }
+        close( INFILE ) ;
+#  end of action code
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-from-columns-in-file-to-column-lists
+
+    } elsif ( $action_name eq "copy-from-columns-in-file-to-column-lists" )
+    {
+        if ( ( $source_filename eq "" ) || ( $operand_two eq "" ) )
+        {
+            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $source_filename . " and " . $operand_two . "]" ;
+        } elsif ( open ( INFILE , '<' . $source_filename ) )
+        {
+            $possible_error_message .= "" ;
+        } else
+        {
+            $possible_error_message .= " [warning, file named " . $source_filename . " not found, or could not be opened]" ;
+        }
+        if ( $possible_error_message eq "" )
+        {
+            $list_name_prefix = $operand_two ;
+            @list_of_values_in_column = ( ) ;
+            $minimum_number_of_columns = 999 ;
+            while ( $input_line = <INFILE> )
+            {
+                chomp( $input_line ) ;
+                $input_line =~ s/[\n\t]+/ /g ;
+                $input_line =~ s/^ +// ;
+                $input_line =~ s/ +$// ;
+                @value_in_column = split( / +/ , $input_line ) ;
+                $number_of_columns = scalar( @value_in_column ) ;
+                if ( $number_of_columns < 1 )
+                {
+                    next ;
+                } elsif ( $number_of_columns < $minimum_number_of_columns )
+                {
+                    $minimum_number_of_columns = $number_of_columns ;
+                }
+                if ( $number_of_columns > 0 )
+                {
+                    for ( $column_pointer = 1 ; $column_pointer <= $minimum_number_of_columns ; $column_pointer ++ )
+                    {
+                        $list_of_values_in_column[ $column_pointer ] .= $value_in_column[ $column_pointer - 1 ] . " " ;
+                    }
+                }
+            }
+            for ( $column_pointer = 1 ; $column_pointer <= $minimum_number_of_columns ; $column_pointer ++ )
+            {
+                $list_of_values_in_column[ $column_pointer ] =~ s/ +$// ;
+                $global_dashrep_replacement{ $list_name_prefix . "-" . $column_pointer } = $list_of_values_in_column[ $column_pointer ] ;
+            }
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied from columns in file " . $source_filename . " to phrase names with prefix " . $operand_two . "}}\n" ;
             }
         }
         if ( $possible_error_message ne "" )
