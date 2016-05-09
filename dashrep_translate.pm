@@ -3693,6 +3693,7 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Handle the actions:
 #  copy-words-found-in-both-lists
+#      (sequence of first occurence of item in first list determines sequence in result list)
 #  copy-words-found-only-in-first-list
 #      (order of items in first list are preserved)
 #  copy-words-unique-only
