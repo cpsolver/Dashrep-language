@@ -1300,7 +1300,7 @@ This phrase contains a list of word counts for the unique words found by the mos
 description-for-phrase-generate-counts-from-integer-to-integer:
 This action generates a list of integers and puts them into the definition of the third phrase. s-n The supplied integers indicate the starting and ending values.
 paragraph-next
-Example: b-i-b [-counts h-h from h-h integer h-h to h-h integer h-h put h-h into h-h phrase 1 10 one h-h to h-h ten-] b-i-e defines the phrase b-i-b one h-h to h-h ten b-i-e as b-i-b 1 2 3 4 5 6 7 8 9 10 b-i-e no-space .
+Example: b-i-b [-generate h-h counts h-h from h-h integer h-h to h-h integer 1 10 one h-h to h-h ten-] b-i-e defines the phrase b-i-b one h-h to h-h ten b-i-e as b-i-b 1 2 3 4 5 6 7 8 9 10 b-i-e no-space .
 ----
 
 description-for-phrase-every-combination-of-words-from-two-phrases-put-into-two-phrases:
