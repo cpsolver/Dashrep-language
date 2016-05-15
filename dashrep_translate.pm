@@ -463,7 +463,7 @@ BEGIN {
     $global_check_operand_two_phrase_is_not_empty_for_action{ "find-line-in-file-that-begins-with-text" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = "yes" ;
-   $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
+    $global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
     $global_check_operand_one_phrase_is_not_empty_for_action{ "get-word-at-position" } = "yes" ;
