@@ -1666,8 +1666,8 @@ sub dashrep_expand_parameters
 
     $replacement_text = $supplied_text ;
     $replacement_text =~ s/[\r\n\t]/ /sg ;
-    $replacement_text =~ s/^ +//sg;
-    $replacement_text =~ s/ +$//sg;
+    $replacement_text =~ s/^ +//sg ;
+    $replacement_text =~ s/ +$//sg ;
 
 
 #-----------------------------------------------
