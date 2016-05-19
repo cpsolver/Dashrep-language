@@ -473,7 +473,7 @@ This action supplies b-i-b yes b-i-e if the following two phrase contain the sam
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
-This action supplies b-i-b yes b-i-e if the following two space h-h delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If either word might be empty, then a warning is put into the trace information because the number of operands is not two.
+This action supplies b-i-b yes b-i-e if the following two space h-h delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If only one word is supplied, or if no word is supplied, then the action supplies b-i-b no b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-word-is-in-phrase:
@@ -906,23 +906,23 @@ Counts the number of characters in the definition of the named phrase. s-n It is
 -----
 
 description-for-phrase-yes-if-all-yes:
-This action supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e or any number of b-i-b yes b-i-e words (either with or without separating spaces) and no other (non hyphen-here space) characters, and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic AND operator in other languages.
+This action supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e or any number of b-i-b yes b-i-e words (either with or without separating spaces) and no other (non hyphen-here space) characters, and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic AND operator in other languages. s-n If there are no operands, this action supplies b-i-b no b-i-e no-space .
 ----
 
 description-for-phrase-yes-if-any-yes:
-This action supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic OR operator in other languages.
+This action supplies b-i-b yes b-i-e if the following text contains the text b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is similar to the logic OR operator in other languages. s-n If there are no operands, this action supplies b-i-b no b-i-e no-space .
 ----
 
 description-for-phrase-yes-if-not-no:
-This action supplies b-i-b no b-i-e if the following word (space h-h delimited characters) is b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b no b-i-e is significant.
+This action supplies b-i-b no b-i-e if the following word (space h-h delimited characters) is b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b no b-i-e is significant. s-n If there are no operands, this action supplies b-i-b yes b-i-e no-space .
 ----
 
 description-for-phrase-no-if-not-yes:
-This action supplies b-i-b yes b-i-e if the following word (space h-h delimited characters) is b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b yes b-i-e is significant.
+This action supplies b-i-b yes b-i-e if the following word (space h-h delimited characters) is b-i-b yes b-i-e no-space , and supplies b-i-b no b-i-e otherwise. s-n This action is useful if the word can be something other than b-i-b yes b-i-e or b-i-b no b-i-e no-space , but only b-i-b yes b-i-e is significant. s-n If there are no operands, this action supplies b-i-b no b-i-e no-space .
 ----
 
 description-for-phrase-no-if-any-no:
-This action supplies b-i-b no b-i-e if the following text contains the text b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise.
+This action supplies b-i-b no b-i-e if the following text contains the text b-i-b no b-i-e no-space , and supplies b-i-b yes b-i-e otherwise. s-n If there are no operands, this action supplies b-i-b yes b-i-e no-space .
 ----
 
 description-for-phrase-numeric-odd-or-even:
