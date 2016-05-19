@@ -372,7 +372,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "numeric-increment" } = 1 ;
     $global_required_number_of_operands_for_action{ "numeric-decrement" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-same-two-phrase-definitions" } = 2 ;
-    $global_required_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 2 ;
     $global_required_number_of_operands_for_action{ "get-characters-from-position-to-position" } = 3 ;
     $global_required_number_of_operands_for_action{ "numeric-minus" } = 2 ;
     $global_required_number_of_operands_for_action{ "numeric-divide-by" } = 2 ;
@@ -442,11 +441,13 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "numeric-maximum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-minimum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
-    $global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 1 ;
-    $global_minimum_number_of_operands_for_action{ "yes-if-not-no" } = 1 ;
-    $global_minimum_number_of_operands_for_action{ "no-if-not-yes" } = 1 ;
-    $global_minimum_number_of_operands_for_action{ "yes-if-any-yes" } = 1 ;
-    $global_minimum_number_of_operands_for_action{ "no-if-any-no" } = 1 ;
+
+    $global_minimum_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "yes-if-not-no" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "no-if-not-yes" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "yes-if-any-yes" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "no-if-any-no" } = 0 ;
 
     $global_check_operand_one_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
     $global_check_operand_two_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
@@ -4235,6 +4236,7 @@ sub dashrep_expand_parameters
             {
                 $action_result = "no" ;
             }
+#  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
@@ -4247,9 +4249,12 @@ sub dashrep_expand_parameters
         if ( $action_name eq "yes-or-no-same-two-words" )
         {
             $action_result = "no" ;
-            if ( $operand_one eq $operand_two )
+            if ( $number_of_operands == 2 )
             {
-                $action_result = "yes" ;
+                if ( $operand_one eq $operand_two )
+                {
+                    $action_result = "yes" ;
+                }
             }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;
