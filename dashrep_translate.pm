@@ -367,7 +367,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = 4 ;
     $global_required_number_of_operands_for_action{ "zero-one-multiple" } = 1 ;
     $global_required_number_of_operands_for_action{ "zero-or-nonzero" } = 1 ;
-    $global_required_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 1 ;
     $global_required_number_of_operands_for_action{ "get-count-of-characters" } = 1 ;
     $global_required_number_of_operands_for_action{ "numeric-increment" } = 1 ;
     $global_required_number_of_operands_for_action{ "numeric-decrement" } = 1 ;
@@ -434,7 +433,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "unique-value" } = 0 ;
     $global_required_number_of_operands_for_action{ "numeric-odd-or-even" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-words-unique-only" } = 2 ;
-    $global_required_number_of_operands_for_action{ "yes-or-no-opposite" } = 1 ;
 
     $global_minimum_number_of_operands_for_action{ "numeric-add" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-multiply" } = 1 ;
@@ -442,6 +440,8 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "numeric-minimum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
 
+    $global_minimum_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "yes-or-no-opposite" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-if-not-no" } = 0 ;
@@ -601,7 +601,6 @@ BEGIN {
     $global_check_operand_four_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_three_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
     $global_check_operand_four_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
-    $global_check_operand_one_is_phrase_name_for_action{ "yes-or-no-empty-phrase" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "get-count-of-characters" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "numeric-increment" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "yes-or-no-same-two-phrase-definitions" } = "yes" ;
@@ -4130,11 +4129,14 @@ sub dashrep_expand_parameters
         if ( $action_name eq "yes-or-no-empty-phrase" )
         {
             $action_result = "yes" ;
-            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            if ( $number_of_operands == 1 )
             {
-                if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
+                if ( exists( $global_dashrep_replacement{ $operand_one } ) )
                 {
-                    $action_result = "no" ;
+                    if ( $global_dashrep_replacement{ $operand_one } =~ /[^ \n\t]/ )
+                    {
+                        $action_result = "no" ;
+                    }
                 }
             }
 #  end of action code

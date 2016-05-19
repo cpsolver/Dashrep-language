@@ -461,11 +461,11 @@ The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-spa
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
-This action supplies b-i-b yes b-i-e if the following specified phrase is empty no-space , and supplies b-i-b no b-i-e otherwise. s-n A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined.
+This action supplies b-i-b yes b-i-e if the following specified phrase is empty no-space , and supplies b-i-b no b-i-e otherwise. s-n A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined. s-n If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-opposite:
-This action supplies b-i-b no b-i-e if the text that follows contains the word b-i-b yes b-i-e no-space , and otherwise supplies b-i-b yes b-i-e no-space .
+This action supplies b-i-b no b-i-e if the text that follows contains the word b-i-b yes b-i-e no-space , and otherwise this action supplies b-i-b yes b-i-e no-space . s-n If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-same-two-phrase-definitions:
@@ -473,7 +473,7 @@ This action supplies b-i-b yes b-i-e if the following two phrase contain the sam
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
-This action supplies b-i-b yes b-i-e if the following two space h-h delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If only one word is supplied, or if no word is supplied, then the action supplies b-i-b no b-i-e no-space .
+This action supplies b-i-b yes b-i-e if the following two space h-h delimited words are the same, and supplies b-i-b no b-i-e otherwise.  If only one word is supplied, or if no word is supplied, then this action supplies b-i-b no b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-word-is-in-phrase:
