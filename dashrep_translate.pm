@@ -1391,9 +1391,16 @@ sub dashrep_expand_parameters
     my $replacement_text ;
     my $loop_status_done ;
     my $text_begin ;
+    my $text_end ;
+    my $text_parameter_content ;
+    my $text_begin_version_bracket ;
+    my $text_end_version_bracket ;
+    my $text_parameter_content_version_bracket ;
+    my $text_begin_version_word ;
+    my $text_end_version_word ;
+    my $text_parameter_content_version_word ;
     my $text_parameter_name ;
     my $text_parameter_value ;
-    my $text_end ;
     my $action_name ;
     my $operand_one ;
     my $operand_two ;
@@ -1406,7 +1413,6 @@ sub dashrep_expand_parameters
     my $yes_or_no ;
     my $text_parameter ;
     my $possible_new_limit ;
-    my $text_parameter_content ;
     my $source_phrase_name ;
     my $target_phrase_name ;
     my $epoch_seconds ;
@@ -1768,23 +1774,51 @@ sub dashrep_expand_parameters
 #  If it contains any line breaks, replace those
 #  with spaces.  If there are no more parameters,
 #  exit the loop.
+#
+#  ToDo:  Finish editing and testing code to
+#  also handle words:
+#  ambee amenn fenambee amennfen
+#  Currently the word approach does not handle
+#  cases that involve nesting.
 
+        $text_begin_version_bracket = "" ;
+        $text_parameter_content_version_bracket = "" ;
         if ( $replacement_text =~ /^(.*?)\[\-([^\[\]]*)\-\](.*)$/ )
         {
-            $text_begin = $1 ;
-            $text_parameter_content = $2 ;
-            $text_end = $3 ;
-            $text_parameter_content =~ s/^ +// ;
-            $text_parameter_content =~ s/ +$// ;
-            $text_parameter_content =~ s/[\r\n\t]/ /sg ;
-            $loop_status_done = $global_false ;
-            if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" ) && ( $text_parameter_content =~ /[^ ]/ ) )
-            {
-                $global_trace_log .= "{{trace; innermost parameter: " . $text_parameter_content . "}}\n";
-            }
+            $text_begin_version_bracket = $1 ;
+            $text_parameter_content_version_bracket = $2 ;
+            $text_end_version_bracket = $3 ;
+        }
+        $text_begin_version_word = "" ;
+        $text_parameter_content_version_word = "" ;
+        if ( $replacement_text =~ /^(.*?) +ambee +([^\[\]]*) +amenn +(.*)$/ )
+        {
+            $text_begin_version_word = $1 ;
+            $text_parameter_content_version_word = $2 ;
+            $text_end_version_word = $3 ;
+        }
+        if ( ( $text_parameter_content_version_bracket ne "" ) && ( $text_parameter_content_version_word ne "" ) && ( length( $text_begin_version_word ) <= length( $text_begin_version_bracket ) ) )
+        {
+            $text_begin = $text_begin_version_word ;
+            $text_parameter_content = $text_parameter_content_version_word ;
+            $text_end = $text_end_version_word ;
         } else
         {
+            $text_begin = $text_begin_version_bracket ;
+            $text_parameter_content = $text_parameter_content_version_bracket ;
+            $text_end = $text_end_version_bracket ;
+        }
+        if ( $text_parameter_content eq "" )
+        {
             last ;
+        }
+        $text_parameter_content =~ s/^ +// ;
+        $text_parameter_content =~ s/ +$// ;
+        $text_parameter_content =~ s/[\r\n\t]/ /sg ;
+        $loop_status_done = $global_false ;
+        if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" ) && ( $text_parameter_content =~ /[^ ]/ ) )
+        {
+            $global_trace_log .= "{{trace; innermost parameter: " . $text_parameter_content . "}}\n";
         }
 
 
