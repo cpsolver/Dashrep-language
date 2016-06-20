@@ -8896,6 +8896,7 @@ sub dashrep_internal_expand_phrases_faster_subset
 #        print "output_buffer: " . $output_buffer . "\n" ;
         $length_of_output_buffer = -1 ;
         $pointer_to_remainder_of_output_buffer = 0 ;
+        $new_output_buffer = "" ;
         while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s )
         {
             $prefix = $1 ;
