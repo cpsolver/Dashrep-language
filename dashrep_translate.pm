@@ -2627,8 +2627,8 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/\t+/ /sg ;
                 $temp_text =~ s/  +/ /sg ;
                 $temp_text =~ s/[\n\r]/ linbray /sg ;
-                $temp_text =~ s/-\[-/ hyambee /sg ;
-                $temp_text =~ s/-\]-/ amennhy /sg ;
+                $temp_text =~ s/-\[-/ fenambee /sg ;
+                $temp_text =~ s/-\]-/ amennfen /sg ;
                 $temp_text =~ s/\[-/ ambee /sg ;
                 $temp_text =~ s/-\]/ amenn /sg ;
                 $temp_text =~ s/ ([^ ]+(-[^ ]+)+) / dashbee $1 dashenn /sg ;
@@ -2667,7 +2667,7 @@ sub dashrep_expand_parameters
                     $phrase_words =~ s/ +/-/sg ;
                     $temp_text = $prefix . $phrase_words . $suffix ;
                 }
-                while ( $temp_text =~ / ((ambee)|(amenn)|(fen)|(combee)|(comenn)|(newline)(hyambee)|(amennhy)) /s )
+                while ( $temp_text =~ / ((ambee)|(amenn)|(fen)|(combee)|(comenn)|(newline)(fenambee)|(amennfen)) /s )
                 {
                     $temp_text =~ s/ ambee / \[-/sg ;
                     $temp_text =~ s/ amenn /-\] /sg ;
@@ -2676,8 +2676,8 @@ sub dashrep_expand_parameters
                     $temp_text =~ s/-fen([^a-z0-9])/-$1/sg ;
                     $temp_text =~ s/ combee / *---- /sg ;
                     $temp_text =~ s/ comenn / ----* /sg ;
-                    $temp_text =~ s/ hyambee /-\[-/sg ;
-                    $temp_text =~ s/ amennhy /-\]-/sg ;
+                    $temp_text =~ s/ fenambee /-\[-/sg ;
+                    $temp_text =~ s/ amennfen /-\]-/sg ;
                     $temp_text =~ s/ newline / linbray /sg ;
                 }
                 $temp_text =~ s/\[- /\[-/sg ;
