@@ -1066,6 +1066,10 @@ paragraph-next
 As these examples illustrate, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The two phrase names can be the same.
 ----
 
+description-for-phrase-convert-unicode-to-html-entities
+This action copies all the text from the first phrase into the second phrase but converts non-ASCII characters into HTML entities. s-n The HTML entities use decimal numbers, which means that open double quotation marks become & no-space # no-space 8220 no-space ; and & no-space # no-space 8221 no-space ;.
+----
+
 description-for-phrase-convert-from-spoken-dashrep-code:
 This action copies the definition of the first phrase into the definition of the second phrase, but recognizes and translates Dashrep spoken words. s-n Specifically the words
 b-i-b f no-space e no-space n b-i-e

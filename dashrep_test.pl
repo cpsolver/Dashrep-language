@@ -213,11 +213,15 @@ $numeric_return_value = &dashrep_translate::dashrep_define( "symbol-space" , " "
 
 $numeric_return_value = &dashrep_translate::dashrep_define( "symbol-two-periods" , ".." );
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "text-with-extra-spaces" , "  12 34  56   78   90  " ) ;
+$numeric_return_value = &dashrep_translate::dashrep_define( "text-with-extra-spaces" , "  12 34  56   78   90  " );
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-createlist" , "abc-[-createlist-parameter-]-def" ) ;
+$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-createlist" , "abc-[-createlist-parameter-]-def" );
 
-$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" ) ;
+$numeric_return_value = &dashrep_translate::dashrep_define( "template-for-full-createlist" , "abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi" );
+
+$text_containing_unicode_characters = "a" . chr( 11 ) . "i" . chr( 13 ) . "u" . chr( 13 );
+
+$numeric_return_value = &dashrep_translate::dashrep_define( "text-with-unicode-characters" , $text_containing_unicode_characters );
 
 $dashrep_code = <<TEXT_TO_IMPORT;
 
@@ -332,6 +336,8 @@ test-of-special-operators:
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 [-text-containing-period = abc.def.ghi -]
 [-results-position-of-matching-text = [-get-position-of-matching-text character-period text-containing-period-]-]
+[-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
+
 nothing else
 --------
 
@@ -1633,6 +1639,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-pos
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "convert-unicode-to-html-entities"
+
+$being_tested = "test action convert-unicode-to-html-entities -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "results-with-unicode-converted-to-html-entities" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "results-with-unicode-converted-to-html-entities" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "a&#11;i&#13;u&#13;" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

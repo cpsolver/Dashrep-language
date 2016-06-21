@@ -331,6 +331,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "decode-from-cgi-parameter" } = 2 ;
     $global_required_number_of_operands_for_action{ "convert-into-spoken-dashrep-code" } = 2 ;
     $global_required_number_of_operands_for_action{ "convert-from-spoken-dashrep-code" } = 2 ;
+    $global_required_number_of_operands_for_action{ "convert-unicode-to-html-entities" } = 2 ;
     $global_required_number_of_operands_for_action{ "xml-move-attributes-into-tag-elements" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-and-remove-attributes-from-xml-tags" } = 2 ;
     $global_required_number_of_operands_for_action{ "insert-angle-bracketed-definitions" } = 1 ;
@@ -551,6 +552,8 @@ BEGIN {
     $global_check_operand_two_is_phrase_name_for_action{ "convert-into-spoken-dashrep-code" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "convert-unicode-to-html-entities" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "convert-unicode-to-html-entities" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "xml-move-attributes-into-tag-elements" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
@@ -1624,6 +1627,10 @@ sub dashrep_expand_parameters
     my $number_of_unique_words ;
     my $text_list_of_unique_word_counts ;
     my $number_of_items_remaining ;
+    my $yes_or_no_within_ampersand_encoded_character ;
+    my $octet_number ;
+    my $unicode_number ;
+    my @octet_number_at_position ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
     my @list_of_paired_words ;
@@ -2632,6 +2639,81 @@ sub dashrep_expand_parameters
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
                 $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with any specified changes}}\n" ;
+            }
+#  end of action code
+            $replacement_text = $text_begin . $action_result . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  convert-unicode-to-html-entities
+#
+#  Converts non-ASCII characters, and convert a few
+#  ASCII characters such as:
+#  11 which is "LF" (line feed)
+#  13 which is "CR" (carriage return)
+#  127 which is "del"
+
+        if ( $action_name eq "convert-unicode-to-html-entities" )
+        {
+            $source_phrase_name = $operand_one ;
+            $target_phrase_name = $operand_two ;
+            if ( not( exists( $global_dashrep_replacement{ $source_phrase_name } ) ) )
+            {
+                $global_dashrep_replacement{ $source_phrase_name } = "" ;
+            }
+            $accumulated_text = "" ;
+			@octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $source_phrase_name } ) ;
+			$yes_or_no_within_ampersand_encoded_character = "no" ;
+			$pointer = -1 ;
+			while ( $pointer < $#octet_number_at_position )
+			{
+				$pointer ++ ;
+				$octet_number = $octet_number_at_position[ $pointer ] ;
+				if ( $octet_number < 32 )
+				{
+					$unicode_number = $octet_number ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+				} elsif ( $octet_number < 127 )
+				{
+					$accumulated_text .= chr( $octet_number ) ;
+				} elsif ( $octet_number >= 0xfc )
+				{
+					$unicode_number = ( ( ( ( ( ( ( ( ( ( $octet_number - 0xfc ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 5 ] - 128 ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+					$pointer += 5 ;
+				} elsif ( $octet_number >= 0xf8 )
+				{
+					$unicode_number = ( ( ( ( ( ( ( ( $octet_number - 0xf8 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+					$pointer += 4 ;
+				} elsif ( $octet_number >= 0xf0 )
+				{
+					$unicode_number = ( ( ( ( ( ( $octet_number - 0xf0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+					$pointer += 3 ;
+				} elsif ( $octet_number >= 0xe0 )
+				{
+					$unicode_number = ( ( ( ( $octet_number - 0xe0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+					$pointer += 2 ;
+				} elsif ( $octet_number >= 0xc0 )
+				{
+					$unicode_number = ( ( $octet_number - 0xc0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+					$pointer += 1 ;
+				} elsif ( $octet_number > 0 )
+				{
+					$unicode_number = $octet_number ;
+					$accumulated_text .= '&#' . $unicode_number . ';' ;
+				}
+			}
+            $global_dashrep_replacement{ $target_phrase_name } = $accumulated_text ;
+            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; copied from phrase " . $source_phrase_name . " to phrase " . $target_phrase_name . " with unicode translation}}\n" ;
             }
 #  end of action code
             $replacement_text = $text_begin . $action_result . $text_end ;

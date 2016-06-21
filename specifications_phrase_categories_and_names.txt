@@ -111,6 +111,7 @@ copy-initial-caps
 copy-zero-pad-left-to-length
 encode-as-cgi-parameter
 decode-from-cgi-parameter
+convert-unicode-to-html-entities
 
 category_search_replace
 get-position-of-matching-text
