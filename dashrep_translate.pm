@@ -1396,12 +1396,6 @@ sub dashrep_expand_parameters
     my $text_begin ;
     my $text_end ;
     my $text_parameter_content ;
-    my $text_begin_version_bracket ;
-    my $text_end_version_bracket ;
-    my $text_parameter_content_version_bracket ;
-    my $text_begin_version_word ;
-    my $text_end_version_word ;
-    my $text_parameter_content_version_word ;
     my $text_parameter_name ;
     my $text_parameter_value ;
     my $action_name ;
@@ -1785,35 +1779,22 @@ sub dashrep_expand_parameters
 #  ToDo:  Finish editing and testing code to
 #  also handle words:
 #  ambee amenn fenambee amennfen
-#  Currently the word approach does not handle
-#  cases that involve nesting.
 
-        $text_begin_version_bracket = "" ;
-        $text_parameter_content_version_bracket = "" ;
+        if ( $replacement_text =~ /((ambee)|(amenn)|(fenambee)|(amennfen))/ )
+        {
+            $replacement_text =~ s/((^)|( ))ambee(( )|($))/\[-/sgi ;
+            $replacement_text =~ s/((^)|( ))amenn(( )|($))/-\]/sgi ;
+            $replacement_text =~ s/((^)|( ))fenambee(( )|($))/-\[-/sgi ;
+            $replacement_text =~ s/((^)|( ))amennfen(( )|($))/-\]-/sgi ;
+        }
+        $text_begin = "" ;
+        $text_parameter_content = "" ;
+        $text_end = "" ;
         if ( $replacement_text =~ /^(.*?)\[\-([^\[\]]*)\-\](.*)$/ )
         {
-            $text_begin_version_bracket = $1 ;
-            $text_parameter_content_version_bracket = $2 ;
-            $text_end_version_bracket = $3 ;
-        }
-        $text_begin_version_word = "" ;
-        $text_parameter_content_version_word = "" ;
-        if ( $replacement_text =~ /^(.*?) +ambee +([^\[\]]*) +amenn +(.*)$/ )
-        {
-            $text_begin_version_word = $1 ;
-            $text_parameter_content_version_word = $2 ;
-            $text_end_version_word = $3 ;
-        }
-        if ( ( $text_parameter_content_version_bracket ne "" ) && ( $text_parameter_content_version_word ne "" ) && ( length( $text_begin_version_word ) <= length( $text_begin_version_bracket ) ) )
-        {
-            $text_begin = $text_begin_version_word ;
-            $text_parameter_content = $text_parameter_content_version_word ;
-            $text_end = $text_end_version_word ;
-        } else
-        {
-            $text_begin = $text_begin_version_bracket ;
-            $text_parameter_content = $text_parameter_content_version_bracket ;
-            $text_end = $text_end_version_bracket ;
+            $text_begin = $1 ;
+            $text_parameter_content = $2 ;
+            $text_end = $3 ;
         }
         if ( $text_parameter_content eq "" )
         {
