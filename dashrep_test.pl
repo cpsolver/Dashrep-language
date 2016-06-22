@@ -325,7 +325,8 @@ test-of-special-operators:
 [-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
 [-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
 [-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
-[-spoken-words = dashbee dashenn dashnex ambee amenn combee comenn fen fenambee amennfen linbray-]
+[-template-spoken-words-split-to-avoid-replacement-here = dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray-]
+[-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
 [-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
 [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
 [-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
@@ -1851,7 +1852,6 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phr
 #  uncomment-for-cpan-version-begin
 # $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
 #  uncomment-for-cpan-version-end
-#
 # $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
 if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
