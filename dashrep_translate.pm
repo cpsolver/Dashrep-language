@@ -1635,7 +1635,6 @@ sub dashrep_expand_parameters
     my @list_of_y_values ;
     my @list ;
     my @list_of_sorted_numbers ;
-    my @list_of_replacements_to_auto_increment ;
     my @list_of_action_names ;
     my @zero_if_not_remaining_item_number ;
     my @right_and_up_direction_value_for_item_number ;
@@ -1689,13 +1688,6 @@ sub dashrep_expand_parameters
             $replacement_text = $global_dashrep_replacement{ $supplied_text } ;
         }
     }
-
-
-#-----------------------------------------------
-#  Initialize the list of replacement names
-#  encountered that need to be auto-incremented.
-
-    @list_of_replacements_to_auto_increment = ( ) ;
 
 
 #-----------------------------------------------
@@ -1780,13 +1772,13 @@ sub dashrep_expand_parameters
 #  also handle words:
 #  ambee amenn fenambee amennfen
 
-        if ( $replacement_text =~ /((ambee)|(amenn)|(fenambee)|(amennfen))/ )
-        {
-            $replacement_text =~ s/((^)|( ))ambee(( )|($))/\[-/sgi ;
-            $replacement_text =~ s/((^)|( ))amenn(( )|($))/-\]/sgi ;
-            $replacement_text =~ s/((^)|( ))fenambee(( )|($))/-\[-/sgi ;
-            $replacement_text =~ s/((^)|( ))amennfen(( )|($))/-\]-/sgi ;
-        }
+#        if ( $replacement_text =~ /((ambee)|(amenn)|(fenambee)|(amennfen))/ )
+#        {
+#            $replacement_text =~ s/((^)|( ))ambee(( )|($))/\[-/sgi ;
+#            $replacement_text =~ s/((^)|( ))amenn(( )|($))/-\]/sgi ;
+#            $replacement_text =~ s/((^)|( ))fenambee(( )|($))/-\[-/sgi ;
+#            $replacement_text =~ s/((^)|( ))amennfen(( )|($))/-\]-/sgi ;
+#        }
         $text_begin = "" ;
         $text_parameter_content = "" ;
         $text_end = "" ;
