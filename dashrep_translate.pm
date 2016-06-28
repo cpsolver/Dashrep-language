@@ -1774,10 +1774,10 @@ sub dashrep_expand_parameters
 
 #        if ( $replacement_text =~ /((ambee)|(amenn)|(fenambee)|(amennfen))/ )
 #        {
-#            $replacement_text =~ s/((^)|( ))ambee(( )|($))/\[-/sgi ;
-#            $replacement_text =~ s/((^)|( ))amenn(( )|($))/-\]/sgi ;
-#            $replacement_text =~ s/((^)|( ))fenambee(( )|($))/-\[-/sgi ;
-#            $replacement_text =~ s/((^)|( ))amennfen(( )|($))/-\]-/sgi ;
+#            $replacement_text =~ s/((^)|( +))fenambee(( +)|($))/-\[-/sgi ;
+#            $replacement_text =~ s/((^)|( +))amennfen(( +)|($))/-\]-/sgi ;
+#            $replacement_text =~ s/((^)|( +))ambee(( +)|($))/\[-/sgi ;
+#            $replacement_text =~ s/((^)|( +))amenn(( +)|($))/-\]/sgi ;
 #        }
         $text_begin = "" ;
         $text_parameter_content = "" ;
