@@ -1672,8 +1672,8 @@ sub dashrep_expand_parameters
 
     $replacement_text = $supplied_text ;
     $replacement_text =~ s/[\r\n\t]/ /sg ;
-    $replacement_text =~ s/^ +//sg ;
-    $replacement_text =~ s/ +$//sg ;
+    $replacement_text =~ s/^ +// ;
+    $replacement_text =~ s/ +$// ;
 
 
 #-----------------------------------------------
@@ -1792,9 +1792,9 @@ sub dashrep_expand_parameters
         {
             last ;
         }
+        $text_parameter_content =~ s/[\r\n\t]/ /sg ;
         $text_parameter_content =~ s/^ +// ;
         $text_parameter_content =~ s/ +$// ;
-        $text_parameter_content =~ s/[\r\n\t]/ /sg ;
         $loop_status_done = $global_false ;
         if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" ) && ( $text_parameter_content =~ /[^ ]/ ) )
         {
@@ -1917,6 +1917,7 @@ sub dashrep_expand_parameters
             $operands_all = $2 ;
             $action_name =~ s/^\-+// ;
             $action_name =~ s/\-+$// ;
+            $operands_all =~ s/\n/ /sg ;
             $operands_all =~ s/^ +// ;
             $operands_all =~ s/ +$// ;
             $operands_all =~ s/\-+$// ;
@@ -2412,7 +2413,7 @@ sub dashrep_expand_parameters
                 next ;
             }
             $list_of_words_as_text = $global_dashrep_replacement{ $phrase_name_containing_parameter_list } ;
-            $list_of_words_as_text =~ s/\n+/ /g ;
+            $list_of_words_as_text =~ s/\n/ /sg ;
             $list_of_words_as_text =~ s/^ +// ;
             $list_of_words_as_text =~ s/ +$// ;
             if ( $list_of_words_as_text !~ /[^ ]/ )
@@ -2424,7 +2425,7 @@ sub dashrep_expand_parameters
                 }
                 next ;
             }
-            @list_of_parameter_words = split( /[ \n]+/ , $list_of_words_as_text ) ;
+            @list_of_parameter_words = split( / +/ , $list_of_words_as_text ) ;
             if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
                 $phrase_name_containing_source_words =~ s/[ \n]+//g ;
@@ -2440,7 +2441,7 @@ sub dashrep_expand_parameters
                     next ;
                 }
                 $list_of_words_as_text = $global_dashrep_replacement{ $phrase_name_containing_source_words } ;
-                $list_of_words_as_text =~ s/\n+/ /g ;
+                $list_of_words_as_text =~ s/\n/ /sg ;
                 $list_of_words_as_text =~ s/^ +// ;
                 $list_of_words_as_text =~ s/ +$// ;
                 if ( $list_of_words_as_text !~ /[^ ]/ )
@@ -2452,7 +2453,7 @@ sub dashrep_expand_parameters
                     }
                     next ;
                 }
-                @list_of_source_words = split( /[ \n]+/ , $list_of_words_as_text ) ;
+                @list_of_source_words = split( / +/ , $list_of_words_as_text ) ;
             }
             if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
@@ -2464,7 +2465,7 @@ sub dashrep_expand_parameters
                         if ( $target_phrase_name =~ /^[^ \-][^ ]*-[^ ]*[^ \-]$/ )
                         {
                             $text_string = $list_of_source_words[ $pointer ] ;
-                            $text_string =~ s/\n+/ /sg ;
+                            $text_string =~ s/\n/ /sg ;
                             $text_string =~ s/^ +//s ;
                             $text_string =~ s/ +$//s ;
                             $global_dashrep_replacement{ $target_phrase_name } = $text_string ;
@@ -2486,7 +2487,7 @@ sub dashrep_expand_parameters
                     if ( ( $source_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $source_phrase_name } ) ) )
                     {
                         $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
-                        $text_string =~ s/\n+/ /sg ;
+                        $text_string =~ s/\n/ /sg ;
                         $text_string =~ s/^ +//s ;
                         $text_string =~ s/ +$//s ;
                         $global_dashrep_replacement{ $target_phrase_name } .= " " . $text_string ;
@@ -2528,9 +2529,9 @@ sub dashrep_expand_parameters
             if ( $action_name eq "copy-without-extra-spaces" )
             {
                 $temp_text =~ s/\n/ /sg ;
-                $temp_text =~ s/  +/ /sg ;
-                $temp_text =~ s/^ +//s ;
-                $temp_text =~ s/ +$//s ;
+                $temp_text =~ s/  +/ /g ;
+                $temp_text =~ s/^ +// ;
+                $temp_text =~ s/ +$// ;
             } elsif ( $action_name eq "copy-lowercase-only" )
             {
                 $temp_text = lc( $temp_text ) ;
@@ -2544,17 +2545,18 @@ sub dashrep_expand_parameters
                 $target_phrase_name = $operand_one ;
             } elsif ( $action_name eq "copy-initial-caps" )
             {
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
                 $temp_text =~ s/ +$// ;
                 $remaining_text = $temp_text ;
                 $accumulated_text = "" ;
-                if ( $remaining_text =~ /^([a-z])(.*)$/s )
+                if ( $remaining_text =~ /^([a-z])(.*)$/ )
                 {
                     $character_to_capitalize = $1 ;
                     $remaining_text = $2 ;
                     $accumulated_text .= uc( $character_to_capitalize ) ;
                 }
-                while ( $remaining_text =~ /^(.*?) ([a-z])(.*)$/s )
+                while ( $remaining_text =~ /^(.*?) ([a-z])(.*)$/ )
                 {
                     $accumulated_text .= $1 ;
                     $character_to_capitalize = $2 ;
@@ -2565,7 +2567,8 @@ sub dashrep_expand_parameters
                 $temp_text = $accumulated_text ;
             } elsif ( $action_name eq "encode-as-cgi-parameter" )
             {
-                $temp_text =~ s/ /\+/sg ;
+                $temp_text =~ s/\n/ /sg ;
+                $temp_text =~ s/ /\+/g ;
                 $remaining_text = $temp_text ;
                 $accumulated_text = "" ;
                 while ( $remaining_text =~ /^(.*?)([^a-zA-Z0-9])(.*)$/s )
@@ -2593,18 +2596,18 @@ sub dashrep_expand_parameters
                 $temp_text = $accumulated_text ;
             } elsif ( $action_name eq "copy-words-sort-numeric" )
             {
-                $temp_text =~ s/\n+/ /sg ;
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
                 @list_of_sorted_numbers = sort { $a <=> $b } @list ;
                 $temp_text = join( " " , @list_of_sorted_numbers ) ;
             } elsif ( $action_name eq "copy-words-sort-alphabetic" )
             {
-                $temp_text =~ s/\n+/ /sg ;
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
                 @list_of_sorted_numbers = sort( @list ) ;
                 $temp_text = join( " " , @list_of_sorted_numbers ) ;
             }
@@ -2938,6 +2941,7 @@ sub dashrep_expand_parameters
             } else
             {
                 $source_text = $global_dashrep_replacement{ $source_phrase_name } ;
+                $source_text =~ s/\n/ /sg ;
                 $source_text =~ s/^ +// ;
                 $source_text =~ s/ +$// ;
                 if ( $action_name eq "copy-word-at-position" )
@@ -2951,7 +2955,7 @@ sub dashrep_expand_parameters
                     }
                     if ( $source_text =~ / / )
                     {
-                        @list_of_words = split( /[ \n]+/ , $source_text ) ;
+                        @list_of_words = split( / +/ , $source_text ) ;
                     } else
                     {
                         @list_of_words = ( ) ;
@@ -2970,16 +2974,17 @@ sub dashrep_expand_parameters
                 {
                     if ( $source_text =~ / / )
                     {
-                        @list_of_words = split( /[ \n]+/ , $source_text ) ;
+                        @list_of_words = split( / +/ , $source_text ) ;
                     } else
                     {
                         @list_of_words = ( ) ;
                         $list_of_words[ 0 ] = $source_text ;
                     }
                     $list_indicating_sort_order_text_string = $global_dashrep_replacement{ $operand_three } ;
+                    $list_indicating_sort_order_text_string =~ s/\n/ /s ;
                     $list_indicating_sort_order_text_string =~ s/^ +// ;
-                    $list_indicating_sort_order_text_string =~ s/ +$//s ;
-                    @list_indicating_sort_order = split( /[ \n]+/ , $list_indicating_sort_order_text_string ) ;
+                    $list_indicating_sort_order_text_string =~ s/ +$// ;
+                    @list_indicating_sort_order = split( / +/ , $list_indicating_sort_order_text_string ) ;
 
                     if ( $action_name eq "copy-words-rearrange-using-order-sort-numeric" )
                     {
@@ -3186,9 +3191,10 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $operand_three } = "" ;
             }
             $paired_words_as_text = $global_dashrep_replacement{ $operand_three } ;
+            $paired_words_as_text =~ s/\n/ /sg ;
             $paired_words_as_text =~ s/^ +// ;
-            $paired_words_as_text =~ s/ +$//s ;
-            @list_of_paired_words = split( /[ \n]+/ , $paired_words_as_text ) ;
+            $paired_words_as_text =~ s/ +$// ;
+            @list_of_paired_words = split( / +/ , $paired_words_as_text ) ;
             $pair_status = "search" ;
             for ( $pair_pointer_offset_zero = 0 ; $pair_pointer_offset_zero <= $#list_of_paired_words ; $pair_pointer_offset_zero ++ )
             {
@@ -3403,9 +3409,10 @@ sub dashrep_expand_parameters
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
             } else
             {
                 @list = ( ) ;
@@ -3438,8 +3445,8 @@ sub dashrep_expand_parameters
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
                 $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
             } else
             {
                 @list = ( ) ;
@@ -3481,9 +3488,10 @@ sub dashrep_expand_parameters
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
             } else
             {
                 @list = ( ) ;
@@ -3514,9 +3522,10 @@ sub dashrep_expand_parameters
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
                 $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/\n/ /sg ;
                 $temp_text =~ s/^ +// ;
-                $temp_text =~ s/ +$//s ;
-                @list = split( /[ \n]+/ , $temp_text ) ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
             } else
             {
                 @list = ( ) ;
@@ -3551,9 +3560,10 @@ sub dashrep_expand_parameters
             }
             $phrase_name = $operand_two ;
             $temp_text = $global_dashrep_replacement{ $phrase_name } ;
+            $temp_text =~ s/\n/ /sg ;
             $temp_text =~ s/^ +// ;
-            $temp_text =~ s/ +$//s ;
-            @list = split( /[ \n]+/ , $temp_text ) ;
+            $temp_text =~ s/ +$// ;
+            @list = split( / +/ , $temp_text ) ;
             $list_length = $#list + 1 ;
             if ( $action_name eq "get-position-of-word" )
             {
@@ -3667,11 +3677,12 @@ sub dashrep_expand_parameters
             if ( ( $phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $operand_three } ) ) )
             {
                 $text_list_of_start_matching_positions = $global_dashrep_replacement{ $operand_three } ;
+                $text_list_of_start_matching_positions =~ s/\n/ /sg ;
                 $text_list_of_start_matching_positions =~ s/^ +// ;
-                $text_list_of_start_matching_positions =~ s/ +$//s ;
+                $text_list_of_start_matching_positions =~ s/ +$// ;
                 if ( $text_list_of_start_matching_positions =~ /[0-9 ]+/ )
                 {
-                    @list_of_start_matching_positions = split( /[ \n]+/ , $text_list_of_start_matching_positions ) ;
+                    @list_of_start_matching_positions = split( / +/ , $text_list_of_start_matching_positions ) ;
                 } else
                 {
                     @list_of_start_matching_positions = ( ) ;
@@ -3710,11 +3721,12 @@ sub dashrep_expand_parameters
             $words_to_find = $global_dashrep_replacement{ $operand_one } ;
             $string_to_search = $global_dashrep_replacement{ $operand_two } ;
             $list_of_positions = "" ;
+            $words_to_find =~ s/\n/ /sg ;
             $words_to_find =~ s/^ +// ;
-            $words_to_find =~ s/ +$//s ;
+            $words_to_find =~ s/ +$// ;
             if ( $words_to_find =~ / / )
             {
-                @list_of_text_items_to_find = split( /[ \n]+/ , $words_to_find ) ;
+                @list_of_text_items_to_find = split( / +/ , $words_to_find ) ;
                 $number_of_items_to_find = $#list_of_text_items_to_find + 1 ;
             } elsif ( $words_to_find =~ /^[^ ]+$/ )
             {
@@ -3814,28 +3826,30 @@ sub dashrep_expand_parameters
                 }
                 $destination_phrase = $operand_three ;
             }
+            $text_list_key =~ s/\n/ /sg ;
             $text_list_key =~ s/^ +// ;
-            $text_list_key =~ s/ +$//s ;
+            $text_list_key =~ s/ +$// ;
             if ( $text_list_key eq "" )
             {
                 @list_of_key_values = ( ) ;
             } else
             {
-                @list_of_key_values = split( /[ \n]+/ , $text_list_key ) ;
+                @list_of_key_values = split( / +/ , $text_list_key ) ;
             }
             %listed_word = ( ) ;
             foreach $word ( @list_of_key_values )
             {
                 $listed_word{ $word } = 1 ;
             }
+            $text_list_loop =~ s/\n/ /sg ;
             $text_list_loop =~ s/^ +// ;
-            $text_list_loop =~ s/ +$//s ;
+            $text_list_loop =~ s/ +$// ;
             if ( $text_list_loop eq "" )
             {
                 @list_of_loop_words = ( ) ;
             } else
             {
-                @list_of_loop_words = split( /[ \n]+/ , $text_list_loop ) ;
+                @list_of_loop_words = split( / +/ , $text_list_loop ) ;
             }
             $length_of_loop_list = $#list_of_loop_words + 1 ;
             %occurrence_count_for_word = ( ) ;
@@ -3901,12 +3915,13 @@ sub dashrep_expand_parameters
         if ( $action_name eq "copy-words-found-in-either-list" )
         {
             $text_list_key = $global_dashrep_replacement{ $operand_one } . " " . $global_dashrep_replacement{ $operand_two } ;
+            $text_list_key =~ s/\n/ /sg ;
             $text_list_key =~ s/^ +// ;
-            $text_list_key =~ s/ +$//s ;
+            $text_list_key =~ s/ +$// ;
             $result_word_list = "" ;
             if ( $text_list_key ne "" )
             {
-                @list_of_key_values = split( /[ \n]+/ , $text_list_key ) ;
+                @list_of_key_values = split( / +/ , $text_list_key ) ;
                 %listed_word = ( ) ;
                 foreach $word ( @list_of_key_values )
                 {
@@ -4044,11 +4059,12 @@ sub dashrep_expand_parameters
         if ( $action_name eq "copy-words-that-begin-with-text" )
         {
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
+            $list_of_words_as_text =~ s/\n/ /sg ;
             $list_of_words_as_text =~ s/^ +// ;
-            $list_of_words_as_text =~ s/ +$//s ;
+            $list_of_words_as_text =~ s/ +$// ;
             if ( $list_of_words_as_text =~ / / )
             {
-                @list_of_words = split( /[ \n]+/ , $list_of_words_as_text ) ;
+                @list_of_words = split( / +/ , $list_of_words_as_text ) ;
             } else
             {
                 @list_of_words = ( ) ;
@@ -4080,13 +4096,15 @@ sub dashrep_expand_parameters
         if ( ( $action_name eq "copy-words-that-contain-listed-words" ) || ( $action_name eq "copy-words-that-begin-with-listed-words" ) )
         {
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
+            $list_of_words_as_text =~ s/\n/ /sg ;
             $list_of_words_as_text =~ s/^ +// ;
-            $list_of_words_as_text =~ s/ +$//s ;
-            @list_of_words_to_check = split( /[ \n]+/ , $list_of_words_as_text ) ;
+            $list_of_words_as_text =~ s/ +$// ;
+            @list_of_words_to_check = split( / +/ , $list_of_words_as_text ) ;
             $list_of_words_as_text = $global_dashrep_replacement{ $operand_three } ;
+            $list_of_words_as_text =~ s/\n/ /sg ;
             $list_of_words_as_text =~ s/^ +// ;
-            $list_of_words_as_text =~ s/ +$//s ;
-            @list_of_strings_to_match = split( /[ \n]+/ , $list_of_words_as_text ) ;
+            $list_of_words_as_text =~ s/ +$// ;
+            @list_of_strings_to_match = split( / +/ , $list_of_words_as_text ) ;
             $generated_list = "" ;
             foreach $word_to_check ( @list_of_words_to_check )
             {
@@ -4127,13 +4145,15 @@ sub dashrep_expand_parameters
             $output_list_one_phrase_name = $operand_three ;
             $output_list_two_phrase_name = $operand_four ;
             $temp_text = $global_dashrep_replacement{ $input_list_one_phrase_name } ;
+            $temp_text =~ s/\n/ /sg ;
             $temp_text =~ s/^ +// ;
-            $temp_text =~ s/ +$//s ;
-            @input_list_one = split( /[ \n]+/ , $temp_text ) ;
+            $temp_text =~ s/ +$// ;
+            @input_list_one = split( / +/ , $temp_text ) ;
             $temp_text = $global_dashrep_replacement{ $input_list_two_phrase_name } ;
+            $temp_text =~ s/\n/ /sg ;
             $temp_text =~ s/^ +// ;
-            $temp_text =~ s/ +$//s ;
-            @input_list_two = split( /[ \n]+/ , $temp_text ) ;
+            $temp_text =~ s/ +$// ;
+            @input_list_two = split( / +/ , $temp_text ) ;
             $count_list_one = $#input_list_one + 1 ;
             $count_list_two = $#input_list_two + 1 ;
             if ( $count_list_one < 1 )
@@ -4740,16 +4760,18 @@ sub dashrep_expand_parameters
                 next ;
             }
             $list_of_x_values_as_text = $global_dashrep_replacement{ $operand_one } ;
-            $list_of_x_values_as_text =~ s/^ +//s ;
-            $list_of_x_values_as_text =~ s/ +$//s ;
-            @list_of_x_values = split( /[ \n]+/s , $list_of_x_values_as_text ) ;
+            $list_of_x_values_as_text =~ s/\n/ /s ;
+            $list_of_x_values_as_text =~ s/^ +// ;
+            $list_of_x_values_as_text =~ s/ +$// ;
+            @list_of_x_values = split( / +/ , $list_of_x_values_as_text ) ;
             $global_dashrep_replacement{ $target_operand } = "" ;
             if ( ( $action_name eq "numeric-vectors-add" ) || ( $action_name eq "numeric-vectors-multiply" ) || ( $action_name eq "numeric-vectors-divide-by" ) || ( $action_name eq "numeric-vectors-from-delta-values-calculate-distances" ) )
             {
                 $list_of_y_values_as_text = $global_dashrep_replacement{ $operand_two } ;
-                $list_of_y_values_as_text =~ s/^ +//s ;
-                $list_of_y_values_as_text =~ s/ +$//s ;
-                @list_of_y_values = split( /[ \n]+/s , $list_of_y_values_as_text ) ;
+                $list_of_y_values_as_text =~ s/\n/ /s ;
+                $list_of_y_values_as_text =~ s/^ +// ;
+                $list_of_y_values_as_text =~ s/ +$// ;
+                @list_of_y_values = split( / +/ , $list_of_y_values_as_text ) ;
             }
             for( $pair_pointer = 0 ; $pair_pointer <= $#list_of_x_values ; $pair_pointer ++ )
             {
@@ -4847,13 +4869,15 @@ sub dashrep_expand_parameters
             $number_of_columns = $operand_one ;
             $text_for_right_direction_values = $global_dashrep_replacement{ $operand_two } ;
             $text_for_up_direction_values = $global_dashrep_replacement{ $operand_three } ;
-            $text_for_up_direction_values =~ s/^ +//s ;
-            $text_for_up_direction_values =~ s/ +$//s ;
-            $text_for_right_direction_values =~ s/^ +//s ;
-            $text_for_right_direction_values =~ s/ +$//s ;
-            @up_direction_value_for_item_number = split( /[ \n]+/s , $text_for_up_direction_values ) ;
+            $text_for_up_direction_values =~ s/\n/ /s ;
+            $text_for_up_direction_values =~ s/^ +// ;
+            $text_for_up_direction_values =~ s/ +$// ;
+            $text_for_right_direction_values =~ s/\n/ /s ;
+            $text_for_right_direction_values =~ s/^ +// ;
+            $text_for_right_direction_values =~ s/ +$// ;
+            @up_direction_value_for_item_number = split( / +/ , $text_for_up_direction_values ) ;
             unshift( @up_direction_value_for_item_number , 0 ) ;
-            @right_direction_value_for_item_number = split( /[ \n]+/s , $text_for_right_direction_values ) ;
+            @right_direction_value_for_item_number = split( / +/ , $text_for_right_direction_values ) ;
             unshift( @right_direction_value_for_item_number , 0 ) ;
             $number_of_items = $#up_direction_value_for_item_number ;
             if ( ( $#up_direction_value_for_item_number != $#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) )
@@ -5986,8 +6010,8 @@ sub dashrep_expand_special_phrases
     {
         $code_begin = $1 ;
         $code_end = $2 ;
-        $code_begin =~ s/ +$//si ;
-        $code_end =~ s/^ +//si ;
+        $code_begin =~ s/ +$//s ;
+        $code_end =~ s/^ +//s ;
         $expanded_string = $code_begin . $code_for_non_breaking_space . $code_end ;
     }
 
