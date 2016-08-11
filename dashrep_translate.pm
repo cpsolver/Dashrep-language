@@ -2428,7 +2428,7 @@ sub dashrep_expand_parameters
             @list_of_parameter_words = split( / +/ , $list_of_words_as_text ) ;
             if ( $action_name eq "copy-listed-words-to-phrases-named-in-pattern" )
             {
-                $phrase_name_containing_source_words =~ s/[ \n]+//g ;
+                $phrase_name_containing_source_words =~ s/[ \n]+//sg ;
                 $phrase_name_containing_source_words =~ s/^-+// ;
                 $phrase_name_containing_source_words =~ s/-+$// ;
                 if ( not( defined( $global_dashrep_replacement{ $phrase_name_containing_source_words } ) ) )
@@ -2465,9 +2465,6 @@ sub dashrep_expand_parameters
                         if ( $target_phrase_name =~ /^[^ \-][^ ]*-[^ ]*[^ \-]$/ )
                         {
                             $text_string = $list_of_source_words[ $pointer ] ;
-                            $text_string =~ s/\n/ /sg ;
-                            $text_string =~ s/^ +//s ;
-                            $text_string =~ s/ +$//s ;
                             $global_dashrep_replacement{ $target_phrase_name } = $text_string ;
                         }
                     } else
@@ -2488,8 +2485,8 @@ sub dashrep_expand_parameters
                     {
                         $text_string = $global_dashrep_replacement{ $source_phrase_name } ;
                         $text_string =~ s/\n/ /sg ;
-                        $text_string =~ s/^ +//s ;
-                        $text_string =~ s/ +$//s ;
+                        $text_string =~ s/^ +// ;
+                        $text_string =~ s/ +$// ;
                         $global_dashrep_replacement{ $target_phrase_name } .= " " . $text_string ;
                     }
                 }
