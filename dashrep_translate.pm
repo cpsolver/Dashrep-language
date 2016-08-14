@@ -256,6 +256,7 @@ BEGIN {
     $global_unique_value = 0 ;
     $global_storage_number = 1 ;
     $file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access
+    $file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
@@ -416,6 +417,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "yes-or-no-file-exists" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-folder-exists" } = 1 ;
     $global_required_number_of_operands_for_action{ "modification-time-of-file" } = 1 ;
+    $global_required_number_of_operands_for_action{ "set-file-permission-public-read" } = 1 ;
     $global_required_number_of_operands_for_action{ "size-of-file" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-from-phrase-append-to-file" } = 2 ;
     $global_required_number_of_operands_for_action{ "rename-file" } = 2 ;
@@ -651,6 +653,7 @@ BEGIN {
     $global_check_operand_one_is_file_name_for_action{ "get-definitions-from-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "yes-or-no-file-exists" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "modification-time-of-file" } = "yes" ;
+    $global_check_operand_one_is_file_name_for_action{ "set-file-permission-public-read" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "size-of-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "delete-file" } = "yes" ;
     $global_check_operand_one_is_file_name_for_action{ "rename-file" } = "yes" ;
@@ -5628,7 +5631,7 @@ sub dashrep_expand_parameters
 
         if ( $action_name =~ /((file)|(folder))/ )
         {
-            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-append-file-to-file" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "copy-from-columns-in-file-to-column-lists" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
+            if ( ( $action_name eq "copy-from-phrase-append-to-file" ) || ( $action_name eq "copy-from-file-to-phrase" ) || ( $action_name eq "copy-append-file-to-file" ) || ( $action_name eq "generate-list-of-files-in-current-read-directory" ) || ( $action_name eq "generate-list-of-folders-in-current-read-directory" ) || ( $action_name eq "yes-or-no-file-exists" ) || ( $action_name eq "yes-or-no-folder-exists" ) || ( $action_name eq "size-of-file" ) || ( $action_name eq "modification-time-of-file" ) || ( $action_name eq "set-file-permission-public-read" ) || ( $action_name eq "create-empty-file" ) || ( $action_name eq "create-empty-sub-folder" ) || ( $action_name eq "rename-file" ) || ( $action_name eq "delete-file" ) || ( $action_name eq "find-line-in-file-that-begins-with-text" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-listed-word" ) || ( $action_name eq "find-lines-in-file-that-begin-with-any-two-words-listed" ) || ( $action_name eq "write-all-dashrep-definitions-to-file" ) || ( $action_name eq "write-dashrep-definitions-listed-in-phrase-to-file" ) || ( $action_name eq "get-definitions-from-file" ) || ( $action_name eq "linewise-translate-from-file-to-file" ) || ( $action_name eq "linewise-translate-parameters-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-phrases-only-from-file-to-file" ) || ( $action_name eq "linewise-translate-special-phrases-only-from-file-to-file" ) || ( $action_name eq "copy-from-columns-in-file-to-named-phrases" ) || ( $action_name eq "copy-from-columns-in-file-to-column-lists" ) || ( $action_name eq "gather-tagged-info-from-file" ) || ( $action_name eq "write-gathered-listed-items-to-end-of-file" ) || ( $action_name eq "gather-from-tagged-file-one-entry" ) || ( $action_name eq "linewise-read-from-file-and-use-handler" ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -6763,6 +6766,29 @@ sub dashrep_file_actions
             }
         }
         $action_result = " " . $write_time . " " ;
+#  end of action code
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  set-file-permission-public-read
+#
+#  The filename is edited to remove any path
+#  specifications, and then the prefix in the
+#  appropriate dashrep phrase is used.
+
+    } elsif ( $action_name eq "set-file-permission-public-read" )
+    {
+        if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
+        {
+            $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
+        } elsif ( not( chmod( $file_public_read_protection_mode , $target_filename ) ) )
+        {
+            if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
+            {
+                $global_trace_log .= "{{trace; warning: protection removal for output file " . $target_filename . "  not successful}}\n" ;
+            }
+        }
 #  end of action code
 
 
