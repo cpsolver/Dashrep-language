@@ -130,11 +130,11 @@ The change assumes that none of the tag's attributes contain a close angle brack
 -----
 
 description-for-phrase-copy-and-replace:
-This action replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The two phrase names can be the same.
+This action replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase. s-n If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop. s-n The special phrases b-i-b character hyphen-here space b-i-e and b-i-b character hyphen-here hyphen b-i-e and b-i-b character hyphen-here newline b-i-e are useful here (because the language does not have ways to define those characters). s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-copy-characters-from-position-to-position:
-This action copies specified characters from the first phrase to the second phrase. s-n The third and fourth operands indicate the starting and ending character positions, with the first character position being numbered one (1). s-n The starting character position must not be larger than the ending character position. s-n The two phrase names can be the same.
+This action copies specified characters from the first phrase to the second phrase. s-n The third and fourth operands indicate the starting and ending character positions, with the first character position being numbered one (1). s-n The starting character position must not be larger than the ending character position. s-n The first two phrase names can be the same.
 -----
 
 description-for-phrase-copy-lowercase-only:
@@ -207,6 +207,10 @@ This action displays the definition of the specified phrase in the trace log. s-
 
 description-for-phrase-dashrep-endless-loop-count:
 This action supplies the current value of the internal endless h-h loop counter. s-n This special action, which has no operands, supplies the count on a read h-h only basis.
+-----
+
+description-for-phrase-dashrep-time-limit:
+This phrase contains the current number of seconds for use as a time limit. s-n When the time limit is exceeded, translation ends. s-n The default value is 300 seconds, which equals 5 minutes. s-n A different value can be specified, although the changed time limit may not take effect immediately.
 -----
 
 description-for-phrase-dashrep-undefined:
@@ -520,14 +524,6 @@ description-for-phrase-hyphen-here:
 This directive inserts a hyphen, with no adjacent spaces, where it appears within text that is expanded (translated). s-n Internally this phrase is defined as b-i-b no h-h space - no h-h space b-i-e no-space .
 ----
 
-description-for-phrase-copy-from-phrase-to-phrase-remove-first-word-from-phrase:
-This action copies a phrase definition to the specified phrase, and removes the first word. s-n The two phrase names can be the same.
-----
-
-description-for-phrase-copy-from-phrase-to-phrase-remove-last-word-from-phrase:
-This action copies a phrase definition to the specified phrase, and removes the last word. s-n The two phrase names can be the same.
-----
-
 description-for-phrase-yes-or-no-expand-special-phrases:
 If this phrase equals b-i-b no b-i-e then the following special phrases are not handled: b-i-b non h-h breaking h-h space b-i-e no-space , b-i-b tab h-h here b-i-e no-space , b-i-b empty h-h line b-i-e no-space , b-i-b new h-h line b-i-e no-space , b-i-b no h-h space b-i-e no-space , and b-i-b one h-h space b-i-e  no-space . s-n Any other value causes these special phrases to be handled. s-n The default value is b-i-b yes b-i-e no-space .
 ----
@@ -579,6 +575,11 @@ location-of-read-file
 
 description-for-phrase-modification-time-of-file:
 This action gets the modification time em-dash in epoch seconds em-dash of the specified file. s-n
+location-of-read-file
+----
+
+description-for-phrase-set-file-permission-public-read:
+This action changes the protection of the specified file to allow global access. s-n It is equivalent to the Linux command i-b chmod 0644 i-e no-space . s-n
 location-of-read-file
 ----
 
@@ -1063,7 +1064,7 @@ paragraph-next
 Another example: To identify a numeric pattern by converting all digits into the digit nine, the third phrase can contain the following text:
 b-i-b 0 9 1 9 2 9 3 9 4 9 5 9 6 9 7 9 8 9 b-i-e s-n
 paragraph-next
-As these examples illustrate, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The two phrase names can be the same.
+As these examples illustrate, the words can include single characters. s-n Obviously none of the words in the third phrase can contain a space. s-n If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable. s-n The first two phrase names can be the same.
 ----
 
 description-for-phrase-convert-unicode-to-html-entities
