@@ -187,6 +187,7 @@ yes-or-no-file-exists
 yes-or-no-folder-exists
 size-of-file
 modification-time-of-file
+set-file-permission-public-read
 create-empty-file
 rename-file
 delete-file
@@ -236,6 +237,7 @@ dashrep-undefined
 yes-or-no-expand-special-phrases
 dashrep-endless-loop-counter-limit
 dashrep-endless-loop-count
+dashrep-time-limit
 yes-or-no-use-slower-subset-expand
 insert-codeview-tags
 end-of-line-here
