@@ -170,6 +170,7 @@ my $global_endless_loop_counter ;
 my $global_endless_loop_counter_limit ;
 my $global_time_limit ;
 my $global_starting_time ;
+my $global_interval_count_for_time_limit_check ;
 my $global_nesting_level_of_file_actions ;
 my $global_recursion_level_of_expand_parameters ;
 my $global_xml_level_number ;
@@ -248,8 +249,9 @@ BEGIN {
     $global_false = 0 ;
     $global_endless_loop_counter = 0 ;
     $global_endless_loop_counter_limit = 70000 ;
-    $global_time_limit = 300 ;  # 300 seconds = 5 minutes
+    $global_time_limit = 1200 ;  # 1200 seconds = 20 minutes
     $global_starting_time = time ;
+    $global_interval_count_for_time_limit_check = 0 ;
     $global_xml_accumulated_sequence_of_tag_names = "" ;
     $global_spaces = "                                                                              " ;
     $global_nesting_level_of_file_actions = 0 ;
@@ -282,7 +284,7 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
-    $global_dashrep_replacement{ "dashrep-time-limit" } = "300" ;
+    $global_dashrep_replacement{ "dashrep-time-limit" } = "1200" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
@@ -741,7 +743,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
-    $global_dashrep_replacement{ "dashrep-time-limit" } = "300" ;
+    $global_dashrep_replacement{ "dashrep-time-limit" } = "1200" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
@@ -1791,22 +1793,27 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Check if time limit exceeded.
 
-        $elapsed_time = time - $global_starting_time ;
-        if ( $elapsed_time > $global_time_limit )
+        $global_interval_count_for_time_limit_check ++ ;
+        if ( $global_interval_count_for_time_limit_check > 1000 )
         {
-            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
-            $global_trace_log .= "{{trace; Error: The dashrep_expand_parameters subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
-            last ;
-        }
-        if ( $elapsed_time > ( $global_time_limit + 1 ) )
-        {
+            $global_interval_count_for_time_limit_check = 0 ;
+            $elapsed_time = time - $global_starting_time ;
+            if ( $elapsed_time > $global_time_limit )
+            {
+                $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+                $global_trace_log .= "{{trace; Error: The dashrep_expand_parameters subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
+                last ;
+            }
+            if ( $elapsed_time > ( $global_time_limit + 1 ) )
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
-            return 0 ;
+                return 0 ;
+            }
         }
 
 
@@ -5744,16 +5751,21 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  Check if time limit exceeded.
 
-        $elapsed_time = time - $global_starting_time ;
-        if ( $elapsed_time > $global_time_limit )
+        $global_interval_count_for_time_limit_check ++ ;
+        if ( $global_interval_count_for_time_limit_check > 1000 )
         {
+            $global_interval_count_for_time_limit_check = 0 ;
+            $elapsed_time = time - $global_starting_time ;
+            if ( $elapsed_time > $global_time_limit )
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
-            return 0 ;
+                return 0 ;
+            }
         }
 
 
@@ -5905,22 +5917,27 @@ sub dashrep_expand_phrases_except_special
 #-----------------------------------------------
 #  Check if time limit has been exceeded.
 
-        $elapsed_time = time - $global_starting_time ;
-        if ( $elapsed_time > $global_time_limit )
+        $global_interval_count_for_time_limit_check ++ ;
+        if ( $global_interval_count_for_time_limit_check > 1000 )
         {
-            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
-            $global_trace_log .= "{{trace; Error: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
-            last ;
-        }
-        if ( $elapsed_time > ( $global_time_limit + 1 ) )
-        {
+            $global_interval_count_for_time_limit_check = 0 ;
+            $elapsed_time = time - $global_starting_time ;
+            if ( $elapsed_time > $global_time_limit )
+            {
+                $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+                $global_trace_log .= "{{trace; Error: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
+                last ;
+            }
+            if ( $elapsed_time > ( $global_time_limit + 1 ) )
+            {
 #  remove-from-cpan-version-begin
-            warn "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+                warn "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
-#            carp "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#                carp "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
-            return 0 ;
+                return 0 ;
+            }
         }
 
 
