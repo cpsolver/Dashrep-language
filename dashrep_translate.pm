@@ -168,6 +168,8 @@ my $global_true ;
 my $global_false ;
 my $global_endless_loop_counter ;
 my $global_endless_loop_counter_limit ;
+my $global_time_limit ;
+my $global_starting_time ;
 my $global_nesting_level_of_file_actions ;
 my $global_recursion_level_of_expand_parameters ;
 my $global_xml_level_number ;
@@ -195,7 +197,8 @@ my $global_dashrep_text_list_of_spoken_words ;
 my $global_dashrep_text_list_of_phrases_uncategorized ;
 my $global_unique_value ;
 my $global_storage_number ;
-my $file_write_protection_mode ;
+my $global_file_write_protection_mode ;
+my $global_file_public_read_protection_mode ;
 my $global_dashrep_text_list_of_phrase_names ;
 my $global_action_name ;
 my $global_operand_one ;
@@ -245,6 +248,8 @@ BEGIN {
     $global_false = 0 ;
     $global_endless_loop_counter = 0 ;
     $global_endless_loop_counter_limit = 70000 ;
+    $global_time_limit = 300 ;  # 300 seconds = 5 minutes
+    $global_starting_time = time ;
     $global_xml_accumulated_sequence_of_tag_names = "" ;
     $global_spaces = "                                                                              " ;
     $global_nesting_level_of_file_actions = 0 ;
@@ -255,8 +260,8 @@ BEGIN {
     $global_trace_log = "" ;
     $global_unique_value = 0 ;
     $global_storage_number = 1 ;
-    $file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access
-    $file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access
+    $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access
+    $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access
     %global_replacement_count_for_item_name = ( ) ;
     @global_list_of_lists_to_generate = ( ) ;
     @global_xml_tag_at_level_number = ( ) ;
@@ -277,6 +282,7 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+    $global_dashrep_replacement{ "dashrep-time-limit" } = "300" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
@@ -688,7 +694,7 @@ BEGIN {
         }
         $global_list_of_action_names_as_text .= $phrase_name ;
     }
-    $global_list_of_special_names_as_text = "hyphen-here no-space one-space new-line empty-line line-break delayed-nospace delayed-newline dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin yes-or-no-append-not-replace-for-imported-phrases export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end word-to-use-in-handler time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year numeric-map-tile-zoom linewise-input-line-from-file linewise-input-line-count dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases yes-or-no-use-two-spaces-as-column-delimiter dashrep-debug-trace-log dashrep-endless-loop-count end-of-line-here yes-or-no-indicate-line-endings dashrep-replacement-results-at-time-of-escape dashrep-list-of-action-names dashrep-list-of-predefined-phrases dashrep-list-of-special-phrases undeleted-phrase" ;
+    $global_list_of_special_names_as_text = "hyphen-here no-space one-space new-line empty-line line-break delayed-nospace delayed-newline dashrep-definitions-begin dashrep-definitions-end dashrep-definition-append-next define-end define-begin yes-or-no-append-not-replace-for-imported-phrases export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end word-to-use-in-handler time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year numeric-map-tile-zoom linewise-input-line-from-file linewise-input-line-count dashrep-phrase-prefix-for-imported-phrases dashrep-phrase-suffix-for-imported-phrases yes-or-no-use-two-spaces-as-column-delimiter dashrep-debug-trace-log dashrep-endless-loop-count dashrep-time-limit end-of-line-here yes-or-no-indicate-line-endings dashrep-replacement-results-at-time-of-escape dashrep-list-of-action-names dashrep-list-of-predefined-phrases dashrep-list-of-special-phrases undeleted-phrase" ;
     $global_list_of_deprecated_phrases_as_text = "dashrep-first-xml-tag-name dashrep-xml-level-reset-if-zero dashrep-xml-trace-on-yes-or-no dashrep-xml-yes-ignore-if-no-tag-replacement" ;
     $global_dashrep_replacement{ "dashrep-list-of-predefined-phrases" } = $global_list_of_predefined_phrases_as_text ;
     $global_dashrep_replacement{ "dashrep-list-of-action-names" } = $global_list_of_action_names_as_text ;
@@ -735,6 +741,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;
     $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;
+    $global_dashrep_replacement{ "dashrep-time-limit" } = "300" ;
     $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;
     $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;
@@ -1627,6 +1634,7 @@ sub dashrep_expand_parameters
     my $yes_or_no_within_ampersand_encoded_character ;
     my $octet_number ;
     my $unicode_number ;
+    my $elapsed_time ;
     my @octet_number_at_position ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
@@ -1712,6 +1720,23 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Update the time limit in case it has changed.
+
+    if ( $global_dashrep_replacement{ "dashrep-time-limit" } =~ /^[0-9]+$/ )
+    {
+        $possible_new_limit = $global_dashrep_replacement{ "dashrep-time-limit" } + 0 ;
+        if ( ( $possible_new_limit != $global_time_limit ) && ( $possible_new_limit > 0 ) )
+        {
+            $global_time_limit = $possible_new_limit ;
+            if ( ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" ) && ( $replacement_text =~ /[^ ]/ ) )
+            {
+                $global_trace_log .= "{{trace; updated time limit: " . $possible_new_limit . "}}\n";
+            }
+        }
+    }
+
+
+#-----------------------------------------------
 #  Begin a loop that repeats until there have
 #  been no more replacements.
 
@@ -1758,6 +1783,28 @@ sub dashrep_expand_parameters
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 #            carp "Warning: The dashrep_expand_parameters subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
+        }
+
+
+#-----------------------------------------------
+#  Check if time limit exceeded.
+
+        $elapsed_time = time - $global_starting_time ;
+        if ( $elapsed_time > $global_time_limit )
+        {
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_expand_parameters subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $elapsed_time > ( $global_time_limit + 1 ) )
+        {
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
             return 0 ;
         }
@@ -5695,6 +5742,22 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
+#  Check if time limit exceeded.
+
+        $elapsed_time = time - $global_starting_time ;
+        if ( $elapsed_time > $global_time_limit )
+        {
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_parameters subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
+        }
+
+
+#-----------------------------------------------
 #  Repeat the loop that repeats until no more
 #  parameters remain.
 
@@ -5754,6 +5817,7 @@ sub dashrep_expand_phrases_except_special
     my $first_item ;
     my $remainder ;
     my $replacement_item ;
+    my $elapsed_time ;
     my @item_stack ;
     my @items_to_add ;
 
@@ -5833,6 +5897,28 @@ sub dashrep_expand_phrases_except_special
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
 #            carp "Warning: The dashrep_expand_phrases_except_special subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+#  uncomment-for-cpan-version-end
+            return 0 ;
+        }
+
+
+#-----------------------------------------------
+#  Check if time limit has been exceeded.
+
+        $elapsed_time = time - $global_starting_time ;
+        if ( $elapsed_time > $global_time_limit )
+        {
+            $global_dashrep_replacement{ "dashrep-stop-translation" } = "yes" ;
+            $global_trace_log .= "{{trace; Error: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit, so attempting to stop translation gently}}\n";
+            last ;
+        }
+        if ( $elapsed_time > ( $global_time_limit + 1 ) )
+        {
+#  remove-from-cpan-version-begin
+            warn "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+#            carp "Warning: The dashrep_expand_phrases_except_special subroutine has exceeded the time limit." . "\n" . "Stopped" ;
 #  uncomment-for-cpan-version-end
             return 0 ;
         }
@@ -6782,7 +6868,7 @@ sub dashrep_file_actions
         if ( ( $target_filename eq "" ) || ( $operand_two ne "" ) )
         {
             $possible_error_message .= " [warning, action " . $action_name . " has invalid operands " . $target_filename . " and " . $operand_two . "]" ;
-        } elsif ( not( chmod( $file_public_read_protection_mode , $target_filename ) ) )
+        } elsif ( not( chmod( $global_file_public_read_protection_mode , $target_filename ) ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
@@ -6862,7 +6948,7 @@ sub dashrep_file_actions
             }
         }
         close( OUTFILE ) ;
-        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        if ( not( chmod( $global_file_write_protection_mode , $target_filename ) ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
@@ -6924,7 +7010,7 @@ sub dashrep_file_actions
         }
         close( INFILE ) ;
         close( OUTFILE ) ;
-        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        if ( not( chmod( $global_file_write_protection_mode , $target_filename ) ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
@@ -7028,7 +7114,7 @@ sub dashrep_file_actions
                 }
             }
             close( OUTFILE ) ;
-            if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+            if ( not( chmod( $global_file_write_protection_mode , $target_filename ) ) )
             {
                 if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                 {
@@ -7604,7 +7690,7 @@ sub dashrep_file_actions
             }
         }
         close( OUTFILE ) ;
-        if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+        if ( not( chmod( $global_file_write_protection_mode , $target_filename ) ) )
         {
             if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
             {
@@ -7829,7 +7915,7 @@ sub dashrep_file_actions
                     }
                 }
                 close( OUTFILE ) ;
-                if ( not( chmod( $file_write_protection_mode , $target_filename ) ) )
+                if ( not( chmod( $global_file_write_protection_mode , $target_filename ) ) )
                 {
                     if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" )
                     {
@@ -9187,7 +9273,7 @@ sub dashrep_internal_endless_loop_info
             }
             close( OUTFILE ) ;
             print "Endless loop debug info written to file " . $endless_loop_debug_info_filename . "\n" ;
-            chmod( $file_write_protection_mode , $endless_loop_debug_info_filename ) ;
+            chmod( $global_file_write_protection_mode , $endless_loop_debug_info_filename ) ;
         }
     }
 
