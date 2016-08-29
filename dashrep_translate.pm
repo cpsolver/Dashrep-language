@@ -306,6 +306,7 @@ BEGIN {
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
     $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;
+    $global_dashrep_replacement{ "list-of-pointers-to-unique-words" } = "" ;
 
     $global_list_of_predefined_phrases_as_text = "" ;
     foreach $phrase_name ( keys( %global_dashrep_replacement ) )
@@ -765,6 +766,7 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;
     $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
     $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;
+    $global_dashrep_replacement{ "list-of-pointers-to-unique-words" } = "" ;
 
     $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;
 }
@@ -3910,6 +3912,7 @@ sub dashrep_expand_parameters
             $number_of_unique_words = 0 ;
             @unique_word_at_position = ( ) ;
             $unique_word_at_position[ 0 ] = "" ;
+            $text_list_of_unique_word_pointers = "" ;
             $result_word_list = "" ;
             if ( $length_of_loop_list > 0 )
             {
@@ -3933,10 +3936,12 @@ sub dashrep_expand_parameters
                             $result_word_list .= $word . " " ;
                             $number_of_unique_words ++ ;
                             $unique_word_at_position[ $number_of_unique_words ] = $word ;
+                            $text_list_of_unique_word_pointers .= $pointer . " " ;
                         }
                     }
                 }
             }
+            $text_list_of_unique_word_pointers =~ s/ +$// ;
             $result_word_list =~ s/ +$// ;
             $global_dashrep_replacement{ $destination_phrase } = $result_word_list ;
             if ( $action_name eq "copy-words-unique-only" )
@@ -3951,6 +3956,7 @@ sub dashrep_expand_parameters
                     $text_list_of_unique_word_counts .= sprintf( "%d" , $occurrence_count_for_word{ $unique_word_at_position[ $pointer ] } ) ;
                 }
                 $global_dashrep_replacement{ "list-of-unique-word-counts" } = $text_list_of_unique_word_counts ;
+                $global_dashrep_replacement{ "list-of-pointers-to-unique-words" } = $text_list_of_unique_word_pointers ;
             }
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
