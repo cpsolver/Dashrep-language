@@ -1402,6 +1402,8 @@ string if there is not exactly one parameter.
 sub dashrep_expand_parameters
 {
 
+# runtime expand parameters code declarations begin
+
     my $undeleted_phrase_content ;
     my $do_nothing ;
     my $supplied_text ;
@@ -1666,6 +1668,8 @@ sub dashrep_expand_parameters
     my %listed_word ;
     my %words_at_numeric_value ;
     my %item_number_at_row_column ;
+
+# runtime expand parameters code declarations end
 
 
 #-----------------------------------------------
@@ -2216,6 +2220,13 @@ sub dashrep_expand_parameters
     {
         $global_trace_log .= "{{trace; starting action " . $action_name . " with operands: " . $operand_one . " and " . $operand_two . " and " . $operand_three . " and " . $operand_four . " and " . $operand_five . "}}\n" ;
     }
+
+
+#-----------------------------------------------
+#  Beginning of actions that can be executed from
+#  compiler-generated code.
+
+# runtime expand parameters code actions begin
 
 
 #-----------------------------------------------
@@ -5641,6 +5652,13 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
+
+
+#-----------------------------------------------
+#  End of actions that can be executed from
+#  compiler-generated code.
+
+# runtime expand parameters code actions end
 
 
 #-----------------------------------------------
