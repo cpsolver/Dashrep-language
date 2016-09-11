@@ -209,6 +209,13 @@ my $global_operand_four ;
 my $global_operand_five ;
 my $global_operands_all ;
 my $global_action_result ;
+my $global_single_action_name ;
+my $global_single_action_operand_one ;
+my $global_single_action_operand_two ;
+my $global_single_action_operand_three ;
+my $global_single_action_operand_four ;
+my $global_single_action_operand_five ;
+my $global_single_action_operands_all ;
 my $global_list_of_action_names_as_text ;
 my $global_list_of_predefined_phrases_as_text ;
 my $global_list_of_special_names_as_text ;
@@ -262,6 +269,13 @@ BEGIN {
     $global_trace_log = "" ;
     $global_unique_value = 0 ;
     $global_storage_number = 1 ;
+    $global_single_action_name = "" ;
+    $global_single_action_operand_one = "" ;
+    $global_single_action_operand_two = "" ;
+    $global_single_action_operand_three = "" ;
+    $global_single_action_operand_four = "" ;
+    $global_single_action_operand_five = "" ;
+    $global_single_action_operands_all = "" ;
     $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access
     $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access
     %global_replacement_count_for_item_name = ( ) ;
@@ -1402,8 +1416,6 @@ string if there is not exactly one parameter.
 sub dashrep_expand_parameters
 {
 
-# runtime expand parameters code declarations begin
-
     my $undeleted_phrase_content ;
     my $do_nothing ;
     my $supplied_text ;
@@ -1641,6 +1653,7 @@ sub dashrep_expand_parameters
     my $octet_number ;
     my $unicode_number ;
     my $elapsed_time ;
+    my $text_list_of_unique_word_pointers ;
     my @octet_number_at_position ;
     my @list_of_words_to_check ;
     my @list_of_strings_to_match ;
@@ -1669,8 +1682,6 @@ sub dashrep_expand_parameters
     my %words_at_numeric_value ;
     my %item_number_at_row_column ;
 
-# runtime expand parameters code declarations end
-
 
 #-----------------------------------------------
 #  Get the hyphenated phrase or supplied string.
@@ -1680,8 +1691,7 @@ sub dashrep_expand_parameters
         $supplied_text = $_[ 0 ] ;
     } else
     {
-        $replacement_text = "" ;
-        return $replacement_text ;
+        $supplied_text = "" ;
     }
 
 
@@ -1693,6 +1703,16 @@ sub dashrep_expand_parameters
     $replacement_text =~ s/[\r\n\t]/ /sg ;
     $replacement_text =~ s/^ +// ;
     $replacement_text =~ s/ +$// ;
+
+
+#-----------------------------------------------
+#  If there is no supplied text and no
+#  runtime-code action name, return with nothing.
+
+    if ( ( $supplied_text eq "" ) && ( $global_single_action_name eq "" ) )
+    {
+        return $replacement_text ;
+    }
 
 
 #-----------------------------------------------
@@ -1851,7 +1871,7 @@ sub dashrep_expand_parameters
             $text_parameter_content = $2 ;
             $text_end = $3 ;
         }
-        if ( $text_parameter_content eq "" )
+        if ( ( $text_parameter_content eq "" ) && ( $global_single_action_name eq "" ) )
         {
             last ;
         }
@@ -1902,7 +1922,7 @@ sub dashrep_expand_parameters
 #  phrase as a way to access this replacement
 #  name for debugging purposes.
 
-        if ( ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
+        if ( ( $text_parameter_content ne "" ) && ( $text_parameter_content !~ / / ) && ( exists( $global_dashrep_replacement{ $text_parameter_content } ) ) )
         {
             if ( defined( $global_dashrep_replacement{ $text_parameter_content } ) )
             {
@@ -1962,54 +1982,98 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Get the action name and the operands.  If there
+#  If this subroutine is being used as runtime
+#  code for compiled code, get the single action
+#  name and its operands.
+
+        if ( $global_single_action_name ne "" )
+        {
+            $action_name = $global_single_action_name ;
+            $operands_all = $global_single_action_operands_all ;
+            if ( exists( $global_required_number_of_operands_for_action{ $action_name } ) )
+            {
+                $number_of_operands = $global_required_number_of_operands_for_action{ $action_name } ;
+            } elsif ( exists( $global_minimum_number_of_operands_for_action{ $action_name } ) )
+            {
+                $number_of_operands = $global_minimum_number_of_operands_for_action{ $action_name } ;
+            } else
+            {
+                $number_of_operands = 0 ;
+            }
+            if ( $number_of_operands > 0 )
+            {
+                $operand_one = $global_single_action_operand_one ;
+                if ( $number_of_operands > 1 )
+                {
+                    $operand_two = $global_single_action_operand_two ;
+                    if ( $number_of_operands > 2 )
+                    {
+                        $operand_three = $global_single_action_operand_three ;
+                        if ( $number_of_operands > 3 )
+                        {
+                            $operand_four = $global_single_action_operand_four ;
+                            if ( $number_of_operands > 4 )
+                            {
+                                $operand_five = $global_single_action_operand_five ;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+#-----------------------------------------------
+#  From the current "text parameter content"
+#  get the action name and the operands.  If there
 #  are no non-space characters, remove the
 #  parameter brackets and restart the main loop.
 
-        $action_name = "" ;
-        $operands_all = "" ;
-        $operand_one = "" ;
-        $operand_two = "" ;
-        $operand_three = "" ;
-        $operand_four = "" ;
-        $operand_five = "" ;
-        $number_of_operands = 0 ;
-        if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
-        {
-            $action_name = $1 ;
-            $operands_all = $2 ;
-            $action_name =~ s/^\-+// ;
-            $action_name =~ s/\-+$// ;
-            $operands_all =~ s/\n/ /sg ;
-            $operands_all =~ s/^ +// ;
-            $operands_all =~ s/ +$// ;
-            $operands_all =~ s/\-+$// ;
-            @list_of_operands = split( / +/ , $operands_all ) ;
-            $number_of_operands = scalar( @list_of_operands ) ;
-            if ( $number_of_operands >= 1 )
-            {
-                $operand_one = $list_of_operands[ 0 ] ;
-            }
-            if ( $number_of_operands >= 2 )
-            {
-                $operand_two = $list_of_operands[ 1 ] ;
-            }
-            if ( $number_of_operands >= 3 )
-            {
-                $operand_three = $list_of_operands[ 2 ] ;
-            }
-            if ( $number_of_operands >= 4 )
-            {
-                $operand_four = $list_of_operands[ 3 ] ;
-            }
-            if ( $number_of_operands >= 5 )
-            {
-                $operand_five = $list_of_operands[ 4 ] ;
-            }
         } else
         {
-            $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
-            next ;
+            $operands_all = "" ;
+            $operand_one = "" ;
+            $operand_two = "" ;
+            $operand_three = "" ;
+            $operand_four = "" ;
+            $operand_five = "" ;
+            $number_of_operands = 0 ;
+            if ( $text_parameter_content =~ /^([^ ]+)(.*)$/ )
+            {
+                $action_name = $1 ;
+                $operands_all = $2 ;
+                $action_name =~ s/^\-+// ;
+                $action_name =~ s/\-+$// ;
+                $operands_all =~ s/\n/ /sg ;
+                $operands_all =~ s/^ +// ;
+                $operands_all =~ s/ +$// ;
+                $operands_all =~ s/\-+$// ;
+                @list_of_operands = split( / +/ , $operands_all ) ;
+                $number_of_operands = scalar( @list_of_operands ) ;
+                if ( $number_of_operands >= 1 )
+                {
+                    $operand_one = $list_of_operands[ 0 ] ;
+                }
+                if ( $number_of_operands >= 2 )
+                {
+                    $operand_two = $list_of_operands[ 1 ] ;
+                }
+                if ( $number_of_operands >= 3 )
+                {
+                    $operand_three = $list_of_operands[ 2 ] ;
+                }
+                if ( $number_of_operands >= 4 )
+                {
+                    $operand_four = $list_of_operands[ 3 ] ;
+                }
+                if ( $number_of_operands >= 5 )
+                {
+                    $operand_five = $list_of_operands[ 4 ] ;
+                }
+            } else
+            {
+                $replacement_text = $text_begin . " " . $text_parameter_content . " " . $text_end ;
+                next ;
+            }
         }
 
 
@@ -2216,17 +2280,14 @@ sub dashrep_expand_parameters
 #-----------------------------------------------
 #  If requested, log the action details.
 
-    if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-    {
-        $global_trace_log .= "{{trace; starting action " . $action_name . " with operands: " . $operand_one . " and " . $operand_two . " and " . $operand_three . " and " . $operand_four . " and " . $operand_five . "}}\n" ;
-    }
+        if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
+        {
+            $global_trace_log .= "{{trace; starting action " . $action_name . " with operands: " . $operand_one . " and " . $operand_two . " and " . $operand_three . " and " . $operand_four . " and " . $operand_five . "}}\n" ;
+        }
 
 
 #-----------------------------------------------
-#  Beginning of actions that can be executed from
-#  compiler-generated code.
-
-# runtime expand parameters code actions begin
+#  Beginning of code for actions.
 
 
 #-----------------------------------------------
@@ -2708,51 +2769,51 @@ sub dashrep_expand_parameters
                 $global_dashrep_replacement{ $source_phrase_name } = "" ;
             }
             $accumulated_text = "" ;
-			@octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $source_phrase_name } ) ;
-			$yes_or_no_within_ampersand_encoded_character = "no" ;
-			$pointer = -1 ;
-			while ( $pointer < $#octet_number_at_position )
-			{
-				$pointer ++ ;
-				$octet_number = $octet_number_at_position[ $pointer ] ;
-				if ( $octet_number < 32 )
-				{
-					$unicode_number = $octet_number ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-				} elsif ( $octet_number < 127 )
-				{
-					$accumulated_text .= chr( $octet_number ) ;
-				} elsif ( $octet_number >= 0xfc )
-				{
-					$unicode_number = ( ( ( ( ( ( ( ( ( ( $octet_number - 0xfc ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 5 ] - 128 ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-					$pointer += 5 ;
-				} elsif ( $octet_number >= 0xf8 )
-				{
-					$unicode_number = ( ( ( ( ( ( ( ( $octet_number - 0xf8 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-					$pointer += 4 ;
-				} elsif ( $octet_number >= 0xf0 )
-				{
-					$unicode_number = ( ( ( ( ( ( $octet_number - 0xf0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-					$pointer += 3 ;
-				} elsif ( $octet_number >= 0xe0 )
-				{
-					$unicode_number = ( ( ( ( $octet_number - 0xe0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-					$pointer += 2 ;
-				} elsif ( $octet_number >= 0xc0 )
-				{
-					$unicode_number = ( ( $octet_number - 0xc0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-					$pointer += 1 ;
-				} elsif ( $octet_number > 0 )
-				{
-					$unicode_number = $octet_number ;
-					$accumulated_text .= '&#' . $unicode_number . ';' ;
-				}
-			}
+            @octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $source_phrase_name } ) ;
+            $yes_or_no_within_ampersand_encoded_character = "no" ;
+            $pointer = -1 ;
+            while ( $pointer < $#octet_number_at_position )
+            {
+                $pointer ++ ;
+                $octet_number = $octet_number_at_position[ $pointer ] ;
+                if ( $octet_number < 32 )
+                {
+                    $unicode_number = $octet_number ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                } elsif ( $octet_number < 127 )
+                {
+                    $accumulated_text .= chr( $octet_number ) ;
+                } elsif ( $octet_number >= 0xfc )
+                {
+                    $unicode_number = ( ( ( ( ( ( ( ( ( ( $octet_number - 0xfc ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 5 ] - 128 ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                    $pointer += 5 ;
+                } elsif ( $octet_number >= 0xf8 )
+                {
+                    $unicode_number = ( ( ( ( ( ( ( ( $octet_number - 0xf8 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 4 ] - 128 ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                    $pointer += 4 ;
+                } elsif ( $octet_number >= 0xf0 )
+                {
+                    $unicode_number = ( ( ( ( ( ( $octet_number - 0xf0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 3 ] - 128 ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                    $pointer += 3 ;
+                } elsif ( $octet_number >= 0xe0 )
+                {
+                    $unicode_number = ( ( ( ( $octet_number - 0xe0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ) * 64 ) + $octet_number_at_position[ $pointer + 2 ] - 128 ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                    $pointer += 2 ;
+                } elsif ( $octet_number >= 0xc0 )
+                {
+                    $unicode_number = ( ( $octet_number - 0xc0 ) * 64 ) + $octet_number_at_position[ $pointer + 1 ] - 128 ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                    $pointer += 1 ;
+                } elsif ( $octet_number > 0 )
+                {
+                    $unicode_number = $octet_number ;
+                    $accumulated_text .= '&#' . $unicode_number . ';' ;
+                }
+            }
             $global_dashrep_replacement{ $target_phrase_name } = $accumulated_text ;
             if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
             {
@@ -5652,13 +5713,6 @@ sub dashrep_expand_parameters
             $replacement_text = $text_begin . $action_result . $text_end ;
             next ;
         }
-
-
-#-----------------------------------------------
-#  End of actions that can be executed from
-#  compiler-generated code.
-
-# runtime expand parameters code actions end
 
 
 #-----------------------------------------------
