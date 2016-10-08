@@ -468,7 +468,7 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
     $global_minimum_number_of_operands_for_action{ "put-into-phrase" } = 2 ;
 
-    $global_minimum_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 0 ;
+    $global_minimum_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "yes-or-no-opposite" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 0 ;
