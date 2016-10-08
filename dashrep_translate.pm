@@ -284,6 +284,7 @@ BEGIN {
 
     %global_dashrep_replacement = ( ) ;
 
+    $global_dashrep_replacement{ "dashrep-version" } = "4.00" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "character-space" } = " " ;
     $global_dashrep_replacement{ "character-hyphen" } = "-" ;
@@ -465,6 +466,7 @@ BEGIN {
     $global_minimum_number_of_operands_for_action{ "numeric-maximum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-minimum" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
+    $global_minimum_number_of_operands_for_action{ "put-into-phrase" } = 2 ;
 
     $global_minimum_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 0 ;
     $global_minimum_number_of_operands_for_action{ "yes-or-no-opposite" } = 0 ;
@@ -744,6 +746,7 @@ with special "dashrep-..." names.
 
 sub initialize_special_phrases
 {
+    $global_dashrep_replacement{ "dashrep-version" } = "4.00" ;
     $global_dashrep_replacement{ "empty-text" } = "" ;
     $global_dashrep_replacement{ "character-space" } = " " ;
     $global_dashrep_replacement{ "character-hyphen" } = "-" ;
@@ -2636,6 +2639,7 @@ sub dashrep_expand_parameters
 #  Handle the actions:
 #  copy-text
 #  copy-to-phrase-from-following-text
+#  put-into-phrase
 #  copy-lowercase-only
 #  copy-uppercase-only
 #  copy-initial-caps
@@ -2645,7 +2649,7 @@ sub dashrep_expand_parameters
 #  encode-as-cgi-parameter
 #  decode-from-cgi-parameter
 
-        if ( ( $action_name eq "copy-text" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-without-extra-spaces" ) || ( $action_name eq "copy-lowercase-only" ) || ( $action_name eq "copy-uppercase-only" ) || ( $action_name eq "copy-initial-caps" ) || ( $action_name eq "copy-words-sort-numeric" ) || ( $action_name eq "copy-words-sort-alphabetic" ) || ( $action_name eq "encode-as-cgi-parameter" ) || ( $action_name eq "decode-from-cgi-parameter" ) )
+        if ( ( $action_name eq "copy-text" ) || ( $action_name eq "put-into-phrase" ) || ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "copy-without-extra-spaces" ) || ( $action_name eq "copy-lowercase-only" ) || ( $action_name eq "copy-uppercase-only" ) || ( $action_name eq "copy-initial-caps" ) || ( $action_name eq "copy-words-sort-numeric" ) || ( $action_name eq "copy-words-sort-alphabetic" ) || ( $action_name eq "encode-as-cgi-parameter" ) || ( $action_name eq "decode-from-cgi-parameter" ) )
         {
             $source_phrase_name = $operand_one ;
             $target_phrase_name = $operand_two ;
@@ -2666,7 +2670,7 @@ sub dashrep_expand_parameters
             } elsif ( $action_name eq "copy-uppercase-only" )
             {
                 $temp_text = uc( $temp_text ) ;
-            } elsif ( $action_name eq "copy-to-phrase-from-following-text" )
+            } elsif ( ( $action_name eq "copy-to-phrase-from-following-text" ) || ( $action_name eq "put-into-phrase" ) )
             {
                 $temp_text = $operands_all ;
                 $temp_text =~ s/^ *[^ ]+ +// ;

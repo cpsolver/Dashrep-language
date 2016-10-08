@@ -269,6 +269,10 @@ description-for-phrase-four-hyphens:
 This pre h-h defined phrase contains four adjacent hyphen characters ( no-space b-i-b h-h no-space h-h no-space h-h no-space h-h b-i-e no-space ).
 -----
 
+description-for-phrase-dashrep-version:
+This pre h-h defined phrase contains the Dashrep version number. s-n This number is not changed with every change in the Dashrep language, but rather tracks major Dashrep changes.
+-----
+
 description-for-phrase-if-yes-begin:
 This action looks at the first space hyphen-here delimited word, and if it is b-i-b yes b-i-e (or contains that word) then this action removes all the text between the next occurrences of b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e (and removes the b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e text items). sentence-next Otherwise (if the first word that follows does not contain b-i-b yes b-i-e no-space ) then this action removes all the text between itself (the action name) and the next occurrence of b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e (and removes the b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e text items). sentence-next This action provides a major branching capability. sentence-next However, the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the text b-i-b [ hyphen-here if hyphen-here else hyphen-here ] b-i-e and the text b-i-b [ hyphen-here if hyphen-here end hyphen-here ] b-i-e b-b cannot b-e be nested (as allowed in most programming languages). sentence-next Specifically, an inner b-i-b if b-i-e action must not appear within an outer b-i-b if b-i-e action within the same Dashrep code. s-n The functional nesting of b-i-b if b-i-e branches is allowed if the inner b-i-b if b-i-e action appears within a separate phrase that is not expanded until after the outer b-i-b if b-i-e directive is handled.
 -----
@@ -1027,11 +1031,14 @@ location-of-write-file
 
 description-for-phrase-copy-text:
 This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase. s-n 
-This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted. s-n This action is useful in situations where the text includes hyphens, line breaks, multiple adjacent spaces and any other text that cannot be assigned using the equal h-h sign approach.
+This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted.
 -----
 
-description-for-phrase-copy-to-phrase-from-following-text:
-This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored. s-n This action is useful in situations where the equal-sign approach cannot be used, such as when a phrase name needs to be put into a phrase without any expansion.
+description-for-phrase-put-into-phrase:
+This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
+paragraph-next
+Example: After expanding the code b-i-b ambee put-into-phrase target-phrase whale dolphin starfish amenn b-i-e the phrase b-i-b target h-h phrase b-i-e
+will contain b-i-b whale dolphin starfish b-i-e no-space .
 -----
 
 description-for-phrase-append-text:
@@ -1137,8 +1144,7 @@ This phrase is written to the beginning of the file created by the action b-i-b 
 
 description-for-phrase-clear-phrase:
 This action clears the definition for the specified phrase. s-n
-The specified phrase continues to be defined, but the definition is empty. s-n
-This action is equivalent to using the equal h-h sign notation without any text for the new definition.
+The specified phrase continues to be defined, but the definition is empty.
 ----
 
 description-for-phrase-clear-listed-phrases:
@@ -1391,41 +1397,39 @@ r-b c-b 4 c-n Three or more adjacent hyphens c-n b-i-b h-h h-h h-h h-h b-i-e c-n
 
 r-b c-b 5 c-n Parameter c-n b-i-b [ h-h b-i-e non-breaking-space parameter non-breaking-space b-i-b h-h ] b-i-e c-n A parameter is expanded before the surrounding text is expanded. s-n The first-encountered innermost parameter is expanded first. s-n Spaces at the beginning and end of the parameter are removed, which allows the expanded text to become part of a hyphenated phrase, which in turn enables branching and indexing. c-e r-e
 
-r-b c-b 6 c-n Assignment c-n b-i-b [ h-h b-i-e user-phrase-name b-i-b = b-i-e new text b-i-b h-h ] b-i-e c-n If a parameter contains an equal sign (=) and there is one hyphenated phrase between the equal sign and the beginning of the parameter, the text to the right of the equal sign (up to the end of the parameter) is assigned as the definition of the phrase. s-n If the hyphenated phrase already had a definition, that definition is discarded. s-n If the text between the beginning of a parameter and an equal sign is not one hyphenated phrase, the equal sign is not recognized as being part of an assignment. s-n The assignment capability enables the same phrase to produce different results, which is what a "function" does in traditional programming languages. c-e r-e
-
 r-b c-b 5 c-n Phrase name in parameter brackets c-n b-i-b [ h-h b-i-e user h-h phrase h-h name b-i-b h-h ] b-i-e c-n A hyphenated phrase within parameter brackets is expanded according to the phrase's definition (which itself can contain parameters). s-n If the phrase name is not defined, it is left as-is, and the parameter brackets are removed. s-n Spaces at the beginning and end of the parameter are removed, which allows the expanded text to become part of a hyphenated phrase, which in turn enables branching and indexing. c-e r-e
 
-r-b c-b 7 c-n Action c-n b-i-b [ h-h b-i-e zero h-h one h-h multiple 3 b-i-b h-h ] b-i-e c-n If the first (left-most) hyphenated phrase inside a parameter is one of the recognized actions (listed below), and the action is followed by text that the action knows how to handle, the action is performed. s-n Some actions produce text that becomes the replacement for the parameter, whereas other actions operate on phrases or files and do not produce any text. c-e r-e
+r-b c-b 6 c-n Action c-n b-i-b [ h-h b-i-e zero h-h one h-h multiple 3 b-i-b h-h ] b-i-e c-n If the first (left-most) hyphenated phrase inside a parameter is one of the recognized actions (listed below), and the action is followed by text that the action knows how to handle, the action is performed. s-n Some actions produce text that becomes the replacement for the parameter, whereas other actions operate on phrases or files and do not produce any text. c-e r-e
 
-r-b c-b 8 c-n Hyphenated phrase c-n needed h-h text h-h string c-n A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase. s-n (A hyphen and a dash are different names for the same symbol.) s-n A phrase name is case-sensitive. s-n Lowercase-only names are recommended, but not required. s-n Speakable names are recommended, but not required. s-n The use of nouns before, rather than after, adjectives is recommended; this convention (for example b-i-b rectangle h-h large h-h begin b-i-e instead of b-i-b large h-h rectangle h-h begin b-i-e no-space ) is typical of many spoken languages, but not English.  s-n The first character cannot be a hyphen and cannot be a digit. s-n The last character cannot be a hyphen. c-e r-e
+r-b c-b 7 c-n Hyphenated phrase c-n needed h-h text h-h string c-n A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase. s-n (A hyphen and a dash are different names for the same symbol.) s-n A phrase name is case-sensitive. s-n Lowercase-only names are recommended, but not required. s-n Speakable names are recommended, but not required. s-n The use of nouns before, rather than after, adjectives is recommended; this convention (for example b-i-b rectangle h-h large h-h begin b-i-e instead of b-i-b large h-h rectangle h-h begin b-i-e no-space ) is typical of many spoken languages, but not English.  s-n The first character cannot be a hyphen and cannot be a digit. s-n The last character cannot be a hyphen. c-e r-e
 
-r-b c-b 9 c-n Colon c-n needed h-h text h-h string no-space b-i-b : b-i-e definition here non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n When there is text after the b-i-b dashrep h-h definitions h-h begin b-i-e directive, a colon can appear at the end of the phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
+r-b c-b 8 c-n Colon c-n needed h-h text h-h string no-space b-i-b : b-i-e definition here non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n When there is text after the b-i-b dashrep h-h definitions h-h begin b-i-e directive, a colon can appear at the end of the phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
 
-r-b c-b 10 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code (which in HTML is the b-i-b <br \> b-i-e tag). c-e r-e
+r-b c-b 9 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code (which in HTML is the b-i-b <br \> b-i-e tag). c-e r-e
 
-r-b c-b 11 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
+r-b c-b 10 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
 
-r-b c-b 12 c-n define h-h begin c-n b-i-b define h-h begin b-i-e c-n Explained below. c-e r-e
+r-b c-b 11 c-n define h-h begin c-n b-i-b define h-h begin b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 13 c-n dashrep h-h definitions h-h begin c-n b-i-b dashrep h-h definitions h-h begin b-i-e c-n Explained below. c-e r-e
+r-b c-b 12 c-n dashrep h-h definitions h-h begin c-n b-i-b dashrep h-h definitions h-h begin b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 14 c-n dashrep h-h definitions h-h end c-n b-i-b dashrep h-h definitions h-h end b-i-e c-n Explained below. c-e r-e
+r-b c-b 13 c-n dashrep h-h definitions h-h end c-n b-i-b dashrep h-h definitions h-h end b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 15 c-n define h-h end c-n b-i-b define h-h end b-i-e c-n Explained below. c-e r-e
+r-b c-b 14 c-n define h-h end c-n b-i-b define h-h end b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 16 c-n hyphen h-h here c-n b-i-b hyphen h-h here b-i-e c-n Explained below. c-e r-e
+r-b c-b 15 c-n hyphen h-h here c-n b-i-b hyphen h-h here b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 17 c-n non h-h breaking h-h space c-n b-i-b non h-h breaking h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 16 c-n non h-h breaking h-h space c-n b-i-b non h-h breaking h-h space b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 20 c-n tab h-h here c-n b-i-b tab h-h here b-i-e c-n Explained below. c-e r-e
+r-b c-b 17 c-n tab h-h here c-n b-i-b tab h-h here b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 21 c-n empty h-h line c-n b-i-b empty h-h line b-i-e c-n Explained below. c-e r-e
+r-b c-b 18 c-n empty h-h line c-n b-i-b empty h-h line b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 22 c-n new h-h line c-n b-i-b new h-h line b-i-e c-n Explained below. c-e r-e
+r-b c-b 19 c-n new h-h line c-n b-i-b new h-h line b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 23 c-n no h-h space c-n b-i-b no h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 20 c-n no h-h space c-n b-i-b no h-h space b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 24 c-n one h-h space c-n b-i-b one h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 21 c-n one h-h space c-n b-i-b one h-h space b-i-e c-n Explained below. c-e r-e
 
 t-e
 ----
@@ -1445,17 +1449,15 @@ r-b c-b comenn c-n h-h h-h h-h * c-n Indicates the end of a comment. c-e r-e
 
 r-b c-b fen c-n hyphen with no adjacent spaces c-n Inserts a hyphen between words (or other adjacent characters). c-e r-e
 
-r-b c-b dashbee c-n (no equivalence) c-n Indicates the beginning of a phrase that needs to be hyphenated. s-n For example, b-i-b dashbee words of phrase dashenn b-i-e becomes b-i-b words h-h of h-h phrase b-i-e  no-space . c-e r-e
+r-b c-b dashbee c-n (no equivalence) c-n Indicates the beginning of a phrase that needs to be hyphenated. s-n For example, b-i-b dashbee info about dolphin dashenn b-i-e becomes b-i-b info h-h about h-h dolphin b-i-e  no-space . c-e r-e
 
 r-b c-b dashenn c-n (no equivalence) c-n Indicates the end of a phrase that needs to be hyphenated. c-e r-e
 
-r-b c-b dashnex c-n (no equivalence) c-n Indicates the end of one phrase that needs to be hyphenated and the beginning of another phrase that needs to be hyphenated. s-n For example, b-i-b dashbee words of phrase dashnex words of another phrase dashenn b-i-e becomes b-i-b words h-h of h-h phrase words h-h of h-h another h-h phrase b-i-e no-space . c-e r-e
+r-b c-b dashnex c-n (no equivalence) c-n Indicates the end of one phrase that needs to be hyphenated and the beginning of another phrase that needs to be hyphenated. s-n For example, b-i-b dashbee info about dolphin dashnex copy of info about dolphin dashenn b-i-e becomes b-i-b info h-h about h-h dolphin copy h-h of h-h info h-h about h-h dolphin b-i-e no-space . c-e r-e
 
 r-b c-b ambee c-n [ h-h c-n Indicates the beginning of a parameter. c-e r-e
 
 r-b c-b amenn c-n h-h ] c-n Indicates the end of a parameter. c-e r-e
-
-r-b c-b ofo c-n (no equivalence) c-n Indicates that an operand (for an action) follows, and that the words (up to the next b-i-b ofo b-i-e or b-i-b amenn b-i-e no-space ) should be hyphenated. c-e r-e
 
 r-b c-b fenambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named fen no-space ambee dolphin h-h name amenn no-space fen b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
 
