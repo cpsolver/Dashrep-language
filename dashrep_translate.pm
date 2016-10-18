@@ -125,6 +125,8 @@ The following subroutines are exported.
 
 =head2 dashrep_linewise_translate
 
+=head2 dashrep_compiler_access
+
 =cut
 
 
@@ -143,6 +145,7 @@ The following subroutines are exported.
 #     dashrep_expand_special_phrases
 #     dashrep_xml_tags_to_dashrep
 #     dashrep_linewise_translate
+#     dashrep_compiler_access
 # );
 
 
@@ -8876,6 +8879,99 @@ sub dashrep_linewise_translate
 #  End of subroutine.
 
     return $error_message ;
+
+}
+
+
+=head2 dashrep_compiler_access
+
+Provides an access point for the Dashrep compiler.
+Specifically this short subroutine gets an action
+name, number of operands for the action, and operand
+values and copies those text strings to global
+variables, and then calls the dashrep_expand_parameters
+subroutine.
+
+The parameters are: the action name, the number of
+operands, all the operands concatenated together,
+and the first four operands.  The concatenated version
+is only needed if the action has a minimum number of
+operands (which means the number of operands are
+variables).  The individual operands are not needed
+if the concatenated version is used.
+
+Return value is the text that is returned by the
+dashrep_expand_parameters subroutine.
+
+=cut
+
+
+#-----------------------------------------------
+#-----------------------------------------------
+#         dashrep_compiler_access
+#-----------------------------------------------
+#-----------------------------------------------
+
+sub dashrep_compiler_access
+{
+    my $number_of_operands ;
+    my $return_text ;
+    my @parameter_values ;
+
+
+#-----------------------------------------------
+#  Copy the operands to global variables.
+#
+#  Reminder:  Operands apply to the action,
+#  and parameters apply to what is passed to
+#  this subroutine.
+
+    $parameter_values = @_ ;
+    if ( scalar( @parameter_values ) > 1 )
+    {
+        $global_single_action_name = $parameter_values[ 0 ] ;
+        $number_of_operands = $parameter_values[ 1 ] ;
+    } else
+    {
+        return "" ;
+    }
+    if ( $number_of_operands > 2 )
+    {
+        $global_single_action_operands_all = $parameter_values[ 2 ] ;
+    }
+    if ( $number_of_operands > 3 )
+    {
+        $global_single_action_operand_one = $parameter_values[ 3 ] ;
+    }
+    if ( $number_of_operands > 4 )
+    {
+        $global_single_action_operand_two = $parameter_values[ 4 ] ;
+    }
+    if ( $number_of_operands > 5 )
+    {
+        $global_single_action_operand_three = $parameter_values[ 5 ] ;
+    }
+    if ( $number_of_operands > 6 )
+    {
+        $global_single_action_operand_four = $parameter_values[ 6 ] ;
+    }
+    if ( $number_of_operands > 7 )
+    {
+        $global_single_action_operand_five = $parameter_values[ 7 ] ;
+    }
+    $global_required_number_of_operands_for_action{ $action_name } = $number_of_operands ;
+
+
+#-----------------------------------------------
+#  Call the dashrep_expand_parameters subroutine.
+
+    $return_text = &dashrep_expand_parameters( ) ;
+
+
+#-----------------------------------------------
+#  End of subroutine.
+
+    return $return_text ;
 
 }
 
