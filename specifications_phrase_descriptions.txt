@@ -1332,6 +1332,14 @@ description-for-phrase-insert-codeview-tags:
 This action inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page. s-n The special inserted tags, such as b-i-b &lt;dashrep_codeview_action_begin&gt; b-i-e and b-i-b &lt;dashrep_codeview_action_middle_1&gt; b-i-e no-space , are expected to be replaced by the text items in phrases such as b-i-b dashrep-codeview-action-begin b-i-e and b-i-b dashrep-codeview-action-middle-1 b-i-e no-space .
 ----
 
+description-for-phrase-dashrep-list-of-compiled-executable-phrases:
+This phrase is used by the Dashrep compiler to identify which phrases are, or might be, used as executable functions. s-n If a phrase is not included in this list then the compiled version of the Dashrep code will not be accessible. s-n Extra phrases in this list are functionally ignored because the compiled code will not execute any of those extra phrases. s-n If the list is unnecessarily long and includes lots of unneeded phrases then the execution time for the compiled code will be slightly increased. s-n This list can include external functions that are not written in the Dashrep language, but those external functions must have names that begin with b-b function_compiled_ b-e no-space. s-n The ability to include external functions provides a way to access executable code that is not included in the compiled Dashrep code, and this ability is needed because the phrases b-b dashrep-stop-translation b-e and b-b escape-from-dashrep b-e are not supported by the Dashrep compiler.
+-----
+
+description-for-phrase-dashrep-compiler-write-phrase-definition:
+This compiler h-h only action writes to the default output file the definition that is associated with the phrase name specified as the first operand. s-n This action is intended for debugging purposes and should not be used to write contents to a specific output file.
+----
+
 description-for-phrase-dashbee:
 (described in table above)
 -----

@@ -250,6 +250,8 @@ dashrep-replacement-results-at-time-of-escape
 dashrep-list-of-action-names
 dashrep-list-of-predefined-phrases
 dashrep-list-of-special-phrases
+dashrep-compiler-write-phrase-definition
+dashrep-list-of-compiled-executable-phrases
 use-handler-with-each-word-in-phrase-currently-at-character-position
 
 category_spoken_words
