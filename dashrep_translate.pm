@@ -8892,16 +8892,25 @@ values and copies those text strings to global
 variables, and then calls the dashrep_expand_parameters
 subroutine.
 
+This subroutine does not support actions for which
+global_minimum_number_of_operands_for_action
+is defined (even though the dashrep_expand_parameters
+subroutine does support those actions).
+And there are actions that should be avoided by the
+compiler because they take control away from the
+compiled code.
+
 The parameters are: the action name, the number of
-operands, all the operands concatenated together,
-and the first four operands.  The concatenated version
-is only needed if the action has a minimum number of
-operands (which means the number of operands are
-variables).  The individual operands are not needed
-if the concatenated version is used.
+operands, and the first four operands.  If there
+should be an action that requires a fifth operand,
+it is not supported by this subroutine.
 
 Return value is the text that is returned by the
 dashrep_expand_parameters subroutine.
+
+If any error occurs, this subroutine simply returns,
+without indicating the error (because the compiler
+should not generate those error conditions).
 
 =cut
 
@@ -8915,6 +8924,7 @@ dashrep_expand_parameters subroutine.
 sub dashrep_compiler_access
 {
     my $number_of_operands ;
+    my $number_of_parameters ;
     my $return_text ;
     my @parameter_values ;
 
@@ -8926,40 +8936,41 @@ sub dashrep_compiler_access
 #  and parameters apply to what is passed to
 #  this subroutine.
 
-    $parameter_values = @_ ;
+    @parameter_values = @_ ;
+    $number_of_parameters = scalar( @parameter_values ) ;
     if ( scalar( @parameter_values ) > 1 )
     {
         $global_single_action_name = $parameter_values[ 0 ] ;
-        $number_of_operands = $parameter_values[ 1 ] ;
+        $number_of_operands = $parameter_values[ 1 ] + 0 ;
     } else
     {
         return "" ;
     }
+    if ( ( not( exists( $global_required_number_of_operands_for_action{ $global_single_action_name } ) ) ) || ( $number_of_operands != $global_required_number_of_operands_for_action{ $global_single_action_name } ) )
+    {
+        return "" ;
+    }
+    $global_single_action_operand_one = "" ;
+    $global_single_action_operand_two = "" ;
+    $global_single_action_operand_three = "" ;
+    $global_single_action_operand_four = "" ;
+    $global_single_action_operand_five = "" ;
     if ( $number_of_operands > 2 )
     {
-        $global_single_action_operands_all = $parameter_values[ 2 ] ;
+        $global_single_action_operand_one = $parameter_values[ 2 ] ;
+        if ( $number_of_operands > 3 )
+        {
+            $global_single_action_operand_two = $parameter_values[ 3 ] ;
+            if ( $number_of_operands > 4 )
+            {
+                $global_single_action_operand_three = $parameter_values[ 4 ] ;
+                if ( $number_of_operands > 5 )
+                {
+                    $global_single_action_operand_four = $parameter_values[ 5 ] ;
+                }
+            }
+        }
     }
-    if ( $number_of_operands > 3 )
-    {
-        $global_single_action_operand_one = $parameter_values[ 3 ] ;
-    }
-    if ( $number_of_operands > 4 )
-    {
-        $global_single_action_operand_two = $parameter_values[ 4 ] ;
-    }
-    if ( $number_of_operands > 5 )
-    {
-        $global_single_action_operand_three = $parameter_values[ 5 ] ;
-    }
-    if ( $number_of_operands > 6 )
-    {
-        $global_single_action_operand_four = $parameter_values[ 6 ] ;
-    }
-    if ( $number_of_operands > 7 )
-    {
-        $global_single_action_operand_five = $parameter_values[ 7 ] ;
-    }
-    $global_required_number_of_operands_for_action{ $action_name } = $number_of_operands ;
 
 
 #-----------------------------------------------
