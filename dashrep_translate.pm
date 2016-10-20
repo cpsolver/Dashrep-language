@@ -1413,6 +1413,11 @@ Return value is the text after expanding
 any parameters.  Return value is an empty
 string if there is not exactly one parameter.
 
+Special access to this code is accessible
+using the dashrep_compiler_access subroutine,
+which supplies parameters using special global
+variables.
+
 =cut
 
 #-----------------------------------------------
@@ -1996,6 +2001,7 @@ sub dashrep_expand_parameters
 
         if ( $global_single_action_name ne "" )
         {
+            $loop_status_done = $global_true ;
             $action_name = $global_single_action_name ;
             $operands_all = $global_single_action_operands_all ;
             if ( exists( $global_required_number_of_operands_for_action{ $action_name } ) )
