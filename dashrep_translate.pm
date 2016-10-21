@@ -2034,6 +2034,10 @@ sub dashrep_expand_parameters
                     }
                 }
             }
+#            if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
+#            {
+                $global_trace_log .= "{{trace; single action info: " . $global_single_action_name . " , " . $global_single_action_operand_one . " , " . $global_single_action_operand_two . " , " . $global_single_action_operand_three . " , " . $global_single_action_operand_four . "}}\n" ;
+#            }
 
 
 #-----------------------------------------------
@@ -8977,6 +8981,7 @@ sub dashrep_compiler_access
             }
         }
     }
+    $global_single_action_operands_all = "" ;
 
 
 #-----------------------------------------------
