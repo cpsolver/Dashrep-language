@@ -233,13 +233,11 @@ dashrep-action-trace-on-yes-or-no
 category_advanced
 dashrep-language-yes
 dashrep-version
-unique-value
 dashrep-undefined
 yes-or-no-expand-special-phrases
 dashrep-endless-loop-counter-limit
 dashrep-endless-loop-count
 dashrep-time-limit
-yes-or-no-use-slower-subset-expand
 insert-codeview-tags
 end-of-line-here
 yes-or-no-indicate-line-endings
@@ -250,9 +248,9 @@ dashrep-replacement-results-at-time-of-escape
 dashrep-list-of-action-names
 dashrep-list-of-predefined-phrases
 dashrep-list-of-special-phrases
-dashrep-compiler-write-phrase-definition
 dashrep-list-of-compiled-executable-phrases
 use-handler-with-each-word-in-phrase-currently-at-character-position
+dashrep-compiler-write-phrase-definition
 
 category_spoken_words
 convert-from-spoken-dashrep-code
@@ -270,6 +268,8 @@ amennfen
 linbray
 
 category_deprecated
+yes-or-no-use-slower-subset-expand
+unique-value
 yes-or-no-word-is-in-phrase
 copy-to-phrase-from-following-text
 dashrep-first-xml-tag-name
