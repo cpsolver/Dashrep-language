@@ -8948,16 +8948,24 @@ sub dashrep_compiler_access
 
     @parameter_values = @_ ;
     $number_of_parameters = scalar( @parameter_values ) ;
-    if ( scalar( @parameter_values ) > 1 )
+    if ( $number_of_parameters > 1 )
     {
         $global_single_action_name = $parameter_values[ 0 ] ;
         $number_of_operands = $parameter_values[ 1 ] + 0 ;
     } else
     {
+#        if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
+#        {
+            $global_trace_log .= "{{trace; number of parameters (" . $number_of_parameters . ") is too few" . "}}\n" ;
+#        }
         return "" ;
     }
     if ( ( not( exists( $global_required_number_of_operands_for_action{ $global_single_action_name } ) ) ) || ( $number_of_operands != $global_required_number_of_operands_for_action{ $global_single_action_name } ) )
     {
+#        if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
+#        {
+            $global_trace_log .= "{{trace; warning: subroutine dashrep_compiler_access does not support action " . $global_single_action_name . " because it does not require a specific number of operands" . "}}\n" ;
+#        }
         return "" ;
     }
     $global_single_action_operand_one = "" ;
@@ -8965,16 +8973,16 @@ sub dashrep_compiler_access
     $global_single_action_operand_three = "" ;
     $global_single_action_operand_four = "" ;
     $global_single_action_operand_five = "" ;
-    if ( $number_of_operands > 2 )
+    if ( $number_of_parameters > 2 )
     {
         $global_single_action_operand_one = $parameter_values[ 2 ] ;
-        if ( $number_of_operands > 3 )
+        if ( $number_of_parameters > 3 )
         {
             $global_single_action_operand_two = $parameter_values[ 3 ] ;
-            if ( $number_of_operands > 4 )
+            if ( $number_of_parameters > 4 )
             {
                 $global_single_action_operand_three = $parameter_values[ 4 ] ;
-                if ( $number_of_operands > 5 )
+                if ( $number_of_parameters > 5 )
                 {
                     $global_single_action_operand_four = $parameter_values[ 5 ] ;
                 }
@@ -8985,17 +8993,18 @@ sub dashrep_compiler_access
 
 
 #-----------------------------------------------
-#  Call the dashrep_expand_parameters subroutine.
-
-    $return_text = &dashrep_expand_parameters( ) ;
-
-#-----------------------------------------------
 #  Possibly write a trace message.
 
 #    if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
 #    {
-        $global_trace_log .= "{{trace; single action info: " . $global_single_action_name . " , " . $global_single_action_operand_one . " , " . $global_single_action_operand_two . " , " . $global_single_action_operand_three . " , " . $global_single_action_operand_four . " , " . $return_text . "}}\n" ;
+        $global_trace_log .= "{{trace; single action info: " . $global_single_action_name . " , " . $number_of_parameters . " , " . $number_of_operands . " , " . $global_single_action_operand_one . " , " . $global_single_action_operand_two . " , " . $global_single_action_operand_three . " , " . $global_single_action_operand_four . " , " . $return_text . "}}\n" ;
 #    }
+
+
+#-----------------------------------------------
+#  Call the dashrep_expand_parameters subroutine.
+
+    $return_text = &dashrep_expand_parameters( ) ;
 
 
 #-----------------------------------------------
