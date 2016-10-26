@@ -410,8 +410,24 @@ test-of-special-operators:
 [-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
 [-put-into-phrase correct-value-for-results-with-unicode-converted-to-html-entities  ??? -]
+[-put-into-phrase template-string-correct-value-hyphen correct hyphen-here value hyphen-here -]
+[-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
+[-trace-show string-correct-value-for-hyphen-]
+[-copy-words-that-begin-with-text list-of-phrases-newly-defined list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
+[-trace-show list-of-phrases-beginning-with-string-correct-value-]
+[-search-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
+[-trace-show list-of-phrases-to-check-for-correct-value-]
+[-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
+[-trace-show list-of-yes-or-no-values-are-correct-]
+[-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
+[-trace-show yes-or-no-all-values-are-correct-]
 
 nothing else
+--------
+
+handle-one-check-for-correct-value:
+[-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-word-to-use-in-handler-] correct-value-for-[-word-to-use-in-handler-]-]-]
+[-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
 --------
 
 test-of-comment-delimiters:
