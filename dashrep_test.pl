@@ -385,42 +385,44 @@ test-of-special-operators:
 [-put-into-phrase correct-value-for-results-replacements-using-paired-words  ??? -]
 [-put-into-phrase string-category-underscore  category_  -]
 [-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
-[-put-into-phrase correct-value-for-documented-phrase-names  ??? -]
 [-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
-[-put-into-phrase correct-value-for-category-words  ??? -]
 [-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
-[-put-into-phrase correct-value-for-documented-phrase-names  ??? -]
 [-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray -]
 [-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
-[-put-into-phrase correct-value-for-spoken-words  ??? -]
 [-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
-[-put-into-phrase correct-value-for-documented-phrase-names  ??? -]
 [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
-[-put-into-phrase correct-value-for-list-of-phrase-names-documented-minus-recognized  ??? -]
 [-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
-[-put-into-phrase correct-value-for-list-of-phrase-names-recognized-minus-documented  ??? -]
+[-put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined -]
+[-copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented-]
 [-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
 [-append-text character-period list-of-phrase-names-difference-]
 [-append-text character-period list-of-phrase-names-difference-]
 [-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
-[-put-into-phrase correct-value-for-list-of-phrase-names-difference  ??? -]
+[-put-into-phrase correct-value-for-list-of-phrase-names-difference  . . -]
 [-put-into-phrase text-containing-period  abc.def.ghi  -]
 [-put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-] -]
 [-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
 [-put-into-phrase correct-value-for-results-with-unicode-converted-to-html-entities  ??? -]
-[-put-into-phrase template-string-correct-value-hyphen correct hyphen-here value hyphen-here -]
+[-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here -]
 [-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
 [-trace-show string-correct-value-for-hyphen-]
-[-copy-words-that-begin-with-text list-of-phrases-newly-defined list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
+[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+[-generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases-]
+[-put-into-phrase phrase-count  [-get-count-of-words full-list-of-all-dashrep-phrases-]-]
+[-trace-show phrase-count-]
+[-copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
 [-trace-show list-of-phrases-beginning-with-string-correct-value-]
-[-search-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
+[-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
 [-trace-show list-of-phrases-to-check-for-correct-value-]
 [-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
 [-trace-show list-of-yes-or-no-values-are-correct-]
 [-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
 [-trace-show yes-or-no-all-values-are-correct-]
+
+[-put-into-phrase yes-or-no-all-values-are-correct  yes -]
 
 nothing else
 --------
@@ -1750,6 +1752,23 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
+#  Test the "correct-value-for-..." values
+
+$being_tested = "test for correct values as specified in correct_value_for ... phrases -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "yes-or-no-all-values-are-correct" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "yes-or-no-all-values-are-correct" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
 #  Test the action "write-gathered-listed-items-to-end-of-file"
 
 # $numeric_return_value = &dashrep_translate::dashrep_define( "dashrep-gathered-tag-names-in-sequence" , "url whatever2" );
@@ -1847,6 +1866,24 @@ close OUTFILE;
 
 
 #-------------------------------------------
+#  Compare lists of action names and predefined phrases and all Dashrep-recognized phrases.
+
+$being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phrase-names-difference" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
+if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+
+#-------------------------------------------
 #  Test file actions.
 
 $being_tested = "test actions that create file, append to file, and copy from file to phrase -- ";
@@ -1930,24 +1967,6 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 
 
 #-------------------------------------------
-#  Compare lists of action names and predefined phrases and all Dashrep-recognized phrases.
-
-$being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phrase-names-difference" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
-#  uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
-if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
-
-
-
-#-------------------------------------------
 #  Note:
 #  Subroutine dashrep_linewise_translate is NOT tested because it uses STDIN and STDOUT.
 
@@ -1977,7 +1996,7 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 #  remove-from-cpan-version-begin
 
 
- $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
+# $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
 
 
 #  remove-from-cpan-version-end
