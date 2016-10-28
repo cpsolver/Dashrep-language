@@ -1021,7 +1021,8 @@ no-space .
 
 description-for-phrase-generate-list-of-all-dashrep-phrases:
 This action generates a list of all the defined phrase names, using a space between adjacent phrase names,
-and puts that list into the specified phrase name. s-n For security purposes this action can be disabled.
+and puts that list into the specified phrase name. s-n For security purposes this action can be disabled. s-n
+To prevent conflicts, the phrase b-b list h-h of h-h phrases h-h newly h-h defined b-e is deleted before the list is generated, and the generated list excludes the phrase name b-b four h-h hyphens b-e no-space .
 -----
 
 description-for-phrase-write-dashrep-definitions-listed-in-phrase-to-file:
