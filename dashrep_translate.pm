@@ -1114,7 +1114,10 @@ sub dashrep_import_replacements
                 }
             }
             $number_of_replacement_names ++ ;
-            $global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $definition_name ;
+            if ( $definition_name ne "list-of-phrases-newly-defined" )
+            {
+                $global_dashrep_replacement{ "list-of-phrases-newly-defined" } .= " " . $definition_name ;
+            }
 
 
 #-----------------------------------------------
@@ -1124,7 +1127,7 @@ sub dashrep_import_replacements
 #  that would cause an endless loop when the
 #  phrase is replaced).
 
-        } elsif ( $input_string ne "" )
+        } elsif ( ( $input_string ne "" ) && ( $input_string ne "list-of-phrases-newly-defined" ) )
         {
             if ( $input_string eq $definition_name )
             {
@@ -4168,14 +4171,16 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "generate-list-of-all-dashrep-phrases" )
         {
+            delete( $global_dashrep_replacement{ "list-of-phrases-newly-defined" } ) ;
             @list_of_phrases = keys( %global_dashrep_replacement ) ;
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             $counter = 0 ;
+            $global_dashrep_replacement{ $operand_one } = "" ;
             if ( $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } eq "yes" )
             {
                 foreach $phrase_name ( @sequence_of_phrases )
                 {
-                    if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
+                    if ( ( defined( $phrase_name ) ) && ( $phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $phrase_name } ) ) && ( $phrase_name ne "four-hyphens" ) )
                     {
                         if ( $global_dashrep_replacement{ $operand_one } ne "" )
                         {
