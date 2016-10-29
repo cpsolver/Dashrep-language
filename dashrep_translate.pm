@@ -4214,13 +4214,22 @@ sub dashrep_expand_parameters
 
         if ( $action_name eq "copy-words-that-begin-with-text" )
         {
-            $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                $list_of_words_as_text = $global_dashrep_replacement{ $operand_one } ;
+            } else
+            {
+                $list_of_words_as_text = "" ;
+            }
             $list_of_words_as_text =~ s/\n/ /sg ;
             $list_of_words_as_text =~ s/^ +// ;
             $list_of_words_as_text =~ s/ +$// ;
             if ( $list_of_words_as_text =~ / / )
             {
                 @list_of_words = split( / +/ , $list_of_words_as_text ) ;
+            } elsif ( $list_of_words_as_text eq "" )
+            {
+                @list_of_words = ( ) ;
             } else
             {
                 @list_of_words = ( ) ;
