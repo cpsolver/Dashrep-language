@@ -1946,9 +1946,11 @@ $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-delete-
 # $string_return_value = &dashrep_expand_parameters( "[-delete-file output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_define( "put-into-phrase yes-or-no-export-delimited-definitions" , "no" );
 $string_return_value = &dashrep_translate::dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
 #  remove-from-cpan-version-end
 #  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_define( "put-into-phrase yes-or-no-export-delimited-definitions" , "no" );
 # $string_return_value = &dashrep_expand_parameters( "[-write-all-dashrep-definitions-to-file output_test_definitions_file.txt-]" );
 #  uncomment-for-cpan-version-end
 #  remove-from-cpan-version-begin
