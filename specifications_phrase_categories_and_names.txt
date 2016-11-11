@@ -250,7 +250,6 @@ dashrep-list-of-predefined-phrases
 dashrep-list-of-special-phrases
 dashrep-list-of-compiled-executable-phrases
 use-handler-with-each-word-in-phrase-currently-at-character-position
-dashrep-compiler-write-phrase-definition
 
 category_spoken_words
 convert-from-spoken-dashrep-code
@@ -276,3 +275,4 @@ dashrep-first-xml-tag-name
 dashrep-xml-level-reset-if-zero
 dashrep-xml-trace-on-yes-or-no
 dashrep-xml-yes-ignore-if-no-tag-replacement
+dashrep-compiler-write-phrase-definition
