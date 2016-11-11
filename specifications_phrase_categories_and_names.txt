@@ -37,14 +37,9 @@ export-defs-phrase-end
 category_clear_delete
 clear-phrase
 clear-listed-phrases
-delete-listed-phrases
-delete-all-dashrep-phrases
-undeleted-phrase
 
 category_expand
 expand-text
-expand-parameters-only
-insert-angle-bracketed-definitions
 
 category_transfer
 get-phrase-definition-without-expanding
@@ -224,32 +219,18 @@ category_debug
 dashrep-comments-ignored
 generate-phrase-usage-counts
 trace-show
-dashrep-debug-trace-log
-dashrep-debug-trace-on-yes-or-no
-dashrep-recent-phrase-name-replaced
-dashrep-warning-trace-on-yes-or-no
-dashrep-action-trace-on-yes-or-no
 
 category_advanced
 dashrep-language-yes
 dashrep-version
 dashrep-undefined
-yes-or-no-expand-special-phrases
 dashrep-endless-loop-counter-limit
 dashrep-endless-loop-count
 dashrep-time-limit
 insert-codeview-tags
 end-of-line-here
 yes-or-no-indicate-line-endings
-dashrep-stop-translation
-escape-from-dashrep
-resume-after-escape-from-dashrep
-dashrep-replacement-results-at-time-of-escape
-dashrep-list-of-action-names
-dashrep-list-of-predefined-phrases
-dashrep-list-of-special-phrases
 dashrep-list-of-compiled-executable-phrases
-use-handler-with-each-word-in-phrase-currently-at-character-position
 
 category_spoken_words
 convert-from-spoken-dashrep-code
@@ -265,6 +246,27 @@ fen
 fenambee
 amennfen
 linbray
+
+category_interpreted
+delete-listed-phrases
+delete-all-dashrep-phrases
+undeleted-phrase
+yes-or-no-expand-special-phrases
+expand-parameters-only
+insert-angle-bracketed-definitions
+dashrep-debug-trace-log
+dashrep-debug-trace-on-yes-or-no
+dashrep-recent-phrase-name-replaced
+dashrep-warning-trace-on-yes-or-no
+dashrep-action-trace-on-yes-or-no
+dashrep-list-of-action-names
+dashrep-list-of-predefined-phrases
+dashrep-list-of-special-phrases
+dashrep-stop-translation
+escape-from-dashrep
+resume-after-escape-from-dashrep
+dashrep-replacement-results-at-time-of-escape
+use-handler-with-each-word-in-phrase-currently-at-character-position
 
 category_deprecated
 yes-or-no-use-slower-subset-expand
