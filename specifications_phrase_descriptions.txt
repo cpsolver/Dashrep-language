@@ -863,15 +863,15 @@ This action avoids complications that can arise if the text being copied should 
 -----
 
 description-for-phrase-append-multiple-from-phrases-named-in-pattern:
-This action appends multiple phrase definitions onto the end of the definition of the second phrase. s-n The pattern for the multiple phrase names is specified in the first phrase. s-n The pattern must contain characters between the text b-i-b ambee hyphen-here no-space b-i-e and the text b-i-b no-space hyphen-here amenn b-i-e no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n (Although b-i-b fenambee b-i-e or b-i-b amennfen b-i-e might normally be used to indicate the inclusion of a hyphen, they are not recognized by this action.) s-n If the phrase that contains the word list contains only a single word without any spaces, then only one item will be appended. s-n If the list is empty, nothing will be appended. s-n This action is useful for building a long list fast, without needing to use a separate Dashrep action for each item appended.
+This action appends multiple phrase definitions onto the end of the definition of the second phrase. s-n The pattern for the multiple phrase names is specified in the first phrase. s-n The pattern must contain characters between the text b-i-b am no-space bee hyphen-here no-space b-i-e and the text b-i-b no-space hyphen-here am no-space enn b-i-e no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n (Although b-i-b fenam no-space bee b-i-e or b-i-b am no-space ennfen b-i-e might normally be used to indicate the inclusion of a hyphen, they are not recognized by this action.) s-n If the phrase that contains the word list contains only a single word without any spaces, then only one item will be appended. s-n If the list is empty, nothing will be appended. s-n This action is useful for building a long list fast, without needing to use a separate Dashrep action for each item appended.
 paragraph-next
-Example: s-n If the first phrase contains the text b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e and the second phrase already contains the text b-i-b dolphin b-i-e and the phrase b-i-b item h-h one b-i-e contains b-i-b buffalo b-i-e and the phrase b-i-b item h-h two b-i-e contains b-i-b bear b-i-e and the phrase b-i-b item h-h three b-i-e contains b-i-b eagle b-i-e then the second phrase will contain b-i-b dolphin buffalo bear eagle b-i-e no-space .
+Example: s-n If the first phrase contains the text b-i-b item h-h am no-space bee h-h list h-h of h-h numbers h-h as h-h text h-h am no-space enn b-i-e and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e and the second phrase already contains the text b-i-b dolphin b-i-e and the phrase b-i-b item h-h one b-i-e contains b-i-b buffalo b-i-e and the phrase b-i-b item h-h two b-i-e contains b-i-b bear b-i-e and the phrase b-i-b item h-h three b-i-e contains b-i-b eagle b-i-e then the second phrase will contain b-i-b dolphin buffalo bear eagle b-i-e no-space .
 -----
 
 description-for-phrase-copy-listed-words-to-phrases-named-in-pattern:
-This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b ambee hyphen-here no-space b-i-e (or b-i-b fenambee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here amenn b-i-e (or b-i-b amennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If that list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
+This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b am no-space bee hyphen-here no-space b-i-e (or b-i-b fenam no-space bee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here am no-space enn b-i-e (or b-i-b am no-space ennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If that list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
 paragraph-next
-Example: If the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the secomd phrase contains b-i-b item h-h ambee h-h list h-h of h-h numbers h-h as h-h text h-h amenn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space .
+Example: If the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the second phrase contains b-i-b item h-h am no-space bee h-h list h-h of h-h numbers h-h as h-h text h-h am no-space enn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-use-slower-subset-expand:
@@ -1038,7 +1038,7 @@ This action must be followed by two phrase names, not one. s-n The previous defi
 description-for-phrase-put-into-phrase:
 This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
 paragraph-next
-Example: After expanding the code b-i-b ambee put-into-phrase target-phrase whale dolphin starfish amenn b-i-e the phrase b-i-b target h-h phrase b-i-e
+Example: After expanding the code b-i-b am no-space bee put-into-phrase target-phrase whale dolphin starfish am no-space enn b-i-e the phrase b-i-b target h-h phrase b-i-e
 will contain b-i-b whale dolphin starfish b-i-e no-space .
 -----
 
@@ -1309,6 +1309,10 @@ description-for-phrase-list-of-unique-word-counts:
 This phrase contains a list of word counts for the unique words found by the most recent use of the action b-i-b copy h-h words h-h unique h-h only b-i-e no-space . s-n If that action has not yet been used, this phrase is empty. s-n See b-i-b copy h-h words h-h unique h-h only b-i-e for details.
 ----
 
+description-for-phrase-list-of-pointers-to-unique-words:
+This phrase contains a list of word pointers for the unique words found by the most recent use of the action b-i-b copy h-h words h-h unique h-h only b-i-e no-space . s-n If that action has not yet been used, this phrase is empty. s-n See b-i-b copy h-h words h-h unique h-h only b-i-e for details.
+----
+
 description-for-phrase-generate-counts-from-integer-to-integer:
 This action generates a list of integers and puts them into the definition of the third phrase. s-n The supplied integers indicate the starting and ending values.
 paragraph-next
@@ -1334,7 +1338,7 @@ This action inserts into the specified phrase definition special tags that enabl
 ----
 
 description-for-phrase-dashrep-list-of-compiled-executable-phrases:
-This phrase is used by the Dashrep compiler to identify which phrases are, or might be, used as executable functions. s-n If a phrase is not included in this list then the compiled version of the Dashrep code will not be accessible. s-n Extra phrases in this list are functionally ignored because the compiled code will not execute any of those extra phrases. s-n If the list is unnecessarily long and includes lots of unneeded phrases then the execution time for the compiled code will be slightly increased. s-n This list can include external functions that are not written in the Dashrep language, but those external functions must have names that begin with b-b function_compiled_ b-e no-space. s-n The ability to include external functions provides a way to access executable code that is not included in the compiled Dashrep code, and this ability is needed because the phrases b-b dashrep-stop-translation b-e and b-b escape-from-dashrep b-e are not supported by the Dashrep compiler. s-n To assist in generating likely function names for this list, the compiler generates a list of phrases that begin with b-b ambee b-e and end with b-b amenn b-e no-space .
+This phrase is used by the Dashrep compiler to identify which phrases are, or might be, used as executable functions. s-n If a phrase is not included in this list then the compiled version of the Dashrep code will not be accessible. s-n Extra phrases in this list are functionally ignored because the compiled code will not execute any of those extra phrases. s-n If the list is unnecessarily long and includes lots of unneeded phrases then the execution time for the compiled code will be slightly increased. s-n This list can include external functions that are not written in the Dashrep language, but those external functions must have names that begin with b-b function_compiled_ b-e no-space. s-n The ability to include external functions provides a way to access executable code that is not included in the compiled Dashrep code, and this ability is needed because the phrases b-b dashrep-stop-translation b-e and b-b escape-from-dashrep b-e are not supported by the Dashrep compiler. s-n To assist in generating likely function names for this list, the compiler generates a list of phrases that begin with b-b am no-space bee b-e and end with b-b am no-space enn b-e no-space .
 -----
 
 description-for-phrase-dashrep-compiler-write-phrase-definition:
@@ -1456,7 +1460,7 @@ r-b c-b combee c-n * h-h h-h h-h c-n Indicates the beginning of a comment. c-e r
 
 r-b c-b comenn c-n h-h h-h h-h * c-n Indicates the end of a comment. c-e r-e
 
-r-b c-b fen c-n hyphen with no adjacent spaces c-n Inserts a hyphen between words (or other adjacent characters). c-e r-e
+r-b c-b f no-space en c-n hyphen with no adjacent spaces c-n Inserts a hyphen between words (or other adjacent characters). c-e r-e
 
 r-b c-b dashbee c-n (no equivalence) c-n Indicates the beginning of a phrase that needs to be hyphenated. s-n For example, b-i-b dashbee info about dolphin dashenn b-i-e becomes b-i-b info h-h about h-h dolphin b-i-e  no-space . c-e r-e
 
@@ -1464,13 +1468,13 @@ r-b c-b dashenn c-n (no equivalence) c-n Indicates the end of a phrase that need
 
 r-b c-b dashnex c-n (no equivalence) c-n Indicates the end of one phrase that needs to be hyphenated and the beginning of another phrase that needs to be hyphenated. s-n For example, b-i-b dashbee info about dolphin dashnex copy of info about dolphin dashenn b-i-e becomes b-i-b info h-h about h-h dolphin copy h-h of h-h info h-h about h-h dolphin b-i-e no-space . c-e r-e
 
-r-b c-b ambee c-n [ h-h c-n Indicates the beginning of a parameter. c-e r-e
+r-b c-b am no-space bee c-n [ h-h c-n Indicates the beginning of a parameter. c-e r-e
 
-r-b c-b amenn c-n h-h ] c-n Indicates the end of a parameter. c-e r-e
+r-b c-b am no-space enn c-n h-h ] c-n Indicates the end of a parameter. c-e r-e
 
-r-b c-b fenambee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named fen no-space ambee dolphin h-h name amenn no-space fen b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
+r-b c-b fenam no-space bee c-n h-h [ h-h c-n Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase. s-n For example, b-i-b info h-h for h-h dolphin h-h named fenam no-space bee dolphin h-h name am no-space ennfen b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . c-e r-e
 
-r-b c-b amennfen c-n h-h ] h-h c-n Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase. c-e r-e
+r-b c-b am no-space ennfen c-n h-h ] h-h c-n Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase. c-e r-e
 
 r-b c-b linbray c-n (line break) c-n Indicates that a line break should be inserted here. s-n If the resulting text goes through additional translation steps, the inserted line break is likely to be converted into a space (rather than remaining as a line break). c-e r-e
 
@@ -1479,12 +1483,16 @@ t-e
 
 
 
+heading-for-phrases-in-category_interpreted:
+Interpreter supported (not compiler supported)
+-----
+
 heading-for-phrases-in-category_hyphens_spaces_lines:
 Hyphens, spaces, lines, & square brackets
 -----
 
 heading-for-phrases-in-category_definitions:
-Definition-related phrases
+Definition-related phrases (not compiler supported)
 -----
 
 heading-for-phrases-in-category_clear_delete:
@@ -1739,7 +1747,7 @@ colon-only:
 -----
 
 dashed-line-spoken:
-fen fen fen fen
+f no-space en f no-space en f no-space en f no-space en
 -----
 
 t-b:
