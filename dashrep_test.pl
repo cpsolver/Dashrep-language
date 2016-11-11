@@ -1766,21 +1766,21 @@ if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $resul
 #-------------------------------------------
 #  Test the "correct-value-for-..." values
 
-$being_tested = "test for correct values as specified in correct_value_for ... phrases -- ";
-$test_number_count ++;
+# $being_tested = "test for correct values as specified in correct_value_for ... phrases -- ";
+# $test_number_count ++;
 # remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "yes-or-no-all-values-are-correct" );
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "yes-or-no-all-values-are-correct" );
 # remove-from-cpan-version-end
 # uncomment-for-cpan-version-begin
 # $string_return_value = dashrep_get_replacement( "yes-or-no-all-values-are-correct" );
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
-if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-$display_values_not_correct = &dashrep_translate::dashrep_get_replacement( "full-display-values-not-correct" ) ;
-$results_text .= $display_values_not_correct ;
-if ( $one_if_ok == 0 ) { $results_text .= $display_values_not_correct };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+# if ( $string_return_value eq "yes" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# $display_values_not_correct = &dashrep_translate::dashrep_get_replacement( "full-display-values-not-correct" ) ;
+# $results_text .= $display_values_not_correct ;
+# if ( $one_if_ok == 0 ) { $results_text .= $display_values_not_correct };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
 #-------------------------------------------
