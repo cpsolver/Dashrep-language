@@ -40,6 +40,7 @@ clear-listed-phrases
 
 category_expand
 expand-text
+expand-parameters-only
 
 category_transfer
 get-phrase-definition-without-expanding
@@ -252,7 +253,6 @@ delete-listed-phrases
 delete-all-dashrep-phrases
 undeleted-phrase
 yes-or-no-expand-special-phrases
-expand-parameters-only
 insert-angle-bracketed-definitions
 dashrep-debug-trace-log
 dashrep-debug-trace-on-yes-or-no
