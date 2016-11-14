@@ -1003,6 +1003,8 @@ italics-begin yes italics-end
 to insert the phrase
 b-i-b end h-h of h-h line h-h here b-i-e
 at each line break that is encountered. s-n
+If it is important to keep newline characters (at the end of each line),
+consider using the action b-i-b copy h-h append h-h file h-h to h-h file b-i-e no-space . s-n
 location-of-read-file
 -----
 
