@@ -690,7 +690,7 @@ This phrase contains a list of all the phrases that Dashrep recognizes, but whic
 ----
 
 description-for-phrase-yes-or-no-export-delimited-definitions:
-If this phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e or the action b-i-b write h-h all h-h dashrep h-h phrase h-h names h-h to h-h file b-i-e or the action b-i-b write h-h dashrep h-h definitions h-h listed h-h in h-h phrase h-h to h-h file b-i-e action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name. s-n
+If this phrase equals b-i-b yes b-i-e then the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e or the action b-i-b write h-h dashrep h-h definitions h-h listed h-h in h-h phrase h-h to h-h file b-i-e action is used, special text is inserted at the beginning and end of each phrase name and phrase definition. s-n
 Otherwise exported definitions are written using the normal Dashrep convention. s-n This capability enables the exported definitions to be converted into special formats such as HTML or XML.
 ----
 
