@@ -325,7 +325,6 @@ BEGIN {
     $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;
     $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;
     $global_dashrep_replacement{ "list-of-pointers-to-unique-words" } = "" ;
-    $global_dashrep_replacement{ "dashrep-list-of-compiled-executable-phrases" } = "" ;
 
     $global_list_of_predefined_phrases_as_text = "" ;
     foreach $phrase_name ( keys( %global_dashrep_replacement ) )
@@ -464,7 +463,6 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "unique-value" } = 0 ;
     $global_required_number_of_operands_for_action{ "numeric-odd-or-even" } = 1 ;
     $global_required_number_of_operands_for_action{ "copy-words-unique-only" } = 2 ;
-    $global_required_number_of_operands_for_action{ "dashrep-compiler-write-phrase-definition" } = 1 ;
 
     $global_minimum_number_of_operands_for_action{ "numeric-add" } = 1 ;
     $global_minimum_number_of_operands_for_action{ "numeric-multiply" } = 1 ;
