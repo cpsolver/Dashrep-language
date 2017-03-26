@@ -1049,7 +1049,7 @@ This action appends the definition of the first phrase to the end of the definit
 ----
 
 description-for-phrase-append-text-no-space:
-This action appends the definition of the first phrase to the end of the definition of the second phrase, without inserting a separating space. s-n The two phrase names can be the same.
+This action appends the definition of the first phrase to the end of the definition of the second phrase, without inserting a separating space, and without removing any adjacent trailing spaces (in the second phrase definition) or leading spaces (in the first phrase definition). s-n The two phrase names can be the same.
 ----
 
 description-for-phrase-append-new-line:
