@@ -406,6 +406,12 @@ test-of-special-operators:
 [-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 [-put-into-phrase correct-value-for-list-of-phrase-names-difference  . . -]
+[-put-into-phrase string-abc  abc -]
+[-copy-text character-space text-to-append-with-leading-and-trailing-space-]
+[-append-text-no-space string-abc text-to-append-with-leading-and-trailing-space-]
+[-append-text-no-space character-space text-to-append-with-leading-and-trailing-space-]
+[-copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending-]
+[-append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending-]
 [-put-into-phrase text-containing-period  abc.def.ghi  -]
 [-put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-] -]
 [-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
@@ -1249,6 +1255,20 @@ if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 
 
+$being_tested = "test append-text-no-space action -- ";
+$test_number_count ++;
+#  remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "text-after-double-appending" );
+#  remove-from-cpan-version-end
+#  uncomment-for-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "text-after-double-appending" );
+#  uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]\n" ;
+if ( $string_return_value eq " abc  abc " ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
 #-------------------------------------------
 #  Test comment delimiters.
 
@@ -1894,7 +1914,7 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phr
 # $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
 if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" . "[[" . $string_return_value . "]]" . "\n\n" };
 
 
 
