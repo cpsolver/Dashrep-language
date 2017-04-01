@@ -52,8 +52,10 @@ compile-source-code-initialize:
 [-delete-file [-debug-output-filename-]-]
 
 [-define-special-strings-]
+
 [-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
+
 [-assign-action-operand-characteristics-]
 [-put-into-phrase current-storage-position  1001 -]
 
@@ -195,6 +197,9 @@ filter-tokens-case-defenn:
 [-clear-phrase list-of-tokens-in-current-definition-]
 [-put-into-phrase count-of-ambee-tokens  0 -]
 [-put-into-phrase count-of-amenn-tokens  0 -]
+[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
+[-copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes-]
+[-delete-listed-phrases list-of-phrases-to-delete-]
 ----
 generate-code-for-one-action:
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
@@ -214,17 +219,17 @@ generate-code-for-one-action:
 generate-runtime-code-for-phrase-definition-simple:
 [-copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple-]
+[-append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple-]
+[-append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple-]
+[-append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple-]
+[-append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple-]
 ----
 generate-runtime-code-function-branch:
 [-copy-text code-function-branch-part-1 runtime-code-function-branch-]
@@ -392,7 +397,7 @@ handle-token-ambee:
 [-create-new-result-storage-position-]
 [-copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage-]
 [-append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage-]
-[-append-text-no-space code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage-]
+[-append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage-]
 [-copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage [-filename-output-results-all-definition-items-]-]
 [-clear-phrase action-name-at-storage-position-[-current-result-storage-position-]-]
 [-append-text string-ambee definition-for-phrase-being-defined-]
@@ -642,14 +647,26 @@ write-results-to-output-file:
 [-copy-from-phrase-append-to-file initialize-global-variables [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file output-results-all-storage-items [-filename-output-results-from-compiler-]-]
 
-
-[-copy-append-file-to-file runtime-code-initializations-needed-by-interpreter-code.txt [-filename-output-results-from-compiler-]-]
-
+[-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
+[-clear-phrase dashrep-path-prefix-for-file-reading-]
+[-put-into-phrase filename-runtime-code-from-interpreter  runtime-code-initializations-needed-by-interpreter-code.txt -]
+[-copy-append-file-to-file [-filename-runtime-code-from-interpreter-] [-filename-output-results-from-compiler-]-]
+[-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
 
 [-copy-from-phrase-append-to-file segment-initialize-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-definition-items-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
+
+[-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
+[-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
+
+[-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
+[-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-standard-runtime-functions-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-functions-runtime-middle [-filename-output-results-from-compiler-]-]
@@ -661,12 +678,6 @@ write-results-to-output-file:
 [-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases [-filename-output-results-from-compiler-]-]
 ----
 assign-action-operand-characteristics:
@@ -1193,6 +1204,12 @@ define-special-strings:
 [-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space string-phrase string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-]
+
+[-copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space-]
+[-append-text-no-space string-one string-placeholder-for-space-one-space-space-]
+[-append-text-no-space character-underscore string-placeholder-for-space-one-space-space-]
+[-append-text-no-space string-space string-placeholder-for-space-one-space-space-]
+[-append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space-]
 ----
 digit-0:
 0
@@ -1271,6 +1288,14 @@ yes-or-no-indicate-line-endings
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 yes-or-no-use-two-spaces-as-column-delimiter
+----
+list-of-temporary-phrase-name-prefixes:
+contents-at-storage-position-
+action-name-at-storage-position-
+storage-type-at-storage-position-
+text-words-at-result-storage-position-
+list-of-operands-for-result-storage-position-
+storage-position-for-word-list-associated-with-result-storage-position-
 ----
 object-code-copyright-notice:
 (c) Copyright 2016 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.
@@ -1364,9 +1389,6 @@ one
 ----
 string-phrase:
 phrase
-----
-string-placeholder-for-space-one-space-space:
-<one_space>
 ----
 string-placeholder-prefix:
 <dashrep_placeholder_
@@ -1624,8 +1646,6 @@ function_compiled__ no-space
 initialize-variable-begin:
 $storage_item__ no-space
 ----
-initialize-variable-end:
-----
 list-of-static-segments-need-to-expand:
 segment-initialize-begin
 segment-initialize-end
@@ -1762,36 +1782,36 @@ template-code-parameter-result-storage-part-1:
 my template-storage-item-prefix
 ----
 template-code-parameter-result-storage-part-2:
-template-storage-item-suffix one-space = '' ; # result storage
+= '' ; # result storage
 ----
 template-code-phrase-definition-simple-part-1:
 my initialize-variable-begin
 ----
 template-code-phrase-definition-simple-part-2:
-initialize-variable-end one-space = '
+= '
 ----
 template-code-phrase-definition-simple-part-3:
 ' ;  <new_line>
 my initialize-variable-begin
 ----
 template-code-phrase-definition-simple-part-4:
-initialize-variable-end one-space = '
+= '
 ----
 template-code-phrase-definition-simple-part-5:
 ' ; <new_line>
 code-get-or-put-phrase-definition-begin initialize-variable-begin
 ----
 template-code-phrase-definition-simple-part-6:
-initialize-variable-end one-space code-get-or-put-phrase-definition-end = initialize-variable-begin
+code-get-or-put-phrase-definition-end = initialize-variable-begin
 ----
 template-code-phrase-definition-simple-part-7:
-initialize-variable-end one-space ;
+;
 ----
 template-code-quoted-string-storage-item-part-1:
 my initialize-variable-begin
 ----
 template-code-quoted-string-storage-item-part-2:
-initialize-variable-end one-space =
+=
 ----
 template-code-quoted-string-storage-item-part-3:
 ;  <new_line>
@@ -1801,7 +1821,7 @@ template-code-quoted-string-storage-item-part-4:
 ' } = initialize-variable-begin
 ----
 template-code-quoted-string-storage-item-part-5:
-initialize-variable-end one-space ;  <new_line>
+;  <new_line>
 ----
 template-displayed-list-of-possible-new-executable-phrases:
 # no-space dashes-long-line  <new_line>
@@ -2907,13 +2927,13 @@ print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
 ----
 template-runtime-code-for-text-storage-position-begin:
-my template-storage-item-prefix current-text-storage-position template-storage-item-suffix = '
+my template-storage-item-prefix current-text-storage-position = '
 ----
 template-runtime-code-for-text-storage-position-end:
 ' ;
 ----
 template-runtime-code-for-word-list-storage-position:
-my template-storage-item-prefix storage-position-for-word-list-associated-with-loop template-storage-item-suffix = '' ; # stores list of words for loop
+my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ; # stores list of words for loop
 ----
 template-runtime-code-one-storage-position-declaration:
 my storage-position-name = '' ;  <new_line>
@@ -2952,7 +2972,7 @@ template-runtime-code-statement-end-with-new-line:
 ;  <new_line>
 ----
 template-runtime-code-storage-item-with-pointer:
-template-storage-item-prefix storage-item-pointer template-storage-item-suffix
+template-storage-item-prefix storage-item-pointer
 ----
 template-segment-branch-begin:
 # no-space dashes-long-line  <new_line>
@@ -3007,6 +3027,7 @@ template-segment-functions-runtime-begin:
 #  Execute starting/main function  <new_line>
 <new_line>
 
+&initialize_special_phrases( ) ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
 & no-space function-name-prefix start_here( ) ;  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
@@ -3056,10 +3077,8 @@ template-segment-initialize-end:
 <new_line>
 ----
 template-storage-item-containing-word-list-associated-with-loop:
-template-storage-item-prefix storage-position-for-word-list-associated-with-loop template-storage-item-suffix
+template-storage-item-prefix storage-position-for-word-list-associated-with-loop
 ----
 template-storage-item-prefix:
 $storage_item__ no-space
-----
-template-storage-item-suffix:
 ----
