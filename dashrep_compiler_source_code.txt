@@ -1,5 +1,5 @@
 dashdef-copyright-notice:
-All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2016 by Richard Fobes at www.SolutionsCreative.com, with survivorship rights granted to Fovationz, Inc. at www.NewsHereNow.com
+All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2017 by the entity who owns the source code from which this object code was generated, and who is specified in a separate copyright statement within one of the following files within this collection. ALL RIGHTS RESERVED.
 ----
 0-documentation-for-compiler:
 Limitations:
@@ -1298,7 +1298,7 @@ list-of-operands-for-result-storage-position-
 storage-position-for-word-list-associated-with-result-storage-position-
 ----
 object-code-copyright-notice:
-(c) Copyright 2016 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.
+(c) Copyright 2017 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.
 ----
 storage-position-number:
 0

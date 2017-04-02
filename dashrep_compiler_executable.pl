@@ -600,7 +600,7 @@ $global_check_operand_two_is_file_name_for_action{ "write-gathered-listed-items-
 
 
 my $storage_item__1002 = 'dashdef-copyright-notice' ;
-my $storage_item__1003 = 'All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2016 by Richard Fobes at www.SolutionsCreative.com, with survivorship rights granted to Fovationz, Inc. at www.NewsHereNow.com' ;
+my $storage_item__1003 = 'All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2017 by the entity who owns the source code from which this object code was generated, and who is specified in a separate copyright statement within one of the following files within this collection. ALL RIGHTS RESERVED.' ;
 $global_dashrep_replacement{ $storage_item__1002 } = $storage_item__1003 ;
 my $storage_item__1004 = '0-documentation-for-compiler' ;
 my $storage_item__1005 = 'Limitations: * Cannot expand parameters within a named phrase if that phrase was not supplied to the compiler as source code. In other words, if during runtime the compiled code imports (or generates) a new phrase with a new definition, and that definition includes parameter phrases, those parameter phrases will be be expanded as parameter phrases. The static definition of such a phrase will get inserted, but the parameter brackets are ignored. * Within parameter brackets, the operands that follow the action name must not expand in a way that effectively inserts a space. In other words, the counting of an action' . "'" . 's operands is done during compilation, not during runtime.' ;
@@ -3155,7 +3155,7 @@ my $storage_item__2464 = 'filename-output-results-from-compiler' ;
 
 my $storage_item__2465 = '' ; # result storage
 my $storage_item__2466 = 'filename-output-standard-runtime-functions' ;
-my $storage_item__2467 = 'output_standard_runtime_functions.txt' ;
+my $storage_item__2467 = 'output_compiler_standard_runtime_functions.txt' ;
 
 
 my $storage_item__2468 = '' ; # result storage
@@ -3227,7 +3227,7 @@ my $storage_item__2500 = 'filename-output-all-phrase-names-complex' ;
 
 my $storage_item__2501 = '' ; # result storage
 my $storage_item__2502 = 'filename-output-debug-trace-all-dashrep-definitions' ;
-my $storage_item__2503 = 'output_debug_trace_all_dashrep_definitions.txt' ;
+my $storage_item__2503 = 'output_compiler_debug_trace_all_definitions.txt' ;
 
 
 my $storage_item__2504 = '' ; # result storage
@@ -5779,7 +5779,7 @@ my $storage_item__4095 = 'list-of-temporary-phrase-name-prefixes' ;
 my $storage_item__4096 = 'contents-at-storage-position- action-name-at-storage-position- storage-type-at-storage-position- text-words-at-result-storage-position- list-of-operands-for-result-storage-position- storage-position-for-word-list-associated-with-result-storage-position-' ;
 $global_dashrep_replacement{ $storage_item__4095 } = $storage_item__4096 ;
 my $storage_item__4097 = 'object-code-copyright-notice' ;
-my $storage_item__4098 = '(c) Copyright 2016 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.' ;
+my $storage_item__4098 = '(c) Copyright 2017 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.' ;
 $global_dashrep_replacement{ $storage_item__4097 } = $storage_item__4098 ;
 my $storage_item__4099 = 'storage-position-number' ;
 my $storage_item__4100 = '0' ;
