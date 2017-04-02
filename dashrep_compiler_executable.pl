@@ -3119,7 +3119,7 @@ my $storage_item__2444 = 'current-result-storage-position' ;
 
 
 my $storage_item__2445 = 'initialize-input-output-files' ;
-my $storage_item__2446 = 'copy-text character-period dashrep-path-prefix-for-file-writing append-text-no-space character-backslash dashrep-path-prefix-for-file-writing copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading put-into-phrase input-filename input_to_dashrep_compiler.txt put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt delete-file filename-output-results-from-compiler put-into-phrase filename-output-standard-runtime-functions output_standard_runtime_functions.txt delete-file filename-output-standard-runtime-functions put-into-phrase filename-output-results-all-definition-items output_results_all_definition_items.txt delete-file filename-output-results-all-definition-items put-into-phrase filename-output-results-all-function-branches output_results_all_function_branches.txt delete-file filename-output-results-all-function-branches put-into-phrase filename-output-results-all-compiled-functions output_results_all_compiled_functions.txt delete-file filename-output-results-all-compiled-functions put-into-phrase filename-output-all-definitions-complex output_results_all_tokens_for_definitions_complex.txt delete-file filename-output-all-definitions-complex put-into-phrase filename-output-all-phrase-names-complex output_results_all_phrase_names_complex.txt delete-file filename-output-all-phrase-names-complex put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_debug_trace_all_dashrep_definitions.txt delete-file filename-output-debug-trace-all-dashrep-definitions' ;
+my $storage_item__2446 = 'copy-text character-period dashrep-path-prefix-for-file-writing append-text-no-space character-backslash dashrep-path-prefix-for-file-writing copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading put-into-phrase input-filename input_to_dashrep_compiler.txt put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt delete-file filename-output-results-from-compiler put-into-phrase filename-output-standard-runtime-functions output_standard_runtime_functions.txt delete-file filename-output-standard-runtime-functions put-into-phrase filename-output-results-all-definition-items output_compiler_all_definition_items.txt delete-file filename-output-results-all-definition-items put-into-phrase filename-output-results-all-function-branches output_compiler_all_function_branches.txt delete-file filename-output-results-all-function-branches put-into-phrase filename-output-results-all-compiled-functions output_compiler_all_compiled_functions.txt delete-file filename-output-results-all-compiled-functions put-into-phrase filename-output-all-definitions-complex output_compiler_all_tokens_for_definitions_complex.txt delete-file filename-output-all-definitions-complex put-into-phrase filename-output-all-phrase-names-complex output_compiler_all_phrase_names_complex.txt delete-file filename-output-all-phrase-names-complex put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_debug_trace_all_dashrep_definitions.txt delete-file filename-output-debug-trace-all-dashrep-definitions' ;
 $global_dashrep_replacement{ $storage_item__2445 } = $storage_item__2446 ;
 my $storage_item__2447 = '' ; # result storage
 my $storage_item__2448 = 'character-period' ;
@@ -3167,7 +3167,7 @@ my $storage_item__2470 = 'filename-output-standard-runtime-functions' ;
 
 my $storage_item__2471 = '' ; # result storage
 my $storage_item__2472 = 'filename-output-results-all-definition-items' ;
-my $storage_item__2473 = 'output_results_all_definition_items.txt' ;
+my $storage_item__2473 = 'output_compiler_all_definition_items.txt' ;
 
 
 my $storage_item__2474 = '' ; # result storage
@@ -3179,7 +3179,7 @@ my $storage_item__2476 = 'filename-output-results-all-definition-items' ;
 
 my $storage_item__2477 = '' ; # result storage
 my $storage_item__2478 = 'filename-output-results-all-function-branches' ;
-my $storage_item__2479 = 'output_results_all_function_branches.txt' ;
+my $storage_item__2479 = 'output_compiler_all_function_branches.txt' ;
 
 
 my $storage_item__2480 = '' ; # result storage
@@ -3191,7 +3191,7 @@ my $storage_item__2482 = 'filename-output-results-all-function-branches' ;
 
 my $storage_item__2483 = '' ; # result storage
 my $storage_item__2484 = 'filename-output-results-all-compiled-functions' ;
-my $storage_item__2485 = 'output_results_all_compiled_functions.txt' ;
+my $storage_item__2485 = 'output_compiler_all_compiled_functions.txt' ;
 
 
 my $storage_item__2486 = '' ; # result storage
@@ -3203,7 +3203,7 @@ my $storage_item__2488 = 'filename-output-results-all-compiled-functions' ;
 
 my $storage_item__2489 = '' ; # result storage
 my $storage_item__2490 = 'filename-output-all-definitions-complex' ;
-my $storage_item__2491 = 'output_results_all_tokens_for_definitions_complex.txt' ;
+my $storage_item__2491 = 'output_compiler_all_tokens_for_definitions_complex.txt' ;
 
 
 my $storage_item__2492 = '' ; # result storage
@@ -3215,7 +3215,7 @@ my $storage_item__2494 = 'filename-output-all-definitions-complex' ;
 
 my $storage_item__2495 = '' ; # result storage
 my $storage_item__2496 = 'filename-output-all-phrase-names-complex' ;
-my $storage_item__2497 = 'output_results_all_phrase_names_complex.txt' ;
+my $storage_item__2497 = 'output_compiler_all_phrase_names_complex.txt' ;
 
 
 my $storage_item__2498 = '' ; # result storage
@@ -3496,7 +3496,7 @@ my $storage_item__2641 = 'saved-directory' ;
 
 my $storage_item__2642 = '' ; # result storage
 my $storage_item__2643 = 'dashrep-path-prefix-for-file-reading' ;
-my $storage_item__2644 = 'undisclosed' ;
+my $storage_item__2644 = '.\\compiler_source\\5_functions_from_interpreter\\' ;
 
 
 my $storage_item__2645 = '' ; # result storage
@@ -3643,7 +3643,7 @@ my $storage_item__2714 = 'saved-directory' ;
 
 my $storage_item__2715 = '' ; # result storage
 my $storage_item__2716 = 'dashrep-path-prefix-for-file-reading' ;
-my $storage_item__2717 = 'undisclosed' ;
+my $storage_item__2717 = '.\\compiler_source\\5_functions_from_interpreter\\' ;
 
 
 my $storage_item__2718 = '' ; # result storage
@@ -17957,7 +17957,7 @@ return '' ;
 sub function_compiled__initialize_input_output_files( ) {
 $global_replacement_count_for_item_name{ 'initialize-input-output-files' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn ambee put-into-phrase input-filename input_to_dashrep_compiler.txt amenn ambee put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt amenn ambee delete-file ambee filename-output-results-from-compiler amenn amenn ambee put-into-phrase filename-output-standard-runtime-functions output_standard_runtime_functions.txt amenn ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn ambee put-into-phrase filename-output-results-all-definition-items output_results_all_definition_items.txt amenn ambee delete-file ambee filename-output-results-all-definition-items amenn amenn ambee put-into-phrase filename-output-results-all-function-branches output_results_all_function_branches.txt amenn ambee delete-file ambee filename-output-results-all-function-branches amenn amenn ambee put-into-phrase filename-output-results-all-compiled-functions output_results_all_compiled_functions.txt amenn ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn ambee put-into-phrase filename-output-all-definitions-complex output_results_all_tokens_for_definitions_complex.txt amenn ambee delete-file ambee filename-output-all-definitions-complex amenn amenn ambee put-into-phrase filename-output-all-phrase-names-complex output_results_all_phrase_names_complex.txt amenn ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_debug_trace_all_dashrep_definitions.txt amenn ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
+# ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn ambee put-into-phrase input-filename input_to_dashrep_compiler.txt amenn ambee put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt amenn ambee delete-file ambee filename-output-results-from-compiler amenn amenn ambee put-into-phrase filename-output-standard-runtime-functions output_standard_runtime_functions.txt amenn ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn ambee put-into-phrase filename-output-results-all-definition-items output_compiler_all_definition_items.txt amenn ambee delete-file ambee filename-output-results-all-definition-items amenn amenn ambee put-into-phrase filename-output-results-all-function-branches output_compiler_all_function_branches.txt amenn ambee delete-file ambee filename-output-results-all-function-branches amenn amenn ambee put-into-phrase filename-output-results-all-compiled-functions output_compiler_all_compiled_functions.txt amenn ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn ambee put-into-phrase filename-output-all-definitions-complex output_compiler_all_tokens_for_definitions_complex.txt amenn ambee delete-file ambee filename-output-all-definitions-complex amenn amenn ambee put-into-phrase filename-output-all-phrase-names-complex output_compiler_all_phrase_names_complex.txt amenn ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_debug_trace_all_dashrep_definitions.txt amenn ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
 
 $global_action_debug_line = '***** initialize-input-output-files **** 2447 *** copy-text ** 2 *' . $storage_item__2448 . ' ' . $storage_item__2449 ;
 print $global_action_debug_line . "\n" ;
