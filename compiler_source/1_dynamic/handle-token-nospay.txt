@@ -1,0 +1,1 @@
+[-append-text code-concat list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]

@@ -1,0 +1,16 @@
+# no-space dashes-long-line  <new_line>
+#  Execute starting/main function  <new_line>
+<new_line>
+
+&initialize_special_phrases( ) ;  <new_line>
+$global_accumulator[ 1 ] = '' ;  <new_line>
+& no-space function-name-prefix start_here( ) ;  <new_line>
+$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
+print $output_results . "\n" ;  <new_line>
+exit ;  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Begin runtime functions  <new_line>
+<new_line>

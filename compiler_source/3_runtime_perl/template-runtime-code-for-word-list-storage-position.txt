@@ -1,0 +1,1 @@
+my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ; # stores list of words for loop

@@ -1,0 +1,6 @@
+contents-at-storage-position-
+action-name-at-storage-position-
+storage-type-at-storage-position-
+text-words-at-result-storage-position-
+list-of-operands-for-result-storage-position-
+storage-position-for-word-list-associated-with-result-storage-position-

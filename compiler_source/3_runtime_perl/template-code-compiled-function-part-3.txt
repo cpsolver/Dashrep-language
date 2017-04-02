@@ -1,0 +1,3 @@
+' } ++ ;  <new_line>
+my $saved_accumulator_pointer = -1 ;  <new_line>
+#

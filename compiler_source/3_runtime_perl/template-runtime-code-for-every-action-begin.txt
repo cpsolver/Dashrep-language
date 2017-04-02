@@ -1,0 +1,3 @@
+$global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
+print $global_action_debug_line . "\n" ;  <new_line>
+# <new_line>

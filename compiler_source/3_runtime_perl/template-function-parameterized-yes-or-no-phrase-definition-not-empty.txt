@@ -1,0 +1,19 @@
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_phrase_definition_not_empty  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_phrase_definition_not_empty( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( $local_text !~ /^[^ ]+-[^ ]+$/ ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( $global_dashrep_replacement{ $local_text } =~ /[^ ]/ ) {  <new_line>
+return $global_yes ;  <new_line>
+} else {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

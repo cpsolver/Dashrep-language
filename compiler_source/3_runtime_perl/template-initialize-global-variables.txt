@@ -1,0 +1,121 @@
+my $global_yes = 1 ;  <new_line>
+my $global_no = 0 ;  <new_line>
+my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
+my $global_word_to_use_in_handler = '' ;  <new_line>
+my $global_yes_or_no = 0 ;  <new_line>
+my $global_source_text = '' ;  <new_line>
+my $global_target_text = '' ;  <new_line>
+my $global_default_text = '' ;  <new_line>
+my $global_storage_number = 1 ;  <new_line>
+my $global_accumulator_pointer = 1 ;  <new_line>
+my $global_text_expanded_parameters_only = '' ;  <new_line>
+my $global_action_name = '' ;  <new_line>
+my $global_number_of_operands = 0 ;  <new_line>
+my $global_action_operand_one = '' ;  <new_line>
+my $global_action_operand_two = '' ;  <new_line>
+my $global_action_operand_three = '' ;  <new_line>
+my $global_action_operand_four = '' ;  <new_line>
+my $global_action_operand_five = '' ;  <new_line>
+my $global_action_operands_all = '' ;  <new_line>
+my $global_action_result = '' ;  <new_line>
+my $global_numeric_value_first = 0 ;  <new_line>
+my $global_numeric_value_second = 0 ;  <new_line>
+my $global_spaces = '                                                                              ' ;  <new_line>
+my $global_phrase_name_to_match = '' ;  <new_line>
+my $global_yes_or_no_operand_error = $global_no ;  <new_line>
+my $output_results = '' ;  <new_line>
+<new_line>
+
+my $global_character_pointer = '' ;  <new_line>
+my $global_character_pointer_begin = '' ;  <new_line>
+my $global_character_pointer_end = '' ;  <new_line>
+my $global_length_of_text = '' ;  <new_line>
+my $global_number_of_words = 0 ;  <new_line>
+my $global_word_pointer = '' ;  <new_line>
+my $global_current_word = '' ;  <new_line>
+my $global_calculated_value = '' ;  <new_line>
+my $global_pointer_to_next_space = 0 ;  <new_line>
+my $global_pointer_to_next_word = 0 ;  <new_line>
+my $global_pointer_to_future_space = 0 ;  <new_line>
+my $global_pointer_to_previous_space = 0 ;  <new_line>
+my $global_pointer_to_first_space = 0 ;  <new_line>
+my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
+my $global_concatenated_all_operands = '' ;  <new_line>
+my $global_concatenated_all_operands_modified = '' ;  <new_line>
+my $global_normalized_calculated_value = '' ;  <new_line>
+my $global_pointer_to_word = '' ;  <new_line>
+<new_line>
+
+my $global_action_debug_line = '' ;  <new_line>
+<new_line>
+
+my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
+my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
+<new_line>
+
+my $global_endless_loop_counter = 0 ;  <new_line>
+my $global_endless_loop_counter_limit = 70000 ;  <new_line>
+my $global_time_limit = 1200 ;  # 1200 seconds = 20 minutes  <new_line>
+my $global_starting_time = time ;  <new_line>
+my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
+my $global_nesting_level_of_file_actions = 0 ;  <new_line>
+my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
+<new_line>
+
+*--- variables that are only needed for old interpreter code ---*
+my $global_true = 1 ;  <new_line>
+my $global_false = 0 ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-debug-trace-on-yes-or-no' } = 'no' ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-action-trace-on-yes-or-no' } = 'no' ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
+<new_line>
+
+*--- variables that hide warnings for unused parts of old interpreter code ---*
+
+# my %global_minimum_number_of_operands_for_action ;  <new_line>
+
+$global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = 'no' ;  <new_line>
+my $global_single_action_name ;  <new_line>
+my $global_trace_log ;  <new_line>
+my $global_single_action_operands_all ;  <new_line>
+my %global_required_number_of_operands_for_action ;  <new_line>
+my $global_single_action_operand_one ;  <new_line>
+my $global_single_action_operand_two ;  <new_line>
+my $global_single_action_operand_three ;  <new_line>
+my $global_single_action_operand_four ;  <new_line>
+my $global_single_action_operand_five ;  <new_line>
+my $global_unique_value ;  <new_line>
+my $global_operand_one ;  <new_line>
+my $global_operand_two ;  <new_line>
+my $global_operand_three ;  <new_line>
+my $global_operand_four ;  <new_line>
+my $global_operand_five ;  <new_line>
+my $global_operands_all ;  <new_line>
+my $global_xml_level_number ;  <new_line>
+my $global_ignore_level ;  <new_line>
+my $global_xml_accumulated_sequence_of_tag_names ;  <new_line>
+my @global_xml_tag_at_level_number ;  <new_line>
+my $global_exists_xml_hyphenated_phrase ;  <new_line>
+
+my %global_check_operand_one_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_two_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_three_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_four_is_phrase_name_for_action ;  <new_line>
+
+my %global_check_operand_one_phrase_is_not_empty_for_action ;  <new_line>
+my %global_check_operand_two_phrase_is_not_empty_for_action ;  <new_line>
+my %global_check_operand_three_phrase_is_not_empty_for_action ;  <new_line>
+
+my %global_check_operand_one_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_two_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_three_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_four_is_positive_integer_for_action ;  <new_line>
+
+my %global_check_operand_one_is_real_number_for_action ;  <new_line>
+my %global_check_operand_two_is_real_number_for_action ;  <new_line>
+
+my %global_check_operand_one_is_file_name_for_action ;  <new_line>
+my %global_check_operand_two_is_file_name_for_action ;  <new_line>
+
+my $global_dashrep_text_list_of_phrase_names ;  <new_line>
+my $global_xml_level ;  <new_line>

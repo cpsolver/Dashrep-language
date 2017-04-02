@@ -1,0 +1,27 @@
+[-copy-text string-hyphen string-hyphen-here-]
+[-append-text-no-space character-hyphen string-hyphen-here-]
+[-append-text-no-space string-here string-hyphen-here-]
+
+[-copy-text string-character string-character-hyphen-]
+[-append-text-no-space character-hyphen string-character-hyphen-]
+[-append-text-no-space string-hyphen string-character-hyphen-]
+
+[-copy-text string-no string-no-space-]
+[-append-text-no-space character-hyphen string-no-space-]
+[-append-text-no-space string-space string-no-space-]
+
+[-copy-text string-one string-one-space-]
+[-append-text-no-space character-hyphen string-one-space-]
+[-append-text-no-space string-space string-one-space-]
+
+[-copy-text string-new string-new-line-]
+[-append-text-no-space character-hyphen string-new-line-]
+[-append-text-no-space string-line string-new-line-]
+
+[-copy-text string-empty string-empty-line-]
+[-append-text-no-space character-hyphen string-empty-line-]
+[-append-text-no-space string-line string-empty-line-]
+
+[-copy-text string-empty string-empty-text-]
+[-append-text-no-space character-hyphen string-empty-text-]
+[-append-text-no-space string-text string-empty-text-]

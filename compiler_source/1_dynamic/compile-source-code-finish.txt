@@ -1,0 +1,9 @@
+[-copy-words-found-only-in-first-list list-of-phrase-definitions-complex dashrep-list-of-compiled-executable-phrases list-of-possible-new-executable-phrases-]
+
+[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
+[-append-text-no-space runtime-code-at-top-if-warning-message output-results-]
+[-append-text-no-space warning-messages output-results-]
+[-append-text-no-space new-empty-lines output-results-]
+[-if-end-]
+
+[-expand-text template-displayed-list-of-possible-new-executable-phrases displayed-list-of-possible-new-executable-phrases-]

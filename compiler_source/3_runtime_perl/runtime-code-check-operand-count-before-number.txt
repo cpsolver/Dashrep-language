@@ -1,0 +1,1 @@
+if ( $global_number_of_operands !=

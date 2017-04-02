@@ -1,0 +1,2 @@
+[-put-into-phrase storage-type  text -]
+[-create-new-storage-position-]

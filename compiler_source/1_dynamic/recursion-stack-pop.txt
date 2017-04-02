@@ -1,0 +1,11 @@
+[-put-into-phrase position-top-of-stack  [-get-count-of-words recursion-stack-] -]
+
+[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-position-top-of-stack-] 1 -]-]-]
+[-recursion-stack-pop-case-not-empty-]
+[-if-else-]
+[-recursion-stack-pop-case-empty-]
+[-if-end-]
+
+*---
+[-recursion-stack-show-]
+---*

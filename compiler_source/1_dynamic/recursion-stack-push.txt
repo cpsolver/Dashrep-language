@@ -1,0 +1,5 @@
+[-append-text current-result-storage-position recursion-stack-]
+
+*---
+[-recursion-stack-show-]
+---*

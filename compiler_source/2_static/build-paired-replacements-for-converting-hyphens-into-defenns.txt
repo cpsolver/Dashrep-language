@@ -1,0 +1,3 @@
+[-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
+[-prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns-]
+[-prepend-text-no-space character-hyphen string-of-hyphens-]

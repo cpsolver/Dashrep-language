@@ -1,0 +1,5 @@
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End text encountered in definitions  <new_line>
+<new_line>

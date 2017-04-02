@@ -1,0 +1,24 @@
+template-runtime-code-for-every-action-begin
+
+runtime-code-check-operand-initialize
+
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
+
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_word_position = runtime-code-for-operand-number-three + 0 ;  <new_line>
+if ( $global_yes == &function_parameterized__yes_or_no_positive_integer( $word_position ) ) {  <new_line>
+&function__get_word_at_position( ) ;  <new_line>
+runtime-code-storage-item-result = $target_text ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'dashrep_undefined' ;  <new_line>
+}  <new_line>
+
+} else {  <new_line>
+runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end

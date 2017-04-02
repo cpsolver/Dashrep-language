@@ -1,0 +1,2 @@
+' ) {  <new_line>
+&function_compiled__

@@ -1,0 +1,2 @@
+' ;  <new_line>
+my initialize-variable-begin

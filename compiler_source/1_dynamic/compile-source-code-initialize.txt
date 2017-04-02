@@ -1,0 +1,22 @@
+[-put-into-phrase local-or-batch-mode  local -]
+[-put-into-phrase dashrep-time-limit  50000 -]
+[-put-into-phrase dashrep-endless-loop-counter-limit  900000 -]
+[-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
+
+[-put-into-phrase debug-output-filename  output_debug_info.txt -]
+[-delete-file [-debug-output-filename-]-]
+
+[-define-special-strings-]
+
+[-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
+[-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
+
+[-assign-action-operand-characteristics-]
+[-put-into-phrase current-storage-position  1001 -]
+
+[-put-into-phrase filename-output-initializations-only  output_initializations_only.txt -]
+[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+[-write-all-dashrep-definitions-to-file [-filename-output-initializations-only-]-]
+
+[-expand-text list-of-template-functions output-results-all-runtime-functions-]
+[-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-standard-runtime-functions-]-]

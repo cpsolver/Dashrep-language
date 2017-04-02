@@ -1,0 +1,27 @@
+[-copy-text character-f string-fen-]
+[-append-text-no-space character-e string-fen-]
+[-append-text-no-space character-n string-fen-]
+
+[-copy-text string-am string-ambee-]
+[-append-text-no-space string-bee string-ambee-]
+
+[-copy-text string-am string-amenn-]
+[-append-text-no-space string-enn string-amenn-]
+
+[-copy-text string-amenn string-amennfen-]
+[-append-text-no-space string-fen string-amennfen-]
+
+[-copy-text string-com string-combee-]
+[-append-text-no-space string-bee string-combee-]
+
+[-copy-text string-com string-comenn-]
+[-append-text-no-space string-enn string-comenn-]
+
+[-copy-text string-def string-defenn-]
+[-append-text-no-space string-enn string-defenn-]
+
+[-copy-text string-fen string-fenambee-]
+[-append-text-no-space string-bee string-fenambee-]
+
+[-copy-text string-no string-nospay-]
+[-append-text-no-space string-spay string-nospay-]

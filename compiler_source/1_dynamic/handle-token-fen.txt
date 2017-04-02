@@ -1,0 +1,2 @@
+[-append-text string-fen definition-for-phrase-being-defined-]
+[-append-text string-fen list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]

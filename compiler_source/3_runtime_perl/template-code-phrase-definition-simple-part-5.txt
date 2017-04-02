@@ -1,0 +1,2 @@
+' ; <new_line>
+code-get-or-put-phrase-definition-begin initialize-variable-begin

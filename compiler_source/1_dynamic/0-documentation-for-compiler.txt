@@ -1,0 +1,5 @@
+Limitations:
+
+* Cannot expand parameters within a named phrase if that phrase was not supplied to the compiler as source code.  In other words, if during runtime the compiled code imports (or generates) a new phrase with a new definition, and that definition includes parameter phrases, those parameter phrases will be be expanded as parameter phrases.  The static definition of such a phrase will get inserted, but the parameter brackets are ignored.
+
+* Within parameter brackets, the operands that follow the action name must not expand in a way that effectively inserts a space. In other words, the counting of an action's operands is done during compilation, not during runtime.

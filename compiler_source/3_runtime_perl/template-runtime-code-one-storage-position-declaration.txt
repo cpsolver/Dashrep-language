@@ -1,0 +1,1 @@
+my storage-position-name = '' ;  <new_line>

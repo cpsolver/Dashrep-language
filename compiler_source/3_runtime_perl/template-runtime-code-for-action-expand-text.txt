@@ -1,0 +1,24 @@
+template-runtime-code-for-every-action-begin
+
+runtime-code-check-operand-initialize
+
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
+
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+$saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
+$global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
+$global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
+&function_branch_based_on_phrase_name( ) ;  <new_line>
+$global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+$global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end

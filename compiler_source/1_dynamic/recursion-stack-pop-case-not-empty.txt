@@ -1,0 +1,8 @@
+[-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-position-top-of-stack-] 1 -]-]-]
+[-copy-word-at-position recursion-stack current-result-storage-position [-position-top-of-stack-]-]
+[-numeric-decrement position-top-of-stack-]
+[-copy-words-from-position-to-position recursion-stack recursion-stack 1 [-position-top-of-stack-]-]
+[-if-else-]
+[-copy-text recursion-stack current-result-storage-position-]
+[-clear-phrase recursion-stack-]
+[-if-end-]

@@ -1,0 +1,13 @@
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
+[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores action-name-with-underscores-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen-]
+*--- reminder: do not modify apostrophes or backslashes here because those characters need to appear in the code ---*
+[-copy-from-phrase-append-to-file runtime-code-for-parameter-phrase [-filename-output-results-all-compiled-functions-]-]
+[-copy-text current-result-storage-position higher-result-storage-position-]
+[-recursion-stack-pop-]
+[-copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand-]
+[-append-text-no-space higher-result-storage-position higher-result-storage-operand-]
+[-append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand-]
+[-append-text higher-result-storage-operand list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]

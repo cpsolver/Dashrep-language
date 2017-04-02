@@ -1,0 +1,1 @@
+my template-storage-item-prefix current-text-storage-position = '

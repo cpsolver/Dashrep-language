@@ -1,0 +1,7 @@
+[-get-all-operands-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase template-runtime-code-for-action-[-action-name-]-]-]
+[-expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase-]
+[-if-else-]
+[-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
+[-if-end-]

@@ -1,0 +1,5 @@
+template-runtime-code-for-every-action-begin
+
+print 'current code location is: phrase-being-defined no-space ' . "\n" ;  <new_line>
+
+template-runtime-code-for-every-action-end

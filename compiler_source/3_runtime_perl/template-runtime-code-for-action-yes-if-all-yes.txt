@@ -1,0 +1,25 @@
+template-runtime-code-for-every-action-begin
+
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+$global_concatenated_all_operands_modified = ' ' . $global_concatenated_all_operands . ' ' ;  <new_line>
+$accumulated_remaining_text = '' ;  <new_line>
+$pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+
+while ( $pointer_to_next_match > 0 ) {  <new_line>
+$accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ;  <new_line>
+$global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ;  <new_line>
+$pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+} # end of while loop  <new_line>
+
+$accumulated_remaining_text .= ' ' . $global_concatenated_all_operands_modified ;  <new_line>
+$accumulated_remaining_text =~ s/ //g ;  <new_line>
+
+if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>
+$global_target_text = 'yes' ;  <new_line>
+} else {  <new_line>
+$global_target_text = 'no' ;  <new_line>
+}  <new_line>
+
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-for-every-action-end

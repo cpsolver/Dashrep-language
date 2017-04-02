@@ -1,0 +1,4 @@
+print 'Compiler error; for details see warning messages at top of compiler output file.' . "\n" ;  <new_line>
+exit ;  <new_line>
+# All done!  <new_line>
+<new_line>

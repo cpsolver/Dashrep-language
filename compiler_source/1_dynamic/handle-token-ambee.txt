@@ -1,0 +1,8 @@
+[-recursion-stack-push-]
+[-create-new-result-storage-position-]
+[-copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage-]
+[-append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage-]
+[-append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage-]
+[-copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage [-filename-output-results-all-definition-items-]-]
+[-clear-phrase action-name-at-storage-position-[-current-result-storage-position-]-]
+[-append-text string-ambee definition-for-phrase-being-defined-]
