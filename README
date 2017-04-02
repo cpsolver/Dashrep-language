@@ -4,6 +4,7 @@ Dashrep is a versatile descriptive programming language based on hyphenated phra
 
 See www.Dashrep.org for details.
 
+The Dashrep compiler is written in the Dashrep language.  The current implementation of this compiler generates Perl code that is directly executable as Perl code.  In the future the runtime language is expected to be changed to a combination of C and C++ code that is compiled by the Clang compiler.
 
 Version 3.03
 
@@ -29,7 +30,7 @@ You can find documentation for the Dashrep language at:
 
 COPYRIGHT AND LICENCE
 
-Copyright (c) 2009-2015 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright (c) 2009-2017 Richard Fobes at www.Dashrep.org, all rights reserved.
 
 You can redistribute and/or modify this library module
 under the Perl Artistic License 2.0, a copy
