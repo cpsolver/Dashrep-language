@@ -2,9 +2,11 @@
 [-copy-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
 [-copy-without-extra-spaces list-of-operands-raw list-of-operands-raw-]
 [-copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen-]
+[-copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay-]
 [-put-into-phrase number-of-operands [-get-count-of-words list-of-operands-for-counting-]-]
 [-copy-text list-of-operands-for-counting operand-or-operands-]
 [-handle-fen-within-operand-or-operands-]
+[-handle-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-concatenated-all-operands-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands-]-]

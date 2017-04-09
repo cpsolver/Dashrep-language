@@ -49,3 +49,11 @@
 [-append-text-no-space character-hyphen string-space-end-of-line-here-space-]
 [-append-text-no-space string-line-here string-space-end-of-line-here-space-]
 [-append-text-no-space character-space string-space-end-of-line-here-space-]
+
+[-copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces-]
+[-prepend-text-no-space character-space string-code-nospay-between-spaces-]
+[-append-text-no-space character-space string-code-nospay-between-spaces-]
+
+[-copy-text string-nospay string-space-nospay-space-]
+[-prepend-text-no-space character-space string-space-nospay-space-]
+[-append-text-no-space character-space string-space-nospay-space-]

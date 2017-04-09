@@ -108,6 +108,13 @@ convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
+
+*--- do twice in case underscore is adjacent to both open and close parameter brackets ---*
+[-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
+
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
 ----
@@ -274,9 +281,11 @@ get-all-operands:
 [-copy-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
 [-copy-without-extra-spaces list-of-operands-raw list-of-operands-raw-]
 [-copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen-]
+[-copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay-]
 [-put-into-phrase number-of-operands [-get-count-of-words list-of-operands-for-counting-]-]
 [-copy-text list-of-operands-for-counting operand-or-operands-]
 [-handle-fen-within-operand-or-operands-]
+[-handle-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-concatenated-all-operands-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands-]-]
@@ -372,6 +381,11 @@ handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-append-text warning-more-amenn-than-ambee-tokens warning-message-]
 [-append-text-no-space warning-message warning-messages-]
 [-if-end-]
+----
+handle-nospay-within-operand-or-operands:
+[-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
+[-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
+[-copy-and-replace operand-or-operands-step-2 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
 ----
 handle-simple-definition:
 [-create-new-text-storage-position-]
@@ -532,7 +546,7 @@ handle-token-next-case-3:
 [-if-end-]
 ----
 handle-token-nospay:
-[-append-text code-concat list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+[-append-text string-two-apostrophes list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
 ----
 handle-token-phrase-name:
 [-copy-text current-token phrase-being-defined-]
@@ -989,6 +1003,14 @@ define-special-strings-that-are-padded-with-spaces:
 [-append-text-no-space character-hyphen string-space-end-of-line-here-space-]
 [-append-text-no-space string-line-here string-space-end-of-line-here-space-]
 [-append-text-no-space character-space string-space-end-of-line-here-space-]
+
+[-copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces-]
+[-prepend-text-no-space character-space string-code-nospay-between-spaces-]
+[-append-text-no-space character-space string-code-nospay-between-spaces-]
+
+[-copy-text string-nospay string-space-nospay-space-]
+[-prepend-text-no-space character-space string-space-nospay-space-]
+[-append-text-no-space character-space string-space-nospay-space-]
 ----
 define-special-strings-that-cannot-be-spelled-in-full:
 [-copy-text character-f string-fen-]
@@ -1069,6 +1091,10 @@ define-special-strings:
 [-expand-text template-string-dash-open-bracket-dash string-dash-open-bracket-dash-]
 [-expand-text template-string-dash-close-bracket string-dash-close-bracket-]
 [-expand-text template-string-dash-close-bracket-dash string-dash-close-bracket-dash-]
+[-expand-text template-string-underscore-open-bracket-dash string-underscore-open-bracket-dash-]
+[-expand-text template-string-dash-close-bracket-underscore string-dash-close-bracket-underscore-]
+[-expand-text template-string-underscore-nospay-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
+[-expand-text template-string-dash-close-bracket-nospay-underscore string-dash-close-bracket-nospay-underscore-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
@@ -1182,6 +1208,10 @@ define-special-strings:
 [-copy-text string-placeholder-prefix string-placeholder-fen-]
 [-append-text-no-space string-fen string-placeholder-fen-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-fen-]
+
+[-copy-text string-placeholder-prefix string-placeholder-nospay-]
+[-append-text-no-space string-fen string-placeholder-nospay-]
+[-append-text-no-space character-close-angle-bracket string-placeholder-nospay-]
 
 [-copy-text string-placeholder-prefix string-placeholder-special-]
 [-append-text-no-space string-special string-placeholder-special-]
@@ -1586,6 +1616,12 @@ template-show-recursion-stack:
 template-string-dash-close-bracket-dash:
 no-space character-hyphen no-space character-close-square-bracket no-space character-hyphen no-space
 ----
+template-string-dash-close-bracket-nospay-underscore:
+no-space character-hyphen no-space character-close-square-bracket string-nospay character-underscore no-space
+----
+template-string-dash-close-bracket-underscore:
+no-space character-hyphen no-space character-close-square-bracket no-space character-underscore no-space
+----
 template-string-dash-close-bracket:
 no-space character-hyphen no-space character-close-square-bracket no-space
 ----
@@ -1594,6 +1630,12 @@ no-space character-hyphen no-space character-open-square-bracket no-space charac
 ----
 template-string-open-bracket-dash:
 no-space character-open-square-bracket no-space character-hyphen no-space
+----
+template-string-underscore-nospay-open-bracket-dash:
+no-space character-underscore string-nospay character-open-square-bracket no-space character-hyphen no-space
+----
+template-string-underscore-open-bracket-dash:
+no-space character-underscore no-space character-open-square-bracket no-space character-hyphen no-space
 ----
 template-warning-ambee-amenn-imbalance-introduction:
 WARNING:  Definition of phrase
@@ -1744,6 +1786,9 @@ runtime-code-storage-item-reference-after-pointer:
 ----
 runtime-code-storage-item-reference-before-pointer:
 $storage_item__
+----
+string-code-nospay-between-spaces-without-padded-spaces:
+. ' ' . '' . ' ' .
 ----
 template-code-compiled-function-part-1:
 # no-space dashes-long-line  <new_line>
@@ -2479,7 +2524,7 @@ $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
-print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+# print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
 $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
@@ -2698,9 +2743,7 @@ template-storage-item-containing-word-list-associated-with-loop = code-get-or-pu
 $local_pointer_to_next_space = -1 ;  <new_line>
 $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;  <new_line>
 
-print "length of word list is " . $length_of_text_in_word_list . "\n" ;  <new_line>
-*---
----*
+# print "length of word list is " . $length_of_text_in_word_list . "\n" ;  <new_line>
 
 # start ABABA loop, which has exit in middle of loop  <new_line>
 $local_endless_loop_counter = 0 ;  <new_line>
@@ -2727,9 +2770,7 @@ last ;  <new_line>
 
 $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_space + 1 ) ;  <new_line>
 
-print "future space at " . $local_pointer_to_future_space . "\n" ;  <new_line>
-*---
----*
+# print "future space at " . $local_pointer_to_future_space . "\n" ;  <new_line>
 
 # exit from second, inner, ABABA loop; if next line is edited, ensure it reaches an end point; otherwise there will be an endless loop  <new_line>
 if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) {  <new_line>
@@ -2742,15 +2783,11 @@ $local_pointer_to_next_space = $local_pointer_to_future_space ;  <new_line>
 
 $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ;  <new_line>
 
-print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
-*---
----*
+# print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
 
 $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_word ) ;  <new_line>
 
-print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
-*---
----*
+# print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
 
 if ( $local_pointer_to_next_space < 0 ) {  <new_line>
 $local_pointer_to_next_space = $length_of_text_in_word_list ;  <new_line>
@@ -2763,11 +2800,9 @@ last ;  <new_line>
 
 $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ;  <new_line>
 
-print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
-print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
-print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
-*---
----*
+# print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
+# print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
+# print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
 
 code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;  <new_line>
 & no-space function-name-prefix handler-name-with-underscores no-space ( ) ;  <new_line>
@@ -2919,11 +2954,11 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-every-action-begin:
 $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
-print $global_action_debug_line . "\n" ;  <new_line>
+# print $global_action_debug_line . "\n" ;  <new_line>
 # <new_line>
 ----
 template-runtime-code-for-every-action-end:
-print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
+# print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
 ----
 template-runtime-code-for-text-storage-position-begin:

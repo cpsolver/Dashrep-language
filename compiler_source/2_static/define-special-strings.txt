@@ -136,6 +136,10 @@
 [-append-text-no-space string-fen string-placeholder-fen-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-fen-]
 
+[-copy-text string-placeholder-prefix string-placeholder-nospay-]
+[-append-text-no-space string-fen string-placeholder-nospay-]
+[-append-text-no-space character-close-angle-bracket string-placeholder-nospay-]
+
 [-copy-text string-placeholder-prefix string-placeholder-special-]
 [-append-text-no-space string-special string-placeholder-special-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-special-]
