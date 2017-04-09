@@ -9,7 +9,12 @@
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
+
+*--- do twice in case underscore is adjacent to both open and close parameter brackets ---*
+[-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
 [-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
+
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
