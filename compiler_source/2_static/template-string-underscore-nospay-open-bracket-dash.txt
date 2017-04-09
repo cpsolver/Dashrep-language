@@ -1,0 +1,1 @@
+no-space character-underscore nospay character-open-square-bracket no-space character-hyphen no-space

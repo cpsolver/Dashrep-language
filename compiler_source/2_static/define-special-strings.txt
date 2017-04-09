@@ -18,6 +18,10 @@
 [-expand-text template-string-dash-open-bracket-dash string-dash-open-bracket-dash-]
 [-expand-text template-string-dash-close-bracket string-dash-close-bracket-]
 [-expand-text template-string-dash-close-bracket-dash string-dash-close-bracket-dash-]
+[-expand-text template-string-underscore-open-bracket-dash string-underscore-open-bracket-dash-]
+[-expand-text template-string-dash-close-bracket-underscore string-dash-close-bracket-underscore-]
+[-expand-text template-string-underscore-nospay-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
+[-expand-text template-string-dash-close-bracket-nospay-underscore string-dash-close-bracket-nospay-underscore-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
