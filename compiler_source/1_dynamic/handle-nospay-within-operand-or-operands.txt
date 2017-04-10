@@ -1,3 +1,0 @@
-[-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
-[-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
-[-copy-and-replace operand-or-operands-step-2 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
