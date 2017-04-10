@@ -284,8 +284,7 @@ get-all-operands:
 [-copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay-]
 [-put-into-phrase number-of-operands [-get-count-of-words list-of-operands-for-counting-]-]
 [-copy-text list-of-operands-for-counting operand-or-operands-]
-[-handle-fen-within-operand-or-operands-]
-[-handle-nospay-within-operand-or-operands-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-concatenated-all-operands-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands-]-]
@@ -294,7 +293,7 @@ get-all-operands:
 
 [-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 1 -]-]-]
 [-copy-word-at-position list-of-operands-for-counting operand-or-operands 1 -]
-[-handle-fen-within-operand-or-operands-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-operand-number-one-]
 [-if-else-]
 [-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one-]
@@ -302,7 +301,7 @@ get-all-operands:
 
 [-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 2 -]-]-]
 [-copy-word-at-position list-of-operands-for-counting operand-or-operands 2 -]
-[-handle-fen-within-operand-or-operands-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-operand-number-two-]
 [-if-else-]
 [-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two-]
@@ -310,7 +309,7 @@ get-all-operands:
 
 [-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 3 -]-]-]
 [-copy-word-at-position list-of-operands-for-counting operand-or-operands 3 -]
-[-handle-fen-within-operand-or-operands-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-operand-number-three-]
 [-if-else-]
 [-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three-]
@@ -318,7 +317,7 @@ get-all-operands:
 
 [-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 4 -]-]-]
 [-copy-word-at-position list-of-operands-for-counting operand-or-operands 4 -]
-[-handle-fen-within-operand-or-operands-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-operand-number-four-]
 [-if-else-]
 [-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four-]
@@ -364,10 +363,11 @@ handle-definition-contains-ambee-amenn:
 [-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
 [-clear-phrase phrase-being-defined-]
 ----
-handle-fen-within-operand-or-operands:
+handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
 [-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
-[-copy-and-replace operand-or-operands-step-2 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
+[-copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
+[-copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
 ----
 handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
@@ -381,11 +381,6 @@ handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-append-text warning-more-amenn-than-ambee-tokens warning-message-]
 [-append-text-no-space warning-message warning-messages-]
 [-if-end-]
-----
-handle-nospay-within-operand-or-operands:
-[-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
-[-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
-[-copy-and-replace operand-or-operands-step-2 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
 ----
 handle-simple-definition:
 [-create-new-text-storage-position-]
@@ -472,8 +467,10 @@ handle-token-amenn-case-executable-phrase:
 [-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
 [-copy-without-extra-spaces list-of-operands-raw list-of-operands-raw-]
 [-copy-and-replace list-of-operands-raw list-of-operands-modified string-space-fen-space string-placeholder-fen-]
+[-copy-and-replace list-of-operands-raw list-of-operands-modified string-space-nospay-space string-placeholder-nospay-]
 [-copy-and-replace list-of-operands-modified list-of-operands-modified character-space string-placeholder-special-]
 [-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
+[-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
 [-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-special runtime-code-inserted-separator-space-]
 [-copy-text list-of-operands-modified runtime-code-for-executable-phrase-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
@@ -1165,7 +1162,10 @@ define-special-strings:
 [-append-text character-period runtime-code-between-items-for-concatenation-type-fen-]
 [-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen-]
 
-[-copy-text character-period runtime-code-between-items-for-concatenation-type-nospay-]
+[-copy-text character-apostrophe runtime-code-between-items-for-concatenation-type-nospay-]
+[-append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-nospay-]
+[-prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
+[-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
 
 [-copy-text character-apostrophe runtime-code-concatenated-empty-]
 [-append-text-no-space character-apostrophe runtime-code-concatenated-empty-]
@@ -1614,28 +1614,28 @@ template-show-recursion-stack:
 # recursion stack: recursion-stack ( no-space tokens-since-last-show-recursion-stack no-space )  <new_line>
 ----
 template-string-dash-close-bracket-dash:
-no-space character-hyphen no-space character-close-square-bracket no-space character-hyphen no-space
+character-hyphen no-space character-close-square-bracket no-space character-hyphen
 ----
 template-string-dash-close-bracket-nospay-underscore:
-no-space character-hyphen no-space character-close-square-bracket string-nospay character-underscore no-space
+character-hyphen no-space character-close-square-bracket string-nospay character-underscore
 ----
 template-string-dash-close-bracket-underscore:
-no-space character-hyphen no-space character-close-square-bracket no-space character-underscore no-space
+character-hyphen no-space character-close-square-bracket no-space character-underscore
 ----
 template-string-dash-close-bracket:
-no-space character-hyphen no-space character-close-square-bracket no-space
+character-hyphen no-space character-close-square-bracket
 ----
 template-string-dash-open-bracket-dash:
-no-space character-hyphen no-space character-open-square-bracket no-space character-hyphen no-space
+character-hyphen no-space character-open-square-bracket no-space character-hyphen
 ----
 template-string-open-bracket-dash:
-no-space character-open-square-bracket no-space character-hyphen no-space
+character-open-square-bracket no-space character-hyphen
 ----
 template-string-underscore-nospay-open-bracket-dash:
-no-space character-underscore string-nospay character-open-square-bracket no-space character-hyphen no-space
+character-underscore string-nospay character-open-square-bracket no-space character-hyphen
 ----
 template-string-underscore-open-bracket-dash:
-no-space character-underscore no-space character-open-square-bracket no-space character-hyphen no-space
+character-underscore no-space character-open-square-bracket no-space character-hyphen
 ----
 template-warning-ambee-amenn-imbalance-introduction:
 WARNING:  Definition of phrase
