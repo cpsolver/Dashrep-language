@@ -2,3 +2,18 @@
 [-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
 [-copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
 [-copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
+
+[-generate-positions-of-delimiter string-open-bracket-dash operand-or-operands pointers-to-delimiters-begin-]
+[-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
+[-generate-positions-of-delimiter string-dash-close-bracket operand-or-operands pointers-to-delimiters-end-]
+[-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
+[-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
+[-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
+[-use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters-]
+[-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
+[-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
+
+
+[-trace-show pointers-to-delimiters-begin-]
+[-trace-show pointers-to-delimiters-end-]
+[-trace-show list-of-adjacent-characters-]

@@ -2,6 +2,14 @@
 [-define-special-strings-that-contain-hyphens-]
 [-define-special-strings-that-are-padded-with-spaces-]
 
+[-copy-text character-open-bracket string-open-bracket-dash-]
+[-append-text-no-space character-hyphen string-open-bracket-dash-]
+
+[-copy-text character-hyphen string-dash-close-bracket-]
+[-append-text-no-space character-close-bracket string-dash-close-bracket-]
+
+*--- todo: revise following code to use above new code ---*
+
 [-copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
 [-append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
