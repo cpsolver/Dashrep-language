@@ -417,6 +417,7 @@ test-of-special-operators:
 [-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
 [-put-into-phrase correct-value-for-results-with-unicode-converted-to-html-entities  ??? -]
+[-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
 [-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
 [-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
@@ -1762,6 +1763,23 @@ $string_return_value = &dashrep_translate::dashrep_get_replacement( "results-pos
 # uncomment-for-cpan-version-end
 # $results_text .= "[[" . $string_return_value . "]]" ;
 if ( $string_return_value eq "4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
+
+
+#-------------------------------------------
+#  Test the action "copy-words-at-skip-interval"
+
+$being_tested = "test action copy-words-at-skip-interval -- ";
+$test_number_count ++;
+# remove-from-cpan-version-begin
+$string_return_value = &dashrep_translate::dashrep_get_replacement( "skipped-list-of-numbers" );
+# remove-from-cpan-version-end
+# uncomment-for-cpan-version-begin
+# $string_return_value = dashrep_get_replacement( "skipped-list-of-numbers" );
+# uncomment-for-cpan-version-end
+# $results_text .= "[[" . $string_return_value . "]]" ;
+if ( $string_return_value eq "3 7 4" ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
 if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
 if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" };
 

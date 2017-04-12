@@ -92,6 +92,7 @@ copy-words-unique-only
 list-of-unique-word-counts
 list-of-pointers-to-unique-words
 copy-words-order-reversed
+copy-words-at-skip-interval
 generate-counts-from-integer-to-integer
 generate-every-pairwise-combination-of-words
 generate-every-ordered-pairwise-combination-of-words

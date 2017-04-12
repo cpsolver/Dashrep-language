@@ -380,6 +380,7 @@ BEGIN {
     $global_required_number_of_operands_for_action{ "if-end" } = 0 ;
     $global_required_number_of_operands_for_action{ "get-word-at-position" } = 2 ;
     $global_required_number_of_operands_for_action{ "copy-words-from-position-to-position" } = 4 ;
+    $global_required_number_of_operands_for_action{ "copy-words-at-skip-interval" } = 3 ;
     $global_required_number_of_operands_for_action{ "copy-words-order-reversed" } = 2 ;
     $global_required_number_of_operands_for_action{ "get-count-of-words" } = 1 ;
     $global_required_number_of_operands_for_action{ "yes-or-no-word-is-in-phrase" } = 2 ;
@@ -518,6 +519,7 @@ BEGIN {
     $global_check_operand_four_is_positive_integer_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
     $global_check_operand_three_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
     $global_check_operand_four_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+    $global_check_operand_three_is_positive_integer_for_action{ "copy-words-at-skip-interval" } = "yes" ;
     $global_check_operand_one_is_positive_integer_for_action{ "zero-one-multiple" } = "yes" ;
     $global_check_operand_one_is_positive_integer_for_action{ "zero-or-nonzero" } = "yes" ;
     $global_check_operand_two_is_positive_integer_for_action{ "get-characters-from-position-to-position" } = "yes" ;
@@ -613,6 +615,8 @@ BEGIN {
     $global_check_operand_one_is_phrase_name_for_action{ "get-phrase-definition-without-expanding" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+    $global_check_operand_one_is_phrase_name_for_action{ "copy-words-at-skip-interval" } = "yes" ;
+    $global_check_operand_two_is_phrase_name_for_action{ "copy-words-at-skip-interval" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
     $global_check_operand_two_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
     $global_check_operand_one_is_phrase_name_for_action{ "get-count-of-words" } = "yes" ;
@@ -1695,6 +1699,7 @@ sub dashrep_expand_parameters
     my %listed_word ;
     my %words_at_numeric_value ;
     my %item_number_at_row_column ;
+    my $word_skip_interval ;
 
 
 #-----------------------------------------------
@@ -3618,6 +3623,48 @@ sub dashrep_expand_parameters
                     $separator = " " ;
                 }
                 $result_text =~ s/ +$// ;
+                $global_dashrep_replacement{ $operand_two } = $result_text ;
+            }
+#  end of action code
+            $replacement_text = $text_begin . $action_result . $text_end ;
+            next ;
+        }
+
+
+#-----------------------------------------------
+#  Handle the action:
+#  copy-words-at-skip-interval
+
+        if ( $action_name eq "copy-words-at-skip-interval" )
+        {
+            $word_skip_interval = $operand_three + 0 ;
+            if ( exists( $global_dashrep_replacement{ $operand_one } ) )
+            {
+                $temp_text = $global_dashrep_replacement{ $operand_one } ;
+                $temp_text =~ s/\n/ /sg ;
+                $temp_text =~ s/^ +// ;
+                $temp_text =~ s/ +$// ;
+                @list = split( / +/ , $temp_text ) ;
+            } else
+            {
+                @list = ( ) ;
+            }
+            $word_count = $#list + 1 ;
+            if ( ( $word_count < 1 ) || ( $word_skip_interval < 1 ) )
+            {
+                $global_dashrep_replacement{ $operand_two } = "" ;
+            } else
+            {
+                $result_text = "" ;
+                $global_dashrep_replacement{ $operand_two } = "" ;
+                for ( $word_number = 1 ; $word_number <= $word_count ; $word_number = $word_number + $word_skip_interval )
+                {
+                    if ( $word_number > 1 )
+                    {
+                        $result_text .= " " ;
+                    }
+                    $result_text .= $list[ $word_number - 1 ] ;
+                }
                 $global_dashrep_replacement{ $operand_two } = $result_text ;
             }
 #  end of action code
