@@ -31,6 +31,11 @@
 [-get-all-operands-]
 [-copy-text code-compiled-function-part-5 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
+
+
+[-trace-show list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+
+
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
 [-generate-runtime-code-function-branch-]
