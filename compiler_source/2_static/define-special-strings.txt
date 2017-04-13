@@ -100,8 +100,7 @@
 [-append-text character-period runtime-code-between-items-for-concatenation-type-fen-]
 [-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen-]
 
-[-copy-text character-apostrophe runtime-code-between-items-for-concatenation-type-nospay-]
-[-append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-nospay-]
+[-copy-text character-period runtime-code-between-items-for-concatenation-type-nospay-]
 [-prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
 [-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
 
