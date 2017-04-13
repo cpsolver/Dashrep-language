@@ -389,7 +389,10 @@ handle-fen-and-nospay-within-operand-or-operands:
 [-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
 
 
+<<<<<<< HEAD
 [-trace-show operand-or-operands-]
+=======
+>>>>>>> 0627134c885fdc3155bc13f2b655a6dd33a8a990
 [-trace-show pointers-to-delimiters-begin-]
 [-trace-show pointers-to-delimiters-end-]
 [-trace-show list-of-adjacent-characters-]
