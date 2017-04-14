@@ -109,14 +109,52 @@ convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
 
-*--- do twice in case underscore is adjacent to both open and close parameter brackets ---*
-[-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-underscore-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-underscore string-dash-close-bracket-nospay-underscore-]
+
+[-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
+[-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
+[-generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end-]
+[-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
+[-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
+[-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
+[-use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters-]
+[-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
+[-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
+
+
+[-trace-show source-code-as-words-]
+[-trace-show pointers-to-delimiters-begin-]
+[-trace-show pointers-to-delimiters-end-]
+[-trace-show list-of-adjacent-characters-]
+
+
+[-put-into-phrase list-of-underscore-and-period  _ . -]
+[-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-underscore-and-period-]
 
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
+----
+convert-source-handle-nospay-insertions:
+[-copy-text word-to-use-in-handler current-symbol-]
+
+[-copy-text current-symbol string-symbol-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-symbol-]
+[-append-text-no-space current-symbol string-dash-close-bracket-symbol-]
+
+[-copy-text current-symbol string-symbol-nospay-open-bracket-dash-]
+[-append-text string-nospay string-symbol-nospay-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol-]
+[-append-text string-nospay string-dash-close-bracket-nospay-symbol-]
+[-append-text current-symbol string-dash-close-bracket-nospay-symbol-]
+
+*--- do twice in case symbol is adjacent to both open and close parameter brackets ---*
+[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
 ----
 create-new-result-storage-position:
 [-put-into-phrase storage-type  result -]
@@ -377,22 +415,6 @@ handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
 [-copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
 [-copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
-
-[-generate-positions-of-delimiter string-open-bracket-dash operand-or-operands pointers-to-delimiters-begin-]
-[-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
-[-generate-positions-of-delimiter string-dash-close-bracket operand-or-operands pointers-to-delimiters-end-]
-[-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
-[-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
-[-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
-[-use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters-]
-[-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
-[-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
-
-
-[-trace-show operand-or-operands-]
-[-trace-show pointers-to-delimiters-begin-]
-[-trace-show pointers-to-delimiters-end-]
-[-trace-show list-of-adjacent-characters-]
 ----
 handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
@@ -1109,6 +1131,12 @@ define-special-strings:
 [-copy-text character-hyphen string-dash-close-bracket-]
 [-append-text-no-space character-close-bracket string-dash-close-bracket-]
 
+[-copy-text character-hyphen string-dash-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-]
+[-append-text-no-space character-hyphen string-dash-close-bracket-dash-]
+
 *--- todo: revise following code to use above new code ---*
 
 [-copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
@@ -1122,15 +1150,6 @@ define-special-strings:
 [-append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-
-[-expand-text template-string-open-bracket-dash string-open-bracket-dash-]
-[-expand-text template-string-dash-open-bracket-dash string-dash-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket string-dash-close-bracket-]
-[-expand-text template-string-dash-close-bracket-dash string-dash-close-bracket-dash-]
-[-expand-text template-string-underscore-open-bracket-dash string-underscore-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket-underscore string-dash-close-bracket-underscore-]
-[-expand-text template-string-underscore-nospay-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket-nospay-underscore string-dash-close-bracket-nospay-underscore-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
@@ -1650,30 +1669,6 @@ template-quoted-yes-or-no-use-two-spaces-as-column-delimiter:
 ----
 template-show-recursion-stack:
 # recursion stack: recursion-stack ( no-space tokens-since-last-show-recursion-stack no-space )  <new_line>
-----
-template-string-dash-close-bracket-dash:
-character-hyphen no-space character-close-square-bracket no-space character-hyphen
-----
-template-string-dash-close-bracket-nospay-underscore:
-character-hyphen no-space character-close-square-bracket string-nospay character-underscore
-----
-template-string-dash-close-bracket-underscore:
-character-hyphen no-space character-close-square-bracket no-space character-underscore
-----
-template-string-dash-close-bracket:
-character-hyphen no-space character-close-square-bracket
-----
-template-string-dash-open-bracket-dash:
-character-hyphen no-space character-open-square-bracket no-space character-hyphen
-----
-template-string-open-bracket-dash:
-character-open-square-bracket no-space character-hyphen
-----
-template-string-underscore-nospay-open-bracket-dash:
-character-underscore string-nospay character-open-square-bracket no-space character-hyphen
-----
-template-string-underscore-open-bracket-dash:
-character-underscore no-space character-open-square-bracket no-space character-hyphen
 ----
 template-warning-ambee-amenn-imbalance-introduction:
 WARNING:  Definition of phrase
