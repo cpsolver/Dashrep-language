@@ -1,1 +1,0 @@
-character-hyphen no-space character-close-square-bracket string-nospay character-underscore

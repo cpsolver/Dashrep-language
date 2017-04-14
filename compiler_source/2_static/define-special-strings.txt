@@ -8,6 +8,12 @@
 [-copy-text character-hyphen string-dash-close-bracket-]
 [-append-text-no-space character-close-bracket string-dash-close-bracket-]
 
+[-copy-text character-hyphen string-dash-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-]
+[-append-text-no-space character-hyphen string-dash-close-bracket-dash-]
+
 *--- todo: revise following code to use above new code ---*
 
 [-copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
@@ -21,15 +27,6 @@
 [-append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-
-[-expand-text template-string-open-bracket-dash string-open-bracket-dash-]
-[-expand-text template-string-dash-open-bracket-dash string-dash-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket string-dash-close-bracket-]
-[-expand-text template-string-dash-close-bracket-dash string-dash-close-bracket-dash-]
-[-expand-text template-string-underscore-open-bracket-dash string-underscore-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket-underscore string-dash-close-bracket-underscore-]
-[-expand-text template-string-underscore-nospay-open-bracket-dash string-underscore-nospay-open-bracket-dash-]
-[-expand-text template-string-dash-close-bracket-nospay-underscore string-dash-close-bracket-nospay-underscore-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
