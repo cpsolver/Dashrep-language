@@ -1,0 +1,21 @@
+[-copy-text word-to-use-in-handler current-symbol-]
+
+[-copy-text current-symbol string-symbol-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-symbol-]
+[-append-text-no-space current-symbol string-dash-close-bracket-symbol-]
+
+[-copy-text current-symbol string-symbol-nospay-open-bracket-dash-]
+[-append-text string-nospay string-symbol-nospay-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol-]
+[-append-text string-nospay string-dash-close-bracket-nospay-symbol-]
+[-append-text current-symbol string-dash-close-bracket-nospay-symbol-]
+
+*--- do twice in case symbol is adjacent to both open and close parameter brackets ---*
+[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
