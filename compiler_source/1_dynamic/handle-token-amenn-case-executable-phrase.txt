@@ -8,13 +8,18 @@
 [-append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name-]
 [-copy-text operand-instead-of-action-name list-of-operands-raw-]
 [-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
-[-copy-without-extra-spaces list-of-operands-raw list-of-operands-raw-]
-[-copy-and-replace list-of-operands-raw list-of-operands-modified string-space-fen-space string-placeholder-fen-]
-[-copy-and-replace list-of-operands-raw list-of-operands-modified string-space-nospay-space string-placeholder-nospay-]
-[-copy-and-replace list-of-operands-modified list-of-operands-modified character-space string-placeholder-special-]
-[-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
-[-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
-[-copy-and-replace list-of-operands-modified list-of-operands-modified string-placeholder-special runtime-code-inserted-separator-space-]
-[-copy-text list-of-operands-modified runtime-code-for-executable-phrase-]
+[-copy-text operand-or-operands saved-operand-or-operands-]
+
+[-trace-show list-of-operands-raw-]
+
+[-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
+[-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
+[-copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay-]
+[-handle-fen-and-nospay-within-operand-or-operands-]
+[-copy-text operand-or-operands runtime-code-for-executable-phrase-]
+
+[-trace-show operand-or-operands-]
+
+[-copy-text saved-operand-or-operands operand-or-operands-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
