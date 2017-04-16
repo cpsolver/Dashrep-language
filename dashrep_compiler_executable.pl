@@ -700,7 +700,7 @@ my $storage_item__1057 = 'compile-source-code-finish' ;
 
 
 my $storage_item__1058 = 'compile-source-code-initialize' ;
-my $storage_item__1059 = 'put-into-phrase local-or-batch-mode local put-into-phrase dashrep-time-limit 50000 put-into-phrase dashrep-endless-loop-counter-limit 900000 put-into-phrase epoch-seconds-starting-time get-current-time-in-epoch-seconds put-into-phrase debug-output-filename output_debug_info.txt delete-file debug-output-filename define-special-strings use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings assign-action-operand-characteristics put-into-phrase current-storage-position 1001 put-into-phrase filename-output-initializations-only output_initializations_only.txt put-into-phrase yes-or-no-export-delimited-definitions yes write-all-dashrep-definitions-to-file filename-output-initializations-only expand-text list-of-template-functions output-results-all-runtime-functions copy-from-phrase-append-to-file output-results-all-runtime-functions filename-output-standard-runtime-functions' ;
+my $storage_item__1059 = 'put-into-phrase local-or-batch-mode local put-into-phrase dashrep-time-limit 50000 put-into-phrase dashrep-endless-loop-counter-limit 900000000 put-into-phrase epoch-seconds-starting-time get-current-time-in-epoch-seconds put-into-phrase debug-output-filename output_debug_info.txt delete-file debug-output-filename define-special-strings use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings assign-action-operand-characteristics put-into-phrase current-storage-position 1001 put-into-phrase filename-output-initializations-only output_initializations_only.txt put-into-phrase yes-or-no-export-delimited-definitions yes write-all-dashrep-definitions-to-file filename-output-initializations-only expand-text list-of-template-functions output-results-all-runtime-functions copy-from-phrase-append-to-file output-results-all-runtime-functions filename-output-standard-runtime-functions' ;
 $global_dashrep_replacement{ $storage_item__1058 } = $storage_item__1059 ;
 my $storage_item__1060 = '' ; # result storage
 my $storage_item__1061 = 'local-or-batch-mode' ;
@@ -714,7 +714,7 @@ my $storage_item__1065 = '50000' ;
 
 my $storage_item__1066 = '' ; # result storage
 my $storage_item__1067 = 'dashrep-endless-loop-counter-limit' ;
-my $storage_item__1068 = '900000' ;
+my $storage_item__1068 = '900000000' ;
 
 
 my $storage_item__1069 = '' ; # result storage
@@ -6228,7 +6228,7 @@ my $storage_item__4377 = 'template-quoted-dashrep-delete' ;
 my $storage_item__4378 = '' . "'" . 'delete_id' . "'" . '' ;
 $global_dashrep_replacement{ $storage_item__4377 } = $storage_item__4378 ;
 my $storage_item__4379 = 'template-quoted-dashrep-endless-loop-counter-limit' ;
-my $storage_item__4380 = '' . "'" . '900000' . "'" . '' ;
+my $storage_item__4380 = '' . "'" . '900000000' . "'" . '' ;
 $global_dashrep_replacement{ $storage_item__4379 } = $storage_item__4380 ;
 my $storage_item__4381 = 'template-quoted-dashrep-gather-tag-begin' ;
 my $storage_item__4382 = '' . "'" . 'entry_begin' . "'" . '' ;
@@ -7370,7 +7370,7 @@ return '' ;
 sub function_compiled__compile_source_code_initialize( ) {
 $global_replacement_count_for_item_name{ 'compile-source-code-initialize' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee put-into-phrase local-or-batch-mode local amenn ambee put-into-phrase dashrep-time-limit 50000 amenn ambee put-into-phrase dashrep-endless-loop-counter-limit 900000 amenn ambee put-into-phrase epoch-seconds-starting-time ambee get-current-time-in-epoch-seconds amenn amenn ambee put-into-phrase debug-output-filename output_debug_info.txt amenn ambee delete-file ambee debug-output-filename amenn amenn ambee define-special-strings amenn ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn ambee assign-action-operand-characteristics amenn ambee put-into-phrase current-storage-position 1001 amenn ambee put-into-phrase filename-output-initializations-only output_initializations_only.txt amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-initializations-only amenn amenn ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-standard-runtime-functions amenn amenn
+# ambee put-into-phrase local-or-batch-mode local amenn ambee put-into-phrase dashrep-time-limit 50000 amenn ambee put-into-phrase dashrep-endless-loop-counter-limit 900000000 amenn ambee put-into-phrase epoch-seconds-starting-time ambee get-current-time-in-epoch-seconds amenn amenn ambee put-into-phrase debug-output-filename output_debug_info.txt amenn ambee delete-file ambee debug-output-filename amenn amenn ambee define-special-strings amenn ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn ambee assign-action-operand-characteristics amenn ambee put-into-phrase current-storage-position 1001 amenn ambee put-into-phrase filename-output-initializations-only output_initializations_only.txt amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-initializations-only amenn amenn ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-standard-runtime-functions amenn amenn
 
 $global_action_debug_line = '***** compile-source-code-initialize **** 1060 *** put-into-phrase ** 2 *' . $storage_item__1061 . ' ' . $storage_item__1062 ;
 # print $global_action_debug_line . "\n" ;
@@ -9273,9 +9273,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__1285 } ) ) ) {
-print 'phrase ' . $storage_item__1285 . ' is: ' . $global_dashrep_replacement{ $storage_item__1285 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1285 . ' is: ' . $global_dashrep_replacement{ $storage_item__1285 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__1285 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1285 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__1284 . "\n" ;
 # end of action trace-show
@@ -9289,9 +9289,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__1287 } ) ) ) {
-print 'phrase ' . $storage_item__1287 . ' is: ' . $global_dashrep_replacement{ $storage_item__1287 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1287 . ' is: ' . $global_dashrep_replacement{ $storage_item__1287 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__1287 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1287 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__1286 . "\n" ;
 # end of action trace-show
@@ -9305,9 +9305,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__1289 } ) ) ) {
-print 'phrase ' . $storage_item__1289 . ' is: ' . $global_dashrep_replacement{ $storage_item__1289 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1289 . ' is: ' . $global_dashrep_replacement{ $storage_item__1289 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__1289 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1289 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__1288 . "\n" ;
 # end of action trace-show
@@ -9321,9 +9321,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__1291 } ) ) ) {
-print 'phrase ' . $storage_item__1291 . ' is: ' . $global_dashrep_replacement{ $storage_item__1291 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1291 . ' is: ' . $global_dashrep_replacement{ $storage_item__1291 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__1291 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__1291 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__1290 . "\n" ;
 # end of action trace-show
@@ -15078,9 +15078,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2016 . '-' . $storage_item__2017 } ) ) ) {
-print 'phrase ' . $storage_item__2016 . '-' . $storage_item__2017 . ' is: ' . $global_dashrep_replacement{ $storage_item__2016 . '-' . $storage_item__2017 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2016 . '-' . $storage_item__2017 . ' is: ' . $global_dashrep_replacement{ $storage_item__2016 . '-' . $storage_item__2017 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__2016 . '-' . $storage_item__2017 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2016 . '-' . $storage_item__2017 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__2015 . "\n" ;
 # end of action trace-show
@@ -16078,9 +16078,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2145 } ) ) ) {
-print 'phrase ' . $storage_item__2145 . ' is: ' . $global_dashrep_replacement{ $storage_item__2145 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2145 . ' is: ' . $global_dashrep_replacement{ $storage_item__2145 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__2145 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2145 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__2144 . "\n" ;
 # end of action trace-show
@@ -17311,9 +17311,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2305 } ) ) ) {
-print 'phrase ' . $storage_item__2305 . ' is: ' . $global_dashrep_replacement{ $storage_item__2305 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2305 . ' is: ' . $global_dashrep_replacement{ $storage_item__2305 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__2305 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2305 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__2304 . "\n" ;
 # end of action trace-show
@@ -17465,9 +17465,9 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2325 } ) ) ) {
-print 'phrase ' . $storage_item__2325 . ' is: ' . $global_dashrep_replacement{ $storage_item__2325 } . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2325 . ' is: ' . $global_dashrep_replacement{ $storage_item__2325 } . "\n" ;
 } else {
-print 'phrase ' . $storage_item__2325 . ' is not defined' . "\n" ;
+print TRACE_OUT 'phrase ' . $storage_item__2325 . ' is not defined' . "\n" ;
 }
 # print 'result: ' . $storage_item__2324 . "\n" ;
 # end of action trace-show
@@ -30534,9 +30534,11 @@ return '' ;
 
 &initialize_special_phrases( ) ;
 $global_accumulator[ 1 ] = '' ;
+open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;
 &function_compiled__start_here( ) ;
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;
 print $output_results . "\n" ;
+close ( TRACE_OUT ) ;
 exit ;
 
 

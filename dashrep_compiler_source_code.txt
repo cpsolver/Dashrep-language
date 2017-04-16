@@ -45,7 +45,7 @@ compile-source-code-generate-output-results:
 compile-source-code-initialize:
 [-put-into-phrase local-or-batch-mode  local -]
 [-put-into-phrase dashrep-time-limit  50000 -]
-[-put-into-phrase dashrep-endless-loop-counter-limit  900000 -]
+[-put-into-phrase dashrep-endless-loop-counter-limit  900000000 -]
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
 [-put-into-phrase debug-output-filename  output_debug_info.txt -]
@@ -1539,7 +1539,7 @@ template-quoted-dashrep-delete:
 'delete_id'
 ----
 template-quoted-dashrep-endless-loop-counter-limit:
-'900000'
+'900000000'
 ----
 template-quoted-dashrep-gather-tag-begin:
 'entry_begin'
