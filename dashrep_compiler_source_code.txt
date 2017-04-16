@@ -2728,7 +2728,7 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-trace-show-where:
 template-runtime-code-for-every-action-begin
 
-print 'current code location is: phrase-being-defined no-space ' . "\n" ;  <new_line>
+print TRACE_OUT 'current code location is: phrase-being-defined no-space ' . "\n" ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -2740,9 +2740,9 @@ runtime-code-check-operand-initialize
 runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
 
 if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
-print 'phrase ' . runtime-code-for-operand-number-one . ' is: ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is: ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
 } else {  <new_line>
-print 'phrase ' . runtime-code-for-operand-number-one . ' is not defined' . "\n" ;  <new_line>
+print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is not defined' . "\n" ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -3097,9 +3097,11 @@ template-segment-functions-runtime-begin:
 
 &initialize_special_phrases( ) ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
+open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix start_here( ) ;  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 print $output_results . "\n" ;  <new_line>
+close ( TRACE_OUT ) ;  <new_line>
 exit ;  <new_line>
 <new_line>
 <new_line>
