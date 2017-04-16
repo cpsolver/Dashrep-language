@@ -1001,6 +1001,8 @@ dashes-twenty no-space dashes-twenty no-space dashes-twenty
 dashes-twenty:
 four-hyphens no-space four-hyphens no-space four-hyphens no-space four-hyphens no-space four-hyphens
 ----
+dashrep-compiled-code-output-phrase-name:
+----
 define-special-strings-that-are-padded-with-spaces:
 [-copy-text string-ambee string-space-ambee-space-]
 [-prepend-text-no-space character-space string-space-ambee-space-]
@@ -1782,6 +1784,10 @@ template-function-numeric-add
 template-function-numeric-multiply
 template-function-numeric-maximum
 template-function-numeric-minimum
+----
+optional-extra-runtime-functions:
+----
+optional-import-statements:
 ----
 runtime-code-check-operand-begin-is-file-name:
 $global_yes_or_no = &function_parameterized__yes_or_no_file_name(
@@ -3089,6 +3095,18 @@ template-segment-functions-compiled-end:
 # no-space dashes-long-line  <new_line>
 #  End compiled functions  <new_line>
 <new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  Begin optional extra runtime functions  <new_line>
+<new_line>
+<new_line>
+optional-extra-runtime-functions
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End optional extra runtime functions  <new_line>
+<new_line>
+<new_line>
 ----
 template-segment-functions-runtime-begin:
 # no-space dashes-long-line  <new_line>
@@ -3099,8 +3117,15 @@ template-segment-functions-runtime-begin:
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix start_here( ) ;  <new_line>
+
+if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )  <new_line>
+{  <new_line>
+print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;  <new_line>
+} else {  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 print $output_results . "\n" ;  <new_line>
+}  <new_line>
+
 close ( TRACE_OUT ) ;  <new_line>
 exit ;  <new_line>
 <new_line>
@@ -3130,8 +3155,14 @@ template-segment-initialize-begin:
 # no-space dashes-long-line  <new_line>
 #  Dashrep compiler output  <new_line>
 <new_line>
-
 # object-code-copyright-notice  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Optional import statements  <new_line>
+<new_line>
+optional-import-statements
 <new_line>
 <new_line>
 
