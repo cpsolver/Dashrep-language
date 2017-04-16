@@ -1,6 +1,6 @@
 [-put-into-phrase local-or-batch-mode  local -]
 [-put-into-phrase dashrep-time-limit  50000 -]
-[-put-into-phrase dashrep-endless-loop-counter-limit  900000 -]
+[-put-into-phrase dashrep-endless-loop-counter-limit  900000000 -]
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
 [-put-into-phrase debug-output-filename  output_debug_info.txt -]
