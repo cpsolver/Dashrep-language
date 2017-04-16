@@ -5,6 +5,11 @@
 
 
 #------------------------------------------------------------
+# Optional import statements
+
+
+
+#------------------------------------------------------------
 # Declare and initialize global arrays and variables
 
 
@@ -30539,14 +30544,30 @@ return '' ;
 
 
 #------------------------------------------------------------
+# Begin optional extra runtime functions
+
+
+
+
+#------------------------------------------------------------
+# End optional extra runtime functions
+
+
+
+#------------------------------------------------------------
 # Execute starting/main function
 
 &initialize_special_phrases( ) ;
 $global_accumulator[ 1 ] = '' ;
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;
 &function_compiled__start_here( ) ;
+if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )
+{
+print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;
+} else {
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;
 print $output_results . "\n" ;
+}
 close ( TRACE_OUT ) ;
 exit ;
 
