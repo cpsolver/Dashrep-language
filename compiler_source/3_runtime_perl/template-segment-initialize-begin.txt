@@ -1,8 +1,14 @@
 # no-space dashes-long-line  <new_line>
 #  Dashrep compiler output  <new_line>
 <new_line>
-
 # object-code-copyright-notice  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Optional import statements  <new_line>
+<new_line>
+optional-import-statements
 <new_line>
 <new_line>
 
