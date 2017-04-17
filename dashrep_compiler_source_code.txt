@@ -225,7 +225,7 @@ filter-tokens-case-comenn:
 ----
 filter-tokens-case-defenn-case-balanced-ambee-amenn:
 [-if-no-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-numeric-add [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-] 0 -]-]-]
-[-handle-simple-definition-]
+[-handle-definition-simple-]
 [-if-else-]
 [-handle-definition-contains-ambee-amenn-]
 [-if-end-]
@@ -391,7 +391,7 @@ handle-definition-contains-ambee-amenn:
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
 
 [-copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition-]
-[-handle-simple-definition-]
+[-handle-definition-simple-]
 [-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
 [-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
 [-copy-text text-storage-position-for-definition-number-[-current-definition-number-] text-storage-position-for-current-definition-]
@@ -409,6 +409,42 @@ handle-definition-contains-ambee-amenn:
 [-generate-runtime-code-function-branch-]
 [-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
 [-clear-phrase phrase-being-defined-]
+----
+handle-definition-simple-or-special:
+[-copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
+[-handle-definition-simple-]
+[-if-else-]
+[-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]
+[-handle-definition-special-]
+[-if-end-]
+----
+handle-definition-simple:
+[-create-new-text-storage-position-]
+[-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
+[-create-new-text-storage-position-]
+[-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
+[-copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
+
+[-trace-show list-of-tokens-in-current-definition-quotable-]
+
+[-generate-runtime-code-for-phrase-definition-simple-]
+[-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
+----
+handle-definition-special:
+[-copy-text list-of-tokens-in-current-definition-quotable phrase-definition-modified-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-space character-space-]
+[-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
 ----
 handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
@@ -428,25 +464,6 @@ handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-append-text warning-more-amenn-than-ambee-tokens warning-message-]
 [-append-text-no-space warning-message warning-messages-]
 [-if-end-]
-----
-handle-simple-definition:
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
-[-copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
-
-[-trace-show list-of-tokens-in-current-definition-quotable-]
-
-[-generate-runtime-code-for-phrase-definition-simple-]
-[-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
 ----
 handle-token-ambee:
 [-recursion-stack-push-]
@@ -723,6 +740,10 @@ write-results-to-output-file:
 [-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
 
+[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
@@ -730,6 +751,10 @@ write-results-to-output-file:
 [-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
+
+[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-extra-runtime-functions-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-standard-runtime-functions-] [-filename-output-results-from-compiler-]-]
@@ -1299,6 +1324,10 @@ define-special-strings:
 [-append-text-no-space character-underscore string-placeholder-for-space-one-space-space-]
 [-append-text-no-space string-space string-placeholder-for-space-one-space-space-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space-]
+
+[-copy-text template-new-empty-line string-new-line-in-brackets-]
+[-copy-text string-new-line-in-brackets string-space-new-line-in-brackets-]
+[-prepend-text-no-space character-space string-space-new-line-in-brackets-]
 ----
 digit-0:
 0
@@ -1377,6 +1406,10 @@ yes-or-no-indicate-line-endings
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 yes-or-no-use-two-spaces-as-column-delimiter
+----
+list-of-special-definition-phrases:
+optional-import-statements
+optional-extra-runtime-functions
 ----
 list-of-temporary-phrase-name-prefixes:
 contents-at-storage-position-
@@ -1728,6 +1761,8 @@ segment-initialize-begin
 segment-initialize-end
 segment-definition-items-begin
 segment-definition-items-end
+segment-optional-import-statements-begin
+segment-optional-import-statements-end
 segment-functions-runtime-begin
 segment-functions-runtime-middle
 segment-functions-runtime-end
@@ -1735,6 +1770,8 @@ segment-functions-compiled-begin
 segment-functions-compiled-end
 segment-branch-begin
 segment-branch-end
+segment-optional-extra-runtime-functions-begin
+segment-optional-extra-runtime-functions-end
 initialize-global-arrays
 initialize-global-variables
 runtime-code-statement-end-with-new-line
@@ -3117,12 +3154,13 @@ template-segment-functions-runtime-begin:
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix start_here( ) ;  <new_line>
+$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 
 if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )  <new_line>
 {  <new_line>
 print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;  <new_line>
+print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 } else {  <new_line>
-$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
@@ -3175,6 +3213,42 @@ template-segment-initialize-end:
 <new_line>
 # no-space dashes-long-line  <new_line>
 #  End of initialize variables  <new_line>
+<new_line>
+----
+template-segment-optional-extra-runtime-functions-begin:
+# no-space dashes-long-line  <new_line>
+#  Begin optional extra runtime functions  <new_line>
+#  <new_line>
+#  Reminder: Only the following Dashrep conversions are done:  <new_line>
+#  * Dashrep comments are removed.  <new_line>
+#  * <new_line> directives are handled.  <new_line>
+#  * <character_space> replacements are done.  <new_line>
+#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
+<new_line>
+----
+template-segment-optional-extra-runtime-functions-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End optional extra runtime functions  <new_line>
+<new_line>
+----
+template-segment-optional-import-statements-begin:
+# no-space dashes-long-line  <new_line>
+#  Begin optional import statements  <new_line>
+#  <new_line>
+#  Reminder: Only the following Dashrep conversions are done:  <new_line>
+#  * Dashrep comments are removed.  <new_line>
+#  * <new_line> directives are handled.  <new_line>
+#  * <character_space> replacements are done.  <new_line>
+#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
+<new_line>
+----
+template-segment-optional-import-statements-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End optional import statements  <new_line>
 <new_line>
 ----
 template-storage-item-containing-word-list-associated-with-loop:
