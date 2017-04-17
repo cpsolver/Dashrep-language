@@ -3198,13 +3198,6 @@ template-segment-initialize-begin:
 <new_line>
 
 # no-space dashes-long-line  <new_line>
-#  Optional import statements  <new_line>
-<new_line>
-optional-import-statements
-<new_line>
-<new_line>
-
-# no-space dashes-long-line  <new_line>
 #  Declare and initialize global arrays and variables  <new_line>
 <new_line>
 ----
@@ -3221,8 +3214,8 @@ template-segment-optional-extra-runtime-functions-begin:
 #  <new_line>
 #  Reminder: Only the following Dashrep conversions are done:  <new_line>
 #  * Dashrep comments are removed.  <new_line>
-#  * <new_line> directives are handled.  <new_line>
-#  * <character_space> replacements are done.  <new_line>
+#  * New line directives in angle brackets are handled.  <new_line>
+#  * Character space directives in angle brackets are replaced.  <new_line>
 #  * Multiple adjacent spaces are compressed to a single space.  <new_line>
 <new_line>
 ----
@@ -3239,8 +3232,8 @@ template-segment-optional-import-statements-begin:
 #  <new_line>
 #  Reminder: Only the following Dashrep conversions are done:  <new_line>
 #  * Dashrep comments are removed.  <new_line>
-#  * <new_line> directives are handled.  <new_line>
-#  * <character_space> replacements are done.  <new_line>
+#  * New line directives in angle brackets are handled.  <new_line>
+#  * Character space directives in angle brackets are replaced.  <new_line>
 #  * Multiple adjacent spaces are compressed to a single space.  <new_line>
 <new_line>
 ----
