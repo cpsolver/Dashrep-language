@@ -23,7 +23,7 @@
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
 
 [-copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition-]
-[-handle-simple-definition-]
+[-handle-definition-simple-]
 [-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
 [-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
 [-copy-text text-storage-position-for-definition-number-[-current-definition-number-] text-storage-position-for-current-definition-]
