@@ -1,3 +1,7 @@
+[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-initialize-begin [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file initialize-global-arrays [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file initialize-global-variables [-filename-output-results-from-compiler-]-]
@@ -14,10 +18,6 @@
 [-copy-from-phrase-append-to-file segment-definition-items-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
-
-[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]

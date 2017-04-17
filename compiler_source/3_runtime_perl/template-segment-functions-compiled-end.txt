@@ -4,14 +4,3 @@
 #  End compiled functions  <new_line>
 <new_line>
 <new_line>
-# no-space dashes-long-line  <new_line>
-#  Begin optional extra runtime functions  <new_line>
-<new_line>
-<new_line>
-optional-extra-runtime-functions
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End optional extra runtime functions  <new_line>
-<new_line>
-<new_line>
