@@ -723,6 +723,10 @@ start-here:
 [-run-compiler-]
 ----
 write-results-to-output-file:
+[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-initialize-begin [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file initialize-global-arrays [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file initialize-global-variables [-filename-output-results-from-compiler-]-]
@@ -739,10 +743,6 @@ write-results-to-output-file:
 [-copy-from-phrase-append-to-file segment-definition-items-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
-
-[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
@@ -3133,17 +3133,6 @@ template-segment-functions-compiled-end:
 #  End compiled functions  <new_line>
 <new_line>
 <new_line>
-# no-space dashes-long-line  <new_line>
-#  Begin optional extra runtime functions  <new_line>
-<new_line>
-<new_line>
-optional-extra-runtime-functions
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End optional extra runtime functions  <new_line>
-<new_line>
-<new_line>
 ----
 template-segment-functions-runtime-begin:
 # no-space dashes-long-line  <new_line>
@@ -3191,13 +3180,6 @@ template-segment-functions-runtime-middle:
 ----
 template-segment-initialize-begin:
 # no-space dashes-long-line  <new_line>
-#  Dashrep compiler output  <new_line>
-<new_line>
-# object-code-copyright-notice  <new_line>
-<new_line>
-<new_line>
-
-# no-space dashes-long-line  <new_line>
 #  Declare and initialize global arrays and variables  <new_line>
 <new_line>
 ----
@@ -3227,6 +3209,13 @@ template-segment-optional-extra-runtime-functions-end:
 <new_line>
 ----
 template-segment-optional-import-statements-begin:
+# no-space dashes-long-line  <new_line>
+#  Dashrep compiler output  <new_line>
+<new_line>
+# object-code-copyright-notice  <new_line>
+<new_line>
+<new_line>
+
 # no-space dashes-long-line  <new_line>
 #  Begin optional import statements  <new_line>
 #  <new_line>
