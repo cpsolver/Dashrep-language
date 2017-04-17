@@ -6,12 +6,5 @@
 <new_line>
 
 # no-space dashes-long-line  <new_line>
-#  Optional import statements  <new_line>
-<new_line>
-optional-import-statements
-<new_line>
-<new_line>
-
-# no-space dashes-long-line  <new_line>
 #  Declare and initialize global arrays and variables  <new_line>
 <new_line>
