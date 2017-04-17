@@ -15,6 +15,10 @@
 [-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
 
+[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
@@ -22,6 +26,10 @@
 [-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
+
+[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file optional-extra-runtime-functions-modified [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-standard-runtime-functions-] [-filename-output-results-from-compiler-]-]

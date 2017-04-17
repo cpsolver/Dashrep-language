@@ -2,6 +2,8 @@ segment-initialize-begin
 segment-initialize-end
 segment-definition-items-begin
 segment-definition-items-end
+segment-optional-import-statements-begin
+segment-optional-import-statements-end
 segment-functions-runtime-begin
 segment-functions-runtime-middle
 segment-functions-runtime-end
@@ -9,6 +11,8 @@ segment-functions-compiled-begin
 segment-functions-compiled-end
 segment-branch-begin
 segment-branch-end
+segment-optional-extra-runtime-functions-begin
+segment-optional-extra-runtime-functions-end
 initialize-global-arrays
 initialize-global-variables
 runtime-code-statement-end-with-new-line

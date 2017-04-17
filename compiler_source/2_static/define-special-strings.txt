@@ -174,3 +174,7 @@
 [-append-text-no-space character-underscore string-placeholder-for-space-one-space-space-]
 [-append-text-no-space string-space string-placeholder-for-space-one-space-space-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space-]
+
+[-copy-text template-new-empty-line string-new-line-in-brackets-]
+[-copy-text string-new-line-in-brackets string-space-new-line-in-brackets-]
+[-prepend-text-no-space character-space string-space-new-line-in-brackets-]

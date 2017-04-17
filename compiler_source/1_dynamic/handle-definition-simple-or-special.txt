@@ -1,0 +1,8 @@
+[-copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
+[-handle-definition-simple-]
+[-if-else-]
+[-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]
+[-handle-definition-special-]
+[-if-end-]
