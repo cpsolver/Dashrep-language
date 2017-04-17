@@ -5,6 +5,22 @@
 
 
 #------------------------------------------------------------
+# Begin optional import statements
+#
+# Reminder: Only the following Dashrep conversions are done:
+# * Dashrep comments are removed.
+# * New line directives in angle brackets are handled.
+# * Character space directives in angle brackets are replaced.
+# * Multiple adjacent spaces are compressed to a single space.
+
+
+
+
+#------------------------------------------------------------
+# End optional import statements
+
+
+#------------------------------------------------------------
 # Declare and initialize global arrays and variables
 
 
@@ -3749,10 +3765,10 @@ my $storage_item__2798 = 'run-compiler' ;
 
 
 my $storage_item__2799 = 'write-results-to-output-file' ;
-my $storage_item__2800 = 'copy-from-phrase-append-to-file segment-initialize-begin filename-output-results-from-compiler copy-from-phrase-append-to-file initialize-global-arrays filename-output-results-from-compiler copy-from-phrase-append-to-file initialize-global-variables filename-output-results-from-compiler copy-from-phrase-append-to-file output-results-all-storage-items filename-output-results-from-compiler copy-text dashrep-path-prefix-for-file-reading saved-directory put-into-phrase dashrep-path-prefix-for-file-reading .' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . ' put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt copy-append-file-to-file filename-runtime-code-from-interpreter filename-output-results-from-compiler copy-text saved-directory dashrep-path-prefix-for-file-reading copy-from-phrase-append-to-file segment-initialize-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-definition-items-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-definition-items filename-output-results-from-compiler copy-from-phrase-append-to-file segment-definition-items-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-import-statements-begin filename-output-results-from-compiler copy-from-phrase-append-to-file optional-import-statements-modified filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-import-statements-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-branch-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-function-branches filename-output-results-from-compiler copy-from-phrase-append-to-file segment-branch-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-compiled-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-compiled-functions filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-compiled-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin filename-output-results-from-compiler copy-from-phrase-append-to-file optional-extra-runtime-functions-modified filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-runtime-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-standard-runtime-functions filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-runtime-middle filename-output-results-from-compiler copy-text dashrep-path-prefix-for-file-reading saved-directory put-into-phrase dashrep-path-prefix-for-file-reading .' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . ' put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt copy-append-file-to-file filename-runtime-code-from-interpreter filename-output-results-from-compiler copy-text saved-directory dashrep-path-prefix-for-file-reading copy-from-phrase-append-to-file segment-functions-runtime-end filename-output-results-from-compiler copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases filename-output-results-from-compiler' ;
+my $storage_item__2800 = 'copy-from-phrase-append-to-file segment-optional-import-statements-begin filename-output-results-from-compiler copy-from-phrase-append-to-file optional-import-statements-modified filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-import-statements-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-initialize-begin filename-output-results-from-compiler copy-from-phrase-append-to-file initialize-global-arrays filename-output-results-from-compiler copy-from-phrase-append-to-file initialize-global-variables filename-output-results-from-compiler copy-from-phrase-append-to-file output-results-all-storage-items filename-output-results-from-compiler copy-text dashrep-path-prefix-for-file-reading saved-directory put-into-phrase dashrep-path-prefix-for-file-reading .' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . ' put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt copy-append-file-to-file filename-runtime-code-from-interpreter filename-output-results-from-compiler copy-text saved-directory dashrep-path-prefix-for-file-reading copy-from-phrase-append-to-file segment-initialize-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-definition-items-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-definition-items filename-output-results-from-compiler copy-from-phrase-append-to-file segment-definition-items-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-branch-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-function-branches filename-output-results-from-compiler copy-from-phrase-append-to-file segment-branch-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-compiled-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-results-all-compiled-functions filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-compiled-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin filename-output-results-from-compiler copy-from-phrase-append-to-file optional-extra-runtime-functions-modified filename-output-results-from-compiler copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-runtime-begin filename-output-results-from-compiler copy-append-file-to-file filename-output-standard-runtime-functions filename-output-results-from-compiler copy-from-phrase-append-to-file segment-functions-runtime-middle filename-output-results-from-compiler copy-text dashrep-path-prefix-for-file-reading saved-directory put-into-phrase dashrep-path-prefix-for-file-reading .' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . ' put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt copy-append-file-to-file filename-runtime-code-from-interpreter filename-output-results-from-compiler copy-text saved-directory dashrep-path-prefix-for-file-reading copy-from-phrase-append-to-file segment-functions-runtime-end filename-output-results-from-compiler copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases filename-output-results-from-compiler' ;
 $global_dashrep_replacement{ $storage_item__2799 } = $storage_item__2800 ;
 my $storage_item__2801 = '' ; # result storage
-my $storage_item__2802 = 'segment-initialize-begin' ;
+my $storage_item__2802 = 'segment-optional-import-statements-begin' ;
 my $storage_item__2803 = '' ; # result storage
 my $storage_item__2804 = 'filename-output-results-from-compiler' ;
 
@@ -3760,7 +3776,7 @@ my $storage_item__2804 = 'filename-output-results-from-compiler' ;
 
 
 my $storage_item__2805 = '' ; # result storage
-my $storage_item__2806 = 'initialize-global-arrays' ;
+my $storage_item__2806 = 'optional-import-statements-modified' ;
 my $storage_item__2807 = '' ; # result storage
 my $storage_item__2808 = 'filename-output-results-from-compiler' ;
 
@@ -3768,7 +3784,7 @@ my $storage_item__2808 = 'filename-output-results-from-compiler' ;
 
 
 my $storage_item__2809 = '' ; # result storage
-my $storage_item__2810 = 'initialize-global-variables' ;
+my $storage_item__2810 = 'segment-optional-import-statements-end' ;
 my $storage_item__2811 = '' ; # result storage
 my $storage_item__2812 = 'filename-output-results-from-compiler' ;
 
@@ -3776,7 +3792,7 @@ my $storage_item__2812 = 'filename-output-results-from-compiler' ;
 
 
 my $storage_item__2813 = '' ; # result storage
-my $storage_item__2814 = 'output-results-all-storage-items' ;
+my $storage_item__2814 = 'segment-initialize-begin' ;
 my $storage_item__2815 = '' ; # result storage
 my $storage_item__2816 = 'filename-output-results-from-compiler' ;
 
@@ -3784,81 +3800,81 @@ my $storage_item__2816 = 'filename-output-results-from-compiler' ;
 
 
 my $storage_item__2817 = '' ; # result storage
-my $storage_item__2818 = 'dashrep-path-prefix-for-file-reading' ;
-my $storage_item__2819 = 'saved-directory' ;
+my $storage_item__2818 = 'initialize-global-arrays' ;
+my $storage_item__2819 = '' ; # result storage
+my $storage_item__2820 = 'filename-output-results-from-compiler' ;
 
 
-my $storage_item__2820 = '' ; # result storage
-my $storage_item__2821 = 'dashrep-path-prefix-for-file-reading' ;
-my $storage_item__2822 = '.' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . '' ;
 
 
+my $storage_item__2821 = '' ; # result storage
+my $storage_item__2822 = 'initialize-global-variables' ;
 my $storage_item__2823 = '' ; # result storage
-my $storage_item__2824 = 'filename-runtime-code-from-interpreter' ;
-my $storage_item__2825 = 'runtime-code-initializations-needed-by-interpreter-code.txt' ;
+my $storage_item__2824 = 'filename-output-results-from-compiler' ;
 
 
-my $storage_item__2826 = '' ; # result storage
+
+
+my $storage_item__2825 = '' ; # result storage
+my $storage_item__2826 = 'output-results-all-storage-items' ;
 my $storage_item__2827 = '' ; # result storage
-my $storage_item__2828 = 'filename-runtime-code-from-interpreter' ;
+my $storage_item__2828 = 'filename-output-results-from-compiler' ;
+
+
 
 
 my $storage_item__2829 = '' ; # result storage
-my $storage_item__2830 = 'filename-output-results-from-compiler' ;
+my $storage_item__2830 = 'dashrep-path-prefix-for-file-reading' ;
+my $storage_item__2831 = 'saved-directory' ;
 
 
-
-
-my $storage_item__2831 = '' ; # result storage
-my $storage_item__2832 = 'saved-directory' ;
+my $storage_item__2832 = '' ; # result storage
 my $storage_item__2833 = 'dashrep-path-prefix-for-file-reading' ;
+my $storage_item__2834 = '.' . '\\' . 'compiler_source' . '\\' . '5_functions_from_interpreter' . '\\' . '' ;
 
 
-my $storage_item__2834 = '' ; # result storage
-my $storage_item__2835 = 'segment-initialize-end' ;
-my $storage_item__2836 = '' ; # result storage
-my $storage_item__2837 = 'filename-output-results-from-compiler' ;
-
-
+my $storage_item__2835 = '' ; # result storage
+my $storage_item__2836 = 'filename-runtime-code-from-interpreter' ;
+my $storage_item__2837 = 'runtime-code-initializations-needed-by-interpreter-code.txt' ;
 
 
 my $storage_item__2838 = '' ; # result storage
-my $storage_item__2839 = 'segment-definition-items-begin' ;
-my $storage_item__2840 = '' ; # result storage
-my $storage_item__2841 = 'filename-output-results-from-compiler' ;
+my $storage_item__2839 = '' ; # result storage
+my $storage_item__2840 = 'filename-runtime-code-from-interpreter' ;
+
+
+my $storage_item__2841 = '' ; # result storage
+my $storage_item__2842 = 'filename-output-results-from-compiler' ;
 
 
 
 
-my $storage_item__2842 = '' ; # result storage
 my $storage_item__2843 = '' ; # result storage
-my $storage_item__2844 = 'filename-output-results-all-definition-items' ;
+my $storage_item__2844 = 'saved-directory' ;
+my $storage_item__2845 = 'dashrep-path-prefix-for-file-reading' ;
 
 
-my $storage_item__2845 = '' ; # result storage
-my $storage_item__2846 = 'filename-output-results-from-compiler' ;
-
-
-
-
-my $storage_item__2847 = '' ; # result storage
-my $storage_item__2848 = 'segment-definition-items-end' ;
-my $storage_item__2849 = '' ; # result storage
-my $storage_item__2850 = 'filename-output-results-from-compiler' ;
+my $storage_item__2846 = '' ; # result storage
+my $storage_item__2847 = 'segment-initialize-end' ;
+my $storage_item__2848 = '' ; # result storage
+my $storage_item__2849 = 'filename-output-results-from-compiler' ;
 
 
 
 
-my $storage_item__2851 = '' ; # result storage
-my $storage_item__2852 = 'segment-optional-import-statements-begin' ;
-my $storage_item__2853 = '' ; # result storage
-my $storage_item__2854 = 'filename-output-results-from-compiler' ;
+my $storage_item__2850 = '' ; # result storage
+my $storage_item__2851 = 'segment-definition-items-begin' ;
+my $storage_item__2852 = '' ; # result storage
+my $storage_item__2853 = 'filename-output-results-from-compiler' ;
 
 
 
 
+my $storage_item__2854 = '' ; # result storage
 my $storage_item__2855 = '' ; # result storage
-my $storage_item__2856 = 'optional-import-statements-modified' ;
+my $storage_item__2856 = 'filename-output-results-all-definition-items' ;
+
+
 my $storage_item__2857 = '' ; # result storage
 my $storage_item__2858 = 'filename-output-results-from-compiler' ;
 
@@ -3866,7 +3882,7 @@ my $storage_item__2858 = 'filename-output-results-from-compiler' ;
 
 
 my $storage_item__2859 = '' ; # result storage
-my $storage_item__2860 = 'segment-optional-import-statements-end' ;
+my $storage_item__2860 = 'segment-definition-items-end' ;
 my $storage_item__2861 = '' ; # result storage
 my $storage_item__2862 = 'filename-output-results-from-compiler' ;
 
@@ -6877,7 +6893,7 @@ my $storage_item__4795 = 'template-segment-functions-compiled-begin' ;
 my $storage_item__4796 = '# no-space dashes-long-line <new_line> # Begin compiled functions <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4795 } = $storage_item__4796 ;
 my $storage_item__4797 = 'template-segment-functions-compiled-end' ;
-my $storage_item__4798 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End compiled functions <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin optional extra runtime functions <new_line> <new_line> <new_line> optional-extra-runtime-functions <new_line> <new_line> # no-space dashes-long-line <new_line> # End optional extra runtime functions <new_line> <new_line> <new_line>' ;
+my $storage_item__4798 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End compiled functions <new_line> <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4797 } = $storage_item__4798 ;
 my $storage_item__4799 = 'template-segment-functions-runtime-begin' ;
 my $storage_item__4800 = '# no-space dashes-long-line <new_line> # Execute starting/main function <new_line> <new_line> &initialize_special_phrases( ) ; <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> open ( TRACE_OUT , ' . "'" . '>' . "'" . ' . ' . "'" . 'output_trace.txt' . "'" . ' ) ; <new_line> & no-space function-name-prefix start_here( ) ; <new_line> $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ; <new_line> if ( ( exists( $global_dashrep_replacement{ ' . "'" . 'dashrep-compiled-code-output-phrase-name' . "'" . ' } ) ) && ( $global_dashrep_replacement{ ' . "'" . 'dashrep-compiled-code-output-phrase-name' . "'" . ' } ne ' . "'" . "'" . ' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ ' . "'" . 'dashrep-compiled-code-output-phrase-name' . "'" . ' } } ) ) ) <new_line> { <new_line> print $global_dashrep_replacement{ $global_dashrep_replacement{ ' . "'" . 'dashrep-compiled-code-output-phrase-name' . "'" . ' } } ; <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> close ( TRACE_OUT ) ; <new_line> exit ; <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin runtime functions <new_line> <new_line>' ;
@@ -6889,7 +6905,7 @@ my $storage_item__4803 = 'template-segment-functions-runtime-middle' ;
 my $storage_item__4804 = '# no-space dashes-long-line <new_line> # Runtime functions from interpreter <new_line> <new_line> # DO NOT EDIT THESE COPIES OF THESE FUNCTIONS <new_line> # Instead, edit the Dashrep interpreter code, and then copy the segments to the appropriate file. <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4803 } = $storage_item__4804 ;
 my $storage_item__4805 = 'template-segment-initialize-begin' ;
-my $storage_item__4806 = '# no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Declare and initialize global arrays and variables <new_line> <new_line>' ;
+my $storage_item__4806 = '# no-space dashes-long-line <new_line> # Declare and initialize global arrays and variables <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4805 } = $storage_item__4806 ;
 my $storage_item__4807 = 'template-segment-initialize-end' ;
 my $storage_item__4808 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End of initialize variables <new_line> <new_line>' ;
@@ -6901,7 +6917,7 @@ my $storage_item__4811 = 'template-segment-optional-extra-runtime-functions-end'
 my $storage_item__4812 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End optional extra runtime functions <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4811 } = $storage_item__4812 ;
 my $storage_item__4813 = 'template-segment-optional-import-statements-begin' ;
-my $storage_item__4814 = '# no-space dashes-long-line <new_line> # Begin optional import statements <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * New line directives in angle brackets are handled. <new_line> # * Character space directives in angle brackets are replaced. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
+my $storage_item__4814 = '# no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin optional import statements <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * New line directives in angle brackets are handled. <new_line> # * Character space directives in angle brackets are replaced. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4813 } = $storage_item__4814 ;
 my $storage_item__4815 = 'template-segment-optional-import-statements-end' ;
 my $storage_item__4816 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End optional import statements <new_line> <new_line>' ;
@@ -6916,22 +6932,6 @@ $global_dashrep_replacement{ $storage_item__4819 } = $storage_item__4820 ;
 
 #------------------------------------------------------------
 # End text encountered in definitions
-
-
-#------------------------------------------------------------
-# Begin optional import statements
-#
-# Reminder: Only the following Dashrep conversions are done:
-# * Dashrep comments are removed.
-# * New line directives in angle brackets are handled.
-# * Character space directives in angle brackets are replaced.
-# * Multiple adjacent spaces are compressed to a single space.
-
-
-
-
-#------------------------------------------------------------
-# End optional import statements
 
 
 #------------------------------------------------------------
@@ -21344,7 +21344,7 @@ return '' ;
 sub function_compiled__write_results_to_output_file( ) {
 $global_replacement_count_for_item_name{ 'write-results-to-output-file' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-standard-runtime-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-middle ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases ambee filename-output-results-from-compiler amenn amenn
+# ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-standard-runtime-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-middle ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases ambee filename-output-results-from-compiler amenn amenn
 
 $global_action_debug_line = '***** write-results-to-output-file **** 2803 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
@@ -21514,363 +21514,363 @@ $storage_item__2813 = 'copy-from-phrase-append-to-file ' . $storage_item__2814 .
 # print 'result: ' . $storage_item__2813 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2817 *** copy-text ** 2 *' . $storage_item__2818 . ' ' . $storage_item__2819 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2818 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2819 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2818 } ;
-$global_dashrep_replacement{ $storage_item__2819 } = $global_target_text ;
-$storage_item__2817 = '' ;
-} else {
-$storage_item__2817 = 'copy-text ' . $storage_item__2818 . ' ' . $storage_item__2819 ;
-}
-# print 'result: ' . $storage_item__2817 . "\n" ;
-# end of action copy-text
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2820 *** put-into-phrase ** 2 *' . $storage_item__2821 . ' ' . $storage_item__2822 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2821 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_concatenated_all_operands = $storage_item__2821 . ' ' . $storage_item__2822 ;
-$global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
-$global_dashrep_replacement{ $storage_item__2821 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
-} else {
-$storage_item__2820 = 'put-into-phrase ' . $storage_item__2821 . ' ' . $storage_item__2822 ;
-}
-# print 'result: ' . $storage_item__2820 . "\n" ;
-# end of action put-into-phrase
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2823 *** put-into-phrase ** 2 *' . $storage_item__2824 . ' ' . $storage_item__2825 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2824 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_concatenated_all_operands = $storage_item__2824 . ' ' . $storage_item__2825 ;
-$global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
-$global_dashrep_replacement{ $storage_item__2824 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
-} else {
-$storage_item__2823 = 'put-into-phrase ' . $storage_item__2824 . ' ' . $storage_item__2825 ;
-}
-# print 'result: ' . $storage_item__2823 . "\n" ;
-# end of action put-into-phrase
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2827 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2819 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 178 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+$global_phrase_name_to_match = $storage_item__2820 ;
+&function_branch_based_on_phrase_name( ) ;
+$storage_item__2819 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2819 . "\n" ;
+# end of action filename-output-results-from-compiler
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2817 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2818 . ' ' . $storage_item__2819 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-from-phrase-append-to-file' ;
+$global_number_of_operands = 2 ;
+$global_single_action_operand_one = $storage_item__2818 ;
+$global_single_action_operand_two = $storage_item__2819 ;
+$global_single_action_operand_three = '' ;
+$global_single_action_operand_four = '' ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2818 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2819 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2817 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2817 = 'copy-from-phrase-append-to-file ' . $storage_item__2818 . ' ' . $storage_item__2819 ;
+}
+# print 'result: ' . $storage_item__2817 . "\n" ;
+# end of action copy-from-phrase-append-to-file
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2823 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 179 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+$global_phrase_name_to_match = $storage_item__2824 ;
+&function_branch_based_on_phrase_name( ) ;
+$storage_item__2823 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2823 . "\n" ;
+# end of action filename-output-results-from-compiler
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2821 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2822 . ' ' . $storage_item__2823 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-from-phrase-append-to-file' ;
+$global_number_of_operands = 2 ;
+$global_single_action_operand_one = $storage_item__2822 ;
+$global_single_action_operand_two = $storage_item__2823 ;
+$global_single_action_operand_three = '' ;
+$global_single_action_operand_four = '' ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2822 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2823 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2821 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2821 = 'copy-from-phrase-append-to-file ' . $storage_item__2822 . ' ' . $storage_item__2823 ;
+}
+# print 'result: ' . $storage_item__2821 . "\n" ;
+# end of action copy-from-phrase-append-to-file
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2827 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 180 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_phrase_name_to_match = $storage_item__2828 ;
 &function_branch_based_on_phrase_name( ) ;
 $storage_item__2827 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2827 . "\n" ;
-# end of action filename-runtime-code-from-interpreter
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2829 *** filename-output-results-from-compiler ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 179 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2830 ;
-&function_branch_based_on_phrase_name( ) ;
-$storage_item__2829 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2829 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2826 *** copy-append-file-to-file ** 2 *' . $storage_item__2827 . ' ' . $storage_item__2829 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2825 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2826 . ' ' . $storage_item__2827 ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-append-file-to-file' ;
+$global_single_action_name = 'copy-from-phrase-append-to-file' ;
 $global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2827 ;
-$global_single_action_operand_two = $storage_item__2829 ;
+$global_single_action_operand_one = $storage_item__2826 ;
+$global_single_action_operand_two = $storage_item__2827 ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
 if ( $global_number_of_operands != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2826 ) ;
+if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2827 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2829 ) ;
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2825 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2825 = 'copy-from-phrase-append-to-file ' . $storage_item__2826 . ' ' . $storage_item__2827 ;
+}
+# print 'result: ' . $storage_item__2825 . "\n" ;
+# end of action copy-from-phrase-append-to-file
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2829 *** copy-text ** 2 *' . $storage_item__2830 . ' ' . $storage_item__2831 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2830 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2831 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2826 = &dashrep_expand_parameters( ) ;
+$global_target_text = $global_dashrep_replacement{ $storage_item__2830 } ;
+$global_dashrep_replacement{ $storage_item__2831 } = $global_target_text ;
+$storage_item__2829 = '' ;
 } else {
-$storage_item__2826 = 'copy-append-file-to-file ' . $storage_item__2827 . ' ' . $storage_item__2829 ;
+$storage_item__2829 = 'copy-text ' . $storage_item__2830 . ' ' . $storage_item__2831 ;
 }
-# print 'result: ' . $storage_item__2826 . "\n" ;
-# end of action copy-append-file-to-file
+# print 'result: ' . $storage_item__2829 . "\n" ;
+# end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2831 *** copy-text ** 2 *' . $storage_item__2832 . ' ' . $storage_item__2833 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2832 *** put-into-phrase ** 2 *' . $storage_item__2833 . ' ' . $storage_item__2834 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2832 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2833 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2832 } ;
-$global_dashrep_replacement{ $storage_item__2833 } = $global_target_text ;
-$storage_item__2831 = '' ;
+$global_concatenated_all_operands = $storage_item__2833 . ' ' . $storage_item__2834 ;
+$global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
+$global_dashrep_replacement{ $storage_item__2833 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 } else {
-$storage_item__2831 = 'copy-text ' . $storage_item__2832 . ' ' . $storage_item__2833 ;
+$storage_item__2832 = 'put-into-phrase ' . $storage_item__2833 . ' ' . $storage_item__2834 ;
 }
-# print 'result: ' . $storage_item__2831 . "\n" ;
-# end of action copy-text
+# print 'result: ' . $storage_item__2832 . "\n" ;
+# end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2836 *** filename-output-results-from-compiler ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2835 *** put-into-phrase ** 2 *' . $storage_item__2836 . ' ' . $storage_item__2837 ;
 # print $global_action_debug_line . "\n" ;
 #
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 180 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2837 ;
-&function_branch_based_on_phrase_name( ) ;
-$storage_item__2836 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2836 . "\n" ;
-# end of action filename-output-results-from-compiler
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2834 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2835 . ' ' . $storage_item__2836 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-from-phrase-append-to-file' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2835 ;
-$global_single_action_operand_two = $storage_item__2836 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 2 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2835 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2836 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2836 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2834 = &dashrep_expand_parameters( ) ;
+$global_concatenated_all_operands = $storage_item__2836 . ' ' . $storage_item__2837 ;
+$global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
+$global_dashrep_replacement{ $storage_item__2836 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 } else {
-$storage_item__2834 = 'copy-from-phrase-append-to-file ' . $storage_item__2835 . ' ' . $storage_item__2836 ;
+$storage_item__2835 = 'put-into-phrase ' . $storage_item__2836 . ' ' . $storage_item__2837 ;
 }
-# print 'result: ' . $storage_item__2834 . "\n" ;
-# end of action copy-from-phrase-append-to-file
+# print 'result: ' . $storage_item__2835 . "\n" ;
+# end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2840 *** filename-output-results-from-compiler ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2839 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 181 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2841 ;
+$global_phrase_name_to_match = $storage_item__2840 ;
 &function_branch_based_on_phrase_name( ) ;
-$storage_item__2840 = $global_accumulator[ $global_accumulator_pointer ] ;
+$storage_item__2839 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2840 . "\n" ;
-# end of action filename-output-results-from-compiler
+# print 'result: ' . $storage_item__2839 . "\n" ;
+# end of action filename-runtime-code-from-interpreter
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2838 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2839 . ' ' . $storage_item__2840 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2841 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-from-phrase-append-to-file' ;
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 182 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+$global_phrase_name_to_match = $storage_item__2842 ;
+&function_branch_based_on_phrase_name( ) ;
+$storage_item__2841 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2841 . "\n" ;
+# end of action filename-output-results-from-compiler
+
+$global_action_debug_line = '***** write-results-to-output-file **** 2838 *** copy-append-file-to-file ** 2 *' . $storage_item__2839 . ' ' . $storage_item__2841 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-append-file-to-file' ;
 $global_number_of_operands = 2 ;
 $global_single_action_operand_one = $storage_item__2839 ;
-$global_single_action_operand_two = $storage_item__2840 ;
+$global_single_action_operand_two = $storage_item__2841 ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2839 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2839 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2840 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2841 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
 $storage_item__2838 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2838 = 'copy-from-phrase-append-to-file ' . $storage_item__2839 . ' ' . $storage_item__2840 ;
+$storage_item__2838 = 'copy-append-file-to-file ' . $storage_item__2839 . ' ' . $storage_item__2841 ;
 }
 # print 'result: ' . $storage_item__2838 . "\n" ;
-# end of action copy-from-phrase-append-to-file
+# end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2843 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2843 *** copy-text ** 2 *' . $storage_item__2844 . ' ' . $storage_item__2845 ;
 # print $global_action_debug_line . "\n" ;
 #
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 182 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2844 ;
-&function_branch_based_on_phrase_name( ) ;
-$storage_item__2843 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
+$global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2844 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2845 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$global_target_text = $global_dashrep_replacement{ $storage_item__2844 } ;
+$global_dashrep_replacement{ $storage_item__2845 } = $global_target_text ;
+$storage_item__2843 = '' ;
+} else {
+$storage_item__2843 = 'copy-text ' . $storage_item__2844 . ' ' . $storage_item__2845 ;
+}
 # print 'result: ' . $storage_item__2843 . "\n" ;
-# end of action filename-output-results-all-definition-items
+# end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2845 *** filename-output-results-from-compiler ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2848 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 183 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2846 ;
+$global_phrase_name_to_match = $storage_item__2849 ;
 &function_branch_based_on_phrase_name( ) ;
-$storage_item__2845 = $global_accumulator[ $global_accumulator_pointer ] ;
+$storage_item__2848 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2845 . "\n" ;
+# print 'result: ' . $storage_item__2848 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2842 *** copy-append-file-to-file ** 2 *' . $storage_item__2843 . ' ' . $storage_item__2845 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2846 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2847 . ' ' . $storage_item__2848 ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-append-file-to-file' ;
+$global_single_action_name = 'copy-from-phrase-append-to-file' ;
 $global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2843 ;
-$global_single_action_operand_two = $storage_item__2845 ;
+$global_single_action_operand_one = $storage_item__2847 ;
+$global_single_action_operand_two = $storage_item__2848 ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2843 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2847 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2845 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2848 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2842 = &dashrep_expand_parameters( ) ;
+$storage_item__2846 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2842 = 'copy-append-file-to-file ' . $storage_item__2843 . ' ' . $storage_item__2845 ;
+$storage_item__2846 = 'copy-from-phrase-append-to-file ' . $storage_item__2847 . ' ' . $storage_item__2848 ;
 }
-# print 'result: ' . $storage_item__2842 . "\n" ;
-# end of action copy-append-file-to-file
+# print 'result: ' . $storage_item__2846 . "\n" ;
+# end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2849 *** filename-output-results-from-compiler ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2852 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 184 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2850 ;
+$global_phrase_name_to_match = $storage_item__2853 ;
 &function_branch_based_on_phrase_name( ) ;
-$storage_item__2849 = $global_accumulator[ $global_accumulator_pointer ] ;
+$storage_item__2852 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2849 . "\n" ;
+# print 'result: ' . $storage_item__2852 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2847 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2848 . ' ' . $storage_item__2849 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2850 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2851 . ' ' . $storage_item__2852 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
 $global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2848 ;
-$global_single_action_operand_two = $storage_item__2849 ;
+$global_single_action_operand_one = $storage_item__2851 ;
+$global_single_action_operand_two = $storage_item__2852 ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2848 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2851 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2849 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2852 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2847 = &dashrep_expand_parameters( ) ;
+$storage_item__2850 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2847 = 'copy-from-phrase-append-to-file ' . $storage_item__2848 . ' ' . $storage_item__2849 ;
+$storage_item__2850 = 'copy-from-phrase-append-to-file ' . $storage_item__2851 . ' ' . $storage_item__2852 ;
 }
-# print 'result: ' . $storage_item__2847 . "\n" ;
+# print 'result: ' . $storage_item__2850 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2853 *** filename-output-results-from-compiler ** 0 *' . '' ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2855 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 185 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-$global_phrase_name_to_match = $storage_item__2854 ;
+$global_phrase_name_to_match = $storage_item__2856 ;
 &function_branch_based_on_phrase_name( ) ;
-$storage_item__2853 = $global_accumulator[ $global_accumulator_pointer ] ;
+$storage_item__2855 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2853 . "\n" ;
-# end of action filename-output-results-from-compiler
-
-$global_action_debug_line = '***** write-results-to-output-file **** 2851 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2852 . ' ' . $storage_item__2853 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-from-phrase-append-to-file' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2852 ;
-$global_single_action_operand_two = $storage_item__2853 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 2 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2852 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2853 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2851 = &dashrep_expand_parameters( ) ;
-} else {
-$storage_item__2851 = 'copy-from-phrase-append-to-file ' . $storage_item__2852 . ' ' . $storage_item__2853 ;
-}
-# print 'result: ' . $storage_item__2851 . "\n" ;
-# end of action copy-from-phrase-append-to-file
+# print 'result: ' . $storage_item__2855 . "\n" ;
+# end of action filename-output-results-all-definition-items
 
 $global_action_debug_line = '***** write-results-to-output-file **** 2857 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
@@ -21885,12 +21885,12 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2857 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2855 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2856 . ' ' . $storage_item__2857 ;
+$global_action_debug_line = '***** write-results-to-output-file **** 2854 *** copy-append-file-to-file ** 2 *' . $storage_item__2855 . ' ' . $storage_item__2857 ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-from-phrase-append-to-file' ;
+$global_single_action_name = 'copy-append-file-to-file' ;
 $global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2856 ;
+$global_single_action_operand_one = $storage_item__2855 ;
 $global_single_action_operand_two = $storage_item__2857 ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
@@ -21898,7 +21898,7 @@ $global_yes_or_no_operand_error = $global_no ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2856 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2855 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21907,12 +21907,12 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2855 = &dashrep_expand_parameters( ) ;
+$storage_item__2854 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2855 = 'copy-from-phrase-append-to-file ' . $storage_item__2856 . ' ' . $storage_item__2857 ;
+$storage_item__2854 = 'copy-append-file-to-file ' . $storage_item__2855 . ' ' . $storage_item__2857 ;
 }
-# print 'result: ' . $storage_item__2855 . "\n" ;
-# end of action copy-from-phrase-append-to-file
+# print 'result: ' . $storage_item__2854 . "\n" ;
+# end of action copy-append-file-to-file
 
 $global_action_debug_line = '***** write-results-to-output-file **** 2861 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
@@ -31341,16 +31341,6 @@ return '' ;
 
 #------------------------------------------------------------
 # End compiled functions
-
-
-#------------------------------------------------------------
-# Begin optional extra runtime functions
-
-
-
-
-#------------------------------------------------------------
-# End optional extra runtime functions
 
 
 
