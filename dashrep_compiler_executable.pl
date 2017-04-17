@@ -5,11 +5,6 @@
 
 
 #------------------------------------------------------------
-# Optional import statements
-
-
-
-#------------------------------------------------------------
 # Declare and initialize global arrays and variables
 
 
@@ -6894,19 +6889,19 @@ my $storage_item__4803 = 'template-segment-functions-runtime-middle' ;
 my $storage_item__4804 = '# no-space dashes-long-line <new_line> # Runtime functions from interpreter <new_line> <new_line> # DO NOT EDIT THESE COPIES OF THESE FUNCTIONS <new_line> # Instead, edit the Dashrep interpreter code, and then copy the segments to the appropriate file. <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4803 } = $storage_item__4804 ;
 my $storage_item__4805 = 'template-segment-initialize-begin' ;
-my $storage_item__4806 = '# no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Optional import statements <new_line> <new_line> optional-import-statements <new_line> <new_line> # no-space dashes-long-line <new_line> # Declare and initialize global arrays and variables <new_line> <new_line>' ;
+my $storage_item__4806 = '# no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Declare and initialize global arrays and variables <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4805 } = $storage_item__4806 ;
 my $storage_item__4807 = 'template-segment-initialize-end' ;
 my $storage_item__4808 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End of initialize variables <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4807 } = $storage_item__4808 ;
 my $storage_item__4809 = 'template-segment-optional-extra-runtime-functions-begin' ;
-my $storage_item__4810 = '# no-space dashes-long-line <new_line> # Begin optional extra runtime functions <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * <new_line> directives are handled. <new_line> # * <character_space> replacements are done. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
+my $storage_item__4810 = '# no-space dashes-long-line <new_line> # Begin optional extra runtime functions <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * New line directives in angle brackets are handled. <new_line> # * Character space directives in angle brackets are replaced. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4809 } = $storage_item__4810 ;
 my $storage_item__4811 = 'template-segment-optional-extra-runtime-functions-end' ;
 my $storage_item__4812 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End optional extra runtime functions <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4811 } = $storage_item__4812 ;
 my $storage_item__4813 = 'template-segment-optional-import-statements-begin' ;
-my $storage_item__4814 = '# no-space dashes-long-line <new_line> # Begin optional import statements <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * <new_line> directives are handled. <new_line> # * <character_space> replacements are done. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
+my $storage_item__4814 = '# no-space dashes-long-line <new_line> # Begin optional import statements <new_line> # <new_line> # Reminder: Only the following Dashrep conversions are done: <new_line> # * Dashrep comments are removed. <new_line> # * New line directives in angle brackets are handled. <new_line> # * Character space directives in angle brackets are replaced. <new_line> # * Multiple adjacent spaces are compressed to a single space. <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4813 } = $storage_item__4814 ;
 my $storage_item__4815 = 'template-segment-optional-import-statements-end' ;
 my $storage_item__4816 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End optional import statements <new_line> <new_line>' ;
@@ -6921,6 +6916,22 @@ $global_dashrep_replacement{ $storage_item__4819 } = $storage_item__4820 ;
 
 #------------------------------------------------------------
 # End text encountered in definitions
+
+
+#------------------------------------------------------------
+# Begin optional import statements
+#
+# Reminder: Only the following Dashrep conversions are done:
+# * Dashrep comments are removed.
+# * New line directives in angle brackets are handled.
+# * Character space directives in angle brackets are replaced.
+# * Multiple adjacent spaces are compressed to a single space.
+
+
+
+
+#------------------------------------------------------------
+# End optional import statements
 
 
 #------------------------------------------------------------
@@ -31344,17 +31355,34 @@ return '' ;
 
 
 #------------------------------------------------------------
+# Begin optional extra runtime functions
+#
+# Reminder: Only the following Dashrep conversions are done:
+# * Dashrep comments are removed.
+# * New line directives in angle brackets are handled.
+# * Character space directives in angle brackets are replaced.
+# * Multiple adjacent spaces are compressed to a single space.
+
+
+
+
+#------------------------------------------------------------
+# End optional extra runtime functions
+
+
+#------------------------------------------------------------
 # Execute starting/main function
 
 &initialize_special_phrases( ) ;
 $global_accumulator[ 1 ] = '' ;
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;
 &function_compiled__start_here( ) ;
+$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;
 if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )
 {
 print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;
+print TRACE_OUT "\n\n\n" . $output_results . "\n" ;
 } else {
-$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;
 print $output_results . "\n" ;
 }
 close ( TRACE_OUT ) ;
