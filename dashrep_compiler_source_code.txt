@@ -417,7 +417,9 @@ handle-definition-contains-ambee-amenn:
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 
 
+*---
 [-trace-show list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+---*
 
 
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
@@ -431,7 +433,6 @@ handle-definition-simple-or-special:
 
 
 [-trace-show phrase-being-defined-]
-[-trace-show possible-special-definition-phrase-name-]
 
 
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
@@ -452,19 +453,12 @@ handle-definition-simple:
 ----
 handle-definition-special:
 [-generate-list-of-tokens-in-current-definition-quotable-]
-[-copy-without-extra-spaces list-of-tokens-in-current-definition-quotable phrase-definition-modified-]
+[-copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space-]
+[-copy-without-extra-spaces phrase-definition-modified phrase-definition-modified-]
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets-]
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets-]
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-space character-space-]
 [-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
-
-
-[-trace-show special-definition-phrase-name-]
-[-trace-show list-of-tokens-in-current-definition-quotable-]
-[-trace-show phrase-definition-modified-]
-[-trace-show string-new-line-in-brackets-]
-[-trace-show string-placeholder-space-]
 ----
 handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
