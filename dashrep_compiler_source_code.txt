@@ -35,7 +35,9 @@ compile-source-code-generate-output-results:
 [-compile-source-code-initialize-]
 [-convert-source-code-into-words-]
 
-[-copy-from-phrase-append-to-file source-code-as-words [-debug-output-filename-]-]
+
+[-trace-show source-code-as-words-]
+
 
 [-clear-phrase phrase-being-defined-]
 [-put-into-phrase yes-or-no-within-comment  no -]
@@ -47,9 +49,6 @@ compile-source-code-initialize:
 [-put-into-phrase dashrep-time-limit  50000 -]
 [-put-into-phrase dashrep-endless-loop-counter-limit  900000000 -]
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
-
-[-put-into-phrase debug-output-filename  output_debug_info.txt -]
-[-delete-file [-debug-output-filename-]-]
 
 [-define-special-strings-]
 
@@ -121,10 +120,12 @@ convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
 [-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
 
 
+*---
 [-trace-show source-code-as-words-]
 [-trace-show pointers-to-delimiters-begin-]
 [-trace-show pointers-to-delimiters-end-]
 [-trace-show list-of-adjacent-characters-]
+---*
 
 
 [-put-into-phrase list-of-underscore-and-period  _ . -]
@@ -413,6 +414,11 @@ handle-definition-contains-ambee-amenn:
 handle-definition-simple-or-special:
 [-copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name-]
 
+
+[-trace-show phrase-being-defined-]
+[-trace-show possible-special-definition-phrase-name-]
+
+
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
 [-handle-definition-simple-]
 [-if-else-]
@@ -434,7 +440,11 @@ handle-definition-simple:
 [-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
 [-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
 
+
+*---
 [-trace-show list-of-tokens-in-current-definition-quotable-]
+---*
+
 
 [-generate-runtime-code-for-phrase-definition-simple-]
 [-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
@@ -445,6 +455,13 @@ handle-definition-special:
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline-]
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-space character-space-]
 [-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
+
+
+[-trace-show special-definition-phrase-name-]
+[-trace-show list-of-tokens-in-current-definition-quotable-]
+[-trace-show phrase-definition-modified-]
+[-trace-show string-new-line-in-brackets-]
+[-trace-show string-placeholder-space-]
 ----
 handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
@@ -531,7 +548,11 @@ handle-token-amenn-case-executable-phrase:
 [-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
 [-copy-text operand-or-operands saved-operand-or-operands-]
 
+
+*---
 [-trace-show list-of-operands-raw-]
+---*
+
 
 [-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
@@ -539,7 +560,11 @@ handle-token-amenn-case-executable-phrase:
 [-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-executable-phrase-]
 
+
+*---
 [-trace-show operand-or-operands-]
+---*
+
 
 [-copy-text saved-operand-or-operands operand-or-operands-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
