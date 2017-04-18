@@ -10,7 +10,11 @@
 [-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
 [-copy-text operand-or-operands saved-operand-or-operands-]
 
+
+*---
 [-trace-show list-of-operands-raw-]
+---*
+
 
 [-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
@@ -18,7 +22,11 @@
 [-handle-fen-and-nospay-within-operand-or-operands-]
 [-copy-text operand-or-operands runtime-code-for-executable-phrase-]
 
+
+*---
 [-trace-show operand-or-operands-]
+---*
+
 
 [-copy-text saved-operand-or-operands operand-or-operands-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]

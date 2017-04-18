@@ -11,7 +11,11 @@
 [-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
 [-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
 
+
+*---
 [-trace-show list-of-tokens-in-current-definition-quotable-]
+---*
+
 
 [-generate-runtime-code-for-phrase-definition-simple-]
 [-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]

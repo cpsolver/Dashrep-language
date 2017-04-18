@@ -1,7 +1,9 @@
 [-compile-source-code-initialize-]
 [-convert-source-code-into-words-]
 
-[-copy-from-phrase-append-to-file source-code-as-words [-debug-output-filename-]-]
+
+[-trace-show source-code-as-words-]
+
 
 [-clear-phrase phrase-being-defined-]
 [-put-into-phrase yes-or-no-within-comment  no -]
