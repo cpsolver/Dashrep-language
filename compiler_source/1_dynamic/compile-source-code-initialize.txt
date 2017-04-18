@@ -3,9 +3,6 @@
 [-put-into-phrase dashrep-endless-loop-counter-limit  900000000 -]
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
-[-put-into-phrase debug-output-filename  output_debug_info.txt -]
-[-delete-file [-debug-output-filename-]-]
-
 [-define-special-strings-]
 
 [-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
