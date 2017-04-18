@@ -2,20 +2,6 @@
 [-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
 [-create-new-text-storage-position-]
 [-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
-[-copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
-
-
-*---
-[-trace-show list-of-tokens-in-current-definition-quotable-]
----*
-
-
+[-generate-list-of-tokens-in-current-definition-quotable-]
 [-generate-runtime-code-for-phrase-definition-simple-]
 [-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
