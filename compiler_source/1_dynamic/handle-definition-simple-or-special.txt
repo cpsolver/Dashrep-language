@@ -2,7 +2,6 @@
 
 
 [-trace-show phrase-being-defined-]
-[-trace-show possible-special-definition-phrase-name-]
 
 
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]

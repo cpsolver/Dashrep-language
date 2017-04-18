@@ -33,7 +33,9 @@
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 
 
+*---
 [-trace-show list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+---*
 
 
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
