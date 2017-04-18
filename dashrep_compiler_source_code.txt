@@ -226,7 +226,7 @@ filter-tokens-case-comenn:
 ----
 filter-tokens-case-defenn-case-balanced-ambee-amenn:
 [-if-no-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-numeric-add [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-] 0 -]-]-]
-[-handle-definition-simple-]
+[-handle-definition-simple-or-special-]
 [-if-else-]
 [-handle-definition-contains-ambee-amenn-]
 [-if-end-]
