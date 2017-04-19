@@ -17,6 +17,7 @@
 
 
 [-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
+[-copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay-]
 [-handle-fen-and-nospay-within-operand-or-operands-]
@@ -29,5 +30,12 @@
 
 
 [-copy-text saved-operand-or-operands operand-or-operands-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase not-empty-if-operands-include-fen-]-]
+[-append-text action-name list-of-function-branches-needed-]
+[-expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase-]
+[-if-else-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
+[-if-end-]
+
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]

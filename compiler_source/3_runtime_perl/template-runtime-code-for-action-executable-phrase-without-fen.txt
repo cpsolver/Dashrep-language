@@ -1,0 +1,10 @@
+template-runtime-code-for-every-action-begin
+
+$saved_accumulator_pointer = $global_accumulator_pointer  ;  <new_line>
+$global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
+&function_compiled__<dashrep_placeholder_code_for_action_name_with_underscores>( ) ;  <new_line>
+runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
+$global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
+
+template-runtime-code-for-every-action-end
