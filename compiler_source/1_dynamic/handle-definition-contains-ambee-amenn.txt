@@ -40,12 +40,5 @@
 
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
-[-append-text phrase-being-defined list-of-function-branches-needed-]
-
-*---
-todo: remove if other code now works:
-[-generate-runtime-code-function-branch-]
-[-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
----*
-
+[-append-text phrase-being-defined list-of-functions-generated-]
 [-clear-phrase phrase-being-defined-]
