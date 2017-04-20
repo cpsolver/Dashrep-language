@@ -167,7 +167,13 @@
 [-append-text-no-space string-executable string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space string-phrase string-placeholder-code-for-executable-phrase-]
+[-copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-]
+[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores-]
 
 [-copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space-]
 [-append-text-no-space string-one string-placeholder-for-space-one-space-space-]
