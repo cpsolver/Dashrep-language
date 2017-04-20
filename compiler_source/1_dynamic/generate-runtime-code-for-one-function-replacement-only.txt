@@ -1,0 +1,8 @@
+[-copy-text word-to-use-in-handler phrase-name-]
+[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+[-copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only-]
+[-append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only-]
+[-append-text-no-space phrase-name runtime-code-function-replacement-only-]
+[-append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only-]
+[-copy-from-phrase-append-to-file runtime-code-function-replacement-only [-filename-output-results-functions-replacement-only-]-]

@@ -11,6 +11,8 @@ segment-functions-compiled-begin
 segment-functions-compiled-end
 segment-branch-begin
 segment-branch-end
+segment-functions-replacement-only-begin
+segment-functions-replacement-only-end
 segment-optional-extra-runtime-functions-begin
 segment-optional-extra-runtime-functions-end
 initialize-global-arrays
@@ -35,6 +37,9 @@ code-quoted-string-storage-item-part-5
 code-function-branch-part-1
 code-function-branch-part-2
 code-function-branch-part-3
+code-function-replacement-only-part-1
+code-function-replacement-only-part-2
+code-function-replacement-only-part-3
 code-compiled-function-part-1
 code-compiled-function-part-2
 code-compiled-function-part-3

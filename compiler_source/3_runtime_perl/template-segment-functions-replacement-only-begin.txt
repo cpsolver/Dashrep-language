@@ -1,0 +1,4 @@
+# no-space dashes-long-line  <new_line>
+#  Functions that only do simple (single-item) replacement  <new_line>
+#  <new_line>
+<new_line>

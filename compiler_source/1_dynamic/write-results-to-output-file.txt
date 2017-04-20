@@ -23,6 +23,10 @@
 [-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
 
+[-copy-from-phrase-append-to-file segment-functions-replacement-only-begin [-filename-output-results-from-compiler-]-]
+[-copy-append-file-to-file [-filename-output-results-functions-replacement-only-] [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-functions-replacement-only-end [-filename-output-results-from-compiler-]-]
+
 [-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
 [-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]

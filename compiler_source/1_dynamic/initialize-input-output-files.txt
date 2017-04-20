@@ -12,6 +12,8 @@
 [-delete-file [-filename-output-results-all-definition-items-]-]
 [-put-into-phrase filename-output-results-all-function-branches  output_compiler_all_function_branches.txt -]
 [-delete-file [-filename-output-results-all-function-branches-]-]
+[-put-into-phrase filename-output-results-functions-replacement-only  output_compiler_functions_replacement_only.txt -]
+[-delete-file [-filename-output-results-functions-replacement-only-]-]
 [-put-into-phrase filename-output-results-all-compiled-functions  output_compiler_all_compiled_functions.txt -]
 [-delete-file [-filename-output-results-all-compiled-functions-]-]
 [-put-into-phrase filename-output-all-definitions-complex  output_compiler_all_tokens_for_definitions_complex.txt -]

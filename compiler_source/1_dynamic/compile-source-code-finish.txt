@@ -1,7 +1,8 @@
-[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-needed-]
-[-copy-words-unique-only list-of-function-branches-needed list-of-function-branches-needed-]
-[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-needed-]
-[-copy-words-found-only-in-first-list list-of-phrase-definitions-complex dashrep-list-of-compiled-executable-phrases list-of-possible-new-executable-phrases-]
+[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
+[-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
+[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
+[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-generated list-of-functions-replacement-only-needed-]
+[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
 
 [-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
 [-append-text-no-space runtime-code-at-top-if-warning-message output-results-]
@@ -9,4 +10,9 @@
 [-append-text-no-space new-empty-lines output-results-]
 [-if-end-]
 
+
+*---
+todo: remove this and related code
+[-copy-words-found-only-in-first-list list-of-phrase-definitions-complex dashrep-list-of-compiled-executable-phrases list-of-possible-new-executable-phrases-]
 [-expand-text template-displayed-list-of-possible-new-executable-phrases displayed-list-of-possible-new-executable-phrases-]
+---*
