@@ -1,11 +1,6 @@
-template-runtime-code-for-every-action-begin
+template-runtime-code-for-action-executable-phrase-begin
 
-$saved_accumulator_pointer = $global_accumulator_pointer  ;  <new_line>
-$global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
 $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
-runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
-$global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-for-action-executable-phrase-end

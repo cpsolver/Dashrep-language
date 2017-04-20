@@ -1,0 +1,3 @@
+runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
+$global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
+template-runtime-code-for-every-action-end

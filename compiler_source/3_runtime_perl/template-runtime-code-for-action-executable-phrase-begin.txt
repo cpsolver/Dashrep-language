@@ -1,0 +1,4 @@
+template-runtime-code-for-every-action-begin
+$saved_accumulator_pointer = $global_accumulator_pointer  ;  <new_line>
+$global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
