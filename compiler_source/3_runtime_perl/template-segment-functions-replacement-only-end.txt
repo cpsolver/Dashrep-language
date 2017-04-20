@@ -1,5 +1,5 @@
 <new_line>
-sub special_function_do_single-replacement_only( ) {  <new_line>
+sub special_function_do_single_replacement_only( ) {  <new_line>
 if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ;  <new_line>
 } else {  <new_line>
