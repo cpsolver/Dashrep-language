@@ -39,3 +39,5 @@
 [-if-end-]
 
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
+[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
