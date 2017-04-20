@@ -1,5 +1,10 @@
 template-runtime-code-for-action-executable-phrase-begin
 
-&function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+# todo: fix  <new_line>
+$global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
+&function_branch_based_on_phrase_name( ) ;  <new_line>
+# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
 
 template-runtime-code-for-action-executable-phrase-end
