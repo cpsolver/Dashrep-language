@@ -21,6 +21,9 @@ check-elapsed-time:
 ---*
 ----
 compile-source-code-finish:
+[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-needed-]
+[-copy-words-unique-only list-of-function-branches-needed list-of-function-branches-needed-]
+[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-needed-]
 [-copy-words-found-only-in-first-list list-of-phrase-definitions-complex dashrep-list-of-compiled-executable-phrases list-of-possible-new-executable-phrases-]
 
 [-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
@@ -277,6 +280,16 @@ generate-list-of-tokens-in-current-definition-quotable:
 [-trace-show list-of-tokens-in-current-definition-quotable-]
 ---*
 ----
+generate-runtime-code-for-one-function-branch:
+[-copy-text word-to-use-in-handler phrase-name-]
+[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+[-copy-text code-function-branch-part-1 runtime-code-function-branch-]
+[-append-text-no-space phrase-name runtime-code-function-branch-]
+[-append-text-no-space code-function-branch-part-2 runtime-code-function-branch-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-branch-]
+[-append-text-no-space code-function-branch-part-3 runtime-code-function-branch-]
+[-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
+----
 generate-runtime-code-for-phrase-definition-simple:
 [-copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple-]
 [-append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple-]
@@ -424,8 +437,14 @@ handle-definition-contains-ambee-amenn:
 
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
+[-append-text phrase-being-defined list-of-function-branches-needed-]
+
+*---
+todo: remove if other code now works:
 [-generate-runtime-code-function-branch-]
 [-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
+---*
+
 [-clear-phrase phrase-being-defined-]
 ----
 handle-definition-simple-or-special:
@@ -455,9 +474,21 @@ handle-definition-special:
 [-generate-list-of-tokens-in-current-definition-quotable-]
 [-copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space-]
 [-copy-without-extra-spaces phrase-definition-modified phrase-definition-modified-]
+
+[-trace-show phrase-definition-modified-]
+
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets-]
+
+[-trace-show phrase-definition-modified-]
+
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets-]
+
+[-trace-show phrase-definition-modified-]
+
 [-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline-]
+
+[-trace-show phrase-definition-modified-]
+
 [-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
 ----
 handle-fen-and-nospay-within-operand-or-operands:
@@ -552,6 +583,7 @@ handle-token-amenn-case-executable-phrase:
 
 
 [-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
+[-copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
 [-copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay-]
 [-handle-fen-and-nospay-within-operand-or-operands-]
@@ -564,8 +596,17 @@ handle-token-amenn-case-executable-phrase:
 
 
 [-copy-text saved-operand-or-operands operand-or-operands-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase not-empty-if-operands-include-fen-]-]
+[-append-text action-name list-of-function-branches-needed-]
+[-expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase-]
+[-if-else-]
 [-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
+[-if-end-]
+
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
+[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
 ----
 handle-token-amenn-case-expand-text:
 [-numeric-increment current-accumulator-pointer-]
@@ -1339,7 +1380,13 @@ define-special-strings:
 [-append-text-no-space string-executable string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
 [-append-text-no-space string-phrase string-placeholder-code-for-executable-phrase-]
+[-copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores-]
 [-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-]
+[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores-]
+[-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores-]
 
 [-copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space-]
 [-append-text-no-space string-one string-placeholder-for-space-one-space-space-]
@@ -1379,6 +1426,9 @@ export-defs-phrase-begin:
 ----
 export-defs-phrase-end:
 <def_phrase_end>
+----
+list-of-function-branches-already-generated:
+start-here
 ----
 list-of-phrases-with-quoted-strings:
 empty-text
@@ -2593,18 +2643,31 @@ runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtim
 
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-executable-phrase:
+template-runtime-code-for-action-executable-phrase-begin:
 template-runtime-code-for-every-action-begin
-
 $saved_accumulator_pointer = $global_accumulator_pointer  ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
-$global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
-&function_branch_based_on_phrase_name( ) ;  <new_line>
+----
+template-runtime-code-for-action-executable-phrase-end:
 runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
 $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
-
 template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-executable-phrase-without-fen:
+template-runtime-code-for-action-executable-phrase-begin
+
+&function_compiled__<dashrep_placeholder_code_for_action_name_with_underscores>( ) ;  <new_line>
+
+template-runtime-code-for-action-executable-phrase-end
+----
+template-runtime-code-for-action-executable-phrase:
+template-runtime-code-for-action-executable-phrase-begin
+
+$global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
+&function_branch_based_on_phrase_name( ) ;  <new_line>
+
+template-runtime-code-for-action-executable-phrase-end
 ----
 template-runtime-code-for-action-expand-text:
 template-runtime-code-for-every-action-begin
@@ -3116,9 +3179,8 @@ template-segment-branch-begin:
 # reminder: later use direct function calls (rather than calling this branching function) for cases where fen not involved; involves revising code for previously handled action  <new_line>
 <new_line>
 sub function_branch_based_on_phrase_name( ) {  <new_line>
-my $do_nothing ;  <new_line>
-if ( 1 == 2 ) {  <new_line>
-$do_nothing ++ ;
+if ( $global_phrase_name_to_match eq 'start-here' ) {  <new_line>
+&function_compiled__start_here( ) ;
 ----
 template-segment-branch-end:
 } elsif ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) {  <new_line>
@@ -3177,6 +3239,7 @@ print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
+print TRACE_OUT "\n\n" . '******************** global trace log '********************' . "\n\n" . $global_trace_log . "\n" ;  <new_line>
 close ( TRACE_OUT ) ;  <new_line>
 exit ;  <new_line>
 <new_line>
