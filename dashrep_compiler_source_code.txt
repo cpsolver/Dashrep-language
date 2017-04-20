@@ -2657,7 +2657,7 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-executable-phrase-without-fen:
 template-runtime-code-for-action-executable-phrase-begin
 
-&function_compiled__<dashrep_placeholder_code_for_action_name_with_underscores>( ) ;  <new_line>
+&function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
 
 template-runtime-code-for-action-executable-phrase-end
 ----
