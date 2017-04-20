@@ -21,6 +21,7 @@ my $global_action_result = '' ;  <new_line>
 my $global_numeric_value_first = 0 ;  <new_line>
 my $global_numeric_value_second = 0 ;  <new_line>
 my $global_spaces = '                                                                              ' ;  <new_line>
+my $global_phrase_name = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
 my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $output_results = '' ;  <new_line>
