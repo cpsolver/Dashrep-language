@@ -1,5 +1,0 @@
-[-copy-text code-function-branch-part-1 runtime-code-function-branch-]
-[-append-text-no-space phrase-being-defined runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-2 runtime-code-function-branch-]
-[-append-text-no-space phrase-being-defined-with-underscores runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-3 runtime-code-function-branch-]
