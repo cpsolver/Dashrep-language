@@ -1,3 +1,3 @@
 ' ;  <new_line>
-&special_function_do_single_replacement_only( ) ;  <new_line>
-}  <new_line>
+# &special_function_do_single_replacement_only( ) ;  <new_line>
+# }  <new_line>
