@@ -1,4 +1,10 @@
 [-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
+
+
+*--- temporary: ---*
+[-append-text list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate-]
+
+
 [-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
 [-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-generated list-of-functions-replacement-only-needed-]
