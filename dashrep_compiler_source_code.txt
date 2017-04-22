@@ -22,6 +22,12 @@ check-elapsed-time:
 ----
 compile-source-code-finish:
 [-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
+
+
+*--- temporary: ---*
+[-append-text list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate-]
+
+
 [-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
 [-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-generated list-of-functions-replacement-only-needed-]
@@ -1995,7 +2001,7 @@ $global_phrase_name = '
 ----
 template-code-function-replacement-only-part-3:
 ' ;  <new_line>
-&special_function_do_single-replacement_only( ) ;  <new_line>
+&special_function_do_single_replacement_only( ) ;  <new_line>
 }  <new_line>
 ----
 template-code-parameter-result-storage-part-1:
@@ -2502,6 +2508,7 @@ my $global_action_result = '' ;  <new_line>
 my $global_numeric_value_first = 0 ;  <new_line>
 my $global_numeric_value_second = 0 ;  <new_line>
 my $global_spaces = '                                                                              ' ;  <new_line>
+my $global_phrase_name = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
 my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $output_results = '' ;  <new_line>
@@ -2682,7 +2689,12 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-executable-phrase-without-fen:
 template-runtime-code-for-action-executable-phrase-begin
 
-&function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+# todo: fix  <new_line>
+$global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
+&function_branch_based_on_phrase_name( ) ;  <new_line>
+# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
 
 template-runtime-code-for-action-executable-phrase-end
 ----
@@ -3252,7 +3264,7 @@ template-segment-functions-replacement-only-begin:
 ----
 template-segment-functions-replacement-only-end:
 <new_line>
-sub special_function_do_single-replacement_only( ) {  <new_line>
+sub special_function_do_single_replacement_only( ) {  <new_line>
 if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ;  <new_line>
 } else {  <new_line>
@@ -3288,7 +3300,7 @@ print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
-print TRACE_OUT "\n\n" . '******************** global trace log '********************' . "\n\n" . $global_trace_log . "\n" ;  <new_line>
+print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
 close ( TRACE_OUT ) ;  <new_line>
 exit ;  <new_line>
 <new_line>
