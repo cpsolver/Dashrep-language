@@ -1,0 +1,2 @@
+test-fake-external-function-one
+test-fake-external-function-two
