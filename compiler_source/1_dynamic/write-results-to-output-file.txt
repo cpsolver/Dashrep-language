@@ -46,4 +46,3 @@
 [-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases [-filename-output-results-from-compiler-]-]
