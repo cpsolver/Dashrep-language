@@ -40,6 +40,9 @@ code-function-branch-part-3
 code-function-replacement-only-part-1
 code-function-replacement-only-part-2
 code-function-replacement-only-part-3
+code-function-external-part-1
+code-function-external-part-2
+code-function-external-part-3
 code-compiled-function-part-1
 code-compiled-function-part-2
 code-compiled-function-part-3
