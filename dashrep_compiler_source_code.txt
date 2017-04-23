@@ -8,9 +8,6 @@ Limitations:
 
 * Within parameter brackets, the operands that follow the action name must not expand in a way that effectively inserts a space. In other words, the counting of an action's operands is done during compilation, not during runtime.
 ----
-append-output-segment-next:
-[-append-text-no-space [-word-to-use-in-handler-] [-target-for-output-results-]-]
-----
 check-elapsed-time:
 *---
 [-put-into-phrase epoch-seconds-current-time  [-get-current-time-in-epoch-seconds-] -]
@@ -21,16 +18,11 @@ check-elapsed-time:
 ---*
 ----
 compile-source-code-finish:
-[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
-
-
-*--- temporary: ---*
-[-append-text list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate-]
-
-
+[-copy-text list-of-functions-generated list-of-function-branches-yet-to-generate-]
+[-append-text list-of-function-branches-needed list-of-function-branches-yet-to-generate-]
+[-copy-words-found-only-in-first-list list-of-function-branches-yet-to-generate list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
 [-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
-[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-generated list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
 
 [-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
@@ -38,13 +30,6 @@ compile-source-code-finish:
 [-append-text-no-space warning-messages output-results-]
 [-append-text-no-space new-empty-lines output-results-]
 [-if-end-]
-
-
-*---
-todo: remove this and related code
-[-copy-words-found-only-in-first-list list-of-phrase-definitions-complex dashrep-list-of-compiled-executable-phrases list-of-possible-new-executable-phrases-]
-[-expand-text template-displayed-list-of-possible-new-executable-phrases displayed-list-of-possible-new-executable-phrases-]
----*
 ----
 compile-source-code-generate-output-results:
 [-compile-source-code-initialize-]
@@ -463,6 +448,7 @@ handle-definition-simple-or-special:
 
 
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
+[-append-text phrase-being-defined list-of-functions-replacement-only-needed-]
 [-handle-definition-simple-]
 [-if-else-]
 [-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]
@@ -844,7 +830,6 @@ write-results-to-output-file:
 [-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file displayed-list-of-possible-new-executable-phrases [-filename-output-results-from-compiler-]-]
 ----
 assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
@@ -1993,16 +1978,16 @@ template-code-function-branch-part-3:
 ( ) ;
 ----
 template-code-function-replacement-only-part-1:
-sub function_compiled__
+# sub function_compiled__
 ----
 template-code-function-replacement-only-part-2:
 ( ) {  <new_line>
-$global_phrase_name = '
+# $global_phrase_name = '
 ----
 template-code-function-replacement-only-part-3:
 ' ;  <new_line>
-&special_function_do_single_replacement_only( ) ;  <new_line>
-}  <new_line>
+# &special_function_do_single_replacement_only( ) ;  <new_line>
+# }  <new_line>
 ----
 template-code-parameter-result-storage-part-1:
 my template-storage-item-prefix
