@@ -6501,7 +6501,7 @@ my $storage_item__4518 = 'list-of-function-branches-already-generated' ;
 my $storage_item__4519 = 'start-here' ;
 $global_dashrep_replacement{ $storage_item__4518 } = $storage_item__4519 ;
 my $storage_item__4520 = 'list-of-functions-in-optional-code' ;
-my $storage_item__4521 = 'test-fake-external-function-one test-fake-external-function-two' ;
+my $storage_item__4521 = '' ;
 $global_dashrep_replacement{ $storage_item__4520 } = $storage_item__4521 ;
 my $storage_item__4522 = 'list-of-phrases-with-quoted-strings' ;
 my $storage_item__4523 = 'empty-text character-space non-breaking-space character-hyphen four-hyphens new-line character-newline empty-line line-break character-tab character-open-square-bracket character-close-square-bracket comments-ignored dashrep-undefined dashrep-delete dashrep-endless-loop-counter-limit dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-matching-id dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing dashrep-time-limit dashrep-version export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end linewise-input-line-from-file linewise-input-line-count list-of-compiled-executable-phrases list-of-pointers-to-unique-words list-of-unique-word-counts numeric-map-tile-zoom time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year yes-or-no-indicate-line-endings yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files yes-or-no-use-two-spaces-as-column-delimiter' ;
@@ -7384,10 +7384,6 @@ if ( $global_phrase_name_to_match eq 'start-here' ) {
 &function_compiled__run_compiler( ) ;
 } elsif ( $global_phrase_name_to_match eq 'write-results-to-output-file' ) {
 &function_compiled__write_results_to_output_file( ) ;
-} elsif ( $global_phrase_name_to_match eq 'test-fake-external-function-one' ) {
-&test_fake_external_function_one( ) ;
-} elsif ( $global_phrase_name_to_match eq 'test-fake-external-function-two' ) {
-&test_fake_external_function_two( ) ;
 } elsif ( exists( $global_dashrep_replacement{ $global_phrase_name_to_match } ) ) {
 $global_accumulator[ $global_accumulator_pointer ] .= $global_dashrep_replacement{ $global_phrase_name_to_match } ;
 } else {
@@ -7404,14 +7400,6 @@ return '' ;
 # Functions that only do simple (single-item) replacement
 #
 
-
-# sub function_compiled__test_fake_external_function_one( ) {
-# &test_fake_external_function_one( ) ;
-# }
-
-# sub function_compiled__test_fake_external_function_two( ) {
-# &test_fake_external_function_two( ) ;
-# }
 
 # sub function_compiled__action_name( ) {
 # $global_phrase_name = 'action-name' ;
