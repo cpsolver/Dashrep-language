@@ -81,7 +81,7 @@ $global_word_to_use_in_handler = substr( template-storage-item-containing-word-l
 # print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
 
 code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;  <new_line>
-& no-space function-name-prefix handler-name-with-underscores no-space ( ) ;  <new_line>
+& no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new_line>
 
 } # end of ABABA loop  <new_line>
 
