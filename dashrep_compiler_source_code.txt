@@ -18,13 +18,14 @@ check-elapsed-time:
 ---*
 ----
 compile-source-code-finish:
-[-copy-text list-of-functions-generated list-of-function-branches-yet-to-generate-]
-[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-replacement-only-needed list-of-function-branches-needed-]
-[-append-text list-of-function-branches-needed list-of-function-branches-yet-to-generate-]
-[-copy-words-found-only-in-first-list list-of-function-branches-yet-to-generate list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
+[-copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
 [-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
+
+[-use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-]
+
+[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed-]
 [-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
@@ -281,6 +282,25 @@ generate-list-of-tokens-in-current-definition-quotable:
 [-trace-show list-of-tokens-in-current-definition-quotable-]
 ---*
 ----
+generate-runtime-code-for-external-function-branch:
+[-copy-text word-to-use-in-handler phrase-name-]
+[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+
+[-copy-text code-function-branch-part-1 runtime-code-function-branch-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-branch-]
+[-append-text-no-space code-function-branch-part-2 runtime-code-function-branch-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-branch-]
+[-append-text-no-space code-function-branch-part-3 runtime-code-function-branch-]
+[-copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text-]
+[-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
+
+[-copy-text code-function-external-part-1 runtime-code-function-external-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-external-]
+[-append-text-no-space code-function-external-part-2 runtime-code-function-external-]
+[-append-text-no-space phrase-name-with-underscores runtime-code-function-external-]
+[-append-text-no-space code-function-external-part-3 runtime-code-function-external-]
+[-copy-from-phrase-append-to-file runtime-code-function-external [-filename-output-results-functions-replacement-only-]-]
+----
 generate-runtime-code-for-one-function-branch:
 [-copy-text word-to-use-in-handler phrase-name-]
 [-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
@@ -452,7 +472,6 @@ handle-definition-simple-or-special:
 
 
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
-[-append-text phrase-being-defined list-of-functions-replacement-only-needed-]
 [-handle-definition-simple-]
 [-if-else-]
 [-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]
@@ -1433,6 +1452,10 @@ export-defs-phrase-end:
 list-of-function-branches-already-generated:
 start-here
 ----
+list-of-functions-in-optional-code:
+test-fake-external-function-one
+test-fake-external-function-two
+----
 list-of-phrases-with-quoted-strings:
 empty-text
 character-space
@@ -1828,7 +1851,7 @@ code-get-or-put-phrase-definition-end:
 }
 ----
 function-name-prefix:
-function_compiled__ no-space
+function_compiled__
 ----
 initialize-variable-begin:
 $storage_item__ no-space
@@ -1876,6 +1899,9 @@ code-function-branch-part-3
 code-function-replacement-only-part-1
 code-function-replacement-only-part-2
 code-function-replacement-only-part-3
+code-function-external-part-1
+code-function-external-part-2
+code-function-external-part-3
 code-compiled-function-part-1
 code-compiled-function-part-2
 code-compiled-function-part-3
@@ -1980,6 +2006,17 @@ template-code-function-branch-part-2:
 ----
 template-code-function-branch-part-3:
 ( ) ;
+----
+template-code-function-external-part-1:
+# sub function_compiled__
+----
+template-code-function-external-part-2:
+( ) {  <new_line>
+# &
+----
+template-code-function-external-part-3:
+( ) ;  <new_line>
+# }  <new_line>
 ----
 template-code-function-replacement-only-part-1:
 # sub function_compiled__
@@ -2994,7 +3031,7 @@ $global_word_to_use_in_handler = substr( template-storage-item-containing-word-l
 # print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
 
 code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;  <new_line>
-& no-space function-name-prefix handler-name-with-underscores no-space ( ) ;  <new_line>
+& no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new_line>
 
 } # end of ABABA loop  <new_line>
 
@@ -3278,7 +3315,7 @@ template-segment-functions-runtime-begin:
 &initialize_special_phrases( ) ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
-& no-space function-name-prefix start_here( ) ;  <new_line>
+& no-space function-name-prefix no-space start_here( ) ;  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 
 if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )  <new_line>
