@@ -5,12 +5,6 @@
 
 
 [-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
-
-*---
-todo: remove if all goes well
-[-append-text phrase-being-defined list-of-functions-replacement-only-needed-]
----*
-
 [-handle-definition-simple-]
 [-if-else-]
 [-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]

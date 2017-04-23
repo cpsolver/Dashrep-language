@@ -3,8 +3,9 @@
 [-copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
 
+[-use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-]
+
 [-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed-]
-[-copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate list-of-functions-replacement-only-needed-]
 [-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
