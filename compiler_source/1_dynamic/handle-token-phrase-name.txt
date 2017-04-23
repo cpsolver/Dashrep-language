@@ -3,7 +3,7 @@
 [-copy-text phrase-being-defined current-text-]
 [-generate-storage-for-current-text-]
 [-copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[-current-definition-number-]-]
-[-clear-text current-text-]
+[-clear-phrase current-text-]
 [-generate-storage-for-current-text-]
 [-copy-text current-text-storage-position text-storage-position-for-definition-number-[-current-definition-number-]-]
 [-copy-text current-text-storage-position current-result-storage-position-]
