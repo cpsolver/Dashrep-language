@@ -1428,7 +1428,7 @@ my $storage_item__1492 = 'no' ;
 
 
 my $storage_item__1493 = 'filter-tokens-case-defenn-case-balanced-ambee-amenn' ;
-my $storage_item__1494 = 'if-no-begin yes-or-no-same-two-words greater numeric-equal-greater-less-compare numeric-add count-of-ambee-tokens count-of-amenn-tokens 0 amenn handle-definition-simple-or-special if-else handle-definition-contains-ambee-amenn if-end' ;
+my $storage_item__1494 = 'if-no-begin yes-or-no-same-two-words greater numeric-equal-greater-less-compare numeric-add count-of-ambee-tokens count-of-amenn-tokens 0 amenn handle-definition-simple-or-immediate if-else handle-definition-contains-ambee-amenn if-end' ;
 $global_dashrep_replacement{ $storage_item__1493 } = $storage_item__1494 ;
 my $storage_item__1495 = '' ; # result storage
 my $storage_item__1496 = '' ; # result storage
@@ -1453,7 +1453,7 @@ my $storage_item__1504 = '0' ;
 
 
 my $storage_item__1505 = '' ; # result storage
-my $storage_item__1506 = 'handle-definition-simple-or-special' ;
+my $storage_item__1506 = 'handle-definition-simple-or-immediate' ;
 
 
 my $storage_item__1507 = '' ; # result storage
@@ -2564,145 +2564,145 @@ my $storage_item__2163 = '' ; # result storage
 my $storage_item__2164 = 'phrase-being-defined' ;
 
 
-my $storage_item__2165 = 'handle-definition-simple-or-special' ;
-my $storage_item__2166 = 'copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name trace-show phrase-being-defined if-yes-begin yes-or-no-empty-phrase possible-special-definition-phrase-name handle-definition-simple if-else copy-text possible-special-definition-phrase-name special-definition-phrase-name handle-definition-special if-end' ;
+my $storage_item__2165 = 'handle-definition-immediate' ;
+my $storage_item__2166 = 'generate-list-of-tokens-in-current-definition-quotable copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space copy-without-extra-spaces phrase-definition-modified phrase-definition-modified trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline trace-show phrase-definition-modified copy-text phrase-definition-modified immediate-definition-phrase-name - modified' ;
 $global_dashrep_replacement{ $storage_item__2165 } = $storage_item__2166 ;
 my $storage_item__2167 = '' ; # result storage
-my $storage_item__2168 = 'phrase-being-defined' ;
-my $storage_item__2169 = 'list-of-special-definition-phrases' ;
-my $storage_item__2170 = 'possible-special-definition-phrase-name' ;
+my $storage_item__2168 = 'generate-list-of-tokens-in-current-definition-quotable' ;
 
 
-my $storage_item__2171 = '' ; # result storage
-my $storage_item__2172 = 'phrase-being-defined' ;
+my $storage_item__2169 = '' ; # result storage
+my $storage_item__2170 = 'list-of-tokens-in-current-definition-quotable' ;
+my $storage_item__2171 = 'phrase-definition-modified' ;
+my $storage_item__2172 = 'string-placeholder-space' ;
+my $storage_item__2173 = 'character-space' ;
 
 
-my $storage_item__2173 = '' ; # result storage
 my $storage_item__2174 = '' ; # result storage
-my $storage_item__2175 = 'possible-special-definition-phrase-name' ;
+my $storage_item__2175 = 'phrase-definition-modified' ;
+my $storage_item__2176 = 'phrase-definition-modified' ;
 
 
-
-
-my $storage_item__2176 = '' ; # result storage
-my $storage_item__2177 = 'handle-definition-simple' ;
-
-
-my $storage_item__2178 = '' ; # result storage
+my $storage_item__2177 = '' ; # result storage
+my $storage_item__2178 = 'phrase-definition-modified' ;
 
 
 my $storage_item__2179 = '' ; # result storage
-my $storage_item__2180 = 'possible-special-definition-phrase-name' ;
-my $storage_item__2181 = 'special-definition-phrase-name' ;
-
-
-my $storage_item__2182 = '' ; # result storage
-my $storage_item__2183 = 'handle-definition-special' ;
+my $storage_item__2180 = 'phrase-definition-modified' ;
+my $storage_item__2181 = 'phrase-definition-modified' ;
+my $storage_item__2182 = 'string-space-new-line-in-brackets' ;
+my $storage_item__2183 = 'string-new-line-in-brackets' ;
 
 
 my $storage_item__2184 = '' ; # result storage
+my $storage_item__2185 = 'phrase-definition-modified' ;
 
 
-my $storage_item__2185 = 'handle-definition-simple' ;
-my $storage_item__2186 = 'create-new-text-storage-position copy-text current-text-storage-position pointer-storage-position-for-phrase-name create-new-text-storage-position copy-text current-text-storage-position pointer-storage-position-for-phrase-definition generate-list-of-tokens-in-current-definition-quotable generate-runtime-code-for-phrase-definition-simple copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple filename-output-results-all-definition-items' ;
-$global_dashrep_replacement{ $storage_item__2185 } = $storage_item__2186 ;
-my $storage_item__2187 = '' ; # result storage
-my $storage_item__2188 = 'create-new-text-storage-position' ;
+my $storage_item__2186 = '' ; # result storage
+my $storage_item__2187 = 'phrase-definition-modified' ;
+my $storage_item__2188 = 'phrase-definition-modified' ;
+my $storage_item__2189 = 'string-new-line-in-brackets-space' ;
+my $storage_item__2190 = 'string-new-line-in-brackets' ;
 
 
-my $storage_item__2189 = '' ; # result storage
-my $storage_item__2190 = 'current-text-storage-position' ;
-my $storage_item__2191 = 'pointer-storage-position-for-phrase-name' ;
+my $storage_item__2191 = '' ; # result storage
+my $storage_item__2192 = 'phrase-definition-modified' ;
 
 
-my $storage_item__2192 = '' ; # result storage
-my $storage_item__2193 = 'create-new-text-storage-position' ;
+my $storage_item__2193 = '' ; # result storage
+my $storage_item__2194 = 'phrase-definition-modified' ;
+my $storage_item__2195 = 'phrase-definition-modified' ;
+my $storage_item__2196 = 'string-new-line-in-brackets' ;
+my $storage_item__2197 = 'character-newline' ;
 
 
-my $storage_item__2194 = '' ; # result storage
-my $storage_item__2195 = 'current-text-storage-position' ;
-my $storage_item__2196 = 'pointer-storage-position-for-phrase-definition' ;
+my $storage_item__2198 = '' ; # result storage
+my $storage_item__2199 = 'phrase-definition-modified' ;
 
 
-my $storage_item__2197 = '' ; # result storage
-my $storage_item__2198 = 'generate-list-of-tokens-in-current-definition-quotable' ;
+my $storage_item__2200 = '' ; # result storage
+my $storage_item__2201 = 'phrase-definition-modified' ;
+my $storage_item__2202 = '' ; # result storage
+my $storage_item__2203 = 'immediate-definition-phrase-name' ;
 
 
-my $storage_item__2199 = '' ; # result storage
-my $storage_item__2200 = 'generate-runtime-code-for-phrase-definition-simple' ;
+my $storage_item__2204 = 'modified' ;
 
 
-my $storage_item__2201 = '' ; # result storage
-my $storage_item__2202 = 'runtime-code-for-phrase-definition-simple' ;
-my $storage_item__2203 = '' ; # result storage
-my $storage_item__2204 = 'filename-output-results-all-definition-items' ;
-
-
-
-
-my $storage_item__2205 = 'handle-definition-special' ;
-my $storage_item__2206 = 'generate-list-of-tokens-in-current-definition-quotable copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space copy-without-extra-spaces phrase-definition-modified phrase-definition-modified trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets trace-show phrase-definition-modified copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline trace-show phrase-definition-modified copy-text phrase-definition-modified special-definition-phrase-name - modified' ;
+my $storage_item__2205 = 'handle-definition-simple-or-immediate' ;
+my $storage_item__2206 = 'copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name trace-show phrase-being-defined if-yes-begin yes-or-no-empty-phrase possible-immediate-definition-phrase-name handle-definition-simple if-else copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name handle-definition-immediate if-end' ;
 $global_dashrep_replacement{ $storage_item__2205 } = $storage_item__2206 ;
 my $storage_item__2207 = '' ; # result storage
-my $storage_item__2208 = 'generate-list-of-tokens-in-current-definition-quotable' ;
+my $storage_item__2208 = 'phrase-being-defined' ;
+my $storage_item__2209 = 'list-of-immediate-definition-phrases' ;
+my $storage_item__2210 = 'possible-immediate-definition-phrase-name' ;
 
 
-my $storage_item__2209 = '' ; # result storage
-my $storage_item__2210 = 'list-of-tokens-in-current-definition-quotable' ;
-my $storage_item__2211 = 'phrase-definition-modified' ;
-my $storage_item__2212 = 'string-placeholder-space' ;
-my $storage_item__2213 = 'character-space' ;
+my $storage_item__2211 = '' ; # result storage
+my $storage_item__2212 = 'phrase-being-defined' ;
 
 
+my $storage_item__2213 = '' ; # result storage
 my $storage_item__2214 = '' ; # result storage
-my $storage_item__2215 = 'phrase-definition-modified' ;
-my $storage_item__2216 = 'phrase-definition-modified' ;
+my $storage_item__2215 = 'possible-immediate-definition-phrase-name' ;
 
 
-my $storage_item__2217 = '' ; # result storage
-my $storage_item__2218 = 'phrase-definition-modified' ;
+
+
+my $storage_item__2216 = '' ; # result storage
+my $storage_item__2217 = 'handle-definition-simple' ;
+
+
+my $storage_item__2218 = '' ; # result storage
 
 
 my $storage_item__2219 = '' ; # result storage
-my $storage_item__2220 = 'phrase-definition-modified' ;
-my $storage_item__2221 = 'phrase-definition-modified' ;
-my $storage_item__2222 = 'string-space-new-line-in-brackets' ;
-my $storage_item__2223 = 'string-new-line-in-brackets' ;
+my $storage_item__2220 = 'possible-immediate-definition-phrase-name' ;
+my $storage_item__2221 = 'immediate-definition-phrase-name' ;
+
+
+my $storage_item__2222 = '' ; # result storage
+my $storage_item__2223 = 'handle-definition-immediate' ;
 
 
 my $storage_item__2224 = '' ; # result storage
-my $storage_item__2225 = 'phrase-definition-modified' ;
 
 
-my $storage_item__2226 = '' ; # result storage
-my $storage_item__2227 = 'phrase-definition-modified' ;
-my $storage_item__2228 = 'phrase-definition-modified' ;
-my $storage_item__2229 = 'string-new-line-in-brackets-space' ;
-my $storage_item__2230 = 'string-new-line-in-brackets' ;
+my $storage_item__2225 = 'handle-definition-simple' ;
+my $storage_item__2226 = 'create-new-text-storage-position copy-text current-text-storage-position pointer-storage-position-for-phrase-name create-new-text-storage-position copy-text current-text-storage-position pointer-storage-position-for-phrase-definition generate-list-of-tokens-in-current-definition-quotable generate-runtime-code-for-phrase-definition-simple copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple filename-output-results-all-definition-items' ;
+$global_dashrep_replacement{ $storage_item__2225 } = $storage_item__2226 ;
+my $storage_item__2227 = '' ; # result storage
+my $storage_item__2228 = 'create-new-text-storage-position' ;
 
 
-my $storage_item__2231 = '' ; # result storage
-my $storage_item__2232 = 'phrase-definition-modified' ;
+my $storage_item__2229 = '' ; # result storage
+my $storage_item__2230 = 'current-text-storage-position' ;
+my $storage_item__2231 = 'pointer-storage-position-for-phrase-name' ;
 
 
-my $storage_item__2233 = '' ; # result storage
-my $storage_item__2234 = 'phrase-definition-modified' ;
-my $storage_item__2235 = 'phrase-definition-modified' ;
-my $storage_item__2236 = 'string-new-line-in-brackets' ;
-my $storage_item__2237 = 'character-newline' ;
+my $storage_item__2232 = '' ; # result storage
+my $storage_item__2233 = 'create-new-text-storage-position' ;
 
 
-my $storage_item__2238 = '' ; # result storage
-my $storage_item__2239 = 'phrase-definition-modified' ;
+my $storage_item__2234 = '' ; # result storage
+my $storage_item__2235 = 'current-text-storage-position' ;
+my $storage_item__2236 = 'pointer-storage-position-for-phrase-definition' ;
 
 
-my $storage_item__2240 = '' ; # result storage
-my $storage_item__2241 = 'phrase-definition-modified' ;
-my $storage_item__2242 = '' ; # result storage
-my $storage_item__2243 = 'special-definition-phrase-name' ;
+my $storage_item__2237 = '' ; # result storage
+my $storage_item__2238 = 'generate-list-of-tokens-in-current-definition-quotable' ;
 
 
-my $storage_item__2244 = 'modified' ;
+my $storage_item__2239 = '' ; # result storage
+my $storage_item__2240 = 'generate-runtime-code-for-phrase-definition-simple' ;
+
+
+my $storage_item__2241 = '' ; # result storage
+my $storage_item__2242 = 'runtime-code-for-phrase-definition-simple' ;
+my $storage_item__2243 = '' ; # result storage
+my $storage_item__2244 = 'filename-output-results-all-definition-items' ;
+
+
 
 
 my $storage_item__2245 = 'handle-fen-and-nospay-within-operand-or-operands' ;
@@ -6503,11 +6503,11 @@ $global_dashrep_replacement{ $storage_item__4518 } = $storage_item__4519 ;
 my $storage_item__4520 = 'list-of-functions-in-optional-code' ;
 my $storage_item__4521 = '' ;
 $global_dashrep_replacement{ $storage_item__4520 } = $storage_item__4521 ;
-my $storage_item__4522 = 'list-of-phrases-with-quoted-strings' ;
-my $storage_item__4523 = 'empty-text character-space non-breaking-space character-hyphen four-hyphens new-line character-newline empty-line line-break character-tab character-open-square-bracket character-close-square-bracket comments-ignored dashrep-undefined dashrep-delete dashrep-endless-loop-counter-limit dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-matching-id dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing dashrep-time-limit dashrep-version export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end linewise-input-line-from-file linewise-input-line-count list-of-compiled-executable-phrases list-of-pointers-to-unique-words list-of-unique-word-counts numeric-map-tile-zoom time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year yes-or-no-indicate-line-endings yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files yes-or-no-use-two-spaces-as-column-delimiter' ;
+my $storage_item__4522 = 'list-of-immediate-definition-phrases' ;
+my $storage_item__4523 = 'optional-import-statements optional-extra-runtime-functions' ;
 $global_dashrep_replacement{ $storage_item__4522 } = $storage_item__4523 ;
-my $storage_item__4524 = 'list-of-special-definition-phrases' ;
-my $storage_item__4525 = 'optional-import-statements optional-extra-runtime-functions' ;
+my $storage_item__4524 = 'list-of-phrases-with-quoted-strings' ;
+my $storage_item__4525 = 'empty-text character-space non-breaking-space character-hyphen four-hyphens new-line character-newline empty-line line-break character-tab character-open-square-bracket character-close-square-bracket comments-ignored dashrep-undefined dashrep-delete dashrep-endless-loop-counter-limit dashrep-gather-tag-begin dashrep-gather-tag-end dashrep-gather-tag-matching-id dashrep-gather-tag-unique dashrep-gather-tag-delete dashrep-path-prefix-for-file-reading dashrep-path-prefix-for-file-writing dashrep-time-limit dashrep-version export-defs-all-begin export-defs-all-end export-defs-def-begin export-defs-def-end export-defs-phrase-begin export-defs-phrase-end linewise-input-line-from-file linewise-input-line-count list-of-compiled-executable-phrases list-of-pointers-to-unique-words list-of-unique-word-counts numeric-map-tile-zoom time-day-of-month time-day-of-week time-day-of-year time-hour time-minute time-month-number time-second time-year yes-or-no-indicate-line-endings yes-or-no-permission-to-append-to-files yes-or-no-permission-to-delete-or-overwrite-files yes-or-no-use-two-spaces-as-column-delimiter' ;
 $global_dashrep_replacement{ $storage_item__4524 } = $storage_item__4525 ;
 my $storage_item__4526 = 'list-of-temporary-phrase-name-prefixes' ;
 my $storage_item__4527 = 'contents-at-storage-position- action-name-at-storage-position- storage-type-at-storage-position- text-words-at-result-storage-position- list-of-operands-for-result-storage-position- storage-position-for-word-list-associated-with-result-storage-position-' ;
@@ -7326,12 +7326,12 @@ if ( $global_phrase_name_to_match eq 'start-here' ) {
 &function_compiled__get_operand_character_at_adjacent_position( ) ;
 } elsif ( $global_phrase_name_to_match eq 'handle-definition-contains-ambee-amenn' ) {
 &function_compiled__handle_definition_contains_ambee_amenn( ) ;
+} elsif ( $global_phrase_name_to_match eq 'handle-definition-immediate' ) {
+&function_compiled__handle_definition_immediate( ) ;
 } elsif ( $global_phrase_name_to_match eq 'handle-definition-simple' ) {
 &function_compiled__handle_definition_simple( ) ;
-} elsif ( $global_phrase_name_to_match eq 'handle-definition-simple-or-special' ) {
-&function_compiled__handle_definition_simple_or_special( ) ;
-} elsif ( $global_phrase_name_to_match eq 'handle-definition-special' ) {
-&function_compiled__handle_definition_special( ) ;
+} elsif ( $global_phrase_name_to_match eq 'handle-definition-simple-or-immediate' ) {
+&function_compiled__handle_definition_simple_or_immediate( ) ;
 } elsif ( $global_phrase_name_to_match eq 'handle-fen-and-nospay-within-operand-or-operands' ) {
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 } elsif ( $global_phrase_name_to_match eq 'handle-non-zero-count-of-ambee-minus-amenn-tokens' ) {
@@ -7616,18 +7616,18 @@ return '' ;
 # &special_function_do_single_replacement_only( ) ;
 # }
 
+# sub function_compiled__handle_definition_immediate( ) {
+# $global_phrase_name = 'handle-definition-immediate' ;
+# &special_function_do_single_replacement_only( ) ;
+# }
+
 # sub function_compiled__handle_definition_simple( ) {
 # $global_phrase_name = 'handle-definition-simple' ;
 # &special_function_do_single_replacement_only( ) ;
 # }
 
-# sub function_compiled__handle_definition_simple_or_special( ) {
-# $global_phrase_name = 'handle-definition-simple-or-special' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
-
-# sub function_compiled__handle_definition_special( ) {
-# $global_phrase_name = 'handle-definition-special' ;
+# sub function_compiled__handle_definition_simple_or_immediate( ) {
+# $global_phrase_name = 'handle-definition-simple-or-immediate' ;
 # &special_function_do_single_replacement_only( ) ;
 # }
 
@@ -7683,6 +7683,11 @@ return '' ;
 
 # sub function_compiled__handle_token_text_word( ) {
 # $global_phrase_name = 'handle-token-text-word' ;
+# &special_function_do_single_replacement_only( ) ;
+# }
+
+# sub function_compiled__immediate_definition_phrase_name( ) {
+# $global_phrase_name = 'immediate-definition-phrase-name' ;
 # &special_function_do_single_replacement_only( ) ;
 # }
 
@@ -7748,11 +7753,6 @@ return '' ;
 
 # sub function_compiled__run_compiler( ) {
 # $global_phrase_name = 'run-compiler' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
-
-# sub function_compiled__special_definition_phrase_name( ) {
-# $global_phrase_name = 'special-definition-phrase-name' ;
 # &special_function_do_single_replacement_only( ) ;
 # }
 
@@ -11892,7 +11892,7 @@ return '' ;
 sub function_compiled__filter_tokens_case_defenn_case_balanced_ambee_amenn( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-defenn-case-balanced-ambee-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0 amenn amenn amenn ambee handle-definition-simple-or-special amenn ambee if-else amenn ambee handle-definition-contains-ambee-amenn amenn ambee if-end amenn
+# ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0 amenn amenn amenn ambee handle-definition-simple-or-immediate amenn ambee if-else amenn ambee handle-definition-contains-ambee-amenn amenn ambee if-end amenn
 
 $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1500 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
@@ -11979,7 +11979,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1505 *** handle-definition-simple-or-special ** 0 *' . '' ;
+$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1505 *** handle-definition-simple-or-immediate ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11988,11 +11988,11 @@ $global_accumulator[ $global_accumulator_pointer ] = '' ;
 # todo: fix
 $global_phrase_name_to_match = $storage_item__1506 ;
 &function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_simple_or_special( ) ;
+# &function_compiled__handle_definition_simple_or_immediate( ) ;
 $storage_item__1505 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1505 . "\n" ;
-# end of action handle-definition-simple-or-special
+# end of action handle-definition-simple-or-immediate
 
 # begin action if else
 } else {
@@ -17430,116 +17430,121 @@ return '' ;
 } # end of function_compiled__handle_definition_contains_ambee_amenn
 
 #------------------------------------------------------------
-sub function_compiled__handle_definition_simple_or_special( ) {
-$global_replacement_count_for_item_name{ 'handle-definition-simple-or-special' } ++ ;
+sub function_compiled__handle_definition_immediate( ) {
+$global_replacement_count_for_item_name{ 'handle-definition-immediate' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name amenn ambee trace-show phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase possible-special-definition-phrase-name amenn amenn ambee handle-definition-simple amenn ambee if-else amenn ambee copy-text possible-special-definition-phrase-name special-definition-phrase-name amenn ambee handle-definition-special amenn ambee if-end amenn
+# ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn ambee trace-show phrase-definition-modified amenn ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amenn fen modified amenn
 
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2167 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2168 . ' ' . $storage_item__2169 . ' ' . $storage_item__2170 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-words-found-in-both-lists' ;
-$global_number_of_operands = 3 ;
-$global_single_action_operand_one = $storage_item__2168 ;
-$global_single_action_operand_two = $storage_item__2169 ;
-$global_single_action_operand_three = $storage_item__2170 ;
-$global_single_action_operand_four = '' ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 3 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2168 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2169 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2170 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2167 = &dashrep_expand_parameters( ) ;
-} else {
-$storage_item__2167 = 'copy-words-found-in-both-lists ' . $storage_item__2168 . ' ' . $storage_item__2169 . ' ' . $storage_item__2170 ;
-}
-# print 'result: ' . $storage_item__2167 . "\n" ;
-# end of action copy-words-found-in-both-lists
-
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2171 *** trace-show ** 1 *' . $storage_item__2172 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2172 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2172 } ) ) ) {
-print TRACE_OUT 'phrase ' . $storage_item__2172 . ' is: ' . $global_dashrep_replacement{ $storage_item__2172 } . "\n" ;
-} else {
-print TRACE_OUT 'phrase ' . $storage_item__2172 . ' is not defined' . "\n" ;
-}
-# print 'result: ' . $storage_item__2171 . "\n" ;
-# end of action trace-show
-
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2174 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2175 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'yes-or-no-empty-phrase' ;
-$global_number_of_operands = 1 ;
-$global_single_action_operand_one = $storage_item__2175 ;
-$global_single_action_operand_two = '' ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 1 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2175 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2174 = &dashrep_expand_parameters( ) ;
-} else {
-$storage_item__2174 = 'yes-or-no-empty-phrase ' . $storage_item__2175 ;
-}
-# print 'result: ' . $storage_item__2174 . "\n" ;
-# end of action yes-or-no-empty-phrase
-
-# begin action if yes begin
-$global_pointer_to_word = index( $storage_item__2174 , 'yes' ) ;
-if ( $global_pointer_to_word >= 0 )
-{
-# end action if yes begin
-
-
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2176 *** handle-definition-simple ** 0 *' . '' ;
+$global_action_debug_line = '***** handle-definition-immediate **** 2167 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 66 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 # todo: fix
-$global_phrase_name_to_match = $storage_item__2177 ;
+$global_phrase_name_to_match = $storage_item__2168 ;
 &function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_simple( ) ;
-$storage_item__2176 = $global_accumulator[ $global_accumulator_pointer ] ;
+# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
+$storage_item__2167 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2176 . "\n" ;
-# end of action handle-definition-simple
+# print 'result: ' . $storage_item__2167 . "\n" ;
+# end of action generate-list-of-tokens-in-current-definition-quotable
 
-# begin action if else
+$global_action_debug_line = '***** handle-definition-immediate **** 2169 *** copy-and-replace ** 4 *' . $storage_item__2170 . ' ' . $storage_item__2171 . ' ' . $storage_item__2172 . ' ' . $storage_item__2173 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-and-replace' ;
+$global_number_of_operands = 4 ;
+$global_single_action_operand_one = $storage_item__2170 ;
+$global_single_action_operand_two = $storage_item__2171 ;
+$global_single_action_operand_three = $storage_item__2172 ;
+$global_single_action_operand_four = $storage_item__2173 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 4 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2170 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2171 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2172 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2173 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2169 = &dashrep_expand_parameters( ) ;
 } else {
-# end action if else
+$storage_item__2169 = 'copy-and-replace ' . $storage_item__2170 . ' ' . $storage_item__2171 . ' ' . $storage_item__2172 . ' ' . $storage_item__2173 ;
+}
+# print 'result: ' . $storage_item__2169 . "\n" ;
+# end of action copy-and-replace
 
+$global_action_debug_line = '***** handle-definition-immediate **** 2174 *** copy-without-extra-spaces ** 2 *' . $storage_item__2175 . ' ' . $storage_item__2176 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-without-extra-spaces' ;
+$global_number_of_operands = 2 ;
+$global_single_action_operand_one = $storage_item__2175 ;
+$global_single_action_operand_two = $storage_item__2176 ;
+$global_single_action_operand_three = '' ;
+$global_single_action_operand_four = '' ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2175 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2176 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2174 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2174 = 'copy-without-extra-spaces ' . $storage_item__2175 . ' ' . $storage_item__2176 ;
+}
+# print 'result: ' . $storage_item__2174 . "\n" ;
+# end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2179 *** copy-text ** 2 *' . $storage_item__2180 . ' ' . $storage_item__2181 ;
+$global_action_debug_line = '***** handle-definition-immediate **** 2177 *** trace-show ** 1 *' . $storage_item__2178 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2178 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2178 } ) ) ) {
+print TRACE_OUT 'phrase ' . $storage_item__2178 . ' is: ' . $global_dashrep_replacement{ $storage_item__2178 } . "\n" ;
+} else {
+print TRACE_OUT 'phrase ' . $storage_item__2178 . ' is not defined' . "\n" ;
+}
+# print 'result: ' . $storage_item__2177 . "\n" ;
+# end of action trace-show
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2179 *** copy-and-replace ** 4 *' . $storage_item__2180 . ' ' . $storage_item__2181 . ' ' . $storage_item__2182 . ' ' . $storage_item__2183 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-and-replace' ;
+$global_number_of_operands = 4 ;
+$global_single_action_operand_one = $storage_item__2180 ;
+$global_single_action_operand_two = $storage_item__2181 ;
+$global_single_action_operand_three = $storage_item__2182 ;
+$global_single_action_operand_four = $storage_item__2183 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 4 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2180 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
@@ -17548,101 +17553,108 @@ $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_ite
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2182 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2183 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2180 } ;
-$global_dashrep_replacement{ $storage_item__2181 } = $global_target_text ;
-$storage_item__2179 = '' ;
+$storage_item__2179 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2179 = 'copy-text ' . $storage_item__2180 . ' ' . $storage_item__2181 ;
+$storage_item__2179 = 'copy-and-replace ' . $storage_item__2180 . ' ' . $storage_item__2181 . ' ' . $storage_item__2182 . ' ' . $storage_item__2183 ;
 }
 # print 'result: ' . $storage_item__2179 . "\n" ;
-# end of action copy-text
+# end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-simple-or-special **** 2182 *** handle-definition-special ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 67 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2183 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_special( ) ;
-$storage_item__2182 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2182 . "\n" ;
-# end of action handle-definition-special
-
-# begin action if end
-}
-# end action if end
-
-
-return '' ;
-} # end of function_compiled__handle_definition_simple_or_special
-
-#------------------------------------------------------------
-sub function_compiled__handle_definition_simple( ) {
-$global_replacement_count_for_item_name{ 'handle-definition-simple' } ++ ;
-my $saved_accumulator_pointer = -1 ;
-# ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee generate-runtime-code-for-phrase-definition-simple amenn ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
-
-$global_action_debug_line = '***** handle-definition-simple **** 2187 *** create-new-text-storage-position ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 68 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2188 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
-$storage_item__2187 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2187 . "\n" ;
-# end of action create-new-text-storage-position
-
-$global_action_debug_line = '***** handle-definition-simple **** 2189 *** copy-text ** 2 *' . $storage_item__2190 . ' ' . $storage_item__2191 ;
+$global_action_debug_line = '***** handle-definition-immediate **** 2184 *** trace-show ** 1 *' . $storage_item__2185 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2185 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2185 } ) ) ) {
+print TRACE_OUT 'phrase ' . $storage_item__2185 . ' is: ' . $global_dashrep_replacement{ $storage_item__2185 } . "\n" ;
+} else {
+print TRACE_OUT 'phrase ' . $storage_item__2185 . ' is not defined' . "\n" ;
+}
+# print 'result: ' . $storage_item__2184 . "\n" ;
+# end of action trace-show
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2186 *** copy-and-replace ** 4 *' . $storage_item__2187 . ' ' . $storage_item__2188 . ' ' . $storage_item__2189 . ' ' . $storage_item__2190 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-and-replace' ;
+$global_number_of_operands = 4 ;
+$global_single_action_operand_one = $storage_item__2187 ;
+$global_single_action_operand_two = $storage_item__2188 ;
+$global_single_action_operand_three = $storage_item__2189 ;
+$global_single_action_operand_four = $storage_item__2190 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 4 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2187 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2188 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2189 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2190 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2191 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2190 } ;
-$global_dashrep_replacement{ $storage_item__2191 } = $global_target_text ;
-$storage_item__2189 = '' ;
+$storage_item__2186 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2189 = 'copy-text ' . $storage_item__2190 . ' ' . $storage_item__2191 ;
+$storage_item__2186 = 'copy-and-replace ' . $storage_item__2187 . ' ' . $storage_item__2188 . ' ' . $storage_item__2189 . ' ' . $storage_item__2190 ;
 }
-# print 'result: ' . $storage_item__2189 . "\n" ;
-# end of action copy-text
+# print 'result: ' . $storage_item__2186 . "\n" ;
+# end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-simple **** 2192 *** create-new-text-storage-position ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 69 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2193 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
-$storage_item__2192 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2192 . "\n" ;
-# end of action create-new-text-storage-position
-
-$global_action_debug_line = '***** handle-definition-simple **** 2194 *** copy-text ** 2 *' . $storage_item__2195 . ' ' . $storage_item__2196 ;
+$global_action_debug_line = '***** handle-definition-immediate **** 2191 *** trace-show ** 1 *' . $storage_item__2192 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2192 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2192 } ) ) ) {
+print TRACE_OUT 'phrase ' . $storage_item__2192 . ' is: ' . $global_dashrep_replacement{ $storage_item__2192 } . "\n" ;
+} else {
+print TRACE_OUT 'phrase ' . $storage_item__2192 . ' is not defined' . "\n" ;
+}
+# print 'result: ' . $storage_item__2191 . "\n" ;
+# end of action trace-show
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2193 *** copy-and-replace ** 4 *' . $storage_item__2194 . ' ' . $storage_item__2195 . ' ' . $storage_item__2196 . ' ' . $storage_item__2197 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_single_action_name = 'copy-and-replace' ;
+$global_number_of_operands = 4 ;
+$global_single_action_operand_one = $storage_item__2194 ;
+$global_single_action_operand_two = $storage_item__2195 ;
+$global_single_action_operand_three = $storage_item__2196 ;
+$global_single_action_operand_four = $storage_item__2197 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( $global_number_of_operands != 4 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2194 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2195 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
@@ -17651,209 +17663,185 @@ $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_ite
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2195 } ;
-$global_dashrep_replacement{ $storage_item__2196 } = $global_target_text ;
-$storage_item__2194 = '' ;
-} else {
-$storage_item__2194 = 'copy-text ' . $storage_item__2195 . ' ' . $storage_item__2196 ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2197 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
 }
-# print 'result: ' . $storage_item__2194 . "\n" ;
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2193 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2193 = 'copy-and-replace ' . $storage_item__2194 . ' ' . $storage_item__2195 . ' ' . $storage_item__2196 . ' ' . $storage_item__2197 ;
+}
+# print 'result: ' . $storage_item__2193 . "\n" ;
+# end of action copy-and-replace
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2198 *** trace-show ** 1 *' . $storage_item__2199 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2199 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2199 } ) ) ) {
+print TRACE_OUT 'phrase ' . $storage_item__2199 . ' is: ' . $global_dashrep_replacement{ $storage_item__2199 } . "\n" ;
+} else {
+print TRACE_OUT 'phrase ' . $storage_item__2199 . ' is not defined' . "\n" ;
+}
+# print 'result: ' . $storage_item__2198 . "\n" ;
+# end of action trace-show
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2202 *** immediate-definition-phrase-name ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 67 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2203 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__immediate_definition_phrase_name( ) ;
+$storage_item__2202 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2202 . "\n" ;
+# end of action immediate-definition-phrase-name
+
+$global_action_debug_line = '***** handle-definition-immediate **** 2200 *** copy-text ** 2 *' . $storage_item__2201 . ' ' . $storage_item__2202 . '-' . $storage_item__2204 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_yes_or_no_operand_error = $global_no ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2201 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2202 . '-' . $storage_item__2204 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$global_target_text = $global_dashrep_replacement{ $storage_item__2201 } ;
+$global_dashrep_replacement{ $storage_item__2202 . '-' . $storage_item__2204 } = $global_target_text ;
+$storage_item__2200 = '' ;
+} else {
+$storage_item__2200 = 'copy-text ' . $storage_item__2201 . ' ' . $storage_item__2202 . '-' . $storage_item__2204 ;
+}
+# print 'result: ' . $storage_item__2200 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-simple **** 2197 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 70 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2198 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
-$storage_item__2197 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2197 . "\n" ;
-# end of action generate-list-of-tokens-in-current-definition-quotable
-
-$global_action_debug_line = '***** handle-definition-simple **** 2199 *** generate-runtime-code-for-phrase-definition-simple ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 71 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2200 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_runtime_code_for_phrase_definition_simple( ) ;
-$storage_item__2199 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2199 . "\n" ;
-# end of action generate-runtime-code-for-phrase-definition-simple
-
-$global_action_debug_line = '***** handle-definition-simple **** 2203 *** filename-output-results-all-definition-items ** 0 *' . '' ;
-# print $global_action_debug_line . "\n" ;
-#
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 72 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2204 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
-$storage_item__2203 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2203 . "\n" ;
-# end of action filename-output-results-all-definition-items
-
-$global_action_debug_line = '***** handle-definition-simple **** 2201 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2202 . ' ' . $storage_item__2203 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-from-phrase-append-to-file' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2202 ;
-$global_single_action_operand_two = $storage_item__2203 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 2 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2202 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2203 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2201 = &dashrep_expand_parameters( ) ;
-} else {
-$storage_item__2201 = 'copy-from-phrase-append-to-file ' . $storage_item__2202 . ' ' . $storage_item__2203 ;
-}
-# print 'result: ' . $storage_item__2201 . "\n" ;
-# end of action copy-from-phrase-append-to-file
-
 return '' ;
-} # end of function_compiled__handle_definition_simple
+} # end of function_compiled__handle_definition_immediate
 
 #------------------------------------------------------------
-sub function_compiled__handle_definition_special( ) {
-$global_replacement_count_for_item_name{ 'handle-definition-special' } ++ ;
+sub function_compiled__handle_definition_simple_or_immediate( ) {
+$global_replacement_count_for_item_name{ 'handle-definition-simple-or-immediate' } ++ ;
 my $saved_accumulator_pointer = -1 ;
-# ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn ambee trace-show phrase-definition-modified amenn ambee copy-text phrase-definition-modified ambee special-definition-phrase-name amenn fen modified amenn
+# ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn ambee trace-show phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn ambee handle-definition-simple amenn ambee if-else amenn ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn ambee handle-definition-immediate amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-definition-special **** 2207 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2207 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' . $storage_item__2210 ;
 # print $global_action_debug_line . "\n" ;
 #
-$saved_accumulator_pointer = $global_accumulator_pointer ;
-$global_accumulator_pointer = 73 ;
-$global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2208 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
-$storage_item__2207 = $global_accumulator[ $global_accumulator_pointer ] ;
-$global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2207 . "\n" ;
-# end of action generate-list-of-tokens-in-current-definition-quotable
-
-$global_action_debug_line = '***** handle-definition-special **** 2209 *** copy-and-replace ** 4 *' . $storage_item__2210 . ' ' . $storage_item__2211 . ' ' . $storage_item__2212 . ' ' . $storage_item__2213 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-and-replace' ;
-$global_number_of_operands = 4 ;
-$global_single_action_operand_one = $storage_item__2210 ;
-$global_single_action_operand_two = $storage_item__2211 ;
-$global_single_action_operand_three = $storage_item__2212 ;
-$global_single_action_operand_four = $storage_item__2213 ;
+$global_single_action_name = 'copy-words-found-in-both-lists' ;
+$global_number_of_operands = 3 ;
+$global_single_action_operand_one = $storage_item__2208 ;
+$global_single_action_operand_two = $storage_item__2209 ;
+$global_single_action_operand_three = $storage_item__2210 ;
+$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 4 ) {
+if ( $global_number_of_operands != 3 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2208 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2209 ) ;
+if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2210 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2211 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$storage_item__2207 = &dashrep_expand_parameters( ) ;
+} else {
+$storage_item__2207 = 'copy-words-found-in-both-lists ' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' . $storage_item__2210 ;
 }
+# print 'result: ' . $storage_item__2207 . "\n" ;
+# end of action copy-words-found-in-both-lists
+
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2211 *** trace-show ** 1 *' . $storage_item__2212 ;
+# print $global_action_debug_line . "\n" ;
+#
+$global_yes_or_no_operand_error = $global_no ;
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2212 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2213 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2209 = &dashrep_expand_parameters( ) ;
+if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2212 } ) ) ) {
+print TRACE_OUT 'phrase ' . $storage_item__2212 . ' is: ' . $global_dashrep_replacement{ $storage_item__2212 } . "\n" ;
 } else {
-$storage_item__2209 = 'copy-and-replace ' . $storage_item__2210 . ' ' . $storage_item__2211 . ' ' . $storage_item__2212 . ' ' . $storage_item__2213 ;
+print TRACE_OUT 'phrase ' . $storage_item__2212 . ' is not defined' . "\n" ;
 }
-# print 'result: ' . $storage_item__2209 . "\n" ;
-# end of action copy-and-replace
+# print 'result: ' . $storage_item__2211 . "\n" ;
+# end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-special **** 2214 *** copy-without-extra-spaces ** 2 *' . $storage_item__2215 . ' ' . $storage_item__2216 ;
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2214 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2215 ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-without-extra-spaces' ;
-$global_number_of_operands = 2 ;
+$global_single_action_name = 'yes-or-no-empty-phrase' ;
+$global_number_of_operands = 1 ;
 $global_single_action_operand_one = $storage_item__2215 ;
-$global_single_action_operand_two = $storage_item__2216 ;
+$global_single_action_operand_two = '' ;
 $global_single_action_operand_three = '' ;
 $global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 2 ) {
+if ( $global_number_of_operands != 1 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2215 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2216 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
 $storage_item__2214 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2214 = 'copy-without-extra-spaces ' . $storage_item__2215 . ' ' . $storage_item__2216 ;
+$storage_item__2214 = 'yes-or-no-empty-phrase ' . $storage_item__2215 ;
 }
 # print 'result: ' . $storage_item__2214 . "\n" ;
-# end of action copy-without-extra-spaces
+# end of action yes-or-no-empty-phrase
 
-$global_action_debug_line = '***** handle-definition-special **** 2217 *** trace-show ** 1 *' . $storage_item__2218 ;
+# begin action if yes begin
+$global_pointer_to_word = index( $storage_item__2214 , 'yes' ) ;
+if ( $global_pointer_to_word >= 0 )
+{
+# end action if yes begin
+
+
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2216 *** handle-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2218 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2218 } ) ) ) {
-print TRACE_OUT 'phrase ' . $storage_item__2218 . ' is: ' . $global_dashrep_replacement{ $storage_item__2218 } . "\n" ;
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 68 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2217 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__handle_definition_simple( ) ;
+$storage_item__2216 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2216 . "\n" ;
+# end of action handle-definition-simple
+
+# begin action if else
 } else {
-print TRACE_OUT 'phrase ' . $storage_item__2218 . ' is not defined' . "\n" ;
-}
-# print 'result: ' . $storage_item__2217 . "\n" ;
-# end of action trace-show
+# end action if else
 
-$global_action_debug_line = '***** handle-definition-special **** 2219 *** copy-and-replace ** 4 *' . $storage_item__2220 . ' ' . $storage_item__2221 . ' ' . $storage_item__2222 . ' ' . $storage_item__2223 ;
+
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2219 *** copy-text ** 2 *' . $storage_item__2220 . ' ' . $storage_item__2221 ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_single_action_name = 'copy-and-replace' ;
-$global_number_of_operands = 4 ;
-$global_single_action_operand_one = $storage_item__2220 ;
-$global_single_action_operand_two = $storage_item__2221 ;
-$global_single_action_operand_three = $storage_item__2222 ;
-$global_single_action_operand_four = $storage_item__2223 ;
 $global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 4 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2220 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
@@ -17862,108 +17850,101 @@ $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_ite
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2222 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2223 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2219 = &dashrep_expand_parameters( ) ;
+$global_target_text = $global_dashrep_replacement{ $storage_item__2220 } ;
+$global_dashrep_replacement{ $storage_item__2221 } = $global_target_text ;
+$storage_item__2219 = '' ;
 } else {
-$storage_item__2219 = 'copy-and-replace ' . $storage_item__2220 . ' ' . $storage_item__2221 . ' ' . $storage_item__2222 . ' ' . $storage_item__2223 ;
+$storage_item__2219 = 'copy-text ' . $storage_item__2220 . ' ' . $storage_item__2221 ;
 }
 # print 'result: ' . $storage_item__2219 . "\n" ;
-# end of action copy-and-replace
+# end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-special **** 2224 *** trace-show ** 1 *' . $storage_item__2225 ;
+$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2222 *** handle-definition-immediate ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 69 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2223 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__handle_definition_immediate( ) ;
+$storage_item__2222 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2222 . "\n" ;
+# end of action handle-definition-immediate
+
+# begin action if end
+}
+# end action if end
+
+
+return '' ;
+} # end of function_compiled__handle_definition_simple_or_immediate
+
+#------------------------------------------------------------
+sub function_compiled__handle_definition_simple( ) {
+$global_replacement_count_for_item_name{ 'handle-definition-simple' } ++ ;
+my $saved_accumulator_pointer = -1 ;
+# ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee generate-runtime-code-for-phrase-definition-simple amenn ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
+
+$global_action_debug_line = '***** handle-definition-simple **** 2227 *** create-new-text-storage-position ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 70 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2228 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__create_new_text_storage_position( ) ;
+$storage_item__2227 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2227 . "\n" ;
+# end of action create-new-text-storage-position
+
+$global_action_debug_line = '***** handle-definition-simple **** 2229 *** copy-text ** 2 *' . $storage_item__2230 . ' ' . $storage_item__2231 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2225 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2225 } ) ) ) {
-print TRACE_OUT 'phrase ' . $storage_item__2225 . ' is: ' . $global_dashrep_replacement{ $storage_item__2225 } . "\n" ;
-} else {
-print TRACE_OUT 'phrase ' . $storage_item__2225 . ' is not defined' . "\n" ;
-}
-# print 'result: ' . $storage_item__2224 . "\n" ;
-# end of action trace-show
-
-$global_action_debug_line = '***** handle-definition-special **** 2226 *** copy-and-replace ** 4 *' . $storage_item__2227 . ' ' . $storage_item__2228 . ' ' . $storage_item__2229 . ' ' . $storage_item__2230 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-and-replace' ;
-$global_number_of_operands = 4 ;
-$global_single_action_operand_one = $storage_item__2227 ;
-$global_single_action_operand_two = $storage_item__2228 ;
-$global_single_action_operand_three = $storage_item__2229 ;
-$global_single_action_operand_four = $storage_item__2230 ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 4 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2227 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2228 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2229 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2230 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2231 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2226 = &dashrep_expand_parameters( ) ;
+$global_target_text = $global_dashrep_replacement{ $storage_item__2230 } ;
+$global_dashrep_replacement{ $storage_item__2231 } = $global_target_text ;
+$storage_item__2229 = '' ;
 } else {
-$storage_item__2226 = 'copy-and-replace ' . $storage_item__2227 . ' ' . $storage_item__2228 . ' ' . $storage_item__2229 . ' ' . $storage_item__2230 ;
+$storage_item__2229 = 'copy-text ' . $storage_item__2230 . ' ' . $storage_item__2231 ;
 }
-# print 'result: ' . $storage_item__2226 . "\n" ;
-# end of action copy-and-replace
+# print 'result: ' . $storage_item__2229 . "\n" ;
+# end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-special **** 2231 *** trace-show ** 1 *' . $storage_item__2232 ;
+$global_action_debug_line = '***** handle-definition-simple **** 2232 *** create-new-text-storage-position ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 71 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2233 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__create_new_text_storage_position( ) ;
+$storage_item__2232 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2232 . "\n" ;
+# end of action create-new-text-storage-position
+
+$global_action_debug_line = '***** handle-definition-simple **** 2234 *** copy-text ** 2 *' . $storage_item__2235 . ' ' . $storage_item__2236 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2232 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2232 } ) ) ) {
-print TRACE_OUT 'phrase ' . $storage_item__2232 . ' is: ' . $global_dashrep_replacement{ $storage_item__2232 } . "\n" ;
-} else {
-print TRACE_OUT 'phrase ' . $storage_item__2232 . ' is not defined' . "\n" ;
-}
-# print 'result: ' . $storage_item__2231 . "\n" ;
-# end of action trace-show
-
-$global_action_debug_line = '***** handle-definition-special **** 2233 *** copy-and-replace ** 4 *' . $storage_item__2234 . ' ' . $storage_item__2235 . ' ' . $storage_item__2236 . ' ' . $storage_item__2237 ;
-# print $global_action_debug_line . "\n" ;
-#
-$global_single_action_name = 'copy-and-replace' ;
-$global_number_of_operands = 4 ;
-$global_single_action_operand_one = $storage_item__2234 ;
-$global_single_action_operand_two = $storage_item__2235 ;
-$global_single_action_operand_three = $storage_item__2236 ;
-$global_single_action_operand_four = $storage_item__2237 ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( $global_number_of_operands != 4 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2234 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2235 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
@@ -17972,73 +17953,92 @@ $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_ite
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2237 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2233 = &dashrep_expand_parameters( ) ;
+$global_target_text = $global_dashrep_replacement{ $storage_item__2235 } ;
+$global_dashrep_replacement{ $storage_item__2236 } = $global_target_text ;
+$storage_item__2234 = '' ;
 } else {
-$storage_item__2233 = 'copy-and-replace ' . $storage_item__2234 . ' ' . $storage_item__2235 . ' ' . $storage_item__2236 . ' ' . $storage_item__2237 ;
+$storage_item__2234 = 'copy-text ' . $storage_item__2235 . ' ' . $storage_item__2236 ;
 }
-# print 'result: ' . $storage_item__2233 . "\n" ;
-# end of action copy-and-replace
+# print 'result: ' . $storage_item__2234 . "\n" ;
+# end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-special **** 2238 *** trace-show ** 1 *' . $storage_item__2239 ;
+$global_action_debug_line = '***** handle-definition-simple **** 2237 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2239 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-}
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( $global_dashrep_replacement{ $storage_item__2239 } ) ) ) {
-print TRACE_OUT 'phrase ' . $storage_item__2239 . ' is: ' . $global_dashrep_replacement{ $storage_item__2239 } . "\n" ;
-} else {
-print TRACE_OUT 'phrase ' . $storage_item__2239 . ' is not defined' . "\n" ;
-}
-# print 'result: ' . $storage_item__2238 . "\n" ;
-# end of action trace-show
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 72 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2238 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
+$storage_item__2237 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2237 . "\n" ;
+# end of action generate-list-of-tokens-in-current-definition-quotable
 
-$global_action_debug_line = '***** handle-definition-special **** 2242 *** special-definition-phrase-name ** 0 *' . '' ;
+$global_action_debug_line = '***** handle-definition-simple **** 2239 *** generate-runtime-code-for-phrase-definition-simple ** 0 *' . '' ;
+# print $global_action_debug_line . "\n" ;
+#
+$saved_accumulator_pointer = $global_accumulator_pointer ;
+$global_accumulator_pointer = 73 ;
+$global_accumulator[ $global_accumulator_pointer ] = '' ;
+# todo: fix
+$global_phrase_name_to_match = $storage_item__2240 ;
+&function_branch_based_on_phrase_name( ) ;
+# &function_compiled__generate_runtime_code_for_phrase_definition_simple( ) ;
+$storage_item__2239 = $global_accumulator[ $global_accumulator_pointer ] ;
+$global_accumulator_pointer = $saved_accumulator_pointer ;
+# print 'result: ' . $storage_item__2239 . "\n" ;
+# end of action generate-runtime-code-for-phrase-definition-simple
+
+$global_action_debug_line = '***** handle-definition-simple **** 2243 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 74 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 # todo: fix
-$global_phrase_name_to_match = $storage_item__2243 ;
+$global_phrase_name_to_match = $storage_item__2244 ;
 &function_branch_based_on_phrase_name( ) ;
-# &function_compiled__special_definition_phrase_name( ) ;
-$storage_item__2242 = $global_accumulator[ $global_accumulator_pointer ] ;
+# &function_compiled__filename_output_results_all_definition_items( ) ;
+$storage_item__2243 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
-# print 'result: ' . $storage_item__2242 . "\n" ;
-# end of action special-definition-phrase-name
+# print 'result: ' . $storage_item__2243 . "\n" ;
+# end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** handle-definition-special **** 2240 *** copy-text ** 2 *' . $storage_item__2241 . ' ' . $storage_item__2242 . '-' . $storage_item__2244 ;
+$global_action_debug_line = '***** handle-definition-simple **** 2241 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2242 . ' ' . $storage_item__2243 ;
 # print $global_action_debug_line . "\n" ;
 #
+$global_single_action_name = 'copy-from-phrase-append-to-file' ;
+$global_number_of_operands = 2 ;
+$global_single_action_operand_one = $storage_item__2242 ;
+$global_single_action_operand_two = $storage_item__2243 ;
+$global_single_action_operand_three = '' ;
+$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2241 ) ;
+if ( $global_number_of_operands != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2242 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2242 . '-' . $storage_item__2244 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_file_name( $storage_item__2243 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__2241 } ;
-$global_dashrep_replacement{ $storage_item__2242 . '-' . $storage_item__2244 } = $global_target_text ;
-$storage_item__2240 = '' ;
+$storage_item__2241 = &dashrep_expand_parameters( ) ;
 } else {
-$storage_item__2240 = 'copy-text ' . $storage_item__2241 . ' ' . $storage_item__2242 . '-' . $storage_item__2244 ;
+$storage_item__2241 = 'copy-from-phrase-append-to-file ' . $storage_item__2242 . ' ' . $storage_item__2243 ;
 }
-# print 'result: ' . $storage_item__2240 . "\n" ;
-# end of action copy-text
+# print 'result: ' . $storage_item__2241 . "\n" ;
+# end of action copy-from-phrase-append-to-file
 
 return '' ;
-} # end of function_compiled__handle_definition_special
+} # end of function_compiled__handle_definition_simple
 
 #------------------------------------------------------------
 sub function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) {
