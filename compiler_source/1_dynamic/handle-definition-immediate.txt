@@ -16,4 +16,4 @@
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
+[-copy-text phrase-definition-modified [-immediate-definition-phrase-name-]-modified-]

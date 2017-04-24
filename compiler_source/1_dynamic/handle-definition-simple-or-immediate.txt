@@ -1,0 +1,12 @@
+[-copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name-]
+
+
+[-trace-show phrase-being-defined-]
+
+
+[-if-yes-begin [-yes-or-no-empty-phrase possible-immediate-definition-phrase-name-]-]
+[-handle-definition-simple-]
+[-if-else-]
+[-copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name-]
+[-handle-definition-immediate-]
+[-if-end-]
