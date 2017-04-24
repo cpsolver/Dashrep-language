@@ -29,12 +29,6 @@ compile-source-code-finish:
 [-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
-
-[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
-[-append-text-no-space runtime-code-at-top-if-warning-message output-results-]
-[-append-text-no-space warning-messages output-results-]
-[-append-text-no-space new-empty-lines output-results-]
-[-if-end-]
 ----
 compile-source-code-generate-output-results:
 [-compile-source-code-initialize-]
@@ -56,16 +50,18 @@ compile-source-code-initialize:
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
 [-define-special-strings-]
-
 [-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
-
 [-assign-action-operand-characteristics-]
 [-put-into-phrase current-storage-position  1001 -]
+[-put-into-phrase count-of-ambee-tokens  0 -]
+[-put-into-phrase count-of-amenn-tokens  0 -]
 
+*---
 [-put-into-phrase filename-output-initializations-only  output_initializations_only.txt -]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
 [-write-all-dashrep-definitions-to-file [-filename-output-initializations-only-]-]
+---*
 
 [-expand-text list-of-template-functions output-results-all-runtime-functions-]
 [-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-standard-runtime-functions-]-]
@@ -515,17 +511,16 @@ handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
 ----
 handle-non-zero-count-of-ambee-minus-amenn-tokens:
+[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
+[-append-text phrase-being-defined warning-message-]
+
 [-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
-[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
-[-append-text phrase-being-defined warning-message-]
 [-append-text warning-more-ambee-than-amenn-tokens warning-message-]
-[-append-text-no-space warning-message warning-messages-]
 [-if-else-]
-[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
-[-append-text phrase-being-defined warning-message-]
 [-append-text warning-more-amenn-than-ambee-tokens warning-message-]
-[-append-text-no-space warning-message warning-messages-]
 [-if-end-]
+
+[-append-text-no-space warning-message warning-messages-]
 ----
 handle-token-ambee:
 [-recursion-stack-push-]
@@ -750,8 +745,13 @@ initialize-input-output-files:
 ----
 recursion-stack-pop-case-empty:
 [-put-into-phrase current-result-storage-position  0 -]
-[-expand-text template-warning-more-amenn-than-ambee-tokens warning-message-]
+
+*---
+[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
+[-append-text phrase-being-defined warning-message-]
+[-append-text warning-more-amenn-than-ambee-tokens warning-message-]
 [-append-text-no-space warning-message warning-messages-]
+---*
 ----
 recursion-stack-pop-case-not-empty:
 [-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-position-top-of-stack-] 1 -]-]-]
@@ -805,6 +805,13 @@ start-here:
 [-run-compiler-]
 ----
 write-results-to-output-file:
+[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
+[-copy-text runtime-code-at-top-if-warning-message output-warning-messages-]
+[-append-text-no-space warning-messages output-warning-messages-]
+[-append-text-no-space new-empty-lines output-warning-messages-]
+[-copy-from-phrase-append-to-file output-warning-messages [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
