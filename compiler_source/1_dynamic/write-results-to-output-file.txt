@@ -1,3 +1,10 @@
+[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
+[-copy-text runtime-code-at-top-if-warning-message output-warning-messages-]
+[-append-text-no-space warning-messages output-warning-messages-]
+[-append-text-no-space new-empty-lines output-warning-messages-]
+[-copy-from-phrase-append-to-file output-warning-messages [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]

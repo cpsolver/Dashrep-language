@@ -9,9 +9,3 @@
 [-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
-
-[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
-[-append-text-no-space runtime-code-at-top-if-warning-message output-results-]
-[-append-text-no-space warning-messages output-results-]
-[-append-text-no-space new-empty-lines output-results-]
-[-if-end-]
