@@ -7146,7 +7146,7 @@ my $storage_item__4948 = 'template-runtime-code-for-action-zero-or-nonzero' ;
 my $storage_item__4949 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-storage-item-result = ' . "'" . 'nonzero' . "'" . ' ; <new_line> if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( runtime-code-for-operand-number-one + 0 <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__4948 } = $storage_item__4949 ;
 my $storage_item__4950 = 'template-runtime-code-for-every-action-begin' ;
-my $storage_item__4951 = '$global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line> # <new_line>' ;
+my $storage_item__4951 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line> # <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4950 } = $storage_item__4951 ;
 my $storage_item__4952 = 'template-runtime-code-for-every-action-end' ;
 my $storage_item__4953 = '# print ' . "'" . 'result: ' . "'" . ' . runtime-code-storage-item-result . "' . '\\' . 'n" ; <new_line> # end of action <dashrep_placeholder_action_name><new_line>' ;
@@ -7805,7 +7805,7 @@ $global_replacement_count_for_item_name{ 'compile-source-code-finish' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate amenn ambee copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-modified amenn ambee copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed amenn ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn ambee if-no-begin ambee yes-or-no-empty-phrase warning-messages amenn amenn ambee append-text-no-space runtime-code-at-top-if-warning-message output-results amenn ambee append-text-no-space warning-messages output-results amenn ambee append-text-no-space new-empty-lines output-results amenn ambee if-end amenn
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1010 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1011 . ' ' . $storage_item__1012 . ' ' . $storage_item__1013 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1010 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1011 . ' ' . $storage_item__1012 . ' ' . $storage_item__1013 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-only-in-first-list' ;
@@ -7834,7 +7834,7 @@ $storage_item__1010 = 'copy-words-found-only-in-first-list ' . $storage_item__10
 # print 'result: ' . $storage_item__1010 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1014 *** copy-words-unique-only ** 2 *' . $storage_item__1015 . ' ' . $storage_item__1016 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1014 *** copy-words-unique-only ** 2 *' . $storage_item__1015 . ' ' . $storage_item__1016 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-unique-only' ;
@@ -7863,7 +7863,7 @@ $storage_item__1014 = 'copy-words-unique-only ' . $storage_item__1015 . ' ' . $s
 # print 'result: ' . $storage_item__1014 . "\n" ;
 # end of action copy-words-unique-only
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1017 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1018 . ' ' . $storage_item__1019 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1017 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1018 . ' ' . $storage_item__1019 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-sort-alphabetic' ;
@@ -7892,7 +7892,7 @@ $storage_item__1017 = 'copy-words-sort-alphabetic ' . $storage_item__1018 . ' ' 
 # print 'result: ' . $storage_item__1017 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1020 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1021 . ' ' . $storage_item__1022 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1020 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1021 . ' ' . $storage_item__1022 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -7965,7 +7965,7 @@ $storage_item__1020 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1020 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1024 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1025 . ' ' . $storage_item__1026 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1024 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1025 . ' ' . $storage_item__1026 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -8038,7 +8038,7 @@ $storage_item__1024 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1024 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1028 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1029 . ' ' . $storage_item__1030 . ' ' . $storage_item__1031 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1028 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1029 . ' ' . $storage_item__1030 . ' ' . $storage_item__1031 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-only-in-first-list' ;
@@ -8067,7 +8067,7 @@ $storage_item__1028 = 'copy-words-found-only-in-first-list ' . $storage_item__10
 # print 'result: ' . $storage_item__1028 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1032 *** copy-words-unique-only ** 2 *' . $storage_item__1033 . ' ' . $storage_item__1034 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1032 *** copy-words-unique-only ** 2 *' . $storage_item__1033 . ' ' . $storage_item__1034 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-unique-only' ;
@@ -8096,7 +8096,7 @@ $storage_item__1032 = 'copy-words-unique-only ' . $storage_item__1033 . ' ' . $s
 # print 'result: ' . $storage_item__1032 . "\n" ;
 # end of action copy-words-unique-only
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1035 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1036 . ' ' . $storage_item__1037 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1035 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1036 . ' ' . $storage_item__1037 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-sort-alphabetic' ;
@@ -8125,7 +8125,7 @@ $storage_item__1035 = 'copy-words-sort-alphabetic ' . $storage_item__1036 . ' ' 
 # print 'result: ' . $storage_item__1035 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1038 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1039 . ' ' . $storage_item__1040 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1038 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1039 . ' ' . $storage_item__1040 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -8198,7 +8198,7 @@ $storage_item__1038 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1038 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1043 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1044 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1043 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1044 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -8230,7 +8230,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1045 *** append-text-no-space ** 2 *' . $storage_item__1046 . ' ' . $storage_item__1047 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1045 *** append-text-no-space ** 2 *' . $storage_item__1046 . ' ' . $storage_item__1047 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -8259,7 +8259,7 @@ $storage_item__1045 = 'append-text-no-space ' . $storage_item__1046 . ' ' . $sto
 # print 'result: ' . $storage_item__1045 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1048 *** append-text-no-space ** 2 *' . $storage_item__1049 . ' ' . $storage_item__1050 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1048 *** append-text-no-space ** 2 *' . $storage_item__1049 . ' ' . $storage_item__1050 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -8288,7 +8288,7 @@ $storage_item__1048 = 'append-text-no-space ' . $storage_item__1049 . ' ' . $sto
 # print 'result: ' . $storage_item__1048 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** compile-source-code-finish **** 1051 *** append-text-no-space ** 2 *' . $storage_item__1052 . ' ' . $storage_item__1053 ;
+# $global_action_debug_line = '***** compile-source-code-finish **** 1051 *** append-text-no-space ** 2 *' . $storage_item__1052 . ' ' . $storage_item__1053 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -8331,7 +8331,7 @@ $global_replacement_count_for_item_name{ 'compile-source-code-generate-output-re
 my $saved_accumulator_pointer = -1 ;
 # ambee compile-source-code-initialize amenn ambee convert-source-code-into-words amenn ambee trace-show source-code-as-words amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words amenn ambee compile-source-code-finish amenn
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1057 *** compile-source-code-initialize ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1057 *** compile-source-code-initialize ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8346,7 +8346,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1057 . "\n" ;
 # end of action compile-source-code-initialize
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1059 *** convert-source-code-into-words ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1059 *** convert-source-code-into-words ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8361,7 +8361,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1059 . "\n" ;
 # end of action convert-source-code-into-words
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1061 *** trace-show ** 1 *' . $storage_item__1062 ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1061 *** trace-show ** 1 *' . $storage_item__1062 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8377,7 +8377,7 @@ print TRACE_OUT 'phrase ' . $storage_item__1062 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__1061 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1063 *** clear-phrase ** 1 *' . $storage_item__1064 ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1063 *** clear-phrase ** 1 *' . $storage_item__1064 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8394,7 +8394,7 @@ $storage_item__1063 = 'clear-phrase ' . $storage_item__1064 ;
 # print 'result: ' . $storage_item__1063 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1065 *** put-into-phrase ** 2 *' . $storage_item__1066 . ' ' . $storage_item__1067 ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1065 *** put-into-phrase ** 2 *' . $storage_item__1066 . ' ' . $storage_item__1067 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8412,7 +8412,7 @@ $storage_item__1065 = 'put-into-phrase ' . $storage_item__1066 . ' ' . $storage_
 # print 'result: ' . $storage_item__1065 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1068 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1069 . ' ' . $storage_item__1070 ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1068 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1069 . ' ' . $storage_item__1070 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -8485,7 +8485,7 @@ $storage_item__1068 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1068 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-generate-output-results **** 1072 *** compile-source-code-finish ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1072 *** compile-source-code-finish ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8509,7 +8509,7 @@ $global_replacement_count_for_item_name{ 'compile-source-code-initialize' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase local-or-batch-mode local amenn ambee put-into-phrase dashrep-time-limit 50000 amenn ambee put-into-phrase dashrep-endless-loop-counter-limit 900000000 amenn ambee put-into-phrase epoch-seconds-starting-time ambee get-current-time-in-epoch-seconds amenn amenn ambee define-special-strings amenn ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn ambee assign-action-operand-characteristics amenn ambee put-into-phrase current-storage-position 1001 amenn ambee put-into-phrase filename-output-initializations-only output_initializations_only.txt amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-initializations-only amenn amenn ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-standard-runtime-functions amenn amenn
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1076 *** put-into-phrase ** 2 *' . $storage_item__1077 . ' ' . $storage_item__1078 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1076 *** put-into-phrase ** 2 *' . $storage_item__1077 . ' ' . $storage_item__1078 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8527,7 +8527,7 @@ $storage_item__1076 = 'put-into-phrase ' . $storage_item__1077 . ' ' . $storage_
 # print 'result: ' . $storage_item__1076 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1079 *** put-into-phrase ** 2 *' . $storage_item__1080 . ' ' . $storage_item__1081 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1079 *** put-into-phrase ** 2 *' . $storage_item__1080 . ' ' . $storage_item__1081 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8545,7 +8545,7 @@ $storage_item__1079 = 'put-into-phrase ' . $storage_item__1080 . ' ' . $storage_
 # print 'result: ' . $storage_item__1079 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1082 *** put-into-phrase ** 2 *' . $storage_item__1083 . ' ' . $storage_item__1084 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1082 *** put-into-phrase ** 2 *' . $storage_item__1083 . ' ' . $storage_item__1084 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8563,7 +8563,7 @@ $storage_item__1082 = 'put-into-phrase ' . $storage_item__1083 . ' ' . $storage_
 # print 'result: ' . $storage_item__1082 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1087 *** get-current-time-in-epoch-seconds ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1087 *** get-current-time-in-epoch-seconds ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'get-current-time-in-epoch-seconds' ;
@@ -8584,7 +8584,7 @@ $storage_item__1087 = 'get-current-time-in-epoch-seconds ' . '' ;
 # print 'result: ' . $storage_item__1087 . "\n" ;
 # end of action get-current-time-in-epoch-seconds
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1085 *** put-into-phrase ** 2 *' . $storage_item__1086 . ' ' . $storage_item__1087 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1085 *** put-into-phrase ** 2 *' . $storage_item__1086 . ' ' . $storage_item__1087 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8602,7 +8602,7 @@ $storage_item__1085 = 'put-into-phrase ' . $storage_item__1086 . ' ' . $storage_
 # print 'result: ' . $storage_item__1085 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1088 *** define-special-strings ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1088 *** define-special-strings ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8617,7 +8617,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1088 . "\n" ;
 # end of action define-special-strings
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1090 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1091 . ' ' . $storage_item__1092 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1090 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1091 . ' ' . $storage_item__1092 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -8690,7 +8690,7 @@ $storage_item__1090 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1090 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1094 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1095 . ' ' . $storage_item__1096 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1094 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1095 . ' ' . $storage_item__1096 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -8763,7 +8763,7 @@ $storage_item__1094 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1094 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1098 *** assign-action-operand-characteristics ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1098 *** assign-action-operand-characteristics ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8778,7 +8778,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1098 . "\n" ;
 # end of action assign-action-operand-characteristics
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1100 *** put-into-phrase ** 2 *' . $storage_item__1101 . ' ' . $storage_item__1102 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1100 *** put-into-phrase ** 2 *' . $storage_item__1101 . ' ' . $storage_item__1102 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8796,7 +8796,7 @@ $storage_item__1100 = 'put-into-phrase ' . $storage_item__1101 . ' ' . $storage_
 # print 'result: ' . $storage_item__1100 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1103 *** put-into-phrase ** 2 *' . $storage_item__1104 . ' ' . $storage_item__1105 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1103 *** put-into-phrase ** 2 *' . $storage_item__1104 . ' ' . $storage_item__1105 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8814,7 +8814,7 @@ $storage_item__1103 = 'put-into-phrase ' . $storage_item__1104 . ' ' . $storage_
 # print 'result: ' . $storage_item__1103 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1106 *** put-into-phrase ** 2 *' . $storage_item__1107 . ' ' . $storage_item__1108 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1106 *** put-into-phrase ** 2 *' . $storage_item__1107 . ' ' . $storage_item__1108 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8832,7 +8832,7 @@ $storage_item__1106 = 'put-into-phrase ' . $storage_item__1107 . ' ' . $storage_
 # print 'result: ' . $storage_item__1106 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1110 *** filename-output-initializations-only ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1110 *** filename-output-initializations-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8847,7 +8847,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1110 . "\n" ;
 # end of action filename-output-initializations-only
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1109 *** write-all-dashrep-definitions-to-file ** 1 *' . $storage_item__1110 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1109 *** write-all-dashrep-definitions-to-file ** 1 *' . $storage_item__1110 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'write-all-dashrep-definitions-to-file' ;
@@ -8872,7 +8872,7 @@ $storage_item__1109 = 'write-all-dashrep-definitions-to-file ' . $storage_item__
 # print 'result: ' . $storage_item__1109 . "\n" ;
 # end of action write-all-dashrep-definitions-to-file
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1112 *** expand-text ** 2 *' . $storage_item__1113 . ' ' . $storage_item__1114 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1112 *** expand-text ** 2 *' . $storage_item__1113 . ' ' . $storage_item__1114 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -8901,7 +8901,7 @@ $storage_item__1112 = 'expand-text ' . $storage_item__1113 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1112 . "\n" ;
 # end of action expand-text
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1117 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1117 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -8916,7 +8916,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1117 . "\n" ;
 # end of action filename-output-standard-runtime-functions
 
-$global_action_debug_line = '***** compile-source-code-initialize **** 1115 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1116 . ' ' . $storage_item__1117 ;
+# $global_action_debug_line = '***** compile-source-code-initialize **** 1115 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1116 . ' ' . $storage_item__1117 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -8954,7 +8954,7 @@ $global_replacement_count_for_item_name{ 'convert-source-code-eliminate-one-spac
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn amenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee if-end amenn
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1126 *** get-position-of-matching-text ** 2 *' . $storage_item__1127 . ' ' . $storage_item__1128 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1126 *** get-position-of-matching-text ** 2 *' . $storage_item__1127 . ' ' . $storage_item__1128 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'get-position-of-matching-text' ;
@@ -8983,7 +8983,7 @@ $storage_item__1126 = 'get-position-of-matching-text ' . $storage_item__1127 . '
 # print 'result: ' . $storage_item__1126 . "\n" ;
 # end of action get-position-of-matching-text
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1124 *** put-into-phrase ** 2 *' . $storage_item__1125 . ' ' . $storage_item__1126 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1124 *** put-into-phrase ** 2 *' . $storage_item__1125 . ' ' . $storage_item__1126 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -9001,7 +9001,7 @@ $storage_item__1124 = 'put-into-phrase ' . $storage_item__1125 . ' ' . $storage_
 # print 'result: ' . $storage_item__1124 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1122 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1123 . ' ' . $storage_item__1124 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1122 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1123 . ' ' . $storage_item__1124 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1123 eq $storage_item__1124 ) {
@@ -9019,7 +9019,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1129 *** copy-and-replace ** 4 *' . $storage_item__1130 . ' ' . $storage_item__1131 . ' ' . $storage_item__1132 . ' ' . $storage_item__1133 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1129 *** copy-and-replace ** 4 *' . $storage_item__1130 . ' ' . $storage_item__1131 . ' ' . $storage_item__1132 . ' ' . $storage_item__1133 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9056,7 +9056,7 @@ $storage_item__1129 = 'copy-and-replace ' . $storage_item__1130 . ' ' . $storage
 # print 'result: ' . $storage_item__1129 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1134 *** copy-and-replace ** 4 *' . $storage_item__1135 . ' ' . $storage_item__1136 . ' ' . $storage_item__1137 . ' ' . $storage_item__1138 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1134 *** copy-and-replace ** 4 *' . $storage_item__1135 . ' ' . $storage_item__1136 . ' ' . $storage_item__1137 . ' ' . $storage_item__1138 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9093,7 +9093,7 @@ $storage_item__1134 = 'copy-and-replace ' . $storage_item__1135 . ' ' . $storage
 # print 'result: ' . $storage_item__1134 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1139 *** copy-and-replace ** 4 *' . $storage_item__1140 . ' ' . $storage_item__1141 . ' ' . $storage_item__1142 . ' ' . $storage_item__1143 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1139 *** copy-and-replace ** 4 *' . $storage_item__1140 . ' ' . $storage_item__1141 . ' ' . $storage_item__1142 . ' ' . $storage_item__1143 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9130,7 +9130,7 @@ $storage_item__1139 = 'copy-and-replace ' . $storage_item__1140 . ' ' . $storage
 # print 'result: ' . $storage_item__1139 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1144 *** copy-and-replace ** 4 *' . $storage_item__1145 . ' ' . $storage_item__1146 . ' ' . $storage_item__1147 . ' ' . $storage_item__1148 ;
+# $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1144 *** copy-and-replace ** 4 *' . $storage_item__1145 . ' ' . $storage_item__1146 . ' ' . $storage_item__1147 . ' ' . $storage_item__1148 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9181,7 +9181,7 @@ $global_replacement_count_for_item_name{ 'convert-source-code-into-words' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee convert-source-code-replace-parameter-brackets-with-ambee-and-amenn amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee put-into-phrase count-1-2 1 2 amenn ambee use-handler-with-each-word-in-phrase convert-source-code-eliminate-one-space-directive count-1-2 amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space character-space amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-hyphens-into-defenns amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-replacement-for-hyphen-here amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee copy-and-replace source-code-as-words source-code-as-lines character-space character-newline amenn
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1152 *** copy-and-replace ** 4 *' . $storage_item__1153 . ' ' . $storage_item__1154 . ' ' . $storage_item__1155 . ' ' . $storage_item__1156 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1152 *** copy-and-replace ** 4 *' . $storage_item__1153 . ' ' . $storage_item__1154 . ' ' . $storage_item__1155 . ' ' . $storage_item__1156 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9218,7 +9218,7 @@ $storage_item__1152 = 'copy-and-replace ' . $storage_item__1153 . ' ' . $storage
 # print 'result: ' . $storage_item__1152 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1157 *** copy-and-replace ** 4 *' . $storage_item__1158 . ' ' . $storage_item__1159 . ' ' . $storage_item__1160 . ' ' . $storage_item__1161 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1157 *** copy-and-replace ** 4 *' . $storage_item__1158 . ' ' . $storage_item__1159 . ' ' . $storage_item__1160 . ' ' . $storage_item__1161 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9255,7 +9255,7 @@ $storage_item__1157 = 'copy-and-replace ' . $storage_item__1158 . ' ' . $storage
 # print 'result: ' . $storage_item__1157 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1162 *** copy-and-replace ** 4 *' . $storage_item__1163 . ' ' . $storage_item__1164 . ' ' . $storage_item__1165 . ' ' . $storage_item__1166 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1162 *** copy-and-replace ** 4 *' . $storage_item__1163 . ' ' . $storage_item__1164 . ' ' . $storage_item__1165 . ' ' . $storage_item__1166 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9292,7 +9292,7 @@ $storage_item__1162 = 'copy-and-replace ' . $storage_item__1163 . ' ' . $storage
 # print 'result: ' . $storage_item__1162 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1167 *** copy-and-replace ** 4 *' . $storage_item__1168 . ' ' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1167 *** copy-and-replace ** 4 *' . $storage_item__1168 . ' ' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9329,7 +9329,7 @@ $storage_item__1167 = 'copy-and-replace ' . $storage_item__1168 . ' ' . $storage
 # print 'result: ' . $storage_item__1167 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1172 *** copy-without-extra-spaces ** 2 *' . $storage_item__1173 . ' ' . $storage_item__1174 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1172 *** copy-without-extra-spaces ** 2 *' . $storage_item__1173 . ' ' . $storage_item__1174 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -9358,7 +9358,7 @@ $storage_item__1172 = 'copy-without-extra-spaces ' . $storage_item__1173 . ' ' .
 # print 'result: ' . $storage_item__1172 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1175 *** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn ** 0 *' . '' ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1175 *** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -9373,7 +9373,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1175 . "\n" ;
 # end of action convert-source-code-replace-parameter-brackets-with-ambee-and-amenn
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1177 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1178 . ' ' . $storage_item__1179 . ' ' . $storage_item__1180 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1177 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1178 . ' ' . $storage_item__1179 . ' ' . $storage_item__1180 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace-using-paired-listed-words' ;
@@ -9406,7 +9406,7 @@ $storage_item__1177 = 'copy-and-replace-using-paired-listed-words ' . $storage_i
 # print 'result: ' . $storage_item__1177 . "\n" ;
 # end of action copy-and-replace-using-paired-listed-words
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1181 *** copy-and-replace ** 4 *' . $storage_item__1182 . ' ' . $storage_item__1183 . ' ' . $storage_item__1184 . ' ' . $storage_item__1185 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1181 *** copy-and-replace ** 4 *' . $storage_item__1182 . ' ' . $storage_item__1183 . ' ' . $storage_item__1184 . ' ' . $storage_item__1185 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9443,7 +9443,7 @@ $storage_item__1181 = 'copy-and-replace ' . $storage_item__1182 . ' ' . $storage
 # print 'result: ' . $storage_item__1181 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1186 *** copy-without-extra-spaces ** 2 *' . $storage_item__1187 . ' ' . $storage_item__1188 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1186 *** copy-without-extra-spaces ** 2 *' . $storage_item__1187 . ' ' . $storage_item__1188 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -9472,7 +9472,7 @@ $storage_item__1186 = 'copy-without-extra-spaces ' . $storage_item__1187 . ' ' .
 # print 'result: ' . $storage_item__1186 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1189 *** put-into-phrase ** 3 *' . $storage_item__1190 . ' ' . $storage_item__1191 . ' ' . $storage_item__1192 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1189 *** put-into-phrase ** 3 *' . $storage_item__1190 . ' ' . $storage_item__1191 . ' ' . $storage_item__1192 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -9490,7 +9490,7 @@ $storage_item__1189 = 'put-into-phrase ' . $storage_item__1190 . ' ' . $storage_
 # print 'result: ' . $storage_item__1189 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1193 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1194 . ' ' . $storage_item__1195 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1193 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1194 . ' ' . $storage_item__1195 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -9563,7 +9563,7 @@ $storage_item__1193 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1193 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1197 *** copy-and-replace ** 4 *' . $storage_item__1198 . ' ' . $storage_item__1199 . ' ' . $storage_item__1200 . ' ' . $storage_item__1201 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1197 *** copy-and-replace ** 4 *' . $storage_item__1198 . ' ' . $storage_item__1199 . ' ' . $storage_item__1200 . ' ' . $storage_item__1201 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9600,7 +9600,7 @@ $storage_item__1197 = 'copy-and-replace ' . $storage_item__1198 . ' ' . $storage
 # print 'result: ' . $storage_item__1197 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1202 *** copy-and-replace ** 4 *' . $storage_item__1203 . ' ' . $storage_item__1204 . ' ' . $storage_item__1205 . ' ' . $storage_item__1206 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1202 *** copy-and-replace ** 4 *' . $storage_item__1203 . ' ' . $storage_item__1204 . ' ' . $storage_item__1205 . ' ' . $storage_item__1206 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9637,7 +9637,7 @@ $storage_item__1202 = 'copy-and-replace ' . $storage_item__1203 . ' ' . $storage
 # print 'result: ' . $storage_item__1202 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1207 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1208 . ' ' . $storage_item__1209 . ' ' . $storage_item__1210 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1207 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1208 . ' ' . $storage_item__1209 . ' ' . $storage_item__1210 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace-using-paired-listed-words' ;
@@ -9670,7 +9670,7 @@ $storage_item__1207 = 'copy-and-replace-using-paired-listed-words ' . $storage_i
 # print 'result: ' . $storage_item__1207 . "\n" ;
 # end of action copy-and-replace-using-paired-listed-words
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1211 *** copy-and-replace ** 4 *' . $storage_item__1212 . ' ' . $storage_item__1213 . ' ' . $storage_item__1214 . ' ' . $storage_item__1215 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1211 *** copy-and-replace ** 4 *' . $storage_item__1212 . ' ' . $storage_item__1213 . ' ' . $storage_item__1214 . ' ' . $storage_item__1215 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9707,7 +9707,7 @@ $storage_item__1211 = 'copy-and-replace ' . $storage_item__1212 . ' ' . $storage
 # print 'result: ' . $storage_item__1211 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1216 *** copy-without-extra-spaces ** 2 *' . $storage_item__1217 . ' ' . $storage_item__1218 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1216 *** copy-without-extra-spaces ** 2 *' . $storage_item__1217 . ' ' . $storage_item__1218 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -9736,7 +9736,7 @@ $storage_item__1216 = 'copy-without-extra-spaces ' . $storage_item__1217 . ' ' .
 # print 'result: ' . $storage_item__1216 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** convert-source-code-into-words **** 1219 *** copy-and-replace ** 4 *' . $storage_item__1220 . ' ' . $storage_item__1221 . ' ' . $storage_item__1222 . ' ' . $storage_item__1223 ;
+# $global_action_debug_line = '***** convert-source-code-into-words **** 1219 *** copy-and-replace ** 4 *' . $storage_item__1220 . ' ' . $storage_item__1221 . ' ' . $storage_item__1222 . ' ' . $storage_item__1223 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9782,7 +9782,7 @@ $global_replacement_count_for_item_name{ 'convert-source-code-replace-parameter-
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters amenn ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn ambee put-into-phrase list-of-underscore-and-period _ . amenn ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-underscore-and-period amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1226 *** copy-and-replace ** 4 *' . $storage_item__1227 . ' ' . $storage_item__1228 . ' ' . $storage_item__1229 . ' ' . $storage_item__1230 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1226 *** copy-and-replace ** 4 *' . $storage_item__1227 . ' ' . $storage_item__1228 . ' ' . $storage_item__1229 . ' ' . $storage_item__1230 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9819,7 +9819,7 @@ $storage_item__1226 = 'copy-and-replace ' . $storage_item__1227 . ' ' . $storage
 # print 'result: ' . $storage_item__1226 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1231 *** copy-and-replace ** 4 *' . $storage_item__1232 . ' ' . $storage_item__1233 . ' ' . $storage_item__1234 . ' ' . $storage_item__1235 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1231 *** copy-and-replace ** 4 *' . $storage_item__1232 . ' ' . $storage_item__1233 . ' ' . $storage_item__1234 . ' ' . $storage_item__1235 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9856,7 +9856,7 @@ $storage_item__1231 = 'copy-and-replace ' . $storage_item__1232 . ' ' . $storage
 # print 'result: ' . $storage_item__1231 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1236 *** copy-and-replace ** 4 *' . $storage_item__1237 . ' ' . $storage_item__1238 . ' ' . $storage_item__1239 . ' ' . $storage_item__1240 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1236 *** copy-and-replace ** 4 *' . $storage_item__1237 . ' ' . $storage_item__1238 . ' ' . $storage_item__1239 . ' ' . $storage_item__1240 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9893,7 +9893,7 @@ $storage_item__1236 = 'copy-and-replace ' . $storage_item__1237 . ' ' . $storage
 # print 'result: ' . $storage_item__1236 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1241 *** copy-and-replace ** 4 *' . $storage_item__1242 . ' ' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1241 *** copy-and-replace ** 4 *' . $storage_item__1242 . ' ' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9930,7 +9930,7 @@ $storage_item__1241 = 'copy-and-replace ' . $storage_item__1242 . ' ' . $storage
 # print 'result: ' . $storage_item__1241 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1246 *** copy-and-replace ** 4 *' . $storage_item__1247 . ' ' . $storage_item__1248 . ' ' . $storage_item__1249 . ' ' . $storage_item__1250 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1246 *** copy-and-replace ** 4 *' . $storage_item__1247 . ' ' . $storage_item__1248 . ' ' . $storage_item__1249 . ' ' . $storage_item__1250 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -9967,7 +9967,7 @@ $storage_item__1246 = 'copy-and-replace ' . $storage_item__1247 . ' ' . $storage
 # print 'result: ' . $storage_item__1246 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1251 *** copy-and-replace ** 4 *' . $storage_item__1252 . ' ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1251 *** copy-and-replace ** 4 *' . $storage_item__1252 . ' ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10004,7 +10004,7 @@ $storage_item__1251 = 'copy-and-replace ' . $storage_item__1252 . ' ' . $storage
 # print 'result: ' . $storage_item__1251 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1256 *** copy-and-replace ** 4 *' . $storage_item__1257 . ' ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' . $storage_item__1260 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1256 *** copy-and-replace ** 4 *' . $storage_item__1257 . ' ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' . $storage_item__1260 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10041,7 +10041,7 @@ $storage_item__1256 = 'copy-and-replace ' . $storage_item__1257 . ' ' . $storage
 # print 'result: ' . $storage_item__1256 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1261 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1262 . ' ' . $storage_item__1263 . ' ' . $storage_item__1264 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1261 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1262 . ' ' . $storage_item__1263 . ' ' . $storage_item__1264 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'generate-positions-of-delimiter' ;
@@ -10074,7 +10074,7 @@ $storage_item__1261 = 'generate-positions-of-delimiter ' . $storage_item__1262 .
 # print 'result: ' . $storage_item__1261 . "\n" ;
 # end of action generate-positions-of-delimiter
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1265 *** numeric-vector-add-number ** 3 *' . $storage_item__1266 . ' ' . $storage_item__1267 . ' ' . $storage_item__1268 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1265 *** numeric-vector-add-number ** 3 *' . $storage_item__1266 . ' ' . $storage_item__1267 . ' ' . $storage_item__1268 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-vector-add-number' ;
@@ -10107,7 +10107,7 @@ $storage_item__1265 = 'numeric-vector-add-number ' . $storage_item__1266 . ' ' .
 # print 'result: ' . $storage_item__1265 . "\n" ;
 # end of action numeric-vector-add-number
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1269 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' . $storage_item__1272 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1269 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' . $storage_item__1272 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'generate-positions-of-delimiter' ;
@@ -10140,7 +10140,7 @@ $storage_item__1269 = 'generate-positions-of-delimiter ' . $storage_item__1270 .
 # print 'result: ' . $storage_item__1269 . "\n" ;
 # end of action generate-positions-of-delimiter
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1273 *** numeric-vector-add-number ** 3 *' . $storage_item__1274 . ' ' . $storage_item__1275 . ' ' . $storage_item__1276 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1273 *** numeric-vector-add-number ** 3 *' . $storage_item__1274 . ' ' . $storage_item__1275 . ' ' . $storage_item__1276 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-vector-add-number' ;
@@ -10173,7 +10173,7 @@ $storage_item__1273 = 'numeric-vector-add-number ' . $storage_item__1274 . ' ' .
 # print 'result: ' . $storage_item__1273 . "\n" ;
 # end of action numeric-vector-add-number
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1277 *** copy-text ** 2 *' . $storage_item__1278 . ' ' . $storage_item__1279 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1277 *** copy-text ** 2 *' . $storage_item__1278 . ' ' . $storage_item__1279 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10195,7 +10195,7 @@ $storage_item__1277 = 'copy-text ' . $storage_item__1278 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1277 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1280 *** append-text ** 2 *' . $storage_item__1281 . ' ' . $storage_item__1282 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1280 *** append-text ** 2 *' . $storage_item__1281 . ' ' . $storage_item__1282 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -10224,7 +10224,7 @@ $storage_item__1280 = 'append-text ' . $storage_item__1281 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1280 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1283 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1284 . ' ' . $storage_item__1285 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1283 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1284 . ' ' . $storage_item__1285 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -10297,7 +10297,7 @@ $storage_item__1283 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1283 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1287 *** copy-words-unique-only ** 2 *' . $storage_item__1288 . ' ' . $storage_item__1289 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1287 *** copy-words-unique-only ** 2 *' . $storage_item__1288 . ' ' . $storage_item__1289 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-unique-only' ;
@@ -10326,7 +10326,7 @@ $storage_item__1287 = 'copy-words-unique-only ' . $storage_item__1288 . ' ' . $s
 # print 'result: ' . $storage_item__1287 . "\n" ;
 # end of action copy-words-unique-only
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1290 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1291 . ' ' . $storage_item__1292 . ' ' . $storage_item__1293 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1290 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1291 . ' ' . $storage_item__1292 . ' ' . $storage_item__1293 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-only-in-first-list' ;
@@ -10355,7 +10355,7 @@ $storage_item__1290 = 'copy-words-found-only-in-first-list ' . $storage_item__12
 # print 'result: ' . $storage_item__1290 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1294 *** put-into-phrase ** 3 *' . $storage_item__1295 . ' ' . $storage_item__1296 . ' ' . $storage_item__1297 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1294 *** put-into-phrase ** 3 *' . $storage_item__1295 . ' ' . $storage_item__1296 . ' ' . $storage_item__1297 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10373,7 +10373,7 @@ $storage_item__1294 = 'put-into-phrase ' . $storage_item__1295 . ' ' . $storage_
 # print 'result: ' . $storage_item__1294 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1298 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1299 . ' ' . $storage_item__1300 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1298 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1299 . ' ' . $storage_item__1300 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -10446,7 +10446,7 @@ $storage_item__1298 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 # print 'result: ' . $storage_item__1298 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1302 *** copy-and-replace ** 4 *' . $storage_item__1303 . ' ' . $storage_item__1304 . ' ' . $storage_item__1305 . ' ' . $storage_item__1306 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1302 *** copy-and-replace ** 4 *' . $storage_item__1303 . ' ' . $storage_item__1304 . ' ' . $storage_item__1305 . ' ' . $storage_item__1306 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10483,7 +10483,7 @@ $storage_item__1302 = 'copy-and-replace ' . $storage_item__1303 . ' ' . $storage
 # print 'result: ' . $storage_item__1302 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1307 *** copy-and-replace ** 4 *' . $storage_item__1308 . ' ' . $storage_item__1309 . ' ' . $storage_item__1310 . ' ' . $storage_item__1311 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1307 *** copy-and-replace ** 4 *' . $storage_item__1308 . ' ' . $storage_item__1309 . ' ' . $storage_item__1310 . ' ' . $storage_item__1311 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10529,7 +10529,7 @@ $global_replacement_count_for_item_name{ 'convert-source-handle-nospay-insertion
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler current-symbol amenn ambee copy-text current-symbol string-symbol-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-symbol amenn ambee append-text-no-space current-symbol string-dash-close-bracket-symbol amenn ambee copy-text current-symbol string-symbol-nospay-open-bracket-dash amenn ambee append-text string-nospay string-symbol-nospay-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol amenn ambee append-text string-nospay string-dash-close-bracket-nospay-symbol amenn ambee append-text current-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1314 *** copy-text ** 2 *' . $storage_item__1315 . ' ' . $storage_item__1316 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1314 *** copy-text ** 2 *' . $storage_item__1315 . ' ' . $storage_item__1316 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10551,7 +10551,7 @@ $storage_item__1314 = 'copy-text ' . $storage_item__1315 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1314 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1317 *** copy-text ** 2 *' . $storage_item__1318 . ' ' . $storage_item__1319 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1317 *** copy-text ** 2 *' . $storage_item__1318 . ' ' . $storage_item__1319 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10573,7 +10573,7 @@ $storage_item__1317 = 'copy-text ' . $storage_item__1318 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1317 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1320 *** append-text-no-space ** 2 *' . $storage_item__1321 . ' ' . $storage_item__1322 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1320 *** append-text-no-space ** 2 *' . $storage_item__1321 . ' ' . $storage_item__1322 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -10602,7 +10602,7 @@ $storage_item__1320 = 'append-text-no-space ' . $storage_item__1321 . ' ' . $sto
 # print 'result: ' . $storage_item__1320 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1323 *** copy-text ** 2 *' . $storage_item__1324 . ' ' . $storage_item__1325 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1323 *** copy-text ** 2 *' . $storage_item__1324 . ' ' . $storage_item__1325 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10624,7 +10624,7 @@ $storage_item__1323 = 'copy-text ' . $storage_item__1324 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1323 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1326 *** append-text-no-space ** 2 *' . $storage_item__1327 . ' ' . $storage_item__1328 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1326 *** append-text-no-space ** 2 *' . $storage_item__1327 . ' ' . $storage_item__1328 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -10653,7 +10653,7 @@ $storage_item__1326 = 'append-text-no-space ' . $storage_item__1327 . ' ' . $sto
 # print 'result: ' . $storage_item__1326 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1329 *** copy-text ** 2 *' . $storage_item__1330 . ' ' . $storage_item__1331 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1329 *** copy-text ** 2 *' . $storage_item__1330 . ' ' . $storage_item__1331 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10675,7 +10675,7 @@ $storage_item__1329 = 'copy-text ' . $storage_item__1330 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1329 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1332 *** append-text ** 2 *' . $storage_item__1333 . ' ' . $storage_item__1334 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1332 *** append-text ** 2 *' . $storage_item__1333 . ' ' . $storage_item__1334 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -10704,7 +10704,7 @@ $storage_item__1332 = 'append-text ' . $storage_item__1333 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1332 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1335 *** append-text ** 2 *' . $storage_item__1336 . ' ' . $storage_item__1337 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1335 *** append-text ** 2 *' . $storage_item__1336 . ' ' . $storage_item__1337 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -10733,7 +10733,7 @@ $storage_item__1335 = 'append-text ' . $storage_item__1336 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1335 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1338 *** copy-text ** 2 *' . $storage_item__1339 . ' ' . $storage_item__1340 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1338 *** copy-text ** 2 *' . $storage_item__1339 . ' ' . $storage_item__1340 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10755,7 +10755,7 @@ $storage_item__1338 = 'copy-text ' . $storage_item__1339 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1338 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1341 *** append-text ** 2 *' . $storage_item__1342 . ' ' . $storage_item__1343 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1341 *** append-text ** 2 *' . $storage_item__1342 . ' ' . $storage_item__1343 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -10784,7 +10784,7 @@ $storage_item__1341 = 'append-text ' . $storage_item__1342 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1341 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1344 *** append-text ** 2 *' . $storage_item__1345 . ' ' . $storage_item__1346 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1344 *** append-text ** 2 *' . $storage_item__1345 . ' ' . $storage_item__1346 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -10813,7 +10813,7 @@ $storage_item__1344 = 'append-text ' . $storage_item__1345 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1344 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1347 *** copy-and-replace ** 4 *' . $storage_item__1348 . ' ' . $storage_item__1349 . ' ' . $storage_item__1350 . ' ' . $storage_item__1351 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1347 *** copy-and-replace ** 4 *' . $storage_item__1348 . ' ' . $storage_item__1349 . ' ' . $storage_item__1350 . ' ' . $storage_item__1351 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10850,7 +10850,7 @@ $storage_item__1347 = 'copy-and-replace ' . $storage_item__1348 . ' ' . $storage
 # print 'result: ' . $storage_item__1347 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1352 *** copy-and-replace ** 4 *' . $storage_item__1353 . ' ' . $storage_item__1354 . ' ' . $storage_item__1355 . ' ' . $storage_item__1356 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1352 *** copy-and-replace ** 4 *' . $storage_item__1353 . ' ' . $storage_item__1354 . ' ' . $storage_item__1355 . ' ' . $storage_item__1356 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10887,7 +10887,7 @@ $storage_item__1352 = 'copy-and-replace ' . $storage_item__1353 . ' ' . $storage
 # print 'result: ' . $storage_item__1352 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1357 *** copy-and-replace ** 4 *' . $storage_item__1358 . ' ' . $storage_item__1359 . ' ' . $storage_item__1360 . ' ' . $storage_item__1361 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1357 *** copy-and-replace ** 4 *' . $storage_item__1358 . ' ' . $storage_item__1359 . ' ' . $storage_item__1360 . ' ' . $storage_item__1361 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10924,7 +10924,7 @@ $storage_item__1357 = 'copy-and-replace ' . $storage_item__1358 . ' ' . $storage
 # print 'result: ' . $storage_item__1357 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1362 *** copy-and-replace ** 4 *' . $storage_item__1363 . ' ' . $storage_item__1364 . ' ' . $storage_item__1365 . ' ' . $storage_item__1366 ;
+# $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1362 *** copy-and-replace ** 4 *' . $storage_item__1363 . ' ' . $storage_item__1364 . ' ' . $storage_item__1365 . ' ' . $storage_item__1366 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -10970,7 +10970,7 @@ $global_replacement_count_for_item_name{ 'create-new-result-storage-position' } 
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase storage-type result amenn ambee create-new-storage-position amenn
 
-$global_action_debug_line = '***** create-new-result-storage-position **** 1369 *** put-into-phrase ** 2 *' . $storage_item__1370 . ' ' . $storage_item__1371 ;
+# $global_action_debug_line = '***** create-new-result-storage-position **** 1369 *** put-into-phrase ** 2 *' . $storage_item__1370 . ' ' . $storage_item__1371 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -10988,7 +10988,7 @@ $storage_item__1369 = 'put-into-phrase ' . $storage_item__1370 . ' ' . $storage_
 # print 'result: ' . $storage_item__1369 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** create-new-result-storage-position **** 1372 *** create-new-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** create-new-result-storage-position **** 1372 *** create-new-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11012,7 +11012,7 @@ $global_replacement_count_for_item_name{ 'create-new-storage-position' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee numeric-increment current-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text storage-type storage-type-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text current-storage-position current fen ambee storage-type amenn fen storage-position amenn
 
-$global_action_debug_line = '***** create-new-storage-position **** 1376 *** numeric-increment ** 1 *' . $storage_item__1377 ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1376 *** numeric-increment ** 1 *' . $storage_item__1377 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -11037,7 +11037,7 @@ $storage_item__1376 = 'numeric-increment ' . $storage_item__1377 ;
 # print 'result: ' . $storage_item__1376 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** create-new-storage-position **** 1380 *** current-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1380 *** current-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11052,7 +11052,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1380 . "\n" ;
 # end of action current-storage-position
 
-$global_action_debug_line = '***** create-new-storage-position **** 1378 *** clear-phrase ** 1 *' . $storage_item__1379 . '-' . $storage_item__1380 ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1378 *** clear-phrase ** 1 *' . $storage_item__1379 . '-' . $storage_item__1380 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11069,7 +11069,7 @@ $storage_item__1378 = 'clear-phrase ' . $storage_item__1379 . '-' . $storage_ite
 # print 'result: ' . $storage_item__1378 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** create-new-storage-position **** 1385 *** current-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1385 *** current-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11084,7 +11084,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1385 . "\n" ;
 # end of action current-storage-position
 
-$global_action_debug_line = '***** create-new-storage-position **** 1382 *** copy-text ** 2 *' . $storage_item__1383 . ' ' . $storage_item__1384 . '-' . $storage_item__1385 ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1382 *** copy-text ** 2 *' . $storage_item__1383 . ' ' . $storage_item__1384 . '-' . $storage_item__1385 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11106,7 +11106,7 @@ $storage_item__1382 = 'copy-text ' . $storage_item__1383 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1382 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** create-new-storage-position **** 1390 *** storage-type ** 0 *' . '' ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1390 *** storage-type ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11121,7 +11121,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1390 . "\n" ;
 # end of action storage-type
 
-$global_action_debug_line = '***** create-new-storage-position **** 1387 *** copy-text ** 2 *' . $storage_item__1388 . ' ' . $storage_item__1389 . '-' . $storage_item__1390 . '-' . $storage_item__1392 ;
+# $global_action_debug_line = '***** create-new-storage-position **** 1387 *** copy-text ** 2 *' . $storage_item__1388 . ' ' . $storage_item__1389 . '-' . $storage_item__1390 . '-' . $storage_item__1392 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11152,7 +11152,7 @@ $global_replacement_count_for_item_name{ 'create-new-text-storage-position' } ++
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase storage-type text amenn ambee create-new-storage-position amenn
 
-$global_action_debug_line = '***** create-new-text-storage-position **** 1395 *** put-into-phrase ** 2 *' . $storage_item__1396 . ' ' . $storage_item__1397 ;
+# $global_action_debug_line = '***** create-new-text-storage-position **** 1395 *** put-into-phrase ** 2 *' . $storage_item__1396 . ' ' . $storage_item__1397 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11170,7 +11170,7 @@ $storage_item__1395 = 'put-into-phrase ' . $storage_item__1396 . ' ' . $storage_
 # print 'result: ' . $storage_item__1395 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** create-new-text-storage-position **** 1398 *** create-new-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** create-new-text-storage-position **** 1398 *** create-new-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11194,7 +11194,7 @@ $global_replacement_count_for_item_name{ 'expand-one-template' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee expand-text template fen ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
 
-$global_action_debug_line = '***** expand-one-template **** 1404 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** expand-one-template **** 1404 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11209,7 +11209,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1404 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** expand-one-template **** 1406 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** expand-one-template **** 1406 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11224,7 +11224,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1406 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** expand-one-template **** 1402 *** expand-text ** 2 *' . $storage_item__1403 . '-' . $storage_item__1404 . ' ' . $storage_item__1406 ;
+# $global_action_debug_line = '***** expand-one-template **** 1402 *** expand-text ** 2 *' . $storage_item__1403 . '-' . $storage_item__1404 . ' ' . $storage_item__1406 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11262,7 +11262,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-1' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-2 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1410 *** copy-text ** 2 *' . $storage_item__1411 . ' ' . $storage_item__1412 ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1410 *** copy-text ** 2 *' . $storage_item__1411 . ' ' . $storage_item__1412 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11284,7 +11284,7 @@ $storage_item__1410 = 'copy-text ' . $storage_item__1411 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1410 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1413 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1414 . ' ' . $storage_item__1415 . ' ' . $storage_item__1416 ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1413 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1414 . ' ' . $storage_item__1415 . ' ' . $storage_item__1416 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-in-both-lists' ;
@@ -11317,7 +11317,7 @@ $storage_item__1413 = 'copy-words-found-in-both-lists ' . $storage_item__1414 . 
 # print 'result: ' . $storage_item__1413 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1418 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1419 ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1418 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1419 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -11349,7 +11349,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1420 *** filter-tokens-case-2 ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1420 *** filter-tokens-case-2 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11369,7 +11369,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1424 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1424 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11384,7 +11384,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1424 . "\n" ;
 # end of action non-empty-if-valid-token-handler-name
 
-$global_action_debug_line = '***** filter-tokens-case-1 **** 1423 *** filter-tokens-case ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-1 **** 1423 *** filter-tokens-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11411,7 +11411,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-2' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-within-comment amenn amenn ambee filter-tokens-case-3 amenn ambee if-else amenn ambee if-end amenn
 
-$global_action_debug_line = '***** filter-tokens-case-2 **** 1431 *** yes-or-no-within-comment ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-2 **** 1431 *** yes-or-no-within-comment ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11433,7 +11433,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-2 **** 1433 *** filter-tokens-case-3 ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-2 **** 1433 *** filter-tokens-case-3 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11467,7 +11467,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-3' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-4 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** filter-tokens-case-3 **** 1439 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1440 . ' ' . $storage_item__1441 . ' ' . $storage_item__1442 ;
+# $global_action_debug_line = '***** filter-tokens-case-3 **** 1439 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1440 . ' ' . $storage_item__1441 . ' ' . $storage_item__1442 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-in-both-lists' ;
@@ -11500,7 +11500,7 @@ $storage_item__1439 = 'copy-words-found-in-both-lists ' . $storage_item__1440 . 
 # print 'result: ' . $storage_item__1439 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
-$global_action_debug_line = '***** filter-tokens-case-3 **** 1444 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1445 ;
+# $global_action_debug_line = '***** filter-tokens-case-3 **** 1444 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1445 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -11532,7 +11532,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-3 **** 1446 *** filter-tokens-case-4 ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-3 **** 1446 *** filter-tokens-case-4 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11552,7 +11552,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** filter-tokens-case-3 **** 1450 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-3 **** 1450 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11567,7 +11567,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1450 . "\n" ;
 # end of action non-empty-if-valid-token-handler-name
 
-$global_action_debug_line = '***** filter-tokens-case-3 **** 1449 *** filter-tokens-case ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-3 **** 1449 *** filter-tokens-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11594,7 +11594,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-4' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee append-text current-token list-of-tokens-in-current-definition amenn ambee if-else amenn ambee copy-text current-token phrase-being-defined amenn ambee remove-colon-if-at-end-of-phrase-being-defined amenn ambee if-end amenn
 
-$global_action_debug_line = '***** filter-tokens-case-4 **** 1457 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1458 ;
+# $global_action_debug_line = '***** filter-tokens-case-4 **** 1457 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1458 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -11626,7 +11626,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-4 **** 1459 *** append-text ** 2 *' . $storage_item__1460 . ' ' . $storage_item__1461 ;
+# $global_action_debug_line = '***** filter-tokens-case-4 **** 1459 *** append-text ** 2 *' . $storage_item__1460 . ' ' . $storage_item__1461 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -11660,7 +11660,7 @@ $storage_item__1459 = 'append-text ' . $storage_item__1460 . ' ' . $storage_item
 # end action if else
 
 
-$global_action_debug_line = '***** filter-tokens-case-4 **** 1463 *** copy-text ** 2 *' . $storage_item__1464 . ' ' . $storage_item__1465 ;
+# $global_action_debug_line = '***** filter-tokens-case-4 **** 1463 *** copy-text ** 2 *' . $storage_item__1464 . ' ' . $storage_item__1465 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11682,7 +11682,7 @@ $storage_item__1463 = 'copy-text ' . $storage_item__1464 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1463 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** filter-tokens-case-4 **** 1466 *** remove-colon-if-at-end-of-phrase-being-defined ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-4 **** 1466 *** remove-colon-if-at-end-of-phrase-being-defined ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11711,7 +11711,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-ambee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee numeric-increment count-of-ambee-tokens amenn ambee append-text string-ambee list-of-tokens-in-current-definition amenn
 
-$global_action_debug_line = '***** filter-tokens-case-ambee **** 1471 *** numeric-increment ** 1 *' . $storage_item__1472 ;
+# $global_action_debug_line = '***** filter-tokens-case-ambee **** 1471 *** numeric-increment ** 1 *' . $storage_item__1472 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -11736,7 +11736,7 @@ $storage_item__1471 = 'numeric-increment ' . $storage_item__1472 ;
 # print 'result: ' . $storage_item__1471 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** filter-tokens-case-ambee **** 1473 *** append-text ** 2 *' . $storage_item__1474 . ' ' . $storage_item__1475 ;
+# $global_action_debug_line = '***** filter-tokens-case-ambee **** 1473 *** append-text ** 2 *' . $storage_item__1474 . ' ' . $storage_item__1475 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -11774,7 +11774,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee numeric-increment count-of-amenn-tokens amenn ambee append-text string-amenn list-of-tokens-in-current-definition amenn
 
-$global_action_debug_line = '***** filter-tokens-case-amenn **** 1478 *** numeric-increment ** 1 *' . $storage_item__1479 ;
+# $global_action_debug_line = '***** filter-tokens-case-amenn **** 1478 *** numeric-increment ** 1 *' . $storage_item__1479 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -11799,7 +11799,7 @@ $storage_item__1478 = 'numeric-increment ' . $storage_item__1479 ;
 # print 'result: ' . $storage_item__1478 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** filter-tokens-case-amenn **** 1480 *** append-text ** 2 *' . $storage_item__1481 . ' ' . $storage_item__1482 ;
+# $global_action_debug_line = '***** filter-tokens-case-amenn **** 1480 *** append-text ** 2 *' . $storage_item__1481 . ' ' . $storage_item__1482 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -11837,7 +11837,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-combee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase yes-or-no-within-comment yes amenn
 
-$global_action_debug_line = '***** filter-tokens-case-combee **** 1485 *** put-into-phrase ** 2 *' . $storage_item__1486 . ' ' . $storage_item__1487 ;
+# $global_action_debug_line = '***** filter-tokens-case-combee **** 1485 *** put-into-phrase ** 2 *' . $storage_item__1486 . ' ' . $storage_item__1487 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11864,7 +11864,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-comenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase yes-or-no-within-comment no amenn
 
-$global_action_debug_line = '***** filter-tokens-case-comenn **** 1490 *** put-into-phrase ** 2 *' . $storage_item__1491 . ' ' . $storage_item__1492 ;
+# $global_action_debug_line = '***** filter-tokens-case-comenn **** 1490 *** put-into-phrase ** 2 *' . $storage_item__1491 . ' ' . $storage_item__1492 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11891,7 +11891,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-defenn-case-balance
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0 amenn amenn amenn ambee handle-definition-simple-or-immediate amenn ambee if-else amenn ambee handle-definition-contains-ambee-amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1500 *** count-of-ambee-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1500 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11906,7 +11906,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1500 . "\n" ;
 # end of action count-of-ambee-tokens
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1502 *** count-of-amenn-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1502 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11921,7 +11921,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1502 . "\n" ;
 # end of action count-of-amenn-tokens
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1499 *** numeric-add ** 2 *' . $storage_item__1500 . ' ' . $storage_item__1502 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1499 *** numeric-add ** 2 *' . $storage_item__1500 . ' ' . $storage_item__1502 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_source_text = $storage_item__1500 . ' ' . $storage_item__1502 ;
@@ -11930,7 +11930,7 @@ $storage_item__1499 = $global_target_text ;
 # print 'result: ' . $storage_item__1499 . "\n" ;
 # end of action numeric-add
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1498 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1499 . ' ' . $storage_item__1504 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1498 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1499 . ' ' . $storage_item__1504 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -11958,7 +11958,7 @@ $storage_item__1498 = 'less' ;
 # print 'result: ' . $storage_item__1498 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1496 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1497 . ' ' . $storage_item__1498 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1496 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1497 . ' ' . $storage_item__1498 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1497 eq $storage_item__1498 ) {
@@ -11976,7 +11976,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1505 *** handle-definition-simple-or-immediate ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1505 *** handle-definition-simple-or-immediate ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -11996,7 +11996,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1508 *** handle-definition-contains-ambee-amenn ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1508 *** handle-definition-contains-ambee-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12025,7 +12025,7 @@ $global_replacement_count_for_item_name{ 'filter-tokens-case-defenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee filter-tokens-case-defenn-case-balanced-ambee-amenn amenn ambee if-else amenn ambee handle-non-zero-count-of-ambee-minus-amenn-tokens amenn ambee if-end amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee clear-phrase list-of-tokens-in-current-definition amenn ambee put-into-phrase count-of-ambee-tokens 0 amenn ambee put-into-phrase count-of-amenn-tokens 0 amenn ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn ambee copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes amenn ambee delete-listed-phrases list-of-phrases-to-delete amenn
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1517 *** count-of-ambee-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1517 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12040,7 +12040,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1517 . "\n" ;
 # end of action count-of-ambee-tokens
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1519 *** count-of-amenn-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1519 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12055,7 +12055,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1519 . "\n" ;
 # end of action count-of-amenn-tokens
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1516 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1517 . ' ' . $storage_item__1519 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1516 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1517 . ' ' . $storage_item__1519 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12083,7 +12083,7 @@ $storage_item__1516 = 'less' ;
 # print 'result: ' . $storage_item__1516 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1514 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1515 . ' ' . $storage_item__1516 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1514 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1515 . ' ' . $storage_item__1516 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1515 eq $storage_item__1516 ) {
@@ -12101,7 +12101,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1521 *** filter-tokens-case-defenn-case-balanced-ambee-amenn ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1521 *** filter-tokens-case-defenn-case-balanced-ambee-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12121,7 +12121,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1524 *** handle-non-zero-count-of-ambee-minus-amenn-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1524 *** handle-non-zero-count-of-ambee-minus-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12141,7 +12141,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if end
 
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1527 *** clear-phrase ** 1 *' . $storage_item__1528 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1527 *** clear-phrase ** 1 *' . $storage_item__1528 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12158,7 +12158,7 @@ $storage_item__1527 = 'clear-phrase ' . $storage_item__1528 ;
 # print 'result: ' . $storage_item__1527 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1529 *** put-into-phrase ** 2 *' . $storage_item__1530 . ' ' . $storage_item__1531 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1529 *** put-into-phrase ** 2 *' . $storage_item__1530 . ' ' . $storage_item__1531 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12176,7 +12176,7 @@ $storage_item__1529 = 'put-into-phrase ' . $storage_item__1530 . ' ' . $storage_
 # print 'result: ' . $storage_item__1529 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1532 *** clear-phrase ** 1 *' . $storage_item__1533 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1532 *** clear-phrase ** 1 *' . $storage_item__1533 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12193,7 +12193,7 @@ $storage_item__1532 = 'clear-phrase ' . $storage_item__1533 ;
 # print 'result: ' . $storage_item__1532 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1534 *** put-into-phrase ** 2 *' . $storage_item__1535 . ' ' . $storage_item__1536 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1534 *** put-into-phrase ** 2 *' . $storage_item__1535 . ' ' . $storage_item__1536 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12211,7 +12211,7 @@ $storage_item__1534 = 'put-into-phrase ' . $storage_item__1535 . ' ' . $storage_
 # print 'result: ' . $storage_item__1534 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1537 *** put-into-phrase ** 2 *' . $storage_item__1538 . ' ' . $storage_item__1539 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1537 *** put-into-phrase ** 2 *' . $storage_item__1538 . ' ' . $storage_item__1539 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12229,7 +12229,7 @@ $storage_item__1537 = 'put-into-phrase ' . $storage_item__1538 . ' ' . $storage_
 # print 'result: ' . $storage_item__1537 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1540 *** generate-list-of-all-dashrep-phrases ** 1 *' . $storage_item__1541 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1540 *** generate-list-of-all-dashrep-phrases ** 1 *' . $storage_item__1541 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'generate-list-of-all-dashrep-phrases' ;
@@ -12254,7 +12254,7 @@ $storage_item__1540 = 'generate-list-of-all-dashrep-phrases ' . $storage_item__1
 # print 'result: ' . $storage_item__1540 . "\n" ;
 # end of action generate-list-of-all-dashrep-phrases
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1542 *** copy-words-that-begin-with-listed-words ** 3 *' . $storage_item__1543 . ' ' . $storage_item__1544 . ' ' . $storage_item__1545 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1542 *** copy-words-that-begin-with-listed-words ** 3 *' . $storage_item__1543 . ' ' . $storage_item__1544 . ' ' . $storage_item__1545 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-that-begin-with-listed-words' ;
@@ -12287,7 +12287,7 @@ $storage_item__1542 = 'copy-words-that-begin-with-listed-words ' . $storage_item
 # print 'result: ' . $storage_item__1542 . "\n" ;
 # end of action copy-words-that-begin-with-listed-words
 
-$global_action_debug_line = '***** filter-tokens-case-defenn **** 1546 *** delete-listed-phrases ** 1 *' . $storage_item__1547 ;
+# $global_action_debug_line = '***** filter-tokens-case-defenn **** 1546 *** delete-listed-phrases ** 1 *' . $storage_item__1547 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-listed-phrases' ;
@@ -12321,7 +12321,7 @@ $global_replacement_count_for_item_name{ 'generate-code-for-one-action' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores action-name-with-underscores amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-phrase ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-text current-result-storage-position higher-result-storage-position amenn ambee recursion-stack-pop amenn ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1550 *** copy-and-replace ** 4 *' . $storage_item__1551 . ' ' . $storage_item__1552 . ' ' . $storage_item__1553 . ' ' . $storage_item__1554 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1550 *** copy-and-replace ** 4 *' . $storage_item__1551 . ' ' . $storage_item__1552 . ' ' . $storage_item__1553 . ' ' . $storage_item__1554 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12358,7 +12358,7 @@ $storage_item__1550 = 'copy-and-replace ' . $storage_item__1551 . ' ' . $storage
 # print 'result: ' . $storage_item__1550 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1555 *** copy-and-replace ** 4 *' . $storage_item__1556 . ' ' . $storage_item__1557 . ' ' . $storage_item__1558 . ' ' . $storage_item__1559 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1555 *** copy-and-replace ** 4 *' . $storage_item__1556 . ' ' . $storage_item__1557 . ' ' . $storage_item__1558 . ' ' . $storage_item__1559 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12395,7 +12395,7 @@ $storage_item__1555 = 'copy-and-replace ' . $storage_item__1556 . ' ' . $storage
 # print 'result: ' . $storage_item__1555 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1560 *** copy-and-replace ** 4 *' . $storage_item__1561 . ' ' . $storage_item__1562 . ' ' . $storage_item__1563 . ' ' . $storage_item__1564 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1560 *** copy-and-replace ** 4 *' . $storage_item__1561 . ' ' . $storage_item__1562 . ' ' . $storage_item__1563 . ' ' . $storage_item__1564 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12432,7 +12432,7 @@ $storage_item__1560 = 'copy-and-replace ' . $storage_item__1561 . ' ' . $storage
 # print 'result: ' . $storage_item__1560 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1565 *** copy-and-replace ** 4 *' . $storage_item__1566 . ' ' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1565 *** copy-and-replace ** 4 *' . $storage_item__1566 . ' ' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12469,7 +12469,7 @@ $storage_item__1565 = 'copy-and-replace ' . $storage_item__1566 . ' ' . $storage
 # print 'result: ' . $storage_item__1565 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1570 *** copy-and-replace ** 4 *' . $storage_item__1571 . ' ' . $storage_item__1572 . ' ' . $storage_item__1573 . ' ' . $storage_item__1574 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1570 *** copy-and-replace ** 4 *' . $storage_item__1571 . ' ' . $storage_item__1572 . ' ' . $storage_item__1573 . ' ' . $storage_item__1574 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12506,7 +12506,7 @@ $storage_item__1570 = 'copy-and-replace ' . $storage_item__1571 . ' ' . $storage
 # print 'result: ' . $storage_item__1570 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1577 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1577 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12521,7 +12521,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1577 . "\n" ;
 # end of action filename-output-results-all-compiled-functions
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1575 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1576 . ' ' . $storage_item__1577 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1575 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1576 . ' ' . $storage_item__1577 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -12550,7 +12550,7 @@ $storage_item__1575 = 'copy-from-phrase-append-to-file ' . $storage_item__1576 .
 # print 'result: ' . $storage_item__1575 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1579 *** copy-text ** 2 *' . $storage_item__1580 . ' ' . $storage_item__1581 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1579 *** copy-text ** 2 *' . $storage_item__1580 . ' ' . $storage_item__1581 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12572,7 +12572,7 @@ $storage_item__1579 = 'copy-text ' . $storage_item__1580 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1579 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1582 *** recursion-stack-pop ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1582 *** recursion-stack-pop ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12587,7 +12587,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1582 . "\n" ;
 # end of action recursion-stack-pop
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1584 *** copy-text ** 2 *' . $storage_item__1585 . ' ' . $storage_item__1586 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1584 *** copy-text ** 2 *' . $storage_item__1585 . ' ' . $storage_item__1586 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -12609,7 +12609,7 @@ $storage_item__1584 = 'copy-text ' . $storage_item__1585 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1584 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1587 *** append-text-no-space ** 2 *' . $storage_item__1588 . ' ' . $storage_item__1589 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1587 *** append-text-no-space ** 2 *' . $storage_item__1588 . ' ' . $storage_item__1589 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -12638,7 +12638,7 @@ $storage_item__1587 = 'append-text-no-space ' . $storage_item__1588 . ' ' . $sto
 # print 'result: ' . $storage_item__1587 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1590 *** append-text-no-space ** 2 *' . $storage_item__1591 . ' ' . $storage_item__1592 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1590 *** append-text-no-space ** 2 *' . $storage_item__1591 . ' ' . $storage_item__1592 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -12667,7 +12667,7 @@ $storage_item__1590 = 'append-text-no-space ' . $storage_item__1591 . ' ' . $sto
 # print 'result: ' . $storage_item__1590 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1596 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1596 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -12682,7 +12682,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1596 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** generate-code-for-one-action **** 1593 *** append-text ** 2 *' . $storage_item__1594 . ' ' . $storage_item__1595 . '-' . $storage_item__1596 ;
+# $global_action_debug_line = '***** generate-code-for-one-action **** 1593 *** append-text ** 2 *' . $storage_item__1594 . ' ' . $storage_item__1595 . '-' . $storage_item__1596 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -12720,7 +12720,7 @@ $global_replacement_count_for_item_name{ 'generate-list-of-tokens-in-current-def
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1600 *** copy-and-replace ** 4 *' . $storage_item__1601 . ' ' . $storage_item__1602 . ' ' . $storage_item__1603 . ' ' . $storage_item__1604 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1600 *** copy-and-replace ** 4 *' . $storage_item__1601 . ' ' . $storage_item__1602 . ' ' . $storage_item__1603 . ' ' . $storage_item__1604 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12757,7 +12757,7 @@ $storage_item__1600 = 'copy-and-replace ' . $storage_item__1601 . ' ' . $storage
 # print 'result: ' . $storage_item__1600 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1605 *** copy-and-replace ** 4 *' . $storage_item__1606 . ' ' . $storage_item__1607 . ' ' . $storage_item__1608 . ' ' . $storage_item__1609 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1605 *** copy-and-replace ** 4 *' . $storage_item__1606 . ' ' . $storage_item__1607 . ' ' . $storage_item__1608 . ' ' . $storage_item__1609 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12794,7 +12794,7 @@ $storage_item__1605 = 'copy-and-replace ' . $storage_item__1606 . ' ' . $storage
 # print 'result: ' . $storage_item__1605 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1610 *** copy-and-replace ** 4 *' . $storage_item__1611 . ' ' . $storage_item__1612 . ' ' . $storage_item__1613 . ' ' . $storage_item__1614 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1610 *** copy-and-replace ** 4 *' . $storage_item__1611 . ' ' . $storage_item__1612 . ' ' . $storage_item__1613 . ' ' . $storage_item__1614 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12831,7 +12831,7 @@ $storage_item__1610 = 'copy-and-replace ' . $storage_item__1611 . ' ' . $storage
 # print 'result: ' . $storage_item__1610 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1615 *** copy-and-replace ** 4 *' . $storage_item__1616 . ' ' . $storage_item__1617 . ' ' . $storage_item__1618 . ' ' . $storage_item__1619 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1615 *** copy-and-replace ** 4 *' . $storage_item__1616 . ' ' . $storage_item__1617 . ' ' . $storage_item__1618 . ' ' . $storage_item__1619 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12868,7 +12868,7 @@ $storage_item__1615 = 'copy-and-replace ' . $storage_item__1616 . ' ' . $storage
 # print 'result: ' . $storage_item__1615 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1620 *** copy-and-replace ** 4 *' . $storage_item__1621 . ' ' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1620 *** copy-and-replace ** 4 *' . $storage_item__1621 . ' ' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12905,7 +12905,7 @@ $storage_item__1620 = 'copy-and-replace ' . $storage_item__1621 . ' ' . $storage
 # print 'result: ' . $storage_item__1620 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1625 *** copy-and-replace ** 4 *' . $storage_item__1626 . ' ' . $storage_item__1627 . ' ' . $storage_item__1628 . ' ' . $storage_item__1629 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1625 *** copy-and-replace ** 4 *' . $storage_item__1626 . ' ' . $storage_item__1627 . ' ' . $storage_item__1628 . ' ' . $storage_item__1629 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12942,7 +12942,7 @@ $storage_item__1625 = 'copy-and-replace ' . $storage_item__1626 . ' ' . $storage
 # print 'result: ' . $storage_item__1625 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1630 *** copy-and-replace ** 4 *' . $storage_item__1631 . ' ' . $storage_item__1632 . ' ' . $storage_item__1633 . ' ' . $storage_item__1634 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1630 *** copy-and-replace ** 4 *' . $storage_item__1631 . ' ' . $storage_item__1632 . ' ' . $storage_item__1633 . ' ' . $storage_item__1634 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -12979,7 +12979,7 @@ $storage_item__1630 = 'copy-and-replace ' . $storage_item__1631 . ' ' . $storage
 # print 'result: ' . $storage_item__1630 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1635 *** copy-and-replace ** 4 *' . $storage_item__1636 . ' ' . $storage_item__1637 . ' ' . $storage_item__1638 . ' ' . $storage_item__1639 ;
+# $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1635 *** copy-and-replace ** 4 *' . $storage_item__1636 . ' ' . $storage_item__1637 . ' ' . $storage_item__1638 . ' ' . $storage_item__1639 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -13025,7 +13025,7 @@ $global_replacement_count_for_item_name{ 'generate-runtime-code-for-external-fun
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn ambee copy-text code-function-external-part-1 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-2 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-3 runtime-code-function-external amenn ambee copy-from-phrase-append-to-file runtime-code-function-external ambee filename-output-results-functions-replacement-only amenn amenn
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1642 *** copy-text ** 2 *' . $storage_item__1643 . ' ' . $storage_item__1644 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1642 *** copy-text ** 2 *' . $storage_item__1643 . ' ' . $storage_item__1644 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13047,7 +13047,7 @@ $storage_item__1642 = 'copy-text ' . $storage_item__1643 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1642 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1645 *** copy-and-replace ** 4 *' . $storage_item__1646 . ' ' . $storage_item__1647 . ' ' . $storage_item__1648 . ' ' . $storage_item__1649 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1645 *** copy-and-replace ** 4 *' . $storage_item__1646 . ' ' . $storage_item__1647 . ' ' . $storage_item__1648 . ' ' . $storage_item__1649 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -13084,7 +13084,7 @@ $storage_item__1645 = 'copy-and-replace ' . $storage_item__1646 . ' ' . $storage
 # print 'result: ' . $storage_item__1645 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1650 *** copy-text ** 2 *' . $storage_item__1651 . ' ' . $storage_item__1652 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1650 *** copy-text ** 2 *' . $storage_item__1651 . ' ' . $storage_item__1652 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13106,7 +13106,7 @@ $storage_item__1650 = 'copy-text ' . $storage_item__1651 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1650 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1653 *** append-text-no-space ** 2 *' . $storage_item__1654 . ' ' . $storage_item__1655 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1653 *** append-text-no-space ** 2 *' . $storage_item__1654 . ' ' . $storage_item__1655 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13135,7 +13135,7 @@ $storage_item__1653 = 'append-text-no-space ' . $storage_item__1654 . ' ' . $sto
 # print 'result: ' . $storage_item__1653 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1656 *** append-text-no-space ** 2 *' . $storage_item__1657 . ' ' . $storage_item__1658 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1656 *** append-text-no-space ** 2 *' . $storage_item__1657 . ' ' . $storage_item__1658 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13164,7 +13164,7 @@ $storage_item__1656 = 'append-text-no-space ' . $storage_item__1657 . ' ' . $sto
 # print 'result: ' . $storage_item__1656 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1659 *** append-text-no-space ** 2 *' . $storage_item__1660 . ' ' . $storage_item__1661 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1659 *** append-text-no-space ** 2 *' . $storage_item__1660 . ' ' . $storage_item__1661 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13193,7 +13193,7 @@ $storage_item__1659 = 'append-text-no-space ' . $storage_item__1660 . ' ' . $sto
 # print 'result: ' . $storage_item__1659 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1662 *** append-text-no-space ** 2 *' . $storage_item__1663 . ' ' . $storage_item__1664 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1662 *** append-text-no-space ** 2 *' . $storage_item__1663 . ' ' . $storage_item__1664 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13222,7 +13222,7 @@ $storage_item__1662 = 'append-text-no-space ' . $storage_item__1663 . ' ' . $sto
 # print 'result: ' . $storage_item__1662 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1665 *** copy-and-replace ** 4 *' . $storage_item__1666 . ' ' . $storage_item__1667 . ' ' . $storage_item__1668 . ' ' . $storage_item__1669 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1665 *** copy-and-replace ** 4 *' . $storage_item__1666 . ' ' . $storage_item__1667 . ' ' . $storage_item__1668 . ' ' . $storage_item__1669 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -13259,7 +13259,7 @@ $storage_item__1665 = 'copy-and-replace ' . $storage_item__1666 . ' ' . $storage
 # print 'result: ' . $storage_item__1665 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1672 *** filename-output-results-all-function-branches ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1672 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -13274,7 +13274,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1672 . "\n" ;
 # end of action filename-output-results-all-function-branches
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1670 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1671 . ' ' . $storage_item__1672 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1670 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1671 . ' ' . $storage_item__1672 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -13303,7 +13303,7 @@ $storage_item__1670 = 'copy-from-phrase-append-to-file ' . $storage_item__1671 .
 # print 'result: ' . $storage_item__1670 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1674 *** copy-text ** 2 *' . $storage_item__1675 . ' ' . $storage_item__1676 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1674 *** copy-text ** 2 *' . $storage_item__1675 . ' ' . $storage_item__1676 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13325,7 +13325,7 @@ $storage_item__1674 = 'copy-text ' . $storage_item__1675 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1674 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1677 *** append-text-no-space ** 2 *' . $storage_item__1678 . ' ' . $storage_item__1679 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1677 *** append-text-no-space ** 2 *' . $storage_item__1678 . ' ' . $storage_item__1679 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13354,7 +13354,7 @@ $storage_item__1677 = 'append-text-no-space ' . $storage_item__1678 . ' ' . $sto
 # print 'result: ' . $storage_item__1677 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1680 *** append-text-no-space ** 2 *' . $storage_item__1681 . ' ' . $storage_item__1682 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1680 *** append-text-no-space ** 2 *' . $storage_item__1681 . ' ' . $storage_item__1682 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13383,7 +13383,7 @@ $storage_item__1680 = 'append-text-no-space ' . $storage_item__1681 . ' ' . $sto
 # print 'result: ' . $storage_item__1680 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1683 *** append-text-no-space ** 2 *' . $storage_item__1684 . ' ' . $storage_item__1685 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1683 *** append-text-no-space ** 2 *' . $storage_item__1684 . ' ' . $storage_item__1685 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13412,7 +13412,7 @@ $storage_item__1683 = 'append-text-no-space ' . $storage_item__1684 . ' ' . $sto
 # print 'result: ' . $storage_item__1683 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1686 *** append-text-no-space ** 2 *' . $storage_item__1687 . ' ' . $storage_item__1688 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1686 *** append-text-no-space ** 2 *' . $storage_item__1687 . ' ' . $storage_item__1688 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13441,7 +13441,7 @@ $storage_item__1686 = 'append-text-no-space ' . $storage_item__1687 . ' ' . $sto
 # print 'result: ' . $storage_item__1686 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1691 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1691 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -13456,7 +13456,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1691 . "\n" ;
 # end of action filename-output-results-functions-replacement-only
 
-$global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1689 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1690 . ' ' . $storage_item__1691 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1689 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1690 . ' ' . $storage_item__1691 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -13494,7 +13494,7 @@ $global_replacement_count_for_item_name{ 'generate-runtime-code-for-one-function
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1695 *** copy-text ** 2 *' . $storage_item__1696 . ' ' . $storage_item__1697 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1695 *** copy-text ** 2 *' . $storage_item__1696 . ' ' . $storage_item__1697 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13516,7 +13516,7 @@ $storage_item__1695 = 'copy-text ' . $storage_item__1696 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1695 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1698 *** copy-and-replace ** 4 *' . $storage_item__1699 . ' ' . $storage_item__1700 . ' ' . $storage_item__1701 . ' ' . $storage_item__1702 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1698 *** copy-and-replace ** 4 *' . $storage_item__1699 . ' ' . $storage_item__1700 . ' ' . $storage_item__1701 . ' ' . $storage_item__1702 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -13553,7 +13553,7 @@ $storage_item__1698 = 'copy-and-replace ' . $storage_item__1699 . ' ' . $storage
 # print 'result: ' . $storage_item__1698 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1703 *** copy-text ** 2 *' . $storage_item__1704 . ' ' . $storage_item__1705 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1703 *** copy-text ** 2 *' . $storage_item__1704 . ' ' . $storage_item__1705 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13575,7 +13575,7 @@ $storage_item__1703 = 'copy-text ' . $storage_item__1704 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1703 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1706 *** append-text-no-space ** 2 *' . $storage_item__1707 . ' ' . $storage_item__1708 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1706 *** append-text-no-space ** 2 *' . $storage_item__1707 . ' ' . $storage_item__1708 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13604,7 +13604,7 @@ $storage_item__1706 = 'append-text-no-space ' . $storage_item__1707 . ' ' . $sto
 # print 'result: ' . $storage_item__1706 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1709 *** append-text-no-space ** 2 *' . $storage_item__1710 . ' ' . $storage_item__1711 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1709 *** append-text-no-space ** 2 *' . $storage_item__1710 . ' ' . $storage_item__1711 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13633,7 +13633,7 @@ $storage_item__1709 = 'append-text-no-space ' . $storage_item__1710 . ' ' . $sto
 # print 'result: ' . $storage_item__1709 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1712 *** append-text-no-space ** 2 *' . $storage_item__1713 . ' ' . $storage_item__1714 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1712 *** append-text-no-space ** 2 *' . $storage_item__1713 . ' ' . $storage_item__1714 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13662,7 +13662,7 @@ $storage_item__1712 = 'append-text-no-space ' . $storage_item__1713 . ' ' . $sto
 # print 'result: ' . $storage_item__1712 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1715 *** append-text-no-space ** 2 *' . $storage_item__1716 . ' ' . $storage_item__1717 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1715 *** append-text-no-space ** 2 *' . $storage_item__1716 . ' ' . $storage_item__1717 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13691,7 +13691,7 @@ $storage_item__1715 = 'append-text-no-space ' . $storage_item__1716 . ' ' . $sto
 # print 'result: ' . $storage_item__1715 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1720 *** filename-output-results-all-function-branches ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1720 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -13706,7 +13706,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1720 . "\n" ;
 # end of action filename-output-results-all-function-branches
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1718 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1719 . ' ' . $storage_item__1720 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1718 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1719 . ' ' . $storage_item__1720 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -13744,7 +13744,7 @@ $global_replacement_count_for_item_name{ 'generate-runtime-code-for-one-function
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only amenn ambee copy-from-phrase-append-to-file runtime-code-function-replacement-only ambee filename-output-results-functions-replacement-only amenn amenn
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1724 *** copy-text ** 2 *' . $storage_item__1725 . ' ' . $storage_item__1726 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1724 *** copy-text ** 2 *' . $storage_item__1725 . ' ' . $storage_item__1726 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13766,7 +13766,7 @@ $storage_item__1724 = 'copy-text ' . $storage_item__1725 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1724 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1727 *** copy-and-replace ** 4 *' . $storage_item__1728 . ' ' . $storage_item__1729 . ' ' . $storage_item__1730 . ' ' . $storage_item__1731 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1727 *** copy-and-replace ** 4 *' . $storage_item__1728 . ' ' . $storage_item__1729 . ' ' . $storage_item__1730 . ' ' . $storage_item__1731 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -13803,7 +13803,7 @@ $storage_item__1727 = 'copy-and-replace ' . $storage_item__1728 . ' ' . $storage
 # print 'result: ' . $storage_item__1727 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1732 *** copy-text ** 2 *' . $storage_item__1733 . ' ' . $storage_item__1734 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1732 *** copy-text ** 2 *' . $storage_item__1733 . ' ' . $storage_item__1734 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -13825,7 +13825,7 @@ $storage_item__1732 = 'copy-text ' . $storage_item__1733 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1732 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1735 *** append-text-no-space ** 2 *' . $storage_item__1736 . ' ' . $storage_item__1737 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1735 *** append-text-no-space ** 2 *' . $storage_item__1736 . ' ' . $storage_item__1737 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13854,7 +13854,7 @@ $storage_item__1735 = 'append-text-no-space ' . $storage_item__1736 . ' ' . $sto
 # print 'result: ' . $storage_item__1735 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1738 *** append-text-no-space ** 2 *' . $storage_item__1739 . ' ' . $storage_item__1740 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1738 *** append-text-no-space ** 2 *' . $storage_item__1739 . ' ' . $storage_item__1740 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13883,7 +13883,7 @@ $storage_item__1738 = 'append-text-no-space ' . $storage_item__1739 . ' ' . $sto
 # print 'result: ' . $storage_item__1738 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1741 *** append-text-no-space ** 2 *' . $storage_item__1742 . ' ' . $storage_item__1743 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1741 *** append-text-no-space ** 2 *' . $storage_item__1742 . ' ' . $storage_item__1743 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13912,7 +13912,7 @@ $storage_item__1741 = 'append-text-no-space ' . $storage_item__1742 . ' ' . $sto
 # print 'result: ' . $storage_item__1741 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1744 *** append-text-no-space ** 2 *' . $storage_item__1745 . ' ' . $storage_item__1746 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1744 *** append-text-no-space ** 2 *' . $storage_item__1745 . ' ' . $storage_item__1746 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -13941,7 +13941,7 @@ $storage_item__1744 = 'append-text-no-space ' . $storage_item__1745 . ' ' . $sto
 # print 'result: ' . $storage_item__1744 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1749 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1749 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -13956,7 +13956,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1749 . "\n" ;
 # end of action filename-output-results-functions-replacement-only
 
-$global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1747 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1748 . ' ' . $storage_item__1749 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1747 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1748 . ' ' . $storage_item__1749 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -13994,7 +13994,7 @@ $global_replacement_count_for_item_name{ 'generate-runtime-code-for-phrase-defin
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple amenn
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1753 *** copy-text ** 2 *' . $storage_item__1754 . ' ' . $storage_item__1755 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1753 *** copy-text ** 2 *' . $storage_item__1754 . ' ' . $storage_item__1755 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -14016,7 +14016,7 @@ $storage_item__1753 = 'copy-text ' . $storage_item__1754 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1753 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1756 *** append-text-no-space ** 2 *' . $storage_item__1757 . ' ' . $storage_item__1758 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1756 *** append-text-no-space ** 2 *' . $storage_item__1757 . ' ' . $storage_item__1758 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14045,7 +14045,7 @@ $storage_item__1756 = 'append-text-no-space ' . $storage_item__1757 . ' ' . $sto
 # print 'result: ' . $storage_item__1756 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1759 *** append-text ** 2 *' . $storage_item__1760 . ' ' . $storage_item__1761 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1759 *** append-text ** 2 *' . $storage_item__1760 . ' ' . $storage_item__1761 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14074,7 +14074,7 @@ $storage_item__1759 = 'append-text ' . $storage_item__1760 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1759 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1762 *** append-text-no-space ** 2 *' . $storage_item__1763 . ' ' . $storage_item__1764 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1762 *** append-text-no-space ** 2 *' . $storage_item__1763 . ' ' . $storage_item__1764 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14103,7 +14103,7 @@ $storage_item__1762 = 'append-text-no-space ' . $storage_item__1763 . ' ' . $sto
 # print 'result: ' . $storage_item__1762 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1765 *** append-text-no-space ** 2 *' . $storage_item__1766 . ' ' . $storage_item__1767 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1765 *** append-text-no-space ** 2 *' . $storage_item__1766 . ' ' . $storage_item__1767 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14132,7 +14132,7 @@ $storage_item__1765 = 'append-text-no-space ' . $storage_item__1766 . ' ' . $sto
 # print 'result: ' . $storage_item__1765 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1768 *** append-text-no-space ** 2 *' . $storage_item__1769 . ' ' . $storage_item__1770 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1768 *** append-text-no-space ** 2 *' . $storage_item__1769 . ' ' . $storage_item__1770 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14161,7 +14161,7 @@ $storage_item__1768 = 'append-text-no-space ' . $storage_item__1769 . ' ' . $sto
 # print 'result: ' . $storage_item__1768 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1771 *** append-text ** 2 *' . $storage_item__1772 . ' ' . $storage_item__1773 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1771 *** append-text ** 2 *' . $storage_item__1772 . ' ' . $storage_item__1773 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14190,7 +14190,7 @@ $storage_item__1771 = 'append-text ' . $storage_item__1772 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1771 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1774 *** append-text-no-space ** 2 *' . $storage_item__1775 . ' ' . $storage_item__1776 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1774 *** append-text-no-space ** 2 *' . $storage_item__1775 . ' ' . $storage_item__1776 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14219,7 +14219,7 @@ $storage_item__1774 = 'append-text-no-space ' . $storage_item__1775 . ' ' . $sto
 # print 'result: ' . $storage_item__1774 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1777 *** append-text-no-space ** 2 *' . $storage_item__1778 . ' ' . $storage_item__1779 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1777 *** append-text-no-space ** 2 *' . $storage_item__1778 . ' ' . $storage_item__1779 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14248,7 +14248,7 @@ $storage_item__1777 = 'append-text-no-space ' . $storage_item__1778 . ' ' . $sto
 # print 'result: ' . $storage_item__1777 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1780 *** append-text-no-space ** 2 *' . $storage_item__1781 . ' ' . $storage_item__1782 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1780 *** append-text-no-space ** 2 *' . $storage_item__1781 . ' ' . $storage_item__1782 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14277,7 +14277,7 @@ $storage_item__1780 = 'append-text-no-space ' . $storage_item__1781 . ' ' . $sto
 # print 'result: ' . $storage_item__1780 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1783 *** append-text ** 2 *' . $storage_item__1784 . ' ' . $storage_item__1785 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1783 *** append-text ** 2 *' . $storage_item__1784 . ' ' . $storage_item__1785 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14306,7 +14306,7 @@ $storage_item__1783 = 'append-text ' . $storage_item__1784 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1783 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1786 *** append-text-no-space ** 2 *' . $storage_item__1787 . ' ' . $storage_item__1788 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1786 *** append-text-no-space ** 2 *' . $storage_item__1787 . ' ' . $storage_item__1788 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14335,7 +14335,7 @@ $storage_item__1786 = 'append-text-no-space ' . $storage_item__1787 . ' ' . $sto
 # print 'result: ' . $storage_item__1786 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1789 *** append-text ** 2 *' . $storage_item__1790 . ' ' . $storage_item__1791 ;
+# $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1789 *** append-text ** 2 *' . $storage_item__1790 . ' ' . $storage_item__1791 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14373,7 +14373,7 @@ $global_replacement_count_for_item_name{ 'generate-runtime-code-using-quoted-str
 my $saved_accumulator_pointer = -1 ;
 # ambee numeric-increment storage-item-pointer amenn ambee copy-text storage-item-pointer storage-item-pointer-for fen ambee word-to-use-in-handler amenn amenn ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn ambee append-text template-quoted fen ambee word-to-use-in-handler amenn generated-runtime-code amenn ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-5 generated-runtime-code amenn ambee append-text-no-space generated-runtime-code output-results-all-storage-items amenn
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1794 *** numeric-increment ** 1 *' . $storage_item__1795 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1794 *** numeric-increment ** 1 *' . $storage_item__1795 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -14398,7 +14398,7 @@ $storage_item__1794 = 'numeric-increment ' . $storage_item__1795 ;
 # print 'result: ' . $storage_item__1794 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1799 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1799 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -14413,7 +14413,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1799 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1796 *** copy-text ** 2 *' . $storage_item__1797 . ' ' . $storage_item__1798 . '-' . $storage_item__1799 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1796 *** copy-text ** 2 *' . $storage_item__1797 . ' ' . $storage_item__1798 . '-' . $storage_item__1799 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -14435,7 +14435,7 @@ $storage_item__1796 = 'copy-text ' . $storage_item__1797 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1796 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1801 *** copy-text ** 2 *' . $storage_item__1802 . ' ' . $storage_item__1803 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1801 *** copy-text ** 2 *' . $storage_item__1802 . ' ' . $storage_item__1803 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -14457,7 +14457,7 @@ $storage_item__1801 = 'copy-text ' . $storage_item__1802 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1801 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1804 *** append-text-no-space ** 2 *' . $storage_item__1805 . ' ' . $storage_item__1806 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1804 *** append-text-no-space ** 2 *' . $storage_item__1805 . ' ' . $storage_item__1806 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14486,7 +14486,7 @@ $storage_item__1804 = 'append-text-no-space ' . $storage_item__1805 . ' ' . $sto
 # print 'result: ' . $storage_item__1804 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1807 *** append-text-no-space ** 2 *' . $storage_item__1808 . ' ' . $storage_item__1809 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1807 *** append-text-no-space ** 2 *' . $storage_item__1808 . ' ' . $storage_item__1809 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14515,7 +14515,7 @@ $storage_item__1807 = 'append-text-no-space ' . $storage_item__1808 . ' ' . $sto
 # print 'result: ' . $storage_item__1807 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1812 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1812 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -14530,7 +14530,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1812 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1810 *** append-text ** 2 *' . $storage_item__1811 . '-' . $storage_item__1812 . ' ' . $storage_item__1814 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1810 *** append-text ** 2 *' . $storage_item__1811 . '-' . $storage_item__1812 . ' ' . $storage_item__1814 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14559,7 +14559,7 @@ $storage_item__1810 = 'append-text ' . $storage_item__1811 . '-' . $storage_item
 # print 'result: ' . $storage_item__1810 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1815 *** append-text ** 2 *' . $storage_item__1816 . ' ' . $storage_item__1817 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1815 *** append-text ** 2 *' . $storage_item__1816 . ' ' . $storage_item__1817 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14588,7 +14588,7 @@ $storage_item__1815 = 'append-text ' . $storage_item__1816 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1815 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1818 *** append-text-no-space ** 2 *' . $storage_item__1819 . ' ' . $storage_item__1820 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1818 *** append-text-no-space ** 2 *' . $storage_item__1819 . ' ' . $storage_item__1820 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14617,7 +14617,7 @@ $storage_item__1818 = 'append-text-no-space ' . $storage_item__1819 . ' ' . $sto
 # print 'result: ' . $storage_item__1818 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1821 *** append-text-no-space ** 2 *' . $storage_item__1822 . ' ' . $storage_item__1823 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1821 *** append-text-no-space ** 2 *' . $storage_item__1822 . ' ' . $storage_item__1823 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14646,7 +14646,7 @@ $storage_item__1821 = 'append-text-no-space ' . $storage_item__1822 . ' ' . $sto
 # print 'result: ' . $storage_item__1821 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1824 *** append-text-no-space ** 2 *' . $storage_item__1825 . ' ' . $storage_item__1826 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1824 *** append-text-no-space ** 2 *' . $storage_item__1825 . ' ' . $storage_item__1826 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14675,7 +14675,7 @@ $storage_item__1824 = 'append-text-no-space ' . $storage_item__1825 . ' ' . $sto
 # print 'result: ' . $storage_item__1824 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1827 *** append-text-no-space ** 2 *' . $storage_item__1828 . ' ' . $storage_item__1829 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1827 *** append-text-no-space ** 2 *' . $storage_item__1828 . ' ' . $storage_item__1829 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14704,7 +14704,7 @@ $storage_item__1827 = 'append-text-no-space ' . $storage_item__1828 . ' ' . $sto
 # print 'result: ' . $storage_item__1827 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1830 *** append-text-no-space ** 2 *' . $storage_item__1831 . ' ' . $storage_item__1832 ;
+# $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1830 *** append-text-no-space ** 2 *' . $storage_item__1831 . ' ' . $storage_item__1832 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14742,7 +14742,7 @@ $global_replacement_count_for_item_name{ 'generate-storage-for-current-text' } +
 my $saved_accumulator_pointer = -1 ;
 # ambee create-new-text-storage-position amenn ambee copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition amenn ambee append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition amenn ambee copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn ambee append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition amenn ambee copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition ambee filename-output-results-all-definition-items amenn amenn
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1835 *** create-new-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1835 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -14757,7 +14757,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1835 . "\n" ;
 # end of action create-new-text-storage-position
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1837 *** copy-text ** 2 *' . $storage_item__1838 . ' ' . $storage_item__1839 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1837 *** copy-text ** 2 *' . $storage_item__1838 . ' ' . $storage_item__1839 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -14779,7 +14779,7 @@ $storage_item__1837 = 'copy-text ' . $storage_item__1838 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1837 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1840 *** append-text-no-space ** 2 *' . $storage_item__1841 . ' ' . $storage_item__1842 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1840 *** append-text-no-space ** 2 *' . $storage_item__1841 . ' ' . $storage_item__1842 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -14808,7 +14808,7 @@ $storage_item__1840 = 'append-text-no-space ' . $storage_item__1841 . ' ' . $sto
 # print 'result: ' . $storage_item__1840 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1843 *** append-text ** 2 *' . $storage_item__1844 . ' ' . $storage_item__1845 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1843 *** append-text ** 2 *' . $storage_item__1844 . ' ' . $storage_item__1845 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -14837,7 +14837,7 @@ $storage_item__1843 = 'append-text ' . $storage_item__1844 . ' ' . $storage_item
 # print 'result: ' . $storage_item__1843 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1846 *** copy-and-replace ** 4 *' . $storage_item__1847 . ' ' . $storage_item__1848 . ' ' . $storage_item__1849 . ' ' . $storage_item__1850 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1846 *** copy-and-replace ** 4 *' . $storage_item__1847 . ' ' . $storage_item__1848 . ' ' . $storage_item__1849 . ' ' . $storage_item__1850 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -14874,7 +14874,7 @@ $storage_item__1846 = 'copy-and-replace ' . $storage_item__1847 . ' ' . $storage
 # print 'result: ' . $storage_item__1846 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1851 *** copy-and-replace ** 4 *' . $storage_item__1852 . ' ' . $storage_item__1853 . ' ' . $storage_item__1854 . ' ' . $storage_item__1855 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1851 *** copy-and-replace ** 4 *' . $storage_item__1852 . ' ' . $storage_item__1853 . ' ' . $storage_item__1854 . ' ' . $storage_item__1855 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -14911,7 +14911,7 @@ $storage_item__1851 = 'copy-and-replace ' . $storage_item__1852 . ' ' . $storage
 # print 'result: ' . $storage_item__1851 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1856 *** copy-and-replace ** 4 *' . $storage_item__1857 . ' ' . $storage_item__1858 . ' ' . $storage_item__1859 . ' ' . $storage_item__1860 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1856 *** copy-and-replace ** 4 *' . $storage_item__1857 . ' ' . $storage_item__1858 . ' ' . $storage_item__1859 . ' ' . $storage_item__1860 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -14948,7 +14948,7 @@ $storage_item__1856 = 'copy-and-replace ' . $storage_item__1857 . ' ' . $storage
 # print 'result: ' . $storage_item__1856 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1861 *** copy-and-replace ** 4 *' . $storage_item__1862 . ' ' . $storage_item__1863 . ' ' . $storage_item__1864 . ' ' . $storage_item__1865 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1861 *** copy-and-replace ** 4 *' . $storage_item__1862 . ' ' . $storage_item__1863 . ' ' . $storage_item__1864 . ' ' . $storage_item__1865 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -14985,7 +14985,7 @@ $storage_item__1861 = 'copy-and-replace ' . $storage_item__1862 . ' ' . $storage
 # print 'result: ' . $storage_item__1861 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1866 *** copy-and-replace ** 4 *' . $storage_item__1867 . ' ' . $storage_item__1868 . ' ' . $storage_item__1869 . ' ' . $storage_item__1870 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1866 *** copy-and-replace ** 4 *' . $storage_item__1867 . ' ' . $storage_item__1868 . ' ' . $storage_item__1869 . ' ' . $storage_item__1870 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15022,7 +15022,7 @@ $storage_item__1866 = 'copy-and-replace ' . $storage_item__1867 . ' ' . $storage
 # print 'result: ' . $storage_item__1866 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1871 *** copy-and-replace ** 4 *' . $storage_item__1872 . ' ' . $storage_item__1873 . ' ' . $storage_item__1874 . ' ' . $storage_item__1875 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1871 *** copy-and-replace ** 4 *' . $storage_item__1872 . ' ' . $storage_item__1873 . ' ' . $storage_item__1874 . ' ' . $storage_item__1875 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15059,7 +15059,7 @@ $storage_item__1871 = 'copy-and-replace ' . $storage_item__1872 . ' ' . $storage
 # print 'result: ' . $storage_item__1871 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1876 *** copy-and-replace ** 4 *' . $storage_item__1877 . ' ' . $storage_item__1878 . ' ' . $storage_item__1879 . ' ' . $storage_item__1880 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1876 *** copy-and-replace ** 4 *' . $storage_item__1877 . ' ' . $storage_item__1878 . ' ' . $storage_item__1879 . ' ' . $storage_item__1880 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15096,7 +15096,7 @@ $storage_item__1876 = 'copy-and-replace ' . $storage_item__1877 . ' ' . $storage
 # print 'result: ' . $storage_item__1876 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1881 *** copy-and-replace ** 4 *' . $storage_item__1882 . ' ' . $storage_item__1883 . ' ' . $storage_item__1884 . ' ' . $storage_item__1885 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1881 *** copy-and-replace ** 4 *' . $storage_item__1882 . ' ' . $storage_item__1883 . ' ' . $storage_item__1884 . ' ' . $storage_item__1885 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15133,7 +15133,7 @@ $storage_item__1881 = 'copy-and-replace ' . $storage_item__1882 . ' ' . $storage
 # print 'result: ' . $storage_item__1881 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1886 *** append-text-no-space ** 2 *' . $storage_item__1887 . ' ' . $storage_item__1888 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1886 *** append-text-no-space ** 2 *' . $storage_item__1887 . ' ' . $storage_item__1888 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -15162,7 +15162,7 @@ $storage_item__1886 = 'append-text-no-space ' . $storage_item__1887 . ' ' . $sto
 # print 'result: ' . $storage_item__1886 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1889 *** append-text-no-space ** 2 *' . $storage_item__1890 . ' ' . $storage_item__1891 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1889 *** append-text-no-space ** 2 *' . $storage_item__1890 . ' ' . $storage_item__1891 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -15191,7 +15191,7 @@ $storage_item__1889 = 'append-text-no-space ' . $storage_item__1890 . ' ' . $sto
 # print 'result: ' . $storage_item__1889 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1894 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1894 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15206,7 +15206,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1894 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** generate-storage-for-current-text **** 1892 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1893 . ' ' . $storage_item__1894 ;
+# $global_action_debug_line = '***** generate-storage-for-current-text **** 1892 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__1893 . ' ' . $storage_item__1894 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -15244,7 +15244,7 @@ $global_replacement_count_for_item_name{ 'get-all-operands' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text digit-0 number-of-operands amenn ambee copy-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn ambee put-into-phrase number-of-operands ambee get-count-of-words list-of-operands-for-counting amenn amenn ambee copy-text list-of-operands-for-counting operand-or-operands amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-concatenated-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands amenn amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-concatenated-all-operands amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 1 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 1 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-one amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 2 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 2 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-two amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 3 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 3 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-three amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 4 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 4 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-four amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four amenn ambee if-end amenn
 
-$global_action_debug_line = '***** get-all-operands **** 1898 *** copy-text ** 2 *' . $storage_item__1899 . ' ' . $storage_item__1900 ;
+# $global_action_debug_line = '***** get-all-operands **** 1898 *** copy-text ** 2 *' . $storage_item__1899 . ' ' . $storage_item__1900 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15266,7 +15266,7 @@ $storage_item__1898 = 'copy-text ' . $storage_item__1899 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1898 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** get-all-operands **** 1903 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1903 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15281,7 +15281,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1903 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** get-all-operands **** 1901 *** copy-text ** 2 *' . $storage_item__1902 . '-' . $storage_item__1903 . ' ' . $storage_item__1905 ;
+# $global_action_debug_line = '***** get-all-operands **** 1901 *** copy-text ** 2 *' . $storage_item__1902 . '-' . $storage_item__1903 . ' ' . $storage_item__1905 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15303,7 +15303,7 @@ $storage_item__1901 = 'copy-text ' . $storage_item__1902 . '-' . $storage_item__
 # print 'result: ' . $storage_item__1901 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** get-all-operands **** 1906 *** copy-without-extra-spaces ** 2 *' . $storage_item__1907 . ' ' . $storage_item__1908 ;
+# $global_action_debug_line = '***** get-all-operands **** 1906 *** copy-without-extra-spaces ** 2 *' . $storage_item__1907 . ' ' . $storage_item__1908 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -15332,7 +15332,7 @@ $storage_item__1906 = 'copy-without-extra-spaces ' . $storage_item__1907 . ' ' .
 # print 'result: ' . $storage_item__1906 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** get-all-operands **** 1909 *** copy-and-replace ** 4 *' . $storage_item__1910 . ' ' . $storage_item__1911 . ' ' . $storage_item__1912 . ' ' . $storage_item__1913 ;
+# $global_action_debug_line = '***** get-all-operands **** 1909 *** copy-and-replace ** 4 *' . $storage_item__1910 . ' ' . $storage_item__1911 . ' ' . $storage_item__1912 . ' ' . $storage_item__1913 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15369,7 +15369,7 @@ $storage_item__1909 = 'copy-and-replace ' . $storage_item__1910 . ' ' . $storage
 # print 'result: ' . $storage_item__1909 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** get-all-operands **** 1914 *** copy-and-replace ** 4 *' . $storage_item__1915 . ' ' . $storage_item__1916 . ' ' . $storage_item__1917 . ' ' . $storage_item__1918 ;
+# $global_action_debug_line = '***** get-all-operands **** 1914 *** copy-and-replace ** 4 *' . $storage_item__1915 . ' ' . $storage_item__1916 . ' ' . $storage_item__1917 . ' ' . $storage_item__1918 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -15406,7 +15406,7 @@ $storage_item__1914 = 'copy-and-replace ' . $storage_item__1915 . ' ' . $storage
 # print 'result: ' . $storage_item__1914 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** get-all-operands **** 1921 *** get-count-of-words ** 1 *' . $storage_item__1922 ;
+# $global_action_debug_line = '***** get-all-operands **** 1921 *** get-count-of-words ** 1 *' . $storage_item__1922 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15424,7 +15424,7 @@ $storage_item__1921 = 'get-count-of-words ' . $storage_item__1922 ;
 # print 'result: ' . $storage_item__1921 . "\n" ;
 # end of action get-count-of-words
 
-$global_action_debug_line = '***** get-all-operands **** 1919 *** put-into-phrase ** 2 *' . $storage_item__1920 . ' ' . $storage_item__1921 ;
+# $global_action_debug_line = '***** get-all-operands **** 1919 *** put-into-phrase ** 2 *' . $storage_item__1920 . ' ' . $storage_item__1921 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15442,7 +15442,7 @@ $storage_item__1919 = 'put-into-phrase ' . $storage_item__1920 . ' ' . $storage_
 # print 'result: ' . $storage_item__1919 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** get-all-operands **** 1923 *** copy-text ** 2 *' . $storage_item__1924 . ' ' . $storage_item__1925 ;
+# $global_action_debug_line = '***** get-all-operands **** 1923 *** copy-text ** 2 *' . $storage_item__1924 . ' ' . $storage_item__1925 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15464,7 +15464,7 @@ $storage_item__1923 = 'copy-text ' . $storage_item__1924 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1923 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** get-all-operands **** 1926 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1926 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15479,7 +15479,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1926 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1928 *** copy-text ** 2 *' . $storage_item__1929 . ' ' . $storage_item__1930 ;
+# $global_action_debug_line = '***** get-all-operands **** 1928 *** copy-text ** 2 *' . $storage_item__1929 . ' ' . $storage_item__1930 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15501,7 +15501,7 @@ $storage_item__1928 = 'copy-text ' . $storage_item__1929 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__1928 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** get-all-operands **** 1932 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1933 ;
+# $global_action_debug_line = '***** get-all-operands **** 1932 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1933 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -15533,7 +15533,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** get-all-operands **** 1934 *** copy-text ** 2 *' . $storage_item__1935 . ' ' . $storage_item__1936 ;
+# $global_action_debug_line = '***** get-all-operands **** 1934 *** copy-text ** 2 *' . $storage_item__1935 . ' ' . $storage_item__1936 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15560,7 +15560,7 @@ $storage_item__1934 = 'copy-text ' . $storage_item__1935 . ' ' . $storage_item__
 # end action if end
 
 
-$global_action_debug_line = '***** get-all-operands **** 1942 *** number-of-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1942 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15575,7 +15575,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1942 . "\n" ;
 # end of action number-of-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1941 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1942 . ' ' . $storage_item__1944 ;
+# $global_action_debug_line = '***** get-all-operands **** 1941 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1942 . ' ' . $storage_item__1944 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15603,7 +15603,7 @@ $storage_item__1941 = 'less' ;
 # print 'result: ' . $storage_item__1941 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** get-all-operands **** 1939 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1940 . ' ' . $storage_item__1941 ;
+# $global_action_debug_line = '***** get-all-operands **** 1939 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1940 . ' ' . $storage_item__1941 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1940 eq $storage_item__1941 ) {
@@ -15621,7 +15621,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** get-all-operands **** 1945 *** copy-word-at-position ** 3 *' . $storage_item__1946 . ' ' . $storage_item__1947 . ' ' . $storage_item__1948 ;
+# $global_action_debug_line = '***** get-all-operands **** 1945 *** copy-word-at-position ** 3 *' . $storage_item__1946 . ' ' . $storage_item__1947 . ' ' . $storage_item__1948 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15649,7 +15649,7 @@ $storage_item__1945 = 'copy-word-at-position ' . $storage_item__1946 . ' ' . $st
 # print 'result: ' . $storage_item__1945 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** get-all-operands **** 1949 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1949 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15664,7 +15664,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1949 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1951 *** copy-text ** 2 *' . $storage_item__1952 . ' ' . $storage_item__1953 ;
+# $global_action_debug_line = '***** get-all-operands **** 1951 *** copy-text ** 2 *' . $storage_item__1952 . ' ' . $storage_item__1953 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15691,7 +15691,7 @@ $storage_item__1951 = 'copy-text ' . $storage_item__1952 . ' ' . $storage_item__
 # end action if else
 
 
-$global_action_debug_line = '***** get-all-operands **** 1955 *** copy-text ** 2 *' . $storage_item__1956 . ' ' . $storage_item__1957 ;
+# $global_action_debug_line = '***** get-all-operands **** 1955 *** copy-text ** 2 *' . $storage_item__1956 . ' ' . $storage_item__1957 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15718,7 +15718,7 @@ $storage_item__1955 = 'copy-text ' . $storage_item__1956 . ' ' . $storage_item__
 # end action if end
 
 
-$global_action_debug_line = '***** get-all-operands **** 1963 *** number-of-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1963 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15733,7 +15733,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1963 . "\n" ;
 # end of action number-of-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1962 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1963 . ' ' . $storage_item__1965 ;
+# $global_action_debug_line = '***** get-all-operands **** 1962 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1963 . ' ' . $storage_item__1965 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15761,7 +15761,7 @@ $storage_item__1962 = 'less' ;
 # print 'result: ' . $storage_item__1962 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** get-all-operands **** 1960 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1961 . ' ' . $storage_item__1962 ;
+# $global_action_debug_line = '***** get-all-operands **** 1960 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1961 . ' ' . $storage_item__1962 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1961 eq $storage_item__1962 ) {
@@ -15779,7 +15779,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** get-all-operands **** 1966 *** copy-word-at-position ** 3 *' . $storage_item__1967 . ' ' . $storage_item__1968 . ' ' . $storage_item__1969 ;
+# $global_action_debug_line = '***** get-all-operands **** 1966 *** copy-word-at-position ** 3 *' . $storage_item__1967 . ' ' . $storage_item__1968 . ' ' . $storage_item__1969 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15807,7 +15807,7 @@ $storage_item__1966 = 'copy-word-at-position ' . $storage_item__1967 . ' ' . $st
 # print 'result: ' . $storage_item__1966 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** get-all-operands **** 1970 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1970 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15822,7 +15822,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1970 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1972 *** copy-text ** 2 *' . $storage_item__1973 . ' ' . $storage_item__1974 ;
+# $global_action_debug_line = '***** get-all-operands **** 1972 *** copy-text ** 2 *' . $storage_item__1973 . ' ' . $storage_item__1974 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15849,7 +15849,7 @@ $storage_item__1972 = 'copy-text ' . $storage_item__1973 . ' ' . $storage_item__
 # end action if else
 
 
-$global_action_debug_line = '***** get-all-operands **** 1976 *** copy-text ** 2 *' . $storage_item__1977 . ' ' . $storage_item__1978 ;
+# $global_action_debug_line = '***** get-all-operands **** 1976 *** copy-text ** 2 *' . $storage_item__1977 . ' ' . $storage_item__1978 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15876,7 +15876,7 @@ $storage_item__1976 = 'copy-text ' . $storage_item__1977 . ' ' . $storage_item__
 # end action if end
 
 
-$global_action_debug_line = '***** get-all-operands **** 1984 *** number-of-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1984 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15891,7 +15891,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1984 . "\n" ;
 # end of action number-of-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1983 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1984 . ' ' . $storage_item__1986 ;
+# $global_action_debug_line = '***** get-all-operands **** 1983 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1984 . ' ' . $storage_item__1986 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15919,7 +15919,7 @@ $storage_item__1983 = 'less' ;
 # print 'result: ' . $storage_item__1983 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** get-all-operands **** 1981 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1982 . ' ' . $storage_item__1983 ;
+# $global_action_debug_line = '***** get-all-operands **** 1981 *** yes-or-no-same-two-words ** 2 *' . $storage_item__1982 . ' ' . $storage_item__1983 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__1982 eq $storage_item__1983 ) {
@@ -15937,7 +15937,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** get-all-operands **** 1987 *** copy-word-at-position ** 3 *' . $storage_item__1988 . ' ' . $storage_item__1989 . ' ' . $storage_item__1990 ;
+# $global_action_debug_line = '***** get-all-operands **** 1987 *** copy-word-at-position ** 3 *' . $storage_item__1988 . ' ' . $storage_item__1989 . ' ' . $storage_item__1990 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -15965,7 +15965,7 @@ $storage_item__1987 = 'copy-word-at-position ' . $storage_item__1988 . ' ' . $st
 # print 'result: ' . $storage_item__1987 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** get-all-operands **** 1991 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 1991 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -15980,7 +15980,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1991 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** get-all-operands **** 1993 *** copy-text ** 2 *' . $storage_item__1994 . ' ' . $storage_item__1995 ;
+# $global_action_debug_line = '***** get-all-operands **** 1993 *** copy-text ** 2 *' . $storage_item__1994 . ' ' . $storage_item__1995 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16007,7 +16007,7 @@ $storage_item__1993 = 'copy-text ' . $storage_item__1994 . ' ' . $storage_item__
 # end action if else
 
 
-$global_action_debug_line = '***** get-all-operands **** 1997 *** copy-text ** 2 *' . $storage_item__1998 . ' ' . $storage_item__1999 ;
+# $global_action_debug_line = '***** get-all-operands **** 1997 *** copy-text ** 2 *' . $storage_item__1998 . ' ' . $storage_item__1999 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16034,7 +16034,7 @@ $storage_item__1997 = 'copy-text ' . $storage_item__1998 . ' ' . $storage_item__
 # end action if end
 
 
-$global_action_debug_line = '***** get-all-operands **** 2005 *** number-of-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 2005 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -16049,7 +16049,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2005 . "\n" ;
 # end of action number-of-operands
 
-$global_action_debug_line = '***** get-all-operands **** 2004 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2005 . ' ' . $storage_item__2007 ;
+# $global_action_debug_line = '***** get-all-operands **** 2004 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2005 . ' ' . $storage_item__2007 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16077,7 +16077,7 @@ $storage_item__2004 = 'less' ;
 # print 'result: ' . $storage_item__2004 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** get-all-operands **** 2002 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2003 . ' ' . $storage_item__2004 ;
+# $global_action_debug_line = '***** get-all-operands **** 2002 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2003 . ' ' . $storage_item__2004 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__2003 eq $storage_item__2004 ) {
@@ -16095,7 +16095,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** get-all-operands **** 2008 *** copy-word-at-position ** 3 *' . $storage_item__2009 . ' ' . $storage_item__2010 . ' ' . $storage_item__2011 ;
+# $global_action_debug_line = '***** get-all-operands **** 2008 *** copy-word-at-position ** 3 *' . $storage_item__2009 . ' ' . $storage_item__2010 . ' ' . $storage_item__2011 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16123,7 +16123,7 @@ $storage_item__2008 = 'copy-word-at-position ' . $storage_item__2009 . ' ' . $st
 # print 'result: ' . $storage_item__2008 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** get-all-operands **** 2012 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-all-operands **** 2012 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -16138,7 +16138,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2012 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** get-all-operands **** 2014 *** copy-text ** 2 *' . $storage_item__2015 . ' ' . $storage_item__2016 ;
+# $global_action_debug_line = '***** get-all-operands **** 2014 *** copy-text ** 2 *' . $storage_item__2015 . ' ' . $storage_item__2016 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16165,7 +16165,7 @@ $storage_item__2014 = 'copy-text ' . $storage_item__2015 . ' ' . $storage_item__
 # end action if else
 
 
-$global_action_debug_line = '***** get-all-operands **** 2018 *** copy-text ** 2 *' . $storage_item__2019 . ' ' . $storage_item__2020 ;
+# $global_action_debug_line = '***** get-all-operands **** 2018 *** copy-text ** 2 *' . $storage_item__2019 . ' ' . $storage_item__2020 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16201,7 +16201,7 @@ $global_replacement_count_for_item_name{ 'get-operand-character-at-adjacent-posi
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-characters-from-position-to-position operand-or-operands adjacent-character ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn ambee append-text adjacent-character list-of-adjacent-characters amenn
 
-$global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2027 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2027 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -16216,7 +16216,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2027 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2029 *** word-to-use-in-handler ** 0 *' . '' ;
+# $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2029 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -16231,7 +16231,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2029 . "\n" ;
 # end of action word-to-use-in-handler
 
-$global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2024 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2025 . ' ' . $storage_item__2026 . ' ' . $storage_item__2027 . ' ' . $storage_item__2029 ;
+# $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2024 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2025 . ' ' . $storage_item__2026 . ' ' . $storage_item__2027 . ' ' . $storage_item__2029 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-characters-from-position-to-position' ;
@@ -16268,7 +16268,7 @@ $storage_item__2024 = 'copy-characters-from-position-to-position ' . $storage_it
 # print 'result: ' . $storage_item__2024 . "\n" ;
 # end of action copy-characters-from-position-to-position
 
-$global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2031 *** append-text ** 2 *' . $storage_item__2032 . ' ' . $storage_item__2033 ;
+# $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2031 *** append-text ** 2 *' . $storage_item__2032 . ' ' . $storage_item__2033 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -16306,7 +16306,7 @@ $global_replacement_count_for_item_name{ 'handle-definition-contains-ambee-amenn
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore amenn ambee copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition amenn ambee copy-text character-space list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen amenn ambee copy-text code-compiled-function-part-1 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-3 runtime-code-compiled-function amenn ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn ambee handle-definition-simple amenn ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn ambee copy-text phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn phrase-name-storage-position-for-current-definition amenn ambee copy-text text-storage-position-for-definition-number fen ambee current-definition-number amenn text-storage-position-for-current-definition amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn ambee get-all-operands amenn ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee append-text phrase-being-defined list-of-functions-generated amenn ambee clear-phrase phrase-being-defined amenn
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2036 *** copy-and-replace ** 4 *' . $storage_item__2037 . ' ' . $storage_item__2038 . ' ' . $storage_item__2039 . ' ' . $storage_item__2040 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2036 *** copy-and-replace ** 4 *' . $storage_item__2037 . ' ' . $storage_item__2038 . ' ' . $storage_item__2039 . ' ' . $storage_item__2040 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16343,7 +16343,7 @@ $storage_item__2036 = 'copy-and-replace ' . $storage_item__2037 . ' ' . $storage
 # print 'result: ' . $storage_item__2036 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2041 *** copy-text ** 2 *' . $storage_item__2042 . ' ' . $storage_item__2043 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2041 *** copy-text ** 2 *' . $storage_item__2042 . ' ' . $storage_item__2043 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16365,7 +16365,7 @@ $storage_item__2041 = 'copy-text ' . $storage_item__2042 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2041 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2044 *** copy-text ** 2 *' . $storage_item__2045 . ' ' . $storage_item__2046 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2044 *** copy-text ** 2 *' . $storage_item__2045 . ' ' . $storage_item__2046 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16387,7 +16387,7 @@ $storage_item__2044 = 'copy-text ' . $storage_item__2045 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2044 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2047 *** append-text-no-space ** 2 *' . $storage_item__2048 . ' ' . $storage_item__2049 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2047 *** append-text-no-space ** 2 *' . $storage_item__2048 . ' ' . $storage_item__2049 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16416,7 +16416,7 @@ $storage_item__2047 = 'append-text-no-space ' . $storage_item__2048 . ' ' . $sto
 # print 'result: ' . $storage_item__2047 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2050 *** append-text-no-space ** 2 *' . $storage_item__2051 . ' ' . $storage_item__2052 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2050 *** append-text-no-space ** 2 *' . $storage_item__2051 . ' ' . $storage_item__2052 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16445,7 +16445,7 @@ $storage_item__2050 = 'append-text-no-space ' . $storage_item__2051 . ' ' . $sto
 # print 'result: ' . $storage_item__2050 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2053 *** copy-and-replace ** 4 *' . $storage_item__2054 . ' ' . $storage_item__2055 . ' ' . $storage_item__2056 . ' ' . $storage_item__2057 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2053 *** copy-and-replace ** 4 *' . $storage_item__2054 . ' ' . $storage_item__2055 . ' ' . $storage_item__2056 . ' ' . $storage_item__2057 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16482,7 +16482,7 @@ $storage_item__2053 = 'copy-and-replace ' . $storage_item__2054 . ' ' . $storage
 # print 'result: ' . $storage_item__2053 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2058 *** copy-and-replace ** 4 *' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 . ' ' . $storage_item__2062 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2058 *** copy-and-replace ** 4 *' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 . ' ' . $storage_item__2062 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16519,7 +16519,7 @@ $storage_item__2058 = 'copy-and-replace ' . $storage_item__2059 . ' ' . $storage
 # print 'result: ' . $storage_item__2058 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2063 *** copy-and-replace ** 4 *' . $storage_item__2064 . ' ' . $storage_item__2065 . ' ' . $storage_item__2066 . ' ' . $storage_item__2067 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2063 *** copy-and-replace ** 4 *' . $storage_item__2064 . ' ' . $storage_item__2065 . ' ' . $storage_item__2066 . ' ' . $storage_item__2067 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16556,7 +16556,7 @@ $storage_item__2063 = 'copy-and-replace ' . $storage_item__2064 . ' ' . $storage
 # print 'result: ' . $storage_item__2063 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2068 *** copy-and-replace ** 4 *' . $storage_item__2069 . ' ' . $storage_item__2070 . ' ' . $storage_item__2071 . ' ' . $storage_item__2072 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2068 *** copy-and-replace ** 4 *' . $storage_item__2069 . ' ' . $storage_item__2070 . ' ' . $storage_item__2071 . ' ' . $storage_item__2072 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16593,7 +16593,7 @@ $storage_item__2068 = 'copy-and-replace ' . $storage_item__2069 . ' ' . $storage
 # print 'result: ' . $storage_item__2068 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2073 *** copy-and-replace ** 4 *' . $storage_item__2074 . ' ' . $storage_item__2075 . ' ' . $storage_item__2076 . ' ' . $storage_item__2077 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2073 *** copy-and-replace ** 4 *' . $storage_item__2074 . ' ' . $storage_item__2075 . ' ' . $storage_item__2076 . ' ' . $storage_item__2077 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16630,7 +16630,7 @@ $storage_item__2073 = 'copy-and-replace ' . $storage_item__2074 . ' ' . $storage
 # print 'result: ' . $storage_item__2073 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2078 *** copy-and-replace ** 4 *' . $storage_item__2079 . ' ' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2078 *** copy-and-replace ** 4 *' . $storage_item__2079 . ' ' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16667,7 +16667,7 @@ $storage_item__2078 = 'copy-and-replace ' . $storage_item__2079 . ' ' . $storage
 # print 'result: ' . $storage_item__2078 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2083 *** copy-and-replace ** 4 *' . $storage_item__2084 . ' ' . $storage_item__2085 . ' ' . $storage_item__2086 . ' ' . $storage_item__2087 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2083 *** copy-and-replace ** 4 *' . $storage_item__2084 . ' ' . $storage_item__2085 . ' ' . $storage_item__2086 . ' ' . $storage_item__2087 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16704,7 +16704,7 @@ $storage_item__2083 = 'copy-and-replace ' . $storage_item__2084 . ' ' . $storage
 # print 'result: ' . $storage_item__2083 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2088 *** copy-and-replace ** 4 *' . $storage_item__2089 . ' ' . $storage_item__2090 . ' ' . $storage_item__2091 . ' ' . $storage_item__2092 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2088 *** copy-and-replace ** 4 *' . $storage_item__2089 . ' ' . $storage_item__2090 . ' ' . $storage_item__2091 . ' ' . $storage_item__2092 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -16741,7 +16741,7 @@ $storage_item__2088 = 'copy-and-replace ' . $storage_item__2089 . ' ' . $storage
 # print 'result: ' . $storage_item__2088 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2093 *** copy-without-extra-spaces ** 2 *' . $storage_item__2094 . ' ' . $storage_item__2095 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2093 *** copy-without-extra-spaces ** 2 *' . $storage_item__2094 . ' ' . $storage_item__2095 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -16770,7 +16770,7 @@ $storage_item__2093 = 'copy-without-extra-spaces ' . $storage_item__2094 . ' ' .
 # print 'result: ' . $storage_item__2093 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2096 *** copy-text ** 2 *' . $storage_item__2097 . ' ' . $storage_item__2098 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2096 *** copy-text ** 2 *' . $storage_item__2097 . ' ' . $storage_item__2098 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -16792,7 +16792,7 @@ $storage_item__2096 = 'copy-text ' . $storage_item__2097 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2096 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2099 *** append-text-no-space ** 2 *' . $storage_item__2100 . ' ' . $storage_item__2101 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2099 *** append-text-no-space ** 2 *' . $storage_item__2100 . ' ' . $storage_item__2101 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16821,7 +16821,7 @@ $storage_item__2099 = 'append-text-no-space ' . $storage_item__2100 . ' ' . $sto
 # print 'result: ' . $storage_item__2099 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2102 *** append-text-no-space ** 2 *' . $storage_item__2103 . ' ' . $storage_item__2104 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2102 *** append-text-no-space ** 2 *' . $storage_item__2103 . ' ' . $storage_item__2104 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16850,7 +16850,7 @@ $storage_item__2102 = 'append-text-no-space ' . $storage_item__2103 . ' ' . $sto
 # print 'result: ' . $storage_item__2102 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2105 *** append-text-no-space ** 2 *' . $storage_item__2106 . ' ' . $storage_item__2107 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2105 *** append-text-no-space ** 2 *' . $storage_item__2106 . ' ' . $storage_item__2107 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16879,7 +16879,7 @@ $storage_item__2105 = 'append-text-no-space ' . $storage_item__2106 . ' ' . $sto
 # print 'result: ' . $storage_item__2105 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2108 *** append-text-no-space ** 2 *' . $storage_item__2109 . ' ' . $storage_item__2110 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2108 *** append-text-no-space ** 2 *' . $storage_item__2109 . ' ' . $storage_item__2110 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16908,7 +16908,7 @@ $storage_item__2108 = 'append-text-no-space ' . $storage_item__2109 . ' ' . $sto
 # print 'result: ' . $storage_item__2108 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2111 *** append-text ** 2 *' . $storage_item__2112 . ' ' . $storage_item__2113 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2111 *** append-text ** 2 *' . $storage_item__2112 . ' ' . $storage_item__2113 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -16937,7 +16937,7 @@ $storage_item__2111 = 'append-text ' . $storage_item__2112 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2111 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2114 *** append-text-no-space ** 2 *' . $storage_item__2115 . ' ' . $storage_item__2116 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2114 *** append-text-no-space ** 2 *' . $storage_item__2115 . ' ' . $storage_item__2116 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -16966,7 +16966,7 @@ $storage_item__2114 = 'append-text-no-space ' . $storage_item__2115 . ' ' . $sto
 # print 'result: ' . $storage_item__2114 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2119 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2119 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -16981,7 +16981,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2119 . "\n" ;
 # end of action filename-output-results-all-compiled-functions
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2117 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2118 . ' ' . $storage_item__2119 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2117 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2118 . ' ' . $storage_item__2119 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -17010,7 +17010,7 @@ $storage_item__2117 = 'copy-from-phrase-append-to-file ' . $storage_item__2118 .
 # print 'result: ' . $storage_item__2117 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2121 *** copy-without-extra-spaces ** 2 *' . $storage_item__2122 . ' ' . $storage_item__2123 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2121 *** copy-without-extra-spaces ** 2 *' . $storage_item__2122 . ' ' . $storage_item__2123 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -17039,7 +17039,7 @@ $storage_item__2121 = 'copy-without-extra-spaces ' . $storage_item__2122 . ' ' .
 # print 'result: ' . $storage_item__2121 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2124 *** handle-definition-simple ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2124 *** handle-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17054,7 +17054,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2124 . "\n" ;
 # end of action handle-definition-simple
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2126 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__2127 . ' ' . $storage_item__2128 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2126 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__2127 . ' ' . $storage_item__2128 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -17127,7 +17127,7 @@ $storage_item__2126 = 'use-handler-with-each-word-in-phrase ' . $storage_item__2
 # print 'result: ' . $storage_item__2126 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2132 *** current-definition-number ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2132 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17142,7 +17142,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2132 . "\n" ;
 # end of action current-definition-number
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2130 *** copy-text ** 2 *' . $storage_item__2131 . '-' . $storage_item__2132 . ' ' . $storage_item__2134 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2130 *** copy-text ** 2 *' . $storage_item__2131 . '-' . $storage_item__2132 . ' ' . $storage_item__2134 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17164,7 +17164,7 @@ $storage_item__2130 = 'copy-text ' . $storage_item__2131 . '-' . $storage_item__
 # print 'result: ' . $storage_item__2130 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2137 *** current-definition-number ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2137 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17179,7 +17179,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2137 . "\n" ;
 # end of action current-definition-number
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2135 *** copy-text ** 2 *' . $storage_item__2136 . '-' . $storage_item__2137 . ' ' . $storage_item__2139 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2135 *** copy-text ** 2 *' . $storage_item__2136 . '-' . $storage_item__2137 . ' ' . $storage_item__2139 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17201,7 +17201,7 @@ $storage_item__2135 = 'copy-text ' . $storage_item__2136 . '-' . $storage_item__
 # print 'result: ' . $storage_item__2135 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2142 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2142 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17216,7 +17216,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2142 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2140 *** copy-text ** 2 *' . $storage_item__2141 . '-' . $storage_item__2142 . ' ' . $storage_item__2144 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2140 *** copy-text ** 2 *' . $storage_item__2141 . '-' . $storage_item__2142 . ' ' . $storage_item__2144 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17238,7 +17238,7 @@ $storage_item__2140 = 'copy-text ' . $storage_item__2141 . '-' . $storage_item__
 # print 'result: ' . $storage_item__2140 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2145 *** get-all-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2145 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17253,7 +17253,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2145 . "\n" ;
 # end of action get-all-operands
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2147 *** copy-text ** 2 *' . $storage_item__2148 . ' ' . $storage_item__2149 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2147 *** copy-text ** 2 *' . $storage_item__2148 . ' ' . $storage_item__2149 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17275,7 +17275,7 @@ $storage_item__2147 = 'copy-text ' . $storage_item__2148 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2147 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2150 *** append-text-no-space ** 2 *' . $storage_item__2151 . ' ' . $storage_item__2152 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2150 *** append-text-no-space ** 2 *' . $storage_item__2151 . ' ' . $storage_item__2152 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -17304,7 +17304,7 @@ $storage_item__2150 = 'append-text-no-space ' . $storage_item__2151 . ' ' . $sto
 # print 'result: ' . $storage_item__2150 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2153 *** append-text-no-space ** 2 *' . $storage_item__2154 . ' ' . $storage_item__2155 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2153 *** append-text-no-space ** 2 *' . $storage_item__2154 . ' ' . $storage_item__2155 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -17333,7 +17333,7 @@ $storage_item__2153 = 'append-text-no-space ' . $storage_item__2154 . ' ' . $sto
 # print 'result: ' . $storage_item__2153 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2158 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2158 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17348,7 +17348,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2158 . "\n" ;
 # end of action filename-output-results-all-compiled-functions
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2156 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2157 . ' ' . $storage_item__2158 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2156 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2157 . ' ' . $storage_item__2158 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -17377,7 +17377,7 @@ $storage_item__2156 = 'copy-from-phrase-append-to-file ' . $storage_item__2157 .
 # print 'result: ' . $storage_item__2156 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2160 *** append-text ** 2 *' . $storage_item__2161 . ' ' . $storage_item__2162 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2160 *** append-text ** 2 *' . $storage_item__2161 . ' ' . $storage_item__2162 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -17406,7 +17406,7 @@ $storage_item__2160 = 'append-text ' . $storage_item__2161 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2160 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2163 *** clear-phrase ** 1 *' . $storage_item__2164 ;
+# $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2163 *** clear-phrase ** 1 *' . $storage_item__2164 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17432,7 +17432,7 @@ $global_replacement_count_for_item_name{ 'handle-definition-immediate' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn ambee trace-show phrase-definition-modified amenn ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amenn fen modified amenn
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2167 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2167 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17447,7 +17447,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2167 . "\n" ;
 # end of action generate-list-of-tokens-in-current-definition-quotable
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2169 *** copy-and-replace ** 4 *' . $storage_item__2170 . ' ' . $storage_item__2171 . ' ' . $storage_item__2172 . ' ' . $storage_item__2173 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2169 *** copy-and-replace ** 4 *' . $storage_item__2170 . ' ' . $storage_item__2171 . ' ' . $storage_item__2172 . ' ' . $storage_item__2173 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -17484,7 +17484,7 @@ $storage_item__2169 = 'copy-and-replace ' . $storage_item__2170 . ' ' . $storage
 # print 'result: ' . $storage_item__2169 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2174 *** copy-without-extra-spaces ** 2 *' . $storage_item__2175 . ' ' . $storage_item__2176 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2174 *** copy-without-extra-spaces ** 2 *' . $storage_item__2175 . ' ' . $storage_item__2176 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -17513,7 +17513,7 @@ $storage_item__2174 = 'copy-without-extra-spaces ' . $storage_item__2175 . ' ' .
 # print 'result: ' . $storage_item__2174 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2177 *** trace-show ** 1 *' . $storage_item__2178 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2177 *** trace-show ** 1 *' . $storage_item__2178 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17529,7 +17529,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2178 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__2177 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2179 *** copy-and-replace ** 4 *' . $storage_item__2180 . ' ' . $storage_item__2181 . ' ' . $storage_item__2182 . ' ' . $storage_item__2183 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2179 *** copy-and-replace ** 4 *' . $storage_item__2180 . ' ' . $storage_item__2181 . ' ' . $storage_item__2182 . ' ' . $storage_item__2183 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -17566,7 +17566,7 @@ $storage_item__2179 = 'copy-and-replace ' . $storage_item__2180 . ' ' . $storage
 # print 'result: ' . $storage_item__2179 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2184 *** trace-show ** 1 *' . $storage_item__2185 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2184 *** trace-show ** 1 *' . $storage_item__2185 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17582,7 +17582,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2185 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__2184 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2186 *** copy-and-replace ** 4 *' . $storage_item__2187 . ' ' . $storage_item__2188 . ' ' . $storage_item__2189 . ' ' . $storage_item__2190 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2186 *** copy-and-replace ** 4 *' . $storage_item__2187 . ' ' . $storage_item__2188 . ' ' . $storage_item__2189 . ' ' . $storage_item__2190 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -17619,7 +17619,7 @@ $storage_item__2186 = 'copy-and-replace ' . $storage_item__2187 . ' ' . $storage
 # print 'result: ' . $storage_item__2186 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2191 *** trace-show ** 1 *' . $storage_item__2192 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2191 *** trace-show ** 1 *' . $storage_item__2192 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17635,7 +17635,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2192 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__2191 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2193 *** copy-and-replace ** 4 *' . $storage_item__2194 . ' ' . $storage_item__2195 . ' ' . $storage_item__2196 . ' ' . $storage_item__2197 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2193 *** copy-and-replace ** 4 *' . $storage_item__2194 . ' ' . $storage_item__2195 . ' ' . $storage_item__2196 . ' ' . $storage_item__2197 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -17672,7 +17672,7 @@ $storage_item__2193 = 'copy-and-replace ' . $storage_item__2194 . ' ' . $storage
 # print 'result: ' . $storage_item__2193 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2198 *** trace-show ** 1 *' . $storage_item__2199 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2198 *** trace-show ** 1 *' . $storage_item__2199 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17688,7 +17688,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2199 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__2198 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2202 *** immediate-definition-phrase-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2202 *** immediate-definition-phrase-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17703,7 +17703,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2202 . "\n" ;
 # end of action immediate-definition-phrase-name
 
-$global_action_debug_line = '***** handle-definition-immediate **** 2200 *** copy-text ** 2 *' . $storage_item__2201 . ' ' . $storage_item__2202 . '-' . $storage_item__2204 ;
+# $global_action_debug_line = '***** handle-definition-immediate **** 2200 *** copy-text ** 2 *' . $storage_item__2201 . ' ' . $storage_item__2202 . '-' . $storage_item__2204 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17734,7 +17734,7 @@ $global_replacement_count_for_item_name{ 'handle-definition-simple-or-immediate'
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn ambee trace-show phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn ambee handle-definition-simple amenn ambee if-else amenn ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn ambee handle-definition-immediate amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2207 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' . $storage_item__2210 ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2207 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' . $storage_item__2210 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-in-both-lists' ;
@@ -17767,7 +17767,7 @@ $storage_item__2207 = 'copy-words-found-in-both-lists ' . $storage_item__2208 . 
 # print 'result: ' . $storage_item__2207 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2211 *** trace-show ** 1 *' . $storage_item__2212 ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2211 *** trace-show ** 1 *' . $storage_item__2212 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17783,7 +17783,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2212 . ' is not defined' . "\n" ;
 # print 'result: ' . $storage_item__2211 . "\n" ;
 # end of action trace-show
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2214 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2215 ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2214 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2215 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -17815,7 +17815,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2216 *** handle-definition-simple ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2216 *** handle-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17835,7 +17835,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2219 *** copy-text ** 2 *' . $storage_item__2220 . ' ' . $storage_item__2221 ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2219 *** copy-text ** 2 *' . $storage_item__2220 . ' ' . $storage_item__2221 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17857,7 +17857,7 @@ $storage_item__2219 = 'copy-text ' . $storage_item__2220 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2219 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2222 *** handle-definition-immediate ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2222 *** handle-definition-immediate ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17886,7 +17886,7 @@ $global_replacement_count_for_item_name{ 'handle-definition-simple' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee generate-runtime-code-for-phrase-definition-simple amenn ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
 
-$global_action_debug_line = '***** handle-definition-simple **** 2227 *** create-new-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2227 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17901,7 +17901,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2227 . "\n" ;
 # end of action create-new-text-storage-position
 
-$global_action_debug_line = '***** handle-definition-simple **** 2229 *** copy-text ** 2 *' . $storage_item__2230 . ' ' . $storage_item__2231 ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2229 *** copy-text ** 2 *' . $storage_item__2230 . ' ' . $storage_item__2231 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17923,7 +17923,7 @@ $storage_item__2229 = 'copy-text ' . $storage_item__2230 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2229 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-simple **** 2232 *** create-new-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2232 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17938,7 +17938,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2232 . "\n" ;
 # end of action create-new-text-storage-position
 
-$global_action_debug_line = '***** handle-definition-simple **** 2234 *** copy-text ** 2 *' . $storage_item__2235 . ' ' . $storage_item__2236 ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2234 *** copy-text ** 2 *' . $storage_item__2235 . ' ' . $storage_item__2236 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -17960,7 +17960,7 @@ $storage_item__2234 = 'copy-text ' . $storage_item__2235 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2234 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-definition-simple **** 2237 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2237 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17975,7 +17975,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2237 . "\n" ;
 # end of action generate-list-of-tokens-in-current-definition-quotable
 
-$global_action_debug_line = '***** handle-definition-simple **** 2239 *** generate-runtime-code-for-phrase-definition-simple ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2239 *** generate-runtime-code-for-phrase-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -17990,7 +17990,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2239 . "\n" ;
 # end of action generate-runtime-code-for-phrase-definition-simple
 
-$global_action_debug_line = '***** handle-definition-simple **** 2243 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2243 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18005,7 +18005,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2243 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** handle-definition-simple **** 2241 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2242 . ' ' . $storage_item__2243 ;
+# $global_action_debug_line = '***** handle-definition-simple **** 2241 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2242 . ' ' . $storage_item__2243 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -18043,7 +18043,7 @@ $global_replacement_count_for_item_name{ 'handle-fen-and-nospay-within-operand-o
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special amenn ambee copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space amenn
 
-$global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2247 *** copy-and-replace ** 4 *' . $storage_item__2248 . ' ' . $storage_item__2249 . ' ' . $storage_item__2250 . ' ' . $storage_item__2251 ;
+# $global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2247 *** copy-and-replace ** 4 *' . $storage_item__2248 . ' ' . $storage_item__2249 . ' ' . $storage_item__2250 . ' ' . $storage_item__2251 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -18080,7 +18080,7 @@ $storage_item__2247 = 'copy-and-replace ' . $storage_item__2248 . ' ' . $storage
 # print 'result: ' . $storage_item__2247 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2252 *** copy-and-replace ** 4 *' . $storage_item__2253 . ' ' . $storage_item__2254 . ' ' . $storage_item__2255 . ' ' . $storage_item__2256 ;
+# $global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2252 *** copy-and-replace ** 4 *' . $storage_item__2253 . ' ' . $storage_item__2254 . ' ' . $storage_item__2255 . ' ' . $storage_item__2256 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -18117,7 +18117,7 @@ $storage_item__2252 = 'copy-and-replace ' . $storage_item__2253 . ' ' . $storage
 # print 'result: ' . $storage_item__2252 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2257 *** copy-and-replace ** 4 *' . $storage_item__2258 . ' ' . $storage_item__2259 . ' ' . $storage_item__2260 . ' ' . $storage_item__2261 ;
+# $global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2257 *** copy-and-replace ** 4 *' . $storage_item__2258 . ' ' . $storage_item__2259 . ' ' . $storage_item__2260 . ' ' . $storage_item__2261 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -18154,7 +18154,7 @@ $storage_item__2257 = 'copy-and-replace ' . $storage_item__2258 . ' ' . $storage
 # print 'result: ' . $storage_item__2257 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2262 *** copy-and-replace ** 4 *' . $storage_item__2263 . ' ' . $storage_item__2264 . ' ' . $storage_item__2265 . ' ' . $storage_item__2266 ;
+# $global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2262 *** copy-and-replace ** 4 *' . $storage_item__2263 . ' ' . $storage_item__2264 . ' ' . $storage_item__2265 . ' ' . $storage_item__2266 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -18200,7 +18200,7 @@ $global_replacement_count_for_item_name{ 'handle-non-zero-count-of-ambee-minus-a
 my $saved_accumulator_pointer = -1 ;
 # ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee append-text warning-more-ambee-than-amenn-tokens warning-message amenn ambee append-text-no-space warning-message warning-messages amenn ambee if-else amenn ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn ambee append-text-no-space warning-message warning-messages amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2273 *** count-of-ambee-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2273 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18215,7 +18215,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2273 . "\n" ;
 # end of action count-of-ambee-tokens
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2275 *** count-of-amenn-tokens ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2275 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18230,7 +18230,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2275 . "\n" ;
 # end of action count-of-amenn-tokens
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2272 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2273 . ' ' . $storage_item__2275 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2272 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2273 . ' ' . $storage_item__2275 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18258,7 +18258,7 @@ $storage_item__2272 = 'less' ;
 # print 'result: ' . $storage_item__2272 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2270 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2271 . ' ' . $storage_item__2272 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2270 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2271 . ' ' . $storage_item__2272 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__2271 eq $storage_item__2272 ) {
@@ -18276,7 +18276,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2277 *** copy-text ** 2 *' . $storage_item__2278 . ' ' . $storage_item__2279 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2277 *** copy-text ** 2 *' . $storage_item__2278 . ' ' . $storage_item__2279 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18298,7 +18298,7 @@ $storage_item__2277 = 'copy-text ' . $storage_item__2278 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2277 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2280 *** append-text ** 2 *' . $storage_item__2281 . ' ' . $storage_item__2282 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2280 *** append-text ** 2 *' . $storage_item__2281 . ' ' . $storage_item__2282 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18327,7 +18327,7 @@ $storage_item__2280 = 'append-text ' . $storage_item__2281 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2280 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2283 *** append-text ** 2 *' . $storage_item__2284 . ' ' . $storage_item__2285 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2283 *** append-text ** 2 *' . $storage_item__2284 . ' ' . $storage_item__2285 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18356,7 +18356,7 @@ $storage_item__2283 = 'append-text ' . $storage_item__2284 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2283 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2286 *** append-text-no-space ** 2 *' . $storage_item__2287 . ' ' . $storage_item__2288 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2286 *** append-text-no-space ** 2 *' . $storage_item__2287 . ' ' . $storage_item__2288 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -18390,7 +18390,7 @@ $storage_item__2286 = 'append-text-no-space ' . $storage_item__2287 . ' ' . $sto
 # end action if else
 
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2290 *** copy-text ** 2 *' . $storage_item__2291 . ' ' . $storage_item__2292 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2290 *** copy-text ** 2 *' . $storage_item__2291 . ' ' . $storage_item__2292 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18412,7 +18412,7 @@ $storage_item__2290 = 'copy-text ' . $storage_item__2291 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2290 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2293 *** append-text ** 2 *' . $storage_item__2294 . ' ' . $storage_item__2295 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2293 *** append-text ** 2 *' . $storage_item__2294 . ' ' . $storage_item__2295 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18441,7 +18441,7 @@ $storage_item__2293 = 'append-text ' . $storage_item__2294 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2293 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2296 *** append-text ** 2 *' . $storage_item__2297 . ' ' . $storage_item__2298 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2296 *** append-text ** 2 *' . $storage_item__2297 . ' ' . $storage_item__2298 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18470,7 +18470,7 @@ $storage_item__2296 = 'append-text ' . $storage_item__2297 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2296 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2299 *** append-text-no-space ** 2 *' . $storage_item__2300 . ' ' . $storage_item__2301 ;
+# $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2299 *** append-text-no-space ** 2 *' . $storage_item__2300 . ' ' . $storage_item__2301 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -18513,7 +18513,7 @@ $global_replacement_count_for_item_name{ 'handle-token-ambee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee recursion-stack-push amenn ambee create-new-result-storage-position amenn ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage amenn ambee append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage amenn ambee append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage ambee filename-output-results-all-definition-items amenn amenn ambee clear-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee append-text string-ambee definition-for-phrase-being-defined amenn
 
-$global_action_debug_line = '***** handle-token-ambee **** 2305 *** recursion-stack-push ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2305 *** recursion-stack-push ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18528,7 +18528,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2305 . "\n" ;
 # end of action recursion-stack-push
 
-$global_action_debug_line = '***** handle-token-ambee **** 2307 *** create-new-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2307 *** create-new-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18543,7 +18543,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2307 . "\n" ;
 # end of action create-new-result-storage-position
 
-$global_action_debug_line = '***** handle-token-ambee **** 2309 *** copy-text ** 2 *' . $storage_item__2310 . ' ' . $storage_item__2311 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2309 *** copy-text ** 2 *' . $storage_item__2310 . ' ' . $storage_item__2311 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18565,7 +18565,7 @@ $storage_item__2309 = 'copy-text ' . $storage_item__2310 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2309 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-ambee **** 2312 *** append-text-no-space ** 2 *' . $storage_item__2313 . ' ' . $storage_item__2314 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2312 *** append-text-no-space ** 2 *' . $storage_item__2313 . ' ' . $storage_item__2314 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -18594,7 +18594,7 @@ $storage_item__2312 = 'append-text-no-space ' . $storage_item__2313 . ' ' . $sto
 # print 'result: ' . $storage_item__2312 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-token-ambee **** 2315 *** append-text ** 2 *' . $storage_item__2316 . ' ' . $storage_item__2317 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2315 *** append-text ** 2 *' . $storage_item__2316 . ' ' . $storage_item__2317 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18623,7 +18623,7 @@ $storage_item__2315 = 'append-text ' . $storage_item__2316 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2315 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-ambee **** 2320 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2320 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18638,7 +18638,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2320 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** handle-token-ambee **** 2318 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2319 . ' ' . $storage_item__2320 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2318 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2319 . ' ' . $storage_item__2320 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -18667,7 +18667,7 @@ $storage_item__2318 = 'copy-from-phrase-append-to-file ' . $storage_item__2319 .
 # print 'result: ' . $storage_item__2318 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** handle-token-ambee **** 2324 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2324 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18682,7 +18682,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2324 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-ambee **** 2322 *** clear-phrase ** 1 *' . $storage_item__2323 . '-' . $storage_item__2324 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2322 *** clear-phrase ** 1 *' . $storage_item__2323 . '-' . $storage_item__2324 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18699,7 +18699,7 @@ $storage_item__2322 = 'clear-phrase ' . $storage_item__2323 . '-' . $storage_ite
 # print 'result: ' . $storage_item__2322 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-ambee **** 2326 *** append-text ** 2 *' . $storage_item__2327 . ' ' . $storage_item__2328 ;
+# $global_action_debug_line = '***** handle-token-ambee **** 2326 *** append-text ** 2 *' . $storage_item__2327 . ' ' . $storage_item__2328 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18737,7 +18737,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-not-emp
 my $saved_accumulator_pointer = -1 ;
 # ambee clear-phrase needed-operand-checks amenn ambee append-text string-amenn definition-for-phrase-being-defined amenn ambee copy-text current-result-storage-position storage-item-pointer amenn ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn ambee copy-text action-name-at-storage-position fen ambee current-result-storage-position amenn action-name amenn ambee put-into-phrase yes-or-no-action-recognized no amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee copy-text operand-checks-for-action fen ambee action-name amenn needed-operand-checks amenn ambee if-end amenn ambee clear-phrase runtime-code-for-parameter-phrase amenn ambee if-yes-begin ambee yes-or-no-action-recognized amenn amenn ambee handle-token-amenn-case-action-recognized amenn ambee if-else amenn ambee handle-token-amenn-case-executable-phrase amenn ambee if-end amenn ambee generate-code-for-one-action amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2331 *** clear-phrase ** 1 *' . $storage_item__2332 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2331 *** clear-phrase ** 1 *' . $storage_item__2332 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18754,7 +18754,7 @@ $storage_item__2331 = 'clear-phrase ' . $storage_item__2332 ;
 # print 'result: ' . $storage_item__2331 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2333 *** append-text ** 2 *' . $storage_item__2334 . ' ' . $storage_item__2335 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2333 *** append-text ** 2 *' . $storage_item__2334 . ' ' . $storage_item__2335 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -18783,7 +18783,7 @@ $storage_item__2333 = 'append-text ' . $storage_item__2334 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2333 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2336 *** copy-text ** 2 *' . $storage_item__2337 . ' ' . $storage_item__2338 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2336 *** copy-text ** 2 *' . $storage_item__2337 . ' ' . $storage_item__2338 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18805,7 +18805,7 @@ $storage_item__2336 = 'copy-text ' . $storage_item__2337 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2336 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2339 *** expand-text ** 2 *' . $storage_item__2340 . ' ' . $storage_item__2341 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2339 *** expand-text ** 2 *' . $storage_item__2340 . ' ' . $storage_item__2341 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18834,7 +18834,7 @@ $storage_item__2339 = 'expand-text ' . $storage_item__2340 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2339 . "\n" ;
 # end of action expand-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2344 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2344 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18849,7 +18849,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2344 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2342 *** copy-text ** 2 *' . $storage_item__2343 . '-' . $storage_item__2344 . ' ' . $storage_item__2346 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2342 *** copy-text ** 2 *' . $storage_item__2343 . '-' . $storage_item__2344 . ' ' . $storage_item__2346 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18871,7 +18871,7 @@ $storage_item__2342 = 'copy-text ' . $storage_item__2343 . '-' . $storage_item__
 # print 'result: ' . $storage_item__2342 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2347 *** put-into-phrase ** 2 *' . $storage_item__2348 . ' ' . $storage_item__2349 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2347 *** put-into-phrase ** 2 *' . $storage_item__2348 . ' ' . $storage_item__2349 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18889,7 +18889,7 @@ $storage_item__2347 = 'put-into-phrase ' . $storage_item__2348 . ' ' . $storage_
 # print 'result: ' . $storage_item__2347 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2353 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2353 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18904,7 +18904,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2353 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2351 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2352 . '-' . $storage_item__2353 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2351 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2352 . '-' . $storage_item__2353 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -18936,7 +18936,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2355 *** put-into-phrase ** 2 *' . $storage_item__2356 . ' ' . $storage_item__2357 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2355 *** put-into-phrase ** 2 *' . $storage_item__2356 . ' ' . $storage_item__2357 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -18959,7 +18959,7 @@ $storage_item__2355 = 'put-into-phrase ' . $storage_item__2356 . ' ' . $storage_
 # end action if end
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2362 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2362 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -18974,7 +18974,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2362 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2360 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2361 . '-' . $storage_item__2362 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2360 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2361 . '-' . $storage_item__2362 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -19006,7 +19006,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2364 *** put-into-phrase ** 2 *' . $storage_item__2365 . ' ' . $storage_item__2366 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2364 *** put-into-phrase ** 2 *' . $storage_item__2365 . ' ' . $storage_item__2366 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19024,7 +19024,7 @@ $storage_item__2364 = 'put-into-phrase ' . $storage_item__2365 . ' ' . $storage_
 # print 'result: ' . $storage_item__2364 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2369 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2369 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19039,7 +19039,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2369 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2367 *** copy-text ** 2 *' . $storage_item__2368 . '-' . $storage_item__2369 . ' ' . $storage_item__2371 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2367 *** copy-text ** 2 *' . $storage_item__2368 . '-' . $storage_item__2369 . ' ' . $storage_item__2371 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19066,7 +19066,7 @@ $storage_item__2367 = 'copy-text ' . $storage_item__2368 . '-' . $storage_item__
 # end action if end
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2373 *** clear-phrase ** 1 *' . $storage_item__2374 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2373 *** clear-phrase ** 1 *' . $storage_item__2374 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19083,7 +19083,7 @@ $storage_item__2373 = 'clear-phrase ' . $storage_item__2374 ;
 # print 'result: ' . $storage_item__2373 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2376 *** yes-or-no-action-recognized ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2376 *** yes-or-no-action-recognized ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19105,7 +19105,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2378 *** handle-token-amenn-case-action-recognized ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2378 *** handle-token-amenn-case-action-recognized ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19125,7 +19125,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2381 *** handle-token-amenn-case-executable-phrase ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2381 *** handle-token-amenn-case-executable-phrase ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19145,7 +19145,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if end
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2384 *** generate-code-for-one-action ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2384 *** generate-code-for-one-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19169,7 +19169,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-recogni
 my $saved_accumulator_pointer = -1 ;
 # ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fen ambee action-name amenn amenn amenn ambee handle-token-amenn-case-action-standard-or-has-template amenn ambee if-else amenn ambee handle-token-amenn-case fen ambee action-name amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2391 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2391 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19184,7 +19184,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2391 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2389 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2390 . '-' . $storage_item__2391 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2389 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2390 . '-' . $storage_item__2391 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -19216,7 +19216,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2393 *** handle-token-amenn-case-action-standard-or-has-template ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2393 *** handle-token-amenn-case-action-standard-or-has-template ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19236,7 +19236,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2397 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2397 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19251,7 +19251,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2397 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2396 *** handle-token-amenn-case ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2396 *** handle-token-amenn-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19278,7 +19278,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-standar
 my $saved_accumulator_pointer = -1 ;
 # ambee get-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2403 *** get-all-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2403 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19293,7 +19293,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2403 . "\n" ;
 # end of action get-all-operands
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2408 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2408 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19308,7 +19308,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2408 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2406 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2407 . '-' . $storage_item__2408 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2406 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2407 . '-' . $storage_item__2408 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -19340,7 +19340,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2410 *** expand-text ** 2 *' . $storage_item__2411 . ' ' . $storage_item__2412 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2410 *** expand-text ** 2 *' . $storage_item__2411 . ' ' . $storage_item__2412 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19374,7 +19374,7 @@ $storage_item__2410 = 'expand-text ' . $storage_item__2411 . ' ' . $storage_item
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2416 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2416 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19389,7 +19389,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2416 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2414 *** expand-text ** 2 *' . $storage_item__2415 . '-' . $storage_item__2416 . ' ' . $storage_item__2418 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2414 *** expand-text ** 2 *' . $storage_item__2415 . '-' . $storage_item__2416 . ' ' . $storage_item__2418 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19432,7 +19432,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-executable-phr
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text digit-0 number-of-operands amenn ambee copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands amenn ambee numeric-increment current-accumulator-pointer amenn ambee copy-text action-name current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name amenn ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn ambee append-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-text operand-or-operands saved-operand-or-operands amenn ambee copy-without-extra-spaces list-of-operands-raw operand-or-operands amenn ambee copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-executable-phrase amenn ambee copy-text saved-operand-or-operands operand-or-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase not-empty-if-operands-include-fen amenn amenn ambee append-text action-name list-of-function-branches-needed amenn ambee expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase amenn ambee if-end amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2422 *** copy-text ** 2 *' . $storage_item__2423 . ' ' . $storage_item__2424 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2422 *** copy-text ** 2 *' . $storage_item__2423 . ' ' . $storage_item__2424 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19454,7 +19454,7 @@ $storage_item__2422 = 'copy-text ' . $storage_item__2423 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2422 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2425 *** copy-text ** 2 *' . $storage_item__2426 . ' ' . $storage_item__2427 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2425 *** copy-text ** 2 *' . $storage_item__2426 . ' ' . $storage_item__2427 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19476,7 +19476,7 @@ $storage_item__2425 = 'copy-text ' . $storage_item__2426 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2425 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2428 *** numeric-increment ** 1 *' . $storage_item__2429 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2428 *** numeric-increment ** 1 *' . $storage_item__2429 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -19501,7 +19501,7 @@ $storage_item__2428 = 'numeric-increment ' . $storage_item__2429 ;
 # print 'result: ' . $storage_item__2428 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2430 *** copy-text ** 2 *' . $storage_item__2431 . ' ' . $storage_item__2432 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2430 *** copy-text ** 2 *' . $storage_item__2431 . ' ' . $storage_item__2432 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19523,7 +19523,7 @@ $storage_item__2430 = 'copy-text ' . $storage_item__2431 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2430 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2433 *** generate-storage-for-current-text ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2433 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19538,7 +19538,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2433 . "\n" ;
 # end of action generate-storage-for-current-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2435 *** copy-text ** 2 *' . $storage_item__2436 . ' ' . $storage_item__2437 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2435 *** copy-text ** 2 *' . $storage_item__2436 . ' ' . $storage_item__2437 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19560,7 +19560,7 @@ $storage_item__2435 = 'copy-text ' . $storage_item__2436 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2435 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2438 *** append-text-no-space ** 2 *' . $storage_item__2439 . ' ' . $storage_item__2440 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2438 *** append-text-no-space ** 2 *' . $storage_item__2439 . ' ' . $storage_item__2440 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -19589,7 +19589,7 @@ $storage_item__2438 = 'append-text-no-space ' . $storage_item__2439 . ' ' . $sto
 # print 'result: ' . $storage_item__2438 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2441 *** append-text-no-space ** 2 *' . $storage_item__2442 . ' ' . $storage_item__2443 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2441 *** append-text-no-space ** 2 *' . $storage_item__2442 . ' ' . $storage_item__2443 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -19618,7 +19618,7 @@ $storage_item__2441 = 'append-text-no-space ' . $storage_item__2442 . ' ' . $sto
 # print 'result: ' . $storage_item__2441 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2444 *** copy-text ** 2 *' . $storage_item__2445 . ' ' . $storage_item__2446 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2444 *** copy-text ** 2 *' . $storage_item__2445 . ' ' . $storage_item__2446 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19640,7 +19640,7 @@ $storage_item__2444 = 'copy-text ' . $storage_item__2445 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2444 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2449 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2449 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19655,7 +19655,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2449 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2447 *** append-text ** 2 *' . $storage_item__2448 . '-' . $storage_item__2449 . ' ' . $storage_item__2451 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2447 *** append-text ** 2 *' . $storage_item__2448 . '-' . $storage_item__2449 . ' ' . $storage_item__2451 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -19684,7 +19684,7 @@ $storage_item__2447 = 'append-text ' . $storage_item__2448 . '-' . $storage_item
 # print 'result: ' . $storage_item__2447 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2452 *** copy-text ** 2 *' . $storage_item__2453 . ' ' . $storage_item__2454 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2452 *** copy-text ** 2 *' . $storage_item__2453 . ' ' . $storage_item__2454 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19706,7 +19706,7 @@ $storage_item__2452 = 'copy-text ' . $storage_item__2453 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2452 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2455 *** copy-without-extra-spaces ** 2 *' . $storage_item__2456 . ' ' . $storage_item__2457 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2455 *** copy-without-extra-spaces ** 2 *' . $storage_item__2456 . ' ' . $storage_item__2457 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-without-extra-spaces' ;
@@ -19735,7 +19735,7 @@ $storage_item__2455 = 'copy-without-extra-spaces ' . $storage_item__2456 . ' ' .
 # print 'result: ' . $storage_item__2455 . "\n" ;
 # end of action copy-without-extra-spaces
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2458 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2459 . ' ' . $storage_item__2460 . ' ' . $storage_item__2461 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2458 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2459 . ' ' . $storage_item__2460 . ' ' . $storage_item__2461 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-in-both-lists' ;
@@ -19768,7 +19768,7 @@ $storage_item__2458 = 'copy-words-found-in-both-lists ' . $storage_item__2459 . 
 # print 'result: ' . $storage_item__2458 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2462 *** copy-and-replace ** 4 *' . $storage_item__2463 . ' ' . $storage_item__2464 . ' ' . $storage_item__2465 . ' ' . $storage_item__2466 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2462 *** copy-and-replace ** 4 *' . $storage_item__2463 . ' ' . $storage_item__2464 . ' ' . $storage_item__2465 . ' ' . $storage_item__2466 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -19805,7 +19805,7 @@ $storage_item__2462 = 'copy-and-replace ' . $storage_item__2463 . ' ' . $storage
 # print 'result: ' . $storage_item__2462 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2467 *** copy-and-replace ** 4 *' . $storage_item__2468 . ' ' . $storage_item__2469 . ' ' . $storage_item__2470 . ' ' . $storage_item__2471 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2467 *** copy-and-replace ** 4 *' . $storage_item__2468 . ' ' . $storage_item__2469 . ' ' . $storage_item__2470 . ' ' . $storage_item__2471 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -19842,7 +19842,7 @@ $storage_item__2467 = 'copy-and-replace ' . $storage_item__2468 . ' ' . $storage
 # print 'result: ' . $storage_item__2467 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2472 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2472 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -19857,7 +19857,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2472 . "\n" ;
 # end of action handle-fen-and-nospay-within-operand-or-operands
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2474 *** copy-text ** 2 *' . $storage_item__2475 . ' ' . $storage_item__2476 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2474 *** copy-text ** 2 *' . $storage_item__2475 . ' ' . $storage_item__2476 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19879,7 +19879,7 @@ $storage_item__2474 = 'copy-text ' . $storage_item__2475 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2474 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2477 *** copy-text ** 2 *' . $storage_item__2478 . ' ' . $storage_item__2479 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2477 *** copy-text ** 2 *' . $storage_item__2478 . ' ' . $storage_item__2479 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19901,7 +19901,7 @@ $storage_item__2477 = 'copy-text ' . $storage_item__2478 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2477 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2481 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2482 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2481 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2482 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -19933,7 +19933,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2483 *** append-text ** 2 *' . $storage_item__2484 . ' ' . $storage_item__2485 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2483 *** append-text ** 2 *' . $storage_item__2484 . ' ' . $storage_item__2485 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -19962,7 +19962,7 @@ $storage_item__2483 = 'append-text ' . $storage_item__2484 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2483 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2486 *** expand-text ** 2 *' . $storage_item__2487 . ' ' . $storage_item__2488 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2486 *** expand-text ** 2 *' . $storage_item__2487 . ' ' . $storage_item__2488 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -19996,7 +19996,7 @@ $storage_item__2486 = 'expand-text ' . $storage_item__2487 . ' ' . $storage_item
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2490 *** expand-text ** 2 *' . $storage_item__2491 . ' ' . $storage_item__2492 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2490 *** expand-text ** 2 *' . $storage_item__2491 . ' ' . $storage_item__2492 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20030,7 +20030,7 @@ $storage_item__2490 = 'expand-text ' . $storage_item__2491 . ' ' . $storage_item
 # end action if end
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2494 *** copy-and-replace ** 4 *' . $storage_item__2495 . ' ' . $storage_item__2496 . ' ' . $storage_item__2497 . ' ' . $storage_item__2498 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2494 *** copy-and-replace ** 4 *' . $storage_item__2495 . ' ' . $storage_item__2496 . ' ' . $storage_item__2497 . ' ' . $storage_item__2498 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -20067,7 +20067,7 @@ $storage_item__2494 = 'copy-and-replace ' . $storage_item__2495 . ' ' . $storage
 # print 'result: ' . $storage_item__2494 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2499 *** copy-and-replace ** 4 *' . $storage_item__2500 . ' ' . $storage_item__2501 . ' ' . $storage_item__2502 . ' ' . $storage_item__2503 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2499 *** copy-and-replace ** 4 *' . $storage_item__2500 . ' ' . $storage_item__2501 . ' ' . $storage_item__2502 . ' ' . $storage_item__2503 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -20104,7 +20104,7 @@ $storage_item__2499 = 'copy-and-replace ' . $storage_item__2500 . ' ' . $storage
 # print 'result: ' . $storage_item__2499 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2504 *** copy-and-replace ** 4 *' . $storage_item__2505 . ' ' . $storage_item__2506 . ' ' . $storage_item__2507 . ' ' . $storage_item__2508 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2504 *** copy-and-replace ** 4 *' . $storage_item__2505 . ' ' . $storage_item__2506 . ' ' . $storage_item__2507 . ' ' . $storage_item__2508 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -20150,7 +20150,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-expand-text' }
 my $saved_accumulator_pointer = -1 ;
 # ambee numeric-increment current-accumulator-pointer amenn ambee handle-token-amenn-case-standard-action amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2511 *** numeric-increment ** 1 *' . $storage_item__2512 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2511 *** numeric-increment ** 1 *' . $storage_item__2512 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -20175,7 +20175,7 @@ $storage_item__2511 = 'numeric-increment ' . $storage_item__2512 ;
 # print 'result: ' . $storage_item__2511 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2513 *** handle-token-amenn-case-standard-action ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2513 *** handle-token-amenn-case-standard-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20199,7 +20199,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-standard-actio
 my $saved_accumulator_pointer = -1 ;
 # ambee get-all-operands amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2517 *** get-all-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2517 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20214,7 +20214,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2517 . "\n" ;
 # end of action get-all-operands
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2522 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2522 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20229,7 +20229,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2522 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2520 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2521 . '-' . $storage_item__2522 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2520 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2521 . '-' . $storage_item__2522 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -20261,7 +20261,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2526 *** action-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2526 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20276,7 +20276,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2526 . "\n" ;
 # end of action action-name
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2524 *** expand-text ** 2 *' . $storage_item__2525 . '-' . $storage_item__2526 . ' ' . $storage_item__2528 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2524 *** expand-text ** 2 *' . $storage_item__2525 . '-' . $storage_item__2526 . ' ' . $storage_item__2528 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20310,7 +20310,7 @@ $storage_item__2524 = 'expand-text ' . $storage_item__2525 . '-' . $storage_item
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2530 *** expand-text ** 2 *' . $storage_item__2531 . ' ' . $storage_item__2532 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2530 *** expand-text ** 2 *' . $storage_item__2531 . ' ' . $storage_item__2532 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20353,7 +20353,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn-case-use-handler-wi
 my $saved_accumulator_pointer = -1 ;
 # ambee create-new-text-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn ambee get-all-operands amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn handler-name 1 amenn ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2 amenn ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2536 *** create-new-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2536 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20368,7 +20368,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2536 . "\n" ;
 # end of action create-new-text-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2540 *** current-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2540 *** current-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20383,7 +20383,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2540 . "\n" ;
 # end of action current-text-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2538 *** clear-phrase ** 1 *' . $storage_item__2539 . '-' . $storage_item__2540 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2538 *** clear-phrase ** 1 *' . $storage_item__2539 . '-' . $storage_item__2540 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20400,7 +20400,7 @@ $storage_item__2538 = 'clear-phrase ' . $storage_item__2539 . '-' . $storage_ite
 # print 'result: ' . $storage_item__2538 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2545 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2545 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20415,7 +20415,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2545 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2542 *** copy-text ** 2 *' . $storage_item__2543 . ' ' . $storage_item__2544 . '-' . $storage_item__2545 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2542 *** copy-text ** 2 *' . $storage_item__2543 . ' ' . $storage_item__2544 . '-' . $storage_item__2545 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20437,7 +20437,7 @@ $storage_item__2542 = 'copy-text ' . $storage_item__2543 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2542 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2549 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2549 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20452,7 +20452,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2549 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2547 *** copy-text ** 2 *' . $storage_item__2548 . '-' . $storage_item__2549 . ' ' . $storage_item__2551 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2547 *** copy-text ** 2 *' . $storage_item__2548 . '-' . $storage_item__2549 . ' ' . $storage_item__2551 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20474,7 +20474,7 @@ $storage_item__2547 = 'copy-text ' . $storage_item__2548 . '-' . $storage_item__
 # print 'result: ' . $storage_item__2547 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2552 *** expand-text ** 2 *' . $storage_item__2553 . ' ' . $storage_item__2554 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2552 *** expand-text ** 2 *' . $storage_item__2553 . ' ' . $storage_item__2554 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20503,7 +20503,7 @@ $storage_item__2552 = 'expand-text ' . $storage_item__2553 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2552 . "\n" ;
 # end of action expand-text
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2557 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2557 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20518,7 +20518,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2557 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2555 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2556 . ' ' . $storage_item__2557 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2555 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2556 . ' ' . $storage_item__2557 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -20547,7 +20547,7 @@ $storage_item__2555 = 'copy-from-phrase-append-to-file ' . $storage_item__2556 .
 # print 'result: ' . $storage_item__2555 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2559 *** get-all-operands ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2559 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20562,7 +20562,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2559 . "\n" ;
 # end of action get-all-operands
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2563 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2563 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20577,7 +20577,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2563 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2561 *** copy-word-at-position ** 3 *' . $storage_item__2562 . '-' . $storage_item__2563 . ' ' . $storage_item__2565 . ' ' . $storage_item__2566 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2561 *** copy-word-at-position ** 3 *' . $storage_item__2562 . '-' . $storage_item__2563 . ' ' . $storage_item__2565 . ' ' . $storage_item__2566 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20605,7 +20605,7 @@ $storage_item__2561 = 'copy-word-at-position ' . $storage_item__2562 . '-' . $st
 # print 'result: ' . $storage_item__2561 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2567 *** copy-and-replace ** 4 *' . $storage_item__2568 . ' ' . $storage_item__2569 . ' ' . $storage_item__2570 . ' ' . $storage_item__2571 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2567 *** copy-and-replace ** 4 *' . $storage_item__2568 . ' ' . $storage_item__2569 . ' ' . $storage_item__2570 . ' ' . $storage_item__2571 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-and-replace' ;
@@ -20642,7 +20642,7 @@ $storage_item__2567 = 'copy-and-replace ' . $storage_item__2568 . ' ' . $storage
 # print 'result: ' . $storage_item__2567 . "\n" ;
 # end of action copy-and-replace
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2574 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2574 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20657,7 +20657,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2574 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2572 *** copy-word-at-position ** 3 *' . $storage_item__2573 . '-' . $storage_item__2574 . ' ' . $storage_item__2576 . ' ' . $storage_item__2577 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2572 *** copy-word-at-position ** 3 *' . $storage_item__2573 . '-' . $storage_item__2574 . ' ' . $storage_item__2576 . ' ' . $storage_item__2577 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20685,7 +20685,7 @@ $storage_item__2572 = 'copy-word-at-position ' . $storage_item__2573 . '-' . $st
 # print 'result: ' . $storage_item__2572 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2578 *** expand-text ** 2 *' . $storage_item__2579 . ' ' . $storage_item__2580 ;
+# $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2578 *** expand-text ** 2 *' . $storage_item__2579 . ' ' . $storage_item__2580 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20723,7 +20723,7 @@ $global_replacement_count_for_item_name{ 'handle-token-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee handle-token-amenn-case-action-not-empty amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn ambee generate-code-for-one-action amenn ambee if-end amenn ambee copy-from-phrase-append-to-file character-newline ambee filename-output-results-all-definition-items amenn amenn
 
-$global_action_debug_line = '***** handle-token-amenn **** 2586 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2586 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20738,7 +20738,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2586 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-amenn **** 2584 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2585 . '-' . $storage_item__2586 ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2584 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2585 . '-' . $storage_item__2586 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -20770,7 +20770,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** handle-token-amenn **** 2588 *** handle-token-amenn-case-action-not-empty ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2588 *** handle-token-amenn-case-action-not-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20790,7 +20790,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-amenn **** 2591 *** expand-text ** 2 *' . $storage_item__2592 . ' ' . $storage_item__2593 ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2591 *** expand-text ** 2 *' . $storage_item__2592 . ' ' . $storage_item__2593 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20819,7 +20819,7 @@ $storage_item__2591 = 'expand-text ' . $storage_item__2592 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2591 . "\n" ;
 # end of action expand-text
 
-$global_action_debug_line = '***** handle-token-amenn **** 2594 *** generate-code-for-one-action ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2594 *** generate-code-for-one-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20839,7 +20839,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if end
 
 
-$global_action_debug_line = '***** handle-token-amenn **** 2599 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2599 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20854,7 +20854,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2599 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** handle-token-amenn **** 2597 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2598 . ' ' . $storage_item__2599 ;
+# $global_action_debug_line = '***** handle-token-amenn **** 2597 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2598 . ' ' . $storage_item__2599 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -20892,7 +20892,7 @@ $global_replacement_count_for_item_name{ 'handle-token-fen' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee append-text string-fen definition-for-phrase-being-defined amenn ambee append-text string-fen list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
-$global_action_debug_line = '***** handle-token-fen **** 2603 *** append-text ** 2 *' . $storage_item__2604 . ' ' . $storage_item__2605 ;
+# $global_action_debug_line = '***** handle-token-fen **** 2603 *** append-text ** 2 *' . $storage_item__2604 . ' ' . $storage_item__2605 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -20921,7 +20921,7 @@ $storage_item__2603 = 'append-text ' . $storage_item__2604 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2603 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-fen **** 2609 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-fen **** 2609 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -20936,7 +20936,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2609 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-fen **** 2606 *** append-text ** 2 *' . $storage_item__2607 . ' ' . $storage_item__2608 . '-' . $storage_item__2609 ;
+# $global_action_debug_line = '***** handle-token-fen **** 2606 *** append-text ** 2 *' . $storage_item__2607 . ' ' . $storage_item__2608 . '-' . $storage_item__2609 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -20974,7 +20974,7 @@ $global_replacement_count_for_item_name{ 'handle-token-next-case-1' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee handle-token-next-case-2 amenn ambee if-else amenn ambee handle-token fen ambee current-token amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2613 *** copy-text ** 2 *' . $storage_item__2614 . ' ' . $storage_item__2615 ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2613 *** copy-text ** 2 *' . $storage_item__2614 . ' ' . $storage_item__2615 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -20996,7 +20996,7 @@ $storage_item__2613 = 'copy-text ' . $storage_item__2614 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2613 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2616 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2617 . ' ' . $storage_item__2618 . ' ' . $storage_item__2619 ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2616 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2617 . ' ' . $storage_item__2618 . ' ' . $storage_item__2619 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-found-in-both-lists' ;
@@ -21029,7 +21029,7 @@ $storage_item__2616 = 'copy-words-found-in-both-lists ' . $storage_item__2617 . 
 # print 'result: ' . $storage_item__2616 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2621 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2622 ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2621 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2622 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -21061,7 +21061,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2623 *** handle-token-next-case-2 ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2623 *** handle-token-next-case-2 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21081,7 +21081,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2627 *** current-token ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2627 *** current-token ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21096,7 +21096,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2627 . "\n" ;
 # end of action current-token
 
-$global_action_debug_line = '***** handle-token-next-case-1 **** 2626 *** handle-token ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-1 **** 2626 *** handle-token ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21123,7 +21123,7 @@ $global_replacement_count_for_item_name{ 'handle-token-next-case-2' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee handle-token-next-case-3 amenn ambee if-else amenn ambee handle-token-phrase-name amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-next-case-2 **** 2634 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2635 ;
+# $global_action_debug_line = '***** handle-token-next-case-2 **** 2634 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2635 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -21155,7 +21155,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** handle-token-next-case-2 **** 2636 *** handle-token-next-case-3 ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-2 **** 2636 *** handle-token-next-case-3 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21175,7 +21175,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-next-case-2 **** 2639 *** handle-token-phrase-name ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-2 **** 2639 *** handle-token-phrase-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21204,7 +21204,7 @@ $global_replacement_count_for_item_name{ 'handle-token-next-case-3' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee append-text current-token definition-for-phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee copy-text current-token action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee if-else amenn ambee handle-token-text-word amenn ambee if-end amenn
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2644 *** append-text ** 2 *' . $storage_item__2645 . ' ' . $storage_item__2646 ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2644 *** append-text ** 2 *' . $storage_item__2645 . ' ' . $storage_item__2646 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -21233,7 +21233,7 @@ $storage_item__2644 = 'append-text ' . $storage_item__2645 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2644 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2650 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2650 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21248,7 +21248,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2650 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2648 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2649 . '-' . $storage_item__2650 ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2648 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2649 . '-' . $storage_item__2650 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'yes-or-no-empty-phrase' ;
@@ -21280,7 +21280,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2655 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2655 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21295,7 +21295,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2655 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2652 *** copy-text ** 2 *' . $storage_item__2653 . ' ' . $storage_item__2654 . '-' . $storage_item__2655 ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2652 *** copy-text ** 2 *' . $storage_item__2653 . ' ' . $storage_item__2654 . '-' . $storage_item__2655 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21322,7 +21322,7 @@ $storage_item__2652 = 'copy-text ' . $storage_item__2653 . ' ' . $storage_item__
 # end action if else
 
 
-$global_action_debug_line = '***** handle-token-next-case-3 **** 2658 *** handle-token-text-word ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-next-case-3 **** 2658 *** handle-token-text-word ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21351,7 +21351,7 @@ $global_replacement_count_for_item_name{ 'handle-token-nospay' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee append-text string-nospay definition-for-phrase-being-defined amenn ambee append-text string-nospay list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
-$global_action_debug_line = '***** handle-token-nospay **** 2663 *** append-text ** 2 *' . $storage_item__2664 . ' ' . $storage_item__2665 ;
+# $global_action_debug_line = '***** handle-token-nospay **** 2663 *** append-text ** 2 *' . $storage_item__2664 . ' ' . $storage_item__2665 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -21380,7 +21380,7 @@ $storage_item__2663 = 'append-text ' . $storage_item__2664 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2663 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-nospay **** 2669 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-nospay **** 2669 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21395,7 +21395,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2669 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-nospay **** 2666 *** append-text ** 2 *' . $storage_item__2667 . ' ' . $storage_item__2668 . '-' . $storage_item__2669 ;
+# $global_action_debug_line = '***** handle-token-nospay **** 2666 *** append-text ** 2 *' . $storage_item__2667 . ' ' . $storage_item__2668 . '-' . $storage_item__2669 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -21433,7 +21433,7 @@ $global_replacement_count_for_item_name{ 'handle-token-phrase-name' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text current-token phrase-being-defined amenn ambee numeric-increment current-definition-number amenn ambee copy-text phrase-being-defined current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee clear-phrase current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position text-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee copy-text current-text-storage-position current-result-storage-position amenn ambee clear-phrase list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn ambee clear-phrase recursion-stack amenn ambee recursion-stack-push amenn ambee copy-text current-definition-number phrase-number-for-phrase-name fen ambee phrase-being-defined amenn amenn ambee copy-text phrase-being-defined phrase-name-for-phrase-number fen ambee current-definition-number amenn amenn ambee clear-phrase definition-for-phrase-being-defined amenn
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2673 *** copy-text ** 2 *' . $storage_item__2674 . ' ' . $storage_item__2675 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2673 *** copy-text ** 2 *' . $storage_item__2674 . ' ' . $storage_item__2675 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21455,7 +21455,7 @@ $storage_item__2673 = 'copy-text ' . $storage_item__2674 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2673 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2676 *** numeric-increment ** 1 *' . $storage_item__2677 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2676 *** numeric-increment ** 1 *' . $storage_item__2677 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-increment' ;
@@ -21480,7 +21480,7 @@ $storage_item__2676 = 'numeric-increment ' . $storage_item__2677 ;
 # print 'result: ' . $storage_item__2676 . "\n" ;
 # end of action numeric-increment
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2678 *** copy-text ** 2 *' . $storage_item__2679 . ' ' . $storage_item__2680 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2678 *** copy-text ** 2 *' . $storage_item__2679 . ' ' . $storage_item__2680 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21502,7 +21502,7 @@ $storage_item__2678 = 'copy-text ' . $storage_item__2679 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2678 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2681 *** generate-storage-for-current-text ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2681 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21517,7 +21517,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2681 . "\n" ;
 # end of action generate-storage-for-current-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2686 *** current-definition-number ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2686 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21532,7 +21532,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2686 . "\n" ;
 # end of action current-definition-number
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2683 *** copy-text ** 2 *' . $storage_item__2684 . ' ' . $storage_item__2685 . '-' . $storage_item__2686 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2683 *** copy-text ** 2 *' . $storage_item__2684 . ' ' . $storage_item__2685 . '-' . $storage_item__2686 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21554,7 +21554,7 @@ $storage_item__2683 = 'copy-text ' . $storage_item__2684 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2683 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2688 *** clear-phrase ** 1 *' . $storage_item__2689 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2688 *** clear-phrase ** 1 *' . $storage_item__2689 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21571,7 +21571,7 @@ $storage_item__2688 = 'clear-phrase ' . $storage_item__2689 ;
 # print 'result: ' . $storage_item__2688 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2690 *** generate-storage-for-current-text ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2690 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21586,7 +21586,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2690 . "\n" ;
 # end of action generate-storage-for-current-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2695 *** current-definition-number ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2695 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21601,7 +21601,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2695 . "\n" ;
 # end of action current-definition-number
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2692 *** copy-text ** 2 *' . $storage_item__2693 . ' ' . $storage_item__2694 . '-' . $storage_item__2695 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2692 *** copy-text ** 2 *' . $storage_item__2693 . ' ' . $storage_item__2694 . '-' . $storage_item__2695 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21623,7 +21623,7 @@ $storage_item__2692 = 'copy-text ' . $storage_item__2693 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2692 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2697 *** copy-text ** 2 *' . $storage_item__2698 . ' ' . $storage_item__2699 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2697 *** copy-text ** 2 *' . $storage_item__2698 . ' ' . $storage_item__2699 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21645,7 +21645,7 @@ $storage_item__2697 = 'copy-text ' . $storage_item__2698 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2697 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2702 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2702 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21660,7 +21660,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2702 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2700 *** clear-phrase ** 1 *' . $storage_item__2701 . '-' . $storage_item__2702 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2700 *** clear-phrase ** 1 *' . $storage_item__2701 . '-' . $storage_item__2702 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21677,7 +21677,7 @@ $storage_item__2700 = 'clear-phrase ' . $storage_item__2701 . '-' . $storage_ite
 # print 'result: ' . $storage_item__2700 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2704 *** clear-phrase ** 1 *' . $storage_item__2705 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2704 *** clear-phrase ** 1 *' . $storage_item__2705 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21694,7 +21694,7 @@ $storage_item__2704 = 'clear-phrase ' . $storage_item__2705 ;
 # print 'result: ' . $storage_item__2704 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2706 *** recursion-stack-push ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2706 *** recursion-stack-push ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21709,7 +21709,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2706 . "\n" ;
 # end of action recursion-stack-push
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2711 *** phrase-being-defined ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2711 *** phrase-being-defined ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21724,7 +21724,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2711 . "\n" ;
 # end of action phrase-being-defined
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2708 *** copy-text ** 2 *' . $storage_item__2709 . ' ' . $storage_item__2710 . '-' . $storage_item__2711 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2708 *** copy-text ** 2 *' . $storage_item__2709 . ' ' . $storage_item__2710 . '-' . $storage_item__2711 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21746,7 +21746,7 @@ $storage_item__2708 = 'copy-text ' . $storage_item__2709 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2708 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2716 *** current-definition-number ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2716 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21761,7 +21761,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2716 . "\n" ;
 # end of action current-definition-number
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2713 *** copy-text ** 2 *' . $storage_item__2714 . ' ' . $storage_item__2715 . '-' . $storage_item__2716 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2713 *** copy-text ** 2 *' . $storage_item__2714 . ' ' . $storage_item__2715 . '-' . $storage_item__2716 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21783,7 +21783,7 @@ $storage_item__2713 = 'copy-text ' . $storage_item__2714 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2713 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-phrase-name **** 2718 *** clear-phrase ** 1 *' . $storage_item__2719 ;
+# $global_action_debug_line = '***** handle-token-phrase-name **** 2718 *** clear-phrase ** 1 *' . $storage_item__2719 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21809,7 +21809,7 @@ $global_replacement_count_for_item_name{ 'handle-token-text-word' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text current-token current-text amenn ambee generate-storage-for-current-text amenn ambee append-text current-text contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee append-text current-text text-words-at-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn ambee append-text-no-space current-text-storage-position current-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn ambee append-text current-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
-$global_action_debug_line = '***** handle-token-text-word **** 2722 *** copy-text ** 2 *' . $storage_item__2723 . ' ' . $storage_item__2724 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2722 *** copy-text ** 2 *' . $storage_item__2723 . ' ' . $storage_item__2724 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21831,7 +21831,7 @@ $storage_item__2722 = 'copy-text ' . $storage_item__2723 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2722 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-text-word **** 2725 *** generate-storage-for-current-text ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2725 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21846,7 +21846,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2725 . "\n" ;
 # end of action generate-storage-for-current-text
 
-$global_action_debug_line = '***** handle-token-text-word **** 2730 *** current-text-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2730 *** current-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21861,7 +21861,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2730 . "\n" ;
 # end of action current-text-storage-position
 
-$global_action_debug_line = '***** handle-token-text-word **** 2727 *** append-text ** 2 *' . $storage_item__2728 . ' ' . $storage_item__2729 . '-' . $storage_item__2730 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2727 *** append-text ** 2 *' . $storage_item__2728 . ' ' . $storage_item__2729 . '-' . $storage_item__2730 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -21890,7 +21890,7 @@ $storage_item__2727 = 'append-text ' . $storage_item__2728 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2727 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-text-word **** 2735 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2735 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -21905,7 +21905,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2735 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-text-word **** 2732 *** append-text ** 2 *' . $storage_item__2733 . ' ' . $storage_item__2734 . '-' . $storage_item__2735 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2732 *** append-text ** 2 *' . $storage_item__2733 . ' ' . $storage_item__2734 . '-' . $storage_item__2735 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -21934,7 +21934,7 @@ $storage_item__2732 = 'append-text ' . $storage_item__2733 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2732 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** handle-token-text-word **** 2737 *** copy-text ** 2 *' . $storage_item__2738 . ' ' . $storage_item__2739 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2737 *** copy-text ** 2 *' . $storage_item__2738 . ' ' . $storage_item__2739 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -21956,7 +21956,7 @@ $storage_item__2737 = 'copy-text ' . $storage_item__2738 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2737 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** handle-token-text-word **** 2740 *** append-text-no-space ** 2 *' . $storage_item__2741 . ' ' . $storage_item__2742 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2740 *** append-text-no-space ** 2 *' . $storage_item__2741 . ' ' . $storage_item__2742 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -21985,7 +21985,7 @@ $storage_item__2740 = 'append-text-no-space ' . $storage_item__2741 . ' ' . $sto
 # print 'result: ' . $storage_item__2740 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-token-text-word **** 2743 *** append-text-no-space ** 2 *' . $storage_item__2744 . ' ' . $storage_item__2745 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2743 *** append-text-no-space ** 2 *' . $storage_item__2744 . ' ' . $storage_item__2745 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -22014,7 +22014,7 @@ $storage_item__2743 = 'append-text-no-space ' . $storage_item__2744 . ' ' . $sto
 # print 'result: ' . $storage_item__2743 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** handle-token-text-word **** 2749 *** current-result-storage-position ** 0 *' . '' ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2749 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22029,7 +22029,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2749 . "\n" ;
 # end of action current-result-storage-position
 
-$global_action_debug_line = '***** handle-token-text-word **** 2746 *** append-text ** 2 *' . $storage_item__2747 . ' ' . $storage_item__2748 . '-' . $storage_item__2749 ;
+# $global_action_debug_line = '***** handle-token-text-word **** 2746 *** append-text ** 2 *' . $storage_item__2747 . ' ' . $storage_item__2748 . '-' . $storage_item__2749 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -22067,7 +22067,7 @@ $global_replacement_count_for_item_name{ 'initialize-input-output-files' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn ambee put-into-phrase input-filename input_to_dashrep_compiler.txt amenn ambee put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt amenn ambee delete-file ambee filename-output-results-from-compiler amenn amenn ambee put-into-phrase filename-output-standard-runtime-functions output_compiler_standard_runtime_functions.txt amenn ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn ambee put-into-phrase filename-output-results-all-definition-items output_compiler_all_definition_items.txt amenn ambee delete-file ambee filename-output-results-all-definition-items amenn amenn ambee put-into-phrase filename-output-results-all-function-branches output_compiler_all_function_branches.txt amenn ambee delete-file ambee filename-output-results-all-function-branches amenn amenn ambee put-into-phrase filename-output-results-functions-replacement-only output_compiler_functions_replacement_only.txt amenn ambee delete-file ambee filename-output-results-functions-replacement-only amenn amenn ambee put-into-phrase filename-output-results-all-compiled-functions output_compiler_all_compiled_functions.txt amenn ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn ambee put-into-phrase filename-output-all-definitions-complex output_compiler_all_tokens_for_definitions_complex.txt amenn ambee delete-file ambee filename-output-all-definitions-complex amenn amenn ambee put-into-phrase filename-output-all-phrase-names-complex output_compiler_all_phrase_names_complex.txt amenn ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_compiler_debug_trace_all_definitions.txt amenn ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2753 *** copy-text ** 2 *' . $storage_item__2754 . ' ' . $storage_item__2755 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2753 *** copy-text ** 2 *' . $storage_item__2754 . ' ' . $storage_item__2755 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22089,7 +22089,7 @@ $storage_item__2753 = 'copy-text ' . $storage_item__2754 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2753 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2756 *** append-text-no-space ** 2 *' . $storage_item__2757 . ' ' . $storage_item__2758 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2756 *** append-text-no-space ** 2 *' . $storage_item__2757 . ' ' . $storage_item__2758 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -22118,7 +22118,7 @@ $storage_item__2756 = 'append-text-no-space ' . $storage_item__2757 . ' ' . $sto
 # print 'result: ' . $storage_item__2756 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2759 *** copy-text ** 2 *' . $storage_item__2760 . ' ' . $storage_item__2761 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2759 *** copy-text ** 2 *' . $storage_item__2760 . ' ' . $storage_item__2761 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22140,7 +22140,7 @@ $storage_item__2759 = 'copy-text ' . $storage_item__2760 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2759 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2762 *** put-into-phrase ** 2 *' . $storage_item__2763 . ' ' . $storage_item__2764 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2762 *** put-into-phrase ** 2 *' . $storage_item__2763 . ' ' . $storage_item__2764 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22158,7 +22158,7 @@ $storage_item__2762 = 'put-into-phrase ' . $storage_item__2763 . ' ' . $storage_
 # print 'result: ' . $storage_item__2762 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2765 *** put-into-phrase ** 2 *' . $storage_item__2766 . ' ' . $storage_item__2767 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2765 *** put-into-phrase ** 2 *' . $storage_item__2766 . ' ' . $storage_item__2767 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22176,7 +22176,7 @@ $storage_item__2765 = 'put-into-phrase ' . $storage_item__2766 . ' ' . $storage_
 # print 'result: ' . $storage_item__2765 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2769 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2769 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22191,7 +22191,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2769 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2768 *** delete-file ** 1 *' . $storage_item__2769 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2768 *** delete-file ** 1 *' . $storage_item__2769 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22216,7 +22216,7 @@ $storage_item__2768 = 'delete-file ' . $storage_item__2769 ;
 # print 'result: ' . $storage_item__2768 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2771 *** put-into-phrase ** 2 *' . $storage_item__2772 . ' ' . $storage_item__2773 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2771 *** put-into-phrase ** 2 *' . $storage_item__2772 . ' ' . $storage_item__2773 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22234,7 +22234,7 @@ $storage_item__2771 = 'put-into-phrase ' . $storage_item__2772 . ' ' . $storage_
 # print 'result: ' . $storage_item__2771 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2775 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2775 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22249,7 +22249,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2775 . "\n" ;
 # end of action filename-output-standard-runtime-functions
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2774 *** delete-file ** 1 *' . $storage_item__2775 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2774 *** delete-file ** 1 *' . $storage_item__2775 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22274,7 +22274,7 @@ $storage_item__2774 = 'delete-file ' . $storage_item__2775 ;
 # print 'result: ' . $storage_item__2774 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2777 *** put-into-phrase ** 2 *' . $storage_item__2778 . ' ' . $storage_item__2779 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2777 *** put-into-phrase ** 2 *' . $storage_item__2778 . ' ' . $storage_item__2779 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22292,7 +22292,7 @@ $storage_item__2777 = 'put-into-phrase ' . $storage_item__2778 . ' ' . $storage_
 # print 'result: ' . $storage_item__2777 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2781 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2781 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22307,7 +22307,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2781 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2780 *** delete-file ** 1 *' . $storage_item__2781 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2780 *** delete-file ** 1 *' . $storage_item__2781 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22332,7 +22332,7 @@ $storage_item__2780 = 'delete-file ' . $storage_item__2781 ;
 # print 'result: ' . $storage_item__2780 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2783 *** put-into-phrase ** 2 *' . $storage_item__2784 . ' ' . $storage_item__2785 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2783 *** put-into-phrase ** 2 *' . $storage_item__2784 . ' ' . $storage_item__2785 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22350,7 +22350,7 @@ $storage_item__2783 = 'put-into-phrase ' . $storage_item__2784 . ' ' . $storage_
 # print 'result: ' . $storage_item__2783 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2787 *** filename-output-results-all-function-branches ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2787 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22365,7 +22365,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2787 . "\n" ;
 # end of action filename-output-results-all-function-branches
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2786 *** delete-file ** 1 *' . $storage_item__2787 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2786 *** delete-file ** 1 *' . $storage_item__2787 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22390,7 +22390,7 @@ $storage_item__2786 = 'delete-file ' . $storage_item__2787 ;
 # print 'result: ' . $storage_item__2786 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2789 *** put-into-phrase ** 2 *' . $storage_item__2790 . ' ' . $storage_item__2791 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2789 *** put-into-phrase ** 2 *' . $storage_item__2790 . ' ' . $storage_item__2791 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22408,7 +22408,7 @@ $storage_item__2789 = 'put-into-phrase ' . $storage_item__2790 . ' ' . $storage_
 # print 'result: ' . $storage_item__2789 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2793 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2793 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22423,7 +22423,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2793 . "\n" ;
 # end of action filename-output-results-functions-replacement-only
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2792 *** delete-file ** 1 *' . $storage_item__2793 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2792 *** delete-file ** 1 *' . $storage_item__2793 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22448,7 +22448,7 @@ $storage_item__2792 = 'delete-file ' . $storage_item__2793 ;
 # print 'result: ' . $storage_item__2792 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2795 *** put-into-phrase ** 2 *' . $storage_item__2796 . ' ' . $storage_item__2797 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2795 *** put-into-phrase ** 2 *' . $storage_item__2796 . ' ' . $storage_item__2797 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22466,7 +22466,7 @@ $storage_item__2795 = 'put-into-phrase ' . $storage_item__2796 . ' ' . $storage_
 # print 'result: ' . $storage_item__2795 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2799 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2799 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22481,7 +22481,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2799 . "\n" ;
 # end of action filename-output-results-all-compiled-functions
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2798 *** delete-file ** 1 *' . $storage_item__2799 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2798 *** delete-file ** 1 *' . $storage_item__2799 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22506,7 +22506,7 @@ $storage_item__2798 = 'delete-file ' . $storage_item__2799 ;
 # print 'result: ' . $storage_item__2798 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2801 *** put-into-phrase ** 2 *' . $storage_item__2802 . ' ' . $storage_item__2803 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2801 *** put-into-phrase ** 2 *' . $storage_item__2802 . ' ' . $storage_item__2803 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22524,7 +22524,7 @@ $storage_item__2801 = 'put-into-phrase ' . $storage_item__2802 . ' ' . $storage_
 # print 'result: ' . $storage_item__2801 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2805 *** filename-output-all-definitions-complex ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2805 *** filename-output-all-definitions-complex ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22539,7 +22539,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2805 . "\n" ;
 # end of action filename-output-all-definitions-complex
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2804 *** delete-file ** 1 *' . $storage_item__2805 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2804 *** delete-file ** 1 *' . $storage_item__2805 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22564,7 +22564,7 @@ $storage_item__2804 = 'delete-file ' . $storage_item__2805 ;
 # print 'result: ' . $storage_item__2804 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2807 *** put-into-phrase ** 2 *' . $storage_item__2808 . ' ' . $storage_item__2809 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2807 *** put-into-phrase ** 2 *' . $storage_item__2808 . ' ' . $storage_item__2809 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22582,7 +22582,7 @@ $storage_item__2807 = 'put-into-phrase ' . $storage_item__2808 . ' ' . $storage_
 # print 'result: ' . $storage_item__2807 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2811 *** filename-output-all-phrase-names-complex ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2811 *** filename-output-all-phrase-names-complex ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22597,7 +22597,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2811 . "\n" ;
 # end of action filename-output-all-phrase-names-complex
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2810 *** delete-file ** 1 *' . $storage_item__2811 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2810 *** delete-file ** 1 *' . $storage_item__2811 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22622,7 +22622,7 @@ $storage_item__2810 = 'delete-file ' . $storage_item__2811 ;
 # print 'result: ' . $storage_item__2810 . "\n" ;
 # end of action delete-file
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2813 *** put-into-phrase ** 2 *' . $storage_item__2814 . ' ' . $storage_item__2815 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2813 *** put-into-phrase ** 2 *' . $storage_item__2814 . ' ' . $storage_item__2815 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22640,7 +22640,7 @@ $storage_item__2813 = 'put-into-phrase ' . $storage_item__2814 . ' ' . $storage_
 # print 'result: ' . $storage_item__2813 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2817 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2817 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22655,7 +22655,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2817 . "\n" ;
 # end of action filename-output-debug-trace-all-dashrep-definitions
 
-$global_action_debug_line = '***** initialize-input-output-files **** 2816 *** delete-file ** 1 *' . $storage_item__2817 ;
+# $global_action_debug_line = '***** initialize-input-output-files **** 2816 *** delete-file ** 1 *' . $storage_item__2817 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'delete-file' ;
@@ -22689,7 +22689,7 @@ $global_replacement_count_for_item_name{ 'recursion-stack-pop-case-empty' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase current-result-storage-position 0 amenn ambee expand-text template-warning-more-amenn-than-ambee-tokens warning-message amenn ambee append-text-no-space warning-message warning-messages amenn
 
-$global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2821 *** put-into-phrase ** 2 *' . $storage_item__2822 . ' ' . $storage_item__2823 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2821 *** put-into-phrase ** 2 *' . $storage_item__2822 . ' ' . $storage_item__2823 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22707,7 +22707,7 @@ $storage_item__2821 = 'put-into-phrase ' . $storage_item__2822 . ' ' . $storage_
 # print 'result: ' . $storage_item__2821 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2824 *** expand-text ** 2 *' . $storage_item__2825 . ' ' . $storage_item__2826 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2824 *** expand-text ** 2 *' . $storage_item__2825 . ' ' . $storage_item__2826 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22736,7 +22736,7 @@ $storage_item__2824 = 'expand-text ' . $storage_item__2825 . ' ' . $storage_item
 # print 'result: ' . $storage_item__2824 . "\n" ;
 # end of action expand-text
 
-$global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2827 *** append-text-no-space ** 2 *' . $storage_item__2828 . ' ' . $storage_item__2829 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2827 *** append-text-no-space ** 2 *' . $storage_item__2828 . ' ' . $storage_item__2829 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -22774,7 +22774,7 @@ $global_replacement_count_for_item_name{ 'recursion-stack-pop-case-not-empty' } 
 my $saved_accumulator_pointer = -1 ;
 # ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee copy-word-at-position recursion-stack current-result-storage-position ambee position-top-of-stack amenn amenn ambee numeric-decrement position-top-of-stack amenn ambee copy-words-from-position-to-position recursion-stack recursion-stack 1 ambee position-top-of-stack amenn amenn ambee if-else amenn ambee copy-text recursion-stack current-result-storage-position amenn ambee clear-phrase recursion-stack amenn ambee if-end amenn
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2836 *** position-top-of-stack ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2836 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22789,7 +22789,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2836 . "\n" ;
 # end of action position-top-of-stack
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2835 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2836 . ' ' . $storage_item__2838 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2835 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2836 . ' ' . $storage_item__2838 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22817,7 +22817,7 @@ $storage_item__2835 = 'less' ;
 # print 'result: ' . $storage_item__2835 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2833 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2834 . ' ' . $storage_item__2835 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2833 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2834 . ' ' . $storage_item__2835 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__2834 eq $storage_item__2835 ) {
@@ -22835,7 +22835,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2842 *** position-top-of-stack ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2842 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22850,7 +22850,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2842 . "\n" ;
 # end of action position-top-of-stack
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2839 *** copy-word-at-position ** 3 *' . $storage_item__2840 . ' ' . $storage_item__2841 . ' ' . $storage_item__2842 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2839 *** copy-word-at-position ** 3 *' . $storage_item__2840 . ' ' . $storage_item__2841 . ' ' . $storage_item__2842 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22878,7 +22878,7 @@ $storage_item__2839 = 'copy-word-at-position ' . $storage_item__2840 . ' ' . $st
 # print 'result: ' . $storage_item__2839 . "\n" ;
 # end of action copy-word-at-position
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2844 *** numeric-decrement ** 1 *' . $storage_item__2845 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2844 *** numeric-decrement ** 1 *' . $storage_item__2845 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-decrement' ;
@@ -22903,7 +22903,7 @@ $storage_item__2844 = 'numeric-decrement ' . $storage_item__2845 ;
 # print 'result: ' . $storage_item__2844 . "\n" ;
 # end of action numeric-decrement
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2850 *** position-top-of-stack ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2850 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -22918,7 +22918,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2850 . "\n" ;
 # end of action position-top-of-stack
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2846 *** copy-words-from-position-to-position ** 4 *' . $storage_item__2847 . ' ' . $storage_item__2848 . ' ' . $storage_item__2849 . ' ' . $storage_item__2850 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2846 *** copy-words-from-position-to-position ** 4 *' . $storage_item__2847 . ' ' . $storage_item__2848 . ' ' . $storage_item__2849 . ' ' . $storage_item__2850 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-words-from-position-to-position' ;
@@ -22960,7 +22960,7 @@ $storage_item__2846 = 'copy-words-from-position-to-position ' . $storage_item__2
 # end action if else
 
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2853 *** copy-text ** 2 *' . $storage_item__2854 . ' ' . $storage_item__2855 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2853 *** copy-text ** 2 *' . $storage_item__2854 . ' ' . $storage_item__2855 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -22982,7 +22982,7 @@ $storage_item__2853 = 'copy-text ' . $storage_item__2854 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2853 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2856 *** clear-phrase ** 1 *' . $storage_item__2857 ;
+# $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2856 *** clear-phrase ** 1 *' . $storage_item__2857 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23013,7 +23013,7 @@ $global_replacement_count_for_item_name{ 'recursion-stack-pop' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase position-top-of-stack ambee get-count-of-words recursion-stack amenn amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee recursion-stack-pop-case-not-empty amenn ambee if-else amenn ambee recursion-stack-pop-case-empty amenn ambee if-end amenn
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2863 *** get-count-of-words ** 1 *' . $storage_item__2864 ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2863 *** get-count-of-words ** 1 *' . $storage_item__2864 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23031,7 +23031,7 @@ $storage_item__2863 = 'get-count-of-words ' . $storage_item__2864 ;
 # print 'result: ' . $storage_item__2863 . "\n" ;
 # end of action get-count-of-words
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2861 *** put-into-phrase ** 2 *' . $storage_item__2862 . ' ' . $storage_item__2863 ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2861 *** put-into-phrase ** 2 *' . $storage_item__2862 . ' ' . $storage_item__2863 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23049,7 +23049,7 @@ $storage_item__2861 = 'put-into-phrase ' . $storage_item__2862 . ' ' . $storage_
 # print 'result: ' . $storage_item__2861 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2869 *** position-top-of-stack ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2869 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23064,7 +23064,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2869 . "\n" ;
 # end of action position-top-of-stack
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2868 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2869 . ' ' . $storage_item__2871 ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2868 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2869 . ' ' . $storage_item__2871 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23092,7 +23092,7 @@ $storage_item__2868 = 'less' ;
 # print 'result: ' . $storage_item__2868 . "\n" ;
 # end of action numeric-equal-greater-less-compare
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2866 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2867 . ' ' . $storage_item__2868 ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2866 *** yes-or-no-same-two-words ** 2 *' . $storage_item__2867 . ' ' . $storage_item__2868 ;
 # print $global_action_debug_line . "\n" ;
 #
 if ( $storage_item__2867 eq $storage_item__2868 ) {
@@ -23110,7 +23110,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if no begin
 
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2872 *** recursion-stack-pop-case-not-empty ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2872 *** recursion-stack-pop-case-not-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23130,7 +23130,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # end action if else
 
 
-$global_action_debug_line = '***** recursion-stack-pop **** 2875 *** recursion-stack-pop-case-empty ** 0 *' . '' ;
+# $global_action_debug_line = '***** recursion-stack-pop **** 2875 *** recursion-stack-pop-case-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23159,7 +23159,7 @@ $global_replacement_count_for_item_name{ 'recursion-stack-push' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee append-text current-result-storage-position recursion-stack amenn
 
-$global_action_debug_line = '***** recursion-stack-push **** 2880 *** append-text ** 2 *' . $storage_item__2881 . ' ' . $storage_item__2882 ;
+# $global_action_debug_line = '***** recursion-stack-push **** 2880 *** append-text ** 2 *' . $storage_item__2881 . ' ' . $storage_item__2882 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -23197,7 +23197,7 @@ $global_replacement_count_for_item_name{ 'remove-colon-if-at-end-of-phrase-being
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase phrase-length ambee get-count-of-characters phrase-being-defined amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined possible-colon ambee phrase-length amenn ambee phrase-length amenn amenn ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-colon character-colon amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 ambee numeric-minus ambee phrase-length amenn 1 amenn amenn ambee if-end amenn
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2887 *** get-count-of-characters ** 1 *' . $storage_item__2888 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2887 *** get-count-of-characters ** 1 *' . $storage_item__2888 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'get-count-of-characters' ;
@@ -23222,7 +23222,7 @@ $storage_item__2887 = 'get-count-of-characters ' . $storage_item__2888 ;
 # print 'result: ' . $storage_item__2887 . "\n" ;
 # end of action get-count-of-characters
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2885 *** put-into-phrase ** 2 *' . $storage_item__2886 . ' ' . $storage_item__2887 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2885 *** put-into-phrase ** 2 *' . $storage_item__2886 . ' ' . $storage_item__2887 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23240,7 +23240,7 @@ $storage_item__2885 = 'put-into-phrase ' . $storage_item__2886 . ' ' . $storage_
 # print 'result: ' . $storage_item__2885 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2892 *** phrase-length ** 0 *' . '' ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2892 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23255,7 +23255,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2892 . "\n" ;
 # end of action phrase-length
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2894 *** phrase-length ** 0 *' . '' ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2894 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23270,7 +23270,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2894 . "\n" ;
 # end of action phrase-length
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2889 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2890 . ' ' . $storage_item__2891 . ' ' . $storage_item__2892 . ' ' . $storage_item__2894 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2889 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2890 . ' ' . $storage_item__2891 . ' ' . $storage_item__2892 . ' ' . $storage_item__2894 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-characters-from-position-to-position' ;
@@ -23307,7 +23307,7 @@ $storage_item__2889 = 'copy-characters-from-position-to-position ' . $storage_it
 # print 'result: ' . $storage_item__2889 . "\n" ;
 # end of action copy-characters-from-position-to-position
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2897 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__2898 . ' ' . $storage_item__2899 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2897 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__2898 . ' ' . $storage_item__2899 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23336,7 +23336,7 @@ if ( $global_pointer_to_word >= 0 )
 # end action if yes begin
 
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2905 *** phrase-length ** 0 *' . '' ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2905 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23351,7 +23351,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2905 . "\n" ;
 # end of action phrase-length
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2904 *** numeric-minus ** 2 *' . $storage_item__2905 . ' ' . $storage_item__2907 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2904 *** numeric-minus ** 2 *' . $storage_item__2905 . ' ' . $storage_item__2907 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'numeric-minus' ;
@@ -23380,7 +23380,7 @@ $storage_item__2904 = 'numeric-minus ' . $storage_item__2905 . ' ' . $storage_it
 # print 'result: ' . $storage_item__2904 . "\n" ;
 # end of action numeric-minus
 
-$global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2900 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2901 . ' ' . $storage_item__2902 . ' ' . $storage_item__2903 . ' ' . $storage_item__2904 ;
+# $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2900 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2901 . ' ' . $storage_item__2902 . ' ' . $storage_item__2903 . ' ' . $storage_item__2904 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-characters-from-position-to-position' ;
@@ -23431,7 +23431,7 @@ $global_replacement_count_for_item_name{ 'run-compiler' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee initialize-input-output-files amenn ambee copy-from-file-to-phrase ambee input-filename amenn source-code amenn ambee compile-source-code-generate-output-results amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-results-to-output-file amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn ambee check-elapsed-time amenn
 
-$global_action_debug_line = '***** run-compiler **** 2911 *** initialize-input-output-files ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2911 *** initialize-input-output-files ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23446,7 +23446,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2911 . "\n" ;
 # end of action initialize-input-output-files
 
-$global_action_debug_line = '***** run-compiler **** 2914 *** input-filename ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2914 *** input-filename ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23461,7 +23461,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2914 . "\n" ;
 # end of action input-filename
 
-$global_action_debug_line = '***** run-compiler **** 2913 *** copy-from-file-to-phrase ** 2 *' . $storage_item__2914 . ' ' . $storage_item__2916 ;
+# $global_action_debug_line = '***** run-compiler **** 2913 *** copy-from-file-to-phrase ** 2 *' . $storage_item__2914 . ' ' . $storage_item__2916 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-file-to-phrase' ;
@@ -23486,7 +23486,7 @@ $storage_item__2913 = 'copy-from-file-to-phrase ' . $storage_item__2914 . ' ' . 
 # print 'result: ' . $storage_item__2913 . "\n" ;
 # end of action copy-from-file-to-phrase
 
-$global_action_debug_line = '***** run-compiler **** 2917 *** compile-source-code-generate-output-results ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2917 *** compile-source-code-generate-output-results ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23501,7 +23501,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2917 . "\n" ;
 # end of action compile-source-code-generate-output-results
 
-$global_action_debug_line = '***** run-compiler **** 2919 *** put-into-phrase ** 2 *' . $storage_item__2920 . ' ' . $storage_item__2921 ;
+# $global_action_debug_line = '***** run-compiler **** 2919 *** put-into-phrase ** 2 *' . $storage_item__2920 . ' ' . $storage_item__2921 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23519,7 +23519,7 @@ $storage_item__2919 = 'put-into-phrase ' . $storage_item__2920 . ' ' . $storage_
 # print 'result: ' . $storage_item__2919 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** run-compiler **** 2922 *** write-results-to-output-file ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2922 *** write-results-to-output-file ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23534,7 +23534,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2922 . "\n" ;
 # end of action write-results-to-output-file
 
-$global_action_debug_line = '***** run-compiler **** 2925 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2925 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23549,7 +23549,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2925 . "\n" ;
 # end of action filename-output-debug-trace-all-dashrep-definitions
 
-$global_action_debug_line = '***** run-compiler **** 2924 *** write-all-dashrep-definitions-to-file ** 1 *' . $storage_item__2925 ;
+# $global_action_debug_line = '***** run-compiler **** 2924 *** write-all-dashrep-definitions-to-file ** 1 *' . $storage_item__2925 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'write-all-dashrep-definitions-to-file' ;
@@ -23574,7 +23574,7 @@ $storage_item__2924 = 'write-all-dashrep-definitions-to-file ' . $storage_item__
 # print 'result: ' . $storage_item__2924 . "\n" ;
 # end of action write-all-dashrep-definitions-to-file
 
-$global_action_debug_line = '***** run-compiler **** 2927 *** check-elapsed-time ** 0 *' . '' ;
+# $global_action_debug_line = '***** run-compiler **** 2927 *** check-elapsed-time ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23598,7 +23598,7 @@ $global_replacement_count_for_item_name{ 'start-here' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee run-compiler amenn
 
-$global_action_debug_line = '***** start-here **** 2931 *** run-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** start-here **** 2931 *** run-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23622,7 +23622,7 @@ $global_replacement_count_for_item_name{ 'write-results-to-output-file' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-standard-runtime-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-middle ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2937 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2937 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23637,7 +23637,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2937 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2935 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2936 . ' ' . $storage_item__2937 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2935 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2936 . ' ' . $storage_item__2937 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23666,7 +23666,7 @@ $storage_item__2935 = 'copy-from-phrase-append-to-file ' . $storage_item__2936 .
 # print 'result: ' . $storage_item__2935 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2941 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2941 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23681,7 +23681,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2941 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2939 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2940 . ' ' . $storage_item__2941 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2939 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2940 . ' ' . $storage_item__2941 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23710,7 +23710,7 @@ $storage_item__2939 = 'copy-from-phrase-append-to-file ' . $storage_item__2940 .
 # print 'result: ' . $storage_item__2939 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2945 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2945 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23725,7 +23725,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2945 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2943 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2944 . ' ' . $storage_item__2945 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2943 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2944 . ' ' . $storage_item__2945 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23754,7 +23754,7 @@ $storage_item__2943 = 'copy-from-phrase-append-to-file ' . $storage_item__2944 .
 # print 'result: ' . $storage_item__2943 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2949 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2949 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23769,7 +23769,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2949 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2947 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2948 . ' ' . $storage_item__2949 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2947 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2948 . ' ' . $storage_item__2949 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23798,7 +23798,7 @@ $storage_item__2947 = 'copy-from-phrase-append-to-file ' . $storage_item__2948 .
 # print 'result: ' . $storage_item__2947 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2953 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2953 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23813,7 +23813,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2953 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2951 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2952 . ' ' . $storage_item__2953 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2951 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2952 . ' ' . $storage_item__2953 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23842,7 +23842,7 @@ $storage_item__2951 = 'copy-from-phrase-append-to-file ' . $storage_item__2952 .
 # print 'result: ' . $storage_item__2951 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2957 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2957 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23857,7 +23857,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2957 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2955 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2956 . ' ' . $storage_item__2957 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2955 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2956 . ' ' . $storage_item__2957 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23886,7 +23886,7 @@ $storage_item__2955 = 'copy-from-phrase-append-to-file ' . $storage_item__2956 .
 # print 'result: ' . $storage_item__2955 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2961 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2961 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -23901,7 +23901,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2961 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2959 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2960 . ' ' . $storage_item__2961 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2959 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2960 . ' ' . $storage_item__2961 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -23930,7 +23930,7 @@ $storage_item__2959 = 'copy-from-phrase-append-to-file ' . $storage_item__2960 .
 # print 'result: ' . $storage_item__2959 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2963 *** copy-text ** 2 *' . $storage_item__2964 . ' ' . $storage_item__2965 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2963 *** copy-text ** 2 *' . $storage_item__2964 . ' ' . $storage_item__2965 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23952,7 +23952,7 @@ $storage_item__2963 = 'copy-text ' . $storage_item__2964 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2963 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2966 *** put-into-phrase ** 2 *' . $storage_item__2967 . ' ' . $storage_item__2968 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2966 *** put-into-phrase ** 2 *' . $storage_item__2967 . ' ' . $storage_item__2968 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23970,7 +23970,7 @@ $storage_item__2966 = 'put-into-phrase ' . $storage_item__2967 . ' ' . $storage_
 # print 'result: ' . $storage_item__2966 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2969 *** put-into-phrase ** 2 *' . $storage_item__2970 . ' ' . $storage_item__2971 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2969 *** put-into-phrase ** 2 *' . $storage_item__2970 . ' ' . $storage_item__2971 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -23988,7 +23988,7 @@ $storage_item__2969 = 'put-into-phrase ' . $storage_item__2970 . ' ' . $storage_
 # print 'result: ' . $storage_item__2969 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2973 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2973 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24003,7 +24003,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2973 . "\n" ;
 # end of action filename-runtime-code-from-interpreter
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2975 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2975 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24018,7 +24018,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2975 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2972 *** copy-append-file-to-file ** 2 *' . $storage_item__2973 . ' ' . $storage_item__2975 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2972 *** copy-append-file-to-file ** 2 *' . $storage_item__2973 . ' ' . $storage_item__2975 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24047,7 +24047,7 @@ $storage_item__2972 = 'copy-append-file-to-file ' . $storage_item__2973 . ' ' . 
 # print 'result: ' . $storage_item__2972 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2977 *** copy-text ** 2 *' . $storage_item__2978 . ' ' . $storage_item__2979 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2977 *** copy-text ** 2 *' . $storage_item__2978 . ' ' . $storage_item__2979 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -24069,7 +24069,7 @@ $storage_item__2977 = 'copy-text ' . $storage_item__2978 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__2977 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2982 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2982 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24084,7 +24084,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2982 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2980 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2981 . ' ' . $storage_item__2982 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2980 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2981 . ' ' . $storage_item__2982 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24113,7 +24113,7 @@ $storage_item__2980 = 'copy-from-phrase-append-to-file ' . $storage_item__2981 .
 # print 'result: ' . $storage_item__2980 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2986 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2986 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24128,7 +24128,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2986 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2984 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2985 . ' ' . $storage_item__2986 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2984 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2985 . ' ' . $storage_item__2986 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24157,7 +24157,7 @@ $storage_item__2984 = 'copy-from-phrase-append-to-file ' . $storage_item__2985 .
 # print 'result: ' . $storage_item__2984 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2989 *** filename-output-results-all-definition-items ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2989 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24172,7 +24172,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2989 . "\n" ;
 # end of action filename-output-results-all-definition-items
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2991 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2991 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24187,7 +24187,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2991 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2988 *** copy-append-file-to-file ** 2 *' . $storage_item__2989 . ' ' . $storage_item__2991 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2988 *** copy-append-file-to-file ** 2 *' . $storage_item__2989 . ' ' . $storage_item__2991 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24216,7 +24216,7 @@ $storage_item__2988 = 'copy-append-file-to-file ' . $storage_item__2989 . ' ' . 
 # print 'result: ' . $storage_item__2988 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2995 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2995 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24231,7 +24231,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2995 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2993 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2994 . ' ' . $storage_item__2995 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2993 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2994 . ' ' . $storage_item__2995 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24260,7 +24260,7 @@ $storage_item__2993 = 'copy-from-phrase-append-to-file ' . $storage_item__2994 .
 # print 'result: ' . $storage_item__2993 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2999 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2999 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24275,7 +24275,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2999 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 2997 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2998 . ' ' . $storage_item__2999 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 2997 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__2998 . ' ' . $storage_item__2999 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24304,7 +24304,7 @@ $storage_item__2997 = 'copy-from-phrase-append-to-file ' . $storage_item__2998 .
 # print 'result: ' . $storage_item__2997 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3002 *** filename-output-results-all-function-branches ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3002 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24319,7 +24319,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3002 . "\n" ;
 # end of action filename-output-results-all-function-branches
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3004 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3004 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24334,7 +24334,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3004 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3001 *** copy-append-file-to-file ** 2 *' . $storage_item__3002 . ' ' . $storage_item__3004 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3001 *** copy-append-file-to-file ** 2 *' . $storage_item__3002 . ' ' . $storage_item__3004 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24363,7 +24363,7 @@ $storage_item__3001 = 'copy-append-file-to-file ' . $storage_item__3002 . ' ' . 
 # print 'result: ' . $storage_item__3001 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3008 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3008 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24378,7 +24378,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3008 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3006 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3007 . ' ' . $storage_item__3008 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3006 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3007 . ' ' . $storage_item__3008 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24407,7 +24407,7 @@ $storage_item__3006 = 'copy-from-phrase-append-to-file ' . $storage_item__3007 .
 # print 'result: ' . $storage_item__3006 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3012 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3012 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24422,7 +24422,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3012 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3010 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3011 . ' ' . $storage_item__3012 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3010 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3011 . ' ' . $storage_item__3012 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24451,7 +24451,7 @@ $storage_item__3010 = 'copy-from-phrase-append-to-file ' . $storage_item__3011 .
 # print 'result: ' . $storage_item__3010 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3015 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3015 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24466,7 +24466,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3015 . "\n" ;
 # end of action filename-output-results-functions-replacement-only
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3017 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3017 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24481,7 +24481,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3017 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3014 *** copy-append-file-to-file ** 2 *' . $storage_item__3015 . ' ' . $storage_item__3017 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3014 *** copy-append-file-to-file ** 2 *' . $storage_item__3015 . ' ' . $storage_item__3017 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24510,7 +24510,7 @@ $storage_item__3014 = 'copy-append-file-to-file ' . $storage_item__3015 . ' ' . 
 # print 'result: ' . $storage_item__3014 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3021 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3021 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24525,7 +24525,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3021 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3019 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3020 . ' ' . $storage_item__3021 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3019 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3020 . ' ' . $storage_item__3021 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24554,7 +24554,7 @@ $storage_item__3019 = 'copy-from-phrase-append-to-file ' . $storage_item__3020 .
 # print 'result: ' . $storage_item__3019 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3025 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3025 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24569,7 +24569,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3025 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3023 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3024 . ' ' . $storage_item__3025 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3023 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3024 . ' ' . $storage_item__3025 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24598,7 +24598,7 @@ $storage_item__3023 = 'copy-from-phrase-append-to-file ' . $storage_item__3024 .
 # print 'result: ' . $storage_item__3023 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3028 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3028 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24613,7 +24613,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3028 . "\n" ;
 # end of action filename-output-results-all-compiled-functions
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3030 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3030 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24628,7 +24628,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3030 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3027 *** copy-append-file-to-file ** 2 *' . $storage_item__3028 . ' ' . $storage_item__3030 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3027 *** copy-append-file-to-file ** 2 *' . $storage_item__3028 . ' ' . $storage_item__3030 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24657,7 +24657,7 @@ $storage_item__3027 = 'copy-append-file-to-file ' . $storage_item__3028 . ' ' . 
 # print 'result: ' . $storage_item__3027 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3034 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3034 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24672,7 +24672,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3034 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3032 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3033 . ' ' . $storage_item__3034 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3032 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3033 . ' ' . $storage_item__3034 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24701,7 +24701,7 @@ $storage_item__3032 = 'copy-from-phrase-append-to-file ' . $storage_item__3033 .
 # print 'result: ' . $storage_item__3032 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3038 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3038 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24716,7 +24716,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3038 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3036 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3037 . ' ' . $storage_item__3038 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3036 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3037 . ' ' . $storage_item__3038 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24745,7 +24745,7 @@ $storage_item__3036 = 'copy-from-phrase-append-to-file ' . $storage_item__3037 .
 # print 'result: ' . $storage_item__3036 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3042 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3042 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24760,7 +24760,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3042 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3040 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3041 . ' ' . $storage_item__3042 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3040 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3041 . ' ' . $storage_item__3042 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24789,7 +24789,7 @@ $storage_item__3040 = 'copy-from-phrase-append-to-file ' . $storage_item__3041 .
 # print 'result: ' . $storage_item__3040 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3046 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3046 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24804,7 +24804,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3046 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3044 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3045 . ' ' . $storage_item__3046 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3044 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3045 . ' ' . $storage_item__3046 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24833,7 +24833,7 @@ $storage_item__3044 = 'copy-from-phrase-append-to-file ' . $storage_item__3045 .
 # print 'result: ' . $storage_item__3044 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3050 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3050 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24848,7 +24848,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3050 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3048 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3049 . ' ' . $storage_item__3050 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3048 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3049 . ' ' . $storage_item__3050 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24877,7 +24877,7 @@ $storage_item__3048 = 'copy-from-phrase-append-to-file ' . $storage_item__3049 .
 # print 'result: ' . $storage_item__3048 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3053 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3053 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24892,7 +24892,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3053 . "\n" ;
 # end of action filename-output-standard-runtime-functions
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3055 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3055 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24907,7 +24907,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3055 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3052 *** copy-append-file-to-file ** 2 *' . $storage_item__3053 . ' ' . $storage_item__3055 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3052 *** copy-append-file-to-file ** 2 *' . $storage_item__3053 . ' ' . $storage_item__3055 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -24936,7 +24936,7 @@ $storage_item__3052 = 'copy-append-file-to-file ' . $storage_item__3053 . ' ' . 
 # print 'result: ' . $storage_item__3052 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3059 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3059 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -24951,7 +24951,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3059 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3057 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3058 . ' ' . $storage_item__3059 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3057 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3058 . ' ' . $storage_item__3059 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -24980,7 +24980,7 @@ $storage_item__3057 = 'copy-from-phrase-append-to-file ' . $storage_item__3058 .
 # print 'result: ' . $storage_item__3057 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3061 *** copy-text ** 2 *' . $storage_item__3062 . ' ' . $storage_item__3063 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3061 *** copy-text ** 2 *' . $storage_item__3062 . ' ' . $storage_item__3063 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25002,7 +25002,7 @@ $storage_item__3061 = 'copy-text ' . $storage_item__3062 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3061 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3064 *** put-into-phrase ** 2 *' . $storage_item__3065 . ' ' . $storage_item__3066 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3064 *** put-into-phrase ** 2 *' . $storage_item__3065 . ' ' . $storage_item__3066 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25020,7 +25020,7 @@ $storage_item__3064 = 'put-into-phrase ' . $storage_item__3065 . ' ' . $storage_
 # print 'result: ' . $storage_item__3064 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3067 *** put-into-phrase ** 2 *' . $storage_item__3068 . ' ' . $storage_item__3069 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3067 *** put-into-phrase ** 2 *' . $storage_item__3068 . ' ' . $storage_item__3069 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25038,7 +25038,7 @@ $storage_item__3067 = 'put-into-phrase ' . $storage_item__3068 . ' ' . $storage_
 # print 'result: ' . $storage_item__3067 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3071 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3071 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -25053,7 +25053,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3071 . "\n" ;
 # end of action filename-runtime-code-from-interpreter
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3073 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3073 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -25068,7 +25068,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3073 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3070 *** copy-append-file-to-file ** 2 *' . $storage_item__3071 . ' ' . $storage_item__3073 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3070 *** copy-append-file-to-file ** 2 *' . $storage_item__3071 . ' ' . $storage_item__3073 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-append-file-to-file' ;
@@ -25097,7 +25097,7 @@ $storage_item__3070 = 'copy-append-file-to-file ' . $storage_item__3071 . ' ' . 
 # print 'result: ' . $storage_item__3070 . "\n" ;
 # end of action copy-append-file-to-file
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3075 *** copy-text ** 2 *' . $storage_item__3076 . ' ' . $storage_item__3077 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3075 *** copy-text ** 2 *' . $storage_item__3076 . ' ' . $storage_item__3077 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25119,7 +25119,7 @@ $storage_item__3075 = 'copy-text ' . $storage_item__3076 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3075 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3080 *** filename-output-results-from-compiler ** 0 *' . '' ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3080 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -25134,7 +25134,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3080 . "\n" ;
 # end of action filename-output-results-from-compiler
 
-$global_action_debug_line = '***** write-results-to-output-file **** 3078 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3079 . ' ' . $storage_item__3080 ;
+# $global_action_debug_line = '***** write-results-to-output-file **** 3078 *** copy-from-phrase-append-to-file ** 2 *' . $storage_item__3079 . ' ' . $storage_item__3080 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'copy-from-phrase-append-to-file' ;
@@ -25172,7 +25172,7 @@ $global_replacement_count_for_item_name{ 'assign-action-operand-characteristics'
 my $saved_accumulator_pointer = -1 ;
 # ambee put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-new-line check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-repeatedly-using-count check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-append-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities check-operand-count-is-one check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-copy-append-file-to-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-characters-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-column-lists check-operand-count-is-two check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-named-phrases check-operand-count-is-three check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-file-to-phrase check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-phrase-append-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-initial-caps check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-lowercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-uppercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-without-extra-spaces check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-word-at-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-both-lists check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-either-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-only-in-first-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-order-reversed check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-alphabetic check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-numeric check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-text check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-contain-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-unique-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-zero-pad-left-to-length check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-create-empty-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-create-empty-sub-folder check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-decode-from-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-delete-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-delete-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-encode-as-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-parameters-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-line-in-file-that-begins-with-text check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-tagged-info-from-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer check-operand-count-is-three check-operand-one-is-positive-integer check-operand-two-is-positive-integer check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-phrase-usage-counts check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-delimiter check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-characters-from-position-to-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-get-count-of-characters check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-count-of-words check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-current-time-in-epoch-seconds check-operand-count-is-zero amenn ambee put-into-phrase operand-checks-for-action-get-definitions-from-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-get-phrase-definition-without-expanding check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-matching-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-word check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-word-at-position check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-insert-angle-bracketed-definitions check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-insert-codeview-tags check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-linewise-read-from-file-and-use-handler check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-modification-time-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-numeric-absolute check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-cosine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-decrement check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-divide-by check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-equal-greater-less-compare check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-increment check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-integer check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-10 check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-e check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-minus check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-odd-or-even check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-sine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-absolutes check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-add-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-integers check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-add check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-divide-by check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-multiply check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-prepend-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-prepend-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-rename-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-set-file-permission-public-read check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-size-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-trace-show check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase check-operand-count-is-one check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-xml-move-attributes-into-tag-elements check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-empty-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-file-exists check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-folder-exists check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-same-two-phrase-definitions check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-zero-one-multiple check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-zero-or-nonzero check-operand-count-is-one check-operand-one-is-positive-integer amenn
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3084 *** put-into-phrase ** 4 *' . $storage_item__3085 . ' ' . $storage_item__3086 . ' ' . $storage_item__3087 . ' ' . $storage_item__3088 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3084 *** put-into-phrase ** 4 *' . $storage_item__3085 . ' ' . $storage_item__3086 . ' ' . $storage_item__3087 . ' ' . $storage_item__3088 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25190,7 +25190,7 @@ $storage_item__3084 = 'put-into-phrase ' . $storage_item__3085 . ' ' . $storage_
 # print 'result: ' . $storage_item__3084 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3089 *** put-into-phrase ** 4 *' . $storage_item__3090 . ' ' . $storage_item__3091 . ' ' . $storage_item__3092 . ' ' . $storage_item__3093 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3089 *** put-into-phrase ** 4 *' . $storage_item__3090 . ' ' . $storage_item__3091 . ' ' . $storage_item__3092 . ' ' . $storage_item__3093 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25208,7 +25208,7 @@ $storage_item__3089 = 'put-into-phrase ' . $storage_item__3090 . ' ' . $storage_
 # print 'result: ' . $storage_item__3089 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3094 *** put-into-phrase ** 3 *' . $storage_item__3095 . ' ' . $storage_item__3096 . ' ' . $storage_item__3097 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3094 *** put-into-phrase ** 3 *' . $storage_item__3095 . ' ' . $storage_item__3096 . ' ' . $storage_item__3097 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25226,7 +25226,7 @@ $storage_item__3094 = 'put-into-phrase ' . $storage_item__3095 . ' ' . $storage_
 # print 'result: ' . $storage_item__3094 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3098 *** put-into-phrase ** 5 *' . $storage_item__3099 . ' ' . $storage_item__3100 . ' ' . $storage_item__3101 . ' ' . $storage_item__3102 . ' ' . $storage_item__3103 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3098 *** put-into-phrase ** 5 *' . $storage_item__3099 . ' ' . $storage_item__3100 . ' ' . $storage_item__3101 . ' ' . $storage_item__3102 . ' ' . $storage_item__3103 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25244,7 +25244,7 @@ $storage_item__3098 = 'put-into-phrase ' . $storage_item__3099 . ' ' . $storage_
 # print 'result: ' . $storage_item__3098 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3104 *** put-into-phrase ** 4 *' . $storage_item__3105 . ' ' . $storage_item__3106 . ' ' . $storage_item__3107 . ' ' . $storage_item__3108 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3104 *** put-into-phrase ** 4 *' . $storage_item__3105 . ' ' . $storage_item__3106 . ' ' . $storage_item__3107 . ' ' . $storage_item__3108 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25262,7 +25262,7 @@ $storage_item__3104 = 'put-into-phrase ' . $storage_item__3105 . ' ' . $storage_
 # print 'result: ' . $storage_item__3104 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3109 *** put-into-phrase ** 4 *' . $storage_item__3110 . ' ' . $storage_item__3111 . ' ' . $storage_item__3112 . ' ' . $storage_item__3113 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3109 *** put-into-phrase ** 4 *' . $storage_item__3110 . ' ' . $storage_item__3111 . ' ' . $storage_item__3112 . ' ' . $storage_item__3113 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25280,7 +25280,7 @@ $storage_item__3109 = 'put-into-phrase ' . $storage_item__3110 . ' ' . $storage_
 # print 'result: ' . $storage_item__3109 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3114 *** put-into-phrase ** 3 *' . $storage_item__3115 . ' ' . $storage_item__3116 . ' ' . $storage_item__3117 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3114 *** put-into-phrase ** 3 *' . $storage_item__3115 . ' ' . $storage_item__3116 . ' ' . $storage_item__3117 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25298,7 +25298,7 @@ $storage_item__3114 = 'put-into-phrase ' . $storage_item__3115 . ' ' . $storage_
 # print 'result: ' . $storage_item__3114 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3118 *** put-into-phrase ** 3 *' . $storage_item__3119 . ' ' . $storage_item__3120 . ' ' . $storage_item__3121 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3118 *** put-into-phrase ** 3 *' . $storage_item__3119 . ' ' . $storage_item__3120 . ' ' . $storage_item__3121 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25316,7 +25316,7 @@ $storage_item__3118 = 'put-into-phrase ' . $storage_item__3119 . ' ' . $storage_
 # print 'result: ' . $storage_item__3118 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3122 *** put-into-phrase ** 4 *' . $storage_item__3123 . ' ' . $storage_item__3124 . ' ' . $storage_item__3125 . ' ' . $storage_item__3126 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3122 *** put-into-phrase ** 4 *' . $storage_item__3123 . ' ' . $storage_item__3124 . ' ' . $storage_item__3125 . ' ' . $storage_item__3126 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25334,7 +25334,7 @@ $storage_item__3122 = 'put-into-phrase ' . $storage_item__3123 . ' ' . $storage_
 # print 'result: ' . $storage_item__3122 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3127 *** put-into-phrase ** 4 *' . $storage_item__3128 . ' ' . $storage_item__3129 . ' ' . $storage_item__3130 . ' ' . $storage_item__3131 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3127 *** put-into-phrase ** 4 *' . $storage_item__3128 . ' ' . $storage_item__3129 . ' ' . $storage_item__3130 . ' ' . $storage_item__3131 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25352,7 +25352,7 @@ $storage_item__3127 = 'put-into-phrase ' . $storage_item__3128 . ' ' . $storage_
 # print 'result: ' . $storage_item__3127 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3132 *** put-into-phrase ** 4 *' . $storage_item__3133 . ' ' . $storage_item__3134 . ' ' . $storage_item__3135 . ' ' . $storage_item__3136 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3132 *** put-into-phrase ** 4 *' . $storage_item__3133 . ' ' . $storage_item__3134 . ' ' . $storage_item__3135 . ' ' . $storage_item__3136 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25370,7 +25370,7 @@ $storage_item__3132 = 'put-into-phrase ' . $storage_item__3133 . ' ' . $storage_
 # print 'result: ' . $storage_item__3132 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3137 *** put-into-phrase ** 4 *' . $storage_item__3138 . ' ' . $storage_item__3139 . ' ' . $storage_item__3140 . ' ' . $storage_item__3141 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3137 *** put-into-phrase ** 4 *' . $storage_item__3138 . ' ' . $storage_item__3139 . ' ' . $storage_item__3140 . ' ' . $storage_item__3141 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25388,7 +25388,7 @@ $storage_item__3137 = 'put-into-phrase ' . $storage_item__3138 . ' ' . $storage_
 # print 'result: ' . $storage_item__3137 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3142 *** put-into-phrase ** 6 *' . $storage_item__3143 . ' ' . $storage_item__3144 . ' ' . $storage_item__3145 . ' ' . $storage_item__3146 . ' ' . $storage_item__3147 . ' ' . $storage_item__3148 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3142 *** put-into-phrase ** 6 *' . $storage_item__3143 . ' ' . $storage_item__3144 . ' ' . $storage_item__3145 . ' ' . $storage_item__3146 . ' ' . $storage_item__3147 . ' ' . $storage_item__3148 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25406,7 +25406,7 @@ $storage_item__3142 = 'put-into-phrase ' . $storage_item__3143 . ' ' . $storage_
 # print 'result: ' . $storage_item__3142 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3149 *** put-into-phrase ** 5 *' . $storage_item__3150 . ' ' . $storage_item__3151 . ' ' . $storage_item__3152 . ' ' . $storage_item__3153 . ' ' . $storage_item__3154 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3149 *** put-into-phrase ** 5 *' . $storage_item__3150 . ' ' . $storage_item__3151 . ' ' . $storage_item__3152 . ' ' . $storage_item__3153 . ' ' . $storage_item__3154 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25424,7 +25424,7 @@ $storage_item__3149 = 'put-into-phrase ' . $storage_item__3150 . ' ' . $storage_
 # print 'result: ' . $storage_item__3149 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3155 *** put-into-phrase ** 4 *' . $storage_item__3156 . ' ' . $storage_item__3157 . ' ' . $storage_item__3158 . ' ' . $storage_item__3159 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3155 *** put-into-phrase ** 4 *' . $storage_item__3156 . ' ' . $storage_item__3157 . ' ' . $storage_item__3158 . ' ' . $storage_item__3159 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25442,7 +25442,7 @@ $storage_item__3155 = 'put-into-phrase ' . $storage_item__3156 . ' ' . $storage_
 # print 'result: ' . $storage_item__3155 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3160 *** put-into-phrase ** 6 *' . $storage_item__3161 . ' ' . $storage_item__3162 . ' ' . $storage_item__3163 . ' ' . $storage_item__3164 . ' ' . $storage_item__3165 . ' ' . $storage_item__3166 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3160 *** put-into-phrase ** 6 *' . $storage_item__3161 . ' ' . $storage_item__3162 . ' ' . $storage_item__3163 . ' ' . $storage_item__3164 . ' ' . $storage_item__3165 . ' ' . $storage_item__3166 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25460,7 +25460,7 @@ $storage_item__3160 = 'put-into-phrase ' . $storage_item__3161 . ' ' . $storage_
 # print 'result: ' . $storage_item__3160 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3167 *** put-into-phrase ** 3 *' . $storage_item__3168 . ' ' . $storage_item__3169 . ' ' . $storage_item__3170 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3167 *** put-into-phrase ** 3 *' . $storage_item__3168 . ' ' . $storage_item__3169 . ' ' . $storage_item__3170 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25478,7 +25478,7 @@ $storage_item__3167 = 'put-into-phrase ' . $storage_item__3168 . ' ' . $storage_
 # print 'result: ' . $storage_item__3167 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3171 *** put-into-phrase ** 3 *' . $storage_item__3172 . ' ' . $storage_item__3173 . ' ' . $storage_item__3174 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3171 *** put-into-phrase ** 3 *' . $storage_item__3172 . ' ' . $storage_item__3173 . ' ' . $storage_item__3174 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25496,7 +25496,7 @@ $storage_item__3171 = 'put-into-phrase ' . $storage_item__3172 . ' ' . $storage_
 # print 'result: ' . $storage_item__3171 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3175 *** put-into-phrase ** 3 *' . $storage_item__3176 . ' ' . $storage_item__3177 . ' ' . $storage_item__3178 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3175 *** put-into-phrase ** 3 *' . $storage_item__3176 . ' ' . $storage_item__3177 . ' ' . $storage_item__3178 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25514,7 +25514,7 @@ $storage_item__3175 = 'put-into-phrase ' . $storage_item__3176 . ' ' . $storage_
 # print 'result: ' . $storage_item__3175 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3179 *** put-into-phrase ** 4 *' . $storage_item__3180 . ' ' . $storage_item__3181 . ' ' . $storage_item__3182 . ' ' . $storage_item__3183 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3179 *** put-into-phrase ** 4 *' . $storage_item__3180 . ' ' . $storage_item__3181 . ' ' . $storage_item__3182 . ' ' . $storage_item__3183 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25532,7 +25532,7 @@ $storage_item__3179 = 'put-into-phrase ' . $storage_item__3180 . ' ' . $storage_
 # print 'result: ' . $storage_item__3179 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3184 *** put-into-phrase ** 4 *' . $storage_item__3185 . ' ' . $storage_item__3186 . ' ' . $storage_item__3187 . ' ' . $storage_item__3188 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3184 *** put-into-phrase ** 4 *' . $storage_item__3185 . ' ' . $storage_item__3186 . ' ' . $storage_item__3187 . ' ' . $storage_item__3188 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25550,7 +25550,7 @@ $storage_item__3184 = 'put-into-phrase ' . $storage_item__3185 . ' ' . $storage_
 # print 'result: ' . $storage_item__3184 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3189 *** put-into-phrase ** 4 *' . $storage_item__3190 . ' ' . $storage_item__3191 . ' ' . $storage_item__3192 . ' ' . $storage_item__3193 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3189 *** put-into-phrase ** 4 *' . $storage_item__3190 . ' ' . $storage_item__3191 . ' ' . $storage_item__3192 . ' ' . $storage_item__3193 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25568,7 +25568,7 @@ $storage_item__3189 = 'put-into-phrase ' . $storage_item__3190 . ' ' . $storage_
 # print 'result: ' . $storage_item__3189 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3194 *** put-into-phrase ** 4 *' . $storage_item__3195 . ' ' . $storage_item__3196 . ' ' . $storage_item__3197 . ' ' . $storage_item__3198 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3194 *** put-into-phrase ** 4 *' . $storage_item__3195 . ' ' . $storage_item__3196 . ' ' . $storage_item__3197 . ' ' . $storage_item__3198 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25586,7 +25586,7 @@ $storage_item__3194 = 'put-into-phrase ' . $storage_item__3195 . ' ' . $storage_
 # print 'result: ' . $storage_item__3194 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3199 *** put-into-phrase ** 4 *' . $storage_item__3200 . ' ' . $storage_item__3201 . ' ' . $storage_item__3202 . ' ' . $storage_item__3203 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3199 *** put-into-phrase ** 4 *' . $storage_item__3200 . ' ' . $storage_item__3201 . ' ' . $storage_item__3202 . ' ' . $storage_item__3203 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25604,7 +25604,7 @@ $storage_item__3199 = 'put-into-phrase ' . $storage_item__3200 . ' ' . $storage_
 # print 'result: ' . $storage_item__3199 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3204 *** put-into-phrase ** 4 *' . $storage_item__3205 . ' ' . $storage_item__3206 . ' ' . $storage_item__3207 . ' ' . $storage_item__3208 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3204 *** put-into-phrase ** 4 *' . $storage_item__3205 . ' ' . $storage_item__3206 . ' ' . $storage_item__3207 . ' ' . $storage_item__3208 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25622,7 +25622,7 @@ $storage_item__3204 = 'put-into-phrase ' . $storage_item__3205 . ' ' . $storage_
 # print 'result: ' . $storage_item__3204 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3209 *** put-into-phrase ** 4 *' . $storage_item__3210 . ' ' . $storage_item__3211 . ' ' . $storage_item__3212 . ' ' . $storage_item__3213 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3209 *** put-into-phrase ** 4 *' . $storage_item__3210 . ' ' . $storage_item__3211 . ' ' . $storage_item__3212 . ' ' . $storage_item__3213 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25640,7 +25640,7 @@ $storage_item__3209 = 'put-into-phrase ' . $storage_item__3210 . ' ' . $storage_
 # print 'result: ' . $storage_item__3209 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3214 *** put-into-phrase ** 5 *' . $storage_item__3215 . ' ' . $storage_item__3216 . ' ' . $storage_item__3217 . ' ' . $storage_item__3218 . ' ' . $storage_item__3219 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3214 *** put-into-phrase ** 5 *' . $storage_item__3215 . ' ' . $storage_item__3216 . ' ' . $storage_item__3217 . ' ' . $storage_item__3218 . ' ' . $storage_item__3219 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25658,7 +25658,7 @@ $storage_item__3214 = 'put-into-phrase ' . $storage_item__3215 . ' ' . $storage_
 # print 'result: ' . $storage_item__3214 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3220 *** put-into-phrase ** 5 *' . $storage_item__3221 . ' ' . $storage_item__3222 . ' ' . $storage_item__3223 . ' ' . $storage_item__3224 . ' ' . $storage_item__3225 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3220 *** put-into-phrase ** 5 *' . $storage_item__3221 . ' ' . $storage_item__3222 . ' ' . $storage_item__3223 . ' ' . $storage_item__3224 . ' ' . $storage_item__3225 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25676,7 +25676,7 @@ $storage_item__3220 = 'put-into-phrase ' . $storage_item__3221 . ' ' . $storage_
 # print 'result: ' . $storage_item__3220 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3226 *** put-into-phrase ** 5 *' . $storage_item__3227 . ' ' . $storage_item__3228 . ' ' . $storage_item__3229 . ' ' . $storage_item__3230 . ' ' . $storage_item__3231 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3226 *** put-into-phrase ** 5 *' . $storage_item__3227 . ' ' . $storage_item__3228 . ' ' . $storage_item__3229 . ' ' . $storage_item__3230 . ' ' . $storage_item__3231 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25694,7 +25694,7 @@ $storage_item__3226 = 'put-into-phrase ' . $storage_item__3227 . ' ' . $storage_
 # print 'result: ' . $storage_item__3226 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3232 *** put-into-phrase ** 4 *' . $storage_item__3233 . ' ' . $storage_item__3234 . ' ' . $storage_item__3235 . ' ' . $storage_item__3236 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3232 *** put-into-phrase ** 4 *' . $storage_item__3233 . ' ' . $storage_item__3234 . ' ' . $storage_item__3235 . ' ' . $storage_item__3236 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25712,7 +25712,7 @@ $storage_item__3232 = 'put-into-phrase ' . $storage_item__3233 . ' ' . $storage_
 # print 'result: ' . $storage_item__3232 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3237 *** put-into-phrase ** 6 *' . $storage_item__3238 . ' ' . $storage_item__3239 . ' ' . $storage_item__3240 . ' ' . $storage_item__3241 . ' ' . $storage_item__3242 . ' ' . $storage_item__3243 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3237 *** put-into-phrase ** 6 *' . $storage_item__3238 . ' ' . $storage_item__3239 . ' ' . $storage_item__3240 . ' ' . $storage_item__3241 . ' ' . $storage_item__3242 . ' ' . $storage_item__3243 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25730,7 +25730,7 @@ $storage_item__3237 = 'put-into-phrase ' . $storage_item__3238 . ' ' . $storage_
 # print 'result: ' . $storage_item__3237 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3244 *** put-into-phrase ** 4 *' . $storage_item__3245 . ' ' . $storage_item__3246 . ' ' . $storage_item__3247 . ' ' . $storage_item__3248 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3244 *** put-into-phrase ** 4 *' . $storage_item__3245 . ' ' . $storage_item__3246 . ' ' . $storage_item__3247 . ' ' . $storage_item__3248 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25748,7 +25748,7 @@ $storage_item__3244 = 'put-into-phrase ' . $storage_item__3245 . ' ' . $storage_
 # print 'result: ' . $storage_item__3244 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3249 *** put-into-phrase ** 5 *' . $storage_item__3250 . ' ' . $storage_item__3251 . ' ' . $storage_item__3252 . ' ' . $storage_item__3253 . ' ' . $storage_item__3254 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3249 *** put-into-phrase ** 5 *' . $storage_item__3250 . ' ' . $storage_item__3251 . ' ' . $storage_item__3252 . ' ' . $storage_item__3253 . ' ' . $storage_item__3254 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25766,7 +25766,7 @@ $storage_item__3249 = 'put-into-phrase ' . $storage_item__3250 . ' ' . $storage_
 # print 'result: ' . $storage_item__3249 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3255 *** put-into-phrase ** 5 *' . $storage_item__3256 . ' ' . $storage_item__3257 . ' ' . $storage_item__3258 . ' ' . $storage_item__3259 . ' ' . $storage_item__3260 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3255 *** put-into-phrase ** 5 *' . $storage_item__3256 . ' ' . $storage_item__3257 . ' ' . $storage_item__3258 . ' ' . $storage_item__3259 . ' ' . $storage_item__3260 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25784,7 +25784,7 @@ $storage_item__3255 = 'put-into-phrase ' . $storage_item__3256 . ' ' . $storage_
 # print 'result: ' . $storage_item__3255 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3261 *** put-into-phrase ** 4 *' . $storage_item__3262 . ' ' . $storage_item__3263 . ' ' . $storage_item__3264 . ' ' . $storage_item__3265 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3261 *** put-into-phrase ** 4 *' . $storage_item__3262 . ' ' . $storage_item__3263 . ' ' . $storage_item__3264 . ' ' . $storage_item__3265 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25802,7 +25802,7 @@ $storage_item__3261 = 'put-into-phrase ' . $storage_item__3262 . ' ' . $storage_
 # print 'result: ' . $storage_item__3261 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3266 *** put-into-phrase ** 4 *' . $storage_item__3267 . ' ' . $storage_item__3268 . ' ' . $storage_item__3269 . ' ' . $storage_item__3270 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3266 *** put-into-phrase ** 4 *' . $storage_item__3267 . ' ' . $storage_item__3268 . ' ' . $storage_item__3269 . ' ' . $storage_item__3270 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25820,7 +25820,7 @@ $storage_item__3266 = 'put-into-phrase ' . $storage_item__3267 . ' ' . $storage_
 # print 'result: ' . $storage_item__3266 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3271 *** put-into-phrase ** 5 *' . $storage_item__3272 . ' ' . $storage_item__3273 . ' ' . $storage_item__3274 . ' ' . $storage_item__3275 . ' ' . $storage_item__3276 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3271 *** put-into-phrase ** 5 *' . $storage_item__3272 . ' ' . $storage_item__3273 . ' ' . $storage_item__3274 . ' ' . $storage_item__3275 . ' ' . $storage_item__3276 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25838,7 +25838,7 @@ $storage_item__3271 = 'put-into-phrase ' . $storage_item__3272 . ' ' . $storage_
 # print 'result: ' . $storage_item__3271 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3277 *** put-into-phrase ** 5 *' . $storage_item__3278 . ' ' . $storage_item__3279 . ' ' . $storage_item__3280 . ' ' . $storage_item__3281 . ' ' . $storage_item__3282 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3277 *** put-into-phrase ** 5 *' . $storage_item__3278 . ' ' . $storage_item__3279 . ' ' . $storage_item__3280 . ' ' . $storage_item__3281 . ' ' . $storage_item__3282 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25856,7 +25856,7 @@ $storage_item__3277 = 'put-into-phrase ' . $storage_item__3278 . ' ' . $storage_
 # print 'result: ' . $storage_item__3277 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3283 *** put-into-phrase ** 5 *' . $storage_item__3284 . ' ' . $storage_item__3285 . ' ' . $storage_item__3286 . ' ' . $storage_item__3287 . ' ' . $storage_item__3288 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3283 *** put-into-phrase ** 5 *' . $storage_item__3284 . ' ' . $storage_item__3285 . ' ' . $storage_item__3286 . ' ' . $storage_item__3287 . ' ' . $storage_item__3288 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25874,7 +25874,7 @@ $storage_item__3283 = 'put-into-phrase ' . $storage_item__3284 . ' ' . $storage_
 # print 'result: ' . $storage_item__3283 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3289 *** put-into-phrase ** 4 *' . $storage_item__3290 . ' ' . $storage_item__3291 . ' ' . $storage_item__3292 . ' ' . $storage_item__3293 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3289 *** put-into-phrase ** 4 *' . $storage_item__3290 . ' ' . $storage_item__3291 . ' ' . $storage_item__3292 . ' ' . $storage_item__3293 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25892,7 +25892,7 @@ $storage_item__3289 = 'put-into-phrase ' . $storage_item__3290 . ' ' . $storage_
 # print 'result: ' . $storage_item__3289 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3294 *** put-into-phrase ** 5 *' . $storage_item__3295 . ' ' . $storage_item__3296 . ' ' . $storage_item__3297 . ' ' . $storage_item__3298 . ' ' . $storage_item__3299 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3294 *** put-into-phrase ** 5 *' . $storage_item__3295 . ' ' . $storage_item__3296 . ' ' . $storage_item__3297 . ' ' . $storage_item__3298 . ' ' . $storage_item__3299 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25910,7 +25910,7 @@ $storage_item__3294 = 'put-into-phrase ' . $storage_item__3295 . ' ' . $storage_
 # print 'result: ' . $storage_item__3294 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3300 *** put-into-phrase ** 3 *' . $storage_item__3301 . ' ' . $storage_item__3302 . ' ' . $storage_item__3303 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3300 *** put-into-phrase ** 3 *' . $storage_item__3301 . ' ' . $storage_item__3302 . ' ' . $storage_item__3303 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25928,7 +25928,7 @@ $storage_item__3300 = 'put-into-phrase ' . $storage_item__3301 . ' ' . $storage_
 # print 'result: ' . $storage_item__3300 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3304 *** put-into-phrase ** 3 *' . $storage_item__3305 . ' ' . $storage_item__3306 . ' ' . $storage_item__3307 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3304 *** put-into-phrase ** 3 *' . $storage_item__3305 . ' ' . $storage_item__3306 . ' ' . $storage_item__3307 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25946,7 +25946,7 @@ $storage_item__3304 = 'put-into-phrase ' . $storage_item__3305 . ' ' . $storage_
 # print 'result: ' . $storage_item__3304 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3308 *** put-into-phrase ** 4 *' . $storage_item__3309 . ' ' . $storage_item__3310 . ' ' . $storage_item__3311 . ' ' . $storage_item__3312 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3308 *** put-into-phrase ** 4 *' . $storage_item__3309 . ' ' . $storage_item__3310 . ' ' . $storage_item__3311 . ' ' . $storage_item__3312 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25964,7 +25964,7 @@ $storage_item__3308 = 'put-into-phrase ' . $storage_item__3309 . ' ' . $storage_
 # print 'result: ' . $storage_item__3308 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3313 *** put-into-phrase ** 3 *' . $storage_item__3314 . ' ' . $storage_item__3315 . ' ' . $storage_item__3316 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3313 *** put-into-phrase ** 3 *' . $storage_item__3314 . ' ' . $storage_item__3315 . ' ' . $storage_item__3316 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -25982,7 +25982,7 @@ $storage_item__3313 = 'put-into-phrase ' . $storage_item__3314 . ' ' . $storage_
 # print 'result: ' . $storage_item__3313 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3317 *** put-into-phrase ** 3 *' . $storage_item__3318 . ' ' . $storage_item__3319 . ' ' . $storage_item__3320 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3317 *** put-into-phrase ** 3 *' . $storage_item__3318 . ' ' . $storage_item__3319 . ' ' . $storage_item__3320 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26000,7 +26000,7 @@ $storage_item__3317 = 'put-into-phrase ' . $storage_item__3318 . ' ' . $storage_
 # print 'result: ' . $storage_item__3317 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3321 *** put-into-phrase ** 4 *' . $storage_item__3322 . ' ' . $storage_item__3323 . ' ' . $storage_item__3324 . ' ' . $storage_item__3325 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3321 *** put-into-phrase ** 4 *' . $storage_item__3322 . ' ' . $storage_item__3323 . ' ' . $storage_item__3324 . ' ' . $storage_item__3325 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26018,7 +26018,7 @@ $storage_item__3321 = 'put-into-phrase ' . $storage_item__3322 . ' ' . $storage_
 # print 'result: ' . $storage_item__3321 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3326 *** put-into-phrase ** 4 *' . $storage_item__3327 . ' ' . $storage_item__3328 . ' ' . $storage_item__3329 . ' ' . $storage_item__3330 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3326 *** put-into-phrase ** 4 *' . $storage_item__3327 . ' ' . $storage_item__3328 . ' ' . $storage_item__3329 . ' ' . $storage_item__3330 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26036,7 +26036,7 @@ $storage_item__3326 = 'put-into-phrase ' . $storage_item__3327 . ' ' . $storage_
 # print 'result: ' . $storage_item__3326 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3331 *** put-into-phrase ** 4 *' . $storage_item__3332 . ' ' . $storage_item__3333 . ' ' . $storage_item__3334 . ' ' . $storage_item__3335 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3331 *** put-into-phrase ** 4 *' . $storage_item__3332 . ' ' . $storage_item__3333 . ' ' . $storage_item__3334 . ' ' . $storage_item__3335 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26054,7 +26054,7 @@ $storage_item__3331 = 'put-into-phrase ' . $storage_item__3332 . ' ' . $storage_
 # print 'result: ' . $storage_item__3331 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3336 *** put-into-phrase ** 5 *' . $storage_item__3337 . ' ' . $storage_item__3338 . ' ' . $storage_item__3339 . ' ' . $storage_item__3340 . ' ' . $storage_item__3341 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3336 *** put-into-phrase ** 5 *' . $storage_item__3337 . ' ' . $storage_item__3338 . ' ' . $storage_item__3339 . ' ' . $storage_item__3340 . ' ' . $storage_item__3341 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26072,7 +26072,7 @@ $storage_item__3336 = 'put-into-phrase ' . $storage_item__3337 . ' ' . $storage_
 # print 'result: ' . $storage_item__3336 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3342 *** put-into-phrase ** 5 *' . $storage_item__3343 . ' ' . $storage_item__3344 . ' ' . $storage_item__3345 . ' ' . $storage_item__3346 . ' ' . $storage_item__3347 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3342 *** put-into-phrase ** 5 *' . $storage_item__3343 . ' ' . $storage_item__3344 . ' ' . $storage_item__3345 . ' ' . $storage_item__3346 . ' ' . $storage_item__3347 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26090,7 +26090,7 @@ $storage_item__3342 = 'put-into-phrase ' . $storage_item__3343 . ' ' . $storage_
 # print 'result: ' . $storage_item__3342 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3348 *** put-into-phrase ** 5 *' . $storage_item__3349 . ' ' . $storage_item__3350 . ' ' . $storage_item__3351 . ' ' . $storage_item__3352 . ' ' . $storage_item__3353 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3348 *** put-into-phrase ** 5 *' . $storage_item__3349 . ' ' . $storage_item__3350 . ' ' . $storage_item__3351 . ' ' . $storage_item__3352 . ' ' . $storage_item__3353 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26108,7 +26108,7 @@ $storage_item__3348 = 'put-into-phrase ' . $storage_item__3349 . ' ' . $storage_
 # print 'result: ' . $storage_item__3348 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3354 *** put-into-phrase ** 4 *' . $storage_item__3355 . ' ' . $storage_item__3356 . ' ' . $storage_item__3357 . ' ' . $storage_item__3358 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3354 *** put-into-phrase ** 4 *' . $storage_item__3355 . ' ' . $storage_item__3356 . ' ' . $storage_item__3357 . ' ' . $storage_item__3358 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26126,7 +26126,7 @@ $storage_item__3354 = 'put-into-phrase ' . $storage_item__3355 . ' ' . $storage_
 # print 'result: ' . $storage_item__3354 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3359 *** put-into-phrase ** 4 *' . $storage_item__3360 . ' ' . $storage_item__3361 . ' ' . $storage_item__3362 . ' ' . $storage_item__3363 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3359 *** put-into-phrase ** 4 *' . $storage_item__3360 . ' ' . $storage_item__3361 . ' ' . $storage_item__3362 . ' ' . $storage_item__3363 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26144,7 +26144,7 @@ $storage_item__3359 = 'put-into-phrase ' . $storage_item__3360 . ' ' . $storage_
 # print 'result: ' . $storage_item__3359 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3364 *** put-into-phrase ** 5 *' . $storage_item__3365 . ' ' . $storage_item__3366 . ' ' . $storage_item__3367 . ' ' . $storage_item__3368 . ' ' . $storage_item__3369 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3364 *** put-into-phrase ** 5 *' . $storage_item__3365 . ' ' . $storage_item__3366 . ' ' . $storage_item__3367 . ' ' . $storage_item__3368 . ' ' . $storage_item__3369 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26162,7 +26162,7 @@ $storage_item__3364 = 'put-into-phrase ' . $storage_item__3365 . ' ' . $storage_
 # print 'result: ' . $storage_item__3364 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3370 *** put-into-phrase ** 6 *' . $storage_item__3371 . ' ' . $storage_item__3372 . ' ' . $storage_item__3373 . ' ' . $storage_item__3374 . ' ' . $storage_item__3375 . ' ' . $storage_item__3376 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3370 *** put-into-phrase ** 6 *' . $storage_item__3371 . ' ' . $storage_item__3372 . ' ' . $storage_item__3373 . ' ' . $storage_item__3374 . ' ' . $storage_item__3375 . ' ' . $storage_item__3376 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26180,7 +26180,7 @@ $storage_item__3370 = 'put-into-phrase ' . $storage_item__3371 . ' ' . $storage_
 # print 'result: ' . $storage_item__3370 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3377 *** put-into-phrase ** 6 *' . $storage_item__3378 . ' ' . $storage_item__3379 . ' ' . $storage_item__3380 . ' ' . $storage_item__3381 . ' ' . $storage_item__3382 . ' ' . $storage_item__3383 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3377 *** put-into-phrase ** 6 *' . $storage_item__3378 . ' ' . $storage_item__3379 . ' ' . $storage_item__3380 . ' ' . $storage_item__3381 . ' ' . $storage_item__3382 . ' ' . $storage_item__3383 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26198,7 +26198,7 @@ $storage_item__3377 = 'put-into-phrase ' . $storage_item__3378 . ' ' . $storage_
 # print 'result: ' . $storage_item__3377 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3384 *** put-into-phrase ** 3 *' . $storage_item__3385 . ' ' . $storage_item__3386 . ' ' . $storage_item__3387 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3384 *** put-into-phrase ** 3 *' . $storage_item__3385 . ' ' . $storage_item__3386 . ' ' . $storage_item__3387 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26216,7 +26216,7 @@ $storage_item__3384 = 'put-into-phrase ' . $storage_item__3385 . ' ' . $storage_
 # print 'result: ' . $storage_item__3384 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3388 *** put-into-phrase ** 3 *' . $storage_item__3389 . ' ' . $storage_item__3390 . ' ' . $storage_item__3391 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3388 *** put-into-phrase ** 3 *' . $storage_item__3389 . ' ' . $storage_item__3390 . ' ' . $storage_item__3391 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26234,7 +26234,7 @@ $storage_item__3388 = 'put-into-phrase ' . $storage_item__3389 . ' ' . $storage_
 # print 'result: ' . $storage_item__3388 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3392 *** put-into-phrase ** 3 *' . $storage_item__3393 . ' ' . $storage_item__3394 . ' ' . $storage_item__3395 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3392 *** put-into-phrase ** 3 *' . $storage_item__3393 . ' ' . $storage_item__3394 . ' ' . $storage_item__3395 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26252,7 +26252,7 @@ $storage_item__3392 = 'put-into-phrase ' . $storage_item__3393 . ' ' . $storage_
 # print 'result: ' . $storage_item__3392 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3396 *** put-into-phrase ** 3 *' . $storage_item__3397 . ' ' . $storage_item__3398 . ' ' . $storage_item__3399 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3396 *** put-into-phrase ** 3 *' . $storage_item__3397 . ' ' . $storage_item__3398 . ' ' . $storage_item__3399 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26270,7 +26270,7 @@ $storage_item__3396 = 'put-into-phrase ' . $storage_item__3397 . ' ' . $storage_
 # print 'result: ' . $storage_item__3396 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3400 *** put-into-phrase ** 5 *' . $storage_item__3401 . ' ' . $storage_item__3402 . ' ' . $storage_item__3403 . ' ' . $storage_item__3404 . ' ' . $storage_item__3405 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3400 *** put-into-phrase ** 5 *' . $storage_item__3401 . ' ' . $storage_item__3402 . ' ' . $storage_item__3403 . ' ' . $storage_item__3404 . ' ' . $storage_item__3405 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26288,7 +26288,7 @@ $storage_item__3400 = 'put-into-phrase ' . $storage_item__3401 . ' ' . $storage_
 # print 'result: ' . $storage_item__3400 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3406 *** put-into-phrase ** 6 *' . $storage_item__3407 . ' ' . $storage_item__3408 . ' ' . $storage_item__3409 . ' ' . $storage_item__3410 . ' ' . $storage_item__3411 . ' ' . $storage_item__3412 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3406 *** put-into-phrase ** 6 *' . $storage_item__3407 . ' ' . $storage_item__3408 . ' ' . $storage_item__3409 . ' ' . $storage_item__3410 . ' ' . $storage_item__3411 . ' ' . $storage_item__3412 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26306,7 +26306,7 @@ $storage_item__3406 = 'put-into-phrase ' . $storage_item__3407 . ' ' . $storage_
 # print 'result: ' . $storage_item__3406 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3413 *** put-into-phrase ** 5 *' . $storage_item__3414 . ' ' . $storage_item__3415 . ' ' . $storage_item__3416 . ' ' . $storage_item__3417 . ' ' . $storage_item__3418 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3413 *** put-into-phrase ** 5 *' . $storage_item__3414 . ' ' . $storage_item__3415 . ' ' . $storage_item__3416 . ' ' . $storage_item__3417 . ' ' . $storage_item__3418 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26324,7 +26324,7 @@ $storage_item__3413 = 'put-into-phrase ' . $storage_item__3414 . ' ' . $storage_
 # print 'result: ' . $storage_item__3413 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3419 *** put-into-phrase ** 5 *' . $storage_item__3420 . ' ' . $storage_item__3421 . ' ' . $storage_item__3422 . ' ' . $storage_item__3423 . ' ' . $storage_item__3424 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3419 *** put-into-phrase ** 5 *' . $storage_item__3420 . ' ' . $storage_item__3421 . ' ' . $storage_item__3422 . ' ' . $storage_item__3423 . ' ' . $storage_item__3424 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26342,7 +26342,7 @@ $storage_item__3419 = 'put-into-phrase ' . $storage_item__3420 . ' ' . $storage_
 # print 'result: ' . $storage_item__3419 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3425 *** put-into-phrase ** 3 *' . $storage_item__3426 . ' ' . $storage_item__3427 . ' ' . $storage_item__3428 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3425 *** put-into-phrase ** 3 *' . $storage_item__3426 . ' ' . $storage_item__3427 . ' ' . $storage_item__3428 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26360,7 +26360,7 @@ $storage_item__3425 = 'put-into-phrase ' . $storage_item__3426 . ' ' . $storage_
 # print 'result: ' . $storage_item__3425 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3429 *** put-into-phrase ** 3 *' . $storage_item__3430 . ' ' . $storage_item__3431 . ' ' . $storage_item__3432 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3429 *** put-into-phrase ** 3 *' . $storage_item__3430 . ' ' . $storage_item__3431 . ' ' . $storage_item__3432 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26378,7 +26378,7 @@ $storage_item__3429 = 'put-into-phrase ' . $storage_item__3430 . ' ' . $storage_
 # print 'result: ' . $storage_item__3429 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3433 *** put-into-phrase ** 2 *' . $storage_item__3434 . ' ' . $storage_item__3435 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3433 *** put-into-phrase ** 2 *' . $storage_item__3434 . ' ' . $storage_item__3435 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26396,7 +26396,7 @@ $storage_item__3433 = 'put-into-phrase ' . $storage_item__3434 . ' ' . $storage_
 # print 'result: ' . $storage_item__3433 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3436 *** put-into-phrase ** 3 *' . $storage_item__3437 . ' ' . $storage_item__3438 . ' ' . $storage_item__3439 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3436 *** put-into-phrase ** 3 *' . $storage_item__3437 . ' ' . $storage_item__3438 . ' ' . $storage_item__3439 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26414,7 +26414,7 @@ $storage_item__3436 = 'put-into-phrase ' . $storage_item__3437 . ' ' . $storage_
 # print 'result: ' . $storage_item__3436 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3440 *** put-into-phrase ** 3 *' . $storage_item__3441 . ' ' . $storage_item__3442 . ' ' . $storage_item__3443 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3440 *** put-into-phrase ** 3 *' . $storage_item__3441 . ' ' . $storage_item__3442 . ' ' . $storage_item__3443 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26432,7 +26432,7 @@ $storage_item__3440 = 'put-into-phrase ' . $storage_item__3441 . ' ' . $storage_
 # print 'result: ' . $storage_item__3440 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3444 *** put-into-phrase ** 4 *' . $storage_item__3445 . ' ' . $storage_item__3446 . ' ' . $storage_item__3447 . ' ' . $storage_item__3448 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3444 *** put-into-phrase ** 4 *' . $storage_item__3445 . ' ' . $storage_item__3446 . ' ' . $storage_item__3447 . ' ' . $storage_item__3448 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26450,7 +26450,7 @@ $storage_item__3444 = 'put-into-phrase ' . $storage_item__3445 . ' ' . $storage_
 # print 'result: ' . $storage_item__3444 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3449 *** put-into-phrase ** 4 *' . $storage_item__3450 . ' ' . $storage_item__3451 . ' ' . $storage_item__3452 . ' ' . $storage_item__3453 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3449 *** put-into-phrase ** 4 *' . $storage_item__3450 . ' ' . $storage_item__3451 . ' ' . $storage_item__3452 . ' ' . $storage_item__3453 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26468,7 +26468,7 @@ $storage_item__3449 = 'put-into-phrase ' . $storage_item__3450 . ' ' . $storage_
 # print 'result: ' . $storage_item__3449 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3454 *** put-into-phrase ** 4 *' . $storage_item__3455 . ' ' . $storage_item__3456 . ' ' . $storage_item__3457 . ' ' . $storage_item__3458 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3454 *** put-into-phrase ** 4 *' . $storage_item__3455 . ' ' . $storage_item__3456 . ' ' . $storage_item__3457 . ' ' . $storage_item__3458 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26486,7 +26486,7 @@ $storage_item__3454 = 'put-into-phrase ' . $storage_item__3455 . ' ' . $storage_
 # print 'result: ' . $storage_item__3454 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3459 *** put-into-phrase ** 3 *' . $storage_item__3460 . ' ' . $storage_item__3461 . ' ' . $storage_item__3462 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3459 *** put-into-phrase ** 3 *' . $storage_item__3460 . ' ' . $storage_item__3461 . ' ' . $storage_item__3462 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26504,7 +26504,7 @@ $storage_item__3459 = 'put-into-phrase ' . $storage_item__3460 . ' ' . $storage_
 # print 'result: ' . $storage_item__3459 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3463 *** put-into-phrase ** 3 *' . $storage_item__3464 . ' ' . $storage_item__3465 . ' ' . $storage_item__3466 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3463 *** put-into-phrase ** 3 *' . $storage_item__3464 . ' ' . $storage_item__3465 . ' ' . $storage_item__3466 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26522,7 +26522,7 @@ $storage_item__3463 = 'put-into-phrase ' . $storage_item__3464 . ' ' . $storage_
 # print 'result: ' . $storage_item__3463 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3467 *** put-into-phrase ** 4 *' . $storage_item__3468 . ' ' . $storage_item__3469 . ' ' . $storage_item__3470 . ' ' . $storage_item__3471 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3467 *** put-into-phrase ** 4 *' . $storage_item__3468 . ' ' . $storage_item__3469 . ' ' . $storage_item__3470 . ' ' . $storage_item__3471 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26540,7 +26540,7 @@ $storage_item__3467 = 'put-into-phrase ' . $storage_item__3468 . ' ' . $storage_
 # print 'result: ' . $storage_item__3467 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3472 *** put-into-phrase ** 3 *' . $storage_item__3473 . ' ' . $storage_item__3474 . ' ' . $storage_item__3475 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3472 *** put-into-phrase ** 3 *' . $storage_item__3473 . ' ' . $storage_item__3474 . ' ' . $storage_item__3475 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26558,7 +26558,7 @@ $storage_item__3472 = 'put-into-phrase ' . $storage_item__3473 . ' ' . $storage_
 # print 'result: ' . $storage_item__3472 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3476 *** put-into-phrase ** 3 *' . $storage_item__3477 . ' ' . $storage_item__3478 . ' ' . $storage_item__3479 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3476 *** put-into-phrase ** 3 *' . $storage_item__3477 . ' ' . $storage_item__3478 . ' ' . $storage_item__3479 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26576,7 +26576,7 @@ $storage_item__3476 = 'put-into-phrase ' . $storage_item__3477 . ' ' . $storage_
 # print 'result: ' . $storage_item__3476 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3480 *** put-into-phrase ** 3 *' . $storage_item__3481 . ' ' . $storage_item__3482 . ' ' . $storage_item__3483 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3480 *** put-into-phrase ** 3 *' . $storage_item__3481 . ' ' . $storage_item__3482 . ' ' . $storage_item__3483 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26594,7 +26594,7 @@ $storage_item__3480 = 'put-into-phrase ' . $storage_item__3481 . ' ' . $storage_
 # print 'result: ' . $storage_item__3480 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3484 *** put-into-phrase ** 3 *' . $storage_item__3485 . ' ' . $storage_item__3486 . ' ' . $storage_item__3487 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3484 *** put-into-phrase ** 3 *' . $storage_item__3485 . ' ' . $storage_item__3486 . ' ' . $storage_item__3487 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26612,7 +26612,7 @@ $storage_item__3484 = 'put-into-phrase ' . $storage_item__3485 . ' ' . $storage_
 # print 'result: ' . $storage_item__3484 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3488 *** put-into-phrase ** 4 *' . $storage_item__3489 . ' ' . $storage_item__3490 . ' ' . $storage_item__3491 . ' ' . $storage_item__3492 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3488 *** put-into-phrase ** 4 *' . $storage_item__3489 . ' ' . $storage_item__3490 . ' ' . $storage_item__3491 . ' ' . $storage_item__3492 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26630,7 +26630,7 @@ $storage_item__3488 = 'put-into-phrase ' . $storage_item__3489 . ' ' . $storage_
 # print 'result: ' . $storage_item__3488 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3493 *** put-into-phrase ** 4 *' . $storage_item__3494 . ' ' . $storage_item__3495 . ' ' . $storage_item__3496 . ' ' . $storage_item__3497 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3493 *** put-into-phrase ** 4 *' . $storage_item__3494 . ' ' . $storage_item__3495 . ' ' . $storage_item__3496 . ' ' . $storage_item__3497 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26648,7 +26648,7 @@ $storage_item__3493 = 'put-into-phrase ' . $storage_item__3494 . ' ' . $storage_
 # print 'result: ' . $storage_item__3493 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3498 *** put-into-phrase ** 3 *' . $storage_item__3499 . ' ' . $storage_item__3500 . ' ' . $storage_item__3501 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3498 *** put-into-phrase ** 3 *' . $storage_item__3499 . ' ' . $storage_item__3500 . ' ' . $storage_item__3501 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26666,7 +26666,7 @@ $storage_item__3498 = 'put-into-phrase ' . $storage_item__3499 . ' ' . $storage_
 # print 'result: ' . $storage_item__3498 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3502 *** put-into-phrase ** 3 *' . $storage_item__3503 . ' ' . $storage_item__3504 . ' ' . $storage_item__3505 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3502 *** put-into-phrase ** 3 *' . $storage_item__3503 . ' ' . $storage_item__3504 . ' ' . $storage_item__3505 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26684,7 +26684,7 @@ $storage_item__3502 = 'put-into-phrase ' . $storage_item__3503 . ' ' . $storage_
 # print 'result: ' . $storage_item__3502 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3506 *** put-into-phrase ** 3 *' . $storage_item__3507 . ' ' . $storage_item__3508 . ' ' . $storage_item__3509 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3506 *** put-into-phrase ** 3 *' . $storage_item__3507 . ' ' . $storage_item__3508 . ' ' . $storage_item__3509 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26702,7 +26702,7 @@ $storage_item__3506 = 'put-into-phrase ' . $storage_item__3507 . ' ' . $storage_
 # print 'result: ' . $storage_item__3506 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3510 *** put-into-phrase ** 3 *' . $storage_item__3511 . ' ' . $storage_item__3512 . ' ' . $storage_item__3513 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3510 *** put-into-phrase ** 3 *' . $storage_item__3511 . ' ' . $storage_item__3512 . ' ' . $storage_item__3513 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26720,7 +26720,7 @@ $storage_item__3510 = 'put-into-phrase ' . $storage_item__3511 . ' ' . $storage_
 # print 'result: ' . $storage_item__3510 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3514 *** put-into-phrase ** 4 *' . $storage_item__3515 . ' ' . $storage_item__3516 . ' ' . $storage_item__3517 . ' ' . $storage_item__3518 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3514 *** put-into-phrase ** 4 *' . $storage_item__3515 . ' ' . $storage_item__3516 . ' ' . $storage_item__3517 . ' ' . $storage_item__3518 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26738,7 +26738,7 @@ $storage_item__3514 = 'put-into-phrase ' . $storage_item__3515 . ' ' . $storage_
 # print 'result: ' . $storage_item__3514 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3519 *** put-into-phrase ** 3 *' . $storage_item__3520 . ' ' . $storage_item__3521 . ' ' . $storage_item__3522 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3519 *** put-into-phrase ** 3 *' . $storage_item__3520 . ' ' . $storage_item__3521 . ' ' . $storage_item__3522 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26756,7 +26756,7 @@ $storage_item__3519 = 'put-into-phrase ' . $storage_item__3520 . ' ' . $storage_
 # print 'result: ' . $storage_item__3519 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3523 *** put-into-phrase ** 3 *' . $storage_item__3524 . ' ' . $storage_item__3525 . ' ' . $storage_item__3526 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3523 *** put-into-phrase ** 3 *' . $storage_item__3524 . ' ' . $storage_item__3525 . ' ' . $storage_item__3526 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26774,7 +26774,7 @@ $storage_item__3523 = 'put-into-phrase ' . $storage_item__3524 . ' ' . $storage_
 # print 'result: ' . $storage_item__3523 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3527 *** put-into-phrase ** 5 *' . $storage_item__3528 . ' ' . $storage_item__3529 . ' ' . $storage_item__3530 . ' ' . $storage_item__3531 . ' ' . $storage_item__3532 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3527 *** put-into-phrase ** 5 *' . $storage_item__3528 . ' ' . $storage_item__3529 . ' ' . $storage_item__3530 . ' ' . $storage_item__3531 . ' ' . $storage_item__3532 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26792,7 +26792,7 @@ $storage_item__3527 = 'put-into-phrase ' . $storage_item__3528 . ' ' . $storage_
 # print 'result: ' . $storage_item__3527 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3533 *** put-into-phrase ** 3 *' . $storage_item__3534 . ' ' . $storage_item__3535 . ' ' . $storage_item__3536 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3533 *** put-into-phrase ** 3 *' . $storage_item__3534 . ' ' . $storage_item__3535 . ' ' . $storage_item__3536 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26810,7 +26810,7 @@ $storage_item__3533 = 'put-into-phrase ' . $storage_item__3534 . ' ' . $storage_
 # print 'result: ' . $storage_item__3533 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3537 *** put-into-phrase ** 5 *' . $storage_item__3538 . ' ' . $storage_item__3539 . ' ' . $storage_item__3540 . ' ' . $storage_item__3541 . ' ' . $storage_item__3542 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3537 *** put-into-phrase ** 5 *' . $storage_item__3538 . ' ' . $storage_item__3539 . ' ' . $storage_item__3540 . ' ' . $storage_item__3541 . ' ' . $storage_item__3542 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26828,7 +26828,7 @@ $storage_item__3537 = 'put-into-phrase ' . $storage_item__3538 . ' ' . $storage_
 # print 'result: ' . $storage_item__3537 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3543 *** put-into-phrase ** 3 *' . $storage_item__3544 . ' ' . $storage_item__3545 . ' ' . $storage_item__3546 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3543 *** put-into-phrase ** 3 *' . $storage_item__3544 . ' ' . $storage_item__3545 . ' ' . $storage_item__3546 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26846,7 +26846,7 @@ $storage_item__3543 = 'put-into-phrase ' . $storage_item__3544 . ' ' . $storage_
 # print 'result: ' . $storage_item__3543 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3547 *** put-into-phrase ** 5 *' . $storage_item__3548 . ' ' . $storage_item__3549 . ' ' . $storage_item__3550 . ' ' . $storage_item__3551 . ' ' . $storage_item__3552 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3547 *** put-into-phrase ** 5 *' . $storage_item__3548 . ' ' . $storage_item__3549 . ' ' . $storage_item__3550 . ' ' . $storage_item__3551 . ' ' . $storage_item__3552 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26864,7 +26864,7 @@ $storage_item__3547 = 'put-into-phrase ' . $storage_item__3548 . ' ' . $storage_
 # print 'result: ' . $storage_item__3547 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3553 *** put-into-phrase ** 5 *' . $storage_item__3554 . ' ' . $storage_item__3555 . ' ' . $storage_item__3556 . ' ' . $storage_item__3557 . ' ' . $storage_item__3558 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3553 *** put-into-phrase ** 5 *' . $storage_item__3554 . ' ' . $storage_item__3555 . ' ' . $storage_item__3556 . ' ' . $storage_item__3557 . ' ' . $storage_item__3558 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26882,7 +26882,7 @@ $storage_item__3553 = 'put-into-phrase ' . $storage_item__3554 . ' ' . $storage_
 # print 'result: ' . $storage_item__3553 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3559 *** put-into-phrase ** 5 *' . $storage_item__3560 . ' ' . $storage_item__3561 . ' ' . $storage_item__3562 . ' ' . $storage_item__3563 . ' ' . $storage_item__3564 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3559 *** put-into-phrase ** 5 *' . $storage_item__3560 . ' ' . $storage_item__3561 . ' ' . $storage_item__3562 . ' ' . $storage_item__3563 . ' ' . $storage_item__3564 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26900,7 +26900,7 @@ $storage_item__3559 = 'put-into-phrase ' . $storage_item__3560 . ' ' . $storage_
 # print 'result: ' . $storage_item__3559 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3565 *** put-into-phrase ** 5 *' . $storage_item__3566 . ' ' . $storage_item__3567 . ' ' . $storage_item__3568 . ' ' . $storage_item__3569 . ' ' . $storage_item__3570 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3565 *** put-into-phrase ** 5 *' . $storage_item__3566 . ' ' . $storage_item__3567 . ' ' . $storage_item__3568 . ' ' . $storage_item__3569 . ' ' . $storage_item__3570 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26918,7 +26918,7 @@ $storage_item__3565 = 'put-into-phrase ' . $storage_item__3566 . ' ' . $storage_
 # print 'result: ' . $storage_item__3565 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3571 *** put-into-phrase ** 5 *' . $storage_item__3572 . ' ' . $storage_item__3573 . ' ' . $storage_item__3574 . ' ' . $storage_item__3575 . ' ' . $storage_item__3576 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3571 *** put-into-phrase ** 5 *' . $storage_item__3572 . ' ' . $storage_item__3573 . ' ' . $storage_item__3574 . ' ' . $storage_item__3575 . ' ' . $storage_item__3576 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26936,7 +26936,7 @@ $storage_item__3571 = 'put-into-phrase ' . $storage_item__3572 . ' ' . $storage_
 # print 'result: ' . $storage_item__3571 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3577 *** put-into-phrase ** 3 *' . $storage_item__3578 . ' ' . $storage_item__3579 . ' ' . $storage_item__3580 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3577 *** put-into-phrase ** 3 *' . $storage_item__3578 . ' ' . $storage_item__3579 . ' ' . $storage_item__3580 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26954,7 +26954,7 @@ $storage_item__3577 = 'put-into-phrase ' . $storage_item__3578 . ' ' . $storage_
 # print 'result: ' . $storage_item__3577 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3581 *** put-into-phrase ** 4 *' . $storage_item__3582 . ' ' . $storage_item__3583 . ' ' . $storage_item__3584 . ' ' . $storage_item__3585 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3581 *** put-into-phrase ** 4 *' . $storage_item__3582 . ' ' . $storage_item__3583 . ' ' . $storage_item__3584 . ' ' . $storage_item__3585 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26972,7 +26972,7 @@ $storage_item__3581 = 'put-into-phrase ' . $storage_item__3582 . ' ' . $storage_
 # print 'result: ' . $storage_item__3581 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3586 *** put-into-phrase ** 4 *' . $storage_item__3587 . ' ' . $storage_item__3588 . ' ' . $storage_item__3589 . ' ' . $storage_item__3590 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3586 *** put-into-phrase ** 4 *' . $storage_item__3587 . ' ' . $storage_item__3588 . ' ' . $storage_item__3589 . ' ' . $storage_item__3590 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -26990,7 +26990,7 @@ $storage_item__3586 = 'put-into-phrase ' . $storage_item__3587 . ' ' . $storage_
 # print 'result: ' . $storage_item__3586 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3591 *** put-into-phrase ** 4 *' . $storage_item__3592 . ' ' . $storage_item__3593 . ' ' . $storage_item__3594 . ' ' . $storage_item__3595 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3591 *** put-into-phrase ** 4 *' . $storage_item__3592 . ' ' . $storage_item__3593 . ' ' . $storage_item__3594 . ' ' . $storage_item__3595 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27008,7 +27008,7 @@ $storage_item__3591 = 'put-into-phrase ' . $storage_item__3592 . ' ' . $storage_
 # print 'result: ' . $storage_item__3591 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3596 *** put-into-phrase ** 3 *' . $storage_item__3597 . ' ' . $storage_item__3598 . ' ' . $storage_item__3599 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3596 *** put-into-phrase ** 3 *' . $storage_item__3597 . ' ' . $storage_item__3598 . ' ' . $storage_item__3599 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27026,7 +27026,7 @@ $storage_item__3596 = 'put-into-phrase ' . $storage_item__3597 . ' ' . $storage_
 # print 'result: ' . $storage_item__3596 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3600 *** put-into-phrase ** 3 *' . $storage_item__3601 . ' ' . $storage_item__3602 . ' ' . $storage_item__3603 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3600 *** put-into-phrase ** 3 *' . $storage_item__3601 . ' ' . $storage_item__3602 . ' ' . $storage_item__3603 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27044,7 +27044,7 @@ $storage_item__3600 = 'put-into-phrase ' . $storage_item__3601 . ' ' . $storage_
 # print 'result: ' . $storage_item__3600 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3604 *** put-into-phrase ** 3 *' . $storage_item__3605 . ' ' . $storage_item__3606 . ' ' . $storage_item__3607 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3604 *** put-into-phrase ** 3 *' . $storage_item__3605 . ' ' . $storage_item__3606 . ' ' . $storage_item__3607 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27062,7 +27062,7 @@ $storage_item__3604 = 'put-into-phrase ' . $storage_item__3605 . ' ' . $storage_
 # print 'result: ' . $storage_item__3604 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3608 *** put-into-phrase ** 3 *' . $storage_item__3609 . ' ' . $storage_item__3610 . ' ' . $storage_item__3611 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3608 *** put-into-phrase ** 3 *' . $storage_item__3609 . ' ' . $storage_item__3610 . ' ' . $storage_item__3611 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27080,7 +27080,7 @@ $storage_item__3608 = 'put-into-phrase ' . $storage_item__3609 . ' ' . $storage_
 # print 'result: ' . $storage_item__3608 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3612 *** put-into-phrase ** 3 *' . $storage_item__3613 . ' ' . $storage_item__3614 . ' ' . $storage_item__3615 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3612 *** put-into-phrase ** 3 *' . $storage_item__3613 . ' ' . $storage_item__3614 . ' ' . $storage_item__3615 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27098,7 +27098,7 @@ $storage_item__3612 = 'put-into-phrase ' . $storage_item__3613 . ' ' . $storage_
 # print 'result: ' . $storage_item__3612 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3616 *** put-into-phrase ** 4 *' . $storage_item__3617 . ' ' . $storage_item__3618 . ' ' . $storage_item__3619 . ' ' . $storage_item__3620 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3616 *** put-into-phrase ** 4 *' . $storage_item__3617 . ' ' . $storage_item__3618 . ' ' . $storage_item__3619 . ' ' . $storage_item__3620 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27116,7 +27116,7 @@ $storage_item__3616 = 'put-into-phrase ' . $storage_item__3617 . ' ' . $storage_
 # print 'result: ' . $storage_item__3616 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3621 *** put-into-phrase ** 3 *' . $storage_item__3622 . ' ' . $storage_item__3623 . ' ' . $storage_item__3624 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3621 *** put-into-phrase ** 3 *' . $storage_item__3622 . ' ' . $storage_item__3623 . ' ' . $storage_item__3624 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27134,7 +27134,7 @@ $storage_item__3621 = 'put-into-phrase ' . $storage_item__3622 . ' ' . $storage_
 # print 'result: ' . $storage_item__3621 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3625 *** put-into-phrase ** 4 *' . $storage_item__3626 . ' ' . $storage_item__3627 . ' ' . $storage_item__3628 . ' ' . $storage_item__3629 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3625 *** put-into-phrase ** 4 *' . $storage_item__3626 . ' ' . $storage_item__3627 . ' ' . $storage_item__3628 . ' ' . $storage_item__3629 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27152,7 +27152,7 @@ $storage_item__3625 = 'put-into-phrase ' . $storage_item__3626 . ' ' . $storage_
 # print 'result: ' . $storage_item__3625 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3630 *** put-into-phrase ** 4 *' . $storage_item__3631 . ' ' . $storage_item__3632 . ' ' . $storage_item__3633 . ' ' . $storage_item__3634 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3630 *** put-into-phrase ** 4 *' . $storage_item__3631 . ' ' . $storage_item__3632 . ' ' . $storage_item__3633 . ' ' . $storage_item__3634 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27170,7 +27170,7 @@ $storage_item__3630 = 'put-into-phrase ' . $storage_item__3631 . ' ' . $storage_
 # print 'result: ' . $storage_item__3630 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3635 *** put-into-phrase ** 3 *' . $storage_item__3636 . ' ' . $storage_item__3637 . ' ' . $storage_item__3638 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3635 *** put-into-phrase ** 3 *' . $storage_item__3636 . ' ' . $storage_item__3637 . ' ' . $storage_item__3638 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27188,7 +27188,7 @@ $storage_item__3635 = 'put-into-phrase ' . $storage_item__3636 . ' ' . $storage_
 # print 'result: ' . $storage_item__3635 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3639 *** put-into-phrase ** 3 *' . $storage_item__3640 . ' ' . $storage_item__3641 . ' ' . $storage_item__3642 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3639 *** put-into-phrase ** 3 *' . $storage_item__3640 . ' ' . $storage_item__3641 . ' ' . $storage_item__3642 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27206,7 +27206,7 @@ $storage_item__3639 = 'put-into-phrase ' . $storage_item__3640 . ' ' . $storage_
 # print 'result: ' . $storage_item__3639 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3643 *** put-into-phrase ** 3 *' . $storage_item__3644 . ' ' . $storage_item__3645 . ' ' . $storage_item__3646 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3643 *** put-into-phrase ** 3 *' . $storage_item__3644 . ' ' . $storage_item__3645 . ' ' . $storage_item__3646 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27224,7 +27224,7 @@ $storage_item__3643 = 'put-into-phrase ' . $storage_item__3644 . ' ' . $storage_
 # print 'result: ' . $storage_item__3643 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3647 *** put-into-phrase ** 3 *' . $storage_item__3648 . ' ' . $storage_item__3649 . ' ' . $storage_item__3650 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3647 *** put-into-phrase ** 3 *' . $storage_item__3648 . ' ' . $storage_item__3649 . ' ' . $storage_item__3650 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27242,7 +27242,7 @@ $storage_item__3647 = 'put-into-phrase ' . $storage_item__3648 . ' ' . $storage_
 # print 'result: ' . $storage_item__3647 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3651 *** put-into-phrase ** 4 *' . $storage_item__3652 . ' ' . $storage_item__3653 . ' ' . $storage_item__3654 . ' ' . $storage_item__3655 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3651 *** put-into-phrase ** 4 *' . $storage_item__3652 . ' ' . $storage_item__3653 . ' ' . $storage_item__3654 . ' ' . $storage_item__3655 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27260,7 +27260,7 @@ $storage_item__3651 = 'put-into-phrase ' . $storage_item__3652 . ' ' . $storage_
 # print 'result: ' . $storage_item__3651 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3656 *** put-into-phrase ** 4 *' . $storage_item__3657 . ' ' . $storage_item__3658 . ' ' . $storage_item__3659 . ' ' . $storage_item__3660 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3656 *** put-into-phrase ** 4 *' . $storage_item__3657 . ' ' . $storage_item__3658 . ' ' . $storage_item__3659 . ' ' . $storage_item__3660 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27278,7 +27278,7 @@ $storage_item__3656 = 'put-into-phrase ' . $storage_item__3657 . ' ' . $storage_
 # print 'result: ' . $storage_item__3656 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3661 *** put-into-phrase ** 3 *' . $storage_item__3662 . ' ' . $storage_item__3663 . ' ' . $storage_item__3664 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3661 *** put-into-phrase ** 3 *' . $storage_item__3662 . ' ' . $storage_item__3663 . ' ' . $storage_item__3664 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27296,7 +27296,7 @@ $storage_item__3661 = 'put-into-phrase ' . $storage_item__3662 . ' ' . $storage_
 # print 'result: ' . $storage_item__3661 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** assign-action-operand-characteristics **** 3665 *** put-into-phrase ** 3 *' . $storage_item__3666 . ' ' . $storage_item__3667 . ' ' . $storage_item__3668 ;
+# $global_action_debug_line = '***** assign-action-operand-characteristics **** 3665 *** put-into-phrase ** 3 *' . $storage_item__3666 . ' ' . $storage_item__3667 . ' ' . $storage_item__3668 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27323,7 +27323,7 @@ $global_replacement_count_for_item_name{ 'build-paired-replacements-for-converti
 my $saved_accumulator_pointer = -1 ;
 # ambee prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text-no-space character-hyphen string-of-hyphens amenn
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3671 *** prepend-text ** 2 *' . $storage_item__3672 . ' ' . $storage_item__3673 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3671 *** prepend-text ** 2 *' . $storage_item__3672 . ' ' . $storage_item__3673 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27352,7 +27352,7 @@ $storage_item__3671 = 'prepend-text ' . $storage_item__3672 . ' ' . $storage_ite
 # print 'result: ' . $storage_item__3671 . "\n" ;
 # end of action prepend-text
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3674 *** prepend-text ** 2 *' . $storage_item__3675 . ' ' . $storage_item__3676 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3674 *** prepend-text ** 2 *' . $storage_item__3675 . ' ' . $storage_item__3676 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27381,7 +27381,7 @@ $storage_item__3674 = 'prepend-text ' . $storage_item__3675 . ' ' . $storage_ite
 # print 'result: ' . $storage_item__3674 . "\n" ;
 # end of action prepend-text
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3677 *** prepend-text-no-space ** 2 *' . $storage_item__3678 . ' ' . $storage_item__3679 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3677 *** prepend-text-no-space ** 2 *' . $storage_item__3678 . ' ' . $storage_item__3679 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27419,7 +27419,7 @@ $global_replacement_count_for_item_name{ 'build-paired-replacements-for-converti
 my $saved_accumulator_pointer = -1 ;
 # ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-combee paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn amenn
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3682 *** prepend-text-no-space ** 2 *' . $storage_item__3683 . ' ' . $storage_item__3684 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3682 *** prepend-text-no-space ** 2 *' . $storage_item__3683 . ' ' . $storage_item__3684 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27448,7 +27448,7 @@ $storage_item__3682 = 'prepend-text-no-space ' . $storage_item__3683 . ' ' . $st
 # print 'result: ' . $storage_item__3682 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3685 *** append-text-no-space ** 2 *' . $storage_item__3686 . ' ' . $storage_item__3687 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3685 *** append-text-no-space ** 2 *' . $storage_item__3686 . ' ' . $storage_item__3687 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -27477,7 +27477,7 @@ $storage_item__3685 = 'append-text-no-space ' . $storage_item__3686 . ' ' . $sto
 # print 'result: ' . $storage_item__3685 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3688 *** prepend-text ** 2 *' . $storage_item__3689 . ' ' . $storage_item__3690 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3688 *** prepend-text ** 2 *' . $storage_item__3689 . ' ' . $storage_item__3690 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27506,7 +27506,7 @@ $storage_item__3688 = 'prepend-text ' . $storage_item__3689 . ' ' . $storage_ite
 # print 'result: ' . $storage_item__3688 . "\n" ;
 # end of action prepend-text
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3691 *** prepend-text ** 2 *' . $storage_item__3692 . ' ' . $storage_item__3693 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3691 *** prepend-text ** 2 *' . $storage_item__3692 . ' ' . $storage_item__3693 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27535,7 +27535,7 @@ $storage_item__3691 = 'prepend-text ' . $storage_item__3692 . ' ' . $storage_ite
 # print 'result: ' . $storage_item__3691 . "\n" ;
 # end of action prepend-text
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3694 *** prepend-text ** 2 *' . $storage_item__3695 . ' ' . $storage_item__3696 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3694 *** prepend-text ** 2 *' . $storage_item__3695 . ' ' . $storage_item__3696 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27564,7 +27564,7 @@ $storage_item__3694 = 'prepend-text ' . $storage_item__3695 . ' ' . $storage_ite
 # print 'result: ' . $storage_item__3694 . "\n" ;
 # end of action prepend-text
 
-$global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3697 *** prepend-text ** 2 *' . $storage_item__3698 . ' ' . $storage_item__3699 ;
+# $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3697 *** prepend-text ** 2 *' . $storage_item__3698 . ' ' . $storage_item__3699 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text' ;
@@ -27602,7 +27602,7 @@ $global_replacement_count_for_item_name{ 'define-special-strings-that-are-padded
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text string-ambee string-space-ambee-space amenn ambee prepend-text-no-space character-space string-space-ambee-space amenn ambee append-text-no-space character-space string-space-ambee-space amenn ambee copy-text string-amenn string-space-amenn-space amenn ambee prepend-text-no-space character-space string-space-amenn-space amenn ambee append-text-no-space character-space string-space-amenn-space amenn ambee copy-text string-fen string-space-fen-space amenn ambee prepend-text-no-space character-space string-space-fen-space amenn ambee append-text-no-space character-space string-space-fen-space amenn ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn ambee append-text-no-space character-space string-space-hyphen-here-space amenn ambee copy-text string-combee string-space-combee-space amenn ambee prepend-text-no-space character-space string-space-combee-space amenn ambee append-text-no-space character-space string-space-combee-space amenn ambee copy-text string-comenn string-space-comenn-space amenn ambee prepend-text-no-space character-space string-space-comenn-space amenn ambee append-text-no-space character-space string-space-comenn-space amenn ambee copy-text code-concat string-space-concat-space amenn ambee prepend-text-no-space character-space string-space-concat-space amenn ambee append-text-no-space character-space string-space-concat-space amenn ambee copy-text string-one-space string-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-space amenn ambee append-text-no-space character-space string-space-one-space-space amenn ambee copy-text character-hyphen string-space-hyphen-space amenn ambee prepend-text-no-space character-space string-space-hyphen-space amenn ambee append-text-no-space character-space string-space-hyphen-space amenn ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn ambee copy-text string-end-of string-space-end-of-line-here-space amenn ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn ambee append-text-no-space character-space string-space-end-of-line-here-space amenn ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn ambee append-text-no-space character-space string-code-nospay-between-spaces amenn ambee copy-text string-nospay string-space-nospay-space amenn ambee prepend-text-no-space character-space string-space-nospay-space amenn ambee append-text-no-space character-space string-space-nospay-space amenn
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3786 *** copy-text ** 2 *' . $storage_item__3787 . ' ' . $storage_item__3788 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3786 *** copy-text ** 2 *' . $storage_item__3787 . ' ' . $storage_item__3788 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27624,7 +27624,7 @@ $storage_item__3786 = 'copy-text ' . $storage_item__3787 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3786 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3789 *** prepend-text-no-space ** 2 *' . $storage_item__3790 . ' ' . $storage_item__3791 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3789 *** prepend-text-no-space ** 2 *' . $storage_item__3790 . ' ' . $storage_item__3791 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27653,7 +27653,7 @@ $storage_item__3789 = 'prepend-text-no-space ' . $storage_item__3790 . ' ' . $st
 # print 'result: ' . $storage_item__3789 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3792 *** append-text-no-space ** 2 *' . $storage_item__3793 . ' ' . $storage_item__3794 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3792 *** append-text-no-space ** 2 *' . $storage_item__3793 . ' ' . $storage_item__3794 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -27682,7 +27682,7 @@ $storage_item__3792 = 'append-text-no-space ' . $storage_item__3793 . ' ' . $sto
 # print 'result: ' . $storage_item__3792 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3795 *** copy-text ** 2 *' . $storage_item__3796 . ' ' . $storage_item__3797 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3795 *** copy-text ** 2 *' . $storage_item__3796 . ' ' . $storage_item__3797 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27704,7 +27704,7 @@ $storage_item__3795 = 'copy-text ' . $storage_item__3796 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3795 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3798 *** prepend-text-no-space ** 2 *' . $storage_item__3799 . ' ' . $storage_item__3800 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3798 *** prepend-text-no-space ** 2 *' . $storage_item__3799 . ' ' . $storage_item__3800 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27733,7 +27733,7 @@ $storage_item__3798 = 'prepend-text-no-space ' . $storage_item__3799 . ' ' . $st
 # print 'result: ' . $storage_item__3798 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3801 *** append-text-no-space ** 2 *' . $storage_item__3802 . ' ' . $storage_item__3803 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3801 *** append-text-no-space ** 2 *' . $storage_item__3802 . ' ' . $storage_item__3803 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -27762,7 +27762,7 @@ $storage_item__3801 = 'append-text-no-space ' . $storage_item__3802 . ' ' . $sto
 # print 'result: ' . $storage_item__3801 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3804 *** copy-text ** 2 *' . $storage_item__3805 . ' ' . $storage_item__3806 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3804 *** copy-text ** 2 *' . $storage_item__3805 . ' ' . $storage_item__3806 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27784,7 +27784,7 @@ $storage_item__3804 = 'copy-text ' . $storage_item__3805 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3804 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3807 *** prepend-text-no-space ** 2 *' . $storage_item__3808 . ' ' . $storage_item__3809 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3807 *** prepend-text-no-space ** 2 *' . $storage_item__3808 . ' ' . $storage_item__3809 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27813,7 +27813,7 @@ $storage_item__3807 = 'prepend-text-no-space ' . $storage_item__3808 . ' ' . $st
 # print 'result: ' . $storage_item__3807 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3810 *** append-text-no-space ** 2 *' . $storage_item__3811 . ' ' . $storage_item__3812 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3810 *** append-text-no-space ** 2 *' . $storage_item__3811 . ' ' . $storage_item__3812 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -27842,7 +27842,7 @@ $storage_item__3810 = 'append-text-no-space ' . $storage_item__3811 . ' ' . $sto
 # print 'result: ' . $storage_item__3810 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3813 *** copy-text ** 2 *' . $storage_item__3814 . ' ' . $storage_item__3815 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3813 *** copy-text ** 2 *' . $storage_item__3814 . ' ' . $storage_item__3815 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27864,7 +27864,7 @@ $storage_item__3813 = 'copy-text ' . $storage_item__3814 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3813 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3816 *** prepend-text-no-space ** 2 *' . $storage_item__3817 . ' ' . $storage_item__3818 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3816 *** prepend-text-no-space ** 2 *' . $storage_item__3817 . ' ' . $storage_item__3818 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27893,7 +27893,7 @@ $storage_item__3816 = 'prepend-text-no-space ' . $storage_item__3817 . ' ' . $st
 # print 'result: ' . $storage_item__3816 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3819 *** append-text-no-space ** 2 *' . $storage_item__3820 . ' ' . $storage_item__3821 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3819 *** append-text-no-space ** 2 *' . $storage_item__3820 . ' ' . $storage_item__3821 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -27922,7 +27922,7 @@ $storage_item__3819 = 'append-text-no-space ' . $storage_item__3820 . ' ' . $sto
 # print 'result: ' . $storage_item__3819 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3822 *** copy-text ** 2 *' . $storage_item__3823 . ' ' . $storage_item__3824 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3822 *** copy-text ** 2 *' . $storage_item__3823 . ' ' . $storage_item__3824 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -27944,7 +27944,7 @@ $storage_item__3822 = 'copy-text ' . $storage_item__3823 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3822 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3825 *** prepend-text-no-space ** 2 *' . $storage_item__3826 . ' ' . $storage_item__3827 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3825 *** prepend-text-no-space ** 2 *' . $storage_item__3826 . ' ' . $storage_item__3827 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -27973,7 +27973,7 @@ $storage_item__3825 = 'prepend-text-no-space ' . $storage_item__3826 . ' ' . $st
 # print 'result: ' . $storage_item__3825 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3828 *** append-text-no-space ** 2 *' . $storage_item__3829 . ' ' . $storage_item__3830 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3828 *** append-text-no-space ** 2 *' . $storage_item__3829 . ' ' . $storage_item__3830 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28002,7 +28002,7 @@ $storage_item__3828 = 'append-text-no-space ' . $storage_item__3829 . ' ' . $sto
 # print 'result: ' . $storage_item__3828 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3831 *** copy-text ** 2 *' . $storage_item__3832 . ' ' . $storage_item__3833 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3831 *** copy-text ** 2 *' . $storage_item__3832 . ' ' . $storage_item__3833 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28024,7 +28024,7 @@ $storage_item__3831 = 'copy-text ' . $storage_item__3832 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3831 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3834 *** prepend-text-no-space ** 2 *' . $storage_item__3835 . ' ' . $storage_item__3836 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3834 *** prepend-text-no-space ** 2 *' . $storage_item__3835 . ' ' . $storage_item__3836 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28053,7 +28053,7 @@ $storage_item__3834 = 'prepend-text-no-space ' . $storage_item__3835 . ' ' . $st
 # print 'result: ' . $storage_item__3834 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3837 *** append-text-no-space ** 2 *' . $storage_item__3838 . ' ' . $storage_item__3839 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3837 *** append-text-no-space ** 2 *' . $storage_item__3838 . ' ' . $storage_item__3839 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28082,7 +28082,7 @@ $storage_item__3837 = 'append-text-no-space ' . $storage_item__3838 . ' ' . $sto
 # print 'result: ' . $storage_item__3837 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3840 *** copy-text ** 2 *' . $storage_item__3841 . ' ' . $storage_item__3842 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3840 *** copy-text ** 2 *' . $storage_item__3841 . ' ' . $storage_item__3842 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28104,7 +28104,7 @@ $storage_item__3840 = 'copy-text ' . $storage_item__3841 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3840 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3843 *** prepend-text-no-space ** 2 *' . $storage_item__3844 . ' ' . $storage_item__3845 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3843 *** prepend-text-no-space ** 2 *' . $storage_item__3844 . ' ' . $storage_item__3845 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28133,7 +28133,7 @@ $storage_item__3843 = 'prepend-text-no-space ' . $storage_item__3844 . ' ' . $st
 # print 'result: ' . $storage_item__3843 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3846 *** append-text-no-space ** 2 *' . $storage_item__3847 . ' ' . $storage_item__3848 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3846 *** append-text-no-space ** 2 *' . $storage_item__3847 . ' ' . $storage_item__3848 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28162,7 +28162,7 @@ $storage_item__3846 = 'append-text-no-space ' . $storage_item__3847 . ' ' . $sto
 # print 'result: ' . $storage_item__3846 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3849 *** copy-text ** 2 *' . $storage_item__3850 . ' ' . $storage_item__3851 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3849 *** copy-text ** 2 *' . $storage_item__3850 . ' ' . $storage_item__3851 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28184,7 +28184,7 @@ $storage_item__3849 = 'copy-text ' . $storage_item__3850 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3849 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3852 *** prepend-text-no-space ** 2 *' . $storage_item__3853 . ' ' . $storage_item__3854 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3852 *** prepend-text-no-space ** 2 *' . $storage_item__3853 . ' ' . $storage_item__3854 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28213,7 +28213,7 @@ $storage_item__3852 = 'prepend-text-no-space ' . $storage_item__3853 . ' ' . $st
 # print 'result: ' . $storage_item__3852 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3855 *** append-text-no-space ** 2 *' . $storage_item__3856 . ' ' . $storage_item__3857 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3855 *** append-text-no-space ** 2 *' . $storage_item__3856 . ' ' . $storage_item__3857 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28242,7 +28242,7 @@ $storage_item__3855 = 'append-text-no-space ' . $storage_item__3856 . ' ' . $sto
 # print 'result: ' . $storage_item__3855 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3858 *** copy-text ** 2 *' . $storage_item__3859 . ' ' . $storage_item__3860 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3858 *** copy-text ** 2 *' . $storage_item__3859 . ' ' . $storage_item__3860 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28264,7 +28264,7 @@ $storage_item__3858 = 'copy-text ' . $storage_item__3859 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3858 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3861 *** prepend-text-no-space ** 2 *' . $storage_item__3862 . ' ' . $storage_item__3863 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3861 *** prepend-text-no-space ** 2 *' . $storage_item__3862 . ' ' . $storage_item__3863 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28293,7 +28293,7 @@ $storage_item__3861 = 'prepend-text-no-space ' . $storage_item__3862 . ' ' . $st
 # print 'result: ' . $storage_item__3861 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3864 *** append-text-no-space ** 2 *' . $storage_item__3865 . ' ' . $storage_item__3866 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3864 *** append-text-no-space ** 2 *' . $storage_item__3865 . ' ' . $storage_item__3866 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28322,7 +28322,7 @@ $storage_item__3864 = 'append-text-no-space ' . $storage_item__3865 . ' ' . $sto
 # print 'result: ' . $storage_item__3864 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3867 *** copy-text ** 2 *' . $storage_item__3868 . ' ' . $storage_item__3869 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3867 *** copy-text ** 2 *' . $storage_item__3868 . ' ' . $storage_item__3869 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28344,7 +28344,7 @@ $storage_item__3867 = 'copy-text ' . $storage_item__3868 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3867 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3870 *** append-text-no-space ** 2 *' . $storage_item__3871 . ' ' . $storage_item__3872 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3870 *** append-text-no-space ** 2 *' . $storage_item__3871 . ' ' . $storage_item__3872 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28373,7 +28373,7 @@ $storage_item__3870 = 'append-text-no-space ' . $storage_item__3871 . ' ' . $sto
 # print 'result: ' . $storage_item__3870 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3873 *** append-text-no-space ** 2 *' . $storage_item__3874 . ' ' . $storage_item__3875 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3873 *** append-text-no-space ** 2 *' . $storage_item__3874 . ' ' . $storage_item__3875 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28402,7 +28402,7 @@ $storage_item__3873 = 'append-text-no-space ' . $storage_item__3874 . ' ' . $sto
 # print 'result: ' . $storage_item__3873 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3876 *** append-text-no-space ** 2 *' . $storage_item__3877 . ' ' . $storage_item__3878 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3876 *** append-text-no-space ** 2 *' . $storage_item__3877 . ' ' . $storage_item__3878 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28431,7 +28431,7 @@ $storage_item__3876 = 'append-text-no-space ' . $storage_item__3877 . ' ' . $sto
 # print 'result: ' . $storage_item__3876 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3879 *** copy-text ** 2 *' . $storage_item__3880 . ' ' . $storage_item__3881 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3879 *** copy-text ** 2 *' . $storage_item__3880 . ' ' . $storage_item__3881 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28453,7 +28453,7 @@ $storage_item__3879 = 'copy-text ' . $storage_item__3880 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3879 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3882 *** append-text-no-space ** 2 *' . $storage_item__3883 . ' ' . $storage_item__3884 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3882 *** append-text-no-space ** 2 *' . $storage_item__3883 . ' ' . $storage_item__3884 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28482,7 +28482,7 @@ $storage_item__3882 = 'append-text-no-space ' . $storage_item__3883 . ' ' . $sto
 # print 'result: ' . $storage_item__3882 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3885 *** append-text-no-space ** 2 *' . $storage_item__3886 . ' ' . $storage_item__3887 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3885 *** append-text-no-space ** 2 *' . $storage_item__3886 . ' ' . $storage_item__3887 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28511,7 +28511,7 @@ $storage_item__3885 = 'append-text-no-space ' . $storage_item__3886 . ' ' . $sto
 # print 'result: ' . $storage_item__3885 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3888 *** append-text-no-space ** 2 *' . $storage_item__3889 . ' ' . $storage_item__3890 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3888 *** append-text-no-space ** 2 *' . $storage_item__3889 . ' ' . $storage_item__3890 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28540,7 +28540,7 @@ $storage_item__3888 = 'append-text-no-space ' . $storage_item__3889 . ' ' . $sto
 # print 'result: ' . $storage_item__3888 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3891 *** copy-text ** 2 *' . $storage_item__3892 . ' ' . $storage_item__3893 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3891 *** copy-text ** 2 *' . $storage_item__3892 . ' ' . $storage_item__3893 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28562,7 +28562,7 @@ $storage_item__3891 = 'copy-text ' . $storage_item__3892 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3891 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3894 *** prepend-text-no-space ** 2 *' . $storage_item__3895 . ' ' . $storage_item__3896 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3894 *** prepend-text-no-space ** 2 *' . $storage_item__3895 . ' ' . $storage_item__3896 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28591,7 +28591,7 @@ $storage_item__3894 = 'prepend-text-no-space ' . $storage_item__3895 . ' ' . $st
 # print 'result: ' . $storage_item__3894 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3897 *** append-text-no-space ** 2 *' . $storage_item__3898 . ' ' . $storage_item__3899 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3897 *** append-text-no-space ** 2 *' . $storage_item__3898 . ' ' . $storage_item__3899 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28620,7 +28620,7 @@ $storage_item__3897 = 'append-text-no-space ' . $storage_item__3898 . ' ' . $sto
 # print 'result: ' . $storage_item__3897 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3900 *** append-text-no-space ** 2 *' . $storage_item__3901 . ' ' . $storage_item__3902 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3900 *** append-text-no-space ** 2 *' . $storage_item__3901 . ' ' . $storage_item__3902 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28649,7 +28649,7 @@ $storage_item__3900 = 'append-text-no-space ' . $storage_item__3901 . ' ' . $sto
 # print 'result: ' . $storage_item__3900 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3903 *** append-text-no-space ** 2 *' . $storage_item__3904 . ' ' . $storage_item__3905 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3903 *** append-text-no-space ** 2 *' . $storage_item__3904 . ' ' . $storage_item__3905 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28678,7 +28678,7 @@ $storage_item__3903 = 'append-text-no-space ' . $storage_item__3904 . ' ' . $sto
 # print 'result: ' . $storage_item__3903 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3906 *** copy-text ** 2 *' . $storage_item__3907 . ' ' . $storage_item__3908 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3906 *** copy-text ** 2 *' . $storage_item__3907 . ' ' . $storage_item__3908 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28700,7 +28700,7 @@ $storage_item__3906 = 'copy-text ' . $storage_item__3907 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3906 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3909 *** prepend-text-no-space ** 2 *' . $storage_item__3910 . ' ' . $storage_item__3911 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3909 *** prepend-text-no-space ** 2 *' . $storage_item__3910 . ' ' . $storage_item__3911 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28729,7 +28729,7 @@ $storage_item__3909 = 'prepend-text-no-space ' . $storage_item__3910 . ' ' . $st
 # print 'result: ' . $storage_item__3909 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3912 *** append-text-no-space ** 2 *' . $storage_item__3913 . ' ' . $storage_item__3914 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3912 *** append-text-no-space ** 2 *' . $storage_item__3913 . ' ' . $storage_item__3914 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28758,7 +28758,7 @@ $storage_item__3912 = 'append-text-no-space ' . $storage_item__3913 . ' ' . $sto
 # print 'result: ' . $storage_item__3912 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3915 *** copy-text ** 2 *' . $storage_item__3916 . ' ' . $storage_item__3917 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3915 *** copy-text ** 2 *' . $storage_item__3916 . ' ' . $storage_item__3917 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28780,7 +28780,7 @@ $storage_item__3915 = 'copy-text ' . $storage_item__3916 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3915 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3918 *** prepend-text-no-space ** 2 *' . $storage_item__3919 . ' ' . $storage_item__3920 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3918 *** prepend-text-no-space ** 2 *' . $storage_item__3919 . ' ' . $storage_item__3920 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -28809,7 +28809,7 @@ $storage_item__3918 = 'prepend-text-no-space ' . $storage_item__3919 . ' ' . $st
 # print 'result: ' . $storage_item__3918 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3921 *** append-text-no-space ** 2 *' . $storage_item__3922 . ' ' . $storage_item__3923 ;
+# $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3921 *** append-text-no-space ** 2 *' . $storage_item__3922 . ' ' . $storage_item__3923 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28847,7 +28847,7 @@ $global_replacement_count_for_item_name{ 'define-special-strings-that-cannot-be-
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text character-f string-fen amenn ambee append-text-no-space character-e string-fen amenn ambee append-text-no-space character-n string-fen amenn ambee copy-text string-am string-ambee amenn ambee append-text-no-space string-bee string-ambee amenn ambee copy-text string-am string-amenn amenn ambee append-text-no-space string-enn string-amenn amenn ambee copy-text string-amenn string-amennfen amenn ambee append-text-no-space string-fen string-amennfen amenn ambee copy-text string-com string-combee amenn ambee append-text-no-space string-bee string-combee amenn ambee copy-text string-com string-comenn amenn ambee append-text-no-space string-enn string-comenn amenn ambee copy-text string-def string-defenn amenn ambee append-text-no-space string-enn string-defenn amenn ambee copy-text string-fen string-fenambee amenn ambee append-text-no-space string-bee string-fenambee amenn ambee copy-text string-no string-nospay amenn ambee append-text-no-space string-spay string-nospay amenn
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3926 *** copy-text ** 2 *' . $storage_item__3927 . ' ' . $storage_item__3928 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3926 *** copy-text ** 2 *' . $storage_item__3927 . ' ' . $storage_item__3928 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28869,7 +28869,7 @@ $storage_item__3926 = 'copy-text ' . $storage_item__3927 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3926 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3929 *** append-text-no-space ** 2 *' . $storage_item__3930 . ' ' . $storage_item__3931 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3929 *** append-text-no-space ** 2 *' . $storage_item__3930 . ' ' . $storage_item__3931 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28898,7 +28898,7 @@ $storage_item__3929 = 'append-text-no-space ' . $storage_item__3930 . ' ' . $sto
 # print 'result: ' . $storage_item__3929 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3932 *** append-text-no-space ** 2 *' . $storage_item__3933 . ' ' . $storage_item__3934 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3932 *** append-text-no-space ** 2 *' . $storage_item__3933 . ' ' . $storage_item__3934 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28927,7 +28927,7 @@ $storage_item__3932 = 'append-text-no-space ' . $storage_item__3933 . ' ' . $sto
 # print 'result: ' . $storage_item__3932 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3935 *** copy-text ** 2 *' . $storage_item__3936 . ' ' . $storage_item__3937 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3935 *** copy-text ** 2 *' . $storage_item__3936 . ' ' . $storage_item__3937 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -28949,7 +28949,7 @@ $storage_item__3935 = 'copy-text ' . $storage_item__3936 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3935 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3938 *** append-text-no-space ** 2 *' . $storage_item__3939 . ' ' . $storage_item__3940 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3938 *** append-text-no-space ** 2 *' . $storage_item__3939 . ' ' . $storage_item__3940 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -28978,7 +28978,7 @@ $storage_item__3938 = 'append-text-no-space ' . $storage_item__3939 . ' ' . $sto
 # print 'result: ' . $storage_item__3938 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3941 *** copy-text ** 2 *' . $storage_item__3942 . ' ' . $storage_item__3943 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3941 *** copy-text ** 2 *' . $storage_item__3942 . ' ' . $storage_item__3943 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29000,7 +29000,7 @@ $storage_item__3941 = 'copy-text ' . $storage_item__3942 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3941 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3944 *** append-text-no-space ** 2 *' . $storage_item__3945 . ' ' . $storage_item__3946 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3944 *** append-text-no-space ** 2 *' . $storage_item__3945 . ' ' . $storage_item__3946 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29029,7 +29029,7 @@ $storage_item__3944 = 'append-text-no-space ' . $storage_item__3945 . ' ' . $sto
 # print 'result: ' . $storage_item__3944 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3947 *** copy-text ** 2 *' . $storage_item__3948 . ' ' . $storage_item__3949 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3947 *** copy-text ** 2 *' . $storage_item__3948 . ' ' . $storage_item__3949 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29051,7 +29051,7 @@ $storage_item__3947 = 'copy-text ' . $storage_item__3948 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3947 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3950 *** append-text-no-space ** 2 *' . $storage_item__3951 . ' ' . $storage_item__3952 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3950 *** append-text-no-space ** 2 *' . $storage_item__3951 . ' ' . $storage_item__3952 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29080,7 +29080,7 @@ $storage_item__3950 = 'append-text-no-space ' . $storage_item__3951 . ' ' . $sto
 # print 'result: ' . $storage_item__3950 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3953 *** copy-text ** 2 *' . $storage_item__3954 . ' ' . $storage_item__3955 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3953 *** copy-text ** 2 *' . $storage_item__3954 . ' ' . $storage_item__3955 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29102,7 +29102,7 @@ $storage_item__3953 = 'copy-text ' . $storage_item__3954 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3953 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3956 *** append-text-no-space ** 2 *' . $storage_item__3957 . ' ' . $storage_item__3958 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3956 *** append-text-no-space ** 2 *' . $storage_item__3957 . ' ' . $storage_item__3958 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29131,7 +29131,7 @@ $storage_item__3956 = 'append-text-no-space ' . $storage_item__3957 . ' ' . $sto
 # print 'result: ' . $storage_item__3956 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3959 *** copy-text ** 2 *' . $storage_item__3960 . ' ' . $storage_item__3961 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3959 *** copy-text ** 2 *' . $storage_item__3960 . ' ' . $storage_item__3961 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29153,7 +29153,7 @@ $storage_item__3959 = 'copy-text ' . $storage_item__3960 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3959 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3962 *** append-text-no-space ** 2 *' . $storage_item__3963 . ' ' . $storage_item__3964 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3962 *** append-text-no-space ** 2 *' . $storage_item__3963 . ' ' . $storage_item__3964 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29182,7 +29182,7 @@ $storage_item__3962 = 'append-text-no-space ' . $storage_item__3963 . ' ' . $sto
 # print 'result: ' . $storage_item__3962 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3965 *** copy-text ** 2 *' . $storage_item__3966 . ' ' . $storage_item__3967 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3965 *** copy-text ** 2 *' . $storage_item__3966 . ' ' . $storage_item__3967 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29204,7 +29204,7 @@ $storage_item__3965 = 'copy-text ' . $storage_item__3966 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3965 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3968 *** append-text-no-space ** 2 *' . $storage_item__3969 . ' ' . $storage_item__3970 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3968 *** append-text-no-space ** 2 *' . $storage_item__3969 . ' ' . $storage_item__3970 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29233,7 +29233,7 @@ $storage_item__3968 = 'append-text-no-space ' . $storage_item__3969 . ' ' . $sto
 # print 'result: ' . $storage_item__3968 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3971 *** copy-text ** 2 *' . $storage_item__3972 . ' ' . $storage_item__3973 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3971 *** copy-text ** 2 *' . $storage_item__3972 . ' ' . $storage_item__3973 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29255,7 +29255,7 @@ $storage_item__3971 = 'copy-text ' . $storage_item__3972 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3971 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3974 *** append-text-no-space ** 2 *' . $storage_item__3975 . ' ' . $storage_item__3976 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3974 *** append-text-no-space ** 2 *' . $storage_item__3975 . ' ' . $storage_item__3976 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29284,7 +29284,7 @@ $storage_item__3974 = 'append-text-no-space ' . $storage_item__3975 . ' ' . $sto
 # print 'result: ' . $storage_item__3974 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3977 *** copy-text ** 2 *' . $storage_item__3978 . ' ' . $storage_item__3979 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3977 *** copy-text ** 2 *' . $storage_item__3978 . ' ' . $storage_item__3979 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29306,7 +29306,7 @@ $storage_item__3977 = 'copy-text ' . $storage_item__3978 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3977 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3980 *** append-text-no-space ** 2 *' . $storage_item__3981 . ' ' . $storage_item__3982 ;
+# $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3980 *** append-text-no-space ** 2 *' . $storage_item__3981 . ' ' . $storage_item__3982 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29344,7 +29344,7 @@ $global_replacement_count_for_item_name{ 'define-special-strings-that-contain-hy
 my $saved_accumulator_pointer = -1 ;
 # ambee copy-text string-hyphen string-hyphen-here amenn ambee append-text-no-space character-hyphen string-hyphen-here amenn ambee append-text-no-space string-here string-hyphen-here amenn ambee copy-text string-character string-character-hyphen amenn ambee append-text-no-space character-hyphen string-character-hyphen amenn ambee append-text-no-space string-hyphen string-character-hyphen amenn ambee copy-text string-no string-no-space amenn ambee append-text-no-space character-hyphen string-no-space amenn ambee append-text-no-space string-space string-no-space amenn ambee copy-text string-one string-one-space amenn ambee append-text-no-space character-hyphen string-one-space amenn ambee append-text-no-space string-space string-one-space amenn ambee copy-text string-new string-new-line amenn ambee append-text-no-space character-hyphen string-new-line amenn ambee append-text-no-space string-line string-new-line amenn ambee copy-text string-empty string-empty-line amenn ambee append-text-no-space character-hyphen string-empty-line amenn ambee append-text-no-space string-line string-empty-line amenn ambee copy-text string-empty string-empty-text amenn ambee append-text-no-space character-hyphen string-empty-text amenn ambee append-text-no-space string-text string-empty-text amenn
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3985 *** copy-text ** 2 *' . $storage_item__3986 . ' ' . $storage_item__3987 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3985 *** copy-text ** 2 *' . $storage_item__3986 . ' ' . $storage_item__3987 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29366,7 +29366,7 @@ $storage_item__3985 = 'copy-text ' . $storage_item__3986 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3985 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3988 *** append-text-no-space ** 2 *' . $storage_item__3989 . ' ' . $storage_item__3990 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3988 *** append-text-no-space ** 2 *' . $storage_item__3989 . ' ' . $storage_item__3990 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29395,7 +29395,7 @@ $storage_item__3988 = 'append-text-no-space ' . $storage_item__3989 . ' ' . $sto
 # print 'result: ' . $storage_item__3988 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3991 *** append-text-no-space ** 2 *' . $storage_item__3992 . ' ' . $storage_item__3993 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3991 *** append-text-no-space ** 2 *' . $storage_item__3992 . ' ' . $storage_item__3993 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29424,7 +29424,7 @@ $storage_item__3991 = 'append-text-no-space ' . $storage_item__3992 . ' ' . $sto
 # print 'result: ' . $storage_item__3991 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3994 *** copy-text ** 2 *' . $storage_item__3995 . ' ' . $storage_item__3996 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3994 *** copy-text ** 2 *' . $storage_item__3995 . ' ' . $storage_item__3996 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29446,7 +29446,7 @@ $storage_item__3994 = 'copy-text ' . $storage_item__3995 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__3994 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3997 *** append-text-no-space ** 2 *' . $storage_item__3998 . ' ' . $storage_item__3999 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 3997 *** append-text-no-space ** 2 *' . $storage_item__3998 . ' ' . $storage_item__3999 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29475,7 +29475,7 @@ $storage_item__3997 = 'append-text-no-space ' . $storage_item__3998 . ' ' . $sto
 # print 'result: ' . $storage_item__3997 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4000 *** append-text-no-space ** 2 *' . $storage_item__4001 . ' ' . $storage_item__4002 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4000 *** append-text-no-space ** 2 *' . $storage_item__4001 . ' ' . $storage_item__4002 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29504,7 +29504,7 @@ $storage_item__4000 = 'append-text-no-space ' . $storage_item__4001 . ' ' . $sto
 # print 'result: ' . $storage_item__4000 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4003 *** copy-text ** 2 *' . $storage_item__4004 . ' ' . $storage_item__4005 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4003 *** copy-text ** 2 *' . $storage_item__4004 . ' ' . $storage_item__4005 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29526,7 +29526,7 @@ $storage_item__4003 = 'copy-text ' . $storage_item__4004 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4003 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4006 *** append-text-no-space ** 2 *' . $storage_item__4007 . ' ' . $storage_item__4008 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4006 *** append-text-no-space ** 2 *' . $storage_item__4007 . ' ' . $storage_item__4008 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29555,7 +29555,7 @@ $storage_item__4006 = 'append-text-no-space ' . $storage_item__4007 . ' ' . $sto
 # print 'result: ' . $storage_item__4006 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4009 *** append-text-no-space ** 2 *' . $storage_item__4010 . ' ' . $storage_item__4011 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4009 *** append-text-no-space ** 2 *' . $storage_item__4010 . ' ' . $storage_item__4011 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29584,7 +29584,7 @@ $storage_item__4009 = 'append-text-no-space ' . $storage_item__4010 . ' ' . $sto
 # print 'result: ' . $storage_item__4009 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4012 *** copy-text ** 2 *' . $storage_item__4013 . ' ' . $storage_item__4014 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4012 *** copy-text ** 2 *' . $storage_item__4013 . ' ' . $storage_item__4014 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29606,7 +29606,7 @@ $storage_item__4012 = 'copy-text ' . $storage_item__4013 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4012 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4015 *** append-text-no-space ** 2 *' . $storage_item__4016 . ' ' . $storage_item__4017 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4015 *** append-text-no-space ** 2 *' . $storage_item__4016 . ' ' . $storage_item__4017 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29635,7 +29635,7 @@ $storage_item__4015 = 'append-text-no-space ' . $storage_item__4016 . ' ' . $sto
 # print 'result: ' . $storage_item__4015 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4018 *** append-text-no-space ** 2 *' . $storage_item__4019 . ' ' . $storage_item__4020 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4018 *** append-text-no-space ** 2 *' . $storage_item__4019 . ' ' . $storage_item__4020 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29664,7 +29664,7 @@ $storage_item__4018 = 'append-text-no-space ' . $storage_item__4019 . ' ' . $sto
 # print 'result: ' . $storage_item__4018 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4021 *** copy-text ** 2 *' . $storage_item__4022 . ' ' . $storage_item__4023 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4021 *** copy-text ** 2 *' . $storage_item__4022 . ' ' . $storage_item__4023 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29686,7 +29686,7 @@ $storage_item__4021 = 'copy-text ' . $storage_item__4022 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4021 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4024 *** append-text-no-space ** 2 *' . $storage_item__4025 . ' ' . $storage_item__4026 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4024 *** append-text-no-space ** 2 *' . $storage_item__4025 . ' ' . $storage_item__4026 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29715,7 +29715,7 @@ $storage_item__4024 = 'append-text-no-space ' . $storage_item__4025 . ' ' . $sto
 # print 'result: ' . $storage_item__4024 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4027 *** append-text-no-space ** 2 *' . $storage_item__4028 . ' ' . $storage_item__4029 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4027 *** append-text-no-space ** 2 *' . $storage_item__4028 . ' ' . $storage_item__4029 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29744,7 +29744,7 @@ $storage_item__4027 = 'append-text-no-space ' . $storage_item__4028 . ' ' . $sto
 # print 'result: ' . $storage_item__4027 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4030 *** copy-text ** 2 *' . $storage_item__4031 . ' ' . $storage_item__4032 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4030 *** copy-text ** 2 *' . $storage_item__4031 . ' ' . $storage_item__4032 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29766,7 +29766,7 @@ $storage_item__4030 = 'copy-text ' . $storage_item__4031 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4030 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4033 *** append-text-no-space ** 2 *' . $storage_item__4034 . ' ' . $storage_item__4035 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4033 *** append-text-no-space ** 2 *' . $storage_item__4034 . ' ' . $storage_item__4035 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29795,7 +29795,7 @@ $storage_item__4033 = 'append-text-no-space ' . $storage_item__4034 . ' ' . $sto
 # print 'result: ' . $storage_item__4033 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4036 *** append-text-no-space ** 2 *' . $storage_item__4037 . ' ' . $storage_item__4038 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4036 *** append-text-no-space ** 2 *' . $storage_item__4037 . ' ' . $storage_item__4038 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29824,7 +29824,7 @@ $storage_item__4036 = 'append-text-no-space ' . $storage_item__4037 . ' ' . $sto
 # print 'result: ' . $storage_item__4036 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4039 *** copy-text ** 2 *' . $storage_item__4040 . ' ' . $storage_item__4041 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4039 *** copy-text ** 2 *' . $storage_item__4040 . ' ' . $storage_item__4041 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29846,7 +29846,7 @@ $storage_item__4039 = 'copy-text ' . $storage_item__4040 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4039 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4042 *** append-text-no-space ** 2 *' . $storage_item__4043 . ' ' . $storage_item__4044 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4042 *** append-text-no-space ** 2 *' . $storage_item__4043 . ' ' . $storage_item__4044 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29875,7 +29875,7 @@ $storage_item__4042 = 'append-text-no-space ' . $storage_item__4043 . ' ' . $sto
 # print 'result: ' . $storage_item__4042 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4045 *** append-text-no-space ** 2 *' . $storage_item__4046 . ' ' . $storage_item__4047 ;
+# $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4045 *** append-text-no-space ** 2 *' . $storage_item__4046 . ' ' . $storage_item__4047 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -29913,7 +29913,7 @@ $global_replacement_count_for_item_name{ 'define-special-strings' } ++ ;
 my $saved_accumulator_pointer = -1 ;
 # ambee define-special-strings-that-cannot-be-spelled-in-full amenn ambee define-special-strings-that-contain-hyphens amenn ambee define-special-strings-that-are-padded-with-spaces amenn ambee copy-text character-open-bracket string-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket amenn ambee copy-text character-hyphen string-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-open-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-text string-fen string-space-fen-ambee-space amenn ambee prepend-text-no-space character-space string-space-fen-ambee-space amenn ambee append-text string-ambee string-space-fen-ambee-space amenn ambee append-text-no-space character-space string-space-fen-ambee-space amenn ambee copy-text string-amenn string-space-amenn-fen-space amenn ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn ambee append-text string-fen string-space-amenn-fen-space amenn ambee append-text-no-space character-space string-space-amenn-fen-space amenn ambee copy-text character-period runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-period runtime-code-inserted-separator-space amenn ambee prepend-text-no-space character-space runtime-code-inserted-separator-space amenn ambee append-text-no-space character-space runtime-code-inserted-separator-space amenn ambee copy-text character-newline new-empty-line amenn ambee copy-text new-empty-line new-empty-lines amenn ambee append-text-no-space character-newline new-empty-lines amenn ambee copy-text string-one-space string-space-one-space-no-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-no-space-space amenn ambee append-text string-no-space string-space-one-space-no-space-space amenn ambee append-text-no-space character-space string-space-one-space-no-space-space amenn ambee copy-text string-no-space string-space-no-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-one-space-space amenn ambee append-text string-one-space string-space-no-space-one-space-space amenn ambee append-text-no-space character-space string-space-no-space-one-space-space amenn ambee copy-text four-hyphens string-of-hyphens amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8 amenn ambee clear-phrase paired-replacements-for-converting-to-combee-comenn amenn ambee put-into-phrase string-asterisk-and-hyphens * amenn ambee put-into-phrase string-hyphens-and-asterisk * amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8 amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-nospay amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-text character-apostrophe runtime-code-concatenated-empty amenn ambee append-text-no-space character-apostrophe runtime-code-concatenated-empty amenn ambee copy-text string-combee list-combee-comenn-defenn amenn ambee append-text string-comenn list-combee-comenn-defenn amenn ambee append-text string-defenn list-combee-comenn-defenn amenn ambee copy-text string-ambee list-ambee-amenn amenn ambee append-text string-amenn list-ambee-amenn amenn ambee copy-text list-ambee-amenn list-ambee-amenn-fen-nospay amenn ambee append-text string-fen list-ambee-amenn-fen-nospay amenn ambee append-text string-nospay list-ambee-amenn-fen-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-character-apostrophe amenn ambee append-text-no-space string-apostrophe string-placeholder-character-apostrophe amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe amenn ambee copy-text string-placeholder-prefix string-placeholder-character-backslash amenn ambee append-text-no-space string-backslash string-placeholder-character-backslash amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-backslash amenn ambee copy-text string-placeholder-prefix string-placeholder-action-name amenn ambee append-text-no-space string-action string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name amenn ambee append-text-no-space string-name string-placeholder-action-name amenn ambee copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-with string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores amenn ambee copy-text string-placeholder-prefix string-placeholder-omit amenn ambee append-text-no-space string-omit string-placeholder-omit amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-omit amenn ambee copy-text string-placeholder-prefix string-placeholder-fen amenn ambee append-text-no-space string-fen string-placeholder-fen amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-fen amenn ambee copy-text string-placeholder-prefix string-placeholder-nospay amenn ambee append-text-no-space string-nospay string-placeholder-nospay amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-special amenn ambee append-text-no-space string-special string-placeholder-special amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-special amenn ambee copy-text string-placeholder-prefix string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-phrase string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-being string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-defined string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined amenn ambee copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-code string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-for string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-executable string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-phrase string-placeholder-code-for-executable-phrase amenn ambee copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores amenn ambee copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-one string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-underscore string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-space string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space amenn ambee copy-text template-new-empty-line string-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-space-new-line-in-brackets amenn ambee prepend-text-no-space character-space string-space-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-new-line-in-brackets-space amenn ambee append-text-no-space character-space string-new-line-in-brackets-space amenn
 
-$global_action_debug_line = '***** define-special-strings **** 4050 *** define-special-strings-that-cannot-be-spelled-in-full ** 0 *' . '' ;
+# $global_action_debug_line = '***** define-special-strings **** 4050 *** define-special-strings-that-cannot-be-spelled-in-full ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -29928,7 +29928,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4050 . "\n" ;
 # end of action define-special-strings-that-cannot-be-spelled-in-full
 
-$global_action_debug_line = '***** define-special-strings **** 4052 *** define-special-strings-that-contain-hyphens ** 0 *' . '' ;
+# $global_action_debug_line = '***** define-special-strings **** 4052 *** define-special-strings-that-contain-hyphens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -29943,7 +29943,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4052 . "\n" ;
 # end of action define-special-strings-that-contain-hyphens
 
-$global_action_debug_line = '***** define-special-strings **** 4054 *** define-special-strings-that-are-padded-with-spaces ** 0 *' . '' ;
+# $global_action_debug_line = '***** define-special-strings **** 4054 *** define-special-strings-that-are-padded-with-spaces ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
 #
 $saved_accumulator_pointer = $global_accumulator_pointer ;
@@ -29958,7 +29958,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4054 . "\n" ;
 # end of action define-special-strings-that-are-padded-with-spaces
 
-$global_action_debug_line = '***** define-special-strings **** 4056 *** copy-text ** 2 *' . $storage_item__4057 . ' ' . $storage_item__4058 ;
+# $global_action_debug_line = '***** define-special-strings **** 4056 *** copy-text ** 2 *' . $storage_item__4057 . ' ' . $storage_item__4058 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -29980,7 +29980,7 @@ $storage_item__4056 = 'copy-text ' . $storage_item__4057 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4056 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4059 *** append-text-no-space ** 2 *' . $storage_item__4060 . ' ' . $storage_item__4061 ;
+# $global_action_debug_line = '***** define-special-strings **** 4059 *** append-text-no-space ** 2 *' . $storage_item__4060 . ' ' . $storage_item__4061 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30009,7 +30009,7 @@ $storage_item__4059 = 'append-text-no-space ' . $storage_item__4060 . ' ' . $sto
 # print 'result: ' . $storage_item__4059 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4062 *** copy-text ** 2 *' . $storage_item__4063 . ' ' . $storage_item__4064 ;
+# $global_action_debug_line = '***** define-special-strings **** 4062 *** copy-text ** 2 *' . $storage_item__4063 . ' ' . $storage_item__4064 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30031,7 +30031,7 @@ $storage_item__4062 = 'copy-text ' . $storage_item__4063 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4062 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4065 *** append-text-no-space ** 2 *' . $storage_item__4066 . ' ' . $storage_item__4067 ;
+# $global_action_debug_line = '***** define-special-strings **** 4065 *** append-text-no-space ** 2 *' . $storage_item__4066 . ' ' . $storage_item__4067 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30060,7 +30060,7 @@ $storage_item__4065 = 'append-text-no-space ' . $storage_item__4066 . ' ' . $sto
 # print 'result: ' . $storage_item__4065 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4068 *** copy-text ** 2 *' . $storage_item__4069 . ' ' . $storage_item__4070 ;
+# $global_action_debug_line = '***** define-special-strings **** 4068 *** copy-text ** 2 *' . $storage_item__4069 . ' ' . $storage_item__4070 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30082,7 +30082,7 @@ $storage_item__4068 = 'copy-text ' . $storage_item__4069 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4068 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4071 *** append-text-no-space ** 2 *' . $storage_item__4072 . ' ' . $storage_item__4073 ;
+# $global_action_debug_line = '***** define-special-strings **** 4071 *** append-text-no-space ** 2 *' . $storage_item__4072 . ' ' . $storage_item__4073 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30111,7 +30111,7 @@ $storage_item__4071 = 'append-text-no-space ' . $storage_item__4072 . ' ' . $sto
 # print 'result: ' . $storage_item__4071 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4074 *** copy-text ** 2 *' . $storage_item__4075 . ' ' . $storage_item__4076 ;
+# $global_action_debug_line = '***** define-special-strings **** 4074 *** copy-text ** 2 *' . $storage_item__4075 . ' ' . $storage_item__4076 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30133,7 +30133,7 @@ $storage_item__4074 = 'copy-text ' . $storage_item__4075 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4074 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4077 *** append-text-no-space ** 2 *' . $storage_item__4078 . ' ' . $storage_item__4079 ;
+# $global_action_debug_line = '***** define-special-strings **** 4077 *** append-text-no-space ** 2 *' . $storage_item__4078 . ' ' . $storage_item__4079 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30162,7 +30162,7 @@ $storage_item__4077 = 'append-text-no-space ' . $storage_item__4078 . ' ' . $sto
 # print 'result: ' . $storage_item__4077 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4080 *** copy-text ** 2 *' . $storage_item__4081 . ' ' . $storage_item__4082 ;
+# $global_action_debug_line = '***** define-special-strings **** 4080 *** copy-text ** 2 *' . $storage_item__4081 . ' ' . $storage_item__4082 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30184,7 +30184,7 @@ $storage_item__4080 = 'copy-text ' . $storage_item__4081 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4080 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4083 *** append-text-no-space ** 2 *' . $storage_item__4084 . ' ' . $storage_item__4085 ;
+# $global_action_debug_line = '***** define-special-strings **** 4083 *** append-text-no-space ** 2 *' . $storage_item__4084 . ' ' . $storage_item__4085 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30213,7 +30213,7 @@ $storage_item__4083 = 'append-text-no-space ' . $storage_item__4084 . ' ' . $sto
 # print 'result: ' . $storage_item__4083 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4086 *** append-text-no-space ** 2 *' . $storage_item__4087 . ' ' . $storage_item__4088 ;
+# $global_action_debug_line = '***** define-special-strings **** 4086 *** append-text-no-space ** 2 *' . $storage_item__4087 . ' ' . $storage_item__4088 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30242,7 +30242,7 @@ $storage_item__4086 = 'append-text-no-space ' . $storage_item__4087 . ' ' . $sto
 # print 'result: ' . $storage_item__4086 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4089 *** append-text-no-space ** 2 *' . $storage_item__4090 . ' ' . $storage_item__4091 ;
+# $global_action_debug_line = '***** define-special-strings **** 4089 *** append-text-no-space ** 2 *' . $storage_item__4090 . ' ' . $storage_item__4091 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30271,7 +30271,7 @@ $storage_item__4089 = 'append-text-no-space ' . $storage_item__4090 . ' ' . $sto
 # print 'result: ' . $storage_item__4089 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4092 *** append-text-no-space ** 2 *' . $storage_item__4093 . ' ' . $storage_item__4094 ;
+# $global_action_debug_line = '***** define-special-strings **** 4092 *** append-text-no-space ** 2 *' . $storage_item__4093 . ' ' . $storage_item__4094 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30300,7 +30300,7 @@ $storage_item__4092 = 'append-text-no-space ' . $storage_item__4093 . ' ' . $sto
 # print 'result: ' . $storage_item__4092 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4095 *** copy-text ** 2 *' . $storage_item__4096 . ' ' . $storage_item__4097 ;
+# $global_action_debug_line = '***** define-special-strings **** 4095 *** copy-text ** 2 *' . $storage_item__4096 . ' ' . $storage_item__4097 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30322,7 +30322,7 @@ $storage_item__4095 = 'copy-text ' . $storage_item__4096 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4095 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4098 *** append-text-no-space ** 2 *' . $storage_item__4099 . ' ' . $storage_item__4100 ;
+# $global_action_debug_line = '***** define-special-strings **** 4098 *** append-text-no-space ** 2 *' . $storage_item__4099 . ' ' . $storage_item__4100 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30351,7 +30351,7 @@ $storage_item__4098 = 'append-text-no-space ' . $storage_item__4099 . ' ' . $sto
 # print 'result: ' . $storage_item__4098 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4101 *** append-text ** 2 *' . $storage_item__4102 . ' ' . $storage_item__4103 ;
+# $global_action_debug_line = '***** define-special-strings **** 4101 *** append-text ** 2 *' . $storage_item__4102 . ' ' . $storage_item__4103 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30380,7 +30380,7 @@ $storage_item__4101 = 'append-text ' . $storage_item__4102 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4101 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4104 *** append-text ** 2 *' . $storage_item__4105 . ' ' . $storage_item__4106 ;
+# $global_action_debug_line = '***** define-special-strings **** 4104 *** append-text ** 2 *' . $storage_item__4105 . ' ' . $storage_item__4106 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30409,7 +30409,7 @@ $storage_item__4104 = 'append-text ' . $storage_item__4105 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4104 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4107 *** append-text-no-space ** 2 *' . $storage_item__4108 . ' ' . $storage_item__4109 ;
+# $global_action_debug_line = '***** define-special-strings **** 4107 *** append-text-no-space ** 2 *' . $storage_item__4108 . ' ' . $storage_item__4109 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30438,7 +30438,7 @@ $storage_item__4107 = 'append-text-no-space ' . $storage_item__4108 . ' ' . $sto
 # print 'result: ' . $storage_item__4107 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4110 *** copy-text ** 2 *' . $storage_item__4111 . ' ' . $storage_item__4112 ;
+# $global_action_debug_line = '***** define-special-strings **** 4110 *** copy-text ** 2 *' . $storage_item__4111 . ' ' . $storage_item__4112 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30460,7 +30460,7 @@ $storage_item__4110 = 'copy-text ' . $storage_item__4111 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4110 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4113 *** append-text-no-space ** 2 *' . $storage_item__4114 . ' ' . $storage_item__4115 ;
+# $global_action_debug_line = '***** define-special-strings **** 4113 *** append-text-no-space ** 2 *' . $storage_item__4114 . ' ' . $storage_item__4115 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30489,7 +30489,7 @@ $storage_item__4113 = 'append-text-no-space ' . $storage_item__4114 . ' ' . $sto
 # print 'result: ' . $storage_item__4113 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4116 *** copy-text ** 2 *' . $storage_item__4117 . ' ' . $storage_item__4118 ;
+# $global_action_debug_line = '***** define-special-strings **** 4116 *** copy-text ** 2 *' . $storage_item__4117 . ' ' . $storage_item__4118 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30511,7 +30511,7 @@ $storage_item__4116 = 'copy-text ' . $storage_item__4117 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4116 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4119 *** append-text ** 2 *' . $storage_item__4120 . ' ' . $storage_item__4121 ;
+# $global_action_debug_line = '***** define-special-strings **** 4119 *** append-text ** 2 *' . $storage_item__4120 . ' ' . $storage_item__4121 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30540,7 +30540,7 @@ $storage_item__4119 = 'append-text ' . $storage_item__4120 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4119 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4122 *** copy-text ** 2 *' . $storage_item__4123 . ' ' . $storage_item__4124 ;
+# $global_action_debug_line = '***** define-special-strings **** 4122 *** copy-text ** 2 *' . $storage_item__4123 . ' ' . $storage_item__4124 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30562,7 +30562,7 @@ $storage_item__4122 = 'copy-text ' . $storage_item__4123 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4122 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4125 *** append-text-no-space ** 2 *' . $storage_item__4126 . ' ' . $storage_item__4127 ;
+# $global_action_debug_line = '***** define-special-strings **** 4125 *** append-text-no-space ** 2 *' . $storage_item__4126 . ' ' . $storage_item__4127 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30591,7 +30591,7 @@ $storage_item__4125 = 'append-text-no-space ' . $storage_item__4126 . ' ' . $sto
 # print 'result: ' . $storage_item__4125 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4128 *** copy-text ** 2 *' . $storage_item__4129 . ' ' . $storage_item__4130 ;
+# $global_action_debug_line = '***** define-special-strings **** 4128 *** copy-text ** 2 *' . $storage_item__4129 . ' ' . $storage_item__4130 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30613,7 +30613,7 @@ $storage_item__4128 = 'copy-text ' . $storage_item__4129 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4128 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4131 *** append-text ** 2 *' . $storage_item__4132 . ' ' . $storage_item__4133 ;
+# $global_action_debug_line = '***** define-special-strings **** 4131 *** append-text ** 2 *' . $storage_item__4132 . ' ' . $storage_item__4133 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30642,7 +30642,7 @@ $storage_item__4131 = 'append-text ' . $storage_item__4132 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4131 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4134 *** copy-text ** 2 *' . $storage_item__4135 . ' ' . $storage_item__4136 ;
+# $global_action_debug_line = '***** define-special-strings **** 4134 *** copy-text ** 2 *' . $storage_item__4135 . ' ' . $storage_item__4136 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30664,7 +30664,7 @@ $storage_item__4134 = 'copy-text ' . $storage_item__4135 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4134 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4137 *** prepend-text-no-space ** 2 *' . $storage_item__4138 . ' ' . $storage_item__4139 ;
+# $global_action_debug_line = '***** define-special-strings **** 4137 *** prepend-text-no-space ** 2 *' . $storage_item__4138 . ' ' . $storage_item__4139 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -30693,7 +30693,7 @@ $storage_item__4137 = 'prepend-text-no-space ' . $storage_item__4138 . ' ' . $st
 # print 'result: ' . $storage_item__4137 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4140 *** append-text ** 2 *' . $storage_item__4141 . ' ' . $storage_item__4142 ;
+# $global_action_debug_line = '***** define-special-strings **** 4140 *** append-text ** 2 *' . $storage_item__4141 . ' ' . $storage_item__4142 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30722,7 +30722,7 @@ $storage_item__4140 = 'append-text ' . $storage_item__4141 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4140 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4143 *** append-text ** 2 *' . $storage_item__4144 . ' ' . $storage_item__4145 ;
+# $global_action_debug_line = '***** define-special-strings **** 4143 *** append-text ** 2 *' . $storage_item__4144 . ' ' . $storage_item__4145 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30751,7 +30751,7 @@ $storage_item__4143 = 'append-text ' . $storage_item__4144 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4143 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4146 *** append-text-no-space ** 2 *' . $storage_item__4147 . ' ' . $storage_item__4148 ;
+# $global_action_debug_line = '***** define-special-strings **** 4146 *** append-text-no-space ** 2 *' . $storage_item__4147 . ' ' . $storage_item__4148 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30780,7 +30780,7 @@ $storage_item__4146 = 'append-text-no-space ' . $storage_item__4147 . ' ' . $sto
 # print 'result: ' . $storage_item__4146 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4149 *** copy-text ** 2 *' . $storage_item__4150 . ' ' . $storage_item__4151 ;
+# $global_action_debug_line = '***** define-special-strings **** 4149 *** copy-text ** 2 *' . $storage_item__4150 . ' ' . $storage_item__4151 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30802,7 +30802,7 @@ $storage_item__4149 = 'copy-text ' . $storage_item__4150 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4149 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4152 *** prepend-text-no-space ** 2 *' . $storage_item__4153 . ' ' . $storage_item__4154 ;
+# $global_action_debug_line = '***** define-special-strings **** 4152 *** prepend-text-no-space ** 2 *' . $storage_item__4153 . ' ' . $storage_item__4154 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -30831,7 +30831,7 @@ $storage_item__4152 = 'prepend-text-no-space ' . $storage_item__4153 . ' ' . $st
 # print 'result: ' . $storage_item__4152 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4155 *** append-text ** 2 *' . $storage_item__4156 . ' ' . $storage_item__4157 ;
+# $global_action_debug_line = '***** define-special-strings **** 4155 *** append-text ** 2 *' . $storage_item__4156 . ' ' . $storage_item__4157 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30860,7 +30860,7 @@ $storage_item__4155 = 'append-text ' . $storage_item__4156 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4155 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4158 *** append-text-no-space ** 2 *' . $storage_item__4159 . ' ' . $storage_item__4160 ;
+# $global_action_debug_line = '***** define-special-strings **** 4158 *** append-text-no-space ** 2 *' . $storage_item__4159 . ' ' . $storage_item__4160 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30889,7 +30889,7 @@ $storage_item__4158 = 'append-text-no-space ' . $storage_item__4159 . ' ' . $sto
 # print 'result: ' . $storage_item__4158 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4161 *** copy-text ** 2 *' . $storage_item__4162 . ' ' . $storage_item__4163 ;
+# $global_action_debug_line = '***** define-special-strings **** 4161 *** copy-text ** 2 *' . $storage_item__4162 . ' ' . $storage_item__4163 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -30911,7 +30911,7 @@ $storage_item__4161 = 'copy-text ' . $storage_item__4162 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4161 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4164 *** prepend-text-no-space ** 2 *' . $storage_item__4165 . ' ' . $storage_item__4166 ;
+# $global_action_debug_line = '***** define-special-strings **** 4164 *** prepend-text-no-space ** 2 *' . $storage_item__4165 . ' ' . $storage_item__4166 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -30940,7 +30940,7 @@ $storage_item__4164 = 'prepend-text-no-space ' . $storage_item__4165 . ' ' . $st
 # print 'result: ' . $storage_item__4164 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4167 *** append-text ** 2 *' . $storage_item__4168 . ' ' . $storage_item__4169 ;
+# $global_action_debug_line = '***** define-special-strings **** 4167 *** append-text ** 2 *' . $storage_item__4168 . ' ' . $storage_item__4169 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -30969,7 +30969,7 @@ $storage_item__4167 = 'append-text ' . $storage_item__4168 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4167 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4170 *** append-text-no-space ** 2 *' . $storage_item__4171 . ' ' . $storage_item__4172 ;
+# $global_action_debug_line = '***** define-special-strings **** 4170 *** append-text-no-space ** 2 *' . $storage_item__4171 . ' ' . $storage_item__4172 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -30998,7 +30998,7 @@ $storage_item__4170 = 'append-text-no-space ' . $storage_item__4171 . ' ' . $sto
 # print 'result: ' . $storage_item__4170 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4173 *** copy-text ** 2 *' . $storage_item__4174 . ' ' . $storage_item__4175 ;
+# $global_action_debug_line = '***** define-special-strings **** 4173 *** copy-text ** 2 *' . $storage_item__4174 . ' ' . $storage_item__4175 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31020,7 +31020,7 @@ $storage_item__4173 = 'copy-text ' . $storage_item__4174 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4173 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4176 *** append-text ** 2 *' . $storage_item__4177 . ' ' . $storage_item__4178 ;
+# $global_action_debug_line = '***** define-special-strings **** 4176 *** append-text ** 2 *' . $storage_item__4177 . ' ' . $storage_item__4178 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31049,7 +31049,7 @@ $storage_item__4176 = 'append-text ' . $storage_item__4177 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4176 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4179 *** append-text ** 2 *' . $storage_item__4180 . ' ' . $storage_item__4181 ;
+# $global_action_debug_line = '***** define-special-strings **** 4179 *** append-text ** 2 *' . $storage_item__4180 . ' ' . $storage_item__4181 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31078,7 +31078,7 @@ $storage_item__4179 = 'append-text ' . $storage_item__4180 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4179 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4182 *** append-text ** 2 *' . $storage_item__4183 . ' ' . $storage_item__4184 ;
+# $global_action_debug_line = '***** define-special-strings **** 4182 *** append-text ** 2 *' . $storage_item__4183 . ' ' . $storage_item__4184 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31107,7 +31107,7 @@ $storage_item__4182 = 'append-text ' . $storage_item__4183 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4182 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4185 *** prepend-text-no-space ** 2 *' . $storage_item__4186 . ' ' . $storage_item__4187 ;
+# $global_action_debug_line = '***** define-special-strings **** 4185 *** prepend-text-no-space ** 2 *' . $storage_item__4186 . ' ' . $storage_item__4187 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -31136,7 +31136,7 @@ $storage_item__4185 = 'prepend-text-no-space ' . $storage_item__4186 . ' ' . $st
 # print 'result: ' . $storage_item__4185 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4188 *** append-text-no-space ** 2 *' . $storage_item__4189 . ' ' . $storage_item__4190 ;
+# $global_action_debug_line = '***** define-special-strings **** 4188 *** append-text-no-space ** 2 *' . $storage_item__4189 . ' ' . $storage_item__4190 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31165,7 +31165,7 @@ $storage_item__4188 = 'append-text-no-space ' . $storage_item__4189 . ' ' . $sto
 # print 'result: ' . $storage_item__4188 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4191 *** copy-text ** 2 *' . $storage_item__4192 . ' ' . $storage_item__4193 ;
+# $global_action_debug_line = '***** define-special-strings **** 4191 *** copy-text ** 2 *' . $storage_item__4192 . ' ' . $storage_item__4193 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31187,7 +31187,7 @@ $storage_item__4191 = 'copy-text ' . $storage_item__4192 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4191 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4194 *** copy-text ** 2 *' . $storage_item__4195 . ' ' . $storage_item__4196 ;
+# $global_action_debug_line = '***** define-special-strings **** 4194 *** copy-text ** 2 *' . $storage_item__4195 . ' ' . $storage_item__4196 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31209,7 +31209,7 @@ $storage_item__4194 = 'copy-text ' . $storage_item__4195 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4194 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4197 *** append-text-no-space ** 2 *' . $storage_item__4198 . ' ' . $storage_item__4199 ;
+# $global_action_debug_line = '***** define-special-strings **** 4197 *** append-text-no-space ** 2 *' . $storage_item__4198 . ' ' . $storage_item__4199 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31238,7 +31238,7 @@ $storage_item__4197 = 'append-text-no-space ' . $storage_item__4198 . ' ' . $sto
 # print 'result: ' . $storage_item__4197 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4200 *** copy-text ** 2 *' . $storage_item__4201 . ' ' . $storage_item__4202 ;
+# $global_action_debug_line = '***** define-special-strings **** 4200 *** copy-text ** 2 *' . $storage_item__4201 . ' ' . $storage_item__4202 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31260,7 +31260,7 @@ $storage_item__4200 = 'copy-text ' . $storage_item__4201 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4200 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4203 *** prepend-text-no-space ** 2 *' . $storage_item__4204 . ' ' . $storage_item__4205 ;
+# $global_action_debug_line = '***** define-special-strings **** 4203 *** prepend-text-no-space ** 2 *' . $storage_item__4204 . ' ' . $storage_item__4205 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -31289,7 +31289,7 @@ $storage_item__4203 = 'prepend-text-no-space ' . $storage_item__4204 . ' ' . $st
 # print 'result: ' . $storage_item__4203 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4206 *** append-text ** 2 *' . $storage_item__4207 . ' ' . $storage_item__4208 ;
+# $global_action_debug_line = '***** define-special-strings **** 4206 *** append-text ** 2 *' . $storage_item__4207 . ' ' . $storage_item__4208 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31318,7 +31318,7 @@ $storage_item__4206 = 'append-text ' . $storage_item__4207 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4206 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4209 *** append-text-no-space ** 2 *' . $storage_item__4210 . ' ' . $storage_item__4211 ;
+# $global_action_debug_line = '***** define-special-strings **** 4209 *** append-text-no-space ** 2 *' . $storage_item__4210 . ' ' . $storage_item__4211 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31347,7 +31347,7 @@ $storage_item__4209 = 'append-text-no-space ' . $storage_item__4210 . ' ' . $sto
 # print 'result: ' . $storage_item__4209 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4212 *** copy-text ** 2 *' . $storage_item__4213 . ' ' . $storage_item__4214 ;
+# $global_action_debug_line = '***** define-special-strings **** 4212 *** copy-text ** 2 *' . $storage_item__4213 . ' ' . $storage_item__4214 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31369,7 +31369,7 @@ $storage_item__4212 = 'copy-text ' . $storage_item__4213 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4212 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4215 *** prepend-text-no-space ** 2 *' . $storage_item__4216 . ' ' . $storage_item__4217 ;
+# $global_action_debug_line = '***** define-special-strings **** 4215 *** prepend-text-no-space ** 2 *' . $storage_item__4216 . ' ' . $storage_item__4217 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -31398,7 +31398,7 @@ $storage_item__4215 = 'prepend-text-no-space ' . $storage_item__4216 . ' ' . $st
 # print 'result: ' . $storage_item__4215 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4218 *** append-text ** 2 *' . $storage_item__4219 . ' ' . $storage_item__4220 ;
+# $global_action_debug_line = '***** define-special-strings **** 4218 *** append-text ** 2 *' . $storage_item__4219 . ' ' . $storage_item__4220 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31427,7 +31427,7 @@ $storage_item__4218 = 'append-text ' . $storage_item__4219 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4218 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4221 *** append-text-no-space ** 2 *' . $storage_item__4222 . ' ' . $storage_item__4223 ;
+# $global_action_debug_line = '***** define-special-strings **** 4221 *** append-text-no-space ** 2 *' . $storage_item__4222 . ' ' . $storage_item__4223 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31456,7 +31456,7 @@ $storage_item__4221 = 'append-text-no-space ' . $storage_item__4222 . ' ' . $sto
 # print 'result: ' . $storage_item__4221 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4224 *** copy-text ** 2 *' . $storage_item__4225 . ' ' . $storage_item__4226 ;
+# $global_action_debug_line = '***** define-special-strings **** 4224 *** copy-text ** 2 *' . $storage_item__4225 . ' ' . $storage_item__4226 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31478,7 +31478,7 @@ $storage_item__4224 = 'copy-text ' . $storage_item__4225 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4224 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4227 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4228 . ' ' . $storage_item__4229 . ' ' . $storage_item__4230 ;
+# $global_action_debug_line = '***** define-special-strings **** 4227 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4228 . ' ' . $storage_item__4229 . ' ' . $storage_item__4230 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'generate-counts-from-integer-to-integer' ;
@@ -31511,7 +31511,7 @@ $storage_item__4227 = 'generate-counts-from-integer-to-integer ' . $storage_item
 # print 'result: ' . $storage_item__4227 . "\n" ;
 # end of action generate-counts-from-integer-to-integer
 
-$global_action_debug_line = '***** define-special-strings **** 4231 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4232 . ' ' . $storage_item__4233 ;
+# $global_action_debug_line = '***** define-special-strings **** 4231 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4232 . ' ' . $storage_item__4233 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -31584,7 +31584,7 @@ $storage_item__4231 = 'use-handler-with-each-word-in-phrase ' . $storage_item__4
 # print 'result: ' . $storage_item__4231 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** define-special-strings **** 4235 *** clear-phrase ** 1 *' . $storage_item__4236 ;
+# $global_action_debug_line = '***** define-special-strings **** 4235 *** clear-phrase ** 1 *' . $storage_item__4236 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31601,7 +31601,7 @@ $storage_item__4235 = 'clear-phrase ' . $storage_item__4236 ;
 # print 'result: ' . $storage_item__4235 . "\n" ;
 # end of action clear-phrase
 
-$global_action_debug_line = '***** define-special-strings **** 4237 *** put-into-phrase ** 2 *' . $storage_item__4238 . ' ' . $storage_item__4239 ;
+# $global_action_debug_line = '***** define-special-strings **** 4237 *** put-into-phrase ** 2 *' . $storage_item__4238 . ' ' . $storage_item__4239 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31619,7 +31619,7 @@ $storage_item__4237 = 'put-into-phrase ' . $storage_item__4238 . ' ' . $storage_
 # print 'result: ' . $storage_item__4237 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** define-special-strings **** 4240 *** put-into-phrase ** 2 *' . $storage_item__4241 . ' ' . $storage_item__4242 ;
+# $global_action_debug_line = '***** define-special-strings **** 4240 *** put-into-phrase ** 2 *' . $storage_item__4241 . ' ' . $storage_item__4242 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31637,7 +31637,7 @@ $storage_item__4240 = 'put-into-phrase ' . $storage_item__4241 . ' ' . $storage_
 # print 'result: ' . $storage_item__4240 . "\n" ;
 # end of action put-into-phrase
 
-$global_action_debug_line = '***** define-special-strings **** 4243 *** append-text-no-space ** 2 *' . $storage_item__4244 . ' ' . $storage_item__4245 ;
+# $global_action_debug_line = '***** define-special-strings **** 4243 *** append-text-no-space ** 2 *' . $storage_item__4244 . ' ' . $storage_item__4245 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31666,7 +31666,7 @@ $storage_item__4243 = 'append-text-no-space ' . $storage_item__4244 . ' ' . $sto
 # print 'result: ' . $storage_item__4243 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4246 *** prepend-text-no-space ** 2 *' . $storage_item__4247 . ' ' . $storage_item__4248 ;
+# $global_action_debug_line = '***** define-special-strings **** 4246 *** prepend-text-no-space ** 2 *' . $storage_item__4247 . ' ' . $storage_item__4248 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -31695,7 +31695,7 @@ $storage_item__4246 = 'prepend-text-no-space ' . $storage_item__4247 . ' ' . $st
 # print 'result: ' . $storage_item__4246 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4249 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4250 . ' ' . $storage_item__4251 . ' ' . $storage_item__4252 ;
+# $global_action_debug_line = '***** define-special-strings **** 4249 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4250 . ' ' . $storage_item__4251 . ' ' . $storage_item__4252 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'generate-counts-from-integer-to-integer' ;
@@ -31728,7 +31728,7 @@ $storage_item__4249 = 'generate-counts-from-integer-to-integer ' . $storage_item
 # print 'result: ' . $storage_item__4249 . "\n" ;
 # end of action generate-counts-from-integer-to-integer
 
-$global_action_debug_line = '***** define-special-strings **** 4253 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4254 . ' ' . $storage_item__4255 ;
+# $global_action_debug_line = '***** define-special-strings **** 4253 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4254 . ' ' . $storage_item__4255 ;
 # print $global_action_debug_line . "\n" ;
 #
 my $local_pointer_to_next_space ;
@@ -31801,7 +31801,7 @@ $storage_item__4253 = 'use-handler-with-each-word-in-phrase ' . $storage_item__4
 # print 'result: ' . $storage_item__4253 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
-$global_action_debug_line = '***** define-special-strings **** 4257 *** copy-text ** 2 *' . $storage_item__4258 . ' ' . $storage_item__4259 ;
+# $global_action_debug_line = '***** define-special-strings **** 4257 *** copy-text ** 2 *' . $storage_item__4258 . ' ' . $storage_item__4259 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -31823,7 +31823,7 @@ $storage_item__4257 = 'copy-text ' . $storage_item__4258 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4257 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4260 *** prepend-text-no-space ** 2 *' . $storage_item__4261 . ' ' . $storage_item__4262 ;
+# $global_action_debug_line = '***** define-special-strings **** 4260 *** prepend-text-no-space ** 2 *' . $storage_item__4261 . ' ' . $storage_item__4262 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -31852,7 +31852,7 @@ $storage_item__4260 = 'prepend-text-no-space ' . $storage_item__4261 . ' ' . $st
 # print 'result: ' . $storage_item__4260 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4263 *** append-text ** 2 *' . $storage_item__4264 . ' ' . $storage_item__4265 ;
+# $global_action_debug_line = '***** define-special-strings **** 4263 *** append-text ** 2 *' . $storage_item__4264 . ' ' . $storage_item__4265 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31881,7 +31881,7 @@ $storage_item__4263 = 'append-text ' . $storage_item__4264 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4263 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4266 *** append-text-no-space ** 2 *' . $storage_item__4267 . ' ' . $storage_item__4268 ;
+# $global_action_debug_line = '***** define-special-strings **** 4266 *** append-text-no-space ** 2 *' . $storage_item__4267 . ' ' . $storage_item__4268 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31910,7 +31910,7 @@ $storage_item__4266 = 'append-text-no-space ' . $storage_item__4267 . ' ' . $sto
 # print 'result: ' . $storage_item__4266 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4269 *** append-text-no-space ** 2 *' . $storage_item__4270 . ' ' . $storage_item__4271 ;
+# $global_action_debug_line = '***** define-special-strings **** 4269 *** append-text-no-space ** 2 *' . $storage_item__4270 . ' ' . $storage_item__4271 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31939,7 +31939,7 @@ $storage_item__4269 = 'append-text-no-space ' . $storage_item__4270 . ' ' . $sto
 # print 'result: ' . $storage_item__4269 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4272 *** append-text ** 2 *' . $storage_item__4273 . ' ' . $storage_item__4274 ;
+# $global_action_debug_line = '***** define-special-strings **** 4272 *** append-text ** 2 *' . $storage_item__4273 . ' ' . $storage_item__4274 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -31968,7 +31968,7 @@ $storage_item__4272 = 'append-text ' . $storage_item__4273 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4272 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4275 *** append-text-no-space ** 2 *' . $storage_item__4276 . ' ' . $storage_item__4277 ;
+# $global_action_debug_line = '***** define-special-strings **** 4275 *** append-text-no-space ** 2 *' . $storage_item__4276 . ' ' . $storage_item__4277 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -31997,7 +31997,7 @@ $storage_item__4275 = 'append-text-no-space ' . $storage_item__4276 . ' ' . $sto
 # print 'result: ' . $storage_item__4275 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4278 *** copy-text ** 2 *' . $storage_item__4279 . ' ' . $storage_item__4280 ;
+# $global_action_debug_line = '***** define-special-strings **** 4278 *** copy-text ** 2 *' . $storage_item__4279 . ' ' . $storage_item__4280 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32019,7 +32019,7 @@ $storage_item__4278 = 'copy-text ' . $storage_item__4279 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4278 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4281 *** prepend-text-no-space ** 2 *' . $storage_item__4282 . ' ' . $storage_item__4283 ;
+# $global_action_debug_line = '***** define-special-strings **** 4281 *** prepend-text-no-space ** 2 *' . $storage_item__4282 . ' ' . $storage_item__4283 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -32048,7 +32048,7 @@ $storage_item__4281 = 'prepend-text-no-space ' . $storage_item__4282 . ' ' . $st
 # print 'result: ' . $storage_item__4281 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4284 *** append-text-no-space ** 2 *' . $storage_item__4285 . ' ' . $storage_item__4286 ;
+# $global_action_debug_line = '***** define-special-strings **** 4284 *** append-text-no-space ** 2 *' . $storage_item__4285 . ' ' . $storage_item__4286 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32077,7 +32077,7 @@ $storage_item__4284 = 'append-text-no-space ' . $storage_item__4285 . ' ' . $sto
 # print 'result: ' . $storage_item__4284 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4287 *** copy-text ** 2 *' . $storage_item__4288 . ' ' . $storage_item__4289 ;
+# $global_action_debug_line = '***** define-special-strings **** 4287 *** copy-text ** 2 *' . $storage_item__4288 . ' ' . $storage_item__4289 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32099,7 +32099,7 @@ $storage_item__4287 = 'copy-text ' . $storage_item__4288 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4287 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4290 *** append-text-no-space ** 2 *' . $storage_item__4291 . ' ' . $storage_item__4292 ;
+# $global_action_debug_line = '***** define-special-strings **** 4290 *** append-text-no-space ** 2 *' . $storage_item__4291 . ' ' . $storage_item__4292 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32128,7 +32128,7 @@ $storage_item__4290 = 'append-text-no-space ' . $storage_item__4291 . ' ' . $sto
 # print 'result: ' . $storage_item__4290 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4293 *** copy-text ** 2 *' . $storage_item__4294 . ' ' . $storage_item__4295 ;
+# $global_action_debug_line = '***** define-special-strings **** 4293 *** copy-text ** 2 *' . $storage_item__4294 . ' ' . $storage_item__4295 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32150,7 +32150,7 @@ $storage_item__4293 = 'copy-text ' . $storage_item__4294 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4293 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4296 *** append-text ** 2 *' . $storage_item__4297 . ' ' . $storage_item__4298 ;
+# $global_action_debug_line = '***** define-special-strings **** 4296 *** append-text ** 2 *' . $storage_item__4297 . ' ' . $storage_item__4298 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -32179,7 +32179,7 @@ $storage_item__4296 = 'append-text ' . $storage_item__4297 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4296 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4299 *** append-text ** 2 *' . $storage_item__4300 . ' ' . $storage_item__4301 ;
+# $global_action_debug_line = '***** define-special-strings **** 4299 *** append-text ** 2 *' . $storage_item__4300 . ' ' . $storage_item__4301 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -32208,7 +32208,7 @@ $storage_item__4299 = 'append-text ' . $storage_item__4300 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4299 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4302 *** copy-text ** 2 *' . $storage_item__4303 . ' ' . $storage_item__4304 ;
+# $global_action_debug_line = '***** define-special-strings **** 4302 *** copy-text ** 2 *' . $storage_item__4303 . ' ' . $storage_item__4304 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32230,7 +32230,7 @@ $storage_item__4302 = 'copy-text ' . $storage_item__4303 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4302 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4305 *** append-text ** 2 *' . $storage_item__4306 . ' ' . $storage_item__4307 ;
+# $global_action_debug_line = '***** define-special-strings **** 4305 *** append-text ** 2 *' . $storage_item__4306 . ' ' . $storage_item__4307 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -32259,7 +32259,7 @@ $storage_item__4305 = 'append-text ' . $storage_item__4306 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4305 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4308 *** copy-text ** 2 *' . $storage_item__4309 . ' ' . $storage_item__4310 ;
+# $global_action_debug_line = '***** define-special-strings **** 4308 *** copy-text ** 2 *' . $storage_item__4309 . ' ' . $storage_item__4310 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32281,7 +32281,7 @@ $storage_item__4308 = 'copy-text ' . $storage_item__4309 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4308 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4311 *** append-text ** 2 *' . $storage_item__4312 . ' ' . $storage_item__4313 ;
+# $global_action_debug_line = '***** define-special-strings **** 4311 *** append-text ** 2 *' . $storage_item__4312 . ' ' . $storage_item__4313 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -32310,7 +32310,7 @@ $storage_item__4311 = 'append-text ' . $storage_item__4312 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4311 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4314 *** append-text ** 2 *' . $storage_item__4315 . ' ' . $storage_item__4316 ;
+# $global_action_debug_line = '***** define-special-strings **** 4314 *** append-text ** 2 *' . $storage_item__4315 . ' ' . $storage_item__4316 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text' ;
@@ -32339,7 +32339,7 @@ $storage_item__4314 = 'append-text ' . $storage_item__4315 . ' ' . $storage_item
 # print 'result: ' . $storage_item__4314 . "\n" ;
 # end of action append-text
 
-$global_action_debug_line = '***** define-special-strings **** 4317 *** copy-text ** 2 *' . $storage_item__4318 . ' ' . $storage_item__4319 ;
+# $global_action_debug_line = '***** define-special-strings **** 4317 *** copy-text ** 2 *' . $storage_item__4318 . ' ' . $storage_item__4319 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32361,7 +32361,7 @@ $storage_item__4317 = 'copy-text ' . $storage_item__4318 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4317 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4320 *** append-text-no-space ** 2 *' . $storage_item__4321 . ' ' . $storage_item__4322 ;
+# $global_action_debug_line = '***** define-special-strings **** 4320 *** append-text-no-space ** 2 *' . $storage_item__4321 . ' ' . $storage_item__4322 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32390,7 +32390,7 @@ $storage_item__4320 = 'append-text-no-space ' . $storage_item__4321 . ' ' . $sto
 # print 'result: ' . $storage_item__4320 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4323 *** append-text-no-space ** 2 *' . $storage_item__4324 . ' ' . $storage_item__4325 ;
+# $global_action_debug_line = '***** define-special-strings **** 4323 *** append-text-no-space ** 2 *' . $storage_item__4324 . ' ' . $storage_item__4325 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32419,7 +32419,7 @@ $storage_item__4323 = 'append-text-no-space ' . $storage_item__4324 . ' ' . $sto
 # print 'result: ' . $storage_item__4323 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4326 *** copy-text ** 2 *' . $storage_item__4327 . ' ' . $storage_item__4328 ;
+# $global_action_debug_line = '***** define-special-strings **** 4326 *** copy-text ** 2 *' . $storage_item__4327 . ' ' . $storage_item__4328 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32441,7 +32441,7 @@ $storage_item__4326 = 'copy-text ' . $storage_item__4327 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4326 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4329 *** append-text-no-space ** 2 *' . $storage_item__4330 . ' ' . $storage_item__4331 ;
+# $global_action_debug_line = '***** define-special-strings **** 4329 *** append-text-no-space ** 2 *' . $storage_item__4330 . ' ' . $storage_item__4331 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32470,7 +32470,7 @@ $storage_item__4329 = 'append-text-no-space ' . $storage_item__4330 . ' ' . $sto
 # print 'result: ' . $storage_item__4329 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4332 *** append-text-no-space ** 2 *' . $storage_item__4333 . ' ' . $storage_item__4334 ;
+# $global_action_debug_line = '***** define-special-strings **** 4332 *** append-text-no-space ** 2 *' . $storage_item__4333 . ' ' . $storage_item__4334 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32499,7 +32499,7 @@ $storage_item__4332 = 'append-text-no-space ' . $storage_item__4333 . ' ' . $sto
 # print 'result: ' . $storage_item__4332 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4335 *** copy-text ** 2 *' . $storage_item__4336 . ' ' . $storage_item__4337 ;
+# $global_action_debug_line = '***** define-special-strings **** 4335 *** copy-text ** 2 *' . $storage_item__4336 . ' ' . $storage_item__4337 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32521,7 +32521,7 @@ $storage_item__4335 = 'copy-text ' . $storage_item__4336 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4335 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4338 *** append-text-no-space ** 2 *' . $storage_item__4339 . ' ' . $storage_item__4340 ;
+# $global_action_debug_line = '***** define-special-strings **** 4338 *** append-text-no-space ** 2 *' . $storage_item__4339 . ' ' . $storage_item__4340 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32550,7 +32550,7 @@ $storage_item__4338 = 'append-text-no-space ' . $storage_item__4339 . ' ' . $sto
 # print 'result: ' . $storage_item__4338 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4341 *** append-text-no-space ** 2 *' . $storage_item__4342 . ' ' . $storage_item__4343 ;
+# $global_action_debug_line = '***** define-special-strings **** 4341 *** append-text-no-space ** 2 *' . $storage_item__4342 . ' ' . $storage_item__4343 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32579,7 +32579,7 @@ $storage_item__4341 = 'append-text-no-space ' . $storage_item__4342 . ' ' . $sto
 # print 'result: ' . $storage_item__4341 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4344 *** append-text-no-space ** 2 *' . $storage_item__4345 . ' ' . $storage_item__4346 ;
+# $global_action_debug_line = '***** define-special-strings **** 4344 *** append-text-no-space ** 2 *' . $storage_item__4345 . ' ' . $storage_item__4346 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32608,7 +32608,7 @@ $storage_item__4344 = 'append-text-no-space ' . $storage_item__4345 . ' ' . $sto
 # print 'result: ' . $storage_item__4344 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4347 *** copy-text ** 2 *' . $storage_item__4348 . ' ' . $storage_item__4349 ;
+# $global_action_debug_line = '***** define-special-strings **** 4347 *** copy-text ** 2 *' . $storage_item__4348 . ' ' . $storage_item__4349 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32630,7 +32630,7 @@ $storage_item__4347 = 'copy-text ' . $storage_item__4348 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4347 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4350 *** append-text-no-space ** 2 *' . $storage_item__4351 . ' ' . $storage_item__4352 ;
+# $global_action_debug_line = '***** define-special-strings **** 4350 *** append-text-no-space ** 2 *' . $storage_item__4351 . ' ' . $storage_item__4352 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32659,7 +32659,7 @@ $storage_item__4350 = 'append-text-no-space ' . $storage_item__4351 . ' ' . $sto
 # print 'result: ' . $storage_item__4350 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4353 *** append-text-no-space ** 2 *' . $storage_item__4354 . ' ' . $storage_item__4355 ;
+# $global_action_debug_line = '***** define-special-strings **** 4353 *** append-text-no-space ** 2 *' . $storage_item__4354 . ' ' . $storage_item__4355 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32688,7 +32688,7 @@ $storage_item__4353 = 'append-text-no-space ' . $storage_item__4354 . ' ' . $sto
 # print 'result: ' . $storage_item__4353 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4356 *** append-text-no-space ** 2 *' . $storage_item__4357 . ' ' . $storage_item__4358 ;
+# $global_action_debug_line = '***** define-special-strings **** 4356 *** append-text-no-space ** 2 *' . $storage_item__4357 . ' ' . $storage_item__4358 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32717,7 +32717,7 @@ $storage_item__4356 = 'append-text-no-space ' . $storage_item__4357 . ' ' . $sto
 # print 'result: ' . $storage_item__4356 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4359 *** append-text-no-space ** 2 *' . $storage_item__4360 . ' ' . $storage_item__4361 ;
+# $global_action_debug_line = '***** define-special-strings **** 4359 *** append-text-no-space ** 2 *' . $storage_item__4360 . ' ' . $storage_item__4361 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32746,7 +32746,7 @@ $storage_item__4359 = 'append-text-no-space ' . $storage_item__4360 . ' ' . $sto
 # print 'result: ' . $storage_item__4359 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4362 *** append-text-no-space ** 2 *' . $storage_item__4363 . ' ' . $storage_item__4364 ;
+# $global_action_debug_line = '***** define-special-strings **** 4362 *** append-text-no-space ** 2 *' . $storage_item__4363 . ' ' . $storage_item__4364 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32775,7 +32775,7 @@ $storage_item__4362 = 'append-text-no-space ' . $storage_item__4363 . ' ' . $sto
 # print 'result: ' . $storage_item__4362 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4365 *** append-text-no-space ** 2 *' . $storage_item__4366 . ' ' . $storage_item__4367 ;
+# $global_action_debug_line = '***** define-special-strings **** 4365 *** append-text-no-space ** 2 *' . $storage_item__4366 . ' ' . $storage_item__4367 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32804,7 +32804,7 @@ $storage_item__4365 = 'append-text-no-space ' . $storage_item__4366 . ' ' . $sto
 # print 'result: ' . $storage_item__4365 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4368 *** copy-text ** 2 *' . $storage_item__4369 . ' ' . $storage_item__4370 ;
+# $global_action_debug_line = '***** define-special-strings **** 4368 *** copy-text ** 2 *' . $storage_item__4369 . ' ' . $storage_item__4370 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32826,7 +32826,7 @@ $storage_item__4368 = 'copy-text ' . $storage_item__4369 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4368 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4371 *** append-text-no-space ** 2 *' . $storage_item__4372 . ' ' . $storage_item__4373 ;
+# $global_action_debug_line = '***** define-special-strings **** 4371 *** append-text-no-space ** 2 *' . $storage_item__4372 . ' ' . $storage_item__4373 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32855,7 +32855,7 @@ $storage_item__4371 = 'append-text-no-space ' . $storage_item__4372 . ' ' . $sto
 # print 'result: ' . $storage_item__4371 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4374 *** append-text-no-space ** 2 *' . $storage_item__4375 . ' ' . $storage_item__4376 ;
+# $global_action_debug_line = '***** define-special-strings **** 4374 *** append-text-no-space ** 2 *' . $storage_item__4375 . ' ' . $storage_item__4376 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32884,7 +32884,7 @@ $storage_item__4374 = 'append-text-no-space ' . $storage_item__4375 . ' ' . $sto
 # print 'result: ' . $storage_item__4374 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4377 *** copy-text ** 2 *' . $storage_item__4378 . ' ' . $storage_item__4379 ;
+# $global_action_debug_line = '***** define-special-strings **** 4377 *** copy-text ** 2 *' . $storage_item__4378 . ' ' . $storage_item__4379 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32906,7 +32906,7 @@ $storage_item__4377 = 'copy-text ' . $storage_item__4378 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4377 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4380 *** append-text-no-space ** 2 *' . $storage_item__4381 . ' ' . $storage_item__4382 ;
+# $global_action_debug_line = '***** define-special-strings **** 4380 *** append-text-no-space ** 2 *' . $storage_item__4381 . ' ' . $storage_item__4382 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32935,7 +32935,7 @@ $storage_item__4380 = 'append-text-no-space ' . $storage_item__4381 . ' ' . $sto
 # print 'result: ' . $storage_item__4380 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4383 *** append-text-no-space ** 2 *' . $storage_item__4384 . ' ' . $storage_item__4385 ;
+# $global_action_debug_line = '***** define-special-strings **** 4383 *** append-text-no-space ** 2 *' . $storage_item__4384 . ' ' . $storage_item__4385 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -32964,7 +32964,7 @@ $storage_item__4383 = 'append-text-no-space ' . $storage_item__4384 . ' ' . $sto
 # print 'result: ' . $storage_item__4383 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4386 *** copy-text ** 2 *' . $storage_item__4387 . ' ' . $storage_item__4388 ;
+# $global_action_debug_line = '***** define-special-strings **** 4386 *** copy-text ** 2 *' . $storage_item__4387 . ' ' . $storage_item__4388 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -32986,7 +32986,7 @@ $storage_item__4386 = 'copy-text ' . $storage_item__4387 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4386 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4389 *** append-text-no-space ** 2 *' . $storage_item__4390 . ' ' . $storage_item__4391 ;
+# $global_action_debug_line = '***** define-special-strings **** 4389 *** append-text-no-space ** 2 *' . $storage_item__4390 . ' ' . $storage_item__4391 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33015,7 +33015,7 @@ $storage_item__4389 = 'append-text-no-space ' . $storage_item__4390 . ' ' . $sto
 # print 'result: ' . $storage_item__4389 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4392 *** append-text-no-space ** 2 *' . $storage_item__4393 . ' ' . $storage_item__4394 ;
+# $global_action_debug_line = '***** define-special-strings **** 4392 *** append-text-no-space ** 2 *' . $storage_item__4393 . ' ' . $storage_item__4394 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33044,7 +33044,7 @@ $storage_item__4392 = 'append-text-no-space ' . $storage_item__4393 . ' ' . $sto
 # print 'result: ' . $storage_item__4392 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4395 *** copy-text ** 2 *' . $storage_item__4396 . ' ' . $storage_item__4397 ;
+# $global_action_debug_line = '***** define-special-strings **** 4395 *** copy-text ** 2 *' . $storage_item__4396 . ' ' . $storage_item__4397 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33066,7 +33066,7 @@ $storage_item__4395 = 'copy-text ' . $storage_item__4396 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4395 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4398 *** append-text-no-space ** 2 *' . $storage_item__4399 . ' ' . $storage_item__4400 ;
+# $global_action_debug_line = '***** define-special-strings **** 4398 *** append-text-no-space ** 2 *' . $storage_item__4399 . ' ' . $storage_item__4400 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33095,7 +33095,7 @@ $storage_item__4398 = 'append-text-no-space ' . $storage_item__4399 . ' ' . $sto
 # print 'result: ' . $storage_item__4398 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4401 *** append-text-no-space ** 2 *' . $storage_item__4402 . ' ' . $storage_item__4403 ;
+# $global_action_debug_line = '***** define-special-strings **** 4401 *** append-text-no-space ** 2 *' . $storage_item__4402 . ' ' . $storage_item__4403 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33124,7 +33124,7 @@ $storage_item__4401 = 'append-text-no-space ' . $storage_item__4402 . ' ' . $sto
 # print 'result: ' . $storage_item__4401 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4404 *** copy-text ** 2 *' . $storage_item__4405 . ' ' . $storage_item__4406 ;
+# $global_action_debug_line = '***** define-special-strings **** 4404 *** copy-text ** 2 *' . $storage_item__4405 . ' ' . $storage_item__4406 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33146,7 +33146,7 @@ $storage_item__4404 = 'copy-text ' . $storage_item__4405 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4404 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4407 *** append-text-no-space ** 2 *' . $storage_item__4408 . ' ' . $storage_item__4409 ;
+# $global_action_debug_line = '***** define-special-strings **** 4407 *** append-text-no-space ** 2 *' . $storage_item__4408 . ' ' . $storage_item__4409 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33175,7 +33175,7 @@ $storage_item__4407 = 'append-text-no-space ' . $storage_item__4408 . ' ' . $sto
 # print 'result: ' . $storage_item__4407 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4410 *** append-text-no-space ** 2 *' . $storage_item__4411 . ' ' . $storage_item__4412 ;
+# $global_action_debug_line = '***** define-special-strings **** 4410 *** append-text-no-space ** 2 *' . $storage_item__4411 . ' ' . $storage_item__4412 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33204,7 +33204,7 @@ $storage_item__4410 = 'append-text-no-space ' . $storage_item__4411 . ' ' . $sto
 # print 'result: ' . $storage_item__4410 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4413 *** append-text-no-space ** 2 *' . $storage_item__4414 . ' ' . $storage_item__4415 ;
+# $global_action_debug_line = '***** define-special-strings **** 4413 *** append-text-no-space ** 2 *' . $storage_item__4414 . ' ' . $storage_item__4415 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33233,7 +33233,7 @@ $storage_item__4413 = 'append-text-no-space ' . $storage_item__4414 . ' ' . $sto
 # print 'result: ' . $storage_item__4413 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4416 *** append-text-no-space ** 2 *' . $storage_item__4417 . ' ' . $storage_item__4418 ;
+# $global_action_debug_line = '***** define-special-strings **** 4416 *** append-text-no-space ** 2 *' . $storage_item__4417 . ' ' . $storage_item__4418 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33262,7 +33262,7 @@ $storage_item__4416 = 'append-text-no-space ' . $storage_item__4417 . ' ' . $sto
 # print 'result: ' . $storage_item__4416 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4419 *** append-text-no-space ** 2 *' . $storage_item__4420 . ' ' . $storage_item__4421 ;
+# $global_action_debug_line = '***** define-special-strings **** 4419 *** append-text-no-space ** 2 *' . $storage_item__4420 . ' ' . $storage_item__4421 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33291,7 +33291,7 @@ $storage_item__4419 = 'append-text-no-space ' . $storage_item__4420 . ' ' . $sto
 # print 'result: ' . $storage_item__4419 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4422 *** append-text-no-space ** 2 *' . $storage_item__4423 . ' ' . $storage_item__4424 ;
+# $global_action_debug_line = '***** define-special-strings **** 4422 *** append-text-no-space ** 2 *' . $storage_item__4423 . ' ' . $storage_item__4424 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33320,7 +33320,7 @@ $storage_item__4422 = 'append-text-no-space ' . $storage_item__4423 . ' ' . $sto
 # print 'result: ' . $storage_item__4422 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4425 *** copy-text ** 2 *' . $storage_item__4426 . ' ' . $storage_item__4427 ;
+# $global_action_debug_line = '***** define-special-strings **** 4425 *** copy-text ** 2 *' . $storage_item__4426 . ' ' . $storage_item__4427 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33342,7 +33342,7 @@ $storage_item__4425 = 'copy-text ' . $storage_item__4426 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4425 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4428 *** append-text-no-space ** 2 *' . $storage_item__4429 . ' ' . $storage_item__4430 ;
+# $global_action_debug_line = '***** define-special-strings **** 4428 *** append-text-no-space ** 2 *' . $storage_item__4429 . ' ' . $storage_item__4430 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33371,7 +33371,7 @@ $storage_item__4428 = 'append-text-no-space ' . $storage_item__4429 . ' ' . $sto
 # print 'result: ' . $storage_item__4428 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4431 *** append-text-no-space ** 2 *' . $storage_item__4432 . ' ' . $storage_item__4433 ;
+# $global_action_debug_line = '***** define-special-strings **** 4431 *** append-text-no-space ** 2 *' . $storage_item__4432 . ' ' . $storage_item__4433 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33400,7 +33400,7 @@ $storage_item__4431 = 'append-text-no-space ' . $storage_item__4432 . ' ' . $sto
 # print 'result: ' . $storage_item__4431 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4434 *** append-text-no-space ** 2 *' . $storage_item__4435 . ' ' . $storage_item__4436 ;
+# $global_action_debug_line = '***** define-special-strings **** 4434 *** append-text-no-space ** 2 *' . $storage_item__4435 . ' ' . $storage_item__4436 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33429,7 +33429,7 @@ $storage_item__4434 = 'append-text-no-space ' . $storage_item__4435 . ' ' . $sto
 # print 'result: ' . $storage_item__4434 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4437 *** append-text-no-space ** 2 *' . $storage_item__4438 . ' ' . $storage_item__4439 ;
+# $global_action_debug_line = '***** define-special-strings **** 4437 *** append-text-no-space ** 2 *' . $storage_item__4438 . ' ' . $storage_item__4439 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33458,7 +33458,7 @@ $storage_item__4437 = 'append-text-no-space ' . $storage_item__4438 . ' ' . $sto
 # print 'result: ' . $storage_item__4437 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4440 *** append-text-no-space ** 2 *' . $storage_item__4441 . ' ' . $storage_item__4442 ;
+# $global_action_debug_line = '***** define-special-strings **** 4440 *** append-text-no-space ** 2 *' . $storage_item__4441 . ' ' . $storage_item__4442 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33487,7 +33487,7 @@ $storage_item__4440 = 'append-text-no-space ' . $storage_item__4441 . ' ' . $sto
 # print 'result: ' . $storage_item__4440 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4443 *** append-text-no-space ** 2 *' . $storage_item__4444 . ' ' . $storage_item__4445 ;
+# $global_action_debug_line = '***** define-special-strings **** 4443 *** append-text-no-space ** 2 *' . $storage_item__4444 . ' ' . $storage_item__4445 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33516,7 +33516,7 @@ $storage_item__4443 = 'append-text-no-space ' . $storage_item__4444 . ' ' . $sto
 # print 'result: ' . $storage_item__4443 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4446 *** append-text-no-space ** 2 *' . $storage_item__4447 . ' ' . $storage_item__4448 ;
+# $global_action_debug_line = '***** define-special-strings **** 4446 *** append-text-no-space ** 2 *' . $storage_item__4447 . ' ' . $storage_item__4448 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33545,7 +33545,7 @@ $storage_item__4446 = 'append-text-no-space ' . $storage_item__4447 . ' ' . $sto
 # print 'result: ' . $storage_item__4446 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4449 *** copy-text ** 2 *' . $storage_item__4450 . ' ' . $storage_item__4451 ;
+# $global_action_debug_line = '***** define-special-strings **** 4449 *** copy-text ** 2 *' . $storage_item__4450 . ' ' . $storage_item__4451 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33567,7 +33567,7 @@ $storage_item__4449 = 'copy-text ' . $storage_item__4450 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4449 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4452 *** append-text-no-space ** 2 *' . $storage_item__4453 . ' ' . $storage_item__4454 ;
+# $global_action_debug_line = '***** define-special-strings **** 4452 *** append-text-no-space ** 2 *' . $storage_item__4453 . ' ' . $storage_item__4454 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33596,7 +33596,7 @@ $storage_item__4452 = 'append-text-no-space ' . $storage_item__4453 . ' ' . $sto
 # print 'result: ' . $storage_item__4452 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4455 *** append-text-no-space ** 2 *' . $storage_item__4456 . ' ' . $storage_item__4457 ;
+# $global_action_debug_line = '***** define-special-strings **** 4455 *** append-text-no-space ** 2 *' . $storage_item__4456 . ' ' . $storage_item__4457 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33625,7 +33625,7 @@ $storage_item__4455 = 'append-text-no-space ' . $storage_item__4456 . ' ' . $sto
 # print 'result: ' . $storage_item__4455 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4458 *** append-text-no-space ** 2 *' . $storage_item__4459 . ' ' . $storage_item__4460 ;
+# $global_action_debug_line = '***** define-special-strings **** 4458 *** append-text-no-space ** 2 *' . $storage_item__4459 . ' ' . $storage_item__4460 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33654,7 +33654,7 @@ $storage_item__4458 = 'append-text-no-space ' . $storage_item__4459 . ' ' . $sto
 # print 'result: ' . $storage_item__4458 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4461 *** append-text-no-space ** 2 *' . $storage_item__4462 . ' ' . $storage_item__4463 ;
+# $global_action_debug_line = '***** define-special-strings **** 4461 *** append-text-no-space ** 2 *' . $storage_item__4462 . ' ' . $storage_item__4463 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33683,7 +33683,7 @@ $storage_item__4461 = 'append-text-no-space ' . $storage_item__4462 . ' ' . $sto
 # print 'result: ' . $storage_item__4461 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4464 *** append-text-no-space ** 2 *' . $storage_item__4465 . ' ' . $storage_item__4466 ;
+# $global_action_debug_line = '***** define-special-strings **** 4464 *** append-text-no-space ** 2 *' . $storage_item__4465 . ' ' . $storage_item__4466 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33712,7 +33712,7 @@ $storage_item__4464 = 'append-text-no-space ' . $storage_item__4465 . ' ' . $sto
 # print 'result: ' . $storage_item__4464 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4467 *** append-text-no-space ** 2 *' . $storage_item__4468 . ' ' . $storage_item__4469 ;
+# $global_action_debug_line = '***** define-special-strings **** 4467 *** append-text-no-space ** 2 *' . $storage_item__4468 . ' ' . $storage_item__4469 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33741,7 +33741,7 @@ $storage_item__4467 = 'append-text-no-space ' . $storage_item__4468 . ' ' . $sto
 # print 'result: ' . $storage_item__4467 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4470 *** copy-text ** 2 *' . $storage_item__4471 . ' ' . $storage_item__4472 ;
+# $global_action_debug_line = '***** define-special-strings **** 4470 *** copy-text ** 2 *' . $storage_item__4471 . ' ' . $storage_item__4472 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33763,7 +33763,7 @@ $storage_item__4470 = 'copy-text ' . $storage_item__4471 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4470 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4473 *** append-text-no-space ** 2 *' . $storage_item__4474 . ' ' . $storage_item__4475 ;
+# $global_action_debug_line = '***** define-special-strings **** 4473 *** append-text-no-space ** 2 *' . $storage_item__4474 . ' ' . $storage_item__4475 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33792,7 +33792,7 @@ $storage_item__4473 = 'append-text-no-space ' . $storage_item__4474 . ' ' . $sto
 # print 'result: ' . $storage_item__4473 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4476 *** append-text-no-space ** 2 *' . $storage_item__4477 . ' ' . $storage_item__4478 ;
+# $global_action_debug_line = '***** define-special-strings **** 4476 *** append-text-no-space ** 2 *' . $storage_item__4477 . ' ' . $storage_item__4478 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33821,7 +33821,7 @@ $storage_item__4476 = 'append-text-no-space ' . $storage_item__4477 . ' ' . $sto
 # print 'result: ' . $storage_item__4476 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4479 *** append-text-no-space ** 2 *' . $storage_item__4480 . ' ' . $storage_item__4481 ;
+# $global_action_debug_line = '***** define-special-strings **** 4479 *** append-text-no-space ** 2 *' . $storage_item__4480 . ' ' . $storage_item__4481 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33850,7 +33850,7 @@ $storage_item__4479 = 'append-text-no-space ' . $storage_item__4480 . ' ' . $sto
 # print 'result: ' . $storage_item__4479 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4482 *** append-text-no-space ** 2 *' . $storage_item__4483 . ' ' . $storage_item__4484 ;
+# $global_action_debug_line = '***** define-special-strings **** 4482 *** append-text-no-space ** 2 *' . $storage_item__4483 . ' ' . $storage_item__4484 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
@@ -33879,7 +33879,7 @@ $storage_item__4482 = 'append-text-no-space ' . $storage_item__4483 . ' ' . $sto
 # print 'result: ' . $storage_item__4482 . "\n" ;
 # end of action append-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4485 *** copy-text ** 2 *' . $storage_item__4486 . ' ' . $storage_item__4487 ;
+# $global_action_debug_line = '***** define-special-strings **** 4485 *** copy-text ** 2 *' . $storage_item__4486 . ' ' . $storage_item__4487 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33901,7 +33901,7 @@ $storage_item__4485 = 'copy-text ' . $storage_item__4486 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4485 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4488 *** copy-text ** 2 *' . $storage_item__4489 . ' ' . $storage_item__4490 ;
+# $global_action_debug_line = '***** define-special-strings **** 4488 *** copy-text ** 2 *' . $storage_item__4489 . ' ' . $storage_item__4490 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33923,7 +33923,7 @@ $storage_item__4488 = 'copy-text ' . $storage_item__4489 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4488 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4491 *** prepend-text-no-space ** 2 *' . $storage_item__4492 . ' ' . $storage_item__4493 ;
+# $global_action_debug_line = '***** define-special-strings **** 4491 *** prepend-text-no-space ** 2 *' . $storage_item__4492 . ' ' . $storage_item__4493 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'prepend-text-no-space' ;
@@ -33952,7 +33952,7 @@ $storage_item__4491 = 'prepend-text-no-space ' . $storage_item__4492 . ' ' . $st
 # print 'result: ' . $storage_item__4491 . "\n" ;
 # end of action prepend-text-no-space
 
-$global_action_debug_line = '***** define-special-strings **** 4494 *** copy-text ** 2 *' . $storage_item__4495 . ' ' . $storage_item__4496 ;
+# $global_action_debug_line = '***** define-special-strings **** 4494 *** copy-text ** 2 *' . $storage_item__4495 . ' ' . $storage_item__4496 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_yes_or_no_operand_error = $global_no ;
@@ -33974,7 +33974,7 @@ $storage_item__4494 = 'copy-text ' . $storage_item__4495 . ' ' . $storage_item__
 # print 'result: ' . $storage_item__4494 . "\n" ;
 # end of action copy-text
 
-$global_action_debug_line = '***** define-special-strings **** 4497 *** append-text-no-space ** 2 *' . $storage_item__4498 . ' ' . $storage_item__4499 ;
+# $global_action_debug_line = '***** define-special-strings **** 4497 *** append-text-no-space ** 2 *' . $storage_item__4498 . ' ' . $storage_item__4499 ;
 # print $global_action_debug_line . "\n" ;
 #
 $global_single_action_name = 'append-text-no-space' ;
