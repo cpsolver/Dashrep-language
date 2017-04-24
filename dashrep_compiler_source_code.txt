@@ -231,7 +231,7 @@ filter-tokens-case-comenn:
 ----
 filter-tokens-case-defenn-case-balanced-ambee-amenn:
 [-if-no-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-numeric-add [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-] 0 -]-]-]
-[-handle-definition-simple-or-special-]
+[-handle-definition-simple-or-immediate-]
 [-if-else-]
 [-handle-definition-contains-ambee-amenn-]
 [-if-end-]
@@ -464,30 +464,7 @@ handle-definition-contains-ambee-amenn:
 [-append-text phrase-being-defined list-of-functions-generated-]
 [-clear-phrase phrase-being-defined-]
 ----
-handle-definition-simple-or-special:
-[-copy-words-found-in-both-lists phrase-being-defined list-of-special-definition-phrases possible-special-definition-phrase-name-]
-
-
-[-trace-show phrase-being-defined-]
-
-
-[-if-yes-begin [-yes-or-no-empty-phrase possible-special-definition-phrase-name-]-]
-[-handle-definition-simple-]
-[-if-else-]
-[-copy-text possible-special-definition-phrase-name special-definition-phrase-name-]
-[-handle-definition-special-]
-[-if-end-]
-----
-handle-definition-simple:
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
-[-generate-list-of-tokens-in-current-definition-quotable-]
-[-generate-runtime-code-for-phrase-definition-simple-]
-[-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
-----
-handle-definition-special:
+handle-definition-immediate:
 [-generate-list-of-tokens-in-current-definition-quotable-]
 [-copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space-]
 [-copy-without-extra-spaces phrase-definition-modified phrase-definition-modified-]
@@ -506,7 +483,30 @@ handle-definition-special:
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-text phrase-definition-modified [-special-definition-phrase-name-]-modified-]
+[-copy-text phrase-definition-modified [-immediate-definition-phrase-name-]-modified-]
+----
+handle-definition-simple-or-immediate:
+[-copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name-]
+
+
+[-trace-show phrase-being-defined-]
+
+
+[-if-yes-begin [-yes-or-no-empty-phrase possible-immediate-definition-phrase-name-]-]
+[-handle-definition-simple-]
+[-if-else-]
+[-copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name-]
+[-handle-definition-immediate-]
+[-if-end-]
+----
+handle-definition-simple:
+[-create-new-text-storage-position-]
+[-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
+[-create-new-text-storage-position-]
+[-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
+[-generate-list-of-tokens-in-current-definition-quotable-]
+[-generate-runtime-code-for-phrase-definition-simple-]
+[-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
 ----
 handle-fen-and-nospay-within-operand-or-operands:
 [-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
@@ -1454,6 +1454,10 @@ start-here
 ----
 list-of-functions-in-optional-code:
 ----
+list-of-immediate-definition-phrases:
+optional-import-statements
+optional-extra-runtime-functions
+----
 list-of-phrases-with-quoted-strings:
 empty-text
 character-space
@@ -1504,10 +1508,6 @@ yes-or-no-indicate-line-endings
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 yes-or-no-use-two-spaces-as-column-delimiter
-----
-list-of-special-definition-phrases:
-optional-import-statements
-optional-extra-runtime-functions
 ----
 list-of-temporary-phrase-name-prefixes:
 contents-at-storage-position-
