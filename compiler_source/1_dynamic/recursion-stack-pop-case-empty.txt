@@ -1,5 +1,8 @@
 [-put-into-phrase current-result-storage-position  0 -]
+
+*---
 [-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
 [-append-text phrase-being-defined warning-message-]
 [-append-text warning-more-amenn-than-ambee-tokens warning-message-]
 [-append-text-no-space warning-message warning-messages-]
+---*
