@@ -1,2 +1,2 @@
 ( ) {  <new_line>
-# $global_phrase_name = '
+$global_phrase_name = '
