@@ -6903,22 +6903,22 @@ my $storage_item__4788 = 'template-code-function-branch-part-3' ;
 my $storage_item__4789 = '( ) ;' ;
 $global_dashrep_replacement{ $storage_item__4788 } = $storage_item__4789 ;
 my $storage_item__4790 = 'template-code-function-external-part-1' ;
-my $storage_item__4791 = '# sub function_compiled__' ;
+my $storage_item__4791 = 'sub function_compiled__' ;
 $global_dashrep_replacement{ $storage_item__4790 } = $storage_item__4791 ;
 my $storage_item__4792 = 'template-code-function-external-part-2' ;
-my $storage_item__4793 = '( ) { <new_line> # &' ;
+my $storage_item__4793 = '( ) { <new_line> &' ;
 $global_dashrep_replacement{ $storage_item__4792 } = $storage_item__4793 ;
 my $storage_item__4794 = 'template-code-function-external-part-3' ;
-my $storage_item__4795 = '( ) ; <new_line> # } <new_line>' ;
+my $storage_item__4795 = '( ) ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4794 } = $storage_item__4795 ;
 my $storage_item__4796 = 'template-code-function-replacement-only-part-1' ;
-my $storage_item__4797 = '# sub function_compiled__' ;
+my $storage_item__4797 = 'sub function_compiled__' ;
 $global_dashrep_replacement{ $storage_item__4796 } = $storage_item__4797 ;
 my $storage_item__4798 = 'template-code-function-replacement-only-part-2' ;
-my $storage_item__4799 = '( ) { <new_line> # $global_phrase_name = ' . "'" . '' ;
+my $storage_item__4799 = '( ) { <new_line> $global_phrase_name = ' . "'" . '' ;
 $global_dashrep_replacement{ $storage_item__4798 } = $storage_item__4799 ;
 my $storage_item__4800 = 'template-code-function-replacement-only-part-3' ;
-my $storage_item__4801 = '' . "'" . ' ; <new_line> # &special_function_do_single_replacement_only( ) ; <new_line> # } <new_line>' ;
+my $storage_item__4801 = '' . "'" . ' ; <new_line> &special_function_do_single_replacement_only( ) ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4800 } = $storage_item__4801 ;
 my $storage_item__4802 = 'template-code-parameter-result-storage-part-1' ;
 my $storage_item__4803 = 'my template-storage-item-prefix' ;
@@ -7386,155 +7386,155 @@ return '' ;
 #
 
 
-# sub function_compiled__action_name( ) {
-# $global_phrase_name = 'action-name' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__action_name( ) {
+$global_phrase_name = 'action-name' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__check_elapsed_time( ) {
-# $global_phrase_name = 'check-elapsed-time' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__check_elapsed_time( ) {
+$global_phrase_name = 'check-elapsed-time' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__count_of_ambee_tokens( ) {
-# $global_phrase_name = 'count-of-ambee-tokens' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__count_of_ambee_tokens( ) {
+$global_phrase_name = 'count-of-ambee-tokens' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__count_of_amenn_tokens( ) {
-# $global_phrase_name = 'count-of-amenn-tokens' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__count_of_amenn_tokens( ) {
+$global_phrase_name = 'count-of-amenn-tokens' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__current_definition_number( ) {
-# $global_phrase_name = 'current-definition-number' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__current_definition_number( ) {
+$global_phrase_name = 'current-definition-number' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__current_result_storage_position( ) {
-# $global_phrase_name = 'current-result-storage-position' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__current_result_storage_position( ) {
+$global_phrase_name = 'current-result-storage-position' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__current_storage_position( ) {
-# $global_phrase_name = 'current-storage-position' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__current_storage_position( ) {
+$global_phrase_name = 'current-storage-position' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__current_text_storage_position( ) {
-# $global_phrase_name = 'current-text-storage-position' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__current_text_storage_position( ) {
+$global_phrase_name = 'current-text-storage-position' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__current_token( ) {
-# $global_phrase_name = 'current-token' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__current_token( ) {
+$global_phrase_name = 'current-token' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_all_definitions_complex( ) {
-# $global_phrase_name = 'filename-output-all-definitions-complex' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_all_definitions_complex( ) {
+$global_phrase_name = 'filename-output-all-definitions-complex' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_all_phrase_names_complex( ) {
-# $global_phrase_name = 'filename-output-all-phrase-names-complex' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_all_phrase_names_complex( ) {
+$global_phrase_name = 'filename-output-all-phrase-names-complex' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) {
-# $global_phrase_name = 'filename-output-debug-trace-all-dashrep-definitions' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) {
+$global_phrase_name = 'filename-output-debug-trace-all-dashrep-definitions' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_results_all_compiled_functions( ) {
-# $global_phrase_name = 'filename-output-results-all-compiled-functions' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_results_all_compiled_functions( ) {
+$global_phrase_name = 'filename-output-results-all-compiled-functions' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_results_all_definition_items( ) {
-# $global_phrase_name = 'filename-output-results-all-definition-items' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_results_all_definition_items( ) {
+$global_phrase_name = 'filename-output-results-all-definition-items' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_results_all_function_branches( ) {
-# $global_phrase_name = 'filename-output-results-all-function-branches' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_results_all_function_branches( ) {
+$global_phrase_name = 'filename-output-results-all-function-branches' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_results_from_compiler( ) {
-# $global_phrase_name = 'filename-output-results-from-compiler' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_results_from_compiler( ) {
+$global_phrase_name = 'filename-output-results-from-compiler' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_results_functions_replacement_only( ) {
-# $global_phrase_name = 'filename-output-results-functions-replacement-only' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_results_functions_replacement_only( ) {
+$global_phrase_name = 'filename-output-results-functions-replacement-only' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_output_standard_runtime_functions( ) {
-# $global_phrase_name = 'filename-output-standard-runtime-functions' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_output_standard_runtime_functions( ) {
+$global_phrase_name = 'filename-output-standard-runtime-functions' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__filename_runtime_code_from_interpreter( ) {
-# $global_phrase_name = 'filename-runtime-code-from-interpreter' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__filename_runtime_code_from_interpreter( ) {
+$global_phrase_name = 'filename-runtime-code-from-interpreter' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__immediate_definition_phrase_name( ) {
-# $global_phrase_name = 'immediate-definition-phrase-name' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__immediate_definition_phrase_name( ) {
+$global_phrase_name = 'immediate-definition-phrase-name' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__input_filename( ) {
-# $global_phrase_name = 'input-filename' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__input_filename( ) {
+$global_phrase_name = 'input-filename' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__non_empty_if_valid_token_handler_name( ) {
-# $global_phrase_name = 'non-empty-if-valid-token-handler-name' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__non_empty_if_valid_token_handler_name( ) {
+$global_phrase_name = 'non-empty-if-valid-token-handler-name' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__number_of_operands( ) {
-# $global_phrase_name = 'number-of-operands' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__number_of_operands( ) {
+$global_phrase_name = 'number-of-operands' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__phrase_being_defined( ) {
-# $global_phrase_name = 'phrase-being-defined' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__phrase_being_defined( ) {
+$global_phrase_name = 'phrase-being-defined' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__phrase_length( ) {
-# $global_phrase_name = 'phrase-length' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__phrase_length( ) {
+$global_phrase_name = 'phrase-length' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__position_top_of_stack( ) {
-# $global_phrase_name = 'position-top-of-stack' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__position_top_of_stack( ) {
+$global_phrase_name = 'position-top-of-stack' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__storage_type( ) {
-# $global_phrase_name = 'storage-type' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__storage_type( ) {
+$global_phrase_name = 'storage-type' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__word_to_use_in_handler( ) {
-# $global_phrase_name = 'word-to-use-in-handler' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__word_to_use_in_handler( ) {
+$global_phrase_name = 'word-to-use-in-handler' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__yes_or_no_action_recognized( ) {
-# $global_phrase_name = 'yes-or-no-action-recognized' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__yes_or_no_action_recognized( ) {
+$global_phrase_name = 'yes-or-no-action-recognized' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
-# sub function_compiled__yes_or_no_within_comment( ) {
-# $global_phrase_name = 'yes-or-no-within-comment' ;
-# &special_function_do_single_replacement_only( ) ;
-# }
+sub function_compiled__yes_or_no_within_comment( ) {
+$global_phrase_name = 'yes-or-no-within-comment' ;
+&special_function_do_single_replacement_only( ) ;
+}
 
 
 sub special_function_do_single_replacement_only( ) {
