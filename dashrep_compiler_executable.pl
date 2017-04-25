@@ -7044,7 +7044,7 @@ my $storage_item__4882 = 'template-runtime-code-for-action-executable-phrase-end
 my $storage_item__4883 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__4882 } = $storage_item__4883 ;
 my $storage_item__4884 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
-my $storage_item__4885 = 'template-runtime-code-for-action-executable-phrase-begin # todo: fix <new_line> $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> # &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__4885 = 'template-runtime-code-for-action-executable-phrase-begin # $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> # &function_branch_based_on_phrase_name( ) ; <new_line> &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__4884 } = $storage_item__4885 ;
 my $storage_item__4886 = 'template-runtime-code-for-action-executable-phrase' ;
 my $storage_item__4887 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
@@ -8029,10 +8029,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 2 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1053 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__compile_source_code_initialize( ) ;
+# $global_phrase_name_to_match = $storage_item__1053 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__compile_source_code_initialize( ) ;
 $storage_item__1052 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1052 . "\n" ;
@@ -8044,10 +8043,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 3 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1055 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__convert_source_code_into_words( ) ;
+# $global_phrase_name_to_match = $storage_item__1055 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__convert_source_code_into_words( ) ;
 $storage_item__1054 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1054 . "\n" ;
@@ -8183,10 +8181,9 @@ $storage_item__1063 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 4 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1068 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__compile_source_code_finish( ) ;
+# $global_phrase_name_to_match = $storage_item__1068 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__compile_source_code_finish( ) ;
 $storage_item__1067 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1067 . "\n" ;
@@ -8300,10 +8297,9 @@ $storage_item__1080 = 'put-into-phrase ' . $storage_item__1081 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 5 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1084 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__define_special_strings( ) ;
+# $global_phrase_name_to_match = $storage_item__1084 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__define_special_strings( ) ;
 $storage_item__1083 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1083 . "\n" ;
@@ -8461,10 +8457,9 @@ $storage_item__1089 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 6 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1094 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__assign_action_operand_characteristics( ) ;
+# $global_phrase_name_to_match = $storage_item__1094 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__assign_action_operand_characteristics( ) ;
 $storage_item__1093 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1093 . "\n" ;
@@ -8559,10 +8554,9 @@ $storage_item__1104 = 'expand-text ' . $storage_item__1105 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 8 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1110 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_standard_runtime_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__1110 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_standard_runtime_functions( ) ;
 $storage_item__1109 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1109 . "\n" ;
@@ -9016,10 +9010,9 @@ $storage_item__1164 = 'copy-without-extra-spaces ' . $storage_item__1165 . ' ' .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 9 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1168 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__convert_source_code_replace_parameter_brackets_with_ambee_and_amenn( ) ;
+# $global_phrase_name_to_match = $storage_item__1168 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__convert_source_code_replace_parameter_brackets_with_ambee_and_amenn( ) ;
 $storage_item__1167 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1167 . "\n" ;
@@ -10646,10 +10639,9 @@ $storage_item__1361 = 'put-into-phrase ' . $storage_item__1362 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 10 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1365 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1365 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_storage_position( ) ;
 $storage_item__1364 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1364 . "\n" ;
@@ -10695,10 +10687,9 @@ $storage_item__1368 = 'numeric-increment ' . $storage_item__1369 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 11 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1373 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1373 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_storage_position( ) ;
 $storage_item__1372 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1372 . "\n" ;
@@ -10727,10 +10718,9 @@ $storage_item__1370 = 'clear-phrase ' . $storage_item__1371 . '-' . $storage_ite
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 12 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1378 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1378 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_storage_position( ) ;
 $storage_item__1377 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1377 . "\n" ;
@@ -10764,10 +10754,9 @@ $storage_item__1374 = 'copy-text ' . $storage_item__1375 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 13 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1383 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__storage_type( ) ;
+# $global_phrase_name_to_match = $storage_item__1383 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__storage_type( ) ;
 $storage_item__1382 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1382 . "\n" ;
@@ -10828,10 +10817,9 @@ $storage_item__1387 = 'put-into-phrase ' . $storage_item__1388 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 14 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1391 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1391 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_storage_position( ) ;
 $storage_item__1390 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1390 . "\n" ;
@@ -10852,10 +10840,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 15 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1397 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__1397 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1396 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1396 . "\n" ;
@@ -10867,10 +10854,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 16 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1399 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__1399 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1398 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1398 . "\n" ;
@@ -11007,10 +10993,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 18 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1413 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filter_tokens_case_2( ) ;
+# $global_phrase_name_to_match = $storage_item__1413 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filter_tokens_case_2( ) ;
 $storage_item__1412 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1412 . "\n" ;
@@ -11027,10 +11012,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 19 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1417 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__non_empty_if_valid_token_handler_name( ) ;
+# $global_phrase_name_to_match = $storage_item__1417 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__non_empty_if_valid_token_handler_name( ) ;
 $storage_item__1416 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1416 . "\n" ;
@@ -11069,10 +11053,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 21 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1424 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__yes_or_no_within_comment( ) ;
+# $global_phrase_name_to_match = $storage_item__1424 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__yes_or_no_within_comment( ) ;
 $storage_item__1423 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1423 . "\n" ;
@@ -11091,10 +11074,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 22 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1426 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filter_tokens_case_3( ) ;
+# $global_phrase_name_to_match = $storage_item__1426 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filter_tokens_case_3( ) ;
 $storage_item__1425 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1425 . "\n" ;
@@ -11190,10 +11172,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 23 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1439 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filter_tokens_case_4( ) ;
+# $global_phrase_name_to_match = $storage_item__1439 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filter_tokens_case_4( ) ;
 $storage_item__1438 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1438 . "\n" ;
@@ -11210,10 +11191,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 24 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1443 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__non_empty_if_valid_token_handler_name( ) ;
+# $global_phrase_name_to_match = $storage_item__1443 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__non_empty_if_valid_token_handler_name( ) ;
 $storage_item__1442 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1442 . "\n" ;
@@ -11340,10 +11320,9 @@ $storage_item__1455 = 'copy-text ' . $storage_item__1456 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 26 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1459 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__remove_colon_if_at_end_of_phrase_being_defined( ) ;
+# $global_phrase_name_to_match = $storage_item__1459 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__remove_colon_if_at_end_of_phrase_being_defined( ) ;
 $storage_item__1458 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1458 . "\n" ;
@@ -11549,10 +11528,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 27 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1493 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_ambee_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__1493 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__1492 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1492 . "\n" ;
@@ -11564,10 +11542,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 28 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1495 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_amenn_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__1495 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__1494 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1494 . "\n" ;
@@ -11634,10 +11611,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 29 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1498 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_simple_or_immediate( ) ;
+# $global_phrase_name_to_match = $storage_item__1498 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_definition_simple_or_immediate( ) ;
 $storage_item__1497 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1497 . "\n" ;
@@ -11654,10 +11630,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 30 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1501 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_contains_ambee_amenn( ) ;
+# $global_phrase_name_to_match = $storage_item__1501 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_definition_contains_ambee_amenn( ) ;
 $storage_item__1500 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1500 . "\n" ;
@@ -11683,10 +11658,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 31 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1510 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_ambee_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__1510 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__1509 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1509 . "\n" ;
@@ -11698,10 +11672,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 32 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1512 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_amenn_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__1512 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__1511 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1511 . "\n" ;
@@ -11759,10 +11732,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 33 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1514 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filter_tokens_case_defenn_case_balanced_ambee_amenn( ) ;
+# $global_phrase_name_to_match = $storage_item__1514 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filter_tokens_case_defenn_case_balanced_ambee_amenn( ) ;
 $storage_item__1513 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1513 . "\n" ;
@@ -11779,10 +11751,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 34 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1517 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_non_zero_count_of_ambee_minus_amenn_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__1517 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_non_zero_count_of_ambee_minus_amenn_tokens( ) ;
 $storage_item__1516 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1516 . "\n" ;
@@ -12164,10 +12135,9 @@ $storage_item__1562 = 'copy-and-replace ' . $storage_item__1563 . ' ' . $storage
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 35 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1570 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_compiled_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__1570 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__1569 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1569 . "\n" ;
@@ -12230,10 +12200,9 @@ $storage_item__1571 = 'copy-text ' . $storage_item__1572 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 36 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1575 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__recursion_stack_pop( ) ;
+# $global_phrase_name_to_match = $storage_item__1575 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__recursion_stack_pop( ) ;
 $storage_item__1574 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1574 . "\n" ;
@@ -12325,10 +12294,9 @@ $storage_item__1582 = 'append-text-no-space ' . $storage_item__1583 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 37 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1589 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1589 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__1588 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1588 . "\n" ;
@@ -12917,10 +12885,9 @@ $storage_item__1657 = 'copy-and-replace ' . $storage_item__1658 . ' ' . $storage
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 38 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1665 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_function_branches( ) ;
+# $global_phrase_name_to_match = $storage_item__1665 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__1664 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1664 . "\n" ;
@@ -13099,10 +13066,9 @@ $storage_item__1678 = 'append-text-no-space ' . $storage_item__1679 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 39 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1684 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_functions_replacement_only( ) ;
+# $global_phrase_name_to_match = $storage_item__1684 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__1683 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1683 . "\n" ;
@@ -13349,10 +13315,9 @@ $storage_item__1707 = 'append-text-no-space ' . $storage_item__1708 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 40 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1713 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_function_branches( ) ;
+# $global_phrase_name_to_match = $storage_item__1713 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__1712 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1712 . "\n" ;
@@ -13599,10 +13564,9 @@ $storage_item__1736 = 'append-text-no-space ' . $storage_item__1737 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 41 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1742 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_functions_replacement_only( ) ;
+# $global_phrase_name_to_match = $storage_item__1742 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__1741 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1741 . "\n" ;
@@ -14056,10 +14020,9 @@ $storage_item__1786 = 'numeric-increment ' . $storage_item__1787 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 42 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1792 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__1792 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1791 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1791 . "\n" ;
@@ -14173,10 +14136,9 @@ $storage_item__1799 = 'append-text-no-space ' . $storage_item__1800 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 43 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1805 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__1805 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1804 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1804 . "\n" ;
@@ -14400,10 +14362,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 44 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1828 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1828 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_text_storage_position( ) ;
 $storage_item__1827 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1827 . "\n" ;
@@ -14849,10 +14810,9 @@ $storage_item__1881 = 'append-text-no-space ' . $storage_item__1882 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 45 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1887 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__1887 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__1886 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1886 . "\n" ;
@@ -14924,10 +14884,9 @@ $storage_item__1890 = 'copy-text ' . $storage_item__1891 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 46 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1896 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__1896 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__1895 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1895 . "\n" ;
@@ -15122,10 +15081,9 @@ $storage_item__1915 = 'copy-text ' . $storage_item__1916 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 47 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1919 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1919 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__1918 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1918 . "\n" ;
@@ -15218,10 +15176,9 @@ $storage_item__1926 = 'copy-text ' . $storage_item__1927 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 48 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1935 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__number_of_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1935 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__number_of_operands( ) ;
 $storage_item__1934 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1934 . "\n" ;
@@ -15307,10 +15264,9 @@ $storage_item__1937 = 'copy-word-at-position ' . $storage_item__1938 . ' ' . $st
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 49 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1942 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1942 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__1941 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1941 . "\n" ;
@@ -15376,10 +15332,9 @@ $storage_item__1947 = 'copy-text ' . $storage_item__1948 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 50 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1956 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__number_of_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1956 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__number_of_operands( ) ;
 $storage_item__1955 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1955 . "\n" ;
@@ -15465,10 +15420,9 @@ $storage_item__1958 = 'copy-word-at-position ' . $storage_item__1959 . ' ' . $st
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 51 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1963 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1963 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__1962 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1962 . "\n" ;
@@ -15534,10 +15488,9 @@ $storage_item__1968 = 'copy-text ' . $storage_item__1969 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 52 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1977 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__number_of_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1977 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__number_of_operands( ) ;
 $storage_item__1976 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1976 . "\n" ;
@@ -15623,10 +15576,9 @@ $storage_item__1979 = 'copy-word-at-position ' . $storage_item__1980 . ' ' . $st
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 53 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1984 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1984 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__1983 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1983 . "\n" ;
@@ -15692,10 +15644,9 @@ $storage_item__1989 = 'copy-text ' . $storage_item__1990 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 54 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__1998 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__number_of_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__1998 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__number_of_operands( ) ;
 $storage_item__1997 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__1997 . "\n" ;
@@ -15781,10 +15732,9 @@ $storage_item__2000 = 'copy-word-at-position ' . $storage_item__2001 . ' ' . $st
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 55 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2005 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2005 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2004 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2004 . "\n" ;
@@ -15859,10 +15809,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 56 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2020 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__2020 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__2019 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2019 . "\n" ;
@@ -15874,10 +15823,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 57 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2022 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__word_to_use_in_handler( ) ;
+# $global_phrase_name_to_match = $storage_item__2022 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__word_to_use_in_handler( ) ;
 $storage_item__2021 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2021 . "\n" ;
@@ -16624,10 +16572,9 @@ $storage_item__2106 = 'append-text-no-space ' . $storage_item__2107 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 58 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2112 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_compiled_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__2112 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__2111 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2111 . "\n" ;
@@ -16697,10 +16644,9 @@ $storage_item__2113 = 'copy-without-extra-spaces ' . $storage_item__2114 . ' ' .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 59 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2117 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_simple( ) ;
+# $global_phrase_name_to_match = $storage_item__2117 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_definition_simple( ) ;
 $storage_item__2116 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2116 . "\n" ;
@@ -16785,10 +16731,9 @@ $storage_item__2118 = 'use-handler-with-each-word-in-phrase ' . $storage_item__2
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 60 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2125 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_definition_number( ) ;
+# $global_phrase_name_to_match = $storage_item__2125 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_definition_number( ) ;
 $storage_item__2124 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2124 . "\n" ;
@@ -16822,10 +16767,9 @@ $storage_item__2122 = 'copy-text ' . $storage_item__2123 . '-' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 61 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2130 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_definition_number( ) ;
+# $global_phrase_name_to_match = $storage_item__2130 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_definition_number( ) ;
 $storage_item__2129 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2129 . "\n" ;
@@ -16859,10 +16803,9 @@ $storage_item__2127 = 'copy-text ' . $storage_item__2128 . '-' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 62 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2135 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2135 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2134 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2134 . "\n" ;
@@ -16896,10 +16839,9 @@ $storage_item__2132 = 'copy-text ' . $storage_item__2133 . '-' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 63 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2138 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__get_all_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2138 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__get_all_operands( ) ;
 $storage_item__2137 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2137 . "\n" ;
@@ -16991,10 +16933,9 @@ $storage_item__2145 = 'append-text-no-space ' . $storage_item__2146 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 64 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2151 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_compiled_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__2151 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__2150 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2150 . "\n" ;
@@ -17090,10 +17031,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 65 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2160 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
+# $global_phrase_name_to_match = $storage_item__2160 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
 $storage_item__2159 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2159 . "\n" ;
@@ -17346,10 +17286,9 @@ print TRACE_OUT 'phrase ' . $storage_item__2191 . ' is not defined' . "\n" ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 66 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2195 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__immediate_definition_phrase_name( ) ;
+# $global_phrase_name_to_match = $storage_item__2195 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__immediate_definition_phrase_name( ) ;
 $storage_item__2194 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2194 . "\n" ;
@@ -17473,10 +17412,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 67 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2209 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_simple( ) ;
+# $global_phrase_name_to_match = $storage_item__2209 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_definition_simple( ) ;
 $storage_item__2208 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2208 . "\n" ;
@@ -17515,10 +17453,9 @@ $storage_item__2211 = 'copy-text ' . $storage_item__2212 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 68 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2215 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_definition_immediate( ) ;
+# $global_phrase_name_to_match = $storage_item__2215 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_definition_immediate( ) ;
 $storage_item__2214 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2214 . "\n" ;
@@ -17544,10 +17481,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 69 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2220 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2220 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2219 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2219 . "\n" ;
@@ -17581,10 +17517,9 @@ $storage_item__2221 = 'copy-text ' . $storage_item__2222 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 70 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2225 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2225 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2224 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2224 . "\n" ;
@@ -17618,10 +17553,9 @@ $storage_item__2226 = 'copy-text ' . $storage_item__2227 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 71 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2230 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
+# $global_phrase_name_to_match = $storage_item__2230 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
 $storage_item__2229 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2229 . "\n" ;
@@ -17633,10 +17567,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 72 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2232 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_runtime_code_for_phrase_definition_simple( ) ;
+# $global_phrase_name_to_match = $storage_item__2232 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_runtime_code_for_phrase_definition_simple( ) ;
 $storage_item__2231 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2231 . "\n" ;
@@ -17648,10 +17581,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 73 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2236 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2236 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2235 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2235 . "\n" ;
@@ -17909,10 +17841,9 @@ $storage_item__2264 = 'append-text ' . $storage_item__2265 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 74 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2272 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_ambee_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__2272 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__2271 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2271 . "\n" ;
@@ -17924,10 +17855,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 75 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2274 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__count_of_amenn_tokens( ) ;
+# $global_phrase_name_to_match = $storage_item__2274 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__2273 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2273 . "\n" ;
@@ -18091,10 +18021,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 76 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2289 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__recursion_stack_push( ) ;
+# $global_phrase_name_to_match = $storage_item__2289 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__recursion_stack_push( ) ;
 $storage_item__2288 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2288 . "\n" ;
@@ -18106,10 +18035,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 77 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2291 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2291 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_result_storage_position( ) ;
 $storage_item__2290 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2290 . "\n" ;
@@ -18201,10 +18129,9 @@ $storage_item__2298 = 'append-text ' . $storage_item__2299 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 78 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2304 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2304 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2303 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2303 . "\n" ;
@@ -18245,10 +18172,9 @@ $storage_item__2301 = 'copy-from-phrase-append-to-file ' . $storage_item__2302 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 79 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2308 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2308 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2307 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2307 . "\n" ;
@@ -18412,10 +18338,9 @@ $storage_item__2322 = 'expand-text ' . $storage_item__2323 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 81 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2328 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2328 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2327 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2327 . "\n" ;
@@ -18467,10 +18392,9 @@ $storage_item__2330 = 'put-into-phrase ' . $storage_item__2331 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 82 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2337 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2337 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2336 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2336 . "\n" ;
@@ -18537,10 +18461,9 @@ $storage_item__2338 = 'put-into-phrase ' . $storage_item__2339 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 83 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2346 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2346 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2345 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2345 . "\n" ;
@@ -18602,10 +18525,9 @@ $storage_item__2347 = 'put-into-phrase ' . $storage_item__2348 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 84 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2353 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2353 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2352 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2352 . "\n" ;
@@ -18661,10 +18583,9 @@ $storage_item__2356 = 'clear-phrase ' . $storage_item__2357 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 85 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2360 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__yes_or_no_action_recognized( ) ;
+# $global_phrase_name_to_match = $storage_item__2360 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__yes_or_no_action_recognized( ) ;
 $storage_item__2359 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2359 . "\n" ;
@@ -18683,10 +18604,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 86 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2362 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_amenn_case_action_recognized( ) ;
+# $global_phrase_name_to_match = $storage_item__2362 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_amenn_case_action_recognized( ) ;
 $storage_item__2361 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2361 . "\n" ;
@@ -18703,10 +18623,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 87 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2365 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_amenn_case_executable_phrase( ) ;
+# $global_phrase_name_to_match = $storage_item__2365 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_amenn_case_executable_phrase( ) ;
 $storage_item__2364 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2364 . "\n" ;
@@ -18723,10 +18642,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 88 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2368 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_code_for_one_action( ) ;
+# $global_phrase_name_to_match = $storage_item__2368 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_code_for_one_action( ) ;
 $storage_item__2367 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2367 . "\n" ;
@@ -18747,10 +18665,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 89 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2375 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2375 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2374 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2374 . "\n" ;
@@ -18794,10 +18711,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 90 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2377 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_amenn_case_action_standard_or_has_template( ) ;
+# $global_phrase_name_to_match = $storage_item__2377 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_amenn_case_action_standard_or_has_template( ) ;
 $storage_item__2376 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2376 . "\n" ;
@@ -18814,10 +18730,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 91 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2381 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2381 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2380 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2380 . "\n" ;
@@ -18856,10 +18771,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 93 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2387 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__get_all_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2387 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__get_all_operands( ) ;
 $storage_item__2386 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2386 . "\n" ;
@@ -18871,10 +18785,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 94 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2392 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2392 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2391 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2391 . "\n" ;
@@ -18952,10 +18865,9 @@ $storage_item__2393 = 'expand-text ' . $storage_item__2394 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 96 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2400 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2400 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2399 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2399 . "\n" ;
@@ -19101,10 +19013,9 @@ $storage_item__2413 = 'copy-text ' . $storage_item__2414 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 98 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2417 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_storage_for_current_text( ) ;
+# $global_phrase_name_to_match = $storage_item__2417 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2416 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2416 . "\n" ;
@@ -19218,10 +19129,9 @@ $storage_item__2427 = 'copy-text ' . $storage_item__2428 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 99 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2433 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2433 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2432 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2432 . "\n" ;
@@ -19420,10 +19330,9 @@ $storage_item__2450 = 'copy-and-replace ' . $storage_item__2451 . ' ' . $storage
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 100 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2456 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2456 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2455 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2455 . "\n" ;
@@ -19753,10 +19662,9 @@ $storage_item__2494 = 'numeric-increment ' . $storage_item__2495 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 103 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2497 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_amenn_case_standard_action( ) ;
+# $global_phrase_name_to_match = $storage_item__2497 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_amenn_case_standard_action( ) ;
 $storage_item__2496 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2496 . "\n" ;
@@ -19777,10 +19685,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 104 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2501 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__get_all_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2501 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__get_all_operands( ) ;
 $storage_item__2500 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2500 . "\n" ;
@@ -19792,10 +19699,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 105 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2506 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2506 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2505 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2505 . "\n" ;
@@ -19839,10 +19745,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 106 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2510 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__<dashrep_placeholder_action_name_with_underscores>( ) ;
+# $global_phrase_name_to_match = $storage_item__2510 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__action_name( ) ;
 $storage_item__2509 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2509 . "\n" ;
@@ -19931,10 +19836,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 109 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2520 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__create_new_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2520 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2519 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2519 . "\n" ;
@@ -19946,10 +19850,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 110 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2524 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2524 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_text_storage_position( ) ;
 $storage_item__2523 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2523 . "\n" ;
@@ -19978,10 +19881,9 @@ $storage_item__2521 = 'clear-phrase ' . $storage_item__2522 . '-' . $storage_ite
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 111 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2529 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2529 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2528 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2528 . "\n" ;
@@ -20015,10 +19917,9 @@ $storage_item__2525 = 'copy-text ' . $storage_item__2526 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 112 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2533 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2533 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2532 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2532 . "\n" ;
@@ -20081,10 +19982,9 @@ $storage_item__2535 = 'expand-text ' . $storage_item__2536 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 114 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2541 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2541 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2540 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2540 . "\n" ;
@@ -20125,10 +20025,9 @@ $storage_item__2538 = 'copy-from-phrase-append-to-file ' . $storage_item__2539 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 115 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2543 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__get_all_operands( ) ;
+# $global_phrase_name_to_match = $storage_item__2543 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__get_all_operands( ) ;
 $storage_item__2542 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2542 . "\n" ;
@@ -20140,10 +20039,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 116 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2547 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2547 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2546 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2546 . "\n" ;
@@ -20220,10 +20118,9 @@ $storage_item__2550 = 'copy-and-replace ' . $storage_item__2551 . ' ' . $storage
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 117 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2558 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2558 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2557 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2557 . "\n" ;
@@ -20301,10 +20198,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 119 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2570 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2570 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2569 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2569 . "\n" ;
@@ -20348,10 +20244,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 120 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2572 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_amenn_case_action_not_empty( ) ;
+# $global_phrase_name_to_match = $storage_item__2572 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_amenn_case_action_not_empty( ) ;
 $storage_item__2571 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2571 . "\n" ;
@@ -20397,10 +20292,9 @@ $storage_item__2574 = 'expand-text ' . $storage_item__2575 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 122 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2578 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_code_for_one_action( ) ;
+# $global_phrase_name_to_match = $storage_item__2578 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_code_for_one_action( ) ;
 $storage_item__2577 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2577 . "\n" ;
@@ -20417,10 +20311,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 123 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2583 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2583 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2582 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2582 . "\n" ;
@@ -20499,10 +20392,9 @@ $storage_item__2586 = 'append-text ' . $storage_item__2587 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 124 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2593 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2593 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2592 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2592 . "\n" ;
@@ -20639,10 +20531,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 125 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2607 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_next_case_2( ) ;
+# $global_phrase_name_to_match = $storage_item__2607 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_next_case_2( ) ;
 $storage_item__2606 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2606 . "\n" ;
@@ -20659,10 +20550,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 126 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2611 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_token( ) ;
+# $global_phrase_name_to_match = $storage_item__2611 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_token( ) ;
 $storage_item__2610 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2610 . "\n" ;
@@ -20733,10 +20623,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 128 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2620 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_next_case_3( ) ;
+# $global_phrase_name_to_match = $storage_item__2620 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_next_case_3( ) ;
 $storage_item__2619 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2619 . "\n" ;
@@ -20753,10 +20642,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 129 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2623 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_phrase_name( ) ;
+# $global_phrase_name_to_match = $storage_item__2623 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_phrase_name( ) ;
 $storage_item__2622 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2622 . "\n" ;
@@ -20811,10 +20699,9 @@ $storage_item__2627 = 'append-text ' . $storage_item__2628 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 130 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2634 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2634 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2633 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2633 . "\n" ;
@@ -20858,10 +20745,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 131 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2639 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2639 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2638 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2638 . "\n" ;
@@ -20900,10 +20786,9 @@ $storage_item__2635 = 'copy-text ' . $storage_item__2636 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 132 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2642 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__handle_token_text_word( ) ;
+# $global_phrase_name_to_match = $storage_item__2642 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__handle_token_text_word( ) ;
 $storage_item__2641 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2641 . "\n" ;
@@ -20958,10 +20843,9 @@ $storage_item__2646 = 'append-text ' . $storage_item__2647 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 133 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2653 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2653 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2652 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2652 . "\n" ;
@@ -21080,10 +20964,9 @@ $storage_item__2661 = 'copy-text ' . $storage_item__2662 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 134 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2665 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_storage_for_current_text( ) ;
+# $global_phrase_name_to_match = $storage_item__2665 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2664 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2664 . "\n" ;
@@ -21095,10 +20978,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 135 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2670 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_definition_number( ) ;
+# $global_phrase_name_to_match = $storage_item__2670 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_definition_number( ) ;
 $storage_item__2669 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2669 . "\n" ;
@@ -21149,10 +21031,9 @@ $storage_item__2671 = 'clear-phrase ' . $storage_item__2672 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 136 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2674 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_storage_for_current_text( ) ;
+# $global_phrase_name_to_match = $storage_item__2674 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2673 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2673 . "\n" ;
@@ -21164,10 +21045,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 137 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2679 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_definition_number( ) ;
+# $global_phrase_name_to_match = $storage_item__2679 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_definition_number( ) ;
 $storage_item__2678 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2678 . "\n" ;
@@ -21223,10 +21103,9 @@ $storage_item__2680 = 'copy-text ' . $storage_item__2681 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 138 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2686 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2686 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2685 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2685 . "\n" ;
@@ -21272,10 +21151,9 @@ $storage_item__2687 = 'clear-phrase ' . $storage_item__2688 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 139 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2690 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__recursion_stack_push( ) ;
+# $global_phrase_name_to_match = $storage_item__2690 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__recursion_stack_push( ) ;
 $storage_item__2689 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2689 . "\n" ;
@@ -21287,10 +21165,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 140 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2695 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__phrase_being_defined( ) ;
+# $global_phrase_name_to_match = $storage_item__2695 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__phrase_being_defined( ) ;
 $storage_item__2694 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2694 . "\n" ;
@@ -21324,10 +21201,9 @@ $storage_item__2691 = 'copy-text ' . $storage_item__2692 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 141 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2700 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_definition_number( ) ;
+# $global_phrase_name_to_match = $storage_item__2700 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_definition_number( ) ;
 $storage_item__2699 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2699 . "\n" ;
@@ -21409,10 +21285,9 @@ $storage_item__2705 = 'copy-text ' . $storage_item__2706 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 142 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2709 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__generate_storage_for_current_text( ) ;
+# $global_phrase_name_to_match = $storage_item__2709 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2708 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2708 . "\n" ;
@@ -21424,10 +21299,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 143 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2714 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_text_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2714 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_text_storage_position( ) ;
 $storage_item__2713 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2713 . "\n" ;
@@ -21468,10 +21342,9 @@ $storage_item__2710 = 'append-text ' . $storage_item__2711 . ' ' . $storage_item
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 144 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2719 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2719 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2718 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2718 . "\n" ;
@@ -21592,10 +21465,9 @@ $storage_item__2726 = 'append-text-no-space ' . $storage_item__2727 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 145 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2733 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__current_result_storage_position( ) ;
+# $global_phrase_name_to_match = $storage_item__2733 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__current_result_storage_position( ) ;
 $storage_item__2732 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2732 . "\n" ;
@@ -21754,10 +21626,9 @@ $storage_item__2748 = 'put-into-phrase ' . $storage_item__2749 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 146 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2753 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2753 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2752 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2752 . "\n" ;
@@ -21812,10 +21683,9 @@ $storage_item__2754 = 'put-into-phrase ' . $storage_item__2755 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 147 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2759 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_standard_runtime_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__2759 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_standard_runtime_functions( ) ;
 $storage_item__2758 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2758 . "\n" ;
@@ -21870,10 +21740,9 @@ $storage_item__2760 = 'put-into-phrase ' . $storage_item__2761 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 148 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2765 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2765 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2764 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2764 . "\n" ;
@@ -21928,10 +21797,9 @@ $storage_item__2766 = 'put-into-phrase ' . $storage_item__2767 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 149 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2771 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_function_branches( ) ;
+# $global_phrase_name_to_match = $storage_item__2771 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__2770 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2770 . "\n" ;
@@ -21986,10 +21854,9 @@ $storage_item__2772 = 'put-into-phrase ' . $storage_item__2773 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 150 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2777 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_functions_replacement_only( ) ;
+# $global_phrase_name_to_match = $storage_item__2777 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__2776 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2776 . "\n" ;
@@ -22044,10 +21911,9 @@ $storage_item__2778 = 'put-into-phrase ' . $storage_item__2779 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 151 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2783 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_compiled_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__2783 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__2782 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2782 . "\n" ;
@@ -22102,10 +21968,9 @@ $storage_item__2784 = 'put-into-phrase ' . $storage_item__2785 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 152 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2789 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_all_definitions_complex( ) ;
+# $global_phrase_name_to_match = $storage_item__2789 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_all_definitions_complex( ) ;
 $storage_item__2788 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2788 . "\n" ;
@@ -22160,10 +22025,9 @@ $storage_item__2790 = 'put-into-phrase ' . $storage_item__2791 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 153 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2795 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_all_phrase_names_complex( ) ;
+# $global_phrase_name_to_match = $storage_item__2795 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_all_phrase_names_complex( ) ;
 $storage_item__2794 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2794 . "\n" ;
@@ -22218,10 +22082,9 @@ $storage_item__2796 = 'put-into-phrase ' . $storage_item__2797 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 154 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2801 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) ;
+# $global_phrase_name_to_match = $storage_item__2801 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) ;
 $storage_item__2800 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2800 . "\n" ;
@@ -22294,10 +22157,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 155 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2814 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__position_top_of_stack( ) ;
+# $global_phrase_name_to_match = $storage_item__2814 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__position_top_of_stack( ) ;
 $storage_item__2813 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2813 . "\n" ;
@@ -22355,10 +22217,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 156 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2820 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__position_top_of_stack( ) ;
+# $global_phrase_name_to_match = $storage_item__2820 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__position_top_of_stack( ) ;
 $storage_item__2819 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2819 . "\n" ;
@@ -22423,10 +22284,9 @@ $storage_item__2821 = 'numeric-decrement ' . $storage_item__2822 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 157 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2828 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__position_top_of_stack( ) ;
+# $global_phrase_name_to_match = $storage_item__2828 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__position_top_of_stack( ) ;
 $storage_item__2827 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2827 . "\n" ;
@@ -22569,10 +22429,9 @@ $storage_item__2838 = 'put-into-phrase ' . $storage_item__2839 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 158 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2847 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__position_top_of_stack( ) ;
+# $global_phrase_name_to_match = $storage_item__2847 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__position_top_of_stack( ) ;
 $storage_item__2846 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2846 . "\n" ;
@@ -22630,10 +22489,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 159 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2850 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__recursion_stack_pop_case_not_empty( ) ;
+# $global_phrase_name_to_match = $storage_item__2850 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__recursion_stack_pop_case_not_empty( ) ;
 $storage_item__2849 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2849 . "\n" ;
@@ -22650,10 +22508,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 160 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2853 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__recursion_stack_pop_case_empty( ) ;
+# $global_phrase_name_to_match = $storage_item__2853 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__recursion_stack_pop_case_empty( ) ;
 $storage_item__2852 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2852 . "\n" ;
@@ -22760,10 +22617,9 @@ $storage_item__2862 = 'put-into-phrase ' . $storage_item__2863 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 161 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2870 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__phrase_length( ) ;
+# $global_phrase_name_to_match = $storage_item__2870 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__phrase_length( ) ;
 $storage_item__2869 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2869 . "\n" ;
@@ -22775,10 +22631,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 162 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2872 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__phrase_length( ) ;
+# $global_phrase_name_to_match = $storage_item__2872 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__phrase_length( ) ;
 $storage_item__2871 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2871 . "\n" ;
@@ -22856,10 +22711,9 @@ if ( $global_pointer_to_word >= 0 )
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 163 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2883 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__phrase_length( ) ;
+# $global_phrase_name_to_match = $storage_item__2883 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__phrase_length( ) ;
 $storage_item__2882 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2882 . "\n" ;
@@ -22951,10 +22805,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 164 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2889 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__initialize_input_output_files( ) ;
+# $global_phrase_name_to_match = $storage_item__2889 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__initialize_input_output_files( ) ;
 $storage_item__2888 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2888 . "\n" ;
@@ -22966,10 +22819,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 165 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2892 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__input_filename( ) ;
+# $global_phrase_name_to_match = $storage_item__2892 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__input_filename( ) ;
 $storage_item__2891 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2891 . "\n" ;
@@ -23006,10 +22858,9 @@ $storage_item__2890 = 'copy-from-file-to-phrase ' . $storage_item__2891 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 166 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2895 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__compile_source_code_generate_output_results( ) ;
+# $global_phrase_name_to_match = $storage_item__2895 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__compile_source_code_generate_output_results( ) ;
 $storage_item__2894 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2894 . "\n" ;
@@ -23039,10 +22890,9 @@ $storage_item__2896 = 'put-into-phrase ' . $storage_item__2897 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 167 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2900 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__write_results_to_output_file( ) ;
+# $global_phrase_name_to_match = $storage_item__2900 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__write_results_to_output_file( ) ;
 $storage_item__2899 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2899 . "\n" ;
@@ -23054,10 +22904,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 168 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2903 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) ;
+# $global_phrase_name_to_match = $storage_item__2903 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) ;
 $storage_item__2902 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2902 . "\n" ;
@@ -23094,10 +22943,9 @@ $storage_item__2901 = 'write-all-dashrep-definitions-to-file ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 169 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2905 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__check_elapsed_time( ) ;
+# $global_phrase_name_to_match = $storage_item__2905 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__check_elapsed_time( ) ;
 $storage_item__2904 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2904 . "\n" ;
@@ -23118,10 +22966,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 170 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2909 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__run_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2909 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__run_compiler( ) ;
 $storage_item__2908 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2908 . "\n" ;
@@ -23254,10 +23101,9 @@ $storage_item__2921 = 'append-text-no-space ' . $storage_item__2922 . ' ' . $sto
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 171 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2927 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2927 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2926 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2926 . "\n" ;
@@ -23303,10 +23149,9 @@ $storage_item__2924 = 'copy-from-phrase-append-to-file ' . $storage_item__2925 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 172 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2932 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2932 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2931 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2931 . "\n" ;
@@ -23347,10 +23192,9 @@ $storage_item__2929 = 'copy-from-phrase-append-to-file ' . $storage_item__2930 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 173 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2936 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2936 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2935 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2935 . "\n" ;
@@ -23391,10 +23235,9 @@ $storage_item__2933 = 'copy-from-phrase-append-to-file ' . $storage_item__2934 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 174 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2940 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2940 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2939 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2939 . "\n" ;
@@ -23435,10 +23278,9 @@ $storage_item__2937 = 'copy-from-phrase-append-to-file ' . $storage_item__2938 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 175 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2944 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2944 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2943 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2943 . "\n" ;
@@ -23479,10 +23321,9 @@ $storage_item__2941 = 'copy-from-phrase-append-to-file ' . $storage_item__2942 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 176 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2948 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2948 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2947 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2947 . "\n" ;
@@ -23523,10 +23364,9 @@ $storage_item__2945 = 'copy-from-phrase-append-to-file ' . $storage_item__2946 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 177 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2952 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2952 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2951 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2951 . "\n" ;
@@ -23567,10 +23407,9 @@ $storage_item__2949 = 'copy-from-phrase-append-to-file ' . $storage_item__2950 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 178 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2956 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2956 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2955 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2955 . "\n" ;
@@ -23669,10 +23508,9 @@ $storage_item__2963 = 'put-into-phrase ' . $storage_item__2964 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 179 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2968 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_runtime_code_from_interpreter( ) ;
+# $global_phrase_name_to_match = $storage_item__2968 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_runtime_code_from_interpreter( ) ;
 $storage_item__2967 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2967 . "\n" ;
@@ -23684,10 +23522,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 180 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2970 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2970 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2969 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2969 . "\n" ;
@@ -23750,10 +23587,9 @@ $storage_item__2971 = 'copy-text ' . $storage_item__2972 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 181 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2977 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2977 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2976 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2976 . "\n" ;
@@ -23794,10 +23630,9 @@ $storage_item__2974 = 'copy-from-phrase-append-to-file ' . $storage_item__2975 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 182 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2981 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2981 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2980 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2980 . "\n" ;
@@ -23838,10 +23673,9 @@ $storage_item__2978 = 'copy-from-phrase-append-to-file ' . $storage_item__2979 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 183 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2984 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_definition_items( ) ;
+# $global_phrase_name_to_match = $storage_item__2984 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2983 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2983 . "\n" ;
@@ -23853,10 +23687,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 184 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2986 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2986 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2985 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2985 . "\n" ;
@@ -23897,10 +23730,9 @@ $storage_item__2982 = 'copy-append-file-to-file ' . $storage_item__2983 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 185 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2990 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2990 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2989 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2989 . "\n" ;
@@ -23941,10 +23773,9 @@ $storage_item__2987 = 'copy-from-phrase-append-to-file ' . $storage_item__2988 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 186 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2994 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2994 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2993 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2993 . "\n" ;
@@ -23985,10 +23816,9 @@ $storage_item__2991 = 'copy-from-phrase-append-to-file ' . $storage_item__2992 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 187 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2997 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_function_branches( ) ;
+# $global_phrase_name_to_match = $storage_item__2997 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__2996 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2996 . "\n" ;
@@ -24000,10 +23830,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 188 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__2999 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__2999 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__2998 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__2998 . "\n" ;
@@ -24044,10 +23873,9 @@ $storage_item__2995 = 'copy-append-file-to-file ' . $storage_item__2996 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 189 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3003 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3003 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3002 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3002 . "\n" ;
@@ -24088,10 +23916,9 @@ $storage_item__3000 = 'copy-from-phrase-append-to-file ' . $storage_item__3001 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 190 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3007 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3007 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3006 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3006 . "\n" ;
@@ -24132,10 +23959,9 @@ $storage_item__3004 = 'copy-from-phrase-append-to-file ' . $storage_item__3005 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 191 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3010 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_functions_replacement_only( ) ;
+# $global_phrase_name_to_match = $storage_item__3010 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__3009 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3009 . "\n" ;
@@ -24147,10 +23973,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 192 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3012 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3012 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3011 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3011 . "\n" ;
@@ -24191,10 +24016,9 @@ $storage_item__3008 = 'copy-append-file-to-file ' . $storage_item__3009 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 193 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3016 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3016 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3015 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3015 . "\n" ;
@@ -24235,10 +24059,9 @@ $storage_item__3013 = 'copy-from-phrase-append-to-file ' . $storage_item__3014 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 194 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3020 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3020 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3019 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3019 . "\n" ;
@@ -24279,10 +24102,9 @@ $storage_item__3017 = 'copy-from-phrase-append-to-file ' . $storage_item__3018 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 195 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3023 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_all_compiled_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__3023 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3022 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3022 . "\n" ;
@@ -24294,10 +24116,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 196 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3025 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3025 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3024 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3024 . "\n" ;
@@ -24338,10 +24159,9 @@ $storage_item__3021 = 'copy-append-file-to-file ' . $storage_item__3022 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 197 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3029 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3029 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3028 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3028 . "\n" ;
@@ -24382,10 +24202,9 @@ $storage_item__3026 = 'copy-from-phrase-append-to-file ' . $storage_item__3027 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 198 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3033 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3033 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3032 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3032 . "\n" ;
@@ -24426,10 +24245,9 @@ $storage_item__3030 = 'copy-from-phrase-append-to-file ' . $storage_item__3031 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 199 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3037 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3037 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3036 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3036 . "\n" ;
@@ -24470,10 +24288,9 @@ $storage_item__3034 = 'copy-from-phrase-append-to-file ' . $storage_item__3035 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 200 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3041 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3041 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3040 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3040 . "\n" ;
@@ -24514,10 +24331,9 @@ $storage_item__3038 = 'copy-from-phrase-append-to-file ' . $storage_item__3039 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 201 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3045 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3045 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3044 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3044 . "\n" ;
@@ -24558,10 +24374,9 @@ $storage_item__3042 = 'copy-from-phrase-append-to-file ' . $storage_item__3043 .
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 202 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3048 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_standard_runtime_functions( ) ;
+# $global_phrase_name_to_match = $storage_item__3048 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_standard_runtime_functions( ) ;
 $storage_item__3047 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3047 . "\n" ;
@@ -24573,10 +24388,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 203 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3050 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3050 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3049 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3049 . "\n" ;
@@ -24617,10 +24431,9 @@ $storage_item__3046 = 'copy-append-file-to-file ' . $storage_item__3047 . ' ' . 
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 204 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3054 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3054 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3053 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3053 . "\n" ;
@@ -24719,10 +24532,9 @@ $storage_item__3061 = 'put-into-phrase ' . $storage_item__3062 . ' ' . $storage_
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 205 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3066 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_runtime_code_from_interpreter( ) ;
+# $global_phrase_name_to_match = $storage_item__3066 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_runtime_code_from_interpreter( ) ;
 $storage_item__3065 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3065 . "\n" ;
@@ -24734,10 +24546,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 206 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3068 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3068 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3067 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3067 . "\n" ;
@@ -24800,10 +24611,9 @@ $storage_item__3069 = 'copy-text ' . $storage_item__3070 . ' ' . $storage_item__
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 207 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__3075 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__filename_output_results_from_compiler( ) ;
+# $global_phrase_name_to_match = $storage_item__3075 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3074 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__3074 . "\n" ;
@@ -29594,10 +29404,9 @@ my $saved_accumulator_pointer = -1 ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 208 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__4045 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__define_special_strings_that_cannot_be_spelled_in_full( ) ;
+# $global_phrase_name_to_match = $storage_item__4045 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__define_special_strings_that_cannot_be_spelled_in_full( ) ;
 $storage_item__4044 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4044 . "\n" ;
@@ -29609,10 +29418,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 209 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__4047 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__define_special_strings_that_contain_hyphens( ) ;
+# $global_phrase_name_to_match = $storage_item__4047 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__define_special_strings_that_contain_hyphens( ) ;
 $storage_item__4046 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4046 . "\n" ;
@@ -29624,10 +29432,9 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 210 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
-# todo: fix
-$global_phrase_name_to_match = $storage_item__4049 ;
-&function_branch_based_on_phrase_name( ) ;
-# &function_compiled__define_special_strings_that_are_padded_with_spaces( ) ;
+# $global_phrase_name_to_match = $storage_item__4049 ;
+# &function_branch_based_on_phrase_name( ) ;
+&function_compiled__define_special_strings_that_are_padded_with_spaces( ) ;
 $storage_item__4048 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $saved_accumulator_pointer ;
 # print 'result: ' . $storage_item__4048 . "\n" ;
