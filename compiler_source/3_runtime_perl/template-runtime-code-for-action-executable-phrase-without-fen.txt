@@ -1,8 +1,10 @@
 template-runtime-code-for-action-executable-phrase-begin
 
 
+*---
 # $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
 # &function_branch_based_on_phrase_name( ) ;  <new_line>
+---*
 &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ;  <new_line>
 
 

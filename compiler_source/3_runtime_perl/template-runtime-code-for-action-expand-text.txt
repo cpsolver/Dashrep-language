@@ -15,7 +15,11 @@ $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
+
+*---
 # print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+---*
+
 $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>

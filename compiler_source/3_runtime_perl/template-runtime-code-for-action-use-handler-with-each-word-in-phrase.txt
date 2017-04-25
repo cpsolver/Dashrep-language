@@ -19,9 +19,14 @@ template-storage-item-containing-word-list-associated-with-loop = code-get-or-pu
 $local_pointer_to_next_space = -1 ;  <new_line>
 $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;  <new_line>
 
+*---
 # print "length of word list is " . $length_of_text_in_word_list . "\n" ;  <new_line>
+---*
 
+*---
 # start ABABA loop, which has exit in middle of loop  <new_line>
+---*
+
 $local_endless_loop_counter = 0 ;  <new_line>
 $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ;  <new_line>
 while ( 1 == 1 ) {  <new_line>
@@ -35,7 +40,10 @@ if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) {  <new_line
 last ;  <new_line>
 }  <new_line>
 
+*---
 # start a second, inner, ABABA loop, which has exit in middle of loop  <new_line>
+---*
+
 $local_counter_number_of_adjacent_spaces = 0 ;  <new_line>
 while ( 1 == 1 ) {  <new_line>
 
@@ -46,44 +54,58 @@ last ;  <new_line>
 
 $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_space + 1 ) ;  <new_line>
 
+*---
 # print "future space at " . $local_pointer_to_future_space . "\n" ;  <new_line>
+---*
 
+*---
 # exit from second, inner, ABABA loop; if next line is edited, ensure it reaches an end point; otherwise there will be an endless loop  <new_line>
+---*
+
 if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) {  <new_line>
 last ;  <new_line>
 }  <new_line>
 
 $local_pointer_to_next_space = $local_pointer_to_future_space ;  <new_line>
 
-} # end of second, inner, ABABA loop  <new_line>
+}  *--- # end of second, inner, ABABA loop ---*  <new_line>
 
 $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ;  <new_line>
 
+*---
 # print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
+---*
 
 $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_word ) ;  <new_line>
 
+*---
 # print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
+---*
 
 if ( $local_pointer_to_next_space < 0 ) {  <new_line>
 $local_pointer_to_next_space = $length_of_text_in_word_list ;  <new_line>
 }  <new_line>
 
+*---
 # exit from ABABA loop; if next line is edited, ensure it reaches an end point; otherwise there will be an endless loop  <new_line>
+---*
+
 if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) {  <new_line>
 last ;  <new_line>
 }  <new_line>
 
 $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ;  <new_line>
 
+*---
 # print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
 # print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
 # print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
+---*
 
 code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;  <new_line>
 & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new_line>
 
-} # end of ABABA loop  <new_line>
+}  *--- # end of ABABA loop ---*  <new_line>
 
 } else {  <new_line>
 runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>

@@ -1,2 +1,4 @@
+*---
 # print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
+---*
