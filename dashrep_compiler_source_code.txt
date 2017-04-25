@@ -2016,27 +2016,27 @@ template-code-function-branch-part-3:
 ( ) ;
 ----
 template-code-function-external-part-1:
-# sub function_compiled__
+sub function_compiled__
 ----
 template-code-function-external-part-2:
 ( ) {  <new_line>
-# &
+&
 ----
 template-code-function-external-part-3:
 ( ) ;  <new_line>
-# }  <new_line>
+}  <new_line>
 ----
 template-code-function-replacement-only-part-1:
-# sub function_compiled__
+sub function_compiled__
 ----
 template-code-function-replacement-only-part-2:
 ( ) {  <new_line>
-# $global_phrase_name = '
+$global_phrase_name = '
 ----
 template-code-function-replacement-only-part-3:
 ' ;  <new_line>
-# &special_function_do_single_replacement_only( ) ;  <new_line>
-# }  <new_line>
+&special_function_do_single_replacement_only( ) ;  <new_line>
+}  <new_line>
 ----
 template-code-parameter-result-storage-part-1:
 my template-storage-item-prefix
