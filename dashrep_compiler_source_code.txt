@@ -31,6 +31,16 @@ compile-source-code-finish:
 [-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
+
+[-trace-show list-of-converted-dashrep-actions-used-]
+[-copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
+[-copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
+[-trace-show list-of-converted-dashrep-actions-used-]
+
+[-trace-show list-of-unconverted-dashrep-actions-used-]
+[-copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
+[-copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
+[-trace-show list-of-unconverted-dashrep-actions-used-]
 ----
 compile-source-code-generate-output-results:
 [-compile-source-code-initialize-]
@@ -253,7 +263,8 @@ filter-tokens-case-defenn:
 generate-code-for-one-action:
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
 [-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores action-name-with-underscores-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen-]
 *--- reminder: do not modify apostrophes or backslashes here because those characters need to appear in the code ---*
@@ -469,11 +480,13 @@ handle-definition-immediate:
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
 
 [-trace-show phrase-definition-modified-]
 
@@ -631,8 +644,10 @@ handle-token-amenn-case-standard-action:
 
 [-if-no-begin [-yes-or-no-empty-phrase template-runtime-code-for-action-[-action-name-]-]-]
 [-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
+[-append-text action-name list-of-converted-dashrep-actions-used-]
 [-if-else-]
 [-expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase-]
+[-append-text action-name list-of-unconverted-dashrep-actions-used-]
 [-if-end-]
 ----
 handle-token-amenn-case-use-handler-with-each-word-in-phrase:
