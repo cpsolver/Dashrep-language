@@ -12,12 +12,14 @@
 [-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
 
-[-trace-show list-of-converted-dashrep-actions-used-]
+[-copy-words-unique-only list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used-]
+[-copy-words-sort-alphabetic list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used-]
+[-trace-show list-of-special-handled-dashrep-actions-used-]
+
 [-copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
 [-copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
 [-trace-show list-of-converted-dashrep-actions-used-]
 
-[-trace-show list-of-unconverted-dashrep-actions-used-]
 [-copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-trace-show list-of-unconverted-dashrep-actions-used-]
