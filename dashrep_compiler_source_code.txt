@@ -1920,24 +1920,6 @@ code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
 ----
-list-of-template-functions:
-template-function-parameterized-yes-or-no-positive-integer
-template-function-parameterized-yes-or-no-real-number
-template-function-parameterized-normalize-calculated-value
-template-function-parameterized-yes-or-no-phrase-name
-template-function-parameterized-yes-or-no-phrase-definition-not-empty
-template-function-parameterized-yes-or-no-file-name
-template-function-parameterized-get-list-of-words
-
-template-function-point-to-words
-template-function-remove-extra-spaces
-template-function-get-count-of-words
-template-function-get-word-at-position
-template-function-numeric-add
-template-function-numeric-multiply
-template-function-numeric-maximum
-template-function-numeric-minimum
-----
 optional-extra-runtime-functions:
 ----
 optional-import-statements:
@@ -2088,6 +2070,363 @@ template-displayed-list-of-possible-new-executable-phrases:
 #  Possible new executable phrases (not yet declared)  <new_line>
 <new_line>
 # list-of-possible-new-executable-phrases  <new_line>
+----
+template-initialize-global-arrays:
+my %global_dashrep_replacement = ( ) ;  <new_line>
+my %global_replacement_count_for_item_name = ( ) ;  <new_line>
+
+<new_line>
+
+my @global_accumulator = ( ) ;  <new_line>
+$global_accumulator[ 1 ] = '' ;  <new_line>
+my @global_begin_position_for_word = ( ) ;  <new_line>
+$global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
+my @global_length_of_word = ( ) ;  <new_line>
+$global_length_of_word[ 1 ] = 0 ;  <new_line>
+----
+template-initialize-global-variables:
+my $global_yes = 1 ;  <new_line>
+my $global_no = 0 ;  <new_line>
+my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
+my $global_word_to_use_in_handler = '' ;  <new_line>
+my $global_yes_or_no = 0 ;  <new_line>
+my $global_source_text = '' ;  <new_line>
+my $global_target_text = '' ;  <new_line>
+my $global_default_text = '' ;  <new_line>
+my $global_storage_number = 1 ;  <new_line>
+my $global_accumulator_pointer = 1 ;  <new_line>
+my $global_text_expanded_parameters_only = '' ;  <new_line>
+my $global_action_name = '' ;  <new_line>
+my $global_number_of_operands = 0 ;  <new_line>
+my $global_action_operand_one = '' ;  <new_line>
+my $global_action_operand_two = '' ;  <new_line>
+my $global_action_operand_three = '' ;  <new_line>
+my $global_action_operand_four = '' ;  <new_line>
+my $global_action_operand_five = '' ;  <new_line>
+my $global_action_operands_all = '' ;  <new_line>
+my $global_action_result = '' ;  <new_line>
+my $global_numeric_value_first = 0 ;  <new_line>
+my $global_numeric_value_second = 0 ;  <new_line>
+my $global_spaces = '                                                                              ' ;  <new_line>
+my $global_phrase_name = '' ;  <new_line>
+my $global_phrase_name_to_match = '' ;  <new_line>
+my $global_yes_or_no_operand_error = $global_no ;  <new_line>
+my $output_results = '' ;  <new_line>
+<new_line>
+
+my $global_character_pointer = '' ;  <new_line>
+my $global_character_pointer_begin = '' ;  <new_line>
+my $global_character_pointer_end = '' ;  <new_line>
+my $global_length_of_text = '' ;  <new_line>
+my $global_number_of_words = 0 ;  <new_line>
+my $global_word_pointer = '' ;  <new_line>
+my $global_current_word = '' ;  <new_line>
+my $global_calculated_value = '' ;  <new_line>
+my $global_pointer_to_next_space = 0 ;  <new_line>
+my $global_pointer_to_next_word = 0 ;  <new_line>
+my $global_pointer_to_future_space = 0 ;  <new_line>
+my $global_pointer_to_previous_space = 0 ;  <new_line>
+my $global_pointer_to_first_space = 0 ;  <new_line>
+my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
+my $global_concatenated_all_operands = '' ;  <new_line>
+my $global_concatenated_all_operands_modified = '' ;  <new_line>
+my $global_normalized_calculated_value = '' ;  <new_line>
+my $global_pointer_to_word = '' ;  <new_line>
+<new_line>
+
+my $global_action_debug_line = '' ;  <new_line>
+<new_line>
+
+my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
+my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
+<new_line>
+
+my $global_endless_loop_counter = 0 ;  <new_line>
+my $global_endless_loop_counter_limit = 70000 ;  <new_line>
+my $global_time_limit = 1200 ;  # 1200 seconds = 20 minutes  <new_line>
+my $global_starting_time = time ;  <new_line>
+my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
+my $global_nesting_level_of_file_actions = 0 ;  <new_line>
+my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
+<new_line>
+
+*--- variables that are only needed for old interpreter code ---*
+my $global_true = 1 ;  <new_line>
+my $global_false = 0 ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-debug-trace-on-yes-or-no' } = 'no' ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-action-trace-on-yes-or-no' } = 'no' ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
+<new_line>
+
+*--- variables that hide warnings for unused parts of old interpreter code ---*
+
+# my %global_minimum_number_of_operands_for_action ;  <new_line>
+
+$global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = 'no' ;  <new_line>
+my $global_single_action_name ;  <new_line>
+my $global_trace_log ;  <new_line>
+my $global_single_action_operands_all ;  <new_line>
+my %global_required_number_of_operands_for_action ;  <new_line>
+my $global_single_action_operand_one ;  <new_line>
+my $global_single_action_operand_two ;  <new_line>
+my $global_single_action_operand_three ;  <new_line>
+my $global_single_action_operand_four ;  <new_line>
+my $global_single_action_operand_five ;  <new_line>
+my $global_unique_value ;  <new_line>
+my $global_operand_one ;  <new_line>
+my $global_operand_two ;  <new_line>
+my $global_operand_three ;  <new_line>
+my $global_operand_four ;  <new_line>
+my $global_operand_five ;  <new_line>
+my $global_operands_all ;  <new_line>
+my $global_xml_level_number ;  <new_line>
+my $global_ignore_level ;  <new_line>
+my $global_xml_accumulated_sequence_of_tag_names ;  <new_line>
+my @global_xml_tag_at_level_number ;  <new_line>
+my $global_exists_xml_hyphenated_phrase ;  <new_line>
+
+my %global_check_operand_one_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_two_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_three_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_four_is_phrase_name_for_action ;  <new_line>
+
+my %global_check_operand_one_phrase_is_not_empty_for_action ;  <new_line>
+my %global_check_operand_two_phrase_is_not_empty_for_action ;  <new_line>
+my %global_check_operand_three_phrase_is_not_empty_for_action ;  <new_line>
+
+my %global_check_operand_one_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_two_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_three_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_four_is_positive_integer_for_action ;  <new_line>
+
+my %global_check_operand_one_is_real_number_for_action ;  <new_line>
+my %global_check_operand_two_is_real_number_for_action ;  <new_line>
+
+my %global_check_operand_one_is_file_name_for_action ;  <new_line>
+my %global_check_operand_two_is_file_name_for_action ;  <new_line>
+
+my $global_dashrep_text_list_of_phrase_names ;  <new_line>
+my $global_xml_level ;  <new_line>
+----
+template-runtime-code-at-top-if-warning-message:
+print 'Compiler error; for details see warning messages at top of compiler output file.' . "\n" ;  <new_line>
+exit ;  <new_line>
+# All done!  <new_line>
+<new_line>
+----
+template-runtime-code-for-text-storage-position-begin:
+my template-storage-item-prefix current-text-storage-position = '
+----
+template-runtime-code-for-text-storage-position-end:
+' ;
+----
+template-runtime-code-for-word-list-storage-position:
+my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  *--- # stores list of words for loop ---*
+----
+template-runtime-code-one-storage-position-declaration:
+my storage-position-name = '' ;  <new_line>
+----
+template-runtime-code-statement-end-with-new-line:
+;  <new_line>
+----
+template-runtime-code-storage-item-with-pointer:
+template-storage-item-prefix storage-item-pointer
+----
+template-segment-branch-begin:
+# no-space dashes-long-line  <new_line>
+#  Function branching based on phrase name  <new_line>
+#  <new_line>
+<new_line>
+sub function_branch_based_on_phrase_name( ) {  <new_line>
+if ( $global_phrase_name_to_match eq 'start-here' ) {  <new_line>
+&function_compiled__start_here( ) ;
+----
+template-segment-branch-end:
+} elsif ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) {  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ;  <new_line>
+} else {  <new_line>
+if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
+}  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name_to_match ;  <new_line>
+} # end of branching  <new_line>
+return '' ;  <new_line>
+} # end of function_branch_based_on_phrase_name  <new_line>
+<new_line>
+----
+template-segment-definition-items-begin:
+# no-space dashes-long-line  <new_line>
+#  Begin text encountered in definitions  <new_line>
+<new_line>
+----
+template-segment-definition-items-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End text encountered in definitions  <new_line>
+<new_line>
+----
+template-segment-functions-compiled-begin:
+# no-space dashes-long-line  <new_line>
+#  Begin compiled functions  <new_line>
+<new_line>
+----
+template-segment-functions-compiled-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End compiled functions  <new_line>
+<new_line>
+<new_line>
+----
+template-segment-functions-replacement-only-begin:
+# no-space dashes-long-line  <new_line>
+#  Functions that only do simple (single-item) replacement  <new_line>
+#  <new_line>
+<new_line>
+----
+template-segment-functions-replacement-only-end:
+<new_line>
+sub special_function_do_single_replacement_only( ) {  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ;  <new_line>
+} else {  <new_line>
+if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
+}  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name ;  <new_line>
+}  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+<new_line>
+
+<new_line>
+#  End of functions that only do single-item replacement only  <new_line>
+<new_line>
+----
+template-segment-functions-runtime-begin:
+# no-space dashes-long-line  <new_line>
+#  Execute starting/main function  <new_line>
+<new_line>
+
+&initialize_special_phrases( ) ;  <new_line>
+$global_accumulator[ 1 ] = '' ;  <new_line>
+open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
+& no-space function-name-prefix no-space start_here( ) ;  <new_line>
+$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
+
+if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )  <new_line>
+{  <new_line>
+print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;  <new_line>
+print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
+} else {  <new_line>
+print $output_results . "\n" ;  <new_line>
+}  <new_line>
+
+print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
+close ( TRACE_OUT ) ;  <new_line>
+exit ;  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Begin runtime functions  <new_line>
+<new_line>
+----
+template-segment-functions-runtime-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End runtime functions  <new_line>
+<new_line>
+----
+template-segment-functions-runtime-middle:
+# no-space dashes-long-line  <new_line>
+#  Runtime functions from interpreter  <new_line>
+<new_line>
+
+#  DO NOT EDIT THESE COPIES OF THESE FUNCTIONS  <new_line>
+#  Instead, edit the Dashrep interpreter code, and then copy the segments to the appropriate file.  <new_line>
+<new_line>
+----
+template-segment-initialize-begin:
+# no-space dashes-long-line  <new_line>
+#  Declare and initialize global arrays and variables  <new_line>
+<new_line>
+----
+template-segment-initialize-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End of initialize variables  <new_line>
+<new_line>
+----
+template-segment-optional-extra-runtime-functions-begin:
+# no-space dashes-long-line  <new_line>
+#  Begin optional extra runtime functions  <new_line>
+#  <new_line>
+#  Reminder: Only the following Dashrep conversions are done:  <new_line>
+#  * Dashrep comments are removed.  <new_line>
+#  * New line directives in angle brackets are handled.  <new_line>
+#  * Character space directives in angle brackets are replaced.  <new_line>
+#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
+<new_line>
+----
+template-segment-optional-extra-runtime-functions-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End optional extra runtime functions  <new_line>
+<new_line>
+----
+template-segment-optional-import-statements-begin:
+# no-space dashes-long-line  <new_line>
+#  Dashrep compiler output  <new_line>
+<new_line>
+# object-code-copyright-notice  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Begin optional import statements  <new_line>
+#  <new_line>
+#  Reminder: Only the following Dashrep conversions are done:  <new_line>
+#  * Dashrep comments are removed.  <new_line>
+#  * New line directives in angle brackets are handled.  <new_line>
+#  * Character space directives in angle brackets are replaced.  <new_line>
+#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
+<new_line>
+----
+template-segment-optional-import-statements-end:
+<new_line>
+<new_line>
+# no-space dashes-long-line  <new_line>
+#  End optional import statements  <new_line>
+<new_line>
+----
+template-storage-item-containing-word-list-associated-with-loop:
+template-storage-item-prefix storage-position-for-word-list-associated-with-loop
+----
+template-storage-item-prefix:
+$storage_item__ no-space
+----
+list-of-template-functions:
+template-function-parameterized-yes-or-no-positive-integer
+template-function-parameterized-yes-or-no-real-number
+template-function-parameterized-normalize-calculated-value
+template-function-parameterized-yes-or-no-phrase-name
+template-function-parameterized-yes-or-no-phrase-definition-not-empty
+template-function-parameterized-yes-or-no-file-name
+template-function-parameterized-get-list-of-words
+
+template-function-point-to-words
+template-function-remove-extra-spaces
+template-function-get-count-of-words
+template-function-get-word-at-position
+template-function-numeric-add
+template-function-numeric-multiply
+template-function-numeric-maximum
+template-function-numeric-minimum
 ----
 template-function-get-count-of-words:
 # no-space dashes-long-line  <new_line>
@@ -2522,149 +2861,6 @@ $global_target_text = $global_default_text ;  <new_line>
 return $global_default_text ;  <new_line>
 }  <new_line>
 # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>
-----
-template-initialize-global-arrays:
-my %global_dashrep_replacement = ( ) ;  <new_line>
-my %global_replacement_count_for_item_name = ( ) ;  <new_line>
-
-<new_line>
-
-my @global_accumulator = ( ) ;  <new_line>
-$global_accumulator[ 1 ] = '' ;  <new_line>
-my @global_begin_position_for_word = ( ) ;  <new_line>
-$global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
-my @global_length_of_word = ( ) ;  <new_line>
-$global_length_of_word[ 1 ] = 0 ;  <new_line>
-----
-template-initialize-global-variables:
-my $global_yes = 1 ;  <new_line>
-my $global_no = 0 ;  <new_line>
-my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
-my $global_word_to_use_in_handler = '' ;  <new_line>
-my $global_yes_or_no = 0 ;  <new_line>
-my $global_source_text = '' ;  <new_line>
-my $global_target_text = '' ;  <new_line>
-my $global_default_text = '' ;  <new_line>
-my $global_storage_number = 1 ;  <new_line>
-my $global_accumulator_pointer = 1 ;  <new_line>
-my $global_text_expanded_parameters_only = '' ;  <new_line>
-my $global_action_name = '' ;  <new_line>
-my $global_number_of_operands = 0 ;  <new_line>
-my $global_action_operand_one = '' ;  <new_line>
-my $global_action_operand_two = '' ;  <new_line>
-my $global_action_operand_three = '' ;  <new_line>
-my $global_action_operand_four = '' ;  <new_line>
-my $global_action_operand_five = '' ;  <new_line>
-my $global_action_operands_all = '' ;  <new_line>
-my $global_action_result = '' ;  <new_line>
-my $global_numeric_value_first = 0 ;  <new_line>
-my $global_numeric_value_second = 0 ;  <new_line>
-my $global_spaces = '                                                                              ' ;  <new_line>
-my $global_phrase_name = '' ;  <new_line>
-my $global_phrase_name_to_match = '' ;  <new_line>
-my $global_yes_or_no_operand_error = $global_no ;  <new_line>
-my $output_results = '' ;  <new_line>
-<new_line>
-
-my $global_character_pointer = '' ;  <new_line>
-my $global_character_pointer_begin = '' ;  <new_line>
-my $global_character_pointer_end = '' ;  <new_line>
-my $global_length_of_text = '' ;  <new_line>
-my $global_number_of_words = 0 ;  <new_line>
-my $global_word_pointer = '' ;  <new_line>
-my $global_current_word = '' ;  <new_line>
-my $global_calculated_value = '' ;  <new_line>
-my $global_pointer_to_next_space = 0 ;  <new_line>
-my $global_pointer_to_next_word = 0 ;  <new_line>
-my $global_pointer_to_future_space = 0 ;  <new_line>
-my $global_pointer_to_previous_space = 0 ;  <new_line>
-my $global_pointer_to_first_space = 0 ;  <new_line>
-my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
-my $global_concatenated_all_operands = '' ;  <new_line>
-my $global_concatenated_all_operands_modified = '' ;  <new_line>
-my $global_normalized_calculated_value = '' ;  <new_line>
-my $global_pointer_to_word = '' ;  <new_line>
-<new_line>
-
-my $global_action_debug_line = '' ;  <new_line>
-<new_line>
-
-my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
-my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
-<new_line>
-
-my $global_endless_loop_counter = 0 ;  <new_line>
-my $global_endless_loop_counter_limit = 70000 ;  <new_line>
-my $global_time_limit = 1200 ;  # 1200 seconds = 20 minutes  <new_line>
-my $global_starting_time = time ;  <new_line>
-my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
-my $global_nesting_level_of_file_actions = 0 ;  <new_line>
-my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
-<new_line>
-
-*--- variables that are only needed for old interpreter code ---*
-my $global_true = 1 ;  <new_line>
-my $global_false = 0 ;  <new_line>
-$global_dashrep_replacement{ 'dashrep-debug-trace-on-yes-or-no' } = 'no' ;  <new_line>
-$global_dashrep_replacement{ 'dashrep-action-trace-on-yes-or-no' } = 'no' ;  <new_line>
-$global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
-<new_line>
-
-*--- variables that hide warnings for unused parts of old interpreter code ---*
-
-# my %global_minimum_number_of_operands_for_action ;  <new_line>
-
-$global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = 'no' ;  <new_line>
-my $global_single_action_name ;  <new_line>
-my $global_trace_log ;  <new_line>
-my $global_single_action_operands_all ;  <new_line>
-my %global_required_number_of_operands_for_action ;  <new_line>
-my $global_single_action_operand_one ;  <new_line>
-my $global_single_action_operand_two ;  <new_line>
-my $global_single_action_operand_three ;  <new_line>
-my $global_single_action_operand_four ;  <new_line>
-my $global_single_action_operand_five ;  <new_line>
-my $global_unique_value ;  <new_line>
-my $global_operand_one ;  <new_line>
-my $global_operand_two ;  <new_line>
-my $global_operand_three ;  <new_line>
-my $global_operand_four ;  <new_line>
-my $global_operand_five ;  <new_line>
-my $global_operands_all ;  <new_line>
-my $global_xml_level_number ;  <new_line>
-my $global_ignore_level ;  <new_line>
-my $global_xml_accumulated_sequence_of_tag_names ;  <new_line>
-my @global_xml_tag_at_level_number ;  <new_line>
-my $global_exists_xml_hyphenated_phrase ;  <new_line>
-
-my %global_check_operand_one_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_two_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_three_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_four_is_phrase_name_for_action ;  <new_line>
-
-my %global_check_operand_one_phrase_is_not_empty_for_action ;  <new_line>
-my %global_check_operand_two_phrase_is_not_empty_for_action ;  <new_line>
-my %global_check_operand_three_phrase_is_not_empty_for_action ;  <new_line>
-
-my %global_check_operand_one_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_two_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_three_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_four_is_positive_integer_for_action ;  <new_line>
-
-my %global_check_operand_one_is_real_number_for_action ;  <new_line>
-my %global_check_operand_two_is_real_number_for_action ;  <new_line>
-
-my %global_check_operand_one_is_file_name_for_action ;  <new_line>
-my %global_check_operand_two_is_file_name_for_action ;  <new_line>
-
-my $global_dashrep_text_list_of_phrase_names ;  <new_line>
-my $global_xml_level ;  <new_line>
-----
-template-runtime-code-at-top-if-warning-message:
-print 'Compiler error; for details see warning messages at top of compiler output file.' . "\n" ;  <new_line>
-exit ;  <new_line>
-# All done!  <new_line>
-<new_line>
 ----
 template-runtime-code-for-action-clear-phrase:
 template-runtime-code-for-every-action-begin
@@ -3245,18 +3441,6 @@ template-runtime-code-for-every-action-end:
 # end of action <dashrep_placeholder_action_name><new_line>
 ---*
 ----
-template-runtime-code-for-text-storage-position-begin:
-my template-storage-item-prefix current-text-storage-position = '
-----
-template-runtime-code-for-text-storage-position-end:
-' ;
-----
-template-runtime-code-for-word-list-storage-position:
-my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  *--- # stores list of words for loop ---*
-----
-template-runtime-code-one-storage-position-declaration:
-my storage-position-name = '' ;  <new_line>
-----
 template-runtime-code-standard-action-with-minimum-operand-count:
 template-runtime-code-for-every-action-begin
 
@@ -3286,188 +3470,4 @@ runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtim
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-----
-template-runtime-code-statement-end-with-new-line:
-;  <new_line>
-----
-template-runtime-code-storage-item-with-pointer:
-template-storage-item-prefix storage-item-pointer
-----
-template-segment-branch-begin:
-# no-space dashes-long-line  <new_line>
-#  Function branching based on phrase name  <new_line>
-#  <new_line>
-<new_line>
-sub function_branch_based_on_phrase_name( ) {  <new_line>
-if ( $global_phrase_name_to_match eq 'start-here' ) {  <new_line>
-&function_compiled__start_here( ) ;
-----
-template-segment-branch-end:
-} elsif ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) {  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ;  <new_line>
-} else {  <new_line>
-if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
-}  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name_to_match ;  <new_line>
-} # end of branching  <new_line>
-return '' ;  <new_line>
-} # end of function_branch_based_on_phrase_name  <new_line>
-<new_line>
-----
-template-segment-definition-items-begin:
-# no-space dashes-long-line  <new_line>
-#  Begin text encountered in definitions  <new_line>
-<new_line>
-----
-template-segment-definition-items-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End text encountered in definitions  <new_line>
-<new_line>
-----
-template-segment-functions-compiled-begin:
-# no-space dashes-long-line  <new_line>
-#  Begin compiled functions  <new_line>
-<new_line>
-----
-template-segment-functions-compiled-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End compiled functions  <new_line>
-<new_line>
-<new_line>
-----
-template-segment-functions-replacement-only-begin:
-# no-space dashes-long-line  <new_line>
-#  Functions that only do simple (single-item) replacement  <new_line>
-#  <new_line>
-<new_line>
-----
-template-segment-functions-replacement-only-end:
-<new_line>
-sub special_function_do_single_replacement_only( ) {  <new_line>
-if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ;  <new_line>
-} else {  <new_line>
-if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
-}  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name ;  <new_line>
-}  <new_line>
-return '' ;  <new_line>
-}  <new_line>
-<new_line>
-
-<new_line>
-#  End of functions that only do single-item replacement only  <new_line>
-<new_line>
-----
-template-segment-functions-runtime-begin:
-# no-space dashes-long-line  <new_line>
-#  Execute starting/main function  <new_line>
-<new_line>
-
-&initialize_special_phrases( ) ;  <new_line>
-$global_accumulator[ 1 ] = '' ;  <new_line>
-open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
-& no-space function-name-prefix no-space start_here( ) ;  <new_line>
-$output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
-
-if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) )  <new_line>
-{  <new_line>
-print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;  <new_line>
-print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
-} else {  <new_line>
-print $output_results . "\n" ;  <new_line>
-}  <new_line>
-
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
-exit ;  <new_line>
-<new_line>
-<new_line>
-
-# no-space dashes-long-line  <new_line>
-#  Begin runtime functions  <new_line>
-<new_line>
-----
-template-segment-functions-runtime-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End runtime functions  <new_line>
-<new_line>
-----
-template-segment-functions-runtime-middle:
-# no-space dashes-long-line  <new_line>
-#  Runtime functions from interpreter  <new_line>
-<new_line>
-
-#  DO NOT EDIT THESE COPIES OF THESE FUNCTIONS  <new_line>
-#  Instead, edit the Dashrep interpreter code, and then copy the segments to the appropriate file.  <new_line>
-<new_line>
-----
-template-segment-initialize-begin:
-# no-space dashes-long-line  <new_line>
-#  Declare and initialize global arrays and variables  <new_line>
-<new_line>
-----
-template-segment-initialize-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End of initialize variables  <new_line>
-<new_line>
-----
-template-segment-optional-extra-runtime-functions-begin:
-# no-space dashes-long-line  <new_line>
-#  Begin optional extra runtime functions  <new_line>
-#  <new_line>
-#  Reminder: Only the following Dashrep conversions are done:  <new_line>
-#  * Dashrep comments are removed.  <new_line>
-#  * New line directives in angle brackets are handled.  <new_line>
-#  * Character space directives in angle brackets are replaced.  <new_line>
-#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
-<new_line>
-----
-template-segment-optional-extra-runtime-functions-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End optional extra runtime functions  <new_line>
-<new_line>
-----
-template-segment-optional-import-statements-begin:
-# no-space dashes-long-line  <new_line>
-#  Dashrep compiler output  <new_line>
-<new_line>
-# object-code-copyright-notice  <new_line>
-<new_line>
-<new_line>
-
-# no-space dashes-long-line  <new_line>
-#  Begin optional import statements  <new_line>
-#  <new_line>
-#  Reminder: Only the following Dashrep conversions are done:  <new_line>
-#  * Dashrep comments are removed.  <new_line>
-#  * New line directives in angle brackets are handled.  <new_line>
-#  * Character space directives in angle brackets are replaced.  <new_line>
-#  * Multiple adjacent spaces are compressed to a single space.  <new_line>
-<new_line>
-----
-template-segment-optional-import-statements-end:
-<new_line>
-<new_line>
-# no-space dashes-long-line  <new_line>
-#  End optional import statements  <new_line>
-<new_line>
-----
-template-storage-item-containing-word-list-associated-with-loop:
-template-storage-item-prefix storage-position-for-word-list-associated-with-loop
-----
-template-storage-item-prefix:
-$storage_item__ no-space
 ----
