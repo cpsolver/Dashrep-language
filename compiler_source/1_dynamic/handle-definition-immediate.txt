@@ -4,11 +4,13 @@
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-new-line-in-brackets-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
 
 [-trace-show phrase-definition-modified-]
 
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-new-line-in-brackets-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special-]
+[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
 
 [-trace-show phrase-definition-modified-]
 

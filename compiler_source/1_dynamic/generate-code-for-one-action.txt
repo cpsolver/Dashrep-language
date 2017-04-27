@@ -1,6 +1,7 @@
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
 [-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores action-name-with-underscores-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special-]
+[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen-]
 *--- reminder: do not modify apostrophes or backslashes here because those characters need to appear in the code ---*
