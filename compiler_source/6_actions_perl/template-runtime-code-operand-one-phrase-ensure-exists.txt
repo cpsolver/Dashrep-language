@@ -1,4 +1,0 @@
-if ( not( exists( $global_dashrep_replacement{ $global_operand_one } ) ) )  <new_line>
-{  <new_line>
-$global_dashrep_replacement{ $global_operand_one } = "" ;  <new_line>
-}  <new_line>
