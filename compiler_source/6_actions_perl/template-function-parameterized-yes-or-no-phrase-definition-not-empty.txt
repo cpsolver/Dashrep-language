@@ -11,6 +11,12 @@ return $global_no ;  <new_line>
 }  <new_line>
 
 if ( $global_dashrep_replacement{ $local_text } =~ /[^ ]/ ) {  <new_line>
+
+*--- If the phrase is not defined, define it as empty ---*
+if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+
 return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
