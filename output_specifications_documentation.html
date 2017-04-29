@@ -331,11 +331,11 @@
 
 
 <h3 id="get-word-at-position">get-word-at-position</h3>
-<p>This action supplies a word that is contained at the specified <b><i>word</i></b> position (not character position) within the second phrase.&nbsp; The word position is supplied as an integer number.&nbsp; The word positions are numbered starting at 1 as the first word position.&nbsp; Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. Example: If the first phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> and the second operand is <b><i>2</i></b> then the supplied value is <b><i>dolphin</i></b>.</p>
+<p>This action supplies a word that is contained at the specified <b><i>word</i></b> position (not character position) within the second phrase.&nbsp; The word position is supplied as an integer number.&nbsp; The word positions are numbered starting with 1 at the first word position.&nbsp; Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. Example: If the first phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> and the second operand is <b><i>2</i></b> then the supplied value is <b><i>dolphin</i></b>.</p>
 
 
 <h3 id="get-position-of-word">get-position-of-word</h3>
-<p>This action searches for a specified word within text that contains the space-delimited word, and supplies the <b>word</b> position (not character position) of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The word positions are numbered starting at 1 as the first word position.&nbsp; The supplied word is the word in the first phrase. Example: If the first phrase contains the word <b><i>dolphin</i></b> and the second phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> then the supplied value is <b><i>2</i></b>.</p>
+<p>This action searches for a specified word within text that contains the space-delimited word, and supplies the <b>word</b> position (not character position) of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The word positions are numbered starting with 1 at the first word position.&nbsp; The supplied word is the word in the first phrase. Example: If the first phrase contains the word <b><i>dolphin</i></b> and the second phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> then the supplied value is <b><i>2</i></b>.</p>
 
 
 <h3 id="copy-word-at-position">copy-word-at-position</h3>
@@ -343,7 +343,7 @@
 
 
 <h3 id="copy-words-from-position-to-position">copy-words-from-position-to-position</h3>
-<p>This action gets the space-delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter.&nbsp; The word positions are numbered starting at 1 the beginning.&nbsp; If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase).&nbsp; The first two phrase names can be the same.</p>
+<p>This action gets the space-delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase).&nbsp; The first two phrase names can be the same.</p>
 
 
 <h2>List-manipulation phrases</h2>
@@ -389,6 +389,10 @@
 <p>This action gets the space-delimited words in the first phrase, and reverses their order (sequence), and puts those reverse-ordered words into the second phrase.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>dolphin whale octopus</i></b> then the second phrase will contain <b><i>octopus whale dolphin</i></b>.</p>
 
 
+<h3 id="copy-words-at-skip-interval">copy-words-at-skip-interval</h3>
+<p>This action copies some space-delimited words from the first phrase to the second phrase using the skip interval specified by the integer number in the third phrase.&nbsp; The first word is always copied, unless the first phrase is empty.&nbsp; The skip interval is the distance between copied words.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>1 2 3 4 5 6 7 8</i></b> and the third phrase contains <b><i>2</i></b> then the second phrase will contain <b><i>1 3 5 7</i></b>.</p>
+
+
 <h3 id="generate-counts-from-integer-to-integer">generate-counts-from-integer-to-integer</h3>
 <p>This action generates a list of integers and puts them into the definition of the third phrase.&nbsp; The supplied integers indicate the starting and ending values. </p> <p> Example: <b><i>generate-counts-from-integer-to-integer 1 10 one-to-ten</i></b> defines the phrase <b><i>one-to-ten</i></b> as <b><i>1 2 3 4 5 6 7 8 9 10</i></b>.</p>
 
@@ -409,7 +413,7 @@
 
 
 <h3 id="get-characters-from-position-to-position">get-characters-from-position-to-position</h3>
-<p>This action gets the characters from the specified phrase starting at the position indicated by the first number, and ending at the position indicated by the second number.&nbsp; The character positions are numbered starting at 1 in the first character position.&nbsp; If the second number is greater than the number of characters, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many characters are in the phrase).</p>
+<p>This action gets the characters from the specified phrase starting at the position indicated by the first number, and ending at the position indicated by the second number.&nbsp; The character positions are numbered starting with 1 at the first character position.&nbsp; If the second number is greater than the number of characters, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many characters are in the phrase).</p>
 
 
 <h3 id="copy-characters-from-position-to-position">copy-characters-from-position-to-position</h3>
@@ -452,7 +456,7 @@
 
 
 <h3 id="get-position-of-matching-text">get-position-of-matching-text</h3>
-<p>This action searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The character positions are numbered starting at 1 in the first character position.</p>
+<p>This action searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The character positions are numbered starting with 1 at the first character position.</p>
 
 
 <h3 id="copy-and-replace">copy-and-replace</h3>
@@ -464,15 +468,15 @@
 
 
 <h3 id="generate-positions-of-delimiter">generate-positions-of-delimiter</h3>
-<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting at 1 in the first character position, and the numbers indicate the position of the first character in the matching text.</p>
+<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
 
 
 <h3 id="generate-positions-of-listed-words">generate-positions-of-listed-words</h3>
-<p>This action searches for any of the space-delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches.&nbsp; The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match.&nbsp; If there is no match, the generated list is empty.&nbsp; The character positions are numbered starting at 1 in the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text. </p> <p> Example: If the first phrase contains <b><i>fish bird</i></b> and the second phrase contains <b><i>birds songbird fish clownfish</i></b> then the third phrase will contain <b><i>1 4 11 14 16 19 26 29</i></b>.</p>
+<p>This action searches for any of the space-delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches.&nbsp; The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match.&nbsp; If there is no match, the generated list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text. </p> <p> Example: If the first phrase contains <b><i>fish bird</i></b> and the second phrase contains <b><i>birds songbird fish clownfish</i></b> then the third phrase will contain <b><i>1 4 11 14 16 19 26 29</i></b>.</p>
 
 
 <h3 id="generate-positions-of-first-matching-delimiter-after-listed-positions">generate-positions-of-first-matching-delimiter-after-listed-positions</h3>
-<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, but starts each search at the positions listed in the third phrase, and only finds the first match after that position, and puts into the fourth phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting at 1 in the first character position, and the numbers indicate the position of the first character in the matching text.</p>
+<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, but starts each search at the positions listed in the third phrase, and only finds the first match after that position, and puts into the fourth phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
 
 
 <h2>Time-related phrases</h2>
