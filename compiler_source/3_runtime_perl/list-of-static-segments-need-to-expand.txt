@@ -52,5 +52,3 @@ code-compiled-function-part-6
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
-runtime-code-operand-one-phrase-ensure-exists
-runtime-code-operand-one-phrase-append-space-if-not-empty
