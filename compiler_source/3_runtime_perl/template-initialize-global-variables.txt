@@ -5,6 +5,7 @@ my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_yes_or_no = 0 ;  <new_line>
 my $global_source_text = '' ;  <new_line>
 my $global_target_text = '' ;  <new_line>
+my $global_temporary_text = '' ;  <new_line>
 my $global_default_text = '' ;  <new_line>
 my $global_storage_number = 1 ;  <new_line>
 my $global_accumulator_pointer = 1 ;  <new_line>
