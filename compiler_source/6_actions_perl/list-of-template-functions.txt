@@ -15,3 +15,5 @@ template-function-numeric-add
 template-function-numeric-multiply
 template-function-numeric-maximum
 template-function-numeric-minimum
+template-function-handle-endless-loop-encountered
+template-function-handle-time-limit-exceeded

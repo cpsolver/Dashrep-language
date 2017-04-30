@@ -1,3 +1,5 @@
 optional-import-statements
 optional-extra-runtime-functions
 list-of-functions-in-optional-code
+dashrep-time-limit
+dashrep-endless-loop-counter-limit
