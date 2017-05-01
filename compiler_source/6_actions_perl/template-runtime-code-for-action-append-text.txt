@@ -7,7 +7,6 @@ $global_number_of_operands = number-of-operands ;  <new_line>
 needed-operand-checks
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ;  <new_line>
 $global_target_text = runtime-code-for-operand-number-two ;  <new_line>
 
