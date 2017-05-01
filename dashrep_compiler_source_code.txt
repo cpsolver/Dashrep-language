@@ -3023,33 +3023,16 @@ return $global_default_text ;  <new_line>
 # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>
 ----
 template-runtime-code-for-action-append-new-line:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "\n" ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'append-new-line ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-append-text:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ;  <new_line>
 $global_target_text = runtime-code-for-operand-number-two ;  <new_line>
 
@@ -3059,11 +3042,8 @@ $global_dashrep_replacement{ $global_target_text } .= ' ' ;  <new_line>
 
 $global_dashrep_replacement{ $global_target_text } .= $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'append-text ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-clear-phrase:
 template-runtime-code-for-every-action-begin
@@ -3647,6 +3627,24 @@ template-runtime-code-for-every-action-end:
 # end of action <dashrep_placeholder_action_name><new_line>
 ---*
 ----
+template-runtime-code-standard-action-begin:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+----
+template-runtime-code-standard-action-end:
+} else {  <new_line>
+runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-standard-action-with-minimum-operand-count:
 template-runtime-code-for-every-action-begin
 
@@ -3657,23 +3655,15 @@ runtime-code-storage-item-result = $global_target_text ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-action:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
 $global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_number_of_operands = number-of-operands ;  <new_line>
 $global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
