@@ -1891,6 +1891,9 @@ $global_dashrep_replacement{
 code-get-or-put-phrase-definition-end:
 }
 ----
+code-not-equals:
+!=
+----
 function-name-prefix:
 function_compiled__
 ----
@@ -1978,7 +1981,7 @@ $global_yes_or_no_operand_error = $global_yes ;  <new_line>
 }  <new_line>
 ----
 runtime-code-check-operand-count-before-number:
-if ( $global_number_of_operands !=
+if ( number-of-operands code-not-equals
 ----
 runtime-code-check-operand-end:
 ) ;  <new_line>
@@ -2524,24 +2527,6 @@ template-function-numeric-minimum
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
 ----
-new-template-runtime-code-for-action-append-text-no-space:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-$global_dashrep_replacement{ runtime-code-for-operand-number-two } .= runtime-code-for-operand-number-one ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'append-text-no-space ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
 template-function-get-count-of-words:
 # no-space dashes-long-line  <new_line>
 # function__get_count_of_words  <new_line>
@@ -3027,6 +3012,28 @@ template-runtime-code-standard-action-begin
 
 $global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "\n" ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-append-text-no-space:
+template-runtime-code-standard-action-begin
+
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+
+*---
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } .= runtime-code-for-operand-number-one ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+---*
+
 
 template-runtime-code-standard-action-end
 ----
@@ -3640,7 +3647,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 ----
 template-runtime-code-standard-action-end:
 } else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+runtime-code-storage-item-result = ' <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
