@@ -7183,65 +7183,65 @@ $global_dashrep_replacement{ $storage_item__4965 } = $storage_item__4966 ;
 my $storage_item__4967 = 'new-template-runtime-code-for-action-append-text-no-space' ;
 my $storage_item__4968 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $text_to_append = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $text_to_append =~ s/^ +//s ; <new_line> $text_to_append =~ s/ +$//s ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end .= $text_to_append ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__4967 } = $storage_item__4968 ;
-my $storage_item__4969 = 'new-template-runtime-code-for-action-append-text' ;
-my $storage_item__4970 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize needed-operand-checks if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> # print "at append text 1: " . $global_dashrep_replacement{ $global_target_text } . " + " . $global_dashrep_replacement{ runtime-code-for-operand-number-one } . "' . '\\' . 'n" ; <new_line> if ( $global_dashrep_replacement{ $global_target_text } ne ' . "'" . "'" . ' ) { <new_line> $global_dashrep_replacement{ $global_target_text } .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_dashrep_replacement{ $global_target_text } .= $global_source_text ; <new_line> # print "at append text 2: " . $global_dashrep_replacement{ $global_target_text } . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'append-text ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__4969 = 'template-function-get-count-of-words' ;
+my $storage_item__4970 = '# no-space dashes-long-line <new_line> # function__get_count_of_words <new_line> # <new_line> sub function__get_count_of_words( ) { <new_line> &function__point_to_words( ) ; <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_number_of_words . ' . "'" . "'" . ' ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4969 } = $storage_item__4970 ;
-my $storage_item__4971 = 'template-function-get-count-of-words' ;
-my $storage_item__4972 = '# no-space dashes-long-line <new_line> # function__get_count_of_words <new_line> # <new_line> sub function__get_count_of_words( ) { <new_line> &function__point_to_words( ) ; <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_number_of_words . ' . "'" . "'" . ' ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4971 = 'template-function-get-word-at-position' ;
+my $storage_item__4972 = '# no-space dashes-long-line <new_line> # function__get_word_at_position <new_line> # <new_line> sub function__get_word_at_position( ) { <new_line> $global_default_text = ' . "'" . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text if ( $global_number_of_words < $global_word_pointer ) { <new_line> $global_word_pointer = $global_number_of_words ; <new_line> } <new_line> $global_target_text = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4971 } = $storage_item__4972 ;
-my $storage_item__4973 = 'template-function-get-word-at-position' ;
-my $storage_item__4974 = '# no-space dashes-long-line <new_line> # function__get_word_at_position <new_line> # <new_line> sub function__get_word_at_position( ) { <new_line> $global_default_text = ' . "'" . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text if ( $global_number_of_words < $global_word_pointer ) { <new_line> $global_word_pointer = $global_number_of_words ; <new_line> } <new_line> $global_target_text = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4973 = 'template-function-numeric-add' ;
+my $storage_item__4974 = '# no-space dashes-long-line <new_line> # function__numeric_add <new_line> # <new_line> sub function__numeric_add( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 0 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> $global_calculated_value = $global_calculated_value + $global_current_word + 0 ; <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4973 } = $storage_item__4974 ;
-my $storage_item__4975 = 'template-function-numeric-add' ;
-my $storage_item__4976 = '# no-space dashes-long-line <new_line> # function__numeric_add <new_line> # <new_line> sub function__numeric_add( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 0 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> $global_calculated_value = $global_calculated_value + $global_current_word + 0 ; <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4975 = 'template-function-numeric-maximum' ;
+my $storage_item__4976 = '# no-space dashes-long-line <new_line> # function__numeric_maximum <new_line> # <new_line> sub function__numeric_maximum( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = -999999999999 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> if ( ( $global_current_word + 0 ) > $global_calculated_value ) { <new_line> $global_calculated_value = ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4975 } = $storage_item__4976 ;
-my $storage_item__4977 = 'template-function-numeric-maximum' ;
-my $storage_item__4978 = '# no-space dashes-long-line <new_line> # function__numeric_maximum <new_line> # <new_line> sub function__numeric_maximum( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = -999999999999 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> if ( ( $global_current_word + 0 ) > $global_calculated_value ) { <new_line> $global_calculated_value = ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4977 = 'template-function-numeric-minimum' ;
+my $storage_item__4978 = '# no-space dashes-long-line <new_line> # function__numeric_minimum <new_line> # <new_line> sub function__numeric_minimum( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 999999999999 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> if ( ( $global_current_word + 0 ) < $global_calculated_value ) { <new_line> $global_calculated_value = ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4977 } = $storage_item__4978 ;
-my $storage_item__4979 = 'template-function-numeric-minimum' ;
-my $storage_item__4980 = '# no-space dashes-long-line <new_line> # function__numeric_minimum <new_line> # <new_line> sub function__numeric_minimum( ) { <new_line> $global_default_text = ' . "'" . '0' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 999999999999 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> if ( ( $global_current_word + 0 ) < $global_calculated_value ) { <new_line> $global_calculated_value = ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4979 = 'template-function-numeric-multiply' ;
+my $storage_item__4980 = '# no-space dashes-long-line <new_line> # function__numeric_multiply <new_line> # <new_line> sub function__numeric_multiply( ) { <new_line> $global_default_text = ' . "'" . '1' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 1 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> $global_calculated_value = $global_calculated_value * ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4979 } = $storage_item__4980 ;
-my $storage_item__4981 = 'template-function-numeric-multiply' ;
-my $storage_item__4982 = '# no-space dashes-long-line <new_line> # function__numeric_multiply <new_line> # <new_line> sub function__numeric_multiply( ) { <new_line> $global_default_text = ' . "'" . '1' . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_calculated_value = 1 ; <new_line> for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) { <new_line> $global_calculated_value = $global_calculated_value * ( $global_current_word + 0 ) ; <new_line> } <new_line> } <new_line> $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__4981 = 'template-function-parameterized-get-list-of-words' ;
+my $storage_item__4982 = '# no-space dashes-long-line <new_line> # function_parameterized__get_list_of_words <new_line> <new_line> sub function_parameterized__get_list_of_words( ) { <new_line> my $local_text ; <new_line> my @list_of_operands ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /[^ ]/ ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( $local_text =~ /[' . '\\' . 'n' . '\\' . 'r' . '\\' . 't]/ ) { <new_line> $local_text =~ s/[' . '\\' . 'n' . '\\' . 'r' . '\\' . 't]/ /sg ; <new_line> } <new_line> if ( $local_text =~ /^ / ) { <new_line> $local_text =~ s/^ +// ; <new_line> } <new_line> if ( $local_text =~ / $/ ) { <new_line> $local_text =~ s/ +$// ; <new_line> } <new_line> @list_of_operands = split( / +/ , $local_text ) ; <new_line> return @list_of_operands ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4981 } = $storage_item__4982 ;
-my $storage_item__4983 = 'template-function-parameterized-get-list-of-words' ;
-my $storage_item__4984 = '# no-space dashes-long-line <new_line> # function_parameterized__get_list_of_words <new_line> <new_line> sub function_parameterized__get_list_of_words( ) { <new_line> my $local_text ; <new_line> my @list_of_operands ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /[^ ]/ ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( $local_text =~ /[' . '\\' . 'n' . '\\' . 'r' . '\\' . 't]/ ) { <new_line> $local_text =~ s/[' . '\\' . 'n' . '\\' . 'r' . '\\' . 't]/ /sg ; <new_line> } <new_line> if ( $local_text =~ /^ / ) { <new_line> $local_text =~ s/^ +// ; <new_line> } <new_line> if ( $local_text =~ / $/ ) { <new_line> $local_text =~ s/ +$// ; <new_line> } <new_line> @list_of_operands = split( / +/ , $local_text ) ; <new_line> return @list_of_operands ; <new_line> template-function-segment-ending' ;
+my $storage_item__4983 = 'template-function-parameterized-normalize-calculated-value' ;
+my $storage_item__4984 = '# no-space dashes-long-line <new_line> # function_parameterized__normalize_calculated_value <new_line> <new_line> sub function_parameterized__normalize_calculated_value( ) { <new_line> $global_calculated_value = $_[ 0 ] ; <new_line> if ( $global_calculated_value == 0 ) { <new_line> $global_normalized_calculated_value = ' . "'" . '0' . "'" . ' ; <new_line> } else { <new_line> $global_normalized_calculated_value = sprintf( "%f" , $global_calculated_value ) ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+' . '\\' . '.[0-9]*[1-9])0+$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+)' . '\\' . '.0*$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> return $global_normalized_calculated_value ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4983 } = $storage_item__4984 ;
-my $storage_item__4985 = 'template-function-parameterized-normalize-calculated-value' ;
-my $storage_item__4986 = '# no-space dashes-long-line <new_line> # function_parameterized__normalize_calculated_value <new_line> <new_line> sub function_parameterized__normalize_calculated_value( ) { <new_line> $global_calculated_value = $_[ 0 ] ; <new_line> if ( $global_calculated_value == 0 ) { <new_line> $global_normalized_calculated_value = ' . "'" . '0' . "'" . ' ; <new_line> } else { <new_line> $global_normalized_calculated_value = sprintf( "%f" , $global_calculated_value ) ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+' . '\\' . '.[0-9]*[1-9])0+$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+)' . '\\' . '.0*$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> return $global_normalized_calculated_value ; <new_line> template-function-segment-ending' ;
+my $storage_item__4985 = 'template-function-parameterized-remove-leading-trailing-spaces' ;
+my $storage_item__4986 = '# no-space dashes-long-line <new_line> # function_parameterized__remove_leading_trailing_spaces <new_line> <new_line> sub function_parameterized__remove_leading_trailing_spaces( ) { <new_line> $global_temporary_text = $_[ 0 ] ; <new_line> $global_length_of_text = length( $global_temporary_text ) ; <new_line> $global_character_pointer_begin = $global_length_of_text + 1 ; <new_line> $global_character_pointer_end = -1 ; <new_line> for ( $global_character_pointer = 1 ; $global_character_pointer <= $global_length_of_text ; $global_character_pointer ++ ) { <new_line> if ( substr( $global_temporary_text , $global_character_pointer - 1 , 1 ) ne ' . "'" . ' ' . "'" . ' ) { <new_line> $global_character_pointer_begin = $global_character_pointer ; <new_line> last ; <new_line> } <new_line> } <new_line> for ( $global_character_pointer = $global_length_of_text ; $global_character_pointer >= 1 ; $global_character_pointer -- ) { <new_line> if ( substr( $global_temporary_text , $global_character_pointer - 1 , 1 ) ne ' . "'" . ' ' . "'" . ' ) { <new_line> $global_character_pointer_end = $global_character_pointer ; <new_line> last ; <new_line> } <new_line> } <new_line> if ( $global_character_pointer_begin <= $global_character_pointer_end ) { return substr( $global_temporary_text , $global_character_pointer_begin - 1 , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ; <new_line> } else { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4985 } = $storage_item__4986 ;
-my $storage_item__4987 = 'template-function-parameterized-remove-leading-trailing-spaces' ;
-my $storage_item__4988 = '# no-space dashes-long-line <new_line> # function_parameterized__remove_leading_trailing_spaces <new_line> <new_line> sub function_parameterized__remove_leading_trailing_spaces( ) { <new_line> $global_temporary_text = $_[ 0 ] ; <new_line> $global_length_of_text = length( $global_temporary_text ) ; <new_line> $global_character_pointer_begin = $global_length_of_text + 1 ; <new_line> $global_character_pointer_end = -1 ; <new_line> for ( $global_character_pointer = 1 ; $global_character_pointer <= $global_length_of_text ; $global_character_pointer ++ ) { <new_line> if ( substr( $global_temporary_text , $global_character_pointer - 1 , 1 ) ne ' . "'" . ' ' . "'" . ' ) { <new_line> $global_character_pointer_begin = $global_character_pointer ; <new_line> last ; <new_line> } <new_line> } <new_line> for ( $global_character_pointer = $global_length_of_text ; $global_character_pointer >= 1 ; $global_character_pointer -- ) { <new_line> if ( substr( $global_temporary_text , $global_character_pointer - 1 , 1 ) ne ' . "'" . ' ' . "'" . ' ) { <new_line> $global_character_pointer_end = $global_character_pointer ; <new_line> last ; <new_line> } <new_line> } <new_line> if ( $global_character_pointer_begin <= $global_character_pointer_end ) { return substr( $global_temporary_text , $global_character_pointer_begin - 1 , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ; <new_line> } else { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4987 = 'template-function-parameterized-yes-or-no-file-name' ;
+my $storage_item__4988 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_name <new_line> <new_line> sub function_parameterized__yes_or_no_file_name( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^[a-z][^ ' . '\\' . '.' . '\\' . '/' . '\\' . '\\' . '\\' . '*' . '\\' . '&' . '\\' . '!' . '\\' . '@' . '\\' . '#' . '\\' . '$' . '\\' . '%' . '\\' . '^' . '\\' . '~' . '\\' . '`' . '\\' . '"' . '\\' . "'" . '\\' . ',' . '\\' . ':' . '\\' . ';' . '\\' . '=' . '\\' . '+]*' . '\\' . '.[a-z]+$/i ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4987 } = $storage_item__4988 ;
-my $storage_item__4989 = 'template-function-parameterized-yes-or-no-file-name' ;
-my $storage_item__4990 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_name <new_line> <new_line> sub function_parameterized__yes_or_no_file_name( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^[a-z][^ ' . '\\' . '.' . '\\' . '/' . '\\' . '\\' . '\\' . '*' . '\\' . '&' . '\\' . '!' . '\\' . '@' . '\\' . '#' . '\\' . '$' . '\\' . '%' . '\\' . '^' . '\\' . '~' . '\\' . '`' . '\\' . '"' . '\\' . "'" . '\\' . ',' . '\\' . ':' . '\\' . ';' . '\\' . '=' . '\\' . '+]*' . '\\' . '.[a-z]+$/i ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4989 = 'template-function-parameterized-yes-or-no-not-empty' ;
+my $storage_item__4990 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_not_empty <new_line> <new_line> sub function_parameterized__yes_or_no_not_empty( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /[^ ]/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4989 } = $storage_item__4990 ;
-my $storage_item__4991 = 'template-function-parameterized-yes-or-no-not-empty' ;
-my $storage_item__4992 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_not_empty <new_line> <new_line> sub function_parameterized__yes_or_no_not_empty( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /[^ ]/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4991 = 'template-function-parameterized-yes-or-no-phrase-definition-not-empty' ;
+my $storage_item__4992 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_phrase_definition_not_empty <new_line> <new_line> sub function_parameterized__yes_or_no_phrase_definition_not_empty( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /^[^ ]+-[^ ]+$/ ) { <new_line> return $global_no ; <new_line> } <new_line> if ( $global_dashrep_replacement{ $local_text } =~ /[^ ]/ ) { <new_line> if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) { <new_line> code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4991 } = $storage_item__4992 ;
-my $storage_item__4993 = 'template-function-parameterized-yes-or-no-phrase-definition-not-empty' ;
-my $storage_item__4994 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_phrase_definition_not_empty <new_line> <new_line> sub function_parameterized__yes_or_no_phrase_definition_not_empty( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text !~ /^[^ ]+-[^ ]+$/ ) { <new_line> return $global_no ; <new_line> } <new_line> if ( $global_dashrep_replacement{ $local_text } =~ /[^ ]/ ) { <new_line> if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) { <new_line> code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4993 = 'template-function-parameterized-yes-or-no-phrase-name' ;
+my $storage_item__4994 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_phrase_name <new_line> <new_line> sub function_parameterized__yes_or_no_phrase_name( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( index( $local_text , ' . "'" . ' ' . "'" . ' ) > -1 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_text , ' . "'" . '-' . "'" . ' ) > 0 ) { <new_line> if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) { <new_line> code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4993 } = $storage_item__4994 ;
-my $storage_item__4995 = 'template-function-parameterized-yes-or-no-phrase-name' ;
-my $storage_item__4996 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_phrase_name <new_line> <new_line> sub function_parameterized__yes_or_no_phrase_name( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( index( $local_text , ' . "'" . ' ' . "'" . ' ) > -1 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_text , ' . "'" . '-' . "'" . ' ) > 0 ) { <new_line> if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) { <new_line> code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4995 = 'template-function-parameterized-yes-or-no-positive-integer' ;
+my $storage_item__4996 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_positive_integer <new_line> <new_line> sub function_parameterized__yes_or_no_positive_integer( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^[0-9]+$/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4995 } = $storage_item__4996 ;
-my $storage_item__4997 = 'template-function-parameterized-yes-or-no-positive-integer' ;
-my $storage_item__4998 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_positive_integer <new_line> <new_line> sub function_parameterized__yes_or_no_positive_integer( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^[0-9]+$/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4997 = 'template-function-parameterized-yes-or-no-real-number' ;
+my $storage_item__4998 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_real_number <new_line> <new_line> sub function_parameterized__yes_or_no_real_number( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^(-?[0-9]+)(' . '\\' . '.[0-9]*)?$/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4997 } = $storage_item__4998 ;
-my $storage_item__4999 = 'template-function-parameterized-yes-or-no-real-number' ;
-my $storage_item__5000 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_real_number <new_line> <new_line> sub function_parameterized__yes_or_no_real_number( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^(-?[0-9]+)(' . '\\' . '.[0-9]*)?$/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__4999 = 'template-function-point-to-words' ;
+my $storage_item__5000 = '# no-space dashes-long-line <new_line> # function__point_to_words <new_line> # <new_line> # Input is $global_source_text <new_line> # Output is variable $global_number_of_words and array begin_position_for_word[ ] and array length_of_word[ ] where pointer into array is 1 for first word, etc. <new_line> # Word counts start at one <new_line> # Character pointer numbers start at zero <new_line> <new_line> sub function__point_to_words( ) { <new_line> $global_number_of_words = 0 ; <new_line> $global_length_of_text = length( $global_source_text ) ; <new_line> # print "source_text = " . $global_source_text . " ; text length = " . $global_length_of_text . "' . '\\' . 'n" ; <new_line> if ( $global_length_of_text < 1 ) { <new_line> # print "found no text" . "' . '\\' . 'n" ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_pointer_to_next_space = index( $global_source_text , ' . "'" . ' ' . "'" . ' ) ; <new_line> if ( $global_pointer_to_next_space < 0 ) { <new_line> # print "found no spaces, but text is not empty, so found just one word" . "' . '\\' . 'n" ; <new_line> $global_number_of_words = 1 ; <new_line> $global_begin_position_for_word[ 1 ] = 0 ; <new_line> $global_length_of_word[ 1 ] = $global_length_of_text ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_pointer_to_previous_space = -1 ; <new_line> while ( $global_pointer_to_next_space >= 0 ) { <new_line> if ( $global_pointer_to_next_space > $global_pointer_to_previous_space + 1 ) { <new_line> $global_number_of_words ++ ; <new_line> # print "number_of_words = " . $global_number_of_words . "' . '\\' . 'n" ; <new_line> $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ; <new_line> $global_length_of_word[ $global_number_of_words ] = $global_pointer_to_next_space - $global_pointer_to_previous_space - 1 ; <new_line> } <new_line> # print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "' . '\\' . 'n" ; <new_line> $global_pointer_to_previous_space = $global_pointer_to_next_space ; <new_line> $global_pointer_to_next_space = index( $global_source_text , ' . "'" . ' ' . "'" . ' , $global_pointer_to_previous_space + 1 ) ; <new_line> } <new_line> $global_number_of_words ++ ; <new_line> $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ; <new_line> $global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space + 1 ; <new_line> # print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "' . '\\' . 'n" ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4999 } = $storage_item__5000 ;
-my $storage_item__5001 = 'template-function-point-to-words' ;
-my $storage_item__5002 = '# no-space dashes-long-line <new_line> # function__point_to_words <new_line> # <new_line> # Input is $global_source_text <new_line> # Output is variable $global_number_of_words and array begin_position_for_word[ ] and array length_of_word[ ] where pointer into array is 1 for first word, etc. <new_line> # Word counts start at one <new_line> # Character pointer numbers start at zero <new_line> <new_line> sub function__point_to_words( ) { <new_line> $global_number_of_words = 0 ; <new_line> $global_length_of_text = length( $global_source_text ) ; <new_line> # print "source_text = " . $global_source_text . " ; text length = " . $global_length_of_text . "' . '\\' . 'n" ; <new_line> if ( $global_length_of_text < 1 ) { <new_line> # print "found no text" . "' . '\\' . 'n" ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_pointer_to_next_space = index( $global_source_text , ' . "'" . ' ' . "'" . ' ) ; <new_line> if ( $global_pointer_to_next_space < 0 ) { <new_line> # print "found no spaces, but text is not empty, so found just one word" . "' . '\\' . 'n" ; <new_line> $global_number_of_words = 1 ; <new_line> $global_begin_position_for_word[ 1 ] = 0 ; <new_line> $global_length_of_word[ 1 ] = $global_length_of_text ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_pointer_to_previous_space = -1 ; <new_line> while ( $global_pointer_to_next_space >= 0 ) { <new_line> if ( $global_pointer_to_next_space > $global_pointer_to_previous_space + 1 ) { <new_line> $global_number_of_words ++ ; <new_line> # print "number_of_words = " . $global_number_of_words . "' . '\\' . 'n" ; <new_line> $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ; <new_line> $global_length_of_word[ $global_number_of_words ] = $global_pointer_to_next_space - $global_pointer_to_previous_space - 1 ; <new_line> } <new_line> # print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "' . '\\' . 'n" ; <new_line> $global_pointer_to_previous_space = $global_pointer_to_next_space ; <new_line> $global_pointer_to_next_space = index( $global_source_text , ' . "'" . ' ' . "'" . ' , $global_pointer_to_previous_space + 1 ) ; <new_line> } <new_line> $global_number_of_words ++ ; <new_line> $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ; <new_line> $global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space + 1 ; <new_line> # print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "' . '\\' . 'n" ; <new_line> template-function-segment-ending' ;
+my $storage_item__5001 = 'template-function-remove-extra-spaces' ;
+my $storage_item__5002 = '# no-space dashes-long-line <new_line> # function__remove_extra_spaces <new_line> # <new_line> # Input is $global_source_text <new_line> # Output is $global_target_text <new_line> <new_line> sub function__remove_extra_spaces( ) { <new_line> $global_default_text = $global_source_text ; <new_line> template-function-segment-if-zero-words-return-default-text $global_target_text = substr( $global_source_text , $global_begin_position_for_word[ 1 ] , $global_length_of_word[ 1 ] ) ; <new_line> if ( $global_number_of_words == 1 ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> for ( $global_word_pointer = 2 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_target_text .= ' . "'" . ' ' . "'" . ' . substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> } <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5001 } = $storage_item__5002 ;
-my $storage_item__5003 = 'template-function-remove-extra-spaces' ;
-my $storage_item__5004 = '# no-space dashes-long-line <new_line> # function__remove_extra_spaces <new_line> # <new_line> # Input is $global_source_text <new_line> # Output is $global_target_text <new_line> <new_line> sub function__remove_extra_spaces( ) { <new_line> $global_default_text = $global_source_text ; <new_line> template-function-segment-if-zero-words-return-default-text $global_target_text = substr( $global_source_text , $global_begin_position_for_word[ 1 ] , $global_length_of_word[ 1 ] ) ; <new_line> if ( $global_number_of_words == 1 ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> for ( $global_word_pointer = 2 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) { <new_line> $global_target_text .= ' . "'" . ' ' . "'" . ' . substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ; <new_line> } <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__5003 = 'template-function-segment-ending' ;
+my $storage_item__5004 = '# end of function <new_line> } <new_line> <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5003 } = $storage_item__5004 ;
-my $storage_item__5005 = 'template-function-segment-ending' ;
-my $storage_item__5006 = '# end of function <new_line> } <new_line> <new_line> <new_line>' ;
+my $storage_item__5005 = 'template-function-segment-if-zero-words-return-default-text' ;
+my $storage_item__5006 = '# begin code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line> &function__point_to_words( ) ; <new_line> if ( $global_number_of_words == 0 ) { <new_line> $global_target_text = $global_default_text ; <new_line> return $global_default_text ; <new_line> } <new_line> # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5005 } = $storage_item__5006 ;
-my $storage_item__5007 = 'template-function-segment-if-zero-words-return-default-text' ;
-my $storage_item__5008 = '# begin code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line> &function__point_to_words( ) ; <new_line> if ( $global_number_of_words == 0 ) { <new_line> $global_target_text = $global_default_text ; <new_line> return $global_default_text ; <new_line> } <new_line> # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line>' ;
+my $storage_item__5007 = 'template-runtime-code-for-action-append-text' ;
+my $storage_item__5008 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_number_of_operands = number-of-operands ; <new_line> needed-operand-checks if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> if ( $global_dashrep_replacement{ $global_target_text } ne ' . "'" . "'" . ' ) { <new_line> $global_dashrep_replacement{ $global_target_text } .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_dashrep_replacement{ $global_target_text } .= $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'append-text ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5007 } = $storage_item__5008 ;
 my $storage_item__5009 = 'template-runtime-code-for-action-clear-phrase' ;
 my $storage_item__5010 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
@@ -10039,13 +10039,8 @@ $storage_item__1293 = 'copy-text ' . $storage_item__1294 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1296 *** append-text ** 2 *' . $storage_item__1297 . ' ' . $storage_item__1298 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1297 ;
-$global_single_action_operand_two = $storage_item__1298 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -10058,7 +10053,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1296 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1297 } ) ;
+$global_target_text = $storage_item__1298 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1296 = ' ' ;
 } else {
 $storage_item__1296 = 'append-text ' . $storage_item__1297 . ' ' . $storage_item__1298 ;
 }
@@ -10472,13 +10473,8 @@ $storage_item__1345 = 'copy-text ' . $storage_item__1346 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1348 *** append-text ** 2 *' . $storage_item__1349 . ' ' . $storage_item__1350 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1349 ;
-$global_single_action_operand_two = $storage_item__1350 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -10491,20 +10487,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1348 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1349 } ) ;
+$global_target_text = $storage_item__1350 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1348 = ' ' ;
 } else {
 $storage_item__1348 = 'append-text ' . $storage_item__1349 . ' ' . $storage_item__1350 ;
 }
 
 # $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1351 *** append-text ** 2 *' . $storage_item__1352 . ' ' . $storage_item__1353 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1352 ;
-$global_single_action_operand_two = $storage_item__1353 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -10517,7 +10514,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1351 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1352 } ) ;
+$global_target_text = $storage_item__1353 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1351 = ' ' ;
 } else {
 $storage_item__1351 = 'append-text ' . $storage_item__1352 . ' ' . $storage_item__1353 ;
 }
@@ -10543,13 +10546,8 @@ $storage_item__1354 = 'copy-text ' . $storage_item__1355 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1357 *** append-text ** 2 *' . $storage_item__1358 . ' ' . $storage_item__1359 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1358 ;
-$global_single_action_operand_two = $storage_item__1359 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -10562,20 +10560,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1357 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1358 } ) ;
+$global_target_text = $storage_item__1359 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1357 = ' ' ;
 } else {
 $storage_item__1357 = 'append-text ' . $storage_item__1358 . ' ' . $storage_item__1359 ;
 }
 
 # $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1360 *** append-text ** 2 *' . $storage_item__1361 . ' ' . $storage_item__1362 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1361 ;
-$global_single_action_operand_two = $storage_item__1362 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -10588,7 +10587,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1360 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1361 } ) ;
+$global_target_text = $storage_item__1362 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1360 = ' ' ;
 } else {
 $storage_item__1360 = 'append-text ' . $storage_item__1361 . ' ' . $storage_item__1362 ;
 }
@@ -11498,13 +11503,8 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-4 **** 1475 *** append-text ** 2 *' . $storage_item__1476 . ' ' . $storage_item__1477 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1476 ;
-$global_single_action_operand_two = $storage_item__1477 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -11517,7 +11517,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1475 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1476 } ) ;
+$global_target_text = $storage_item__1477 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1475 = ' ' ;
 } else {
 $storage_item__1475 = 'append-text ' . $storage_item__1476 . ' ' . $storage_item__1477 ;
 }
@@ -11616,13 +11622,8 @@ $storage_item__1487 = 'numeric-increment ' . $storage_item__1488 ;
 
 # $global_action_debug_line = '***** filter-tokens-case-ambee **** 1489 *** append-text ** 2 *' . $storage_item__1490 . ' ' . $storage_item__1491 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1490 ;
-$global_single_action_operand_two = $storage_item__1491 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -11635,7 +11636,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1489 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1490 } ) ;
+$global_target_text = $storage_item__1491 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1489 = ' ' ;
 } else {
 $storage_item__1489 = 'append-text ' . $storage_item__1490 . ' ' . $storage_item__1491 ;
 }
@@ -11690,13 +11697,8 @@ $storage_item__1494 = 'numeric-increment ' . $storage_item__1495 ;
 
 # $global_action_debug_line = '***** filter-tokens-case-amenn **** 1496 *** append-text ** 2 *' . $storage_item__1497 . ' ' . $storage_item__1498 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1497 ;
-$global_single_action_operand_two = $storage_item__1498 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -11709,7 +11711,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1496 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1497 } ) ;
+$global_target_text = $storage_item__1498 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1496 = ' ' ;
 } else {
 $storage_item__1496 = 'append-text ' . $storage_item__1497 . ' ' . $storage_item__1498 ;
 }
@@ -12614,13 +12622,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** generate-code-for-one-action **** 1614 *** append-text ** 2 *' . $storage_item__1615 . ' ' . $storage_item__1616 . '-' . $storage_item__1617 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1615 ;
-$global_single_action_operand_two = $storage_item__1616 . '-' . $storage_item__1617 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -12633,7 +12636,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1614 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1615 } ) ;
+$global_target_text = $storage_item__1616 . '-' . $storage_item__1617 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1614 = ' ' ;
 } else {
 $storage_item__1614 = 'append-text ' . $storage_item__1615 . ' ' . $storage_item__1616 . '-' . $storage_item__1617 ;
 }
@@ -13936,13 +13945,8 @@ $storage_item__1777 = 'append-text-no-space ' . $storage_item__1778 . ' ' . $sto
 
 # $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1780 *** append-text ** 2 *' . $storage_item__1781 . ' ' . $storage_item__1782 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1781 ;
-$global_single_action_operand_two = $storage_item__1782 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -13955,7 +13959,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1780 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1781 } ) ;
+$global_target_text = $storage_item__1782 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1780 = ' ' ;
 } else {
 $storage_item__1780 = 'append-text ' . $storage_item__1781 . ' ' . $storage_item__1782 ;
 }
@@ -14040,13 +14050,8 @@ $storage_item__1789 = 'append-text-no-space ' . $storage_item__1790 . ' ' . $sto
 
 # $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1792 *** append-text ** 2 *' . $storage_item__1793 . ' ' . $storage_item__1794 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1793 ;
-$global_single_action_operand_two = $storage_item__1794 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14059,7 +14064,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1792 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1793 } ) ;
+$global_target_text = $storage_item__1794 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1792 = ' ' ;
 } else {
 $storage_item__1792 = 'append-text ' . $storage_item__1793 . ' ' . $storage_item__1794 ;
 }
@@ -14144,13 +14155,8 @@ $storage_item__1801 = 'append-text-no-space ' . $storage_item__1802 . ' ' . $sto
 
 # $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1804 *** append-text ** 2 *' . $storage_item__1805 . ' ' . $storage_item__1806 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1805 ;
-$global_single_action_operand_two = $storage_item__1806 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14163,7 +14169,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1804 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1805 } ) ;
+$global_target_text = $storage_item__1806 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1804 = ' ' ;
 } else {
 $storage_item__1804 = 'append-text ' . $storage_item__1805 . ' ' . $storage_item__1806 ;
 }
@@ -14196,13 +14208,8 @@ $storage_item__1807 = 'append-text-no-space ' . $storage_item__1808 . ' ' . $sto
 
 # $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1810 *** append-text ** 2 *' . $storage_item__1811 . ' ' . $storage_item__1812 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1811 ;
-$global_single_action_operand_two = $storage_item__1812 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14215,7 +14222,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1810 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1811 } ) ;
+$global_target_text = $storage_item__1812 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1810 = ' ' ;
 } else {
 $storage_item__1810 = 'append-text ' . $storage_item__1811 . ' ' . $storage_item__1812 ;
 }
@@ -14390,13 +14403,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1831 *** append-text ** 2 *' . $storage_item__1832 . '-' . $storage_item__1833 . ' ' . $storage_item__1835 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1832 . '-' . $storage_item__1833 ;
-$global_single_action_operand_two = $storage_item__1835 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14409,20 +14417,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1831 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1832 . '-' . $storage_item__1833 } ) ;
+$global_target_text = $storage_item__1835 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1831 = ' ' ;
 } else {
 $storage_item__1831 = 'append-text ' . $storage_item__1832 . '-' . $storage_item__1833 . ' ' . $storage_item__1835 ;
 }
 
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1836 *** append-text ** 2 *' . $storage_item__1837 . ' ' . $storage_item__1838 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1837 ;
-$global_single_action_operand_two = $storage_item__1838 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14435,7 +14444,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1836 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1837 } ) ;
+$global_target_text = $storage_item__1838 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1836 = ' ' ;
 } else {
 $storage_item__1836 = 'append-text ' . $storage_item__1837 . ' ' . $storage_item__1838 ;
 }
@@ -14658,13 +14673,8 @@ $storage_item__1861 = 'append-text-no-space ' . $storage_item__1862 . ' ' . $sto
 
 # $global_action_debug_line = '***** generate-storage-for-current-text **** 1864 *** append-text ** 2 *' . $storage_item__1865 . ' ' . $storage_item__1866 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__1865 ;
-$global_single_action_operand_two = $storage_item__1866 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -14677,7 +14687,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__1864 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1865 } ) ;
+$global_target_text = $storage_item__1866 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__1864 = ' ' ;
 } else {
 $storage_item__1864 = 'append-text ' . $storage_item__1865 . ' ' . $storage_item__1866 ;
 }
@@ -16020,13 +16036,8 @@ $storage_item__2045 = 'copy-characters-from-position-to-position ' . $storage_it
 
 # $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2052 *** append-text ** 2 *' . $storage_item__2053 . ' ' . $storage_item__2054 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2053 ;
-$global_single_action_operand_two = $storage_item__2054 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -16039,7 +16050,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2052 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2053 } ) ;
+$global_target_text = $storage_item__2054 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2052 = ' ' ;
 } else {
 $storage_item__2052 = 'append-text ' . $storage_item__2053 . ' ' . $storage_item__2054 ;
 }
@@ -16617,13 +16634,8 @@ $storage_item__2129 = 'append-text-no-space ' . $storage_item__2130 . ' ' . $sto
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2132 *** append-text ** 2 *' . $storage_item__2133 . ' ' . $storage_item__2134 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2133 ;
-$global_single_action_operand_two = $storage_item__2134 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -16636,7 +16648,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2132 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2133 } ) ;
+$global_target_text = $storage_item__2134 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2132 = ' ' ;
 } else {
 $storage_item__2132 = 'append-text ' . $storage_item__2133 . ' ' . $storage_item__2134 ;
 }
@@ -17039,13 +17057,8 @@ $storage_item__2177 = 'copy-from-phrase-append-to-file ' . $storage_item__2178 .
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2181 *** append-text ** 2 *' . $storage_item__2182 . ' ' . $storage_item__2183 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2182 ;
-$global_single_action_operand_two = $storage_item__2183 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -17058,7 +17071,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2181 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2182 } ) ;
+$global_target_text = $storage_item__2183 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2181 = ' ' ;
 } else {
 $storage_item__2181 = 'append-text ' . $storage_item__2182 . ' ' . $storage_item__2183 ;
 }
@@ -17965,13 +17984,8 @@ $storage_item__2300 = 'copy-text ' . $storage_item__2301 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2303 *** append-text ** 2 *' . $storage_item__2304 . ' ' . $storage_item__2305 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2304 ;
-$global_single_action_operand_two = $storage_item__2305 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -17984,7 +17998,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2303 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2304 } ) ;
+$global_target_text = $storage_item__2305 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2303 = ' ' ;
 } else {
 $storage_item__2303 = 'append-text ' . $storage_item__2304 . ' ' . $storage_item__2305 ;
 }
@@ -18061,13 +18081,8 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2314 *** append-text ** 2 *' . $storage_item__2315 . ' ' . $storage_item__2316 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2315 ;
-$global_single_action_operand_two = $storage_item__2316 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18080,7 +18095,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2314 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2315 } ) ;
+$global_target_text = $storage_item__2316 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2314 = ' ' ;
 } else {
 $storage_item__2314 = 'append-text ' . $storage_item__2315 . ' ' . $storage_item__2316 ;
 }
@@ -18092,13 +18113,8 @@ $storage_item__2314 = 'append-text ' . $storage_item__2315 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2318 *** append-text ** 2 *' . $storage_item__2319 . ' ' . $storage_item__2320 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2319 ;
-$global_single_action_operand_two = $storage_item__2320 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18111,7 +18127,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2318 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2319 } ) ;
+$global_target_text = $storage_item__2320 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2318 = ' ' ;
 } else {
 $storage_item__2318 = 'append-text ' . $storage_item__2319 . ' ' . $storage_item__2320 ;
 }
@@ -18250,13 +18272,8 @@ $storage_item__2334 = 'append-text-no-space ' . $storage_item__2335 . ' ' . $sto
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2337 *** append-text ** 2 *' . $storage_item__2338 . ' ' . $storage_item__2339 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2338 ;
-$global_single_action_operand_two = $storage_item__2339 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18269,7 +18286,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2337 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2338 } ) ;
+$global_target_text = $storage_item__2339 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2337 = ' ' ;
 } else {
 $storage_item__2337 = 'append-text ' . $storage_item__2338 . ' ' . $storage_item__2339 ;
 }
@@ -18346,13 +18369,8 @@ $storage_item__2344 = 'clear-phrase ' . $storage_item__2345 . '-' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2348 *** append-text ** 2 *' . $storage_item__2349 . ' ' . $storage_item__2350 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2349 ;
-$global_single_action_operand_two = $storage_item__2350 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18365,7 +18383,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2348 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2349 } ) ;
+$global_target_text = $storage_item__2350 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2348 = ' ' ;
 } else {
 $storage_item__2348 = 'append-text ' . $storage_item__2349 . ' ' . $storage_item__2350 ;
 }
@@ -18412,13 +18436,8 @@ $storage_item__2353 = 'clear-phrase ' . $storage_item__2354 ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2355 *** append-text ** 2 *' . $storage_item__2356 . ' ' . $storage_item__2357 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2356 ;
-$global_single_action_operand_two = $storage_item__2357 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18431,7 +18450,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2355 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2356 } ) ;
+$global_target_text = $storage_item__2357 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2355 = ' ' ;
 } else {
 $storage_item__2355 = 'append-text ' . $storage_item__2356 . ' ' . $storage_item__2357 ;
 }
@@ -18905,13 +18930,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2422 *** append-text ** 2 *' . $storage_item__2423 . ' ' . $storage_item__2424 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2423 ;
-$global_single_action_operand_two = $storage_item__2424 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -18924,7 +18944,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2422 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2423 } ) ;
+$global_target_text = $storage_item__2424 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2422 = ' ' ;
 } else {
 $storage_item__2422 = 'append-text ' . $storage_item__2423 . ' ' . $storage_item__2424 ;
 }
@@ -19046,13 +19072,8 @@ $storage_item__2435 = 'expand-text ' . $storage_item__2436 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2438 *** append-text ** 2 *' . $storage_item__2439 . ' ' . $storage_item__2440 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2439 ;
-$global_single_action_operand_two = $storage_item__2440 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19065,7 +19086,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2438 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2439 } ) ;
+$global_target_text = $storage_item__2440 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2438 = ' ' ;
 } else {
 $storage_item__2438 = 'append-text ' . $storage_item__2439 . ' ' . $storage_item__2440 ;
 }
@@ -19117,13 +19144,8 @@ $storage_item__2442 = 'expand-text ' . $storage_item__2443 . '-' . $storage_item
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2447 *** append-text ** 2 *' . $storage_item__2448 . ' ' . $storage_item__2449 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2448 ;
-$global_single_action_operand_two = $storage_item__2449 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19136,7 +19158,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2447 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2448 } ) ;
+$global_target_text = $storage_item__2449 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2447 = ' ' ;
 } else {
 $storage_item__2447 = 'append-text ' . $storage_item__2448 . ' ' . $storage_item__2449 ;
 }
@@ -19373,13 +19401,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2478 *** append-text ** 2 *' . $storage_item__2479 . '-' . $storage_item__2480 . ' ' . $storage_item__2482 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2479 . '-' . $storage_item__2480 ;
-$global_single_action_operand_two = $storage_item__2482 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19392,7 +19415,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2478 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2479 . '-' . $storage_item__2480 } ) ;
+$global_target_text = $storage_item__2482 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2478 = ' ' ;
 } else {
 $storage_item__2478 = 'append-text ' . $storage_item__2479 . '-' . $storage_item__2480 . ' ' . $storage_item__2482 ;
 }
@@ -19624,13 +19653,8 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2514 *** append-text ** 2 *' . $storage_item__2515 . ' ' . $storage_item__2516 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2515 ;
-$global_single_action_operand_two = $storage_item__2516 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19643,7 +19667,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2514 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2515 } ) ;
+$global_target_text = $storage_item__2516 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2514 = ' ' ;
 } else {
 $storage_item__2514 = 'append-text ' . $storage_item__2515 . ' ' . $storage_item__2516 ;
 }
@@ -19838,13 +19868,8 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2544 *** append-text ** 2 *' . $storage_item__2545 . ' ' . $storage_item__2546 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2545 ;
-$global_single_action_operand_two = $storage_item__2546 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19857,20 +19882,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2544 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2545 } ) ;
+$global_target_text = $storage_item__2546 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2544 = ' ' ;
 } else {
 $storage_item__2544 = 'append-text ' . $storage_item__2545 . ' ' . $storage_item__2546 ;
 }
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2547 *** append-text ** 2 *' . $storage_item__2548 . ' ' . $storage_item__2549 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2548 ;
-$global_single_action_operand_two = $storage_item__2549 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19883,20 +19909,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2547 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2548 } ) ;
+$global_target_text = $storage_item__2549 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2547 = ' ' ;
 } else {
 $storage_item__2547 = 'append-text ' . $storage_item__2548 . ' ' . $storage_item__2549 ;
 }
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2550 *** append-text ** 2 *' . $storage_item__2551 . ' ' . $storage_item__2552 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2551 ;
-$global_single_action_operand_two = $storage_item__2552 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -19909,7 +19936,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2550 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2551 } ) ;
+$global_target_text = $storage_item__2552 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2550 = ' ' ;
 } else {
 $storage_item__2550 = 'append-text ' . $storage_item__2551 . ' ' . $storage_item__2552 ;
 }
@@ -20730,13 +20763,8 @@ exit ;
 
 # $global_action_debug_line = '***** handle-token-fen **** 2651 *** append-text ** 2 *' . $storage_item__2652 . ' ' . $storage_item__2653 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2652 ;
-$global_single_action_operand_two = $storage_item__2653 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -20749,7 +20777,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2651 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2652 } ) ;
+$global_target_text = $storage_item__2653 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2651 = ' ' ;
 } else {
 $storage_item__2651 = 'append-text ' . $storage_item__2652 . ' ' . $storage_item__2653 ;
 }
@@ -20771,13 +20805,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-fen **** 2654 *** append-text ** 2 *' . $storage_item__2655 . ' ' . $storage_item__2656 . '-' . $storage_item__2657 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2655 ;
-$global_single_action_operand_two = $storage_item__2656 . '-' . $storage_item__2657 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -20790,7 +20819,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2654 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2655 } ) ;
+$global_target_text = $storage_item__2656 . '-' . $storage_item__2657 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2654 = ' ' ;
 } else {
 $storage_item__2654 = 'append-text ' . $storage_item__2655 . ' ' . $storage_item__2656 . '-' . $storage_item__2657 ;
 }
@@ -21078,13 +21113,8 @@ exit ;
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2692 *** append-text ** 2 *' . $storage_item__2693 . ' ' . $storage_item__2694 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2693 ;
-$global_single_action_operand_two = $storage_item__2694 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21097,7 +21127,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2692 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2693 } ) ;
+$global_target_text = $storage_item__2694 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2692 = ' ' ;
 } else {
 $storage_item__2692 = 'append-text ' . $storage_item__2693 . ' ' . $storage_item__2694 ;
 }
@@ -21233,13 +21269,8 @@ exit ;
 
 # $global_action_debug_line = '***** handle-token-nospay **** 2711 *** append-text ** 2 *' . $storage_item__2712 . ' ' . $storage_item__2713 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2712 ;
-$global_single_action_operand_two = $storage_item__2713 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21252,7 +21283,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2711 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2712 } ) ;
+$global_target_text = $storage_item__2713 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2711 = ' ' ;
 } else {
 $storage_item__2711 = 'append-text ' . $storage_item__2712 . ' ' . $storage_item__2713 ;
 }
@@ -21274,13 +21311,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-nospay **** 2714 *** append-text ** 2 *' . $storage_item__2715 . ' ' . $storage_item__2716 . '-' . $storage_item__2717 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2715 ;
-$global_single_action_operand_two = $storage_item__2716 . '-' . $storage_item__2717 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21293,7 +21325,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2714 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2715 } ) ;
+$global_target_text = $storage_item__2716 . '-' . $storage_item__2717 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2714 = ' ' ;
 } else {
 $storage_item__2714 = 'append-text ' . $storage_item__2715 . ' ' . $storage_item__2716 . '-' . $storage_item__2717 ;
 }
@@ -21732,13 +21770,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2775 *** append-text ** 2 *' . $storage_item__2776 . ' ' . $storage_item__2777 . '-' . $storage_item__2778 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2776 ;
-$global_single_action_operand_two = $storage_item__2777 . '-' . $storage_item__2778 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21751,7 +21784,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2775 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2776 } ) ;
+$global_target_text = $storage_item__2777 . '-' . $storage_item__2778 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2775 = ' ' ;
 } else {
 $storage_item__2775 = 'append-text ' . $storage_item__2776 . ' ' . $storage_item__2777 . '-' . $storage_item__2778 ;
 }
@@ -21773,13 +21812,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2780 *** append-text ** 2 *' . $storage_item__2781 . ' ' . $storage_item__2782 . '-' . $storage_item__2783 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2781 ;
-$global_single_action_operand_two = $storage_item__2782 . '-' . $storage_item__2783 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21792,7 +21826,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2780 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2781 } ) ;
+$global_target_text = $storage_item__2782 . '-' . $storage_item__2783 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2780 = ' ' ;
 } else {
 $storage_item__2780 = 'append-text ' . $storage_item__2781 . ' ' . $storage_item__2782 . '-' . $storage_item__2783 ;
 }
@@ -21885,13 +21925,8 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2794 *** append-text ** 2 *' . $storage_item__2795 . ' ' . $storage_item__2796 . '-' . $storage_item__2797 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2795 ;
-$global_single_action_operand_two = $storage_item__2796 . '-' . $storage_item__2797 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -21904,7 +21939,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2794 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2795 } ) ;
+$global_target_text = $storage_item__2796 . '-' . $storage_item__2797 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2794 = ' ' ;
 } else {
 $storage_item__2794 = 'append-text ' . $storage_item__2795 . ' ' . $storage_item__2796 . '-' . $storage_item__2797 ;
 }
@@ -22937,13 +22978,8 @@ exit ;
 
 # $global_action_debug_line = '***** recursion-stack-push **** 2922 *** append-text ** 2 *' . $storage_item__2923 . ' ' . $storage_item__2924 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__2923 ;
-$global_single_action_operand_two = $storage_item__2924 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -22956,7 +22992,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2922 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__2923 } ) ;
+$global_target_text = $storage_item__2924 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__2922 = ' ' ;
 } else {
 $storage_item__2922 = 'append-text ' . $storage_item__2923 . ' ' . $storage_item__2924 ;
 }
@@ -29634,13 +29676,8 @@ $storage_item__4157 = 'append-text-no-space ' . $storage_item__4158 . ' ' . $sto
 
 # $global_action_debug_line = '***** define-special-strings **** 4160 *** append-text ** 2 *' . $storage_item__4161 . ' ' . $storage_item__4162 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4161 ;
-$global_single_action_operand_two = $storage_item__4162 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29653,20 +29690,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4160 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4161 } ) ;
+$global_target_text = $storage_item__4162 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4160 = ' ' ;
 } else {
 $storage_item__4160 = 'append-text ' . $storage_item__4161 . ' ' . $storage_item__4162 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4163 *** append-text ** 2 *' . $storage_item__4164 . ' ' . $storage_item__4165 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4164 ;
-$global_single_action_operand_two = $storage_item__4165 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29679,7 +29717,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4163 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4164 } ) ;
+$global_target_text = $storage_item__4165 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4163 = ' ' ;
 } else {
 $storage_item__4163 = 'append-text ' . $storage_item__4164 . ' ' . $storage_item__4165 ;
 }
@@ -29776,13 +29820,8 @@ $storage_item__4175 = 'copy-text ' . $storage_item__4176 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4178 *** append-text ** 2 *' . $storage_item__4179 . ' ' . $storage_item__4180 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4179 ;
-$global_single_action_operand_two = $storage_item__4180 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29795,7 +29834,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4178 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4179 } ) ;
+$global_target_text = $storage_item__4180 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4178 = ' ' ;
 } else {
 $storage_item__4178 = 'append-text ' . $storage_item__4179 . ' ' . $storage_item__4180 ;
 }
@@ -29866,13 +29911,8 @@ $storage_item__4187 = 'copy-text ' . $storage_item__4188 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4190 *** append-text ** 2 *' . $storage_item__4191 . ' ' . $storage_item__4192 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4191 ;
-$global_single_action_operand_two = $storage_item__4192 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29885,7 +29925,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4190 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4191 } ) ;
+$global_target_text = $storage_item__4192 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4190 = ' ' ;
 } else {
 $storage_item__4190 = 'append-text ' . $storage_item__4191 . ' ' . $storage_item__4192 ;
 }
@@ -29937,13 +29983,8 @@ $storage_item__4196 = 'prepend-text-no-space ' . $storage_item__4197 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4199 *** append-text ** 2 *' . $storage_item__4200 . ' ' . $storage_item__4201 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4200 ;
-$global_single_action_operand_two = $storage_item__4201 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29956,20 +29997,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4199 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4200 } ) ;
+$global_target_text = $storage_item__4201 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4199 = ' ' ;
 } else {
 $storage_item__4199 = 'append-text ' . $storage_item__4200 . ' ' . $storage_item__4201 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4202 *** append-text ** 2 *' . $storage_item__4203 . ' ' . $storage_item__4204 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4203 ;
-$global_single_action_operand_two = $storage_item__4204 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -29982,7 +30024,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4202 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4203 } ) ;
+$global_target_text = $storage_item__4204 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4202 = ' ' ;
 } else {
 $storage_item__4202 = 'append-text ' . $storage_item__4203 . ' ' . $storage_item__4204 ;
 }
@@ -30060,13 +30108,8 @@ $storage_item__4211 = 'prepend-text-no-space ' . $storage_item__4212 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4214 *** append-text ** 2 *' . $storage_item__4215 . ' ' . $storage_item__4216 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4215 ;
-$global_single_action_operand_two = $storage_item__4216 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30079,7 +30122,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4214 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4215 } ) ;
+$global_target_text = $storage_item__4216 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4214 = ' ' ;
 } else {
 $storage_item__4214 = 'append-text ' . $storage_item__4215 . ' ' . $storage_item__4216 ;
 }
@@ -30157,13 +30206,8 @@ $storage_item__4223 = 'prepend-text-no-space ' . $storage_item__4224 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4226 *** append-text ** 2 *' . $storage_item__4227 . ' ' . $storage_item__4228 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4227 ;
-$global_single_action_operand_two = $storage_item__4228 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30176,7 +30220,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4226 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4227 } ) ;
+$global_target_text = $storage_item__4228 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4226 = ' ' ;
 } else {
 $storage_item__4226 = 'append-text ' . $storage_item__4227 . ' ' . $storage_item__4228 ;
 }
@@ -30228,13 +30278,8 @@ $storage_item__4232 = 'copy-text ' . $storage_item__4233 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4235 *** append-text ** 2 *' . $storage_item__4236 . ' ' . $storage_item__4237 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4236 ;
-$global_single_action_operand_two = $storage_item__4237 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30247,20 +30292,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4235 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4236 } ) ;
+$global_target_text = $storage_item__4237 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4235 = ' ' ;
 } else {
 $storage_item__4235 = 'append-text ' . $storage_item__4236 . ' ' . $storage_item__4237 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4238 *** append-text ** 2 *' . $storage_item__4239 . ' ' . $storage_item__4240 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4239 ;
-$global_single_action_operand_two = $storage_item__4240 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30273,20 +30319,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4238 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4239 } ) ;
+$global_target_text = $storage_item__4240 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4238 = ' ' ;
 } else {
 $storage_item__4238 = 'append-text ' . $storage_item__4239 . ' ' . $storage_item__4240 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4241 *** append-text ** 2 *' . $storage_item__4242 . ' ' . $storage_item__4243 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4242 ;
-$global_single_action_operand_two = $storage_item__4243 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30299,7 +30346,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4241 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4242 } ) ;
+$global_target_text = $storage_item__4243 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4241 = ' ' ;
 } else {
 $storage_item__4241 = 'append-text ' . $storage_item__4242 . ' ' . $storage_item__4243 ;
 }
@@ -30467,13 +30520,8 @@ $storage_item__4262 = 'prepend-text-no-space ' . $storage_item__4263 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4265 *** append-text ** 2 *' . $storage_item__4266 . ' ' . $storage_item__4267 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4266 ;
-$global_single_action_operand_two = $storage_item__4267 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30486,7 +30534,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4265 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4266 } ) ;
+$global_target_text = $storage_item__4267 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4265 = ' ' ;
 } else {
 $storage_item__4265 = 'append-text ' . $storage_item__4266 . ' ' . $storage_item__4267 ;
 }
@@ -30564,13 +30618,8 @@ $storage_item__4274 = 'prepend-text-no-space ' . $storage_item__4275 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4277 *** append-text ** 2 *' . $storage_item__4278 . ' ' . $storage_item__4279 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4278 ;
-$global_single_action_operand_two = $storage_item__4279 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30583,7 +30632,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4277 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4278 } ) ;
+$global_target_text = $storage_item__4279 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4277 = ' ' ;
 } else {
 $storage_item__4277 = 'append-text ' . $storage_item__4278 . ' ' . $storage_item__4279 ;
 }
@@ -30954,13 +31009,8 @@ $storage_item__4319 = 'prepend-text-no-space ' . $storage_item__4320 . ' ' . $st
 
 # $global_action_debug_line = '***** define-special-strings **** 4322 *** append-text ** 2 *' . $storage_item__4323 . ' ' . $storage_item__4324 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4323 ;
-$global_single_action_operand_two = $storage_item__4324 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -30973,7 +31023,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4322 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4323 } ) ;
+$global_target_text = $storage_item__4324 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4322 = ' ' ;
 } else {
 $storage_item__4322 = 'append-text ' . $storage_item__4323 . ' ' . $storage_item__4324 ;
 }
@@ -31032,13 +31088,8 @@ $storage_item__4328 = 'append-text-no-space ' . $storage_item__4329 . ' ' . $sto
 
 # $global_action_debug_line = '***** define-special-strings **** 4331 *** append-text ** 2 *' . $storage_item__4332 . ' ' . $storage_item__4333 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4332 ;
-$global_single_action_operand_two = $storage_item__4333 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31051,7 +31102,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4331 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4332 } ) ;
+$global_target_text = $storage_item__4333 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4331 = ' ' ;
 } else {
 $storage_item__4331 = 'append-text ' . $storage_item__4332 . ' ' . $storage_item__4333 ;
 }
@@ -31219,13 +31276,8 @@ $storage_item__4352 = 'copy-text ' . $storage_item__4353 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4355 *** append-text ** 2 *' . $storage_item__4356 . ' ' . $storage_item__4357 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4356 ;
-$global_single_action_operand_two = $storage_item__4357 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31238,20 +31290,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4355 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4356 } ) ;
+$global_target_text = $storage_item__4357 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4355 = ' ' ;
 } else {
 $storage_item__4355 = 'append-text ' . $storage_item__4356 . ' ' . $storage_item__4357 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4358 *** append-text ** 2 *' . $storage_item__4359 . ' ' . $storage_item__4360 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4359 ;
-$global_single_action_operand_two = $storage_item__4360 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31264,7 +31317,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4358 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4359 } ) ;
+$global_target_text = $storage_item__4360 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4358 = ' ' ;
 } else {
 $storage_item__4358 = 'append-text ' . $storage_item__4359 . ' ' . $storage_item__4360 ;
 }
@@ -31290,13 +31349,8 @@ $storage_item__4361 = 'copy-text ' . $storage_item__4362 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4364 *** append-text ** 2 *' . $storage_item__4365 . ' ' . $storage_item__4366 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4365 ;
-$global_single_action_operand_two = $storage_item__4366 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31309,7 +31363,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4364 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4365 } ) ;
+$global_target_text = $storage_item__4366 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4364 = ' ' ;
 } else {
 $storage_item__4364 = 'append-text ' . $storage_item__4365 . ' ' . $storage_item__4366 ;
 }
@@ -31335,13 +31395,8 @@ $storage_item__4367 = 'copy-text ' . $storage_item__4368 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** define-special-strings **** 4370 *** append-text ** 2 *' . $storage_item__4371 . ' ' . $storage_item__4372 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4371 ;
-$global_single_action_operand_two = $storage_item__4372 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31354,20 +31409,21 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4370 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4371 } ) ;
+$global_target_text = $storage_item__4372 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4370 = ' ' ;
 } else {
 $storage_item__4370 = 'append-text ' . $storage_item__4371 . ' ' . $storage_item__4372 ;
 }
 
 # $global_action_debug_line = '***** define-special-strings **** 4373 *** append-text ** 2 *' . $storage_item__4374 . ' ' . $storage_item__4375 ;
 # print $global_action_debug_line . "\n" ;
-$global_single_action_name = 'append-text' ;
-$global_number_of_operands = 2 ;
-$global_single_action_operand_one = $storage_item__4374 ;
-$global_single_action_operand_two = $storage_item__4375 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
 $global_yes_or_no_operand_error = $global_no ;
+$global_number_of_operands = 2 ;
 if ( $global_number_of_operands != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
@@ -31380,7 +31436,13 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__4373 = &dashrep_expand_parameters( ) ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__4374 } ) ;
+$global_target_text = $storage_item__4375 ;
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;
+}
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
+$storage_item__4373 = ' ' ;
 } else {
 $storage_item__4373 = 'append-text ' . $storage_item__4374 . ' ' . $storage_item__4375 ;
 }
