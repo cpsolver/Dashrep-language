@@ -1,0 +1,24 @@
+template-runtime-code-for-every-action-begin
+
+runtime-code-check-operand-initialize
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ;  <new_line>
+$global_target_text = runtime-code-for-operand-number-two ;  <new_line>
+
+if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {  <new_line>
+$global_dashrep_replacement{ $global_target_text } .= ' ' ;  <new_line>
+}  <new_line>
+
+$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'append-text ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end
