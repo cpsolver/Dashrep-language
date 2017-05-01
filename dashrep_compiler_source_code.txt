@@ -2524,45 +2524,20 @@ template-function-numeric-minimum
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
 ----
-new-template-runtime-code-for-action-append-new-line:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
-
-runtime-code-storage-item-result = '' ;  <new_line>
-
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
 new-template-runtime-code-for-action-append-text-no-space:
 template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
+$global_number_of_operands = number-of-operands ;  <new_line>
 
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
+needed-operand-checks
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$text_to_append = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-$text_to_append =~ s/^ +//s ;  <new_line>
-$text_to_append =~ s/ +$//s ;  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end .= $text_to_append ;  <new_line>
-
-runtime-code-storage-item-result = '' ;  <new_line>
-
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } .= runtime-code-for-operand-number-one ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+runtime-code-storage-item-result = 'append-text-no-space ' . runtime-code-for-concatenated-all-operands ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -3047,6 +3022,24 @@ return $global_default_text ;  <new_line>
 }  <new_line>
 # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text"  <new_line>
 ----
+template-runtime-code-for-action-append-new-line:
+template-runtime-code-for-every-action-begin
+
+runtime-code-check-operand-initialize
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+$global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "\n" ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'append-new-line ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-append-text:
 template-runtime-code-for-every-action-begin
 
@@ -3057,7 +3050,6 @@ $global_number_of_operands = number-of-operands ;  <new_line>
 needed-operand-checks
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ;  <new_line>
 $global_target_text = runtime-code-for-operand-number-two ;  <new_line>
 
