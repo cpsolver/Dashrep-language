@@ -1,16 +1,6 @@
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "\n" ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'append-new-line ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
