@@ -63,24 +63,27 @@ my $global_phrase_name_to_match = '' ;
 my $global_yes_or_no_operand_error = $global_no ;
 my $output_results = '' ;
 
-my $global_character_pointer = '' ;
-my $global_character_pointer_begin = '' ;
-my $global_character_pointer_end = '' ;
-my $global_length_of_text = '' ;
+my $global_character_pointer = 0 ;
+my $global_character_pointer_begin = 0 ;
+my $global_character_pointer_end = 0 ;
+my $global_length_of_text = 0 ;
 my $global_number_of_words = 0 ;
-my $global_word_pointer = '' ;
-my $global_current_word = '' ;
-my $global_calculated_value = '' ;
 my $global_pointer_to_next_space = 0 ;
 my $global_pointer_to_next_word = 0 ;
 my $global_pointer_to_future_space = 0 ;
 my $global_pointer_to_previous_space = 0 ;
 my $global_pointer_to_first_space = 0 ;
 my $global_counter_number_of_adjacent_spaces = 0 ;
+my $global_word_pointer = 0 ;
+my $global_pointer_to_word = 0 ;
+my $global_length_of_string_to_be_replaced = 0 ;
+my $global_calculated_value = 0 ;
+my $global_normalized_calculated_value = 0 ;
+my $global_current_word = '' ;
 my $global_concatenated_all_operands = '' ;
 my $global_concatenated_all_operands_modified = '' ;
-my $global_normalized_calculated_value = '' ;
-my $global_pointer_to_word = '' ;
+my $global_string_to_be_replaced = '' ;
+my $global_text_to_insert = '' ;
 
 my $global_action_debug_line = '' ;
 
@@ -7091,7 +7094,7 @@ my $storage_item__4905 = 'template-initialize-global-arrays' ;
 my $storage_item__4906 = 'my %global_dashrep_replacement = ( ) ; <new_line> my %global_replacement_count_for_item_name = ( ) ; <new_line> <new_line> my @global_accumulator = ( ) ; <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> my @global_begin_position_for_word = ( ) ; <new_line> $global_begin_position_for_word[ 1 ] = 0 ; <new_line> my @global_length_of_word = ( ) ; <new_line> $global_length_of_word[ 1 ] = 0 ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4905 } = $storage_item__4906 ;
 my $storage_item__4907 = 'template-initialize-global-variables' ;
-my $storage_item__4908 = 'my $global_yes = 1 ; <new_line> my $global_no = 0 ; <new_line> my $global_string_word_to_use_in_handler = ' . "'" . 'word-to-use-in-handler' . "'" . ' ; <new_line> my $global_word_to_use_in_handler = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no = 0 ; <new_line> my $global_source_text = ' . "'" . "'" . ' ; <new_line> my $global_target_text = ' . "'" . "'" . ' ; <new_line> my $global_temporary_text = ' . "'" . "'" . ' ; <new_line> my $global_default_text = ' . "'" . "'" . ' ; <new_line> my $global_storage_number = 1 ; <new_line> my $global_accumulator_pointer = 1 ; <new_line> my $global_text_expanded_parameters_only = ' . "'" . "'" . ' ; <new_line> my $global_action_name = ' . "'" . "'" . ' ; <new_line> my $global_number_of_operands = 0 ; <new_line> my $global_action_operand_one = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_two = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_three = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_four = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_five = ' . "'" . "'" . ' ; <new_line> my $global_action_operands_all = ' . "'" . "'" . ' ; <new_line> my $global_action_result = ' . "'" . "'" . ' ; <new_line> my $global_numeric_value_first = 0 ; <new_line> my $global_numeric_value_second = 0 ; <new_line> my $global_spaces = ' . "'" . ' ' . "'" . ' ; <new_line> my $global_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_match = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no_operand_error = $global_no ; <new_line> my $output_results = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_character_pointer = ' . "'" . "'" . ' ; <new_line> my $global_character_pointer_begin = ' . "'" . "'" . ' ; <new_line> my $global_character_pointer_end = ' . "'" . "'" . ' ; <new_line> my $global_length_of_text = ' . "'" . "'" . ' ; <new_line> my $global_number_of_words = 0 ; <new_line> my $global_word_pointer = ' . "'" . "'" . ' ; <new_line> my $global_current_word = ' . "'" . "'" . ' ; <new_line> my $global_calculated_value = ' . "'" . "'" . ' ; <new_line> my $global_pointer_to_next_space = 0 ; <new_line> my $global_pointer_to_next_word = 0 ; <new_line> my $global_pointer_to_future_space = 0 ; <new_line> my $global_pointer_to_previous_space = 0 ; <new_line> my $global_pointer_to_first_space = 0 ; <new_line> my $global_counter_number_of_adjacent_spaces = 0 ; <new_line> my $global_concatenated_all_operands = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands_modified = ' . "'" . "'" . ' ; <new_line> my $global_normalized_calculated_value = ' . "'" . "'" . ' ; <new_line> my $global_pointer_to_word = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_action_debug_line = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_file_write_protection_mode = 0600 ; # octal number that specifies no "world" read access <new_line> my $global_file_public_read_protection_mode = 0644 ; # octal number that specifies public "world" read access <new_line> <new_line> my $global_endless_loop_counter = 0 ; <new_line> my $global_endless_loop_counter_limit = 70000 ; <new_line> my $global_time_limit = 1200 ; # 1200 seconds = 20 minutes <new_line> my $global_starting_time = time ; <new_line> my $global_interval_count_for_time_limit_check = 0 ; <new_line> my $global_nesting_level_of_file_actions = 0 ; <new_line> my $global_recursion_level_of_expand_parameters = 0 ; <new_line> <new_line> my $global_true = 1 ; <new_line> my $global_false = 0 ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-debug-trace-on-yes-or-no' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-action-trace-on-yes-or-no' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-stop-translation' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> <new_line> # my %global_minimum_number_of_operands_for_action ; <new_line> $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = ' . "'" . 'no' . "'" . ' ; <new_line> my $global_single_action_name ; <new_line> my $global_trace_log ; <new_line> my $global_single_action_operands_all ; <new_line> my %global_required_number_of_operands_for_action ; <new_line> my $global_single_action_operand_one ; <new_line> my $global_single_action_operand_two ; <new_line> my $global_single_action_operand_three ; <new_line> my $global_single_action_operand_four ; <new_line> my $global_single_action_operand_five ; <new_line> my $global_unique_value ; <new_line> my $global_operand_one ; <new_line> my $global_operand_two ; <new_line> my $global_operand_three ; <new_line> my $global_operand_four ; <new_line> my $global_operand_five ; <new_line> my $global_operands_all ; <new_line> my $global_xml_level_number ; <new_line> my $global_ignore_level ; <new_line> my $global_xml_accumulated_sequence_of_tag_names ; <new_line> my @global_xml_tag_at_level_number ; <new_line> my $global_exists_xml_hyphenated_phrase ; <new_line> my %global_check_operand_one_is_phrase_name_for_action ; <new_line> my %global_check_operand_two_is_phrase_name_for_action ; <new_line> my %global_check_operand_three_is_phrase_name_for_action ; <new_line> my %global_check_operand_four_is_phrase_name_for_action ; <new_line> my %global_check_operand_one_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_two_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_three_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_one_is_positive_integer_for_action ; <new_line> my %global_check_operand_two_is_positive_integer_for_action ; <new_line> my %global_check_operand_three_is_positive_integer_for_action ; <new_line> my %global_check_operand_four_is_positive_integer_for_action ; <new_line> my %global_check_operand_one_is_real_number_for_action ; <new_line> my %global_check_operand_two_is_real_number_for_action ; <new_line> my %global_check_operand_one_is_file_name_for_action ; <new_line> my %global_check_operand_two_is_file_name_for_action ; <new_line> my $global_dashrep_text_list_of_phrase_names ; <new_line> my $global_xml_level ; <new_line>' ;
+my $storage_item__4908 = 'my $global_yes = 1 ; <new_line> my $global_no = 0 ; <new_line> my $global_string_word_to_use_in_handler = ' . "'" . 'word-to-use-in-handler' . "'" . ' ; <new_line> my $global_word_to_use_in_handler = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no = 0 ; <new_line> my $global_source_text = ' . "'" . "'" . ' ; <new_line> my $global_target_text = ' . "'" . "'" . ' ; <new_line> my $global_temporary_text = ' . "'" . "'" . ' ; <new_line> my $global_default_text = ' . "'" . "'" . ' ; <new_line> my $global_storage_number = 1 ; <new_line> my $global_accumulator_pointer = 1 ; <new_line> my $global_text_expanded_parameters_only = ' . "'" . "'" . ' ; <new_line> my $global_action_name = ' . "'" . "'" . ' ; <new_line> my $global_number_of_operands = 0 ; <new_line> my $global_action_operand_one = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_two = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_three = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_four = ' . "'" . "'" . ' ; <new_line> my $global_action_operand_five = ' . "'" . "'" . ' ; <new_line> my $global_action_operands_all = ' . "'" . "'" . ' ; <new_line> my $global_action_result = ' . "'" . "'" . ' ; <new_line> my $global_numeric_value_first = 0 ; <new_line> my $global_numeric_value_second = 0 ; <new_line> my $global_spaces = ' . "'" . ' ' . "'" . ' ; <new_line> my $global_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_match = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no_operand_error = $global_no ; <new_line> my $output_results = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_character_pointer = 0 ; <new_line> my $global_character_pointer_begin = 0 ; <new_line> my $global_character_pointer_end = 0 ; <new_line> my $global_length_of_text = 0 ; <new_line> my $global_number_of_words = 0 ; <new_line> my $global_pointer_to_next_space = 0 ; <new_line> my $global_pointer_to_next_word = 0 ; <new_line> my $global_pointer_to_future_space = 0 ; <new_line> my $global_pointer_to_previous_space = 0 ; <new_line> my $global_pointer_to_first_space = 0 ; <new_line> my $global_counter_number_of_adjacent_spaces = 0 ; <new_line> my $global_word_pointer = 0 ; <new_line> my $global_pointer_to_word = 0 ; <new_line> my $global_length_of_string_to_be_replaced = 0 ; <new_line> my $global_calculated_value = 0 ; <new_line> my $global_normalized_calculated_value = 0 ; <new_line> my $global_current_word = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands_modified = ' . "'" . "'" . ' ; <new_line> my $global_string_to_be_replaced = ' . "'" . "'" . ' ; <new_line> my $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_action_debug_line = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_file_write_protection_mode = 0600 ; # octal number that specifies no "world" read access <new_line> my $global_file_public_read_protection_mode = 0644 ; # octal number that specifies public "world" read access <new_line> <new_line> my $global_endless_loop_counter = 0 ; <new_line> my $global_endless_loop_counter_limit = 70000 ; <new_line> my $global_time_limit = 1200 ; # 1200 seconds = 20 minutes <new_line> my $global_starting_time = time ; <new_line> my $global_interval_count_for_time_limit_check = 0 ; <new_line> my $global_nesting_level_of_file_actions = 0 ; <new_line> my $global_recursion_level_of_expand_parameters = 0 ; <new_line> <new_line> my $global_true = 1 ; <new_line> my $global_false = 0 ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-debug-trace-on-yes-or-no' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-action-trace-on-yes-or-no' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> $global_dashrep_replacement{ ' . "'" . 'dashrep-stop-translation' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> <new_line> # my %global_minimum_number_of_operands_for_action ; <new_line> $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = ' . "'" . 'no' . "'" . ' ; <new_line> my $global_single_action_name ; <new_line> my $global_trace_log ; <new_line> my $global_single_action_operands_all ; <new_line> my %global_required_number_of_operands_for_action ; <new_line> my $global_single_action_operand_one ; <new_line> my $global_single_action_operand_two ; <new_line> my $global_single_action_operand_three ; <new_line> my $global_single_action_operand_four ; <new_line> my $global_single_action_operand_five ; <new_line> my $global_unique_value ; <new_line> my $global_operand_one ; <new_line> my $global_operand_two ; <new_line> my $global_operand_three ; <new_line> my $global_operand_four ; <new_line> my $global_operand_five ; <new_line> my $global_operands_all ; <new_line> my $global_xml_level_number ; <new_line> my $global_ignore_level ; <new_line> my $global_xml_accumulated_sequence_of_tag_names ; <new_line> my @global_xml_tag_at_level_number ; <new_line> my $global_exists_xml_hyphenated_phrase ; <new_line> my %global_check_operand_one_is_phrase_name_for_action ; <new_line> my %global_check_operand_two_is_phrase_name_for_action ; <new_line> my %global_check_operand_three_is_phrase_name_for_action ; <new_line> my %global_check_operand_four_is_phrase_name_for_action ; <new_line> my %global_check_operand_one_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_two_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_three_phrase_is_not_empty_for_action ; <new_line> my %global_check_operand_one_is_positive_integer_for_action ; <new_line> my %global_check_operand_two_is_positive_integer_for_action ; <new_line> my %global_check_operand_three_is_positive_integer_for_action ; <new_line> my %global_check_operand_four_is_positive_integer_for_action ; <new_line> my %global_check_operand_one_is_real_number_for_action ; <new_line> my %global_check_operand_two_is_real_number_for_action ; <new_line> my %global_check_operand_one_is_file_name_for_action ; <new_line> my %global_check_operand_two_is_file_name_for_action ; <new_line> my $global_dashrep_text_list_of_phrase_names ; <new_line> my $global_xml_level ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4907 } = $storage_item__4908 ;
 my $storage_item__4909 = 'template-runtime-code-at-top-if-warning-message' ;
 my $storage_item__4910 = 'print ' . "'" . 'Compiler error; for details see warning messages at top of compiler output file.' . "'" . ' . "' . '\\' . 'n" ; <new_line> exit ; <new_line> # All done! <new_line> <new_line>' ;
@@ -7241,7 +7244,7 @@ my $storage_item__5005 = 'template-runtime-code-for-action-append-new-line' ;
 my $storage_item__5006 = 'template-runtime-code-standard-action-begin $global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-standard-action-end' ;
 $global_dashrep_replacement{ $storage_item__5005 } = $storage_item__5006 ;
 my $storage_item__5007 = 'template-runtime-code-for-action-append-text-no-space' ;
-my $storage_item__5008 = 'template-runtime-code-standard-action-begin $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> template-runtime-code-standard-action-end' ;
+my $storage_item__5008 = 'template-runtime-code-standard-action-begin $global_dashrep_replacement{ runtime-code-for-operand-number-two } .= $global_dashrep_replacement{ runtime-code-for-operand-number-one } ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-standard-action-end' ;
 $global_dashrep_replacement{ $storage_item__5007 } = $storage_item__5008 ;
 my $storage_item__5009 = 'template-runtime-code-for-action-append-text' ;
 my $storage_item__5010 = 'template-runtime-code-standard-action-begin $global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> if ( $global_dashrep_replacement{ $global_target_text } ne ' . "'" . "'" . ' ) { <new_line> $global_dashrep_replacement{ $global_target_text } .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_dashrep_replacement{ $global_target_text } .= $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-standard-action-end' ;
@@ -7249,126 +7252,132 @@ $global_dashrep_replacement{ $storage_item__5009 } = $storage_item__5010 ;
 my $storage_item__5011 = 'template-runtime-code-for-action-clear-phrase' ;
 my $storage_item__5012 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5011 } = $storage_item__5012 ;
-my $storage_item__5013 = 'template-runtime-code-for-action-copy-text' ;
-my $storage_item__5014 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5013 = 'template-runtime-code-for-action-copy-and-replace' ;
+my $storage_item__5014 = 'template-runtime-code-standard-action-begin $global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ; <new_line> $global_string_to_be_replaced = $global_dashrep_replacement{ runtime-code-for-operand-number-three } ; <new_line> $global_text_to_insert = $global_dashrep_replacement{ runtime-code-for-operand-number-four } ; <new_line> $global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ; <new_line> if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) { <new_line> template-runtime-code-store-result-for-case-error } else { <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ; <new_line> while ( $global_character_pointer >= 0 ) { <new_line> $global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ; <new_line> $global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ; <new_line> $global_endless_loop_counter ++ ; <new_line> if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) { <new_line> last ; <new_line> } <new_line> } <new_line> } <new_line> if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) { <new_line> $global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-standard-action-end' ;
 $global_dashrep_replacement{ $storage_item__5013 } = $storage_item__5014 ;
-my $storage_item__5015 = 'template-runtime-code-for-action-copy-word-at-position' ;
-my $storage_item__5016 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $global_word_pointer = runtime-code-for-operand-number-three + 0 ; <new_line> &function__get_word_at_position( ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5015 = 'template-runtime-code-for-action-copy-text' ;
+my $storage_item__5016 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5015 } = $storage_item__5016 ;
-my $storage_item__5017 = 'template-runtime-code-for-action-executable-phrase-begin' ;
-my $storage_item__5018 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line>' ;
+my $storage_item__5017 = 'template-runtime-code-for-action-copy-word-at-position' ;
+my $storage_item__5018 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $global_word_pointer = runtime-code-for-operand-number-three + 0 ; <new_line> &function__get_word_at_position( ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5017 } = $storage_item__5018 ;
-my $storage_item__5019 = 'template-runtime-code-for-action-executable-phrase-end' ;
-my $storage_item__5020 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5019 = 'template-runtime-code-for-action-executable-phrase-begin' ;
+my $storage_item__5020 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5019 } = $storage_item__5020 ;
-my $storage_item__5021 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
-my $storage_item__5022 = 'template-runtime-code-for-action-executable-phrase-begin &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5021 = 'template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5022 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5021 } = $storage_item__5022 ;
-my $storage_item__5023 = 'template-runtime-code-for-action-executable-phrase' ;
-my $storage_item__5024 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5023 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
+my $storage_item__5024 = 'template-runtime-code-for-action-executable-phrase-begin &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5023 } = $storage_item__5024 ;
-my $storage_item__5025 = 'template-runtime-code-for-action-expand-text' ;
-my $storage_item__5026 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5025 = 'template-runtime-code-for-action-executable-phrase' ;
+my $storage_item__5026 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5025 } = $storage_item__5026 ;
-my $storage_item__5027 = 'template-runtime-code-for-action-get-count-of-words' ;
-my $storage_item__5028 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> &function__get_count_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5027 = 'template-runtime-code-for-action-expand-text' ;
+my $storage_item__5028 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5027 } = $storage_item__5028 ;
-my $storage_item__5029 = 'template-runtime-code-for-action-get-word-at-position' ;
-my $storage_item__5030 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $global_word_position = runtime-code-for-operand-number-three + 0 ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_positive_integer( $word_position ) ) { <new_line> &function__get_word_at_position( ) ; <new_line> runtime-code-storage-item-result = $target_text ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_undefined' . "'" . ' ; <new_line> } <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5029 = 'template-runtime-code-for-action-get-count-of-words' ;
+my $storage_item__5030 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> &function__get_count_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5029 } = $storage_item__5030 ;
-my $storage_item__5031 = 'template-runtime-code-for-action-if-else' ;
-my $storage_item__5032 = '# begin action if else <new_line> } else { <new_line> # end action if else <new_line> <new_line>' ;
+my $storage_item__5031 = 'template-runtime-code-for-action-get-word-at-position' ;
+my $storage_item__5032 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $global_word_position = runtime-code-for-operand-number-three + 0 ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_positive_integer( $word_position ) ) { <new_line> &function__get_word_at_position( ) ; <new_line> runtime-code-storage-item-result = $target_text ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_undefined' . "'" . ' ; <new_line> } <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5031 } = $storage_item__5032 ;
-my $storage_item__5033 = 'template-runtime-code-for-action-if-end' ;
-my $storage_item__5034 = '# begin action if end <new_line> } <new_line> # end action if end <new_line> <new_line>' ;
+my $storage_item__5033 = 'template-runtime-code-for-action-if-else' ;
+my $storage_item__5034 = '# begin action if else <new_line> } else { <new_line> # end action if else <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5033 } = $storage_item__5034 ;
-my $storage_item__5035 = 'template-runtime-code-for-action-if-no-begin' ;
-my $storage_item__5036 = '# begin action if no begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'no' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) <new_line> { <new_line> # end action if no begin <new_line> <new_line>' ;
+my $storage_item__5035 = 'template-runtime-code-for-action-if-end' ;
+my $storage_item__5036 = '# begin action if end <new_line> } <new_line> # end action if end <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5035 } = $storage_item__5036 ;
-my $storage_item__5037 = 'template-runtime-code-for-action-if-yes-begin' ;
-my $storage_item__5038 = '# begin action if yes begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'yes' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) <new_line> { <new_line> # end action if yes begin <new_line> <new_line>' ;
+my $storage_item__5037 = 'template-runtime-code-for-action-if-no-begin' ;
+my $storage_item__5038 = '# begin action if no begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'no' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) <new_line> { <new_line> # end action if no begin <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5037 } = $storage_item__5038 ;
-my $storage_item__5039 = 'template-runtime-code-for-action-no-if-any-no' ;
-my $storage_item__5040 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5039 = 'template-runtime-code-for-action-if-yes-begin' ;
+my $storage_item__5040 = '# begin action if yes begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'yes' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) <new_line> { <new_line> # end action if yes begin <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5039 } = $storage_item__5040 ;
-my $storage_item__5041 = 'template-runtime-code-for-action-no-if-not-yes' ;
-my $storage_item__5042 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5041 = 'template-runtime-code-for-action-no-if-any-no' ;
+my $storage_item__5042 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5041 } = $storage_item__5042 ;
-my $storage_item__5043 = 'template-runtime-code-for-action-not-recognized' ;
-my $storage_item__5044 = 'template-runtime-code-for-every-action-begin # action not recognized template-runtime-code-for-every-action-end' ;
+my $storage_item__5043 = 'template-runtime-code-for-action-no-if-not-yes' ;
+my $storage_item__5044 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5043 } = $storage_item__5044 ;
-my $storage_item__5045 = 'template-runtime-code-for-action-numeric-add' ;
-my $storage_item__5046 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
+my $storage_item__5045 = 'template-runtime-code-for-action-not-recognized' ;
+my $storage_item__5046 = 'template-runtime-code-for-every-action-begin # action not recognized template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5045 } = $storage_item__5046 ;
-my $storage_item__5047 = 'template-runtime-code-for-action-numeric-equal-greater-less-compare' ;
-my $storage_item__5048 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_yes ) { <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> return runtime-code-storage-item-result ; <new_line> } <new_line> $global_numeric_value_first = runtime-code-for-operand-number-one + 0 ; <new_line> $global_numeric_value_second = runtime-code-for-operand-number-two + 0 ; <new_line> if ( $global_numeric_value_first == $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'equal' . "'" . ' ; <new_line> } elsif ( $global_numeric_value_first > $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'greater' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'less' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5047 = 'template-runtime-code-for-action-numeric-add' ;
+my $storage_item__5048 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
 $global_dashrep_replacement{ $storage_item__5047 } = $storage_item__5048 ;
-my $storage_item__5049 = 'template-runtime-code-for-action-numeric-maximum' ;
-my $storage_item__5050 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
+my $storage_item__5049 = 'template-runtime-code-for-action-numeric-equal-greater-less-compare' ;
+my $storage_item__5050 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_yes ) { <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> return runtime-code-storage-item-result ; <new_line> } <new_line> $global_numeric_value_first = runtime-code-for-operand-number-one + 0 ; <new_line> $global_numeric_value_second = runtime-code-for-operand-number-two + 0 ; <new_line> if ( $global_numeric_value_first == $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'equal' . "'" . ' ; <new_line> } elsif ( $global_numeric_value_first > $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'greater' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'less' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5049 } = $storage_item__5050 ;
-my $storage_item__5051 = 'template-runtime-code-for-action-numeric-minimum' ;
+my $storage_item__5051 = 'template-runtime-code-for-action-numeric-maximum' ;
 my $storage_item__5052 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
 $global_dashrep_replacement{ $storage_item__5051 } = $storage_item__5052 ;
-my $storage_item__5053 = 'template-runtime-code-for-action-numeric-multiply' ;
+my $storage_item__5053 = 'template-runtime-code-for-action-numeric-minimum' ;
 my $storage_item__5054 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
 $global_dashrep_replacement{ $storage_item__5053 } = $storage_item__5054 ;
-my $storage_item__5055 = 'template-runtime-code-for-action-put-into-phrase' ;
-my $storage_item__5056 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5055 = 'template-runtime-code-for-action-numeric-multiply' ;
+my $storage_item__5056 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
 $global_dashrep_replacement{ $storage_item__5055 } = $storage_item__5056 ;
-my $storage_item__5057 = 'template-runtime-code-for-action-trace-show-where' ;
-my $storage_item__5058 = 'template-runtime-code-for-every-action-begin print TRACE_OUT ' . "'" . 'current code location is: phrase-being-defined no-space ' . "'" . ' . "' . '\\' . 'n" ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5057 = 'template-runtime-code-for-action-put-into-phrase' ;
+my $storage_item__5058 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5057 } = $storage_item__5058 ;
-my $storage_item__5059 = 'template-runtime-code-for-action-trace-show' ;
-my $storage_item__5060 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) ) { <new_line> print TRACE_OUT ' . "'" . 'phrase ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' is: ' . "'" . ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT ' . "'" . 'phrase ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' is not defined' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5059 = 'template-runtime-code-for-action-trace-show-where' ;
+my $storage_item__5060 = 'template-runtime-code-for-every-action-begin print TRACE_OUT ' . "'" . 'current code location is: phrase-being-defined no-space ' . "'" . ' . "' . '\\' . 'n" ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5059 } = $storage_item__5060 ;
-my $storage_item__5061 = 'template-runtime-code-for-action-unchanged' ;
-my $storage_item__5062 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' . ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5061 = 'template-runtime-code-for-action-trace-show' ;
+my $storage_item__5062 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) ) { <new_line> print TRACE_OUT ' . "'" . 'phrase ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' is: ' . "'" . ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT ' . "'" . 'phrase ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' is not defined' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5061 } = $storage_item__5062 ;
-my $storage_item__5063 = 'template-runtime-code-for-action-use-handler-with-each-word-in-phrase' ;
-my $storage_item__5064 = 'template-runtime-code-for-every-action-begin my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5063 = 'template-runtime-code-for-action-unchanged' ;
+my $storage_item__5064 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' . ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5063 } = $storage_item__5064 ;
-my $storage_item__5065 = 'template-runtime-code-for-action-yes-if-all-yes' ;
-my $storage_item__5066 = 'template-runtime-code-for-every-action-begin $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_concatenated_all_operands_modified = ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands . ' . "'" . ' ' . "'" . ' ; <new_line> $accumulated_remaining_text = ' . "'" . "'" . ' ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> while ( $pointer_to_next_match > 0 ) { <new_line> $accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ; <new_line> $global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> } <new_line> $accumulated_remaining_text .= ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands_modified ; <new_line> $accumulated_remaining_text =~ s/ //g ; <new_line> if ( length( $accumulated_remaining_text ) == 0 ) { <new_line> $global_target_text = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> $global_target_text = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5065 = 'template-runtime-code-for-action-use-handler-with-each-word-in-phrase' ;
+my $storage_item__5066 = 'template-runtime-code-for-every-action-begin my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . '<dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5065 } = $storage_item__5066 ;
-my $storage_item__5067 = 'template-runtime-code-for-action-yes-if-any-yes' ;
-my $storage_item__5068 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5067 = 'template-runtime-code-for-action-yes-if-all-yes' ;
+my $storage_item__5068 = 'template-runtime-code-for-every-action-begin $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_concatenated_all_operands_modified = ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands . ' . "'" . ' ' . "'" . ' ; <new_line> $accumulated_remaining_text = ' . "'" . "'" . ' ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> while ( $pointer_to_next_match > 0 ) { <new_line> $accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ; <new_line> $global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> } <new_line> $accumulated_remaining_text .= ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands_modified ; <new_line> $accumulated_remaining_text =~ s/ //g ; <new_line> if ( length( $accumulated_remaining_text ) == 0 ) { <new_line> $global_target_text = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> $global_target_text = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5067 } = $storage_item__5068 ;
-my $storage_item__5069 = 'template-runtime-code-for-action-yes-if-not-no' ;
-my $storage_item__5070 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5069 = 'template-runtime-code-for-action-yes-if-any-yes' ;
+my $storage_item__5070 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5069 } = $storage_item__5070 ;
-my $storage_item__5071 = 'template-runtime-code-for-action-yes-or-no-opposite' ;
-my $storage_item__5072 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5071 = 'template-runtime-code-for-action-yes-if-not-no' ;
+my $storage_item__5072 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5071 } = $storage_item__5072 ;
-my $storage_item__5073 = 'template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions' ;
-my $storage_item__5074 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5073 = 'template-runtime-code-for-action-yes-or-no-opposite' ;
+my $storage_item__5074 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5073 } = $storage_item__5074 ;
-my $storage_item__5075 = 'template-runtime-code-for-action-yes-or-no-same-two-words' ;
-my $storage_item__5076 = 'template-runtime-code-for-every-action-begin if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5075 = 'template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions' ;
+my $storage_item__5076 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5075 } = $storage_item__5076 ;
-my $storage_item__5077 = 'template-runtime-code-for-action-zero-one-multiple' ;
-my $storage_item__5078 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-storage-item-result = ' . "'" . 'multiple' . "'" . ' ; <new_line> if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( runtime-code-for-operand-number-one + 0 <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } elsif ( runtime-code-for-operand-number-one + 0 == 1 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'one' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5077 = 'template-runtime-code-for-action-yes-or-no-same-two-words' ;
+my $storage_item__5078 = 'template-runtime-code-for-every-action-begin if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5077 } = $storage_item__5078 ;
-my $storage_item__5079 = 'template-runtime-code-for-action-zero-or-nonzero' ;
-my $storage_item__5080 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-storage-item-result = ' . "'" . 'nonzero' . "'" . ' ; <new_line> if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( runtime-code-for-operand-number-one + 0 <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5079 = 'template-runtime-code-for-action-zero-one-multiple' ;
+my $storage_item__5080 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-storage-item-result = ' . "'" . 'multiple' . "'" . ' ; <new_line> if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( runtime-code-for-operand-number-one + 0 <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } elsif ( runtime-code-for-operand-number-one + 0 == 1 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'one' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5079 } = $storage_item__5080 ;
-my $storage_item__5081 = 'template-runtime-code-for-every-action-begin' ;
-my $storage_item__5082 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line>' ;
+my $storage_item__5081 = 'template-runtime-code-for-action-zero-or-nonzero' ;
+my $storage_item__5082 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end runtime-code-storage-item-result = ' . "'" . 'nonzero' . "'" . ' ; <new_line> if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( runtime-code-for-operand-number-one + 0 <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5081 } = $storage_item__5082 ;
-my $storage_item__5083 = 'template-runtime-code-for-every-action-end' ;
-my $storage_item__5084 = '' ;
+my $storage_item__5083 = 'template-runtime-code-for-every-action-begin' ;
+my $storage_item__5084 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5083 } = $storage_item__5084 ;
-my $storage_item__5085 = 'template-runtime-code-standard-action-begin' ;
-my $storage_item__5086 = 'template-runtime-code-for-every-action-begin $global_number_of_operands = number-of-operands ; <new_line> runtime-code-check-operand-initialize needed-operand-checks if ( $global_yes_or_no_operand_error == $global_no ) { <new_line>' ;
+my $storage_item__5085 = 'template-runtime-code-for-every-action-end' ;
+my $storage_item__5086 = '' ;
 $global_dashrep_replacement{ $storage_item__5085 } = $storage_item__5086 ;
-my $storage_item__5087 = 'template-runtime-code-standard-action-end' ;
-my $storage_item__5088 = '} else { <new_line> runtime-code-storage-item-result = ' . "'" . ' <dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5087 = 'template-runtime-code-standard-action-begin' ;
+my $storage_item__5088 = 'template-runtime-code-for-every-action-begin $global_number_of_operands = number-of-operands ; <new_line> runtime-code-check-operand-initialize needed-operand-checks if ( $global_yes_or_no_operand_error == $global_no ) { <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5087 } = $storage_item__5088 ;
-my $storage_item__5089 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
-my $storage_item__5090 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__<dashrep_placeholder_action_name_with_underscores>( ) ; <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5089 = 'template-runtime-code-standard-action-end' ;
+my $storage_item__5090 = '} else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5089 } = $storage_item__5090 ;
-my $storage_item__5091 = 'template-runtime-code-standard-action' ;
-my $storage_item__5092 = 'template-runtime-code-standard-action-begin $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> template-runtime-code-standard-action-end' ;
+my $storage_item__5091 = 'template-runtime-code-standard-action-with-minimum-operand-count' ;
+my $storage_item__5092 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__<dashrep_placeholder_action_name_with_underscores>( ) ; <new_line> runtime-code-storage-item-result = $global_target_text ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5091 } = $storage_item__5092 ;
+my $storage_item__5093 = 'template-runtime-code-standard-action' ;
+my $storage_item__5094 = 'template-runtime-code-standard-action-begin $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> template-runtime-code-standard-action-end' ;
+$global_dashrep_replacement{ $storage_item__5093 } = $storage_item__5094 ;
+my $storage_item__5095 = 'template-runtime-code-store-result-for-case-error' ;
+my $storage_item__5096 = 'runtime-code-storage-item-result = ' . "'" . ' <dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line>' ;
+$global_dashrep_replacement{ $storage_item__5095 } = $storage_item__5096 ;
 
 
 #------------------------------------------------------------
@@ -8967,12 +8976,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1146 ;
-$global_single_action_operand_two = $storage_item__1147 ;
-$global_single_action_operand_three = $storage_item__1148 ;
-$global_single_action_operand_four = $storage_item__1149 ;
-$storage_item__1145 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1146 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1148 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1149 } ;
+$global_dashrep_replacement{ $storage_item__1147 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1145 = ' copy-and-replace ' . $storage_item__1146 . ' ' . $storage_item__1147 . ' ' . $storage_item__1148 . ' ' . $storage_item__1149 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1147 } = $global_source_text ;
+$storage_item__1145 = ' ' ;
+} else {
+$storage_item__1145 = ' copy-and-replace ' . $storage_item__1146 . ' ' . $storage_item__1147 . ' ' . $storage_item__1148 . ' ' . $storage_item__1149 . ' ' ;
+}
 } else {
 $storage_item__1145 = ' copy-and-replace ' . $storage_item__1146 . ' ' . $storage_item__1147 . ' ' . $storage_item__1148 . ' ' . $storage_item__1149 . ' ' ;
 }
@@ -9001,12 +9028,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1151 ;
-$global_single_action_operand_two = $storage_item__1152 ;
-$global_single_action_operand_three = $storage_item__1153 ;
-$global_single_action_operand_four = $storage_item__1154 ;
-$storage_item__1150 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1151 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1153 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1154 } ;
+$global_dashrep_replacement{ $storage_item__1152 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1150 = ' copy-and-replace ' . $storage_item__1151 . ' ' . $storage_item__1152 . ' ' . $storage_item__1153 . ' ' . $storage_item__1154 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1152 } = $global_source_text ;
+$storage_item__1150 = ' ' ;
+} else {
+$storage_item__1150 = ' copy-and-replace ' . $storage_item__1151 . ' ' . $storage_item__1152 . ' ' . $storage_item__1153 . ' ' . $storage_item__1154 . ' ' ;
+}
 } else {
 $storage_item__1150 = ' copy-and-replace ' . $storage_item__1151 . ' ' . $storage_item__1152 . ' ' . $storage_item__1153 . ' ' . $storage_item__1154 . ' ' ;
 }
@@ -9035,12 +9080,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1156 ;
-$global_single_action_operand_two = $storage_item__1157 ;
-$global_single_action_operand_three = $storage_item__1158 ;
-$global_single_action_operand_four = $storage_item__1159 ;
-$storage_item__1155 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1156 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1158 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1159 } ;
+$global_dashrep_replacement{ $storage_item__1157 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1155 = ' copy-and-replace ' . $storage_item__1156 . ' ' . $storage_item__1157 . ' ' . $storage_item__1158 . ' ' . $storage_item__1159 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1157 } = $global_source_text ;
+$storage_item__1155 = ' ' ;
+} else {
+$storage_item__1155 = ' copy-and-replace ' . $storage_item__1156 . ' ' . $storage_item__1157 . ' ' . $storage_item__1158 . ' ' . $storage_item__1159 . ' ' ;
+}
 } else {
 $storage_item__1155 = ' copy-and-replace ' . $storage_item__1156 . ' ' . $storage_item__1157 . ' ' . $storage_item__1158 . ' ' . $storage_item__1159 . ' ' ;
 }
@@ -9069,12 +9132,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1161 ;
-$global_single_action_operand_two = $storage_item__1162 ;
-$global_single_action_operand_three = $storage_item__1163 ;
-$global_single_action_operand_four = $storage_item__1164 ;
-$storage_item__1160 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1161 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1163 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1164 } ;
+$global_dashrep_replacement{ $storage_item__1162 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1160 = ' copy-and-replace ' . $storage_item__1161 . ' ' . $storage_item__1162 . ' ' . $storage_item__1163 . ' ' . $storage_item__1164 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1162 } = $global_source_text ;
+$storage_item__1160 = ' ' ;
+} else {
+$storage_item__1160 = ' copy-and-replace ' . $storage_item__1161 . ' ' . $storage_item__1162 . ' ' . $storage_item__1163 . ' ' . $storage_item__1164 . ' ' ;
+}
 } else {
 $storage_item__1160 = ' copy-and-replace ' . $storage_item__1161 . ' ' . $storage_item__1162 . ' ' . $storage_item__1163 . ' ' . $storage_item__1164 . ' ' ;
 }
@@ -9134,12 +9215,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1169 ;
-$global_single_action_operand_two = $storage_item__1170 ;
-$global_single_action_operand_three = $storage_item__1171 ;
-$global_single_action_operand_four = $storage_item__1172 ;
-$storage_item__1168 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1169 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1171 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1172 } ;
+$global_dashrep_replacement{ $storage_item__1170 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1168 = ' copy-and-replace ' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 . ' ' . $storage_item__1172 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1170 } = $global_source_text ;
+$storage_item__1168 = ' ' ;
+} else {
+$storage_item__1168 = ' copy-and-replace ' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 . ' ' . $storage_item__1172 . ' ' ;
+}
 } else {
 $storage_item__1168 = ' copy-and-replace ' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 . ' ' . $storage_item__1172 . ' ' ;
 }
@@ -9168,12 +9267,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1174 ;
-$global_single_action_operand_two = $storage_item__1175 ;
-$global_single_action_operand_three = $storage_item__1176 ;
-$global_single_action_operand_four = $storage_item__1177 ;
-$storage_item__1173 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1174 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1176 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1177 } ;
+$global_dashrep_replacement{ $storage_item__1175 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1173 = ' copy-and-replace ' . $storage_item__1174 . ' ' . $storage_item__1175 . ' ' . $storage_item__1176 . ' ' . $storage_item__1177 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1175 } = $global_source_text ;
+$storage_item__1173 = ' ' ;
+} else {
+$storage_item__1173 = ' copy-and-replace ' . $storage_item__1174 . ' ' . $storage_item__1175 . ' ' . $storage_item__1176 . ' ' . $storage_item__1177 . ' ' ;
+}
 } else {
 $storage_item__1173 = ' copy-and-replace ' . $storage_item__1174 . ' ' . $storage_item__1175 . ' ' . $storage_item__1176 . ' ' . $storage_item__1177 . ' ' ;
 }
@@ -9202,12 +9319,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1179 ;
-$global_single_action_operand_two = $storage_item__1180 ;
-$global_single_action_operand_three = $storage_item__1181 ;
-$global_single_action_operand_four = $storage_item__1182 ;
-$storage_item__1178 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1179 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1181 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1182 } ;
+$global_dashrep_replacement{ $storage_item__1180 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1178 = ' copy-and-replace ' . $storage_item__1179 . ' ' . $storage_item__1180 . ' ' . $storage_item__1181 . ' ' . $storage_item__1182 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1180 } = $global_source_text ;
+$storage_item__1178 = ' ' ;
+} else {
+$storage_item__1178 = ' copy-and-replace ' . $storage_item__1179 . ' ' . $storage_item__1180 . ' ' . $storage_item__1181 . ' ' . $storage_item__1182 . ' ' ;
+}
 } else {
 $storage_item__1178 = ' copy-and-replace ' . $storage_item__1179 . ' ' . $storage_item__1180 . ' ' . $storage_item__1181 . ' ' . $storage_item__1182 . ' ' ;
 }
@@ -9236,12 +9371,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1184 ;
-$global_single_action_operand_two = $storage_item__1185 ;
-$global_single_action_operand_three = $storage_item__1186 ;
-$global_single_action_operand_four = $storage_item__1187 ;
-$storage_item__1183 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1184 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1186 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1187 } ;
+$global_dashrep_replacement{ $storage_item__1185 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1183 = ' copy-and-replace ' . $storage_item__1184 . ' ' . $storage_item__1185 . ' ' . $storage_item__1186 . ' ' . $storage_item__1187 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1185 } = $global_source_text ;
+$storage_item__1183 = ' ' ;
+} else {
+$storage_item__1183 = ' copy-and-replace ' . $storage_item__1184 . ' ' . $storage_item__1185 . ' ' . $storage_item__1186 . ' ' . $storage_item__1187 . ' ' ;
+}
 } else {
 $storage_item__1183 = ' copy-and-replace ' . $storage_item__1184 . ' ' . $storage_item__1185 . ' ' . $storage_item__1186 . ' ' . $storage_item__1187 . ' ' ;
 }
@@ -9341,12 +9494,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1198 ;
-$global_single_action_operand_two = $storage_item__1199 ;
-$global_single_action_operand_three = $storage_item__1200 ;
-$global_single_action_operand_four = $storage_item__1201 ;
-$storage_item__1197 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1198 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1200 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1201 } ;
+$global_dashrep_replacement{ $storage_item__1199 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1197 = ' copy-and-replace ' . $storage_item__1198 . ' ' . $storage_item__1199 . ' ' . $storage_item__1200 . ' ' . $storage_item__1201 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1199 } = $global_source_text ;
+$storage_item__1197 = ' ' ;
+} else {
+$storage_item__1197 = ' copy-and-replace ' . $storage_item__1198 . ' ' . $storage_item__1199 . ' ' . $storage_item__1200 . ' ' . $storage_item__1201 . ' ' ;
+}
 } else {
 $storage_item__1197 = ' copy-and-replace ' . $storage_item__1198 . ' ' . $storage_item__1199 . ' ' . $storage_item__1200 . ' ' . $storage_item__1201 . ' ' ;
 }
@@ -9475,12 +9646,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1214 ;
-$global_single_action_operand_two = $storage_item__1215 ;
-$global_single_action_operand_three = $storage_item__1216 ;
-$global_single_action_operand_four = $storage_item__1217 ;
-$storage_item__1213 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1214 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1216 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1217 } ;
+$global_dashrep_replacement{ $storage_item__1215 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1213 = ' copy-and-replace ' . $storage_item__1214 . ' ' . $storage_item__1215 . ' ' . $storage_item__1216 . ' ' . $storage_item__1217 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1215 } = $global_source_text ;
+$storage_item__1213 = ' ' ;
+} else {
+$storage_item__1213 = ' copy-and-replace ' . $storage_item__1214 . ' ' . $storage_item__1215 . ' ' . $storage_item__1216 . ' ' . $storage_item__1217 . ' ' ;
+}
 } else {
 $storage_item__1213 = ' copy-and-replace ' . $storage_item__1214 . ' ' . $storage_item__1215 . ' ' . $storage_item__1216 . ' ' . $storage_item__1217 . ' ' ;
 }
@@ -9509,12 +9698,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1219 ;
-$global_single_action_operand_two = $storage_item__1220 ;
-$global_single_action_operand_three = $storage_item__1221 ;
-$global_single_action_operand_four = $storage_item__1222 ;
-$storage_item__1218 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1219 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1221 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1222 } ;
+$global_dashrep_replacement{ $storage_item__1220 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1218 = ' copy-and-replace ' . $storage_item__1219 . ' ' . $storage_item__1220 . ' ' . $storage_item__1221 . ' ' . $storage_item__1222 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1220 } = $global_source_text ;
+$storage_item__1218 = ' ' ;
+} else {
+$storage_item__1218 = ' copy-and-replace ' . $storage_item__1219 . ' ' . $storage_item__1220 . ' ' . $storage_item__1221 . ' ' . $storage_item__1222 . ' ' ;
+}
 } else {
 $storage_item__1218 = ' copy-and-replace ' . $storage_item__1219 . ' ' . $storage_item__1220 . ' ' . $storage_item__1221 . ' ' . $storage_item__1222 . ' ' ;
 }
@@ -9573,12 +9780,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1228 ;
-$global_single_action_operand_two = $storage_item__1229 ;
-$global_single_action_operand_three = $storage_item__1230 ;
-$global_single_action_operand_four = $storage_item__1231 ;
-$storage_item__1227 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1228 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1230 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1231 } ;
+$global_dashrep_replacement{ $storage_item__1229 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1227 = ' copy-and-replace ' . $storage_item__1228 . ' ' . $storage_item__1229 . ' ' . $storage_item__1230 . ' ' . $storage_item__1231 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1229 } = $global_source_text ;
+$storage_item__1227 = ' ' ;
+} else {
+$storage_item__1227 = ' copy-and-replace ' . $storage_item__1228 . ' ' . $storage_item__1229 . ' ' . $storage_item__1230 . ' ' . $storage_item__1231 . ' ' ;
+}
 } else {
 $storage_item__1227 = ' copy-and-replace ' . $storage_item__1228 . ' ' . $storage_item__1229 . ' ' . $storage_item__1230 . ' ' . $storage_item__1231 . ' ' ;
 }
@@ -9633,12 +9858,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1236 ;
-$global_single_action_operand_two = $storage_item__1237 ;
-$global_single_action_operand_three = $storage_item__1238 ;
-$global_single_action_operand_four = $storage_item__1239 ;
-$storage_item__1235 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1236 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1238 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1239 } ;
+$global_dashrep_replacement{ $storage_item__1237 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1235 = ' copy-and-replace ' . $storage_item__1236 . ' ' . $storage_item__1237 . ' ' . $storage_item__1238 . ' ' . $storage_item__1239 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1237 } = $global_source_text ;
+$storage_item__1235 = ' ' ;
+} else {
+$storage_item__1235 = ' copy-and-replace ' . $storage_item__1236 . ' ' . $storage_item__1237 . ' ' . $storage_item__1238 . ' ' . $storage_item__1239 . ' ' ;
+}
 } else {
 $storage_item__1235 = ' copy-and-replace ' . $storage_item__1236 . ' ' . $storage_item__1237 . ' ' . $storage_item__1238 . ' ' . $storage_item__1239 . ' ' ;
 }
@@ -9693,12 +9936,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1243 ;
-$global_single_action_operand_two = $storage_item__1244 ;
-$global_single_action_operand_three = $storage_item__1245 ;
-$global_single_action_operand_four = $storage_item__1246 ;
-$storage_item__1242 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1243 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1245 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1246 } ;
+$global_dashrep_replacement{ $storage_item__1244 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1242 = ' copy-and-replace ' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 . ' ' . $storage_item__1246 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1244 } = $global_source_text ;
+$storage_item__1242 = ' ' ;
+} else {
+$storage_item__1242 = ' copy-and-replace ' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 . ' ' . $storage_item__1246 . ' ' ;
+}
 } else {
 $storage_item__1242 = ' copy-and-replace ' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 . ' ' . $storage_item__1246 . ' ' ;
 }
@@ -9727,12 +9988,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1248 ;
-$global_single_action_operand_two = $storage_item__1249 ;
-$global_single_action_operand_three = $storage_item__1250 ;
-$global_single_action_operand_four = $storage_item__1251 ;
-$storage_item__1247 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1248 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1250 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1251 } ;
+$global_dashrep_replacement{ $storage_item__1249 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1247 = ' copy-and-replace ' . $storage_item__1248 . ' ' . $storage_item__1249 . ' ' . $storage_item__1250 . ' ' . $storage_item__1251 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1249 } = $global_source_text ;
+$storage_item__1247 = ' ' ;
+} else {
+$storage_item__1247 = ' copy-and-replace ' . $storage_item__1248 . ' ' . $storage_item__1249 . ' ' . $storage_item__1250 . ' ' . $storage_item__1251 . ' ' ;
+}
 } else {
 $storage_item__1247 = ' copy-and-replace ' . $storage_item__1248 . ' ' . $storage_item__1249 . ' ' . $storage_item__1250 . ' ' . $storage_item__1251 . ' ' ;
 }
@@ -9761,12 +10040,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1253 ;
-$global_single_action_operand_two = $storage_item__1254 ;
-$global_single_action_operand_three = $storage_item__1255 ;
-$global_single_action_operand_four = $storage_item__1256 ;
-$storage_item__1252 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1253 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1255 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1256 } ;
+$global_dashrep_replacement{ $storage_item__1254 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1252 = ' copy-and-replace ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 . ' ' . $storage_item__1256 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1254 } = $global_source_text ;
+$storage_item__1252 = ' ' ;
+} else {
+$storage_item__1252 = ' copy-and-replace ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 . ' ' . $storage_item__1256 . ' ' ;
+}
 } else {
 $storage_item__1252 = ' copy-and-replace ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 . ' ' . $storage_item__1256 . ' ' ;
 }
@@ -9795,12 +10092,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1258 ;
-$global_single_action_operand_two = $storage_item__1259 ;
-$global_single_action_operand_three = $storage_item__1260 ;
-$global_single_action_operand_four = $storage_item__1261 ;
-$storage_item__1257 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1258 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1260 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1261 } ;
+$global_dashrep_replacement{ $storage_item__1259 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1257 = ' copy-and-replace ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1259 } = $global_source_text ;
+$storage_item__1257 = ' ' ;
+} else {
+$storage_item__1257 = ' copy-and-replace ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 . ' ' ;
+}
 } else {
 $storage_item__1257 = ' copy-and-replace ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 . ' ' ;
 }
@@ -9829,12 +10144,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1263 ;
-$global_single_action_operand_two = $storage_item__1264 ;
-$global_single_action_operand_three = $storage_item__1265 ;
-$global_single_action_operand_four = $storage_item__1266 ;
-$storage_item__1262 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1263 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1265 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1266 } ;
+$global_dashrep_replacement{ $storage_item__1264 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1262 = ' copy-and-replace ' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 . ' ' . $storage_item__1266 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1264 } = $global_source_text ;
+$storage_item__1262 = ' ' ;
+} else {
+$storage_item__1262 = ' copy-and-replace ' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 . ' ' . $storage_item__1266 . ' ' ;
+}
 } else {
 $storage_item__1262 = ' copy-and-replace ' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 . ' ' . $storage_item__1266 . ' ' ;
 }
@@ -9863,12 +10196,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1268 ;
-$global_single_action_operand_two = $storage_item__1269 ;
-$global_single_action_operand_three = $storage_item__1270 ;
-$global_single_action_operand_four = $storage_item__1271 ;
-$storage_item__1267 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1268 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1270 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1271 } ;
+$global_dashrep_replacement{ $storage_item__1269 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1267 = ' copy-and-replace ' . $storage_item__1268 . ' ' . $storage_item__1269 . ' ' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1269 } = $global_source_text ;
+$storage_item__1267 = ' ' ;
+} else {
+$storage_item__1267 = ' copy-and-replace ' . $storage_item__1268 . ' ' . $storage_item__1269 . ' ' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' ;
+}
 } else {
 $storage_item__1267 = ' copy-and-replace ' . $storage_item__1268 . ' ' . $storage_item__1269 . ' ' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' ;
 }
@@ -9897,12 +10248,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1273 ;
-$global_single_action_operand_two = $storage_item__1274 ;
-$global_single_action_operand_three = $storage_item__1275 ;
-$global_single_action_operand_four = $storage_item__1276 ;
-$storage_item__1272 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1273 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1275 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1276 } ;
+$global_dashrep_replacement{ $storage_item__1274 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1272 = ' copy-and-replace ' . $storage_item__1273 . ' ' . $storage_item__1274 . ' ' . $storage_item__1275 . ' ' . $storage_item__1276 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1274 } = $global_source_text ;
+$storage_item__1272 = ' ' ;
+} else {
+$storage_item__1272 = ' copy-and-replace ' . $storage_item__1273 . ' ' . $storage_item__1274 . ' ' . $storage_item__1275 . ' ' . $storage_item__1276 . ' ' ;
+}
 } else {
 $storage_item__1272 = ' copy-and-replace ' . $storage_item__1273 . ' ' . $storage_item__1274 . ' ' . $storage_item__1275 . ' ' . $storage_item__1276 . ' ' ;
 }
@@ -10282,12 +10651,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1319 ;
-$global_single_action_operand_two = $storage_item__1320 ;
-$global_single_action_operand_three = $storage_item__1321 ;
-$global_single_action_operand_four = $storage_item__1322 ;
-$storage_item__1318 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1319 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1321 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1322 } ;
+$global_dashrep_replacement{ $storage_item__1320 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1318 = ' copy-and-replace ' . $storage_item__1319 . ' ' . $storage_item__1320 . ' ' . $storage_item__1321 . ' ' . $storage_item__1322 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1320 } = $global_source_text ;
+$storage_item__1318 = ' ' ;
+} else {
+$storage_item__1318 = ' copy-and-replace ' . $storage_item__1319 . ' ' . $storage_item__1320 . ' ' . $storage_item__1321 . ' ' . $storage_item__1322 . ' ' ;
+}
 } else {
 $storage_item__1318 = ' copy-and-replace ' . $storage_item__1319 . ' ' . $storage_item__1320 . ' ' . $storage_item__1321 . ' ' . $storage_item__1322 . ' ' ;
 }
@@ -10316,12 +10703,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1324 ;
-$global_single_action_operand_two = $storage_item__1325 ;
-$global_single_action_operand_three = $storage_item__1326 ;
-$global_single_action_operand_four = $storage_item__1327 ;
-$storage_item__1323 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1324 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1326 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1327 } ;
+$global_dashrep_replacement{ $storage_item__1325 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1323 = ' copy-and-replace ' . $storage_item__1324 . ' ' . $storage_item__1325 . ' ' . $storage_item__1326 . ' ' . $storage_item__1327 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1325 } = $global_source_text ;
+$storage_item__1323 = ' ' ;
+} else {
+$storage_item__1323 = ' copy-and-replace ' . $storage_item__1324 . ' ' . $storage_item__1325 . ' ' . $storage_item__1326 . ' ' . $storage_item__1327 . ' ' ;
+}
 } else {
 $storage_item__1323 = ' copy-and-replace ' . $storage_item__1324 . ' ' . $storage_item__1325 . ' ' . $storage_item__1326 . ' ' . $storage_item__1327 . ' ' ;
 }
@@ -10406,12 +10811,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1337 ;
-$global_single_action_operand_two = $storage_item__1338 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1336 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1338 } .= $global_dashrep_replacement{ $storage_item__1337 } ;
+$storage_item__1336 = ' ' ;
 } else {
 $storage_item__1336 = ' append-text-no-space ' . $storage_item__1337 . ' ' . $storage_item__1338 . ' ' ;
 }
@@ -10451,12 +10852,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1343 ;
-$global_single_action_operand_two = $storage_item__1344 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1342 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1344 } .= $global_dashrep_replacement{ $storage_item__1343 } ;
+$storage_item__1342 = ' ' ;
 } else {
 $storage_item__1342 = ' append-text-no-space ' . $storage_item__1343 . ' ' . $storage_item__1344 . ' ' ;
 }
@@ -10631,12 +11028,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1364 ;
-$global_single_action_operand_two = $storage_item__1365 ;
-$global_single_action_operand_three = $storage_item__1366 ;
-$global_single_action_operand_four = $storage_item__1367 ;
-$storage_item__1363 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1364 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1366 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1367 } ;
+$global_dashrep_replacement{ $storage_item__1365 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1363 = ' copy-and-replace ' . $storage_item__1364 . ' ' . $storage_item__1365 . ' ' . $storage_item__1366 . ' ' . $storage_item__1367 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1365 } = $global_source_text ;
+$storage_item__1363 = ' ' ;
+} else {
+$storage_item__1363 = ' copy-and-replace ' . $storage_item__1364 . ' ' . $storage_item__1365 . ' ' . $storage_item__1366 . ' ' . $storage_item__1367 . ' ' ;
+}
 } else {
 $storage_item__1363 = ' copy-and-replace ' . $storage_item__1364 . ' ' . $storage_item__1365 . ' ' . $storage_item__1366 . ' ' . $storage_item__1367 . ' ' ;
 }
@@ -10665,12 +11080,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1369 ;
-$global_single_action_operand_two = $storage_item__1370 ;
-$global_single_action_operand_three = $storage_item__1371 ;
-$global_single_action_operand_four = $storage_item__1372 ;
-$storage_item__1368 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1369 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1371 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1372 } ;
+$global_dashrep_replacement{ $storage_item__1370 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1368 = ' copy-and-replace ' . $storage_item__1369 . ' ' . $storage_item__1370 . ' ' . $storage_item__1371 . ' ' . $storage_item__1372 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1370 } = $global_source_text ;
+$storage_item__1368 = ' ' ;
+} else {
+$storage_item__1368 = ' copy-and-replace ' . $storage_item__1369 . ' ' . $storage_item__1370 . ' ' . $storage_item__1371 . ' ' . $storage_item__1372 . ' ' ;
+}
 } else {
 $storage_item__1368 = ' copy-and-replace ' . $storage_item__1369 . ' ' . $storage_item__1370 . ' ' . $storage_item__1371 . ' ' . $storage_item__1372 . ' ' ;
 }
@@ -10699,12 +11132,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1374 ;
-$global_single_action_operand_two = $storage_item__1375 ;
-$global_single_action_operand_three = $storage_item__1376 ;
-$global_single_action_operand_four = $storage_item__1377 ;
-$storage_item__1373 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1374 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1376 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1377 } ;
+$global_dashrep_replacement{ $storage_item__1375 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1373 = ' copy-and-replace ' . $storage_item__1374 . ' ' . $storage_item__1375 . ' ' . $storage_item__1376 . ' ' . $storage_item__1377 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1375 } = $global_source_text ;
+$storage_item__1373 = ' ' ;
+} else {
+$storage_item__1373 = ' copy-and-replace ' . $storage_item__1374 . ' ' . $storage_item__1375 . ' ' . $storage_item__1376 . ' ' . $storage_item__1377 . ' ' ;
+}
 } else {
 $storage_item__1373 = ' copy-and-replace ' . $storage_item__1374 . ' ' . $storage_item__1375 . ' ' . $storage_item__1376 . ' ' . $storage_item__1377 . ' ' ;
 }
@@ -10733,12 +11184,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1379 ;
-$global_single_action_operand_two = $storage_item__1380 ;
-$global_single_action_operand_three = $storage_item__1381 ;
-$global_single_action_operand_four = $storage_item__1382 ;
-$storage_item__1378 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1379 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1381 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1382 } ;
+$global_dashrep_replacement{ $storage_item__1380 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1378 = ' copy-and-replace ' . $storage_item__1379 . ' ' . $storage_item__1380 . ' ' . $storage_item__1381 . ' ' . $storage_item__1382 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1380 } = $global_source_text ;
+$storage_item__1378 = ' ' ;
+} else {
+$storage_item__1378 = ' copy-and-replace ' . $storage_item__1379 . ' ' . $storage_item__1380 . ' ' . $storage_item__1381 . ' ' . $storage_item__1382 . ' ' ;
+}
 } else {
 $storage_item__1378 = ' copy-and-replace ' . $storage_item__1379 . ' ' . $storage_item__1380 . ' ' . $storage_item__1381 . ' ' . $storage_item__1382 . ' ' ;
 }
@@ -12288,12 +12757,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1567 ;
-$global_single_action_operand_two = $storage_item__1568 ;
-$global_single_action_operand_three = $storage_item__1569 ;
-$global_single_action_operand_four = $storage_item__1570 ;
-$storage_item__1566 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1567 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1569 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1570 } ;
+$global_dashrep_replacement{ $storage_item__1568 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1566 = ' copy-and-replace ' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 . ' ' . $storage_item__1570 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1568 } = $global_source_text ;
+$storage_item__1566 = ' ' ;
+} else {
+$storage_item__1566 = ' copy-and-replace ' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 . ' ' . $storage_item__1570 . ' ' ;
+}
 } else {
 $storage_item__1566 = ' copy-and-replace ' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 . ' ' . $storage_item__1570 . ' ' ;
 }
@@ -12322,12 +12809,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1572 ;
-$global_single_action_operand_two = $storage_item__1573 ;
-$global_single_action_operand_three = $storage_item__1574 ;
-$global_single_action_operand_four = $storage_item__1575 ;
-$storage_item__1571 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1572 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1574 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1575 } ;
+$global_dashrep_replacement{ $storage_item__1573 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1571 = ' copy-and-replace ' . $storage_item__1572 . ' ' . $storage_item__1573 . ' ' . $storage_item__1574 . ' ' . $storage_item__1575 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1573 } = $global_source_text ;
+$storage_item__1571 = ' ' ;
+} else {
+$storage_item__1571 = ' copy-and-replace ' . $storage_item__1572 . ' ' . $storage_item__1573 . ' ' . $storage_item__1574 . ' ' . $storage_item__1575 . ' ' ;
+}
 } else {
 $storage_item__1571 = ' copy-and-replace ' . $storage_item__1572 . ' ' . $storage_item__1573 . ' ' . $storage_item__1574 . ' ' . $storage_item__1575 . ' ' ;
 }
@@ -12356,12 +12861,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1577 ;
-$global_single_action_operand_two = $storage_item__1578 ;
-$global_single_action_operand_three = $storage_item__1579 ;
-$global_single_action_operand_four = $storage_item__1580 ;
-$storage_item__1576 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1577 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1579 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1580 } ;
+$global_dashrep_replacement{ $storage_item__1578 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1576 = ' copy-and-replace ' . $storage_item__1577 . ' ' . $storage_item__1578 . ' ' . $storage_item__1579 . ' ' . $storage_item__1580 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1578 } = $global_source_text ;
+$storage_item__1576 = ' ' ;
+} else {
+$storage_item__1576 = ' copy-and-replace ' . $storage_item__1577 . ' ' . $storage_item__1578 . ' ' . $storage_item__1579 . ' ' . $storage_item__1580 . ' ' ;
+}
 } else {
 $storage_item__1576 = ' copy-and-replace ' . $storage_item__1577 . ' ' . $storage_item__1578 . ' ' . $storage_item__1579 . ' ' . $storage_item__1580 . ' ' ;
 }
@@ -12390,12 +12913,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1582 ;
-$global_single_action_operand_two = $storage_item__1583 ;
-$global_single_action_operand_three = $storage_item__1584 ;
-$global_single_action_operand_four = $storage_item__1585 ;
-$storage_item__1581 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1582 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1584 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1585 } ;
+$global_dashrep_replacement{ $storage_item__1583 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1581 = ' copy-and-replace ' . $storage_item__1582 . ' ' . $storage_item__1583 . ' ' . $storage_item__1584 . ' ' . $storage_item__1585 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1583 } = $global_source_text ;
+$storage_item__1581 = ' ' ;
+} else {
+$storage_item__1581 = ' copy-and-replace ' . $storage_item__1582 . ' ' . $storage_item__1583 . ' ' . $storage_item__1584 . ' ' . $storage_item__1585 . ' ' ;
+}
 } else {
 $storage_item__1581 = ' copy-and-replace ' . $storage_item__1582 . ' ' . $storage_item__1583 . ' ' . $storage_item__1584 . ' ' . $storage_item__1585 . ' ' ;
 }
@@ -12424,12 +12965,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1587 ;
-$global_single_action_operand_two = $storage_item__1588 ;
-$global_single_action_operand_three = $storage_item__1589 ;
-$global_single_action_operand_four = $storage_item__1590 ;
-$storage_item__1586 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1587 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1589 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1590 } ;
+$global_dashrep_replacement{ $storage_item__1588 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1586 = ' copy-and-replace ' . $storage_item__1587 . ' ' . $storage_item__1588 . ' ' . $storage_item__1589 . ' ' . $storage_item__1590 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1588 } = $global_source_text ;
+$storage_item__1586 = ' ' ;
+} else {
+$storage_item__1586 = ' copy-and-replace ' . $storage_item__1587 . ' ' . $storage_item__1588 . ' ' . $storage_item__1589 . ' ' . $storage_item__1590 . ' ' ;
+}
 } else {
 $storage_item__1586 = ' copy-and-replace ' . $storage_item__1587 . ' ' . $storage_item__1588 . ' ' . $storage_item__1589 . ' ' . $storage_item__1590 . ' ' ;
 }
@@ -12458,12 +13017,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1592 ;
-$global_single_action_operand_two = $storage_item__1593 ;
-$global_single_action_operand_three = $storage_item__1594 ;
-$global_single_action_operand_four = $storage_item__1595 ;
-$storage_item__1591 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1592 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1594 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1595 } ;
+$global_dashrep_replacement{ $storage_item__1593 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1591 = ' copy-and-replace ' . $storage_item__1592 . ' ' . $storage_item__1593 . ' ' . $storage_item__1594 . ' ' . $storage_item__1595 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1593 } = $global_source_text ;
+$storage_item__1591 = ' ' ;
+} else {
+$storage_item__1591 = ' copy-and-replace ' . $storage_item__1592 . ' ' . $storage_item__1593 . ' ' . $storage_item__1594 . ' ' . $storage_item__1595 . ' ' ;
+}
 } else {
 $storage_item__1591 = ' copy-and-replace ' . $storage_item__1592 . ' ' . $storage_item__1593 . ' ' . $storage_item__1594 . ' ' . $storage_item__1595 . ' ' ;
 }
@@ -12578,12 +13155,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1609 ;
-$global_single_action_operand_two = $storage_item__1610 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1608 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1610 } .= $global_dashrep_replacement{ $storage_item__1609 } ;
+$storage_item__1608 = ' ' ;
 } else {
 $storage_item__1608 = ' append-text-no-space ' . $storage_item__1609 . ' ' . $storage_item__1610 . ' ' ;
 }
@@ -12604,12 +13177,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1612 ;
-$global_single_action_operand_two = $storage_item__1613 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1611 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1613 } .= $global_dashrep_replacement{ $storage_item__1612 } ;
+$storage_item__1611 = ' ' ;
 } else {
 $storage_item__1611 = ' append-text-no-space ' . $storage_item__1612 . ' ' . $storage_item__1613 . ' ' ;
 }
@@ -12706,12 +13275,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1622 ;
-$global_single_action_operand_two = $storage_item__1623 ;
-$global_single_action_operand_three = $storage_item__1624 ;
-$global_single_action_operand_four = $storage_item__1625 ;
-$storage_item__1621 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1622 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1624 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1625 } ;
+$global_dashrep_replacement{ $storage_item__1623 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1621 = ' copy-and-replace ' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 . ' ' . $storage_item__1625 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1623 } = $global_source_text ;
+$storage_item__1621 = ' ' ;
+} else {
+$storage_item__1621 = ' copy-and-replace ' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 . ' ' . $storage_item__1625 . ' ' ;
+}
 } else {
 $storage_item__1621 = ' copy-and-replace ' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 . ' ' . $storage_item__1625 . ' ' ;
 }
@@ -12740,12 +13327,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1627 ;
-$global_single_action_operand_two = $storage_item__1628 ;
-$global_single_action_operand_three = $storage_item__1629 ;
-$global_single_action_operand_four = $storage_item__1630 ;
-$storage_item__1626 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1627 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1629 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1630 } ;
+$global_dashrep_replacement{ $storage_item__1628 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1626 = ' copy-and-replace ' . $storage_item__1627 . ' ' . $storage_item__1628 . ' ' . $storage_item__1629 . ' ' . $storage_item__1630 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1628 } = $global_source_text ;
+$storage_item__1626 = ' ' ;
+} else {
+$storage_item__1626 = ' copy-and-replace ' . $storage_item__1627 . ' ' . $storage_item__1628 . ' ' . $storage_item__1629 . ' ' . $storage_item__1630 . ' ' ;
+}
 } else {
 $storage_item__1626 = ' copy-and-replace ' . $storage_item__1627 . ' ' . $storage_item__1628 . ' ' . $storage_item__1629 . ' ' . $storage_item__1630 . ' ' ;
 }
@@ -12774,12 +13379,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1632 ;
-$global_single_action_operand_two = $storage_item__1633 ;
-$global_single_action_operand_three = $storage_item__1634 ;
-$global_single_action_operand_four = $storage_item__1635 ;
-$storage_item__1631 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1632 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1634 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1635 } ;
+$global_dashrep_replacement{ $storage_item__1633 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1631 = ' copy-and-replace ' . $storage_item__1632 . ' ' . $storage_item__1633 . ' ' . $storage_item__1634 . ' ' . $storage_item__1635 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1633 } = $global_source_text ;
+$storage_item__1631 = ' ' ;
+} else {
+$storage_item__1631 = ' copy-and-replace ' . $storage_item__1632 . ' ' . $storage_item__1633 . ' ' . $storage_item__1634 . ' ' . $storage_item__1635 . ' ' ;
+}
 } else {
 $storage_item__1631 = ' copy-and-replace ' . $storage_item__1632 . ' ' . $storage_item__1633 . ' ' . $storage_item__1634 . ' ' . $storage_item__1635 . ' ' ;
 }
@@ -12808,12 +13431,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1637 ;
-$global_single_action_operand_two = $storage_item__1638 ;
-$global_single_action_operand_three = $storage_item__1639 ;
-$global_single_action_operand_four = $storage_item__1640 ;
-$storage_item__1636 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1637 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1639 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1640 } ;
+$global_dashrep_replacement{ $storage_item__1638 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1636 = ' copy-and-replace ' . $storage_item__1637 . ' ' . $storage_item__1638 . ' ' . $storage_item__1639 . ' ' . $storage_item__1640 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1638 } = $global_source_text ;
+$storage_item__1636 = ' ' ;
+} else {
+$storage_item__1636 = ' copy-and-replace ' . $storage_item__1637 . ' ' . $storage_item__1638 . ' ' . $storage_item__1639 . ' ' . $storage_item__1640 . ' ' ;
+}
 } else {
 $storage_item__1636 = ' copy-and-replace ' . $storage_item__1637 . ' ' . $storage_item__1638 . ' ' . $storage_item__1639 . ' ' . $storage_item__1640 . ' ' ;
 }
@@ -12842,12 +13483,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1642 ;
-$global_single_action_operand_two = $storage_item__1643 ;
-$global_single_action_operand_three = $storage_item__1644 ;
-$global_single_action_operand_four = $storage_item__1645 ;
-$storage_item__1641 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1642 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1644 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1645 } ;
+$global_dashrep_replacement{ $storage_item__1643 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1641 = ' copy-and-replace ' . $storage_item__1642 . ' ' . $storage_item__1643 . ' ' . $storage_item__1644 . ' ' . $storage_item__1645 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1643 } = $global_source_text ;
+$storage_item__1641 = ' ' ;
+} else {
+$storage_item__1641 = ' copy-and-replace ' . $storage_item__1642 . ' ' . $storage_item__1643 . ' ' . $storage_item__1644 . ' ' . $storage_item__1645 . ' ' ;
+}
 } else {
 $storage_item__1641 = ' copy-and-replace ' . $storage_item__1642 . ' ' . $storage_item__1643 . ' ' . $storage_item__1644 . ' ' . $storage_item__1645 . ' ' ;
 }
@@ -12876,12 +13535,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1647 ;
-$global_single_action_operand_two = $storage_item__1648 ;
-$global_single_action_operand_three = $storage_item__1649 ;
-$global_single_action_operand_four = $storage_item__1650 ;
-$storage_item__1646 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1647 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1649 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1650 } ;
+$global_dashrep_replacement{ $storage_item__1648 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1646 = ' copy-and-replace ' . $storage_item__1647 . ' ' . $storage_item__1648 . ' ' . $storage_item__1649 . ' ' . $storage_item__1650 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1648 } = $global_source_text ;
+$storage_item__1646 = ' ' ;
+} else {
+$storage_item__1646 = ' copy-and-replace ' . $storage_item__1647 . ' ' . $storage_item__1648 . ' ' . $storage_item__1649 . ' ' . $storage_item__1650 . ' ' ;
+}
 } else {
 $storage_item__1646 = ' copy-and-replace ' . $storage_item__1647 . ' ' . $storage_item__1648 . ' ' . $storage_item__1649 . ' ' . $storage_item__1650 . ' ' ;
 }
@@ -12910,12 +13587,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1652 ;
-$global_single_action_operand_two = $storage_item__1653 ;
-$global_single_action_operand_three = $storage_item__1654 ;
-$global_single_action_operand_four = $storage_item__1655 ;
-$storage_item__1651 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1652 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1654 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1655 } ;
+$global_dashrep_replacement{ $storage_item__1653 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1651 = ' copy-and-replace ' . $storage_item__1652 . ' ' . $storage_item__1653 . ' ' . $storage_item__1654 . ' ' . $storage_item__1655 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1653 } = $global_source_text ;
+$storage_item__1651 = ' ' ;
+} else {
+$storage_item__1651 = ' copy-and-replace ' . $storage_item__1652 . ' ' . $storage_item__1653 . ' ' . $storage_item__1654 . ' ' . $storage_item__1655 . ' ' ;
+}
 } else {
 $storage_item__1651 = ' copy-and-replace ' . $storage_item__1652 . ' ' . $storage_item__1653 . ' ' . $storage_item__1654 . ' ' . $storage_item__1655 . ' ' ;
 }
@@ -12944,12 +13639,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1657 ;
-$global_single_action_operand_two = $storage_item__1658 ;
-$global_single_action_operand_three = $storage_item__1659 ;
-$global_single_action_operand_four = $storage_item__1660 ;
-$storage_item__1656 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1657 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1659 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1660 } ;
+$global_dashrep_replacement{ $storage_item__1658 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1656 = ' copy-and-replace ' . $storage_item__1657 . ' ' . $storage_item__1658 . ' ' . $storage_item__1659 . ' ' . $storage_item__1660 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1658 } = $global_source_text ;
+$storage_item__1656 = ' ' ;
+} else {
+$storage_item__1656 = ' copy-and-replace ' . $storage_item__1657 . ' ' . $storage_item__1658 . ' ' . $storage_item__1659 . ' ' . $storage_item__1660 . ' ' ;
+}
 } else {
 $storage_item__1656 = ' copy-and-replace ' . $storage_item__1657 . ' ' . $storage_item__1658 . ' ' . $storage_item__1659 . ' ' . $storage_item__1660 . ' ' ;
 }
@@ -13023,12 +13736,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1667 ;
-$global_single_action_operand_two = $storage_item__1668 ;
-$global_single_action_operand_three = $storage_item__1669 ;
-$global_single_action_operand_four = $storage_item__1670 ;
-$storage_item__1666 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1667 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1669 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1670 } ;
+$global_dashrep_replacement{ $storage_item__1668 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1666 = ' copy-and-replace ' . $storage_item__1667 . ' ' . $storage_item__1668 . ' ' . $storage_item__1669 . ' ' . $storage_item__1670 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1668 } = $global_source_text ;
+$storage_item__1666 = ' ' ;
+} else {
+$storage_item__1666 = ' copy-and-replace ' . $storage_item__1667 . ' ' . $storage_item__1668 . ' ' . $storage_item__1669 . ' ' . $storage_item__1670 . ' ' ;
+}
 } else {
 $storage_item__1666 = ' copy-and-replace ' . $storage_item__1667 . ' ' . $storage_item__1668 . ' ' . $storage_item__1669 . ' ' . $storage_item__1670 . ' ' ;
 }
@@ -13068,12 +13799,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1675 ;
-$global_single_action_operand_two = $storage_item__1676 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1674 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1676 } .= $global_dashrep_replacement{ $storage_item__1675 } ;
+$storage_item__1674 = ' ' ;
 } else {
 $storage_item__1674 = ' append-text-no-space ' . $storage_item__1675 . ' ' . $storage_item__1676 . ' ' ;
 }
@@ -13094,12 +13821,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1678 ;
-$global_single_action_operand_two = $storage_item__1679 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1677 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1679 } .= $global_dashrep_replacement{ $storage_item__1678 } ;
+$storage_item__1677 = ' ' ;
 } else {
 $storage_item__1677 = ' append-text-no-space ' . $storage_item__1678 . ' ' . $storage_item__1679 . ' ' ;
 }
@@ -13120,12 +13843,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1681 ;
-$global_single_action_operand_two = $storage_item__1682 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1680 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1682 } .= $global_dashrep_replacement{ $storage_item__1681 } ;
+$storage_item__1680 = ' ' ;
 } else {
 $storage_item__1680 = ' append-text-no-space ' . $storage_item__1681 . ' ' . $storage_item__1682 . ' ' ;
 }
@@ -13146,12 +13865,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1684 ;
-$global_single_action_operand_two = $storage_item__1685 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1683 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1685 } .= $global_dashrep_replacement{ $storage_item__1684 } ;
+$storage_item__1683 = ' ' ;
 } else {
 $storage_item__1683 = ' append-text-no-space ' . $storage_item__1684 . ' ' . $storage_item__1685 . ' ' ;
 }
@@ -13180,12 +13895,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1687 ;
-$global_single_action_operand_two = $storage_item__1688 ;
-$global_single_action_operand_three = $storage_item__1689 ;
-$global_single_action_operand_four = $storage_item__1690 ;
-$storage_item__1686 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1687 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1689 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1690 } ;
+$global_dashrep_replacement{ $storage_item__1688 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1686 = ' copy-and-replace ' . $storage_item__1687 . ' ' . $storage_item__1688 . ' ' . $storage_item__1689 . ' ' . $storage_item__1690 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1688 } = $global_source_text ;
+$storage_item__1686 = ' ' ;
+} else {
+$storage_item__1686 = ' copy-and-replace ' . $storage_item__1687 . ' ' . $storage_item__1688 . ' ' . $storage_item__1689 . ' ' . $storage_item__1690 . ' ' ;
+}
 } else {
 $storage_item__1686 = ' copy-and-replace ' . $storage_item__1687 . ' ' . $storage_item__1688 . ' ' . $storage_item__1689 . ' ' . $storage_item__1690 . ' ' ;
 }
@@ -13266,12 +13999,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1699 ;
-$global_single_action_operand_two = $storage_item__1700 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1698 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1700 } .= $global_dashrep_replacement{ $storage_item__1699 } ;
+$storage_item__1698 = ' ' ;
 } else {
 $storage_item__1698 = ' append-text-no-space ' . $storage_item__1699 . ' ' . $storage_item__1700 . ' ' ;
 }
@@ -13292,12 +14021,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1702 ;
-$global_single_action_operand_two = $storage_item__1703 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1701 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1703 } .= $global_dashrep_replacement{ $storage_item__1702 } ;
+$storage_item__1701 = ' ' ;
 } else {
 $storage_item__1701 = ' append-text-no-space ' . $storage_item__1702 . ' ' . $storage_item__1703 . ' ' ;
 }
@@ -13318,12 +14043,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1705 ;
-$global_single_action_operand_two = $storage_item__1706 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1704 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1706 } .= $global_dashrep_replacement{ $storage_item__1705 } ;
+$storage_item__1704 = ' ' ;
 } else {
 $storage_item__1704 = ' append-text-no-space ' . $storage_item__1705 . ' ' . $storage_item__1706 . ' ' ;
 }
@@ -13344,12 +14065,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1708 ;
-$global_single_action_operand_two = $storage_item__1709 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1707 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1709 } .= $global_dashrep_replacement{ $storage_item__1708 } ;
+$storage_item__1707 = ' ' ;
 } else {
 $storage_item__1707 = ' append-text-no-space ' . $storage_item__1708 . ' ' . $storage_item__1709 . ' ' ;
 }
@@ -13464,12 +14181,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1720 ;
-$global_single_action_operand_two = $storage_item__1721 ;
-$global_single_action_operand_three = $storage_item__1722 ;
-$global_single_action_operand_four = $storage_item__1723 ;
-$storage_item__1719 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1720 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1722 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1723 } ;
+$global_dashrep_replacement{ $storage_item__1721 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1719 = ' copy-and-replace ' . $storage_item__1720 . ' ' . $storage_item__1721 . ' ' . $storage_item__1722 . ' ' . $storage_item__1723 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1721 } = $global_source_text ;
+$storage_item__1719 = ' ' ;
+} else {
+$storage_item__1719 = ' copy-and-replace ' . $storage_item__1720 . ' ' . $storage_item__1721 . ' ' . $storage_item__1722 . ' ' . $storage_item__1723 . ' ' ;
+}
 } else {
 $storage_item__1719 = ' copy-and-replace ' . $storage_item__1720 . ' ' . $storage_item__1721 . ' ' . $storage_item__1722 . ' ' . $storage_item__1723 . ' ' ;
 }
@@ -13509,12 +14244,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1728 ;
-$global_single_action_operand_two = $storage_item__1729 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1727 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1729 } .= $global_dashrep_replacement{ $storage_item__1728 } ;
+$storage_item__1727 = ' ' ;
 } else {
 $storage_item__1727 = ' append-text-no-space ' . $storage_item__1728 . ' ' . $storage_item__1729 . ' ' ;
 }
@@ -13535,12 +14266,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1731 ;
-$global_single_action_operand_two = $storage_item__1732 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1730 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1732 } .= $global_dashrep_replacement{ $storage_item__1731 } ;
+$storage_item__1730 = ' ' ;
 } else {
 $storage_item__1730 = ' append-text-no-space ' . $storage_item__1731 . ' ' . $storage_item__1732 . ' ' ;
 }
@@ -13561,12 +14288,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1734 ;
-$global_single_action_operand_two = $storage_item__1735 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1733 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1735 } .= $global_dashrep_replacement{ $storage_item__1734 } ;
+$storage_item__1733 = ' ' ;
 } else {
 $storage_item__1733 = ' append-text-no-space ' . $storage_item__1734 . ' ' . $storage_item__1735 . ' ' ;
 }
@@ -13587,12 +14310,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1737 ;
-$global_single_action_operand_two = $storage_item__1738 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1736 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1738 } .= $global_dashrep_replacement{ $storage_item__1737 } ;
+$storage_item__1736 = ' ' ;
 } else {
 $storage_item__1736 = ' append-text-no-space ' . $storage_item__1737 . ' ' . $storage_item__1738 . ' ' ;
 }
@@ -13707,12 +14426,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1749 ;
-$global_single_action_operand_two = $storage_item__1750 ;
-$global_single_action_operand_three = $storage_item__1751 ;
-$global_single_action_operand_four = $storage_item__1752 ;
-$storage_item__1748 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1749 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1751 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1752 } ;
+$global_dashrep_replacement{ $storage_item__1750 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1748 = ' copy-and-replace ' . $storage_item__1749 . ' ' . $storage_item__1750 . ' ' . $storage_item__1751 . ' ' . $storage_item__1752 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1750 } = $global_source_text ;
+$storage_item__1748 = ' ' ;
+} else {
+$storage_item__1748 = ' copy-and-replace ' . $storage_item__1749 . ' ' . $storage_item__1750 . ' ' . $storage_item__1751 . ' ' . $storage_item__1752 . ' ' ;
+}
 } else {
 $storage_item__1748 = ' copy-and-replace ' . $storage_item__1749 . ' ' . $storage_item__1750 . ' ' . $storage_item__1751 . ' ' . $storage_item__1752 . ' ' ;
 }
@@ -13752,12 +14489,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1757 ;
-$global_single_action_operand_two = $storage_item__1758 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1756 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1758 } .= $global_dashrep_replacement{ $storage_item__1757 } ;
+$storage_item__1756 = ' ' ;
 } else {
 $storage_item__1756 = ' append-text-no-space ' . $storage_item__1757 . ' ' . $storage_item__1758 . ' ' ;
 }
@@ -13778,12 +14511,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1760 ;
-$global_single_action_operand_two = $storage_item__1761 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1759 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1761 } .= $global_dashrep_replacement{ $storage_item__1760 } ;
+$storage_item__1759 = ' ' ;
 } else {
 $storage_item__1759 = ' append-text-no-space ' . $storage_item__1760 . ' ' . $storage_item__1761 . ' ' ;
 }
@@ -13804,12 +14533,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1763 ;
-$global_single_action_operand_two = $storage_item__1764 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1762 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1764 } .= $global_dashrep_replacement{ $storage_item__1763 } ;
+$storage_item__1762 = ' ' ;
 } else {
 $storage_item__1762 = ' append-text-no-space ' . $storage_item__1763 . ' ' . $storage_item__1764 . ' ' ;
 }
@@ -13830,12 +14555,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1766 ;
-$global_single_action_operand_two = $storage_item__1767 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1765 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1767 } .= $global_dashrep_replacement{ $storage_item__1766 } ;
+$storage_item__1765 = ' ' ;
 } else {
 $storage_item__1765 = ' append-text-no-space ' . $storage_item__1766 . ' ' . $storage_item__1767 . ' ' ;
 }
@@ -13942,12 +14663,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1778 ;
-$global_single_action_operand_two = $storage_item__1779 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1777 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1779 } .= $global_dashrep_replacement{ $storage_item__1778 } ;
+$storage_item__1777 = ' ' ;
 } else {
 $storage_item__1777 = ' append-text-no-space ' . $storage_item__1778 . ' ' . $storage_item__1779 . ' ' ;
 }
@@ -13995,12 +14712,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1784 ;
-$global_single_action_operand_two = $storage_item__1785 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1783 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1785 } .= $global_dashrep_replacement{ $storage_item__1784 } ;
+$storage_item__1783 = ' ' ;
 } else {
 $storage_item__1783 = ' append-text-no-space ' . $storage_item__1784 . ' ' . $storage_item__1785 . ' ' ;
 }
@@ -14021,12 +14734,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1787 ;
-$global_single_action_operand_two = $storage_item__1788 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1786 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1788 } .= $global_dashrep_replacement{ $storage_item__1787 } ;
+$storage_item__1786 = ' ' ;
 } else {
 $storage_item__1786 = ' append-text-no-space ' . $storage_item__1787 . ' ' . $storage_item__1788 . ' ' ;
 }
@@ -14047,12 +14756,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1790 ;
-$global_single_action_operand_two = $storage_item__1791 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1789 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1791 } .= $global_dashrep_replacement{ $storage_item__1790 } ;
+$storage_item__1789 = ' ' ;
 } else {
 $storage_item__1789 = ' append-text-no-space ' . $storage_item__1790 . ' ' . $storage_item__1791 . ' ' ;
 }
@@ -14100,12 +14805,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1796 ;
-$global_single_action_operand_two = $storage_item__1797 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1795 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1797 } .= $global_dashrep_replacement{ $storage_item__1796 } ;
+$storage_item__1795 = ' ' ;
 } else {
 $storage_item__1795 = ' append-text-no-space ' . $storage_item__1796 . ' ' . $storage_item__1797 . ' ' ;
 }
@@ -14126,12 +14827,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1799 ;
-$global_single_action_operand_two = $storage_item__1800 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1798 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1800 } .= $global_dashrep_replacement{ $storage_item__1799 } ;
+$storage_item__1798 = ' ' ;
 } else {
 $storage_item__1798 = ' append-text-no-space ' . $storage_item__1799 . ' ' . $storage_item__1800 . ' ' ;
 }
@@ -14152,12 +14849,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1802 ;
-$global_single_action_operand_two = $storage_item__1803 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1801 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1803 } .= $global_dashrep_replacement{ $storage_item__1802 } ;
+$storage_item__1801 = ' ' ;
 } else {
 $storage_item__1801 = ' append-text-no-space ' . $storage_item__1802 . ' ' . $storage_item__1803 . ' ' ;
 }
@@ -14205,12 +14898,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1808 ;
-$global_single_action_operand_two = $storage_item__1809 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1807 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1809 } .= $global_dashrep_replacement{ $storage_item__1808 } ;
+$storage_item__1807 = ' ' ;
 } else {
 $storage_item__1807 = ' append-text-no-space ' . $storage_item__1808 . ' ' . $storage_item__1809 . ' ' ;
 }
@@ -14359,12 +15048,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1826 ;
-$global_single_action_operand_two = $storage_item__1827 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1825 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1827 } .= $global_dashrep_replacement{ $storage_item__1826 } ;
+$storage_item__1825 = ' ' ;
 } else {
 $storage_item__1825 = ' append-text-no-space ' . $storage_item__1826 . ' ' . $storage_item__1827 . ' ' ;
 }
@@ -14385,12 +15070,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1829 ;
-$global_single_action_operand_two = $storage_item__1830 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1828 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1830 } .= $global_dashrep_replacement{ $storage_item__1829 } ;
+$storage_item__1828 = ' ' ;
 } else {
 $storage_item__1828 = ' append-text-no-space ' . $storage_item__1829 . ' ' . $storage_item__1830 . ' ' ;
 }
@@ -14480,12 +15161,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1840 ;
-$global_single_action_operand_two = $storage_item__1841 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1839 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1841 } .= $global_dashrep_replacement{ $storage_item__1840 } ;
+$storage_item__1839 = ' ' ;
 } else {
 $storage_item__1839 = ' append-text-no-space ' . $storage_item__1840 . ' ' . $storage_item__1841 . ' ' ;
 }
@@ -14506,12 +15183,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1843 ;
-$global_single_action_operand_two = $storage_item__1844 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1842 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1844 } .= $global_dashrep_replacement{ $storage_item__1843 } ;
+$storage_item__1842 = ' ' ;
 } else {
 $storage_item__1842 = ' append-text-no-space ' . $storage_item__1843 . ' ' . $storage_item__1844 . ' ' ;
 }
@@ -14532,12 +15205,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1846 ;
-$global_single_action_operand_two = $storage_item__1847 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1845 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1847 } .= $global_dashrep_replacement{ $storage_item__1846 } ;
+$storage_item__1845 = ' ' ;
 } else {
 $storage_item__1845 = ' append-text-no-space ' . $storage_item__1846 . ' ' . $storage_item__1847 . ' ' ;
 }
@@ -14558,12 +15227,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1849 ;
-$global_single_action_operand_two = $storage_item__1850 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1848 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1850 } .= $global_dashrep_replacement{ $storage_item__1849 } ;
+$storage_item__1848 = ' ' ;
 } else {
 $storage_item__1848 = ' append-text-no-space ' . $storage_item__1849 . ' ' . $storage_item__1850 . ' ' ;
 }
@@ -14584,12 +15249,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1852 ;
-$global_single_action_operand_two = $storage_item__1853 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1851 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1853 } .= $global_dashrep_replacement{ $storage_item__1852 } ;
+$storage_item__1851 = ' ' ;
 } else {
 $storage_item__1851 = ' append-text-no-space ' . $storage_item__1852 . ' ' . $storage_item__1853 . ' ' ;
 }
@@ -14670,12 +15331,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1862 ;
-$global_single_action_operand_two = $storage_item__1863 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1861 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1863 } .= $global_dashrep_replacement{ $storage_item__1862 } ;
+$storage_item__1861 = ' ' ;
 } else {
 $storage_item__1861 = ' append-text-no-space ' . $storage_item__1862 . ' ' . $storage_item__1863 . ' ' ;
 }
@@ -14731,12 +15388,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1868 ;
-$global_single_action_operand_two = $storage_item__1869 ;
-$global_single_action_operand_three = $storage_item__1870 ;
-$global_single_action_operand_four = $storage_item__1871 ;
-$storage_item__1867 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1868 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1870 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1871 } ;
+$global_dashrep_replacement{ $storage_item__1869 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1867 = ' copy-and-replace ' . $storage_item__1868 . ' ' . $storage_item__1869 . ' ' . $storage_item__1870 . ' ' . $storage_item__1871 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1869 } = $global_source_text ;
+$storage_item__1867 = ' ' ;
+} else {
+$storage_item__1867 = ' copy-and-replace ' . $storage_item__1868 . ' ' . $storage_item__1869 . ' ' . $storage_item__1870 . ' ' . $storage_item__1871 . ' ' ;
+}
 } else {
 $storage_item__1867 = ' copy-and-replace ' . $storage_item__1868 . ' ' . $storage_item__1869 . ' ' . $storage_item__1870 . ' ' . $storage_item__1871 . ' ' ;
 }
@@ -14765,12 +15440,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1873 ;
-$global_single_action_operand_two = $storage_item__1874 ;
-$global_single_action_operand_three = $storage_item__1875 ;
-$global_single_action_operand_four = $storage_item__1876 ;
-$storage_item__1872 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1873 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1875 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1876 } ;
+$global_dashrep_replacement{ $storage_item__1874 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1872 = ' copy-and-replace ' . $storage_item__1873 . ' ' . $storage_item__1874 . ' ' . $storage_item__1875 . ' ' . $storage_item__1876 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1874 } = $global_source_text ;
+$storage_item__1872 = ' ' ;
+} else {
+$storage_item__1872 = ' copy-and-replace ' . $storage_item__1873 . ' ' . $storage_item__1874 . ' ' . $storage_item__1875 . ' ' . $storage_item__1876 . ' ' ;
+}
 } else {
 $storage_item__1872 = ' copy-and-replace ' . $storage_item__1873 . ' ' . $storage_item__1874 . ' ' . $storage_item__1875 . ' ' . $storage_item__1876 . ' ' ;
 }
@@ -14799,12 +15492,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1878 ;
-$global_single_action_operand_two = $storage_item__1879 ;
-$global_single_action_operand_three = $storage_item__1880 ;
-$global_single_action_operand_four = $storage_item__1881 ;
-$storage_item__1877 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1878 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1880 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1881 } ;
+$global_dashrep_replacement{ $storage_item__1879 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1877 = ' copy-and-replace ' . $storage_item__1878 . ' ' . $storage_item__1879 . ' ' . $storage_item__1880 . ' ' . $storage_item__1881 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1879 } = $global_source_text ;
+$storage_item__1877 = ' ' ;
+} else {
+$storage_item__1877 = ' copy-and-replace ' . $storage_item__1878 . ' ' . $storage_item__1879 . ' ' . $storage_item__1880 . ' ' . $storage_item__1881 . ' ' ;
+}
 } else {
 $storage_item__1877 = ' copy-and-replace ' . $storage_item__1878 . ' ' . $storage_item__1879 . ' ' . $storage_item__1880 . ' ' . $storage_item__1881 . ' ' ;
 }
@@ -14833,12 +15544,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1883 ;
-$global_single_action_operand_two = $storage_item__1884 ;
-$global_single_action_operand_three = $storage_item__1885 ;
-$global_single_action_operand_four = $storage_item__1886 ;
-$storage_item__1882 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1883 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1885 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1886 } ;
+$global_dashrep_replacement{ $storage_item__1884 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1882 = ' copy-and-replace ' . $storage_item__1883 . ' ' . $storage_item__1884 . ' ' . $storage_item__1885 . ' ' . $storage_item__1886 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1884 } = $global_source_text ;
+$storage_item__1882 = ' ' ;
+} else {
+$storage_item__1882 = ' copy-and-replace ' . $storage_item__1883 . ' ' . $storage_item__1884 . ' ' . $storage_item__1885 . ' ' . $storage_item__1886 . ' ' ;
+}
 } else {
 $storage_item__1882 = ' copy-and-replace ' . $storage_item__1883 . ' ' . $storage_item__1884 . ' ' . $storage_item__1885 . ' ' . $storage_item__1886 . ' ' ;
 }
@@ -14867,12 +15596,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1888 ;
-$global_single_action_operand_two = $storage_item__1889 ;
-$global_single_action_operand_three = $storage_item__1890 ;
-$global_single_action_operand_four = $storage_item__1891 ;
-$storage_item__1887 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1888 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1890 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1891 } ;
+$global_dashrep_replacement{ $storage_item__1889 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1887 = ' copy-and-replace ' . $storage_item__1888 . ' ' . $storage_item__1889 . ' ' . $storage_item__1890 . ' ' . $storage_item__1891 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1889 } = $global_source_text ;
+$storage_item__1887 = ' ' ;
+} else {
+$storage_item__1887 = ' copy-and-replace ' . $storage_item__1888 . ' ' . $storage_item__1889 . ' ' . $storage_item__1890 . ' ' . $storage_item__1891 . ' ' ;
+}
 } else {
 $storage_item__1887 = ' copy-and-replace ' . $storage_item__1888 . ' ' . $storage_item__1889 . ' ' . $storage_item__1890 . ' ' . $storage_item__1891 . ' ' ;
 }
@@ -14901,12 +15648,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1893 ;
-$global_single_action_operand_two = $storage_item__1894 ;
-$global_single_action_operand_three = $storage_item__1895 ;
-$global_single_action_operand_four = $storage_item__1896 ;
-$storage_item__1892 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1893 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1895 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1896 } ;
+$global_dashrep_replacement{ $storage_item__1894 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1892 = ' copy-and-replace ' . $storage_item__1893 . ' ' . $storage_item__1894 . ' ' . $storage_item__1895 . ' ' . $storage_item__1896 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1894 } = $global_source_text ;
+$storage_item__1892 = ' ' ;
+} else {
+$storage_item__1892 = ' copy-and-replace ' . $storage_item__1893 . ' ' . $storage_item__1894 . ' ' . $storage_item__1895 . ' ' . $storage_item__1896 . ' ' ;
+}
 } else {
 $storage_item__1892 = ' copy-and-replace ' . $storage_item__1893 . ' ' . $storage_item__1894 . ' ' . $storage_item__1895 . ' ' . $storage_item__1896 . ' ' ;
 }
@@ -14935,12 +15700,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1898 ;
-$global_single_action_operand_two = $storage_item__1899 ;
-$global_single_action_operand_three = $storage_item__1900 ;
-$global_single_action_operand_four = $storage_item__1901 ;
-$storage_item__1897 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1898 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1900 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1901 } ;
+$global_dashrep_replacement{ $storage_item__1899 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1897 = ' copy-and-replace ' . $storage_item__1898 . ' ' . $storage_item__1899 . ' ' . $storage_item__1900 . ' ' . $storage_item__1901 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1899 } = $global_source_text ;
+$storage_item__1897 = ' ' ;
+} else {
+$storage_item__1897 = ' copy-and-replace ' . $storage_item__1898 . ' ' . $storage_item__1899 . ' ' . $storage_item__1900 . ' ' . $storage_item__1901 . ' ' ;
+}
 } else {
 $storage_item__1897 = ' copy-and-replace ' . $storage_item__1898 . ' ' . $storage_item__1899 . ' ' . $storage_item__1900 . ' ' . $storage_item__1901 . ' ' ;
 }
@@ -14969,12 +15752,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1903 ;
-$global_single_action_operand_two = $storage_item__1904 ;
-$global_single_action_operand_three = $storage_item__1905 ;
-$global_single_action_operand_four = $storage_item__1906 ;
-$storage_item__1902 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1903 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1905 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1906 } ;
+$global_dashrep_replacement{ $storage_item__1904 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1902 = ' copy-and-replace ' . $storage_item__1903 . ' ' . $storage_item__1904 . ' ' . $storage_item__1905 . ' ' . $storage_item__1906 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1904 } = $global_source_text ;
+$storage_item__1902 = ' ' ;
+} else {
+$storage_item__1902 = ' copy-and-replace ' . $storage_item__1903 . ' ' . $storage_item__1904 . ' ' . $storage_item__1905 . ' ' . $storage_item__1906 . ' ' ;
+}
 } else {
 $storage_item__1902 = ' copy-and-replace ' . $storage_item__1903 . ' ' . $storage_item__1904 . ' ' . $storage_item__1905 . ' ' . $storage_item__1906 . ' ' ;
 }
@@ -14995,12 +15796,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1908 ;
-$global_single_action_operand_two = $storage_item__1909 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1907 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1909 } .= $global_dashrep_replacement{ $storage_item__1908 } ;
+$storage_item__1907 = ' ' ;
 } else {
 $storage_item__1907 = ' append-text-no-space ' . $storage_item__1908 . ' ' . $storage_item__1909 . ' ' ;
 }
@@ -15021,12 +15818,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__1911 ;
-$global_single_action_operand_two = $storage_item__1912 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__1910 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__1912 } .= $global_dashrep_replacement{ $storage_item__1911 } ;
+$storage_item__1910 = ' ' ;
 } else {
 $storage_item__1910 = ' append-text-no-space ' . $storage_item__1911 . ' ' . $storage_item__1912 . ' ' ;
 }
@@ -15201,12 +15994,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1931 ;
-$global_single_action_operand_two = $storage_item__1932 ;
-$global_single_action_operand_three = $storage_item__1933 ;
-$global_single_action_operand_four = $storage_item__1934 ;
-$storage_item__1930 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1931 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1933 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1934 } ;
+$global_dashrep_replacement{ $storage_item__1932 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1930 = ' copy-and-replace ' . $storage_item__1931 . ' ' . $storage_item__1932 . ' ' . $storage_item__1933 . ' ' . $storage_item__1934 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1932 } = $global_source_text ;
+$storage_item__1930 = ' ' ;
+} else {
+$storage_item__1930 = ' copy-and-replace ' . $storage_item__1931 . ' ' . $storage_item__1932 . ' ' . $storage_item__1933 . ' ' . $storage_item__1934 . ' ' ;
+}
 } else {
 $storage_item__1930 = ' copy-and-replace ' . $storage_item__1931 . ' ' . $storage_item__1932 . ' ' . $storage_item__1933 . ' ' . $storage_item__1934 . ' ' ;
 }
@@ -15235,12 +16046,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__1936 ;
-$global_single_action_operand_two = $storage_item__1937 ;
-$global_single_action_operand_three = $storage_item__1938 ;
-$global_single_action_operand_four = $storage_item__1939 ;
-$storage_item__1935 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__1936 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__1938 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__1939 } ;
+$global_dashrep_replacement{ $storage_item__1937 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__1935 = ' copy-and-replace ' . $storage_item__1936 . ' ' . $storage_item__1937 . ' ' . $storage_item__1938 . ' ' . $storage_item__1939 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__1937 } = $global_source_text ;
+$storage_item__1935 = ' ' ;
+} else {
+$storage_item__1935 = ' copy-and-replace ' . $storage_item__1936 . ' ' . $storage_item__1937 . ' ' . $storage_item__1938 . ' ' . $storage_item__1939 . ' ' ;
+}
 } else {
 $storage_item__1935 = ' copy-and-replace ' . $storage_item__1936 . ' ' . $storage_item__1937 . ' ' . $storage_item__1938 . ' ' . $storage_item__1939 . ' ' ;
 }
@@ -16120,12 +16949,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2058 ;
-$global_single_action_operand_two = $storage_item__2059 ;
-$global_single_action_operand_three = $storage_item__2060 ;
-$global_single_action_operand_four = $storage_item__2061 ;
-$storage_item__2057 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2058 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2060 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2061 } ;
+$global_dashrep_replacement{ $storage_item__2059 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2057 = ' copy-and-replace ' . $storage_item__2058 . ' ' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2059 } = $global_source_text ;
+$storage_item__2057 = ' ' ;
+} else {
+$storage_item__2057 = ' copy-and-replace ' . $storage_item__2058 . ' ' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 . ' ' ;
+}
 } else {
 $storage_item__2057 = ' copy-and-replace ' . $storage_item__2058 . ' ' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 . ' ' ;
 }
@@ -16184,12 +17031,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2069 ;
-$global_single_action_operand_two = $storage_item__2070 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2068 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2070 } .= $global_dashrep_replacement{ $storage_item__2069 } ;
+$storage_item__2068 = ' ' ;
 } else {
 $storage_item__2068 = ' append-text-no-space ' . $storage_item__2069 . ' ' . $storage_item__2070 . ' ' ;
 }
@@ -16210,12 +17053,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2072 ;
-$global_single_action_operand_two = $storage_item__2073 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2071 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2073 } .= $global_dashrep_replacement{ $storage_item__2072 } ;
+$storage_item__2071 = ' ' ;
 } else {
 $storage_item__2071 = ' append-text-no-space ' . $storage_item__2072 . ' ' . $storage_item__2073 . ' ' ;
 }
@@ -16244,12 +17083,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2075 ;
-$global_single_action_operand_two = $storage_item__2076 ;
-$global_single_action_operand_three = $storage_item__2077 ;
-$global_single_action_operand_four = $storage_item__2078 ;
-$storage_item__2074 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2075 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2077 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2078 } ;
+$global_dashrep_replacement{ $storage_item__2076 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2074 = ' copy-and-replace ' . $storage_item__2075 . ' ' . $storage_item__2076 . ' ' . $storage_item__2077 . ' ' . $storage_item__2078 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2076 } = $global_source_text ;
+$storage_item__2074 = ' ' ;
+} else {
+$storage_item__2074 = ' copy-and-replace ' . $storage_item__2075 . ' ' . $storage_item__2076 . ' ' . $storage_item__2077 . ' ' . $storage_item__2078 . ' ' ;
+}
 } else {
 $storage_item__2074 = ' copy-and-replace ' . $storage_item__2075 . ' ' . $storage_item__2076 . ' ' . $storage_item__2077 . ' ' . $storage_item__2078 . ' ' ;
 }
@@ -16278,12 +17135,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2080 ;
-$global_single_action_operand_two = $storage_item__2081 ;
-$global_single_action_operand_three = $storage_item__2082 ;
-$global_single_action_operand_four = $storage_item__2083 ;
-$storage_item__2079 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2080 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2082 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2083 } ;
+$global_dashrep_replacement{ $storage_item__2081 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2079 = ' copy-and-replace ' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 . ' ' . $storage_item__2083 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2081 } = $global_source_text ;
+$storage_item__2079 = ' ' ;
+} else {
+$storage_item__2079 = ' copy-and-replace ' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 . ' ' . $storage_item__2083 . ' ' ;
+}
 } else {
 $storage_item__2079 = ' copy-and-replace ' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 . ' ' . $storage_item__2083 . ' ' ;
 }
@@ -16312,12 +17187,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2085 ;
-$global_single_action_operand_two = $storage_item__2086 ;
-$global_single_action_operand_three = $storage_item__2087 ;
-$global_single_action_operand_four = $storage_item__2088 ;
-$storage_item__2084 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2085 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2087 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2088 } ;
+$global_dashrep_replacement{ $storage_item__2086 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2084 = ' copy-and-replace ' . $storage_item__2085 . ' ' . $storage_item__2086 . ' ' . $storage_item__2087 . ' ' . $storage_item__2088 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2086 } = $global_source_text ;
+$storage_item__2084 = ' ' ;
+} else {
+$storage_item__2084 = ' copy-and-replace ' . $storage_item__2085 . ' ' . $storage_item__2086 . ' ' . $storage_item__2087 . ' ' . $storage_item__2088 . ' ' ;
+}
 } else {
 $storage_item__2084 = ' copy-and-replace ' . $storage_item__2085 . ' ' . $storage_item__2086 . ' ' . $storage_item__2087 . ' ' . $storage_item__2088 . ' ' ;
 }
@@ -16346,12 +17239,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2090 ;
-$global_single_action_operand_two = $storage_item__2091 ;
-$global_single_action_operand_three = $storage_item__2092 ;
-$global_single_action_operand_four = $storage_item__2093 ;
-$storage_item__2089 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2090 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2092 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2093 } ;
+$global_dashrep_replacement{ $storage_item__2091 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2089 = ' copy-and-replace ' . $storage_item__2090 . ' ' . $storage_item__2091 . ' ' . $storage_item__2092 . ' ' . $storage_item__2093 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2091 } = $global_source_text ;
+$storage_item__2089 = ' ' ;
+} else {
+$storage_item__2089 = ' copy-and-replace ' . $storage_item__2090 . ' ' . $storage_item__2091 . ' ' . $storage_item__2092 . ' ' . $storage_item__2093 . ' ' ;
+}
 } else {
 $storage_item__2089 = ' copy-and-replace ' . $storage_item__2090 . ' ' . $storage_item__2091 . ' ' . $storage_item__2092 . ' ' . $storage_item__2093 . ' ' ;
 }
@@ -16380,12 +17291,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2095 ;
-$global_single_action_operand_two = $storage_item__2096 ;
-$global_single_action_operand_three = $storage_item__2097 ;
-$global_single_action_operand_four = $storage_item__2098 ;
-$storage_item__2094 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2095 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2097 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2098 } ;
+$global_dashrep_replacement{ $storage_item__2096 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2094 = ' copy-and-replace ' . $storage_item__2095 . ' ' . $storage_item__2096 . ' ' . $storage_item__2097 . ' ' . $storage_item__2098 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2096 } = $global_source_text ;
+$storage_item__2094 = ' ' ;
+} else {
+$storage_item__2094 = ' copy-and-replace ' . $storage_item__2095 . ' ' . $storage_item__2096 . ' ' . $storage_item__2097 . ' ' . $storage_item__2098 . ' ' ;
+}
 } else {
 $storage_item__2094 = ' copy-and-replace ' . $storage_item__2095 . ' ' . $storage_item__2096 . ' ' . $storage_item__2097 . ' ' . $storage_item__2098 . ' ' ;
 }
@@ -16414,12 +17343,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2100 ;
-$global_single_action_operand_two = $storage_item__2101 ;
-$global_single_action_operand_three = $storage_item__2102 ;
-$global_single_action_operand_four = $storage_item__2103 ;
-$storage_item__2099 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2100 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2102 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2103 } ;
+$global_dashrep_replacement{ $storage_item__2101 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2099 = ' copy-and-replace ' . $storage_item__2100 . ' ' . $storage_item__2101 . ' ' . $storage_item__2102 . ' ' . $storage_item__2103 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2101 } = $global_source_text ;
+$storage_item__2099 = ' ' ;
+} else {
+$storage_item__2099 = ' copy-and-replace ' . $storage_item__2100 . ' ' . $storage_item__2101 . ' ' . $storage_item__2102 . ' ' . $storage_item__2103 . ' ' ;
+}
 } else {
 $storage_item__2099 = ' copy-and-replace ' . $storage_item__2100 . ' ' . $storage_item__2101 . ' ' . $storage_item__2102 . ' ' . $storage_item__2103 . ' ' ;
 }
@@ -16448,12 +17395,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2105 ;
-$global_single_action_operand_two = $storage_item__2106 ;
-$global_single_action_operand_three = $storage_item__2107 ;
-$global_single_action_operand_four = $storage_item__2108 ;
-$storage_item__2104 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2105 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2107 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2108 } ;
+$global_dashrep_replacement{ $storage_item__2106 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2104 = ' copy-and-replace ' . $storage_item__2105 . ' ' . $storage_item__2106 . ' ' . $storage_item__2107 . ' ' . $storage_item__2108 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2106 } = $global_source_text ;
+$storage_item__2104 = ' ' ;
+} else {
+$storage_item__2104 = ' copy-and-replace ' . $storage_item__2105 . ' ' . $storage_item__2106 . ' ' . $storage_item__2107 . ' ' . $storage_item__2108 . ' ' ;
+}
 } else {
 $storage_item__2104 = ' copy-and-replace ' . $storage_item__2105 . ' ' . $storage_item__2106 . ' ' . $storage_item__2107 . ' ' . $storage_item__2108 . ' ' ;
 }
@@ -16482,12 +17447,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2110 ;
-$global_single_action_operand_two = $storage_item__2111 ;
-$global_single_action_operand_three = $storage_item__2112 ;
-$global_single_action_operand_four = $storage_item__2113 ;
-$storage_item__2109 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2110 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2112 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2113 } ;
+$global_dashrep_replacement{ $storage_item__2111 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2109 = ' copy-and-replace ' . $storage_item__2110 . ' ' . $storage_item__2111 . ' ' . $storage_item__2112 . ' ' . $storage_item__2113 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2111 } = $global_source_text ;
+$storage_item__2109 = ' ' ;
+} else {
+$storage_item__2109 = ' copy-and-replace ' . $storage_item__2110 . ' ' . $storage_item__2111 . ' ' . $storage_item__2112 . ' ' . $storage_item__2113 . ' ' ;
+}
 } else {
 $storage_item__2109 = ' copy-and-replace ' . $storage_item__2110 . ' ' . $storage_item__2111 . ' ' . $storage_item__2112 . ' ' . $storage_item__2113 . ' ' ;
 }
@@ -16553,12 +17536,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2121 ;
-$global_single_action_operand_two = $storage_item__2122 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2120 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2122 } .= $global_dashrep_replacement{ $storage_item__2121 } ;
+$storage_item__2120 = ' ' ;
 } else {
 $storage_item__2120 = ' append-text-no-space ' . $storage_item__2121 . ' ' . $storage_item__2122 . ' ' ;
 }
@@ -16579,12 +17558,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2124 ;
-$global_single_action_operand_two = $storage_item__2125 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2123 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2125 } .= $global_dashrep_replacement{ $storage_item__2124 } ;
+$storage_item__2123 = ' ' ;
 } else {
 $storage_item__2123 = ' append-text-no-space ' . $storage_item__2124 . ' ' . $storage_item__2125 . ' ' ;
 }
@@ -16605,12 +17580,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2127 ;
-$global_single_action_operand_two = $storage_item__2128 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2126 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2128 } .= $global_dashrep_replacement{ $storage_item__2127 } ;
+$storage_item__2126 = ' ' ;
 } else {
 $storage_item__2126 = ' append-text-no-space ' . $storage_item__2127 . ' ' . $storage_item__2128 . ' ' ;
 }
@@ -16631,12 +17602,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2130 ;
-$global_single_action_operand_two = $storage_item__2131 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2129 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2131 } .= $global_dashrep_replacement{ $storage_item__2130 } ;
+$storage_item__2129 = ' ' ;
 } else {
 $storage_item__2129 = ' append-text-no-space ' . $storage_item__2130 . ' ' . $storage_item__2131 . ' ' ;
 }
@@ -16684,12 +17651,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2136 ;
-$global_single_action_operand_two = $storage_item__2137 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2135 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2137 } .= $global_dashrep_replacement{ $storage_item__2136 } ;
+$storage_item__2135 = ' ' ;
 } else {
 $storage_item__2135 = ' append-text-no-space ' . $storage_item__2136 . ' ' . $storage_item__2137 . ' ' ;
 }
@@ -16987,12 +17950,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2172 ;
-$global_single_action_operand_two = $storage_item__2173 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2171 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2173 } .= $global_dashrep_replacement{ $storage_item__2172 } ;
+$storage_item__2171 = ' ' ;
 } else {
 $storage_item__2171 = ' append-text-no-space ' . $storage_item__2172 . ' ' . $storage_item__2173 . ' ' ;
 }
@@ -17013,12 +17972,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2175 ;
-$global_single_action_operand_two = $storage_item__2176 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2174 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2176 } .= $global_dashrep_replacement{ $storage_item__2175 } ;
+$storage_item__2174 = ' ' ;
 } else {
 $storage_item__2174 = ' append-text-no-space ' . $storage_item__2175 . ' ' . $storage_item__2176 . ' ' ;
 }
@@ -17170,12 +18125,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2191 ;
-$global_single_action_operand_two = $storage_item__2192 ;
-$global_single_action_operand_three = $storage_item__2193 ;
-$global_single_action_operand_four = $storage_item__2194 ;
-$storage_item__2190 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2191 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2193 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2194 } ;
+$global_dashrep_replacement{ $storage_item__2192 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2190 = ' copy-and-replace ' . $storage_item__2191 . ' ' . $storage_item__2192 . ' ' . $storage_item__2193 . ' ' . $storage_item__2194 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2192 } = $global_source_text ;
+$storage_item__2190 = ' ' ;
+} else {
+$storage_item__2190 = ' copy-and-replace ' . $storage_item__2191 . ' ' . $storage_item__2192 . ' ' . $storage_item__2193 . ' ' . $storage_item__2194 . ' ' ;
+}
 } else {
 $storage_item__2190 = ' copy-and-replace ' . $storage_item__2191 . ' ' . $storage_item__2192 . ' ' . $storage_item__2193 . ' ' . $storage_item__2194 . ' ' ;
 }
@@ -17243,12 +18216,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2201 ;
-$global_single_action_operand_two = $storage_item__2202 ;
-$global_single_action_operand_three = $storage_item__2203 ;
-$global_single_action_operand_four = $storage_item__2204 ;
-$storage_item__2200 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2201 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2203 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2204 } ;
+$global_dashrep_replacement{ $storage_item__2202 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2200 = ' copy-and-replace ' . $storage_item__2201 . ' ' . $storage_item__2202 . ' ' . $storage_item__2203 . ' ' . $storage_item__2204 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2202 } = $global_source_text ;
+$storage_item__2200 = ' ' ;
+} else {
+$storage_item__2200 = ' copy-and-replace ' . $storage_item__2201 . ' ' . $storage_item__2202 . ' ' . $storage_item__2203 . ' ' . $storage_item__2204 . ' ' ;
+}
 } else {
 $storage_item__2200 = ' copy-and-replace ' . $storage_item__2201 . ' ' . $storage_item__2202 . ' ' . $storage_item__2203 . ' ' . $storage_item__2204 . ' ' ;
 }
@@ -17277,12 +18268,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2206 ;
-$global_single_action_operand_two = $storage_item__2207 ;
-$global_single_action_operand_three = $storage_item__2208 ;
-$global_single_action_operand_four = $storage_item__2209 ;
-$storage_item__2205 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2206 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2208 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2209 } ;
+$global_dashrep_replacement{ $storage_item__2207 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2205 = ' copy-and-replace ' . $storage_item__2206 . ' ' . $storage_item__2207 . ' ' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2207 } = $global_source_text ;
+$storage_item__2205 = ' ' ;
+} else {
+$storage_item__2205 = ' copy-and-replace ' . $storage_item__2206 . ' ' . $storage_item__2207 . ' ' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' ;
+}
 } else {
 $storage_item__2205 = ' copy-and-replace ' . $storage_item__2206 . ' ' . $storage_item__2207 . ' ' . $storage_item__2208 . ' ' . $storage_item__2209 . ' ' ;
 }
@@ -17324,12 +18333,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2213 ;
-$global_single_action_operand_two = $storage_item__2214 ;
-$global_single_action_operand_three = $storage_item__2215 ;
-$global_single_action_operand_four = $storage_item__2216 ;
-$storage_item__2212 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2213 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2215 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2216 } ;
+$global_dashrep_replacement{ $storage_item__2214 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2212 = ' copy-and-replace ' . $storage_item__2213 . ' ' . $storage_item__2214 . ' ' . $storage_item__2215 . ' ' . $storage_item__2216 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2214 } = $global_source_text ;
+$storage_item__2212 = ' ' ;
+} else {
+$storage_item__2212 = ' copy-and-replace ' . $storage_item__2213 . ' ' . $storage_item__2214 . ' ' . $storage_item__2215 . ' ' . $storage_item__2216 . ' ' ;
+}
 } else {
 $storage_item__2212 = ' copy-and-replace ' . $storage_item__2213 . ' ' . $storage_item__2214 . ' ' . $storage_item__2215 . ' ' . $storage_item__2216 . ' ' ;
 }
@@ -17358,12 +18385,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2218 ;
-$global_single_action_operand_two = $storage_item__2219 ;
-$global_single_action_operand_three = $storage_item__2220 ;
-$global_single_action_operand_four = $storage_item__2221 ;
-$storage_item__2217 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2218 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2220 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2221 } ;
+$global_dashrep_replacement{ $storage_item__2219 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2217 = ' copy-and-replace ' . $storage_item__2218 . ' ' . $storage_item__2219 . ' ' . $storage_item__2220 . ' ' . $storage_item__2221 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2219 } = $global_source_text ;
+$storage_item__2217 = ' ' ;
+} else {
+$storage_item__2217 = ' copy-and-replace ' . $storage_item__2218 . ' ' . $storage_item__2219 . ' ' . $storage_item__2220 . ' ' . $storage_item__2221 . ' ' ;
+}
 } else {
 $storage_item__2217 = ' copy-and-replace ' . $storage_item__2218 . ' ' . $storage_item__2219 . ' ' . $storage_item__2220 . ' ' . $storage_item__2221 . ' ' ;
 }
@@ -17405,12 +18450,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2225 ;
-$global_single_action_operand_two = $storage_item__2226 ;
-$global_single_action_operand_three = $storage_item__2227 ;
-$global_single_action_operand_four = $storage_item__2228 ;
-$storage_item__2224 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2225 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2227 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2228 } ;
+$global_dashrep_replacement{ $storage_item__2226 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2224 = ' copy-and-replace ' . $storage_item__2225 . ' ' . $storage_item__2226 . ' ' . $storage_item__2227 . ' ' . $storage_item__2228 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2226 } = $global_source_text ;
+$storage_item__2224 = ' ' ;
+} else {
+$storage_item__2224 = ' copy-and-replace ' . $storage_item__2225 . ' ' . $storage_item__2226 . ' ' . $storage_item__2227 . ' ' . $storage_item__2228 . ' ' ;
+}
 } else {
 $storage_item__2224 = ' copy-and-replace ' . $storage_item__2225 . ' ' . $storage_item__2226 . ' ' . $storage_item__2227 . ' ' . $storage_item__2228 . ' ' ;
 }
@@ -17834,12 +18897,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2279 ;
-$global_single_action_operand_two = $storage_item__2280 ;
-$global_single_action_operand_three = $storage_item__2281 ;
-$global_single_action_operand_four = $storage_item__2282 ;
-$storage_item__2278 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2279 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2281 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2282 } ;
+$global_dashrep_replacement{ $storage_item__2280 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2278 = ' copy-and-replace ' . $storage_item__2279 . ' ' . $storage_item__2280 . ' ' . $storage_item__2281 . ' ' . $storage_item__2282 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2280 } = $global_source_text ;
+$storage_item__2278 = ' ' ;
+} else {
+$storage_item__2278 = ' copy-and-replace ' . $storage_item__2279 . ' ' . $storage_item__2280 . ' ' . $storage_item__2281 . ' ' . $storage_item__2282 . ' ' ;
+}
 } else {
 $storage_item__2278 = ' copy-and-replace ' . $storage_item__2279 . ' ' . $storage_item__2280 . ' ' . $storage_item__2281 . ' ' . $storage_item__2282 . ' ' ;
 }
@@ -17868,12 +18949,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2284 ;
-$global_single_action_operand_two = $storage_item__2285 ;
-$global_single_action_operand_three = $storage_item__2286 ;
-$global_single_action_operand_four = $storage_item__2287 ;
-$storage_item__2283 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2284 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2286 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2287 } ;
+$global_dashrep_replacement{ $storage_item__2285 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2283 = ' copy-and-replace ' . $storage_item__2284 . ' ' . $storage_item__2285 . ' ' . $storage_item__2286 . ' ' . $storage_item__2287 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2285 } = $global_source_text ;
+$storage_item__2283 = ' ' ;
+} else {
+$storage_item__2283 = ' copy-and-replace ' . $storage_item__2284 . ' ' . $storage_item__2285 . ' ' . $storage_item__2286 . ' ' . $storage_item__2287 . ' ' ;
+}
 } else {
 $storage_item__2283 = ' copy-and-replace ' . $storage_item__2284 . ' ' . $storage_item__2285 . ' ' . $storage_item__2286 . ' ' . $storage_item__2287 . ' ' ;
 }
@@ -17902,12 +19001,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2289 ;
-$global_single_action_operand_two = $storage_item__2290 ;
-$global_single_action_operand_three = $storage_item__2291 ;
-$global_single_action_operand_four = $storage_item__2292 ;
-$storage_item__2288 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2289 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2291 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2292 } ;
+$global_dashrep_replacement{ $storage_item__2290 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2288 = ' copy-and-replace ' . $storage_item__2289 . ' ' . $storage_item__2290 . ' ' . $storage_item__2291 . ' ' . $storage_item__2292 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2290 } = $global_source_text ;
+$storage_item__2288 = ' ' ;
+} else {
+$storage_item__2288 = ' copy-and-replace ' . $storage_item__2289 . ' ' . $storage_item__2290 . ' ' . $storage_item__2291 . ' ' . $storage_item__2292 . ' ' ;
+}
 } else {
 $storage_item__2288 = ' copy-and-replace ' . $storage_item__2289 . ' ' . $storage_item__2290 . ' ' . $storage_item__2291 . ' ' . $storage_item__2292 . ' ' ;
 }
@@ -17936,12 +19053,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2294 ;
-$global_single_action_operand_two = $storage_item__2295 ;
-$global_single_action_operand_three = $storage_item__2296 ;
-$global_single_action_operand_four = $storage_item__2297 ;
-$storage_item__2293 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2294 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2296 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2297 } ;
+$global_dashrep_replacement{ $storage_item__2295 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2293 = ' copy-and-replace ' . $storage_item__2294 . ' ' . $storage_item__2295 . ' ' . $storage_item__2296 . ' ' . $storage_item__2297 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2295 } = $global_source_text ;
+$storage_item__2293 = ' ' ;
+} else {
+$storage_item__2293 = ' copy-and-replace ' . $storage_item__2294 . ' ' . $storage_item__2295 . ' ' . $storage_item__2296 . ' ' . $storage_item__2297 . ' ' ;
+}
 } else {
 $storage_item__2293 = ' copy-and-replace ' . $storage_item__2294 . ' ' . $storage_item__2295 . ' ' . $storage_item__2296 . ' ' . $storage_item__2297 . ' ' ;
 }
@@ -18168,12 +19303,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2323 ;
-$global_single_action_operand_two = $storage_item__2324 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2322 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2324 } .= $global_dashrep_replacement{ $storage_item__2323 } ;
+$storage_item__2322 = ' ' ;
 } else {
 $storage_item__2322 = ' append-text-no-space ' . $storage_item__2323 . ' ' . $storage_item__2324 . ' ' ;
 }
@@ -18269,12 +19400,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2335 ;
-$global_single_action_operand_two = $storage_item__2336 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2334 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2336 } .= $global_dashrep_replacement{ $storage_item__2335 } ;
+$storage_item__2334 = ' ' ;
 } else {
 $storage_item__2334 = ' append-text-no-space ' . $storage_item__2335 . ' ' . $storage_item__2336 . ' ' ;
 }
@@ -19338,12 +20465,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2470 ;
-$global_single_action_operand_two = $storage_item__2471 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2469 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2471 } .= $global_dashrep_replacement{ $storage_item__2470 } ;
+$storage_item__2469 = ' ' ;
 } else {
 $storage_item__2469 = ' append-text-no-space ' . $storage_item__2470 . ' ' . $storage_item__2471 . ' ' ;
 }
@@ -19364,12 +20487,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2473 ;
-$global_single_action_operand_two = $storage_item__2474 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2472 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2474 } .= $global_dashrep_replacement{ $storage_item__2473 } ;
+$storage_item__2472 = ' ' ;
 } else {
 $storage_item__2472 = ' append-text-no-space ' . $storage_item__2473 . ' ' . $storage_item__2474 . ' ' ;
 }
@@ -19534,12 +20653,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2494 ;
-$global_single_action_operand_two = $storage_item__2495 ;
-$global_single_action_operand_three = $storage_item__2496 ;
-$global_single_action_operand_four = $storage_item__2497 ;
-$storage_item__2493 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2494 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2496 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2497 } ;
+$global_dashrep_replacement{ $storage_item__2495 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2493 = ' copy-and-replace ' . $storage_item__2494 . ' ' . $storage_item__2495 . ' ' . $storage_item__2496 . ' ' . $storage_item__2497 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2495 } = $global_source_text ;
+$storage_item__2493 = ' ' ;
+} else {
+$storage_item__2493 = ' copy-and-replace ' . $storage_item__2494 . ' ' . $storage_item__2495 . ' ' . $storage_item__2496 . ' ' . $storage_item__2497 . ' ' ;
+}
 } else {
 $storage_item__2493 = ' copy-and-replace ' . $storage_item__2494 . ' ' . $storage_item__2495 . ' ' . $storage_item__2496 . ' ' . $storage_item__2497 . ' ' ;
 }
@@ -19568,12 +20705,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2499 ;
-$global_single_action_operand_two = $storage_item__2500 ;
-$global_single_action_operand_three = $storage_item__2501 ;
-$global_single_action_operand_four = $storage_item__2502 ;
-$storage_item__2498 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2499 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2501 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2502 } ;
+$global_dashrep_replacement{ $storage_item__2500 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2498 = ' copy-and-replace ' . $storage_item__2499 . ' ' . $storage_item__2500 . ' ' . $storage_item__2501 . ' ' . $storage_item__2502 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2500 } = $global_source_text ;
+$storage_item__2498 = ' ' ;
+} else {
+$storage_item__2498 = ' copy-and-replace ' . $storage_item__2499 . ' ' . $storage_item__2500 . ' ' . $storage_item__2501 . ' ' . $storage_item__2502 . ' ' ;
+}
 } else {
 $storage_item__2498 = ' copy-and-replace ' . $storage_item__2499 . ' ' . $storage_item__2500 . ' ' . $storage_item__2501 . ' ' . $storage_item__2502 . ' ' ;
 }
@@ -19771,12 +20926,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2526 ;
-$global_single_action_operand_two = $storage_item__2527 ;
-$global_single_action_operand_three = $storage_item__2528 ;
-$global_single_action_operand_four = $storage_item__2529 ;
-$storage_item__2525 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2526 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2528 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2529 } ;
+$global_dashrep_replacement{ $storage_item__2527 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2525 = ' copy-and-replace ' . $storage_item__2526 . ' ' . $storage_item__2527 . ' ' . $storage_item__2528 . ' ' . $storage_item__2529 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2527 } = $global_source_text ;
+$storage_item__2525 = ' ' ;
+} else {
+$storage_item__2525 = ' copy-and-replace ' . $storage_item__2526 . ' ' . $storage_item__2527 . ' ' . $storage_item__2528 . ' ' . $storage_item__2529 . ' ' ;
+}
 } else {
 $storage_item__2525 = ' copy-and-replace ' . $storage_item__2526 . ' ' . $storage_item__2527 . ' ' . $storage_item__2528 . ' ' . $storage_item__2529 . ' ' ;
 }
@@ -19805,12 +20978,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2531 ;
-$global_single_action_operand_two = $storage_item__2532 ;
-$global_single_action_operand_three = $storage_item__2533 ;
-$global_single_action_operand_four = $storage_item__2534 ;
-$storage_item__2530 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2531 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2533 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2534 } ;
+$global_dashrep_replacement{ $storage_item__2532 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2530 = ' copy-and-replace ' . $storage_item__2531 . ' ' . $storage_item__2532 . ' ' . $storage_item__2533 . ' ' . $storage_item__2534 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2532 } = $global_source_text ;
+$storage_item__2530 = ' ' ;
+} else {
+$storage_item__2530 = ' copy-and-replace ' . $storage_item__2531 . ' ' . $storage_item__2532 . ' ' . $storage_item__2533 . ' ' . $storage_item__2534 . ' ' ;
+}
 } else {
 $storage_item__2530 = ' copy-and-replace ' . $storage_item__2531 . ' ' . $storage_item__2532 . ' ' . $storage_item__2533 . ' ' . $storage_item__2534 . ' ' ;
 }
@@ -19839,12 +21030,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2536 ;
-$global_single_action_operand_two = $storage_item__2537 ;
-$global_single_action_operand_three = $storage_item__2538 ;
-$global_single_action_operand_four = $storage_item__2539 ;
-$storage_item__2535 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2536 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2538 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2539 } ;
+$global_dashrep_replacement{ $storage_item__2537 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2535 = ' copy-and-replace ' . $storage_item__2536 . ' ' . $storage_item__2537 . ' ' . $storage_item__2538 . ' ' . $storage_item__2539 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2537 } = $global_source_text ;
+$storage_item__2535 = ' ' ;
+} else {
+$storage_item__2535 = ' copy-and-replace ' . $storage_item__2536 . ' ' . $storage_item__2537 . ' ' . $storage_item__2538 . ' ' . $storage_item__2539 . ' ' ;
+}
 } else {
 $storage_item__2535 = ' copy-and-replace ' . $storage_item__2536 . ' ' . $storage_item__2537 . ' ' . $storage_item__2538 . ' ' . $storage_item__2539 . ' ' ;
 }
@@ -19972,12 +21181,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2554 ;
-$global_single_action_operand_two = $storage_item__2555 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2553 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2555 } .= $global_dashrep_replacement{ $storage_item__2554 } ;
+$storage_item__2553 = ' ' ;
 } else {
 $storage_item__2553 = ' append-text-no-space ' . $storage_item__2554 . ' ' . $storage_item__2555 . ' ' ;
 }
@@ -20493,12 +21698,30 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'copy-and-replace' ;
-$global_single_action_operand_one = $storage_item__2616 ;
-$global_single_action_operand_two = $storage_item__2617 ;
-$global_single_action_operand_three = $storage_item__2618 ;
-$global_single_action_operand_four = $storage_item__2619 ;
-$storage_item__2615 = &dashrep_expand_parameters( ) ;
+$global_source_text = $global_dashrep_replacement{ $storage_item__2616 } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ $storage_item__2618 } ;
+$global_text_to_insert = $global_dashrep_replacement{ $storage_item__2619 } ;
+$global_dashrep_replacement{ $storage_item__2617 } = $global_source_text ;
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+$storage_item__2615 = ' copy-and-replace ' . $storage_item__2616 . ' ' . $storage_item__2617 . ' ' . $storage_item__2618 . ' ' . $storage_item__2619 . ' ' ;
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+last ;
+}
+}
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+$global_dashrep_replacement{ $storage_item__2617 } = $global_source_text ;
+$storage_item__2615 = ' ' ;
+} else {
+$storage_item__2615 = ' copy-and-replace ' . $storage_item__2616 . ' ' . $storage_item__2617 . ' ' . $storage_item__2618 . ' ' . $storage_item__2619 . ' ' ;
+}
 } else {
 $storage_item__2615 = ' copy-and-replace ' . $storage_item__2616 . ' ' . $storage_item__2617 . ' ' . $storage_item__2618 . ' ' . $storage_item__2619 . ' ' ;
 }
@@ -21881,12 +23104,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2789 ;
-$global_single_action_operand_two = $storage_item__2790 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2788 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2790 } .= $global_dashrep_replacement{ $storage_item__2789 } ;
+$storage_item__2788 = ' ' ;
 } else {
 $storage_item__2788 = ' append-text-no-space ' . $storage_item__2789 . ' ' . $storage_item__2790 . ' ' ;
 }
@@ -21907,12 +23126,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2792 ;
-$global_single_action_operand_two = $storage_item__2793 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2791 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2793 } .= $global_dashrep_replacement{ $storage_item__2792 } ;
+$storage_item__2791 = ' ' ;
 } else {
 $storage_item__2791 = ' append-text-no-space ' . $storage_item__2792 . ' ' . $storage_item__2793 . ' ' ;
 }
@@ -22020,12 +23235,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2805 ;
-$global_single_action_operand_two = $storage_item__2806 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2804 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2806 } .= $global_dashrep_replacement{ $storage_item__2805 } ;
+$storage_item__2804 = ' ' ;
 } else {
 $storage_item__2804 = ' append-text-no-space ' . $storage_item__2805 . ' ' . $storage_item__2806 . ' ' ;
 }
@@ -23551,12 +24762,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2984 ;
-$global_single_action_operand_two = $storage_item__2985 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2983 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2985 } .= $global_dashrep_replacement{ $storage_item__2984 } ;
+$storage_item__2983 = ' ' ;
 } else {
 $storage_item__2983 = ' append-text-no-space ' . $storage_item__2984 . ' ' . $storage_item__2985 . ' ' ;
 }
@@ -23577,12 +24784,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__2987 ;
-$global_single_action_operand_two = $storage_item__2988 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__2986 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__2988 } .= $global_dashrep_replacement{ $storage_item__2987 } ;
+$storage_item__2986 = ' ' ;
 } else {
 $storage_item__2986 = ' append-text-no-space ' . $storage_item__2987 . ' ' . $storage_item__2988 . ' ' ;
 }
@@ -27046,12 +28249,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3745 ;
-$global_single_action_operand_two = $storage_item__3746 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3744 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3746 } .= $global_dashrep_replacement{ $storage_item__3745 } ;
+$storage_item__3744 = ' ' ;
 } else {
 $storage_item__3744 = ' append-text-no-space ' . $storage_item__3745 . ' ' . $storage_item__3746 . ' ' ;
 }
@@ -27247,12 +28446,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3852 ;
-$global_single_action_operand_two = $storage_item__3853 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3851 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3853 } .= $global_dashrep_replacement{ $storage_item__3852 } ;
+$storage_item__3851 = ' ' ;
 } else {
 $storage_item__3851 = ' append-text-no-space ' . $storage_item__3852 . ' ' . $storage_item__3853 . ' ' ;
 }
@@ -27318,12 +28513,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3861 ;
-$global_single_action_operand_two = $storage_item__3862 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3860 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3862 } .= $global_dashrep_replacement{ $storage_item__3861 } ;
+$storage_item__3860 = ' ' ;
 } else {
 $storage_item__3860 = ' append-text-no-space ' . $storage_item__3861 . ' ' . $storage_item__3862 . ' ' ;
 }
@@ -27389,12 +28580,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3870 ;
-$global_single_action_operand_two = $storage_item__3871 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3869 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3871 } .= $global_dashrep_replacement{ $storage_item__3870 } ;
+$storage_item__3869 = ' ' ;
 } else {
 $storage_item__3869 = ' append-text-no-space ' . $storage_item__3870 . ' ' . $storage_item__3871 . ' ' ;
 }
@@ -27460,12 +28647,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3879 ;
-$global_single_action_operand_two = $storage_item__3880 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3878 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3880 } .= $global_dashrep_replacement{ $storage_item__3879 } ;
+$storage_item__3878 = ' ' ;
 } else {
 $storage_item__3878 = ' append-text-no-space ' . $storage_item__3879 . ' ' . $storage_item__3880 . ' ' ;
 }
@@ -27531,12 +28714,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3888 ;
-$global_single_action_operand_two = $storage_item__3889 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3887 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3889 } .= $global_dashrep_replacement{ $storage_item__3888 } ;
+$storage_item__3887 = ' ' ;
 } else {
 $storage_item__3887 = ' append-text-no-space ' . $storage_item__3888 . ' ' . $storage_item__3889 . ' ' ;
 }
@@ -27602,12 +28781,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3897 ;
-$global_single_action_operand_two = $storage_item__3898 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3896 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3898 } .= $global_dashrep_replacement{ $storage_item__3897 } ;
+$storage_item__3896 = ' ' ;
 } else {
 $storage_item__3896 = ' append-text-no-space ' . $storage_item__3897 . ' ' . $storage_item__3898 . ' ' ;
 }
@@ -27673,12 +28848,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3906 ;
-$global_single_action_operand_two = $storage_item__3907 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3905 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3907 } .= $global_dashrep_replacement{ $storage_item__3906 } ;
+$storage_item__3905 = ' ' ;
 } else {
 $storage_item__3905 = ' append-text-no-space ' . $storage_item__3906 . ' ' . $storage_item__3907 . ' ' ;
 }
@@ -27744,12 +28915,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3915 ;
-$global_single_action_operand_two = $storage_item__3916 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3914 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3916 } .= $global_dashrep_replacement{ $storage_item__3915 } ;
+$storage_item__3914 = ' ' ;
 } else {
 $storage_item__3914 = ' append-text-no-space ' . $storage_item__3915 . ' ' . $storage_item__3916 . ' ' ;
 }
@@ -27815,12 +28982,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3924 ;
-$global_single_action_operand_two = $storage_item__3925 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3923 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3925 } .= $global_dashrep_replacement{ $storage_item__3924 } ;
+$storage_item__3923 = ' ' ;
 } else {
 $storage_item__3923 = ' append-text-no-space ' . $storage_item__3924 . ' ' . $storage_item__3925 . ' ' ;
 }
@@ -27860,12 +29023,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3930 ;
-$global_single_action_operand_two = $storage_item__3931 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3929 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3931 } .= $global_dashrep_replacement{ $storage_item__3930 } ;
+$storage_item__3929 = ' ' ;
 } else {
 $storage_item__3929 = ' append-text-no-space ' . $storage_item__3930 . ' ' . $storage_item__3931 . ' ' ;
 }
@@ -27886,12 +29045,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3933 ;
-$global_single_action_operand_two = $storage_item__3934 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3932 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3934 } .= $global_dashrep_replacement{ $storage_item__3933 } ;
+$storage_item__3932 = ' ' ;
 } else {
 $storage_item__3932 = ' append-text-no-space ' . $storage_item__3933 . ' ' . $storage_item__3934 . ' ' ;
 }
@@ -27912,12 +29067,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3936 ;
-$global_single_action_operand_two = $storage_item__3937 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3935 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3937 } .= $global_dashrep_replacement{ $storage_item__3936 } ;
+$storage_item__3935 = ' ' ;
 } else {
 $storage_item__3935 = ' append-text-no-space ' . $storage_item__3936 . ' ' . $storage_item__3937 . ' ' ;
 }
@@ -27957,12 +29108,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3942 ;
-$global_single_action_operand_two = $storage_item__3943 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3941 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3943 } .= $global_dashrep_replacement{ $storage_item__3942 } ;
+$storage_item__3941 = ' ' ;
 } else {
 $storage_item__3941 = ' append-text-no-space ' . $storage_item__3942 . ' ' . $storage_item__3943 . ' ' ;
 }
@@ -27983,12 +29130,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3945 ;
-$global_single_action_operand_two = $storage_item__3946 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3944 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3946 } .= $global_dashrep_replacement{ $storage_item__3945 } ;
+$storage_item__3944 = ' ' ;
 } else {
 $storage_item__3944 = ' append-text-no-space ' . $storage_item__3945 . ' ' . $storage_item__3946 . ' ' ;
 }
@@ -28009,12 +29152,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3948 ;
-$global_single_action_operand_two = $storage_item__3949 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3947 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3949 } .= $global_dashrep_replacement{ $storage_item__3948 } ;
+$storage_item__3947 = ' ' ;
 } else {
 $storage_item__3947 = ' append-text-no-space ' . $storage_item__3948 . ' ' . $storage_item__3949 . ' ' ;
 }
@@ -28080,12 +29219,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3957 ;
-$global_single_action_operand_two = $storage_item__3958 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3956 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3958 } .= $global_dashrep_replacement{ $storage_item__3957 } ;
+$storage_item__3956 = ' ' ;
 } else {
 $storage_item__3956 = ' append-text-no-space ' . $storage_item__3957 . ' ' . $storage_item__3958 . ' ' ;
 }
@@ -28106,12 +29241,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3960 ;
-$global_single_action_operand_two = $storage_item__3961 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3959 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3961 } .= $global_dashrep_replacement{ $storage_item__3960 } ;
+$storage_item__3959 = ' ' ;
 } else {
 $storage_item__3959 = ' append-text-no-space ' . $storage_item__3960 . ' ' . $storage_item__3961 . ' ' ;
 }
@@ -28132,12 +29263,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3963 ;
-$global_single_action_operand_two = $storage_item__3964 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3962 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3964 } .= $global_dashrep_replacement{ $storage_item__3963 } ;
+$storage_item__3962 = ' ' ;
 } else {
 $storage_item__3962 = ' append-text-no-space ' . $storage_item__3963 . ' ' . $storage_item__3964 . ' ' ;
 }
@@ -28203,12 +29330,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3972 ;
-$global_single_action_operand_two = $storage_item__3973 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3971 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3973 } .= $global_dashrep_replacement{ $storage_item__3972 } ;
+$storage_item__3971 = ' ' ;
 } else {
 $storage_item__3971 = ' append-text-no-space ' . $storage_item__3972 . ' ' . $storage_item__3973 . ' ' ;
 }
@@ -28274,12 +29397,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3981 ;
-$global_single_action_operand_two = $storage_item__3982 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3980 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3982 } .= $global_dashrep_replacement{ $storage_item__3981 } ;
+$storage_item__3980 = ' ' ;
 } else {
 $storage_item__3980 = ' append-text-no-space ' . $storage_item__3981 . ' ' . $storage_item__3982 . ' ' ;
 }
@@ -28345,12 +29464,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3989 ;
-$global_single_action_operand_two = $storage_item__3990 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3988 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3990 } .= $global_dashrep_replacement{ $storage_item__3989 } ;
+$storage_item__3988 = ' ' ;
 } else {
 $storage_item__3988 = ' append-text-no-space ' . $storage_item__3989 . ' ' . $storage_item__3990 . ' ' ;
 }
@@ -28371,12 +29486,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3992 ;
-$global_single_action_operand_two = $storage_item__3993 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3991 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3993 } .= $global_dashrep_replacement{ $storage_item__3992 } ;
+$storage_item__3991 = ' ' ;
 } else {
 $storage_item__3991 = ' append-text-no-space ' . $storage_item__3992 . ' ' . $storage_item__3993 . ' ' ;
 }
@@ -28416,12 +29527,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__3998 ;
-$global_single_action_operand_two = $storage_item__3999 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__3997 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__3999 } .= $global_dashrep_replacement{ $storage_item__3998 } ;
+$storage_item__3997 = ' ' ;
 } else {
 $storage_item__3997 = ' append-text-no-space ' . $storage_item__3998 . ' ' . $storage_item__3999 . ' ' ;
 }
@@ -28461,12 +29568,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4004 ;
-$global_single_action_operand_two = $storage_item__4005 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4003 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4005 } .= $global_dashrep_replacement{ $storage_item__4004 } ;
+$storage_item__4003 = ' ' ;
 } else {
 $storage_item__4003 = ' append-text-no-space ' . $storage_item__4004 . ' ' . $storage_item__4005 . ' ' ;
 }
@@ -28506,12 +29609,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4010 ;
-$global_single_action_operand_two = $storage_item__4011 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4009 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4011 } .= $global_dashrep_replacement{ $storage_item__4010 } ;
+$storage_item__4009 = ' ' ;
 } else {
 $storage_item__4009 = ' append-text-no-space ' . $storage_item__4010 . ' ' . $storage_item__4011 . ' ' ;
 }
@@ -28551,12 +29650,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4016 ;
-$global_single_action_operand_two = $storage_item__4017 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4015 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4017 } .= $global_dashrep_replacement{ $storage_item__4016 } ;
+$storage_item__4015 = ' ' ;
 } else {
 $storage_item__4015 = ' append-text-no-space ' . $storage_item__4016 . ' ' . $storage_item__4017 . ' ' ;
 }
@@ -28596,12 +29691,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4022 ;
-$global_single_action_operand_two = $storage_item__4023 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4021 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4023 } .= $global_dashrep_replacement{ $storage_item__4022 } ;
+$storage_item__4021 = ' ' ;
 } else {
 $storage_item__4021 = ' append-text-no-space ' . $storage_item__4022 . ' ' . $storage_item__4023 . ' ' ;
 }
@@ -28641,12 +29732,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4028 ;
-$global_single_action_operand_two = $storage_item__4029 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4027 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4029 } .= $global_dashrep_replacement{ $storage_item__4028 } ;
+$storage_item__4027 = ' ' ;
 } else {
 $storage_item__4027 = ' append-text-no-space ' . $storage_item__4028 . ' ' . $storage_item__4029 . ' ' ;
 }
@@ -28686,12 +29773,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4034 ;
-$global_single_action_operand_two = $storage_item__4035 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4033 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4035 } .= $global_dashrep_replacement{ $storage_item__4034 } ;
+$storage_item__4033 = ' ' ;
 } else {
 $storage_item__4033 = ' append-text-no-space ' . $storage_item__4034 . ' ' . $storage_item__4035 . ' ' ;
 }
@@ -28731,12 +29814,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4040 ;
-$global_single_action_operand_two = $storage_item__4041 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4039 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4041 } .= $global_dashrep_replacement{ $storage_item__4040 } ;
+$storage_item__4039 = ' ' ;
 } else {
 $storage_item__4039 = ' append-text-no-space ' . $storage_item__4040 . ' ' . $storage_item__4041 . ' ' ;
 }
@@ -28802,12 +29881,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4048 ;
-$global_single_action_operand_two = $storage_item__4049 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4047 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4049 } .= $global_dashrep_replacement{ $storage_item__4048 } ;
+$storage_item__4047 = ' ' ;
 } else {
 $storage_item__4047 = ' append-text-no-space ' . $storage_item__4048 . ' ' . $storage_item__4049 . ' ' ;
 }
@@ -28828,12 +29903,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4051 ;
-$global_single_action_operand_two = $storage_item__4052 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4050 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4052 } .= $global_dashrep_replacement{ $storage_item__4051 } ;
+$storage_item__4050 = ' ' ;
 } else {
 $storage_item__4050 = ' append-text-no-space ' . $storage_item__4051 . ' ' . $storage_item__4052 . ' ' ;
 }
@@ -28873,12 +29944,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4057 ;
-$global_single_action_operand_two = $storage_item__4058 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4056 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4058 } .= $global_dashrep_replacement{ $storage_item__4057 } ;
+$storage_item__4056 = ' ' ;
 } else {
 $storage_item__4056 = ' append-text-no-space ' . $storage_item__4057 . ' ' . $storage_item__4058 . ' ' ;
 }
@@ -28899,12 +29966,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4060 ;
-$global_single_action_operand_two = $storage_item__4061 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4059 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4061 } .= $global_dashrep_replacement{ $storage_item__4060 } ;
+$storage_item__4059 = ' ' ;
 } else {
 $storage_item__4059 = ' append-text-no-space ' . $storage_item__4060 . ' ' . $storage_item__4061 . ' ' ;
 }
@@ -28944,12 +30007,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4066 ;
-$global_single_action_operand_two = $storage_item__4067 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4065 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4067 } .= $global_dashrep_replacement{ $storage_item__4066 } ;
+$storage_item__4065 = ' ' ;
 } else {
 $storage_item__4065 = ' append-text-no-space ' . $storage_item__4066 . ' ' . $storage_item__4067 . ' ' ;
 }
@@ -28970,12 +30029,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4069 ;
-$global_single_action_operand_two = $storage_item__4070 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4068 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4070 } .= $global_dashrep_replacement{ $storage_item__4069 } ;
+$storage_item__4068 = ' ' ;
 } else {
 $storage_item__4068 = ' append-text-no-space ' . $storage_item__4069 . ' ' . $storage_item__4070 . ' ' ;
 }
@@ -29015,12 +30070,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4075 ;
-$global_single_action_operand_two = $storage_item__4076 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4074 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4076 } .= $global_dashrep_replacement{ $storage_item__4075 } ;
+$storage_item__4074 = ' ' ;
 } else {
 $storage_item__4074 = ' append-text-no-space ' . $storage_item__4075 . ' ' . $storage_item__4076 . ' ' ;
 }
@@ -29041,12 +30092,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4078 ;
-$global_single_action_operand_two = $storage_item__4079 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4077 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4079 } .= $global_dashrep_replacement{ $storage_item__4078 } ;
+$storage_item__4077 = ' ' ;
 } else {
 $storage_item__4077 = ' append-text-no-space ' . $storage_item__4078 . ' ' . $storage_item__4079 . ' ' ;
 }
@@ -29086,12 +30133,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4084 ;
-$global_single_action_operand_two = $storage_item__4085 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4083 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4085 } .= $global_dashrep_replacement{ $storage_item__4084 } ;
+$storage_item__4083 = ' ' ;
 } else {
 $storage_item__4083 = ' append-text-no-space ' . $storage_item__4084 . ' ' . $storage_item__4085 . ' ' ;
 }
@@ -29112,12 +30155,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4087 ;
-$global_single_action_operand_two = $storage_item__4088 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4086 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4088 } .= $global_dashrep_replacement{ $storage_item__4087 } ;
+$storage_item__4086 = ' ' ;
 } else {
 $storage_item__4086 = ' append-text-no-space ' . $storage_item__4087 . ' ' . $storage_item__4088 . ' ' ;
 }
@@ -29157,12 +30196,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4093 ;
-$global_single_action_operand_two = $storage_item__4094 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4092 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4094 } .= $global_dashrep_replacement{ $storage_item__4093 } ;
+$storage_item__4092 = ' ' ;
 } else {
 $storage_item__4092 = ' append-text-no-space ' . $storage_item__4093 . ' ' . $storage_item__4094 . ' ' ;
 }
@@ -29183,12 +30218,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4096 ;
-$global_single_action_operand_two = $storage_item__4097 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4095 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4097 } .= $global_dashrep_replacement{ $storage_item__4096 } ;
+$storage_item__4095 = ' ' ;
 } else {
 $storage_item__4095 = ' append-text-no-space ' . $storage_item__4096 . ' ' . $storage_item__4097 . ' ' ;
 }
@@ -29228,12 +30259,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4102 ;
-$global_single_action_operand_two = $storage_item__4103 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4101 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4103 } .= $global_dashrep_replacement{ $storage_item__4102 } ;
+$storage_item__4101 = ' ' ;
 } else {
 $storage_item__4101 = ' append-text-no-space ' . $storage_item__4102 . ' ' . $storage_item__4103 . ' ' ;
 }
@@ -29254,12 +30281,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4105 ;
-$global_single_action_operand_two = $storage_item__4106 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4104 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4106 } .= $global_dashrep_replacement{ $storage_item__4105 } ;
+$storage_item__4104 = ' ' ;
 } else {
 $storage_item__4104 = ' append-text-no-space ' . $storage_item__4105 . ' ' . $storage_item__4106 . ' ' ;
 }
@@ -29370,12 +30393,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4119 ;
-$global_single_action_operand_two = $storage_item__4120 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4118 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4120 } .= $global_dashrep_replacement{ $storage_item__4119 } ;
+$storage_item__4118 = ' ' ;
 } else {
 $storage_item__4118 = ' append-text-no-space ' . $storage_item__4119 . ' ' . $storage_item__4120 . ' ' ;
 }
@@ -29415,12 +30434,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4125 ;
-$global_single_action_operand_two = $storage_item__4126 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4124 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4126 } .= $global_dashrep_replacement{ $storage_item__4125 } ;
+$storage_item__4124 = ' ' ;
 } else {
 $storage_item__4124 = ' append-text-no-space ' . $storage_item__4125 . ' ' . $storage_item__4126 . ' ' ;
 }
@@ -29460,12 +30475,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4131 ;
-$global_single_action_operand_two = $storage_item__4132 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4130 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4132 } .= $global_dashrep_replacement{ $storage_item__4131 } ;
+$storage_item__4130 = ' ' ;
 } else {
 $storage_item__4130 = ' append-text-no-space ' . $storage_item__4131 . ' ' . $storage_item__4132 . ' ' ;
 }
@@ -29505,12 +30516,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4137 ;
-$global_single_action_operand_two = $storage_item__4138 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4136 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4138 } .= $global_dashrep_replacement{ $storage_item__4137 } ;
+$storage_item__4136 = ' ' ;
 } else {
 $storage_item__4136 = ' append-text-no-space ' . $storage_item__4137 . ' ' . $storage_item__4138 . ' ' ;
 }
@@ -29550,12 +30557,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4143 ;
-$global_single_action_operand_two = $storage_item__4144 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4142 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4144 } .= $global_dashrep_replacement{ $storage_item__4143 } ;
+$storage_item__4142 = ' ' ;
 } else {
 $storage_item__4142 = ' append-text-no-space ' . $storage_item__4143 . ' ' . $storage_item__4144 . ' ' ;
 }
@@ -29576,12 +30579,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4146 ;
-$global_single_action_operand_two = $storage_item__4147 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4145 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4147 } .= $global_dashrep_replacement{ $storage_item__4146 } ;
+$storage_item__4145 = ' ' ;
 } else {
 $storage_item__4145 = ' append-text-no-space ' . $storage_item__4146 . ' ' . $storage_item__4147 . ' ' ;
 }
@@ -29602,12 +30601,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4149 ;
-$global_single_action_operand_two = $storage_item__4150 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4148 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4150 } .= $global_dashrep_replacement{ $storage_item__4149 } ;
+$storage_item__4148 = ' ' ;
 } else {
 $storage_item__4148 = ' append-text-no-space ' . $storage_item__4149 . ' ' . $storage_item__4150 . ' ' ;
 }
@@ -29628,12 +30623,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4152 ;
-$global_single_action_operand_two = $storage_item__4153 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4151 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4153 } .= $global_dashrep_replacement{ $storage_item__4152 } ;
+$storage_item__4151 = ' ' ;
 } else {
 $storage_item__4151 = ' append-text-no-space ' . $storage_item__4152 . ' ' . $storage_item__4153 . ' ' ;
 }
@@ -29673,12 +30664,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4158 ;
-$global_single_action_operand_two = $storage_item__4159 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4157 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4159 } .= $global_dashrep_replacement{ $storage_item__4158 } ;
+$storage_item__4157 = ' ' ;
 } else {
 $storage_item__4157 = ' append-text-no-space ' . $storage_item__4158 . ' ' . $storage_item__4159 . ' ' ;
 }
@@ -29753,12 +30740,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4167 ;
-$global_single_action_operand_two = $storage_item__4168 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4166 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4168 } .= $global_dashrep_replacement{ $storage_item__4167 } ;
+$storage_item__4166 = ' ' ;
 } else {
 $storage_item__4166 = ' append-text-no-space ' . $storage_item__4167 . ' ' . $storage_item__4168 . ' ' ;
 }
@@ -29798,12 +30781,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4173 ;
-$global_single_action_operand_two = $storage_item__4174 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4172 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4174 } .= $global_dashrep_replacement{ $storage_item__4173 } ;
+$storage_item__4172 = ' ' ;
 } else {
 $storage_item__4172 = ' append-text-no-space ' . $storage_item__4173 . ' ' . $storage_item__4174 . ' ' ;
 }
@@ -29889,12 +30868,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4185 ;
-$global_single_action_operand_two = $storage_item__4186 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4184 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4186 } .= $global_dashrep_replacement{ $storage_item__4185 } ;
+$storage_item__4184 = ' ' ;
 } else {
 $storage_item__4184 = ' append-text-no-space ' . $storage_item__4185 . ' ' . $storage_item__4186 . ' ' ;
 }
@@ -30060,12 +31035,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4206 ;
-$global_single_action_operand_two = $storage_item__4207 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4205 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4207 } .= $global_dashrep_replacement{ $storage_item__4206 } ;
+$storage_item__4205 = ' ' ;
 } else {
 $storage_item__4205 = ' append-text-no-space ' . $storage_item__4206 . ' ' . $storage_item__4207 . ' ' ;
 }
@@ -30158,12 +31129,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4218 ;
-$global_single_action_operand_two = $storage_item__4219 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4217 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4219 } .= $global_dashrep_replacement{ $storage_item__4218 } ;
+$storage_item__4217 = ' ' ;
 } else {
 $storage_item__4217 = ' append-text-no-space ' . $storage_item__4218 . ' ' . $storage_item__4219 . ' ' ;
 }
@@ -30256,12 +31223,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4230 ;
-$global_single_action_operand_two = $storage_item__4231 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4229 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4231 } .= $global_dashrep_replacement{ $storage_item__4230 } ;
+$storage_item__4229 = ' ' ;
 } else {
 $storage_item__4229 = ' append-text-no-space ' . $storage_item__4230 . ' ' . $storage_item__4231 . ' ' ;
 }
@@ -30408,12 +31371,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4248 ;
-$global_single_action_operand_two = $storage_item__4249 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4247 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4249 } .= $global_dashrep_replacement{ $storage_item__4248 } ;
+$storage_item__4247 = ' ' ;
 } else {
 $storage_item__4247 = ' append-text-no-space ' . $storage_item__4248 . ' ' . $storage_item__4249 . ' ' ;
 }
@@ -30472,12 +31431,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4257 ;
-$global_single_action_operand_two = $storage_item__4258 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4256 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4258 } .= $global_dashrep_replacement{ $storage_item__4257 } ;
+$storage_item__4256 = ' ' ;
 } else {
 $storage_item__4256 = ' append-text-no-space ' . $storage_item__4257 . ' ' . $storage_item__4258 . ' ' ;
 }
@@ -30570,12 +31525,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4269 ;
-$global_single_action_operand_two = $storage_item__4270 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4268 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4270 } .= $global_dashrep_replacement{ $storage_item__4269 } ;
+$storage_item__4268 = ' ' ;
 } else {
 $storage_item__4268 = ' append-text-no-space ' . $storage_item__4269 . ' ' . $storage_item__4270 . ' ' ;
 }
@@ -30668,12 +31619,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4281 ;
-$global_single_action_operand_two = $storage_item__4282 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4280 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4282 } .= $global_dashrep_replacement{ $storage_item__4281 } ;
+$storage_item__4280 = ' ' ;
 } else {
 $storage_item__4280 = ' append-text-no-space ' . $storage_item__4281 . ' ' . $storage_item__4282 . ' ' ;
 }
@@ -30846,12 +31793,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4303 ;
-$global_single_action_operand_two = $storage_item__4304 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4302 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4304 } .= $global_dashrep_replacement{ $storage_item__4303 } ;
+$storage_item__4302 = ' ' ;
 } else {
 $storage_item__4302 = ' append-text-no-space ' . $storage_item__4303 . ' ' . $storage_item__4304 . ' ' ;
 }
@@ -31059,12 +32002,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4326 ;
-$global_single_action_operand_two = $storage_item__4327 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4325 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4327 } .= $global_dashrep_replacement{ $storage_item__4326 } ;
+$storage_item__4325 = ' ' ;
 } else {
 $storage_item__4325 = ' append-text-no-space ' . $storage_item__4326 . ' ' . $storage_item__4327 . ' ' ;
 }
@@ -31085,12 +32024,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4329 ;
-$global_single_action_operand_two = $storage_item__4330 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4328 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4330 } .= $global_dashrep_replacement{ $storage_item__4329 } ;
+$storage_item__4328 = ' ' ;
 } else {
 $storage_item__4328 = ' append-text-no-space ' . $storage_item__4329 . ' ' . $storage_item__4330 . ' ' ;
 }
@@ -31138,12 +32073,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4335 ;
-$global_single_action_operand_two = $storage_item__4336 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4334 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4336 } .= $global_dashrep_replacement{ $storage_item__4335 } ;
+$storage_item__4334 = ' ' ;
 } else {
 $storage_item__4334 = ' append-text-no-space ' . $storage_item__4335 . ' ' . $storage_item__4336 . ' ' ;
 }
@@ -31209,12 +32140,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4344 ;
-$global_single_action_operand_two = $storage_item__4345 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4343 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4345 } .= $global_dashrep_replacement{ $storage_item__4344 } ;
+$storage_item__4343 = ' ' ;
 } else {
 $storage_item__4343 = ' append-text-no-space ' . $storage_item__4344 . ' ' . $storage_item__4345 . ' ' ;
 }
@@ -31254,12 +32181,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4350 ;
-$global_single_action_operand_two = $storage_item__4351 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4349 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4351 } .= $global_dashrep_replacement{ $storage_item__4350 } ;
+$storage_item__4349 = ' ' ;
 } else {
 $storage_item__4349 = ' append-text-no-space ' . $storage_item__4350 . ' ' . $storage_item__4351 . ' ' ;
 }
@@ -31491,12 +32414,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4380 ;
-$global_single_action_operand_two = $storage_item__4381 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4379 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4381 } .= $global_dashrep_replacement{ $storage_item__4380 } ;
+$storage_item__4379 = ' ' ;
 } else {
 $storage_item__4379 = ' append-text-no-space ' . $storage_item__4380 . ' ' . $storage_item__4381 . ' ' ;
 }
@@ -31517,12 +32436,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4383 ;
-$global_single_action_operand_two = $storage_item__4384 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4382 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4384 } .= $global_dashrep_replacement{ $storage_item__4383 } ;
+$storage_item__4382 = ' ' ;
 } else {
 $storage_item__4382 = ' append-text-no-space ' . $storage_item__4383 . ' ' . $storage_item__4384 . ' ' ;
 }
@@ -31562,12 +32477,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4389 ;
-$global_single_action_operand_two = $storage_item__4390 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4388 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4390 } .= $global_dashrep_replacement{ $storage_item__4389 } ;
+$storage_item__4388 = ' ' ;
 } else {
 $storage_item__4388 = ' append-text-no-space ' . $storage_item__4389 . ' ' . $storage_item__4390 . ' ' ;
 }
@@ -31588,12 +32499,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4392 ;
-$global_single_action_operand_two = $storage_item__4393 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4391 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4393 } .= $global_dashrep_replacement{ $storage_item__4392 } ;
+$storage_item__4391 = ' ' ;
 } else {
 $storage_item__4391 = ' append-text-no-space ' . $storage_item__4392 . ' ' . $storage_item__4393 . ' ' ;
 }
@@ -31633,12 +32540,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4398 ;
-$global_single_action_operand_two = $storage_item__4399 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4397 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4399 } .= $global_dashrep_replacement{ $storage_item__4398 } ;
+$storage_item__4397 = ' ' ;
 } else {
 $storage_item__4397 = ' append-text-no-space ' . $storage_item__4398 . ' ' . $storage_item__4399 . ' ' ;
 }
@@ -31659,12 +32562,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4401 ;
-$global_single_action_operand_two = $storage_item__4402 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4400 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4402 } .= $global_dashrep_replacement{ $storage_item__4401 } ;
+$storage_item__4400 = ' ' ;
 } else {
 $storage_item__4400 = ' append-text-no-space ' . $storage_item__4401 . ' ' . $storage_item__4402 . ' ' ;
 }
@@ -31685,12 +32584,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4404 ;
-$global_single_action_operand_two = $storage_item__4405 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4403 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4405 } .= $global_dashrep_replacement{ $storage_item__4404 } ;
+$storage_item__4403 = ' ' ;
 } else {
 $storage_item__4403 = ' append-text-no-space ' . $storage_item__4404 . ' ' . $storage_item__4405 . ' ' ;
 }
@@ -31730,12 +32625,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4410 ;
-$global_single_action_operand_two = $storage_item__4411 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4409 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4411 } .= $global_dashrep_replacement{ $storage_item__4410 } ;
+$storage_item__4409 = ' ' ;
 } else {
 $storage_item__4409 = ' append-text-no-space ' . $storage_item__4410 . ' ' . $storage_item__4411 . ' ' ;
 }
@@ -31756,12 +32647,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4413 ;
-$global_single_action_operand_two = $storage_item__4414 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4412 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4414 } .= $global_dashrep_replacement{ $storage_item__4413 } ;
+$storage_item__4412 = ' ' ;
 } else {
 $storage_item__4412 = ' append-text-no-space ' . $storage_item__4413 . ' ' . $storage_item__4414 . ' ' ;
 }
@@ -31782,12 +32669,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4416 ;
-$global_single_action_operand_two = $storage_item__4417 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4415 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4417 } .= $global_dashrep_replacement{ $storage_item__4416 } ;
+$storage_item__4415 = ' ' ;
 } else {
 $storage_item__4415 = ' append-text-no-space ' . $storage_item__4416 . ' ' . $storage_item__4417 . ' ' ;
 }
@@ -31808,12 +32691,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4419 ;
-$global_single_action_operand_two = $storage_item__4420 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4418 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4420 } .= $global_dashrep_replacement{ $storage_item__4419 } ;
+$storage_item__4418 = ' ' ;
 } else {
 $storage_item__4418 = ' append-text-no-space ' . $storage_item__4419 . ' ' . $storage_item__4420 . ' ' ;
 }
@@ -31834,12 +32713,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4422 ;
-$global_single_action_operand_two = $storage_item__4423 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4421 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4423 } .= $global_dashrep_replacement{ $storage_item__4422 } ;
+$storage_item__4421 = ' ' ;
 } else {
 $storage_item__4421 = ' append-text-no-space ' . $storage_item__4422 . ' ' . $storage_item__4423 . ' ' ;
 }
@@ -31860,12 +32735,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4425 ;
-$global_single_action_operand_two = $storage_item__4426 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4424 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4426 } .= $global_dashrep_replacement{ $storage_item__4425 } ;
+$storage_item__4424 = ' ' ;
 } else {
 $storage_item__4424 = ' append-text-no-space ' . $storage_item__4425 . ' ' . $storage_item__4426 . ' ' ;
 }
@@ -31905,12 +32776,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4431 ;
-$global_single_action_operand_two = $storage_item__4432 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4430 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4432 } .= $global_dashrep_replacement{ $storage_item__4431 } ;
+$storage_item__4430 = ' ' ;
 } else {
 $storage_item__4430 = ' append-text-no-space ' . $storage_item__4431 . ' ' . $storage_item__4432 . ' ' ;
 }
@@ -31931,12 +32798,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4434 ;
-$global_single_action_operand_two = $storage_item__4435 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4433 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4435 } .= $global_dashrep_replacement{ $storage_item__4434 } ;
+$storage_item__4433 = ' ' ;
 } else {
 $storage_item__4433 = ' append-text-no-space ' . $storage_item__4434 . ' ' . $storage_item__4435 . ' ' ;
 }
@@ -31976,12 +32839,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4440 ;
-$global_single_action_operand_two = $storage_item__4441 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4439 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4441 } .= $global_dashrep_replacement{ $storage_item__4440 } ;
+$storage_item__4439 = ' ' ;
 } else {
 $storage_item__4439 = ' append-text-no-space ' . $storage_item__4440 . ' ' . $storage_item__4441 . ' ' ;
 }
@@ -32002,12 +32861,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4443 ;
-$global_single_action_operand_two = $storage_item__4444 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4442 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4444 } .= $global_dashrep_replacement{ $storage_item__4443 } ;
+$storage_item__4442 = ' ' ;
 } else {
 $storage_item__4442 = ' append-text-no-space ' . $storage_item__4443 . ' ' . $storage_item__4444 . ' ' ;
 }
@@ -32047,12 +32902,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4449 ;
-$global_single_action_operand_two = $storage_item__4450 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4448 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4450 } .= $global_dashrep_replacement{ $storage_item__4449 } ;
+$storage_item__4448 = ' ' ;
 } else {
 $storage_item__4448 = ' append-text-no-space ' . $storage_item__4449 . ' ' . $storage_item__4450 . ' ' ;
 }
@@ -32073,12 +32924,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4452 ;
-$global_single_action_operand_two = $storage_item__4453 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4451 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4453 } .= $global_dashrep_replacement{ $storage_item__4452 } ;
+$storage_item__4451 = ' ' ;
 } else {
 $storage_item__4451 = ' append-text-no-space ' . $storage_item__4452 . ' ' . $storage_item__4453 . ' ' ;
 }
@@ -32118,12 +32965,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4458 ;
-$global_single_action_operand_two = $storage_item__4459 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4457 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4459 } .= $global_dashrep_replacement{ $storage_item__4458 } ;
+$storage_item__4457 = ' ' ;
 } else {
 $storage_item__4457 = ' append-text-no-space ' . $storage_item__4458 . ' ' . $storage_item__4459 . ' ' ;
 }
@@ -32144,12 +32987,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4461 ;
-$global_single_action_operand_two = $storage_item__4462 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4460 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4462 } .= $global_dashrep_replacement{ $storage_item__4461 } ;
+$storage_item__4460 = ' ' ;
 } else {
 $storage_item__4460 = ' append-text-no-space ' . $storage_item__4461 . ' ' . $storage_item__4462 . ' ' ;
 }
@@ -32189,12 +33028,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4467 ;
-$global_single_action_operand_two = $storage_item__4468 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4466 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4468 } .= $global_dashrep_replacement{ $storage_item__4467 } ;
+$storage_item__4466 = ' ' ;
 } else {
 $storage_item__4466 = ' append-text-no-space ' . $storage_item__4467 . ' ' . $storage_item__4468 . ' ' ;
 }
@@ -32215,12 +33050,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4470 ;
-$global_single_action_operand_two = $storage_item__4471 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4469 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4471 } .= $global_dashrep_replacement{ $storage_item__4470 } ;
+$storage_item__4469 = ' ' ;
 } else {
 $storage_item__4469 = ' append-text-no-space ' . $storage_item__4470 . ' ' . $storage_item__4471 . ' ' ;
 }
@@ -32241,12 +33072,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4473 ;
-$global_single_action_operand_two = $storage_item__4474 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4472 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4474 } .= $global_dashrep_replacement{ $storage_item__4473 } ;
+$storage_item__4472 = ' ' ;
 } else {
 $storage_item__4472 = ' append-text-no-space ' . $storage_item__4473 . ' ' . $storage_item__4474 . ' ' ;
 }
@@ -32267,12 +33094,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4476 ;
-$global_single_action_operand_two = $storage_item__4477 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4475 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4477 } .= $global_dashrep_replacement{ $storage_item__4476 } ;
+$storage_item__4475 = ' ' ;
 } else {
 $storage_item__4475 = ' append-text-no-space ' . $storage_item__4476 . ' ' . $storage_item__4477 . ' ' ;
 }
@@ -32293,12 +33116,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4479 ;
-$global_single_action_operand_two = $storage_item__4480 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4478 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4480 } .= $global_dashrep_replacement{ $storage_item__4479 } ;
+$storage_item__4478 = ' ' ;
 } else {
 $storage_item__4478 = ' append-text-no-space ' . $storage_item__4479 . ' ' . $storage_item__4480 . ' ' ;
 }
@@ -32319,12 +33138,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4482 ;
-$global_single_action_operand_two = $storage_item__4483 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4481 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4483 } .= $global_dashrep_replacement{ $storage_item__4482 } ;
+$storage_item__4481 = ' ' ;
 } else {
 $storage_item__4481 = ' append-text-no-space ' . $storage_item__4482 . ' ' . $storage_item__4483 . ' ' ;
 }
@@ -32364,12 +33179,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4488 ;
-$global_single_action_operand_two = $storage_item__4489 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4487 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4489 } .= $global_dashrep_replacement{ $storage_item__4488 } ;
+$storage_item__4487 = ' ' ;
 } else {
 $storage_item__4487 = ' append-text-no-space ' . $storage_item__4488 . ' ' . $storage_item__4489 . ' ' ;
 }
@@ -32390,12 +33201,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4491 ;
-$global_single_action_operand_two = $storage_item__4492 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4490 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4492 } .= $global_dashrep_replacement{ $storage_item__4491 } ;
+$storage_item__4490 = ' ' ;
 } else {
 $storage_item__4490 = ' append-text-no-space ' . $storage_item__4491 . ' ' . $storage_item__4492 . ' ' ;
 }
@@ -32416,12 +33223,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4494 ;
-$global_single_action_operand_two = $storage_item__4495 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4493 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4495 } .= $global_dashrep_replacement{ $storage_item__4494 } ;
+$storage_item__4493 = ' ' ;
 } else {
 $storage_item__4493 = ' append-text-no-space ' . $storage_item__4494 . ' ' . $storage_item__4495 . ' ' ;
 }
@@ -32442,12 +33245,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4497 ;
-$global_single_action_operand_two = $storage_item__4498 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4496 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4498 } .= $global_dashrep_replacement{ $storage_item__4497 } ;
+$storage_item__4496 = ' ' ;
 } else {
 $storage_item__4496 = ' append-text-no-space ' . $storage_item__4497 . ' ' . $storage_item__4498 . ' ' ;
 }
@@ -32468,12 +33267,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4500 ;
-$global_single_action_operand_two = $storage_item__4501 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4499 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4501 } .= $global_dashrep_replacement{ $storage_item__4500 } ;
+$storage_item__4499 = ' ' ;
 } else {
 $storage_item__4499 = ' append-text-no-space ' . $storage_item__4500 . ' ' . $storage_item__4501 . ' ' ;
 }
@@ -32494,12 +33289,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4503 ;
-$global_single_action_operand_two = $storage_item__4504 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4502 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4504 } .= $global_dashrep_replacement{ $storage_item__4503 } ;
+$storage_item__4502 = ' ' ;
 } else {
 $storage_item__4502 = ' append-text-no-space ' . $storage_item__4503 . ' ' . $storage_item__4504 . ' ' ;
 }
@@ -32520,12 +33311,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4506 ;
-$global_single_action_operand_two = $storage_item__4507 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4505 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4507 } .= $global_dashrep_replacement{ $storage_item__4506 } ;
+$storage_item__4505 = ' ' ;
 } else {
 $storage_item__4505 = ' append-text-no-space ' . $storage_item__4506 . ' ' . $storage_item__4507 . ' ' ;
 }
@@ -32565,12 +33352,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4512 ;
-$global_single_action_operand_two = $storage_item__4513 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4511 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4513 } .= $global_dashrep_replacement{ $storage_item__4512 } ;
+$storage_item__4511 = ' ' ;
 } else {
 $storage_item__4511 = ' append-text-no-space ' . $storage_item__4512 . ' ' . $storage_item__4513 . ' ' ;
 }
@@ -32591,12 +33374,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4515 ;
-$global_single_action_operand_two = $storage_item__4516 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4514 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4516 } .= $global_dashrep_replacement{ $storage_item__4515 } ;
+$storage_item__4514 = ' ' ;
 } else {
 $storage_item__4514 = ' append-text-no-space ' . $storage_item__4515 . ' ' . $storage_item__4516 . ' ' ;
 }
@@ -32617,12 +33396,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4518 ;
-$global_single_action_operand_two = $storage_item__4519 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4517 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4519 } .= $global_dashrep_replacement{ $storage_item__4518 } ;
+$storage_item__4517 = ' ' ;
 } else {
 $storage_item__4517 = ' append-text-no-space ' . $storage_item__4518 . ' ' . $storage_item__4519 . ' ' ;
 }
@@ -32643,12 +33418,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4521 ;
-$global_single_action_operand_two = $storage_item__4522 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4520 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4522 } .= $global_dashrep_replacement{ $storage_item__4521 } ;
+$storage_item__4520 = ' ' ;
 } else {
 $storage_item__4520 = ' append-text-no-space ' . $storage_item__4521 . ' ' . $storage_item__4522 . ' ' ;
 }
@@ -32669,12 +33440,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4524 ;
-$global_single_action_operand_two = $storage_item__4525 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4523 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4525 } .= $global_dashrep_replacement{ $storage_item__4524 } ;
+$storage_item__4523 = ' ' ;
 } else {
 $storage_item__4523 = ' append-text-no-space ' . $storage_item__4524 . ' ' . $storage_item__4525 . ' ' ;
 }
@@ -32695,12 +33462,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4527 ;
-$global_single_action_operand_two = $storage_item__4528 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4526 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4528 } .= $global_dashrep_replacement{ $storage_item__4527 } ;
+$storage_item__4526 = ' ' ;
 } else {
 $storage_item__4526 = ' append-text-no-space ' . $storage_item__4527 . ' ' . $storage_item__4528 . ' ' ;
 }
@@ -32740,12 +33503,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4533 ;
-$global_single_action_operand_two = $storage_item__4534 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4532 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4534 } .= $global_dashrep_replacement{ $storage_item__4533 } ;
+$storage_item__4532 = ' ' ;
 } else {
 $storage_item__4532 = ' append-text-no-space ' . $storage_item__4533 . ' ' . $storage_item__4534 . ' ' ;
 }
@@ -32766,12 +33525,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4536 ;
-$global_single_action_operand_two = $storage_item__4537 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4535 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4537 } .= $global_dashrep_replacement{ $storage_item__4536 } ;
+$storage_item__4535 = ' ' ;
 } else {
 $storage_item__4535 = ' append-text-no-space ' . $storage_item__4536 . ' ' . $storage_item__4537 . ' ' ;
 }
@@ -32792,12 +33547,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4539 ;
-$global_single_action_operand_two = $storage_item__4540 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4538 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4540 } .= $global_dashrep_replacement{ $storage_item__4539 } ;
+$storage_item__4538 = ' ' ;
 } else {
 $storage_item__4538 = ' append-text-no-space ' . $storage_item__4539 . ' ' . $storage_item__4540 . ' ' ;
 }
@@ -32818,12 +33569,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4542 ;
-$global_single_action_operand_two = $storage_item__4543 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4541 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4543 } .= $global_dashrep_replacement{ $storage_item__4542 } ;
+$storage_item__4541 = ' ' ;
 } else {
 $storage_item__4541 = ' append-text-no-space ' . $storage_item__4542 . ' ' . $storage_item__4543 . ' ' ;
 }
@@ -32927,12 +33674,8 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_single_action_name = 'append-text-no-space' ;
-$global_single_action_operand_one = $storage_item__4557 ;
-$global_single_action_operand_two = $storage_item__4558 ;
-$global_single_action_operand_three = '' ;
-$global_single_action_operand_four = '' ;
-$storage_item__4556 = &dashrep_expand_parameters( ) ;
+$global_dashrep_replacement{ $storage_item__4558 } .= $global_dashrep_replacement{ $storage_item__4557 } ;
+$storage_item__4556 = ' ' ;
 } else {
 $storage_item__4556 = ' append-text-no-space ' . $storage_item__4557 . ' ' . $storage_item__4558 . ' ' ;
 }
