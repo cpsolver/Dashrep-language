@@ -1,8 +1,4 @@
 ' } ++ ;  <new_line>
 my $saved_accumulator_pointer = -1 ;  <new_line>
-
-template-runtime-code-check-for-endless-loop
-
-template-runtime-code-check-for-time-limit-exceeded
-
+<new_line>
 #

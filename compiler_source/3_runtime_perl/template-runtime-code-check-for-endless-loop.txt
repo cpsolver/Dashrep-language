@@ -1,3 +1,4 @@
+# Check for endless loop  <new_line>
 $global_endless_loop_counter ++ ;  <new_line>
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )  <new_line>
 {  <new_line>
