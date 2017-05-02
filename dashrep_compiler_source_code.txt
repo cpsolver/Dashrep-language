@@ -681,7 +681,9 @@ handle-token-amenn:
 [-generate-code-for-one-action-]
 [-if-end-]
 
+*---
 [-copy-from-phrase-append-to-file character-newline [-filename-output-results-all-definition-items-]-]
+---*
 ----
 handle-token-fen:
 [-append-text string-fen definition-for-phrase-being-defined-]
@@ -1883,7 +1885,7 @@ code-for-text-storage-position-part-2:
 = '
 ----
 code-for-text-storage-position-part-3:
-' ;
+' ;  # id127
 ----
 code-get-or-put-phrase-definition-begin:
 $global_dashrep_replacement{
@@ -2088,7 +2090,7 @@ template-code-phrase-definition-simple-part-6:
 code-get-or-put-phrase-definition-end = initialize-variable-begin
 ----
 template-code-phrase-definition-simple-part-7:
-;
+; # id123
 ----
 template-code-quoted-string-storage-item-part-1:
 my initialize-variable-begin
@@ -2217,7 +2219,7 @@ my $global_file_public_read_protection_mode = 0644 ;  # octal number that specif
 
 my $global_endless_loop_counter = 0 ;  <new_line>
 my $global_endless_loop_counter_limit = 70000 ;  <new_line>
-my $global_time_limit = 1200 ;  # 1200 seconds = 20 minutes  <new_line>
+my $global_time_limit = 300 ;  # 300 seconds = 5 minutes  <new_line>
 my $global_starting_time = time ;  <new_line>
 my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
 my $global_nesting_level_of_file_actions = 0 ;  <new_line>
@@ -2313,13 +2315,13 @@ template-runtime-code-for-text-storage-position-begin:
 my template-storage-item-prefix current-text-storage-position = '
 ----
 template-runtime-code-for-text-storage-position-end:
-' ;
+' ;  # id126
 ----
 template-runtime-code-for-word-list-storage-position:
-my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  *--- # stores list of words for loop ---*
+my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  # id124  *--- # stores list of words for loop ---*
 ----
 template-runtime-code-one-storage-position-declaration:
-my storage-position-name = '' ;  <new_line>
+my storage-position-name = '' ;  # id125  <new_line>
 ----
 template-runtime-code-statement-end-with-new-line:
 ;  <new_line>
