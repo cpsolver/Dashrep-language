@@ -1,0 +1,48 @@
+template-runtime-code-standard-action-begin
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+
+$global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;
+$global_string_to_be_replaced = $global_dashrep_replacement{ runtime-code-for-operand-number-three } ;
+$global_text_to_insert = $global_dashrep_replacement{ runtime-code-for-operand-number-four } ;
+
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {
+template-runtime-code-store-result-for-case-error
+} else {
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+
+*---
+while ( $global_character_pointer >= 0 ) {
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;
+
+$global_endless_loop_counter ++ ;
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+template-runtime-code-store-result-for-case-error
+last ;
+}
+}
+---*
+
+}
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {
+
+*---
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ;
+runtime-code-storage-item-result = ' ' ;  <new_line>
+---*
+
+} else {
+template-runtime-code-store-result-for-case-error
+}
+
+template-runtime-code-standard-action-end
