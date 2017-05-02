@@ -2009,15 +2009,15 @@ $global_replacement_count_for_item_name{ '
 template-code-compiled-function-part-3:
 ' } ++ ;  <new_line>
 my $saved_accumulator_pointer = -1 ;  <new_line>
-
-template-runtime-code-check-for-endless-loop
-
-template-runtime-code-check-for-time-limit-exceeded
-
+<new_line>
 #
 ----
 template-code-compiled-function-part-4:
 <new_line>
+<new_line>
+template-runtime-code-check-for-endless-loop
+<new_line>
+template-runtime-code-check-for-time-limit-exceeded
 ----
 template-code-compiled-function-part-5:
 return '' ;  <new_line>
@@ -2287,6 +2287,7 @@ exit ;  <new_line>
 <new_line>
 ----
 template-runtime-code-check-for-endless-loop:
+# Check for endless loop  <new_line>
 $global_endless_loop_counter ++ ;  <new_line>
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )  <new_line>
 {  <new_line>
@@ -2295,6 +2296,7 @@ exit ;  <new_line>
 }  <new_line>
 ----
 template-runtime-code-check-for-time-limit-exceeded:
+# Check for time limit exceeded  <new_line>
 $global_interval_count_for_time_limit_check ++ ;  <new_line>
 if ( $global_interval_count_for_time_limit_check > 10000 )  <new_line>
 {  <new_line>
@@ -2331,10 +2333,12 @@ template-segment-branch-begin:
 #  <new_line>
 <new_line>
 sub function_branch_based_on_phrase_name( ) {  <new_line>
+<new_line>
 
 template-runtime-code-check-for-endless-loop
-
+<new_line>
 template-runtime-code-check-for-time-limit-exceeded
+<new_line>
 
 if ( $global_phrase_name_to_match eq 'start-here' ) {  <new_line>
 &function_compiled__start_here( ) ;
