@@ -28,24 +28,28 @@ my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $output_results = '' ;  <new_line>
 <new_line>
 
-my $global_character_pointer = '' ;  <new_line>
-my $global_character_pointer_begin = '' ;  <new_line>
-my $global_character_pointer_end = '' ;  <new_line>
-my $global_length_of_text = '' ;  <new_line>
+my $global_character_pointer = 0 ;  <new_line>
+my $global_character_pointer_begin = 0 ;  <new_line>
+my $global_character_pointer_end = 0 ;  <new_line>
+my $global_length_of_text = 0 ;  <new_line>
 my $global_number_of_words = 0 ;  <new_line>
-my $global_word_pointer = '' ;  <new_line>
-my $global_current_word = '' ;  <new_line>
-my $global_calculated_value = '' ;  <new_line>
 my $global_pointer_to_next_space = 0 ;  <new_line>
 my $global_pointer_to_next_word = 0 ;  <new_line>
 my $global_pointer_to_future_space = 0 ;  <new_line>
 my $global_pointer_to_previous_space = 0 ;  <new_line>
 my $global_pointer_to_first_space = 0 ;  <new_line>
 my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
+my $global_word_pointer = 0 ;  <new_line>
+my $global_pointer_to_word = 0 ;  <new_line>
+my $global_length_of_string_to_be_replaced = 0 ;  <new_line>
+my $global_calculated_value = 0 ;  <new_line>
+my $global_normalized_calculated_value = 0 ;  <new_line>
+
+my $global_current_word = '' ;  <new_line>
 my $global_concatenated_all_operands = '' ;  <new_line>
 my $global_concatenated_all_operands_modified = '' ;  <new_line>
-my $global_normalized_calculated_value = '' ;  <new_line>
-my $global_pointer_to_word = '' ;  <new_line>
+my $global_string_to_be_replaced = '' ;  <new_line>
+my $global_text_to_insert = '' ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
