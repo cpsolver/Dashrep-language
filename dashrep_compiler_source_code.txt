@@ -2184,24 +2184,28 @@ my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $output_results = '' ;  <new_line>
 <new_line>
 
-my $global_character_pointer = '' ;  <new_line>
-my $global_character_pointer_begin = '' ;  <new_line>
-my $global_character_pointer_end = '' ;  <new_line>
-my $global_length_of_text = '' ;  <new_line>
+my $global_character_pointer = 0 ;  <new_line>
+my $global_character_pointer_begin = 0 ;  <new_line>
+my $global_character_pointer_end = 0 ;  <new_line>
+my $global_length_of_text = 0 ;  <new_line>
 my $global_number_of_words = 0 ;  <new_line>
-my $global_word_pointer = '' ;  <new_line>
-my $global_current_word = '' ;  <new_line>
-my $global_calculated_value = '' ;  <new_line>
 my $global_pointer_to_next_space = 0 ;  <new_line>
 my $global_pointer_to_next_word = 0 ;  <new_line>
 my $global_pointer_to_future_space = 0 ;  <new_line>
 my $global_pointer_to_previous_space = 0 ;  <new_line>
 my $global_pointer_to_first_space = 0 ;  <new_line>
 my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
+my $global_word_pointer = 0 ;  <new_line>
+my $global_pointer_to_word = 0 ;  <new_line>
+my $global_length_of_string_to_be_replaced = 0 ;  <new_line>
+my $global_calculated_value = 0 ;  <new_line>
+my $global_normalized_calculated_value = 0 ;  <new_line>
+
+my $global_current_word = '' ;  <new_line>
 my $global_concatenated_all_operands = '' ;  <new_line>
 my $global_concatenated_all_operands_modified = '' ;  <new_line>
-my $global_normalized_calculated_value = '' ;  <new_line>
-my $global_pointer_to_word = '' ;  <new_line>
+my $global_string_to_be_replaced = '' ;  <new_line>
+my $global_text_to_insert = '' ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
@@ -3018,22 +3022,8 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-append-text-no-space:
 template-runtime-code-standard-action-begin
 
-
-$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-
-*---
-$global_dashrep_replacement{ runtime-code-for-operand-number-two } .= runtime-code-for-operand-number-one ;  <new_line>
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } .= $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
----*
-
 
 template-runtime-code-standard-action-end
 ----
@@ -3067,6 +3057,43 @@ runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtim
 }  <new_line>
 
 template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-copy-and-replace:
+template-runtime-code-standard-action-begin
+
+$global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;  <new_line>
+$global_string_to_be_replaced = $global_dashrep_replacement{ runtime-code-for-operand-number-three } ;  <new_line>
+$global_text_to_insert = $global_dashrep_replacement{ runtime-code-for-operand-number-four } ;  <new_line>
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ;  <new_line>
+
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {  <new_line>
+template-runtime-code-store-result-for-case-error
+} else {  <new_line>
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
+
+while ( $global_character_pointer >= 0 ) {  <new_line>
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;  <new_line>
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
+
+$global_endless_loop_counter ++ ;  <new_line>
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
+last ;  <new_line>
+}  <new_line>
+
+}  <new_line>
+}  <new_line>
+
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {  <new_line>
+$global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+} else {  <new_line>
+
+template-runtime-code-store-result-for-case-error
+
+}  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-text:
 template-runtime-code-for-every-action-begin
@@ -3647,9 +3674,8 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 ----
 template-runtime-code-standard-action-end:
 } else {  <new_line>
-runtime-code-storage-item-result = ' <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+template-runtime-code-store-result-for-case-error
 }  <new_line>
-
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-action-with-minimum-operand-count:
@@ -3673,4 +3699,7 @@ $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <ne
 runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
 
 template-runtime-code-standard-action-end
+----
+template-runtime-code-store-result-for-case-error:
+runtime-code-storage-item-result = ' <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 ----
