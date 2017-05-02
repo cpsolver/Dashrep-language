@@ -4717,10 +4717,10 @@ my $storage_item__4839 = 'template-code-compiled-function-part-2' ;
 my $storage_item__4840 = '( ) { <new_line> $global_replacement_count_for_item_name{ ' . "'" . '' ;
 $global_dashrep_replacement{ $storage_item__4839 } = $storage_item__4840 ;
 my $storage_item__4841 = 'template-code-compiled-function-part-3' ;
-my $storage_item__4842 = '' . "'" . ' } ++ ; <new_line> my $saved_accumulator_pointer = -1 ; <new_line> template-runtime-code-check-for-endless-loop template-runtime-code-check-for-time-limit-exceeded #' ;
+my $storage_item__4842 = '' . "'" . ' } ++ ; <new_line> my $saved_accumulator_pointer = -1 ; <new_line> <new_line> #' ;
 $global_dashrep_replacement{ $storage_item__4841 } = $storage_item__4842 ;
 my $storage_item__4843 = 'template-code-compiled-function-part-4' ;
-my $storage_item__4844 = '<new_line>' ;
+my $storage_item__4844 = '<new_line> <new_line> template-runtime-code-check-for-endless-loop <new_line> template-runtime-code-check-for-time-limit-exceeded' ;
 $global_dashrep_replacement{ $storage_item__4843 } = $storage_item__4844 ;
 my $storage_item__4845 = 'template-code-compiled-function-part-5' ;
 my $storage_item__4846 = 'return ' . "'" . "'" . ' ; <new_line> } # end of function-name-prefix' ;
@@ -4816,10 +4816,10 @@ my $storage_item__4905 = 'template-runtime-code-at-top-if-warning-message' ;
 my $storage_item__4906 = 'print ' . "'" . 'Compiler error; for details see warning messages at top of compiler output file.' . "'" . ' . "' . '\\' . 'n" ; <new_line> exit ; <new_line> # All done! <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4905 } = $storage_item__4906 ;
 my $storage_item__4907 = 'template-runtime-code-check-for-endless-loop' ;
-my $storage_item__4908 = '$global_endless_loop_counter ++ ; <new_line> if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) <new_line> { <new_line> &handle_endless_loop_encountered( ) ; <new_line> exit ; <new_line> } <new_line>' ;
+my $storage_item__4908 = '# Check for endless loop <new_line> $global_endless_loop_counter ++ ; <new_line> if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) <new_line> { <new_line> &handle_endless_loop_encountered( ) ; <new_line> exit ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4907 } = $storage_item__4908 ;
 my $storage_item__4909 = 'template-runtime-code-check-for-time-limit-exceeded' ;
-my $storage_item__4910 = '$global_interval_count_for_time_limit_check ++ ; <new_line> if ( $global_interval_count_for_time_limit_check > 10000 ) <new_line> { <new_line> $global_interval_count_for_time_limit_check = 0 ; <new_line> $elapsed_time = time - $global_starting_time ; <new_line> if ( $elapsed_time > $global_time_limit ) <new_line> { <new_line> &handle_time_limit_exceeded( ) ; <new_line> exit ; <new_line> } <new_line> } <new_line>' ;
+my $storage_item__4910 = '# Check for time limit exceeded <new_line> $global_interval_count_for_time_limit_check ++ ; <new_line> if ( $global_interval_count_for_time_limit_check > 10000 ) <new_line> { <new_line> $global_interval_count_for_time_limit_check = 0 ; <new_line> $elapsed_time = time - $global_starting_time ; <new_line> if ( $elapsed_time > $global_time_limit ) <new_line> { <new_line> &handle_time_limit_exceeded( ) ; <new_line> exit ; <new_line> } <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4909 } = $storage_item__4910 ;
 my $storage_item__4911 = 'template-runtime-code-for-text-storage-position-begin' ;
 my $storage_item__4912 = 'my template-storage-item-prefix current-text-storage-position = ' . "'" . '' ;
@@ -4840,7 +4840,7 @@ my $storage_item__4921 = 'template-runtime-code-storage-item-with-pointer' ;
 my $storage_item__4922 = 'template-storage-item-prefix storage-item-pointer' ;
 $global_dashrep_replacement{ $storage_item__4921 } = $storage_item__4922 ;
 my $storage_item__4923 = 'template-segment-branch-begin' ;
-my $storage_item__4924 = '# no-space dashes-long-line <new_line> # Function branching based on phrase name <new_line> # <new_line> <new_line> sub function_branch_based_on_phrase_name( ) { <new_line> template-runtime-code-check-for-endless-loop template-runtime-code-check-for-time-limit-exceeded if ( $global_phrase_name_to_match eq ' . "'" . 'start-here' . "'" . ' ) { <new_line> &function_compiled__start_here( ) ;' ;
+my $storage_item__4924 = '# no-space dashes-long-line <new_line> # Function branching based on phrase name <new_line> # <new_line> <new_line> sub function_branch_based_on_phrase_name( ) { <new_line> <new_line> template-runtime-code-check-for-endless-loop <new_line> template-runtime-code-check-for-time-limit-exceeded <new_line> if ( $global_phrase_name_to_match eq ' . "'" . 'start-here' . "'" . ' ) { <new_line> &function_compiled__start_here( ) ;' ;
 $global_dashrep_replacement{ $storage_item__4923 } = $storage_item__4924 ;
 my $storage_item__4925 = 'template-segment-branch-end' ;
 my $storage_item__4926 = '} elsif ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ; <new_line> } else { <new_line> if ( $global_accumulator[ $global_accumulator_pointer ] ne ' . "'" . "'" . ' ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name_to_match ; <new_line> } # end of branching <new_line> return ' . "'" . "'" . ' ; <new_line> } # end of function_branch_based_on_phrase_name <new_line> <new_line>' ;
@@ -5105,12 +5105,16 @@ $global_dashrep_replacement{ $storage_item__5091 } = $storage_item__5092 ;
 #
 
 sub function_branch_based_on_phrase_name( ) {
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -5122,6 +5126,7 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
+
 if ( $global_phrase_name_to_match eq 'start-here' ) {
 &function_compiled__start_here( ) ;
 } elsif ( $global_phrase_name_to_match eq 'assign-action-operand-characteristics' ) {
@@ -5452,12 +5457,18 @@ return '' ;
 sub function_compiled__compile_source_code_finish( ) {
 $global_replacement_count_for_item_name{ 'compile-source-code-finish' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate amenn ambee copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-modified amenn ambee copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed amenn ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-functions-in-optional-code-modified list-of-functions-replacement-only-needed amenn ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate list-of-functions-replacement-only-needed amenn ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn ambee copy-words-unique-only list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used amenn ambee trace-show list-of-special-handled-dashrep-actions-used amenn ambee copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn ambee trace-show list-of-converted-dashrep-actions-used amenn ambee copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn ambee trace-show list-of-unconverted-dashrep-actions-used amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -5469,7 +5480,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate amenn ambee copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-modified amenn ambee copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed amenn ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-functions-in-optional-code-modified list-of-functions-replacement-only-needed amenn ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate list-of-functions-replacement-only-needed amenn ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn ambee copy-words-unique-only list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-special-handled-dashrep-actions-used list-of-special-handled-dashrep-actions-used amenn ambee trace-show list-of-special-handled-dashrep-actions-used amenn ambee copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn ambee trace-show list-of-converted-dashrep-actions-used amenn ambee copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn ambee copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn ambee trace-show list-of-unconverted-dashrep-actions-used amenn
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1010 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1011 . ' ' . $storage_item__1012 . ' ' . $storage_item__1013 ;
 # print $global_action_debug_line . "\n" ;
@@ -6058,12 +6068,18 @@ return '' ;
 sub function_compiled__compile_source_code_generate_output_results( ) {
 $global_replacement_count_for_item_name{ 'compile-source-code-generate-output-results' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee compile-source-code-initialize amenn ambee convert-source-code-into-words amenn ambee trace-show source-code-as-words amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words amenn ambee compile-source-code-finish amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -6075,10 +6091,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee compile-source-code-initialize amenn ambee convert-source-code-into-words amenn ambee trace-show source-code-as-words amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words amenn ambee compile-source-code-finish amenn
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1076 *** compile-source-code-initialize ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6094,6 +6110,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1078 *** convert-source-code-into-words ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6210,6 +6227,7 @@ $storage_item__1087 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1091 *** compile-source-code-finish ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6230,12 +6248,18 @@ return '' ;
 sub function_compiled__compile_source_code_initialize( ) {
 $global_replacement_count_for_item_name{ 'compile-source-code-initialize' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase local-or-batch-mode local amenn ambee put-into-phrase dashrep-time-limit 50000 amenn ambee put-into-phrase dashrep-endless-loop-counter-limit 900000000 amenn ambee put-into-phrase epoch-seconds-starting-time ambee get-current-time-in-epoch-seconds amenn amenn ambee define-special-strings amenn ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn ambee assign-action-operand-characteristics amenn ambee put-into-phrase current-storage-position 1001 amenn ambee put-into-phrase count-of-ambee-tokens 0 amenn ambee put-into-phrase count-of-amenn-tokens 0 amenn ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-standard-runtime-functions amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -6247,7 +6271,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase local-or-batch-mode local amenn ambee put-into-phrase dashrep-time-limit 50000 amenn ambee put-into-phrase dashrep-endless-loop-counter-limit 900000000 amenn ambee put-into-phrase epoch-seconds-starting-time ambee get-current-time-in-epoch-seconds amenn amenn ambee define-special-strings amenn ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn ambee assign-action-operand-characteristics amenn ambee put-into-phrase current-storage-position 1001 amenn ambee put-into-phrase count-of-ambee-tokens 0 amenn ambee put-into-phrase count-of-amenn-tokens 0 amenn ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-standard-runtime-functions amenn amenn
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1095 *** put-into-phrase ** 2 *' . $storage_item__1096 . ' ' . $storage_item__1097 ;
 # print $global_action_debug_line . "\n" ;
@@ -6329,6 +6352,7 @@ $storage_item__1104 = 'put-into-phrase ' . $storage_item__1105 . ' ' . $storage_
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1107 *** define-special-strings ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6462,6 +6486,7 @@ $storage_item__1113 = 'use-handler-with-each-word-in-phrase ' . $storage_item__1
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1117 *** assign-action-operand-characteristics ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6547,6 +6572,7 @@ $storage_item__1128 = 'expand-text ' . $storage_item__1129 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1133 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -6593,12 +6619,18 @@ return '' ;
 sub function_compiled__convert_source_code_eliminate_one_space_directive( ) {
 $global_replacement_count_for_item_name{ 'convert-source-code-eliminate-one-space-directive' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn amenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -6610,7 +6642,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn amenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** convert-source-code-eliminate-one-space-directive **** 1142 *** get-position-of-matching-text ** 2 *' . $storage_item__1143 . ' ' . $storage_item__1144 ;
 # print $global_action_debug_line . "\n" ;
@@ -6888,12 +6919,18 @@ return '' ;
 sub function_compiled__convert_source_code_into_words( ) {
 $global_replacement_count_for_item_name{ 'convert-source-code-into-words' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee convert-source-code-replace-parameter-brackets-with-ambee-and-amenn amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee put-into-phrase count-1-2 1 2 amenn ambee use-handler-with-each-word-in-phrase convert-source-code-eliminate-one-space-directive count-1-2 amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space character-space amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-hyphens-into-defenns amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-replacement-for-hyphen-here amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee copy-and-replace source-code-as-words source-code-as-lines character-space character-newline amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -6905,7 +6942,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee convert-source-code-replace-parameter-brackets-with-ambee-and-amenn amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee put-into-phrase count-1-2 1 2 amenn ambee use-handler-with-each-word-in-phrase convert-source-code-eliminate-one-space-directive count-1-2 amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-space string-placeholder-for-space-one-space-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space character-space amenn ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-hyphens-into-defenns amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-replacement-for-hyphen-here amenn ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn ambee copy-and-replace source-code-as-words source-code-as-lines character-space character-newline amenn
 
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1168 *** copy-and-replace ** 4 *' . $storage_item__1169 . ' ' . $storage_item__1170 . ' ' . $storage_item__1171 . ' ' . $storage_item__1172 ;
 # print $global_action_debug_line . "\n" ;
@@ -7143,6 +7179,7 @@ $storage_item__1188 = ' copy-without-extra-spaces ' . $storage_item__1189 . ' ' 
 
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1191 *** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -7609,12 +7646,18 @@ return '' ;
 sub function_compiled__convert_source_code_replace_parameter_brackets_with_ambee_and_amenn( ) {
 $global_replacement_count_for_item_name{ 'convert-source-code-replace-parameter-brackets-with-ambee-and-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters amenn ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn ambee put-into-phrase list-of-underscore-and-period _ . amenn ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-underscore-and-period amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -7626,7 +7669,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters amenn ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn ambee put-into-phrase list-of-underscore-and-period _ . amenn ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-underscore-and-period amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1242 *** copy-and-replace ** 4 *' . $storage_item__1243 . ' ' . $storage_item__1244 . ' ' . $storage_item__1245 . ' ' . $storage_item__1246 ;
 # print $global_action_debug_line . "\n" ;
@@ -8454,12 +8496,18 @@ return '' ;
 sub function_compiled__convert_source_handle_nospay_insertions( ) {
 $global_replacement_count_for_item_name{ 'convert-source-handle-nospay-insertions' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler current-symbol amenn ambee copy-text current-symbol string-symbol-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-symbol amenn ambee append-text-no-space current-symbol string-dash-close-bracket-symbol amenn ambee copy-text current-symbol string-symbol-nospay-open-bracket-dash amenn ambee append-text string-nospay string-symbol-nospay-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol amenn ambee append-text string-nospay string-dash-close-bracket-nospay-symbol amenn ambee append-text current-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -8471,7 +8519,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler current-symbol amenn ambee copy-text current-symbol string-symbol-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-symbol amenn ambee append-text-no-space current-symbol string-dash-close-bracket-symbol amenn ambee copy-text current-symbol string-symbol-nospay-open-bracket-dash amenn ambee append-text string-nospay string-symbol-nospay-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol amenn ambee append-text string-nospay string-dash-close-bracket-nospay-symbol amenn ambee append-text current-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn
 
 # $global_action_debug_line = '***** convert-source-handle-nospay-insertions **** 1330 *** copy-text ** 2 *' . $storage_item__1331 . ' ' . $storage_item__1332 ;
 # print $global_action_debug_line . "\n" ;
@@ -8935,12 +8982,18 @@ return '' ;
 sub function_compiled__create_new_result_storage_position( ) {
 $global_replacement_count_for_item_name{ 'create-new-result-storage-position' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase storage-type result amenn ambee create-new-storage-position amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -8952,7 +9005,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase storage-type result amenn ambee create-new-storage-position amenn
 
 # $global_action_debug_line = '***** create-new-result-storage-position **** 1385 *** put-into-phrase ** 2 *' . $storage_item__1386 . ' ' . $storage_item__1387 ;
 # print $global_action_debug_line . "\n" ;
@@ -8971,6 +9023,7 @@ $storage_item__1385 = 'put-into-phrase ' . $storage_item__1386 . ' ' . $storage_
 
 # $global_action_debug_line = '***** create-new-result-storage-position **** 1388 *** create-new-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -8991,12 +9044,18 @@ return '' ;
 sub function_compiled__create_new_storage_position( ) {
 $global_replacement_count_for_item_name{ 'create-new-storage-position' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee numeric-increment current-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text storage-type storage-type-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text current-storage-position current fen ambee storage-type amenn fen storage-position amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9008,7 +9067,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee numeric-increment current-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text storage-type storage-type-at-storage-position fen ambee current-storage-position amenn amenn ambee copy-text current-storage-position current fen ambee storage-type amenn fen storage-position amenn
 
 # $global_action_debug_line = '***** create-new-storage-position **** 1392 *** numeric-increment ** 1 *' . $storage_item__1393 ;
 # print $global_action_debug_line . "\n" ;
@@ -9034,6 +9092,7 @@ $storage_item__1392 = ' numeric-increment ' . $storage_item__1393 . ' ' ;
 
 # $global_action_debug_line = '***** create-new-storage-position **** 1396 *** current-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9063,6 +9122,7 @@ $storage_item__1394 = 'clear-phrase ' . $storage_item__1395 . '-' . $storage_ite
 
 # $global_action_debug_line = '***** create-new-storage-position **** 1401 *** current-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9097,6 +9157,7 @@ $storage_item__1398 = 'copy-text ' . $storage_item__1399 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** create-new-storage-position **** 1406 *** storage-type ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9136,12 +9197,18 @@ return '' ;
 sub function_compiled__create_new_text_storage_position( ) {
 $global_replacement_count_for_item_name{ 'create-new-text-storage-position' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase storage-type text amenn ambee create-new-storage-position amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9153,7 +9220,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase storage-type text amenn ambee create-new-storage-position amenn
 
 # $global_action_debug_line = '***** create-new-text-storage-position **** 1411 *** put-into-phrase ** 2 *' . $storage_item__1412 . ' ' . $storage_item__1413 ;
 # print $global_action_debug_line . "\n" ;
@@ -9172,6 +9238,7 @@ $storage_item__1411 = 'put-into-phrase ' . $storage_item__1412 . ' ' . $storage_
 
 # $global_action_debug_line = '***** create-new-text-storage-position **** 1414 *** create-new-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9192,12 +9259,18 @@ return '' ;
 sub function_compiled__expand_one_template( ) {
 $global_replacement_count_for_item_name{ 'expand-one-template' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee expand-text template fen ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9209,10 +9282,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee expand-text template fen ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
 
 # $global_action_debug_line = '***** expand-one-template **** 1420 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9228,6 +9301,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** expand-one-template **** 1422 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9273,12 +9347,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_1( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-1' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-2 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9290,7 +9370,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-2 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-1 **** 1426 *** copy-text ** 2 *' . $storage_item__1427 . ' ' . $storage_item__1428 ;
 # print $global_action_debug_line . "\n" ;
@@ -9372,6 +9451,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-1 **** 1436 *** filter-tokens-case-2 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9392,6 +9472,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-1 **** 1440 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9407,6 +9488,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-1 **** 1439 *** filter-tokens-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9433,12 +9515,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_2( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-2' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-within-comment amenn amenn ambee filter-tokens-case-3 amenn ambee if-else amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9450,10 +9538,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-within-comment amenn amenn ambee filter-tokens-case-3 amenn ambee if-else amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-2 **** 1447 *** yes-or-no-within-comment ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9476,6 +9564,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-2 **** 1449 *** filter-tokens-case-3 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9506,12 +9595,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_3( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-3' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-4 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9523,7 +9618,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee filter-tokens-case-4 amenn ambee if-else amenn ambee filter-tokens-case fen ambee non-empty-if-valid-token-handler-name amenn amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-3 **** 1455 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1456 . ' ' . $storage_item__1457 . ' ' . $storage_item__1458 ;
 # print $global_action_debug_line . "\n" ;
@@ -9586,6 +9680,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-3 **** 1462 *** filter-tokens-case-4 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9606,6 +9701,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-3 **** 1466 *** non-empty-if-valid-token-handler-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9621,6 +9717,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-3 **** 1465 *** filter-tokens-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9647,12 +9744,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_4( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-4' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee append-text current-token list-of-tokens-in-current-definition amenn ambee if-else amenn ambee copy-text current-token phrase-being-defined amenn ambee remove-colon-if-at-end-of-phrase-being-defined amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9664,7 +9767,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee append-text current-token list-of-tokens-in-current-definition amenn ambee if-else amenn ambee copy-text current-token phrase-being-defined amenn ambee remove-colon-if-at-end-of-phrase-being-defined amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-4 **** 1473 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__1474 ;
 # print $global_action_debug_line . "\n" ;
@@ -9748,6 +9850,7 @@ $storage_item__1479 = 'copy-text ' . $storage_item__1480 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** filter-tokens-case-4 **** 1482 *** remove-colon-if-at-end-of-phrase-being-defined ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -9773,12 +9876,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_ambee( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-ambee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee numeric-increment count-of-ambee-tokens amenn ambee append-text string-ambee list-of-tokens-in-current-definition amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9790,7 +9899,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee numeric-increment count-of-ambee-tokens amenn ambee append-text string-ambee list-of-tokens-in-current-definition amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-ambee **** 1487 *** numeric-increment ** 1 *' . $storage_item__1488 ;
 # print $global_action_debug_line . "\n" ;
@@ -9848,12 +9956,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_amenn( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee numeric-increment count-of-amenn-tokens amenn ambee append-text string-amenn list-of-tokens-in-current-definition amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9865,7 +9979,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee numeric-increment count-of-amenn-tokens amenn ambee append-text string-amenn list-of-tokens-in-current-definition amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-amenn **** 1494 *** numeric-increment ** 1 *' . $storage_item__1495 ;
 # print $global_action_debug_line . "\n" ;
@@ -9923,12 +10036,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_combee( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-combee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase yes-or-no-within-comment yes amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9940,7 +10059,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase yes-or-no-within-comment yes amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-combee **** 1501 *** put-into-phrase ** 2 *' . $storage_item__1502 . ' ' . $storage_item__1503 ;
 # print $global_action_debug_line . "\n" ;
@@ -9964,12 +10082,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_comenn( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-comenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase yes-or-no-within-comment no amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -9981,7 +10105,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase yes-or-no-within-comment no amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-comenn **** 1506 *** put-into-phrase ** 2 *' . $storage_item__1507 . ' ' . $storage_item__1508 ;
 # print $global_action_debug_line . "\n" ;
@@ -10005,12 +10128,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_defenn_case_balanced_ambee_amenn( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-defenn-case-balanced-ambee-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0 amenn amenn amenn ambee handle-definition-simple-or-immediate amenn ambee if-else amenn ambee handle-definition-contains-ambee-amenn amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -10022,10 +10151,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0 amenn amenn amenn ambee handle-definition-simple-or-immediate amenn ambee if-else amenn ambee handle-definition-contains-ambee-amenn amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1516 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10041,6 +10170,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1518 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10102,6 +10232,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1521 *** handle-definition-simple-or-immediate ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10122,6 +10253,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1524 *** handle-definition-contains-ambee-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10147,12 +10279,18 @@ return '' ;
 sub function_compiled__filter_tokens_case_defenn( ) {
 $global_replacement_count_for_item_name{ 'filter-tokens-case-defenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee filter-tokens-case-defenn-case-balanced-ambee-amenn amenn ambee if-else amenn ambee handle-non-zero-count-of-ambee-minus-amenn-tokens amenn ambee if-end amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee clear-phrase list-of-tokens-in-current-definition amenn ambee put-into-phrase count-of-ambee-tokens 0 amenn ambee put-into-phrase count-of-amenn-tokens 0 amenn ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn ambee copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes amenn ambee delete-listed-phrases list-of-phrases-to-delete amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -10164,10 +10302,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee filter-tokens-case-defenn-case-balanced-ambee-amenn amenn ambee if-else amenn ambee handle-non-zero-count-of-ambee-minus-amenn-tokens amenn ambee if-end amenn ambee clear-phrase phrase-being-defined amenn ambee put-into-phrase yes-or-no-within-comment no amenn ambee clear-phrase list-of-tokens-in-current-definition amenn ambee put-into-phrase count-of-ambee-tokens 0 amenn ambee put-into-phrase count-of-amenn-tokens 0 amenn ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn ambee copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes amenn ambee delete-listed-phrases list-of-phrases-to-delete amenn
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1533 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10183,6 +10321,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1535 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10238,6 +10377,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1537 *** filter-tokens-case-defenn-case-balanced-ambee-amenn ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10258,6 +10398,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1540 *** handle-non-zero-count-of-ambee-minus-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10430,12 +10571,18 @@ return '' ;
 sub function_compiled__generate_code_for_one_action( ) {
 $global_replacement_count_for_item_name{ 'generate-code-for-one-action' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-phrase ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-text current-result-storage-position higher-result-storage-position amenn ambee recursion-stack-pop amenn ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -10447,7 +10594,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-phrase ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-text current-result-storage-position higher-result-storage-position amenn ambee recursion-stack-pop amenn ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
 # $global_action_debug_line = '***** generate-code-for-one-action **** 1566 *** copy-and-replace ** 4 *' . $storage_item__1567 . ' ' . $storage_item__1568 . ' ' . $storage_item__1569 . ' ' . $storage_item__1570 ;
 # print $global_action_debug_line . "\n" ;
@@ -10763,6 +10909,7 @@ $storage_item__1591 = ' copy-and-replace ' . $storage_item__1592 . ' ' . $storag
 
 # $global_action_debug_line = '***** generate-code-for-one-action **** 1598 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10823,6 +10970,7 @@ $storage_item__1600 = 'copy-text ' . $storage_item__1601 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** generate-code-for-one-action **** 1603 *** recursion-stack-pop ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10901,6 +11049,7 @@ $storage_item__1611 = ' append-text-no-space ' . $storage_item__1612 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-code-for-one-action **** 1617 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -10948,12 +11097,18 @@ return '' ;
 sub function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) {
 $global_replacement_count_for_item_name{ 'generate-list-of-tokens-in-current-definition-quotable' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -10965,7 +11120,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
 
 # $global_action_debug_line = '***** generate-list-of-tokens-in-current-definition-quotable **** 1621 *** copy-and-replace ** 4 *' . $storage_item__1622 . ' ' . $storage_item__1623 . ' ' . $storage_item__1624 . ' ' . $storage_item__1625 ;
 # print $global_action_debug_line . "\n" ;
@@ -11390,12 +11544,18 @@ return '' ;
 sub function_compiled__generate_runtime_code_for_external_function_branch( ) {
 $global_replacement_count_for_item_name{ 'generate-runtime-code-for-external-function-branch' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn ambee copy-text code-function-external-part-1 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-2 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-3 runtime-code-function-external amenn ambee copy-from-phrase-append-to-file runtime-code-function-external ambee filename-output-results-functions-replacement-only amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -11407,7 +11567,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn ambee copy-text code-function-external-part-1 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-2 runtime-code-function-external amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn ambee append-text-no-space code-function-external-part-3 runtime-code-function-external amenn ambee copy-from-phrase-append-to-file runtime-code-function-external ambee filename-output-results-functions-replacement-only amenn amenn
 
 # $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1663 *** copy-text ** 2 *' . $storage_item__1664 . ' ' . $storage_item__1665 ;
 # print $global_action_debug_line . "\n" ;
@@ -11641,6 +11800,7 @@ $storage_item__1686 = ' copy-and-replace ' . $storage_item__1687 . ' ' . $storag
 
 # $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1693 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -11789,6 +11949,7 @@ $storage_item__1707 = ' append-text-no-space ' . $storage_item__1708 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-runtime-code-for-external-function-branch **** 1712 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -11835,12 +11996,18 @@ return '' ;
 sub function_compiled__generate_runtime_code_for_one_function_branch( ) {
 $global_replacement_count_for_item_name{ 'generate-runtime-code-for-one-function-branch' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -11852,7 +12019,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn ambee append-text-no-space phrase-name runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
 
 # $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1716 *** copy-text ** 2 *' . $storage_item__1717 . ' ' . $storage_item__1718 ;
 # print $global_action_debug_line . "\n" ;
@@ -12034,6 +12200,7 @@ $storage_item__1736 = ' append-text-no-space ' . $storage_item__1737 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-runtime-code-for-one-function-branch **** 1741 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -12080,12 +12247,18 @@ return '' ;
 sub function_compiled__generate_runtime_code_for_one_function_replacement_only( ) {
 $global_replacement_count_for_item_name{ 'generate-runtime-code-for-one-function-replacement-only' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only amenn ambee copy-from-phrase-append-to-file runtime-code-function-replacement-only ambee filename-output-results-functions-replacement-only amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -12097,7 +12270,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler phrase-name amenn ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn ambee copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only amenn ambee append-text-no-space phrase-name runtime-code-function-replacement-only amenn ambee append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only amenn ambee copy-from-phrase-append-to-file runtime-code-function-replacement-only ambee filename-output-results-functions-replacement-only amenn amenn
 
 # $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1745 *** copy-text ** 2 *' . $storage_item__1746 . ' ' . $storage_item__1747 ;
 # print $global_action_debug_line . "\n" ;
@@ -12279,6 +12451,7 @@ $storage_item__1765 = ' append-text-no-space ' . $storage_item__1766 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-runtime-code-for-one-function-replacement-only **** 1770 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -12325,12 +12498,18 @@ return '' ;
 sub function_compiled__generate_runtime_code_for_phrase_definition_simple( ) {
 $global_replacement_count_for_item_name{ 'generate-runtime-code-for-phrase-definition-simple' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -12342,7 +12521,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple amenn ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn ambee append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple amenn
 
 # $global_action_debug_line = '***** generate-runtime-code-for-phrase-definition-simple **** 1774 *** copy-text ** 2 *' . $storage_item__1775 . ' ' . $storage_item__1776 ;
 # print $global_action_debug_line . "\n" ;
@@ -12654,12 +12832,18 @@ return '' ;
 sub function_compiled__generate_runtime_code_using_quoted_string( ) {
 $global_replacement_count_for_item_name{ 'generate-runtime-code-using-quoted-string' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee numeric-increment storage-item-pointer amenn ambee copy-text storage-item-pointer storage-item-pointer-for fen ambee word-to-use-in-handler amenn amenn ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn ambee append-text template-quoted fen ambee word-to-use-in-handler amenn generated-runtime-code amenn ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-5 generated-runtime-code amenn ambee append-text-no-space generated-runtime-code output-results-all-storage-items amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -12671,7 +12855,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee numeric-increment storage-item-pointer amenn ambee copy-text storage-item-pointer storage-item-pointer-for fen ambee word-to-use-in-handler amenn amenn ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn ambee append-text template-quoted fen ambee word-to-use-in-handler amenn generated-runtime-code amenn ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn ambee append-text-no-space storage-item-pointer generated-runtime-code amenn ambee append-text-no-space code-quoted-string-storage-item-part-5 generated-runtime-code amenn ambee append-text-no-space generated-runtime-code output-results-all-storage-items amenn
 
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1815 *** numeric-increment ** 1 *' . $storage_item__1816 ;
 # print $global_action_debug_line . "\n" ;
@@ -12697,6 +12880,7 @@ $storage_item__1815 = ' numeric-increment ' . $storage_item__1816 . ' ' ;
 
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1820 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -12794,6 +12978,7 @@ $storage_item__1828 = ' append-text-no-space ' . $storage_item__1829 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1833 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -12978,12 +13163,18 @@ return '' ;
 sub function_compiled__generate_storage_for_current_text( ) {
 $global_replacement_count_for_item_name{ 'generate-storage-for-current-text' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee create-new-text-storage-position amenn ambee copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition amenn ambee append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition amenn ambee copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn ambee append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition amenn ambee copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition ambee filename-output-results-all-definition-items amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -12995,10 +13186,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee create-new-text-storage-position amenn ambee copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition amenn ambee append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition amenn ambee copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe amenn ambee copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash amenn ambee copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn ambee copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn ambee append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition amenn ambee append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition amenn ambee copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition ambee filename-output-results-all-definition-items amenn amenn
 
 # $global_action_debug_line = '***** generate-storage-for-current-text **** 1856 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -13542,6 +13733,7 @@ $storage_item__1910 = ' append-text-no-space ' . $storage_item__1911 . ' ' . $st
 
 # $global_action_debug_line = '***** generate-storage-for-current-text **** 1915 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -13588,12 +13780,18 @@ return '' ;
 sub function_compiled__get_all_operands( ) {
 $global_replacement_count_for_item_name{ 'get-all-operands' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text digit-0 number-of-operands amenn ambee copy-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn ambee put-into-phrase number-of-operands ambee get-count-of-words list-of-operands-for-counting amenn amenn ambee copy-text list-of-operands-for-counting operand-or-operands amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-concatenated-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands amenn amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-concatenated-all-operands amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 1 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 1 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-one amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 2 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 2 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-two amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 3 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 3 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-three amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 4 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 4 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-four amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -13605,7 +13803,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text digit-0 number-of-operands amenn ambee copy-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn ambee put-into-phrase number-of-operands ambee get-count-of-words list-of-operands-for-counting amenn amenn ambee copy-text list-of-operands-for-counting operand-or-operands amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-concatenated-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands amenn amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-concatenated-all-operands amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 1 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 1 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-one amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 2 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 2 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-two amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 3 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 3 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-three amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 4 amenn amenn amenn ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 4 amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-operand-number-four amenn ambee if-else amenn ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** get-all-operands **** 1919 *** copy-text ** 2 *' . $storage_item__1920 . ' ' . $storage_item__1921 ;
 # print $global_action_debug_line . "\n" ;
@@ -13628,6 +13825,7 @@ $storage_item__1919 = 'copy-text ' . $storage_item__1920 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 1924 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -13841,6 +14039,7 @@ $storage_item__1944 = 'copy-text ' . $storage_item__1945 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 1947 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -13928,6 +14127,7 @@ $storage_item__1955 = 'copy-text ' . $storage_item__1956 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 1963 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14008,6 +14208,7 @@ $storage_item__1966 = 'copy-word-at-position ' . $storage_item__1967 . ' ' . $st
 
 # $global_action_debug_line = '***** get-all-operands **** 1970 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14071,6 +14272,7 @@ $storage_item__1976 = 'copy-text ' . $storage_item__1977 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 1984 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14151,6 +14353,7 @@ $storage_item__1987 = 'copy-word-at-position ' . $storage_item__1988 . ' ' . $st
 
 # $global_action_debug_line = '***** get-all-operands **** 1991 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14214,6 +14417,7 @@ $storage_item__1997 = 'copy-text ' . $storage_item__1998 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 2005 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14294,6 +14498,7 @@ $storage_item__2008 = 'copy-word-at-position ' . $storage_item__2009 . ' ' . $st
 
 # $global_action_debug_line = '***** get-all-operands **** 2012 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14357,6 +14562,7 @@ $storage_item__2018 = 'copy-text ' . $storage_item__2019 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** get-all-operands **** 2026 *** number-of-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14437,6 +14643,7 @@ $storage_item__2029 = 'copy-word-at-position ' . $storage_item__2030 . ' ' . $st
 
 # $global_action_debug_line = '***** get-all-operands **** 2033 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14505,12 +14712,18 @@ return '' ;
 sub function_compiled__get_operand_character_at_adjacent_position( ) {
 $global_replacement_count_for_item_name{ 'get-operand-character-at-adjacent-position' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-characters-from-position-to-position operand-or-operands adjacent-character ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn ambee append-text adjacent-character list-of-adjacent-characters amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -14522,10 +14735,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-characters-from-position-to-position operand-or-operands adjacent-character ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn ambee append-text adjacent-character list-of-adjacent-characters amenn
 
 # $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2048 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14541,6 +14754,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** get-operand-character-at-adjacent-position **** 2050 *** word-to-use-in-handler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -14622,12 +14836,18 @@ return '' ;
 sub function_compiled__handle_definition_contains_ambee_amenn( ) {
 $global_replacement_count_for_item_name{ 'handle-definition-contains-ambee-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore amenn ambee copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition amenn ambee copy-text character-space list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen amenn ambee copy-text code-compiled-function-part-1 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-3 runtime-code-compiled-function amenn ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn ambee handle-definition-simple amenn ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn ambee copy-text phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn phrase-name-storage-position-for-current-definition amenn ambee copy-text text-storage-position-for-definition-number fen ambee current-definition-number amenn text-storage-position-for-current-definition amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn ambee get-all-operands amenn ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee append-text phrase-being-defined list-of-functions-generated amenn ambee clear-phrase phrase-being-defined amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -14639,7 +14859,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore amenn ambee copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition amenn ambee copy-text character-space list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen amenn ambee append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen amenn ambee copy-text code-compiled-function-part-1 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-3 runtime-code-compiled-function amenn ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn ambee handle-definition-simple amenn ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn ambee copy-text phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn phrase-name-storage-position-for-current-definition amenn ambee copy-text text-storage-position-for-definition-number fen ambee current-definition-number amenn text-storage-position-for-current-definition amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn ambee get-all-operands amenn ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn ambee append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function amenn ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn ambee append-text phrase-being-defined list-of-functions-generated amenn ambee clear-phrase phrase-being-defined amenn
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2057 *** copy-and-replace ** 4 *' . $storage_item__2058 . ' ' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 ;
 # print $global_action_debug_line . "\n" ;
@@ -15375,6 +15594,7 @@ $storage_item__2135 = ' append-text-no-space ' . $storage_item__2136 . ' ' . $st
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2140 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15442,6 +15662,7 @@ $storage_item__2142 = ' copy-without-extra-spaces ' . $storage_item__2143 . ' ' 
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2145 *** handle-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15516,6 +15737,7 @@ $storage_item__2147 = 'use-handler-with-each-word-in-phrase ' . $storage_item__2
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2153 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15550,6 +15772,7 @@ $storage_item__2151 = 'copy-text ' . $storage_item__2152 . '-' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2158 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15584,6 +15807,7 @@ $storage_item__2156 = 'copy-text ' . $storage_item__2157 . '-' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2163 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15618,6 +15842,7 @@ $storage_item__2161 = 'copy-text ' . $storage_item__2162 . '-' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2166 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15696,6 +15921,7 @@ $storage_item__2174 = ' append-text-no-space ' . $storage_item__2175 . ' ' . $st
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2179 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -15783,12 +16009,18 @@ return '' ;
 sub function_compiled__handle_definition_immediate( ) {
 $global_replacement_count_for_item_name{ 'handle-definition-immediate' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn ambee trace-show phrase-definition-modified amenn ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amenn fen modified amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -15800,10 +16032,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn ambee trace-show phrase-definition-modified amenn ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn ambee trace-show phrase-definition-modified amenn ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amenn fen modified amenn
 
 # $global_action_debug_line = '***** handle-definition-immediate **** 2188 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16209,6 +16441,7 @@ print TRACE_OUT 'phrase ' . $storage_item__2230 . ' is not defined' . "\n" ;
 
 # $global_action_debug_line = '***** handle-definition-immediate **** 2233 *** immediate-definition-phrase-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16248,12 +16481,18 @@ return '' ;
 sub function_compiled__handle_definition_simple_or_immediate( ) {
 $global_replacement_count_for_item_name{ 'handle-definition-simple-or-immediate' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn ambee trace-show phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn ambee handle-definition-simple amenn ambee if-else amenn ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn ambee handle-definition-immediate amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -16265,7 +16504,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn ambee trace-show phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn ambee handle-definition-simple amenn ambee if-else amenn ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn ambee handle-definition-immediate amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2238 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2239 . ' ' . $storage_item__2240 . ' ' . $storage_item__2241 ;
 # print $global_action_debug_line . "\n" ;
@@ -16341,6 +16579,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2247 *** handle-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16380,6 +16619,7 @@ $storage_item__2250 = 'copy-text ' . $storage_item__2251 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2253 *** handle-definition-immediate ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16405,12 +16645,18 @@ return '' ;
 sub function_compiled__handle_definition_simple( ) {
 $global_replacement_count_for_item_name{ 'handle-definition-simple' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee generate-runtime-code-for-phrase-definition-simple amenn ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -16422,10 +16668,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn ambee create-new-text-storage-position amenn ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn ambee generate-list-of-tokens-in-current-definition-quotable amenn ambee generate-runtime-code-for-phrase-definition-simple amenn ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
 
 # $global_action_debug_line = '***** handle-definition-simple **** 2258 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16460,6 +16706,7 @@ $storage_item__2260 = 'copy-text ' . $storage_item__2261 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-simple **** 2263 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16494,6 +16741,7 @@ $storage_item__2265 = 'copy-text ' . $storage_item__2266 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-definition-simple **** 2268 *** generate-list-of-tokens-in-current-definition-quotable ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16509,6 +16757,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-definition-simple **** 2270 *** generate-runtime-code-for-phrase-definition-simple ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16524,6 +16773,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-definition-simple **** 2274 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16570,12 +16820,18 @@ return '' ;
 sub function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) {
 $global_replacement_count_for_item_name{ 'handle-fen-and-nospay-within-operand-or-operands' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special amenn ambee copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -16587,7 +16843,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special amenn ambee copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space amenn
 
 # $global_action_debug_line = '***** handle-fen-and-nospay-within-operand-or-operands **** 2278 *** copy-and-replace ** 4 *' . $storage_item__2279 . ' ' . $storage_item__2280 . ' ' . $storage_item__2281 . ' ' . $storage_item__2282 ;
 # print $global_action_debug_line . "\n" ;
@@ -16804,12 +17059,18 @@ return '' ;
 sub function_compiled__handle_non_zero_count_of_ambee_minus_amenn_tokens( ) {
 $global_replacement_count_for_item_name{ 'handle-non-zero-count-of-ambee-minus-amenn-tokens' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee append-text warning-more-ambee-than-amenn-tokens warning-message amenn ambee if-else amenn ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn ambee if-end amenn ambee append-text-no-space warning-message warning-messages amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -16821,7 +17082,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn ambee append-text warning-more-ambee-than-amenn-tokens warning-message amenn ambee if-else amenn ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn ambee if-end amenn ambee append-text-no-space warning-message warning-messages amenn
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2300 *** copy-text ** 2 *' . $storage_item__2301 . ' ' . $storage_item__2302 ;
 # print $global_action_debug_line . "\n" ;
@@ -16871,6 +17131,7 @@ $storage_item__2303 = ' append-text ' . $storage_item__2304 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2310 *** count-of-ambee-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -16886,6 +17147,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2312 *** count-of-amenn-tokens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17032,12 +17294,18 @@ return '' ;
 sub function_compiled__handle_token_ambee( ) {
 $global_replacement_count_for_item_name{ 'handle-token-ambee' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee recursion-stack-push amenn ambee create-new-result-storage-position amenn ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage amenn ambee append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage amenn ambee append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage ambee filename-output-results-all-definition-items amenn amenn ambee clear-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee append-text string-ambee definition-for-phrase-being-defined amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -17049,10 +17317,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee recursion-stack-push amenn ambee create-new-result-storage-position amenn ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage amenn ambee append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage amenn ambee append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage amenn ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage ambee filename-output-results-all-definition-items amenn amenn ambee clear-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee append-text string-ambee definition-for-phrase-being-defined amenn
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2327 *** recursion-stack-push ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17068,6 +17336,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2329 *** create-new-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17151,6 +17420,7 @@ $storage_item__2337 = ' append-text ' . $storage_item__2338 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2342 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17192,6 +17462,7 @@ $storage_item__2340 = ' copy-from-phrase-append-to-file ' . $storage_item__2341 
 
 # $global_action_debug_line = '***** handle-token-ambee **** 2346 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17253,12 +17524,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_action_not_empty( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-not-empty' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee clear-phrase needed-operand-checks amenn ambee append-text string-amenn definition-for-phrase-being-defined amenn ambee copy-text current-result-storage-position storage-item-pointer amenn ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn ambee copy-text action-name-at-storage-position fen ambee current-result-storage-position amenn action-name amenn ambee put-into-phrase yes-or-no-action-recognized no amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee copy-text operand-checks-for-action fen ambee action-name amenn needed-operand-checks amenn ambee if-end amenn ambee clear-phrase runtime-code-for-parameter-phrase amenn ambee if-yes-begin ambee yes-or-no-action-recognized amenn amenn ambee handle-token-amenn-case-action-recognized amenn ambee if-else amenn ambee handle-token-amenn-case-executable-phrase amenn ambee if-end amenn ambee generate-code-for-one-action amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -17270,7 +17547,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee clear-phrase needed-operand-checks amenn ambee append-text string-amenn definition-for-phrase-being-defined amenn ambee copy-text current-result-storage-position storage-item-pointer amenn ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn ambee copy-text action-name-at-storage-position fen ambee current-result-storage-position amenn action-name amenn ambee put-into-phrase yes-or-no-action-recognized no amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee if-end amenn ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fen ambee action-name amenn amenn amenn ambee put-into-phrase yes-or-no-action-recognized yes amenn ambee copy-text operand-checks-for-action fen ambee action-name amenn needed-operand-checks amenn ambee if-end amenn ambee clear-phrase runtime-code-for-parameter-phrase amenn ambee if-yes-begin ambee yes-or-no-action-recognized amenn amenn ambee handle-token-amenn-case-action-recognized amenn ambee if-else amenn ambee handle-token-amenn-case-executable-phrase amenn ambee if-end amenn ambee generate-code-for-one-action amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2353 *** clear-phrase ** 1 *' . $storage_item__2354 ;
 # print $global_action_debug_line . "\n" ;
@@ -17359,6 +17635,7 @@ $storage_item__2361 = 'expand-text ' . $storage_item__2362 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2366 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17408,6 +17685,7 @@ $storage_item__2369 = 'put-into-phrase ' . $storage_item__2370 . ' ' . $storage_
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2375 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17472,6 +17750,7 @@ $storage_item__2377 = 'put-into-phrase ' . $storage_item__2378 . ' ' . $storage_
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2384 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17531,6 +17810,7 @@ $storage_item__2386 = 'put-into-phrase ' . $storage_item__2387 . ' ' . $storage_
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2391 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17584,6 +17864,7 @@ $storage_item__2395 = 'clear-phrase ' . $storage_item__2396 ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2398 *** yes-or-no-action-recognized ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17606,6 +17887,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2400 *** handle-token-amenn-case-action-recognized ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17626,6 +17908,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2403 *** handle-token-amenn-case-executable-phrase ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17646,6 +17929,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2406 *** generate-code-for-one-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17666,12 +17950,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_action_recognized( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-recognized' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fen ambee action-name amenn amenn amenn ambee handle-token-amenn-case-action-standard-or-has-template amenn ambee if-else amenn ambee handle-token-amenn-case fen ambee action-name amenn amenn ambee append-text action-name list-of-special-handled-dashrep-actions-used amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -17683,10 +17973,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fen ambee action-name amenn amenn amenn ambee handle-token-amenn-case-action-standard-or-has-template amenn ambee if-else amenn ambee handle-token-amenn-case fen ambee action-name amenn amenn ambee append-text action-name list-of-special-handled-dashrep-actions-used amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2413 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17731,6 +18021,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2415 *** handle-token-amenn-case-action-standard-or-has-template ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17751,6 +18042,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2419 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17766,6 +18058,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2418 *** handle-token-amenn-case ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17819,12 +18112,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_action_standard_or_has_template( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-action-standard-or-has-template' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee get-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee append-text action-name list-of-converted-dashrep-actions-used amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -17836,10 +18135,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee get-all-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee append-text action-name list-of-converted-dashrep-actions-used amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2428 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17855,6 +18154,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2433 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -17956,6 +18256,7 @@ $storage_item__2438 = ' append-text ' . $storage_item__2439 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-standard-or-has-template **** 2444 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -18033,12 +18334,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_executable_phrase( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-executable-phrase' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text digit-0 number-of-operands amenn ambee copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands amenn ambee numeric-increment current-accumulator-pointer amenn ambee copy-text action-name current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name amenn ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn ambee append-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-text operand-or-operands saved-operand-or-operands amenn ambee copy-without-extra-spaces list-of-operands-raw operand-or-operands amenn ambee copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-executable-phrase amenn ambee copy-text saved-operand-or-operands operand-or-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase not-empty-if-operands-include-fen amenn amenn ambee append-text action-name list-of-function-branches-needed amenn ambee expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase amenn ambee if-end amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores amenn ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions action-name phrase-being-defined amenn amenn ambee append-text warning-executable-phrase-matches-container-phrase-begin warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee append-text warning-executable-phrase-matches-container-phrase-end warning-message amenn ambee append-text-no-space warning-message warning-messages amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -18050,7 +18357,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text digit-0 number-of-operands amenn ambee copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands amenn ambee numeric-increment current-accumulator-pointer amenn ambee copy-text action-name current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name amenn ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn ambee append-text list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn list-of-operands-raw amenn ambee copy-text operand-or-operands saved-operand-or-operands amenn ambee copy-without-extra-spaces list-of-operands-raw operand-or-operands amenn ambee copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen amenn ambee copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay amenn ambee handle-fen-and-nospay-within-operand-or-operands amenn ambee copy-text operand-or-operands runtime-code-for-executable-phrase amenn ambee copy-text saved-operand-or-operands operand-or-operands amenn ambee if-yes-begin ambee yes-or-no-empty-phrase not-empty-if-operands-include-fen amenn amenn ambee append-text action-name list-of-function-branches-needed amenn ambee expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase amenn ambee if-end amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase amenn ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores amenn ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions action-name phrase-being-defined amenn amenn ambee append-text warning-executable-phrase-matches-container-phrase-begin warning-message amenn ambee append-text phrase-being-defined warning-message amenn ambee append-text warning-executable-phrase-matches-container-phrase-end warning-message amenn ambee append-text-no-space warning-message warning-messages amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2453 *** copy-text ** 2 *' . $storage_item__2454 . ' ' . $storage_item__2455 ;
 # print $global_action_debug_line . "\n" ;
@@ -18133,6 +18439,7 @@ $storage_item__2461 = 'copy-text ' . $storage_item__2462 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2464 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -18230,6 +18537,7 @@ $storage_item__2475 = 'copy-text ' . $storage_item__2476 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2480 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -18451,6 +18759,7 @@ $storage_item__2498 = ' copy-and-replace ' . $storage_item__2499 . ' ' . $storag
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2503 *** handle-fen-and-nospay-within-operand-or-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -18915,12 +19224,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_expand_text( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-expand-text' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee numeric-increment current-accumulator-pointer amenn ambee handle-token-amenn-case-standard-action amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -18932,7 +19247,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee numeric-increment current-accumulator-pointer amenn ambee handle-token-amenn-case-standard-action amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2559 *** numeric-increment ** 1 *' . $storage_item__2560 ;
 # print $global_action_debug_line . "\n" ;
@@ -18958,6 +19272,7 @@ $storage_item__2559 = ' numeric-increment ' . $storage_item__2560 . ' ' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2561 *** handle-token-amenn-case-standard-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -18978,12 +19293,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_standard_action( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-standard-action' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee get-all-operands amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -18995,10 +19316,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee get-all-operands amenn ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fen ambee action-name amenn amenn amenn ambee expand-text template-runtime-code-for-action fen ambee action-name amenn runtime-code-for-parameter-phrase amenn ambee if-else amenn ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2565 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19014,6 +19335,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2570 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19058,6 +19380,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn-case-standard-action **** 2574 *** action-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19138,12 +19461,18 @@ return '' ;
 sub function_compiled__handle_token_amenn_case_use_handler_with_each_word_in_phrase( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn-case-use-handler-with-each-word-in-phrase' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee create-new-text-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn ambee get-all-operands amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn handler-name 1 amenn ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2 amenn ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -19155,10 +19484,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee create-new-text-storage-position amenn ambee clear-phrase contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fen ambee current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn ambee get-all-operands amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn handler-name 1 amenn ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn ambee copy-word-at-position text-words-at-result-storage-position fen ambee current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2 amenn ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2584 *** create-new-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19174,6 +19503,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2588 *** current-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19203,6 +19533,7 @@ $storage_item__2586 = 'clear-phrase ' . $storage_item__2587 . '-' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2593 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19237,6 +19568,7 @@ $storage_item__2590 = 'copy-text ' . $storage_item__2591 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2597 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19296,6 +19628,7 @@ $storage_item__2600 = 'expand-text ' . $storage_item__2601 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2605 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19337,6 +19670,7 @@ $storage_item__2603 = ' copy-from-phrase-append-to-file ' . $storage_item__2604 
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2607 *** get-all-operands ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19352,6 +19686,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2611 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19444,6 +19779,7 @@ $storage_item__2615 = ' copy-and-replace ' . $storage_item__2616 . ' ' . $storag
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2622 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19514,12 +19850,18 @@ return '' ;
 sub function_compiled__handle_token_amenn( ) {
 $global_replacement_count_for_item_name{ 'handle-token-amenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee handle-token-amenn-case-action-not-empty amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn ambee generate-code-for-one-action amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -19531,10 +19873,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee handle-token-amenn-case-action-not-empty amenn ambee if-else amenn ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn ambee generate-code-for-one-action amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-amenn **** 2634 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19579,6 +19921,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-amenn **** 2636 *** handle-token-amenn-case-action-not-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19624,6 +19967,7 @@ $storage_item__2639 = 'expand-text ' . $storage_item__2640 . ' ' . $storage_item
 
 # $global_action_debug_line = '***** handle-token-amenn **** 2642 *** generate-code-for-one-action ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19649,12 +19993,18 @@ return '' ;
 sub function_compiled__handle_token_fen( ) {
 $global_replacement_count_for_item_name{ 'handle-token-fen' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee append-text string-fen definition-for-phrase-being-defined amenn ambee append-text string-fen list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -19666,7 +20016,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee append-text string-fen definition-for-phrase-being-defined amenn ambee append-text string-fen list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
 # $global_action_debug_line = '***** handle-token-fen **** 2647 *** append-text ** 2 *' . $storage_item__2648 . ' ' . $storage_item__2649 ;
 # print $global_action_debug_line . "\n" ;
@@ -19697,6 +20046,7 @@ $storage_item__2647 = ' append-text ' . $storage_item__2648 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-fen **** 2653 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19744,12 +20094,18 @@ return '' ;
 sub function_compiled__handle_token_next_case_1( ) {
 $global_replacement_count_for_item_name{ 'handle-token-next-case-1' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee handle-token-next-case-2 amenn ambee if-else amenn ambee handle-token fen ambee current-token amenn amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -19761,7 +20117,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text word-to-use-in-handler current-token amenn ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name amenn ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn ambee handle-token-next-case-2 amenn ambee if-else amenn ambee handle-token fen ambee current-token amenn amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2657 *** copy-text ** 2 *' . $storage_item__2658 . ' ' . $storage_item__2659 ;
 # print $global_action_debug_line . "\n" ;
@@ -19843,6 +20198,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2667 *** handle-token-next-case-2 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19863,6 +20219,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2671 *** current-token ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19878,6 +20235,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2670 *** handle-token ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19904,12 +20262,18 @@ return '' ;
 sub function_compiled__handle_token_next_case_2( ) {
 $global_replacement_count_for_item_name{ 'handle-token-next-case-2' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee handle-token-next-case-3 amenn ambee if-else amenn ambee handle-token-phrase-name amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -19921,7 +20285,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn ambee handle-token-next-case-3 amenn ambee if-else amenn ambee handle-token-phrase-name amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-next-case-2 **** 2678 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2679 ;
 # print $global_action_debug_line . "\n" ;
@@ -19954,6 +20317,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-next-case-2 **** 2680 *** handle-token-next-case-3 ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19974,6 +20338,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-next-case-2 **** 2683 *** handle-token-phrase-name ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -19999,12 +20364,18 @@ return '' ;
 sub function_compiled__handle_token_next_case_3( ) {
 $global_replacement_count_for_item_name{ 'handle-token-next-case-3' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee append-text current-token definition-for-phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee copy-text current-token action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee if-else amenn ambee handle-token-text-word amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -20016,7 +20387,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee append-text current-token definition-for-phrase-being-defined amenn ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fen ambee current-result-storage-position amenn amenn amenn ambee copy-text current-token action-name-at-storage-position fen ambee current-result-storage-position amenn amenn ambee if-else amenn ambee handle-token-text-word amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2688 *** append-text ** 2 *' . $storage_item__2689 . ' ' . $storage_item__2690 ;
 # print $global_action_debug_line . "\n" ;
@@ -20047,6 +20417,7 @@ $storage_item__2688 = ' append-text ' . $storage_item__2689 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2694 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20091,6 +20462,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2699 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20130,6 +20502,7 @@ $storage_item__2696 = 'copy-text ' . $storage_item__2697 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2702 *** handle-token-text-word ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20155,12 +20528,18 @@ return '' ;
 sub function_compiled__handle_token_nospay( ) {
 $global_replacement_count_for_item_name{ 'handle-token-nospay' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee append-text string-nospay definition-for-phrase-being-defined amenn ambee append-text string-nospay list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -20172,7 +20551,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee append-text string-nospay definition-for-phrase-being-defined amenn ambee append-text string-nospay list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
 # $global_action_debug_line = '***** handle-token-nospay **** 2707 *** append-text ** 2 *' . $storage_item__2708 . ' ' . $storage_item__2709 ;
 # print $global_action_debug_line . "\n" ;
@@ -20203,6 +20581,7 @@ $storage_item__2707 = ' append-text ' . $storage_item__2708 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-nospay **** 2713 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20250,12 +20629,18 @@ return '' ;
 sub function_compiled__handle_token_phrase_name( ) {
 $global_replacement_count_for_item_name{ 'handle-token-phrase-name' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text current-token phrase-being-defined amenn ambee numeric-increment current-definition-number amenn ambee copy-text phrase-being-defined current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee clear-phrase current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position text-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee copy-text current-text-storage-position current-result-storage-position amenn ambee clear-phrase list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn ambee clear-phrase recursion-stack amenn ambee recursion-stack-push amenn ambee copy-text current-definition-number phrase-number-for-phrase-name fen ambee phrase-being-defined amenn amenn ambee copy-text phrase-being-defined phrase-name-for-phrase-number fen ambee current-definition-number amenn amenn ambee clear-phrase definition-for-phrase-being-defined amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -20267,7 +20652,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text current-token phrase-being-defined amenn ambee numeric-increment current-definition-number amenn ambee copy-text phrase-being-defined current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee clear-phrase current-text amenn ambee generate-storage-for-current-text amenn ambee copy-text current-text-storage-position text-storage-position-for-definition-number fen ambee current-definition-number amenn amenn ambee copy-text current-text-storage-position current-result-storage-position amenn ambee clear-phrase list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn ambee clear-phrase recursion-stack amenn ambee recursion-stack-push amenn ambee copy-text current-definition-number phrase-number-for-phrase-name fen ambee phrase-being-defined amenn amenn ambee copy-text phrase-being-defined phrase-name-for-phrase-number fen ambee current-definition-number amenn amenn ambee clear-phrase definition-for-phrase-being-defined amenn
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2717 *** copy-text ** 2 *' . $storage_item__2718 . ' ' . $storage_item__2719 ;
 # print $global_action_debug_line . "\n" ;
@@ -20331,6 +20715,7 @@ $storage_item__2722 = 'copy-text ' . $storage_item__2723 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2725 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20346,6 +20731,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2730 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20394,6 +20780,7 @@ $storage_item__2732 = 'clear-phrase ' . $storage_item__2733 ;
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2734 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20409,6 +20796,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2739 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20462,6 +20850,7 @@ $storage_item__2741 = 'copy-text ' . $storage_item__2742 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2746 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20505,6 +20894,7 @@ $storage_item__2748 = 'clear-phrase ' . $storage_item__2749 ;
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2750 *** recursion-stack-push ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20520,6 +20910,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2755 *** phrase-being-defined ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20554,6 +20945,7 @@ $storage_item__2752 = 'copy-text ' . $storage_item__2753 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2760 *** current-definition-number ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20607,12 +20999,18 @@ return '' ;
 sub function_compiled__handle_token_text_word( ) {
 $global_replacement_count_for_item_name{ 'handle-token-text-word' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text current-token current-text amenn ambee generate-storage-for-current-text amenn ambee append-text current-text contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee append-text current-text text-words-at-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn ambee append-text-no-space current-text-storage-position current-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn ambee append-text current-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -20624,7 +21022,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text current-token current-text amenn ambee generate-storage-for-current-text amenn ambee append-text current-text contents-at-storage-position fen ambee current-text-storage-position amenn amenn ambee append-text current-text text-words-at-result-storage-position fen ambee current-result-storage-position amenn amenn ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn ambee append-text-no-space current-text-storage-position current-storage-operand amenn ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn ambee append-text current-storage-operand list-of-operands-for-result-storage-position fen ambee current-result-storage-position amenn amenn
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2766 *** copy-text ** 2 *' . $storage_item__2767 . ' ' . $storage_item__2768 ;
 # print $global_action_debug_line . "\n" ;
@@ -20647,6 +21044,7 @@ $storage_item__2766 = 'copy-text ' . $storage_item__2767 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2769 *** generate-storage-for-current-text ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20662,6 +21060,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2774 *** current-text-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20704,6 +21103,7 @@ $storage_item__2771 = ' append-text ' . $storage_item__2772 . ' ' . $storage_ite
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2779 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20809,6 +21209,7 @@ $storage_item__2787 = ' append-text-no-space ' . $storage_item__2788 . ' ' . $st
 
 # $global_action_debug_line = '***** handle-token-text-word **** 2793 *** current-result-storage-position ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -20856,12 +21257,18 @@ return '' ;
 sub function_compiled__initialize_input_output_files( ) {
 $global_replacement_count_for_item_name{ 'initialize-input-output-files' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn ambee put-into-phrase input-filename input_to_dashrep_compiler.txt amenn ambee put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt amenn ambee delete-file ambee filename-output-results-from-compiler amenn amenn ambee put-into-phrase filename-output-standard-runtime-functions output_compiler_standard_runtime_functions.txt amenn ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn ambee put-into-phrase filename-output-results-all-definition-items output_compiler_all_definition_items.txt amenn ambee delete-file ambee filename-output-results-all-definition-items amenn amenn ambee put-into-phrase filename-output-results-all-function-branches output_compiler_all_function_branches.txt amenn ambee delete-file ambee filename-output-results-all-function-branches amenn amenn ambee put-into-phrase filename-output-results-functions-replacement-only output_compiler_functions_replacement_only.txt amenn ambee delete-file ambee filename-output-results-functions-replacement-only amenn amenn ambee put-into-phrase filename-output-results-all-compiled-functions output_compiler_all_compiled_functions.txt amenn ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn ambee put-into-phrase filename-output-all-definitions-complex output_compiler_all_tokens_for_definitions_complex.txt amenn ambee delete-file ambee filename-output-all-definitions-complex amenn amenn ambee put-into-phrase filename-output-all-phrase-names-complex output_compiler_all_phrase_names_complex.txt amenn ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_compiler_debug_trace_all_definitions.txt amenn ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -20873,7 +21280,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn ambee put-into-phrase input-filename input_to_dashrep_compiler.txt amenn ambee put-into-phrase filename-output-results-from-compiler output_from_dashrep_compiler.txt amenn ambee delete-file ambee filename-output-results-from-compiler amenn amenn ambee put-into-phrase filename-output-standard-runtime-functions output_compiler_standard_runtime_functions.txt amenn ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn ambee put-into-phrase filename-output-results-all-definition-items output_compiler_all_definition_items.txt amenn ambee delete-file ambee filename-output-results-all-definition-items amenn amenn ambee put-into-phrase filename-output-results-all-function-branches output_compiler_all_function_branches.txt amenn ambee delete-file ambee filename-output-results-all-function-branches amenn amenn ambee put-into-phrase filename-output-results-functions-replacement-only output_compiler_functions_replacement_only.txt amenn ambee delete-file ambee filename-output-results-functions-replacement-only amenn amenn ambee put-into-phrase filename-output-results-all-compiled-functions output_compiler_all_compiled_functions.txt amenn ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn ambee put-into-phrase filename-output-all-definitions-complex output_compiler_all_tokens_for_definitions_complex.txt amenn ambee delete-file ambee filename-output-all-definitions-complex amenn amenn ambee put-into-phrase filename-output-all-phrase-names-complex output_compiler_all_phrase_names_complex.txt amenn ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions output_compiler_debug_trace_all_definitions.txt amenn ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2797 *** copy-text ** 2 *' . $storage_item__2798 . ' ' . $storage_item__2799 ;
 # print $global_action_debug_line . "\n" ;
@@ -20967,6 +21373,7 @@ $storage_item__2809 = 'put-into-phrase ' . $storage_item__2810 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2813 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21019,6 +21426,7 @@ $storage_item__2815 = 'put-into-phrase ' . $storage_item__2816 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2819 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21071,6 +21479,7 @@ $storage_item__2821 = 'put-into-phrase ' . $storage_item__2822 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2825 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21123,6 +21532,7 @@ $storage_item__2827 = 'put-into-phrase ' . $storage_item__2828 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2831 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21175,6 +21585,7 @@ $storage_item__2833 = 'put-into-phrase ' . $storage_item__2834 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2837 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21227,6 +21638,7 @@ $storage_item__2839 = 'put-into-phrase ' . $storage_item__2840 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2843 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21279,6 +21691,7 @@ $storage_item__2845 = 'put-into-phrase ' . $storage_item__2846 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2849 *** filename-output-all-definitions-complex ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21331,6 +21744,7 @@ $storage_item__2851 = 'put-into-phrase ' . $storage_item__2852 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2855 *** filename-output-all-phrase-names-complex ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21383,6 +21797,7 @@ $storage_item__2857 = 'put-into-phrase ' . $storage_item__2858 . ' ' . $storage_
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 2861 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21425,12 +21840,18 @@ return '' ;
 sub function_compiled__recursion_stack_pop_case_empty( ) {
 $global_replacement_count_for_item_name{ 'recursion-stack-pop-case-empty' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase current-result-storage-position 0 amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -21442,7 +21863,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase current-result-storage-position 0 amenn
 
 # $global_action_debug_line = '***** recursion-stack-pop-case-empty **** 2865 *** put-into-phrase ** 2 *' . $storage_item__2866 . ' ' . $storage_item__2867 ;
 # print $global_action_debug_line . "\n" ;
@@ -21466,12 +21886,18 @@ return '' ;
 sub function_compiled__recursion_stack_pop_case_not_empty( ) {
 $global_replacement_count_for_item_name{ 'recursion-stack-pop-case-not-empty' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee copy-word-at-position recursion-stack current-result-storage-position ambee position-top-of-stack amenn amenn ambee numeric-decrement position-top-of-stack amenn ambee copy-words-from-position-to-position recursion-stack recursion-stack 1 ambee position-top-of-stack amenn amenn ambee if-else amenn ambee copy-text recursion-stack current-result-storage-position amenn ambee clear-phrase recursion-stack amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -21483,10 +21909,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee copy-word-at-position recursion-stack current-result-storage-position ambee position-top-of-stack amenn amenn ambee numeric-decrement position-top-of-stack amenn ambee copy-words-from-position-to-position recursion-stack recursion-stack 1 ambee position-top-of-stack amenn amenn ambee if-else amenn ambee copy-text recursion-stack current-result-storage-position amenn ambee clear-phrase recursion-stack amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2874 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21542,6 +21968,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2880 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21604,6 +22031,7 @@ $storage_item__2882 = ' numeric-decrement ' . $storage_item__2883 . ' ' ;
 
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 2888 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21701,12 +22129,18 @@ return '' ;
 sub function_compiled__recursion_stack_pop( ) {
 $global_replacement_count_for_item_name{ 'recursion-stack-pop' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase position-top-of-stack ambee get-count-of-words recursion-stack amenn amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee recursion-stack-pop-case-not-empty amenn ambee if-else amenn ambee recursion-stack-pop-case-empty amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -21718,7 +22152,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase position-top-of-stack ambee get-count-of-words recursion-stack amenn amenn ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1 amenn amenn amenn ambee recursion-stack-pop-case-not-empty amenn ambee if-else amenn ambee recursion-stack-pop-case-empty amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** recursion-stack-pop **** 2901 *** get-count-of-words ** 1 *' . $storage_item__2902 ;
 # print $global_action_debug_line . "\n" ;
@@ -21752,6 +22185,7 @@ $storage_item__2899 = 'put-into-phrase ' . $storage_item__2900 . ' ' . $storage_
 
 # $global_action_debug_line = '***** recursion-stack-pop **** 2907 *** position-top-of-stack ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21807,6 +22241,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** recursion-stack-pop **** 2910 *** recursion-stack-pop-case-not-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21827,6 +22262,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** recursion-stack-pop **** 2913 *** recursion-stack-pop-case-empty ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21852,12 +22288,18 @@ return '' ;
 sub function_compiled__recursion_stack_push( ) {
 $global_replacement_count_for_item_name{ 'recursion-stack-push' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee append-text current-result-storage-position recursion-stack amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -21869,7 +22311,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee append-text current-result-storage-position recursion-stack amenn
 
 # $global_action_debug_line = '***** recursion-stack-push **** 2918 *** append-text ** 2 *' . $storage_item__2919 . ' ' . $storage_item__2920 ;
 # print $global_action_debug_line . "\n" ;
@@ -21905,12 +22346,18 @@ return '' ;
 sub function_compiled__remove_colon_if_at_end_of_phrase_being_defined( ) {
 $global_replacement_count_for_item_name{ 'remove-colon-if-at-end-of-phrase-being-defined' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase phrase-length ambee get-count-of-characters phrase-being-defined amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined possible-colon ambee phrase-length amenn ambee phrase-length amenn amenn ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-colon character-colon amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 ambee numeric-minus ambee phrase-length amenn 1 amenn amenn ambee if-end amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -21922,7 +22369,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase phrase-length ambee get-count-of-characters phrase-being-defined amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined possible-colon ambee phrase-length amenn ambee phrase-length amenn amenn ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-colon character-colon amenn amenn ambee copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 ambee numeric-minus ambee phrase-length amenn 1 amenn amenn ambee if-end amenn
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2925 *** get-count-of-characters ** 1 *' . $storage_item__2926 ;
 # print $global_action_debug_line . "\n" ;
@@ -21963,6 +22409,7 @@ $storage_item__2923 = 'put-into-phrase ' . $storage_item__2924 . ' ' . $storage_
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2930 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -21978,6 +22425,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2932 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22053,6 +22501,7 @@ if ( $global_pointer_to_word >= 0 )
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 2943 *** phrase-length ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22138,12 +22587,18 @@ return '' ;
 sub function_compiled__run_compiler( ) {
 $global_replacement_count_for_item_name{ 'run-compiler' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee initialize-input-output-files amenn ambee copy-from-file-to-phrase ambee input-filename amenn source-code amenn ambee compile-source-code-generate-output-results amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-results-to-output-file amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn ambee check-elapsed-time amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -22155,10 +22610,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee initialize-input-output-files amenn ambee copy-from-file-to-phrase ambee input-filename amenn source-code amenn ambee compile-source-code-generate-output-results amenn ambee put-into-phrase yes-or-no-export-delimited-definitions yes amenn ambee write-results-to-output-file amenn ambee write-all-dashrep-definitions-to-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn ambee check-elapsed-time amenn
 
 # $global_action_debug_line = '***** run-compiler **** 2949 *** initialize-input-output-files ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22174,6 +22629,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** run-compiler **** 2952 *** input-filename ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22211,6 +22667,7 @@ $storage_item__2951 = ' copy-from-file-to-phrase ' . $storage_item__2952 . ' ' .
 
 # $global_action_debug_line = '***** run-compiler **** 2955 *** compile-source-code-generate-output-results ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22241,6 +22698,7 @@ $storage_item__2957 = 'put-into-phrase ' . $storage_item__2958 . ' ' . $storage_
 
 # $global_action_debug_line = '***** run-compiler **** 2960 *** write-results-to-output-file ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22256,6 +22714,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** run-compiler **** 2963 *** filename-output-debug-trace-all-dashrep-definitions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22293,6 +22752,7 @@ $storage_item__2962 = ' write-all-dashrep-definitions-to-file ' . $storage_item_
 
 # $global_action_debug_line = '***** run-compiler **** 2965 *** check-elapsed-time ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22313,12 +22773,18 @@ return '' ;
 sub function_compiled__start_here( ) {
 $global_replacement_count_for_item_name{ 'start-here' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee run-compiler amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -22330,10 +22796,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee run-compiler amenn
 
 # $global_action_debug_line = '***** start-here **** 2969 *** run-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22354,12 +22820,18 @@ return '' ;
 sub function_compiled__write_results_to_output_file( ) {
 $global_replacement_count_for_item_name{ 'write-results-to-output-file' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee if-no-begin ambee yes-or-no-empty-phrase warning-messages amenn amenn ambee copy-text runtime-code-at-top-if-warning-message output-warning-messages amenn ambee append-text-no-space warning-messages output-warning-messages amenn ambee append-text-no-space new-empty-lines output-warning-messages amenn ambee copy-from-phrase-append-to-file output-warning-messages ambee filename-output-results-from-compiler amenn amenn ambee if-end amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-standard-runtime-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-middle ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -22371,7 +22843,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee if-no-begin ambee yes-or-no-empty-phrase warning-messages amenn amenn ambee copy-text runtime-code-at-top-if-warning-message output-warning-messages amenn ambee append-text-no-space warning-messages output-warning-messages amenn ambee append-text-no-space new-empty-lines output-warning-messages amenn ambee copy-from-phrase-append-to-file output-warning-messages ambee filename-output-results-from-compiler amenn amenn ambee if-end amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-initializations-needed-by-interpreter-code.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn ambee copy-append-file-to-file ambee filename-output-standard-runtime-functions amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-middle ambee filename-output-results-from-compiler amenn amenn ambee copy-text dashrep-path-prefix-for-file-reading saved-directory amenn ambee put-into-phrase dashrep-path-prefix-for-file-reading .\compiler_source\5_functions_from_interpreter\ amenn ambee put-into-phrase filename-runtime-code-from-interpreter runtime-code-functions-from-interpreter.txt amenn ambee copy-append-file-to-file ambee filename-runtime-code-from-interpreter amenn ambee filename-output-results-from-compiler amenn amenn ambee copy-text saved-directory dashrep-path-prefix-for-file-reading amenn ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 2974 *** yes-or-no-empty-phrase ** 1 *' . $storage_item__2975 ;
 # print $global_action_debug_line . "\n" ;
@@ -22467,6 +22938,7 @@ $storage_item__2982 = ' append-text-no-space ' . $storage_item__2983 . ' ' . $st
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 2987 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22513,6 +22985,7 @@ $storage_item__2985 = ' copy-from-phrase-append-to-file ' . $storage_item__2986 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 2992 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22554,6 +23027,7 @@ $storage_item__2990 = ' copy-from-phrase-append-to-file ' . $storage_item__2991 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 2996 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22595,6 +23069,7 @@ $storage_item__2994 = ' copy-from-phrase-append-to-file ' . $storage_item__2995 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3000 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22636,6 +23111,7 @@ $storage_item__2998 = ' copy-from-phrase-append-to-file ' . $storage_item__2999 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3004 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22677,6 +23153,7 @@ $storage_item__3002 = ' copy-from-phrase-append-to-file ' . $storage_item__3003 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3008 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22718,6 +23195,7 @@ $storage_item__3006 = ' copy-from-phrase-append-to-file ' . $storage_item__3007 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3012 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22759,6 +23237,7 @@ $storage_item__3010 = ' copy-from-phrase-append-to-file ' . $storage_item__3011 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3016 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22849,6 +23328,7 @@ $storage_item__3024 = 'put-into-phrase ' . $storage_item__3025 . ' ' . $storage_
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3028 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22864,6 +23344,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3030 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22924,6 +23405,7 @@ $storage_item__3032 = 'copy-text ' . $storage_item__3033 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3037 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -22965,6 +23447,7 @@ $storage_item__3035 = ' copy-from-phrase-append-to-file ' . $storage_item__3036 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3041 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23006,6 +23489,7 @@ $storage_item__3039 = ' copy-from-phrase-append-to-file ' . $storage_item__3040 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3044 *** filename-output-results-all-definition-items ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23021,6 +23505,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3046 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23062,6 +23547,7 @@ $storage_item__3043 = ' copy-append-file-to-file ' . $storage_item__3044 . ' ' .
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3050 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23103,6 +23589,7 @@ $storage_item__3048 = ' copy-from-phrase-append-to-file ' . $storage_item__3049 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3054 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23144,6 +23631,7 @@ $storage_item__3052 = ' copy-from-phrase-append-to-file ' . $storage_item__3053 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3057 *** filename-output-results-all-function-branches ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23159,6 +23647,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3059 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23200,6 +23689,7 @@ $storage_item__3056 = ' copy-append-file-to-file ' . $storage_item__3057 . ' ' .
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3063 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23241,6 +23731,7 @@ $storage_item__3061 = ' copy-from-phrase-append-to-file ' . $storage_item__3062 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3067 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23282,6 +23773,7 @@ $storage_item__3065 = ' copy-from-phrase-append-to-file ' . $storage_item__3066 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3070 *** filename-output-results-functions-replacement-only ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23297,6 +23789,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3072 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23338,6 +23831,7 @@ $storage_item__3069 = ' copy-append-file-to-file ' . $storage_item__3070 . ' ' .
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3076 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23379,6 +23873,7 @@ $storage_item__3074 = ' copy-from-phrase-append-to-file ' . $storage_item__3075 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3080 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23420,6 +23915,7 @@ $storage_item__3078 = ' copy-from-phrase-append-to-file ' . $storage_item__3079 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3083 *** filename-output-results-all-compiled-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23435,6 +23931,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3085 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23476,6 +23973,7 @@ $storage_item__3082 = ' copy-append-file-to-file ' . $storage_item__3083 . ' ' .
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3089 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23517,6 +24015,7 @@ $storage_item__3087 = ' copy-from-phrase-append-to-file ' . $storage_item__3088 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3093 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23558,6 +24057,7 @@ $storage_item__3091 = ' copy-from-phrase-append-to-file ' . $storage_item__3092 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3097 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23599,6 +24099,7 @@ $storage_item__3095 = ' copy-from-phrase-append-to-file ' . $storage_item__3096 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3101 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23640,6 +24141,7 @@ $storage_item__3099 = ' copy-from-phrase-append-to-file ' . $storage_item__3100 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3105 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23681,6 +24183,7 @@ $storage_item__3103 = ' copy-from-phrase-append-to-file ' . $storage_item__3104 
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3108 *** filename-output-standard-runtime-functions ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23696,6 +24199,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3110 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23737,6 +24241,7 @@ $storage_item__3107 = ' copy-append-file-to-file ' . $storage_item__3108 . ' ' .
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3114 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23827,6 +24332,7 @@ $storage_item__3122 = 'put-into-phrase ' . $storage_item__3123 . ' ' . $storage_
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3126 *** filename-runtime-code-from-interpreter ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23842,6 +24348,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3128 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23902,6 +24409,7 @@ $storage_item__3130 = 'copy-text ' . $storage_item__3131 . ' ' . $storage_item__
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3135 *** filename-output-results-from-compiler ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -23948,12 +24456,18 @@ return '' ;
 sub function_compiled__assign_action_operand_characteristics( ) {
 $global_replacement_count_for_item_name{ 'assign-action-operand-characteristics' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-new-line check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-repeatedly-using-count check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-append-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities check-operand-count-is-one check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-copy-append-file-to-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-characters-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-column-lists check-operand-count-is-two check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-named-phrases check-operand-count-is-three check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-file-to-phrase check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-phrase-append-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-initial-caps check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-lowercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-uppercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-without-extra-spaces check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-word-at-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-both-lists check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-either-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-only-in-first-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-order-reversed check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-alphabetic check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-numeric check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-text check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-contain-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-unique-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-zero-pad-left-to-length check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-create-empty-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-create-empty-sub-folder check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-decode-from-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-delete-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-delete-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-encode-as-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-parameters-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-line-in-file-that-begins-with-text check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-tagged-info-from-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer check-operand-count-is-three check-operand-one-is-positive-integer check-operand-two-is-positive-integer check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-phrase-usage-counts check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-delimiter check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-characters-from-position-to-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-get-count-of-characters check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-count-of-words check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-current-time-in-epoch-seconds check-operand-count-is-zero amenn ambee put-into-phrase operand-checks-for-action-get-definitions-from-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-get-phrase-definition-without-expanding check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-matching-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-word check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-word-at-position check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-insert-angle-bracketed-definitions check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-insert-codeview-tags check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-linewise-read-from-file-and-use-handler check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-modification-time-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-numeric-absolute check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-cosine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-decrement check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-divide-by check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-equal-greater-less-compare check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-increment check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-integer check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-10 check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-e check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-minus check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-odd-or-even check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-sine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-absolutes check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-add-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-integers check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-add check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-divide-by check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-multiply check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-prepend-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-prepend-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-rename-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-set-file-permission-public-read check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-size-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-trace-show check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase check-operand-count-is-one check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-xml-move-attributes-into-tag-elements check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-empty-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-file-exists check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-folder-exists check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-same-two-phrase-definitions check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-zero-one-multiple check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-zero-or-nonzero check-operand-count-is-one check-operand-one-is-positive-integer amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -23965,7 +24479,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-new-line check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-repeatedly-using-count check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-append-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-append-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-clear-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities check-operand-count-is-one check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-copy-append-file-to-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-characters-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-column-lists check-operand-count-is-two check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-named-phrases check-operand-count-is-three check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-file-to-phrase check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-from-phrase-append-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-copy-initial-caps check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-lowercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-uppercase-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-without-extra-spaces check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-word-at-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-both-lists check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-in-either-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-found-only-in-first-list check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-from-position-to-position check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-copy-words-order-reversed check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-alphabetic check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-sort-numeric check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-begin-with-text check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-that-contain-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-words-unique-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-copy-zero-pad-left-to-length check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-create-empty-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-create-empty-sub-folder check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-decode-from-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-delete-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-delete-listed-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-encode-as-cgi-parameter check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-parameters-only check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-expand-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-line-in-file-that-begins-with-text check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-gather-tagged-info-from-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer check-operand-count-is-three check-operand-one-is-positive-integer check-operand-two-is-positive-integer check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-phrase-usage-counts check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-delimiter check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-generate-positions-of-listed-words check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-characters-from-position-to-position check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-get-count-of-characters check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-count-of-words check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-current-time-in-epoch-seconds check-operand-count-is-zero amenn ambee put-into-phrase operand-checks-for-action-get-definitions-from-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-get-phrase-definition-without-expanding check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-matching-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-position-of-word check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-get-word-at-position check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-insert-angle-bracketed-definitions check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-insert-codeview-tags check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-linewise-read-from-file-and-use-handler check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-modification-time-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-numeric-absolute check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-cosine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-decrement check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-divide-by check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-equal-greater-less-compare check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-increment check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-integer check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-10 check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-logarithm-base-e check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-minus check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-odd-or-even check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-sine check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-absolutes check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-add-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-integers check-operand-count-is-two check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-add check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-divide-by check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-numeric-vectors-multiply check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-prepend-text check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-prepend-text-no-space check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-rename-file check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-set-file-permission-public-read check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-size-of-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components check-operand-count-is-one check-operand-one-is-real-number amenn ambee put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-trace-show check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase check-operand-count-is-one check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name amenn ambee put-into-phrase operand-checks-for-action-xml-move-attributes-into-tag-elements check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-empty-phrase check-operand-count-is-one check-operand-one-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-file-exists check-operand-count-is-one check-operand-one-is-file-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-folder-exists check-operand-count-is-one check-operand-one-is-phrase-not-empty amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-same-two-phrase-definitions check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name amenn ambee put-into-phrase operand-checks-for-action-zero-one-multiple check-operand-count-is-one check-operand-one-is-positive-integer amenn ambee put-into-phrase operand-checks-for-action-zero-or-nonzero check-operand-count-is-one check-operand-one-is-positive-integer amenn
 
 # $global_action_debug_line = '***** assign-action-operand-characteristics **** 3139 *** put-into-phrase ** 4 *' . $storage_item__3140 . ' ' . $storage_item__3141 . ' ' . $storage_item__3142 . ' ' . $storage_item__3143 ;
 # print $global_action_debug_line . "\n" ;
@@ -25759,12 +26272,18 @@ return '' ;
 sub function_compiled__build_paired_replacements_for_converting_hyphens_into_defenns( ) {
 $global_replacement_count_for_item_name{ 'build-paired-replacements-for-converting-hyphens-into-defenns' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text-no-space character-hyphen string-of-hyphens amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -25776,7 +26295,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns amenn ambee prepend-text-no-space character-hyphen string-of-hyphens amenn
 
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3726 *** prepend-text ** 2 *' . $storage_item__3727 . ' ' . $storage_item__3728 ;
 # print $global_action_debug_line . "\n" ;
@@ -25863,12 +26381,18 @@ return '' ;
 sub function_compiled__build_paired_replacements_for_converting_to_combee_comenn( ) {
 $global_replacement_count_for_item_name{ 'build-paired-replacements-for-converting-to-combee-comenn' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-combee paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -25880,7 +26404,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-combee paired-replacements-for-converting-to-combee-comenn amenn ambee prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn amenn
 
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3737 *** prepend-text-no-space ** 2 *' . $storage_item__3738 . ' ' . $storage_item__3739 ;
 # print $global_action_debug_line . "\n" ;
@@ -26041,12 +26564,18 @@ return '' ;
 sub function_compiled__define_special_strings_that_are_padded_with_spaces( ) {
 $global_replacement_count_for_item_name{ 'define-special-strings-that-are-padded-with-spaces' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text string-ambee string-space-ambee-space amenn ambee prepend-text-no-space character-space string-space-ambee-space amenn ambee append-text-no-space character-space string-space-ambee-space amenn ambee copy-text string-amenn string-space-amenn-space amenn ambee prepend-text-no-space character-space string-space-amenn-space amenn ambee append-text-no-space character-space string-space-amenn-space amenn ambee copy-text string-fen string-space-fen-space amenn ambee prepend-text-no-space character-space string-space-fen-space amenn ambee append-text-no-space character-space string-space-fen-space amenn ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn ambee append-text-no-space character-space string-space-hyphen-here-space amenn ambee copy-text string-combee string-space-combee-space amenn ambee prepend-text-no-space character-space string-space-combee-space amenn ambee append-text-no-space character-space string-space-combee-space amenn ambee copy-text string-comenn string-space-comenn-space amenn ambee prepend-text-no-space character-space string-space-comenn-space amenn ambee append-text-no-space character-space string-space-comenn-space amenn ambee copy-text code-concat string-space-concat-space amenn ambee prepend-text-no-space character-space string-space-concat-space amenn ambee append-text-no-space character-space string-space-concat-space amenn ambee copy-text string-one-space string-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-space amenn ambee append-text-no-space character-space string-space-one-space-space amenn ambee copy-text character-hyphen string-space-hyphen-space amenn ambee prepend-text-no-space character-space string-space-hyphen-space amenn ambee append-text-no-space character-space string-space-hyphen-space amenn ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn ambee copy-text string-end-of string-space-end-of-line-here-space amenn ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn ambee append-text-no-space character-space string-space-end-of-line-here-space amenn ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn ambee append-text-no-space character-space string-code-nospay-between-spaces amenn ambee copy-text string-nospay string-space-nospay-space amenn ambee prepend-text-no-space character-space string-space-nospay-space amenn ambee append-text-no-space character-space string-space-nospay-space amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -26058,7 +26587,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text string-ambee string-space-ambee-space amenn ambee prepend-text-no-space character-space string-space-ambee-space amenn ambee append-text-no-space character-space string-space-ambee-space amenn ambee copy-text string-amenn string-space-amenn-space amenn ambee prepend-text-no-space character-space string-space-amenn-space amenn ambee append-text-no-space character-space string-space-amenn-space amenn ambee copy-text string-fen string-space-fen-space amenn ambee prepend-text-no-space character-space string-space-fen-space amenn ambee append-text-no-space character-space string-space-fen-space amenn ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn ambee append-text-no-space character-space string-space-hyphen-here-space amenn ambee copy-text string-combee string-space-combee-space amenn ambee prepend-text-no-space character-space string-space-combee-space amenn ambee append-text-no-space character-space string-space-combee-space amenn ambee copy-text string-comenn string-space-comenn-space amenn ambee prepend-text-no-space character-space string-space-comenn-space amenn ambee append-text-no-space character-space string-space-comenn-space amenn ambee copy-text code-concat string-space-concat-space amenn ambee prepend-text-no-space character-space string-space-concat-space amenn ambee append-text-no-space character-space string-space-concat-space amenn ambee copy-text string-one-space string-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-space amenn ambee append-text-no-space character-space string-space-one-space-space amenn ambee copy-text character-hyphen string-space-hyphen-space amenn ambee prepend-text-no-space character-space string-space-hyphen-space amenn ambee append-text-no-space character-space string-space-hyphen-space amenn ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn ambee copy-text string-end-of string-space-end-of-line-here-space amenn ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn ambee append-text-no-space character-space string-space-end-of-line-here-space amenn ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn ambee append-text-no-space character-space string-code-nospay-between-spaces amenn ambee copy-text string-nospay string-space-nospay-space amenn ambee prepend-text-no-space character-space string-space-nospay-space amenn ambee append-text-no-space character-space string-space-nospay-space amenn
 
 # $global_action_debug_line = '***** define-special-strings-that-are-padded-with-spaces **** 3841 *** copy-text ** 2 *' . $storage_item__3842 . ' ' . $storage_item__3843 ;
 # print $global_action_debug_line . "\n" ;
@@ -27085,12 +27613,18 @@ return '' ;
 sub function_compiled__define_special_strings_that_cannot_be_spelled_in_full( ) {
 $global_replacement_count_for_item_name{ 'define-special-strings-that-cannot-be-spelled-in-full' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text character-f string-fen amenn ambee append-text-no-space character-e string-fen amenn ambee append-text-no-space character-n string-fen amenn ambee copy-text string-am string-ambee amenn ambee append-text-no-space string-bee string-ambee amenn ambee copy-text string-am string-amenn amenn ambee append-text-no-space string-enn string-amenn amenn ambee copy-text string-amenn string-amennfen amenn ambee append-text-no-space string-fen string-amennfen amenn ambee copy-text string-com string-combee amenn ambee append-text-no-space string-bee string-combee amenn ambee copy-text string-com string-comenn amenn ambee append-text-no-space string-enn string-comenn amenn ambee copy-text string-def string-defenn amenn ambee append-text-no-space string-enn string-defenn amenn ambee copy-text string-fen string-fenambee amenn ambee append-text-no-space string-bee string-fenambee amenn ambee copy-text string-no string-nospay amenn ambee append-text-no-space string-spay string-nospay amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -27102,7 +27636,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text character-f string-fen amenn ambee append-text-no-space character-e string-fen amenn ambee append-text-no-space character-n string-fen amenn ambee copy-text string-am string-ambee amenn ambee append-text-no-space string-bee string-ambee amenn ambee copy-text string-am string-amenn amenn ambee append-text-no-space string-enn string-amenn amenn ambee copy-text string-amenn string-amennfen amenn ambee append-text-no-space string-fen string-amennfen amenn ambee copy-text string-com string-combee amenn ambee append-text-no-space string-bee string-combee amenn ambee copy-text string-com string-comenn amenn ambee append-text-no-space string-enn string-comenn amenn ambee copy-text string-def string-defenn amenn ambee append-text-no-space string-enn string-defenn amenn ambee copy-text string-fen string-fenambee amenn ambee append-text-no-space string-bee string-fenambee amenn ambee copy-text string-no string-nospay amenn ambee append-text-no-space string-spay string-nospay amenn
 
 # $global_action_debug_line = '***** define-special-strings-that-cannot-be-spelled-in-full **** 3981 *** copy-text ** 2 *' . $storage_item__3982 . ' ' . $storage_item__3983 ;
 # print $global_action_debug_line . "\n" ;
@@ -27502,12 +28035,18 @@ return '' ;
 sub function_compiled__define_special_strings_that_contain_hyphens( ) {
 $global_replacement_count_for_item_name{ 'define-special-strings-that-contain-hyphens' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee copy-text string-hyphen string-hyphen-here amenn ambee append-text-no-space character-hyphen string-hyphen-here amenn ambee append-text-no-space string-here string-hyphen-here amenn ambee copy-text string-character string-character-hyphen amenn ambee append-text-no-space character-hyphen string-character-hyphen amenn ambee append-text-no-space string-hyphen string-character-hyphen amenn ambee copy-text string-no string-no-space amenn ambee append-text-no-space character-hyphen string-no-space amenn ambee append-text-no-space string-space string-no-space amenn ambee copy-text string-one string-one-space amenn ambee append-text-no-space character-hyphen string-one-space amenn ambee append-text-no-space string-space string-one-space amenn ambee copy-text string-new string-new-line amenn ambee append-text-no-space character-hyphen string-new-line amenn ambee append-text-no-space string-line string-new-line amenn ambee copy-text string-empty string-empty-line amenn ambee append-text-no-space character-hyphen string-empty-line amenn ambee append-text-no-space string-line string-empty-line amenn ambee copy-text string-empty string-empty-text amenn ambee append-text-no-space character-hyphen string-empty-text amenn ambee append-text-no-space string-text string-empty-text amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -27519,7 +28058,6 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee copy-text string-hyphen string-hyphen-here amenn ambee append-text-no-space character-hyphen string-hyphen-here amenn ambee append-text-no-space string-here string-hyphen-here amenn ambee copy-text string-character string-character-hyphen amenn ambee append-text-no-space character-hyphen string-character-hyphen amenn ambee append-text-no-space string-hyphen string-character-hyphen amenn ambee copy-text string-no string-no-space amenn ambee append-text-no-space character-hyphen string-no-space amenn ambee append-text-no-space string-space string-no-space amenn ambee copy-text string-one string-one-space amenn ambee append-text-no-space character-hyphen string-one-space amenn ambee append-text-no-space string-space string-one-space amenn ambee copy-text string-new string-new-line amenn ambee append-text-no-space character-hyphen string-new-line amenn ambee append-text-no-space string-line string-new-line amenn ambee copy-text string-empty string-empty-line amenn ambee append-text-no-space character-hyphen string-empty-line amenn ambee append-text-no-space string-line string-empty-line amenn ambee copy-text string-empty string-empty-text amenn ambee append-text-no-space character-hyphen string-empty-text amenn ambee append-text-no-space string-text string-empty-text amenn
 
 # $global_action_debug_line = '***** define-special-strings-that-contain-hyphens **** 4040 *** copy-text ** 2 *' . $storage_item__4041 . ' ' . $storage_item__4042 ;
 # print $global_action_debug_line . "\n" ;
@@ -27969,12 +28507,18 @@ return '' ;
 sub function_compiled__define_special_strings( ) {
 $global_replacement_count_for_item_name{ 'define-special-strings' } ++ ;
 my $saved_accumulator_pointer = -1 ;
+
+# ambee define-special-strings-that-cannot-be-spelled-in-full amenn ambee define-special-strings-that-contain-hyphens amenn ambee define-special-strings-that-are-padded-with-spaces amenn ambee copy-text character-open-bracket string-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket amenn ambee copy-text character-hyphen string-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-open-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-text string-fen string-space-fen-ambee-space amenn ambee prepend-text-no-space character-space string-space-fen-ambee-space amenn ambee append-text string-ambee string-space-fen-ambee-space amenn ambee append-text-no-space character-space string-space-fen-ambee-space amenn ambee copy-text string-amenn string-space-amenn-fen-space amenn ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn ambee append-text string-fen string-space-amenn-fen-space amenn ambee append-text-no-space character-space string-space-amenn-fen-space amenn ambee copy-text character-period runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-period runtime-code-inserted-separator-space amenn ambee prepend-text-no-space character-space runtime-code-inserted-separator-space amenn ambee append-text-no-space character-space runtime-code-inserted-separator-space amenn ambee copy-text character-newline new-empty-line amenn ambee copy-text new-empty-line new-empty-lines amenn ambee append-text-no-space character-newline new-empty-lines amenn ambee copy-text string-one-space string-space-one-space-no-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-no-space-space amenn ambee append-text string-no-space string-space-one-space-no-space-space amenn ambee append-text-no-space character-space string-space-one-space-no-space-space amenn ambee copy-text string-no-space string-space-no-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-one-space-space amenn ambee append-text string-one-space string-space-no-space-one-space-space amenn ambee append-text-no-space character-space string-space-no-space-one-space-space amenn ambee copy-text four-hyphens string-of-hyphens amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8 amenn ambee clear-phrase paired-replacements-for-converting-to-combee-comenn amenn ambee put-into-phrase string-asterisk-and-hyphens * amenn ambee put-into-phrase string-hyphens-and-asterisk * amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8 amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-nospay amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-text character-apostrophe runtime-code-concatenated-empty amenn ambee append-text-no-space character-apostrophe runtime-code-concatenated-empty amenn ambee copy-text string-combee list-combee-comenn-defenn amenn ambee append-text string-comenn list-combee-comenn-defenn amenn ambee append-text string-defenn list-combee-comenn-defenn amenn ambee copy-text string-ambee list-ambee-amenn amenn ambee append-text string-amenn list-ambee-amenn amenn ambee copy-text list-ambee-amenn list-ambee-amenn-fen-nospay amenn ambee append-text string-fen list-ambee-amenn-fen-nospay amenn ambee append-text string-nospay list-ambee-amenn-fen-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-character-apostrophe amenn ambee append-text-no-space string-apostrophe string-placeholder-character-apostrophe amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe amenn ambee copy-text string-placeholder-prefix string-placeholder-character-backslash amenn ambee append-text-no-space string-backslash string-placeholder-character-backslash amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-backslash amenn ambee copy-text string-placeholder-prefix string-placeholder-action-name amenn ambee append-text-no-space string-action string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name amenn ambee append-text-no-space string-name string-placeholder-action-name amenn ambee copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-with string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores amenn ambee copy-text string-placeholder-prefix string-placeholder-omit amenn ambee append-text-no-space string-omit string-placeholder-omit amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-omit amenn ambee copy-text string-placeholder-prefix string-placeholder-fen amenn ambee append-text-no-space string-fen string-placeholder-fen amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-fen amenn ambee copy-text string-placeholder-prefix string-placeholder-nospay amenn ambee append-text-no-space string-nospay string-placeholder-nospay amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-special amenn ambee append-text-no-space string-special string-placeholder-special amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-special amenn ambee copy-text string-placeholder-prefix string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-phrase string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-being string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-defined string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined amenn ambee copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-code string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-for string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-executable string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-phrase string-placeholder-code-for-executable-phrase amenn ambee copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores amenn ambee copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-one string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-underscore string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-space string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space amenn ambee copy-text template-new-empty-line string-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-space-new-line-in-brackets amenn ambee prepend-text-no-space character-space string-space-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-new-line-in-brackets-space amenn ambee append-text-no-space character-space string-new-line-in-brackets-space amenn
+
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
 &handle_endless_loop_encountered( ) ;
 exit ;
 }
+
+# Check for time limit exceeded
 $global_interval_count_for_time_limit_check ++ ;
 if ( $global_interval_count_for_time_limit_check > 10000 )
 {
@@ -27986,10 +28530,10 @@ if ( $elapsed_time > $global_time_limit )
 exit ;
 }
 }
-# ambee define-special-strings-that-cannot-be-spelled-in-full amenn ambee define-special-strings-that-contain-hyphens amenn ambee define-special-strings-that-are-padded-with-spaces amenn ambee copy-text character-open-bracket string-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket amenn ambee copy-text character-hyphen string-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-open-bracket string-dash-close-bracket-dash-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn ambee copy-text character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn ambee copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space amenn ambee append-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn ambee append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn ambee copy-text string-fen string-space-fen-ambee-space amenn ambee prepend-text-no-space character-space string-space-fen-ambee-space amenn ambee append-text string-ambee string-space-fen-ambee-space amenn ambee append-text-no-space character-space string-space-fen-ambee-space amenn ambee copy-text string-amenn string-space-amenn-fen-space amenn ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn ambee append-text string-fen string-space-amenn-fen-space amenn ambee append-text-no-space character-space string-space-amenn-fen-space amenn ambee copy-text character-period runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn ambee append-text character-period runtime-code-inserted-separator-space amenn ambee prepend-text-no-space character-space runtime-code-inserted-separator-space amenn ambee append-text-no-space character-space runtime-code-inserted-separator-space amenn ambee copy-text character-newline new-empty-line amenn ambee copy-text new-empty-line new-empty-lines amenn ambee append-text-no-space character-newline new-empty-lines amenn ambee copy-text string-one-space string-space-one-space-no-space-space amenn ambee prepend-text-no-space character-space string-space-one-space-no-space-space amenn ambee append-text string-no-space string-space-one-space-no-space-space amenn ambee append-text-no-space character-space string-space-one-space-no-space-space amenn ambee copy-text string-no-space string-space-no-space-one-space-space amenn ambee prepend-text-no-space character-space string-space-no-space-one-space-space amenn ambee append-text string-one-space string-space-no-space-one-space-space amenn ambee append-text-no-space character-space string-space-no-space-one-space-space amenn ambee copy-text four-hyphens string-of-hyphens amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8 amenn ambee clear-phrase paired-replacements-for-converting-to-combee-comenn amenn ambee put-into-phrase string-asterisk-and-hyphens * amenn ambee put-into-phrase string-hyphens-and-asterisk * amenn ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8 amenn ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8 amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text character-period runtime-code-between-items-for-concatenation-type-fen amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn ambee copy-text character-period runtime-code-between-items-for-concatenation-type-nospay amenn ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn ambee copy-text character-apostrophe runtime-code-concatenated-empty amenn ambee append-text-no-space character-apostrophe runtime-code-concatenated-empty amenn ambee copy-text string-combee list-combee-comenn-defenn amenn ambee append-text string-comenn list-combee-comenn-defenn amenn ambee append-text string-defenn list-combee-comenn-defenn amenn ambee copy-text string-ambee list-ambee-amenn amenn ambee append-text string-amenn list-ambee-amenn amenn ambee copy-text list-ambee-amenn list-ambee-amenn-fen-nospay amenn ambee append-text string-fen list-ambee-amenn-fen-nospay amenn ambee append-text string-nospay list-ambee-amenn-fen-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-character-apostrophe amenn ambee append-text-no-space string-apostrophe string-placeholder-character-apostrophe amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe amenn ambee copy-text string-placeholder-prefix string-placeholder-character-backslash amenn ambee append-text-no-space string-backslash string-placeholder-character-backslash amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-character-backslash amenn ambee copy-text string-placeholder-prefix string-placeholder-action-name amenn ambee append-text-no-space string-action string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name amenn ambee append-text-no-space string-name string-placeholder-action-name amenn ambee copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-with string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-action-name-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores amenn ambee copy-text string-placeholder-prefix string-placeholder-omit amenn ambee append-text-no-space string-omit string-placeholder-omit amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-omit amenn ambee copy-text string-placeholder-prefix string-placeholder-fen amenn ambee append-text-no-space string-fen string-placeholder-fen amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-fen amenn ambee copy-text string-placeholder-prefix string-placeholder-nospay amenn ambee append-text-no-space string-nospay string-placeholder-nospay amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-nospay amenn ambee copy-text string-placeholder-prefix string-placeholder-special amenn ambee append-text-no-space string-special string-placeholder-special amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-special amenn ambee copy-text string-placeholder-prefix string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-phrase string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-being string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn ambee append-text-no-space string-defined string-placeholder-phrase-being-defined amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined amenn ambee copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-code string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-for string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-executable string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space string-phrase string-placeholder-code-for-executable-phrase amenn ambee copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores amenn ambee copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-one string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-underscore string-placeholder-for-space-one-space-space amenn ambee append-text-no-space string-space string-placeholder-for-space-one-space-space amenn ambee append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space amenn ambee copy-text template-new-empty-line string-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-space-new-line-in-brackets amenn ambee prepend-text-no-space character-space string-space-new-line-in-brackets amenn ambee copy-text string-new-line-in-brackets string-new-line-in-brackets-space amenn ambee append-text-no-space character-space string-new-line-in-brackets-space amenn
 
 # $global_action_debug_line = '***** define-special-strings **** 4105 *** define-special-strings-that-cannot-be-spelled-in-full ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -28005,6 +28549,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** define-special-strings **** 4107 *** define-special-strings-that-contain-hyphens ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
@@ -28020,6 +28565,7 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # $global_action_debug_line = '***** define-special-strings **** 4109 *** define-special-strings-that-are-padded-with-spaces ** 0 *' . '' ;
 # print $global_action_debug_line . "\n" ;
+# Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )
 {
