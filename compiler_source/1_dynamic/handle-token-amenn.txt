@@ -4,5 +4,3 @@
 [-expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase-]
 [-generate-code-for-one-action-]
 [-if-end-]
-
-[-copy-from-phrase-append-to-file character-newline [-filename-output-results-all-definition-items-]-]
