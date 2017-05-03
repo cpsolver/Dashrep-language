@@ -1,5 +1,6 @@
 template-runtime-code-for-action-executable-phrase-begin
 
+$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
 $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 
