@@ -52,3 +52,4 @@ code-compiled-function-part-6
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
+runtime-code-print-trace-output
