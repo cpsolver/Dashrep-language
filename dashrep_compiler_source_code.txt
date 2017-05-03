@@ -449,6 +449,7 @@ handle-definition-contains-ambee-amenn:
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined runtime-code-compiled-function-]
+[-copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined-]
 [-append-text-no-space code-compiled-function-part-3 runtime-code-compiled-function-]
 [-append-text list-of-tokens-in-current-definition runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function-]
@@ -639,13 +640,6 @@ handle-token-amenn-case-executable-phrase:
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
 [-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
-
-[-if-yes-begin [-yes-or-no-same-two-phrase-definitions action-name phrase-being-defined-]-]
-[-append-text warning-executable-phrase-matches-container-phrase-begin warning-message-]
-[-append-text phrase-being-defined warning-message-]
-[-append-text warning-executable-phrase-matches-container-phrase-end warning-message-]
-[-append-text-no-space warning-message warning-messages-]
-[-if-end-]
 ----
 handle-token-amenn-case-expand-text:
 [-numeric-increment current-accumulator-pointer-]
@@ -1847,12 +1841,6 @@ contains more am no-space bee tokens (or character-open-square-bracket no-space 
 template-warning-more-amenn-than-ambee-tokens:
 contains fewer am no-space bee tokens (or character-open-square-bracket no-space character-hyphen occurences) than am no-space enn tokens (or character-hyphen no-space character-close-square-bracket occurences)  <new_line>
 ----
-warning-executable-phrase-matches-container-phrase-begin:
-WARNING:  Phrase
-----
-warning-executable-phrase-matches-container-phrase-end:
-contains an attempt to execute itself, which would cause an endless loop  <new_line>
-----
 warning-wrong-number-of-required-operands-part-1:
 WARNING:  Wrong number of required operands for action
 ----
@@ -1953,6 +1941,7 @@ code-compiled-function-part-6
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
+runtime-code-print-trace-output
 ----
 optional-extra-runtime-functions:
 ----
@@ -2118,8 +2107,9 @@ template-function-handle-endless-loop-encountered:
 sub handle_endless_loop_encountered( ) {  <new_line>
 print 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-debug-trace-log' } .= 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+
+template-runtime-code-print-trace-output
+
 exit ;  <new_line>
 
 template-function-segment-ending
@@ -2132,8 +2122,9 @@ template-function-handle-time-limit-exceeded:
 sub handle_time_limit_exceeded( ) {  <new_line>
 print 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-debug-trace-log' } .= 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+
+template-runtime-code-print-trace-output
+
 exit ;  <new_line>
 
 template-function-segment-ending
@@ -2321,6 +2312,10 @@ my template-storage-item-prefix storage-position-for-word-list-associated-with-l
 template-runtime-code-one-storage-position-declaration:
 my storage-position-name = '' ;  <new_line>
 ----
+template-runtime-code-print-trace-output:
+print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep hyphen-here debug hyphen-here trace hyphen-here log' } . "\n" ;  <new_line>
+close ( TRACE_OUT ) ;  <new_line>
+----
 template-runtime-code-statement-end-with-new-line:
 ;  <new_line>
 ----
@@ -2339,6 +2334,22 @@ template-runtime-code-check-for-endless-loop
 <new_line>
 template-runtime-code-check-for-time-limit-exceeded
 <new_line>
+
+if ( $global_phrase_name_to_match eq $global_phrase_name_currently_executing ) {  <new_line>
+print 'ERROR:  Phrase ' . $global_phrase_name_to_match . ' has requested executing itself, which would cause an endless loop, so exiting now!' . "\n" ;  <new_line>
+
+template-runtime-code-print-trace-output
+
+exit ;  <new_line>
+}  <new_line>
+
+if ( index( $global_phrase_name_to_match , ' ' ) >= 0 ) {  <new_line>
+print 'ERROR:  Phrase "' . $global_phrase_name_to_match . '" is not a valid phrase name, which means a major error has occurred, so exiting now!' . "\n" ;  <new_line>
+
+template-runtime-code-print-trace-output
+
+exit ;  <new_line>
+}  <new_line>
 
 if ( $global_phrase_name_to_match eq 'start-here' ) {  <new_line>
 &function_compiled__start_here( ) ;
@@ -2425,8 +2436,8 @@ print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+template-runtime-code-print-trace-output
+
 exit ;  <new_line>
 <new_line>
 <new_line>
@@ -2516,11 +2527,11 @@ list-of-template-functions:
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-normalize-calculated-value
+template-function-parameterized-remove-leading-trailing-spaces
 template-function-parameterized-yes-or-no-phrase-name
 template-function-parameterized-yes-or-no-phrase-definition-not-empty
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-get-list-of-words
-template-function-parameterized-remove-leading-trailing-spaces
 
 template-function-point-to-words
 template-function-remove-extra-spaces
@@ -2532,6 +2543,47 @@ template-function-numeric-maximum
 template-function-numeric-minimum
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
+----
+template-function-file-open-input:
+# no-space dashes-long-line  <new_line>
+# function__file_open_input  <new_line>
+#  <new_line>
+#  Input is $global_input_file_name  <new_line>
+#  Output is file INFILE  <new_line>
+<new_line>
+
+sub function__file_open_input( ) {  <new_line>
+
+
+
+template-function-segment-ending
+----
+template-function-file-open-output:
+# no-space dashes-long-line  <new_line>
+# function__file_open_input  <new_line>
+#  <new_line>
+#  Input is $global_output_file_name  <new_line>
+#  Output is file OUTFILE  <new_line>
+<new_line>
+
+sub function__file_open_output( ) {  <new_line>
+
+
+
+template-function-segment-ending
+----
+template-function-file-write-protect:
+# no-space dashes-long-line  <new_line>
+# function__file_write_protect  <new_line>
+#  <new_line>
+#  Input is $global_output_file_name  <new_line>
+<new_line>
+
+sub function__file_write_protect( ) {  <new_line>
+
+
+
+template-function-segment-ending
 ----
 template-function-get-count-of-words:
 # no-space dashes-long-line  <new_line>
@@ -2831,17 +2883,21 @@ sub function_parameterized__yes_or_no_phrase_definition_not_empty( ) {  <new_lin
 my $local_text ;  <new_line>
 $local_text = $_[ 0 ] ;  <new_line>
 
-if ( $local_text !~ /^[^ ]+-[^ ]+$/ ) {  <new_line>
+if ( index( $local_text , ' ' ) >= 0 ) {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( $global_dashrep_replacement{ $local_text } =~ /[^ ]/ ) {  <new_line>
+if ( index( $local_text , '-' ) < 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
 
 *--- If the phrase is not defined, define it as empty ---*
 if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
 code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = '' ;  <new_line>
+return $global_no ;  <new_line>
 }  <new_line>
 
+if ( '' ne &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) {  <new_line>
 return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
@@ -3172,6 +3228,7 @@ template-runtime-code-for-action-executable-phrase-end
 template-runtime-code-for-action-executable-phrase:
 template-runtime-code-for-action-executable-phrase-begin
 
+$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
 $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 
