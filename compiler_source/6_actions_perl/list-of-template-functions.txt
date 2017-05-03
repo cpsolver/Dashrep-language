@@ -1,11 +1,11 @@
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-normalize-calculated-value
+template-function-parameterized-remove-leading-trailing-spaces
 template-function-parameterized-yes-or-no-phrase-name
 template-function-parameterized-yes-or-no-phrase-definition-not-empty
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-get-list-of-words
-template-function-parameterized-remove-leading-trailing-spaces
 
 template-function-point-to-words
 template-function-remove-extra-spaces
