@@ -41,10 +41,3 @@
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
 [-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
-
-[-if-yes-begin [-yes-or-no-same-two-phrase-definitions action-name phrase-being-defined-]-]
-[-append-text warning-executable-phrase-matches-container-phrase-begin warning-message-]
-[-append-text phrase-being-defined warning-message-]
-[-append-text warning-executable-phrase-matches-container-phrase-end warning-message-]
-[-append-text-no-space warning-message warning-messages-]
-[-if-end-]
