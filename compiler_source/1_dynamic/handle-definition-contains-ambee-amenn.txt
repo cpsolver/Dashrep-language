@@ -17,6 +17,7 @@
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined runtime-code-compiled-function-]
+[-copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined-]
 [-append-text-no-space code-compiled-function-part-3 runtime-code-compiled-function-]
 [-append-text list-of-tokens-in-current-definition runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function-]
