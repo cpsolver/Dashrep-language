@@ -5,8 +5,9 @@
 sub handle_endless_loop_encountered( ) {  <new_line>
 print 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-debug-trace-log' } .= 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+
+template-runtime-code-print-trace-output
+
 exit ;  <new_line>
 
 template-function-segment-ending

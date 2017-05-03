@@ -16,8 +16,8 @@ print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
-print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep-debug-trace-log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+template-runtime-code-print-trace-output
+
 exit ;  <new_line>
 <new_line>
 <new_line>
