@@ -1,0 +1,512 @@
+start-here:
+[-test-of-special-operators-]
+--------
+dashrep-action-trace-on-yes-or-no:
+yes
+--------
+
+dashrep-warning-trace-on-yes-or-no:
+yes
+--------
+
+dashrep-special-replacement-newline:
+[eol]
+--------
+
+symbol-two-periods:
+..
+--------
+
+text-with-extra-spaces:
+12 34  56   78   90
+--------
+
+template-for-createlist:
+abc-[-createlist-parameter-]-def
+--------
+
+template-for-full-createlist:
+abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi
+--------
+
+list-of-numbers:
+3 12 7 13 4
+--------
+
+test-of-special-operators:
+[-put-into-phrase test-assignment  17 -]
+[-put-into-phrase should-be-17  [-test-assignment-] -]
+[-put-into-phrase correct-value-for-should-be-17  17 -]
+[-put-into-phrase first-word-phrase  copied -]
+[-put-into-phrase second-word-phrase  text -]
+[-copy-text empty-text copied-text-]
+[-append-text first-word-phrase copied-text-]
+[-append-text second-word-phrase copied-text-]
+[-copy-text copied-text should-be-copied-text-]
+[-put-into-phrase correct-value-for-should-be-copied-text  copied text -]
+[-put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp; -]
+[-put-into-phrase dashrep-special-replacement-hyphen  &ndash; -]
+[-copy-without-extra-spaces text-with-special-characters text-with-adjacent-spaces-replaced-]
+[-put-into-phrase correct-value-text-with-adjacent-spaces-replaced  ??? -]
+[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
+[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
+[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
+*---
+[-copy-without-extra-spaces page-participants-list correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
+---*
+[-put-into-phrase should-be-zero  [-zero-one-multiple 0-] -]
+[-put-into-phrase correct-value-for-should-be-zero  zero -]
+[-put-into-phrase should-be-one  [-zero-one-multiple 1-] -]
+[-put-into-phrase correct-value-for-should-be-one  one -]
+[-put-into-phrase should-be-multiple  [-zero-one-multiple 2-] -]
+[-put-into-phrase correct-value-for-should-be-multiple  multiple -]
+[-put-into-phrase should-be-size-zero  [-get-count-of-words empty-text-] -]
+[-put-into-phrase correct-value-for-should-be-size-zero  0 -]
+[-put-into-phrase should-be-size-one  [-get-count-of-words should-be-17-] -]
+[-put-into-phrase correct-value-for-should-be-size-one  1 -]
+[-put-into-phrase list-of-size-three  4 5 6 -]
+[-put-into-phrase should-be-size-three  [-get-count-of-words list-of-size-three-] -]
+[-put-into-phrase correct-value-for-should-be-size-three  3 -]
+[-put-into-phrase list-of-numbers  3 12 7 13 4 -]
+[-put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -] -]
+[-put-into-phrase correct-value-for-should-be-number-three  3 -]
+[-put-into-phrase should-be-item-four  [-get-word-at-position list-of-numbers 999 -] -]
+[-put-into-phrase correct-value-for-should-be-item-four  4 -]
+[-put-into-phrase should-be-same-words-yes  [-yes-or-no-same-two-words waltz waltz-] -]
+[-put-into-phrase correct-value-for-should-be-same-words-yes  yes -]
+[-put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-] -]
+[-put-into-phrase correct-value-for-should-be-same-words-no  no -]
+[-put-into-phrase item-one  waltz -]
+[-put-into-phrase item-two  dance -]
+[-put-into-phrase should-be-same-yes  [-yes-or-no-same-two-phrase-definitions item-one item-one-] -]
+[-put-into-phrase correct-value-for-should-be-same-yes  yes -]
+[-put-into-phrase should-be-same-no  [-yes-or-no-same-two-phrase-definitions item-one item-two-] -]
+[-put-into-phrase correct-value-for-should-be-same-no  no -]
+[-put-into-phrase test-counter  17 -]
+[-put-into-phrase test-value  3 -]
+[-put-into-phrase compare-numbers-equal  [-numeric-equal-greater-less-compare 16 16-] -]
+[-put-into-phrase correct-value-for-compare-numbers-equal  equal -]
+[-put-into-phrase compare-numbers-less  [-numeric-equal-greater-less-compare 18 19-] -]
+[-put-into-phrase correct-value-for-compare-numbers-less  less -]
+[-put-into-phrase compare-numbers-greater  [-numeric-equal-greater-less-compare 21 20-] -]
+[-put-into-phrase correct-value-for-compare-numbers-greater  greater -]
+[-copy-text empty-text test-text-length-0-]
+[-put-into-phrase should-be-length-0  [-get-count-of-characters test-text-length-0-] -]
+[-put-into-phrase correct-value-for-should-be-length-0  0 -]
+[-put-into-phrase test-text-length-1  a -]
+[-put-into-phrase should-be-length-1  [-get-count-of-characters test-text-length-1-] -]
+[-put-into-phrase correct-value-for-should-be-length-1  1 -]
+[-put-into-phrase test-text-length-7  abcdefg -]
+[-put-into-phrase should-be-length-7  [-get-count-of-characters test-text-length-7-] -]
+[-put-into-phrase correct-value-for-should-be-length-7  7 -]
+[-put-into-phrase should-be-item-with-value-7  [-get-word-at-position list-of-numbers 3-] -]
+[-put-into-phrase correct-value-for-should-be-item-with-value-7  7 -]
+[-generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7-]
+[-put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7 -]
+[-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
+
+[-trace-show counts-from-5-to-minus-4 -]
+
+[-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
+[-put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -] -]
+[-put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4 -]
+[-generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
+[-put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions ??? -]
+[-put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions ??? -]
+[-should-be-counts-3-and-minus-2 = [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38-]-]
+[-put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2 -]
+[-put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-] -]
+[-put-into-phrase correct-value-for-calculation-result  23 -]
+[-put-into-phrase compare-result  [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17 -] [-numeric-equal-greater-less-compare 17 23-]-]
+[-put-into-phrase correct-value-for-compare-result  greater equal less -]
+[-put-into-phrase string-to-test-character-actions  abc123 abc123 abc123 -]
+[-put-into-phrase character-result  [-get-characters-from-position-to-position string-to-test-character-actions 1 1-][-get-characters-from-position-to-position string-to-test-character-actions 2 2-][-get-characters-from-position-to-position string-to-test-character-actions 4 4-][-get-characters-from-position-to-position string-to-test-character-actions 5 5-][-get-characters-from-position-to-position string-to-test-character-actions 20 20-][-get-characters-from-position-to-position string-to-test-character-actions 21 21-]-]
+[-put-into-phrase correct-value-for-character-result  ab1233 -]
+[-put-into-phrase sample-word-list  alpha beta gamma delta -]
+[-copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
+[-put-into-phrase correct-value-for-should-be-beta-gamma  beta gamma -]
+[-put-into-phrase word-alpha  alpha  -]
+[-put-into-phrase word-gamma  gamma  -]
+[-put-into-phrase word-other  other  -]
+[-put-into-phrase word-list-result  [-get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list-] -]
+[-put-into-phrase correct-value-for-word-list-result  1-3-0 -]
+[-put-into-phrase sample-word-list-one  alpha alpha-here and beta gamma beta delta -]
+[-put-into-phrase sample-word-list-two  something-here alpha alpha-here beta delta whatever -]
+[-put-into-phrase sample-word-list-three  alpha-here and gamma delta something-here whatever -]
+[-prepend-text-no-space character-space sample-word-list-one-]
+[-append-new-line sample-word-list-one-]
+[-append-text-no-space character-space sample-word-list-one-]
+[-put-into-phrase correct-value-for-sample-word-list-one  ??? -]
+[-prepend-text-no-space character-space sample-word-list-two-]
+[-append-new-line sample-word-list-two-]
+[-append-text-no-space character-space sample-word-list-two-]
+[-put-into-phrase correct-value-for-sample-word-list-two  something-here alpha alpha-here beta delta whatever -]
+[-append-text-no-space character-space correct-value-for-sample-word-list-two-]
+[-prepend-text-no-space character-space sample-word-list-three-]
+[-append-new-line sample-word-list-three-]
+[-append-text-no-space character-space sample-word-list-three-]
+[-put-into-phrase correct-value-for-sample-word-list-three  ??? -]
+[-copy-text sample-word-list-one list-with-dups-]
+[-append-text sample-word-list-two list-with-dups-]
+[-copy-without-extra-spaces list-with-dups list-with-dups-without-extra-spaces-]
+[-put-into-phrase correct-value-for-list-with-dups-without-extra-spaces  alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever -]
+[-put-into-phrase find-in-lists-result  [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list list-with-dups sample-word-list-three word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] - [-list-of-unique-word-counts-] - [-list-of-pointers-to-unique-words-] -]
+[-put-into-phrase correct-value-for-find-in-lists-result  ??? -]
+[-put-into-phrase hyphen-translation-safe  <character_hyphen> -]
+[-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
+[-put-into-phrase correct-value-for-text-translation-safe  ??? -]
+[-put-into-phrase already-expanded-phrase  one<character_hyphen>two<character_hyphen>three <item_one> -]
+[-insert-angle-bracketed-definitions already-expanded-phrase-]
+[-put-into-phrase correct-value-for-already-expanded-phrase  one-two-three waltz -]
+[-put-into-phrase yes-or-no-allow-user-defined-actions  yes -]
+[-put-into-phrase string-123  123  -]
+[-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
+[-put-into-phrase correct-value-for-string-123-padded  00123 -]
+[-put-into-phrase vector-one  17 23 -4  -]
+[-put-into-phrase vector-two  21 -9 0  -]
+[-numeric-vector-add-number vector-one -7 vector-result-add-number-]
+[-put-into-phrase correct-value-for-vector-add-number  ??? -]
+[-numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number-]
+[-put-into-phrase correct-value-for-vector-result-multiply-by-number  119 161 -28 -]
+[-numeric-vectors-add vector-one vector-two vector-result-addition-]
+[-put-into-phrase correct-value-for-vector-result-addition  38 14 -4 -]
+[-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
+[-put-into-phrase correct-value-for-vector-result-distances  27 25 4 -]
+[-put-into-phrase text-to-repeat  number 9  -]
+[-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
+[-put-into-phrase correct-value-for-list-of-repeated-text  ??? -]
+[-put-into-phrase text-with-named-html-entities  abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def  -]
+[-put-into-phrase text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  -]
+[-copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
+[-put-into-phrase correct-value-for-text-with-tag-and-attribute  ??? -]
+[-put-into-phrase list-of-words-to-search-based-on-prefix  here-is-something here-is-something-else hereis-something-else and-something-else -]
+[-put-into-phrase text-begins-with  here-is -]
+[-copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
+[-put-into-phrase correct-value-for-list-of-words-that-begin-with-text  ??? -]
+[-put-into-phrase text-contains  is  -]
+[-copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains-]
+[-put-into-phrase text-begins-with  and  -]
+[-copy-words-that-begin-with-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-listed-words text-begins-with-]
+[-put-into-phrase correct-value-for-list-of-words-that-begin-with-listed-words  and-something-else -]
+[-put-into-phrase text-for-multiple-find  fish bird -]
+[-put-into-phrase text-for-multiple-search  birds songbird fish clownfish -]
+[-generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
+[-put-into-phrase correct-value-for-pointers-to-multiple-matching-words  1 4 11 14 16 19 26 29 -]
+[-put-into-phrase paired-words-for-replacements  bird flier fish swimmer -]
+[-copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
+[-put-into-phrase correct-value-for-results-replacements-using-paired-words  fliers songflier swimmer clownswimmer -]
+[-put-into-phrase string-category-underscore  category_  -]
+[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
+[-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
+[-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
+[-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray -]
+[-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
+[-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
+[-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
+[-put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined -]
+[-copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented-]
+[-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
+[-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
+[-put-into-phrase correct-value-for-list-of-phrase-names-difference  . . -]
+[-put-into-phrase string-abc  abc -]
+[-copy-text character-space text-to-append-with-leading-and-trailing-space-]
+[-append-text-no-space string-abc text-to-append-with-leading-and-trailing-space-]
+[-append-text-no-space character-space text-to-append-with-leading-and-trailing-space-]
+[-copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending-]
+[-append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending-]
+[-put-into-phrase text-containing-period  abc.def.ghi  -]
+[-put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-] -]
+[-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
+[-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
+[-put-into-phrase correct-value-for-results-with-unicode-converted-to-html-entities  ??? -]
+[-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
+[-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
+[-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
+[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+[-generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases-]
+[-put-into-phrase yes-or-no-export-delimited-definitions  no -]
+[-copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
+[-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
+[-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
+[-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
+
+nothing else
+--------
+
+handle-one-check-for-correct-value:
+[-copy-text word-to-use-in-handler phrase-name-]
+[-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-]-]
+[-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
+[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+[-if-no-begin [-yes-or-no-value-is-correct-]-]
+[-expand-text template-display-value-is-not-correct display-value-is-not-correct-]
+[-append-text-no-space display-value-is-not-correct full-display-values-not-correct-]
+[-if-end-]
+--------
+
+template-display-value-is-not-correct:
+Value of phrase phrase-name-with-underscores is " no-space [-phrase-name-] no-space " but should be " no-space correct-value-for-[-phrase-name-] no-space "
+<new_line>
+--------
+
+character-underscore:
+_
+--------
+
+test-of-comment-delimiters:
+beginning text
+*---- comment text ----*
+middle text
+/---- comment text ----/
+ending text
+--------
+
+test-of-numeric-increment:
+[-numeric-increment test-counter-]
+--------
+
+test-of-unique-value:
+[-put-into-phrase first-unique-value  [-unique-value-] -]
+[-put-into-phrase second-unique-value  [-unique-value-] -]
+[-yes-or-no-same-two-phrase-definitions first-unique-value second-unique-value-]
+--------
+
+non-breaking-space:
+&nbsp;
+--------
+
+test-of-special-spacing:
+abc no-space def one-space ghi jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx non-breaking-space yz
+--------
+
+test-of-special-line-phrases:
+abc
+empty-line
+def
+new-line
+ghi
+--------
+
+test-of-space-and-line-directives:
+Content-type: text/html
+<new_line>
+<new_line>
+<!DOCTYPE html>
+<new_line>
+<head>
+<new_line>
+<title> no-space web-page-title no-space </title>
+<new_line>
+--------
+
+web-page-title:
+No hyphen-here title no-space
+--------
+
+test-of-parameter-substitution:
+[-prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text-]
+--------
+
+prefix-text:
+abc
+--------
+
+middle-text:
+ghi
+--------
+
+suffix-text:
+mno
+--------
+
+intended-result-of-parameter-substitution:
+abc-def-ghi-jkl-mno
+--------
+
+single-phrase-to-replace:
+replaced-phrase
+--------
+
+text-with-periods:
+12345.67890.54321
+--------
+
+character-period:
+.
+--------
+
+test-of-replace-periods-with-spaces:
+[-copy-and-replace text-with-periods text-with-spaces character-period character-space-]
+--------
+
+test-of-several-copy-actions:
+[-put-into-phrase text-being-copied  abc DEF 123 -]
+[-copy-text text-being-copied text-copied-]
+[-copy-lowercase-only text-being-copied text-copied-lowercase-]
+[-copy-uppercase-only text-being-copied text-copied-uppercase-]
+[-copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999 -]
+[-copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2 -]
+[-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
+[-text-copied-without-first-word-] [-text-copied-without-last-word-]
+--------
+
+test-of-more-copy-actions:
+[-copy-without-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
+[-put-into-phrase text-being-copied  17 9 183 65 -]
+[-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
+[-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-]
+--------
+
+list-from-which-to-remove-last-item:
+12, 56, 72
+--------
+
+phrase-that-contains-hyphenated-phrases:
+hyphenated-content-here hyphenated-content-here
+--------
+
+value-of-pi:
+3.14159
+--------
+
+test-of-insert-codeview-tags:
+[-put-into-phrase text-being-codified  <xyz>&amp;</xyz> -]
+[-copy-text text-being-codified dashrep-code-with-inserted-codeview-tags-]
+[-insert-codeview-tags dashrep-code-with-inserted-codeview-tags-]
+--------
+
+input-right-values:
+12 -3 6 23 15 9 22 17 2 -5 10
+--------
+
+input-up-values:
+8 -9 4 2 18 3 11 9 12 6 7
+--------
+
+two-dimensional-sort:
+[-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort-]
+--------
+
+test-if-begin-actions:
+[-put-into-phrase result-of-testing-if-begin-actions  [-if-yes-begin yes-] one [-if-else-] two [-if-end-] [-if-yes-begin no-] three [-if-else-] four [-if-end-] [-if-no-begin yes-] five [-if-else-] six [-if-end-] [-if-no-begin no-] seven [-if-else-] eight [-if-end-] [-if-yes-begin yes-] nine [-if-end-] [-if-yes-begin no-] ten [-if-end-] [-if-no-begin no-] eleven [-if-end-] [-if-no-begin yes-] twelve [-if-end-] -]
+--------
+
+character-string-source:
+some words here
+--------
+
+test-of-stop-translation:
+[-value-of-pi-]
+[-put-into-phrase dashrep-stop-translation  yes -]
+[-value-of-pi-]
+--------
+
+sample-escape-text:
+command to be executed
+--------
+
+test-of-escape-action:
+[-put-into-phrase escape-text  step1 -]
+[-escape-if-yes no-]
+[-copy-text sample-escape-text escape-text-]
+[-escape-if-yes yes-]
+[-put-into-phrase escape-text  step3 -]
+[-escape-if-yes yes-]
+--------
+
+handle-one-named-participant:
+[-expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant-]
+[-append-text expanded-content-for-named-participant generated-list-named-participant-names-full-]
+--------
+
+page-participants-list:
+[-put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  [-case-info-idlistparticipants-] -]
+[-use-handler-with-each-word-in-phrase handle-one-named-participant list-of-parameter-values-for-list-named-participant-names-full-]
+[-numeric-increment test-counter-]
+format-begin-heading-level-1
+words-web-page-title
+format-end-heading-level-1
+tag-begin ul tag-end
+generated-list-named-participant-names-full
+tag-begin /ul tag-end
+--------
+
+entire-standard-web-page:
+web-page-begin-1-of-2
+web-page-begin-2-of-2
+[-page-participants-list-]
+web-page-end
+--------
+
+words-web-page-title:
+List of participants
+--------
+
+tag-begin:
+< no-space
+--------
+
+tag-end:
+no-space >
+--------
+
+web-page-begin-1-of-2:
+tag-begin !DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" tag-end
+tag-begin html tag-end
+tag-begin head tag-end
+tag-begin title tag-end no-space
+words-web-page-title
+no-space tag-begin /title tag-end
+--------
+
+web-page-begin-2-of-2:
+tag-begin /head tag-end
+new-line
+tag-begin body tag-end
+--------
+
+web-page-end:
+tag-begin /body tag-end
+tag-begin /html tag-end
+--------
+
+format-begin-heading-level-1:
+tag-begin h1 tag-end no-space
+--------
+
+format-end-heading-level-1:
+no-space  tag-begin /h1 tag-end
+--------
+
+case-info-idlistparticipants:
+[-list-of-numbers-]
+--------
+
+template-for-list-named-participant-names-full
+tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler-] no-space tag-begin /li tag-end
+--------
+
+participant-fullname-for-participantid-3
+James (Conservative)
+--------
+
+participant-fullname-for-participantid-12
+Nicole (Bloc Qu&eacute;b&eacute;cois)
+--------
+
+participant-fullname-for-participantid-7
+Eduard (Liberal)
+--------
+
+participant-fullname-for-participantid-13
+Robert (New Democratic)
+--------
+
+participant-fullname-for-participantid-4
+Diane (Conservative)
+--------
