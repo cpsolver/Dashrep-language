@@ -935,7 +935,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-gather-tagged-info-from-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-positive-integer check-operand-two-is-positive-integer check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name -]
@@ -1000,6 +1000,8 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-zero-one-multiple  check-operand-count-is-one check-operand-one-is-positive-integer -]
 [-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
+
+[-put-into-phrase operand-checks-for-flush-trace-log  check-operand-count-is-zero -]
 ----
 build-paired-replacements-for-converting-hyphens-into-defenns:
 [-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
@@ -1086,6 +1088,9 @@ runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-nu
 check-operand-one-is-file-name:
 runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-one runtime-code-check-operand-end
 ----
+check-operand-one-is-integer:
+runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
 check-operand-one-is-phrase-name:
 runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
 ----
@@ -1109,6 +1114,9 @@ runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-nu
 ----
 check-operand-two-is-file-name:
 runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-integer:
+runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
 ----
 check-operand-two-is-phrase-name:
 runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
@@ -1950,6 +1958,9 @@ optional-import-statements:
 runtime-code-check-operand-begin-is-file-name:
 $global_yes_or_no = &function_parameterized__yes_or_no_file_name(
 ----
+runtime-code-check-operand-begin-is-integer:
+$global_yes_or_no = &function_parameterized__yes_or_no_integer(
+----
 runtime-code-check-operand-begin-is-phrase-name:
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name(
 ----
@@ -2314,7 +2325,8 @@ my storage-position-name = '' ;  <new_line>
 ----
 template-runtime-code-print-trace-output:
 print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep hyphen-here debug hyphen-here trace hyphen-here log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+$global_dashrep_replacement{ 'dashrep hyphen-here debug hyphen-here trace hyphen-here log' } = '' ;  <new_line>
+$global_trace_log = '' ;  <new_line>
 ----
 template-runtime-code-statement-end-with-new-line:
 ;  <new_line>
@@ -2525,6 +2537,7 @@ $storage_item__ no-space
 ----
 list-of-template-functions:
 template-function-parameterized-yes-or-no-positive-integer
+template-function-parameterized-yes-or-no-integer
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-normalize-calculated-value
 template-function-parameterized-remove-leading-trailing-spaces
@@ -2850,6 +2863,23 @@ my $local_text ;  <new_line>
 $local_text = $_[ 0 ] ;  <new_line>
 
 if ( $local_text =~ /^[a-z][^ \.\/\\\*\&\!\@\#\$\%\^\~\`\"\'\,\:\;\=\+]*\.[a-z]+$/i )  {  <new_line>
+return $global_yes ;  <new_line>
+} else {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
+----
+template-function-parameterized-yes-or-no-integer:
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_integer  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_integer( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( $local_text =~ /^-?[0-9]+$/ ) {  <new_line>
 return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
@@ -3261,6 +3291,13 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
 }  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-flush-trace-log:
+template-runtime-code-for-every-action-begin
+
+template-runtime-code-print-trace-output
 
 template-runtime-code-for-every-action-end
 ----
