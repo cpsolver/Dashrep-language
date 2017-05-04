@@ -36,7 +36,9 @@ $global_required_number_of_operands_for_action{ "copy-characters-from-position-t
 $global_required_number_of_operands_for_action{ "copy-and-replace-using-paired-listed-words" } = 3 ;
 $global_required_number_of_operands_for_action{ "expand-text" } = 2 ;
 $global_required_number_of_operands_for_action{ "get-phrase-definition-without-expanding" } = 1 ;
-$global_required_number_of_operands_for_action{ "expand-parameters-only" } = 2 ;
+
+# $global_required_number_of_operands_for_action{ "expand-parameters-only" } = 2 ;
+
 $global_required_number_of_operands_for_action{ "numeric-equal-greater-less-compare" } = 2 ;
 $global_required_number_of_operands_for_action{ "if-yes-begin" } = 1 ;
 $global_required_number_of_operands_for_action{ "if-no-begin" } = 1 ;
@@ -274,8 +276,10 @@ $global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace-using-pai
 $global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
 $global_check_operand_one_is_phrase_name_for_action{ "expand-text" } = "yes" ;
 $global_check_operand_two_is_phrase_name_for_action{ "expand-text" } = "yes" ;
-$global_check_operand_one_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
-$global_check_operand_two_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+
+# $global_check_operand_one_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+# $global_check_operand_two_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+
 $global_check_operand_one_is_phrase_name_for_action{ "get-phrase-definition-without-expanding" } = "yes" ;
 $global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
 $global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;

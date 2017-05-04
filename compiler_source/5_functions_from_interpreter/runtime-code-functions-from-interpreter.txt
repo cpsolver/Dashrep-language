@@ -2046,7 +2046,8 @@ sub dashrep_expand_parameters
 #  expand-text
 #  expand-parameters-only
 
-        if ( ( $action_name eq "expand-text" ) || ( $action_name eq "expand-parameters-only" ) )
+        if ( $action_name eq "expand-text" )
+#        if ( ( $action_name eq "expand-text" ) || ( $action_name eq "expand-parameters-only" ) )
         {
             if ( exists( $global_dashrep_replacement{ $operand_one } ) )
             {
