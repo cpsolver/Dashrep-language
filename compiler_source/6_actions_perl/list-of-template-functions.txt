@@ -1,4 +1,5 @@
 template-function-parameterized-yes-or-no-positive-integer
+template-function-parameterized-yes-or-no-integer
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-normalize-calculated-value
 template-function-parameterized-remove-leading-trailing-spaces

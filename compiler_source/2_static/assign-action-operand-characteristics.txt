@@ -52,7 +52,7 @@
 [-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-gather-tagged-info-from-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-positive-integer check-operand-two-is-positive-integer check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name -]
@@ -117,3 +117,5 @@
 [-put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-zero-one-multiple  check-operand-count-is-one check-operand-one-is-positive-integer -]
 [-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
+
+[-put-into-phrase operand-checks-for-flush-trace-log  check-operand-count-is-zero -]
