@@ -1,2 +1,3 @@
 print TRACE_OUT "\n\n" . '******************** global trace log ********************' . "\n\n" . $global_dashrep_replacement{ 'dashrep hyphen-here debug hyphen-here trace hyphen-here log' } . "\n" ;  <new_line>
-close ( TRACE_OUT ) ;  <new_line>
+$global_dashrep_replacement{ 'dashrep hyphen-here debug hyphen-here trace hyphen-here log' } = '' ;  <new_line>
+$global_trace_log = '' ;  <new_line>
