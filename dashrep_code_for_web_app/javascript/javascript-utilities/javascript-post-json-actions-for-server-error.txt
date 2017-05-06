@@ -1,0 +1,6 @@
+var jsvar-value-to-check js-statement-end
+jsvar-value-to-check js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote idServerError code-close-quote js-params-end js-statement-end
+*--- do not use selectext version with "yes" on next line, because it comes from cgi script ---*
+js-if jsvar-value-to-check js-is-equal-to code-open-quote yes code-close-quote js-then
+    jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-page-segment-current code-close-quote js-params-next code-open-quote selectext-servererrormessage code-close-quote js-params-end js-statement-end
+js-if-end

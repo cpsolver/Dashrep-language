@@ -1,0 +1,3 @@
+/* Recommended reading: "Secrets of the Javascript Ninja" by John Resig & Bear Bibeault */
+<new_line>
+/* Recommended reference: http://developer.mozilla.org */

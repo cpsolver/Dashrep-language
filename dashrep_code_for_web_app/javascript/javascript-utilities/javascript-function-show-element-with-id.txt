@@ -1,0 +1,44 @@
+jsfunction-show-element-with-id js-equals function( jsvar-id-of-element ) {
+    var jsvar-return-value comma-sep jsvar-trace-info comma-sep jsvar-element-selected comma-sep jsvar-element-type js-statement-end
+
+*--- save trace info for debugging ---*
+    jsvar-trace-info js-equals code-open-quote jsfunction-show-element-with-id one-space code-close-quote js-concat jsvar-id-of-element js-statement-end
+    js-try
+        jsvar-element-selected js-equals document.getElementById( code-open-quote selectext-id-javascript-trace code-close-quote ) js-statement-end
+        jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next "contents" js-params-next jsvar-trace-info js-params-end js-statement-end
+    js-catch
+
+*---
+        jslog-begin code-open-quote cannot write trace info code-close-quote jslog-end
+---*
+    js-if-end
+
+*--- now begin actual update ---*
+    js-try
+        jsvar-element-selected js-equals document.getElementById( jsvar-id-of-element ) js-statement-end
+    js-catch
+
+*---
+        jslog-begin code-open-quote cannot select element one-space code-close-quote js-concat jsvar-id-of-element jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    js-if ! no-space jsvar-element-selected js-then
+*---
+        jslog-begin code-open-quote in jsfunction-show-element-with-id element one-space code-close-quote js-concat jsvar-id-of-element js-concat code-open-quote one-space not found code-close-quote jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    jsvar-element-type js-equals jsvar-element-selected no-space .tagName js-statement-end
+
+*---
+    jslog-begin code-open-quote jsvar-element-type code-close-quote jslog-equal-sign jsvar-element-type jslog-end
+---*
+    js-if js-paren-begin jsvar-element-type js-is-equal-to "span" js-paren-end js-logical-or js-paren-begin jsvar-element-type js-is-equal-to "SPAN" js-paren-end js-then
+        jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next "display" js-params-next "inline" js-params-end js-statement-end
+    js-else
+        jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next "display" js-params-next "block" js-params-end js-statement-end
+    js-if-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

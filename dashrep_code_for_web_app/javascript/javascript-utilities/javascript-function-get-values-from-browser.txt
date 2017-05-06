@@ -1,0 +1,19 @@
+jsfunction-get-values-from-browser js-equals function( ) {
+    var jsvar-pointer comma-sep jsvar-storage-key comma-sep jsvar-storage-value js-statement-end
+    js-if window.localStorage js-then
+        js-if localStorage.length > 0 js-then
+            js-for-loop-define jsvar-pointer = 0 ; jsvar-pointer < localStorage.length; jsvar-pointer ++ js-for-loop-start
+                jsvar-storage-key js-equals localStorage.key( jsvar-pointer ) js-statement-end
+                jsvar-storage-value js-equals localStorage.getItem( jsvar-storage-key ) js-statement-end
+                jsfunction-update-contents-of-html-element-with-id js-params-begin jsvar-storage-key js-params-next jsvar-storage-value js-params-end js-statement-end
+*---
+                jslog-begin code-open-quote jsvar-storage-key code-close-quote jslog-equal-sign jsvar-storage-value jslog-end
+---*
+            js-loop-end
+            return true js-statement-end
+        js-if-end
+    js-else
+        return false js-statement-end
+    js-if-end
+} js-statement-end
+<new_line>

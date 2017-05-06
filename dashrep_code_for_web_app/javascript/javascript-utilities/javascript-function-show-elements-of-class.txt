@@ -1,0 +1,34 @@
+jsfunction-show-elements-of-class js-equals function( jsvar-class-name ) {
+    var jsvar-element-name comma-sep jsvar-pointer comma-sep jsvar-element-type js-statement-end
+    js-if js-paren-begin ! no-space jsvar-class-name js-paren-end js-logical-or js-paren-begin jsvar-class-name no-space .length < 2 js-paren-end js-then
+*---
+        jslog-begin code-open-quote invalid class name one-space code-close-quote js-concat jsvar-class-name js-concat code-open-quote one-space supplied to jsfunction-show-elements-of-class code-close-quote jslog-end
+---*
+        return false;
+    js-if-end
+    var jsvar-elements-to-show js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
+    js-for-loop-define jsvar-pointer js-equals 0 ; jsvar-pointer < jsvar-elements-to-show no-space .length; jsvar-pointer ++ js-for-loop-start
+
+        js-try
+            jsvar-element-type js-equals jsvar-elements-to-show no-space [ jsvar-pointer ].tagName js-statement-end
+        js-catch
+            jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-next js-paren-begin code-open-quote jsfunction-show-elements-of-class one-space code-close-quote js-concat jsvar-class-name js-paren-end js-params-end js-statement-end
+
+*---
+            jslog-begin code-open-quote in jsfunction-show-elements-of-class cannot get tag type from element code-close-quote jslog-end
+---*
+            return false;
+        js-if-end
+
+*---
+        jslog-begin code-open-quote jsvar-element-type code-close-quote jslog-equal-sign jsvar-element-type jslog-end
+---*
+        js-if js-paren-begin jsvar-element-type js-is-equal-to "span" js-paren-end js-logical-or js-paren-begin jsvar-element-type js-is-equal-to "SPAN" js-paren-end js-then
+            jsfunction-update-attribute-of-html-element js-params-begin jsvar-elements-to-show no-space [ jsvar-pointer ] js-params-next "display" js-params-next "inline" js-params-end js-statement-end
+        js-else
+            jsfunction-update-attribute-of-html-element js-params-begin jsvar-elements-to-show no-space [ jsvar-pointer ] js-params-next "display" js-params-next "block" js-params-end js-statement-end
+        js-if-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

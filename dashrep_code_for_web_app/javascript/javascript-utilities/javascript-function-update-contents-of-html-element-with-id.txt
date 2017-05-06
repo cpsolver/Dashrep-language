@@ -1,0 +1,11 @@
+jsfunction-update-contents-of-html-element-with-id js-equals function( jsvar-id-of-element , jsvar-value-after-update ) {
+    var jsvar-element-selected js-statement-end
+    jsvar-element-selected js-equals document.getElementById( jsvar-id-of-element ) js-statement-end
+    js-if ! no-space jsvar-element-selected js-then
+        return false js-statement-end
+    js-if-end
+    jsvar-element-selected no-space .textContent js-equals jsvar-value-after-update js-statement-end
+    return true js-statement-end
+} js-statement-end
+<new_line>
+

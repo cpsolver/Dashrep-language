@@ -1,0 +1,10 @@
+jsfunction-check-geo-location-available js-equals function( ) {
+    var jsvar-element-name comma-sep jsvar-whatever js-statement-end
+    js-if code-open-quote geolocation code-close-quote in navigator js-then
+        jsfunction-show-element-with-id js-params-begin code-open-quote selectext-id-button-use-gps-location code-close-quote js-params-end js-statement-end
+    js-else
+        jsfunction-hide-element-with-id js-params-begin code-open-quote selectext-id-button-use-gps-location code-close-quote js-params-end js-statement-end
+    js-if-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

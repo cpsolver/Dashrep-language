@@ -1,0 +1,33 @@
+jsfunction-get-heights-of-visible-elements-of-class js-equals function( jsvar-class-name ) {
+    var jsvar-pointer comma-sep jsvar-pointer-with-skips comma-sep jsvar-height js-statement-end
+    var jsvar-list-of-heights js-equals [0] js-statement-end
+    js-if js-paren-begin ! no-space jsvar-class-name js-paren-end js-logical-or js-paren-begin jsvar-class-name no-space .length < 2 js-paren-end js-then
+*---
+        jslog-begin code-open-quote invalid class name code-close-quote js-concat jsvar-class-name js-concat " supplied to jsfunction-get-heights-of-visible-elements-of-class code-close-quote jslog-end
+---*
+        return false;
+    js-if-end
+    var jsvar-elements-to-measure js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
+    jsvar-pointer-with-skips js-equals 0 js-statement-end
+    js-for-loop-define jsvar-pointer = 0 ; jsvar-pointer < jsvar-elements-to-measure no-space .length; jsvar-pointer ++ js-for-loop-start
+        js-try
+            jsvar-height js-equals jsvar-elements-to-measure no-space [ jsvar-pointer ].offsetHeight js-statement-end
+            js-if jsvar-height > 0 js-then
+                jsvar-list-of-heights no-space [ jsvar-pointer-with-skips ] js-equals jsvar-height js-statement-end
+                jsvar-pointer-with-skips js-equals jsvar-pointer-with-skips + 1 js-statement-end
+            js-if-end
+
+*---
+            jslog-begin code-open-quote next element has height one-space code-close-quote js-concat jsvar-height jslog-end
+---*
+        js-catch
+            jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-next js-paren-begin code-open-quote jsfunction-get-heights-of-visible-elements-of-class code-close-quote js-concat " " js-concat jsvar-class-name js-paren-end js-params-end js-statement-end
+        js-if-end
+    js-loop-end
+    js-if jsvar-list-of-heights no-space .length > 0 js-then
+        return jsvar-list-of-heights js-statement-end
+    js-else
+        return 0 js-statement-end
+    js-if-end
+} js-statement-end
+<new_line>

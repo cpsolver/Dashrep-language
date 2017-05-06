@@ -1,0 +1,13 @@
+jsfunction-get-contents-from-html-textarea-element js-equals function( jsvar-element-selected ) {
+    var jsvar-content-of-element js-statement-end
+    js-if ! no-space jsvar-element-selected js-then
+
+*---
+        jslog-begin code-open-quote warning: in jsfunction-get-contents-from-html-textarea-element , no element selected code-close-quote jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    jsvar-content-of-element js-equals jsvar-element-selected no-space .value js-statement-end
+    return jsvar-content-of-element js-statement-end
+} js-statement-end
+<new_line>

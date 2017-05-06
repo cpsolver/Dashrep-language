@@ -1,0 +1,11 @@
+jsfunction-remove-focus-from-element-with-id js-equals function( jsvar-element-name ) {
+    var jsvar-element-selected js-statement-end
+    jsvar-element-selected js-equals document.getElementById( jsvar-element-name ) js-statement-end
+    js-try
+        jsvar-element-selected no-space .blur( ) js-statement-end
+    js-catch
+        return false js-statement-end
+    js-if-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

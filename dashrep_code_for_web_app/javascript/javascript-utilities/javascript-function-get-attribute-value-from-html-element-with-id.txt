@@ -1,0 +1,22 @@
+jsfunction-get-attribute-value-from-html-element-with-id js-equals function( jsvar-id-of-element , jsvar-attribute-name ) {
+    var jsvar-element-selected js-statement-end
+    js-if js-paren-begin ! no-space jsvar-id-of-element js-paren-end js-logical-or js-paren-begin jsvar-id-of-element no-space .length < 1 js-paren-end js-then
+
+*---
+        jslog-begin code-open-quote jsvar-id-of-element code-close-quote jslog-equal-sign jsvar-id-of-element jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    js-try
+        jsvar-element-selected js-equals document.getElementById( jsvar-id-of-element ) js-statement-end
+    js-catch
+
+*---
+        jslog-begin code-open-quote jsvar-id-of-element code-close-quote jslog-equal-sign jsvar-id-of-element jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    jsvar-return-value js-equals jsfunction-get-attribute-value-from-html-element js-params-begin jsvar-element-selected js-params-next jsvar-attribute-name js-params-end js-statement-end
+    return jsvar-return-value js-statement-end
+} js-statement-end
+<new_line>

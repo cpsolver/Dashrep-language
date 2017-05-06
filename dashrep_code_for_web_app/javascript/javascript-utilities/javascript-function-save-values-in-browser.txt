@@ -1,0 +1,25 @@
+jsfunction-save-values-in-browser js-equals function( ) {
+    var jsvar-elements-to-store comma-sep jsvar-pointer comma-sep jsvar-element-name comma-sep jsvar-storage-value js-statement-end
+    js-if window.localStorage js-then
+        var jsvar-elements-to-store js-equals document.getElementsByClassName( code-open-quote selectext-save-in-browser code-close-quote ) js-statement-end
+        js-for-loop-define jsvar-pointer = 0 ; jsvar-pointer < jsvar-elements-to-store no-space .length; jsvar-pointer ++ js-for-loop-start
+            jsvar-element-name js-equals code-open-close-quote js-statement-end
+            js-try
+                jsvar-element-name js-equals jsvar-elements-to-store no-space [ jsvar-pointer ].id js-statement-end
+            js-catch
+                jsvar-element-name js-equals code-open-close-quote js-statement-end
+            js-if-end
+            js-if jsvar-element-name js-then
+                jsvar-storage-value js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin jsvar-element-name js-params-end js-statement-end
+                localStorage.setItem( jsvar-element-name , jsvar-storage-value ) js-statement-end
+*---
+                jslog-begin code-open-quote jsvar-element-name code-close-quote jslog-equal-sign jsvar-storage-value jslog-end
+---*
+            js-if-end
+        js-loop-end
+        return true js-statement-end
+    js-else
+        return false js-statement-end
+    js-if-end
+} js-statement-end
+<new_line>

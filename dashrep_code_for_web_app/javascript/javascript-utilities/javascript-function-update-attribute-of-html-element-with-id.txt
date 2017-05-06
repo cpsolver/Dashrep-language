@@ -1,0 +1,23 @@
+jsfunction-update-attribute-of-html-element-with-id js-equals function( jsvar-id-of-element , jsvar-attribute-name , jsvar-value-after-update ) {
+    var jsvar-return-value comma-sep jsvar-trace-info comma-sep jsvar-element-selected js-statement-end
+    jsvar-trace-info js-equals code-open-quote jsfunction-update-attribute-of-html-element-with-id code-close-quote js-concat " " js-concat jsvar-id-of-element js-statement-end
+
+*--- save trace info for debugging ---*
+    js-try
+        jsvar-element-selected js-equals document.getElementById( code-open-quote selectext-id-javascript-trace code-close-quote ) js-statement-end
+        jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next "contents" js-params-next jsvar-trace-info js-params-end js-statement-end
+    js-catch
+        jslog-begin code-open-quote cannot write trace info code-close-quote jslog-end
+    js-if-end
+
+*--- now begin actual update ---*
+    js-try
+        jsvar-element-selected js-equals document.getElementById( jsvar-id-of-element ) js-statement-end
+    js-catch
+        jslog-begin code-open-quote cannot select element code-close-quote js-concat jsvar-id-of-element jslog-end
+        return false js-statement-end
+    js-if-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next jsvar-attribute-name js-params-next jsvar-value-after-update js-params-end js-statement-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

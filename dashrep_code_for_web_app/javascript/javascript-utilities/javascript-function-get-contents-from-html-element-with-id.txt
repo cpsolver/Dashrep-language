@@ -1,0 +1,14 @@
+jsfunction-get-contents-from-html-element-with-id js-equals function( jsvar-id-name ) {
+    var jsvar-return-value js-statement-end
+    js-if js-paren-begin ! no-space jsvar-id-name js-paren-end js-logical-or js-paren-begin jsvar-id-name no-space .length < 2 js-paren-end js-then
+        return false;
+    js-if-end
+    var jsvar-element-selected js-equals document.getElementById( jsvar-id-name ) js-statement-end
+    js-if jsvar-element-selected js-then
+        jsvar-return-value js-equals jsfunction-get-contents-from-html-element js-params-begin jsvar-element-selected js-params-end js-statement-end
+    js-else
+        jsvar-return-value js-equals code-open-close-quote js-statement-end
+    js-if-end
+    return jsvar-return-value js-statement-end
+} js-statement-end
+<new_line>

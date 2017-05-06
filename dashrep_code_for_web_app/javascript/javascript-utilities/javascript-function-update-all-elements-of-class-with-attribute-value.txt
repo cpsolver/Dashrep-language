@@ -1,0 +1,23 @@
+jsfunction-update-all-elements-of-class-with-attribute-value js-equals function( jsvar-class-name , jsvar-attribute-name , jsvar-value-after-update ) {
+    var jsvar-pointer comma-sep jsvar-element-name comma-sep jsvar-element-selected js-statement-end
+    js-if js-paren-begin ! no-space jsvar-class-name js-paren-end js-logical-or js-paren-begin jsvar-class-name no-space .length < 2 js-paren-end js-logical-or js-paren-begin ! no-space jsvar-attribute-name js-paren-end js-logical-or js-paren-begin jsvar-attribute-name no-space .length < 2 js-paren-end js-then
+        return false;
+    js-if-end
+    var jsvar-elements-to-update js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
+    js-for-loop-define jsvar-pointer = 0 ; jsvar-pointer < jsvar-elements-to-update no-space .length; jsvar-pointer ++ js-for-loop-start
+        jsvar-element-name js-equals code-open-close-quote js-statement-end
+        js-try
+            jsvar-element-name js-equals jsvar-elements-to-update no-space [ jsvar-pointer ].id js-statement-end
+        js-catch
+            jsvar-element-name js-equals code-open-close-quote js-statement-end
+        js-if-end
+        js-if jsvar-element-name js-then
+            jsvar-return-value js-equals jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-element-name js-params-next jsvar-attribute-name js-params-next jsvar-value-after-update js-params-end js-statement-end
+        js-else
+            jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-next js-paren-begin code-open-quote jsfunction-update-all-elements-of-class-with-attribute-value code-close-quote js-concat " " js-concat jsvar-class-name js-paren-end js-params-end js-statement-end
+            jsvar-return-value js-equals jsfunction-update-attribute-of-html-element js-params-begin jsvar-elements-to-update no-space [ jsvar-pointer ] js-params-next jsvar-attribute-name js-params-next jsvar-value-after-update js-params-end js-statement-end
+        js-if-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

@@ -1,0 +1,27 @@
+jsfunction-get-width-of-visible-element-with-id js-equals function( jsvar-id-element-name ) {
+    var jsvar-element-selected comma-sep jsvar-return-value js-statement-end
+    js-if js-paren-begin ! no-space jsvar-id-element-name js-paren-end js-logical-or js-paren-begin jsvar-id-element-name no-space .length < 1 js-paren-end js-then
+
+*---
+        jslog-begin code-open-quote element id code-close-quote js-concat jsvar-id-element-name js-concat " is not a valid id" jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    jsvar-element-selected js-equals document.getElementById( jsvar-id-element-name ) js-statement-end
+    js-if ! no-space jsvar-element-selected js-then
+
+*---
+        jslog-begin code-open-quote element named code-close-quote js-concat jsvar-id-element-name js-concat " not found" jslog-end
+---*
+        return false js-statement-end
+    js-if-end
+    jsvar-return-value js-equals jsvar-element-selected no-space .offsetWidth js-statement-end
+
+
+*---
+    jslog-begin code-open-quote element id code-close-quote js-concat jsvar-id-element-name js-concat " has width " js-concat jsvar-return-value jslog-end
+---*
+
+    return jsvar-return-value js-statement-end
+} js-statement-end
+<new_line>

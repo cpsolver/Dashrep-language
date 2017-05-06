@@ -1,0 +1,16 @@
+jsfunction-update-width-and-padding-of-centered-div js-equals function( jsvar-id-of-element , jsvar-inside-width-numeric , jsvar-padding-numeric ) {
+    var jsvar-element-selected js-statement-end
+    js-try
+        jsvar-element-selected js-equals document.getElementById( jsvar-id-of-element ) js-statement-end
+    js-catch
+        jslog-begin code-open-quote cannot select element code-close-quote js-concat jsvar-id-of-element jslog-end
+        return false js-statement-end
+    js-if-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next code-open-quote width code-close-quote js-params-next parseInt( jsvar-inside-width-numeric ) js-concat "px" js-params-end js-statement-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next code-open-quote padding-left code-close-quote js-params-next parseInt( jsvar-padding-numeric ) js-concat "px" js-params-end js-statement-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next code-open-quote padding-right code-close-quote js-params-next parseInt( jsvar-padding-numeric ) js-concat "px" js-params-end js-statement-end
+    return true js-statement-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next code-open-quote margin hyphen-here left code-close-quote js-params-next "auto" js-params-end js-statement-end
+    jsfunction-update-attribute-of-html-element js-params-begin jsvar-element-selected js-params-next code-open-quote margin hyphen-here right code-close-quote js-params-next "auto" js-params-end js-statement-end
+} js-statement-end
+<new_line>

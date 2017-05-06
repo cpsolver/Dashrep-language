@@ -1,0 +1,26 @@
+jsfunction-update-copies-of-content js-equals function( ) {
+    var jsvar-component-elements comma-sep jsvar-pointer comma-sep jsvar-id-name-of-element comma-sep jsvar-value-to-copy comma-sep jsvar-component-of-element-name comma-sep jsvar-id-name-of-element-to-copy js-statement-end
+    jsvar-component-elements js-equals document.getElementsByClassName( code-open-quote selectext-group-copy code-close-quote ) js-statement-end
+    js-for-loop-define jsvar-pointer = 0 ; jsvar-pointer < jsvar-component-elements no-space .length; jsvar-pointer ++ js-for-loop-start
+        js-try
+            jsvar-id-name-of-element js-equals jsvar-component-elements no-space [ jsvar-pointer ].id js-statement-end
+        js-catch
+            jsvar-id-name-of-element js-equals code-open-close-quote js-statement-end
+        js-if-end
+        js-if jsvar-id-name-of-element js-then
+            jsvar-component-of-element-name js-equals jsvar-id-name-of-element no-space .split( code-open-quote underscore-double-here code-close-quote ) js-statement-end
+            jsvar-id-name-of-element-to-copy js-equals jsvar-component-of-element-name no-space [0] js-statement-end
+
+
+*---
+            jslog-begin code-open-quote jsvar-id-name-of-element code-close-quote jslog-equal-sign jsvar-id-name-of-element jslog-end
+            jslog-begin code-open-quote jsvar-id-name-of-element-to-copy code-close-quote jslog-equal-sign jsvar-id-name-of-element-to-copy jslog-end
+---*
+
+            jsvar-value-to-copy js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin jsvar-id-name-of-element-to-copy js-params-end js-statement-end
+            jsfunction-update-contents-of-html-element-with-id js-params-begin jsvar-id-name-of-element js-params-next jsvar-value-to-copy js-params-end js-statement-end
+        js-if-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

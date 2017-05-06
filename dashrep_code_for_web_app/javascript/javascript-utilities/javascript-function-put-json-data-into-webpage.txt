@@ -1,0 +1,73 @@
+jsfunction-put-json-data-into-webpage js-equals function( ) {
+
+*--- this list of variable includes some that do not appear in this file, but do appear in the inserted "javascript-post-json-actions-for-case-..." files ---*
+    var jsvar-json-reply comma-sep jsvar-keyed-values comma-sep jsvar-list-trio-id-atr-val comma-sep jsvar-element-selected comma-sep jsvar-id-of-element-selected comma-sep jsvar-id-element-name comma-sep jsvar-show-hide-element-name comma-sep jsvar-item-pointer comma-sep jsvar-item-pointer-limit comma-sep jsvar-show-hide-pointer comma-sep jsvar-attribute-name comma-sep jsvar-value-after-update comma-sep jsvar-post-json-action comma-sep jsvar-class-name comma-sep jsvar-yes-or-no js-statement-end
+
+    jsfunction-un-brighten-button js-params-begin js-params-end js-statement-end
+    jsfunction-scroll-to-top no-space ( ) js-statement-end
+    jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-post-json-action code-close-quote js-params-next code-open-close-quote js-params-end js-statement-end
+    jsvar-json-reply js-equals jsvar-global-http-request-object no-space .responseText js-statement-end
+    jsvar-keyed-values js-equals JSON.parse( jsvar-json-reply ) js-statement-end
+    jsvar-list-trio-id-atr-val js-equals jsvar-keyed-values no-space . no-space idAtrVal js-statement-end
+    jsvar-item-pointer-limit js-equals jsvar-list-trio-id-atr-val no-space .length - 2 js-statement-end
+    js-for-loop-define jsvar-item-pointer js-equals 1 ; jsvar-item-pointer <= jsvar-item-pointer-limit ; jsvar-item-pointer = jsvar-item-pointer + 3 js-for-loop-start
+        jsvar-id-element-name js-equals jsvar-list-trio-id-atr-val no-space [ jsvar-item-pointer ] js-statement-end
+        jsvar-attribute-name js-equals jsvar-list-trio-id-atr-val no-space [ jsvar-item-pointer + 1 ] js-statement-end
+
+*--- allow special attribute name of "show" or "hide" in which case the element id name is used as a class name (and the value is ignored) ---*
+*--- reminder: selected elements must have id name in addition to class name! ---*
+        js-if js-paren-begin jsvar-attribute-name js-is-equal-to "show" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "hide" js-paren-end js-then
+            jsvar-class-name js-equals jsvar-id-element-name js-statement-end
+            var jsvar-elements-to-update js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
+            js-for-loop-define jsvar-show-hide-pointer = 0 ; jsvar-show-hide-pointer < jsvar-elements-to-update no-space .length; jsvar-show-hide-pointer ++ js-for-loop-start
+                jsvar-show-hide-element-name js-equals code-open-close-quote js-statement-end
+                js-try
+                    jsvar-show-hide-element-name js-equals jsvar-elements-to-update no-space [ jsvar-show-hide-pointer ].id js-statement-end
+                js-catch
+                    jsvar-show-hide-element-name js-equals code-open-close-quote js-statement-end
+                    jslog-begin jsvar-element-name js-concat code-open-quote was not found code-close-quote jslog-end
+                js-if-end
+                js-if jsvar-show-hide-element-name no-space .length > 0 js-then
+                    js-if jsvar-attribute-name js-is-equal-to "show" js-then
+                        jsfunction-show-element-with-id js-params-begin jsvar-show-hide-element-name js-params-end js-statement-end
+                    js-else-if jsvar-attribute-name js-is-equal-to "hide" js-then
+                        jsfunction-hide-element-with-id js-params-begin jsvar-show-hide-element-name js-params-end js-statement-end
+                    js-if-end
+                js-if-end
+            js-loop-end
+
+        js-else
+            jsvar-value-after-update js-equals jsvar-list-trio-id-atr-val no-space [ jsvar-item-pointer + 2 ] js-statement-end
+            jsvar-value-after-update js-equals jsfunction-convert-unicode-from-html-entities-to-utf8 js-params-begin jsvar-value-after-update js-params-end js-statement-end
+            jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next jsvar-attribute-name js-params-next jsvar-value-after-update js-params-end js-statement-end
+        js-if-end
+    js-loop-end
+    jsfunction-update-copies-of-content no-space ( ) js-statement-end
+    jsvar-post-json-action js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-post-json-action code-close-quote js-params-end js-statement-end
+    jslog-begin code-open-quote jsvar-post-json-action code-close-quote jslog-equal-sign jsvar-post-json-action jslog-end
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-location-not-found code-close-quote js-then
+        javascript-post-json-actions-for-case-location-not-found
+    js-if-end
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-location code-close-quote js-then
+        javascript-post-json-actions-for-case-got-location
+    js-if-end
+
+    jsvar-yes-or-no js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-yes-no-got-loc-news code-close-quote js-params-end js-statement-end
+    js-if jsvar-yes-or-no js-is-equal-to code-open-quote selectext-yes code-close-quote js-then
+        javascript-post-json-actions-for-case-got-location
+        jsfunction-update-page-map-for-info-type js-params-begin code-open-quote selectext-location code-close-quote js-params-end js-statement-end
+        jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-nav-tab-current code-close-quote js-params-next code-open-quote selectext-news code-close-quote js-params-end js-statement-end
+        jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-yes-no-got-loc-news code-close-quote js-params-next code-open-close-quote js-params-end js-statement-end
+    js-if-end
+
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-news code-close-quote js-then
+        javascript-post-json-actions-for-case-got-news
+    js-if-end
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-biz code-close-quote js-then
+        javascript-post-json-actions-for-case-got-biz
+    js-if-end
+    javascript-post-json-actions-for-server-error
+    jsfunction-show-next-page-segment js-params-begin js-params-end js-statement-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

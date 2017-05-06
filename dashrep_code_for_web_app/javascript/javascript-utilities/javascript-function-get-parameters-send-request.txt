@@ -1,0 +1,34 @@
+jsfunction-get-parameters-send-request js-equals function( selectext-parameter-group-name ) {
+    var jsvar-user-id comma-sep jsvar-json-request-type comma-sep jsvar-user-info-in-cgi-parameters comma-sep jsvar-url comma-sep jsvar-return-value js-statement-end
+    jsvar-user-id js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-user-id code-close-quote js-params-end js-statement-end
+    jsvar-json-request-type js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-json-request-type code-close-quote js-params-end js-statement-end
+    jsvar-user-info-in-cgi-parameters js-equals jsfunction-get-cgi-user-info-with-class-name js-params-begin selectext-parameter-group-name js-params-end js-statement-end
+    jsvar-compatibility-version-number js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-lookup-compatibility-version-number code-close-quote js-params-end js-statement-end
+
+<new_line>
+
+*--- attempt to use "selectext-cgi-user-id" did not work, so switched back to using "user-id" ---*
+
+    jsvar-url js-equals "
+no-space
+url-cgi-script
+no-space
+" js-concat "? no-space user hyphen-here id no-space =" js-concat jsvar-user-id js-concat "& no-space selectext-cgi-json-lookup-request no-space =" js-concat jsvar-json-request-type js-concat "& no-space version no-space =" js-concat jsvar-compatibility-version-number js-concat jsvar-user-info-in-cgi-parameters js-statement-end
+
+<new_line>
+
+
+*---
+    jslog-begin code-open-quote jsvar-url code-close-quote jslog-equal-sign jsvar-url jslog-end
+---*
+
+    jsvar-return-value js-equals jsfunction-check-validity-of-url js-params-begin jsvar-url js-params-end js-statement-end
+    js-if jsvar-return-value js-is-equal-to false js-then
+        return false js-statement-end
+    js-if-end
+    jsvar-global-http-request-object no-space .open( "GET" , jsvar-url , true ) js-statement-end
+    jsvar-global-http-request-object no-space .send( null ) js-statement-end
+    return true js-statement-end
+
+} js-statement-end
+<new_line>

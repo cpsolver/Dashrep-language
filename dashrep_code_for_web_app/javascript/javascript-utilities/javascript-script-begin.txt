@@ -1,0 +1,8 @@
+<script type="text/javascript">
+<new_line>
+words-copyright-notice-for-javascript
+<new_line>
+javascript-references
+<new_line>
+javascript-utility-name-cues
+<new_line>

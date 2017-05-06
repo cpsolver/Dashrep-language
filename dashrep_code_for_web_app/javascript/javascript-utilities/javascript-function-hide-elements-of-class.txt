@@ -1,0 +1,15 @@
+jsfunction-hide-elements-of-class js-equals function( jsvar-class-name ) {
+    var jsvar-pointer js-statement-end
+    js-if js-paren-begin ! no-space jsvar-class-name js-paren-end js-logical-or js-paren-begin jsvar-class-name no-space .length < 2 js-paren-end js-then
+*---
+        jslog-begin code-open-quote invalid class name one-space code-close-quote js-concat jsvar-class-name js-concat code-open-quote one-space supplied to jsfunction-hide-elements-of-class code-close-quote jslog-end
+---*
+        return false;
+    js-if-end
+    var jsvar-elements-to-hide js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
+    js-for-loop-define jsvar-pointer js-equals 0 ; jsvar-pointer < jsvar-elements-to-hide no-space .length; jsvar-pointer ++ js-for-loop-start
+        jsfunction-update-attribute-of-html-element js-params-begin jsvar-elements-to-hide no-space [ jsvar-pointer ] js-params-next "display" js-params-next "none" js-params-end js-statement-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

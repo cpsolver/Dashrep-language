@@ -1,0 +1,27 @@
+jsfunction-convert-unicode-from-utf8-to-html-entities js-equals function( jsvar-string-with-unicode-utf8 ) {
+    var jsvar-string-being-converted comma-sep jsvar-converted-string comma-sep jsvar-unicode-number comma-sep jsvar-character-pointer comma-sep jsvar-html-entity comma-sep jsvar-string-length js-statement-end
+    jsvar-string-length js-equals jsvar-string-with-unicode-utf8 no-space .length js-statement-end
+    jsvar-converted-string js-equals code-open-close-quote js-statement-end
+    js-for-loop-define jsvar-character-pointer js-equals 0 ; jsvar-character-pointer < jsvar-string-length ; jsvar-character-pointer ++ js-for-loop-start
+        jsvar-unicode-number js-equals jsvar-string-with-unicode-utf8 no-space .charCodeAt( jsvar-character-pointer ) js-statement-end
+
+*---
+Do not convert: A to Z, a to z, 0 to 9, space, comma , period ("full stop"), underscore
+---*
+
+        js-if js-paren-begin js-paren-begin jsvar-unicode-number > 47 js-paren-end js-logical-and js-paren-begin jsvar-unicode-number < 58 js-paren-end js-paren-end js-logical-or js-paren-begin js-paren-begin jsvar-unicode-number > 64 js-paren-end js-logical-and js-paren-begin jsvar-unicode-number < 91 js-paren-end js-paren-end js-logical-or js-paren-begin js-paren-begin jsvar-unicode-number > 96 js-paren-end js-logical-and js-paren-begin jsvar-unicode-number < 123 js-paren-end js-paren-end js-logical-or js-paren-begin jsvar-unicode-number js-is-equal-to 32 js-paren-end js-logical-or js-paren-begin jsvar-unicode-number js-is-equal-to 44 js-paren-end js-logical-or js-paren-begin jsvar-unicode-number js-is-equal-to 46 js-paren-end js-logical-or js-paren-begin jsvar-unicode-number js-is-equal-to 95 js-paren-end js-then
+            jsvar-converted-string js-equals jsvar-converted-string js-concat jsvar-string-with-unicode-utf8 no-space [ jsvar-character-pointer ] js-statement-end
+        js-else
+            jsvar-html-entity js-equals "&#" js-concat jsvar-unicode-number js-concat ";" js-statement-end
+            jsvar-converted-string js-equals jsvar-converted-string js-concat jsvar-html-entity js-statement-end
+            jsvar-character-in-utf8 js-equals String.fromCharCode( jsvar-unicode-number ) js-statement-end
+
+*---
+            jslog-begin code-open-quote jsvar-character-in-utf8 code-close-quote jslog-equal-sign jsvar-character-in-utf8 jslog-end
+            jslog-begin code-open-quote jsvar-html-entity code-close-quote jslog-equal-sign jsvar-html-entity jslog-end
+---*
+        js-if-end
+    js-loop-end
+    return jsvar-converted-string js-statement-end
+} js-statement-end
+<new_line>

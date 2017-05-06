@@ -1,0 +1,43 @@
+jsfunction-convert-unicode-from-html-entities-to-utf8 js-equals function( selectext-string-with-unicode-html-entities ) {
+    var jsvar-remainder-string comma-sep jsvar-converted-string comma-sep jsvar-unicode-number comma-sep jsvar-pointer-to-entity comma-sep jsvar-prefix-string comma-sep jsvar-suffix-string comma-sep jsvar-unicode-number-as-string comma-sep jsvar-pointer-to-semicolon comma-sep jsvar-character-in-utf8 js-statement-end
+
+*---
+    var jsvar-do-nothing js-equals 1 js-statement-end
+---*
+
+    const jscon-re-pattern-html-entity js-equals /&#[0-9]+;/ js-statement-end
+    jsvar-remainder-string js-equals code-open-close-quote js-concat selectext-string-with-unicode-html-entities js-statement-end
+    jsvar-converted-string js-equals code-open-close-quote js-statement-end
+
+*---
+    jsvar-do-nothing ++ js-statement-end
+---*
+
+    jsvar-pointer-to-entity js-equals jsvar-remainder-string no-space .search( jscon-re-pattern-html-entity ) js-statement-end
+
+*---
+    jsvar-do-nothing ++ js-statement-end
+---*
+
+    while ( jsvar-pointer-to-entity >= 0 ) {
+        jsvar-prefix-string js-equals jsvar-remainder-string no-space .substr( 0 , jsvar-pointer-to-entity ) js-statement-end
+        jsvar-pointer-to-semicolon js-equals jsvar-remainder-string no-space .indexOf( ";" , jsvar-pointer-to-entity ) js-statement-end
+        jsvar-suffix-string js-equals jsvar-remainder-string no-space .substr( jsvar-pointer-to-semicolon + 1 ) js-statement-end
+        jsvar-unicode-number-as-string js-equals jsvar-remainder-string no-space .substr( js-paren-begin jsvar-pointer-to-entity + 2 js-paren-end , jsvar-pointer-to-semicolon - jsvar-pointer-to-entity - 2 ) js-statement-end
+        jsvar-unicode-number js-equals parseInt( jsvar-unicode-number-as-string ) js-statement-end
+        jsvar-character-in-utf8 js-equals String.fromCharCode( jsvar-unicode-number ) js-statement-end
+        jsvar-converted-string js-equals jsvar-converted-string js-concat jsvar-prefix-string js-concat jsvar-character-in-utf8 js-statement-end
+
+
+*---
+        jslog-begin code-open-quote jsvar-converted-string code-close-quote jslog-equal-sign jsvar-converted-string jslog-end
+---*
+
+        jsvar-remainder-string js-equals jsvar-suffix-string js-statement-end
+        jsvar-pointer-to-entity js-equals jsvar-remainder-string no-space .search( jscon-re-pattern-html-entity ) js-statement-end
+    js-if-end
+    jsvar-converted-string js-equals jsvar-converted-string js-concat jsvar-remainder-string js-statement-end
+
+    return jsvar-converted-string js-statement-end
+} js-statement-end
+<new_line>

@@ -1,0 +1,9 @@
+jsfunction-convert-string-to-cgi-string js-equals function( selectext-string-not-cgi-version ) {
+    var jsvar-return-value js-statement-end
+    jsvar-return-value js-equals encodeURIComponent( selectext-string-not-cgi-version ) js-statement-end
+*---
+    jsvar-return-value js-equals encodeURIComponent( selectext-string-not-cgi-version ).replace( /['()]/g , escape ).replace( /\*/g , "%2A" ) js-statement-end
+---*
+    return jsvar-return-value js-statement-end
+} js-statement-end
+<new_line>

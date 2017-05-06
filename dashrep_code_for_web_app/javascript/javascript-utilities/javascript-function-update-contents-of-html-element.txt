@@ -1,0 +1,19 @@
+jsfunction-update-contents-of-html-element js-equals function( jsvar-element-selected , jsvar-value-after-update ) {
+    js-if ! no-space jsvar-element-selected js-then
+        return false js-statement-end
+    js-if-end
+    jsvar-element-selected no-space .textContent js-equals jsvar-value-after-update js-statement-end
+
+*---
+indicates error, yet no error:
+    js-if jsvar-element-selected no-space .textContent js-is-equal-to jsvar-value-after-update js-then
+        jslog-begin code-open-quote element content updated to code-close-quote js-concat jsvar-value-after-update jslog-end
+        return true js-statement-end
+    js-else
+        jslog-begin code-open-quote element content was not updated to code-close-quote js-concat jsvar-value-after-update jslog-end
+        return false js-statement-end
+    js-if-end
+---*
+
+} js-statement-end
+<new_line>

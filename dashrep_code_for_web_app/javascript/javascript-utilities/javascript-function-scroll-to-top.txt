@@ -1,0 +1,5 @@
+jsfunction-scroll-to-top js-equals function( ) {
+    window.scrollTo( 0 , 0 ) js-statement-end
+    return true js-statement-end
+} js-statement-end
+<new_line>
