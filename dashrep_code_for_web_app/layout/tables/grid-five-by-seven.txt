@@ -1,0 +1,26 @@
+table-begin
+specify-css-class class-style-grid-table-[-grid-name-] specify-end
+specify-id selectext-id-grid underscore-here [-grid-name-for-css-class-] specify-end
+<new_line>
+[-put-into-phrase row-number  1 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  2 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  3 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  4 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  5 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  6 -]
+[-grid-one-row-five-columns-]
+<new_line>
+[-put-into-phrase row-number  7 -]
+[-grid-one-row-five-columns-]
+table-end
+<new_line>

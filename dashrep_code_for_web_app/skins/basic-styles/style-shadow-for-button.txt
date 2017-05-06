@@ -1,0 +1,1 @@
+border: 1px outset hsla( no-space hue-background no-space ,100%,30%,0.4);

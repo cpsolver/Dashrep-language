@@ -1,0 +1,3 @@
+[-put-into-phrase items-per-column  [-numeric-integer [-numeric-add [-numeric-divide-by [-numeric-add [-total-count-] [-column-count-] -1-] [-column-count-]-] 0.15-]-] -]
+[-put-into-phrase column-number  [-numeric-add 1 [-numeric-integer [-numeric-divide-by [-numeric-minus [-item-number-] 0.5-] [-items-per-column-]-]-]-] -]
+[-column-number-]

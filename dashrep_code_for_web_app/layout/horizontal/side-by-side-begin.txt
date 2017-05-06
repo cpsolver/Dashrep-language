@@ -1,0 +1,7 @@
+table-begin
+specify-css-class class-style-side-by-side-cell-gap-middle specify-end
+no-space
+table-row-begin
+table-cell-begin
+specify-css-class class-style-side-by-side-cell-content-middle specify-end
+no-space

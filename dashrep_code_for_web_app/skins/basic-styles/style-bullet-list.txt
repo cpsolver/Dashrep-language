@@ -1,0 +1,3 @@
+list-style-type:disc;
+list-style-position:inside;
+text-align: justify;

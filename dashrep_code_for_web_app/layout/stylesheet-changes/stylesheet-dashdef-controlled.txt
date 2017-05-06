@@ -1,0 +1,10 @@
+stylesheet-change-begin
+<new_line>
+words-copyright-notice-for-css-stylesheet
+<new_line>
+stylesheet-default-styles
+<new_line>
+generated-css-stylesheet
+<new_line>
+stylesheet-change-end
+<new_line>

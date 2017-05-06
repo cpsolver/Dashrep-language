@@ -1,0 +1,8 @@
+[-clear-phrase contents-grid-named-[-grid-name-]-row-[-grid-row-number-]-column-[-grid-column-number-]-]
+[-expand-text template-grid-cell expanded-results-]
+
+
+[-trace-show expanded-results-]
+
+
+[-append-text expanded-results row-content-for-grid-named-[-grid-name-]-row-[-grid-row-number-]-]

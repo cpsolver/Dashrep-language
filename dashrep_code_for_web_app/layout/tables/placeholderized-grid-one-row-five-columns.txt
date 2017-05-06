@@ -1,0 +1,14 @@
+placeholderized-no-space
+placeholderized-table-row-begin placeholderized-specify-css-class placeholderized-class-style-grid-row-[-grid-style-type-] placeholderized-specify-end
+[-put-into-phrase column-number  1 -]
+[-placeholderized-grid-one-cell-]
+[-put-into-phrase column-number  2 -]
+[-placeholderized-grid-one-cell-]
+[-put-into-phrase column-number  3 -]
+[-placeholderized-grid-one-cell-]
+[-put-into-phrase column-number  4 -]
+[-placeholderized-grid-one-cell-]
+[-put-into-phrase column-number  5 -]
+[-placeholderized-grid-one-cell-]
+placeholderized-table-row-end
+placeholderized-no-space

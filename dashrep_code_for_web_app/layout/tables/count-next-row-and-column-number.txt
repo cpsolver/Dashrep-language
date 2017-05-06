@@ -1,0 +1,6 @@
+[-numeric-increment column-number-]
+
+[-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-column-number-] [-number-of-columns-]-]-]-]
+[-count-next-row-and-column-number-case-next-row-]
+[-if-end-]
+

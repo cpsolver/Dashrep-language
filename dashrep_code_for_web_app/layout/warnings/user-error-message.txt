@@ -1,0 +1,5 @@
+line-break
+paragraph-begin specify-css-class class-style-user-error-message specify-end specify-style style-bold no-space style-font-red specify-end
+word-important-capitalized no-space :
+user-error-message-wording
+paragraph-end

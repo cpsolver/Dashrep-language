@@ -1,0 +1,6 @@
+[-if-no-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-grid-column-number-] [-number-of-items-in-last-row-]-]-]-]
+[-grid-handle-one-cell-not-empty-]
+[-if-else-]
+[-grid-handle-one-cell-empty-]
+[-if-end-]
+

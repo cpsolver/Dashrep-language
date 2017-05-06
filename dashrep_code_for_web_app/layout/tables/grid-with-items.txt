@@ -1,0 +1,6 @@
+[-if-yes-begin [-yes-or-no-same-two-words nonzero [-zero-or-nonzero [-grid-item-count-]-]-]-]
+[-grid-with-items-nonzero-]
+[-if-else-]
+[-grid-with-items-zero-]
+[-if-end-]
+

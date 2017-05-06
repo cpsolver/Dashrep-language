@@ -1,0 +1,5 @@
+style-box-rounded
+no-space
+style-color-background-lighter
+no-space
+style-centered-block-or-image

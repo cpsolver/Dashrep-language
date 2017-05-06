@@ -1,0 +1,2 @@
+no-space </table><!-- tableend -->
+new-line

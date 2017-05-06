@@ -1,0 +1,38 @@
+[-put-into-phrase number-of-items  [-grid-item-count-] -]
+[-put-into-phrase number-of-columns  [-grid-columns-] -]
+[-generate-counts-from-integer-to-integer 1 [-number-of-columns-] list-of-grid-column-numbers-]
+
+
+[-trace-show number-of-items-]
+[-trace-show number-of-columns-]
+
+
+[-calculate-number-of-rows-based-on-number-of-items-and-columns-]
+[-copy-text number-of-rows grid-number-of-rows-]
+
+
+[-trace-show grid-number-of-rows-]
+
+
+[-generate-counts-from-integer-to-integer 1 [-grid-number-of-rows-] list-of-grid-row-numbers-]
+
+
+[-trace-show list-of-grid-row-numbers-]
+
+
+[-put-into-phrase dashrep-action-trace-on-yes-or-no  no -]
+
+
+[-use-handler-with-each-word-in-phrase grid-handle-one-row list-of-grid-row-numbers-]
+
+table-begin
+specify-css-class class-style-grid-table-[-grid-name-] specify-end
+specify-id selectext-id-grid underscore-here [-grid-name-for-css-class-] specify-end
+no-space
+contents-grid-named-[-grid-name-]-all-rows
+no-space
+table-end
+
+
+[-put-into-phrase dashrep-action-trace-on-yes-or-no  no -]
+

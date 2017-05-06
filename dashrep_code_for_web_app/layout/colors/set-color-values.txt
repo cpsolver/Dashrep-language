@@ -1,0 +1,35 @@
+[-if-yes-begin [-yes-or-no-empty-phrase palette-choice-]-]
+[-put-into-phrase palette-choice  default -]
+[-if-end-]
+
+[-put-into-phrase hue-body  [-palette-[-palette-choice-]-hue-body-] -]
+[-put-into-phrase hue-background  [-palette-[-palette-choice-]-hue-background-] -]
+[-put-into-phrase hue-foreground  [-palette-[-palette-choice-]-hue-foreground-] -]
+
+[-put-into-phrase saturation-body  [-palette-[-palette-choice-]-saturation-body-] -]
+[-put-into-phrase saturation-background  [-palette-[-palette-choice-]-saturation-background-] -]
+[-put-into-phrase saturation-foreground  [-palette-[-palette-choice-]-saturation-foreground-] -]
+
+[-put-into-phrase luminance-body  [-palette-[-palette-choice-]-luminance-body-] -]
+[-put-into-phrase luminance-background  [-palette-[-palette-choice-]-luminance-background-] -]
+[-put-into-phrase luminance-background-lighter  [-palette-[-palette-choice-]-luminance-background-lighter-] -]
+[-put-into-phrase luminance-foreground  [-palette-[-palette-choice-]-luminance-foreground-] -]
+
+[-expand-text template-string-no-space string-no-space-]
+
+[-expand-text style-color-body style-color-body-]
+[-prepend-text string-no-space style-color-body-]
+[-append-text string-no-space style-color-body-]
+
+[-expand-text style-color-background style-color-background-]
+[-prepend-text string-no-space style-color-background-]
+[-append-text string-no-space style-color-background-]
+
+[-expand-text style-color-background-lighter style-color-background-lighter-]
+[-prepend-text string-no-space style-color-background-lighter-]
+[-append-text string-no-space style-color-background-lighter-]
+
+[-expand-text style-color-foreground style-color-foreground-]
+[-prepend-text string-no-space style-color-foreground-]
+[-append-text string-no-space style-color-foreground-]
+

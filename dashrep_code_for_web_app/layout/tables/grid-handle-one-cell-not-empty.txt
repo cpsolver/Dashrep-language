@@ -1,0 +1,10 @@
+[-clear-phrase cell-content-for-grid-named-[-grid-name-]-row-[-grid-row-number-]-column-[-grid-column-number-]-]
+[-expand-text template-grid-cell cell-content-for-grid-named-[-grid-name-]-row-[-grid-row-number-]-column-[-grid-column-number-]-]
+
+
+*---
+[-trace-show contents-grid-named-[-grid-name-]-row-[-grid-row-number-]-column-[-grid-column-number-]-]
+---*
+
+
+[-append-text cell-content-for-grid-named-[-grid-name-]-row-[-grid-row-number-]-column-[-grid-column-number-] row-content-for-grid-named-[-grid-name-]-row-[-grid-row-number-]-]

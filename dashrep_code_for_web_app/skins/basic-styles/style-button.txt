@@ -1,0 +1,9 @@
+style-box-rounded
+no-space
+style-centered-text
+no-space
+style-color-background-lighter
+no-space
+style-cursor-hand
+no-space
+style-shadow-for-button

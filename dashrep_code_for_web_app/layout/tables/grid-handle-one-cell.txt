@@ -1,0 +1,8 @@
+[-copy-text word-to-use-in-handler grid-column-number-]
+
+[-if-no-begin [-yes-or-no-same-two-words equal [-numeric-equal-greater-less-compare [-grid-row-number-] [-grid-number-of-rows-]-]-]-]
+[-grid-handle-one-cell-not-empty-]
+[-if-else-]
+[-grid-handle-one-cell-case-last-row-]
+[-if-end-]
+

@@ -1,0 +1,7 @@
+[-copy-text word-to-use-in-handler grid-row-number-]
+[-use-handler-with-each-word-in-phrase grid-handle-one-cell list-of-grid-column-numbers-]
+[-expand-text template-grid-row expanded-results-]
+[-append-text expanded-results contents-grid-named-[-grid-name-]-all-rows-]
+
+
+[-trace-show expanded-results-]

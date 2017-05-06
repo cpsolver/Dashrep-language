@@ -1,0 +1,12 @@
+[-put-into-phrase dashrep-number-of-full-rows  [-numeric-integer [-numeric-divide-by [-number-of-items-] [-number-of-columns-] -]-] -]
+[-put-into-phrase full-rows-times-number-of-columns  [-numeric-multiply [-dashrep-number-of-full-rows-] [-number-of-columns-]-] -]
+[-put-into-phrase number-of-items-in-last-row  [-numeric-minus [-number-of-items-] [-full-rows-times-number-of-columns-]-] -]
+
+[-if-yes-begin [-yes-or-no-same-two-words zero [-zero-or-nonzero [-number-of-items-in-last-row-]-]-]-]
+[-calculate-number-of-rows-for-case-last-row-full-]
+[-if-else-]
+[-calculate-number-of-rows-for-case-last-row-not-full-]
+[-if-end-]
+
+[-clear-phrase dashrep-number-of-full-rows-]
+

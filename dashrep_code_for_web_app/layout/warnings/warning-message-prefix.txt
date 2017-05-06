@@ -1,0 +1,5 @@
+paragraph-begin specify-style style-bold no-space style-color-red specify-end
+word-warning-capitalized no-space :
+paragraph-end
+paragraph-begin specify-style style-color-red specify-end
+paragraph-begin-after-style

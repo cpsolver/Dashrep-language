@@ -1,0 +1,2 @@
+[-put-into-phrase intermediate-result  [-numeric-multiply [-modulus-operand-second-] [-numeric-integer [-numeric-divide-by [-modulus-operand-first-] [-modulus-operand-second-]-]-]-] -]
+[-put-into-phrase modulus-result  [-numeric-minus [-modulus-operand-first-] [-intermediate-result-]-] -]

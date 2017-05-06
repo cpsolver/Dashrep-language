@@ -1,0 +1,6 @@
+border:0;
+no-space
+border-radius:10px;
+no-space
+padding:10px 40px;
+no-space

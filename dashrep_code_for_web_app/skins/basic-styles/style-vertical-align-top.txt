@@ -1,0 +1,1 @@
+vertical hyphen-here align:top;

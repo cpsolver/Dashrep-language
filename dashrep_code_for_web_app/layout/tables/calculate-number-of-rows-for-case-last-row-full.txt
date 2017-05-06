@@ -1,0 +1,2 @@
+[-put-into-phrase number-of-rows  [-dashrep-number-of-full-rows-] -]
+[-put-into-phrase number-of-items-in-last-row  [-number-of-columns-] -]

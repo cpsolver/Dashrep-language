@@ -1,0 +1,26 @@
+*--- for output, Monday is day 1 , Sunday is day 7 ---*
+[-put-into-phrase modulus-operand-first  [-numeric-add [-start-day-of-week-for-year-[-year-number-]-] [-days-into-year-for-month-number-[-month-number-]-] [-day-of-month-] -1 -] -]
+
+*--- future_todo: switch to using list-of-leap-years ---*
+[-if-yes-begin [-yes-if-not-no [-yes-or-no-leap-year-[-year-number-]-] [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-month-number-] 2 -]-]-]-]
+[-numeric-increment modulus-operand-first-]
+[-if-end-]
+
+[-put-into-phrase modulus-operand-second  7 -]
+[-calculate-numeric-modulus-]
+[-copy-text modulus-result day-of-week-number-]
+
+[-if-yes-begin [-yes-or-no-same-two-words 0 [-day-of-week-number-]-]-]
+[-put-into-phrase day-of-week-number  7 -]
+[-if-end-]
+
+
+*---
+[-trace-show year-number-]
+[-trace-show start-day-of-week-for-year-[-year-number-]-]
+[-trace-show month-number-]
+[-trace-show days-into-year-for-month-number-[-month-number-]-]
+[-trace-show day-of-month-]
+[-trace-show yes-or-no-leap-year-[-year-number-]-]
+[-trace-show day-of-week-number-]
+---*

@@ -1,0 +1,1 @@
+<textarea wrap="soft"> no-space

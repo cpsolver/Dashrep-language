@@ -1,0 +1,4 @@
+border-top-left-radius:20px;
+no-space
+border-bottom-left-radius:10px;
+no-space

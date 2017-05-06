@@ -1,0 +1,2 @@
+<new_line>
+paragraph-begin specify-css-class class-style-paragraph-long specify-end

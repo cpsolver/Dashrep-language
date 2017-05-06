@@ -1,0 +1,1 @@
+color: no-space hsl( no-space hue-foreground no-space , no-space saturation-foreground no-space % no-space , no-space luminance-foreground no-space %) no-space ;

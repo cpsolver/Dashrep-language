@@ -1,0 +1,7 @@
+[-put-into-phrase comparison-minutes-since-begin-year-2000  [-numeric-add [-minute-number-] [-numeric-multiply 60 [-numeric-add [-hour-number-] [-numeric-multiply 24 [-numeric-add [-days-into-year-for-month-number-[-month-number-]-] [-day-of-month-] [-numeric-multiply 366 [-numeric-minus [-year-number-] 2000-]-]-]-]-]-]-] -]
+
+
+*---
+Perl code version:
+$comparison_date_time_in_minutes = $minute + ( 60 * ( $hours_gmt + ( 24 * ( $days_in_year_prior_to_first_day_of_month_number[ $month_number ] + $day_of_month + ( 366 * ( $year - 2000 ) ) ) ) ) ) ;
+---*

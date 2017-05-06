@@ -1,0 +1,10 @@
+no-space
+table-row-begin specify-css-class class-style-grid-row-[-grid-style-type-] specify-end
+[-put-into-phrase column-number  1 -]
+[-grid-one-cell-]
+[-put-into-phrase column-number  2 -]
+[-grid-one-cell-]
+[-put-into-phrase column-number  3 -]
+[-grid-one-cell-]
+table-row-end
+no-space

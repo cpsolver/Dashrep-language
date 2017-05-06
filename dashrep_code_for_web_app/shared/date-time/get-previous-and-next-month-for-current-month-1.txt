@@ -1,0 +1,4 @@
+[-put-into-phrase previous-month-number  12 -]
+[-put-into-phrase year-containing-previous-month  [-numeric-minus [-current-year-] 1 -] -]
+[-put-into-phrase next-month-number  2 -]
+[-put-into-phrase year-containing-next-month  [-current-year-] -]
