@@ -4991,7 +4991,7 @@ my $storage_item__5016 = 'template-runtime-code-for-action-copy-without-extra-sp
 my $storage_item__5017 = 'template-runtime-code-standard-action-begin $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> # $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> # &function__remove_extra_spaces( ) ; <new_line> # code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> template-runtime-code-standard-action-end' ;
 $global_dashrep_replacement{ $storage_item__5016 } = $storage_item__5017 ;
 my $storage_item__5018 = 'template-runtime-code-for-action-copy-word-at-position' ;
-my $storage_item__5019 = 'template-runtime-code-standard-action-begin # $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> # $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> # $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> # $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> # $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> # runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> $global_word_pointer = runtime-code-for-operand-number-three + 0 ; <new_line> &function__get_word_at_position( ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-standard-action-end' ;
+my $storage_item__5019 = 'template-runtime-code-standard-action-begin $global_single_action_name = ' . "'" . '<dashrep_placeholder_action_name>' . "'" . ' ; <new_line> $global_single_action_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_single_action_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_single_action_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_single_action_operand_four = runtime-code-for-operand-number-four ; <new_line> runtime-code-storage-item-result = &dashrep_expand_parameters( ) ; <new_line> # $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> # $global_word_pointer = runtime-code-for-operand-number-three + 0 ; <new_line> # &function__get_word_at_position( ) ; <new_line> # code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> # runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-standard-action-end' ;
 $global_dashrep_replacement{ $storage_item__5018 } = $storage_item__5019 ;
 my $storage_item__5020 = 'template-runtime-code-for-action-executable-phrase-begin' ;
 my $storage_item__5021 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line>' ;
@@ -14305,17 +14305,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__1967 ;
-# $global_single_action_operand_two = $storage_item__1968 ;
-# $global_single_action_operand_three = $storage_item__1969 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__1966 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__1967 } ;
-$global_word_pointer = $storage_item__1969 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__1968 } = $global_target_text ;
-$storage_item__1966 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__1967 ;
+$global_single_action_operand_two = $storage_item__1968 ;
+$global_single_action_operand_three = $storage_item__1969 ;
+$global_single_action_operand_four = '' ;
+$storage_item__1966 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__1967 } ;
+# $global_word_pointer = $storage_item__1969 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__1968 } = $global_target_text ;
+# $storage_item__1966 = '' ;
 } else {
 $storage_item__1966 = ' copy-word-at-position ' . $storage_item__1967 . ' ' . $storage_item__1968 . ' ' . $storage_item__1969 . ' ' ;
 }
@@ -14460,17 +14460,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__1988 ;
-# $global_single_action_operand_two = $storage_item__1989 ;
-# $global_single_action_operand_three = $storage_item__1990 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__1987 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__1988 } ;
-$global_word_pointer = $storage_item__1990 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__1989 } = $global_target_text ;
-$storage_item__1987 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__1988 ;
+$global_single_action_operand_two = $storage_item__1989 ;
+$global_single_action_operand_three = $storage_item__1990 ;
+$global_single_action_operand_four = '' ;
+$storage_item__1987 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__1988 } ;
+# $global_word_pointer = $storage_item__1990 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__1989 } = $global_target_text ;
+# $storage_item__1987 = '' ;
 } else {
 $storage_item__1987 = ' copy-word-at-position ' . $storage_item__1988 . ' ' . $storage_item__1989 . ' ' . $storage_item__1990 . ' ' ;
 }
@@ -14615,17 +14615,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__2009 ;
-# $global_single_action_operand_two = $storage_item__2010 ;
-# $global_single_action_operand_three = $storage_item__2011 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__2008 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__2009 } ;
-$global_word_pointer = $storage_item__2011 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__2010 } = $global_target_text ;
-$storage_item__2008 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__2009 ;
+$global_single_action_operand_two = $storage_item__2010 ;
+$global_single_action_operand_three = $storage_item__2011 ;
+$global_single_action_operand_four = '' ;
+$storage_item__2008 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__2009 } ;
+# $global_word_pointer = $storage_item__2011 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__2010 } = $global_target_text ;
+# $storage_item__2008 = '' ;
 } else {
 $storage_item__2008 = ' copy-word-at-position ' . $storage_item__2009 . ' ' . $storage_item__2010 . ' ' . $storage_item__2011 . ' ' ;
 }
@@ -14770,17 +14770,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__2030 ;
-# $global_single_action_operand_two = $storage_item__2031 ;
-# $global_single_action_operand_three = $storage_item__2032 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__2029 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__2030 } ;
-$global_word_pointer = $storage_item__2032 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__2031 } = $global_target_text ;
-$storage_item__2029 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__2030 ;
+$global_single_action_operand_two = $storage_item__2031 ;
+$global_single_action_operand_three = $storage_item__2032 ;
+$global_single_action_operand_four = '' ;
+$storage_item__2029 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__2030 } ;
+# $global_word_pointer = $storage_item__2032 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__2031 } = $global_target_text ;
+# $storage_item__2029 = '' ;
 } else {
 $storage_item__2029 = ' copy-word-at-position ' . $storage_item__2030 . ' ' . $storage_item__2031 . ' ' . $storage_item__2032 . ' ' ;
 }
@@ -19872,17 +19872,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__2598 . '-' . $storage_item__2599 ;
-# $global_single_action_operand_two = $storage_item__2601 ;
-# $global_single_action_operand_three = $storage_item__2602 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__2597 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__2598 . '-' . $storage_item__2599 } ;
-$global_word_pointer = $storage_item__2602 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__2601 } = $global_target_text ;
-$storage_item__2597 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__2598 . '-' . $storage_item__2599 ;
+$global_single_action_operand_two = $storage_item__2601 ;
+$global_single_action_operand_three = $storage_item__2602 ;
+$global_single_action_operand_four = '' ;
+$storage_item__2597 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__2598 . '-' . $storage_item__2599 } ;
+# $global_word_pointer = $storage_item__2602 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__2601 } = $global_target_text ;
+# $storage_item__2597 = '' ;
 } else {
 $storage_item__2597 = ' copy-word-at-position ' . $storage_item__2598 . '-' . $storage_item__2599 . ' ' . $storage_item__2601 . ' ' . $storage_item__2602 . ' ' ;
 }
@@ -19975,17 +19975,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__2609 . '-' . $storage_item__2610 ;
-# $global_single_action_operand_two = $storage_item__2612 ;
-# $global_single_action_operand_three = $storage_item__2613 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__2608 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__2609 . '-' . $storage_item__2610 } ;
-$global_word_pointer = $storage_item__2613 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__2612 } = $global_target_text ;
-$storage_item__2608 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__2609 . '-' . $storage_item__2610 ;
+$global_single_action_operand_two = $storage_item__2612 ;
+$global_single_action_operand_three = $storage_item__2613 ;
+$global_single_action_operand_four = '' ;
+$storage_item__2608 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__2609 . '-' . $storage_item__2610 } ;
+# $global_word_pointer = $storage_item__2613 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__2612 } = $global_target_text ;
+# $storage_item__2608 = '' ;
 } else {
 $storage_item__2608 = ' copy-word-at-position ' . $storage_item__2609 . '-' . $storage_item__2610 . ' ' . $storage_item__2612 . ' ' . $storage_item__2613 . ' ' ;
 }
@@ -22219,17 +22219,17 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-# $global_single_action_name = 'copy-word-at-position' ;
-# $global_single_action_operand_one = $storage_item__2866 ;
-# $global_single_action_operand_two = $storage_item__2867 ;
-# $global_single_action_operand_three = $storage_item__2868 ;
-# $global_single_action_operand_four = '' ;
-# $storage_item__2865 = &dashrep_expand_parameters( ) ;
-$global_source_text = $global_dashrep_replacement{ $storage_item__2866 } ;
-$global_word_pointer = $storage_item__2868 + 0 ;
-&function__get_word_at_position( ) ;
-$global_dashrep_replacement{ $storage_item__2867 } = $global_target_text ;
-$storage_item__2865 = '' ;
+$global_single_action_name = 'copy-word-at-position' ;
+$global_single_action_operand_one = $storage_item__2866 ;
+$global_single_action_operand_two = $storage_item__2867 ;
+$global_single_action_operand_three = $storage_item__2868 ;
+$global_single_action_operand_four = '' ;
+$storage_item__2865 = &dashrep_expand_parameters( ) ;
+# $global_source_text = $global_dashrep_replacement{ $storage_item__2866 } ;
+# $global_word_pointer = $storage_item__2868 + 0 ;
+# &function__get_word_at_position( ) ;
+# $global_dashrep_replacement{ $storage_item__2867 } = $global_target_text ;
+# $storage_item__2865 = '' ;
 } else {
 $storage_item__2865 = ' copy-word-at-position ' . $storage_item__2866 . ' ' . $storage_item__2867 . ' ' . $storage_item__2868 . ' ' ;
 }
