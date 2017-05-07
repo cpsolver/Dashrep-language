@@ -1,6 +1,14 @@
 start-here:
 [-test-of-special-operators-]
+[-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
+[-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
+[-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
 --------
+
+output-filename:
+output_display_values_not_correct.txt
+-------
+
 dashrep-action-trace-on-yes-or-no:
 yes
 --------
@@ -111,8 +119,8 @@ test-of-special-operators:
 [-put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -] -]
 [-put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4 -]
 [-generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
-[-put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions ??? -]
-[-put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions ??? -]
+[-put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions  0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 -]
+[-put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions  5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 -]
 [-should-be-counts-3-and-minus-2 = [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38-]-]
 [-put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2 -]
 [-put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-] -]
@@ -136,7 +144,9 @@ test-of-special-operators:
 [-prepend-text-no-space character-space sample-word-list-one-]
 [-append-new-line sample-word-list-one-]
 [-append-text-no-space character-space sample-word-list-one-]
-[-put-into-phrase correct-value-for-sample-word-list-one  ??? -]
+[-put-into-phrase correct-value-for-sample-word-list-one  " alpha alpha-here and beta gamma beta delta<new_line> " -]
+[-copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one character-double-quote empty-text-]
+[-copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one placeholder-new-line character-newline-]
 [-prepend-text-no-space character-space sample-word-list-two-]
 [-append-new-line sample-word-list-two-]
 [-append-text-no-space character-space sample-word-list-two-]
@@ -174,7 +184,7 @@ test-of-special-operators:
 [-put-into-phrase correct-value-for-vector-result-distances  27 25 4 -]
 [-put-into-phrase text-to-repeat  number 9  -]
 [-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
-[-put-into-phrase correct-value-for-list-of-repeated-text  ??? -]
+[-put-into-phrase correct-value-for-list-of-repeated-text  number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 -]
 [-put-into-phrase text-with-named-html-entities  abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def  -]
 [-put-into-phrase text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  -]
 [-copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
@@ -182,7 +192,7 @@ test-of-special-operators:
 [-put-into-phrase list-of-words-to-search-based-on-prefix  here-is-something here-is-something-else hereis-something-else and-something-else -]
 [-put-into-phrase text-begins-with  here-is -]
 [-copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
-[-put-into-phrase correct-value-for-list-of-words-that-begin-with-text  ??? -]
+[-put-into-phrase correct-value-for-list-of-words-that-begin-with-text  here-is-something here-is-something-else -]
 [-put-into-phrase text-contains  is  -]
 [-copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains-]
 [-put-into-phrase text-begins-with  and  -]
@@ -212,7 +222,9 @@ test-of-special-operators:
 [-append-text character-period list-of-phrase-names-difference-]
 [-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
-[-put-into-phrase correct-value-for-list-of-phrase-names-difference  . . -]
+
+[-put-into-phrase new-correct-value-for-list-of-phrase-names-difference  . . -]
+
 [-put-into-phrase string-abc  abc -]
 [-copy-text character-space text-to-append-with-leading-and-trailing-space-]
 [-append-text-no-space string-abc text-to-append-with-leading-and-trailing-space-]
@@ -221,12 +233,21 @@ test-of-special-operators:
 [-append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending-]
 [-put-into-phrase text-containing-period  abc.def.ghi  -]
 [-put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-] -]
-[-put-into-phrase correct-value-for-results-position-of-matching-text  ??? -]
+[-put-into-phrase correct-value-for-results-position-of-matching-text  4 -]
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
-[-put-into-phrase correct-value-for-results-with-unicode-converted-to-html-entities  ??? -]
+[-clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities-]
 [-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
 [-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
 [-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
+[-put-into-phrase words-with-space-at-end  abc xyz 123 -]
+[-append-text-no-space character-space words-with-space-at-end-]
+[-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
+[-put-into-phrase correct-value-for-word-count  3 -]
+[-check-for-correct-values-]
+--------
+
+check-for-correct-values:
+
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
 [-generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  no -]
@@ -234,8 +255,6 @@ test-of-special-operators:
 [-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
 [-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
 [-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
-
-nothing else
 --------
 
 handle-one-check-for-correct-value:
@@ -243,15 +262,41 @@ handle-one-check-for-correct-value:
 [-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-]-]
 [-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
 [-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+
 [-if-no-begin [-yes-or-no-value-is-correct-]-]
 [-expand-text template-display-value-is-not-correct display-value-is-not-correct-]
+[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name-]
+[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name [-phrase-name-]-]
+[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name-]-]
 [-append-text-no-space display-value-is-not-correct full-display-values-not-correct-]
+[-if-else-]
+[-append-text phrase-name list-of-phrases-with-correct-values-]
 [-if-end-]
 --------
 
+string-ok-colon:
+OK:
+--------
+
+string-not-ok-colon:
+NOT_OK:
+--------
+
 template-display-value-is-not-correct:
-Value of phrase phrase-name-with-underscores is " no-space [-phrase-name-] no-space " but should be " no-space correct-value-for-[-phrase-name-] no-space "
+ERROR: Value of phrase "<placeholder_phrase_name>" is "<placeholder_value_of_phrase_name>" but should be "<placeholder_correct_value_for_phrase_name>"
 <new_line>
+--------
+
+placeholder-phrase-name:
+<placeholder_phrase_name>
+--------
+
+placeholder-value-of-phrase-name:
+<placeholder_value_of_phrase_name>
+--------
+
+placeholder-correct-value-for-phrase-name:
+<placeholder_correct_value_for_phrase_name>
 --------
 
 character-underscore:
@@ -278,6 +323,18 @@ test-of-unique-value:
 
 non-breaking-space:
 &nbsp;
+--------
+
+character-double-quote:
+"
+--------
+
+placeholder-new-line:
+<new_line>
+--------
+
+words-preface-to-list-of-correct-values:
+List of phrases correctly calculated:
 --------
 
 test-of-special-spacing:
