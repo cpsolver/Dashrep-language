@@ -38,23 +38,21 @@ $global_pointer_to_previous_space = -1 ;  <new_line>
 while ( $global_pointer_to_next_space >= 0 ) {  <new_line>
 if ( $global_pointer_to_next_space > $global_pointer_to_previous_space + 1 ) {  <new_line>
 $global_number_of_words ++ ;  <new_line>
-
-# print "number_of_words = " . $global_number_of_words . "\n" ;  <new_line>
-
 $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ;  <new_line>
 $global_length_of_word[ $global_number_of_words ] = $global_pointer_to_next_space - $global_pointer_to_previous_space - 1 ;  <new_line>
 }  <new_line>
-
-# print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "\n" ;  <new_line>
-
+# reminder: a change in the next two lines of code can cause an endless loop  <new_line>
 $global_pointer_to_previous_space = $global_pointer_to_next_space ;  <new_line>
 $global_pointer_to_next_space = index( $global_source_text , ' ' , $global_pointer_to_previous_space + 1 ) ;  <new_line>
 }  <new_line>
 
+if ( $global_pointer_to_previous_space < $global_length_of_text - 1 ) {  <new_line>
 $global_number_of_words ++ ;  <new_line>
 $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ;  <new_line>
-$global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space + 1 ;  <new_line>
+$global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space - 1 ;  <new_line>
+}  <new_line>
 
-# print "word number " . $global_number_of_words . " is: " . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "\n" ;  <new_line>
+ print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
+
 
 template-function-segment-ending
