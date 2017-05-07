@@ -1,13 +1,13 @@
 template-runtime-code-standard-action-begin
 
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ runtime-code-for-operand-number-one } ) ;  <new_line>
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
 $global_target_text = runtime-code-for-operand-number-two ;  <new_line>
 
-if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {  <new_line>
-$global_dashrep_replacement{ $global_target_text } .= ' ' ;  <new_line>
+if ( code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
+code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= ' ' ;  <new_line>
 }  <new_line>
 
-$global_dashrep_replacement{ $global_target_text } .= $global_source_text ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
 template-runtime-code-standard-action-end

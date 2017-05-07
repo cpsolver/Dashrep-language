@@ -11,9 +11,8 @@ $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <ne
 runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
 
 
-# $global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;  <new_line>
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
 # &function__remove_extra_spaces( ) ;  <new_line>
-# $global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_target_text ;  <new_line>
-
+# code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 
 template-runtime-code-standard-action-end

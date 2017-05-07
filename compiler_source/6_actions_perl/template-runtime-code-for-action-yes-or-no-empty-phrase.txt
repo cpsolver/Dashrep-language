@@ -9,8 +9,9 @@ $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <ne
 
 runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
 
+
 # runtime-code-storage-item-result = 'yes' ;  <new_line>
-# $global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;  <new_line>
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
 # $global_pointer_to_previous_space = -1 ;  <new_line>
 # $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
 

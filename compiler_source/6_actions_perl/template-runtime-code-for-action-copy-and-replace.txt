@@ -1,9 +1,9 @@
 template-runtime-code-standard-action-begin
 
-$global_source_text = $global_dashrep_replacement{ runtime-code-for-operand-number-one } ;  <new_line>
-$global_string_to_be_replaced = $global_dashrep_replacement{ runtime-code-for-operand-number-three } ;  <new_line>
-$global_text_to_insert = $global_dashrep_replacement{ runtime-code-for-operand-number-four } ;  <new_line>
-$global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ;  <new_line>
+$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
+$global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
 
 if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {  <new_line>
 template-runtime-code-store-result-for-case-error
@@ -24,7 +24,7 @@ last ;  <new_line>
 }  <new_line>
 
 if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {  <new_line>
-$global_dashrep_replacement{ runtime-code-for-operand-number-two } = $global_source_text ;  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
 

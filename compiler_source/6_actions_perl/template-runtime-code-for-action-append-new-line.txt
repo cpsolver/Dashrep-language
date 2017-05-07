@@ -1,6 +1,6 @@
 template-runtime-code-standard-action-begin
 
-$global_dashrep_replacement{ runtime-code-for-operand-number-one } .= "\n" ;  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
 template-runtime-code-standard-action-end

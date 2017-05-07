@@ -8,8 +8,8 @@ open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 
-if ( ( exists( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ) ) && ( $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } ne '' ) && ( exists( $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ) ) ) {  <new_line>
-print $global_dashrep_replacement{ $global_dashrep_replacement{ 'dashrep-compiled-code-output-phrase-name' } } ;  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end ne '' ) && ( exists( code-get-or-put-phrase-definition-begin code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+print code-get-or-put-phrase-definition-begin code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end code-get-or-put-phrase-definition-end ;  <new_line>
 print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 } else {  <new_line>
 print $output_results . "\n" ;  <new_line>
