@@ -1,12 +1,6 @@
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
+template-runtime-code-standard-action-begin
 
 runtime-code-storage-item-result = 'multiple' ;  <new_line>
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'zero' ;  <new_line>
@@ -14,6 +8,4 @@ runtime-code-storage-item-result = 'zero' ;  <new_line>
 runtime-code-storage-item-result = 'one' ;  <new_line>
 }  <new_line>
 
-}  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end

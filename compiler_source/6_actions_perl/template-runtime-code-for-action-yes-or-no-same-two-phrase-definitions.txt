@@ -1,12 +1,4 @@
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-standard-action-begin
 
 if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -14,6 +6,4 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 }  <new_line>
 
-}  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
