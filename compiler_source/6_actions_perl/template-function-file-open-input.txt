@@ -1,0 +1,12 @@
+# no-space dashes-long-line  <new_line>
+# function__file_open_input  <new_line>
+#  <new_line>
+#  Input is $global_input_file_name  <new_line>
+#  Output is file INFILE  <new_line>
+<new_line>
+
+sub function__file_open_input( ) {  <new_line>
+
+
+
+template-function-segment-ending
