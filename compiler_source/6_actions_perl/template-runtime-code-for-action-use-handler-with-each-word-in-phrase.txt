@@ -1,4 +1,4 @@
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
 my $local_pointer_to_next_space ;  <new_line>
 my $local_pointer_to_future_space ;  <new_line>
@@ -6,14 +6,6 @@ my $local_pointer_to_next_word ;  <new_line>
 my $local_endless_loop_counter ;  <new_line>
 my $local_endless_loop_counter_limit ;  <new_line>
 my $length_of_text_in_word_list ; <new_line>
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
 $local_pointer_to_next_space = -1 ;  <new_line>
@@ -107,8 +99,4 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 
 }  *--- # end of ABABA loop ---*  <new_line>
 
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
