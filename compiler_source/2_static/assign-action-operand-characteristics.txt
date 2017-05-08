@@ -119,3 +119,4 @@
 [-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
 
 [-put-into-phrase operand-checks-for-flush-trace-log  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-put-into-phrase check-operand-one-is-phrase-name-]
