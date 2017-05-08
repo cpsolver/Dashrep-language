@@ -18,6 +18,7 @@ runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
 # while ( $global_character_pointer >= 0 ) {  <new_line>
 # if ( $global_character_pointer > $global_pointer_to_previous_space + 1 ) {  <new_line>
 # runtime-code-storage-item-result = 'no' ;  <new_line>
+# last ;  <new_line>
 # }  <new_line>
 # $global_pointer_to_previous_space = $global_character_pointer ;  <new_line>
 # $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
