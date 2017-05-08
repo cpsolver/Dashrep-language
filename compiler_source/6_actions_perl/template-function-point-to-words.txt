@@ -52,7 +52,7 @@ $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_
 $global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space - 1 ;  <new_line>
 }  <new_line>
 
- print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
+# print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
 
 
 template-function-segment-ending
