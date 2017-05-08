@@ -1,15 +1,6 @@
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_yes ) {  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
-return runtime-code-storage-item-result ;  <new_line>
-}  <new_line>
 
 $global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
 $global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
@@ -22,4 +13,4 @@ runtime-code-storage-item-result = 'greater' ;  <new_line>
 runtime-code-storage-item-result = 'less' ;  <new_line>
 }  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
