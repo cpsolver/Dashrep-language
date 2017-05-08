@@ -1,7 +1,5 @@
 template-runtime-code-standard-action-begin
 
-runtime-code-storage-item-result = '' ;  <new_line>
-
 $global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
 $global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
 
