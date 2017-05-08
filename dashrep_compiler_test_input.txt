@@ -1,5 +1,6 @@
 start-here:
-[-test-of-special-operators-]
+[-test-of-dashrep-actions-]
+[-check-for-correct-values-]
 [-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
 [-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
 [-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
@@ -41,7 +42,7 @@ list-of-numbers:
 3 12 7 13 4
 --------
 
-test-of-special-operators:
+test-of-dashrep-actions:
 [-put-into-phrase test-assignment  17 -]
 [-put-into-phrase should-be-17  [-test-assignment-] -]
 [-put-into-phrase correct-value-for-should-be-17  17 -]
@@ -56,12 +57,6 @@ test-of-special-operators:
 [-put-into-phrase dashrep-special-replacement-hyphen  &ndash; -]
 [-copy-without-extra-spaces text-with-special-characters text-with-adjacent-spaces-replaced-]
 [-put-into-phrase correct-value-text-with-adjacent-spaces-replaced  ??? -]
-[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
-[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
-[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
-*---
-[-copy-without-extra-spaces page-participants-list correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
----*
 [-put-into-phrase should-be-zero  [-zero-one-multiple 0-] -]
 [-put-into-phrase correct-value-for-should-be-zero  zero -]
 [-put-into-phrase should-be-one  [-zero-one-multiple 1-] -]
@@ -78,12 +73,22 @@ test-of-special-operators:
 [-put-into-phrase list-of-numbers  3 12 7 13 4 -]
 [-put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -] -]
 [-put-into-phrase correct-value-for-should-be-number-three  3 -]
-[-put-into-phrase should-be-item-four  [-get-word-at-position list-of-numbers 999 -] -]
-[-put-into-phrase correct-value-for-should-be-item-four  4 -]
+[-put-into-phrase should-be-number-four  [-get-word-at-position list-of-numbers 999 -] -]
+[-put-into-phrase correct-value-for-should-be-number-four  4 -]
 [-put-into-phrase should-be-same-words-yes  [-yes-or-no-same-two-words waltz waltz-] -]
 [-put-into-phrase correct-value-for-should-be-same-words-yes  yes -]
 [-put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-] -]
 [-put-into-phrase correct-value-for-should-be-same-words-no  no -]
+--------
+
+
+more-test-of-dashrep-actions:
+
+[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
+[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
+[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
+[-copy-without-extra-spaces page-participants-list todo-later--correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
+
 [-put-into-phrase item-one  waltz -]
 [-put-into-phrase item-two  dance -]
 [-put-into-phrase should-be-same-yes  [-yes-or-no-same-two-phrase-definitions item-one item-one-] -]
@@ -176,7 +181,6 @@ test-of-special-operators:
 [-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
 [-put-into-phrase correct-value-for-string-123-padded  00123 -]
 
-*---
 [-put-into-phrase vector-one  17 23 -4  -]
 [-put-into-phrase vector-two  21 -9 0  -]
 [-numeric-vector-add-number vector-one -7 vector-result-add-number-]
@@ -187,7 +191,6 @@ test-of-special-operators:
 [-put-into-phrase correct-value-for-vector-result-addition  38 14 -4 -]
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 [-put-into-phrase correct-value-for-vector-result-distances  27 25 4 -]
----*
 
 [-put-into-phrase text-to-repeat  number 9  -]
 [-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
@@ -244,22 +247,24 @@ test-of-special-operators:
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
 [-clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities-]
 [-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
-[-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
-[-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
 [-put-into-phrase words-with-space-at-end  abc xyz 123 -]
 [-append-text-no-space character-space words-with-space-at-end-]
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
-[-check-for-correct-values-]
 --------
 
 check-for-correct-values:
 
+[-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
+[-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
 [-generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  no -]
 [-copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
 [-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
+
+[-trace-show list-of-phrases-to-check-for-correct-value-]
+
 [-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
 [-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
 --------
