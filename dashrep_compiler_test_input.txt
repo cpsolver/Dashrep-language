@@ -79,15 +79,6 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-should-be-same-words-yes  yes -]
 [-put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-] -]
 [-put-into-phrase correct-value-for-should-be-same-words-no  no -]
---------
-
-
-more-test-of-dashrep-actions:
-
-[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
-[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
-[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
-[-copy-without-extra-spaces page-participants-list todo-later--correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
 
 [-put-into-phrase item-one  waltz -]
 [-put-into-phrase item-two  dance -]
@@ -251,6 +242,16 @@ more-test-of-dashrep-actions:
 [-append-text-no-space character-space words-with-space-at-end-]
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
+--------
+
+
+more-test-of-dashrep-actions:
+
+[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
+[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
+[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
+[-copy-without-extra-spaces page-participants-list todo-later--correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
+
 --------
 
 check-for-correct-values:
