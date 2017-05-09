@@ -1,5 +1,5 @@
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
 template-runtime-code-print-trace-output
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
