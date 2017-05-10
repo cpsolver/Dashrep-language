@@ -891,7 +891,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-clear-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities  check-operand-count-is-one check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-copy-and-replace  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty -]
@@ -988,7 +988,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components  check-operand-count-is-one check-operand-one-is-real-number -]
 [-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian  check-operand-count-is-one check-operand-one-is-positive-integer -]
 [-put-into-phrase operand-checks-for-action-trace-show  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase  check-operand-count-is-one check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file  check-operand-count-is-one check-operand-one-is-file-name -]
 [-put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name -]
 [-put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name -]
@@ -1001,7 +1001,9 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-zero-one-multiple  check-operand-count-is-one check-operand-one-is-positive-integer -]
 [-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
 
-[-put-into-phrase operand-checks-for-flush-trace-log  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-put-into-phrase check-operand-one-is-phrase-name-]
+[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words check-operand-one-is-phrase-name-]
 ----
 build-paired-replacements-for-converting-hyphens-into-defenns:
 [-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
@@ -2555,6 +2557,221 @@ template-function-numeric-minimum
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
 ----
+new-template-runtime-code-for-action-clear-phrase:
+template-runtime-code-standard-action-begin
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = '' ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-copy-and-replace:
+template-runtime-code-standard-action-begin
+
+$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
+$global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
+
+if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {  <new_line>
+template-runtime-code-store-result-for-case-error
+} else {  <new_line>
+$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
+
+while ( $global_character_pointer >= 0 ) {  <new_line>
+$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;  <new_line>
+$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
+
+$global_endless_loop_counter ++ ;  <new_line>
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
+last ;  <new_line>
+}  <new_line>
+
+}  <new_line>
+}  <new_line>
+
+if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+} else {  <new_line>
+
+template-runtime-code-store-result-for-case-error
+
+}  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-copy-text:
+template-runtime-code-standard-action-begin
+
+$global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-copy-without-extra-spaces:
+template-runtime-code-standard-action-begin
+
+
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+# &function__remove_extra_spaces( ) ;  <new_line>
+# code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-copy-word-at-position:
+template-runtime-code-standard-action-begin
+
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+# $global_word_pointer = runtime-code-for-operand-number-three + 0 ;  <new_line>
+# &function__get_word_at_position( ) ;  <new_line>
+# code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+# runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-get-count-of-words:
+template-runtime-code-standard-action-begin
+
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+# &function__get_count_of_words( ) ;  <new_line>
+# runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-get-word-at-position:
+template-runtime-code-standard-action-begin
+
+
+# $global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+# $global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+# $global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+# $global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+# $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+# runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_word_pointer = runtime-code-for-operand-number-two + 0 ;  <new_line>
+&function__get_word_at_position( ) ;  <new_line>
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-numeric-equal-greater-less-compare:
+template-runtime-code-standard-action-begin
+
+$global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
+$global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
+
+if ( $global_numeric_value_first == $global_numeric_value_second ) {  <new_line>
+runtime-code-storage-item-result = 'equal' ;  <new_line>
+} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {  <new_line>
+runtime-code-storage-item-result = 'greater' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'less' ;  <new_line>
+}  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-yes-or-no-empty-phrase:
+template-runtime-code-standard-action-begin
+
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+# runtime-code-storage-item-result = 'yes' ;  <new_line>
+# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+# $global_pointer_to_previous_space = -1 ;  <new_line>
+# $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
+
+# while ( $global_character_pointer >= 0 ) {  <new_line>
+# if ( $global_character_pointer > $global_pointer_to_previous_space + 1 ) {  <new_line>
+# runtime-code-storage-item-result = 'no' ;  <new_line>
+# last ;  <new_line>
+# }  <new_line>
+# $global_pointer_to_previous_space = $global_character_pointer ;  <new_line>
+# $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
+# }  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions:
+template-runtime-code-standard-action-begin
+
+if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
+runtime-code-storage-item-result = 'yes' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'no' ;  <new_line>
+}  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-zero-one-multiple:
+template-runtime-code-standard-action-begin
+
+runtime-code-storage-item-result = 'multiple' ;  <new_line>
+
+if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
+runtime-code-storage-item-result = 'zero' ;  <new_line>
+} elsif ( runtime-code-for-operand-number-one + 0 == 1 ) {  <new_line>
+runtime-code-storage-item-result = 'one' ;  <new_line>
+}  <new_line>
+
+template-runtime-code-standard-action-end
+----
+new-template-runtime-code-for-action-zero-or-nonzero:
+template-runtime-code-standard-action-begin
+
+runtime-code-storage-item-result = 'nonzero' ;  <new_line>
+
+if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
+runtime-code-storage-item-result = 'zero' ;  <new_line>
+}  <new_line>
+
+template-runtime-code-standard-action-end
+----
 template-function-file-open-input:
 # no-space dashes-long-line  <new_line>
 # function__file_open_input  <new_line>
@@ -3049,7 +3266,7 @@ $global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_
 $global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space - 1 ;  <new_line>
 }  <new_line>
 
- print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
+# print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
 
 
 template-function-segment-ending
@@ -3126,122 +3343,6 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
-template-runtime-code-for-action-clear-phrase:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = '' ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-and-replace:
-template-runtime-code-standard-action-begin
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
-$global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
-
-if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {  <new_line>
-template-runtime-code-store-result-for-case-error
-} else {  <new_line>
-$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
-$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
-
-while ( $global_character_pointer >= 0 ) {  <new_line>
-$global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;  <new_line>
-$global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
-
-$global_endless_loop_counter ++ ;  <new_line>
-if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
-last ;  <new_line>
-}  <new_line>
-
-}  <new_line>
-}  <new_line>
-
-if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
-} else {  <new_line>
-
-template-runtime-code-store-result-for-case-error
-
-}  <new_line>
-
-template-runtime-code-standard-action-end
-----
-template-runtime-code-for-action-copy-text:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-without-extra-spaces:
-template-runtime-code-standard-action-begin
-
-
-
-$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-# &function__remove_extra_spaces( ) ;  <new_line>
-# code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
-
-template-runtime-code-standard-action-end
-----
-template-runtime-code-for-action-copy-word-at-position:
-template-runtime-code-standard-action-begin
-
-
-# $global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-# $global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-# $global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-# $global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-# $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-# runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-$global_word_pointer = runtime-code-for-operand-number-three + 0 ;  <new_line>
-&function__get_word_at_position( ) ;  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-
-template-runtime-code-standard-action-end
-----
 template-runtime-code-for-action-executable-phrase-begin:
 template-runtime-code-for-every-action-begin
 
@@ -3279,15 +3380,8 @@ $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> 
 template-runtime-code-for-action-executable-phrase-end
 ----
 template-runtime-code-for-action-expand-text:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
@@ -3302,55 +3396,13 @@ runtime-code-storage-item-result = '' ;  <new_line>
 ---*
 
 $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-flush-trace-log:
-template-runtime-code-for-every-action-begin
-
-template-runtime-code-print-trace-output
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-get-count-of-words:
-template-runtime-code-standard-action-begin
-
-
-# $global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-# $global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-# $global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-# $global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-# $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-# runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-&function__get_count_of_words( ) ;  <new_line>
-runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
-template-runtime-code-for-action-get-word-at-position:
+template-runtime-code-for-action-flush-trace-log:
 template-runtime-code-standard-action-begin
 
-
-# $global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-# $global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-# $global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-# $global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-# $global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-# runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-$global_word_pointer = runtime-code-for-operand-number-three + 0 ;  <new_line>
-&function__get_word_at_position( ) ;  <new_line>
-runtime-code-storage-item-result = $target_text ;  <new_line>
+template-runtime-code-print-trace-output
 
 template-runtime-code-standard-action-end
 ----
@@ -3416,33 +3468,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-add:
 template-runtime-code-standard-action-with-minimum-operand-count
 ----
-template-runtime-code-for-action-numeric-equal-greater-less-compare:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_yes ) {  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-return runtime-code-storage-item-result ;  <new_line>
-}  <new_line>
-
-$global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
-$global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
-
-if ( $global_numeric_value_first == $global_numeric_value_second ) {  <new_line>
-runtime-code-storage-item-result = 'equal' ;  <new_line>
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {  <new_line>
-runtime-code-storage-item-result = 'greater' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'less' ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-for-action-numeric-maximum:
 template-runtime-code-standard-action-with-minimum-operand-count
 ----
@@ -3453,23 +3478,13 @@ template-runtime-code-for-action-numeric-multiply:
 template-runtime-code-standard-action-with-minimum-operand-count
 ----
 template-runtime-code-for-action-put-into-phrase:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-standard-action-begin
 
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>
 
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-trace-show-where:
 template-runtime-code-for-every-action-begin
@@ -3479,19 +3494,15 @@ print TRACE_OUT 'current code location is: phrase-being-defined no-space ' . "\n
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-trace-show:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-if ( ( $global_yes_or_no_operand_error == $global_no ) && ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
 print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is: ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
 } else {  <new_line>
 print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is not defined' . "\n" ;  <new_line>
 }  <new_line>
 
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-unchanged:
 template-runtime-code-for-every-action-begin
@@ -3501,7 +3512,7 @@ runtime-code-storage-item-result = ' ' . '<dashrep_placeholder_action_name> ' . 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-use-handler-with-each-word-in-phrase:
-template-runtime-code-for-every-action-begin
+template-runtime-code-standard-action-begin
 
 my $local_pointer_to_next_space ;  <new_line>
 my $local_pointer_to_future_space ;  <new_line>
@@ -3509,14 +3520,6 @@ my $local_pointer_to_next_word ;  <new_line>
 my $local_endless_loop_counter ;  <new_line>
 my $local_endless_loop_counter_limit ;  <new_line>
 my $length_of_text_in_word_list ; <new_line>
-
-runtime-code-check-operand-initialize
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
 $local_pointer_to_next_space = -1 ;  <new_line>
@@ -3610,11 +3613,7 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 
 }  *--- # end of ABABA loop ---*  <new_line>
 
-} else {  <new_line>
-runtime-code-storage-item-result = '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-yes-if-all-yes:
 template-runtime-code-for-every-action-begin
@@ -3668,34 +3667,6 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-yes-or-no-empty-phrase:
-template-runtime-code-standard-action-begin
-
-
-$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
-
-
-# runtime-code-storage-item-result = 'yes' ;  <new_line>
-# $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-# $global_pointer_to_previous_space = -1 ;  <new_line>
-# $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
-
-# while ( $global_character_pointer >= 0 ) {  <new_line>
-# if ( $global_character_pointer > $global_pointer_to_previous_space + 1 ) {  <new_line>
-# runtime-code-storage-item-result = 'no' ;  <new_line>
-# }  <new_line>
-# $global_pointer_to_previous_space = $global_character_pointer ;  <new_line>
-# $global_character_pointer = index( $global_source_text , ' ' ) ;  <new_line>
-# }  <new_line>
-
-template-runtime-code-standard-action-end
-----
 template-runtime-code-for-action-yes-or-no-opposite:
 template-runtime-code-for-every-action-begin
 
@@ -3709,17 +3680,6 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions:
-template-runtime-code-standard-action-begin
-
-if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
-runtime-code-storage-item-result = 'yes' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'no' ;  <new_line>
-}  <new_line>
-
-template-runtime-code-standard-action-end
-----
 template-runtime-code-for-action-yes-or-no-same-two-words:
 template-runtime-code-for-every-action-begin
 
@@ -3730,30 +3690,6 @@ runtime-code-storage-item-result = 'no' ;  <new_line>
 }  <new_line>
 
 template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-zero-one-multiple:
-template-runtime-code-standard-action-begin
-
-runtime-code-storage-item-result = 'multiple' ;  <new_line>
-
-if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
-runtime-code-storage-item-result = 'zero' ;  <new_line>
-} elsif ( runtime-code-for-operand-number-one + 0 == 1 ) {  <new_line>
-runtime-code-storage-item-result = 'one' ;  <new_line>
-}  <new_line>
-
-template-runtime-code-standard-action-end
-----
-template-runtime-code-for-action-zero-or-nonzero:
-template-runtime-code-standard-action-begin
-
-runtime-code-storage-item-result = 'nonzero' ;  <new_line>
-
-if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
-runtime-code-storage-item-result = 'zero' ;  <new_line>
-}  <new_line>
-
-template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-every-action-begin:
 # $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
