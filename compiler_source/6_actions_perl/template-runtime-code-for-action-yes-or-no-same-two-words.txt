@@ -1,0 +1,9 @@
+template-runtime-code-for-every-action-begin
+
+if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) {  <new_line>
+runtime-code-storage-item-result = 'yes' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'no' ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end
