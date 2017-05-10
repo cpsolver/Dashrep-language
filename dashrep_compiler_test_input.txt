@@ -107,6 +107,12 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-should-be-item-with-value-7  7 -]
 [-generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7-]
 [-put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7 -]
+
+--------
+
+
+more-test-of-dashrep-actions:
+
 [-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
 [-trace-show counts-from-5-to-minus-4 -]
 [-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
@@ -242,10 +248,7 @@ test-of-dashrep-actions:
 [-append-text-no-space character-space words-with-space-at-end-]
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
---------
 
-
-more-test-of-dashrep-actions:
 
 [-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
@@ -268,10 +271,16 @@ check-for-correct-values:
 
 [-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
 [-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
+
+[-trace-show full-display-values-not-correct-]
+[-trace-show list-of-phrases-with-correct-values-]
 --------
 
 handle-one-check-for-correct-value:
 [-copy-text word-to-use-in-handler phrase-name-]
+
+[-trace-show phrase-name-]
+
 [-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-]-]
 [-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
 [-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
