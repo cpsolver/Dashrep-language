@@ -14,8 +14,8 @@ $global_default_text = '0' ;  <new_line>
 template-function-segment-if-zero-words-return-default-text
 
 $global_calculated_value = -999999999999 ;  <new_line>
-for ( $global_word_pointer = 1 ; $global_word_pointer <= $global_number_of_words ; $global_word_pointer ++ ) {  <new_line>
-$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ;  <new_line>
+for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
+$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
 if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) {  <new_line>
 if ( ( $global_current_word + 0 ) > $global_calculated_value ) {  <new_line>
 $global_calculated_value = ( $global_current_word + 0 ) ;  <new_line>
