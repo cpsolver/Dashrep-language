@@ -94,7 +94,7 @@
 [-put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-numeric-vectors-add  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-numeric-vectors-divide-by  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-numeric-vectors-multiply  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude  check-operand-count-is-one check-operand-one-is-real-number -]
 [-put-into-phrase operand-checks-for-action-prepend-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
