@@ -1,0 +1,5 @@
+template-runtime-code-standard-action-begin
+
+runtime-code-storage-item-result = length( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+template-runtime-code-standard-action-end
