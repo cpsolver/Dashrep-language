@@ -15,6 +15,7 @@ template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-get-list-of-words
 
 template-function-point-to-words
+template-function-point-to-words-allow-newlines
 template-function-remove-extra-spaces
 template-function-get-count-of-words
 template-function-get-word-at-position
