@@ -120,9 +120,11 @@ convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
+
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
-
 
 [-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
 [-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
@@ -1291,19 +1293,13 @@ define-special-strings:
 [-copy-text string-dash-close-bracket string-dash-close-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-dash-]
 
-*--- todo: revise following code to use above new code ---*
-
-[-copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
+[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-open-bracket string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash-]
 
-[-copy-text character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text-no-space character-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
+[-copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
@@ -1316,6 +1312,13 @@ define-special-strings:
 
 [-copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash-]
+[-append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
 
 [-copy-text string-no-space string-space-no-space-character-hyphen-no-space-space-]
 [-prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space-]
