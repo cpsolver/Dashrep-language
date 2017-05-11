@@ -1,0 +1,10 @@
+# no-space dashes-long-line  <new_line>
+#  Dashrep compiler output  <new_line>
+<new_line>
+# object-code-copyright-notice  <new_line>
+<new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  Begin Dashrep source code as words  <new_line>
+<new_line>
