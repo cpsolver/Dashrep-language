@@ -24,5 +24,7 @@ template-function-numeric-multiply
 template-function-numeric-maximum
 template-function-numeric-minimum
 
+template-function-generate-counts-from-integer-to-integer
+
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
