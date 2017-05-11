@@ -7,9 +7,11 @@
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+
+[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
+
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
-
 
 [-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
 [-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]

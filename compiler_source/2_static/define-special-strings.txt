@@ -14,19 +14,13 @@
 [-copy-text string-dash-close-bracket string-dash-close-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-dash-]
 
-*--- todo: revise following code to use above new code ---*
-
-[-copy-text character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
+[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
 [-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-open-bracket string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash-]
 
-[-copy-text character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text-no-space character-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
+[-copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text character-open-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 
 [-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
 [-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
@@ -39,6 +33,13 @@
 
 [-copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
 [-append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash-]
+[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash-]
+
+[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash-]
+[-append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash-]
+[-append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
 
 [-copy-text string-no-space string-space-no-space-character-hyphen-no-space-space-]
 [-prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space-]
