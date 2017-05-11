@@ -20,7 +20,7 @@ code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-defin
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( '' ne &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) {  <new_line>
+if ( $global_no == &function_parameterized__yes_or_no_empty( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) {  <new_line>
 return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
