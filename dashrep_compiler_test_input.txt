@@ -178,7 +178,7 @@ test-of-dashrep-actions:
 [-put-into-phrase vector-one  17 23 -4  -]
 [-put-into-phrase vector-two  21 -9 0  -]
 [-numeric-vector-add-number vector-one -7 vector-result-add-number-]
-[-put-into-phrase correct-value-for-vector-add-number  ??? -]
+[-put-into-phrase correct-value-for-vector-result-add-number  10 16 -11 -]
 [-numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number-]
 [-put-into-phrase correct-value-for-vector-result-multiply-by-number  119 161 -28 -]
 [-numeric-vectors-add vector-one vector-two vector-result-addition-]
