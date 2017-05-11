@@ -11,7 +11,7 @@ template-runtime-code-standard-action-begin
 
 
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-$global_word_pointer = runtime-code-for-operand-number-two + 0 ;  <new_line>
+$global_word_pointer_text = runtime-code-for-operand-number-two ;  <new_line>
 &function__get_word_at_position( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 

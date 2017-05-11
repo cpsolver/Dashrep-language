@@ -3,9 +3,9 @@
 #  <new_line>
 
 *---
-#  Input is $global_source_text and $global_word_pointer  <new_line>
+#  Input is $global_source_text (type text) and $global_word_pointer_text (type text, not numeric!)  <new_line>
 #  Output is $global_target_text  <new_line>
-#  And $global_word_pointer is modified if it exceeds the word count  <new_line>
+#  And $global_word_pointer_text is modified if it exceeds the word count  <new_line>
 <new_line>
 ---*
 
@@ -14,11 +14,14 @@ $global_default_text = '' ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
 
-if ( $global_number_of_words < $global_word_pointer ) {  <new_line>
-$global_word_pointer = $global_number_of_words ;  <new_line>
+$global_word_pointer_numeric = &function_parameterized__convert_numeric_text_into_numeric_value( $global_word_pointer_text ) ;  <new_line>
+
+if ( $global_number_of_words < $global_word_pointer_numeric ) {  <new_line>
+$global_word_pointer_numeric = $global_number_of_words ;  <new_line>
+$global_word_pointer_text = &function_parameterized__convert_numeric_value_into_numeric_text( $global_number_of_words ) ;  <new_line>
 }  <new_line>
 
-$global_target_text = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer ] , $global_length_of_word[ $global_word_pointer ] ) ;  <new_line>
+$global_target_text = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
 
 return '' ;  <new_line>
 
