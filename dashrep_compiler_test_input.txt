@@ -37,13 +37,11 @@ test-of-dashrep-actions:
 [-append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types-]
 [-append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types-]
 [-append-text-no-space character-space multiple-words-separated-by-whitespace-multiple-types-]
-[-copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types multiple-words-separated-by-spaces-]
-[-put-into-phrase correct-value-for-multiple-words-separated-by-spaces-]
+[-copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types text-with-adjacent-spaces-replaced-]
+[-put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  first_word second_word -]
 
 [-put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp; -]
 [-put-into-phrase dashrep-special-replacement-hyphen  &ndash; -]
-[-copy-without-extra-spaces text-with-special-characters text-with-adjacent-spaces-replaced-]
-[-put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  ??? -]
 [-put-into-phrase should-be-zero  [-zero-one-multiple 0-] -]
 [-put-into-phrase correct-value-for-should-be-zero  zero -]
 [-put-into-phrase should-be-one  [-zero-one-multiple 1-] -]
@@ -94,6 +92,13 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-should-be-item-with-value-7  7 -]
 [-generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7-]
 [-put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7 -]
+
+[-put-into-phrase some-text-with-hyphens  here - is - some - text - with - hyphens -]
+[-copy-and-replace some-text-with-hyphens some-text-with-underscores character-hyphen character-underscore-]
+[-put-into-phrase string-word-hyphens  hyphens -]
+[-put-into-phrase string-word-underscores  underscores -]
+[-copy-and-replace some-text-with-underscores some-text-with-underscores string-word-hyphens string-word-underscores-]
+[-put-into-phrase correct-value-for-some-text-with-underscores  here _ is _ some _ text _ with _ underscores -]
 
 [-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
 [-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
@@ -234,13 +239,13 @@ test-of-dashrep-actions:
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
 
-[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
-[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
-
 --------
 
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
+
+[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
+[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
 
 [-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
