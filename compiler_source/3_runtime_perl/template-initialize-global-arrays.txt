@@ -1,11 +1,25 @@
 my %global_dashrep_replacement = ( ) ;  <new_line>
+
 my %global_replacement_count_for_item_name = ( ) ;  <new_line>
 
-<new_line>
-
 my @global_accumulator = ( ) ;  <new_line>
+$global_accumulator[ 0 ] = '' ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
+
 my @global_begin_position_for_word = ( ) ;  <new_line>
+$global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
 $global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
+
 my @global_length_of_word = ( ) ;  <new_line>
+$global_length_of_word[ 0 ] = 0 ;  <new_line>
 $global_length_of_word[ 1 ] = 0 ;  <new_line>
+
+my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 0 ] = 0 ;  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = 0 ;  <new_line>
+
+my @global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
+$global_yes_find_next_whitespace_of_type[ 0 ] = 0 ;  <new_line>
+$global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
+
+<new_line>

@@ -1,10 +1,3 @@
-my %global_dashrep_replacement = ( ) ;  <new_line>
-my @global_begin_position_for_word = ( ) ;  <new_line>
-my @global_length_of_word = ( ) ;  <new_line>
-my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
-my @global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
-<new_line>
-
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
