@@ -18,45 +18,32 @@ dashrep-warning-trace-on-yes-or-no:
 yes
 --------
 
-dashrep-special-replacement-newline:
-[eol]
---------
-
-symbol-two-periods:
-..
---------
-
-text-with-extra-spaces:
-12 34  56   78   90
---------
-
-template-for-createlist:
-abc-[-createlist-parameter-]-def
---------
-
-template-for-full-createlist:
-abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi
---------
-
-list-of-numbers:
-3 12 7 13 4
---------
-
 test-of-dashrep-actions:
 [-put-into-phrase test-assignment  17 -]
 [-put-into-phrase should-be-17  [-test-assignment-] -]
 [-put-into-phrase correct-value-for-should-be-17  17 -]
-[-put-into-phrase first-word-phrase  copied -]
-[-put-into-phrase second-word-phrase  text -]
+[-put-into-phrase first-word-phrase  first_word -]
+[-put-into-phrase second-word-phrase  second_word -]
 [-copy-text empty-text copied-text-]
 [-append-text first-word-phrase copied-text-]
 [-append-text second-word-phrase copied-text-]
 [-copy-text copied-text should-be-copied-text-]
-[-put-into-phrase correct-value-for-should-be-copied-text  copied text -]
+[-put-into-phrase correct-value-for-should-be-copied-text  first_word second_word -]
+[-copy-text character-space multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space first-word-phrase multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space second-word-phrase multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types-]
+[-append-text-no-space character-space multiple-words-separated-by-whitespace-multiple-types-]
+[-copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types multiple-words-separated-by-spaces-]
+[-put-into-phrase correct-value-for-multiple-words-separated-by-spaces-]
+
 [-put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp; -]
 [-put-into-phrase dashrep-special-replacement-hyphen  &ndash; -]
 [-copy-without-extra-spaces text-with-special-characters text-with-adjacent-spaces-replaced-]
-[-put-into-phrase correct-value-text-with-adjacent-spaces-replaced  ??? -]
+[-put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  ??? -]
 [-put-into-phrase should-be-zero  [-zero-one-multiple 0-] -]
 [-put-into-phrase correct-value-for-should-be-zero  zero -]
 [-put-into-phrase should-be-one  [-zero-one-multiple 1-] -]
@@ -109,7 +96,6 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7 -]
 
 [-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
-[-trace-show counts-from-5-to-minus-4 -]
 [-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
 [-put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -] -]
 [-put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4 -]
@@ -159,10 +145,14 @@ test-of-dashrep-actions:
 [-copy-without-extra-spaces list-with-dups list-with-dups-without-extra-spaces-]
 [-put-into-phrase correct-value-for-list-with-dups-without-extra-spaces  alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever -]
 [-put-into-phrase find-in-lists-result  [-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-] [-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-] [-copy-words-found-only-in-first-list list-with-dups sample-word-list-three word-list-in-first-only-] [-copy-words-unique-only list-with-dups unique-words-] [-word-list-in-both-] - [-word-list-in-either-] - [-word-list-in-first-only-] - [-unique-words-] - [-list-of-unique-word-counts-] - [-list-of-pointers-to-unique-words-] -]
+[-copy-without-extra-spaces find-in-lists-result find-in-lists-result-]
 
-
-[-put-into-phrase temporarily-ignore-correct-value-for-find-in-lists-result  ??? -]
-
+[-put-into-phrase correct-value-for-word-list-in-both  alpha alpha-here beta delta -]
+[-put-into-phrase correct-value-for-word-list-in-either  beta whatever something-here gamma alpha-here alpha delta and -]
+[-put-into-phrase correct-value-for-word-list-in-first-only  alpha beta beta alpha beta -]
+[-put-into-phrase correct-value-for-unique-words  alpha alpha-here and beta gamma delta something-here whatever -]
+[-put-into-phrase correct-value-for-list-of-unique-word-counts  2 2 1 3 1 2 1 1 -]
+[-put-into-phrase correct-value-for-find-in-lists-result  alpha alpha-here beta delta - beta whatever something-here gamma alpha-here alpha delta and - alpha beta beta alpha beta - alpha alpha-here and beta gamma delta something-here whatever - 2 2 1 3 1 2 1 1 - 1 2 3 4 5 7 8 13 -]
 
 [-put-into-phrase hyphen-translation-safe  <character_hyphen> -]
 [-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
@@ -227,10 +217,6 @@ test-of-dashrep-actions:
 [-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
 [-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 
-
-[-put-into-phrase new-correct-value-for-list-of-phrase-names-difference  . . -]
-
-
 [-put-into-phrase string-abc  abc -]
 [-copy-text character-space text-to-append-with-leading-and-trailing-space-]
 [-append-text-no-space string-abc text-to-append-with-leading-and-trailing-space-]
@@ -248,18 +234,18 @@ test-of-dashrep-actions:
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
 
-[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
-[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
-[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
-
-
-[-copy-without-extra-spaces page-participants-list todo-later--correct-value-for-regenerated-page-participants-list-without-extra-spaces-]
+[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
+[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
 
 --------
 
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
+[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
+[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
+[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
+[-put-into-phrase correct-value-for-regenerated-page-participants-list-without-extra-spaces  ??? -]
 
 --------
 
@@ -329,6 +315,30 @@ placeholder-correct-value-for-phrase-name:
 
 character-underscore:
 _
+--------
+
+dashrep-special-replacement-newline:
+[eol]
+--------
+
+symbol-two-periods:
+..
+--------
+
+text-with-extra-spaces:
+12 34  56   78   90
+--------
+
+template-for-createlist:
+abc-[-createlist-parameter-]-def
+--------
+
+template-for-full-createlist:
+abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi
+--------
+
+list-of-numbers:
+3 12 7 13 4
 --------
 
 test-of-comment-delimiters:
