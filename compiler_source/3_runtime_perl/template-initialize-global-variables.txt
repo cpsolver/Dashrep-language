@@ -1,14 +1,16 @@
-my $global_yes = 1 ;  <new_line>
-my $global_no = 0 ;  <new_line>
+my %global_dashrep_replacement = ( ) ;  <new_line>
+my @global_begin_position_for_word = ( ) ;  <new_line>
+my @global_length_of_word = ( ) ;  <new_line>
+my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
+my @global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
+<new_line>
+
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
-my $global_yes_or_no = 0 ;  <new_line>
 my $global_source_text = '' ;  <new_line>
 my $global_target_text = '' ;  <new_line>
 my $global_temporary_text = '' ;  <new_line>
 my $global_default_text = '' ;  <new_line>
-my $global_storage_number = 1 ;  <new_line>
-my $global_accumulator_pointer = 1 ;  <new_line>
 my $global_text_expanded_parameters_only = '' ;  <new_line>
 my $global_action_name = '' ;  <new_line>
 my $global_action_operand_one = '' ;  <new_line>
@@ -21,14 +23,23 @@ my $global_action_result = '' ;  <new_line>
 my $global_spaces = '                                                                              ' ;  <new_line>
 my $global_phrase_name = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
-my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $output_results = '' ;  <new_line>
 my $global_current_word = '' ;  <new_line>
 my $global_concatenated_all_operands = '' ;  <new_line>
 my $global_concatenated_all_operands_modified = '' ;  <new_line>
 my $global_string_to_be_replaced = '' ;  <new_line>
 my $global_text_to_insert = '' ;  <new_line>
-my $text_to_append = '' ;  <new_line>
+<new_line>
+
+my $global_yes = 1 ;  <new_line>
+my $global_no = 0 ;  <new_line>
+my $global_yes_or_no = 0 ;  <new_line>
+my $global_yes_or_no_operand_error = $global_no ;  <new_line>
+<new_line>
+
+my $global_storage_number = 1 ;  <new_line>
+my $global_accumulator_pointer = 1 ;  <new_line>
+my $global_plus_or_minus_one = 1 ;  <new_line>
 <new_line>
 
 my $global_number_of_operands = 0 ;  <new_line>
@@ -43,6 +54,8 @@ my $global_pointer_to_next_space = 0 ;  <new_line>
 my $global_pointer_to_next_word = 0 ;  <new_line>
 my $global_pointer_to_future_space = 0 ;  <new_line>
 my $global_pointer_to_previous_space = 0 ;  <new_line>
+my $global_pointer_to_next_whitespace = 0 ;  <new_line>
+my $global_pointer_to_previous_whitespace = 0 ;  <new_line>
 my $global_pointer_to_first_space = 0 ;  <new_line>
 my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
 my $global_word_pointer_text = '0' ;  <new_line>
@@ -52,9 +65,9 @@ my $global_length_of_string_to_be_replaced = 0 ;  <new_line>
 my $global_calculated_value = 0 ;  <new_line>
 my $global_normalized_calculated_value = 0 ;  <new_line>
 my $global_count_range = 0 ;  <new_line>
-my $global_plus_or_minus_one = 1 ;  <new_line>
 my $global_counter = 0 ;  <new_line>
 my $global_count_number = 0 ;  <new_line>
+my $global_whitespace_type = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
@@ -71,9 +84,11 @@ my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no
 my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
 <new_line>
 
+
 *--- variables that are only needed for old interpreter code ---*
 my $global_true = 1 ;  <new_line>
 my $global_false = 0 ;  <new_line>
+my $text_to_append = '' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-debug-trace-on-yes-or-no' } = 'no' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-action-trace-on-yes-or-no' } = 'no' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
