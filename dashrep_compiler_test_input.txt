@@ -100,6 +100,17 @@ test-of-dashrep-actions:
 [-copy-and-replace some-text-with-underscores some-text-with-underscores string-word-hyphens string-word-underscores-]
 [-put-into-phrase correct-value-for-some-text-with-underscores  here _ is _ some _ text _ with _ underscores -]
 
+[-clear-phrase counter-increment-decrement-]
+[-numeric-increment counter-increment-decrement-]
+[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
+[-numeric-decrement counter-increment-decrement-]
+[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
+[-numeric-decrement counter-increment-decrement-]
+[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
+[-numeric-increment counter-increment-decrement-]
+[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
+[-put-into-phrase correct-value-for-list-of-counter-increment-decrement-values  1 0 -1 0 -]
+
 [-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
 [-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
 [-put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -] -]
