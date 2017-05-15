@@ -1,0 +1,1 @@
+if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>

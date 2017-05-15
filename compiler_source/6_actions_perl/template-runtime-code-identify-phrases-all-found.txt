@@ -1,0 +1,5 @@
+for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
+
+template-runtime-code-identify-phrase-found
+
+}  <new_line>
