@@ -1,0 +1,7 @@
+template-runtime-code-standard-action-begin
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) - 1 ) ;  <new_line>
+
+runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-runtime-code-standard-action-end
