@@ -238,6 +238,10 @@ test-of-dashrep-actions:
 [-append-text-no-space character-space words-with-space-at-end-]
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
 [-put-into-phrase correct-value-for-word-count  3 -]
+[-copy-text words-with-space-at-end words-with-spaces-at-end-]
+[-append-text-no-space character-space words-with-spaces-at-end-]
+[-put-into-phrase word-count-extra-space  [-get-count-of-words words-with-spaces-at-end-] -]
+[-put-into-phrase correct-value-for-word-count-extra-space  3 -]
 
 --------
 
