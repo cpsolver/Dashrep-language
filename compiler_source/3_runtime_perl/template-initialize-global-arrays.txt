@@ -22,4 +22,6 @@ my @global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
 $global_yes_find_next_whitespace_of_type[ 0 ] = 0 ;  <new_line>
 $global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
 
+my %global_yes_found_phrase = ( ) ;  <new_line>
+
 <new_line>
