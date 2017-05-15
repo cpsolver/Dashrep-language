@@ -2,61 +2,147 @@
 # function__point_to_words  <new_line>
 #  <new_line>
 #  Input is $global_source_text  <new_line>
-#  Output is variable $global_number_of_words and array begin_position_for_word[ ] and array length_of_word[ ] where pointer into array is 1 for first word, etc.  <new_line>
+#  Output is variable $global_number_of_words and array @global_begin_position_for_word and array @global_length_of_word where pointer into array is 1 for first word, etc.  <new_line>
 #  Word counts start at one  <new_line>
 #  Character pointer numbers start at zero  <new_line>
+#  Note: \n = new line , \t = tab , \r = carriage return , \f = form feed  <new_line>
+#  (Did not work: \v = vertical tab )  <new_line>
 <new_line>
 
 sub function__point_to_words( ) {  <new_line>
 
+
+print "\n" . $global_source_text . "\n" ;  <new_line>
+
+
+# $local_endless_loop_counter = 0 ;  <new_line>
+# $concatenated_words = '' ;  <new_line>
+
+
 $global_number_of_words = 0 ;  <new_line>
 $global_length_of_text = length( $global_source_text ) ;  <new_line>
-
-# print "source_text = " . $global_source_text . " ; text length = " . $global_length_of_text . "\n" ;  <new_line>
-
+$global_pointer_to_previous_whitespace = -1 ;  <new_line>
+$global_pointer_to_next_whitespace = -1 ;  <new_line>
 if ( $global_length_of_text < 1 ) {  <new_line>
-
-# print "found no text" . "\n" ;  <new_line>
-
 return '' ;  <new_line>
 }  <new_line>
 
-
-# todo: allow for newline characters!!!  <new_line>
-
-
-$global_pointer_to_next_space = index( $global_source_text , ' ' ) ;  <new_line>
-
-if ( $global_pointer_to_next_space < 0 ) {  <new_line>
-
-# print "found no spaces, but text is not empty, so found just one word" . "\n" ;  <new_line>
-
-$global_number_of_words = 1 ;  <new_line>
-$global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
-$global_length_of_word[ 1 ] = $global_length_of_text ;  <new_line>
-return '' ;  <new_line>
+for ( $global_whitespace_type = 1 ; $global_whitespace_type <= 5 ; $global_whitespace_type ++ ) {  <new_line>
+$global_yes_find_next_whitespace_of_type[ $global_whitespace_type ] = 1 ;  <new_line>
+$global_pointer_to_whitespace_type[ $global_whitespace_type ] = -1 ;  <new_line>
 }  <new_line>
 
-$global_pointer_to_previous_space = -1 ;  <new_line>
+while ( $global_pointer_to_next_whitespace <= $global_length_of_text ) {  <new_line>
 
-while ( $global_pointer_to_next_space >= 0 ) {  <new_line>
-if ( $global_pointer_to_next_space > $global_pointer_to_previous_space + 1 ) {  <new_line>
+if ( $global_yes_find_next_whitespace_of_type[ 1 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = index( $global_source_text , ' ' , $global_pointer_to_whitespace_type[ 1 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 1 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_find_next_whitespace_of_type[ 2 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 2 ] = index( $global_source_text , "\n" , $global_pointer_to_whitespace_type[ 2 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 2 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 2 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 2 ] = 0 ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_find_next_whitespace_of_type[ 3 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 3 ] = index( $global_source_text , "\t" , $global_pointer_to_whitespace_type[ 3 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 3 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 3 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 3 ] = 0 ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_find_next_whitespace_of_type[ 4 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 4 ] = index( $global_source_text , "\r" , $global_pointer_to_whitespace_type[ 4 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 4 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 4 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 4 ] = 0 ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_find_next_whitespace_of_type[ 5 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 5 ] = index( $global_source_text , "\f" , $global_pointer_to_whitespace_type[ 5 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 5 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 5 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 5 ] = 0 ;  <new_line>
+}  <new_line>
+
+
+$global_pointer_to_next_whitespace = $global_length_of_text + 99 ;  <new_line>
+$global_whitespace_type_next = 0 ;  <new_line>
+
+for ( $global_whitespace_type = 1 ; $global_whitespace_type <= 5 ; $global_whitespace_type ++ ) {  <new_line>
+if ( $global_pointer_to_whitespace_type[ $global_whitespace_type ] < $global_pointer_to_next_whitespace ) {  <new_line>
+$global_pointer_to_next_whitespace = $global_pointer_to_whitespace_type[ $global_whitespace_type ] ;  <new_line>
+$global_whitespace_type_next = $global_whitespace_type ;  <new_line>
+}  <new_line>
+}  <new_line>
+
+if ( $global_pointer_to_next_whitespace >= $global_length_of_text ) {  <new_line>
+last ;  <new_line>
+}  <new_line>
+
+if ( $global_pointer_to_next_whitespace > $global_pointer_to_previous_whitespace + 1 ) {  <new_line>
 $global_number_of_words ++ ;  <new_line>
-$global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ;  <new_line>
-$global_length_of_word[ $global_number_of_words ] = $global_pointer_to_next_space - $global_pointer_to_previous_space - 1 ;  <new_line>
-}  <new_line>
-# reminder: a change in the next two lines of code can cause an endless loop  <new_line>
-$global_pointer_to_previous_space = $global_pointer_to_next_space ;  <new_line>
-$global_pointer_to_next_space = index( $global_source_text , ' ' , $global_pointer_to_previous_space + 1 ) ;  <new_line>
+$global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
+$global_length_of_word[ $global_number_of_words ] = $global_pointer_to_next_whitespace - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
+
+print ">" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "<" . "\n" ;  <new_line>
+
+# $concatenated_words .= "*" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) ;  <new_line>
+
 }  <new_line>
 
-if ( $global_pointer_to_previous_space < $global_length_of_text - 1 ) {  <new_line>
+$global_pointer_to_previous_whitespace = $global_pointer_to_next_whitespace ;  <new_line>
+$global_yes_find_next_whitespace_of_type[ $global_whitespace_type_next ] = 1 ;  <new_line>
+
+
+
+# $local_endless_loop_counter ++ ;  <new_line>
+# if ( $local_endless_loop_counter > 10000 ) { exit ; }  <new_line>
+
+
+
+#  end of while loop  <new_line>
+}  <new_line>
+
+
+print "prev " . $global_pointer_to_previous_whitespace . "  next " . $global_pointer_to_next_whitespace . "  length " . $global_length_of_text . "\n" ;  <new_line>
+
+
+if ( ( $global_length_of_text - $global_pointer_to_previous_whitespace ) >= 2 ) {  <new_line>
 $global_number_of_words ++ ;  <new_line>
-$global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_space + 1 ;  <new_line>
-$global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_space - 1 ;  <new_line>
+$global_begin_position_for_word[ $global_number_of_words ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
+$global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
+
+
+print ">>" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "<<" . "\n" ;  <new_line>
+
+
+print "position " . $global_begin_position_for_word[ $global_number_of_words ] . "  length " . $global_length_of_word[ $global_number_of_words ] . "\n" ;  <new_line>
+
+
+# $concatenated_words .= "*" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) ;  <new_line>
+
+
 }  <new_line>
 
-# print "word number " . $global_number_of_words . " is: '" . substr( $global_source_text , $global_begin_position_for_word[ $global_number_of_words ] , $global_length_of_word[ $global_number_of_words ] ) . "'\n" ;  <new_line>
+
+# $concatenated_words .= "*" ;  <new_line>
+# $global_source_text_modified = $global_source_text ;  <new_line>
+# $global_source_text_modified =~ s/ /\*/sg ;  <new_line>
+# $global_source_text_modified = '*' . $global_source_text_modified . '*' ;  <new_line>
+
+# if ( $global_source_text_modified ne $concatenated_words ) {  <new_line>
+# print ">> input:__" . $global_source_text_modified . "\n" . ">> output:_" . $concatenated_words . "\n\n" ;  <new_line>
+# }  <new_line>
 
 
 template-function-segment-ending
