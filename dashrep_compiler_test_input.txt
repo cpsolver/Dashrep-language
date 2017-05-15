@@ -79,6 +79,24 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-compare-numbers-less  less -]
 [-put-into-phrase compare-numbers-greater  [-numeric-equal-greater-less-compare 21 20 -] -]
 [-put-into-phrase correct-value-for-compare-numbers-greater  greater -]
+
+[-put-into-phrase result-calculation-subtraction  [-numeric-minus 7 3 -]-]
+[-put-into-phrase correct-value-for-result-calculation-subtraction  4 -]
+[-put-into-phrase result-calculation-absolute  [-numeric-absolute -6 -]-]
+[-put-into-phrase correct-value-for-result-calculation-absolute  6 -]
+[-put-into-phrase result-calculation-integer  [-numeric-integer 7.3 -]-]
+[-put-into-phrase correct-value-for-result-calculation-integer  7 -]
+
+[-put-into-phrase result-calculation-division [-numeric-divide-by 7 3 -]-]
+[-copy-characters-from-position-to-position result-calculation-division result-calculation-division 1 6 -]
+[-put-into-phrase correct-value-for-result-calculation-division  2.3333 -]
+[-put-into-phrase result-calculation-sine [-numeric-sine 0.5 -]-]
+[-copy-characters-from-position-to-position result-calculation-sine result-calculation-sine 1 6 -]
+[-put-into-phrase correct-value-for-result-calculation-sine  0.4794 -]
+[-put-into-phrase result-calculation-cosine  [-numeric-cosine 0.5 -]-]
+[-copy-characters-from-position-to-position result-calculation-cosine result-calculation-cosine 1 6 -]
+[-put-into-phrase correct-value-for-result-calculation-cosine  0.8775 -]
+
 [-copy-text empty-text test-text-length-0-]
 [-put-into-phrase should-be-length-0  [-get-count-of-characters test-text-length-0 -] -]
 [-put-into-phrase correct-value-for-should-be-length-0  0 -]
@@ -254,13 +272,37 @@ test-of-dashrep-actions:
 [-put-into-phrase word-count-extra-space  [-get-count-of-words words-with-spaces-at-end-] -]
 [-put-into-phrase correct-value-for-word-count-extra-space  3 -]
 
+[-copy-and-replace text-with-periods text-with-spaces character-period character-space-]
+[-put-into-phrase correct-value-for-text-with-spaces  12345 67890 54321 -]
+
+[-put-into-phrase text-being-copied  abc DEF 123 -]
+[-copy-text text-being-copied text-copied-]
+[-copy-lowercase-only text-being-copied text-copied-lowercase-]
+[-copy-uppercase-only text-being-copied text-copied-uppercase-]
+[-put-into-phrase correct-value-for-text-copied-lowercase  abc def 123 -]
+[-put-into-phrase correct-value-for-text-copied-uppercase  ABC DEF 123 -]
+
+[-copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999 -]
+[-copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2 -]
+[-put-into-phrase correct-value-for-text-copied-without-first-word  DEF 123 -]
+[-put-into-phrase correct-value-for-text-copied-without-last-word  abc DEF -]
+
+[-put-into-phrase text-being-copied  17 9 183 65 -]
+[-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
+[-put-into-phrase correct-value-for-text-copied-numeric-sorted  9 17 65 183 -]
+
+[-put-into-phrase correct-value-for-test-of-comment-delimiters  beginning text middle text ending text -]
+
+[-two-dimensional-sort-]
+[-test-if-begin-actions-]
+
+[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
+[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
+
 --------
 
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
-
-[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
-[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
 
 [-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
@@ -365,18 +407,8 @@ test-of-comment-delimiters:
 beginning text
 *---- comment text ----*
 middle text
-/---- comment text ----/
+*--- comment text ---*
 ending text
---------
-
-test-of-numeric-increment:
-[-numeric-increment test-counter-]
---------
-
-test-of-unique-value:
-[-put-into-phrase first-unique-value  [-unique-value-] -]
-[-put-into-phrase second-unique-value  [-unique-value-] -]
-[-yes-or-no-same-two-phrase-definitions first-unique-value second-unique-value-]
 --------
 
 non-breaking-space:
@@ -455,28 +487,6 @@ character-period:
 .
 --------
 
-test-of-replace-periods-with-spaces:
-[-copy-and-replace text-with-periods text-with-spaces character-period character-space-]
---------
-
-test-of-several-copy-actions:
-[-put-into-phrase text-being-copied  abc DEF 123 -]
-[-copy-text text-being-copied text-copied-]
-[-copy-lowercase-only text-being-copied text-copied-lowercase-]
-[-copy-uppercase-only text-being-copied text-copied-uppercase-]
-[-copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999 -]
-[-copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2 -]
-[-text-copied-] [-text-copied-lowercase-] [-text-copied-uppercase-]
-[-text-copied-without-first-word-] [-text-copied-without-last-word-]
---------
-
-test-of-more-copy-actions:
-[-copy-without-extra-spaces text-with-extra-spaces text-copied-extra-spaces-removed-]
-[-put-into-phrase text-being-copied  17 9 183 65 -]
-[-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
-[-text-copied-numeric-sorted-] [-text-copied-extra-spaces-removed-]
---------
-
 list-from-which-to-remove-last-item:
 12, 56, 72
 --------
@@ -505,33 +515,96 @@ input-up-values:
 
 two-dimensional-sort:
 [-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort-]
+[-put-into-phrase correct-value-for-results-of-two-dimensional-sort  row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 -]
 --------
 
 test-if-begin-actions:
-[-put-into-phrase result-of-testing-if-begin-actions  [-if-yes-begin yes-] one [-if-else-] two [-if-end-] [-if-yes-begin no-] three [-if-else-] four [-if-end-] [-if-no-begin yes-] five [-if-else-] six [-if-end-] [-if-no-begin no-] seven [-if-else-] eight [-if-end-] [-if-yes-begin yes-] nine [-if-end-] [-if-yes-begin no-] ten [-if-end-] [-if-no-begin no-] eleven [-if-end-] [-if-no-begin yes-] twelve [-if-end-] -]
+[-clear-phrase result-of-testing-if-begin-actions-]
+[-if-yes-begin yes-]
+[-append-text string-one result-of-testing-if-begin-actions-]
+[-if-else-]
+[-append-text string-two result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-yes-begin no-]
+[-append-text string-three result-of-testing-if-begin-actions-]
+[-if-else-]
+[-append-text string-four result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-no-begin yes-]
+[-append-text string-five result-of-testing-if-begin-actions-]
+[-if-else-]
+[-append-text string-six result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-no-begin no-]
+[-append-text string-seven result-of-testing-if-begin-actions-]
+[-if-else-]
+[-append-text string-eight result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-yes-begin yes-]
+[-append-text string-nine result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-yes-begin no-]
+[-append-text string-ten result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-no-begin no-]
+[-append-text string-eleven result-of-testing-if-begin-actions-]
+[-if-end-]
+[-if-no-begin yes-]
+[-append-text string-twelve result-of-testing-if-begin-actions-]
+[-if-end-]
+[-put-into-phrase correct-value-for-result-of-testing-if-begin-actions  one four six seven nine eleven -]
+--------
+
+string-one:
+one
+--------
+
+string-two:
+two
+--------
+
+string-three:
+three
+--------
+
+string-four:
+four
+--------
+
+string-five:
+five
+--------
+
+string-six:
+six
+--------
+
+string-seven:
+seven
+--------
+
+string-eight:
+eight
+--------
+
+string-nine:
+nine
+--------
+
+string-ten:
+ten
+--------
+
+string-eleven:
+eleven
+--------
+
+string-twelve:
+twelve
 --------
 
 character-string-source:
 some words here
---------
-
-test-of-stop-translation:
-[-value-of-pi-]
-[-put-into-phrase dashrep-stop-translation  yes -]
-[-value-of-pi-]
---------
-
-sample-escape-text:
-command to be executed
---------
-
-test-of-escape-action:
-[-put-into-phrase escape-text  step1 -]
-[-escape-if-yes no-]
-[-copy-text sample-escape-text escape-text-]
-[-escape-if-yes yes-]
-[-put-into-phrase escape-text  step3 -]
-[-escape-if-yes yes-]
 --------
 
 handle-one-named-participant:
