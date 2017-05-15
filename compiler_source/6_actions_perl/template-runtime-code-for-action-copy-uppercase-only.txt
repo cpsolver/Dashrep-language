@@ -1,0 +1,7 @@
+template-runtime-code-standard-action-begin
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-runtime-code-standard-action-end
