@@ -22,6 +22,7 @@ my $global_concatenated_all_operands = '' ;  <new_line>
 my $global_concatenated_all_operands_modified = '' ;  <new_line>
 my $global_string_to_be_replaced = '' ;  <new_line>
 my $global_text_to_insert = '' ;  <new_line>
+my $global_word_pointer_text = '0' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
@@ -51,7 +52,6 @@ my $global_pointer_to_next_whitespace = 0 ;  <new_line>
 my $global_pointer_to_previous_whitespace = 0 ;  <new_line>
 my $global_pointer_to_first_space = 0 ;  <new_line>
 my $global_counter_number_of_adjacent_spaces = 0 ;  <new_line>
-my $global_word_pointer_text = '0' ;  <new_line>
 my $global_word_pointer_numeric = 0 ;  <new_line>
 my $global_pointer_to_word = 0 ;  <new_line>
 my $global_length_of_string_to_be_replaced = 0 ;  <new_line>
