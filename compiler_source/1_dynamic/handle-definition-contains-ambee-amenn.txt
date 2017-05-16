@@ -30,15 +30,21 @@
 [-copy-text text-storage-position-for-definition-number-[-current-definition-number-] text-storage-position-for-current-definition-]
 [-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-current-result-storage-position-]
 [-get-all-operands-]
-[-copy-text code-compiled-function-part-5 runtime-code-compiled-function-]
+
+
+
+*--- todo: copy value of concatenated operands to accumulator; list of operands ... is missing the static text strings ---*
+
+[-copy-text character-pound-sign runtime-code-compiled-function-]
+[-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] runtime-code-compiled-function-]
+[-append-text-no-space character-newline runtime-code-compiled-function-]
+
+[-clear-phrase list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+
+
+
+[-append-text-no-space code-compiled-function-part-5 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
-
-
-*---
-[-trace-show list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
----*
-
-
 [-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
 [-append-text phrase-being-defined list-of-functions-generated-]
