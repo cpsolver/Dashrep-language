@@ -55,7 +55,7 @@ test-of-dashrep-actions:
 [-put-into-phrase list-of-size-three  4 5 6 -]
 [-put-into-phrase should-be-size-three  [-get-count-of-words list-of-size-three-] -]
 [-put-into-phrase correct-value-for-should-be-size-three  3 -]
-[-put-into-phrase list-of-numbers  3 12 7 13 4 -]
+
 [-put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -] -]
 [-put-into-phrase correct-value-for-should-be-number-three  3 -]
 [-put-into-phrase should-be-number-four  [-get-word-at-position list-of-numbers 999 -] -]
@@ -138,13 +138,16 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions  5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 -]
 [-put-into-phrase should-be-counts-3-and-minus-2 [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38 -] -]
 [-put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2 -]
+
 [-put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-] -]
 [-put-into-phrase correct-value-for-calculation-result  23 -]
 [-put-into-phrase compare-result  [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17 -] [-numeric-equal-greater-less-compare 17 23-]-]
 [-put-into-phrase correct-value-for-compare-result  greater equal less -]
+
 [-put-into-phrase string-to-test-character-actions  abc123 abc123 abc123 -]
 [-put-into-phrase character-result  [-get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21 -]-]
 [-put-into-phrase correct-value-for-character-result  ab1233 -]
+
 [-put-into-phrase sample-word-list  alpha beta gamma delta -]
 [-copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
 [-put-into-phrase correct-value-for-should-be-beta-gamma  beta gamma -]
@@ -607,9 +610,11 @@ character-string-source:
 some words here
 --------
 
-handle-one-named-participant:
-[-expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant-]
-[-append-text expanded-content-for-named-participant generated-list-named-participant-names-full-]
+entire-standard-web-page:
+web-page-begin-1-of-2
+web-page-begin-2-of-2
+[-page-participants-list-]
+web-page-end
 --------
 
 page-participants-list:
@@ -624,11 +629,9 @@ generated-list-named-participant-names-full
 tag-begin /ul tag-end
 --------
 
-entire-standard-web-page:
-web-page-begin-1-of-2
-web-page-begin-2-of-2
-[-page-participants-list-]
-web-page-end
+handle-one-named-participant:
+[-expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant-]
+[-append-text expanded-content-for-named-participant generated-list-named-participant-names-full-]
 --------
 
 words-web-page-title:
