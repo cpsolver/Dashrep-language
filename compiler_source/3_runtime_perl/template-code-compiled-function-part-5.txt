@@ -1,2 +1,1 @@
-return '' ;  <new_line>
-} # end of function-name-prefix
+# $global_accumulator[ $global_accumulator_pointer ] .=
