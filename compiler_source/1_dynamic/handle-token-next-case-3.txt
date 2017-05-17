@@ -1,7 +1,5 @@
 [-append-text current-token definition-for-phrase-being-defined-]
 
-*--- todo: allow for first text word (in definition/function) not being inside ambee/amenn brackets ---*
-
 [-if-yes-begin [-yes-or-no-empty-phrase action-name-at-storage-position-[-current-result-storage-position-]-]-]
 [-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
 [-if-else-]
