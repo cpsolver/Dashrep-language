@@ -1,0 +1,5 @@
+[-if-yes-begin [-yes-or-no-empty-phrase action-name-at-storage-position-[-current-result-storage-position-]-]-]
+[-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
+[-if-else-]
+[-handle-token-text-word-]
+[-if-end-]

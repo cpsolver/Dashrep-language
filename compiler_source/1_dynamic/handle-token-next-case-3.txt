@@ -1,7 +1,20 @@
 [-append-text current-token definition-for-phrase-being-defined-]
 
-[-if-yes-begin [-yes-or-no-empty-phrase action-name-at-storage-position-[-current-result-storage-position-]-]-]
-[-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
-[-if-else-]
+
+[-trace-show phrase-being-defined-]
+[-trace-show recursion-stack-]
+
+
+*---
+todo: figure out correct criteria that applies to ALL words that are outside the ambee and amenn delimiters
+
+[-if-yes-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-get-count-of-words recursion-stack-] 2 -]-]-]
 [-handle-token-text-word-]
+[-if-else-]
+---*
+
+[-handle-token-next-case-4-]
+
+*---
 [-if-end-]
+---*
