@@ -1,5 +1,4 @@
-template-runtime-code-for-every-action-begin
+# $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *' . runtime-code-for-concatenated-all-operands ;  <new_line>
+# print $global_action_debug_line . "\n" ;  <new_line>
 
-# action not recognized
-
-template-runtime-code-for-every-action-end
+runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ;  <new_line>

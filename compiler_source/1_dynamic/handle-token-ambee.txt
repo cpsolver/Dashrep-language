@@ -1,3 +1,4 @@
+[-copy-text digit-0 count-of-tokens-after-ambee-]
 [-recursion-stack-push-]
 [-create-new-result-storage-position-]
 [-copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage-]

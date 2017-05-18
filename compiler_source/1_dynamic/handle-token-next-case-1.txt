@@ -1,4 +1,5 @@
 [-copy-text word-to-use-in-handler current-token-]
+[-numeric-increment count-of-tokens-after-ambee-]
 [-copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase non-empty-if-valid-token-handler-name-]-]
