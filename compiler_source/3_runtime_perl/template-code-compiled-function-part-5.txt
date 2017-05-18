@@ -1,1 +1,2 @@
-$global_accumulator[ $global_accumulator_pointer ] .= ' ' .
+# save concatenated result  <new_line>
+template-storage-item-prefix
