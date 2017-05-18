@@ -19,7 +19,9 @@ yes
 --------
 
 test-of-dashrep-actions:
+text-that-occurs-before-parameter-phrases
 [-put-into-phrase test-assignment  17 -]
+text-that-occurs-within-parameter-phrases
 [-put-into-phrase should-be-17  [-test-assignment-] -]
 [-put-into-phrase correct-value-for-should-be-17  17 -]
 [-put-into-phrase first-word-phrase  first_word -]
@@ -265,7 +267,6 @@ test-of-dashrep-actions:
 [-put-into-phrase correct-value-for-results-position-of-matching-text  4 -]
 [-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
 [-clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities-]
-[-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
 [-put-into-phrase words-with-space-at-end  abc xyz 123 -]
 [-append-text-no-space character-space words-with-space-at-end-]
 [-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
@@ -300,12 +301,23 @@ test-of-dashrep-actions:
 [-test-if-begin-actions-]
 
 [-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
-[-put-into-phrase correct-value-for-expanded-entire-standard-web-page  ??? -]
+[-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
+*--- correct value for above is specified below as separate phrase ---*
+
+text-that-occurs-after-parameter-phrases
 
 --------
 
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
+
+*---
+[-[-handle-double-nested-executable-phrase-]-]
+---*
+
+*---
+[-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
+---*
 
 [-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
@@ -446,7 +458,7 @@ test-of-space-and-line-directives:
 Content-type: text/html
 <new_line>
 <new_line>
-<!DOCTYPE html>
+<html>
 <new_line>
 <head>
 <new_line>
@@ -647,7 +659,6 @@ no-space >
 --------
 
 web-page-begin-1-of-2:
-tag-begin !DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" tag-end
 tag-begin html tag-end
 tag-begin head tag-end
 tag-begin title tag-end no-space
@@ -700,4 +711,8 @@ Robert (New Democratic)
 
 participant-fullname-for-participantid-4
 Diane (Conservative)
+--------
+
+correct-value-for-expanded-entire-standard-web-page:
+<html> <head> <title>List of participants</title> </head> <body> <h1>List of participants</h1> <ul> <li>James (Conservative)</li> <li>Nicole (Bloc Qu&eacute;b&eacute;cois)</li> <li>Eduard (Liberal)</li> <li>Robert (New Democratic)</li> <li>Diane (Conservative)</li> </ul> </body> </html>
 --------
