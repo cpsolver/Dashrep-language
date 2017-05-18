@@ -1,7 +1,13 @@
 start-here:
 [-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
+
+[-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
+[-copy-from-phrase-append-to-file display-values-all-ok [-output-filename-]-]
+[-if-else-]
 [-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
 [-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
 --------
@@ -440,6 +446,10 @@ placeholder-new-line:
 
 words-preface-to-list-of-correct-values:
 List of phrases correctly calculated:
+--------
+
+display-values-all-ok:
+All values OK!  (no errors)
 --------
 
 test-of-special-spacing:
