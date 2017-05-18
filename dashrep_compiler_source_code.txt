@@ -459,24 +459,20 @@ handle-definition-contains-ambee-amenn:
 
 [-copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition-]
 [-handle-definition-simple-]
+
 [-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
 [-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
-[-copy-text text-storage-position-for-definition-number-[-current-definition-number-] text-storage-position-for-current-definition-]
 [-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-current-result-storage-position-]
 [-get-all-operands-]
 [-copy-text code-compiled-function-part-5 runtime-code-compiled-function-]
+[-append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function-]
+[-append-text code-compiled-function-part-6 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
-
-
-*---
-[-trace-show list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
----*
-
-
-[-append-text-no-space code-compiled-function-part-6 runtime-code-compiled-function-]
+[-append-text-no-space code-compiled-function-part-7 runtime-code-compiled-function-]
 [-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
 [-append-text phrase-being-defined list-of-functions-generated-]
 [-clear-phrase phrase-being-defined-]
+[-clear-phrase list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
 ----
 handle-definition-immediate:
 [-generate-list-of-tokens-in-current-definition-quotable-]
@@ -543,6 +539,7 @@ handle-non-zero-count-of-ambee-minus-amenn-tokens:
 [-append-text-no-space warning-message warning-messages-]
 ----
 handle-token-ambee:
+[-copy-text digit-0 count-of-tokens-after-ambee-]
 [-recursion-stack-push-]
 [-create-new-result-storage-position-]
 [-copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage-]
@@ -683,6 +680,7 @@ handle-token-fen:
 ----
 handle-token-next-case-1:
 [-copy-text word-to-use-in-handler current-token-]
+[-numeric-increment count-of-tokens-after-ambee-]
 [-copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase non-empty-if-valid-token-handler-name-]-]
@@ -701,11 +699,13 @@ handle-token-next-case-2:
 handle-token-next-case-3:
 [-append-text current-token definition-for-phrase-being-defined-]
 
-[-if-yes-begin [-yes-or-no-empty-phrase action-name-at-storage-position-[-current-result-storage-position-]-]-]
-[-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
-[-if-else-]
+[-if-no-begin [-yes-or-no-same-two-phrase-definitions digit-1 count-of-tokens-after-ambee-]-]
 [-handle-token-text-word-]
+[-if-else-]
+[-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
 [-if-end-]
+----
+handle-token-next-case-4:
 ----
 handle-token-nospay:
 [-append-text string-nospay definition-for-phrase-being-defined-]
@@ -718,9 +718,7 @@ handle-token-phrase-name:
 [-generate-storage-for-current-text-]
 [-copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[-current-definition-number-]-]
 [-clear-phrase current-text-]
-[-generate-storage-for-current-text-]
-[-copy-text current-text-storage-position text-storage-position-for-definition-number-[-current-definition-number-]-]
-[-copy-text current-text-storage-position current-result-storage-position-]
+[-create-new-result-storage-position-]
 [-clear-phrase list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
 [-clear-phrase recursion-stack-]
 [-recursion-stack-push-]
@@ -1959,6 +1957,7 @@ code-compiled-function-part-3
 code-compiled-function-part-4
 code-compiled-function-part-5
 code-compiled-function-part-6
+code-compiled-function-part-7
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
@@ -2032,10 +2031,14 @@ template-runtime-code-check-for-endless-loop
 template-runtime-code-check-for-time-limit-exceeded
 ----
 template-code-compiled-function-part-5:
+$global_accumulator[ $global_accumulator_pointer ] .= ' ' .
+----
+template-code-compiled-function-part-6:
+;  <new_line>
 return '' ;  <new_line>
 } # end of function-name-prefix
 ----
-template-code-compiled-function-part-6:
+template-code-compiled-function-part-7:
 <new_line>
 ----
 template-code-function-branch-part-1:
@@ -3383,6 +3386,15 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-copy-lowercase-only:
+template-runtime-code-standard-action-begin
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
 template-runtime-code-for-action-copy-text:
 template-runtime-code-standard-action-begin
 
@@ -3390,6 +3402,15 @@ $global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-o
 
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-uppercase-only:
+template-runtime-code-standard-action-begin
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+runtime-code-storage-item-result = ' ' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
@@ -3585,11 +3606,10 @@ runtime-code-storage-item-result = 'no' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-not-recognized:
-template-runtime-code-for-every-action-begin
+# $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *' . runtime-code-for-concatenated-all-operands ;  <new_line>
+# print $global_action_debug_line . "\n" ;  <new_line>
 
-# action not recognized
-
-template-runtime-code-for-every-action-end
+runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ;  <new_line>
 ----
 template-runtime-code-for-action-numeric-add:
 template-runtime-code-standard-action-with-minimum-operand-count
