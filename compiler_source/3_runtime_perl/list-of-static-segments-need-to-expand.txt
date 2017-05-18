@@ -52,6 +52,9 @@ code-compiled-function-part-4
 code-compiled-function-part-5
 code-compiled-function-part-6
 code-compiled-function-part-7
+code-compiled-function-part-8
+code-compiled-function-part-9
+code-compiled-function-part-10
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
 runtime-code-for-text-storage-position-end
