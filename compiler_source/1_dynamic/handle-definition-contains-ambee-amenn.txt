@@ -32,13 +32,6 @@
 [-get-all-operands-]
 [-copy-text code-compiled-function-part-5 runtime-code-compiled-function-]
 [-append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function-]
-
-
-[-append-text character-open-bracket runtime-code-compiled-function-]
-[-append-text current-result-storage-position runtime-code-compiled-function-]
-[-append-text character-close-bracket runtime-code-compiled-function-]
-
-
 [-append-text code-compiled-function-part-6 runtime-code-compiled-function-]
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-7 runtime-code-compiled-function-]
