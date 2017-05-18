@@ -3,4 +3,3 @@ $global_pointer_to_word = index( runtime-code-for-operand-number-one , 'yes' ) ;
 if ( $global_pointer_to_word >= 0 )  <new_line>
 {  <new_line>
 # end action if yes begin  <new_line>
-<new_line>

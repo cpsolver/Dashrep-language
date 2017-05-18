@@ -1,4 +1,3 @@
 # begin action if end  <new_line>
 }  <new_line>
 # end action if end  <new_line>
-<new_line>
