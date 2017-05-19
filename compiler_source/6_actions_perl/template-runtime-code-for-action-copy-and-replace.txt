@@ -1,19 +1,43 @@
 template-runtime-code-standard-action-begin
 
+
+
+# *--- todo: too slow!!! revise to use "accumulated_text" approach! ---*  <new_line>
+
+
+
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
 $global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
 $global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
 
+
+# todo: not needed when new approach working:  <new_line>
 if ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) {  <new_line>
 template-runtime-code-store-result-for-case-error
 } else {  <new_line>
+
+
+# $global_length_of_text = length( $global_source_text ) ;  <new_line>
+
 $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
 $global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
 
+# $global_temporary_text = '' ;  <new_line>
+
 while ( $global_character_pointer >= 0 ) {  <new_line>
+
+
+# $global_character_pointer_begin = $global_character_pointer - 1 ;  <new_line>
+# $global_character_pointer_end = $global_length_of_text - $global_character_pointer + $global_length_of_string_to_be_replaced - 1 ;  <new_line>
+# $global_temporary_text .= substr( $global_source_text , $global_character_pointer_begin - 1 , $global_length_of_text - $global_character_pointer_end + 1 ) . $global_text_to_insert ;  <new_line>
+# $global_character_pointer = $global_character_pointer_end + 1 ;  <new_line>
+
+
 $global_source_text = substr( $global_source_text , 0 , $global_character_pointer ) . $global_text_to_insert . substr( $global_source_text , $global_character_pointer + $global_length_of_string_to_be_replaced ) ;  <new_line>
 $global_character_pointer = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
+
+
 
 $global_endless_loop_counter ++ ;  <new_line>
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
@@ -21,7 +45,12 @@ last ;  <new_line>
 }  <new_line>
 
 }  <new_line>
+
+# code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_temporary_text ;  <new_line>
+
+
 }  <new_line>
+
 
 if ( $global_endless_loop_counter < $global_endless_loop_counter_limit - 100 ) {  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
