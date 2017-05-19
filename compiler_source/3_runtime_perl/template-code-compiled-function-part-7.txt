@@ -1,2 +1,2 @@
 ;  <new_line>
-if ( template-storage-item-prefix
+if ( $global_no == &function_parameterized__yes_or_no_empty( template-storage-item-prefix
