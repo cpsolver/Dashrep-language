@@ -1,0 +1,11 @@
+template-runtime-code-standard-action-begin
+
+$global_numeric_value_first = int( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ;  <new_line>
+$global_numeric_value_second = $global_numeric_value_first - ( 2 * int( $global_numeric_value_first / 2 ) ) ;  <new_line>
+if ( $global_numeric_value_second == 0 ) {  <new_line>
+runtime-code-storage-item-result = "even" ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = "odd" ;  <new_line>
+}  <new_line>
+
+template-runtime-code-standard-action-end
