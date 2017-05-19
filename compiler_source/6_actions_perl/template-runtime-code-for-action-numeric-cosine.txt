@@ -1,0 +1,5 @@
+template-runtime-code-standard-action-begin
+
+runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( cos( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ;  <new_line>
+
+template-runtime-code-standard-action-end
