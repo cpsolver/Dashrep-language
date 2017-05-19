@@ -1,0 +1,15 @@
+template-runtime-code-standard-action-begin
+
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+$global_count_number = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ;  <new_line>
+
+$global_counter = $global_count_number - length( $global_source_text ) ;  <new_line>
+$global_text_to_insert = '' ;  <new_line>
+while ( ( $global_counter > 0 ) && ( $global_counter < 99 ) ) {  <new_line>
+$global_text_to_insert .= '0' ;  <new_line>
+$global_counter -- ;  <new_line>
+}  <new_line>
+
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_text_to_insert . $global_source_text ;
+
+template-runtime-code-standard-action-end
