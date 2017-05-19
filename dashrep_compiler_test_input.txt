@@ -8,6 +8,7 @@ start-here:
 [-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
 [-if-end-]
 
+[-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
 [-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
 [-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
 --------
@@ -449,7 +450,7 @@ List of phrases correctly calculated:
 --------
 
 display-values-all-ok:
-All values OK!  (no errors)
+All values OK! (no errors)
 --------
 
 test-of-special-spacing:
