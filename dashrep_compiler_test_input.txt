@@ -1,5 +1,5 @@
 start-here:
-[-test-of-dashrep-actions-]
+[-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
@@ -11,6 +11,8 @@ start-here:
 [-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
 [-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
 [-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
+
+[-expand-text template-html-to-display-in-browser dashrep-content-going-to-standard-output-]
 --------
 
 output-filename:
@@ -735,4 +737,20 @@ Diane (Conservative)
 
 correct-value-for-expanded-entire-standard-web-page:
 <html> <head> <title>List of participants</title> </head> <body> <h1>List of participants</h1> <ul> <li>James (Conservative)</li> <li>Nicole (Bloc Qu&eacute;b&eacute;cois)</li> <li>Eduard (Liberal)</li> <li>Robert (New Democratic)</li> <li>Diane (Conservative)</li> </ul> </body> </html>
+--------
+
+template-html-to-display-in-browser:
+Content-type:text/html<new_line>
+<new_line>
+<html>  <new_line>
+<head>  <new_line>
+<title>Response from test code</title>  <new_line>
+</head>  <new_line>
+<body>  <new_line>
+<h1>CGI information</h1>  <new_line>
+<ul>  <new_line>
+<li>???</li>  <new_line>
+</ul>  <new_line>
+</body>  <new_line>
+</html>  <new_line>
 --------
