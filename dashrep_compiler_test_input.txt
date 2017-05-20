@@ -1,18 +1,25 @@
 start-here:
+[-get-cgi-information-]
+[-put-into-phrase correct-value-for-input-cgi-item  ??? -]
+
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
 [-copy-from-phrase-append-to-file display-values-all-ok [-output-filename-]-]
+[-copy-text display-values-all-ok displayed-text-ok-or-not-ok-]
 [-if-else-]
+[-copy-from-phrase-append-to-file display-values-not-ok [-output-filename-]-]
+[-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
 [-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
+[-copy-text display-values-not-ok displayed-text-ok-or-not-ok-]
 [-if-end-]
 
 [-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
 [-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
 [-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
 
-[-expand-text template-html-to-display-in-browser dashrep-content-going-to-standard-output-]
+[-expand-text template-html-to-display-in-browser standard-output-]
 --------
 
 output-filename:
@@ -463,6 +470,10 @@ display-values-all-ok:
 All values OK! (no errors)
 --------
 
+display-values-not-ok:
+Not all values are OK. (Errors!)
+--------
+
 test-of-special-spacing:
 abc no-space def one-space ghi jkl  span-non-breaking-spaces-begin mno pqr stu span-non-breaking-spaces-end vwx non-breaking-space yz
 --------
@@ -750,6 +761,7 @@ Content-type:text/html<new_line>
 <ul>  <new_line>
 <li>???</li>  <new_line>
 </ul>  <new_line>
+<h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
 </body>  <new_line>
 </html>  <new_line>
 --------
