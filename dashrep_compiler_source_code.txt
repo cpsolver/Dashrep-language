@@ -1021,6 +1021,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
 [-put-into-phrase operand-checks-for-action-put-into-phrase check-operand-one-is-phrase-name-]
 [-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words check-operand-one-is-phrase-name-]
+[-put-into-phrase operand-checks-for-action-get-cgi-information check-operand-count-is-zero-]
 ----
 build-paired-replacements-for-converting-hyphens-into-defenns:
 [-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
@@ -2515,8 +2516,8 @@ open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
 $output_results = &dashrep_internal_expand_phrases_faster_subset( $global_accumulator[ 1 ] ) ;  <new_line>
 
-if ( ( exists( code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end ne '' ) && ( exists( code-get-or-put-phrase-definition-begin code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
-print code-get-or-put-phrase-definition-begin code-get-or-put-phrase-definition-begin 'dashrep-compiled-code-output-phrase-name' code-get-or-put-phrase-definition-end code-get-or-put-phrase-definition-end ;  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
+print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
 print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 } else {  <new_line>
 print $output_results . "\n" ;  <new_line>
@@ -2649,6 +2650,7 @@ template-function-numeric-maximum
 template-function-numeric-minimum
 
 template-function-generate-counts-from-integer-to-integer
+template-function-get-cgi-information
 
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
@@ -2748,6 +2750,129 @@ code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or
 return '' ;  <new_line>
 
 template-function-segment-ending
+----
+template-function-get-cgi-information:
+# no-space dashes-long-line  <new_line>
+# function__get_cgi_information  <new_line>
+#  <new_line>
+
+*---
+#  Input is standard input or standard environmental values  <new_line>
+#  Output are phrases that have names that begin with the text "input-" and otherwise are named using the cgi name  <new_line>
+<new_line>
+---*
+
+sub function__get_cgi_information( ) {  <new_line>
+
+my @name_value_pairs ;  <new_line>
+my $raw_input ;  <new_line>
+my $input_line ;  <new_line>
+my $name_value ;  <new_line>
+my $name ;  <new_line>
+my $value ;  <new_line>
+my $line_count ;  <new_line>
+my $cgi_string_length_limit ;  <new_line>
+my $cgi_line_length_limit ;  <new_line>
+
+$cgi_string_length_limit = 100000 ;  <new_line>
+$cgi_line_length_limit = 100 ;  <new_line>
+$raw_input = '' ;  <new_line>
+
+if ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'GET' ) ) {  <new_line>
+
+if ( ( exists( $ENV{ 'CONTENT_LENGTH' } ) ) && ($ENV{ 'CONTENT_LENGTH' } > $cgi_string_length_limit ) ) {  <new_line>
+$dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= ' ' . dashrep_error_cgi_input_too_long ;  <new_line>
+return ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'QUERY_STRING' } ) ) {  <new_line>
+$raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
+}  <new_line>
+
+} else {  <new_line>
+$line_count = 0 ;  <new_line>
+
+while( $input_line = <STDIN> ) {  <new_line>
+chomp( $input_line ) ;  <new_line>
+
+if ( $raw_input ne '' ) {  <new_line>
+$raw_input .= ' ' ;  <new_line>
+}  <new_line>
+
+$raw_input .= $input_line ;  <new_line>
+$line_count ++ ;  <new_line>
+
+if ( $line_count > $cgi_line_length_limit ) {  <new_line>
+$dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
+return ;  <new_line>
+}  <new_line>
+
+# end of while loop  <new_line>
+}  <new_line>
+
+# end of if branch  <new_line>
+}  <new_line>
+
+$global_dashrep_replacement{ 'input-raw-cgi-string' } = $raw_input ;  <new_line>
+
+if ( $raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
+$raw_input = $1 ;  <new_line>
+$raw_input =~ tr/+/ / ;  <new_line>
+@name_value_pairs = split( /&/, $raw_input ) ;  <new_line>
+
+foreach $name_value ( @name_value_pairs ) {  <new_line>
+( $name, $value ) = split( /=/, $name_value, 2 ) ;  <new_line>
+
+if ( not( defined( $value ) ) ) {  <new_line>
+$value = '' ;  <new_line>
+}  <new_line>
+
+$name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+$name  =~ s/[<>\/\\]+/_/g ;  <new_line>
+
+if ( $name eq 'texttoimport' ) {  <new_line>
+#               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
+$value =~ s/%0D//ig ;  <new_line>
+$value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+} else {  <new_line>
+$value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+$value =~ s/[<>]+/_/gm ;  <new_line>
+$value =~ s/\n/<eol\/>/gm ;  <new_line>
+}  <new_line>
+
+$name = &function_parameterized__remove_leading_trailing_spaces( $name ) ;  <new_line>
+$value = &function_parameterized__remove_leading_trailing_spaces( $value ) ;  <new_line>
+
+if ( $name ne '' ) {  <new_line>
+#  Prepend "input-" to the phrase name  <new_line>
+$global_dashrep_replacement{ 'input-' . $name } = $value ;  <new_line>
+}  <new_line>
+
+# end of foreach loop  <new_line>
+}  <new_line>
+
+# end of if branch  <new_line>
+}  <new_line>
+
+$raw_input = '' ;  <new_line>
+
+if ( exists( $ENV{ 'REMOTE_ADDR' } ) ) {  <new_line>
+$global_dashrep_replacement{ 'input-ip-address' } = $ENV{ 'REMOTE_ADDR' } ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'REMOTE_PORT' } ) ) {  <new_line>
+$global_dashrep_replacement{ 'input-port-number' } = $ENV{ 'REMOTE_PORT' } ;  <new_line>
+}  <new_line>
+
+if ( exists( $ENV{ 'HTTP_COOKIE' } ) ) {  <new_line>
+$global_dashrep_replacement{ 'input-cookie-contents' } = $ENV{ 'HTTP_COOKIE' } ;  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+}  <new_line>
 ----
 template-function-get-count-of-words:
 # no-space dashes-long-line  <new_line>
@@ -3568,6 +3693,13 @@ $global_action_operand_three = runtime-code-for-operand-number-three ;  <new_lin
 &function__generate_counts_from_integer_to_integer( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-get-cgi-information:
+template-runtime-code-standard-action-begin
+
+&function__get_cgi_information( ) ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
