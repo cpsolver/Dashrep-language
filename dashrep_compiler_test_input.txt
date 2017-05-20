@@ -1,6 +1,7 @@
 start-here:
 [-get-cgi-information-]
-[-put-into-phrase correct-value-for-input-cgi-item  ??? -]
+[-put-into-phrase correct-value-for-input-cgi-value-one  123 -]
+[-put-into-phrase correct-value-for-input-cgi-value-two  abc xyz -]
 
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
