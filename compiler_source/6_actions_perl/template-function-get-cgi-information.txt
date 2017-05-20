@@ -4,7 +4,7 @@
 
 *---
 #  Input is standard input or standard environmental values  <new_line>
-#  Output is phrases that begin with the text "input-" and followed by the name of the parameter  <new_line>
+#  Output are phrases that have names that begin with the text "input-" and otherwise are named using the cgi name  <new_line>
 <new_line>
 ---*
 
@@ -41,7 +41,12 @@ $line_count = 0 ;  <new_line>
 
 while( $input_line = <STDIN> ) {  <new_line>
 chomp( $input_line ) ;  <new_line>
-$raw_input .= $input_line . ' ' ;  <new_line>
+
+if ( $raw_input ne '' ) {  <new_line>
+$raw_input .= ' ' ;  <new_line>
+}  <new_line>
+
+$raw_input .= $input_line ;  <new_line>
 $line_count ++ ;  <new_line>
 
 if ( $line_count > $cgi_line_length_limit ) {  <new_line>
@@ -83,7 +88,10 @@ $value =~ s/[<>]+/_/gm ;  <new_line>
 $value =~ s/\n/<eol\/>/gm ;  <new_line>
 }  <new_line>
 
-if ( $name !~ /^ *$/ ) {  <new_line>
+$name = &function_parameterized__remove_leading_trailing_spaces( $name ) ;  <new_line>
+$value = &function_parameterized__remove_leading_trailing_spaces( $value ) ;  <new_line>
+
+if ( $name ne '' ) {  <new_line>
 #  Prepend "input-" to the phrase name  <new_line>
 $global_dashrep_replacement{ 'input-' . $name } = $value ;  <new_line>
 }  <new_line>
@@ -91,10 +99,10 @@ $global_dashrep_replacement{ 'input-' . $name } = $value ;  <new_line>
 # end of foreach loop  <new_line>
 }  <new_line>
 
-$raw_input = '' ;  <new_line>
-
 # end of if branch  <new_line>
 }  <new_line>
+
+$raw_input = '' ;  <new_line>
 
 if ( exists( $ENV{ 'REMOTE_ADDR' } ) ) {  <new_line>
 $global_dashrep_replacement{ 'input-ip-address' } = $ENV{ 'REMOTE_ADDR' } ;  <new_line>
