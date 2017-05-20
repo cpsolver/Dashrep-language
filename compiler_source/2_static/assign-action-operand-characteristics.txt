@@ -121,3 +121,4 @@
 [-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
 [-put-into-phrase operand-checks-for-action-put-into-phrase check-operand-one-is-phrase-name-]
 [-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words check-operand-one-is-phrase-name-]
+[-put-into-phrase operand-checks-for-action-get-cgi-information check-operand-count-is-zero-]
