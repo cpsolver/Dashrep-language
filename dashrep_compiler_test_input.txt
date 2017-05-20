@@ -257,22 +257,6 @@ text-that-occurs-within-parameter-phrases
 [-copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
 [-put-into-phrase correct-value-for-results-replacements-using-paired-words  fliers songflier swimmer clownswimmer -]
 [-put-into-phrase string-category-underscore  category_  -]
-[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
-[-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
-[-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
-[-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray -]
-[-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
-[-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
-[-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
-[-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
-[-put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined -]
-[-copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized-]
-[-copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented-]
-[-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
-[-append-text character-period list-of-phrase-names-difference-]
-[-append-text character-period list-of-phrase-names-difference-]
-[-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
-[-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 
 [-put-into-phrase string-abc  abc -]
 [-copy-text character-space text-to-append-with-leading-and-trailing-space-]
@@ -323,9 +307,7 @@ text-that-occurs-within-parameter-phrases
 *--- correct value for above is specified below as separate phrase ---*
 
 text-that-occurs-after-parameter-phrases
-
 --------
-
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
@@ -341,11 +323,28 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
 [-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
 [-put-into-phrase correct-value-for-regenerated-page-participants-list-without-extra-spaces  ??? -]
+--------
 
+check-dashrep-recognized-phrase-names-in-documentation:
+[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
+[-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
+[-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
+[-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray -]
+[-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
+[-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
+[-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
+[-put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined -]
+[-copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized-]
+[-copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented-]
+[-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text character-period list-of-phrase-names-difference-]
+[-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
+[-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
 --------
 
 do-check-for-correct-values:
-
 [-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
 [-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
