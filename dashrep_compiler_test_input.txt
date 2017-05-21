@@ -749,7 +749,7 @@ correct-value-for-expanded-entire-standard-web-page:
 --------
 
 template-html-to-display-in-browser:
-Content-type:text/html<new_line>
+Content-type: text/html<new_line>
 <new_line>
 <html>  <new_line>
 <head>  <new_line>
