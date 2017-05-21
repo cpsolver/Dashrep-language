@@ -1,7 +1,5 @@
 start-here:
-[-get-cgi-information-]
-[-put-into-phrase correct-value-for-input-cgi-value-one  123 -]
-[-put-into-phrase correct-value-for-input-cgi-value-two  abc xyz -]
+[-test-getting-of-cgi-information-]
 
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
@@ -760,9 +758,54 @@ Content-type:text/html<new_line>
 <body>  <new_line>
 <h1>CGI information</h1>  <new_line>
 <ul>  <new_line>
-<li>???</li>  <new_line>
+list-of-displayed-input-phrases
+no-space
 </ul>  <new_line>
 <h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
 </body>  <new_line>
 </html>  <new_line>
+--------
+
+test-getting-of-cgi-information:
+[-get-cgi-information-]
+[-put-into-phrase correct-value-for-input-cgi-value-one  123 -]
+[-put-into-phrase correct-value-for-input-cgi-value-two  abc xyz -]
+
+[-put-into-phrase list-of-input-phrase-names  input-cgi-value-one input-cgi-value-two -]
+
+*---
+[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
+[-copy-words-that-begin-with-text list-of-all-dashrep-phrases list-of-input-phrase-names string-word-input-hyphen-]
+---*
+
+[-use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition list-of-input-phrase-names-]
+--------
+
+handle-display-input-phrase-name-and-definition:
+[-copy-text word-to-use-in-handler input-phrase-name-]
+[-copy-text html-list-item-begin display-one-input-phrase-with-value-]
+[-copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen-]
+[-append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value-]
+[-append-text character-equal-sign display-one-input-phrase-with-value-]
+[-expand-text input-phrase-name input-phrase-definition-]
+[-append-text input-phrase-definition display-one-input-phrase-with-value-]
+[-append-text-no-space html-list-item-end display-one-input-phrase-with-value-]
+[-append-text-no-space character-newline display-one-input-phrase-with-value-]
+[-append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases-]
+--------
+
+html-list-item-begin:
+<li>
+--------
+
+html-list-item-end:
+</li>
+--------
+
+character-equal-sign:
+=
+--------
+
+html-entity-hyphen:
+&#45;
 --------
