@@ -39,24 +39,24 @@ $raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
 } else {  <new_line>
 $line_count = 0 ;  <new_line>
 
-while( $input_line = <STDIN> ) {  <new_line>
-chomp( $input_line ) ;  <new_line>
+# while( $input_line = <STDIN> ) {  <new_line>
+# chomp( $input_line ) ;  <new_line>
 
-if ( $raw_input ne '' ) {  <new_line>
-$raw_input .= ' ' ;  <new_line>
-}  <new_line>
+# if ( $raw_input ne '' ) {  <new_line>
+# $raw_input .= ' ' ;  <new_line>
+# }  <new_line>
 
-$raw_input .= $input_line ;  <new_line>
-$line_count ++ ;  <new_line>
+# $raw_input .= $input_line ;  <new_line>
+# $line_count ++ ;  <new_line>
 
-if ( $line_count > $cgi_line_length_limit ) {  <new_line>
-$dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
-$global_accumulator[ $global_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
-return ;  <new_line>
-}  <new_line>
+# if ( $line_count > $cgi_line_length_limit ) {  <new_line>
+# $dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
+# $global_accumulator[ $global_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
+# return ;  <new_line>
+# }  <new_line>
 
-# end of while loop  <new_line>
-}  <new_line>
+# # end of while loop  <new_line>
+# }  <new_line>
 
 # end of if branch  <new_line>
 }  <new_line>
