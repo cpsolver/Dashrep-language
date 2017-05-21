@@ -118,4 +118,4 @@ $global_dashrep_replacement{ 'input-cookie-contents' } = $ENV{ 'HTTP_COOKIE' } ;
 
 return '' ;  <new_line>
 
-}  <new_line>
+template-function-segment-ending
