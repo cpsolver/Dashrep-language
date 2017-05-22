@@ -2,6 +2,13 @@ template-runtime-code-standard-action-begin
 
 $global_character_pointer_begin = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ;  <new_line>
 $global_character_pointer_end = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-four ) ;  <new_line>
+
+if ( $global_character_pointer_begin > $global_character_pointer_end ) {  <new_line>
+$global_character_pointer_saved = $global_character_pointer_begin ;  <new_line>
+$global_character_pointer_begin = $global_character_pointer_end ;  <new_line>
+$global_character_pointer_end = $global_character_pointer_saved ;  <new_line>
+}  <new_line>
+
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = substr( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end , $global_character_pointer_begin - 1 , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
