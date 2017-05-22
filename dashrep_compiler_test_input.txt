@@ -1,8 +1,11 @@
 start-here:
+[-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
 
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
+[-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values character-hyphen html-entity-hyphen-]
+[-copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values character-hyphen html-entity-hyphen-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
 [-copy-from-phrase-append-to-file display-values-all-ok [-output-filename-]-]
@@ -23,6 +26,10 @@ start-here:
 
 output-filename:
 output_display_values_not_correct.txt
+-------
+
+input-filename-for-cgi-information:
+input_cgi_information.txt
 -------
 
 dashrep-action-trace-on-yes-or-no:
@@ -383,6 +390,7 @@ handle-one-check-for-correct-value:
 [-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name [-phrase-name-]-]
 [-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name-]-]
 [-append-text-no-space display-value-is-not-correct full-display-values-not-correct-]
+[-append-text phrase-name list-of-phrases-with-incorrect-values-]
 [-if-else-]
 [-append-text phrase-name list-of-phrases-with-correct-values-]
 [-if-end-]
@@ -762,6 +770,8 @@ list-of-displayed-input-phrases
 no-space
 </ul>  <new_line>
 <h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
+<p>Phrases with wrong values: list-of-phrases-with-incorrect-values no-space </p>  <new_line>
+<p>Phrases with correct values: list-of-phrases-with-correct-values no-space </p>  <new_line>
 </body>  <new_line>
 </html>  <new_line>
 --------
@@ -770,15 +780,7 @@ test-getting-of-cgi-information:
 [-get-cgi-information-]
 [-put-into-phrase correct-value-for-input-cgi-value-one  123 -]
 [-put-into-phrase correct-value-for-input-cgi-value-two  abc xyz -]
-
-[-put-into-phrase list-of-input-phrase-names  input-cgi-value-one input-cgi-value-two -]
-
-*---
-[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
-[-copy-words-that-begin-with-text list-of-all-dashrep-phrases list-of-input-phrase-names string-word-input-hyphen-]
----*
-
-[-use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition list-of-input-phrase-names-]
+[-use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names-]
 --------
 
 handle-display-input-phrase-name-and-definition:
@@ -787,7 +789,7 @@ handle-display-input-phrase-name-and-definition:
 [-copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen-]
 [-append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value-]
 [-append-text character-equal-sign display-one-input-phrase-with-value-]
-[-expand-text input-phrase-name input-phrase-definition-]
+[-put-into-phrase input-phrase-definition  [-get-phrase-definition-without-expanding input-phrase-name-] -]
 [-append-text input-phrase-definition display-one-input-phrase-with-value-]
 [-append-text-no-space html-list-item-end display-one-input-phrase-with-value-]
 [-append-text-no-space character-newline display-one-input-phrase-with-value-]
