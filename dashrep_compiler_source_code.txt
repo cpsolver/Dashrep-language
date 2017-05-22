@@ -904,7 +904,6 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-append-repeatedly-using-count  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
 [-put-into-phrase operand-checks-for-action-append-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-append-text-no-space  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-clear-listed-phrases  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-clear-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
@@ -943,7 +942,6 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-create-empty-sub-folder  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
 [-put-into-phrase operand-checks-for-action-decode-from-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-delete-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-encode-as-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-expand-parameters-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-expand-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
@@ -2777,6 +2775,8 @@ my $cgi_line_length_limit ;  <new_line>
 $cgi_string_length_limit = 100000 ;  <new_line>
 $cgi_line_length_limit = 100 ;  <new_line>
 $raw_input = '' ;  <new_line>
+$line_count = 0 ;  <new_line>
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } = '' ;  <new_line>
 
 if ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'GET' ) ) {  <new_line>
 
@@ -2790,10 +2790,9 @@ if ( exists( $ENV{ 'QUERY_STRING' } ) ) {  <new_line>
 $raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
 }  <new_line>
 
-} else {  <new_line>
-$line_count = 0 ;  <new_line>
+} elsif ( ( exists( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) && ( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } =~ /^[^ ]+\.[^ ]+$/ ) && ( open( INFILE , $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) ) {  <new_line>
 
-while( $input_line = <STDIN> ) {  <new_line>
+while( $input_line = <INFILE> ) {  <new_line>
 chomp( $input_line ) ;  <new_line>
 
 if ( $raw_input ne '' ) {  <new_line>
@@ -2811,6 +2810,8 @@ return ;  <new_line>
 
 # end of while loop  <new_line>
 }  <new_line>
+
+close( INFILE ) ;  <new_line>
 
 # end of if branch  <new_line>
 }  <new_line>
@@ -2848,6 +2849,12 @@ $value = &function_parameterized__remove_leading_trailing_spaces( $value ) ;  <n
 if ( $name ne '' ) {  <new_line>
 #  Prepend "input-" to the phrase name  <new_line>
 $global_dashrep_replacement{ 'input-' . $name } = $value ;  <new_line>
+
+if ( $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } ne '' ) {  <new_line>
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= ' ' ;  <new_line>
+}  <new_line>
+
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= 'input-' . $name ;  <new_line>
 }  <new_line>
 
 # end of foreach loop  <new_line>
@@ -2872,7 +2879,7 @@ $global_dashrep_replacement{ 'input-cookie-contents' } = $ENV{ 'HTTP_COOKIE' } ;
 
 return '' ;  <new_line>
 
-}  <new_line>
+template-function-segment-ending
 ----
 template-function-get-count-of-words:
 # no-space dashes-long-line  <new_line>
