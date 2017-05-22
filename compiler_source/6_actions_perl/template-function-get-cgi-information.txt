@@ -55,7 +55,7 @@ $line_count ++ ;  <new_line>
 
 close( INFILE ) ;  <new_line>
 
-} else {  <new_line>
+} elsif ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'POST' ) ) {  <new_line>
 
 while( $input_line = <STDIN> ) {  <new_line>
 chomp( $input_line ) ;  <new_line>
