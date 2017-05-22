@@ -23,6 +23,7 @@ my $global_concatenated_all_operands_modified = '' ;  <new_line>
 my $global_string_to_be_replaced = '' ;  <new_line>
 my $global_text_to_insert = '' ;  <new_line>
 my $global_word_pointer_text = '0' ;  <new_line>
+my $global_phrase_name_currently_executing = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
@@ -94,47 +95,47 @@ $global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
 # my %global_minimum_number_of_operands_for_action ;  <new_line>
 
 $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = 'no' ;  <new_line>
-my $global_single_action_name ;  <new_line>
-my $global_trace_log ;  <new_line>
-my $global_single_action_operands_all ;  <new_line>
-my %global_required_number_of_operands_for_action ;  <new_line>
-my $global_single_action_operand_one ;  <new_line>
-my $global_single_action_operand_two ;  <new_line>
-my $global_single_action_operand_three ;  <new_line>
-my $global_single_action_operand_four ;  <new_line>
-my $global_single_action_operand_five ;  <new_line>
-my $global_unique_value ;  <new_line>
-my $global_operand_one ;  <new_line>
-my $global_operand_two ;  <new_line>
-my $global_operand_three ;  <new_line>
-my $global_operand_four ;  <new_line>
-my $global_operand_five ;  <new_line>
-my $global_operands_all ;  <new_line>
-my $global_xml_level_number ;  <new_line>
-my $global_ignore_level ;  <new_line>
-my $global_xml_accumulated_sequence_of_tag_names ;  <new_line>
-my @global_xml_tag_at_level_number ;  <new_line>
-my $global_exists_xml_hyphenated_phrase ;  <new_line>
+my $global_single_action_name = '' ;  <new_line>
+my $global_trace_log = '' ;  <new_line>
+my $global_single_action_operands_all = '' ;  <new_line>
+my %global_required_number_of_operands_for_action = ( ) ;  <new_line>
+my $global_single_action_operand_one = '' ;  <new_line>
+my $global_single_action_operand_two = '' ;  <new_line>
+my $global_single_action_operand_three = '' ;  <new_line>
+my $global_single_action_operand_four = '' ;  <new_line>
+my $global_single_action_operand_five = '' ;  <new_line>
+my $global_unique_value = '' ;  <new_line>
+my $global_operand_one = '' ;  <new_line>
+my $global_operand_two = '' ;  <new_line>
+my $global_operand_three = '' ;  <new_line>
+my $global_operand_four = '' ;  <new_line>
+my $global_operand_five = '' ;  <new_line>
+my $global_operands_all = '' ;  <new_line>
+my $global_xml_level_number = 0 ;  <new_line>
+my $global_ignore_level = 0 ;  <new_line>
+my $global_xml_accumulated_sequence_of_tag_names = '' ;  <new_line>
+my @global_xml_tag_at_level_number = ( ) ;  <new_line>
+my $global_exists_xml_hyphenated_phrase = '' ;  <new_line>
 
-my %global_check_operand_one_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_two_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_three_is_phrase_name_for_action ;  <new_line>
-my %global_check_operand_four_is_phrase_name_for_action ;  <new_line>
+my %global_check_operand_one_is_phrase_name_for_action = ( ) ;  <new_line>
+my %global_check_operand_two_is_phrase_name_for_action = ( ) ;  <new_line>
+my %global_check_operand_three_is_phrase_name_for_action = ( ) ;  <new_line>
+my %global_check_operand_four_is_phrase_name_for_action = ( ) ;  <new_line>
 
-my %global_check_operand_one_phrase_is_not_empty_for_action ;  <new_line>
-my %global_check_operand_two_phrase_is_not_empty_for_action ;  <new_line>
-my %global_check_operand_three_phrase_is_not_empty_for_action ;  <new_line>
+my %global_check_operand_one_phrase_is_not_empty_for_action = ( ) ;  <new_line>
+my %global_check_operand_two_phrase_is_not_empty_for_action = ( ) ;  <new_line>
+my %global_check_operand_three_phrase_is_not_empty_for_action = ( ) ;  <new_line>
 
-my %global_check_operand_one_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_two_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_three_is_positive_integer_for_action ;  <new_line>
-my %global_check_operand_four_is_positive_integer_for_action ;  <new_line>
+my %global_check_operand_one_is_positive_integer_for_action = ( ) ;  <new_line>
+my %global_check_operand_two_is_positive_integer_for_action = ( ) ;  <new_line>
+my %global_check_operand_three_is_positive_integer_for_action = ( ) ;  <new_line>
+my %global_check_operand_four_is_positive_integer_for_action = ( ) ;  <new_line>
 
-my %global_check_operand_one_is_real_number_for_action ;  <new_line>
-my %global_check_operand_two_is_real_number_for_action ;  <new_line>
+my %global_check_operand_one_is_real_number_for_action = ( ) ;  <new_line>
+my %global_check_operand_two_is_real_number_for_action = ( ) ;  <new_line>
 
-my %global_check_operand_one_is_file_name_for_action ;  <new_line>
-my %global_check_operand_two_is_file_name_for_action ;  <new_line>
+my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
+my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
 
-my $global_dashrep_text_list_of_phrase_names ;  <new_line>
-my $global_xml_level ;  <new_line>
+my $global_dashrep_text_list_of_phrase_names = '' ;  <new_line>
+my $global_xml_level = 0 ;  <new_line>
