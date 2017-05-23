@@ -3,3 +3,12 @@
 # no-space dashes-long-line  <new_line>
 #  End runtime functions  <new_line>
 <new_line>
+<new_line>
+
+# no-space dashes-long-line  <new_line>
+#  All done.  <new_line>
+<new_line>
+
+exit;  <new_line>
+
+1;  <new_line>
