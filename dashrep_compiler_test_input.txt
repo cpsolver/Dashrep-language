@@ -1,4 +1,5 @@
 start-here:
+[-delete-file [-output-filename-]-]
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
 
