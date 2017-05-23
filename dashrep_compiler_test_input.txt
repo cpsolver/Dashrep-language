@@ -4,8 +4,8 @@ start-here:
 
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-do-check-for-correct-values-]
-[-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values character-hyphen html-entity-hyphen-]
-[-copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values character-hyphen html-entity-hyphen-]
+[-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen-]
+[-copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values-version-html character-hyphen html-entity-hyphen-]
 
 [-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
 [-copy-from-phrase-append-to-file display-values-all-ok [-output-filename-]-]
@@ -770,8 +770,8 @@ list-of-displayed-input-phrases
 no-space
 </ul>  <new_line>
 <h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
-<p>Phrases with wrong values: list-of-phrases-with-incorrect-values no-space </p>  <new_line>
-<p>Phrases with correct values: list-of-phrases-with-correct-values no-space </p>  <new_line>
+<p>Phrases with wrong values: list-of-phrases-with-incorrect-values-version-html no-space </p>  <new_line>
+<p>Phrases with correct values: list-of-phrases-with-correct-values-version-html no-space </p>  <new_line>
 </body>  <new_line>
 </html>  <new_line>
 --------
