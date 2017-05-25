@@ -1782,6 +1782,9 @@ template-quoted-time-year:
 template-quoted-yes-or-no-indicate-line-endings:
 'yes'
 ----
+template-quoted-yes-or-no-permission-administrator:
+'yes'
+----
 template-quoted-yes-or-no-permission-to-append-to-files:
 'yes'
 ----
@@ -2235,9 +2238,6 @@ my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no
 my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
 <new_line>
 
-*--- default values for Dashrep phrases ---*
-$global_dashrep_replacement{ 'yes-or-no-permission-administrator' } = 'yes' ;  <new_line>
-<new_line>
 
 *--- variables that are only needed for old interpreter code ---*
 my $global_true = 1 ;  <new_line>
@@ -4530,5 +4530,5 @@ runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-store-result-for-case-error:
-runtime-code-storage-item-result = ' <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error: <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 ----
