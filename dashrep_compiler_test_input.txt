@@ -372,19 +372,25 @@ do-check-for-correct-values:
 [-copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
 [-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
 
+*---
 [-trace-show list-of-phrases-to-check-for-correct-value-]
+---*
 
 [-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
 [-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
 
+*---
 [-trace-show full-display-values-not-correct-]
 [-trace-show list-of-phrases-with-correct-values-]
+---*
 --------
 
 handle-one-check-for-correct-value:
 [-copy-text word-to-use-in-handler phrase-name-]
 
+*---
 [-trace-show phrase-name-]
+---*
 
 [-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-]-]
 [-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
