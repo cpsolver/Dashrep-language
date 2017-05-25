@@ -941,7 +941,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-create-empty-file  check-operand-count-is-one check-operand-one-is-file-name -]
 [-put-into-phrase operand-checks-for-action-create-empty-sub-folder  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
 [-put-into-phrase operand-checks-for-action-decode-from-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-delete-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-delete-file  check-operand-count-is-one check-operand-one-is-file-name check-valid-path-for-writing check-user-has-permission-delete-or-overwrite-files -]
 [-put-into-phrase operand-checks-for-action-encode-as-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-expand-parameters-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-expand-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
@@ -953,7 +953,7 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name check-user-has-permission-administrator -]
 [-put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-generate-phrase-usage-counts  check-operand-count-is-one check-operand-one-is-phrase-name -]
@@ -1017,9 +1017,10 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
 
 [-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
-[-put-into-phrase operand-checks-for-action-put-into-phrase check-operand-one-is-phrase-name-]
-[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words check-operand-one-is-phrase-name-]
-[-put-into-phrase operand-checks-for-action-get-cgi-information check-operand-count-is-zero-]
+[-put-into-phrase operand-checks-for-action-put-into-phrase  check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words  check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-cgi-information  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one -]
 ----
 build-paired-replacements-for-converting-hyphens-into-defenns:
 [-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
@@ -1081,72 +1082,6 @@ character-semicolon:
 ----
 character-underscore:
 _
-----
-check-operand-count-is-four:
-runtime-code-check-operand-count-before-number 4 runtime-code-check-operand-count-after-number
-----
-check-operand-count-is-one:
-runtime-code-check-operand-count-before-number 1 runtime-code-check-operand-count-after-number
-----
-check-operand-count-is-three:
-runtime-code-check-operand-count-before-number 3 runtime-code-check-operand-count-after-number
-----
-check-operand-count-is-two:
-runtime-code-check-operand-count-before-number 2 runtime-code-check-operand-count-after-number
-----
-check-operand-count-is-zero:
-runtime-code-check-operand-count-before-number 0 runtime-code-check-operand-count-after-number
-----
-check-operand-four-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-four runtime-code-check-operand-end
-----
-check-operand-four-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-four runtime-code-check-operand-end
-----
-check-operand-one-is-file-name:
-runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-one-is-integer:
-runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-one-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-one-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-one-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-one-is-real-number:
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
-----
-check-operand-three-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-three runtime-code-check-operand-end
-----
-check-operand-three-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-three runtime-code-check-operand-end
-----
-check-operand-three-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end
-----
-check-operand-two-is-file-name:
-runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-----
-check-operand-two-is-integer:
-runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
-----
-check-operand-two-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
-----
-check-operand-two-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-two runtime-code-check-operand-end
-----
-check-operand-two-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
-----
-check-operand-two-is-real-number:
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end
 ----
 count-of-ambee-tokens:
 0
@@ -2241,6 +2176,8 @@ my $global_string_to_be_replaced = '' ;  <new_line>
 my $global_text_to_insert = '' ;  <new_line>
 my $global_word_pointer_text = '0' ;  <new_line>
 my $global_phrase_name_currently_executing = '' ;  <new_line>
+my $global_input_file_name = '' ;  <new_line>
+my $global_output_file_name = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
@@ -2281,6 +2218,7 @@ my $global_normalized_calculated_value = 0 ;  <new_line>
 my $global_count_range = 0 ;  <new_line>
 my $global_counter = 0 ;  <new_line>
 my $global_count_number = 0 ;  <new_line>
+my $global_count_of_items_appended = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
@@ -2297,6 +2235,9 @@ my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no
 my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
 <new_line>
 
+*--- default values for Dashrep phrases ---*
+$global_dashrep_replacement{ 'yes-or-no-permission-administrator' } = 'yes' ;  <new_line>
+<new_line>
 
 *--- variables that are only needed for old interpreter code ---*
 my $global_true = 1 ;  <new_line>
@@ -2630,36 +2571,149 @@ template-storage-item-prefix storage-position-for-word-list-associated-with-loop
 template-storage-item-prefix:
 $storage_item__ no-space
 ----
+check-operand-count-is-four:
+runtime-code-check-operand-count-before-number 4 runtime-code-check-operand-count-after-number
+----
+check-operand-count-is-one:
+runtime-code-check-operand-count-before-number 1 runtime-code-check-operand-count-after-number
+----
+check-operand-count-is-three:
+runtime-code-check-operand-count-before-number 3 runtime-code-check-operand-count-after-number
+----
+check-operand-count-is-two:
+runtime-code-check-operand-count-before-number 2 runtime-code-check-operand-count-after-number
+----
+check-operand-count-is-zero:
+runtime-code-check-operand-count-before-number 0 runtime-code-check-operand-count-after-number
+----
+check-operand-four-is-phrase-name:
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-four runtime-code-check-operand-end
+----
+check-operand-four-is-positive-integer:
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-four runtime-code-check-operand-end
+----
+check-operand-one-is-file-name:
+runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-one-is-integer:
+runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-one-is-phrase-name:
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-one-is-phrase-not-empty:
+runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-one-is-positive-integer:
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-one-is-real-number:
+runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
+----
+check-operand-three-is-phrase-name:
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-three runtime-code-check-operand-end
+----
+check-operand-three-is-phrase-not-empty:
+runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-three runtime-code-check-operand-end
+----
+check-operand-three-is-positive-integer:
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end
+----
+check-operand-two-is-file-name:
+runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-integer:
+runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-phrase-name:
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-phrase-not-empty:
+runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-positive-integer:
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-operand-two-is-real-number:
+runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end
+----
+check-user-has-permission-administrator:
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-administrator' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes-or-no-permission-administrator' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+$global_yes_or_no = $global_yes ;  <new_line>
+} else {  <new_line>
+$global_yes_or_no = $global_no ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+----
+check-user-has-permission-append-to-files:
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-append-to-files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-append-to-files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+$global_yes_or_no = $global_yes ;  <new_line>
+} else {  <new_line>
+$global_yes_or_no = $global_no ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+----
+check-user-has-permission-delete-or-overwrite-files:
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-delete-or-overwrite-files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-delete-or-overwrite-files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+$global_yes_or_no = $global_yes ;  <new_line>
+} else {  <new_line>
+$global_yes_or_no = $global_no ;  <new_line>
+}  <new_line>
+
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+----
+check-valid-path-for-reading:
+$global_yes_or_no = &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-reading' code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+----
+check-valid-path-for-writing:
+$global_yes_or_no = &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-writing' code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+----
 list-of-template-functions:
 template-function-parameterized-yes-or-no-empty
 template-function-parameterized-remove-leading-trailing-spaces
-
 template-function-parameterized-yes-or-no-phrase-name
 template-function-parameterized-yes-or-no-phrase-definition-not-empty
-
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-integer
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-normalize-calculated-value
 template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
-
-template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-get-list-of-words
+template-function-parameterized-yes-or-no-file-name
+template-function-parameterized-yes-or-no-valid-path
+template-function-parameterized-yes-or-no-input-file-exists
+template-function-parameterized-yes-or-no-output-file-exists
 
 template-function-point-to-words
 template-function-remove-extra-spaces
 template-function-get-count-of-words
 template-function-get-word-at-position
-
 template-function-numeric-add
 template-function-numeric-multiply
 template-function-numeric-maximum
 template-function-numeric-minimum
-
 template-function-generate-counts-from-integer-to-integer
 template-function-get-cgi-information
-
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
 ----
@@ -2731,7 +2785,7 @@ $global_count_range = $global_numeric_value_second - $global_numeric_value_first
 }  <new_line>
 
 if ( $global_count_range > 500000 ) {  <new_line>
-code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end = 'dashrep_undefined' ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end = 'dashrep_undefined_from_action_generate_counts_from_integer_to_integer_error_count_range_too_large' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -3218,11 +3272,111 @@ sub function_parameterized__yes_or_no_file_name( ) {  <new_line>
 my $local_text ;  <new_line>
 $local_text = $_[ 0 ] ;  <new_line>
 
-if ( $local_text =~ /^[a-z][^ \.\/\\\*\&\!\@\#\$\%\^\~\`\"\'\,\:\;\=\+]*\.[a-z]+$/i )  {  <new_line>
-return $global_yes ;  <new_line>
-} else {  <new_line>
+if ( index( $local_text , ' ' ) >= 0 ) {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
+
+if ( index( $local_text , '.' ) < 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+$global_length_of_text = length( $local_text ) ;  <new_line>
+if ( $global_length_of_text < 3 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '/' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , "\\" ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '*' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '&' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '!' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '@' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '$' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '%' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '^' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '~' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '`' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '"' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , "'" ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ',' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ':' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ';' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '=' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '+' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+return $global_yes ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-parameterized-yes-or-no-input-file-exists:
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_input_file_exists  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_input_file_exists( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( open ( INFILE , '<' . code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-reading' code-get-or-put-phrase-definition-end . $local_text ) ) {  <new_line>
+close( INFILE ) ;  <new_line>
+return $global_yes ;  <new_line>
+}  <new_line>
+
+close( INFILE ) ;  <new_line>
+return $global_no ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -3240,6 +3394,25 @@ return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
+
+template-function-segment-ending
+----
+template-function-parameterized-yes-or-no-output-file-exists:
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_output_file_exists  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_output_file_exists( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( open ( INFILE , '<' . code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-writing' code-get-or-put-phrase-definition-end . $local_text ) ) {  <new_line>
+close( INFILE ) ;  <new_line>
+return $global_yes ;  <new_line>
+}  <new_line>
+
+close( INFILE ) ;  <new_line>
+return $global_no ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -3332,6 +3505,96 @@ return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
+
+template-function-segment-ending
+----
+template-function-parameterized-yes-or-no-valid-path:
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_valid_path  <new_line>
+<new_line>
+# reminder: path "./" is valid, so period is OK  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_valid_path( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( ( index( $local_text , '/' ) < 0 ) && ( index( $local_text , "\\" ) < 0 ) ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+$global_length_of_text = length( $local_text ) ;  <new_line>
+if ( $global_length_of_text > 0 ) {  <new_line>
+if ( ( substr( $local_text , $global_length_of_text - 1 , 1 ) ne "\\" ) && ( substr( $local_text , $global_length_of_text - 1 , 1 ) ne '/' ) ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ' ' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '*' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '&' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '!' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '@' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '$' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '%' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '^' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '~' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '`' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '"' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , "'" ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ',' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , ';' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '=' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '+' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+return $global_yes ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -3563,8 +3826,27 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-copy-characters-from-position-to-position:
 template-runtime-code-standard-action-begin
 
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+runtime-code-storage-item-result = &dashrep_expand_parameters( ) ;  <new_line>
+
+
+
+*---
+$global_length_of_text_source = length( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
 $global_character_pointer_begin = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ;  <new_line>
 $global_character_pointer_end = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-four ) ;  <new_line>
+
+
+print "operand text: " . runtime-code-for-operand-number-one . "\n" ;  <new_line>
+print "definition text: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+print "length: " . $global_length_of_text_source . "\n" ;  <new_line>
+print "pointers before: " . $global_character_pointer_begin . "  " . $global_character_pointer_end . "\n" ;  <new_line>
+
 
 if ( $global_character_pointer_begin > $global_character_pointer_end ) {  <new_line>
 $global_character_pointer_saved = $global_character_pointer_begin ;  <new_line>
@@ -3572,8 +3854,25 @@ $global_character_pointer_begin = $global_character_pointer_end ;  <new_line>
 $global_character_pointer_end = $global_character_pointer_saved ;  <new_line>
 }  <new_line>
 
+if ( ( $global_length_of_text_source > 0 ) && ( $global_character_pointer_begin < $global_length_of_text_source ) ) {  <new_line>
+
+if ( $global_character_pointer_end > $global_length_of_text_source - 1 ) {  <new_line>
+$global_character_pointer_end = $global_length_of_text_source - 1 ;  <new_line>
+}  <new_line>
+
+
+print "pointers after: " . $global_character_pointer_begin . "  " . $global_character_pointer_end . "\n" ;
+
+
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = substr( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end , $global_character_pointer_begin - 1 , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ;  <new_line>
+
+
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
+---*
+
 
 template-runtime-code-standard-action-end
 ----
@@ -3650,6 +3949,15 @@ $global_counter -- ;  <new_line>
 }  <new_line>
 
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_text_to_insert . $global_source_text ;
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-delete-file:
+template-runtime-code-standard-action-begin
+
+$global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
+unlink $global_temporary_text ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
