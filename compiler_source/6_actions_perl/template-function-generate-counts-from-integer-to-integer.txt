@@ -24,7 +24,7 @@ $global_count_range = $global_numeric_value_second - $global_numeric_value_first
 }  <new_line>
 
 if ( $global_count_range > 500000 ) {  <new_line>
-code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end = 'dashrep_undefined' ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end = 'dashrep_undefined_from_action_generate_counts_from_integer_to_integer_error_count_range_too_large' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
