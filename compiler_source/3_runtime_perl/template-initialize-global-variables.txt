@@ -64,6 +64,7 @@ my $global_normalized_calculated_value = 0 ;  <new_line>
 my $global_count_range = 0 ;  <new_line>
 my $global_counter = 0 ;  <new_line>
 my $global_count_number = 0 ;  <new_line>
+my $global_count_of_items_appended = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
