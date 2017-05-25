@@ -24,6 +24,8 @@ my $global_string_to_be_replaced = '' ;  <new_line>
 my $global_text_to_insert = '' ;  <new_line>
 my $global_word_pointer_text = '0' ;  <new_line>
 my $global_phrase_name_currently_executing = '' ;  <new_line>
+my $global_input_file_name = '' ;  <new_line>
+my $global_output_file_name = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
