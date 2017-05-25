@@ -1,0 +1,17 @@
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_input_file_exists  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_input_file_exists( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( open ( INFILE , '<' . code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-reading' code-get-or-put-phrase-definition-end . $local_text ) ) {  <new_line>
+close( INFILE ) ;  <new_line>
+return $global_yes ;  <new_line>
+}  <new_line>
+
+close( INFILE ) ;  <new_line>
+return $global_no ;  <new_line>
+
+template-function-segment-ending
