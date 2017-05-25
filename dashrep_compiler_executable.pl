@@ -39309,7 +39309,12 @@ sub dashrep_expand_parameters
             foreach $phrase_name ( keys( %global_replacement_count_for_item_name ) )
             {
                 $replacement_count = $global_replacement_count_for_item_name{ $phrase_name } ;
-                if ( $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } ne "" )
+
+
+# edited 2017may25
+                if ( ( exists( $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } ) ) && ( $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } ne "" ) )
+
+
                 {
                     $endless_loop_replacements_with_count{ sprintf( "%08d" , $replacement_count ) } .= "\n" ;
                 }
