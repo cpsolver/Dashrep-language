@@ -675,6 +675,12 @@ sub dashrep_expand_parameters
             {
                 $number_of_operands = 0 ;
             }
+
+
+# added 2017may24
+            $operand_two = '' ;
+
+
             if ( $number_of_operands > 0 )
             {
                 $operand_one = $global_single_action_operand_one ;
