@@ -1,5 +1,6 @@
 start-here:
 [-delete-file [-output-filename-]-]
+
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
 
@@ -38,6 +39,10 @@ yes
 --------
 
 dashrep-warning-trace-on-yes-or-no:
+yes
+--------
+
+yes-or-no-permission-administrator:
 yes
 --------
 
