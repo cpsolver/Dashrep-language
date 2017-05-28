@@ -2266,9 +2266,10 @@ template-segment-branch-end:
 } elsif ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ;  <new_line>
 } else {  <new_line>
-if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
+if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
 }  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name_to_match ;  <new_line>
 } # end of branching  <new_line>
 return '' ;  <new_line>
@@ -2312,9 +2313,10 @@ sub special_function_do_single_replacement_only( ) {  <new_line>
 if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ;  <new_line>
 } else {  <new_line>
-if ( $global_accumulator[ $global_accumulator_pointer ] ne '' ) {  <new_line>
+if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
 }  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name ;  <new_line>
 }  <new_line>
 return '' ;  <new_line>
