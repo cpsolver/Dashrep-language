@@ -3,5 +3,6 @@ template-runtime-code-standard-action-begin
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
