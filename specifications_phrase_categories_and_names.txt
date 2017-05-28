@@ -37,6 +37,7 @@ export-defs-phrase-end
 category_clear_delete
 clear-phrase
 clear-listed-phrases
+delete-listed-phrases
 
 category_expand
 expand-text
@@ -250,7 +251,6 @@ amennfen
 linbray
 
 category_interpreted
-delete-listed-phrases
 delete-all-dashrep-phrases
 undeleted-phrase
 yes-or-no-expand-special-phrases
