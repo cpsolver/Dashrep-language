@@ -3,6 +3,7 @@ template-runtime-code-standard-action-begin
 $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;  <new_line>
 $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
