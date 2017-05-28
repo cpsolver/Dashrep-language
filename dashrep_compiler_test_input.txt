@@ -3,13 +3,7 @@ start-here:
 
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
-
-[-put-into-phrase contains-name-test-action-expand-text-inline-named  test-action-expand-text-inline-named -]
-[-expand-text-inline-named contains-name-test-action-expand-text-inline-named-]
-[-put-into-phrase correct-value-for-contains-text-successful-action-expand-text-inline-named  successful action expand text inline named -]
-
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
-[-put-into-phrase correct-value-for-expanded-test-of-dashrep-actions  ??? -]
 
 [-do-check-for-correct-values-]
 [-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen-]
@@ -331,6 +325,10 @@ text-that-occurs-within-parameter-phrases
 [-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
 *--- correct value for above is specified below as separate phrase ---*
 
+[-put-into-phrase contains-name-test-action-expand-text-inline-named  test-action-expand-text-inline-named -]
+[-expand-text-inline-named contains-name-test-action-expand-text-inline-named-]
+[-put-into-phrase correct-value-for-contains-text-successful-action-expand-text-inline-named  successful action expand text inline named -]
+
 text-that-occurs-after-parameter-phrases
 --------
 
@@ -348,6 +346,10 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 [-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
 [-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
 [-put-into-phrase correct-value-for-regenerated-page-participants-list-without-extra-spaces  ??? -]
+--------
+
+correct-value-for-expanded-test-of-dashrep-actions:
+text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases text-that-occurs-within-test-of-action-expand-text-inline-named text-that-occurs-after-parameter-phrases
 --------
 
 check-dashrep-recognized-phrase-names-in-documentation:
