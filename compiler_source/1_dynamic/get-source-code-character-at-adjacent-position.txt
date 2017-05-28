@@ -1,0 +1,2 @@
+[-copy-characters-from-position-to-position source-code-as-words adjacent-character [-word-to-use-in-handler-] [-word-to-use-in-handler-]-]
+[-append-text adjacent-character list-of-adjacent-characters-]

@@ -19,21 +19,11 @@
 [-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
 [-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
 [-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
-[-use-handler-with-each-word-in-phrase get-operand-character-at-adjacent-position pointers-to-adjacent-characters-]
+[-use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters-]
 [-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
 [-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
 
-
-*---
-[-trace-show source-code-as-words-]
-[-trace-show pointers-to-delimiters-begin-]
-[-trace-show pointers-to-delimiters-end-]
-[-trace-show list-of-adjacent-characters-]
----*
-
-
-[-put-into-phrase list-of-underscore-and-period  _ . -]
-[-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-underscore-and-period-]
+[-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters-]
 
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
