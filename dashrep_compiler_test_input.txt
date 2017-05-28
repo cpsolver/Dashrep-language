@@ -4,6 +4,7 @@ start-here:
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
+[-put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-] -]
 
 [-do-check-for-correct-values-]
 [-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen-]
@@ -230,9 +231,6 @@ text-that-occurs-within-parameter-phrases
 [-put-into-phrase correct-value-for-list-of-unique-word-counts  2 2 1 3 1 2 1 1 -]
 [-put-into-phrase correct-value-for-find-in-lists-result  alpha alpha-here beta delta - beta whatever something-here gamma alpha-here alpha delta and - alpha beta beta alpha beta - alpha alpha-here and beta gamma delta something-here whatever - 2 2 1 3 1 2 1 1 - 1 2 3 4 5 7 8 13 -]
 
-[-put-into-phrase hyphen-translation-safe  <character_hyphen> -]
-[-copy-and-replace template-for-createlist text-translation-safe character-hyphen hyphen-translation-safe-]
-[-put-into-phrase correct-value-for-text-translation-safe  abc <character_hyphen> createlist<character_hyphen>parameter <character_hyphen> def -]
 [-put-into-phrase already-expanded-phrase  one<character_hyphen>two<character_hyphen>three <item_one> -]
 [-insert-angle-bracketed-definitions already-expanded-phrase-]
 [-put-into-phrase correct-value-for-already-expanded-phrase  one-two-three waltz -]
@@ -457,14 +455,6 @@ text-with-extra-spaces:
 12 34  56   78   90
 --------
 
-template-for-createlist:
-abc-[-createlist-parameter-]-def
---------
-
-template-for-full-createlist:
-abc-[-createlist-parameter-]-def-[-createlist-item-number-]of[-createlist-total-number-of-items-]-ghi
---------
-
 list-of-numbers:
 3 12 7 13 4
 --------
@@ -684,6 +674,22 @@ some words here
 test-action-expand-text-inline-named:
 [-put-into-phrase contains-text-successful-action-expand-text-inline-named  successful action expand text inline named -]
 text-that-occurs-within-test-of-action-expand-text-inline-named
+--------
+
+test-of-adjacent-parameter-values:
+g7r[-row-number-]c[-column-number-]
+--------
+
+row-number:
+3
+--------
+
+column-number:
+5
+--------
+
+result-of-testing-of-adjacent-parameter-values:
+g7r3c5
 --------
 
 entire-standard-web-page:
