@@ -897,131 +897,6 @@ write-results-to-output-file:
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
 ----
-assign-action-operand-characteristics:
-[-put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-append-new-line  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-append-repeatedly-using-count  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-append-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-append-text-no-space  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-clear-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-and-replace  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty -]
-[-put-into-phrase operand-checks-for-action-copy-append-file-to-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name -]
-[-put-into-phrase operand-checks-for-action-copy-characters-from-position-to-position  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-column-lists  check-operand-count-is-two check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-named-phrases  check-operand-count-is-three check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-copy-from-file-to-phrase  check-operand-count-is-two check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-from-phrase-append-to-file  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name -]
-[-put-into-phrase operand-checks-for-action-copy-initial-caps  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-lowercase-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-uppercase-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-without-extra-spaces  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-word-at-position  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-copy-words-found-in-both-lists  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-found-in-either-list  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-found-only-in-first-list  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-from-position-to-position  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-copy-words-order-reversed  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-sort-alphabetic  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-sort-numeric  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-that-begin-with-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-that-begin-with-text  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-that-contain-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-words-unique-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-copy-zero-pad-left-to-length  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-create-empty-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-create-empty-sub-folder  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
-[-put-into-phrase operand-checks-for-action-decode-from-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-delete-file  check-operand-count-is-one check-operand-one-is-file-name check-valid-path-for-writing check-user-has-permission-delete-or-overwrite-files -]
-[-put-into-phrase operand-checks-for-action-encode-as-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-expand-parameters-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-expand-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-find-line-in-file-that-begins-with-text  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-gather-tagged-info-from-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name check-user-has-permission-administrator -]
-[-put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-phrase-usage-counts  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-positions-of-delimiter  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-generate-positions-of-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-characters-from-position-to-position  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-get-count-of-characters  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-count-of-words  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-current-time-in-epoch-seconds  check-operand-count-is-zero -]
-[-put-into-phrase operand-checks-for-action-get-definitions-from-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-get-phrase-definition-without-expanding  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-position-of-matching-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-position-of-word  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-word-at-position  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-insert-angle-bracketed-definitions  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-insert-codeview-tags  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-linewise-read-from-file-and-use-handler  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-not-empty -]
-[-put-into-phrase operand-checks-for-action-modification-time-of-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-numeric-absolute  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-cosine  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-decrement  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-divide-by  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-equal-greater-less-compare  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-increment  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-integer  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-logarithm-base-10  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-logarithm-base-e  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-minus  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-odd-or-even  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-sine  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows  check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty -]
-[-put-into-phrase operand-checks-for-action-numeric-vector-absolutes  check-operand-count-is-two check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vector-add-number  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vector-integers  check-operand-count-is-two check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vectors-add  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vectors-divide-by  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-vectors-multiply  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-prepend-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-prepend-text-no-space  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-rename-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name -]
-[-put-into-phrase operand-checks-for-action-set-file-permission-public-read  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-size-of-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components  check-operand-count-is-one check-operand-one-is-real-number -]
-[-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian  check-operand-count-is-one check-operand-one-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-trace-show  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name -]
-[-put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name -]
-[-put-into-phrase operand-checks-for-action-xml-move-attributes-into-tag-elements  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-empty-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-file-exists  check-operand-count-is-one check-operand-one-is-file-name -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-folder-exists  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-phrase-definitions  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-zero-one-multiple  check-operand-count-is-one check-operand-one-is-positive-integer -]
-[-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
-
-[-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
-[-put-into-phrase operand-checks-for-action-put-into-phrase  check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words  check-operand-one-is-phrase-name -]
-[-put-into-phrase operand-checks-for-action-get-cgi-information  check-operand-count-is-zero -]
-[-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one -]
-----
 build-paired-replacements-for-converting-hyphens-into-defenns:
 [-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
 [-prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns-]
@@ -1997,9 +1872,10 @@ if ( $global_no == &function_parameterized__yes_or_no_empty( template-storage-it
 ----
 template-code-compiled-function-part-8:
 ) ) {  <new_line>
-if ( $global_no == &function_parameterized__yes_or_no_empty( $global_accumulator[ $global_accumulator_pointer ] ) ) {  <new_line>
+if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
 }  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= template-storage-item-prefix
 ----
 template-code-compiled-function-part-9:
@@ -2131,6 +2007,10 @@ my %global_replacement_count_for_item_name = ( ) ;  <new_line>
 my @global_accumulator = ( ) ;  <new_line>
 $global_accumulator[ 0 ] = '' ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
+
+my @global_count_of_items_appended_to_accumulator = ( ) ;  <new_line>
+$global_count_of_items_appended_to_accumulator[ 0 ] = 0 ;  <new_line>
+$global_count_of_items_appended_to_accumulator[ 1 ] = 0 ;  <new_line>
 
 my @global_begin_position_for_word = ( ) ;  <new_line>
 $global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
@@ -2570,6 +2450,132 @@ template-storage-item-prefix storage-position-for-word-list-associated-with-loop
 ----
 template-storage-item-prefix:
 $storage_item__ no-space
+----
+assign-action-operand-characteristics:
+[-put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-append-new-line  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-append-repeatedly-using-count  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-append-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-append-text-no-space  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-clear-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-convert-from-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-convert-into-spoken-dashrep-code  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-convert-unicode-to-html-entities  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-and-remove-attributes-from-xml-tags  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-and-replace  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-and-replace-using-paired-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-copy-append-file-to-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name -]
+[-put-into-phrase operand-checks-for-action-copy-characters-from-position-to-position  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-column-lists  check-operand-count-is-two check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-copy-from-columns-in-file-to-named-phrases  check-operand-count-is-three check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-copy-from-file-to-phrase  check-operand-count-is-two check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-from-phrase-append-to-file  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name -]
+[-put-into-phrase operand-checks-for-action-copy-initial-caps  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-lowercase-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-uppercase-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-without-extra-spaces  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-word-at-position  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-copy-words-found-in-both-lists  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-found-in-either-list  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-found-only-in-first-list  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-from-position-to-position  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-copy-words-order-reversed  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-sort-alphabetic  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-sort-numeric  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-that-begin-with-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-that-begin-with-text  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-that-contain-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-words-unique-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-copy-zero-pad-left-to-length  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-create-empty-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-create-empty-sub-folder  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-decode-from-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-delete-file  check-operand-count-is-one check-operand-one-is-file-name check-valid-path-for-writing check-user-has-permission-delete-or-overwrite-files -]
+[-put-into-phrase operand-checks-for-action-encode-as-cgi-parameter  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-expand-parameters-only  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-expand-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-find-line-in-file-that-begins-with-text  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed  check-operand-count-is-three check-operand-one-is-file-name check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-gather-from-tagged-file-one-entry  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-gather-tagged-info-from-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-counts-from-integer-to-integer  check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-every-pairwise-combination-of-words  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-list-of-all-dashrep-phrases  check-operand-count-is-one check-operand-one-is-phrase-name check-user-has-permission-administrator -]
+[-put-into-phrase operand-checks-for-action-generate-list-of-files-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-list-of-folders-in-current-read-directory  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-phrase-usage-counts  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-positions-of-delimiter  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions  check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-generate-positions-of-listed-words  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-characters-from-position-to-position  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-get-count-of-characters  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-count-of-words  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-current-time-in-epoch-seconds  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-get-definitions-from-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-get-phrase-definition-without-expanding  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-position-of-matching-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-position-of-word  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-word-at-position  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-insert-angle-bracketed-definitions  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-insert-codeview-tags  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-linewise-read-from-file-and-use-handler  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-modification-time-of-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-numeric-absolute  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-cosine  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-decrement  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-divide-by  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-equal-greater-less-compare  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-increment  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-integer  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-logarithm-base-10  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-logarithm-base-e  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-minus  check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-odd-or-even  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-sine  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows  check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-numeric-vector-absolutes  check-operand-count-is-two check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vector-add-number  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vector-integers  check-operand-count-is-two check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vector-multiply-by-number  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vectors-add  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vectors-divide-by  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances  check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-vectors-multiply  check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-prepend-text  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-prepend-text-no-space  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-rename-file  check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-file-name -]
+[-put-into-phrase operand-checks-for-action-set-file-permission-public-read  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-size-of-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components  check-operand-count-is-one check-operand-one-is-real-number -]
+[-put-into-phrase operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian  check-operand-count-is-one check-operand-one-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-trace-show  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-use-handler-with-each-word-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-write-all-dashrep-definitions-to-file  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file  check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-file-name -]
+[-put-into-phrase operand-checks-for-action-write-gathered-listed-items-to-end-of-file  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-file-name -]
+[-put-into-phrase operand-checks-for-action-xml-move-attributes-into-tag-elements  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-empty-phrase  check-operand-count-is-one check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-file-exists  check-operand-count-is-one check-operand-one-is-file-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-folder-exists  check-operand-count-is-one check-operand-one-is-phrase-not-empty -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-phrase-definitions  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-word-is-in-phrase  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-zero-one-multiple  check-operand-count-is-one check-operand-one-is-positive-integer -]
+[-put-into-phrase operand-checks-for-action-zero-or-nonzero  check-operand-count-is-one check-operand-one-is-positive-integer -]
+
+[-put-into-phrase operand-checks-for-action-flush-trace-log  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-put-into-phrase  check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words  check-operand-one-is-phrase-name -]
+[-put-into-phrase operand-checks-for-action-get-cgi-information  check-operand-count-is-zero -]
+[-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one -]
+[-put-into-phrase operand-checks-for-action-expand-text-inline-named  check-operand-count-is-one check-operand-one-is-phrase-name -]
 ----
 check-operand-count-is-four:
 runtime-code-check-operand-count-before-number 4 runtime-code-check-operand-count-after-number
@@ -3939,6 +3945,7 @@ template-runtime-code-check-for-endless-loop
 $saved_accumulator_pointer = $global_accumulator_pointer  ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;  <new_line>
 ----
 template-runtime-code-for-action-executable-phrase-end:
 runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
@@ -3963,12 +3970,24 @@ $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> 
 
 template-runtime-code-for-action-executable-phrase-end
 ----
+template-runtime-code-for-action-expand-text-inline-named:
+template-runtime-code-for-action-executable-phrase-begin
+
+$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
+$global_phrase_name_to_match = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+&function_branch_based_on_phrase_name( ) ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-action-executable-phrase-end
+----
 template-runtime-code-for-action-expand-text:
 template-runtime-code-standard-action-begin
 
 $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
+$global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;  <new_line>
 $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
@@ -4207,6 +4226,7 @@ template-runtime-code-standard-action-begin
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
