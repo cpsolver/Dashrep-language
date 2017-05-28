@@ -203,7 +203,11 @@
 
 
 <h3 id="expand-text">expand-text</h3>
-<p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices.&nbsp; It is especially useful if the text contains hyphens but is not Dashrep code.</p>
+<p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices.&nbsp; It is especially useful for handling text that contains hyphens but is not Dashrep code.</p>
+
+
+<h3 id="expand-text-inline-named">expand-text-inline-named</h3>
+<p>This action expands ("translates") the contents of the phrase that is named in the first phrase, and inserts the result into the currently expanding text.&nbsp; This action provides a way to choose which phrase is expanded, so that the phrase being named can change.&nbsp; It also differs from the <b><i>expand-text</i></b> action because the result is not put into a specific phrase.&nbsp; It enables the handling of a situation which otherwise would require the phrase name to be inside two levels of parameter brackets.&nbsp; Currently this action is supported by the Dashrep compiler but not the Dashrep interpreter.</p>
 
 
 <h3 id="expand-parameters-only">expand-parameters-only</h3>
@@ -316,7 +320,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>68</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>69</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
