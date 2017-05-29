@@ -1,6 +1,6 @@
 ) ) {  <new_line>
-# if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {  <new_line>
-# $global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
-# }  <new_line>
+if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {  <new_line>
+$global_accumulator[ $global_accumulator_pointer ] .= ' ' ;  <new_line>
+}  <new_line>
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= template-storage-item-prefix
