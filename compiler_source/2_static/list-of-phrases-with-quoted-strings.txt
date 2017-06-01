@@ -1,9 +1,7 @@
 empty-text
 character-space
-non-breaking-space
 character-hyphen
 four-hyphens
-new-line
 character-newline
 empty-line
 line-break
