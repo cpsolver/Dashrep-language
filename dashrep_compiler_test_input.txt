@@ -323,8 +323,10 @@ text-that-occurs-within-parameter-phrases
 [-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
 *--- correct value for above is specified below as separate phrase ---*
 
-[-expand-text contains-name-test-expand-text-inline unused-result-of-expanded-contains-name-test-expand-text-inline-]
-contains-text-successful-expand-text-inline
+[-expand-text test-expand-text-inline result-of-test-expand-text-inline-]
+result-of-test-expand-text-inline
+
+[-contains-name-test-skip-level-executable-phrase-]
 
 [-put-into-phrase something-about-row-3  beta -]
 [-put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-] -]
@@ -353,12 +355,21 @@ correct-value-for-expanded-test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases successful expand text inline text-that-occurs-after-parameter-phrases
 --------
 
-contains-name-test-expand-text-inline:
-test-expand-text-inline
+test-expand-text-inline:
+[-copy-text string-abc copy-of-string-abc-]
+copy-of-string-abc
 --------
 
-test-expand-text-inline:
-[-put-into-phrase contains-text-successful-expand-text-inline  successful expand text inline -]
+contains-name-test-skip-level-executable-phrase:
+test-skip-level-executable-phrase
+--------
+
+test-skip-level-executable-phrase:
+[-put-into-phrase value-inserted-if-skip-level-ok  ok -]
+--------
+
+correct-value-for-value-inserted-if-skip-level-ok:
+ok
 --------
 
 check-dashrep-recognized-phrase-names-in-documentation:
