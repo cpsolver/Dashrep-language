@@ -2444,6 +2444,8 @@ template-storage-item-prefix:
 $storage_item__ no-space
 ----
 assign-action-operand-characteristics:
+*--- todo: split into separate phrase definitions ---*
+
 [-put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-append-new-line  check-operand-count-is-one check-operand-one-is-phrase-name -]
@@ -2567,7 +2569,6 @@ assign-action-operand-characteristics:
 [-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words  check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-get-cgi-information  check-operand-count-is-zero -]
 [-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one -]
-[-put-into-phrase operand-checks-for-action-expand-text-inline-named  check-operand-count-is-one check-operand-one-is-phrase-name -]
 ----
 check-operand-count-is-four:
 runtime-code-check-operand-count-before-number 4 runtime-code-check-operand-count-after-number
@@ -3962,17 +3963,6 @@ $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> 
 
 template-runtime-code-for-action-executable-phrase-end
 ----
-template-runtime-code-for-action-expand-text-inline-named:
-template-runtime-code-for-action-executable-phrase-begin
-
-$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
-if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
-$global_phrase_name_to_match = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-&function_branch_based_on_phrase_name( ) ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-action-executable-phrase-end
-----
 template-runtime-code-for-action-expand-text:
 template-runtime-code-standard-action-begin
 
@@ -3980,7 +3970,13 @@ $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;  <new_line>
+$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
 $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
+
+if ( ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) && ( $global_yes == &function_parameterized__yes_or_no_phrase_name( code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+$global_phrase_name_to_match = code-get-or-put-phrase-definition-begin $global_phrase_name_to_match code-get-or-put-phrase-definition-end ;  <new_line>
+}  <new_line>
+
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_internal_expand_phrases_faster_subset( $global_target_text ) ;  <new_line>
