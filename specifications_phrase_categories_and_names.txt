@@ -41,7 +41,6 @@ delete-listed-phrases
 
 category_expand
 expand-text
-expand-text-inline-named
 expand-parameters-only
 
 category_transfer

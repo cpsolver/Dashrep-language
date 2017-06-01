@@ -1,9 +1,0 @@
-template-runtime-code-for-action-executable-phrase-begin
-
-$global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_defined>' ;  <new_line>
-if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
-$global_phrase_name_to_match = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-&function_branch_based_on_phrase_name( ) ;  <new_line>
-}  <new_line>
-
-template-runtime-code-for-action-executable-phrase-end

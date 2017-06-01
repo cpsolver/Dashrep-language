@@ -701,11 +701,7 @@ Otherwise exported definitions are written using the normal Dashrep convention. 
 ----
 
 description-for-phrase-expand-text:
-This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices. s-n It is especially useful for handling text that contains hyphens but is not Dashrep code.
-----
-
-description-for-phrase-expand-text-inline-named:
-This action expands ("translates") the contents of the phrase that is named in the first phrase, and inserts the result into the currently expanding text. s-n This action provides a way to choose which phrase is expanded, so that the phrase being named can change. s-n It also differs from the b-i-b expand h-h text b-i-e action because the result is not put into a specific phrase. s-n It enables the handling of a situation which otherwise would require the phrase name to be inside two levels of parameter brackets. s-n Currently this action is supported by the Dashrep compiler but not the Dashrep interpreter.
+This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices. s-n If the contents of the first phrase is a phrase name alone (without surrounding am no-space bee and am no-space enn delimiters), that second hyphen-here level phrase name is expanded (instead of just inserting that phrase name without further recursion). s-n If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am h-h bee and am h-h enn delimiters).
 ----
 
 description-for-phrase-get-phrase-definition-without-expanding:

@@ -323,9 +323,8 @@ text-that-occurs-within-parameter-phrases
 [-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
 *--- correct value for above is specified below as separate phrase ---*
 
-[-put-into-phrase contains-name-test-action-expand-text-inline-named  test-action-expand-text-inline-named -]
-[-expand-text-inline-named contains-name-test-action-expand-text-inline-named-]
-[-put-into-phrase correct-value-for-contains-text-successful-action-expand-text-inline-named  successful action expand text inline named -]
+[-expand-text contains-name-test-expand-text-inline unused-result-of-expanded-contains-name-test-expand-text-inline-]
+contains-text-successful-expand-text-inline
 
 [-put-into-phrase something-about-row-3  beta -]
 [-put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-] -]
@@ -351,7 +350,15 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 --------
 
 correct-value-for-expanded-test-of-dashrep-actions:
-text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases text-that-occurs-within-test-of-action-expand-text-inline-named text-that-occurs-after-parameter-phrases
+text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases successful expand text inline text-that-occurs-after-parameter-phrases
+--------
+
+contains-name-test-expand-text-inline:
+test-expand-text-inline
+--------
+
+test-expand-text-inline:
+[-put-into-phrase contains-text-successful-expand-text-inline  successful expand text inline -]
 --------
 
 check-dashrep-recognized-phrase-names-in-documentation:
@@ -673,11 +680,6 @@ twelve
 
 character-string-source:
 some words here
---------
-
-test-action-expand-text-inline-named:
-[-put-into-phrase contains-text-successful-action-expand-text-inline-named  successful action expand text inline named -]
-text-that-occurs-within-test-of-action-expand-text-inline-named
 --------
 
 test-of-adjacent-parameter-values:

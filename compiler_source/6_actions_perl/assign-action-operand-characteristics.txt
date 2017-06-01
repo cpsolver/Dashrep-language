@@ -1,3 +1,5 @@
+*--- todo: split into separate phrase definitions ---*
+
 [-put-into-phrase operand-checks-for-action-append-multiple-from-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern  check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-append-new-line  check-operand-count-is-one check-operand-one-is-phrase-name -]
@@ -121,4 +123,3 @@
 [-put-into-phrase operand-checks-for-action-yes-or-no-same-two-words  check-operand-one-is-phrase-name -]
 [-put-into-phrase operand-checks-for-action-get-cgi-information  check-operand-count-is-zero -]
 [-put-into-phrase operand-checks-for-action-delete-listed-phrases  check-operand-count-is-one -]
-[-put-into-phrase operand-checks-for-action-expand-text-inline-named  check-operand-count-is-one check-operand-one-is-phrase-name -]

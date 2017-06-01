@@ -199,15 +199,15 @@
 <p>This action clears the definitions for the phrases that are named in the specified phrase.&nbsp; The phrases continue to exist, but their definitions are empty.</p>
 
 
+<h3 id="delete-listed-phrases">delete-listed-phrases</h3>
+<p>This action deletes (removes) the phrases that are named in the specified phrase.&nbsp; This phrase is related to the action <b><i>clear-listed-phrases</i></b> except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized.&nbsp; This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.</p>
+
+
 <h2>Expansion-related phrases</h2>
 
 
 <h3 id="expand-text">expand-text</h3>
-<p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices.&nbsp; It is especially useful for handling text that contains hyphens but is not Dashrep code.</p>
-
-
-<h3 id="expand-text-inline-named">expand-text-inline-named</h3>
-<p>This action expands ("translates") the contents of the phrase that is named in the first phrase, and inserts the result into the currently expanding text.&nbsp; This action provides a way to choose which phrase is expanded, so that the phrase being named can change.&nbsp; It also differs from the <b><i>expand-text</i></b> action because the result is not put into a specific phrase.&nbsp; It enables the handling of a situation which otherwise would require the phrase name to be inside two levels of parameter brackets.&nbsp; Currently this action is supported by the Dashrep compiler but not the Dashrep interpreter.</p>
+<p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices.&nbsp; If the contents of the first phrase is a phrase name alone (without surrounding ambee and amenn delimiters), that second-level phrase name is expanded (instead of just inserting that phrase name without further recursion).&nbsp; If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am-bee and am-enn delimiters).</p>
 
 
 <h3 id="expand-parameters-only">expand-parameters-only</h3>
@@ -959,10 +959,6 @@
 
 
 <h2>Interpreter supported (not compiler supported)</h2>
-
-
-<h3 id="delete-listed-phrases">delete-listed-phrases</h3>
-<p>This action deletes (removes) the phrases that are named in the specified phrase.&nbsp; This phrase is related to the action <b><i>clear-listed-phrases</i></b> except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized.&nbsp; This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.</p>
 
 
 <h3 id="delete-all-dashrep-phrases">delete-all-dashrep-phrases</h3>
