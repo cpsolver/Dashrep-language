@@ -33,7 +33,10 @@ sub initialize_special_phrases
     $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;
     $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;
     $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;
-    $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
+
+# edited 2017-june-1
+#    $global_dashrep_replacement{ "non-breaking-space" } = "&nbsp;" ;
+
     $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;
     $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;
     $global_dashrep_replacement{ "dashrep-gather-tag-begin" } = "entry_begin" ;
