@@ -3,7 +3,6 @@ character-space
 character-hyphen
 four-hyphens
 character-newline
-empty-line
 line-break
 character-tab
 character-open-square-bracket
