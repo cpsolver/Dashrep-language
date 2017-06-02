@@ -1315,6 +1315,7 @@ dashrep-time-limit
 dashrep-endless-loop-counter-limit
 ----
 list-of-phrases-with-quoted-strings:
+non-breaking-space
 empty-text
 character-space
 character-hyphen
@@ -1604,6 +1605,9 @@ template-quoted-list-of-pointers-to-unique-words:
 ----
 template-quoted-list-of-unique-word-counts:
 ''
+----
+template-quoted-non-breaking-space:
+'no-space &#160; no-space'
 ----
 template-quoted-numeric-map-tile-zoom:
 '1'
