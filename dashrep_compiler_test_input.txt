@@ -489,10 +489,6 @@ middle text
 ending text
 --------
 
-non-breaking-space:
-&nbsp;
---------
-
 character-double-quote:
 "
 --------

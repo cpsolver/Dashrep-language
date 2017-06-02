@@ -1,3 +1,4 @@
+non-breaking-space
 empty-text
 character-space
 character-hyphen
