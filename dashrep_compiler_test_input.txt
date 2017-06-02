@@ -326,7 +326,7 @@ text-that-occurs-within-parameter-phrases
 [-expand-text test-expand-text-inline result-of-test-expand-text-inline-]
 result-of-test-expand-text-inline
 
-[-contains-name-test-skip-level-executable-phrase-]
+[-expand-text contains-name-test-skip-level-executable-phrase unused-result-of-test-skip-level-]
 
 [-put-into-phrase something-about-row-3  beta -]
 [-put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-] -]
@@ -352,7 +352,7 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 --------
 
 correct-value-for-expanded-test-of-dashrep-actions:
-text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases successful expand text inline text-that-occurs-after-parameter-phrases
+text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases abc text-that-occurs-after-parameter-phrases
 --------
 
 test-expand-text-inline:
