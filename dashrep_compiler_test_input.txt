@@ -326,7 +326,7 @@ text-that-occurs-within-parameter-phrases
 [-expand-text test-expand-text-inline result-of-test-expand-text-inline-]
 result-of-test-expand-text-inline
 
-[-expand-text contains-name-test-skip-level-executable-phrase unused-result-of-test-skip-level-]
+[-expand-text [-contains-name-test-skip-level-executable-phrase-] unused-result-of-test-skip-level-]
 
 [-put-into-phrase something-about-row-3  beta -]
 [-put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-] -]
