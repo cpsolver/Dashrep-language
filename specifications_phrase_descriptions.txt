@@ -701,7 +701,7 @@ Otherwise exported definitions are written using the normal Dashrep convention. 
 ----
 
 description-for-phrase-expand-text:
-This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to translate many different chunks of text rather than translating all text using the same translation choices. s-n If the contents of the first phrase is a phrase name alone (without surrounding am no-space bee and am no-space enn delimiters), that second hyphen-here level phrase name is expanded (instead of just inserting that phrase name without further recursion). s-n If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am h-h bee and am h-h enn delimiters).
+This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file h-h path template to point to multiple file paths. s-n If the name of the phrase that needs to be expanded can change, then the first phrase can be surrounded with am no-space bee and am no-space enn delimiters. s-n If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am h-h bee and am h-h enn delimiters).
 ----
 
 description-for-phrase-get-phrase-definition-without-expanding:
