@@ -199,7 +199,6 @@ linewise-input-line-count
 get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
-write-all-dashrep-definitions-to-file
 write-dashrep-definitions-listed-in-phrase-to-file
 find-line-in-file-that-begins-with-text
 find-lines-in-file-that-begin-with-any-listed-word
@@ -269,6 +268,7 @@ dashrep-replacement-results-at-time-of-escape
 use-handler-with-each-word-in-phrase-currently-at-character-position
 
 category_deprecated
+write-all-dashrep-definitions-to-file
 yes-or-no-use-slower-subset-expand
 unique-value
 yes-or-no-word-is-in-phrase
