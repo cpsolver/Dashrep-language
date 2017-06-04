@@ -2738,7 +2738,7 @@ sub dashrep_expand_parameters
                 $temp_text =~ s/\+/ /sg ;
                 $remaining_text = $temp_text ;
                 $accumulated_text = "" ;
-                while ( $remaining_text =~ /^(.*?)(\%[0-9][0-9])(.*)$/s )
+                while ( $remaining_text =~ /^(.*?)(\%[0-9a-fA-F][0-9a-fA-F])(.*)$/s )
                 {
                     $accumulated_text .= $1 ;
                     $character_code_to_decode = $2 ;
