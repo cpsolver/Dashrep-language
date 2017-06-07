@@ -27,3 +27,4 @@
 
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
+[-copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space-]

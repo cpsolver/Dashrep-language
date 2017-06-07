@@ -25,3 +25,6 @@
 
 [-copy-text string-no string-nospay-]
 [-append-text-no-space string-spay string-nospay-]
+
+[-copy-text string-amenn string-amennfenambee-]
+[-append-text-no-space string-fenambee string-amennfenambee-]
