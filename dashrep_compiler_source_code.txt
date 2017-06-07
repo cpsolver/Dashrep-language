@@ -140,6 +140,7 @@ convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
 
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
+[-copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space-]
 ----
 convert-source-handle-nospay-insertions:
 [-copy-text word-to-use-in-handler current-symbol-]
@@ -1025,6 +1026,16 @@ define-special-strings-that-are-padded-with-spaces:
 [-copy-text string-nospay string-space-nospay-space-]
 [-prepend-text-no-space character-space string-space-nospay-space-]
 [-append-text-no-space character-space string-space-nospay-space-]
+
+[-copy-text string-amennfenambee string-space-amennfenambee-space-]
+[-prepend-text-no-space character-space string-space-amennfenambee-space-]
+[-append-text-no-space character-space string-space-amennfenambee-space-]
+
+[-copy-text string-amenn string-space-amenn-fen-ambee-space-]
+[-prepend-text-no-space character-space string-space-amenn-fen-ambee-space-]
+[-append-text string-fen string-space-amenn-fen-ambee-space-]
+[-append-text string-ambee string-space-amenn-fen-ambee-space-]
+[-append-text-no-space character-space string-space-amenn-fen-ambee-space-]
 ----
 define-special-strings-that-cannot-be-spelled-in-full:
 [-copy-text character-f string-fen-]
@@ -1054,6 +1065,9 @@ define-special-strings-that-cannot-be-spelled-in-full:
 
 [-copy-text string-no string-nospay-]
 [-append-text-no-space string-spay string-nospay-]
+
+[-copy-text string-amenn string-amennfenambee-]
+[-append-text-no-space string-fenambee string-amennfenambee-]
 ----
 define-special-strings-that-contain-hyphens:
 [-copy-text string-hyphen string-hyphen-here-]
