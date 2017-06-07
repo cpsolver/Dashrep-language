@@ -1,0 +1,8 @@
+[-copy-text digit-1 column-number-]
+[-copy-and-replace template-generated-grid-row-begin grid-item string-bracketed-grid-name grid-name-]
+[-copy-and-replace grid-item grid-item string-bracketed-grid-name-for-css-class grid-name-for-css-class-]
+[-copy-and-replace grid-item grid-item string-bracketed-row-number row-number-]
+[-append-text grid-item generated-grid-named-[-grid-name-]-]
+[-use-handler-with-each-word-in-phrase generate-grid-one-cell list-of-grid-column-numbers-]
+[-append-text template-generated-grid-row-end generated-grid-named-[-grid-name-]-]
+[-numeric-increment row-number-]

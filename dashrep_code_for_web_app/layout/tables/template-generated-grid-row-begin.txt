@@ -1,0 +1,3 @@
+no-space
+table-row-begin specify-css-class class-style-grid-row-<grid_style_type> specify-end
+no-space

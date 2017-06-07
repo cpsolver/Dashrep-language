@@ -1,0 +1,4 @@
+table-begin
+specify-css-class class-style-grid-table-<grid_name> specify-end
+specify-id selectext-id-grid underscore-here <grid_name_for_css_class> specify-end
+<new_line>

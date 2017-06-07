@@ -1,5 +1,5 @@
-[-put-into-phrase number-of-items  [-grid-item-count-] -]
-[-put-into-phrase number-of-columns  [-grid-columns-] -]
+[-copy-text grid-item-count number-of-items-]
+[-copy-text grid-columns number-of-columns-]
 [-generate-counts-from-integer-to-integer 1 [-number-of-columns-] list-of-grid-column-numbers-]
 
 

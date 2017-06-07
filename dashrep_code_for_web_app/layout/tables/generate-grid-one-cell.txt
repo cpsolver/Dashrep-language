@@ -1,0 +1,5 @@
+[-copy-and-replace template-generated-grid-cell grid-item string-bracketed-grid-name grid-name-]
+[-copy-and-replace grid-item grid-item string-bracketed-row-number row-number-]
+[-copy-and-replace grid-item grid-item string-bracketed-column-number column-number-]
+[-append-text grid-item generated-grid-named-[-grid-name-]-]
+[-numeric-increment column-number-]
