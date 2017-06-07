@@ -17,34 +17,10 @@ character-tab
 delayed-nospace
 delayed-newline
 
-category_definitions
-dashrep-definitions-begin
-dashrep-definitions-end
-dashrep-definition-append-next
-define-end
-define-begin
-list-of-phrases-newly-defined
-generate-list-of-all-dashrep-phrases
-yes-or-no-append-not-replace-for-imported-phrases
-yes-or-no-export-delimited-definitions
-export-defs-all-begin
-export-defs-all-end
-export-defs-def-begin
-export-defs-def-end
-export-defs-phrase-begin
-export-defs-phrase-end
-
-category_clear_delete
-clear-phrase
-clear-listed-phrases
-delete-listed-phrases
-
 category_expand
 expand-text
-expand-parameters-only
 
 category_transfer
-get-phrase-definition-without-expanding
 copy-text
 put-into-phrase
 copy-listed-words-to-phrases-named-in-pattern
@@ -55,6 +31,11 @@ append-repeatedly-using-count
 append-multiple-from-phrases-named-in-pattern
 prepend-text
 prepend-text-no-space
+
+category_clear_delete
+clear-phrase
+clear-listed-phrases
+delete-listed-phrases
 
 category_decision
 if-yes-begin
@@ -217,25 +198,25 @@ dashrep-gather-tag-unique
 dashrep-gather-tag-delete
 dashrep-gather-tag-matching-id
 
+category_definitions
+generate-list-of-all-dashrep-phrases
+
 category_debug
+trace-show
 dashrep-comments-ignored
 generate-phrase-usage-counts
-trace-show
 
 category_advanced
 dashrep-language-yes
 dashrep-version
 dashrep-undefined
 dashrep-endless-loop-counter-limit
-dashrep-endless-loop-count
 dashrep-time-limit
 insert-codeview-tags
 end-of-line-here
 yes-or-no-indicate-line-endings
 
 category_spoken_words
-convert-from-spoken-dashrep-code
-convert-into-spoken-dashrep-code
 dashbee
 dashenn
 dashnex
@@ -249,7 +230,22 @@ amennfen
 amennfenambee
 linbray
 
-category_interpreted
+category_deprecated
+expand-parameters-only
+dashrep-definitions-begin
+dashrep-definitions-end
+dashrep-definition-append-next
+define-end
+define-begin
+list-of-phrases-newly-defined
+yes-or-no-append-not-replace-for-imported-phrases
+yes-or-no-export-delimited-definitions
+export-defs-all-begin
+export-defs-all-end
+export-defs-def-begin
+export-defs-def-end
+export-defs-phrase-begin
+export-defs-phrase-end
 delete-all-dashrep-phrases
 undeleted-phrase
 yes-or-no-expand-special-phrases
@@ -267,8 +263,10 @@ escape-from-dashrep
 resume-after-escape-from-dashrep
 dashrep-replacement-results-at-time-of-escape
 use-handler-with-each-word-in-phrase-currently-at-character-position
-
-category_deprecated
+convert-from-spoken-dashrep-code
+convert-into-spoken-dashrep-code
+dashrep-endless-loop-count
+get-phrase-definition-without-expanding
 write-all-dashrep-definitions-to-file
 yes-or-no-use-slower-subset-expand
 unique-value
