@@ -1,3 +1,5 @@
+#!/usr/bin/perl  <new_line>
+<new_line>
 # no-space dashes-long-line  <new_line>
 #  Dashrep compiler output  <new_line>
 <new_line>
