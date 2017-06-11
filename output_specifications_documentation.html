@@ -132,6 +132,10 @@
 <h2>Text-transfer-related phrases</h2>
 
 
+<h3 id="get-cgi-information">get-cgi-information</h3>
+<p>This action gets the CGI (Common Gateway Interface) input information &mdash; which was sent from the browser to the server &mdash; and puts that information into phrases that begin their names with the prefix <b><i>input-</i></b> and use the supplied information names as the remainder of each name. </p> <p> Example: If a user clicks a link that has the URL <b><i>www.example.org/cgi-bin/value%1Fone=123&value%2Dtwo=abc+def</i></b> then the new phrase <b><i>input-value_one</i></b> will contain the text <b><i>123</i></b> and <b><i>input-value-two</i></b> will contain the text <b><i>abc def</i></b>.&nbsp; As indicated by this example, the CGI conversion converts <b><i>%1F</i></b> into <b><i>_</i></b> (underscore) and converts <b><i>%20</i></b> into a hyphen and converts <b><i>+</i></b> into a space.</p>
+
+
 <h3 id="copy-text">copy-text</h3>
 <p>This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase.&nbsp; This action must be followed by two phrase names, not one.&nbsp; The previous definition of the second hyphenated phrase is deleted.</p>
 
@@ -246,7 +250,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>51</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>52</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>

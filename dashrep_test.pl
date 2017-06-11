@@ -394,6 +394,8 @@ test-of-special-operators:
 [-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
 [-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray am no-space ennf no-space enam no-space bee -]
 [-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
+[-put-into-phrase actions-in-compiler-but-not-interpreter  get-cgi-information -]
+[-append-text actions-in-compiler-but-not-interpreter dashrep-list-of-recognized-phrase-names-]
 [-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
 [-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
 [-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]

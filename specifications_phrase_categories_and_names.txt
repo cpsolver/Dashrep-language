@@ -21,6 +21,7 @@ category_expand
 expand-text
 
 category_transfer
+get-cgi-information
 copy-text
 put-into-phrase
 copy-listed-words-to-phrases-named-in-pattern

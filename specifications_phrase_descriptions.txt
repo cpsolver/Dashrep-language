@@ -1042,6 +1042,26 @@ This action writes (in Dashrep-readable form) the definitions of the phrases tha
 location-of-write-file
 -----
 
+description-for-phrase-get-cgi-information:
+This action gets the CGI (Common Gateway Interface) input information em-dash which was sent from the browser to the server em-dash and puts that information into phrases that begin their names with the prefix b-i-b input hyphen-here b-i-e and use the supplied information names as the remainder of each name.
+paragraph-next
+Example: If a user clicks a link that has the URL b-i-b
+www.example.org/cgi-bin/value%1Fone=123&value%2Dtwo=abc+def
+b-i-e
+then the new phrase
+b-i-b input-value_one b-i-e will contain the text b-i-b 123 b-i-e
+and
+b-i-b input-value-two b-i-e will contain the text b-i-b abc def b-i-e
+no-space . s-n
+As indicated by this example, the CGI conversion converts
+b-i-b %1F b-i-e into b-i-b _ b-i-e (underscore)
+and converts
+b-i-b %20 b-i-e into a hyphen
+and converts
+b-i-b + b-i-e into a space
+no-space .
+-----
+
 description-for-phrase-copy-text:
 This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase. s-n 
 This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted.
