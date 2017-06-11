@@ -1064,6 +1064,10 @@ b-i-b + b-i-e into a space
 no-space .
 -----
 
+description-for-phrase-standard-output:
+This phrase contains the text that is written to standard output if em-dash but only if em-dash this phrase is not empty. s-n If this phrase is empty, then the normal convention is followed, which means that the expanded text is written to standard output. s-n In other programming languages the b-i-b print b-i-e statement is used to write text to standard output. s-n This phrase provides a way to completely control what is sent to standard output, without unexpected insertions of text caused by warnings and undefined Dashrep code.
+-----
+
 description-for-phrase-copy-text:
 This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase. s-n 
 This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted.

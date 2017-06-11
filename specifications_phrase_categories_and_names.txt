@@ -22,6 +22,7 @@ expand-text
 
 category_transfer
 get-cgi-information
+standard-output
 copy-text
 put-into-phrase
 copy-listed-words-to-phrases-named-in-pattern
