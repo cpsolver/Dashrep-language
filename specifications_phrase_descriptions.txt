@@ -1043,7 +1043,7 @@ location-of-write-file
 -----
 
 description-for-phrase-get-cgi-information:
-This action gets the CGI (Common Gateway Interface) input information em-dash which was sent from the browser to the server em-dash and puts that information into phrases that begin their names with the prefix b-i-b input hyphen-here b-i-e and use the supplied information names as the remainder of each name.
+This action gets the CGI (Common Gateway Interface) input information em-dash which was sent from the browser to the server em-dash and puts that information into phrases that begin their names with the prefix b-i-b input hyphen-here b-i-e and use the supplied information names as the remainder of each name. s-n In addition, the full raw CGI text in put into a phrase named b-i-b input-raw-cgi-string b-i-e no-space .
 paragraph-next
 Example: If a user clicks a link that has the URL b-i-b
 www.example.org/cgi-bin/value%1Fone=123&value%2Dtwo=abc+def
@@ -1052,6 +1052,8 @@ then the new phrase
 b-i-b input-value_one b-i-e will contain the text b-i-b 123 b-i-e
 and
 b-i-b input-value-two b-i-e will contain the text b-i-b abc def b-i-e
+and
+b-i-b input-raw-cgi-string b-i-e will contain the text b-i-b value%1Fone=123&value%2Dtwo=abc+def b-i-e
 no-space . s-n
 As indicated by this example, the CGI conversion converts
 b-i-b %1F b-i-e into b-i-b _ b-i-e (underscore)
