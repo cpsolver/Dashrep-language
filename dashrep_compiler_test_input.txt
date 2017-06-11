@@ -27,6 +27,52 @@ start-here:
 [-expand-text template-html-to-display-in-browser standard-output-]
 --------
 
+list-of-phrases-not-yet-tested-here:
+character-open-square-bracket
+character-close-square-bracket
+four-hyphens
+line-break
+copy-words-order-reversed
+copy-word-at-position
+copy-initial-caps
+copy-listed-words-to-phrases-named-in-pattern
+append-multiple-from-phrases-named-in-pattern
+clear-listed-phrases
+delete-listed-phrases
+copy-words-at-skip-interval
+generate-every-ordered-pairwise-combination-of-words
+copy-words-sort-alphabetic
+copy-words-rearrange-using-order-sort-alphabetic
+xml-move-attributes-into-tag-elements
+encode-as-cgi-parameter
+decode-from-cgi-parameter
+generate-positions-of-delimiter
+generate-positions-of-first-matching-delimiter-after-listed-positions
+zero-or-nonzero
+copy-words-rearrange-using-order-sort-numeric
+numeric-add
+numeric-logarithm-base-e
+numeric-logarithm-base-10
+numeric-pi
+numeric-vectors-multiply
+numeric-vectors-divide-by
+numeric-vector-integers
+numeric-vector-absolutes
+numeric-y-map-tile-number-based-on-latitude
+numeric-map-tile-zoom
+get-current-time-in-epoch-seconds
+split-epoch-seconds-into-named-components
+split-epoch-seconds-into-named-components-for-zero-meridian
+time-day-of-month
+time-day-of-week
+time-day-of-year
+time-hour
+time-minute
+time-month-number
+time-second
+time-year
+-------
+
 output-filename:
 output_display_values_not_correct.txt
 -------
@@ -318,6 +364,7 @@ text-that-occurs-within-parameter-phrases
 
 [-two-dimensional-sort-]
 [-test-if-begin-actions-]
+[-test-yes-no-checks-]
 
 [-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
 [-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
@@ -635,6 +682,11 @@ test-if-begin-actions:
 [-append-text string-twelve result-of-testing-if-begin-actions-]
 [-if-end-]
 [-put-into-phrase correct-value-for-result-of-testing-if-begin-actions  one four six seven nine eleven -]
+--------
+
+test-yes-no-checks:
+[-put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-]-]
+[-put-into-phrase correct-value-for-multiple-yes-no-checks  no_yes_yes_no_no_yes_yes_no_yes_no_yes_no -]
 --------
 
 string-one:
