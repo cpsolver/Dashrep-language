@@ -205,6 +205,7 @@ generate-list-of-all-dashrep-phrases
 
 category_debug
 trace-show
+trace-show-where
 dashrep-comments-ignored
 generate-phrase-usage-counts
 

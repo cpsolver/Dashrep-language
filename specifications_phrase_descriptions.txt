@@ -208,7 +208,11 @@ If this phrase equals b-i-b yes b-i-e then trace messages are added to the trace
 -----
 
 description-for-phrase-trace-show:
-This action displays the definition of the specified phrase in the trace log. s-n These requests are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep h-h action h-h trace h-h on h-h yes h-h or h-h no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
+This action inserts into the trace log the definition of the specified phrase. s-n These insertions are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep h-h action h-h trace h-h on h-h yes h-h or h-h no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
+-----
+
+description-for-phrase-trace-show-where:
+This action inserts into the trace log the name of the phrase currently being expanded. s-n These insertions are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep h-h action h-h trace h-h on h-h yes h-h or h-h no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
 -----
 
 description-for-phrase-dashrep-endless-loop-count:
