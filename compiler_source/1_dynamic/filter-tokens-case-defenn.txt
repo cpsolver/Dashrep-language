@@ -1,7 +1,13 @@
 [-if-yes-begin [-yes-or-no-same-two-words equal [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
 [-filter-tokens-case-defenn-case-balanced-ambee-amenn-]
 [-if-else-]
+[-handle-definition-simple-or-immediate-]
+
+*---
+if unbalanced needs warning:
 [-handle-non-zero-count-of-ambee-minus-amenn-tokens-]
+---*
+
 [-if-end-]
 
 [-clear-phrase phrase-being-defined-]
