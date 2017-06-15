@@ -17,4 +17,6 @@
 
 
 [-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
+[-expand-text modified-template-function-interpreter_code_dashrep_expand_parameters function-interpreter_code_dashrep_expand_parameters-]
 [-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
+[-expand-text modified-template-function-interpreter_code_actions_file_related function-interpreter_code_actions_file_related-]
