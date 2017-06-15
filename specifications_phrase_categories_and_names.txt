@@ -14,8 +14,6 @@ character-newline
 character-open-square-bracket
 character-close-square-bracket
 character-tab
-delayed-nospace
-delayed-newline
 
 category_expand
 expand-text
@@ -213,6 +211,8 @@ category_advanced
 dashrep-language-yes
 dashrep-version
 dashrep-undefined
+delayed-nospace
+delayed-newline
 dashrep-endless-loop-counter-limit
 dashrep-time-limit
 insert-codeview-tags

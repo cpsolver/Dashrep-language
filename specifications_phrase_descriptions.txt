@@ -57,7 +57,7 @@ This phrase is not defined, but this name is reserved for use as a placeholder w
 -----
 
 description-for-phrase-delayed-newline:
-This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b new h-h line b-i-e needs to be inserted later, after other replacements have been done. s-n When ready, this phrase should be defined as b-i-b new h-h line b-i-e just before the final translation step.
+This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b new h-h line b-i-e needs to be inserted later, after other replacements have been done. s-n Normally this phrase is not needed because the text b-i-b <new_ no-space line> b-i-e serves this purpose. s-n When this phrase is used, this phrase should be defined as b-i-b new h-h line b-i-e just before the final translation step.
 -----
 
 description-for-phrase-character-close-square-bracket:
