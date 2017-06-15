@@ -70,11 +70,7 @@ compile-source-code-initialize:
 [-put-into-phrase current-storage-position  1001 -]
 [-put-into-phrase count-of-ambee-tokens  0 -]
 [-put-into-phrase count-of-amenn-tokens  0 -]
-
-[-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
-[-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
-
-[-expand-text list-of-template-functions output-results-all-runtime-functions-]
+[-clear-phrase list-of-template-functions-for-requested-actions-]
 ----
 convert-source-code-into-words:
 [-copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special-]
@@ -603,6 +599,11 @@ handle-token-amenn-case-action-standard-or-has-template:
 [-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
 [-append-text action-name list-of-converted-dashrep-actions-used-]
 [-if-end-]
+
+[-if-no-begin [-yes-or-no-empty-phrase template-function-[-action-name-]-]-]
+[-put-into-phrase requested-template-function  template-function-[-action-name-] -]
+[-append-text requested-template-function list-of-template-functions-for-requested-actions-]
+[-if-end-]
 ----
 handle-token-amenn-case-executable-phrase:
 [-copy-text digit-0 number-of-operands-]
@@ -845,7 +846,11 @@ write-results-to-output-file:
 [-copy-from-phrase-append-to-file segment-start-object-code-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+
+[-if-no-begin [-yes-or-no-empty-phrase optional-import-statements-modified-]-]
 [-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-initialize-begin [-filename-output-results-from-compiler-]-]
@@ -878,12 +883,26 @@ write-results-to-output-file:
 [-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin [-filename-output-results-from-compiler-]-]
+
+[-if-no-begin [-yes-or-no-empty-phrase optional-extra-runtime-functions-modified-]-]
 [-copy-from-phrase-append-to-file optional-extra-runtime-functions-modified [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
+
+[-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
+[-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
+
+[-copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions-]
+[-copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions-]
+
+[-trace-show list-of-template-functions-for-requested-actions-]
+[-trace-show list-of-template-functions-]
+
+[-expand-text list-of-template-functions output-results-all-runtime-functions-]
 [-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-runtime-middle [-filename-output-results-from-compiler-]-]
 
 [-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
 [-put-into-phrase dashrep-path-prefix-for-file-reading  .\compiler_source\5_functions_from_interpreter\ -]
@@ -1392,6 +1411,10 @@ storage-position-for-word-list-associated-with-result-storage-position-
 ----
 object-code-copyright-notice:
 (c) Copyright 2017 by the entity who owns the source code from which this object code was generated. ALL RIGHTS RESERVED.
+----
+optional-extra-runtime-functions:
+----
+optional-import-statements:
 ----
 source-code-copyright-notice:
 (c) Copyright 2016-2017 by Richard Fobes at www.github.com/cpsolver/Dashrep-language  ALL RIGHTS RESERVED.
@@ -3004,16 +3027,10 @@ template-function-point-to-words
 template-function-remove-extra-spaces
 template-function-get-count-of-words
 template-function-get-word-at-position
-template-function-numeric-add
-template-function-numeric-multiply
-template-function-numeric-maximum
-template-function-numeric-minimum
-template-function-generate-counts-from-integer-to-integer
-template-function-get-cgi-information
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
 
-template-function-dashrep-expand-phrases
+list-of-template-functions-for-requested-actions
 ----
 operand-checks-for-action-append-multiple-from-phrases-named-in-pattern:
 check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
@@ -3386,7 +3403,7 @@ template-function-dashrep-expand-phrases:
 # dashrep_expand_phrases  <new_line>
 <new_line>
 
-sub dashrep_expand_phrases  <new_line>
+sub temp_renamed_dashrep_expand_phrases  <new_line>
 {  <new_line>
 
     my $expand_endless_cycle_count_maximum ;  <new_line>
