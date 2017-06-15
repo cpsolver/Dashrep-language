@@ -7,3 +7,8 @@
 [-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
 [-append-text action-name list-of-converted-dashrep-actions-used-]
 [-if-end-]
+
+[-if-no-begin [-yes-or-no-empty-phrase template-function-[-action-name-]-]-]
+[-put-into-phrase requested-template-function  template-function-[-action-name-] -]
+[-append-text requested-template-function list-of-template-functions-for-requested-actions-]
+[-if-end-]
