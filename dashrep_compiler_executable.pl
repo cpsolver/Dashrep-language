@@ -4598,7 +4598,7 @@ my $storage_item__4574 = 'check-valid-path-for-writing' ;
 my $storage_item__4575 = '$global_yes_or_no = &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep-path-prefix-for-file-writing' . "'" . ' code-get-or-put-phrase-definition-end ) ; <new_line> if ( $global_yes_or_no == $global_no ) { <new_line> $global_yes_or_no_operand_error = $global_yes ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4574 } = $storage_item__4575 ;
 my $storage_item__4576 = 'list-of-template-functions' ;
-my $storage_item__4577 = 'template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-input-file-exists template-function-parameterized-yes-or-no-output-file-exists template-function-point-to-words template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded list-of-template-functions-for-requested-actions' ;
+my $storage_item__4577 = 'template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-input-file-exists template-function-parameterized-yes-or-no-output-file-exists template-function-point-to-words template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-dashrep-expand-phrases list-of-template-functions-for-requested-actions' ;
 $global_dashrep_replacement{ $storage_item__4576 } = $storage_item__4577 ;
 my $storage_item__4578 = 'operand-checks-for-action-append-multiple-from-phrases-named-in-pattern' ;
 my $storage_item__4579 = 'check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name' ;
@@ -33521,6 +33521,352 @@ print TRACE_OUT "\n\n" . '******************** global trace log ****************
 $global_dashrep_replacement{ 'dashrep-debug-trace-log' } = '' ;
 $global_trace_log = '' ;
 exit ;
+# end of function
+}
+
+
+#------------------------------------------------------------
+# dashrep_expand_phrases
+
+sub temp_renamed_dashrep_expand_phrases
+{
+my $expand_endless_cycle_count_maximum ;
+my $supplied_text ;
+my $current_phrase ;
+my $result_text ;
+my $output_buffer ;
+my $space_directive ;
+my $expand_endless_loop_counter ;
+my $expand_endless_loop_counter_maximum ;
+my $recursion_level ;
+my $pointer_to_phrase_begin ;
+my $pointer_to_next_space ;
+my $pointer_to_phrase_end ;
+my $prior_length ;
+my $prefix ;
+my $possible_phrase_name_with_underscores ;
+my $length_of_tag ;
+my $new_output_buffer ;
+my $pointer_to_remainder_of_output_buffer ;
+my $possible_phrase_name_with_hyphens ;
+my $pointer_to_close_angle_bracket ;
+my $string_of_spaces ;
+my $length_of_output_buffer ;
+my $maximum_cycle_count ;
+my $phrase_name ;
+my $cycle_count ;
+my $phrase_name_with_highest_cycle_count ;
+my $length_of_code_at_recursion_level_current ;
+my @code_at_recursion_level ;
+my @length_of_code_at_recursion_level ;
+my @pointer_to_remainder_of_code_at_recursion_level ;
+my %number_of_times_encountered_phrase_named ;
+#***********************************************
+# Get the hyphenated phrase or supplied string.
+if ( scalar( @_ ) == 1 )
+{
+$supplied_text = $_[ 0 ] ;
+} else
+{
+$result_text = "" ;
+return $result_text ;
+}
+#***********************************************
+# Initialization.
+$space_directive = "none" ;
+$result_text = "" ;
+$output_buffer = "" ;
+$pointer_to_remainder_of_output_buffer = 0 ;
+$new_output_buffer = "" ;
+$possible_phrase_name_with_underscores = "" ;
+$string_of_spaces = " " ;
+$expand_endless_loop_counter = 0 ;
+$expand_endless_loop_counter_maximum = 100000 ;
+%number_of_times_encountered_phrase_named = ( ) ;
+$expand_endless_cycle_count_maximum = 100000 ;
+@code_at_recursion_level = ( ) ;
+@length_of_code_at_recursion_level = ( ) ;
+@pointer_to_remainder_of_code_at_recursion_level = ( ) ;
+$code_at_recursion_level[ 0 ] = "unused" ;
+$pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;
+$length_of_code_at_recursion_level[ 0 ] = 0 ;
+#***********************************************
+# Begin a loop that handles each space delimited string
+# in the phrase definition.
+$code_at_recursion_level[ 1 ] = $supplied_text ;
+$pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;
+$length_of_code_at_recursion_level[ 1 ] = length( $code_at_recursion_level[ 1 ] ) ;
+$recursion_level = 1 ;
+while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) )
+{
+$expand_endless_loop_counter ++ ;
+#***********************************************
+# Get the next phrase name.
+# If there is no more code at the current recursion
+# level, shift back to the previous recursion level.
+# When the recursion_level reaches zero, the loop
+# will end.
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print ".........." . "\n" ;
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "remainder: " . substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] , 100 ) . " ...\n" ;
+$length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ;
+if ( $length_of_code_at_recursion_level_current == 0 )
+{
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "empty definition, nothing to append" . "\n" ;
+$recursion_level -- ;
+next ;
+}
+$pointer_to_phrase_begin = $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] ;
+while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq " " ) )
+{
+$pointer_to_phrase_begin ++ ;
+}
+$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;
+if ( $pointer_to_next_space == -1 )
+{
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "no more spaces in definition" . "\n" ;
+$pointer_to_phrase_end = $length_of_code_at_recursion_level_current - 1 ;
+$pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ;
+} else
+{
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "definition contains another space in middle of three characters: " . substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_next_space - 1 , 3 ) . "\n" ;
+$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;
+if ( $pointer_to_next_space > $pointer_to_phrase_begin )
+{
+$pointer_to_phrase_end = $pointer_to_next_space - 1 ;
+$pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_next_space ;
+} else
+{
+$pointer_to_phrase_end = -2 ;
+}
+}
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "pointers to phrase begin and end: " . $pointer_to_phrase_begin . " " . $pointer_to_phrase_end . "\n" ;
+if ( $pointer_to_phrase_begin > $pointer_to_phrase_end )
+{
+$recursion_level -- ;
+next ;
+}
+$current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end - $pointer_to_phrase_begin + 1 ) ) ;
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "current_phrase: " . $current_phrase . "\n" ;
+#***********************************************
+# Check for an endless loop caused by the same
+# phrase name being encountered too many times.
+# If this occurs, exit the endless loop.
+$number_of_times_encountered_phrase_named{ $current_phrase } ++ ;
+if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum )
+{
+if ( $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } eq "yes" )
+{
+$maximum_cycle_count = 0 ;
+foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) )
+{
+$cycle_count = $number_of_times_encountered_phrase_named{ $phrase_name } ;
+if ( $cycle_count > $maximum_cycle_count )
+{
+$maximum_cycle_count = $cycle_count ;
+$phrase_name = $phrase_name_with_highest_cycle_count ;
+}
+}
+$global_trace_log .= "{{trace; in subroutine dashrep_expand_phrases encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}\n" ;
+}
+warn "Warning: The dashrep_expand_phrases subroutine has encountered an endless loop." . "\n" . "Stopped" ;
+return "" ;
+}
+#***********************************************
+# If the phrase name is a hyphen directive, or a
+# space directive, or a line directive, handle it.
+if ( $current_phrase eq ( "hyphen" . '-' . "here" ) )
+{
+$output_buffer .= "-" ;
+$space_directive = "none" ;
+next ;
+}
+if ( $current_phrase eq ( "no" . '-' . "space" ) )
+{
+if ( $space_directive ne "one_requested" )
+{
+$space_directive = "none" ;
+}
+next ;
+}
+if ( $current_phrase eq "<no_space>" )
+{
+$space_directive = "none" ;
+next ;
+}
+if ( $current_phrase eq ( "one" . '-' . "space" ) )
+{
+$space_directive = "one_requested" ;
+next ;
+}
+if ( $current_phrase eq " " )
+{
+$space_directive = "one_requested" ;
+next ;
+}
+if ( $current_phrase eq ( "new" . '-' . "line" ) )
+{
+$output_buffer .= "\n" ;
+$space_directive = "none" ;
+next ;
+}
+if ( $current_phrase eq "
+" )
+{
+$output_buffer .= "\n" ;
+$space_directive = "none" ;
+next ;
+}
+if ( $current_phrase eq ( "empty" . '-' . "line" ) )
+{
+$output_buffer .= "\n\n" ;
+$space_directive = "none" ;
+next ;
+}
+if ( $current_phrase eq "
+" )
+{
+$output_buffer .= "\n\n" ;
+$space_directive = "none" ;
+next ;
+}
+#***********************************************
+# If the phrase name has a definition (which can be
+# empty), and it is not a space directive or line
+# directive, insert phrase definition into the text
+# being expanded, and remove the phrase name.
+if ( ( $current_phrase =~ /[^ \-]\-[^ \-]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) )
+{
+$recursion_level ++ ;
+# print substr( $string_of_spaces , 0 , ( $recursion_level * 4 ) ) ;
+# print "inserting definition of phrase: " . $current_phrase . "\n" ;
+$code_at_recursion_level[ $recursion_level ] = $global_dashrep_replacement{ $current_phrase } ;
+$length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ;
+$pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;
+next ;
+}
+#***********************************************
+# If a space should be inserted here, insert it.
+# Specify a default of inserting one space after
+# the next phrase insertion.
+# print "space_directive: " . $space_directive . "\n" ;
+if ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) )
+{
+$output_buffer .= " " ;
+}
+$space_directive = "one" ;
+#***********************************************
+# At this point the current text string is not the
+# name of a defined phrase, so just use the text string.
+$output_buffer .= $current_phrase ;
+$pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;
+#***********************************************
+# In the output buffer, if there is a
+# "<specify " string that needs to be
+# combined with the preceding tag, combine it into
+# a single XML or HTML tag.
+# Handle tags of type "<xyz />" as well as "<xyz>".
+if ( index( $output_buffer , "<specify " ) > 0 )
+{
+$prior_length = 0 ;
+while ( length( $output_buffer ) != $prior_length )
+{
+$prior_length = length( $output_buffer ) ;
+$output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;
+}
+if ( index( $output_buffer , "<specify " ) > 0 )
+{
+$prior_length = 0 ;
+while ( length( $output_buffer ) != $prior_length )
+{
+$prior_length = length( $output_buffer ) ;
+$output_buffer =~ s/ *> *<specify +/ / ;
+}
+}
+}
+#***********************************************
+# If the output buffer contains a recognized phrase
+# name using underscores instead of hyphens, and it
+# is enclosed in angle brackets (with no spaces),
+# then replace that text with the definition of the
+# specified phrase.
+# print "*************" . "\n" ;
+# print "output_buffer: " . $output_buffer . "\n" ;
+# $output_buffer =~ s/ *<no_space>*//sg ;
+$output_buffer =~ s/ *- */-/sg ;
+$output_buffer =~ s/ *
+ */\n/sg ;
+$output_buffer =~ s/ *
+ */\n/sg ;
+if ( $output_buffer =~ /<((no_space)|(hyphen_here)|(new_line))> *$/ )
+{
+$space_directive = "none" ;
+}
+# print "output_buffer: " . $output_buffer . "\n" ;
+$length_of_output_buffer = -1 ;
+$pointer_to_remainder_of_output_buffer = 0 ;
+$new_output_buffer = "" ;
+while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \->]+_[^ \->]+)>/s )
+{
+$prefix = $1 ;
+$possible_phrase_name_with_underscores = $2 ;
+$length_of_output_buffer = length( $output_buffer ) ;
+$new_output_buffer .= $prefix ;
+$length_of_tag = length( $possible_phrase_name_with_underscores ) ;
+$pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 2 ;
+# print "............. " . "\n" ;
+# print "current_phrase: " . $current_phrase . "\n" ;
+# print "output_buffer: " . $output_buffer . "\n" ;
+# print "remainder of output_buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
+# print "possible_phrase_name_with_underscores: " . $possible_phrase_name_with_underscores . "\n" ;
+# print "remainder of output buffer: " . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) . "\n" ;
+$possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ;
+$possible_phrase_name_with_hyphens =~ s/_/-/g ;
+if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) )
+{
+$new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;
+} else
+{
+$new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;
+}
+# print "new_output_buffer: " . $new_output_buffer . "\n" ;
+}
+if ( $length_of_output_buffer != -1 )
+{
+$output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;
+# print "output_buffer: " . $output_buffer . "\n" ;
+$new_output_buffer = "" ;
+$possible_phrase_name_with_underscores = "" ;
+}
+#***********************************************
+# If the output buffer does not contain any text
+# that might need to be revised, then append it to
+# the result text.
+$pointer_to_close_angle_bracket = index( $output_buffer , ">" ) ;
+if ( $pointer_to_close_angle_bracket < 0 )
+{
+$result_text .= $output_buffer ;
+$output_buffer = "" ;
+} elsif ( length( $output_buffer ) > 1000 )
+{
+$result_text .= substr( $output_buffer , 0 , 500 ) ;
+$output_buffer = substr( $output_buffer , 500 ) ;
+}
+# print "==============" . "\n" ;
+#***********************************************
+# Repeat the loop that handles each space delimited
+# string.
+}
+#***********************************************
+# Supply the results.
+$result_text .= $output_buffer ;
+return $result_text ;
 # end of function
 }
 
