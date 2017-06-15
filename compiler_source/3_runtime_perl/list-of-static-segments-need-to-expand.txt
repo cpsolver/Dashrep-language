@@ -7,7 +7,6 @@ segment-source-code-as-comment-end
 segment-optional-import-statements-begin
 segment-optional-import-statements-end
 segment-functions-runtime-begin
-segment-functions-runtime-middle
 segment-functions-runtime-end
 segment-functions-compiled-begin
 segment-functions-compiled-end

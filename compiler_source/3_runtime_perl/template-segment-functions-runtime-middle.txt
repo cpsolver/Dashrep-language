@@ -1,7 +1,0 @@
-# no-space dashes-long-line  <new_line>
-#  Runtime functions from interpreter  <new_line>
-<new_line>
-
-#  DO NOT EDIT THESE COPIES OF THESE FUNCTIONS  <new_line>
-#  Instead, edit the Dashrep interpreter code, and then copy the segments to the appropriate file.  <new_line>
-<new_line>
