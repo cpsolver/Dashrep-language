@@ -17,6 +17,10 @@ template-function-parameterized-yes-or-no-output-file-exists
 template-function-point-to-words
 template-function-remove-extra-spaces
 template-function-get-count-of-words
+template-function-handle-endless-loop-encountered
+template-function-handle-time-limit-exceeded
+
+list-of-template-functions-for-requested-actions
 template-function-get-word-at-position
 template-function-numeric-add
 template-function-numeric-multiply
@@ -24,7 +28,5 @@ template-function-numeric-maximum
 template-function-numeric-minimum
 template-function-generate-counts-from-integer-to-integer
 template-function-get-cgi-information
-template-function-handle-endless-loop-encountered
-template-function-handle-time-limit-exceeded
 
 template-function-dashrep-expand-phrases

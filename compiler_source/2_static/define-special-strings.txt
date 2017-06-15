@@ -187,3 +187,5 @@
 [-prepend-text-no-space character-space string-space-new-line-in-brackets-]
 [-copy-text string-new-line-in-brackets string-new-line-in-brackets-space-]
 [-append-text-no-space character-space string-new-line-in-brackets-space-]
+
+[-clear-phrase list-of-template-functions-for-requested-actions-]
