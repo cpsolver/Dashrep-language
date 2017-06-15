@@ -11,11 +11,10 @@
 [-put-into-phrase count-of-ambee-tokens  0 -]
 [-put-into-phrase count-of-amenn-tokens  0 -]
 
-*---
-[-put-into-phrase filename-output-initializations-only  output_initializations_only.txt -]
-[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
-[-write-all-dashrep-definitions-to-file [-filename-output-initializations-only-]-]
----*
+
+[-expand-text list-of-template-functions output-results-all-runtime-functions-]
+[-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-standard-runtime-functions-]-]
+
 
 [-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
 [-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
