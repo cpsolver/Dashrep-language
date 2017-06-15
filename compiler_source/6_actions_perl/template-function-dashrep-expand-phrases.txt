@@ -1,8 +1,8 @@
 # no-space dashes-long-line  <new_line>
-# dashrep_internal_expand_phrases_faster_subset  <new_line>
+# dashrep_expand_phrases  <new_line>
 <new_line>
 
-sub dashrep_internal_expand_phrases_faster_subset  <new_line>
+sub dashrep_expand_phrases  <new_line>
 {  <new_line>
 
     my $expand_endless_cycle_count_maximum ;  <new_line>
@@ -163,9 +163,9 @@ sub dashrep_internal_expand_phrases_faster_subset  <new_line>
                         $phrase_name = $phrase_name_with_highest_cycle_count ;  <new_line>
                     }  <new_line>
                 }  <new_line>
-                $global_trace_log .= "{{trace; in subroutine dashrep_internal_expand_phrases_faster_subset encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}\n" ;  <new_line>
+                $global_trace_log .= "{{trace; in subroutine dashrep_expand_phrases encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}\n" ;  <new_line>
             }  <new_line>
-            warn "Warning: The dashrep_internal_expand_phrases_faster_subset subroutine has encountered an endless loop." . "\n" . "Stopped" ;  <new_line>
+            warn "Warning: The dashrep_expand_phrases subroutine has encountered an endless loop." . "\n" . "Stopped" ;  <new_line>
             return "" ;  <new_line>
         }  <new_line>
 

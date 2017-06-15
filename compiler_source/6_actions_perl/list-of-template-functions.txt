@@ -26,3 +26,5 @@ template-function-generate-counts-from-integer-to-integer
 template-function-get-cgi-information
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
+
+template-function-dashrep-expand-phrases
