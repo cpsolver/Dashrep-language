@@ -20,5 +20,6 @@ template-function-get-count-of-words
 template-function-get-word-at-position
 template-function-handle-endless-loop-encountered
 template-function-handle-time-limit-exceeded
+template-function-dashrep-expand-phrases
 
 list-of-template-functions-for-requested-actions
