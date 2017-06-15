@@ -49,7 +49,7 @@
 [-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-standard-runtime-functions-] [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file segment-functions-runtime-middle [-filename-output-results-from-compiler-]-]
 
 [-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
