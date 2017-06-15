@@ -12,7 +12,11 @@
 [-copy-from-phrase-append-to-file segment-start-object-code-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+
+[-if-no-begin [-yes-or-no-empty-phrase optional-import-statements-modified-]-]
 [-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-initialize-begin [-filename-output-results-from-compiler-]-]
@@ -45,12 +49,26 @@
 [-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin [-filename-output-results-from-compiler-]-]
+
+[-if-no-begin [-yes-or-no-empty-phrase optional-extra-runtime-functions-modified-]-]
 [-copy-from-phrase-append-to-file optional-extra-runtime-functions-modified [-filename-output-results-from-compiler-]-]
+[-if-end-]
+
 [-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
+
+[-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
+[-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
+
+[-copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions-]
+[-copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions-]
+
+[-trace-show list-of-template-functions-for-requested-actions-]
+[-trace-show list-of-template-functions-]
+
+[-expand-text list-of-template-functions output-results-all-runtime-functions-]
 [-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-runtime-middle [-filename-output-results-from-compiler-]-]
 
 [-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
 [-put-into-phrase dashrep-path-prefix-for-file-reading  .\compiler_source\5_functions_from_interpreter\ -]
