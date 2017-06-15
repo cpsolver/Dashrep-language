@@ -2,7 +2,7 @@
 # dashrep_expand_phrases  <new_line>
 <new_line>
 
-sub dashrep_expand_phrases  <new_line>
+sub temp_renamed_dashrep_expand_phrases  <new_line>
 {  <new_line>
 
     my $expand_endless_cycle_count_maximum ;  <new_line>
