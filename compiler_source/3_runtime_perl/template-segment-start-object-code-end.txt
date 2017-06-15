@@ -1,5 +1,5 @@
 <new_line>
 <new_line>
 # no-space dashes-long-line  <new_line>
-#  End Dashrep source code as words  <new_line>
+#  End of introduction to object code that follows  <new_line>
 <new_line>

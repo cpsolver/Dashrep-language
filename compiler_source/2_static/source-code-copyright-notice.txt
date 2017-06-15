@@ -1,0 +1,1 @@
+(c) Copyright 2016-2017 by Richard Fobes at www.github.com/cpsolver/Dashrep-language  ALL RIGHTS RESERVED.

@@ -5,11 +5,11 @@
 [-copy-from-phrase-append-to-file output-warning-messages [-filename-output-results-from-compiler-]-]
 [-if-end-]
 
-[-copy-from-phrase-append-to-file segment-source-code-as-comment-begin [-filename-output-results-from-compiler-]-]
-[-copy-text character-pound-sign source-code-as-comment-in-executable-code-]
-[-append-text source-code-as-words source-code-as-comment-in-executable-code-]
-[-copy-from-phrase-append-to-file source-code-as-comment-in-executable-code [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-source-code-as-comment-end [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-start-object-code-begin [-filename-output-results-from-compiler-]-]
+[-copy-text character-pound-sign start-object-code-in-executable-code-]
+[-append-text source-code-copyright-notice start-object-code-in-executable-code-]
+[-copy-from-phrase-append-to-file start-object-code-in-executable-code [-filename-output-results-from-compiler-]-]
+[-copy-from-phrase-append-to-file segment-start-object-code-end [-filename-output-results-from-compiler-]-]
 
 [-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]

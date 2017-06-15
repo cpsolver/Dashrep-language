@@ -2,8 +2,8 @@ segment-initialize-begin
 segment-initialize-end
 segment-definition-items-begin
 segment-definition-items-end
-segment-source-code-as-comment-begin
-segment-source-code-as-comment-end
+segment-start-object-code-begin
+segment-start-object-code-end
 segment-optional-import-statements-begin
 segment-optional-import-statements-end
 segment-functions-runtime-begin
