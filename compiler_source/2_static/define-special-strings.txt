@@ -187,3 +187,21 @@
 [-prepend-text-no-space character-space string-space-new-line-in-brackets-]
 [-copy-text string-new-line-in-brackets string-new-line-in-brackets-space-]
 [-append-text-no-space character-space string-new-line-in-brackets-space-]
+
+[-copy-text character-open-angle-bracket string-bracketed-hyphen-here-]
+[-append-text-no-space string-hyphen string-bracketed-hyphen-here-]
+[-append-text-no-space character-underscore string-bracketed-hyphen-here-]
+[-append-text-no-space string-here string-bracketed-hyphen-here-]
+[-append-text-no-space character-close-angle-bracket string-bracketed-hyphen-here-]
+
+[-copy-text character-open-angle-bracket string-bracketed-empty-line-]
+[-append-text-no-space string-empty string-bracketed-empty-line-]
+[-append-text-no-space character-underscore string-bracketed-empty-line-]
+[-append-text-no-space string-line string-bracketed-empty-line-]
+[-append-text-no-space character-close-angle-bracket string-bracketed-empty-line-]
+
+[-copy-text character-open-angle-bracket string-bracketed-new-line-]
+[-append-text-no-space string-new string-bracketed-new-line-]
+[-append-text-no-space character-underscore string-bracketed-new-line-]
+[-append-text-no-space string-line string-bracketed-new-line-]
+[-append-text-no-space character-close-angle-bracket string-bracketed-new-line-]

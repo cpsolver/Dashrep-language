@@ -64,10 +64,10 @@
 [-copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions-]
 [-copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions-]
 
-[-trace-show list-of-template-functions-for-requested-actions-]
-[-trace-show list-of-template-functions-]
-
 [-expand-text list-of-template-functions output-results-all-runtime-functions-]
+[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-hyphen-here string-bracketed-hyphen-here-]
+[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-new-line string-bracketed-new-line-]
+[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-empty-line string-bracketed-empty-line-]
 [-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-results-from-compiler-]-]
 
 [-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
