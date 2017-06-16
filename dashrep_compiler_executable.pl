@@ -41196,7 +41196,7 @@ sub dashrep_compiler_access
 #  This subroutine is not exported because it
 #  is only needed within this Dashrep module.
 
-sub unused_dashrep_expand_phrases
+sub unused_unused_dashrep_expand_phrases
 {
 
     my $expand_endless_cycle_count_maximum ;
