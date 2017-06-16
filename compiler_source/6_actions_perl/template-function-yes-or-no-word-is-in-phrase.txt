@@ -1,0 +1,47 @@
+template-interpreter-function-begin
+
+sub function__yes_or_no_word_is_in_phrase( ) {  <new_line>
+
+template-interpreter-function-preprocess
+
+if ( $action_name eq "get-position-of-word" )  <new_line>
+{  <new_line>
+    $word_to_find = $global_dashrep_replacement{ $operand_one } ;  <new_line>
+} else  <new_line>
+{  <new_line>
+    $word_to_find = $operand_one ;  <new_line>
+}  <new_line>
+$phrase_name = $operand_two ;  <new_line>
+$temp_text = $global_dashrep_replacement{ $phrase_name } ;  <new_line>
+$temp_text =~ s/\n/ /sg ;  <new_line>
+$temp_text =~ s/^ +// ;  <new_line>
+$temp_text =~ s/ +$// ;  <new_line>
+@list = split( / +/ , $temp_text ) ;  <new_line>
+$list_length = $#list + 1 ;  <new_line>
+if ( $action_name eq "get-position-of-word" )  <new_line>
+{  <new_line>
+    $action_result = "0" ;  <new_line>
+} else  <new_line>
+{  <new_line>
+    $action_result = "no" ;  <new_line>
+}  <new_line>
+if ( $list_length >= 1 )  <new_line>
+{  <new_line>
+    $last_pointer = 0 ;  <new_line>
+    for ( $pointer = 1 ; $pointer <= $list_length ; $pointer ++ )  <new_line>
+    {  <new_line>
+        if ( $list[ $pointer - 1 ] eq $word_to_find )  <new_line>
+        {  <new_line>
+            if ( $action_name eq "get-position-of-word" )  <new_line>
+            {  <new_line>
+                $action_result = sprintf( "%d" , $pointer ) ;  <new_line>
+            } else  <new_line>
+            {  <new_line>
+                $action_result = "yes" ;  <new_line>
+            }  <new_line>
+            last ;  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+
+template-interpreter-function-end

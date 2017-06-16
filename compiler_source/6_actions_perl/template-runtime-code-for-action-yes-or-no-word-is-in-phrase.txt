@@ -1,0 +1,13 @@
+template-runtime-code-standard-action-begin
+
+$global_single_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_single_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_single_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_single_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_single_action_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__yes_or_no_word_is_in_phrase( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-standard-action-end
