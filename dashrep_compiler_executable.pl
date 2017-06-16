@@ -4549,7 +4549,7 @@ my $storage_item__4560 = 'template-segment-functions-replacement-only-end' ;
 my $storage_item__4561 = '<new_line> sub special_function_do_single_replacement_only( ) { <new_line> if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ; <new_line> } else { <new_line> if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ; <new_line> $global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name ; <new_line> } <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> <new_line> <new_line> # End of functions that only do single-item replacement only <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4560 } = $storage_item__4561 ;
 my $storage_item__4562 = 'template-segment-functions-runtime-begin' ;
-my $storage_item__4563 = '# no-space dashes-long-line <new_line> # Execute starting/main function <new_line> <new_line> &initialize_special_phrases( ) ; <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> open ( TRACE_OUT , ' . "'" . '>' . "'" . ' . ' . "'" . 'output_trace.txt' . "'" . ' ) ; <new_line> & no-space function-name-prefix no-space start_here( ) ; <new_line> $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ; <new_line> if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-print-trace-output exit ; <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin runtime functions <new_line> <new_line>' ;
+my $storage_item__4563 = '# no-space dashes-long-line <new_line> # Execute starting/main function <new_line> <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> open ( TRACE_OUT , ' . "'" . '>' . "'" . ' . ' . "'" . 'output_trace.txt' . "'" . ' ) ; <new_line> & no-space function-name-prefix no-space start_here( ) ; <new_line> $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ; <new_line> if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-print-trace-output exit ; <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin runtime functions <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4562 } = $storage_item__4563 ;
 my $storage_item__4564 = 'template-segment-functions-runtime-end' ;
 my $storage_item__4565 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End runtime functions <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # All done. <new_line> <new_line> exit; <new_line> 1; <new_line>' ;
@@ -33960,7 +33960,7 @@ exit ;
 #------------------------------------------------------------
 # dashrep_expand_phrases
 
-sub temp_renamed_dashrep_expand_phrases
+sub dashrep_expand_phrases
 {
 my $expand_endless_cycle_count_maximum ;
 my $supplied_text ;
@@ -41125,7 +41125,7 @@ sub dashrep_compiler_access
 #  This subroutine is not exported because it
 #  is only needed within this Dashrep module.
 
-sub dashrep_expand_phrases
+sub unused_5_dashrep_expand_phrases
 {
 
     my $expand_endless_cycle_count_maximum ;
