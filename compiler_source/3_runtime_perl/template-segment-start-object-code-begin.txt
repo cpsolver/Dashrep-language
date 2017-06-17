@@ -8,5 +8,5 @@
 <new_line>
 
 # no-space dashes-long-line  <new_line>
-#  Copyright notice within phrase "source-code-copyright-notice":  <new_line>
+#  Copyright notice within phrase "source<character_hyphen>code<character_hyphen>copyright<character_hyphen>notice":  <new_line>
 <new_line>
