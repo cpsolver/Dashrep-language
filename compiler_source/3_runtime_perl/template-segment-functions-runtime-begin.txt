@@ -2,7 +2,54 @@
 #  Execute starting/main function  <new_line>
 <new_line>
 
-&initialize_special_phrases( ) ;  <new_line>
+*---
+does not work:
+
+# special initialization that overwrites errors in earlier initialization:  <new_line>
+
+    $global_dashrep_replacement{ "dashrep-version" } = "4.00" ;  <new_line>
+    $global_dashrep_replacement{ "empty-text" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "character-space" } = " " ;  <new_line>
+    $global_dashrep_replacement{ "character-hyphen" } = "-" ;  <new_line>
+    $global_dashrep_replacement{ "character-newline" } = "\n" ;  <new_line>
+    $global_dashrep_replacement{ "character-open-square-bracket" } = "[" ;  <new_line>
+    $global_dashrep_replacement{ "character-close-square-bracket" } = "]" ;  <new_line>
+    $global_dashrep_replacement{ "character-tab" } = "\t" ;  <new_line>
+    $global_dashrep_replacement{ "four-hyphens" } = "----" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-reading" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-path-prefix-for-file-writing" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "yes-or-no-permission-to-delete-or-overwrite-files" } = "yes" ;  <new_line>
+    $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } = "yes" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-comments-ignored" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-endless-loop-counter-limit" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-time-limit" } = "1200" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } = "yes" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-debug-trace-on-yes-or-no" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-xml-trace-on-yes-or-no" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-xml-level-reset-if-zero" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-first-xml-tag-name" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "yes-or-no-export-delimited-definitions" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-stop-translation" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "list-of-phrases-newly-defined" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-undefined" } = "dashrep_undefined" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-gather-tag-begin" } = "entry_begin" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-gather-tag-end" } = "entry_end" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-gather-tag-unique" } = "url" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-gather-tag-matching-id" } = "1" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-gather-tag-delete" } = "delete_id" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-recent-phrase-name-replaced" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "yes-or-no-use-slower-subset-expand" } = "no" ;  <new_line>
+    $global_dashrep_replacement{ "yes-or-no-expand-special-phrases" } = "yes" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-language-yes" } = "yes" ;  <new_line>
+    $global_dashrep_replacement{ "list-of-unique-word-counts" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "list-of-pointers-to-unique-words" } = "" ;  <new_line>
+    $global_dashrep_replacement{ "dashrep-list-of-recognized-phrase-names" } = $global_dashrep_text_list_of_phrase_names ;  <new_line>
+<new_line>
+---*
+
+&initialize_special_phrases( ) ;
+
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
