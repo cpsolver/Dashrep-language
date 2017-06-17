@@ -2030,7 +2030,7 @@ template-function-dashrep-expand-phrases:
 # dashrep_expand_phrases  <new_line>
 <new_line>
 
-sub not_yet_used_dashrep_expand_phrases( ) {  <new_line>
+sub dashrep_expand_phrases( ) {  <new_line>
 
 my $expand_endless_cycle_count_maximum ;  <new_line>
 my $supplied_text ;  <new_line>
