@@ -34701,35 +34701,6 @@ sub initialize_special_phrases
 
 #-----------------------------------------------
 #-----------------------------------------------
-#           dashrep_get_list_of_phrases
-#-----------------------------------------------
-#-----------------------------------------------
-
-sub dashrep_get_list_of_phrases
-{
-
-    my @list_of_phrases ;
-
-    if ( scalar( @_ ) != 0 )
-    {
-#  remove-from-cpan-version-begin
-        warn "Warning: Call to dashrep_get_list_of_phrases subroutine does not have exactly zero parameters." ;
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-#        carp "Warning: Call to dashrep_get_list_of_phrases subroutine does not have exactly zero parameters." ;
-#  uncomment-for-cpan-version-end
-        @list_of_phrases = ( ) ;
-        return @list_of_phrases ;
-    }
-
-    @list_of_phrases = keys( %global_dashrep_replacement ) ;
-    return @list_of_phrases ;
-
-}
-
-
-#-----------------------------------------------
-#-----------------------------------------------
 #       dashrep_expand_parameters
 #-----------------------------------------------
 #-----------------------------------------------
@@ -40752,7 +40723,9 @@ sub dashrep_file_actions
         } else
         {
             $definitions_or_phrase_names = "definitions" ;
-            @list_of_phrases = &dashrep_get_list_of_phrases( ) ;
+
+            @list_of_phrases = keys( %global_dashrep_replacement ) ;
+
             @sequence_of_phrases = sort( @list_of_phrases ) ;
             unshift( @sequence_of_phrases , "dashrep-language-yes" ) ;
         }
