@@ -48,7 +48,7 @@ does not work:
 <new_line>
 ---*
 
-&initialize_special_phrases( ) ;
+&initialize_special_phrases( ) ;  <new_line>
 
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
