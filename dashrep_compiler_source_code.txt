@@ -2030,8 +2030,7 @@ template-function-dashrep-expand-phrases:
 # dashrep_expand_phrases  <new_line>
 <new_line>
 
-sub temp_renamed_dashrep_expand_phrases  <new_line>
-{  <new_line>
+sub not_yet_used_dashrep_expand_phrases( ) {  <new_line>
 
 my $expand_endless_cycle_count_maximum ;  <new_line>
 my $supplied_text ;  <new_line>
@@ -3159,7 +3158,7 @@ template-segment-functions-runtime-begin:
 #  Execute starting/main function  <new_line>
 <new_line>
 
-&initialize_special_phrases( ) ;  <new_line>
+&initialize_special_phrases( ) ;
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
@@ -3257,7 +3256,7 @@ template-segment-start-object-code-begin:
 <new_line>
 
 # no-space dashes-long-line  <new_line>
-#  Copyright notice within phrase "source-code-copyright-notice":  <new_line>
+#  Copyright notice within phrase "source<character_hyphen>code<character_hyphen>copyright<character_hyphen>notice":  <new_line>
 <new_line>
 ----
 template-segment-start-object-code-end:
