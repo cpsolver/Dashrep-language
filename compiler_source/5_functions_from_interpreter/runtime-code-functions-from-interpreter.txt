@@ -4965,7 +4965,7 @@ sub dashrep_expand_special_phrases
 #-----------------------------------------------
 #-----------------------------------------------
 
-sub dashrep_expand_phrases
+sub no_longer_used_dashrep_expand_phrases
 {
 
     my $text_string_to_expand ;
