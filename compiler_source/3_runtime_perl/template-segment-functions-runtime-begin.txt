@@ -2,6 +2,7 @@
 #  Execute starting/main function  <new_line>
 <new_line>
 
+&initialize_special_phrases( ) ;
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
