@@ -684,6 +684,376 @@ $global_dashrep_replacement{ 'yes-or-no-permission-to-delete-or-overwrite-files'
 my $storage_item__47= 'no' ;
 $global_dashrep_replacement{ 'yes-or-no-use-two-spaces-as-column-delimiter' } = $storage_item__47;
 
+# needed for interpreter code:
+
+$global_required_number_of_operands_for_action{ "clear-phrase" } = 1 ;
+$global_required_number_of_operands_for_action{ "clear-listed-phrases" } = 1 ;
+$global_required_number_of_operands_for_action{ "delete-listed-phrases" } = 1 ;
+$global_required_number_of_operands_for_action{ "delete-all-dashrep-phrases" } = 0 ;
+$global_required_number_of_operands_for_action{ "append-text" } = 2 ;
+$global_required_number_of_operands_for_action{ "append-text-no-space" } = 2 ;
+$global_required_number_of_operands_for_action{ "append-repeatedly-using-count" } = 3 ;
+$global_required_number_of_operands_for_action{ "prepend-text" } = 2 ;
+$global_required_number_of_operands_for_action{ "prepend-text-no-space" } = 2 ;
+$global_required_number_of_operands_for_action{ "append-new-line" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = 2 ;
+$global_required_number_of_operands_for_action{ "append-multiple-from-phrases-named-in-pattern" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-text" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-without-extra-spaces" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-lowercase-only" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-uppercase-only" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-initial-caps" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-words-sort-numeric" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-words-sort-alphabetic" } = 2 ;
+$global_required_number_of_operands_for_action{ "encode-as-cgi-parameter" } = 2 ;
+$global_required_number_of_operands_for_action{ "decode-from-cgi-parameter" } = 2 ;
+$global_required_number_of_operands_for_action{ "convert-into-spoken-dashrep-code" } = 2 ;
+$global_required_number_of_operands_for_action{ "convert-from-spoken-dashrep-code" } = 2 ;
+$global_required_number_of_operands_for_action{ "convert-unicode-to-html-entities" } = 2 ;
+$global_required_number_of_operands_for_action{ "xml-move-attributes-into-tag-elements" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-and-remove-attributes-from-xml-tags" } = 2 ;
+$global_required_number_of_operands_for_action{ "insert-angle-bracketed-definitions" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-word-at-position" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-zero-pad-left-to-length" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-and-replace" } = 4 ;
+$global_required_number_of_operands_for_action{ "copy-characters-from-position-to-position" } = 4 ;
+$global_required_number_of_operands_for_action{ "copy-and-replace-using-paired-listed-words" } = 3 ;
+$global_required_number_of_operands_for_action{ "expand-text" } = 2 ;
+$global_required_number_of_operands_for_action{ "get-phrase-definition-without-expanding" } = 1 ;
+
+# $global_required_number_of_operands_for_action{ "expand-parameters-only" } = 2 ;
+
+$global_required_number_of_operands_for_action{ "numeric-equal-greater-less-compare" } = 2 ;
+$global_required_number_of_operands_for_action{ "if-yes-begin" } = 1 ;
+$global_required_number_of_operands_for_action{ "if-no-begin" } = 1 ;
+$global_required_number_of_operands_for_action{ "if-else" } = 0 ;
+$global_required_number_of_operands_for_action{ "if-end" } = 0 ;
+$global_required_number_of_operands_for_action{ "get-word-at-position" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-words-from-position-to-position" } = 4 ;
+$global_required_number_of_operands_for_action{ "copy-words-order-reversed" } = 2 ;
+$global_required_number_of_operands_for_action{ "get-count-of-words" } = 1 ;
+$global_required_number_of_operands_for_action{ "yes-or-no-word-is-in-phrase" } = 2 ;
+$global_required_number_of_operands_for_action{ "get-position-of-word" } = 2 ;
+$global_required_number_of_operands_for_action{ "get-position-of-matching-text" } = 2 ;
+$global_required_number_of_operands_for_action{ "generate-positions-of-delimiter" } = 3 ;
+$global_required_number_of_operands_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = 4 ;
+$global_required_number_of_operands_for_action{ "generate-positions-of-listed-words" } = 3 ;
+$global_required_number_of_operands_for_action{ "generate-counts-from-integer-to-integer" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-that-begin-with-text" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-that-contain-listed-words" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-that-begin-with-listed-words" } = 3 ;
+$global_required_number_of_operands_for_action{ "generate-every-pairwise-combination-of-words" } = 4 ;
+$global_required_number_of_operands_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = 4 ;
+$global_required_number_of_operands_for_action{ "zero-one-multiple" } = 1 ;
+$global_required_number_of_operands_for_action{ "zero-or-nonzero" } = 1 ;
+$global_required_number_of_operands_for_action{ "get-count-of-characters" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-increment" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-decrement" } = 1 ;
+$global_required_number_of_operands_for_action{ "yes-or-no-same-two-phrase-definitions" } = 2 ;
+$global_required_number_of_operands_for_action{ "get-characters-from-position-to-position" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-minus" } = 2 ;
+$global_required_number_of_operands_for_action{ "numeric-divide-by" } = 2 ;
+$global_required_number_of_operands_for_action{ "numeric-absolute" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-integer" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-sine" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-cosine" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-logarithm-base-e" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-logarithm-base-10" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-vector-add-number" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-vector-multiply-by-number" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-vectors-add" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-vectors-multiply" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-vectors-divide-by" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-vector-integers" } = 2 ;
+$global_required_number_of_operands_for_action{ "numeric-vector-absolutes" } = 2 ;
+$global_required_number_of_operands_for_action{ "numeric-vectors-from-delta-values-calculate-distances" } = 3 ;
+$global_required_number_of_operands_for_action{ "numeric-pi" } = 0 ;
+$global_required_number_of_operands_for_action{ "numeric-y-map-tile-number-based-on-latitude" } = 1 ;
+$global_required_number_of_operands_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = 4 ;
+$global_required_number_of_operands_for_action{ "get-current-time-in-epoch-seconds" } = 0 ;
+$global_required_number_of_operands_for_action{ "split-epoch-seconds-into-named-components" } = 1 ;
+$global_required_number_of_operands_for_action{ "split-epoch-seconds-into-named-components-for-zero-meridian" } = 1 ;
+$global_required_number_of_operands_for_action{ "use-handler-with-each-word-in-phrase" } = 2 ;
+$global_required_number_of_operands_for_action{ "use-handler-with-each-word-in-phrase-currently-at-character-position" } = 3 ;
+$global_required_number_of_operands_for_action{ "insert-codeview-tags" } = 1 ;
+$global_required_number_of_operands_for_action{ "escape-from-dashrep" } = 0 ;
+$global_required_number_of_operands_for_action{ "resume-after-escape-from-dashrep" } = 0 ;
+$global_required_number_of_operands_for_action{ "trace-show" } = 1 ;
+$global_required_number_of_operands_for_action{ "generate-phrase-usage-counts" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-words-found-in-both-lists" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-found-only-in-first-list" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-words-found-in-either-list" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-from-file-to-phrase" } = 2 ;
+$global_required_number_of_operands_for_action{ "copy-append-file-to-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "find-line-in-file-that-begins-with-text" } = 3 ;
+$global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = 3 ;
+$global_required_number_of_operands_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = 3 ;
+$global_required_number_of_operands_for_action{ "get-definitions-from-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "generate-list-of-files-in-current-read-directory" } = 1 ;
+$global_required_number_of_operands_for_action{ "generate-list-of-folders-in-current-read-directory" } = 1 ;
+$global_required_number_of_operands_for_action{ "yes-or-no-file-exists" } = 1 ;
+$global_required_number_of_operands_for_action{ "yes-or-no-folder-exists" } = 1 ;
+$global_required_number_of_operands_for_action{ "modification-time-of-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "set-file-permission-public-read" } = 1 ;
+$global_required_number_of_operands_for_action{ "size-of-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-from-phrase-append-to-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "rename-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "delete-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "create-empty-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "create-empty-sub-folder" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-named-phrases" } = 3 ;
+$global_required_number_of_operands_for_action{ "copy-from-columns-in-file-to-column-lists" } = 2 ;
+$global_required_number_of_operands_for_action{ "gather-tagged-info-from-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "write-gathered-listed-items-to-end-of-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "gather-from-tagged-file-one-entry" } = 2 ;
+$global_required_number_of_operands_for_action{ "linewise-read-from-file-and-use-handler" } = 2 ;
+$global_required_number_of_operands_for_action{ "write-all-dashrep-definitions-to-file" } = 1 ;
+$global_required_number_of_operands_for_action{ "generate-list-of-all-dashrep-phrases" } = 1 ;
+$global_required_number_of_operands_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = 2 ;
+$global_required_number_of_operands_for_action{ "unique-value" } = 0 ;
+$global_required_number_of_operands_for_action{ "numeric-odd-or-even" } = 1 ;
+$global_required_number_of_operands_for_action{ "copy-words-unique-only" } = 2 ;
+$global_required_number_of_operands_for_action{ "dashrep-compiler-write-phrase-definition" } = 1 ;
+
+$global_required_number_of_operands_for_action{ "yes-or-no-same-two-words" } = 2 ;
+
+$global_minimum_number_of_operands_for_action{ "numeric-add" } = 1 ;
+$global_minimum_number_of_operands_for_action{ "numeric-multiply" } = 1 ;
+$global_minimum_number_of_operands_for_action{ "numeric-maximum" } = 1 ;
+$global_minimum_number_of_operands_for_action{ "numeric-minimum" } = 1 ;
+$global_minimum_number_of_operands_for_action{ "copy-to-phrase-from-following-text" } = 2 ;
+$global_minimum_number_of_operands_for_action{ "put-into-phrase" } = 2 ;
+
+$global_minimum_number_of_operands_for_action{ "yes-or-no-empty-phrase" } = 1 ;
+$global_minimum_number_of_operands_for_action{ "yes-or-no-opposite" } = 0 ;
+$global_minimum_number_of_operands_for_action{ "yes-if-all-yes" } = 0 ;
+$global_minimum_number_of_operands_for_action{ "yes-if-not-no" } = 0 ;
+$global_minimum_number_of_operands_for_action{ "no-if-not-yes" } = 0 ;
+$global_minimum_number_of_operands_for_action{ "yes-if-any-yes" } = 0 ;
+$global_minimum_number_of_operands_for_action{ "no-if-any-no" } = 0 ;
+
+$global_check_operand_one_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "use-handler-with-each-word-in-phrase" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-add-number" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "append-multiple-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "find-line-in-file-that-begins-with-text" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "get-word-at-position" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "copy-and-replace" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "get-position-of-word" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+$global_check_operand_one_phrase_is_not_empty_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+$global_check_operand_two_phrase_is_not_empty_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+$global_check_operand_three_phrase_is_not_empty_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
+
+$global_check_operand_two_is_positive_integer_for_action{ "get-word-at-position" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "copy-word-at-position" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_four_is_positive_integer_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+$global_check_operand_four_is_positive_integer_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+$global_check_operand_one_is_positive_integer_for_action{ "zero-one-multiple" } = "yes" ;
+$global_check_operand_one_is_positive_integer_for_action{ "zero-or-nonzero" } = "yes" ;
+$global_check_operand_two_is_positive_integer_for_action{ "get-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "get-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_one_is_positive_integer_for_action{ "numeric-two-dimensional-sort-into-columns-and-rows" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "append-repeatedly-using-count" } = "yes" ;
+$global_check_operand_three_is_positive_integer_for_action{ "use-handler-with-each-word-in-phrase-currently-at-character-position" } = "yes" ;
+
+$global_check_operand_one_is_real_number_for_action{ "numeric-equal-greater-less-compare" } = "yes" ;
+$global_check_operand_two_is_real_number_for_action{ "numeric-equal-greater-less-compare" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-minus" } = "yes" ;
+$global_check_operand_two_is_real_number_for_action{ "numeric-minus" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-divide-by" } = "yes" ;
+$global_check_operand_two_is_real_number_for_action{ "numeric-divide-by" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-absolute" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-integer" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-odd-or-even" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-sine" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-cosine" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-logarithm-base-e" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-logarithm-base-10" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "numeric-y-map-tile-number-based-on-latitude" } = "yes" ;
+$global_check_operand_two_is_real_number_for_action{ "numeric-vector-add-number" } = "yes" ;
+$global_check_operand_two_is_real_number_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
+$global_check_operand_one_is_real_number_for_action{ "split-epoch-seconds-into-named-components" } = "yes" ;
+
+$global_check_operand_one_is_phrase_name_for_action{ "clear-phrase" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "clear-listed-phrases" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "delete-listed-phrases" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "append-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "append-text" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "append-text-no-space" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "append-text-no-space" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "append-repeatedly-using-count" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "append-repeatedly-using-count" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "prepend-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "prepend-text" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "prepend-text-no-space" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "prepend-text-no-space" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "append-new-line" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-listed-words-to-phrases-named-in-pattern" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "append-multiple-in-phrase-to-phrases-named-in-pattern" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-text" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-lowercase-only" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-lowercase-only" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-uppercase-only" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-uppercase-only" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-initial-caps" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-initial-caps" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-without-extra-spaces" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-without-extra-spaces" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-sort-numeric" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-sort-numeric" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-sort-alphabetic" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-sort-alphabetic" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "encode-as-cgi-parameter" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "encode-as-cgi-parameter" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "decode-from-cgi-parameter" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "decode-from-cgi-parameter" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "convert-into-spoken-dashrep-code" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "convert-into-spoken-dashrep-code" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "convert-from-spoken-dashrep-code" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "convert-unicode-to-html-entities" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "convert-unicode-to-html-entities" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "xml-move-attributes-into-tag-elements" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "insert-angle-bracketed-definitions" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-numeric" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-zero-pad-left-to-length" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "copy-and-replace" } = "yes" ;
+$global_check_operand_four_is_phrase_name_for_action{ "copy-and-replace" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-and-replace-using-paired-listed-words" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "expand-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "expand-text" } = "yes" ;
+
+# $global_check_operand_one_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+# $global_check_operand_two_is_phrase_name_for_action{ "expand-parameters-only" } = "yes" ;
+
+$global_check_operand_one_is_phrase_name_for_action{ "get-phrase-definition-without-expanding" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-from-position-to-position" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-order-reversed" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "get-count-of-words" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "get-position-of-matching-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "get-position-of-matching-text" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-delimiter" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-positions-of-listed-words" } = "yes" ;
+$global_check_operand_four_is_phrase_name_for_action{ "generate-positions-of-first-matching-delimiter-after-listed-positions" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-counts-from-integer-to-integer" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-text" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-contain-listed-words" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-that-begin-with-listed-words" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_four_is_phrase_name_for_action{ "generate-every-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_four_is_phrase_name_for_action{ "generate-every-ordered-pairwise-combination-of-words" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "get-count-of-characters" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-increment" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "yes-or-no-same-two-phrase-definitions" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "yes-or-no-same-two-phrase-definitions" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "get-characters-from-position-to-position" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-vector-add-number" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-vectors-add" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "numeric-vectors-add" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "numeric-vectors-add" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-vectors-multiply" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "numeric-vectors-multiply" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "numeric-vectors-multiply" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "numeric-vectors-divide-by" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "numeric-vectors-divide-by" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "numeric-vectors-divide-by" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "numeric-vector-integers" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "numeric-vector-absolutes" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "numeric-vector-add-number" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "numeric-vector-multiply-by-number" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "trace-show" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "trace-show" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "generate-phrase-usage-counts" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "insert-codeview-tags" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-from-file-to-phrase" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "find-line-in-file-that-begins-with-text" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-listed-word" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "find-lines-in-file-that-begin-with-any-two-words-listed" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-files-in-current-read-directory" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-folders-in-current-read-directory" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "gather-tagged-info-from-file" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "write-gathered-listed-items-to-end-of-file" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "gather-from-tagged-file-one-entry" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-both-to-phrase" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-words-found-only-in-first-list" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-words-found-only-in-first-list" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
+$global_check_operand_three_is_phrase_name_for_action{ "copy-two-phrases-words-found-in-either-to-phrase" } = "yes" ;
+$global_check_operand_one_is_phrase_name_for_action{ "generate-list-of-all-dashrep-phrases" } = "yes" ;
+$global_check_operand_two_is_phrase_name_for_action{ "yes-or-no-word-is-in-phrase" } = "yes" ;
+
+$global_check_operand_one_is_file_name_for_action{ "get-definitions-from-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "yes-or-no-file-exists" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "modification-time-of-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "set-file-permission-public-read" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "size-of-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "delete-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "rename-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "create-empty-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-named-phrases" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "copy-from-columns-in-file-to-column-lists" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "gather-tagged-info-from-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "gather-from-tagged-file-one-entry" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "linewise-read-from-file-and-use-handler" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "write-all-dashrep-definitions-to-file" } = "yes" ;
+$global_check_operand_one_is_file_name_for_action{ "copy-append-file-to-file" } = "yes" ;
+$global_check_operand_two_is_file_name_for_action{ "copy-append-file-to-file" } = "yes" ;
+$global_check_operand_two_is_file_name_for_action{ "copy-from-phrase-append-to-file" } = "yes" ;
+$global_check_operand_two_is_file_name_for_action{ "rename-file" } = "yes" ;
+$global_check_operand_two_is_file_name_for_action{ "write-dashrep-definitions-listed-in-phrase-to-file" } = "yes" ;
+$global_check_operand_two_is_file_name_for_action{ "write-gathered-listed-items-to-end-of-file" } = "yes" ;
 
 
 #------------------------------------------------------------
@@ -4480,7 +4850,7 @@ my $storage_item__4514 = 'template-displayed-list-of-possible-new-executable-phr
 my $storage_item__4515 = '# no-space dashes-long-line <new_line> # Possible new executable phrases (not yet declared) <new_line> <new_line> # list-of-possible-new-executable-phrases <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4514 } = $storage_item__4515 ;
 my $storage_item__4516 = 'template-function-dashrep-expand-phrases' ;
-my $storage_item__4517 = '# no-space dashes-long-line <new_line> # dashrep_expand_phrases <new_line> <new_line> sub dashrep_expand_phrases <new_line> { <new_line> my $expand_endless_cycle_count_maximum ; <new_line> my $supplied_text ; <new_line> my $current_phrase ; <new_line> my $result_text ; <new_line> my $output_buffer ; <new_line> my $space_directive ; <new_line> my $expand_endless_loop_counter ; <new_line> my $expand_endless_loop_counter_maximum ; <new_line> my $recursion_level ; <new_line> my $pointer_to_phrase_begin ; <new_line> my $pointer_to_next_space ; <new_line> my $pointer_to_phrase_end ; <new_line> my $prior_length ; <new_line> my $prefix ; <new_line> my $possible_phrase_name_with_underscores ; <new_line> my $length_of_tag ; <new_line> my $new_output_buffer ; <new_line> my $pointer_to_remainder_of_output_buffer ; <new_line> my $possible_phrase_name_with_hyphens ; <new_line> my $pointer_to_close_angle_bracket ; <new_line> my $length_of_output_buffer ; <new_line> my $maximum_cycle_count ; <new_line> my $phrase_name ; <new_line> my $cycle_count ; <new_line> my $phrase_name_with_highest_cycle_count ; <new_line> my $length_of_code_at_recursion_level_current ; <new_line> my @code_at_recursion_level ; <new_line> my @length_of_code_at_recursion_level ; <new_line> my @pointer_to_remainder_of_code_at_recursion_level ; <new_line> my %number_of_times_encountered_phrase_named ; <new_line> if ( scalar( @_ ) == 1 ) <new_line> { <new_line> $supplied_text = $_[ 0 ] ; <new_line> } else <new_line> { <new_line> $result_text = "" ; <new_line> return $result_text ; <new_line> } <new_line> $space_directive = "none" ; <new_line> $result_text = "" ; <new_line> $output_buffer = "" ; <new_line> $pointer_to_remainder_of_output_buffer = 0 ; <new_line> $new_output_buffer = "" ; <new_line> $possible_phrase_name_with_underscores = "" ; <new_line> $expand_endless_loop_counter = 0 ; <new_line> $expand_endless_loop_counter_maximum = 100000 ; <new_line> %number_of_times_encountered_phrase_named = ( ) ; <new_line> $expand_endless_cycle_count_maximum = 100000 ; <new_line> @code_at_recursion_level = ( ) ; <new_line> @length_of_code_at_recursion_level = ( ) ; <new_line> @pointer_to_remainder_of_code_at_recursion_level = ( ) ; <new_line> $code_at_recursion_level[ 0 ] = "unused" ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ; <new_line> $length_of_code_at_recursion_level[ 0 ] = 0 ; <new_line> $code_at_recursion_level[ 1 ] = $supplied_text ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ; <new_line> $length_of_code_at_recursion_level[ 1 ] = length( $code_at_recursion_level[ 1 ] ) ; <new_line> $recursion_level = 1 ; <new_line> while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) ) <new_line> { <new_line> $expand_endless_loop_counter ++ ; <new_line> $length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ; <new_line> if ( $length_of_code_at_recursion_level_current == 0 ) <new_line> { <new_line> $recursion_level <character_hyphen><character_hyphen> ; <new_line> next ; <new_line> } <new_line> $pointer_to_phrase_begin = $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] ; <new_line> while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq " " ) ) <new_line> { <new_line> $pointer_to_phrase_begin ++ ; <new_line> } <new_line> $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ; <new_line> if ( $pointer_to_next_space == <character_hyphen>1 ) <new_line> { <new_line> $pointer_to_phrase_end = $length_of_code_at_recursion_level_current <character_hyphen> 1 ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ; <new_line> } else <new_line> { <new_line> $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ; <new_line> if ( $pointer_to_next_space > $pointer_to_phrase_begin ) <new_line> { <new_line> $pointer_to_phrase_end = $pointer_to_next_space <character_hyphen> 1 ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_next_space ; <new_line> } else <new_line> { <new_line> $pointer_to_phrase_end = <character_hyphen>2 ; <new_line> } <new_line> } <new_line> if ( $pointer_to_phrase_begin > $pointer_to_phrase_end ) <new_line> { <new_line> $recursion_level <character_hyphen><character_hyphen> ; <new_line> next ; <new_line> } <new_line> $current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end <character_hyphen> $pointer_to_phrase_begin + 1 ) ) ; <new_line> $number_of_times_encountered_phrase_named{ $current_phrase } ++ ; <new_line> if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum ) <new_line> { <new_line> if ( $global_dashrep_replacement{ "dashrep no-space character-hyphen no-space debug no-space character-hyphen no-space trace no-space character-hyphen no-space on no-space character-hyphen no-space yes no-space character-hyphen no-space or no-space character-hyphen no-space no" } eq "yes" ) <new_line> { <new_line> $maximum_cycle_count = 0 ; <new_line> foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) ) <new_line> { <new_line> $cycle_count = $number_of_times_encountered_phrase_named{ $phrase_name } ; <new_line> if ( $cycle_count > $maximum_cycle_count ) <new_line> { <new_line> $maximum_cycle_count = $cycle_count ; <new_line> $phrase_name = $phrase_name_with_highest_cycle_count ; <new_line> } <new_line> } <new_line> $global_trace_log .= "{{trace; in subroutine dashrep_expand_phrases encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}' . '\\' . 'n" ; <new_line> } <new_line> warn "Warning: The dashrep_expand_phrases subroutine has encountered an endless loop." . "' . '\\' . 'n" . "Stopped" ; <new_line> return "" ; <new_line> } <new_line> if ( $current_phrase eq ( "hyphen" . ' . "'" . '-' . "'" . ' . "here" ) ) <new_line> { <new_line> $output_buffer .= "-" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "no" . ' . "'" . '-' . "'" . ' . "space" ) ) <new_line> { <new_line> if ( $space_directive ne "one_requested" ) <new_line> { <new_line> $space_directive = "none" ; <new_line> } <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "no_space" . ">" ) ) <new_line> { <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "one" . ' . "'" . '-' . "'" . ' . "space" ) ) <new_line> { <new_line> $space_directive = "one_requested" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "one_space" . ">" ) ) <new_line> { <new_line> $space_directive = "one_requested" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "new" . ' . "'" . '-' . "'" . ' . "line" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "new_line" . ">" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "empty" . ' . "'" . '-' . "'" . ' . "line" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "empty_line" . ">" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( ( $current_phrase =~ /[^ ' . '\\' . '<character_hyphen>]' . '\\' . '<character_hyphen>[^ ' . '\\' . '<character_hyphen>]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) ) <new_line> { <new_line> $recursion_level ++ ; <new_line> $code_at_recursion_level[ $recursion_level ] = $global_dashrep_replacement{ $current_phrase } ; <new_line> $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ; <new_line> next ; <new_line> } <new_line> if ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) <new_line> { <new_line> $output_buffer .= " " ; <new_line> } <new_line> $space_directive = "one" ; <new_line> $output_buffer .= $current_phrase ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ; <new_line> if ( index( $output_buffer , "<specify " ) > 0 ) <new_line> { <new_line> $prior_length = 0 ; <new_line> while ( length( $output_buffer ) != $prior_length ) <new_line> { <new_line> $prior_length = length( $output_buffer ) ; <new_line> $output_buffer =~ s/ *' . '\\' . '/> *<specify +([^>]+)>/ $1 ' . '\\' . '/>/ ; <new_line> } <new_line> if ( index( $output_buffer , "<specify " ) > 0 ) <new_line> { <new_line> $prior_length = 0 ; <new_line> while ( length( $output_buffer ) != $prior_length ) <new_line> { <new_line> $prior_length = length( $output_buffer ) ; <new_line> $output_buffer =~ s/ *> *<specify +/ / ; <new_line> } <new_line> } <new_line> } <new_line> $output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ; <new_line> $output_buffer =~ s/ *<placeholder_for_new_line> */' . '\\' . 'n/sg ; <new_line> $output_buffer =~ s/ *<placeholder_for_empty_line> */' . '\\' . 'n/sg ; <new_line> if ( $output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) <new_line> { <new_line> $space_directive = "none" ; <new_line> } <new_line> $length_of_output_buffer = <character_hyphen>1 ; <new_line> $pointer_to_remainder_of_output_buffer = 0 ; <new_line> $new_output_buffer = "" ; <new_line> while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ ' . '\\' . '<character_hyphen><character_close_angle_bracket>]+_[^ ' . '\\' . '<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) <new_line> { <new_line> $prefix = $1 ; <new_line> $possible_phrase_name_with_underscores = $2 ; <new_line> $length_of_output_buffer = length( $output_buffer ) ; <new_line> $new_output_buffer .= $prefix ; <new_line> $length_of_tag = length( $possible_phrase_name_with_underscores ) ; <new_line> $pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 2 ; <new_line> $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ; <new_line> $possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ; <new_line> if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) ) <new_line> { <new_line> $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ; <new_line> } else <new_line> { <new_line> $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ; <new_line> } <new_line> } <new_line> if ( $length_of_output_buffer != <character_hyphen>1 ) <new_line> { <new_line> $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ; <new_line> $new_output_buffer = "" ; <new_line> $possible_phrase_name_with_underscores = "" ; <new_line> } <new_line> $pointer_to_close_angle_bracket = index( $output_buffer , ">" ) ; <new_line> if ( $pointer_to_close_angle_bracket < 0 ) <new_line> { <new_line> $result_text .= $output_buffer ; <new_line> $output_buffer = "" ; <new_line> } elsif ( length( $output_buffer ) > 1000 ) <new_line> { <new_line> $result_text .= substr( $output_buffer , 0 , 500 ) ; <new_line> $output_buffer = substr( $output_buffer , 500 ) ; <new_line> } <new_line> } <new_line> $result_text .= $output_buffer ; <new_line> return $result_text ; <new_line> template-function-segment-ending' ;
+my $storage_item__4517 = '# no-space dashes-long-line <new_line> # dashrep_expand_phrases <new_line> <new_line> sub not_yet_used_dashrep_expand_phrases( ) { <new_line> my $expand_endless_cycle_count_maximum ; <new_line> my $supplied_text ; <new_line> my $current_phrase ; <new_line> my $result_text ; <new_line> my $output_buffer ; <new_line> my $space_directive ; <new_line> my $expand_endless_loop_counter ; <new_line> my $expand_endless_loop_counter_maximum ; <new_line> my $recursion_level ; <new_line> my $pointer_to_phrase_begin ; <new_line> my $pointer_to_next_space ; <new_line> my $pointer_to_phrase_end ; <new_line> my $prior_length ; <new_line> my $prefix ; <new_line> my $possible_phrase_name_with_underscores ; <new_line> my $length_of_tag ; <new_line> my $new_output_buffer ; <new_line> my $pointer_to_remainder_of_output_buffer ; <new_line> my $possible_phrase_name_with_hyphens ; <new_line> my $pointer_to_close_angle_bracket ; <new_line> my $length_of_output_buffer ; <new_line> my $maximum_cycle_count ; <new_line> my $phrase_name ; <new_line> my $cycle_count ; <new_line> my $phrase_name_with_highest_cycle_count ; <new_line> my $length_of_code_at_recursion_level_current ; <new_line> my @code_at_recursion_level ; <new_line> my @length_of_code_at_recursion_level ; <new_line> my @pointer_to_remainder_of_code_at_recursion_level ; <new_line> my %number_of_times_encountered_phrase_named ; <new_line> if ( scalar( @_ ) == 1 ) <new_line> { <new_line> $supplied_text = $_[ 0 ] ; <new_line> } else <new_line> { <new_line> $result_text = "" ; <new_line> return $result_text ; <new_line> } <new_line> $space_directive = "none" ; <new_line> $result_text = "" ; <new_line> $output_buffer = "" ; <new_line> $pointer_to_remainder_of_output_buffer = 0 ; <new_line> $new_output_buffer = "" ; <new_line> $possible_phrase_name_with_underscores = "" ; <new_line> $expand_endless_loop_counter = 0 ; <new_line> $expand_endless_loop_counter_maximum = 100000 ; <new_line> %number_of_times_encountered_phrase_named = ( ) ; <new_line> $expand_endless_cycle_count_maximum = 100000 ; <new_line> @code_at_recursion_level = ( ) ; <new_line> @length_of_code_at_recursion_level = ( ) ; <new_line> @pointer_to_remainder_of_code_at_recursion_level = ( ) ; <new_line> $code_at_recursion_level[ 0 ] = "unused" ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ; <new_line> $length_of_code_at_recursion_level[ 0 ] = 0 ; <new_line> $code_at_recursion_level[ 1 ] = $supplied_text ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ; <new_line> $length_of_code_at_recursion_level[ 1 ] = length( $code_at_recursion_level[ 1 ] ) ; <new_line> $recursion_level = 1 ; <new_line> while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) ) <new_line> { <new_line> $expand_endless_loop_counter ++ ; <new_line> $length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ; <new_line> if ( $length_of_code_at_recursion_level_current == 0 ) <new_line> { <new_line> $recursion_level <character_hyphen><character_hyphen> ; <new_line> next ; <new_line> } <new_line> $pointer_to_phrase_begin = $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] ; <new_line> while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq " " ) ) <new_line> { <new_line> $pointer_to_phrase_begin ++ ; <new_line> } <new_line> $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ; <new_line> if ( $pointer_to_next_space == <character_hyphen>1 ) <new_line> { <new_line> $pointer_to_phrase_end = $length_of_code_at_recursion_level_current <character_hyphen> 1 ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ; <new_line> } else <new_line> { <new_line> $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ; <new_line> if ( $pointer_to_next_space > $pointer_to_phrase_begin ) <new_line> { <new_line> $pointer_to_phrase_end = $pointer_to_next_space <character_hyphen> 1 ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_next_space ; <new_line> } else <new_line> { <new_line> $pointer_to_phrase_end = <character_hyphen>2 ; <new_line> } <new_line> } <new_line> if ( $pointer_to_phrase_begin > $pointer_to_phrase_end ) <new_line> { <new_line> $recursion_level <character_hyphen><character_hyphen> ; <new_line> next ; <new_line> } <new_line> $current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end <character_hyphen> $pointer_to_phrase_begin + 1 ) ) ; <new_line> $number_of_times_encountered_phrase_named{ $current_phrase } ++ ; <new_line> if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum ) <new_line> { <new_line> if ( $global_dashrep_replacement{ "dashrep no-space character-hyphen no-space debug no-space character-hyphen no-space trace no-space character-hyphen no-space on no-space character-hyphen no-space yes no-space character-hyphen no-space or no-space character-hyphen no-space no" } eq "yes" ) <new_line> { <new_line> $maximum_cycle_count = 0 ; <new_line> foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) ) <new_line> { <new_line> $cycle_count = $number_of_times_encountered_phrase_named{ $phrase_name } ; <new_line> if ( $cycle_count > $maximum_cycle_count ) <new_line> { <new_line> $maximum_cycle_count = $cycle_count ; <new_line> $phrase_name = $phrase_name_with_highest_cycle_count ; <new_line> } <new_line> } <new_line> $global_trace_log .= "{{trace; in subroutine dashrep_expand_phrases encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}' . '\\' . 'n" ; <new_line> } <new_line> warn "Warning: The dashrep_expand_phrases subroutine has encountered an endless loop." . "' . '\\' . 'n" . "Stopped" ; <new_line> return "" ; <new_line> } <new_line> if ( $current_phrase eq ( "hyphen" . ' . "'" . '-' . "'" . ' . "here" ) ) <new_line> { <new_line> $output_buffer .= "-" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "no" . ' . "'" . '-' . "'" . ' . "space" ) ) <new_line> { <new_line> if ( $space_directive ne "one_requested" ) <new_line> { <new_line> $space_directive = "none" ; <new_line> } <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "no_space" . ">" ) ) <new_line> { <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "one" . ' . "'" . '-' . "'" . ' . "space" ) ) <new_line> { <new_line> $space_directive = "one_requested" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "one_space" . ">" ) ) <new_line> { <new_line> $space_directive = "one_requested" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "new" . ' . "'" . '-' . "'" . ' . "line" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "new_line" . ">" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "empty" . ' . "'" . '-' . "'" . ' . "line" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( $current_phrase eq ( "<" . "empty_line" . ">" ) ) <new_line> { <new_line> $output_buffer .= "' . '\\' . 'n' . '\\' . 'n" ; <new_line> $space_directive = "none" ; <new_line> next ; <new_line> } <new_line> if ( ( $current_phrase =~ /[^ ' . '\\' . '<character_hyphen>]' . '\\' . '<character_hyphen>[^ ' . '\\' . '<character_hyphen>]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) ) <new_line> { <new_line> $recursion_level ++ ; <new_line> $code_at_recursion_level[ $recursion_level ] = $global_dashrep_replacement{ $current_phrase } ; <new_line> $length_of_code_at_recursion_level[ $recursion_level ] = length( $code_at_recursion_level[ $recursion_level ] ) ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ; <new_line> next ; <new_line> } <new_line> if ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) ) <new_line> { <new_line> $output_buffer .= " " ; <new_line> } <new_line> $space_directive = "one" ; <new_line> $output_buffer .= $current_phrase ; <new_line> $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ; <new_line> if ( index( $output_buffer , "<specify " ) > 0 ) <new_line> { <new_line> $prior_length = 0 ; <new_line> while ( length( $output_buffer ) != $prior_length ) <new_line> { <new_line> $prior_length = length( $output_buffer ) ; <new_line> $output_buffer =~ s/ *' . '\\' . '/> *<specify +([^>]+)>/ $1 ' . '\\' . '/>/ ; <new_line> } <new_line> if ( index( $output_buffer , "<specify " ) > 0 ) <new_line> { <new_line> $prior_length = 0 ; <new_line> while ( length( $output_buffer ) != $prior_length ) <new_line> { <new_line> $prior_length = length( $output_buffer ) ; <new_line> $output_buffer =~ s/ *> *<specify +/ / ; <new_line> } <new_line> } <new_line> } <new_line> $output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ; <new_line> $output_buffer =~ s/ *<placeholder_for_new_line> */' . '\\' . 'n/sg ; <new_line> $output_buffer =~ s/ *<placeholder_for_empty_line> */' . '\\' . 'n/sg ; <new_line> if ( $output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) <new_line> { <new_line> $space_directive = "none" ; <new_line> } <new_line> $length_of_output_buffer = <character_hyphen>1 ; <new_line> $pointer_to_remainder_of_output_buffer = 0 ; <new_line> $new_output_buffer = "" ; <new_line> while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ ' . '\\' . '<character_hyphen><character_close_angle_bracket>]+_[^ ' . '\\' . '<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) <new_line> { <new_line> $prefix = $1 ; <new_line> $possible_phrase_name_with_underscores = $2 ; <new_line> $length_of_output_buffer = length( $output_buffer ) ; <new_line> $new_output_buffer .= $prefix ; <new_line> $length_of_tag = length( $possible_phrase_name_with_underscores ) ; <new_line> $pointer_to_remainder_of_output_buffer += length( $prefix ) + $length_of_tag + 2 ; <new_line> $possible_phrase_name_with_hyphens = $possible_phrase_name_with_underscores ; <new_line> $possible_phrase_name_with_hyphens =~ s/_/<character_hyphen>/g ; <new_line> if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ) ) <new_line> { <new_line> $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ; <new_line> } else <new_line> { <new_line> $new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ; <new_line> } <new_line> } <new_line> if ( $length_of_output_buffer != <character_hyphen>1 ) <new_line> { <new_line> $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ; <new_line> $new_output_buffer = "" ; <new_line> $possible_phrase_name_with_underscores = "" ; <new_line> } <new_line> $pointer_to_close_angle_bracket = index( $output_buffer , ">" ) ; <new_line> if ( $pointer_to_close_angle_bracket < 0 ) <new_line> { <new_line> $result_text .= $output_buffer ; <new_line> $output_buffer = "" ; <new_line> } elsif ( length( $output_buffer ) > 1000 ) <new_line> { <new_line> $result_text .= substr( $output_buffer , 0 , 500 ) ; <new_line> $output_buffer = substr( $output_buffer , 500 ) ; <new_line> } <new_line> } <new_line> $result_text .= $output_buffer ; <new_line> return $result_text ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__4516 } = $storage_item__4517 ;
 my $storage_item__4518 = 'template-function-handle-endless-loop-encountered' ;
 my $storage_item__4519 = '# no-space dashes-long-line <new_line> # handle_endless_loop_encountered <new_line> <new_line> sub handle_endless_loop_encountered( ) { <new_line> print ' . "'" . 'Exceeded endless no-space character-hyphen no-space loop count of ' . "'" . ' . $global_endless_loop_counter_limit . "' . '\\' . 'n" ; <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep-debug-trace-log' . "'" . ' code-get-or-put-phrase-definition-end .= ' . "'" . 'Exceeded endless no-space character-hyphen no-space loop count of ' . "'" . ' . $global_endless_loop_counter_limit . "' . '\\' . 'n" ; <new_line> template-runtime-code-print-trace-output exit ; <new_line> template-function-segment-ending' ;
@@ -4549,7 +4919,7 @@ my $storage_item__4560 = 'template-segment-functions-replacement-only-end' ;
 my $storage_item__4561 = '<new_line> sub special_function_do_single_replacement_only( ) { <new_line> if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ; <new_line> } else { <new_line> if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) { <new_line> $global_accumulator[ $global_accumulator_pointer ] .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] ++ ; <new_line> $global_accumulator[ $global_accumulator_pointer ] .= $global_phrase_name ; <new_line> } <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> <new_line> <new_line> # End of functions that only do single-item replacement only <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4560 } = $storage_item__4561 ;
 my $storage_item__4562 = 'template-segment-functions-runtime-begin' ;
-my $storage_item__4563 = '# no-space dashes-long-line <new_line> # Execute starting/main function <new_line> <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> open ( TRACE_OUT , ' . "'" . '>' . "'" . ' . ' . "'" . 'output_trace.txt' . "'" . ' ) ; <new_line> & no-space function-name-prefix no-space start_here( ) ; <new_line> $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ; <new_line> if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-print-trace-output exit ; <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin runtime functions <new_line> <new_line>' ;
+my $storage_item__4563 = '# no-space dashes-long-line <new_line> # Execute starting/main function <new_line> <new_line> &initialize_special_phrases( ) ; $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> open ( TRACE_OUT , ' . "'" . '>' . "'" . ' . ' . "'" . 'output_trace.txt' . "'" . ' ) ; <new_line> & no-space function-name-prefix no-space start_here( ) ; <new_line> $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ; <new_line> if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> template-runtime-code-print-trace-output exit ; <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Begin runtime functions <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4562 } = $storage_item__4563 ;
 my $storage_item__4564 = 'template-segment-functions-runtime-end' ;
 my $storage_item__4565 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End runtime functions <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # All done. <new_line> <new_line> exit; <new_line> 1; <new_line>' ;
@@ -4573,7 +4943,7 @@ my $storage_item__4576 = 'template-segment-optional-import-statements-end' ;
 my $storage_item__4577 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End optional import statements <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4576 } = $storage_item__4577 ;
 my $storage_item__4578 = 'template-segment-start-object-code-begin' ;
-my $storage_item__4579 = '#!/usr/bin/perl <new_line> <new_line> # no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Copyright notice within phrase "source-code-copyright-notice": <new_line> <new_line>' ;
+my $storage_item__4579 = '#!/usr/bin/perl <new_line> <new_line> # no-space dashes-long-line <new_line> # Dashrep compiler output <new_line> <new_line> # object-code-copyright-notice <new_line> <new_line> <new_line> # no-space dashes-long-line <new_line> # Copyright notice within phrase "source<character_hyphen>code<character_hyphen>copyright<character_hyphen>notice": <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4578 } = $storage_item__4579 ;
 my $storage_item__4580 = 'template-segment-start-object-code-end' ;
 my $storage_item__4581 = '<new_line> <new_line> # no-space dashes-long-line <new_line> # End of introduction to object code that follows <new_line> <new_line>' ;
@@ -33374,8 +33744,7 @@ return '' ;
 #------------------------------------------------------------
 # Execute starting/main function
 
-&initialize_special_phrases( ) ;
-$global_accumulator[ 1 ] = '' ;
+&initialize_special_phrases( ) ; $global_accumulator[ 1 ] = '' ;
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;
 &function_compiled__start_here( ) ;
 $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ;
@@ -33960,8 +34329,7 @@ exit ;
 #------------------------------------------------------------
 # dashrep_expand_phrases
 
-sub temp_renamed_dashrep_expand_phrases
-{
+sub not_yet_used_dashrep_expand_phrases( ) {
 my $expand_endless_cycle_count_maximum ;
 my $supplied_text ;
 my $current_phrase ;
@@ -39244,7 +39612,7 @@ sub dashrep_expand_special_phrases
 #-----------------------------------------------
 #-----------------------------------------------
 
-sub unused_unused_dashrep_expand_phrases
+sub dashrep_expand_phrases
 {
 
     my $text_string_to_expand ;
@@ -41125,7 +41493,7 @@ sub dashrep_compiler_access
 #  This subroutine is not exported because it
 #  is only needed within this Dashrep module.
 
-sub dashrep_expand_phrases
+sub dashrep_internal_expand_phrases_faster_subset
 {
 
     my $expand_endless_cycle_count_maximum ;
