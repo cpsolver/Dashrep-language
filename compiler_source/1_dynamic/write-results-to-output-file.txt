@@ -24,11 +24,13 @@
 [-copy-from-phrase-append-to-file initialize-global-variables [-filename-output-results-from-compiler-]-]
 [-copy-from-phrase-append-to-file output-results-all-storage-items [-filename-output-results-from-compiler-]-]
 
+*---
 [-copy-text dashrep-path-prefix-for-file-reading saved-directory-]
 [-put-into-phrase dashrep-path-prefix-for-file-reading  .\compiler_source\5_functions_from_interpreter\ -]
 [-put-into-phrase filename-runtime-code-from-interpreter  runtime-code-initializations-needed-by-interpreter-code.txt -]
 [-copy-append-file-to-file [-filename-runtime-code-from-interpreter-] [-filename-output-results-from-compiler-]-]
 [-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
+---*
 
 [-copy-from-phrase-append-to-file segment-initialize-end [-filename-output-results-from-compiler-]-]
 
