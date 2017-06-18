@@ -50,9 +50,12 @@ $global_dashrep_replacement{ "dashrep hyphen-here list hyphen-here of hyphen-her
 
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
+# if ( length( code-get-or-put-phrase-definition-begin 'start<characer_hyphen>here' code-get-or-put-phrase-definition-end ) > 10 ) {  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
+# } else {  <new_line>
+# $global_accumulator[ 1 ] = code-get-or-put-phrase-definition-begin 'source<characer_hyphen>code<characer_hyphen>as<characer_hyphen>words' code-get-or-put-phrase-definition-end ;  <new_line>
+# }  <new_line>
 $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ;  <new_line>
-
 if ( ( exists( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
 print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
 print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
