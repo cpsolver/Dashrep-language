@@ -1,3 +1,5 @@
+*--- unused, but keep for reference ... ---*
+
 <new_line>
 my $undeleted_phrase_content ;  <new_line>
 my $do_nothing ;  <new_line>
@@ -268,22 +270,5 @@ my %item_number_at_row_column ;  <new_line>
 $replacement_text = '' ;  <new_line>
 $action_result = " " ;  <new_line>
 
-$action_name = $global_single_action_name ;  <new_line>
 $operands_all = $global_single_action_operands_all ;  <new_line>
 $number_of_operands = $global_number_of_operands ;  <new_line>
-$operand_two = '' ;  <new_line>
-if ( $number_of_operands > 0 ) {  <new_line>
-    $operand_one = $global_single_action_operand_one ;  <new_line>
-    if ( $number_of_operands > 1 ) {  <new_line>
-        $operand_two = $global_single_action_operand_two ;  <new_line>
-        if ( $number_of_operands > 2 ) {  <new_line>
-            $operand_three = $global_single_action_operand_three ;  <new_line>
-            if ( $number_of_operands > 3 ) {  <new_line>
-                $operand_four = $global_single_action_operand_four ;  <new_line>
-                if ( $number_of_operands > 4 ) {  <new_line>
-                    $operand_five = $global_single_action_operand_five ;  <new_line>
-                }  <new_line>
-            }  <new_line>
-        }  <new_line>
-    }  <new_line>
-}  <new_line>
