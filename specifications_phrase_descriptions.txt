@@ -237,7 +237,7 @@ This action puts into the specified phrase a list of counts for how many times e
 
 description-for-phrase-end-of-line-here:
 This phrase contains text that is inserted at the end of each line when the action
-b-i-b copy-from-file-to-phrase b-i-e is used, and if the phrase b-i-b dashrep h-h yes h-h indicate h-h line h-h endings b-i-e equals b-i-b yes b-i-e no-space .
+b-i-b copy-from-file-to-phrase b-i-e is used, and if the phrase b-i-b yes h-h or h-h no h-h indicate h-h line h-h endings b-i-e equals b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-generate-every-ordered-pairwise-combination-of-words:
