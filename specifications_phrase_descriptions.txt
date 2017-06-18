@@ -103,6 +103,8 @@ This action removes all the expanded text up to this action. s-n It is useful wh
 
 description-for-phrase-copy-words-sort-alphabetic:
 This action gets the space hyphen-here delimited words in the first phrase, and sorts those words alphabetically, and puts those sorted words into the second phrase. s-n The two phrase names can be the same.
+paragraph-next
+Example: If the first phrase contains the text b-i-b dolphin whale seal b-i-e then the text placed into the second phrase will be b-i-b dolphin seal whale b-i-e no-space .
 -----
 
 description-for-phrase-encode-as-cgi-parameter:
@@ -1307,6 +1309,8 @@ This action supplies b-i-b equal b-i-e if the following two numbers are equal, o
 
 description-for-phrase-copy-words-sort-numeric:
 This action copies from a phrase definition to the specified phrase and numerically sorts the list of (space h-h delimited) numbers. s-n The two phrase names can be the same.
+paragraph-next
+Example: If the first phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the text placed into the second phrase will be b-i-b 1 3 5 7 12 b-i-e no-space .
 ----
 
 description-for-phrase-count-of-characters-in-phrase-definition:
@@ -1551,7 +1555,7 @@ heading-for-phrases-in-category_numeric:
 Number-related phrases
 -----
 
-heading-for-phrases-in-category_alphabetic:
+unused-heading-for-phrases-in-category_alphabetic:
 Alphabetical-order-related phrases
 -----
 

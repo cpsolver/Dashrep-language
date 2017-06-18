@@ -114,14 +114,6 @@
 <p>This pre-defined phrase contains a tab character.&nbsp; In some other programming languages this character is represented by the text <b>\<i>t</i></b>.</p>
 
 
-<h3 id="delayed-nospace">delayed-nospace</h3>
-<p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>no-space</i></b> needs to be inserted later, after other replacements have been done.&nbsp; When ready, this phrase should be defined as <b><i>no-space</i></b> just before the final translation step.</p>
-
-
-<h3 id="delayed-newline">delayed-newline</h3>
-<p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>new-line</i></b> needs to be inserted later, after other replacements have been done.&nbsp; When ready, this phrase should be defined as <b><i>new-line</i></b> just before the final translation step.</p>
-
-
 <h2>Expansion-related phrases</h2>
 
 
@@ -254,7 +246,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>53</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>51</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
@@ -325,6 +317,22 @@
 
 <h3 id="copy-words-order-reversed">copy-words-order-reversed</h3>
 <p>This action gets the space-delimited words in the first phrase, and reverses their order (sequence), and puts those reverse-ordered words into the second phrase.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>dolphin whale octopus</i></b> then the second phrase will contain <b><i>octopus whale dolphin</i></b>.</p>
+
+
+<h3 id="copy-words-sort-numeric">copy-words-sort-numeric</h3>
+<p>This action copies from a phrase definition to the specified phrase and numerically sorts the list of (space-delimited) numbers.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>7 1 5 3 12</i></b> then the text placed into the second phrase will be <b><i>1 3 5 7 12</i></b>.</p>
+
+
+<h3 id="copy-words-rearrange-using-order-sort-numeric">copy-words-rearrange-using-order-sort-numeric</h3>
+<p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>seven one five three twelve</i></b> and the third phrase contains the text <b><i>7 1 5 3 12</i></b> then the text placed into the second phrase will be <b><i>one three five seven twelve</i></b>.</p>
+
+
+<h3 id="copy-words-sort-alphabetic">copy-words-sort-alphabetic</h3>
+<p>This action gets the space-delimited words in the first phrase, and sorts those words alphabetically, and puts those sorted words into the second phrase.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>dolphin whale seal</i></b> then the text placed into the second phrase will be <b><i>dolphin seal whale</i></b>.</p>
+
+
+<h3 id="copy-words-rearrange-using-order-sort-alphabetic">copy-words-rearrange-using-order-sort-alphabetic</h3>
+<p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready</i></b> and the third phrase contains the text <b><i>tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul</i></b> then the text placed into the second phrase will be <b><i>Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla</i></b>.</p>
 
 
 <h3 id="copy-words-at-skip-interval">copy-words-at-skip-interval</h3>
@@ -475,14 +483,6 @@
 <p>This action supplies either <b><i>zero</i></b> or <b><i>one</i></b> or <b><i>multiple</i></b> depending upon whether the following integer number equals zero, one, or multiple (more than one).&nbsp; This phrase is very useful for choosing between singular and plural forms of words based on a data-supplied count.</p>
 
 
-<h3 id="copy-words-sort-numeric">copy-words-sort-numeric</h3>
-<p>This action copies from a phrase definition to the specified phrase and numerically sorts the list of (space-delimited) numbers.&nbsp; The two phrase names can be the same.</p>
-
-
-<h3 id="copy-words-rearrange-using-order-sort-numeric">copy-words-rearrange-using-order-sort-numeric</h3>
-<p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>seven one five three twelve</i></b> and the third phrase contains the text <b><i>7 1 5 3 12</i></b> then the text placed into the second phrase will be <b><i>one three five seven twelve</i></b>.</p>
-
-
 <h3 id="numeric-equal-greater-less-compare">numeric-equal-greater-less-compare</h3>
 <p>This action supplies the word <b><i>equal</i></b> if the two numbers that follow are numerically equal, or supplies the word <b><i>greater</i></b> if the first number is greater than the second number, or supplies the word <b><i>less</i></b> if the first number is less than the second number.</p>
 
@@ -593,17 +593,6 @@
 
 <h3 id="numeric-map-tile-zoom">numeric-map-tile-zoom</h3>
 <p>This action specifies the zoom level that is used in the action <b><i>numeric-y-map-tile-number-based-on-latitude</i></b>.</p>
-
-
-<h2>Alphabetical-order-related phrases</h2>
-
-
-<h3 id="copy-words-sort-alphabetic">copy-words-sort-alphabetic</h3>
-<p>This action gets the space-delimited words in the first phrase, and sorts those words alphabetically, and puts those sorted words into the second phrase.&nbsp; The two phrase names can be the same.</p>
-
-
-<h3 id="copy-words-rearrange-using-order-sort-alphabetic">copy-words-rearrange-using-order-sort-alphabetic</h3>
-<p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready</i></b> and the third phrase contains the text <b><i>tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul</i></b> then the text placed into the second phrase will be <b><i>Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla</i></b>.</p>
 
 
 <h2>XML-related phrases</h2>
@@ -790,7 +779,11 @@
 
 
 <h3 id="trace-show">trace-show</h3>
-<p>This action displays the definition of the specified phrase in the trace log.&nbsp; These requests are highlighted with multiple asterisks (<b><i>*******</i></b>).&nbsp; The requested information appears in the trace log regardless of whether the <b><i>dashrep-action-trace-on-yes-or-no</i></b> definition is <b><i>yes</i></b> or <b><i>no</i></b>.</p>
+<p>This action inserts into the trace log the definition of the specified phrase.&nbsp; These insertions are highlighted with multiple asterisks (<b><i>*******</i></b>).&nbsp; The requested information appears in the trace log regardless of whether the <b><i>dashrep-action-trace-on-yes-or-no</i></b> definition is <b><i>yes</i></b> or <b><i>no</i></b>.</p>
+
+
+<h3 id="trace-show-where">trace-show-where</h3>
+<p>This action inserts into the trace log the name of the phrase currently being expanded.&nbsp; These insertions are highlighted with multiple asterisks (<b><i>*******</i></b>).&nbsp; The requested information appears in the trace log regardless of whether the <b><i>dashrep-action-trace-on-yes-or-no</i></b> definition is <b><i>yes</i></b> or <b><i>no</i></b>.</p>
 
 
 <h3 id="dashrep-comments-ignored">dashrep-comments-ignored</h3>
@@ -816,6 +809,15 @@
 <p>This phrase contains the text that is inserted in some cases when the result of an action is undefined.&nbsp; The default value is <b><i>dashrep_undefined</i></b>.</p>
 
 
+<h3 id="delayed-nospace">delayed-nospace</h3>
+<p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>no-space</i></b> needs to be inserted later, after other replacements have been done.&nbsp; When ready, this phrase should be defined as <b><i>no-space</i></b> just before the final translation step.</p>
+
+
+<h3 id="delayed-newline">delayed-newline</h3>
+<p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>new-line</i></b> needs to be inserted later, after other replacements have been done.&nbsp; Normally this phrase is not needed because the text <b><i>
+</i></b> serves this purpose.&nbsp; When this phrase is used, this phrase should be defined as <b><i>new-line</i></b> just before the final translation step.</p>
+
+
 <h3 id="dashrep-endless-loop-counter-limit">dashrep-endless-loop-counter-limit</h3>
 <p>This phrase specifies the maximum number of replacements allowed during a Dashrep translation.&nbsp; This number can be redefined, such as to a larger number.&nbsp; If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times.&nbsp; If large amounts of data are processed, the default number is not going to be large enough.&nbsp; This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.</p>
 
@@ -829,7 +831,7 @@
 
 
 <h3 id="end-of-line-here">end-of-line-here</h3>
-<p>This phrase contains text that is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used, and if the phrase <b><i>dashrep-yes-indicate-line-endings</i></b> equals <b><i>yes</i></b>.</p>
+<p>This phrase contains text that is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used, and if the phrase <b><i>yes-or-no-indicate-line-endings</i></b> equals <b><i>yes</i></b>.</p>
 
 
 <h3 id="yes-or-no-indicate-line-endings">yes-or-no-indicate-line-endings</h3>

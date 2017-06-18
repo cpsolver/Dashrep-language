@@ -74,6 +74,10 @@ copy-words-unique-only
 list-of-unique-word-counts
 list-of-pointers-to-unique-words
 copy-words-order-reversed
+copy-words-sort-numeric
+copy-words-rearrange-using-order-sort-numeric
+copy-words-sort-alphabetic
+copy-words-rearrange-using-order-sort-alphabetic
 copy-words-at-skip-interval
 generate-counts-from-integer-to-integer
 generate-every-pairwise-combination-of-words
@@ -116,8 +120,6 @@ time-year
 category_numeric
 zero-or-nonzero
 zero-one-multiple
-copy-words-sort-numeric
-copy-words-rearrange-using-order-sort-numeric
 numeric-equal-greater-less-compare
 numeric-add
 numeric-minus
@@ -146,10 +148,6 @@ numeric-vectors-from-delta-values-calculate-distances
 numeric-two-dimensional-sort-into-columns-and-rows
 numeric-y-map-tile-number-based-on-latitude
 numeric-map-tile-zoom
-
-category_alphabetic
-copy-words-sort-alphabetic
-copy-words-rearrange-using-order-sort-alphabetic
 
 category_xml
 xml-move-attributes-into-tag-elements
