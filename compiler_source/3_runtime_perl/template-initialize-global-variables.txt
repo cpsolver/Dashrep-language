@@ -613,7 +613,6 @@ $global_required_number_of_operands_for_action{ "convert-from-spoken-dashrep-cod
 $global_required_number_of_operands_for_action{ "convert-unicode-to-html-entities" } = 2 ;  <new_line>
 $global_required_number_of_operands_for_action{ "xml-move-attributes-into-tag-elements" } = 1 ;  <new_line>
 $global_required_number_of_operands_for_action{ "copy-and-remove-attributes-from-xml-tags" } = 2 ;  <new_line>
-$global_required_number_of_operands_for_action{ "insert-angle-bracketed-definitions" } = 1 ;  <new_line>
 $global_required_number_of_operands_for_action{ "copy-word-at-position" } = 3 ;  <new_line>
 $global_required_number_of_operands_for_action{ "copy-zero-pad-left-to-length" } = 3 ;  <new_line>
 $global_required_number_of_operands_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = 3 ;  <new_line>
@@ -842,7 +841,6 @@ $global_check_operand_two_is_phrase_name_for_action{ "convert-unicode-to-html-en
 $global_check_operand_one_is_phrase_name_for_action{ "xml-move-attributes-into-tag-elements" } = "yes" ;  <new_line>
 $global_check_operand_one_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;  <new_line>
 $global_check_operand_two_is_phrase_name_for_action{ "copy-and-remove-attributes-from-xml-tags" } = "yes" ;  <new_line>
-$global_check_operand_one_is_phrase_name_for_action{ "insert-angle-bracketed-definitions" } = "yes" ;  <new_line>
 $global_check_operand_one_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;  <new_line>
 $global_check_operand_two_is_phrase_name_for_action{ "copy-word-at-position" } = "yes" ;  <new_line>
 $global_check_operand_one_is_phrase_name_for_action{ "copy-words-rearrange-using-order-sort-alphabetic" } = "yes" ;  <new_line>

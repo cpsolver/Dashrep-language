@@ -3486,58 +3486,6 @@ sub dashrep_expand_parameters
 
 
 #-----------------------------------------------
-#  Handle the action:
-#  insert-angle-bracketed-definitions
-
-        if ( $action_name eq "insert-angle-bracketed-definitions" )
-        {
-            $phrase_being_edited = $operand_one ;
-            if ( not( exists( $global_dashrep_replacement{ $phrase_being_edited } ) ) )
-            {
-                $global_dashrep_replacement{ $phrase_being_edited } = "" ;
-            }
-            $remaining_text = $global_dashrep_replacement{ $phrase_being_edited } ;
-            $accumulated_text = "" ;
-            $remaining_text =~ s/<character_hyphen>/-/sg ;
-            while ( $remaining_text =~ /^(.*?)<([^ _<>;:=,\-]+_[^ <>;:=,\-]+)>(.*)$/s )
-            {
-                $accumulated_text .= $1 ;
-                $possible_phrase_name = $2 ;
-                $remaining_text = $3 ;
-                $phrase_name = $possible_phrase_name ;
-                $phrase_name =~ s/_/-/g ;
-                if ( exists( $global_dashrep_replacement{ $phrase_name } ) )
-                {
-                    $accumulated_text .= $global_dashrep_replacement{ $phrase_name } ;
-                } else
-                {
-                    $accumulated_text .= "<" . $possible_phrase_name . ">" ;
-                }
-                $global_endless_loop_counter ++ ;
-                $global_replacement_count_for_item_name{ "loop within action " . $action_name } ++ ;
-                if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 )
-                {
-                    $global_trace_log .= "{{trace; Error: During the action " . $action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";
-                    $accumulated_text .= $remaining_text ;
-                    $remaining_text = "" ;
-                    last ;
-                }
-            }
-            $accumulated_text .= $remaining_text ;
-            $accumulated_text =~ s/ *<no_space> *//sg ;
-            $accumulated_text =~ s/ *<new_line> */\n/sg ;
-            $global_dashrep_replacement{ $phrase_being_edited } = $accumulated_text ;
-            if ( $global_dashrep_replacement{ "dashrep-action-trace-on-yes-or-no" } eq "yes" )
-            {
-                $global_trace_log .= "{{trace; within phrase " . $phrase_being_edited . " replaced translation-safe phrases with their definitions}}\n" ;
-            }
-#  end of action code
-            $replacement_text = $text_begin . $action_result . $text_end ;
-            next ;
-        }
-
-
-#-----------------------------------------------
 #  If the word "file" or "files" or "folder" or
 #  "folders" appears in the action name,
 #  and if the action is recognized as a file-related
