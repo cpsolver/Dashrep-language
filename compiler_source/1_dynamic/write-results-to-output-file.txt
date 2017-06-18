@@ -71,3 +71,11 @@
 [-copy-text saved-directory dashrep-path-prefix-for-file-reading-]
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
+
+
+
+[-put-into-phrase yes-or-no-indicate-line-endings no-]
+[-put-into-phrase dashrep-path-prefix-for-file-reading  .\compiler_source\5_functions_from_interpreter\ -]
+[-copy-from-file-to-phrase template-interpreter-version-of-runtime-code.txt template-interpreter-code-]
+[-expand-text template-interpreter-code expanded-template-interpreter-code-]
+[-trace-show expanded-template-interpreter-code-]
