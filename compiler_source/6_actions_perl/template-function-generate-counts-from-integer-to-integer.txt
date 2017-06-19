@@ -10,7 +10,7 @@
 
 sub function__generate_counts_from_integer_to_integer( ) {  <new_line>
 
-# print "operands = " . $global_action_operand_one . "  " . $global_action_operand_two . "  " . $global_action_operand_three . "\n" ;  <new_line>
+# print 'operands = ' . $global_action_operand_one . '  ' . $global_action_operand_two . '  ' . $global_action_operand_three . "\n" ;  <new_line>
 
 $global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $global_action_operand_one ) ;  <new_line>
 $global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $global_action_operand_two ) ;  <new_line>
@@ -43,7 +43,7 @@ code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or
 code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end .= sprintf( "%d" , $global_count_number ) ;  <new_line>
 }  <new_line>
 
-# print "count " . $global_counter . " list '" . code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end . "'\n" ;  <new_line>
+# print 'count ' . $global_counter . " list '" . code-get-or-put-phrase-definition-begin $global_action_operand_three code-get-or-put-phrase-definition-end . "'\n" ;  <new_line>
 
 # end of loop  <new_line>
 }  <new_line>
