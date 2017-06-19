@@ -1,0 +1,103 @@
+template-interpreter-function-begin
+
+sub function__copy_words_sort_numeric( ) {  <new_line>
+
+$global_source_phrase_name = $global_operand_one ;  <new_line>
+$global_target_phrase_name = $global_operand_two ;  <new_line>
+if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) )  <new_line>
+{  <new_line>
+    $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
+}  <new_line>
+$global_temp_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
+if ( $global_action_name eq 'copy hyphen-here without hyphen-here extra hyphen-here spaces' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\n/ /sg ;  <new_line>
+    $global_temp_text =~ s/<character_space> +/ /g ;  <new_line>
+    $global_temp_text =~ s/^ +// ;  <new_line>
+    $global_temp_text =~ s/ +$// ;  <new_line>
+} elsif ( $global_action_name eq 'copy hyphen-here lowercase hyphen-here only' )  <new_line>
+{  <new_line>
+    $global_temp_text = lc( $global_temp_text ) ;  <new_line>
+} elsif ( $global_action_name eq 'copy hyphen-here uppercase hyphen-here only' )  <new_line>
+{  <new_line>
+    $global_temp_text = uc( $global_temp_text ) ;  <new_line>
+} elsif ( ( $global_action_name eq 'copy hyphen-here to hyphen-here phrase hyphen-here from hyphen-here following hyphen-here text' ) || ( $global_action_name eq 'put hyphen-here into hyphen-here phrase' ) )  <new_line>
+{  <new_line>
+    $global_temp_text = $global_operands_all ;  <new_line>
+    $global_temp_text =~ s/^ *[^ ]+ +// ;  <new_line>
+    $global_target_phrase_name = $global_operand_one ;  <new_line>
+} elsif ( $global_action_name eq 'copy hyphen-here initial hyphen-here caps' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\n/ /sg ;  <new_line>
+    $global_temp_text =~ s/^ +// ;  <new_line>
+    $global_temp_text =~ s/ +$// ;  <new_line>
+    $global_remaining_text = $global_temp_text ;  <new_line>
+    $global_accumulated_text = '' ;  <new_line>
+    if ( $global_remaining_text =~ /^([a hyphen-here z])(.*)$/ )  <new_line>
+    {  <new_line>
+        $global_character_to_capitalize = $1 ;  <new_line>
+        $global_remaining_text = $2 ;  <new_line>
+        $global_accumulated_text .= uc( $global_character_to_capitalize ) ;  <new_line>
+    }  <new_line>
+    while ( $global_remaining_text =~ /^(.*?) ([a hyphen-here z])(.*)$/ )  <new_line>
+    {  <new_line>
+        $global_accumulated_text .= $1 ;  <new_line>
+        $global_character_to_capitalize = $2 ;  <new_line>
+        $global_remaining_text = $3 ;  <new_line>
+        $global_accumulated_text .= ' ' . uc( $global_character_to_capitalize ) ;  <new_line>
+    }  <new_line>
+    $global_accumulated_text .= $global_remaining_text ;  <new_line>
+    $global_temp_text = $global_accumulated_text ;  <new_line>
+} elsif ( $global_action_name eq 'encode hyphen-here as hyphen-here cgi hyphen-here parameter' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\n/ /sg ;  <new_line>
+    $global_temp_text =~ s/ /\+/g ;  <new_line>
+    $global_remaining_text = $global_temp_text ;  <new_line>
+    $global_accumulated_text = '' ;  <new_line>
+    while ( $global_remaining_text =~ /^(.*?)([^a hyphen-here zA hyphen-here Z0<character_hyphen>9])(.*)$/s )  <new_line>
+    {  <new_line>
+        $global_accumulated_text .= $1 ;  <new_line>
+        $global_character_to_replace = $2 ;  <new_line>
+        $global_remaining_text = $3 ;  <new_line>
+        $global_accumulated_text .= '%' . sprintf( "%02x" , ord( $global_character_to_replace ) ) ;  <new_line>
+    }  <new_line>
+    $global_accumulated_text .= $global_remaining_text ;  <new_line>
+    $global_temp_text = $global_accumulated_text ;  <new_line>
+} elsif ( $global_action_name eq 'decode hyphen-here from hyphen-here cgi hyphen-here parameter' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\+/ /sg ;  <new_line>
+    $global_remaining_text = $global_temp_text ;  <new_line>
+    $global_accumulated_text = '' ;  <new_line>
+
+# Edited 2017<character_hyphen>june<character_hyphen>1  <new_line>
+    while ( $global_remaining_text =~ /^(.*?)(\%[0<character_hyphen>9a hyphen-here fA hyphen-here F][0<character_hyphen>9a hyphen-here fA hyphen-here F])(.*)$/s )  <new_line>
+#                while ( $global_remaining_text =~ /^(.*?)(\%[0<character_hyphen>9][0<character_hyphen>9])(.*)$/s )  <new_line>
+
+    {  <new_line>
+        $global_accumulated_text .= $1 ;  <new_line>
+        $global_character_code_to_decode = $2 ;  <new_line>
+        $global_remaining_text = $3 ;  <new_line>
+        $global_accumulated_text .= chr( hex( $global_character_code_to_decode ) ) ;  <new_line>
+    }  <new_line>
+    $global_accumulated_text .= $global_remaining_text ;  <new_line>
+    $global_temp_text = $global_accumulated_text ;  <new_line>
+} elsif ( $global_action_name eq 'copy hyphen-here words hyphen-here sort hyphen-here numeric' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\n/ /sg ;  <new_line>
+    $global_temp_text =~ s/^ +// ;  <new_line>
+    $global_temp_text =~ s/ +$// ;  <new_line>
+    @list = split( / +/ , $global_temp_text ) ;  <new_line>
+    @list_of_sorted_numbers = sort { $global_a <=> $global_b } @list ;  <new_line>
+    $global_temp_text = join( ' ' , @list_of_sorted_numbers ) ;  <new_line>
+} elsif ( $global_action_name eq 'copy hyphen-here words hyphen-here sort hyphen-here alphabetic' )  <new_line>
+{  <new_line>
+    $global_temp_text =~ s/\n/ /sg ;  <new_line>
+    $global_temp_text =~ s/^ +// ;  <new_line>
+    $global_temp_text =~ s/ +$// ;  <new_line>
+    @list = split( / +/ , $global_temp_text ) ;  <new_line>
+    @list_of_sorted_numbers = sort( @list ) ;  <new_line>
+    $global_temp_text = join( ' ' , @list_of_sorted_numbers ) ;  <new_line>
+}  <new_line>
+$global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;  <new_line>
+
+template-interpreter-function-end

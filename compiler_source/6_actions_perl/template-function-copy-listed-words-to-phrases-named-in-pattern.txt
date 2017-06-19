@@ -1,0 +1,67 @@
+template-interpreter-function-begin
+
+sub function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>
+
+$global_action_result = '' ;  <new_line>
+$global_phrase_name_containing_source_words = $global_operand_one ;  <new_line>
+$global_phrase_name_containing_pattern = $global_operand_two ;  <new_line>
+$global_target_phrase_name = '' ;  <new_line>
+if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } =~ /^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$/ ) ) {  <new_line>
+    $global_prefix = $1 ;  <new_line>
+    $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
+    $global_suffix = $3 ;  <new_line>
+}  <new_line>
+$global_prefix =~ s/[ \n]+//g ;  <new_line>
+$global_prefix =~ s/^<character_hyphen>+// ;  <new_line>
+$global_suffix =~ s/[ \n]+//g ;  <new_line>
+$global_suffix =~ s/<character_hyphen>+$// ;  <new_line>
+$global_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
+$global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
+$global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
+if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ) ) )  <new_line>
+{  <new_line>
+    $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+    return ;  <new_line>
+}  <new_line>
+$global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ;  <new_line>
+$global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+$global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+$global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+if ( $global_list_of_words_as_text !~ /[^ ]/ )  <new_line>
+{  <new_line>
+    $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+    return ;  <new_line>
+}  <new_line>
+@list_of_parameter_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
+$global_phrase_name_containing_source_words =~ s/[ \n]+//sg ;  <new_line>
+$global_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
+$global_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
+if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ) ) )  <new_line>
+{  <new_line>
+    $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+    next ;  <new_line>
+}  <new_line>
+$global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ;  <new_line>
+$global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+$global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+$global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+if ( $global_list_of_words_as_text !~ /[^ ]/ )  <new_line>
+{  <new_line>
+    $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+    next ;  <new_line>
+}  <new_line>
+@list_of_source_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
+for ( $global_pointer = 0 ; $global_pointer <= $global_#list_of_parameter_words ; $global_pointer ++ )  <new_line>
+{  <new_line>
+    $global_source_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
+    if ( ( $global_source_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $global_source_phrase_name } ) ) )  <new_line>
+    {  <new_line>
+        $global_text_string = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
+        $global_text_string =~ s/\n/ /sg ;  <new_line>
+        $global_text_string =~ s/^ +// ;  <new_line>
+        $global_text_string =~ s/ +$// ;  <new_line>
+        $global_dashrep_replacement{ $global_target_phrase_name } .= ' ' . $global_text_string ;  <new_line>
+    }  <new_line>
+}  <new_line>
+
+template-interpreter-function-end

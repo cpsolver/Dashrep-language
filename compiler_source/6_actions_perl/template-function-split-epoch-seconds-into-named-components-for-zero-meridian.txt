@@ -1,0 +1,39 @@
+template-interpreter-function-begin
+
+sub function__split_epoch_seconds_into_named_components_for_zero_meridian( ) {  <new_line>
+
+#***********************************************  <new_line>
+#  Handle the actions:  <new_line>
+#  split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components  <new_line>
+#  split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components hyphen-here for hyphen-here zero hyphen-here meridian  <new_line>
+
+        if ( ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components" ) || ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components hyphen-here for hyphen-here zero hyphen-here meridian" ) )  <new_line>
+        {  <new_line>
+            if ( $global_operand_one !~ /^[\<character_hyphen>0<character_hyphen>9\.]+$/ )  <new_line>
+            {  <new_line>
+                $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+                next ;  <new_line>
+            }  <new_line>
+            if ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components" )  <new_line>
+            {  <new_line>
+                ( $global_second_time , $global_minute , $global_hour , $global_day_of_month , $global_month_number , $global_year , $global_weekday , $global_day_of_year , $global_extra_info ) = localtime( $global_operand_one ) ;  <new_line>
+            } else  <new_line>
+            {  <new_line>
+                ( $global_second_time , $global_minute , $global_hour , $global_day_of_month , $global_month_number , $global_year , $global_weekday , $global_day_of_year , $global_extra_info ) = gmtime( $global_operand_one ) ;  <new_line>
+            }  <new_line>
+            $global_month_number ++ ;  <new_line>
+            $global_year += 1900 ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here second" } = sprintf( "%d" , $global_second_time ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here minute" } = sprintf( "%d" , $global_minute ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here hour" } = sprintf( "%d" , $global_hour ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here day hyphen-here of hyphen-here month" } = sprintf( "%d" , $global_day_of_month ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here month hyphen-here number" } = sprintf( "%d" , $global_month_number ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here year" } = sprintf( "%d" , $global_year ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here day hyphen-here of hyphen-here week" } = sprintf( "%d" , $global_weekday ) ;  <new_line>
+            $global_dashrep_replacement{ "time hyphen-here day hyphen-here of hyphen-here year" } = sprintf( "%d" , $global_day_of_year ) ;  <new_line>
+#  end of action code  <new_line>
+            $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
+            next ;  <new_line>
+        }  <new_line>
+
+template-interpreter-function-end

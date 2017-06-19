@@ -1,0 +1,38 @@
+template-interpreter-function-begin
+
+sub function__copy_words_that_contain_listed_words( ) {  <new_line>
+
+$global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
+$global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+$global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+$global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+@list_of_words_to_check = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
+$global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
+$global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
+$global_list_of_words_as_text =~ s/^ +// ;  <new_line>
+$global_list_of_words_as_text =~ s/ +$// ;  <new_line>
+@list_of_strings_to_match = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
+$global_generated_list = '' ;  <new_line>
+foreach $global_word_to_check ( @list_of_words_to_check )  <new_line>
+{  <new_line>
+    foreach $global_string_to_match ( @list_of_strings_to_match )  <new_line>
+    {  <new_line>
+        $global_pointer_to_matching_text = index( $global_word_to_check , $global_string_to_match ) ;  <new_line>
+        if ( $global_pointer_to_matching_text >= 0 )  <new_line>
+        {  <new_line>
+            if ( $global_action_name eq 'copy hyphen-here words hyphen-here that hyphen-here contain hyphen-here listed hyphen-here words' )  <new_line>
+            {  <new_line>
+                $global_generated_list .= $global_word_to_check . ' ' ;  <new_line>
+                last ;  <new_line>
+            } elsif ( ( $global_pointer_to_matching_text == 0 ) && ( $global_action_name eq 'copy hyphen-here words hyphen-here that hyphen-here begin hyphen-here with hyphen-here listed hyphen-here words' ) )  <new_line>
+            {  <new_line>
+                $global_generated_list .= $global_word_to_check . ' ' ;  <new_line>
+                last ;  <new_line>
+            }  <new_line>
+        }  <new_line>
+    }  <new_line>
+}  <new_line>
+$global_generated_list =~ s/ +$// ;  <new_line>
+$global_dashrep_replacement{ $global_operand_two } = $global_generated_list ;  <new_line>
+
+template-interpreter-function-end
