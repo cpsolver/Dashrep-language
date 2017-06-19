@@ -44,7 +44,7 @@ if ( scalar( @_ ) == 1 )  <new_line>
 $supplied_text = $_[ 0 ] ;  <new_line>
 } else  <new_line>
 {  <new_line>
-$result_text = "" ;  <new_line>
+$result_text = '' ;  <new_line>
 return $result_text ;  <new_line>
 }  <new_line>
 
@@ -52,12 +52,12 @@ return $result_text ;  <new_line>
 Initialization.
 ---*
 
-$space_directive = "none" ;  <new_line>
-$result_text = "" ;  <new_line>
-$output_buffer = "" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
+$result_text = '' ;  <new_line>
+$output_buffer = '' ;  <new_line>
 $pointer_to_remainder_of_output_buffer = 0 ;  <new_line>
-$new_output_buffer = "" ;  <new_line>
-$possible_phrase_name_with_underscores = "" ;  <new_line>
+$new_output_buffer = '' ;  <new_line>
+$possible_phrase_name_with_underscores = '' ;  <new_line>
 $expand_endless_loop_counter = 0 ;  <new_line>
 $expand_endless_loop_counter_maximum = 100000 ;  <new_line>
 %number_of_times_encountered_phrase_named = ( ) ;  <new_line>
@@ -65,7 +65,7 @@ $expand_endless_cycle_count_maximum = 100000 ;  <new_line>
 @code_at_recursion_level = ( ) ;  <new_line>
 @length_of_code_at_recursion_level = ( ) ;  <new_line>
 @pointer_to_remainder_of_code_at_recursion_level = ( ) ;  <new_line>
-$code_at_recursion_level[ 0 ] = "unused" ;  <new_line>
+$code_at_recursion_level[ 0 ] = 'unused' ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 $length_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 
@@ -97,18 +97,18 @@ $recursion_level <character_hyphen><character_hyphen> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 $pointer_to_phrase_begin = $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] ;  <new_line>
-while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq " " ) )  <new_line>
+while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current ) && ( substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , 1 ) eq ' ' ) )  <new_line>
 {  <new_line>
 $pointer_to_phrase_begin ++ ;  <new_line>
 }  <new_line>
-$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;  <new_line>
+$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , ' ' , $pointer_to_phrase_begin ) ;  <new_line>
 if ( $pointer_to_next_space == <character_hyphen>1 )  <new_line>
 {  <new_line>
 $pointer_to_phrase_end = $length_of_code_at_recursion_level_current <character_hyphen> 1 ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ;  <new_line>
 } else  <new_line>
 {  <new_line>
-$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , " " , $pointer_to_phrase_begin ) ;  <new_line>
+$pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , ' ' , $pointer_to_phrase_begin ) ;  <new_line>
 if ( $pointer_to_next_space > $pointer_to_phrase_begin )  <new_line>
 {  <new_line>
 $pointer_to_phrase_end = $pointer_to_next_space <character_hyphen> 1 ;  <new_line>
@@ -134,8 +134,10 @@ If this occurs, exit the endless loop.
 $number_of_times_encountered_phrase_named{ $current_phrase } ++ ;  <new_line>
 if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum )  <new_line>
 {  <new_line>
+
 if ( $global_dashrep_replacement{ "dashrep hyphen-here debug hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
 {  <new_line>
+
 $maximum_cycle_count = 0 ;  <new_line>
 foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) )  <new_line>
 {  <new_line>
@@ -146,10 +148,10 @@ $maximum_cycle_count = $cycle_count ;  <new_line>
 $phrase_name = $phrase_name_with_highest_cycle_count ;  <new_line>
 }  <new_line>
 }  <new_line>
-$global_trace_log .= "{{trace; in subroutine dashrep_expand_phrases encountered phrase " . $phrase_name_with_highest_cycle_count . " " . $maximum_cycle_count . " number of times}}\n" ;  <new_line>
+$global_trace_log .= '{{trace; in subroutine dashrep_expand_phrases encountered phrase ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . ' number of times}}' . "\n" ;  <new_line>
 }  <new_line>
-warn "Warning: The dashrep_expand_phrases subroutine has encountered an endless loop." . "\n" . "Stopped" ;  <new_line>
-return "" ;  <new_line>
+warn 'Warning: The dashrep_expand_phrases subroutine has encountered an endless loop.' . "\n" . 'Stopped' ;  <new_line>
+return '' ;  <new_line>
 }  <new_line>
 
 *---
@@ -157,57 +159,57 @@ If the phrase name is a hyphen directive, or a
 space directive, or a line directive, handle it.
 ---*
 
-if ( $current_phrase eq ( "hyphen" . '-' . "here" ) )  <new_line>
+if ( $current_phrase eq ( 'hyphen' . '-' . 'here' ) )  <new_line>
 {  <new_line>
-$output_buffer .= "-" ;  <new_line>
-$space_directive = "none" ;  <new_line>
+$output_buffer .= '-' ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "no" . '-' . "space" ) )  <new_line>
+if ( $current_phrase eq ( 'no' . '-' . 'space' ) )  <new_line>
 {  <new_line>
-if ( $space_directive ne "one_requested" )  <new_line>
+if ( $space_directive ne 'one_requested' )  <new_line>
 {  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 }  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "<" . "no_space" . ">" ) )  <new_line>
+if ( $current_phrase eq ( '<' . 'no_space' . '>' ) )  <new_line>
 {  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "one" . '-' . "space" ) )  <new_line>
+if ( $current_phrase eq ( 'one' . '-' . 'space' ) )  <new_line>
 {  <new_line>
-$space_directive = "one_requested" ;  <new_line>
+$space_directive = 'one_requested' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "<" . "one_space" . ">" ) )  <new_line>
+if ( $current_phrase eq ( '<' . 'one_space' . '>' ) )  <new_line>
 {  <new_line>
-$space_directive = "one_requested" ;  <new_line>
+$space_directive = 'one_requested' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "new" . '-' . "line" ) )  <new_line>
+if ( $current_phrase eq ( 'new' . '-' . 'line' ) )  <new_line>
 {  <new_line>
 $output_buffer .= "\n" ;  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "<" . "new_line" . ">" ) )  <new_line>
+if ( $current_phrase eq ( '<' . 'new_line' . '>' ) )  <new_line>
 {  <new_line>
 $output_buffer .= "\n" ;  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "empty" . '-' . "line" ) )  <new_line>
+if ( $current_phrase eq ( 'empty' . '-' . 'line' ) )  <new_line>
 {  <new_line>
 $output_buffer .= "\n\n" ;  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-if ( $current_phrase eq ( "<" . "empty_line" . ">" ) )  <new_line>
+if ( $current_phrase eq ( '<' . 'empty_line' . '>' ) )  <new_line>
 {  <new_line>
 $output_buffer .= "\n\n" ;  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 
@@ -233,11 +235,11 @@ Specify a default of inserting one space after
 the next phrase insertion.
 ---*
 
-if ( ( $space_directive eq "one" ) || ( $space_directive eq "one_requested" ) )  <new_line>
+if ( ( $space_directive eq 'one' ) || ( $space_directive eq 'one_requested' ) )  <new_line>
 {  <new_line>
-$output_buffer .= " " ;  <new_line>
+$output_buffer .= ' ' ;  <new_line>
 }  <new_line>
-$space_directive = "one" ;  <new_line>
+$space_directive = 'one' ;  <new_line>
 
 *---
 At this point the current text string is not the
@@ -255,7 +257,7 @@ a single XML or HTML tag.
 Handle tags of type "<xyz />" as well as "<xyz>".
 ---*
 
-if ( index( $output_buffer , "<specify " ) > 0 )  <new_line>
+if ( index( $output_buffer , '<specify ' ) > 0 )  <new_line>
 {  <new_line>
 $prior_length = 0 ;  <new_line>
 while ( length( $output_buffer ) != $prior_length )  <new_line>
@@ -263,7 +265,7 @@ while ( length( $output_buffer ) != $prior_length )  <new_line>
 $prior_length = length( $output_buffer ) ;  <new_line>
 $output_buffer =~ s/ *\/> *<specify +([^>]+)>/ $1 \/>/ ;  <new_line>
 }  <new_line>
-if ( index( $output_buffer , "<specify " ) > 0 )  <new_line>
+if ( index( $output_buffer , '<specify ' ) > 0 )  <new_line>
 {  <new_line>
 $prior_length = 0 ;  <new_line>
 while ( length( $output_buffer ) != $prior_length )  <new_line>
@@ -288,11 +290,11 @@ $output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;  <new_line>
 
 if ( $output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ )  <new_line>
 {  <new_line>
-$space_directive = "none" ;  <new_line>
+$space_directive = 'none' ;  <new_line>
 }  <new_line>
 $length_of_output_buffer = <character_hyphen>1 ;  <new_line>
 $pointer_to_remainder_of_output_buffer = 0 ;  <new_line>
-$new_output_buffer = "" ;  <new_line>
+$new_output_buffer = '' ;  <new_line>
 while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \<character_hyphen><character_close_angle_bracket>]+_[^ \<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s )  <new_line>
 {  <new_line>
 $prefix = $1 ;  <new_line>
@@ -309,14 +311,14 @@ if ( exists( $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } )
 $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hyphens } ;  <new_line>
 } else  <new_line>
 {  <new_line>
-$new_output_buffer .= "<" . $possible_phrase_name_with_underscores . ">" ;  <new_line>
+$new_output_buffer .= '<' . $possible_phrase_name_with_underscores . '>' ;  <new_line>
 }  <new_line>
 }  <new_line>
 if ( $length_of_output_buffer != <character_hyphen>1 )  <new_line>
 {  <new_line>
 $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;  <new_line>
-$new_output_buffer = "" ;  <new_line>
-$possible_phrase_name_with_underscores = "" ;  <new_line>
+$new_output_buffer = '' ;  <new_line>
+$possible_phrase_name_with_underscores = '' ;  <new_line>
 }  <new_line>
 
 *---
@@ -325,11 +327,11 @@ that might need to be revised, then append it to
 the result text.
 ---*
 
-$pointer_to_close_angle_bracket = index( $output_buffer , ">" ) ;  <new_line>
+$pointer_to_close_angle_bracket = index( $output_buffer , '>' ) ;  <new_line>
 if ( $pointer_to_close_angle_bracket < 0 )  <new_line>
 {  <new_line>
 $result_text .= $output_buffer ;  <new_line>
-$output_buffer = "" ;  <new_line>
+$output_buffer = '' ;  <new_line>
 } elsif ( length( $output_buffer ) > 1000 )  <new_line>
 {  <new_line>
 $result_text .= substr( $output_buffer , 0 , 500 ) ;  <new_line>
