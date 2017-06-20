@@ -16,9 +16,9 @@ if ( ( $global_action_name eq 'numeric hyphen-here vectors hyphen-here add' ) ||
     $global_list_of_y_values_as_text =~ s/\n/ /s ;  <new_line>
     $global_list_of_y_values_as_text =~ s/^ +// ;  <new_line>
     $global_list_of_y_values_as_text =~ s/ +$// ;  <new_line>
-    @list_of_y_values = split( / +/ , $global_list_of_y_values_as_text ) ;  <new_line>
+    @global_list_of_y_values = split( / +/ , $global_list_of_y_values_as_text ) ;  <new_line>
 }  <new_line>
-for( $global_pair_pointer = 0 ; $global_pair_pointer <= $global_#list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
+for( $global_pair_pointer = 0 ; $global_pair_pointer <= $global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
     $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] + $global_single_value + 0 ;  <new_line>
     }  <new_line>
     if ( $global_numeric_value == 0 )  <new_line>

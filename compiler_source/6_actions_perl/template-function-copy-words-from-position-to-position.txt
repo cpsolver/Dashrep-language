@@ -13,9 +13,9 @@ sub function__copy_words_from_position_to_position( ) {  <new_line>
                 @list = split( / +/ , $global_temp_text ) ;  <new_line>
             } else  <new_line>
             {  <new_line>
-                @list = ( ) ;  <new_line>
+                @global_list = ( ) ;  <new_line>
             }  <new_line>
-            $global_word_count = $global_#list + 1 ;  <new_line>
+            $global_word_count = $global_list + 1 ;  <new_line>
             if ( $global_word_number_end > $global_word_count )  <new_line>
             {  <new_line>
                 $global_word_number_end = $global_word_count ;  <new_line>
