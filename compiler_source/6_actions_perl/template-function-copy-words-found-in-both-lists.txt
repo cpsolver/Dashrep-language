@@ -2,16 +2,14 @@ template-interpreter-function-begin
 
 sub function__copy_words_found_in_both_lists( ) {  <new_line>
 
-if ( exists( $global_dashrep_replacement{ $global_operand_one } ) )  <new_line>
-{  <new_line>
+if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_text_list_loop = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_text_list_loop = '' ;  <new_line>
 }  <new_line>
 
-if ( exists( $global_dashrep_replacement{ $global_operand_two } ) )  <new_line>
-{  <new_line>
+if ( exists( $global_dashrep_replacement{ $global_operand_two } ) ) {  <new_line>
     $global_text_list_key = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 } else  <new_line>
 {  <new_line>
@@ -22,23 +20,20 @@ $global_destination_phrase = $global_operand_three ;  <new_line>
 $global_text_list_key =~ s/\n/ /sg ;  <new_line>
 $global_text_list_key =~ s/^ +// ;  <new_line>
 $global_text_list_key =~ s/ +$// ;  <new_line>
-if ( $global_text_list_key eq '' )  <new_line>
-{  <new_line>
+if ( $global_text_list_key eq '' ) {  <new_line>
     @list_of_key_values = ( ) ;  <new_line>
 } else  <new_line>
 {  <new_line>
     @list_of_key_values = split( / +/ , $global_text_list_key ) ;  <new_line>
 }  <new_line>
 %listed_word = ( ) ;  <new_line>
-foreach $global_word ( @list_of_key_values )  <new_line>
-{  <new_line>
+foreach $global_word ( @list_of_key_values ) {  <new_line>
     $global_listed_word{ $global_word } = 1 ;  <new_line>
 }  <new_line>
 $global_text_list_loop =~ s/\n/ /sg ;  <new_line>
 $global_text_list_loop =~ s/^ +// ;  <new_line>
 $global_text_list_loop =~ s/ +$// ;  <new_line>
-if ( $global_text_list_loop eq '' )  <new_line>
-{  <new_line>
+if ( $global_text_list_loop eq '' ) {  <new_line>
     @global_list_of_loop_words = ( ) ;  <new_line>
 } else  <new_line>
 {  <new_line>
@@ -51,8 +46,7 @@ $global_number_of_unique_words = 0 ;  <new_line>
 $global_unique_word_at_position[ 0 ] = '' ;  <new_line>
 $global_text_list_of_unique_word_pointers = '' ;  <new_line>
 $global_result_word_list = '' ;  <new_line>
-if ( $global_length_of_loop_list > 0 )  <new_line>
-{  <new_line>
+if ( $global_length_of_loop_list > 0 ) {  <new_line>
     for ( $global_pointer = 1 ; $global_pointer <= $global_length_of_loop_list ; $global_pointer ++ )  <new_line>
     {  <new_line>
         $global_word = $global_list_of_loop_words[ $global_pointer <character_hyphen> 1 ] ;  <new_line>

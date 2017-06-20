@@ -1,7 +1,6 @@
 # Check for endless loop  <new_line>
 $global_endless_loop_counter ++ ;  <new_line>
-if ( $global_endless_loop_counter > $global_endless_loop_counter_limit )  <new_line>
-{  <new_line>
+if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {  <new_line>
 &handle_endless_loop_encountered( ) ;  <new_line>
 exit ;  <new_line>
 }  <new_line>

@@ -1,11 +1,9 @@
 # Check for time limit exceeded  <new_line>
 $global_interval_count_for_time_limit_check ++ ;  <new_line>
-if ( $global_interval_count_for_time_limit_check > 10000 )  <new_line>
-{  <new_line>
+if ( $global_interval_count_for_time_limit_check > 10000 ) {  <new_line>
 $global_interval_count_for_time_limit_check = 0 ;  <new_line>
 $elapsed_time = time - $global_starting_time ;  <new_line>
-if ( $elapsed_time > $global_time_limit )  <new_line>
-{  <new_line>
+if ( $elapsed_time > $global_time_limit ) {  <new_line>
 &handle_time_limit_exceeded( ) ;  <new_line>
 exit ;  <new_line>
 }  <new_line>

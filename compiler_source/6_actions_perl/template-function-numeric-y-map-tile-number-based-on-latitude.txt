@@ -2,8 +2,7 @@ template-interpreter-function-begin
 
 sub function__template_function_numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 
-if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
-{  <new_line>
+if ( $global_action_name eq 'numeric hyphen-here integer' ) {  <new_line>
     $global_result_value = int( $global_operand_one + 0 ) ;  <new_line>
     if ( $global_result_value == 0 )  <new_line>
     {  <new_line>
@@ -16,8 +15,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = $1 ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here odd hyphen-here or hyphen-here even' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here odd hyphen-here or hyphen-here even' ) {  <new_line>
     $global_result_value = int( $global_operand_one + 0 ) ;  <new_line>
     $global_result_value = $global_result_value <character_hyphen> int( ( $global_result_value * 2 ) / 2 ) ;  <new_line>
     if ( $global_result_value == 0 )  <new_line>
@@ -27,8 +25,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = 'odd' ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here sine' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here sine' ) {  <new_line>
     $global_result_value = sin( $global_operand_one + 0.0 ) ;  <new_line>
     if ( $global_result_value == 0 )  <new_line>
     {  <new_line>
@@ -37,8 +34,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = sprintf( "%f" , $global_result_value ) ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here cosine' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here cosine' ) {  <new_line>
     $global_result_value = cos( $global_operand_one + 0.0 ) ;  <new_line>
     if ( $global_result_value == 0 )  <new_line>
     {  <new_line>
@@ -47,8 +43,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = sprintf( "%f" , $global_result_value ) ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here logarithm hyphen-here base hyphen-here e' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here logarithm hyphen-here base hyphen-here e' ) {  <new_line>
     if ( $global_operand_one + 0.0 < 0.000001 )  <new_line>
     {  <new_line>
         $global_result_value = <character_hyphen>999999 ;  <new_line>
@@ -63,8 +58,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = sprintf( "%f" , $global_result_value ) ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here logarithm hyphen-here base<character_hyphen>10' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here logarithm hyphen-here base<character_hyphen>10' ) {  <new_line>
     if ( $global_operand_one + 0.0 < 0.000001 )  <new_line>
     {  <new_line>
         $global_result_value = <character_hyphen>999999 ;  <new_line>
@@ -79,8 +73,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
     {  <new_line>
         $global_action_result = sprintf( "%f" , $global_result_value ) ;  <new_line>
     }  <new_line>
-} elsif ( $global_action_name eq 'numeric hyphen-here y<character_hyphen>map hyphen-here tile hyphen-here number hyphen-here based hyphen-here on hyphen-here latitude' )  <new_line>
-{  <new_line>
+} elsif ( $global_action_name eq 'numeric hyphen-here y<character_hyphen>map hyphen-here tile hyphen-here number hyphen-here based hyphen-here on hyphen-here latitude' ) {  <new_line>
     if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen>85.0 ) )  <new_line>
     {  <new_line>
         $global_action_result = $global_dashrep_replacement{ 'dashrep hyphen-here undefined' } ;  <new_line>
@@ -109,8 +102,7 @@ if ( $global_action_name eq 'numeric hyphen-here integer' )  <new_line>
         $global_action_result = sprintf( "%f" , $global_result_value ) ;  <new_line>
     }  <new_line>
 }  <new_line>
-if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*$/ )  <new_line>
-{  <new_line>
+if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*$/ ) {  <new_line>
     $global_action_result = $1 ;  <new_line>
 }  <new_line>
 

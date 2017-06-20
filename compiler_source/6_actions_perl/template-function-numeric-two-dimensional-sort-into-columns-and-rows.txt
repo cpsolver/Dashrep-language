@@ -2,18 +2,15 @@ template-interpreter-function-begin
 
 sub function__numeric_two_dimensional_sort_into_columns_and_rows( ) {  <new_line>
 
-if ( ( $global_operand_one + 0 ) < 1 )  <new_line>
-{  <new_line>
+if ( ( $global_operand_one + 0 ) < 1 ) {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     next ;  <new_line>
 }  <new_line>
-if ( $global_dashrep_replacement{ $global_operand_two } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ )  <new_line>
-{  <new_line>
+if ( $global_dashrep_replacement{ $global_operand_two } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ ) {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     next ;  <new_line>
 }  <new_line>
-if ( $global_dashrep_replacement{ $global_operand_three } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ )  <new_line>
-{  <new_line>
+if ( $global_dashrep_replacement{ $global_operand_three } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ ) {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     next ;  <new_line>
 }  <new_line>
@@ -31,21 +28,18 @@ unshift( @up_direction_value_for_item_number , 0 ) ;  <new_line>
 @right_direction_value_for_item_number = split( / +/ , $global_text_for_right_direction_values ) ;  <new_line>
 unshift( @right_direction_value_for_item_number , 0 ) ;  <new_line>
 $global_number_of_items = $global_#up_direction_value_for_item_number ;  <new_line>
-if ( ( $global_#up_direction_value_for_item_number != $global_#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ 'dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no' } eq 'yes' ) )  <new_line>
-{  <new_line>
+if ( ( $global_#up_direction_value_for_item_number != $global_#right_direction_value_for_item_number ) && ( $global_dashrep_replacement{ 'dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no' } eq 'yes' ) ) {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     next ;  <new_line>
 }  <new_line>
-if ( ( $global_number_of_items == 0 ) && ( $global_dashrep_replacement{ 'dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no' } eq 'yes' ) )  <new_line>
-{  <new_line>
+if ( ( $global_number_of_items == 0 ) && ( $global_dashrep_replacement{ 'dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no' } eq 'yes' ) ) {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     next ;  <new_line>
 }  <new_line>
 $global_number_of_items_in_bottom_row = $global_number_of_columns ;  <new_line>
 $global_number_of_full_rows = int( $global_number_of_items / $global_number_of_columns ) ;  <new_line>
 $global_number_of_rows = $global_number_of_full_rows ;  <new_line>
-if ( ( $global_number_of_full_rows * $global_number_of_columns ) < $global_number_of_items )  <new_line>
-{  <new_line>
+if ( ( $global_number_of_full_rows * $global_number_of_columns ) < $global_number_of_items ) {  <new_line>
     $global_number_of_rows ++ ;  <new_line>
     $global_number_of_items_in_bottom_row = $global_number_of_items <character_hyphen> ( $global_number_of_full_rows * $global_number_of_columns ) ;  <new_line>
 }  <new_line>
@@ -54,8 +48,7 @@ $global_up_direction_minimum_value = 999999 ;  <new_line>
 $global_up_direction_maximum_value = <character_hyphen>999999 ;  <new_line>
 $global_right_direction_minimum_value = 999999 ;  <new_line>
 $global_right_direction_maximum_value = <character_hyphen>999999 ;  <new_line>
-for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ )  <new_line>
-{  <new_line>
+for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ ) {  <new_line>
     $global_zero_if_not_remaining_item_number[ $global_item_number ] = $global_item_number ;  <new_line>
     if ( $global_up_direction_value_for_item_number[ $global_item_number ] < $global_up_direction_minimum_value )  <new_line>
     {  <new_line>
@@ -77,29 +70,25 @@ for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ;
 }  <new_line>
 $global_range_of_up_direction_values = $global_up_direction_maximum_value <character_hyphen> $global_up_direction_minimum_value ;  <new_line>
 $global_range_of_right_direction_values = $global_right_direction_maximum_value <character_hyphen> $global_right_direction_minimum_value ;  <new_line>
-if ( $global_range_of_up_direction_values > 0.0001 )  <new_line>
-{  <new_line>
+if ( $global_range_of_up_direction_values > 0.0001 ) {  <new_line>
     $global_multiplier_for_up_direction_values = $global_number_of_rows * 100.00 / $global_range_of_up_direction_values ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_multiplier_for_up_direction_values = $global_number_of_rows * 1.0 ;  <new_line>
     $global_up_direction_minimum_value = $global_up_direction_minimum_value <character_hyphen> 1.0 ;  <new_line>
 }  <new_line>
-if ( $global_range_of_right_direction_values > 0.0001 )  <new_line>
-{  <new_line>
+if ( $global_range_of_right_direction_values > 0.0001 ) {  <new_line>
     $global_multiplier_for_right_direction_values = $global_number_of_columns * 100.00 / $global_range_of_right_direction_values ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_multiplier_for_right_direction_values = $global_number_of_columns * 1.0 ;  <new_line>
     $global_right_direction_minimum_value = $global_right_direction_minimum_value <character_hyphen> 1.0 ;  <new_line>
 }  <new_line>
-for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ )  <new_line>
-{  <new_line>
+for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ ) {  <new_line>
     $global_up_direction_value_for_item_number[ $global_item_number ] = ( $global_up_direction_value_for_item_number[ $global_item_number ] <character_hyphen> $global_up_direction_minimum_value ) * $global_multiplier_for_up_direction_values ;  <new_line>
     $global_right_direction_value_for_item_number[ $global_item_number ] = ( $global_right_direction_value_for_item_number[ $global_item_number ] <character_hyphen> $global_right_direction_minimum_value ) * $global_multiplier_for_right_direction_values ;  <new_line>
 }  <new_line>
-for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ )  <new_line>
-{  <new_line>
+for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ ) {  <new_line>
     $global_right_and_up_direction_value_for_item_number[ $global_item_number ] = $global_right_direction_value_for_item_number[ $global_item_number ] + $global_up_direction_value_for_item_number[ $global_item_number ] ;  <new_line>
     $global_left_and_up_direction_value_for_item_number[ $global_item_number ] = <character_hyphen> $global_right_direction_value_for_item_number[ $global_item_number ] + $global_up_direction_value_for_item_number[ $global_item_number ] ;  <new_line>
 }  <new_line>
@@ -120,8 +109,7 @@ $global_top_right_open_column = $global_number_of_columns ;  <new_line>
 $global_bottom_left_open_column = 1 ;  <new_line>
 $global_bottom_right_open_column = $global_number_of_items_in_bottom_row ;  <new_line>
 $global_number_of_items_remaining = $global_number_of_items ;  <new_line>
-while ( $global_number_of_items_remaining > 0 )  <new_line>
-{  <new_line>
+while ( $global_number_of_items_remaining > 0 ) {  <new_line>
     for ( $global_fill_direction = $global_fill_direction_top_left ; $global_fill_direction <= $global_fill_direction_top_right ; $global_fill_direction ++ )  <new_line>
     {  <new_line>
         if ( $global_fill_direction == $global_fill_direction_top_left )  <new_line>
@@ -319,8 +307,7 @@ while ( $global_number_of_items_remaining > 0 )  <new_line>
     }  <new_line>
 }  <new_line>
 $global_final_result = '' ;  <new_line>
-for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ )  <new_line>
-{  <new_line>
+for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ ) {  <new_line>
     $global_row_number = $global_row_position_for_item_number[ $global_item_number ] ;  <new_line>
     $global_column_number = $global_column_position_for_item_number[ $global_item_number ] ;  <new_line>
     $global_final_result .= 'row<character_hyphen>' . $global_row_number . '<character_hyphen>column<character_hyphen>' . $global_column_number . ' ' ;  <new_line>

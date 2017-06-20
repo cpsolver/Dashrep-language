@@ -6,8 +6,7 @@ $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_list_of_positions = '' ;  <new_line>
 $global_phrase_length = length( $global_string_to_search ) + 1 ;  <new_line>
-if ( ( $global_phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $global_operand_three } ) ) )  <new_line>
-{  <new_line>
+if ( ( $global_phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $global_operand_three } ) ) ) {  <new_line>
     $global_text_list_of_start_matching_positions = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
     $global_text_list_of_start_matching_positions =~ s/\n/ /sg ;  <new_line>
     $global_text_list_of_start_matching_positions =~ s/^ +// ;  <new_line>

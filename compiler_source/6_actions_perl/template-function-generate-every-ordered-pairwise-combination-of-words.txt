@@ -18,11 +18,9 @@ $global_temp_text =~ s/ +$// ;  <new_line>
 @input_list_two = split( / +/ , $global_temp_text ) ;  <new_line>
 $global_count_list_one = $global_#input_list_one + 1 ;  <new_line>
 $global_count_list_two = $global_#input_list_two + 1 ;  <new_line>
-if ( $global_count_list_one < 1 )  <new_line>
-{  <new_line>
+if ( $global_count_list_one < 1 ) {  <new_line>
 
-} elsif ( $global_count_list_two < 1 )  <new_line>
-{  <new_line>
+} elsif ( $global_count_list_two < 1 ) {  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_dashrep_replacement{ $global_output_list_one_phrase_name } = '' ;  <new_line>

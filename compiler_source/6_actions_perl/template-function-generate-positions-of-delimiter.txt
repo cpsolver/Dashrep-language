@@ -7,8 +7,7 @@ $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ; 
 $global_search_starting_position = 0 ;  <new_line>
 $global_list_of_positions = '' ;  <new_line>
 $global_phrase_length = length( $global_string_to_search ) + 1 ;  <new_line>
-if ( $global_phrase_length > 0 )  <new_line>
-{  <new_line>
+if ( $global_phrase_length > 0 ) {  <new_line>
     $global_local_endless_loop_counter = 0 ;  <new_line>
     $global_local_endless_loop_counter_maximum = 10000 ;  <new_line>
     $global_position = index( $global_string_to_search , $global_string_to_find , $global_search_starting_position ) ;  <new_line>
