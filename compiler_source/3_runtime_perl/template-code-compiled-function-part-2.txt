@@ -1,2 +1,3 @@
 ( ) {  <new_line>
-$global_replacement_count_for_item_name{ '
+# $phrase_usage_count_for_phrase_number[ 1 ] ++  <new_line>
+# $global_replacement_count_for_item_name{ '
