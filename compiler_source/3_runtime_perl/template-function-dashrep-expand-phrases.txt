@@ -98,14 +98,14 @@ while ( ( $pointer_to_phrase_begin < $length_of_code_at_recursion_level_current 
 $pointer_to_phrase_begin ++ ;  <new_line>
 }  <new_line>
 $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , ' ' , $pointer_to_phrase_begin ) ;  <new_line>
-if ( $pointer_to_next_space == <character_hyphen>1 ) {  <new_line>
-$pointer_to_phrase_end = $length_of_code_at_recursion_level_current <character_hyphen> 1 ;  <new_line>
+if ( $pointer_to_next_space == -1 ) {  <new_line>
+$pointer_to_phrase_end = $length_of_code_at_recursion_level_current - 1 ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $length_of_code_at_recursion_level_current ;  <new_line>
 } else  <new_line>
 {  <new_line>
 $pointer_to_next_space = index( $code_at_recursion_level[ $recursion_level ] , ' ' , $pointer_to_phrase_begin ) ;  <new_line>
 if ( $pointer_to_next_space > $pointer_to_phrase_begin ) {  <new_line>
-$pointer_to_phrase_end = $pointer_to_next_space <character_hyphen> 1 ;  <new_line>
+$pointer_to_phrase_end = $pointer_to_next_space - 1 ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_next_space ;  <new_line>
 } else  <new_line>
 {  <new_line>
@@ -116,7 +116,7 @@ if ( $pointer_to_phrase_begin > $pointer_to_phrase_end ) {  <new_line>
 $recursion_level <character_hyphen><character_hyphen> ;  <new_line>
 next ;  <new_line>
 }  <new_line>
-$current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end <character_hyphen> $pointer_to_phrase_begin + 1 ) ) ;  <new_line>
+$current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end - $pointer_to_phrase_begin + 1 ) ) ;  <new_line>
 
 *---
 Check for an endless loop caused by the same
@@ -264,7 +264,7 @@ $output_buffer =~ s/ *<placeholder_for_empty_line> */\n/sg ;  <new_line>
 if ( $output_buffer =~ /<((no_space)|(hyphen_ no-space here)|(new_line))> *$/ ) {  <new_line>
 $space_directive = 'none' ;  <new_line>
 }  <new_line>
-$length_of_output_buffer = <character_hyphen>1 ;  <new_line>
+$length_of_output_buffer = -1 ;  <new_line>
 $pointer_to_remainder_of_output_buffer = 0 ;  <new_line>
 $new_output_buffer = '' ;  <new_line>
 while ( substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) =~ /^(.*?)<([^ \<character_hyphen><character_close_angle_bracket>]+_[^ \<character_hyphen><character_close_angle_bracket>]+)<character_close_angle_bracket>/s ) {  <new_line>
@@ -284,7 +284,7 @@ $new_output_buffer .= $global_dashrep_replacement{ $possible_phrase_name_with_hy
 $new_output_buffer .= '<' . $possible_phrase_name_with_underscores . '>' ;  <new_line>
 }  <new_line>
 }  <new_line>
-if ( $length_of_output_buffer != <character_hyphen>1 ) {  <new_line>
+if ( $length_of_output_buffer != -1 ) {  <new_line>
 $output_buffer = $new_output_buffer . substr( $output_buffer , $pointer_to_remainder_of_output_buffer ) ;  <new_line>
 $new_output_buffer = '' ;  <new_line>
 $possible_phrase_name_with_underscores = '' ;  <new_line>
