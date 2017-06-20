@@ -10,12 +10,12 @@ sub function__copy_words_from_position_to_position( ) {  <new_line>
                 $global_temp_text =~ s/\n/ /sg ;  <new_line>
                 $global_temp_text =~ s/^ +// ;  <new_line>
                 $global_temp_text =~ s/ +$// ;  <new_line>
-                @list = split( / +/ , $global_temp_text ) ;  <new_line>
+                @global_list = split( / +/ , $global_temp_text ) ;  <new_line>
             } else  <new_line>
             {  <new_line>
                 @global_list = ( ) ;  <new_line>
             }  <new_line>
-            $global_word_count = $global_list + 1 ;  <new_line>
+            $global_word_count = $#global_list + 1 ;  <new_line>
             if ( $global_word_number_end > $global_word_count )  <new_line>
             {  <new_line>
                 $global_word_number_end = $global_word_count ;  <new_line>
@@ -30,7 +30,7 @@ sub function__copy_words_from_position_to_position( ) {  <new_line>
                 $global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
                 for ( $global_word_number = $global_word_number_begin ; $global_word_number <= $global_word_number_end ; $global_word_number ++ )  <new_line>
                 {  <new_line>
-                    $global_result_text .= $global_separator . $global_list[ $global_word_number <character_hyphen> 1 ] ;  <new_line>
+                    $global_result_text .= $global_separator . $global_list[ $global_word_number - 1 ] ;  <new_line>
                     $global_separator = ' ' ;  <new_line>
                 }  <new_line>
                 $global_result_text =~ s/ +$// ;  <new_line>

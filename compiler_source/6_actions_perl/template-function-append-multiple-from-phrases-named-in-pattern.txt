@@ -35,7 +35,7 @@ if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
     return ;  <new_line>
 }  <new_line>
 @global_list_of_parameter_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
-for ( $global_pointer = 0 ; $global_pointer <= $global_list_of_parameter_words ; $global_pointer ++ ) {  <new_line>
+for ( $global_pointer = 0 ; $global_pointer <= $#global_list_of_parameter_words ; $global_pointer ++ ) {  <new_line>
     $global_source_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
     if ( ( $global_source_phrase_name =~ /^[^ ]+$/ ) && ( defined( $global_dashrep_replacement{ $global_source_phrase_name } ) ) )  <new_line>
     {  <new_line>

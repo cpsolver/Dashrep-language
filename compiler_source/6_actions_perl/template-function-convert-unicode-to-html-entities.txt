@@ -18,7 +18,7 @@ if ( $global_action_name eq 'convert hyphen-here unicode hyphen-here to hyphen-h
     $global_accumulated_text = '' ;  <new_line>
     @global_octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $global_source_phrase_name } ) ;  <new_line>
     $global_yes_or_no_within_ampersand_encoded_character = 'no' ;  <new_line>
-    $global_pointer = <character_hyphen>1 ;  <new_line>
+    $global_pointer = -1 ;  <new_line>
     while ( $global_pointer < $global_octet_number_at_position )  <new_line>
     {  <new_line>
         $global_pointer ++ ;  <new_line>
@@ -32,27 +32,27 @@ if ( $global_action_name eq 'convert hyphen-here unicode hyphen-here to hyphen-h
             $global_accumulated_text .= chr( $global_octet_number ) ;  <new_line>
         } elsif ( $global_octet_number >= 0xfc )  <new_line>
         {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( ( ( ( ( $global_octet_number <character_hyphen> 0xfc ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 5 ] <character_hyphen> 128 ;  <new_line>
+            $global_unicode_number = ( ( ( ( ( ( ( ( ( ( $global_octet_number - 0xfc ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 5 ] - 128 ;  <new_line>
             $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
             $global_pointer += 5 ;  <new_line>
         } elsif ( $global_octet_number >= 0xf8 )  <new_line>
         {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( ( ( $global_octet_number <character_hyphen> 0xf8 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] <character_hyphen> 128 ;  <new_line>
+            $global_unicode_number = ( ( ( ( ( ( ( ( $global_octet_number - 0xf8 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ;  <new_line>
             $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
             $global_pointer += 4 ;  <new_line>
         } elsif ( $global_octet_number >= 0xf0 )  <new_line>
         {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( $global_octet_number <character_hyphen> 0xf0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] <character_hyphen> 128 ;  <new_line>
+            $global_unicode_number = ( ( ( ( ( ( $global_octet_number - 0xf0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ;  <new_line>
             $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
             $global_pointer += 3 ;  <new_line>
         } elsif ( $global_octet_number >= 0xe0 )  <new_line>
         {  <new_line>
-            $global_unicode_number = ( ( ( ( $global_octet_number <character_hyphen> 0xe0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] <character_hyphen> 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] <character_hyphen> 128 ;  <new_line>
+            $global_unicode_number = ( ( ( ( $global_octet_number - 0xe0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ;  <new_line>
             $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
             $global_pointer += 2 ;  <new_line>
         } elsif ( $global_octet_number >= 0xc0 )  <new_line>
         {  <new_line>
-            $global_unicode_number = ( ( $global_octet_number <character_hyphen> 0xc0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] <character_hyphen> 128 ;  <new_line>
+            $global_unicode_number = ( ( $global_octet_number - 0xc0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ;  <new_line>
             $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
             $global_pointer += 1 ;  <new_line>
         } elsif ( $global_octet_number > 0 )  <new_line>

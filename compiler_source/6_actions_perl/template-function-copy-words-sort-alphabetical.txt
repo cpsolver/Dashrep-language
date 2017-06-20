@@ -77,16 +77,16 @@ if ( $global_action_name eq 'copy hyphen-here without hyphen-here extra hyphen-h
     $global_temp_text =~ s/\n/ /sg ;  <new_line>
     $global_temp_text =~ s/^ +// ;  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>
-    @list = split( / +/ , $global_temp_text ) ;  <new_line>
+    @global_list = split( / +/ , $global_temp_text ) ;  <new_line>
     @list_of_sorted_numbers = sort { $global_a <=> $global_b } @list ;  <new_line>
     $global_temp_text = join( ' ' , @list_of_sorted_numbers ) ;  <new_line>
 } elsif ( $global_action_name eq 'copy hyphen-here words hyphen-here sort hyphen-here alphabetic' ) {  <new_line>
     $global_temp_text =~ s/\n/ /sg ;  <new_line>
     $global_temp_text =~ s/^ +// ;  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>
-    @list = split( / +/ , $global_temp_text ) ;  <new_line>
-    @list_of_sorted_numbers = sort( @list ) ;  <new_line>
-    $global_temp_text = join( ' ' , @list_of_sorted_numbers ) ;  <new_line>
+    @global_list = split( / +/ , $global_temp_text ) ;  <new_line>
+    @global_list_of_sorted_numbers = sort( @global_list ) ;  <new_line>
+    $global_temp_text = join( ' ' , @global_list_of_sorted_numbers ) ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;  <new_line>
 
