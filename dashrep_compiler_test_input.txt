@@ -277,9 +277,9 @@ text-that-occurs-within-parameter-phrases
 [-put-into-phrase correct-value-for-list-of-unique-word-counts  2 2 1 3 1 2 1 1 -]
 [-put-into-phrase correct-value-for-find-in-lists-result  alpha alpha-here beta delta - beta whatever something-here gamma alpha-here alpha delta and - alpha beta beta alpha beta - alpha alpha-here and beta gamma delta something-here whatever - 2 2 1 3 1 2 1 1 - 1 2 3 4 5 7 8 13 -]
 
-[-put-into-phrase already-expanded-phrase  one<character_hyphen>two<character_hyphen>three <item_one> -]
-[-insert-angle-bracketed-definitions already-expanded-phrase-]
-[-put-into-phrase correct-value-for-already-expanded-phrase  one-two-three waltz -]
+[-put-into-phrase contains-angle-bracketed-phrase-names  one<character_hyphen>two<character_hyphen>three <item_one> -]
+[-expand-text contains-angle-bracketed-phrase-names expanded-contains-angle-bracketed-phrase-names-]
+[-put-into-phrase expanded-contains-angle-bracketed-phrase-names  one-two-three waltz -]
 [-put-into-phrase yes-or-no-allow-user-defined-actions  yes -]
 [-put-into-phrase string-123  123  -]
 [-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
