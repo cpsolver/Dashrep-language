@@ -5,15 +5,19 @@ sub function__copy_and_replace( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
+
 if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>
     $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
 }  <new_line>
+
 $global_string_to_be_replaced = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
+
 if ( exists( $global_dashrep_replacement{ $global_operand_four } ) ) {  <new_line>
     $global_text_to_insert = $global_dashrep_replacement{ $global_operand_four } ;  <new_line>
 } else {  <new_line>
     $global_text_to_insert = '' ;  <new_line>
 }  <new_line>
+
 $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
 if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced ) ) && ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) ) {  <new_line>
 } elsif ( ( length( $global_string_to_be_replaced ) >= length( $global_text_to_insert ) ) && ( length( $global_text_to_insert ) > 0 ) && ( index( $global_string_to_be_replaced , $global_text_to_insert ) >= 0 ) ) {  <new_line>

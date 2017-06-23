@@ -3,7 +3,7 @@ template-interpreter-function-begin
 sub function__insert_codeview_tags( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-if ( not( exists( $global_action_name_exists{ 'no hyphen-here space' } ) ) || ( $global_action_name_exists{ 'no hyphen-here space' } ne 'yes' ) ) {  <new_line>
+if ( not( exists( $global_action_name_exists{ 'no<character_hyphen>space' } ) ) || ( $global_action_name_exists{ 'no<character_hyphen>space' } ne 'yes' ) ) {  <new_line>
     @global_list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;  <new_line>
     foreach $global_action_name ( @global_list_of_action_names )  <new_line>
     {  <new_line>
@@ -19,8 +19,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_odd_or_even_based_on_zero_or_one[ 1 ] = 'odd' ;  <new_line>
     $global_accumulated_text = '' ;  <new_line>
     $global_remaining_text = $global_string_in_phrase ;  <new_line>
-    while ( $global_remaining_text =~ /^(.*?)((\[<character_hyphen>)|(<character_hyphen>\]))(.*)$/ )  <new_line>
-    {  <new_line>
+    while ( $global_remaining_text =~ /^(.*?)((\[<character_hyphen>)|(<character_hyphen>\]))(.*)$/ ) {  <new_line>
         $global_prefix_text = $1 ;  <new_line>
         $global_parameter_begin_or_end_string = $2 ;  <new_line>
         $global_remaining_text = $5 ;  <new_line>
@@ -48,8 +47,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_string_in_phrase = $global_accumulated_text . $global_remaining_text ;  <new_line>
     $global_accumulated_text = '' ;  <new_line>
     $global_remaining_text = $global_string_in_phrase ;  <new_line>
-    while ( $global_remaining_text =~ /^(.*?)([^ <>]+<character_hyphen>[^ <>]+)(([ <]).*)$/ )  <new_line>
-    {  <new_line>
+    while ( $global_remaining_text =~ /^(.*?)([^ <>]+<character_hyphen>[^ <>]+)(([ <]).*)$/ ) {  <new_line>
         $global_prefix_text = $1 ;  <new_line>
         $global_phrase_name = $2 ;  <new_line>
         $global_remaining_text = $3 ;  <new_line>

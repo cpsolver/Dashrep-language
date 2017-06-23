@@ -14,12 +14,12 @@ $global_temp_text =~ s/^ +// ;  <new_line>
 $global_temp_text =~ s/ +$// ;  <new_line>
 $global_remaining_text = $global_temp_text ;  <new_line>
 $global_accumulated_text = '' ;  <new_line>
-if ( $global_remaining_text =~ /^([a hyphen-here z])(.*)$/ ) {  <new_line>
+if ( $global_remaining_text =~ /^([a<character_hyphen>z])(.*)$/ ) {  <new_line>
     $global_character_to_capitalize = $1 ;  <new_line>
     $global_remaining_text = $2 ;  <new_line>
     $global_accumulated_text .= uc( $global_character_to_capitalize ) ;  <new_line>
 }  <new_line>
-while ( $global_remaining_text =~ /^(.*?) ([a hyphen-here z])(.*)$/ ) {  <new_line>
+while ( $global_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) {  <new_line>
     $global_accumulated_text .= $1 ;  <new_line>
     $global_character_to_capitalize = $2 ;  <new_line>
     $global_remaining_text = $3 ;  <new_line>
