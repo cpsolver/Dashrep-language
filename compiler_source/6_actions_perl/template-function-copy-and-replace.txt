@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__copy_and_replace( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
 if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>

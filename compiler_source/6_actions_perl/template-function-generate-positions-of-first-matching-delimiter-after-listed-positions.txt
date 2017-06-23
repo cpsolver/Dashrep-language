@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_list_of_positions = '' ;  <new_line>

@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__append_repeatedly_using_count( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_text_to_append = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 } else {  <new_line>

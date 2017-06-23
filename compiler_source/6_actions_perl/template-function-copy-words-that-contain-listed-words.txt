@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__copy_words_that_contain_listed_words( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>

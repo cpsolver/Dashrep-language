@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__numeric_vector_add_number( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 $global_single_value = $global_operand_two + 0 ;  <new_line>

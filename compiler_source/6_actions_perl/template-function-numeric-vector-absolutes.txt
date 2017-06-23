@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__numeric_vector_absolutes( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_required_number_of_operands = $global_required_number_of_operands_for_action{ $global_action_name } ;  <new_line>
 $global_target_operand = $global_operand_two ;  <new_line>

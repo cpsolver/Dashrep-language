@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__generate_list_of_all_dashrep_phrases( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 delete( $global_dashrep_replacement{ 'list hyphen-here of hyphen-here phrases hyphen-here newly hyphen-here defined' } ) ;  <new_line>
 @global_list_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
 @global_sequence_of_phrases = sort( @global_list_of_phrases ) ;  <new_line>
