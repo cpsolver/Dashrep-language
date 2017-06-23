@@ -21,13 +21,13 @@ $global_text_list_key =~ s/\n/ /sg ;  <new_line>
 $global_text_list_key =~ s/^ +// ;  <new_line>
 $global_text_list_key =~ s/ +$// ;  <new_line>
 if ( $global_text_list_key eq '' ) {  <new_line>
-    @list_of_key_values = ( ) ;  <new_line>
+    @global_list_of_key_values = ( ) ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    @list_of_key_values = split( / +/ , $global_text_list_key ) ;  <new_line>
+    @global_list_of_key_values = split( / +/ , $global_text_list_key ) ;  <new_line>
 }  <new_line>
 %listed_word = ( ) ;  <new_line>
-foreach $global_word ( @list_of_key_values ) {  <new_line>
+foreach $global_word ( @global_list_of_key_values ) {  <new_line>
     $global_listed_word{ $global_word } = 1 ;  <new_line>
 }  <new_line>
 $global_text_list_loop =~ s/\n/ /sg ;  <new_line>

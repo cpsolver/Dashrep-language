@@ -28,15 +28,15 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
         }  <new_line>
         if ( $global_source_text =~ / / )  <new_line>
         {  <new_line>
-            @list_of_words = split( / +/ , $global_source_text ) ;  <new_line>
+            @global_list_of_words = split( / +/ , $global_source_text ) ;  <new_line>
         } else  <new_line>
         {  <new_line>
-            @list_of_words = ( ) ;  <new_line>
+            @global_list_of_words = ( ) ;  <new_line>
             $global_list_of_words[ 0 ] = $global_source_text ;  <new_line>
         }  <new_line>
-        if ( $global_word_position > scalar( @list_of_words + 1 ) )  <new_line>
+        if ( $global_word_position > scalar( @global_list_of_words + 1 ) )  <new_line>
         {  <new_line>
-            $global_word_position = scalar( @list_of_words + 1 ) ;  <new_line>
+            $global_word_position = scalar( @global_list_of_words + 1 ) ;  <new_line>
         }  <new_line>
         $global_dashrep_replacement{ $global_target_phrase_name } = $global_list_of_words[ $global_word_position - 1 ] ;  <new_line>
     } elsif ( ( $global_action_name eq 'copy hyphen-here words hyphen-here rearrange hyphen-here using hyphen-here order hyphen-here sort hyphen-here alphabetic' ) || ( $global_action_name eq 'copy hyphen-here words hyphen-here rearrange hyphen-here using hyphen-here order hyphen-here sort hyphen-here numeric' ) )  <new_line>
@@ -57,10 +57,10 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
 
         if ( $global_action_name eq 'copy hyphen-here words hyphen-here rearrange hyphen-here using hyphen-here order hyphen-here sort hyphen-here numeric' )  <new_line>
         {  <new_line>
-            @sort_order = sort { $global_a <=> $global_b } @list_indicating_sort_order ;  <new_line>
+            @sort_order = sort { $a <=> $b } @global_list_indicating_sort_order ;  <new_line>
         } else  <new_line>
         {  <new_line>
-            @sort_order = sort( @list_indicating_sort_order ) ;  <new_line>
+            @sort_order = sort( @global_list_indicating_sort_order ) ;  <new_line>
         }  <new_line>
         $global_extra_words_without_sort_value = '' ;  <new_line>
         if ( $global_list_indicating_sort_order < $global_list_of_words )  <new_line>

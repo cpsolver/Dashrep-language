@@ -3,8 +3,8 @@ template-interpreter-function-begin
 sub function__insert_codeview_tags( ) {  <new_line>
 
 if ( not( exists( $global_action_name_exists{ 'no hyphen-here space' } ) ) || ( $global_action_name_exists{ 'no hyphen-here space' } ne 'yes' ) ) {  <new_line>
-    @list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;  <new_line>
-    foreach $global_action_name ( @list_of_action_names )  <new_line>
+    @global_list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;  <new_line>
+    foreach $global_action_name ( @global_list_of_action_names )  <new_line>
     {  <new_line>
         $global_action_name_exists{ $global_action_name } = 'yes' ;  <new_line>
     }  <new_line>

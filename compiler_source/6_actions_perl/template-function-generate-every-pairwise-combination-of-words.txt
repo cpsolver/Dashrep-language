@@ -16,8 +16,8 @@ $global_temp_text =~ s/\n/ /sg ;  <new_line>
 $global_temp_text =~ s/^ +// ;  <new_line>
 $global_temp_text =~ s/ +$// ;  <new_line>
 @global_input_list_two = split( / +/ , $global_temp_text ) ;  <new_line>
-$global_count_list_one = $global_input_list_one + 1 ;  <new_line>
-$global_count_list_two = $global_input_list_two + 1 ;  <new_line>
+$global_count_list_one = $#global_input_list_one + 1 ;  <new_line>
+$global_count_list_two = $#global_input_list_two + 1 ;  <new_line>
 if ( $global_count_list_one < 1 ) {  <new_line>
 
 } elsif ( $global_count_list_two < 1 ) {  <new_line>

@@ -4,7 +4,7 @@
 
 sub function_parameterized__get_list_of_words( ) {  <new_line>
 my $local_text ;  <new_line>
-my @list_of_operands ;  <new_line>
+my @global_list_of_operands ;  <new_line>
 $local_text = $_[ 0 ] ;  <new_line>
 
 if ( $local_text !~ /[^ ]/ ) {  <new_line>
@@ -21,7 +21,7 @@ if ( $local_text =~ / $/ ) {  <new_line>
 $local_text =~ s/ +$// ;  <new_line>
 }  <new_line>
 
-@list_of_operands = split( / +/ , $local_text ) ;  <new_line>
-return @list_of_operands ;  <new_line>
+@global_list_of_operands = split( / +/ , $local_text ) ;  <new_line>
+return @global_list_of_operands ;  <new_line>
 
 template-function-segment-ending

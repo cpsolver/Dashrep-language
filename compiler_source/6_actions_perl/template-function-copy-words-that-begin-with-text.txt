@@ -12,18 +12,18 @@ $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text =~ / / ) {  <new_line>
-    @list_of_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
+    @global_list_of_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
 } elsif ( $global_list_of_words_as_text eq '' ) {  <new_line>
-    @list_of_words = ( ) ;  <new_line>
+    @global_list_of_words = ( ) ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    @list_of_words = ( ) ;  <new_line>
+    @global_list_of_words = ( ) ;  <new_line>
     $global_list_of_words[ 0 ] = $global_list_of_words_as_text ;  <new_line>
 }  <new_line>
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
 $global_length_of_string = length( $global_string_to_search ) ;  <new_line>
 $global_generated_list = '' ;  <new_line>
-foreach $global_word ( @list_of_words ) {  <new_line>
+foreach $global_word ( @global_list_of_words ) {  <new_line>
     if ( substr( $global_word , 0 , $global_length_of_string ) eq $global_string_to_search )  <new_line>
     {  <new_line>
         $global_generated_list .= $global_word . ' ' ;  <new_line>

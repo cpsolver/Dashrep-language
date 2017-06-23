@@ -17,8 +17,8 @@ foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) 
     $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= $global_phrase_name ;  <new_line>
 }  <new_line>
 foreach $global_replacement_count_text ( reverse( sort( keys( %endless_loop_replacements_with_count ) ) ) ) {  <new_line>
-    @list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
-    foreach $global_phrase_name ( @list_of_phrase_names )  <new_line>
+    @global_list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
+    foreach $global_phrase_name ( @global_list_of_phrase_names )  <new_line>
     {  <new_line>
         $global_result_text .= $global_replacement_count_text . ' ' . $global_phrase_name  . "\n" ;  <new_line>
     }  <new_line>

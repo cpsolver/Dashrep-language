@@ -10,14 +10,14 @@ $global_words_to_find =~ s/^ +// ;  <new_line>
 $global_words_to_find =~ s/ +$// ;  <new_line>
 if ( $global_words_to_find =~ / / ) {  <new_line>
     @global_list_of_text_items_to_find = split( / +/ , $global_words_to_find ) ;  <new_line>
-    $global_number_of_items_to_find = $global_list_of_text_items_to_find + 1 ;  <new_line>
+    $global_number_of_items_to_find = $#global_list_of_text_items_to_find + 1 ;  <new_line>
 } elsif ( $global_words_to_find =~ /^[^ ]+$/ ) {  <new_line>
-    @list_of_text_items_to_find = ( ) ;  <new_line>
+    @global_list_of_text_items_to_find = ( ) ;  <new_line>
     $global_list_of_text_items_to_find[ 0 ] = $global_words_to_find ;  <new_line>
     $global_number_of_items_to_find = 1 ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    @list_of_text_items_to_find = ( ) ;  <new_line>
+    @global_list_of_text_items_to_find = ( ) ;  <new_line>
     $global_number_of_items_to_find = 0 ;  <new_line>
 }  <new_line>
 %text_to_find_at_position = ( ) ;  <new_line>

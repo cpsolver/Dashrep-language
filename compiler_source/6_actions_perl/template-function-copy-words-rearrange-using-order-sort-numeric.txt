@@ -57,7 +57,7 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
 
         if ( $global_action_name eq 'copy hyphen-here words hyphen-here rearrange hyphen-here using hyphen-here order hyphen-here sort hyphen-here numeric' )  <new_line>
         {  <new_line>
-            @global_sort_order = sort { $global_a <=> $global_b } @global_list_indicating_sort_order ;  <new_line>
+            @global_sort_order = sort { $a <=> $b } @global_list_indicating_sort_order ;  <new_line>
         } else  <new_line>
         {  <new_line>
             @global_sort_order = sort( @global_list_indicating_sort_order ) ;  <new_line>
