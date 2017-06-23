@@ -2,6 +2,7 @@ template-interpreter-function-begin
 
 sub function__copy_words_found_in_either_list( ) {  <new_line>
 
+$global_action_result = '' ;  <new_line>
 $global_text_list_key = $global_dashrep_replacement{ $global_operand_one } . ' ' . $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_text_list_key =~ s/\n/ /sg ;  <new_line>
 $global_text_list_key =~ s/^ +// ;  <new_line>
@@ -9,12 +10,12 @@ $global_text_list_key =~ s/ +$// ;  <new_line>
 $global_result_word_list = '' ;  <new_line>
 if ( $global_text_list_key ne '' ) {  <new_line>
     @global_list_of_key_values = split( / +/ , $global_text_list_key ) ;  <new_line>
-    %listed_word = ( ) ;  <new_line>
+    %global_listed_word = ( ) ;  <new_line>
     foreach $global_word ( @global_list_of_key_values )  <new_line>
     {  <new_line>
         $global_listed_word{ $global_word } = 'exists' ;  <new_line>
     }  <new_line>
-    foreach $global_word ( keys( %listed_word ) )  <new_line>
+    foreach $global_word ( keys( %global_listed_word ) )  <new_line>
     {  <new_line>
         $global_result_word_list .= $global_word . ' ' ;  <new_line>
     }  <new_line>
