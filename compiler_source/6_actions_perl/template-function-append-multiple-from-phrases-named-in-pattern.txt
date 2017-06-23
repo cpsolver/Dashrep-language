@@ -10,8 +10,7 @@ if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_patt
     $global_prefix = $1 ;  <new_line>
     $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
     $global_suffix = $3 ;  <new_line>
-} else  <new_line>
-{  <new_line>
+} else {  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
     return ;  <new_line>
 }  <new_line>

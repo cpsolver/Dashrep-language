@@ -26,8 +26,7 @@ for ( $global_pair_pointer_offset_zero = 0 ; $global_pair_pointer_offset_zero <=
         $global_remaining_text = $global_result_text ;  <new_line>
         $global_result_text = '' ;  <new_line>
         $global_pointer_to_matching_text = index( $global_remaining_text , $global_string_to_be_replaced ) ;  <new_line>
-        while ( $global_pointer_to_matching_text >= 0 )  <new_line>
-        {  <new_line>
+        while ( $global_pointer_to_matching_text >= 0 ) {  <new_line>
             if ( $global_pointer_to_matching_text > 0 )  <new_line>
             {  <new_line>
                 $global_result_text .= substr( $global_remaining_text , 0 , $global_pointer_to_matching_text ) ;  <new_line>
