@@ -156,7 +156,6 @@ my $global_item_number_at_min_or_max = 0 ;  <new_line>
 my $global_item_number_at_row_column = 0 ;  <new_line>
 my $global_item_number_found_at_position = 0 ;  <new_line>
 my $global_last_pointer = 0 ;  <new_line>
-my $global_left_and_up_direction_value_for_item_number = '' ;  <new_line>
 my $global_length_desired = 0 ;  <new_line>
 my $global_length_of_first_word = 0 ;  <new_line>
 my $global_length_of_loop_list = 0 ;  <new_line>
