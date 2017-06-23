@@ -8,8 +8,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_temp_text =~ s/^ +// ;  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>
     @global_list = split( / +/ , $global_temp_text ) ;  <new_line>
-} else  <new_line>
-{  <new_line>
+} else {  <new_line>
     @global_list = ( ) ;  <new_line>
 }  <new_line>
 $global_count = $global_list + 1 ;  <new_line>

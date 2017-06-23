@@ -7,8 +7,7 @@ sub function__split_epoch_seconds_into_named_components( ) {  <new_line>
 #  split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components  <new_line>
 #  split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components hyphen-here for hyphen-here zero hyphen-here meridian  <new_line>
 
-        if ( ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components" ) || ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components hyphen-here for hyphen-here zero hyphen-here meridian" ) )  <new_line>
-        {  <new_line>
+        if ( ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components" ) || ( $global_action_name eq "split hyphen-here epoch hyphen-here seconds hyphen-here into hyphen-here named hyphen-here components hyphen-here for hyphen-here zero hyphen-here meridian" ) ) {  <new_line>
             if ( $global_operand_one !~ /^[\<character_hyphen>0<character_hyphen>9\.]+$/ )  <new_line>
             {  <new_line>
                 $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>

@@ -6,8 +6,7 @@ $global_single_value = 0 ;  <new_line>
 $global_required_number_of_operands = $global_required_number_of_operands_for_action{ $global_action_name } ;  <new_line>
 if ( $global_required_number_of_operands == 3 ) {  <new_line>
     $global_target_operand = $global_operand_three ;  <new_line>
-} else  <new_line>
-{  <new_line>
+} else {  <new_line>
     $global_target_operand = $global_operand_two ;  <new_line>
 }  <new_line>
 if ( ( $global_action_name eq 'numeric hyphen-here vector hyphen-here add hyphen-here number' ) || ( $global_action_name eq 'numeric hyphen-here vector hyphen-here multiply hyphen-here by hyphen-here number' ) ) {  <new_line>
@@ -40,8 +39,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
         $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] * $global_list_of_y_values[ $global_pair_pointer ] + 0 ;  <new_line>
     } elsif ( $global_action_name eq 'numeric hyphen-here vectors hyphen-here divide hyphen-here by' )  <new_line>
     {  <new_line>
-        if ( abs( $global_list_of_y_values[ $global_pair_pointer ] ) < 0.000001 )  <new_line>
-        {  <new_line>
+        if ( abs( $global_list_of_y_values[ $global_pair_pointer ] ) < 0.000001 ) {  <new_line>
             $global_numeric_value = 1000000 ;  <new_line>
         } else  <new_line>
         {  <new_line>

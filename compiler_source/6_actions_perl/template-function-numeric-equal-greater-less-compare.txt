@@ -8,8 +8,7 @@ if ( $global_first_object_of_action == $global_second_object_of_action ) {  <new
     $global_action_result = 'equal' ;  <new_line>
 } elsif ( $global_first_object_of_action > $global_second_object_of_action ) {  <new_line>
     $global_action_result = 'greater' ;  <new_line>
-} else  <new_line>
-{  <new_line>
+} else {  <new_line>
     $global_action_result = 'less' ;  <new_line>
 }  <new_line>
 
