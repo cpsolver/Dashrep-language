@@ -1,8 +1,0 @@
-template-interpreter-function-begin
-
-sub function__get_current_time_in_epoch_seconds( ) {  <new_line>
-
-$global_epoch_seconds = time ;  <new_line>
-$global_action_result = sprintf( "%d" , $global_epoch_seconds ) ;  <new_line>
-
-template-interpreter-function-end
