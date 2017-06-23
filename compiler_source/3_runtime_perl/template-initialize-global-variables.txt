@@ -365,15 +365,17 @@ $global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-warning-trace-on-yes-or-no' } = 'no' ;  <new_line>
 <new_line>
 
+# todo: remove these when no longer used  <new_line>
 my $global_single_action_name = '' ;  <new_line>
-my $global_trace_log = '' ;  <new_line>
 my $global_single_action_operands_all = '' ;  <new_line>
-my %global_required_number_of_operands_for_action = ( ) ;  <new_line>
 my $global_single_action_operand_one = '' ;  <new_line>
 my $global_single_action_operand_two = '' ;  <new_line>
 my $global_single_action_operand_three = '' ;  <new_line>
 my $global_single_action_operand_four = '' ;  <new_line>
 my $global_single_action_operand_five = '' ;  <new_line>
+
+my $global_trace_log = '' ;  <new_line>
+my %global_required_number_of_operands_for_action = ( ) ;  <new_line>
 my $global_unique_value = '' ;  <new_line>
 my $global_operand_one = '' ;  <new_line>
 my $global_operand_two = '' ;  <new_line>
