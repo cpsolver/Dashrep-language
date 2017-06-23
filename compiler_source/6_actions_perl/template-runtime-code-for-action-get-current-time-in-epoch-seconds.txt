@@ -1,0 +1,5 @@
+template-runtime-code-standard-action-begin
+
+runtime-code-storage-item-result = sprintf( "%d" , time ) ;  <new_line>
+
+template-runtime-code-standard-action-end
