@@ -358,6 +358,7 @@ my $global_zero_padding = '' ;  <new_line>
 
 my $global_true = 1 ;  <new_line>
 my $global_false = 0 ;  <new_line>
+$global_dashrep_replacement{ 'dashrep-debug-trace-log' } = '' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-debug-trace-on-yes-or-no' } = 'no' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-action-trace-on-yes-or-no' } = 'no' ;  <new_line>
 $global_dashrep_replacement{ 'dashrep-stop-translation' } = 'no' ;  <new_line>
