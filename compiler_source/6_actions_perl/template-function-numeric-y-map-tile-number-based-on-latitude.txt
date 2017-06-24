@@ -7,7 +7,7 @@ if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen
 {  <new_line>
     $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
     $global_replacement_text = $global_text_begin . $global_action_result . $global_text_end ;  <new_line>
-    next ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 if ( ( exists( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } ) ) && ( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } =~ /^[0<character_hyphen>9]+$/ ) )  <new_line>
 {  <new_line>

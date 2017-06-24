@@ -29,7 +29,7 @@ if ( $global_possible_error_message eq "" )  <new_line>
         $global_number_of_columns = scalar( @value_in_column ) ;  <new_line>
         if ( $global_number_of_columns < 1 )  <new_line>
         {  <new_line>
-            next ;  <new_line>
+            return '' ;  <new_line>
         } elsif ( $global_number_of_columns < $global_minimum_number_of_columns )  <new_line>
         {  <new_line>
             $global_minimum_number_of_columns = $global_number_of_columns ;  <new_line>
