@@ -3,7 +3,6 @@ template-interpreter-function-begin
 sub function__numeric_vector_multiply_by_number( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 $global_single_value = $global_operand_two + 0 ;  <new_line>
 $global_list_of_x_values_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
