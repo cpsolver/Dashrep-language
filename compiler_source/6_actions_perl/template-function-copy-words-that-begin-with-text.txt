@@ -25,7 +25,7 @@ $global_string_to_search = $global_dashrep_replacement{ $global_operand_three } 
 $global_length_of_string = length( $global_string_to_search ) ;  <new_line>
 $global_generated_list = '' ;  <new_line>
 foreach $global_word ( @global_list_of_words ) {  <new_line>
-    if ( substr( $global_word , 0 , $global_length_of_string ) eq $global_string_to_search )  <new_line>
+    if ( substr( $global_word , 0 , $global_length_of_string ) eq $global_string_to_search ) {  <new_line>
         $global_generated_list .= $global_word . ' ' ;  <new_line>
     }  <new_line>
 }  <new_line>

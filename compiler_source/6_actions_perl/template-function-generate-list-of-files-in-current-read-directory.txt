@@ -4,27 +4,27 @@ sub function__generate_list_of_files_in_current_read_directory( ) {  <new_line>
 
 template-interpreter-function-middle
 
-    } elsif ( ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here files hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) || ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here folders hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) )  <new_line>
-        if ( ( $global_operand_one eq "" ) || ( $global_operand_two ne "" ) )  <new_line>
+    } elsif ( ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here files hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) || ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here folders hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) ) {  <new_line>
+        if ( ( $global_operand_one eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
             $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . "]" ;  <new_line>
-        } elsif ( exists( $global_dashrep_replacement{ "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" } ) )  <new_line>
+        } elsif ( exists( $global_dashrep_replacement{ "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" } ) ) {  <new_line>
             $global_directory = $global_dashrep_replacement{ "dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading" } ;  <new_line>
-            if ( ( $global_directory eq "" ) || ( $global_directory !~ /[\\\/]$/ ) )  <new_line>
+            if ( ( $global_directory eq "" ) || ( $global_directory !~ /[\\\/]$/ ) ) {  <new_line>
                 $global_directory = './' ;  <new_line>
-                if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                     $global_trace_log .= "{{trace; warning, directory " . $global_directory . " is invalid so using local directory}}\n" ;  <new_line>
                 }  <new_line>
             }  <new_line>
-            if ( opendir( READDIR , $global_directory ) )  <new_line>
-                while ( defined( $global_file_name = readdir( READDIR ) ) )  <new_line>
-                    if ( $global_file_name !~ /^\./ )  <new_line>
+            if ( opendir( READDIR , $global_directory ) ) {  <new_line>
+                while ( defined( $global_file_name = readdir( READDIR ) ) ) {  <new_line>
+                    if ( $global_file_name !~ /^\./ ) {  <new_line>
                         $global_full_path = $global_directory . $global_file_name ;  <new_line>
-                        if ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here folders hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" )  <new_line>
-                            if ( <character_hyphen>d $global_full_path )  <new_line>
+                        if ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here folders hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) {  <new_line>
+                            if ( <character_hyphen>d $global_full_path ) {  <new_line>
                                 $global_list_of_file_names .= $global_file_name . " " ;  <new_line>
                             }  <new_line>
-                        } elsif ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here files hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" )  <new_line>
-                            if ( <character_hyphen>f $global_full_path )  <new_line>
+                        } elsif ( $global_action_name eq "generate hyphen-here list hyphen-here of hyphen-here files hyphen-here in hyphen-here current hyphen-here read hyphen-here directory" ) {  <new_line>
+                            if ( <character_hyphen>f $global_full_path ) {  <new_line>
                                 $global_list_of_file_names .= $global_file_name . " " ;  <new_line>
                             }  <new_line>
                         }  <new_line>
@@ -32,12 +32,12 @@ template-interpreter-function-middle
                 }  <new_line>
                 $global_list_of_file_names =~ s / +$// ;  <new_line>
                 $global_dashrep_replacement{ $global_operands_all } = $global_list_of_file_names ;  <new_line>
-                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                     $global_trace_log .= "{{trace; listed files or folders in directory " . $global_directory . "}}\n" ;  <new_line>
                 }  <new_line>
                 closedir( READDIR ) ;  <new_line>
             } else {  <new_line>
-                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                     $global_trace_log .= "{{trace; warning, cannot list files in directory " . $global_directory . "}}\n" ;  <new_line>
                 }  <new_line>
             }  <new_line>

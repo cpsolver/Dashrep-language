@@ -24,7 +24,7 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
 } else {  <new_line>
     $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
     $global_character_position = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
-    while ( $global_character_position >= 0 )  <new_line>
+    while ( $global_character_position >= 0 ) {  <new_line>
         $global_source_text = substr( $global_source_text , 0 , $global_character_position ) . $global_text_to_insert . substr( $global_source_text , $global_character_position + $global_length_of_string_to_be_replaced ) ;  <new_line>
         $global_character_position = index( $global_source_text , $global_string_to_be_replaced ) ;  <new_line>
         $global_endless_loop_counter ++ ;  <new_line>

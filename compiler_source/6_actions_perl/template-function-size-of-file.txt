@@ -4,13 +4,13 @@ sub function__size_of_file( ) {  <new_line>
 
 template-interpreter-function-middle
 
-if ( ( $global_source_filename eq "" ) || ( $global_operand_two ne "" ) )  <new_line>
+if ( ( $global_source_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
 {  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_file_size = sprintf( "%d" , ( stat( $global_source_filename ) )[7] ) ;  <new_line>
-    if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+    if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
         $global_trace_log .= "{{trace; size of file " . $global_source_filename . " is " . $global_file_size . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>

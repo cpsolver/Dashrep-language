@@ -4,75 +4,75 @@ sub function__find_line_in_file_that_begins_with_text( ) {  <new_line>
 
 template-interpreter-function-middle
 
-    } elsif ( ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here two hyphen-here words hyphen-here listed" ) )  <new_line>
+    } elsif ( ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here two hyphen-here words hyphen-here listed" ) ) {  <new_line>
         $global_list_of_storage_names = "" ;  <new_line>
-        if ( ( $global_source_filename eq "" ) || ( $global_operand_two eq "" ) || ( $global_operand_three eq "" ) )  <new_line>
+        if ( ( $global_source_filename eq "" ) || ( $global_operand_two eq "" ) || ( $global_operand_three eq "" ) ) {  <new_line>
             $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . " and " . $global_operand_three . "]" ;  <new_line>
-        } elsif ( ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) && ( ( not( exists( $global_dashrep_replacement{ $global_operand_two } ) ) ) || ( $global_dashrep_replacement{ $global_operand_two } !~ /[^ ]/ ) ) )  <new_line>
+        } elsif ( ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) && ( ( not( exists( $global_dashrep_replacement{ $global_operand_two } ) ) ) || ( $global_dashrep_replacement{ $global_operand_two } !~ /[^ ]/ ) ) ) {  <new_line>
             $global_possible_error_message .= " [warning, action " . $global_action_name . " has empty search word in phrase " . $global_operand_two . "]" ;  <new_line>
-        } elsif ( ( ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here two hyphen-here words hyphen-here listed" ) ) && ( ( not( exists( $global_dashrep_replacement{ $global_operand_two } ) ) ) || ( $global_dashrep_replacement{ $global_operand_two } !~ /[^ ]/ ) ) )  <new_line>
+        } elsif ( ( ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here two hyphen-here words hyphen-here listed" ) ) && ( ( not( exists( $global_dashrep_replacement{ $global_operand_two } ) ) ) || ( $global_dashrep_replacement{ $global_operand_two } !~ /[^ ]/ ) ) ) {  <new_line>
             $global_possible_error_message .= " [warning, action " . $global_action_name . " has no search words in phrase " . $global_operand_two . "]" ;  <new_line>
-        } elsif ( open ( INFILE , '<' . $global_source_filename ) )  <new_line>
+        } elsif ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
             $global_possible_error_message .= "" ;  <new_line>
         } else {  <new_line>
             $global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;  <new_line>
         }  <new_line>
-        if ( $global_possible_error_message eq "" )  <new_line>
-            if ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" )  <new_line>
+        if ( $global_possible_error_message eq "" ) {  <new_line>
+            if ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) {  <new_line>
                 $global_string_to_find = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
-                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                     $global_trace_log .= "{{trace; searching in file " . $global_source_filename . " for string " . $global_string_to_find . "}}\n" ;  <new_line>
                 }  <new_line>
                 $global_length_of_string = length( $global_string_to_find ) ;  <new_line>
-                while ( $global_input_line = <INFILE> )  <new_line>
+                while ( $global_input_line = <INFILE> ) {  <new_line>
                     chomp( $global_input_line ) ;  <new_line>
                     $global_possible_match = substr( $global_input_line , 0 , $global_length_of_string ) ;  <new_line>
-                    if ( $global_possible_match eq $global_string_to_find )  <new_line>
+                    if ( $global_possible_match eq $global_string_to_find ) {  <new_line>
                         $global_dashrep_replacement{ $global_operand_three } = $global_input_line ;  <new_line>
-                        if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                        if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                             $global_trace_log .= "{{trace; in file " . $global_source_filename . " found starting string " . $global_string_to_find . "}}\n" ;  <new_line>
                         }  <new_line>
                         last ;  <new_line>
                     }  <new_line>
                 }  <new_line>
             } else {  <new_line>
-                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+                if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                     $global_trace_log .= "{{trace; searching in file " . $global_source_filename . " for words in phrase " . $global_operand_two . "}}\n" ;  <new_line>
                 }  <new_line>
                 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
                 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
                 $global_list_of_words_as_text =~ s/ +$//s ;  <new_line>
-                if ( $global_list_of_words_as_text =~ / / )  <new_line>
+                if ( $global_list_of_words_as_text =~ / / ) {  <new_line>
                     @list_of_words = split( /[ \n\r]+/ , $global_list_of_words_as_text ) ;  <new_line>
                 } else {  <new_line>
                     @list_of_words = ( ) ;  <new_line>
                     $global_list_of_words[ 0 ] = $global_list_of_words_as_text ;  <new_line>
                 }  <new_line>
-                foreach $global_word ( @list_of_words )  <new_line>
+                foreach $global_word ( @list_of_words ) {  <new_line>
                     $global_matching_text{ $global_word } = "match" ;  <new_line>
                 }  <new_line>
-                if ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" )  <new_line>
+                if ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) {  <new_line>
                     $global_words_to_match = 1 ;  <new_line>
                 } else {  <new_line>
                     $global_words_to_match = 2 ;  <new_line>
                 }  <new_line>
-                while ( $global_input_line = <INFILE> )  <new_line>
+                while ( $global_input_line = <INFILE> ) {  <new_line>
                     chomp( $global_input_line ) ;  <new_line>
                     $global_length_of_first_word = index( $global_input_line , " " ) ;  <new_line>
                     $global_possible_match = substr( $global_input_line , 0 , $global_length_of_first_word ) ;  <new_line>
-                    if ( ( exists( $global_matching_text{ $global_possible_match } ) ) && ( $global_matching_text{ $global_possible_match } eq "match" ) )  <new_line>
-                        if ( $global_words_to_match == 1 )  <new_line>
+                    if ( ( exists( $global_matching_text{ $global_possible_match } ) ) && ( $global_matching_text{ $global_possible_match } eq "match" ) ) {  <new_line>
+                        if ( $global_words_to_match == 1 ) {  <new_line>
                             $global_storage_name = "dashrep hyphen-here storage<character_hyphen>" . sprintf( "%d" , $global_storage_number ) ;  <new_line>
                             $global_storage_number ++ ;  <new_line>
                             $global_dashrep_replacement{ $global_storage_name } = $global_input_line ;  <new_line>
                             $global_list_of_storage_names .= $global_storage_name . " " ;  <new_line>
                         } else {  <new_line>
-                            if ( $global_input_line =~ /^[^ ]+ +([^ ]+)(( )|($))/ )  <new_line>
+                            if ( $global_input_line =~ /^[^ ]+ +([^ ]+)(( )|($))/ ) {  <new_line>
                                 $global_second_word = $1 ;  <new_line>
-                                if ( ( exists( $global_matching_text{ $global_second_word } ) ) && ( $global_matching_text{ $global_second_word } eq "match" ) )  <new_line>
+                                if ( ( exists( $global_matching_text{ $global_second_word } ) ) && ( $global_matching_text{ $global_second_word } eq "match" ) ) {  <new_line>
                                     $global_storage_name = "dashrep hyphen-here storage<character_hyphen>" . sprintf( "%d" , $global_storage_number ) ;  <new_line>
                                     $global_storage_number ++ ;  <new_line>
-                                    if ( $global_list_of_storage_names eq "" )  <new_line>
+                                    if ( $global_list_of_storage_names eq "" ) {  <new_line>
                                         $global_list_of_storage_names = $global_storage_name . " " ;  <new_line>
                                     } else {  <new_line>
                                         $global_list_of_storage_names .= $global_storage_name . " " ;  <new_line>
@@ -86,11 +86,11 @@ template-interpreter-function-middle
                 $global_list_of_storage_names =~ s/ +$// ;  <new_line>
                 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
             }  <new_line>
-            if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+            if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                 $global_trace_log .= "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;  <new_line>
             }  <new_line>
         } else {  <new_line>
-            if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+            if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
                 $global_trace_log .= "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
             }  <new_line>
         }  <new_line>

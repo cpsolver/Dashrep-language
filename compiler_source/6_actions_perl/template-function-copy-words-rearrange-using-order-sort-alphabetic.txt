@@ -27,7 +27,7 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     @global_sort_order = sort( @global_list_indicating_sort_order ) ;  <new_line>
     $global_extra_words_without_sort_value = '' ;  <new_line>
     if ( $global_list_indicating_sort_order < $global_list_of_words ) {  <new_line>
-        for ( $global_word_position = ( $global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $global_list_of_words + 1 ) ; $global_word_position ++ )  <new_line>
+        for ( $global_word_position = ( $global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $global_list_of_words + 1 ) ; $global_word_position ++ ) {  <new_line>
             $global_extra_words_without_sort_value .= $global_list_of_words[ $global_word_position - 1 ] . ' ' ;  <new_line>
         }  <new_line>
     }  <new_line>
@@ -38,7 +38,7 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     }  <new_line>
     $global_text_string = '' ;  <new_line>
     foreach $global_numeric_value ( @global_sort_order ) {  <new_line>
-        if ( $global_words_at_numeric_value{ $global_numeric_value } =~ /[^ ]/ )  <new_line>
+        if ( $global_words_at_numeric_value{ $global_numeric_value } =~ /[^ ]/ ) {  <new_line>
             $global_text_string .= $global_words_at_numeric_value{ $global_numeric_value } . ' ' ;  <new_line>
             $global_words_at_numeric_value{ $global_numeric_value } = '' ;  <new_line>
         }  <new_line>

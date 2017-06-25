@@ -3,7 +3,7 @@
 #  <new_line>
 
 *---
-#  Input is $global_source_text (type text) and $global_word_pointer_text (type text, not numeric!)  <new_line>
+#  Input is $global_source_text (type text) and $global_word_pointer_text (type text, not numeric!) {  <new_line>
 #  Output is $global_target_text  <new_line>
 #  And $global_word_pointer_text is modified if it exceeds the word count  <new_line>
 <new_line>

@@ -4,24 +4,24 @@ sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
 
 template-interpreter-function-middle
 
-if ( ( $global_source_filename eq "" ) || ( $global_target_phrase_name eq "" ) )  <new_line>
+if ( ( $global_source_filename eq "" ) || ( $global_target_phrase_name eq "" ) ) {  <new_line>
 {  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_target_phrase_name . "]" ;  <new_line>
-} elsif ( open ( INFILE , '<' . $global_source_filename ) )  <new_line>
+} elsif ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
 {  <new_line>
     $global_possible_error_message .= "" ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;  <new_line>
 }  <new_line>
-if ( $global_possible_error_message eq "" )  <new_line>
+if ( $global_possible_error_message eq "" ) {  <new_line>
 {  <new_line>
     $global_nesting_level_of_file_actions ++ ;  <new_line>
-    if ( $global_nesting_level_of_file_actions > 1 )  <new_line>
+    if ( $global_nesting_level_of_file_actions > 1 ) {  <new_line>
         $global_possible_error_message .= " [warning, file hyphen-here related action called recursivley, which is not allowed]" ;  <new_line>
     } else {  <new_line>
         $global_line_count = 1 ;  <new_line>
-        while ( $global_input_line = <INFILE> )  <new_line>
+        while ( $global_input_line = <INFILE> ) {  <new_line>
             chomp( $global_input_line ) ;  <new_line>
             $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = $global_input_line ;  <new_line>
             $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $global_line_count ;  <new_line>
@@ -31,7 +31,7 @@ if ( $global_possible_error_message eq "" )  <new_line>
             $global_line_count ++ ;  <new_line>
         }  <new_line>
     }  <new_line>
-    if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
+    if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
         $global_trace_log .= "{{trace; processed each line in file " . $global_source_filename . " using handler " . $global_target_phrase_name . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>
