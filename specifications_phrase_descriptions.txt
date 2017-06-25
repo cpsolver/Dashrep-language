@@ -472,10 +472,10 @@ description-for-phrase-word-to-use-in-handler:
 This phrase is used with the action b-i-b use-handler-with-each-word-in-phrase b-i-e no-space .
 -----
 
-description-for-phrase-xml-move-attributes-into-tag-elements:
-This action moves the content of an b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding tag.
+description-for-phrase-copy-and-move-attributes-into-xml-tags:
+This action copies the content of the first phrase to the second phrase but with the content of each b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding XML (or HTML) tag.
 paragraph-next
-Example: it converts the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e into the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
+Example: If the first phrase contains the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
 paragraph-next
 The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
 -----
@@ -1584,7 +1584,7 @@ Data-related phrases
 -----
 
 heading-for-phrases-in-category_xml:
-XML-related phrases
+XML-related & HTML-related phrases
 -----
 
 heading-for-phrases-in-category_time:
