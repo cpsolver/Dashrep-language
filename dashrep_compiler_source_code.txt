@@ -2453,12 +2453,14 @@ my @global_list_of_y_values = ( ) ;  <new_line>
 my @global_octet_number_at_position = ( ) ;  <new_line>
 my @global_phrase_naming_convention_for_column = ( ) ;  <new_line>
 my @global_right_and_up_direction_value_for_item_number = ( ) ;  <new_line>
+my @global_right_direction_text_for_item_number = ( ) ;  <new_line>
 my @global_right_direction_value_for_item_number = ( ) ;  <new_line>
 my @global_row_position_for_item_number = ( ) ;  <new_line>
 my @global_sequence_of_phrases = ( ) ;  <new_line>
 my @global_sort_order = ( ) ;  <new_line>
 my @global_text_item_in_column = ( ) ;  <new_line>
 my @global_unique_word_at_position = ( ) ;  <new_line>
+my @global_up_direction_text_for_item_number = ( ) ;  <new_line>
 my @global_up_direction_value_for_item_number = ( ) ;  <new_line>
 my @global_value_in_column = ( ) ;  <new_line>
 my @global_zero_if_not_remaining_item_number = ( ) ;  <new_line>
@@ -2745,7 +2747,6 @@ my $global_result_word_list = '' ;  <new_line>
 my $global_right_and_up_direction_value_for_item_number = '' ;  <new_line>
 my $global_right_direction_maximum_value = 0 ;  <new_line>
 my $global_right_direction_minimum_value = 0 ;  <new_line>
-my $global_right_direction_value_for_item_number = 0 ;  <new_line>
 my $global_row_number = 0 ;  <new_line>
 my $global_row_position_for_item_number = 0 ;  <new_line>
 my $global_search_starting_position = 0 ;  <new_line>
@@ -2815,7 +2816,6 @@ my $global_unicode_number = 0 ;  <new_line>
 my $global_unique_word_at_position = '' ;  <new_line>
 my $global_up_direction_maximum_value = 0 ;  <new_line>
 my $global_up_direction_minimum_value = 0 ;  <new_line>
-my $global_up_direction_value_for_item_number = 0 ;  <new_line>
 my $global_use_two_spaces_as_delimiter = '' ;  <new_line>
 my $global_use_value_direction = '' ;  <new_line>
 my $global_value = 0 ;  <new_line>
@@ -3635,6 +3635,9 @@ runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-nu
 check-operand-one-is-real-number:
 runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end
 ----
+check-operand-three-contains-real-numbers:
+runtime-code-check-operand-begin-contains-real-numbers runtime-code-for-operand-number-three runtime-code-check-operand-end
+----
 check-operand-three-is-phrase-name:
 runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-three runtime-code-check-operand-end
 ----
@@ -3643,6 +3646,9 @@ runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-nu
 ----
 check-operand-three-is-positive-integer:
 runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end
+----
+check-operand-two-contains-real-numbers:
+runtime-code-check-operand-begin-contains-real-numbers runtime-code-for-operand-number-two runtime-code-check-operand-end
 ----
 check-operand-two-is-file-name:
 runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-two runtime-code-check-operand-end
@@ -3720,6 +3726,7 @@ template-function-parameterized-yes-or-no-phrase-definition-not-empty
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-integer
 template-function-parameterized-yes-or-no-real-number
+template-function-parameterized-yes-or-no-phrase-contains-real-numbers
 template-function-parameterized-normalize-calculated-value
 template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
@@ -4013,7 +4020,7 @@ operand-checks-for-action-numeric-sine:
 check-operand-count-is-one check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
-check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-not-empty
+check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-contains-real-numbers check-operand-three-contains-real-numbers
 ----
 operand-checks-for-action-numeric-vector-absolutes:
 check-operand-count-is-two check-operand-two-is-phrase-name
@@ -4104,6 +4111,9 @@ check-operand-count-is-one check-operand-one-is-positive-integer
 ----
 operand-checks-for-action-zero-or-nonzero:
 check-operand-count-is-one check-operand-one-is-positive-integer
+----
+runtime-code-check-operand-begin-contains-real-numbers:
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_contains_real_numbers(
 ----
 template-function-append-multiple-from-phrases-named-in-pattern:
 template-interpreter-function-begin
@@ -7226,18 +7236,6 @@ template-interpreter-function-begin
 sub function__numeric_two_dimensional_sort_into_columns_and_rows( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-if ( ( $global_operand_one + 0 ) < 1 ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-if ( $global_dashrep_replacement{ $global_operand_two } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-if ( $global_dashrep_replacement{ $global_operand_three } !~ /^[\<character_hyphen>0<character_hyphen>9\. ]+$/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
 $global_number_of_columns = $global_operand_one ;  <new_line>
 $global_text_for_right_direction_values = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_text_for_up_direction_values = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
@@ -7247,18 +7245,22 @@ $global_text_for_up_direction_values =~ s/ +$// ;  <new_line>
 $global_text_for_right_direction_values =~ s/\n/ /s ;  <new_line>
 $global_text_for_right_direction_values =~ s/^ +// ;  <new_line>
 $global_text_for_right_direction_values =~ s/ +$// ;  <new_line>
-@global_up_direction_value_for_item_number = split( / +/ , $global_text_for_up_direction_values ) ;  <new_line>
-unshift( @global_up_direction_value_for_item_number , 0 ) ;  <new_line>
-@global_right_direction_value_for_item_number = split( / +/ , $global_text_for_right_direction_values ) ;  <new_line>
-unshift( @global_right_direction_value_for_item_number , 0 ) ;  <new_line>
-$global_number_of_items = $global_up_direction_value_for_item_number ;  <new_line>
-if ( $global_up_direction_value_for_item_number != $global_right_direction_value_for_item_number ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
+@global_up_direction_text_for_item_number = split( / +/ , $global_text_for_up_direction_values ) ;  <new_line>
+unshift( @global_up_direction_text_for_item_number , 0 ) ;  <new_line>
+@global_right_direction_text_for_item_number = split( / +/ , $global_text_for_right_direction_values ) ;  <new_line>
+unshift( @global_right_direction_text_for_item_number , 0 ) ;  <new_line>
+if ( $#global_up_direction_text_for_item_number != $#global_right_direction_text_for_item_number ) {  <new_line>
+    $global_action_result = 'runtime_error_two_dimensional_sort_lists_not_same_length' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
+$global_number_of_items = $#global_up_direction_text_for_item_number ;  <new_line>
 if ( $global_number_of_items == 0 ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
+    $global_action_result = 'runtime_error_two_dimensional_sort_lists_are_empty' ;  <new_line>
     return '' ;  <new_line>
+}  <new_line>
+for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ; $global_item_number ++ ) {  <new_line>
+    $global_up_direction_value_for_item_number[ $global_item_number ] = &function_parameterized__convert_numeric_text_into_numeric_value( $global_up_direction_text_for_item_number[ $global_item_number ] ) ;  <new_line>
+    $global_right_direction_value_for_item_number[ $global_item_number ] = &function_parameterized__convert_numeric_text_into_numeric_value( $global_right_direction_text_for_item_number[ $global_item_number ] ) ;  <new_line>
 }  <new_line>
 $global_number_of_items_in_bottom_row = $global_number_of_columns ;  <new_line>
 $global_number_of_full_rows = int( $global_number_of_items / $global_number_of_columns ) ;  <new_line>
@@ -7342,7 +7344,7 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_maximum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_up ;  <new_line>
             } else {  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             }  <new_line>
         } elsif ( $global_fill_direction == $global_fill_direction_bottom_right ) {  <new_line>
             $global_target_row_number = $global_bottom_row_number ;  <new_line>
@@ -7352,8 +7354,7 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 $global_use_value_direction = $global_value_direction_right ;  <new_line>
             } elsif ( ( $global_bottom_row_number == $global_number_of_rows ) && ( $global_bottom_right_open_column > $global_number_of_items_in_bottom_row ) ) {  <new_line>
                 $global_bottom_right_open_column <character_hyphen><character_hyphen> ;  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             } elsif ( $global_bottom_left_open_column < $global_bottom_right_open_column ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_minimum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_left_and_up ;  <new_line>
@@ -7361,15 +7362,13 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_minimum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_up ;  <new_line>
             } else {  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             }  <new_line>
         } elsif ( $global_fill_direction == $global_fill_direction_bottom_left ) {  <new_line>
             $global_target_row_number = $global_bottom_row_number ;  <new_line>
             $global_target_column_number = $global_bottom_left_open_column ;  <new_line>
             if ( $global_top_row_number == $global_bottom_row_number ) {  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             } elsif ( ( $global_bottom_row_number == $global_number_of_rows ) && ( $global_bottom_left_open_column > $global_number_of_items_in_bottom_row ) ) {  <new_line>
                 $global_bottom_row_number <character_hyphen><character_hyphen> ;  <new_line>
                 $global_bottom_left_open_column = 1 ;  <new_line>
@@ -7383,15 +7382,13 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_minimum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_up ;  <new_line>
             } else {  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             }  <new_line>
         } elsif ( $global_fill_direction == $global_fill_direction_top_right ) {  <new_line>
             $global_target_row_number = $global_top_row_number ;  <new_line>
             $global_target_column_number = $global_top_right_open_column ;  <new_line>
             if ( $global_top_row_number == $global_bottom_row_number ) {  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             } elsif ( $global_top_left_open_column < $global_top_right_open_column ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_maximum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_left_and_up ;  <new_line>
@@ -7399,8 +7396,7 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 $global_need_maximum_or_minimum = $global_need_maximum ;  <new_line>
                 $global_use_value_direction = $global_value_direction_up ;  <new_line>
             } else {  <new_line>
-                $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                return '' ;  <new_line>
+                next ;  <new_line>
             }  <new_line>
         }  <new_line>
         if ( $global_need_maximum_or_minimum == $global_need_maximum ) {  <new_line>
@@ -7420,8 +7416,7 @@ while ( $global_number_of_items_remaining > 0 ) {  <new_line>
                 } elsif ( $global_use_value_direction == $global_value_direction_right ) {  <new_line>
                     $global_next_value_to_compare = $global_right_direction_value_for_item_number[ $global_item_number ] ;  <new_line>
                 } else {  <new_line>
-                    $global_action_result = 'runtime_operand_error_two_dimensional_sort' ;  <new_line>
-                    return '' ;  <new_line>
+                    next ;  <new_line>
                 }  <new_line>
                 if ( $global_need_maximum_or_minimum == $global_need_maximum ) {  <new_line>
                     if ( $global_next_value_to_compare > $global_max_or_min_value ) {  <new_line>
@@ -8055,6 +8050,35 @@ return $global_yes ;  <new_line>
 
 close( INFILE ) ;  <new_line>
 return $global_no ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-parameterized-yes-or-no-phrase-contains-real-numbers:
+# no-space dashes-long-line  <new_line>
+# function_parameterized__yes_or_no_phrase_contains_real_numbers  <new_line>
+<new_line>
+
+sub function_parameterized__yes_or_no_phrase_contains_real_numbers( ) {  <new_line>
+my $local_text ;  <new_line>
+$local_text = $_[ 0 ] ;  <new_line>
+
+if ( index( $local_text , ' ' ) >= 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( index( $local_text , '-' ) < 0 ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
+return $global_no ;  <new_line>
+}  <new_line>
+
+if ( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end =~ /[^0-9\-\. ]/ ) {  <new_line>
+return $global_no ;  <new_line>
+} else {  <new_line>
+return $global_yes ;  <new_line>
+}  <new_line>
 
 template-function-segment-ending
 ----
