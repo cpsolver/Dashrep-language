@@ -5,6 +5,7 @@ template-function-parameterized-yes-or-no-phrase-definition-not-empty
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-integer
 template-function-parameterized-yes-or-no-real-number
+template-function-parameterized-yes-or-no-phrase-contains-real-numbers
 template-function-parameterized-normalize-calculated-value
 template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
