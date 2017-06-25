@@ -10,46 +10,34 @@
 
 sub function__get_cgi_information( ) {  <new_line>
 
-my @name_value_pairs ;  <new_line>
-my $raw_input ;  <new_line>
-my $input_line ;  <new_line>
-my $name_value ;  <new_line>
-my $name ;  <new_line>
-my $value ;  <new_line>
-my $line_count ;  <new_line>
-my $cgi_string_length_limit ;  <new_line>
-my $cgi_line_length_limit ;  <new_line>
-
 $global_action_result = '' ;  <new_line>
-$cgi_string_length_limit = 100000 ;  <new_line>
-$cgi_line_length_limit = 100 ;  <new_line>
-$raw_input = '' ;  <new_line>
-$line_count = 0 ;  <new_line>
+$global_raw_input = '' ;  <new_line>
+$global_line_count = 0 ;  <new_line>
 $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } = '' ;  <new_line>
 
 if ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'GET' ) ) {  <new_line>
 
-if ( ( exists( $ENV{ 'CONTENT_LENGTH' } ) ) && ( $ENV{ 'CONTENT_LENGTH' } > $cgi_string_length_limit ) ) {  <new_line>
+if ( ( exists( $ENV{ 'CONTENT_LENGTH' } ) ) && ( $ENV{ 'CONTENT_LENGTH' } > $global_cgi_string_length_limit ) ) {  <new_line>
 $dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
 return ;  <new_line>
 }  <new_line>
 
 if ( exists( $ENV{ 'QUERY_STRING' } ) ) {  <new_line>
-$raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
+$global_raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
 }  <new_line>
 
 } elsif ( ( exists( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) && ( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } =~ /^[^ ]+\.[^ ]+$/ ) && ( open( INFILE , $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) ) {  <new_line>
 
-while( $input_line = <INFILE> ) {  <new_line>
-chomp( $input_line ) ;  <new_line>
+while( $global_input_line = <INFILE> ) {  <new_line>
+chomp( $global_input_line ) ;  <new_line>
 
-if ( $line_count > 0 ) {  <new_line>
-$raw_input .= ' ' ;  <new_line>
+if ( $global_line_count > 0 ) {  <new_line>
+$global_raw_input .= ' ' ;  <new_line>
 }  <new_line>
 
-$raw_input .= $input_line ;  <new_line>
-$line_count ++ ;  <new_line>
+$global_raw_input .= $global_input_line ;  <new_line>
+$global_line_count ++ ;  <new_line>
 
 # end of while loop  <new_line>
 }  <new_line>
@@ -58,17 +46,17 @@ close( INFILE ) ;  <new_line>
 
 } elsif ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'POST' ) ) {  <new_line>
 
-while( $input_line = <STDIN> ) {  <new_line>
-chomp( $input_line ) ;  <new_line>
+while( $global_input_line = <STDIN> ) {  <new_line>
+chomp( $global_input_line ) ;  <new_line>
 
-if ( $line_count > 0 ) {  <new_line>
-$raw_input .= ' ' ;  <new_line>
+if ( $global_line_count > 0 ) {  <new_line>
+$global_raw_input .= ' ' ;  <new_line>
 }  <new_line>
 
-$raw_input .= $input_line ;  <new_line>
-$line_count ++ ;  <new_line>
+$global_raw_input .= $global_input_line ;  <new_line>
+$global_line_count ++ ;  <new_line>
 
-if ( $line_count > $cgi_line_length_limit ) {  <new_line>
+if ( $global_line_count > $global_cgi_line_length_limit ) {  <new_line>
 $dashrep_get_replacement{ 'dashrep-error-cgi-input-too-long' } = 'yes' ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] .= ' dashrep_error_cgi_input_too_long' ;  <new_line>
 return ;  <new_line>
@@ -80,45 +68,45 @@ return ;  <new_line>
 # end of if branch  <new_line>
 }  <new_line>
 
-$global_dashrep_replacement{ 'input-raw-cgi-string' } = $raw_input ;  <new_line>
+$global_dashrep_replacement{ 'input-raw-cgi-string' } = $global_raw_input ;  <new_line>
 
-if ( $raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
-$raw_input = $1 ;  <new_line>
-$raw_input =~ tr/+/ / ;  <new_line>
-@name_value_pairs = split( /&/, $raw_input ) ;  <new_line>
+if ( $global_raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
+$global_raw_input = $1 ;  <new_line>
+$global_raw_input =~ tr/+/ / ;  <new_line>
+@name_value_pairs = split( /&/, $global_raw_input ) ;  <new_line>
 
-foreach $name_value ( @name_value_pairs ) {  <new_line>
-( $name, $value ) = split( /=/, $name_value, 2 ) ;  <new_line>
+foreach $global_name_value ( @global_name_value_pairs ) {  <new_line>
+( $global_name, $global_value ) = split( /=/, $global_name_value, 2 ) ;  <new_line>
 
-if ( not( defined( $value ) ) ) {  <new_line>
-$value = '' ;  <new_line>
+if ( not( defined( $global_value ) ) ) {  <new_line>
+$global_value = '' ;  <new_line>
 }  <new_line>
 
-$name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
-$name  =~ s/[<>\/\\]+/_/g ;  <new_line>
+$global_name  =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+$global_name  =~ s/[<>\/\\]+/_/g ;  <new_line>
 
-if ( $name eq 'texttoimport' ) {  <new_line>
+if ( $global_name eq 'texttoimport' ) {  <new_line>
 #               Special preservation of tabs, line breaks, etc. for imported text:  <new_line>
-$value =~ s/%0D//ig ;  <new_line>
-$value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+$global_value =~ s/%0D//ig ;  <new_line>
+$global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
 } else {  <new_line>
-$value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
-$value =~ s/[<>]+/_/gm ;  <new_line>
-$value =~ s/\n/<eol\/>/gm ;  <new_line>
+$global_value =~ s/%([0-9A-F][0-9A-F])/chr (hex ($1))/ieg ;  <new_line>
+$global_value =~ s/[<>]+/_/gm ;  <new_line>
+$global_value =~ s/\n/<eol\/>/gm ;  <new_line>
 }  <new_line>
 
-$name = &function_parameterized__remove_leading_trailing_spaces( $name ) ;  <new_line>
-$value = &function_parameterized__remove_leading_trailing_spaces( $value ) ;  <new_line>
+$global_name = &function_parameterized__remove_leading_trailing_spaces( $global_name ) ;  <new_line>
+$global_value = &function_parameterized__remove_leading_trailing_spaces( $global_value ) ;  <new_line>
 
-if ( $name ne '' ) {  <new_line>
+if ( $global_name ne '' ) {  <new_line>
 #  Prepend "input-" to the phrase name  <new_line>
-$global_dashrep_replacement{ 'input-' . $name } = $value ;  <new_line>
+$global_dashrep_replacement{ 'input-' . $global_name } = $global_value ;  <new_line>
 
 if ( $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } ne '' ) {  <new_line>
 $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= ' ' ;  <new_line>
 }  <new_line>
 
-$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= 'input-' . $name ;  <new_line>
+$dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= 'input-' . $global_name ;  <new_line>
 }  <new_line>
 
 # end of foreach loop  <new_line>
@@ -127,7 +115,7 @@ $dashrep_get_replacement{ 'dashrep-list-of-input-cgi-phrase-names' } .= 'input-'
 # end of if branch  <new_line>
 }  <new_line>
 
-$raw_input = '' ;  <new_line>
+$global_raw_input = '' ;  <new_line>
 
 if ( exists( $ENV{ 'REMOTE_ADDR' } ) ) {  <new_line>
 $global_dashrep_replacement{ 'input-ip-address' } = $ENV{ 'REMOTE_ADDR' } ;  <new_line>
