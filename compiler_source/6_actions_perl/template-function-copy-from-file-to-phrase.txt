@@ -5,17 +5,14 @@ sub function__copy_from_file_to_phrase( ) {  <new_line>
 template-interpreter-function-middle
 
 if ( ( $global_source_filename eq "" ) || ( $global_target_phrase_name eq "" ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_target_phrase_name . "]" ;  <new_line>
 } elsif ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= "" ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;  <new_line>
 }  <new_line>
 if ( $global_possible_error_message eq "" ) {  <new_line>
-{  <new_line>
     $global_all_lines = "" ;  <new_line>
     $global_line_ending = "" ;  <new_line>
     $global_line_number = 0 ;  <new_line>

@@ -5,10 +5,8 @@ sub function__create_empty_file( ) {  <new_line>
 template-interpreter-function-middle
 
 if ( ( $global_target_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_target_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } elsif ( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files" } ne "yes" ) {  <new_line>
-{  <new_line>
     $global_trace_log .= "{{trace; attempt to create empty file: " . $global_target_filename . "}}\n" ;  <new_line>
     $global_possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;  <new_line>
 } else  <new_line>

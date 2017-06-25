@@ -5,7 +5,6 @@ sub function__modification_time_of_file( ) {  <new_line>
 template-interpreter-function-middle
 
 if ( ( $global_source_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } else  <new_line>
 {  <new_line>

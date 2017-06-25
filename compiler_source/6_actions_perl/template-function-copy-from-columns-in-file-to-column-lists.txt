@@ -5,17 +5,14 @@ sub function__copy_from_columns_in_file_to_column_lists( ) {  <new_line>
 template-interpreter-function-middle
 
 if ( ( $global_source_filename eq "" ) || ( $global_operand_two eq "" ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } elsif ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= "" ;  <new_line>
 } else  <new_line>
 {  <new_line>
     $global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;  <new_line>
 }  <new_line>
 if ( $global_possible_error_message eq "" ) {  <new_line>
-{  <new_line>
     $global_list_name_prefix = $global_operand_two ;  <new_line>
     @list_of_values_in_column = ( ) ;  <new_line>
     $global_minimum_number_of_columns = 999 ;  <new_line>
@@ -46,7 +43,6 @@ if ( $global_possible_error_message eq "" ) {  <new_line>
     }  <new_line>
 }  <new_line>
 if ( $global_possible_error_message ne "" ) {  <new_line>
-{  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
         $global_trace_log .= "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
     }  <new_line>

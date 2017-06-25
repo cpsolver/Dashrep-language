@@ -5,10 +5,8 @@ sub function__set_file_permission_public_read( ) {  <new_line>
 template-interpreter-function-middle
 
 if ( ( $global_target_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
-{  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_target_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } elsif ( not( chmod( $global_file_public_read_protection_mode , $global_target_filename ) ) ) {  <new_line>
-{  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
         $global_trace_log .= "{{trace; warning: protection removal for output file " . $global_target_filename . "  not successful}}\n" ;  <new_line>
     }  <new_line>
