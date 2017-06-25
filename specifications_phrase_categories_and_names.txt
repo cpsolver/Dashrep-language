@@ -14,6 +14,7 @@ character-newline
 character-open-square-bracket
 character-close-square-bracket
 character-tab
+character-underscore
 
 category_expand
 expand-text
@@ -82,6 +83,7 @@ copy-words-at-skip-interval
 generate-counts-from-integer-to-integer
 generate-every-pairwise-combination-of-words
 generate-every-ordered-pairwise-combination-of-words
+generate-list-of-all-dashrep-phrases
 
 category_character
 get-count-of-characters
@@ -150,7 +152,7 @@ numeric-y-map-tile-number-based-on-latitude
 numeric-map-tile-zoom
 
 category_xml
-xml-move-attributes-into-tag-elements
+copy-and-move-attributes-into-xml-tags
 copy-and-remove-attributes-from-xml-tags
 
 category_file_related
@@ -195,9 +197,6 @@ dashrep-gather-tag-end
 dashrep-gather-tag-unique
 dashrep-gather-tag-delete
 dashrep-gather-tag-matching-id
-
-category_definitions
-generate-list-of-all-dashrep-phrases
 
 category_debug
 trace-show
