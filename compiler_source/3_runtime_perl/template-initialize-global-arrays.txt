@@ -105,4 +105,5 @@ my %global_check_operand_one_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
+my @global_name_value_pairs ;  <new_line>
 <new_line>
