@@ -247,7 +247,6 @@ my $global_remaining_text = '' ;  <new_line>
 my $global_repeat_count = 0 ;  <new_line>
 my $global_replacement_count = 0 ;  <new_line>
 my $global_replacement_count_text = '' ;  <new_line>
-my $global_replacement_text = '' ;  <new_line>
 my $global_result_text = '' ;  <new_line>
 my $global_result_value = 0 ;  <new_line>
 my $global_result_word_list = '' ;  <new_line>
