@@ -20,7 +20,6 @@ if ( $global_possible_error_message eq "" )  <new_line>
     @list_of_values_in_column = ( ) ;  <new_line>
     $global_minimum_number_of_columns = 999 ;  <new_line>
     while ( $global_input_line = <INFILE> )  <new_line>
-    {  <new_line>
         chomp( $global_input_line ) ;  <new_line>
         $global_input_line =~ s/[\n\t]+/ /g ;  <new_line>
         $global_input_line =~ s/^ +// ;  <new_line>
@@ -28,34 +27,27 @@ if ( $global_possible_error_message eq "" )  <new_line>
         @value_in_column = split( / +/ , $global_input_line ) ;  <new_line>
         $global_number_of_columns = scalar( @value_in_column ) ;  <new_line>
         if ( $global_number_of_columns < 1 )  <new_line>
-        {  <new_line>
             return '' ;  <new_line>
         } elsif ( $global_number_of_columns < $global_minimum_number_of_columns )  <new_line>
-        {  <new_line>
             $global_minimum_number_of_columns = $global_number_of_columns ;  <new_line>
         }  <new_line>
         if ( $global_number_of_columns > 0 )  <new_line>
-        {  <new_line>
             for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_number_of_columns ; $global_column_pointer ++ )  <new_line>
-            {  <new_line>
                 $global_list_of_values_in_column[ $global_column_pointer ] .= $global_value_in_column[ $global_column_pointer <character_hyphen> 1 ] . " " ;  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
     for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_number_of_columns ; $global_column_pointer ++ )  <new_line>
-    {  <new_line>
         $global_list_of_values_in_column[ $global_column_pointer ] =~ s/ +$// ;  <new_line>
         $global_dashrep_replacement{ $global_list_name_prefix . "<character_hyphen>" . $global_column_pointer } = $global_list_of_values_in_column[ $global_column_pointer ] ;  <new_line>
     }  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; copied from columns in file " . $global_source_filename . " to phrase names with prefix " . $global_operand_two . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>
 if ( $global_possible_error_message ne "" )  <new_line>
 {  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>

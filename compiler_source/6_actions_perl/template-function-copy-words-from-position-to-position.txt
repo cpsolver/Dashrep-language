@@ -30,7 +30,6 @@ if ( ( $global_word_count < 1 ) || ( $global_word_number_begin < 1 ) || ( $globa
     $global_separator = '' ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
     for ( $global_word_number = $global_word_number_begin ; $global_word_number <= $global_word_number_end ; $global_word_number ++ )  <new_line>
-    {  <new_line>
         $global_result_text .= $global_separator . $global_list[ $global_word_number - 1 ] ;  <new_line>
         $global_separator = ' ' ;  <new_line>
     }  <new_line>

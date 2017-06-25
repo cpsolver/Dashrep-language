@@ -16,7 +16,6 @@ $global_count = $global_list + 1 ;  <new_line>
 $global_temp_text = '' ;  <new_line>
 if ( $global_count > 0 ) {  <new_line>
     for ( $global_word_number = $global_count ; $global_word_number >= 1 ; $global_word_number <character_hyphen><character_hyphen> )  <new_line>
-    {  <new_line>
         $global_temp_text .= $global_list[ $global_word_number - 1 ] . ' ' ;  <new_line>
     }  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>

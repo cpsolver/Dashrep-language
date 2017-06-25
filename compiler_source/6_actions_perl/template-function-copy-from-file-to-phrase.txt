@@ -20,39 +20,31 @@ if ( $global_possible_error_message eq "" )  <new_line>
     $global_line_ending = "" ;  <new_line>
     $global_line_number = 0 ;  <new_line>
     if ( not( exists( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here indicate hyphen-here line hyphen-here endings" } ) ) )  <new_line>
-    {  <new_line>
         $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here indicate hyphen-here line hyphen-here endings" } = "no" ;  <new_line>
     }  <new_line>
     if ( ( exists( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here indicate hyphen-here line hyphen-here endings" } ) ) && ( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here indicate hyphen-here line hyphen-here endings" } eq "yes" ) )  <new_line>
-    {  <new_line>
         $global_line_ending = " end hyphen-here of hyphen-here line hyphen-here here " ;  <new_line>
-    } else  <new_line>
-    {  <new_line>
+    } else {  <new_line>
         $global_line_ending = " " ;  <new_line>
     }  <new_line>
     while ( $global_input_line = <INFILE> )  <new_line>
-    {  <new_line>
         chomp( $global_input_line ) ;  <new_line>
         $global_input_line =~ s/[\t\f\n\r]+/ /g ;  <new_line>
         $global_input_line =~ s/^ +/ / ;  <new_line>
         $global_input_line =~ s/ +$/ / ;  <new_line>
         if ( $global_action_name eq "copy hyphen-here from hyphen-here file hyphen-here to hyphen-here phrase" )  <new_line>
-        {  <new_line>
             if ( ( $global_input_line ne "" ) || ( $global_line_ending ne " " ) )  <new_line>
-            {  <new_line>
                 $global_all_lines .= $global_input_line . $global_line_ending ;  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } = $global_all_lines ;  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; copied from file " . $global_source_filename . " to phrase " . $global_target_phrase_name . "}}\n" ;  <new_line>
     }  <new_line>
 } else  <new_line>
 {  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>

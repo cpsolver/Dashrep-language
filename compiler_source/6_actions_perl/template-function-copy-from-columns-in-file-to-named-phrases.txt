@@ -20,18 +20,15 @@ if ( $global_possible_error_message eq "" )  <new_line>
     $global_temp_text =~ s/^ +// ;  <new_line>
     $global_temp_text =~ s/ +$//s ;  <new_line>
     if ( $global_temp_text =~ / / )  <new_line>
-    {  <new_line>
         @phrase_naming_convention_for_column = split( /[ \n\r]+/ , $global_temp_text ) ;  <new_line>
         $global_number_of_column_names = scalar( @phrase_naming_convention_for_column ) ;  <new_line>
         $global_prefix_text = $global_phrase_naming_convention_for_column[ 0 ] ;  <new_line>
-    } else  <new_line>
-    {  <new_line>
+    } else {  <new_line>
         $global_phrase_naming_convention_for_column[ 1 ] = "" ;  <new_line>
         $global_number_of_column_names = 2 ;  <new_line>
         $global_prefix_text = $global_temp_text ;  <new_line>
     }  <new_line>
     if ( $global_prefix_text !~ /^[^ ]+$/ )  <new_line>
-    {  <new_line>
         $global_possible_error_message .= " [warning, action " . $global_action_name . " has prefix of " . $global_prefix_text . " that is not valid]" ;  <new_line>
     }  <new_line>
 }  <new_line>
@@ -39,7 +36,6 @@ if ( $global_possible_error_message eq "" )  <new_line>
 {  <new_line>
     $global_name_of_phrase_that_contains_list_of_index_values = $global_operand_three ;  <new_line>
     if ( $global_name_of_phrase_that_contains_list_of_index_values !~ /^[a hyphen-here z0<character_hyphen>9_\<character_hyphen>]+$/i )  <new_line>
-    {  <new_line>
         $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid third operand " . $global_name_of_phrase_that_contains_list_of_index_values . "]" ;  <new_line>
     }  <new_line>
 }  <new_line>
@@ -48,50 +44,37 @@ if ( $global_possible_error_message eq "" )  <new_line>
     $global_list_of_unique_values = "" ;  <new_line>
     $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
     if ( ( exists( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter" } ) ) && ( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here use hyphen-here two hyphen-here spaces hyphen-here as hyphen-here column hyphen-here delimiter" } eq "yes" ) )  <new_line>
-    {  <new_line>
         $global_use_two_spaces_as_delimiter = "yes" ;  <new_line>
-    } else  <new_line>
-    {  <new_line>
+    } else {  <new_line>
         $global_use_two_spaces_as_delimiter = "no" ;  <new_line>
     }  <new_line>
     while ( $global_input_line = <INFILE> )  <new_line>
-    {  <new_line>
         chomp( $global_input_line ) ;  <new_line>
         $global_input_line =~ s/[ \n\t]+$// ;  <new_line>
         if ( $global_use_two_spaces_as_delimiter eq "yes" )  <new_line>
-        {  <new_line>
             @text_item_in_column = split( /<character_space> +/ , $global_input_line ) ;  <new_line>
-        } else  <new_line>
-        {  <new_line>
+        } else {  <new_line>
             @text_item_in_column = split( /[\t ]/ , $global_input_line ) ;  <new_line>
         }  <new_line>
         $global_unique_value = $global_text_item_in_column[ 0 ] ;  <new_line>
         if ( $global_unique_value =~ / / )  <new_line>
-        {  <new_line>
             $global_unique_value =~ s/ +/_/g ;  <new_line>
         }  <new_line>
         $global_number_of_columns = scalar( @text_item_in_column ) ;  <new_line>
         if ( $global_number_of_columns > $global_number_of_column_names )  <new_line>
-        {  <new_line>
             $global_number_of_columns = $global_number_of_column_names ;  <new_line>
         }  <new_line>
         if ( $global_number_of_columns > 0 )  <new_line>
-        {  <new_line>
             $global_list_of_unique_values .= " " . $global_unique_value ;  <new_line>
             for ( $global_column_pointer = 2 ; $global_column_pointer <= $global_number_of_column_names ; $global_column_pointer ++ )  <new_line>
-            {  <new_line>
                 if ( $global_phrase_naming_convention_for_column[ $global_column_pointer <character_hyphen> 1 ] ne "" )  <new_line>
-                {  <new_line>
                     $global_phrase_naming_convention_for_this_column = $global_prefix_text . "<character_hyphen>" . $global_unique_value . "<character_hyphen>" . $global_phrase_naming_convention_for_column[ $global_column_pointer <character_hyphen> 1 ] ;  <new_line>
-                } else  <new_line>
-                {  <new_line>
+                } else {  <new_line>
                     $global_phrase_naming_convention_for_this_column = $global_prefix_text . "<character_hyphen>" . $global_unique_value ;  <new_line>
                 }  <new_line>
                 if ( $global_column_pointer <= $global_number_of_columns )  <new_line>
-                {  <new_line>
                     $global_dashrep_replacement{ $global_phrase_naming_convention_for_this_column } = $global_text_item_in_column[ $global_column_pointer <character_hyphen> 1 ] ;  <new_line>
-                } else  <new_line>
-                {  <new_line>
+                } else {  <new_line>
                     $global_dashrep_replacement{ $global_phrase_naming_convention_for_this_column } = "" ;  <new_line>
                 }  <new_line>
             }  <new_line>
@@ -100,14 +83,12 @@ if ( $global_possible_error_message eq "" )  <new_line>
     $global_list_of_unique_values =~ s/^ +// ;  <new_line>
     $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; copied from columns in file " . $global_source_filename . " to phrase names specified in phrase " . $global_target_phrase_name . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>
 if ( $global_possible_error_message ne "" )  <new_line>
 {  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" )  <new_line>
-    {  <new_line>
         $global_trace_log .= "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>

@@ -6,7 +6,6 @@ $global_action_result = '' ;  <new_line>
 if ( not( exists( $global_action_name_exists{ 'no<character_hyphen>space' } ) ) || ( $global_action_name_exists{ 'no<character_hyphen>space' } ne 'yes' ) ) {  <new_line>
     @global_list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;  <new_line>
     foreach $global_action_name ( @global_list_of_action_names )  <new_line>
-    {  <new_line>
         $global_action_name_exists{ $global_action_name } = 'yes' ;  <new_line>
     }  <new_line>
 }  <new_line>
@@ -26,20 +25,16 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
         $global_accumulated_text = $global_accumulated_text . $global_prefix_text ;  <new_line>
         if ( $global_parameter_begin_or_end_string eq '[<character_hyphen>' ) {  <new_line>
             if ( $global_parameter_level >= 1 )  <new_line>
-            {  <new_line>
                 $global_accumulated_text = $global_accumulated_text . '<dashrep_codeview_tag_param_' . $global_odd_or_even_based_on_zero_or_one[ $global_parameter_level % 2 ] . '_begin>' ;  <new_line>
-            } else  <new_line>
-            {  <new_line>
+            } else {  <new_line>
                 $global_accumulated_text = $global_accumulated_text . '<dashrep_codeview_tag_param_unmatched_begin>' ;  <new_line>
             }  <new_line>
             $global_parameter_level ++ ;  <new_line>
         } elsif ( $global_parameter_begin_or_end_string eq '<character_hyphen>]' ) {  <new_line>
             $global_parameter_level <character_hyphen><character_hyphen> ;  <new_line>
             if ( $global_parameter_level >= 1 )  <new_line>
-            {  <new_line>
                 $global_accumulated_text = $global_accumulated_text . '<dashrep_codeview_tag_param_' . $global_odd_or_even_based_on_zero_or_one[ $global_parameter_level % 2 ] . '_end>' ;  <new_line>
-            } else  <new_line>
-            {  <new_line>
+            } else {  <new_line>
                 $global_accumulated_text = $global_accumulated_text . '<dashrep_codeview_tag_param_unmatched_end>' ;  <new_line>
             }  <new_line>
         }  <new_line>
@@ -55,8 +50,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
             $global_phrase_type = 'action' ;  <new_line>
         } elsif ( exists( $global_dashrep_replacement{ $global_phrase_name } ) && ( $global_dashrep_replacement{ $global_phrase_name } ne '' ) ) {  <new_line>
             $global_phrase_type = 'phrase_defined' ;  <new_line>
-        } else  <new_line>
-        {  <new_line>
+        } else {  <new_line>
             $global_phrase_type = 'phrase' ;  <new_line>
         }  <new_line>
         $global_accumulated_text = $global_accumulated_text . $global_prefix_text . '<dashrep_codeview_tag_' . $global_phrase_type . '_begin>' . $global_phrase_name . '<dashrep_codeview_tag_' . $global_phrase_type . '_middle_1>' . $global_phrase_name . '<dashrep_codeview_tag_' . $global_phrase_type . '_middle_2>' . $global_phrase_name . '<dashrep_codeview_tag_' . $global_phrase_type . '_end>' ;  <new_line>

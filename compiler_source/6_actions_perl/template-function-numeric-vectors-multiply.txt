@@ -19,10 +19,8 @@ $global_list_of_y_values_as_text =~ s/ +$// ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
     $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] * $global_list_of_y_values[ $global_pair_pointer ] + 0 ;  <new_line>
     if ( $global_numeric_value == 0 )  <new_line>
-    {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
-    } else  <new_line>
-    {  <new_line>
+    } else {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= sprintf( "%d" , $global_numeric_value ) . ' ' ;  <new_line>
     }  <new_line>
 }  <new_line>

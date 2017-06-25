@@ -16,7 +16,6 @@ $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 $global_generated_list = '' ;  <new_line>
 foreach $global_word_to_check ( @global_list_of_words_to_check ) {  <new_line>
     foreach $global_string_to_match ( @global_list_of_strings_to_match )  <new_line>
-    {  <new_line>
         $global_pointer_to_matching_text = index( $global_word_to_check , $global_string_to_match ) ;  <new_line>
         if ( $global_pointer_to_matching_text >= 0 ) {  <new_line>
             $global_generated_list .= $global_word_to_check . ' ' ;  <new_line>

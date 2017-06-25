@@ -13,15 +13,13 @@ if ( $global_action_name eq 'convert hyphen-here unicode hyphen-here to hyphen-h
     $global_source_phrase_name = $global_operand_one ;  <new_line>
     $global_target_phrase_name = $global_operand_two ;  <new_line>
     if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) )  <new_line>
-    {  <new_line>
         $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
     }  <new_line>
     $global_accumulated_text = '' ;  <new_line>
     @global_octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $global_source_phrase_name } ) ;  <new_line>
     $global_yes_or_no_within_ampersand_encoded_character = 'no' ;  <new_line>
     $global_pointer = -1 ;  <new_line>
-    while ( $global_pointer < $global_octet_number_at_position )  <new_line>
-    {  <new_line>
+    while ( $global_pointer < $#global_octet_number_at_position )  <new_line>
         $global_pointer ++ ;  <new_line>
         $global_octet_number = $global_octet_number_at_position[ $global_pointer ] ;  <new_line>
         if ( $global_octet_number < 32 ) {  <new_line>

@@ -3,6 +3,9 @@ template-interpreter-function-begin
 sub function__generate_phrase_usage_counts( ) {  <new_line>
 
 $global_result_text = '' ;  <new_line>
+
+# todo: use "sequence-number-for-executable-phrase" values to track counts  <new_line>
+
 foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
     $global_replacement_count = $global_replacement_count_for_item_name{ $global_phrase_name } ;  <new_line>
 
@@ -19,7 +22,6 @@ foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) 
 foreach $global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
     @global_list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
     foreach $global_phrase_name ( @global_list_of_phrase_names )  <new_line>
-    {  <new_line>
         $global_result_text .= $global_replacement_count_text . ' ' . $global_phrase_name  . "\n" ;  <new_line>
     }  <new_line>
 }  <new_line>
