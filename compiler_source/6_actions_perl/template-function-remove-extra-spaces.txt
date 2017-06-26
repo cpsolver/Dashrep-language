@@ -16,7 +16,7 @@ return '' ;  <new_line>
 }  <new_line>
 
 for ( $global_word_pointer_numeric = 2 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_target_text .= ' ' . substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_target_text .= ' ' . runtime-code-word-within-source-text ;  <new_line>
 }  <new_line>
 
 return '' ;  <new_line>
