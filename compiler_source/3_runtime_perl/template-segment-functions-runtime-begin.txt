@@ -45,9 +45,6 @@ $global_dashrep_replacement{ 'dashrep hyphen-here list hyphen-here of hyphen-her
 
 <new_line>
 
-# &initialize_special_phrases( ) ;  <new_line>
-
-
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 # if ( length( code-get-or-put-phrase-definition-begin 'start<characer_hyphen>here' code-get-or-put-phrase-definition-end ) > 10 ) {  <new_line>
