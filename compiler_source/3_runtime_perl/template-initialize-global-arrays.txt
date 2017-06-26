@@ -15,9 +15,17 @@ my @global_begin_position_for_word = ( ) ;  <new_line>
 $global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
 $global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
 
+my @global_begin_position_secondary_for_word = ( ) ;  <new_line>
+$global_begin_position_secondary_for_word[ 0 ] = 0 ;  <new_line>
+$global_begin_position_secondary_for_word[ 1 ] = 0 ;  <new_line>
+
 my @global_length_of_word = ( ) ;  <new_line>
 $global_length_of_word[ 0 ] = 0 ;  <new_line>
 $global_length_of_word[ 1 ] = 0 ;  <new_line>
+
+my @global_length_secondary_of_word = ( ) ;  <new_line>
+$global_length_secondary_of_word[ 0 ] = 0 ;  <new_line>
+$global_length_secondary_of_word[ 1 ] = 0 ;  <new_line>
 
 my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
 $global_pointer_to_whitespace_type[ 0 ] = 0 ;  <new_line>
@@ -105,5 +113,5 @@ my %global_check_operand_one_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
-my @global_name_value_pairs ;  <new_line>
+my @global_name_value_pairs = ( ) ;  <new_line>
 <new_line>
