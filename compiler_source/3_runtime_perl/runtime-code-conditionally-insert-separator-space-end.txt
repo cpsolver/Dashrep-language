@@ -1,0 +1,3 @@
+} else {  <new_line>
+   $global_yes_or_no_conditionally_need_separator_space = $global_yes ;  <new_line>
+}  <new_line>

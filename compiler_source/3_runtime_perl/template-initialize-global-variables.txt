@@ -365,6 +365,7 @@ my $global_zero_padding = '' ;  <new_line>
 my $global_cgi_string_length_limit = 100000 ;  <new_line>
 my $global_cgi_line_length_limit = 100 ;  <new_line>
 my $global_unique_value = '' ;  <new_line>
+my $global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_line>
 <new_line>
 <new_line>
 
