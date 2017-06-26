@@ -1,0 +1,1 @@
+substr( $global_source_text_secondary , $global_begin_position_secondary_for_word[ $global_word_pointer_numeric_secondary ] , $global_length_secondary_of_word[ $global_word_pointer_numeric_secondary ] )
