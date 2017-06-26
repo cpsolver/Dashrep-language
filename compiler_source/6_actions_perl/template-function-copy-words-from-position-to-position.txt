@@ -3,8 +3,8 @@ template-interpreter-function-begin
 sub function__copy_words_from_position_to_position( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_word_number_begin = $global_operand_three + 0 ;  <new_line>
-$global_word_number_end = $global_operand_four + 0 ;  <new_line>
+$global_word_number_begin = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
+$global_word_number_end = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_temp_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
     $global_temp_text =~ s/\n/ /sg ;  <new_line>

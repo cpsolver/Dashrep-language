@@ -1,7 +1,7 @@
 template-runtime-code-standard-action-begin
 
-$global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
-$global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
+$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ;  <new_line>
+$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ;  <new_line>
 
 if ( $global_numeric_value_first == $global_numeric_value_second ) {  <new_line>
 runtime-code-storage-item-result = 'equal' ;  <new_line>

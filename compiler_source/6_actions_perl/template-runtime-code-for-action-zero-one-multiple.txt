@@ -2,9 +2,9 @@ template-runtime-code-standard-action-begin
 
 runtime-code-storage-item-result = 'multiple' ;  <new_line>
 
-if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'zero' ;  <new_line>
-} elsif ( runtime-code-for-operand-number-one + 0 == 1 ) {  <new_line>
+} elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) {  <new_line>
 runtime-code-storage-item-result = 'one' ;  <new_line>
 }  <new_line>
 
