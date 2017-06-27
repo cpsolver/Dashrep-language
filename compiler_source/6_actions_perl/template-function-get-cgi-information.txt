@@ -73,7 +73,7 @@ $global_dashrep_replacement{ 'input-raw-cgi-string' } = $global_raw_input ;  <ne
 if ( $global_raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
 $global_raw_input = $1 ;  <new_line>
 $global_raw_input =~ tr/+/ / ;  <new_line>
-@name_value_pairs = split( /&/, $global_raw_input ) ;  <new_line>
+@global_name_value_pairs = split( /&/, $global_raw_input ) ;  <new_line>
 
 foreach $global_name_value ( @global_name_value_pairs ) {  <new_line>
 ( $global_name, $global_value ) = split( /=/, $global_name_value, 2 ) ;  <new_line>
