@@ -1875,6 +1875,17 @@ $global_yes_or_no_operand_error = $global_yes ;  <new_line>
 runtime-code-check-operand-initialize:
 $global_yes_or_no_operand_error = $global_no ;  <new_line>
 ----
+runtime-code-conditionally-insert-separator-space-begin:
+if ( $global_yes_or_no_conditionally_need_separator_space == $global_yes ) {  <new_line>
+----
+runtime-code-conditionally-insert-separator-space-end:
+} else {  <new_line>
+   $global_yes_or_no_conditionally_need_separator_space = $global_yes ;  <new_line>
+}  <new_line>
+----
+runtime-code-conditionally-insert-separator-space-initialize:
+$global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_line>
+----
 runtime-code-storage-item-reference-after-pointer:
 ----
 runtime-code-storage-item-reference-before-pointer:
@@ -2391,9 +2402,17 @@ my @global_begin_position_for_word = ( ) ;  <new_line>
 $global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
 $global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
 
+my @global_begin_position_secondary_for_word = ( ) ;  <new_line>
+$global_begin_position_secondary_for_word[ 0 ] = 0 ;  <new_line>
+$global_begin_position_secondary_for_word[ 1 ] = 0 ;  <new_line>
+
 my @global_length_of_word = ( ) ;  <new_line>
 $global_length_of_word[ 0 ] = 0 ;  <new_line>
 $global_length_of_word[ 1 ] = 0 ;  <new_line>
+
+my @global_length_secondary_of_word = ( ) ;  <new_line>
+$global_length_secondary_of_word[ 0 ] = 0 ;  <new_line>
+$global_length_secondary_of_word[ 1 ] = 0 ;  <new_line>
 
 my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
 $global_pointer_to_whitespace_type[ 0 ] = 0 ;  <new_line>
@@ -2481,7 +2500,7 @@ my %global_check_operand_one_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_real_number_for_action = ( ) ;  <new_line>
 my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
-my @global_name_value_pairs ;  <new_line>
+my @global_name_value_pairs = ( ) ;  <new_line>
 <new_line>
 ----
 template-initialize-global-variables:
@@ -2489,6 +2508,7 @@ my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line
 my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
 my $global_target_text = '' ;  <new_line>
+my $global_source_text_secondary = '' ;  <new_line>
 my $global_temporary_text = '' ;  <new_line>
 my $global_default_text = '' ;  <new_line>
 my $global_text_expanded_parameters_only = '' ;  <new_line>
@@ -2565,6 +2585,7 @@ my $global_pointer_to_word = 0 ;  <new_line>
 my $global_pointer_to_next_word = 0 ;  <new_line>
 my $global_number_of_words = 0 ;  <new_line>
 my $global_word_pointer_numeric = 0 ;  <new_line>
+my $global_word_pointer_numeric_secondary = 0 ;  <new_line>
 my $global_calculated_value = 0 ;  <new_line>
 my $global_normalized_calculated_value = 0 ;  <new_line>
 my $global_count_range = 0 ;  <new_line>
@@ -2850,6 +2871,7 @@ my $global_zero_padding = '' ;  <new_line>
 my $global_cgi_string_length_limit = 100000 ;  <new_line>
 my $global_cgi_line_length_limit = 100 ;  <new_line>
 my $global_unique_value = '' ;  <new_line>
+my $global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_line>
 <new_line>
 <new_line>
 
@@ -3056,9 +3078,6 @@ $global_dashrep_replacement{ 'list hyphen-here of hyphen-here pointers hyphen-he
 $global_dashrep_replacement{ 'dashrep hyphen-here list hyphen-here of hyphen-here recognized hyphen-here phrase hyphen-here names' } = $global_dashrep_text_list_of_phrase_names ;  <new_line>
 
 <new_line>
-
-# &initialize_special_phrases( ) ;  <new_line>
-
 
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
@@ -3695,6 +3714,12 @@ check-operand-count-is-one check-operand-one-is-positive-integer
 runtime-code-check-operand-begin-contains-real-numbers:
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_contains_real_numbers(
 ----
+runtime-code-word-within-source-text-secondary:
+substr( $global_source_text_secondary , $global_begin_position_secondary_for_word[ $global_word_pointer_numeric_secondary ] , $global_length_secondary_of_word[ $global_word_pointer_numeric_secondary ] )
+----
+runtime-code-word-within-source-text:
+substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
+----
 template-function-append-multiple-from-phrases-named-in-pattern:
 template-interpreter-function-begin
 
@@ -3765,7 +3790,7 @@ $global_text_to_append =~ s/ +$//s ;  <new_line>
 if ( $global_operand_three eq '0' ) {  <new_line>
     $global_repeat_count = 0 ;  <new_line>
 } else {  <new_line>
-    $global_repeat_count = $global_operand_three + 0 ;  <new_line>
+    $global_repeat_count = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
 }  <new_line>
 if ( ( $global_repeat_count < 1 ) || ( $global_repeat_count > 99999 ) ) {  <new_line>
     $global_action_result = '' ;  <new_line>
@@ -4539,8 +4564,8 @@ template-interpreter-function-begin
 sub function__copy_words_from_position_to_position( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_word_number_begin = $global_operand_three + 0 ;  <new_line>
-$global_word_number_end = $global_operand_four + 0 ;  <new_line>
+$global_word_number_begin = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
+$global_word_number_end = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_temp_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
     $global_temp_text =~ s/\n/ /sg ;  <new_line>
@@ -6274,7 +6299,7 @@ $global_dashrep_replacement{ 'input-raw-cgi-string' } = $global_raw_input ;  <ne
 if ( $global_raw_input =~ /^(([^ <>]+)=([^ <>]*)(&([^ <>]+)=([^ <>]*))*) *$/ ) {  <new_line>
 $global_raw_input = $1 ;  <new_line>
 $global_raw_input =~ tr/+/ / ;  <new_line>
-@name_value_pairs = split( /&/, $global_raw_input ) ;  <new_line>
+@global_name_value_pairs = split( /&/, $global_raw_input ) ;  <new_line>
 
 foreach $global_name_value ( @global_name_value_pairs ) {  <new_line>
 ( $global_name, $global_value ) = split( /=/, $global_name_value, 2 ) ;  <new_line>
@@ -6343,13 +6368,13 @@ $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_string_in_phrase = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
     $global_phrase_length = length( $global_string_in_phrase ) ;  <new_line>
-    $global_starting_character_position = $global_operand_two + 0 ;  <new_line>
+    $global_starting_character_position = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
     if ( $global_starting_character_position > $global_phrase_length ) {  <new_line>
         $global_starting_character_position = $global_phrase_length ;  <new_line>
     } elsif ( $global_starting_character_position < 0 ) {  <new_line>
         $global_starting_character_position = $global_phrase_length - $global_starting_character_position + 1 ;  <new_line>
     }  <new_line>
-    $global_ending_character_position = $global_operand_three + 0 ;  <new_line>
+    $global_ending_character_position = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
     if ( ( $global_ending_character_position > $global_phrase_length ) || ( $global_ending_character_position == 0 ) ) {  <new_line>
         $global_ending_character_position = $global_phrase_length ;  <new_line>
     } elsif ( $global_ending_character_position < 0 ) {  <new_line>
@@ -6509,7 +6534,7 @@ $global_word_pointer_numeric = $global_number_of_words ;  <new_line>
 $global_word_pointer_text = &function_parameterized__convert_numeric_value_into_numeric_text( $global_number_of_words ) ;  <new_line>
 }  <new_line>
 
-$global_target_text = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_target_text = runtime-code-word-within-source-text ;  <new_line>
 
 return '' ;  <new_line>
 
@@ -6644,7 +6669,7 @@ template-interpreter-function-begin
 sub function__numeric_absolute( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_result_value = abs( $global_operand_one + 0 ) ;  <new_line>
+$global_result_value = abs( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ;  <new_line>
 if ( $global_result_value == 0 ) {  <new_line>
     $global_action_result = '0' ;  <new_line>
 } else {  <new_line>
@@ -6674,9 +6699,9 @@ template-function-segment-if-zero-words-return-default-text
 
 $global_calculated_value = 0 ;  <new_line>
 for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_current_word = runtime-code-word-within-source-text ;  <new_line>
 if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) {  <new_line>
-$global_calculated_value = $global_calculated_value + $global_current_word + 0 ;  <new_line>
+$global_calculated_value = $global_calculated_value + &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ;  <new_line>
 }  <new_line>
 }  <new_line>
 $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ;  <new_line>
@@ -6691,8 +6716,8 @@ template-interpreter-function-begin
 sub function__numeric_equal_greater_less_compare( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_first_object_of_action = $global_operand_one + 0 ;  <new_line>
-$global_second_object_of_action = $global_operand_two + 0 ;  <new_line>
+$global_first_object_of_action = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ;  <new_line>
+$global_second_object_of_action = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
 if ( $global_first_object_of_action == $global_second_object_of_action ) {  <new_line>
     $global_action_result = 'equal' ;  <new_line>
 } elsif ( $global_first_object_of_action > $global_second_object_of_action ) {  <new_line>
@@ -6721,10 +6746,10 @@ template-function-segment-if-zero-words-return-default-text
 
 $global_calculated_value = -999999999999 ;  <new_line>
 for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_current_word = runtime-code-word-within-source-text ;  <new_line>
 if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) {  <new_line>
-if ( ( $global_current_word + 0 ) > $global_calculated_value ) {  <new_line>
-$global_calculated_value = ( $global_current_word + 0 ) ;  <new_line>
+if ( ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ) > $global_calculated_value ) {  <new_line>
+$global_calculated_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ;  <new_line>
 }  <new_line>
 }  <new_line>
 }  <new_line>
@@ -6752,10 +6777,10 @@ template-function-segment-if-zero-words-return-default-text
 
 $global_calculated_value = 999999999999 ;  <new_line>
 for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_current_word = runtime-code-word-within-source-text ;  <new_line>
 if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) {  <new_line>
-if ( ( $global_current_word + 0 ) < $global_calculated_value ) {  <new_line>
-$global_calculated_value = ( $global_current_word + 0 ) ;  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) < $global_calculated_value ) {  <new_line>
+$global_calculated_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ;  <new_line>
 }  <new_line>
 }  <new_line>
 }  <new_line>
@@ -6783,9 +6808,9 @@ template-function-segment-if-zero-words-return-default-text
 
 $global_calculated_value = 1 ;  <new_line>
 for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_current_word = substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_current_word = runtime-code-word-within-source-text ;  <new_line>
 if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_current_word ) ) {  <new_line>
-$global_calculated_value = $global_calculated_value * ( $global_current_word + 0 ) ;  <new_line>
+$global_calculated_value = $global_calculated_value * &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ;  <new_line>
 }  <new_line>
 }  <new_line>
 $global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ;  <new_line>
@@ -7068,7 +7093,7 @@ $global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
 @global_list_of_x_values = split( / +/ , $global_list_of_x_values_as_text ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_operand } = '' ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
-    $global_numeric_value = abs( $global_list_of_x_values[ $global_pair_pointer ] + 0 ) ;  <new_line>
+    $global_numeric_value = abs( &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_x_values[ $global_pair_pointer ] ) ) ;  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
     } else {  <new_line>
@@ -7086,7 +7111,7 @@ sub function__numeric_vector_add_number( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
-$global_single_value = $global_operand_two + 0 ;  <new_line>
+$global_single_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
 $global_list_of_x_values_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
 $global_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
@@ -7094,7 +7119,7 @@ $global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
 @global_list_of_x_values = split( / +/ , $global_list_of_x_values_as_text ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_operand } = '' ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
-    $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] + $global_single_value + 0 ;  <new_line>
+    $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] + &function_parameterized__convert_numeric_text_into_numeric_value( $global_single_value ) ;  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
     } else {  <new_line>
@@ -7125,7 +7150,7 @@ $global_list_of_x_values_as_text =~ s/ +$// ;  <new_line>
 @global_list_of_x_values = split( / +/ , $global_list_of_x_values_as_text ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_operand } = '' ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
-    $global_numeric_value = int( $global_list_of_x_values[ $global_pair_pointer ] + 0 ) ;  <new_line>
+    $global_numeric_value = int( &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_x_values[ $global_pair_pointer ] )) ;  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
     } else {  <new_line>
@@ -7143,7 +7168,7 @@ sub function__numeric_vector_multiply_by_number( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
-$global_single_value = $global_operand_two + 0 ;  <new_line>
+$global_single_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
 $global_list_of_x_values_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_list_of_x_values_as_text =~ s/\n/ /s ;  <new_line>
 $global_list_of_x_values_as_text =~ s/^ +// ;  <new_line>
@@ -7182,7 +7207,7 @@ $global_list_of_y_values_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_y_values_as_text =~ s/ +$// ;  <new_line>
 @global_list_of_y_values = split( / +/ , $global_list_of_y_values_as_text ) ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
-    $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] + $global_list_of_y_values[ $global_pair_pointer ] + 0 ;  <new_line>
+    $global_numeric_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_x_values[ $global_pair_pointer ] ) + &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_y_values[ $global_pair_pointer ] ) ;  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
     } else {  <new_line>
@@ -7216,7 +7241,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     if ( abs( $global_list_of_y_values[ $global_pair_pointer ] ) < 0.000001 ) {  <new_line>
         $global_numeric_value = 1000000 ;  <new_line>
     } else {  <new_line>
-        $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] / $global_list_of_y_values[ $global_pair_pointer ] + 0 ;  <new_line>
+        $global_numeric_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_x_values[ $global_pair_pointer ] ) / &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_y_values[ $global_pair_pointer ] ) ;  <new_line>
     }  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
@@ -7284,7 +7309,7 @@ $global_list_of_y_values_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_y_values_as_text =~ s/ +$// ;  <new_line>
 @global_list_of_y_values = split( / +/ , $global_list_of_y_values_as_text ) ;  <new_line>
 for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_values ; $global_pair_pointer ++ ) {  <new_line>
-    $global_numeric_value = $global_list_of_x_values[ $global_pair_pointer ] * $global_list_of_y_values[ $global_pair_pointer ] + 0 ;  <new_line>
+    $global_numeric_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_x_values[ $global_pair_pointer ] ) * &function_parameterized__convert_numeric_text_into_numeric_value( $global_list_of_y_values[ $global_pair_pointer ] ) ;  <new_line>
     if ( $global_numeric_value == 0 ) {  <new_line>
         $global_dashrep_replacement{ $global_target_operand } .= '0 ' ;  <new_line>
     } else {  <new_line>
@@ -7307,7 +7332,7 @@ if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen
     return '' ;  <new_line>
 }  <new_line>
 if ( ( exists( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } ) ) && ( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } =~ /^[0<character_hyphen>9]+$/ ) ) {  <new_line>
-    $global_map_tile_zoom = $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } + 0 ;  <new_line>
+    $global_map_tile_zoom = &function_parameterized__convert_numeric_text_into_numeric_value( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } ) ;  <new_line>
 } else {  <new_line>
     $global_map_tile_zoom = 16 ;  <new_line>
 }  <new_line>
@@ -7958,7 +7983,7 @@ return '' ;  <new_line>
 }  <new_line>
 
 for ( $global_word_pointer_numeric = 2 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
-$global_target_text .= ' ' . substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) ;  <new_line>
+$global_target_text .= ' ' . runtime-code-word-within-source-text ;  <new_line>
 }  <new_line>
 
 return '' ;  <new_line>
@@ -8870,8 +8895,8 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-numeric-equal-greater-less-compare:
 template-runtime-code-standard-action-begin
 
-$global_numeric_value_first = runtime-code-for-operand-number-one + 0 ;  <new_line>
-$global_numeric_value_second = runtime-code-for-operand-number-two + 0 ;  <new_line>
+$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ;  <new_line>
+$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ;  <new_line>
 
 if ( $global_numeric_value_first == $global_numeric_value_second ) {  <new_line>
 runtime-code-storage-item-result = 'equal' ;  <new_line>
@@ -9250,9 +9275,9 @@ template-runtime-code-standard-action-begin
 
 runtime-code-storage-item-result = 'multiple' ;  <new_line>
 
-if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'zero' ;  <new_line>
-} elsif ( runtime-code-for-operand-number-one + 0 == 1 ) {  <new_line>
+} elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) {  <new_line>
 runtime-code-storage-item-result = 'one' ;  <new_line>
 }  <new_line>
 
@@ -9263,7 +9288,7 @@ template-runtime-code-standard-action-begin
 
 runtime-code-storage-item-result = 'nonzero' ;  <new_line>
 
-if ( runtime-code-for-operand-number-one + 0 <= 0 ) {  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'zero' ;  <new_line>
 }  <new_line>
 
@@ -9284,7 +9309,7 @@ template-runtime-code-for-every-action-end:
 ---*
 ----
 template-runtime-code-identify-phrase-found:
-$global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] ) } = $global_yes ;  <new_line>
+$global_yes_found_word{ runtime-code-word-within-source-text } = $global_yes ;  <new_line>
 ----
 template-runtime-code-identify-phrases-all-found:
 for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) {  <new_line>
