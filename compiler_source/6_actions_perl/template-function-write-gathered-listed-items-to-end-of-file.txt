@@ -20,18 +20,18 @@ if ( $global_possible_error_message eq "" ) {  <new_line>
     $global_entry_begin = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here begin" } ;  <new_line>
     $global_entry_end = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here end" } ;  <new_line>
     $global_entry_unique = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here unique" } ;  <new_line>
-    @list_of_tag_names = ( ) ;  <new_line>
+    @global_list_of_tag_names = ( ) ;  <new_line>
     if ( ( exists( $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } ) ) && ( $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } =~ /[^ ]/ ) ) {  <new_line>
-        @list_of_tag_names = split( /[ \n\r]+/ , $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } ) ;  <new_line>
+        @global_list_of_tag_names = split( /[ \n\r]+/ , $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } ) ;  <new_line>
     }  <new_line>
-    @list_of_unique_values = ( ) ;  <new_line>
+    @global_list_of_unique_values = ( ) ;  <new_line>
     if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
-        @list_of_unique_values = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
+        @global_list_of_unique_values = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
     }  <new_line>
-    foreach $global_unique_value ( @list_of_unique_values ) {  <new_line>
+    foreach $global_unique_value ( @global_list_of_unique_values ) {  <new_line>
         $global_accumulated_text .= $global_entry_begin . "\n" ;  <new_line>
         $global_accumulated_text .= $global_entry_unique . " " . $global_unique_value . "\n" ;  <new_line>
-        foreach $global_tag_name ( @list_of_tag_names ) {  <new_line>
+        foreach $global_tag_name ( @global_list_of_tag_names ) {  <new_line>
             $global_phrase_name = $global_tag_name . "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" . $global_unique_value ;  <new_line>
             if ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) {  <new_line>
                 $global_accumulated_text .= $global_tag_name . " " . $global_dashrep_replacement{ $global_phrase_name } . "\n" ;  <new_line>

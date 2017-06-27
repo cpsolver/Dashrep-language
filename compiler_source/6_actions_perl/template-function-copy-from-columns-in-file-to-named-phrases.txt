@@ -17,8 +17,8 @@ if ( $global_possible_error_message eq "" ) {  <new_line>
     $global_temp_text =~ s/^ +// ;  <new_line>
     $global_temp_text =~ s/ +$//s ;  <new_line>
     if ( $global_temp_text =~ / / ) {  <new_line>
-        @phrase_naming_convention_for_column = split( /[ \n\r]+/ , $global_temp_text ) ;  <new_line>
-        $global_number_of_column_names = scalar( @phrase_naming_convention_for_column ) ;  <new_line>
+        @global_phrase_naming_convention_for_column = split( /[ \n\r]+/ , $global_temp_text ) ;  <new_line>
+        $global_number_of_column_names = scalar( @global_phrase_naming_convention_for_column ) ;  <new_line>
         $global_prefix_text = $global_phrase_naming_convention_for_column[ 0 ] ;  <new_line>
     } else {  <new_line>
         $global_phrase_naming_convention_for_column[ 1 ] = "" ;  <new_line>
@@ -47,15 +47,15 @@ if ( $global_possible_error_message eq "" ) {  <new_line>
         chomp( $global_input_line ) ;  <new_line>
         $global_input_line =~ s/[ \n\t]+$// ;  <new_line>
         if ( $global_use_two_spaces_as_delimiter eq "yes" ) {  <new_line>
-            @text_item_in_column = split( /<character_space> +/ , $global_input_line ) ;  <new_line>
+            @global_text_item_in_column = split( /<character_space> +/ , $global_input_line ) ;  <new_line>
         } else {  <new_line>
-            @text_item_in_column = split( /[\t ]/ , $global_input_line ) ;  <new_line>
+            @global_text_item_in_column = split( /[\t ]/ , $global_input_line ) ;  <new_line>
         }  <new_line>
         $global_unique_value = $global_text_item_in_column[ 0 ] ;  <new_line>
         if ( $global_unique_value =~ / / ) {  <new_line>
             $global_unique_value =~ s/ +/_/g ;  <new_line>
         }  <new_line>
-        $global_number_of_columns = scalar( @text_item_in_column ) ;  <new_line>
+        $global_number_of_columns = scalar( @global_text_item_in_column ) ;  <new_line>
         if ( $global_number_of_columns > $global_number_of_column_names ) {  <new_line>
             $global_number_of_columns = $global_number_of_column_names ;  <new_line>
         }  <new_line>
