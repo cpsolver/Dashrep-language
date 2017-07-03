@@ -3,7 +3,6 @@ start-here:
 
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
-[-do-new-tests-]
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
 [-put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-] -]
 
@@ -27,84 +26,6 @@ start-here:
 
 [-expand-text template-html-to-display-in-browser standard-output-]
 --------
-
-do-new-tests:
-
-ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 0 amenn  amenn
-ambee put-into-phrase correct-value-for-result-of-zero-or-nonzero  zero  amenn
-ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 23 amenn  amenn
-ambee put-into-phrase correct-value-for-result-of-zero-or-nonzero  nonzero  amenn
-ambee put-into-phrase phrase-to-clear-one  123  amenn
-ambee put-into-phrase phrase-to-clear-two  123  amenn
-ambee put-into-phrase phrase-to-clear-three  123  amenn
-ambee put-into-phrase list-of-phrases-to-clear  phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three  amenn
-ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-before-clear amenn
-ambee clear-listed-phrases list-of-phrases-to-clear
-ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-after-clear amenn
-
---------
-
-list-of-phrases-not-yet-tested-here:
-
-numeric-y-map-tile-number-based-on-latitude
-numeric-map-tile-zoom
-copy-words-rearrange-using-order-sort-numeric
-copy-words-rearrange-using-order-sort-alphabetic
-copy-words-at-skip-interval
-append-repeatedly-using-count
-copy-listed-words-to-phrases-named-in-pattern
-append-multiple-from-phrases-named-in-pattern
-generate-every-ordered-pairwise-combination-of-words
-xml-move-attributes-into-tag-elements
-encode-as-cgi-parameter
-decode-from-cgi-parameter
-generate-positions-of-delimiter
-generate-positions-of-first-matching-delimiter-after-listed-positions
-delete-listed-phrases
--------
-
-list-of-file-related-actions-to-test:
-copy-and-move-attributes-into-xml-tags
-yes-or-no-permission-to-append-to-files
-yes-or-no-permission-to-delete-or-overwrite-files
-dashrep-path-prefix-for-file-reading
-dashrep-path-prefix-for-file-writing
-generate-list-of-files-in-current-read-directory
-generate-list-of-folders-in-current-read-directory
-yes-or-no-file-exists
-yes-or-no-folder-exists
-size-of-file
-modification-time-of-file
-set-file-permission-public-read
-create-empty-file
-rename-file
-delete-file
-create-empty-sub-folder
-copy-from-file-to-phrase
-copy-from-phrase-append-to-file
-copy-append-file-to-file
-linewise-read-from-file-and-use-handler
-linewise-input-line-from-file
-linewise-input-line-count
-get-definitions-from-file
-dashrep-phrase-prefix-for-imported-phrases
-dashrep-phrase-suffix-for-imported-phrases
-write-dashrep-definitions-listed-in-phrase-to-file
-find-line-in-file-that-begins-with-text
-find-lines-in-file-that-begin-with-any-listed-word
-find-lines-in-file-that-begin-with-any-two-words-listed
-copy-from-columns-in-file-to-named-phrases
-copy-from-columns-in-file-to-column-lists
-yes-or-no-use-two-spaces-as-column-delimiter
-gather-tagged-info-from-file
-gather-from-tagged-file-one-entry
-write-gathered-listed-items-to-end-of-file
-dashrep-gather-tag-begin
-dashrep-gather-tag-end
-dashrep-gather-tag-unique
-dashrep-gather-tag-delete
-dashrep-gather-tag-matching-id
--------
 
 output-filename:
 output_display_values_not_correct.txt
@@ -332,7 +253,7 @@ text-that-occurs-within-parameter-phrases
 [-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
 [-put-into-phrase correct-value-for-vector-result-distances  27 25 4 -]
 
-ambee put-into-phrase vector-decimals-and-negatives  -1.73 82.5 -3.9  -]
+ambee put-into-phrase vector-decimals-and-negatives  -1.73 82.5 -3.9  amenn
 ambee numeric-vectors-multiply vector-decimals-and-negatives vector-two result-of-numeric-vectors-multiply amenn
 ambee put-into-phrase correct-value-for-result-of-numeric-vectors-multiply  -36 -742 0  amenn
 ambee numeric-vectors-divide-by vector-decimals-and-negatives vector-two result-of-numeric-vectors-divide-by amenn
@@ -434,6 +355,42 @@ ambee put-into-phrase correct-value-for-single-animal-type  whale  amenn
 ambee copy-words-sort-alphabetic list-of-animal-types alphabetically-sorted-animal-types amenn
 ambee put-into-phrase correct-value-for-alphabetically-sorted-animal-types  dolphin octopus starfish whale  amenn
 
+ambee generate-every-ordered-pairwise-combination-of-words list-of-animal-types list-ordered-pairwise-words-one list-ordered-pairwise-words-two amenn
+ambee put-into-phrase correct-value-for-list-ordered-pairwise-words-one  dolphin dolphin dolphin whale whale starfish  amenn
+ambee put-into-phrase correct-value-for-list-ordered-pairwise-words-two  whale starfish octopus starfish octopus octopus  amenn
+
+ambee put-into-phrase operand-one  seven one five three twelve  amenn
+ambee put-into-phrase operand-three  7 1 5 3 12  amenn
+ambee copy-words-rearrange-using-order-sort-numeric operand-one list-from-rearranged-numeric operand-three  amenn
+ambee put-into-phrase correct-value-for-list-from-rearranged-numeric  one three five seven twelve  amenn
+
+ambee put-into-phrase operand-one  Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready  amenn
+ambee put-into-phrase operand-three  tesla_nikola lincoln_abe jefferson_thomas maccready_paul  amenn
+ambee copy-words-rearrange-using-order-sort-alphabetic operand-one list-from-rearranged-alphabetic operand-three amenn
+ambee put-into-phrase correct-value-for-list-from-rearranged-alphabetic Thomas_Jefferson Abe_Lincoln Paul_MacCready Nikola_Tesla  amenn
+
+ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 0 amenn  amenn
+ambee put-into-phrase correct-value-for-result-of-zero-or-nonzero  zero  amenn
+ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 23 amenn  amenn
+ambee put-into-phrase correct-value-for-result-of-zero-or-nonzero  nonzero  amenn
+
+ambee put-into-phrase phrase-to-clear-one  123  amenn
+ambee put-into-phrase phrase-to-clear-two  123  amenn
+ambee put-into-phrase phrase-to-clear-three  123  amenn
+ambee put-into-phrase list-of-phrases-to-clear  phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three  amenn
+ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-before-clear amenn
+*---
+ambee clear-listed-phrases list-of-phrases-to-clear amenn
+ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-after-clear amenn
+---*
+
+ambee put-into-phrase result-of-numeric-add  ambee numeric-add 3.5 2.7 amenn amenn
+ambee put-into-phrase correct-value-for-result-of-numeric-add  6.2  amenn
+ambee put-into-phrase result-of-numeric-logarithm-base-e  ambee numeric-logarithm-base-e 3.5 amenn  amenn
+ambee put-into-phrase correct-value-for-result-of-numeric-logarithm-base-e  1.25276296849537  amenn
+ambee put-into-phrase result-of-numeric-logarithm-base-10  ambee numeric-logarithm-base-10 3.5 amenn  amenn
+ambee put-into-phrase correct-value-for-result-of-numeric-logarithm-base-10  0.544068044350276  amenn
+
 ambee put-into-phrase current-time-in-epoch-seconds  ambee get-current-time-in-epoch-seconds amenn  amenn
 ambee put-into-phrase check-current-time-in-epoch-seconds  ambee numeric-equal-greater-less-compare ambee current-time-in-epoch-seconds amenn 1498700000 amenn  amenn
 ambee put-into-phrase correct-value-for-check-current-time-in-epoch-seconds  greater amenn
@@ -445,15 +402,52 @@ ambee split-epoch-seconds-into-named-components-for-zero-meridian ambee epoch-se
 ambee expand-text template-date-time-full expanded-date-time-frozen-zero-meridian amenn
 ambee put-into-phrase correct-value-for-expanded-date-time-frozen-zero-meridian  29 4 5 50 6 53 2017  amenn
 
-ambee put-into-phrase result-of-numeric-add  ambee numeric-add 3.5 2.7 amenn amenn
-ambee put-into-phrase correct-value-for-result-of-numeric-add  6.2  amenn
-ambee numeric-logarithm-base-e 3.5 result-of-numeric-logarithm-base-e amenn
-ambee put-into-phrase correct-value-for-result-of-numeric-logarithm-base-e  ????  amenn
-ambee numeric-logarithm-base-10 3.5 result-of-numeric-logarithm-base-10 amenn
-ambee put-into-phrase correct-value-for-result-of-numeric-logarithm-base-10  ????  amenn
+ambee put-into-phrase list-of-numbers-as-text  one two three  amenn
+ambee put-into-phrase operand-one  dolphin buffalo bear  amenn
+ambee put-into-phrase operand-two  item-am bee-list-of-numbers-as-text-am enn  amenn
+ambee copy-and-replace operand-two operand-one character-space empty-text amenn
+*---
+ambee copy-listed-words-to-phrases-named-in-pattern operand-one operand-two amenn
+ambee put-into-phrase correct-value-for-item-one  dolphin  amenn
+ambee put-into-phrase correct-value-for-item-two  buffalo  amenn
+ambee put-into-phrase correct-value-for-item-three  bear  amenn
+---*
+
+ambee put-into-phrase operand-one  item-am bee-list-of-numbers-as-text-am enn  amenn
+ambee copy-and-replace operand-one operand-one character-space empty-text amenn
+ambee put-into-phrase operand-two  dolphin  amenn
+ambee put-into-phrase item-one  buffalo  amenn
+ambee put-into-phrase item-two  bear  amenn
+ambee put-into-phrase item-three  eagle  amenn
+*---
+ambee append-multiple-from-phrases-named-in-pattern result-append-multiple operand-two operand-three amenn
+---*
+ambee put-into-phrase correct-value-for-result-append-multiple  dolphin buffalo bear eagle  amenn
+
 
 text-that-occurs-after-parameter-phrases
 --------
+
+list-of-phrases-not-yet-tested-here:
+
+copy-and-move-attributes-into-xml-tags
+Example: If the first phrase contains the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
+paragraph-next
+
+copy-and-remove-attributes-from-xml-tags
+Example: If the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space .
+
+
+numeric-y-map-tile-number-based-on-latitude
+
+encode-as-cgi-parameter
+decode-from-cgi-parameter
+generate-positions-of-delimiter
+generate-positions-of-first-matching-delimiter-after-listed-positions
+delete-listed-phrases
+copy-words-at-skip-interval
+
+-------
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
@@ -471,13 +465,60 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 [-put-into-phrase correct-value-for-regenerated-page-participants-list-without-extra-spaces  ??? -]
 --------
 
+list-of-file-related-actions-to-test:
+copy-and-move-attributes-into-xml-tags
+yes-or-no-permission-to-append-to-files
+yes-or-no-permission-to-delete-or-overwrite-files
+dashrep-path-prefix-for-file-reading
+dashrep-path-prefix-for-file-writing
+generate-list-of-files-in-current-read-directory
+generate-list-of-folders-in-current-read-directory
+yes-or-no-file-exists
+yes-or-no-folder-exists
+size-of-file
+modification-time-of-file
+set-file-permission-public-read
+create-empty-file
+rename-file
+delete-file
+create-empty-sub-folder
+copy-from-file-to-phrase
+copy-from-phrase-append-to-file
+copy-append-file-to-file
+linewise-read-from-file-and-use-handler
+linewise-input-line-from-file
+linewise-input-line-count
+get-definitions-from-file
+dashrep-phrase-prefix-for-imported-phrases
+dashrep-phrase-suffix-for-imported-phrases
+write-dashrep-definitions-listed-in-phrase-to-file
+find-line-in-file-that-begins-with-text
+find-lines-in-file-that-begin-with-any-listed-word
+find-lines-in-file-that-begin-with-any-two-words-listed
+copy-from-columns-in-file-to-named-phrases
+copy-from-columns-in-file-to-column-lists
+yes-or-no-use-two-spaces-as-column-delimiter
+gather-tagged-info-from-file
+gather-from-tagged-file-one-entry
+write-gathered-listed-items-to-end-of-file
+dashrep-gather-tag-begin
+dashrep-gather-tag-end
+dashrep-gather-tag-unique
+dashrep-gather-tag-delete
+dashrep-gather-tag-matching-id
+-------
+
 correct-value-for-expanded-test-of-dashrep-actions:
-text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases abc text-that-occurs-after-parameter-phrases
+text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases inline text text-that-occurs-after-parameter-phrases
 --------
 
 test-expand-text-inline:
-[-copy-text string-abc copy-of-string-abc-]
-copy-of-string-abc
+[-copy-text string-words-inline-text copy-of-string-words-inline-text-]
+copy-of-string-words-inline-text
+--------
+
+string-words-inline-text:
+inline text
 --------
 
 contains-name-test-skip-level-executable-phrase:
@@ -993,4 +1034,8 @@ character-equal-sign:
 
 html-entity-hyphen:
 &#45;
+--------
+
+numeric-map-tile-zoom
+12
 --------
