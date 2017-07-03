@@ -38,6 +38,7 @@ $global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
 my @global_list_of_items_one = ( ) ;  <new_line>
 my @global_list_of_items_two = ( ) ;  <new_line>
 my @global_column_position_for_item_number = ( ) ;  <new_line>
+my @global_input_list = ( ) ;  <new_line>
 my @global_input_list_one = ( ) ;  <new_line>
 my @global_input_list_two = ( ) ;  <new_line>
 my @global_item_number_found_at_position = ( ) ;  <new_line>
