@@ -3,46 +3,21 @@ template-interpreter-function-begin
 sub function__generate_every_ordered_pairwise_combination_of_words( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
-$global_input_list_two_phrase_name = $global_operand_two ;  <new_line>
-$global_output_list_one_phrase_name = $global_operand_three ;  <new_line>
-$global_output_list_two_phrase_name = $global_operand_four ;  <new_line>
-$global_temp_text = $global_dashrep_replacement{ $global_input_list_one_phrase_name } ;  <new_line>
+$global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
+$global_dashrep_replacement{ $global_operand_three } = '' ;  <new_line>
+$global_separator = '' ;  <new_line>
+$global_temp_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_temp_text =~ s/\n/ /sg ;  <new_line>
 $global_temp_text =~ s/^ +// ;  <new_line>
 $global_temp_text =~ s/ +$// ;  <new_line>
-@global_input_list_one = split( / +/ , $global_temp_text ) ;  <new_line>
-$global_temp_text = $global_dashrep_replacement{ $global_input_list_two_phrase_name } ;  <new_line>
-$global_temp_text =~ s/\n/ /sg ;  <new_line>
-$global_temp_text =~ s/^ +// ;  <new_line>
-$global_temp_text =~ s/ +$// ;  <new_line>
-@global_input_list_two = split( / +/ , $global_temp_text ) ;  <new_line>
-$global_count_list_one = $#global_input_list_one + 1 ;  <new_line>
-$global_count_list_two = $#global_input_list_two + 1 ;  <new_line>
-if ( $global_count_list_one < 1 ) {  <new_line>
-
-} elsif ( $global_count_list_two < 1 ) {  <new_line>
-} else {  <new_line>
-    $global_dashrep_replacement{ $global_output_list_one_phrase_name } = '' ;  <new_line>
-    $global_dashrep_replacement{ $global_output_list_two_phrase_name } = '' ;  <new_line>
-    $global_separator_one = ' ' ;  <new_line>
-    $global_separator_two = ' ' ;  <new_line>
-    $global_ending_first_count = $global_count_list_one ;  <new_line>
-    $global_starting_second_count = 1 ;  <new_line>
-    $global_ending_first_count <character_hyphen><character_hyphen> ;  <new_line>
-    for ( $global_counter_one = 1 ; $global_counter_one <= $global_ending_first_count ; $global_counter_one ++ ) {  <new_line>
-        $global_value_one = $global_input_list_one[ $global_counter_one - 1 ] ;  <new_line>
-        if ( $global_ending_first_count != $global_count_list_one ) {  <new_line>
-            $global_starting_second_count = $global_counter_one + 1 ;  <new_line>
-        }  <new_line>
-        for ( $global_counter_two = $global_starting_second_count ; $global_counter_two <= $global_count_list_two ; $global_counter_two ++ ) {  <new_line>
-            $global_value_two = $global_input_list_two[ $global_counter_two - 1 ] ;  <new_line>
-            if ( ( $global_counter_one == $global_ending_first_count ) && ( $global_counter_two == $global_count_list_two ) ) {  <new_line>
-                $global_separator_one = '' ;  <new_line>
-                $global_separator_two = '' ;  <new_line>
-            }  <new_line>
-            $global_dashrep_replacement{ $global_output_list_one_phrase_name } .= $global_value_one . $global_separator_one ;  <new_line>
-            $global_dashrep_replacement{ $global_output_list_two_phrase_name } .= $global_value_two . $global_separator_two ;  <new_line>
+@global_input_list = split( / +/ , $global_temp_text ) ;  <new_line>
+$global_count_list = $#global_input_list + 1 ;  <new_line>
+if ( $global_count_list > 0 ) {  <new_line>
+    for ( $global_counter_one = 1 ; $global_counter_one <= $global_count_list ; $global_counter_one ++ ) {  <new_line>
+        for ( $global_counter_two = $global_counter_one + 1 ; $global_counter_two <= $global_count_list ; $global_counter_two ++ ) {  <new_line>
+            $global_dashrep_replacement{ $global_operand_two } .= $global_separator . $global_input_list[ $global_counter_one - 1 ] ;  <new_line>
+            $global_dashrep_replacement{ $global_operand_three } .= $global_separator . $global_input_list[ $global_counter_two - 1 ] ;  <new_line>
+            $global_separator = ' ' ;  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
