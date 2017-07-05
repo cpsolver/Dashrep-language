@@ -378,11 +378,13 @@ ambee put-into-phrase phrase-to-clear-one  123  amenn
 ambee put-into-phrase phrase-to-clear-two  123  amenn
 ambee put-into-phrase phrase-to-clear-three  123  amenn
 ambee put-into-phrase list-of-phrases-to-clear  phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three  amenn
-ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-before-clear amenn
+ambee expand-text list-of-phrases-to-clear result-before-listed-phrases-cleared amenn
 *---
 ambee clear-listed-phrases list-of-phrases-to-clear amenn
-ambee expand-text list-of-phrases-to-clear expanded-list-of-phrases-to-clear-after-clear amenn
 ---*
+ambee expand-text list-of-phrases-to-clear result-after-listed-phrases-cleared amenn
+ambee put-into-phrase correct-value-for-result-before-listed-phrases-cleared  ???  amenn
+ambee put-into-phrase correct-value-for-result-after-listed-phrases-cleared  ???  amenn
 
 ambee put-into-phrase result-of-numeric-add  ambee numeric-add 3.5 2.7 amenn amenn
 ambee put-into-phrase correct-value-for-result-of-numeric-add  6.2  amenn
@@ -413,16 +415,20 @@ ambee put-into-phrase correct-value-for-item-two  buffalo  amenn
 ambee put-into-phrase correct-value-for-item-three  bear  amenn
 ---*
 
-ambee put-into-phrase operand-one  item-am bee-list-of-numbers-as-text-am enn  amenn
-ambee copy-and-replace operand-one operand-one character-space empty-text amenn
+ambee put-into-phrase operand-one  item-ambee-list-of-numbers-as-text-amenn  amenn
 ambee put-into-phrase operand-two  dolphin  amenn
 ambee put-into-phrase item-one  buffalo  amenn
 ambee put-into-phrase item-two  bear  amenn
 ambee put-into-phrase item-three  eagle  amenn
+ambee append-multiple-from-phrases-named-in-pattern operand-one operand-two result-append-multiple amenn
 *---
-ambee append-multiple-from-phrases-named-in-pattern result-append-multiple operand-two operand-three amenn
 ---*
 ambee put-into-phrase correct-value-for-result-append-multiple  dolphin buffalo bear eagle  amenn
+
+*---
+generate-positions-of-delimiter simple-xml-with-tags
+generate-positions-of-first-matching-delimiter-after-listed-positions simple-xml-with-tags
+---*
 
 
 text-that-occurs-after-parameter-phrases
@@ -442,8 +448,6 @@ numeric-y-map-tile-number-based-on-latitude
 
 encode-as-cgi-parameter
 decode-from-cgi-parameter
-generate-positions-of-delimiter
-generate-positions-of-first-matching-delimiter-after-listed-positions
 delete-listed-phrases
 copy-words-at-skip-interval
 
@@ -1038,4 +1042,23 @@ html-entity-hyphen:
 
 numeric-map-tile-zoom
 12
+--------
+
+list-of-integers-positive:
+12 72 0 3 28 94 36 103 17 1
+--------
+
+list-of-integers-positive-and-negative:
+12 -72 0 3 -28 94 -36 1 17 -1
+--------
+
+list-of-decimal-numbers:
+1.0 0.0 -4.2 9.666 -0.002 32.7 21.4 -7.7 42.5 0.100
+--------
+
+simple-xml-with-tags:
+<begin>dolphin<end>
+<begin>tail<end>
+<begin>fin<end>
+<begin>flippers<end>
 --------
