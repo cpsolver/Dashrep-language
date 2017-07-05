@@ -1,0 +1,4 @@
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-one string-whichever string-one amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-two string-whichever string-two amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-three string-whichever string-three amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-four string-whichever string-four amenn

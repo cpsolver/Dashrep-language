@@ -1,0 +1,1 @@
+substr( $global_operand_three , $global_word_begin_operand_three_at_word[ $global_word_pointer_operand_three ] , $global_word_length_operand_three_at_word[ $global_word_pointer_operand_three ] )

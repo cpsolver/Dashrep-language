@@ -4,6 +4,7 @@
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
 [-define-special-strings-]
+[-generate-versions-of-function-point-to-word-in-operand-]
 [-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
 [-assign-action-operand-characteristics-]
