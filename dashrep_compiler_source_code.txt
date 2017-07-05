@@ -64,6 +64,7 @@ compile-source-code-initialize:
 [-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
 
 [-define-special-strings-]
+[-generate-versions-of-function-point-to-word-in-operand-]
 [-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
 [-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
 [-assign-action-operand-characteristics-]
@@ -371,6 +372,12 @@ generate-storage-for-current-text:
 [-append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition-]
 [-append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition-]
 [-copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition [-filename-output-results-all-definition-items-]-]
+----
+generate-versions-of-function-point-to-word-in-operand:
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-one string-whichever string-one amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-two string-whichever string-two amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-three string-whichever string-three amenn
+ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-four string-whichever string-four amenn
 ----
 get-all-operands:
 [-copy-text digit-0 number-of-operands-]
@@ -1495,6 +1502,9 @@ executable
 string-for:
 for
 ----
+string-four:
+four
+----
 string-here:
 here
 ----
@@ -1543,11 +1553,20 @@ special
 string-text:
 text
 ----
+string-three:
+three
+----
 string-two-apostrophes:
 ''
 ----
+string-two:
+two
+----
 string-underscores:
 underscores
+----
+string-whichever:
+whichever
 ----
 string-with:
 with
@@ -2402,17 +2421,9 @@ my @global_begin_position_for_word = ( ) ;  <new_line>
 $global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
 $global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
 
-my @global_begin_position_secondary_for_word = ( ) ;  <new_line>
-$global_begin_position_secondary_for_word[ 0 ] = 0 ;  <new_line>
-$global_begin_position_secondary_for_word[ 1 ] = 0 ;  <new_line>
-
 my @global_length_of_word = ( ) ;  <new_line>
 $global_length_of_word[ 0 ] = 0 ;  <new_line>
 $global_length_of_word[ 1 ] = 0 ;  <new_line>
-
-my @global_length_secondary_of_word = ( ) ;  <new_line>
-$global_length_secondary_of_word[ 0 ] = 0 ;  <new_line>
-$global_length_secondary_of_word[ 1 ] = 0 ;  <new_line>
 
 my @global_pointer_to_whitespace_type = ( ) ;  <new_line>
 $global_pointer_to_whitespace_type[ 0 ] = 0 ;  <new_line>
@@ -2422,9 +2433,19 @@ my @global_yes_find_next_whitespace_of_type = ( ) ;  <new_line>
 $global_yes_find_next_whitespace_of_type[ 0 ] = 0 ;  <new_line>
 $global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
 
+my @global_word_begin_operand_one_at_word = ( ) ;  <new_line>
+my @global_word_length_operand_one_at_word = ( ) ;  <new_line>
+my @global_word_begin_operand_two_at_word = ( ) ;  <new_line>
+my @global_word_length_operand_two_at_word = ( ) ;  <new_line>
+my @global_word_begin_operand_three_at_word = ( ) ;  <new_line>
+my @global_word_length_operand_three_at_word = ( ) ;  <new_line>
+my @global_word_begin_operand_four_at_word = ( ) ;  <new_line>
+my @global_word_length_operand_four_at_word = ( ) ;  <new_line>
+
 my @global_list_of_items_one = ( ) ;  <new_line>
 my @global_list_of_items_two = ( ) ;  <new_line>
 my @global_column_position_for_item_number = ( ) ;  <new_line>
+my @global_input_list = ( ) ;  <new_line>
 my @global_input_list_one = ( ) ;  <new_line>
 my @global_input_list_two = ( ) ;  <new_line>
 my @global_item_number_found_at_position = ( ) ;  <new_line>
@@ -2508,7 +2529,6 @@ my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line
 my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
 my $global_target_text = '' ;  <new_line>
-my $global_source_text_secondary = '' ;  <new_line>
 my $global_temporary_text = '' ;  <new_line>
 my $global_default_text = '' ;  <new_line>
 my $global_text_expanded_parameters_only = '' ;  <new_line>
@@ -2585,13 +2605,16 @@ my $global_pointer_to_word = 0 ;  <new_line>
 my $global_pointer_to_next_word = 0 ;  <new_line>
 my $global_number_of_words = 0 ;  <new_line>
 my $global_word_pointer_numeric = 0 ;  <new_line>
-my $global_word_pointer_numeric_secondary = 0 ;  <new_line>
 my $global_calculated_value = 0 ;  <new_line>
 my $global_normalized_calculated_value = 0 ;  <new_line>
 my $global_count_range = 0 ;  <new_line>
 my $global_counter = 0 ;  <new_line>
 my $global_count_number = 0 ;  <new_line>
 my $global_count_of_items_appended = 0 ;  <new_line>
+my $global_word_pointer_operand_one = 0 ;  <new_line>
+my $global_word_pointer_operand_two = 0 ;  <new_line>
+my $global_word_pointer_operand_three = 0 ;  <new_line>
+my $global_word_pointer_operand_four = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
@@ -3336,6 +3359,10 @@ template-function-parameterized-yes-or-no-input-file-exists
 template-function-parameterized-yes-or-no-output-file-exists
 
 template-function-point-to-words
+template-function-point-to-words-in-operand-one
+template-function-point-to-words-in-operand-two
+template-function-point-to-words-in-operand-three
+template-function-point-to-words-in-operand-four
 template-function-remove-extra-spaces
 template-function-get-count-of-words
 template-function-get-word-at-position
@@ -3346,9 +3373,6 @@ template-function-dashrep-expand-phrases
 list-of-template-functions-for-requested-actions
 ----
 operand-checks-for-action-append-multiple-from-phrases-named-in-pattern:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
-----
-operand-checks-for-action-append-multiple-in-phrase-to-phrases-named-in-pattern:
 check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-append-new-line:
@@ -3514,7 +3538,7 @@ operand-checks-for-action-generate-counts-from-integer-to-integer:
 check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name
+check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-generate-every-pairwise-combination-of-words:
 check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name
@@ -3719,6 +3743,18 @@ substr( $global_source_text_secondary , $global_begin_position_secondary_for_wor
 ----
 runtime-code-word-within-source-text:
 substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
+----
+template-current-word-in-operand-four:
+substr( $global_operand_four , $global_word_begin_operand_four_at_word[ $global_word_pointer_operand_four ] , $global_word_length_operand_four_at_word[ $global_word_pointer_operand_four ] )
+----
+template-current-word-in-operand-one:
+substr( $global_operand_one , $global_word_begin_operand_one_at_word[ $global_word_pointer_operand_one ] , $global_word_length_operand_one_at_word[ $global_word_pointer_operand_one ] )
+----
+template-current-word-in-operand-three:
+substr( $global_operand_three , $global_word_begin_operand_three_at_word[ $global_word_pointer_operand_three ] , $global_word_length_operand_three_at_word[ $global_word_pointer_operand_three ] )
+----
+template-current-word-in-operand-two:
+substr( $global_operand_two , $global_word_begin_operand_two_at_word[ $global_word_pointer_operand_two ] , $global_word_length_operand_two_at_word[ $global_word_pointer_operand_two ] )
 ----
 template-function-append-multiple-from-phrases-named-in-pattern:
 template-interpreter-function-begin
@@ -4612,7 +4648,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
 } else {  <new_line>
     @global_list = ( ) ;  <new_line>
 }  <new_line>
-$global_count = $global_list + 1 ;  <new_line>
+$global_count = $#global_list + 1 ;  <new_line>
 $global_temp_text = '' ;  <new_line>
 if ( $global_count > 0 ) {  <new_line>
     for ( $global_word_number = $global_count ; $global_word_number >= 1 ; $global_word_number <character_hyphen><character_hyphen> ) {  <new_line>
@@ -4627,16 +4663,15 @@ template-interpreter-function-end
 template-function-copy-words-rearrange-using-order-sort-alphabetic:
 template-interpreter-function-begin
 
-sub function__words_rearrange_using_order_sort_alphabetic( ) {  <new_line>
+sub function__copy_words_rearrange_using_order_sort_alphabetic( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_source_phrase_name = $global_operand_one ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
-# previously, next line removed instead of replaced:  <new_line>
-$global_source_phrase_name =~ s/\n/ /g ;  <new_line>
-if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) ) {  <new_line>
+$global_operand_one =~ s/\n/ /g ;  <new_line>
+
+if ( ( $global_operand_one !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) || ( not( defined( $global_dashrep_replacement{ $global_operand_one } ) ) ) ) {  <new_line>
 } else {  <new_line>
-    $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
+
+    $global_source_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
     $global_source_text =~ s/\n/ /sg ;  <new_line>
     $global_source_text =~ s/^ +// ;  <new_line>
     $global_source_text =~ s/ +$// ;  <new_line>
@@ -4653,13 +4688,13 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     @global_list_indicating_sort_order = split( / +/ , $global_list_indicating_sort_order_text_string ) ;  <new_line>
     @global_sort_order = sort( @global_list_indicating_sort_order ) ;  <new_line>
     $global_extra_words_without_sort_value = '' ;  <new_line>
-    if ( $global_list_indicating_sort_order < $global_list_of_words ) {  <new_line>
-        for ( $global_word_position = ( $global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $global_list_of_words + 1 ) ; $global_word_position ++ ) {  <new_line>
+    if ( $#global_list_indicating_sort_order < $#global_list_of_words ) {  <new_line>
+        for ( $global_word_position = ( $#global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $#global_list_of_words + 1 ) ; $global_word_position ++ ) {  <new_line>
             $global_extra_words_without_sort_value .= $global_list_of_words[ $global_word_position - 1 ] . ' ' ;  <new_line>
         }  <new_line>
     }  <new_line>
     %global_words_at_numeric_value = ( ) ;  <new_line>
-    for ( $global_word_position = 1 ; $global_word_position <= ( $global_list_indicating_sort_order + 1 ) ; $global_word_position ++ ) {  <new_line>
+    for ( $global_word_position = 1 ; $global_word_position <= ( $#global_list_indicating_sort_order + 1 ) ; $global_word_position ++ ) {  <new_line>
         $global_numeric_value = $global_list_indicating_sort_order[ $global_word_position - 1 ] ;  <new_line>
         $global_words_at_numeric_value{ $global_numeric_value } .= $global_list_of_words[ $global_word_position - 1 ] . ' ' ;  <new_line>
     }  <new_line>
@@ -4673,7 +4708,7 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     $global_text_string .= ' ' . $global_extra_words_without_sort_value ;  <new_line>
     $global_text_string =~ s/ +/ /g ;  <new_line>
     $global_text_string =~ s/ $// ;  <new_line>
-    $global_dashrep_replacement{ $global_target_phrase_name } = $global_text_string ;  <new_line>
+    $global_dashrep_replacement{ $global_operand_two } = $global_text_string ;  <new_line>
 }  <new_line>
 
 template-interpreter-function-end
@@ -4684,17 +4719,18 @@ template-interpreter-function-begin
 sub function__copy_words_rearrange_using_order_sort_numeric( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
+
 if ( $global_dashrep_replacement{ $global_operand_three } =~ /[^0<character_hyphen>9\.\<character_hyphen> ]/ ) {  <new_line>
     $global_action_result = 'runtime_operand_error_copy_words_rearrange_using_order_sort_numeric' ;  <new_line>
     return ;  <new_line>
 }  <new_line>
-$global_source_phrase_name = $global_operand_one ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
-# previously, next line removed instead of replaced:  <new_line>
-$global_source_phrase_name =~ s/\n/ /g ;  <new_line>
-if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) || ( not( defined( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) ) {  <new_line>
+
+$global_operand_one =~ s/\n/ /g ;  <new_line>
+
+if ( ( $global_operand_one !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) || ( not( defined( $global_dashrep_replacement{ $global_operand_one } ) ) ) ) {  <new_line>
 } else {  <new_line>
-    $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
+
+    $global_source_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
     $global_source_text =~ s/\n/ /sg ;  <new_line>
     $global_source_text =~ s/^ +// ;  <new_line>
     $global_source_text =~ s/ +$// ;  <new_line>
@@ -4711,13 +4747,13 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     @global_list_indicating_sort_order = split( / +/ , $global_list_indicating_sort_order_text_string ) ;  <new_line>
     @global_sort_order = sort { $a <=> $b } @global_list_indicating_sort_order ;  <new_line>
     $global_extra_words_without_sort_value = '' ;  <new_line>
-    if ( $global_list_indicating_sort_order < $global_list_of_words ) {  <new_line>
-        for ( $global_word_position = ( $global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $global_list_of_words + 1 ) ; $global_word_position ++ ) {  <new_line>
+    if ( $#global_list_indicating_sort_order < $#global_list_of_words ) {  <new_line>
+        for ( $global_word_position = ( $#global_list_indicating_sort_order + 2 ) ; $global_word_position <= ( $#global_list_of_words + 1 ) ; $global_word_position ++ ) {  <new_line>
             $global_extra_words_without_sort_value .= $global_list_of_words[ $global_word_position - 1 ] . ' ' ;  <new_line>
         }  <new_line>
     }  <new_line>
     %global_words_at_numeric_value = ( ) ;  <new_line>
-    for ( $global_word_position = 1 ; $global_word_position <= ( $global_list_indicating_sort_order + 1 ) ; $global_word_position ++ ) {  <new_line>
+    for ( $global_word_position = 1 ; $global_word_position <= ( $#global_list_indicating_sort_order + 1 ) ; $global_word_position ++ ) {  <new_line>
         $global_numeric_value = $global_list_indicating_sort_order[ $global_word_position - 1 ] ;  <new_line>
         $global_words_at_numeric_value{ $global_numeric_value } .= $global_list_of_words[ $global_word_position - 1 ] . ' ' ;  <new_line>
     }  <new_line>
@@ -4731,7 +4767,7 @@ if ( ( $global_source_phrase_name !~ /^[^ ]+$/ ) || ( not( exists( $global_dashr
     $global_text_string .= ' ' . $global_extra_words_without_sort_value ;  <new_line>
     $global_text_string =~ s/ +/ /g ;  <new_line>
     $global_text_string =~ s/ $// ;  <new_line>
-    $global_dashrep_replacement{ $global_target_phrase_name } = $global_text_string ;  <new_line>
+    $global_dashrep_replacement{ $global_operand_two } = $global_text_string ;  <new_line>
 }  <new_line>
 
 template-interpreter-function-end
@@ -5846,46 +5882,21 @@ template-interpreter-function-begin
 sub function__generate_every_ordered_pairwise_combination_of_words( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
-$global_input_list_two_phrase_name = $global_operand_two ;  <new_line>
-$global_output_list_one_phrase_name = $global_operand_three ;  <new_line>
-$global_output_list_two_phrase_name = $global_operand_four ;  <new_line>
-$global_temp_text = $global_dashrep_replacement{ $global_input_list_one_phrase_name } ;  <new_line>
+$global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
+$global_dashrep_replacement{ $global_operand_three } = '' ;  <new_line>
+$global_separator = '' ;  <new_line>
+$global_temp_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_temp_text =~ s/\n/ /sg ;  <new_line>
 $global_temp_text =~ s/^ +// ;  <new_line>
 $global_temp_text =~ s/ +$// ;  <new_line>
-@global_input_list_one = split( / +/ , $global_temp_text ) ;  <new_line>
-$global_temp_text = $global_dashrep_replacement{ $global_input_list_two_phrase_name } ;  <new_line>
-$global_temp_text =~ s/\n/ /sg ;  <new_line>
-$global_temp_text =~ s/^ +// ;  <new_line>
-$global_temp_text =~ s/ +$// ;  <new_line>
-@global_input_list_two = split( / +/ , $global_temp_text ) ;  <new_line>
-$global_count_list_one = $#global_input_list_one + 1 ;  <new_line>
-$global_count_list_two = $#global_input_list_two + 1 ;  <new_line>
-if ( $global_count_list_one < 1 ) {  <new_line>
-
-} elsif ( $global_count_list_two < 1 ) {  <new_line>
-} else {  <new_line>
-    $global_dashrep_replacement{ $global_output_list_one_phrase_name } = '' ;  <new_line>
-    $global_dashrep_replacement{ $global_output_list_two_phrase_name } = '' ;  <new_line>
-    $global_separator_one = ' ' ;  <new_line>
-    $global_separator_two = ' ' ;  <new_line>
-    $global_ending_first_count = $global_count_list_one ;  <new_line>
-    $global_starting_second_count = 1 ;  <new_line>
-    $global_ending_first_count <character_hyphen><character_hyphen> ;  <new_line>
-    for ( $global_counter_one = 1 ; $global_counter_one <= $global_ending_first_count ; $global_counter_one ++ ) {  <new_line>
-        $global_value_one = $global_input_list_one[ $global_counter_one - 1 ] ;  <new_line>
-        if ( $global_ending_first_count != $global_count_list_one ) {  <new_line>
-            $global_starting_second_count = $global_counter_one + 1 ;  <new_line>
-        }  <new_line>
-        for ( $global_counter_two = $global_starting_second_count ; $global_counter_two <= $global_count_list_two ; $global_counter_two ++ ) {  <new_line>
-            $global_value_two = $global_input_list_two[ $global_counter_two - 1 ] ;  <new_line>
-            if ( ( $global_counter_one == $global_ending_first_count ) && ( $global_counter_two == $global_count_list_two ) ) {  <new_line>
-                $global_separator_one = '' ;  <new_line>
-                $global_separator_two = '' ;  <new_line>
-            }  <new_line>
-            $global_dashrep_replacement{ $global_output_list_one_phrase_name } .= $global_value_one . $global_separator_one ;  <new_line>
-            $global_dashrep_replacement{ $global_output_list_two_phrase_name } .= $global_value_two . $global_separator_two ;  <new_line>
+@global_input_list = split( / +/ , $global_temp_text ) ;  <new_line>
+$global_count_list = $#global_input_list + 1 ;  <new_line>
+if ( $global_count_list > 0 ) {  <new_line>
+    for ( $global_counter_one = 1 ; $global_counter_one <= $global_count_list ; $global_counter_one ++ ) {  <new_line>
+        for ( $global_counter_two = $global_counter_one + 1 ; $global_counter_two <= $global_count_list ; $global_counter_two ++ ) {  <new_line>
+            $global_dashrep_replacement{ $global_operand_two } .= $global_separator . $global_input_list[ $global_counter_one - 1 ] ;  <new_line>
+            $global_dashrep_replacement{ $global_operand_three } .= $global_separator . $global_input_list[ $global_counter_two - 1 ] ;  <new_line>
+            $global_separator = ' ' ;  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
@@ -7100,7 +7111,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
         $global_dashrep_replacement{ $global_target_operand } .= sprintf( "%d" , $global_numeric_value ) . ' ' ;  <new_line>
     }  <new_line>
 }  <new_line>
-$global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+$global_dashrep_replacement{ $global_target_operand } =~ s/ +$// ;  <new_line>
 
 template-interpreter-function-end
 ----
@@ -7157,7 +7168,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
         $global_dashrep_replacement{ $global_target_operand } .= sprintf( "%d" , $global_numeric_value ) . ' ' ;  <new_line>
     }  <new_line>
 }  <new_line>
-$global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+$global_dashrep_replacement{ $global_target_operand } =~ s/ +$// ;  <new_line>
 
 template-interpreter-function-end
 ----
@@ -7849,6 +7860,118 @@ return $global_no ;  <new_line>
 }  <new_line>
 
 return $global_yes ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-point-to-words-in-operand-whichever:
+# no-space dashes-long-line  <new_line>
+# function__point_to_words_in_operand_whichever  <new_line>
+#  <new_line>
+#  Input is $global_operand_whichever  <new_line>
+#  Output is variable $global_word_pointer_operand_whichever and array @global_word_begin_operand_whichever_at_word and array @global_word_length_operand_whichever_at_word where pointer into array is 1 for first word, etc.  <new_line>
+#  Word counts start at one  <new_line>
+#  Character pointer numbers start at zero  <new_line>
+#  Note: \n = new line , \t = tab , \r = carriage return , \f = form feed  <new_line>
+#  (Did not work: \v = vertical tab )  <new_line>
+<new_line>
+
+sub function__point_to_words_in_operand_whichever( ) {  <new_line>
+
+
+# print "\n" . $global_operand_whichever . "\n" ;  <new_line>
+
+
+$global_word_count_operand_whichever = 0 ;  <new_line>
+$global_length_of_text = length( $global_operand_whichever ) ;  <new_line>
+$global_pointer_to_previous_whitespace = -1 ;  <new_line>
+$global_pointer_to_next_whitespace = -1 ;  <new_line>
+if ( $global_length_of_text < 1 ) {  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+for ( $global_whitespace_type = 1 ; $global_whitespace_type <= 5 ; $global_whitespace_type ++ ) {  <new_line>
+$global_yes_find_next_whitespace_of_type[ $global_whitespace_type ] = 1 ;  <new_line>
+$global_pointer_to_whitespace_type[ $global_whitespace_type ] = -1 ;  <new_line>
+}  <new_line>
+
+while ( $global_pointer_to_next_whitespace <= $global_length_of_text ) {  <new_line>
+
+if ( $global_yes_find_next_whitespace_of_type[ 1 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = index( $global_operand_whichever , ' ' , $global_pointer_to_whitespace_type[ 1 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 1 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
+}  <new_line>
+if ( $global_yes_find_next_whitespace_of_type[ 2 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 2 ] = index( $global_operand_whichever , "\n" , $global_pointer_to_whitespace_type[ 2 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 2 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 2 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 2 ] = 0 ;  <new_line>
+}  <new_line>
+if ( $global_yes_find_next_whitespace_of_type[ 3 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 3 ] = index( $global_operand_whichever , "\t" , $global_pointer_to_whitespace_type[ 3 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 3 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 3 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 3 ] = 0 ;  <new_line>
+}  <new_line>
+if ( $global_yes_find_next_whitespace_of_type[ 4 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 4 ] = index( $global_operand_whichever , "\r" , $global_pointer_to_whitespace_type[ 4 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 4 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 4 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 4 ] = 0 ;  <new_line>
+}  <new_line>
+if ( $global_yes_find_next_whitespace_of_type[ 5 ] == 1 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 5 ] = index( $global_operand_whichever , "\f" , $global_pointer_to_whitespace_type[ 5 ] + 1 ) ;  <new_line>
+if ( $global_pointer_to_whitespace_type[ 5 ] < 0 ) {  <new_line>
+$global_pointer_to_whitespace_type[ 5 ] = $global_length_of_text ;  <new_line>
+}  <new_line>
+$global_yes_find_next_whitespace_of_type[ 5 ] = 0 ;  <new_line>
+}  <new_line>
+
+$global_pointer_to_next_whitespace = $global_length_of_text + 99 ;  <new_line>
+$global_whitespace_type_next = 0 ;  <new_line>
+
+for ( $global_whitespace_type = 1 ; $global_whitespace_type <= 5 ; $global_whitespace_type ++ ) {  <new_line>
+if ( $global_pointer_to_whitespace_type[ $global_whitespace_type ] < $global_pointer_to_next_whitespace ) {  <new_line>
+$global_pointer_to_next_whitespace = $global_pointer_to_whitespace_type[ $global_whitespace_type ] ;  <new_line>
+$global_whitespace_type_next = $global_whitespace_type ;  <new_line>
+}  <new_line>
+}  <new_line>
+
+if ( $global_pointer_to_next_whitespace >= $global_length_of_text ) {  <new_line>
+last ;  <new_line>
+}  <new_line>
+
+if ( $global_pointer_to_next_whitespace > $global_pointer_to_previous_whitespace + 1 ) {  <new_line>
+$global_word_count_operand_whichever ++ ;  <new_line>
+$global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
+$global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_next_whitespace - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
+
+# print ">" . substr( $global_operand_whichever , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<" . "\n" ;  <new_line>
+
+}  <new_line>
+
+$global_pointer_to_previous_whitespace = $global_pointer_to_next_whitespace ;  <new_line>
+$global_yes_find_next_whitespace_of_type[ $global_whitespace_type_next ] = 1 ;  <new_line>
+
+#  end of while loop  <new_line>
+}  <new_line>
+
+# print "prev " . $global_pointer_to_previous_whitespace . "  next " . $global_pointer_to_next_whitespace . "  length " . $global_length_of_text . "\n" ;  <new_line>
+
+if ( ( $global_length_of_text - $global_pointer_to_previous_whitespace ) >= 2 ) {  <new_line>
+$global_word_count_operand_whichever ++ ;  <new_line>
+$global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
+$global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_length_of_text - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
+
+# print ">>" . substr( $global_operand_whichever , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<<" . "\n" ;  <new_line>
+# print "position " . $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] . "  length " . $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] . "\n" ;  <new_line>
+
+}  <new_line>
 
 template-function-segment-ending
 ----
