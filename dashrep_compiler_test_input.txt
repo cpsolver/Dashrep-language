@@ -437,42 +437,25 @@ ambee generate-positions-of-first-matching-delimiter-after-listed-positions char
 ambee put-into-phrase correct-value-for-pointers-to-beginning-of-tags  1 15 21 32 38 48 54 69  amenn
 ambee put-into-phrase correct-value-for-pointers-to-end-of-tags  7 19 27 36 44 52 60 73  amenn
 
+ambee copy-and-remove-attributes-from-xml-tags text-with-tags-attributes-inside-tags result-text-after-remove-attributes-from-tags amenn
 ambee copy-and-move-attributes-into-xml-tags text-with-tags-attributes-outside-of-tags result-text-after-move-attributes-inside-tags amenn
-ambee copy-and-remove-attributes-from-xml-tags text-with-tags-attributes-inside-tags result-text-after-move-attributes-outside-tags amenn
+
+ambee put-into-phrase result-numeric-y-map-tile-number ambee numeric-y-map-tile-number-based-on-latitude 45.00 amenn amenn
+
+ambee encode-as-cgi-parameter text-with-tags-attributes-inside-tags encoded-cgi-parameter amenn
+ambee decode-from-cgi-parameter encoded-cgi-parameter result-decoded-cgi-parameter amenn
 
 text-that-occurs-after-parameter-phrases
 --------
 
-list-of-phrases-not-yet-tested-here:
-
-
-numeric-y-map-tile-number-based-on-latitude
-
-encode-as-cgi-parameter
-decode-from-cgi-parameter
-
-copy-words-at-skip-interval
-
--------
-
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
-*---
-[-[-handle-double-nested-executable-phrase-]-]
----*
-
-*---
 [-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
----*
-
-[-convert-into-spoken-dashrep-code page-participants-list tagged-dashrep-code-]
-[-convert-from-spoken-dashrep-code tagged-dashrep-code regenerated-page-participants-list-]
-[-copy-without-extra-spaces regenerated-page-participants-list regenerated-page-participants-list-without-extra-spaces-]
-[-put-into-phrase correct-value-for-regenerated-page-participants-list-without-extra-spaces  ??? -]
+[-[-handle-double-nested-executable-phrase-]-]
 --------
 
 list-of-file-related-actions-to-test:
-copy-and-move-attributes-into-xml-tags
+
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 dashrep-path-prefix-for-file-reading
@@ -1089,6 +1072,14 @@ text-with-tags-attributes-inside-tags:
 and a <span style="whatever">dolphin</span>
 --------
 
-correct-value-for-result-text-after-move-attributes-outside-tags:
-and a <span><attribute style="whatever">dolphin</span>
+correct-value-for-result-text-after-remove-attributes-from-tags:
+and a <span>dolphin</span>
+--------
+
+correct-value-for-result-numeric-y-map-tile-number:
+1473.433751
+--------
+
+correct-value-for-result-decoded-cgi-parameter:
+and a <span style="whatever">dolphin</span>
 --------
