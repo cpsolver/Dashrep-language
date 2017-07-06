@@ -3,7 +3,10 @@ template-interpreter-function-begin
 sub function__delete_listed_phrases( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-@global_list_of_phrase_names = split( / + / , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
+if ( not ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) {  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+@global_list_of_phrase_names = split( / +/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
 foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_line>
     if ( exists( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ) {  <new_line>
         delete( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ;  <new_line>
