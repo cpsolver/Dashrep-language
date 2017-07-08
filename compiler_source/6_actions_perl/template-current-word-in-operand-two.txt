@@ -1,1 +1,1 @@
-substr( $global_operand_two , $global_word_begin_operand_two_at_word[ $global_word_pointer_operand_two ] , $global_word_length_operand_two_at_word[ $global_word_pointer_operand_two ] )
+substr( $global_operand_two_words , $global_word_begin_operand_two_at_word[ $global_word_pointer_operand_two ] , $global_word_length_operand_two_at_word[ $global_word_pointer_operand_two ] )
