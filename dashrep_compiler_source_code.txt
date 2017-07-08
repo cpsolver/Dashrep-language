@@ -2545,6 +2545,9 @@ my $global_operand_three = '' ;  <new_line>
 my $global_operand_four = '' ;  <new_line>
 my $global_operand_five = '' ;  <new_line>
 my $global_operands_all = '' ;  <new_line>
+my $global_operand_one_words = '' ;  <new_line>
+my $global_operand_two_words = '' ;  <new_line>
+my $global_operand_three_words = '' ;  <new_line>
 my $global_phrase_name = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
 my $output_results = '' ;  <new_line>
@@ -3418,6 +3421,9 @@ check-operand-count-is-two check-operand-one-is-file-name check-operand-two-is-f
 operand-checks-for-action-copy-characters-from-position-to-position:
 check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
 ----
+operand-checks-for-action-copy-definition-of-named-phrase:
+check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+----
 operand-checks-for-action-copy-from-columns-in-file-to-column-lists:
 check-operand-count-is-two check-operand-one-is-file-name
 ----
@@ -3586,9 +3592,6 @@ check-operand-count-is-zero
 operand-checks-for-action-get-definitions-from-file:
 check-operand-count-is-one check-operand-one-is-file-name
 ----
-operand-checks-for-action-get-phrase-definition-without-expanding:
-check-operand-count-is-one check-operand-one-is-phrase-name
-----
 operand-checks-for-action-get-position-of-matching-text:
 check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
 ----
@@ -3742,20 +3745,17 @@ check-operand-count-is-one check-operand-one-is-positive-integer
 runtime-code-check-operand-begin-contains-real-numbers:
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_contains_real_numbers(
 ----
-runtime-code-word-within-source-text-secondary:
-substr( $global_source_text_secondary , $global_begin_position_secondary_for_word[ $global_word_pointer_numeric_secondary ] , $global_length_secondary_of_word[ $global_word_pointer_numeric_secondary ] )
-----
 runtime-code-word-within-source-text:
 substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
 ----
 template-current-word-in-operand-one:
-substr( $global_operand_one , $global_word_begin_operand_one_at_word[ $global_word_pointer_operand_one ] , $global_word_length_operand_one_at_word[ $global_word_pointer_operand_one ] )
+substr( $global_operand_one_words , $global_word_begin_operand_one_at_word[ $global_word_pointer_operand_one ] , $global_word_length_operand_one_at_word[ $global_word_pointer_operand_one ] )
 ----
 template-current-word-in-operand-three:
-substr( $global_operand_three , $global_word_begin_operand_three_at_word[ $global_word_pointer_operand_three ] , $global_word_length_operand_three_at_word[ $global_word_pointer_operand_three ] )
+substr( $global_operand_three_words , $global_word_begin_operand_three_at_word[ $global_word_pointer_operand_three ] , $global_word_length_operand_three_at_word[ $global_word_pointer_operand_three ] )
 ----
 template-current-word-in-operand-two:
-substr( $global_operand_two , $global_word_begin_operand_two_at_word[ $global_word_pointer_operand_two ] , $global_word_length_operand_two_at_word[ $global_word_pointer_operand_two ] )
+substr( $global_operand_two_words , $global_word_begin_operand_two_at_word[ $global_word_pointer_operand_two ] , $global_word_length_operand_two_at_word[ $global_word_pointer_operand_two ] )
 ----
 template-function-append-multiple-from-phrases-named-in-pattern:
 template-interpreter-function-begin
@@ -7946,7 +7946,7 @@ template-function-point-to-words-in-operand-whichever:
 # function__point_to_words_in_operand_whichever  <new_line>
 #  <new_line>
 #  Input is $global_operand_whichever  <new_line>
-#  Output is variable $global_word_pointer_operand_whichever and array @global_word_begin_operand_whichever_at_word and array @global_word_length_operand_whichever_at_word where pointer into array is 1 for first word, etc.  <new_line>
+#  Output is variable $global_word_pointer_operand_whichever and variable $global_operand_whichever_words array @global_word_begin_operand_whichever_at_word and array @global_word_length_operand_whichever_at_word where pointer into array is 1 for first word, etc.  <new_line>
 #  Word counts start at one  <new_line>
 #  Character pointer numbers start at zero  <new_line>
 #  Note: \n = new line , \t = tab , \r = carriage return , \f = form feed  <new_line>
@@ -7960,7 +7960,18 @@ sub function__point_to_words_in_operand_whichever( ) {  <new_line>
 
 
 $global_word_count_operand_whichever = 0 ;  <new_line>
-$global_length_of_text = length( $global_operand_whichever ) ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_whichever ) == $global_yes ) {  <new_line>
+if ( exists( $global_dashrep_replacement{ $global_operand_whichever } ) ) {  <new_line>
+$global_operand_whichever_words = $global_dashrep_replacement{ $global_operand_whichever }  <new_line>
+} else {  <new_line>
+$global_operand_whichever_words = ''  <new_line>
+}  <new_line>
+} else {  <new_line>
+$global_operand_whichever_words = ''  <new_line>
+}  <new_line>
+
+$global_length_of_text = length( $global_operand_whichever_words ) ;  <new_line>
 $global_pointer_to_previous_whitespace = -1 ;  <new_line>
 $global_pointer_to_next_whitespace = -1 ;  <new_line>
 if ( $global_length_of_text < 1 ) {  <new_line>
@@ -7975,35 +7986,35 @@ $global_pointer_to_whitespace_type[ $global_whitespace_type ] = -1 ;  <new_line>
 while ( $global_pointer_to_next_whitespace <= $global_length_of_text ) {  <new_line>
 
 if ( $global_yes_find_next_whitespace_of_type[ 1 ] == 1 ) {  <new_line>
-$global_pointer_to_whitespace_type[ 1 ] = index( $global_operand_whichever , ' ' , $global_pointer_to_whitespace_type[ 1 ] + 1 ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 1 ] = index( $global_operand_whichever_words , ' ' , $global_pointer_to_whitespace_type[ 1 ] + 1 ) ;  <new_line>
 if ( $global_pointer_to_whitespace_type[ 1 ] < 0 ) {  <new_line>
 $global_pointer_to_whitespace_type[ 1 ] = $global_length_of_text ;  <new_line>
 }  <new_line>
 $global_yes_find_next_whitespace_of_type[ 1 ] = 0 ;  <new_line>
 }  <new_line>
 if ( $global_yes_find_next_whitespace_of_type[ 2 ] == 1 ) {  <new_line>
-$global_pointer_to_whitespace_type[ 2 ] = index( $global_operand_whichever , "\n" , $global_pointer_to_whitespace_type[ 2 ] + 1 ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 2 ] = index( $global_operand_whichever_words , "\n" , $global_pointer_to_whitespace_type[ 2 ] + 1 ) ;  <new_line>
 if ( $global_pointer_to_whitespace_type[ 2 ] < 0 ) {  <new_line>
 $global_pointer_to_whitespace_type[ 2 ] = $global_length_of_text ;  <new_line>
 }  <new_line>
 $global_yes_find_next_whitespace_of_type[ 2 ] = 0 ;  <new_line>
 }  <new_line>
 if ( $global_yes_find_next_whitespace_of_type[ 3 ] == 1 ) {  <new_line>
-$global_pointer_to_whitespace_type[ 3 ] = index( $global_operand_whichever , "\t" , $global_pointer_to_whitespace_type[ 3 ] + 1 ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 3 ] = index( $global_operand_whichever_words , "\t" , $global_pointer_to_whitespace_type[ 3 ] + 1 ) ;  <new_line>
 if ( $global_pointer_to_whitespace_type[ 3 ] < 0 ) {  <new_line>
 $global_pointer_to_whitespace_type[ 3 ] = $global_length_of_text ;  <new_line>
 }  <new_line>
 $global_yes_find_next_whitespace_of_type[ 3 ] = 0 ;  <new_line>
 }  <new_line>
 if ( $global_yes_find_next_whitespace_of_type[ 4 ] == 1 ) {  <new_line>
-$global_pointer_to_whitespace_type[ 4 ] = index( $global_operand_whichever , "\r" , $global_pointer_to_whitespace_type[ 4 ] + 1 ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 4 ] = index( $global_operand_whichever_words , "\r" , $global_pointer_to_whitespace_type[ 4 ] + 1 ) ;  <new_line>
 if ( $global_pointer_to_whitespace_type[ 4 ] < 0 ) {  <new_line>
 $global_pointer_to_whitespace_type[ 4 ] = $global_length_of_text ;  <new_line>
 }  <new_line>
 $global_yes_find_next_whitespace_of_type[ 4 ] = 0 ;  <new_line>
 }  <new_line>
 if ( $global_yes_find_next_whitespace_of_type[ 5 ] == 1 ) {  <new_line>
-$global_pointer_to_whitespace_type[ 5 ] = index( $global_operand_whichever , "\f" , $global_pointer_to_whitespace_type[ 5 ] + 1 ) ;  <new_line>
+$global_pointer_to_whitespace_type[ 5 ] = index( $global_operand_whichever_words , "\f" , $global_pointer_to_whitespace_type[ 5 ] + 1 ) ;  <new_line>
 if ( $global_pointer_to_whitespace_type[ 5 ] < 0 ) {  <new_line>
 $global_pointer_to_whitespace_type[ 5 ] = $global_length_of_text ;  <new_line>
 }  <new_line>
@@ -8029,7 +8040,7 @@ $global_word_count_operand_whichever ++ ;  <new_line>
 $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
 $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_next_whitespace - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
 
-# print ">" . substr( $global_operand_whichever , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<" . "\n" ;  <new_line>
+# print ">" . substr( $global_operand_whichever_words , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<" . "\n" ;  <new_line>
 
 }  <new_line>
 
@@ -8046,7 +8057,7 @@ $global_word_count_operand_whichever ++ ;  <new_line>
 $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_pointer_to_previous_whitespace + 1 ;  <new_line>
 $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] = $global_length_of_text - $global_pointer_to_previous_whitespace - 1 ;  <new_line>
 
-# print ">>" . substr( $global_operand_whichever , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<<" . "\n" ;  <new_line>
+# print ">>" . substr( $global_operand_whichever_words , $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] , $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] ) . "<<" . "\n" ;  <new_line>
 # print "position " . $global_word_begin_operand_whichever_at_word[ $global_word_count_operand_whichever ] . "  length " . $global_word_length_operand_whichever_at_word[ $global_word_count_operand_whichever ] . "\n" ;  <new_line>
 
 }  <new_line>
@@ -8673,6 +8684,25 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code
 } else {  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
 }  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-definition-of-named-phrase:
+template-runtime-code-standard-action-begin
+
+$global_phrase_name = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_yes ) {  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+
 runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
