@@ -716,6 +716,10 @@ paragraph-next
 This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed for complex expansions of Dashrep code.
 ----
 
+description-for-phrase-copy-definition-of-named-phrase:
+This action copies to the second operand the definition of the phrase that is named in the definition of the first operand. s-n This action is only needed when the name of a phrase is being supplied as the defintion of another phrase. s-n In one sense this action provides a way to immediately expand a phrase by just one level of recursion, without also expanding any parameter phrases within the definition. s-n The first operand must contain only a single phrase name. s-n The named phrase can contain anything, and that content is copied without being expanded.
+----
+
 description-for-phrase-get-phrase-definition-without-expanding:
 This action inserts the definition of the specified phrase. s-n This action is rarely needed. s-n It provides a way to immediately expand a phrase by just one level of recursion, without also expanding parameter phrases within the definition.
 ----

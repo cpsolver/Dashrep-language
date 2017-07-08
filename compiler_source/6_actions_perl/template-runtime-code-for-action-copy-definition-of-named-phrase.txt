@@ -1,0 +1,17 @@
+template-runtime-code-standard-action-begin
+
+$global_phrase_name = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_yes ) {  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
+}  <new_line>
+
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
