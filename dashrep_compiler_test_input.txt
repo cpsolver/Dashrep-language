@@ -1002,7 +1002,7 @@ handle-display-input-phrase-name-and-definition:
 [-copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen-]
 [-append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value-]
 [-append-text character-equal-sign display-one-input-phrase-with-value-]
-[-put-into-phrase input-phrase-definition  [-get-phrase-definition-without-expanding input-phrase-name-] -]
+[-copy-definition-of-named-phrase input-phrase-name input-phrase-definition-]
 [-append-text input-phrase-definition display-one-input-phrase-with-value-]
 [-append-text-no-space html-list-item-end display-one-input-phrase-with-value-]
 [-append-text-no-space character-newline display-one-input-phrase-with-value-]
