@@ -1,4 +1,8 @@
 start-here:
+
+*--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
+*--- todo: convert bracket notation into ambee/amenn/etc. notation ; use dashrep code already written, but using line-by-line handling ---*
+
 [-delete-file [-output-filename-]-]
 
 [-clear-phrase list-of-displayed-input-phrases-]
@@ -407,12 +411,13 @@ ambee put-into-phrase current-time-in-epoch-seconds  ambee get-current-time-in-e
 ambee put-into-phrase check-current-time-in-epoch-seconds  ambee numeric-equal-greater-less-compare ambee current-time-in-epoch-seconds amenn 1498700000 amenn  amenn
 ambee put-into-phrase correct-value-for-check-current-time-in-epoch-seconds  greater amenn
 ambee put-into-phrase epoch-seconds-frozen-in-time  1498715453  amenn
-ambee split-epoch-seconds-into-named-components ambee epoch-seconds-frozen-in-time amenn amenn
-ambee expand-text template-date-time-full expanded-date-time-frozen amenn
-ambee put-into-phrase correct-value-for-expanded-date-time-frozen  28 3 22 50 6 53 2017  amenn
 ambee split-epoch-seconds-into-named-components-for-zero-meridian ambee epoch-seconds-frozen-in-time amenn amenn
 ambee expand-text template-date-time-full expanded-date-time-frozen-zero-meridian amenn
 ambee put-into-phrase correct-value-for-expanded-date-time-frozen-zero-meridian  29 4 5 50 6 53 2017  amenn
+ambee split-epoch-seconds-into-named-components ambee epoch-seconds-frozen-in-time amenn amenn
+ambee expand-text template-date-time-full expanded-date-time-frozen amenn
+ambee copy-words-from-position-to-position expanded-date-time-frozen expanded-date-time-frozen-adjusted 4 7 amenn
+ambee put-into-phrase correct-value-for-expanded-date-time-frozen-adjusted  50 6 53 2017  amenn
 
 ambee put-into-phrase operand-one  dolphin buffalo bear  amenn
 ambee put-into-phrase operand-two  item-ambee-list-of-numbers-as-text-amenn  amenn
