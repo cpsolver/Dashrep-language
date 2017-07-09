@@ -2083,7 +2083,6 @@ my $length_of_code_at_recursion_level_current ;  <new_line>
 my @code_at_recursion_level ;  <new_line>
 my @length_of_code_at_recursion_level ;  <new_line>
 my @pointer_to_remainder_of_code_at_recursion_level ;  <new_line>
-my %number_of_times_encountered_phrase_named ;  <new_line>
 
 *---
 Get the hyphenated phrase or supplied string.
@@ -2108,7 +2107,6 @@ $new_output_buffer = '' ;  <new_line>
 $possible_phrase_name_with_underscores = '' ;  <new_line>
 $expand_endless_loop_counter = 0 ;  <new_line>
 $expand_endless_loop_counter_maximum = 100000 ;  <new_line>
-%number_of_times_encountered_phrase_named = ( ) ;  <new_line>
 $expand_endless_cycle_count_maximum = 100000 ;  <new_line>
 @code_at_recursion_level = ( ) ;  <new_line>
 @length_of_code_at_recursion_level = ( ) ;  <new_line>
@@ -2171,24 +2169,23 @@ phrase name being encountered too many times.
 If this occurs, exit the endless loop.
 ---*
 
-$number_of_times_encountered_phrase_named{ $current_phrase } ++ ;  <new_line>
-if ( $number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum ) {  <new_line>
-
-if ( $global_dashrep_replacement{ "dashrep hyphen-here debug hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
-
+if ( $global_yes_or_no_count_phrase_usage == $global_yes ) {  <new_line>
+$global_number_of_times_encountered_phrase_named{ $current_phrase } ++ ;  <new_line>
+if ( $global_number_of_times_encountered_phrase_named{ $current_phrase } >= $expand_endless_cycle_count_maximum ) {  <new_line>
 $maximum_cycle_count = 0 ;  <new_line>
-foreach $phrase_name ( keys( %number_of_times_encountered_phrase_named ) ) {  <new_line>
-$cycle_count = $number_of_times_encountered_phrase_named{ $phrase_name } ;  <new_line>
+foreach $phrase_name ( keys( %global_number_of_times_encountered_phrase_named ) ) {  <new_line>
+$cycle_count = $global_number_of_times_encountered_phrase_named{ $phrase_name } ;  <new_line>
 if ( $cycle_count > $maximum_cycle_count ) {  <new_line>
 $maximum_cycle_count = $cycle_count ;  <new_line>
 $phrase_name = $phrase_name_with_highest_cycle_count ;  <new_line>
 }  <new_line>
 }  <new_line>
 $global_trace_log .= '{{trace; in subroutine dashrep_expand_phrases encountered phrase ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . ' number of times}}' . "\n" ;  <new_line>
-}  <new_line>
 warn 'Warning: The dashrep_expand_phrases subroutine has encountered an endless loop.' . "\n" . 'Stopped' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
+}  <new_line>
+
 
 *---
 If the phrase name is a hyphen directive, or a
@@ -2522,6 +2519,13 @@ my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
 my @global_name_value_pairs = ( ) ;  <new_line>
 <new_line>
+<new_line>
+
+
+# todo: remove these when no longer used  <new_line>
+
+my %global_number_of_times_encountered_phrase_named ;  <new_line>
+%global_number_of_times_encountered_phrase_named = ( ) ;  <new_line>
 ----
 template-initialize-global-variables:
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
@@ -2627,6 +2631,7 @@ my $global_starting_time = time ;  <new_line>
 my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
 my $global_nesting_level_of_file_actions = 0 ;  <new_line>
 my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
+my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 <new_line>
 
 my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
@@ -3104,6 +3109,11 @@ $global_dashrep_replacement{ 'dashrep hyphen-here list hyphen-here of hyphen-her
 
 <new_line>
 
+if ( ( exists( $global_dashrep_replacement{ 'yes-or-no-count-phrase-usage' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-count-phrase-usage' } eq 'yes' ) ) {  <new_line>
+$global_yes_or_no_count_phrase_usage = $global_yes ;  <new_line>
+} else {  <new_line>
+$global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
+}  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
 open ( TRACE_OUT , '>' . 'output_trace.txt' ) ;  <new_line>
 # if ( length( code-get-or-put-phrase-definition-begin 'start<characer_hyphen>here' code-get-or-put-phrase-definition-end ) > 10 ) {  <new_line>
