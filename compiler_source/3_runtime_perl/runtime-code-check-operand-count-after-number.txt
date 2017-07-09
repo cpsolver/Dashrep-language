@@ -1,3 +1,4 @@
 ) {  <new_line>
 $global_yes_or_no_operand_error = $global_yes ;  <new_line>
+$global_runtime_error_type = 'operand_count' ;  <new_line>
 }  <new_line>

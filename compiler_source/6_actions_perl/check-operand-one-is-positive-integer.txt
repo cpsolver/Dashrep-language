@@ -1,1 +1,1 @@
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-one runtime-code-check-operand-end
+runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-one runtime-code-check-operand-end-is-positive-integer

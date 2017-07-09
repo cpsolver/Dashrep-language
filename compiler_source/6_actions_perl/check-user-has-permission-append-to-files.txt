@@ -7,4 +7,5 @@ $global_yes_or_no = $global_no ;  <new_line>
 
 if ( $global_yes_or_no == $global_no ) {  <new_line>
 $global_yes_or_no_operand_error = $global_yes ;  <new_line>
+$global_runtime_error_type = 'permission_append' ;  <new_line>
 }  <new_line>

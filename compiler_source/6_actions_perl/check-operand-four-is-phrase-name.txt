@@ -1,1 +1,1 @@
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-four runtime-code-check-operand-end
+runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-four runtime-code-check-operand-end-is-phrase-name
