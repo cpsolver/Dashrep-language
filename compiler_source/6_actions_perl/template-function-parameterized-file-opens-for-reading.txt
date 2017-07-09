@@ -1,0 +1,16 @@
+# no-space dashes-long-line  <new_line>
+# function_parameterized__file_opens_for_reading  <new_line>
+<new_line>
+
+sub function_parameterized__file_opens_for_reading( ) {  <new_line>
+my $local_numeric ;  <new_line>
+$local_numeric = $_[ 0 ] ;  <new_line>
+
+
+# todo: write this code ; if file does not exist, create empty file named zee_dashrep_empty_file.txt and open it for reading  <new_line>
+# use $global_input_file_name and &function_file_open_input( )  <new_line>
+
+
+return $global_no ;  <new_line>
+
+template-function-segment-ending
