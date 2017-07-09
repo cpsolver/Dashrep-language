@@ -117,3 +117,10 @@ my %global_check_operand_one_is_file_name_for_action = ( ) ;  <new_line>
 my %global_check_operand_two_is_file_name_for_action = ( ) ;  <new_line>
 my @global_name_value_pairs = ( ) ;  <new_line>
 <new_line>
+<new_line>
+
+
+# todo: remove these when no longer used  <new_line>
+
+my %global_number_of_times_encountered_phrase_named ;  <new_line>
+%global_number_of_times_encountered_phrase_named = ( ) ;  <new_line>

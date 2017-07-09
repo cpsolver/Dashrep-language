@@ -203,6 +203,7 @@ category_debug
 trace-show
 trace-show-where
 dashrep-comments-ignored
+yes-or-no-count-phrase-usage
 generate-phrase-usage-counts
 
 category_advanced

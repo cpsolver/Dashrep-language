@@ -101,6 +101,7 @@ my $global_starting_time = time ;  <new_line>
 my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
 my $global_nesting_level_of_file_actions = 0 ;  <new_line>
 my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
+my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 <new_line>
 
 my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
