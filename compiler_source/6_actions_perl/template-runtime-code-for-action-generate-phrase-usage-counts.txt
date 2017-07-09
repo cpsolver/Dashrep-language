@@ -1,0 +1,6 @@
+template-runtime-code-standard-action-begin
+
+&function__generate_phrase_usage_counts( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end

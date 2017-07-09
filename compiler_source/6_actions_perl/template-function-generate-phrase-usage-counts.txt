@@ -4,7 +4,13 @@ sub function__generate_phrase_usage_counts( ) {  <new_line>
 
 $global_result_text = '' ;  <new_line>
 
-# todo: use "sequence-number-for-executable-phrase" values to track counts  <new_line>
+
+# todo: use $global_phrase_usage_count_for_phrase_number[ phrase-number-for-usage-counting ] ++  <new_line>
+# reason: much faster execution!!! (current use of associative array slows down code)  <new_line>
+# use $global_phrase_name_for_phrase_number[ phrase-number-for-usage-counting ] to get phrase names  <new_line>
+# do sorting subroutine with 0000000175_phrase_name where 175 is usage count  <new_line>
+# edits involve code-compiled-funtion-part-3  <new_line>
+
 
 foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
     $global_replacement_count = $global_replacement_count_for_item_name{ $global_phrase_name } ;  <new_line>
