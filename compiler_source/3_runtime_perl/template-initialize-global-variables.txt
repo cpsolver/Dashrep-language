@@ -46,6 +46,7 @@ my $global_bottom_right_open_column = '' ;  <new_line>
 my $global_bottom_row_number = '' ;  <new_line>
 my $global_character_code_to_decode = '' ;  <new_line>
 my $global_character_pointer_to_next_word_zero_based = 0 ;  <new_line>
+my $global_runtime_error_type = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
@@ -158,7 +159,6 @@ my $global_found_unique_value = '' ;  <new_line>
 my $global_full_path = '' ;  <new_line>
 my $global_generated_list = '' ;  <new_line>
 my $global_dashrep_text_list_of_phrase_names = '' ;  <new_line>
-my $global_minimum_number_of_operands_for_action = 0 ;  <new_line>
 my $global_growing_text_to_append = '' ;  <new_line>
 my $global_handler_phrase_name = '' ;  <new_line>
 my $global_hour = 0 ;  <new_line>
