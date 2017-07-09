@@ -64,6 +64,7 @@ get-word-at-position
 get-position-of-word
 copy-word-at-position
 copy-words-from-position-to-position
+copy-words-offset-skip
 
 category_manipulate_list
 copy-words-found-in-both-lists
@@ -80,7 +81,6 @@ copy-words-sort-numeric
 copy-words-rearrange-using-order-sort-numeric
 copy-words-sort-alphabetic
 copy-words-rearrange-using-order-sort-alphabetic
-copy-words-at-skip-interval
 generate-counts-from-integer-to-integer
 generate-every-pairwise-combination-of-words
 generate-every-ordered-pairwise-combination-of-words
