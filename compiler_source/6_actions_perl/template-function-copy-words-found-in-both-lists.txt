@@ -2,6 +2,11 @@ template-interpreter-function-begin
 
 sub function__copy_words_found_in_both_lists( ) {  <new_line>
 
+
+# todo: rewrite this code to use new functions: point_to_words_in_operand_one and point_to_words_in_operand_two  <new_line>
+# also use: $global_yes_found_word{ }  <new_line>
+
+
 $global_action_result = '' ;  <new_line>
 
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
