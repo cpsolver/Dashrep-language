@@ -114,11 +114,19 @@
 <p>This pre-defined phrase contains a tab character.&nbsp; In some other programming languages this character is represented by the text <b>\<i>t</i></b>.</p>
 
 
+<h3 id="character-underscore">character-underscore</h3>
+<p>This pre-defined phrase contains one underscore character (<b><i>_</i></b>).</p>
+
+
 <h2>Expansion-related phrases</h2>
 
 
 <h3 id="expand-text">expand-text</h3>
 <p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file-path template to point to different file paths.&nbsp; If the name of the phrase that needs to be expanded can change, then the first phrase can be surrounded with ambee and amenn delimiters.&nbsp; If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am-bee and am-enn delimiters).&nbsp; The first phrase name and the second phrase name can be the same (without automatically causing an endless loop). </p> <p> In addition to replacing hyphenated phrase names with their associated definitions, the expansion also replaces each occurrence of a specially identified hyphenated phrase with the definition of that phrase.&nbsp; The specially identified hyphenated phrases begin and end with angle brackets (<b><i>&lt;</i></b> and <b><i>&gt;</i></b>) and contain at least one underscore (<b><i>_</i></b>), such as <b><i>&lt;special_content&gt;</i></b>.&nbsp; For each such specially identified hyphenated phrase, the underscores are (internally) replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase (but the underscores are not changed if there is no associated phrase).&nbsp; The special text <b><i>&lt;character_hyphen&gt;</i></b> is replaced by a hyphen (<b><i>-</i></b>) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.&nbsp; The special text items <b><i>&lt;no_space&gt;</i></b> and <b><i>&lt;new_line&gt;</i></b> provide functionality that is equivalent to the <b><i>no-space</i></b> and <b><i>new-line</i></b> directives. </p> <p> This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed for complex expansions of Dashrep code.</p>
+
+
+<h3 id="copy-definition-of-named-phrase">copy-definition-of-named-phrase</h3>
+<p>This action copies to the second operand the definition of the phrase that is named in the definition of the first operand.&nbsp; This action is only needed when the name of a phrase is being supplied as the defintion of another phrase.&nbsp; In one sense this action provides a way to immediately expand a phrase by just one level of recursion, without also expanding any parameter phrases within the definition.&nbsp; The first operand must contain only a single phrase name.&nbsp; The named phrase can contain anything, and that content is copied without being expanded.</p>
 
 
 <h2>Text-transfer-related phrases</h2>
@@ -246,7 +254,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>51</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>53</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
@@ -274,6 +282,10 @@
 
 <h3 id="copy-words-from-position-to-position">copy-words-from-position-to-position</h3>
 <p>This action gets the space-delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase).&nbsp; The first two phrase names can be the same.</p>
+
+
+<h3 id="copy-words-offset-skip">copy-words-offset-skip</h3>
+<p>This action copies some space-delimited words from the first phrase to the second phrase using the skip interval specified by the integer number in the fourth operand, starting with the offset integer number specified in the third operand.&nbsp; The skip interval is the distance between copied words.&nbsp; If the offset position and skip interval are both zero, then all the words are copied.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>1 2 3 4 5 6 7 8</i></b> and the third operand is <b><i>3</i></b> and the fourth operand is <b><i>1</i></b> then the second phrase will contain <b><i>3 5 7</i></b>.</p>
 
 
 <h2>List-manipulation phrases</h2>
@@ -335,20 +347,20 @@
 <p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready</i></b> and the third phrase contains the text <b><i>tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul</i></b> then the text placed into the second phrase will be <b><i>Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla</i></b>.</p>
 
 
-<h3 id="copy-words-at-skip-interval">copy-words-at-skip-interval</h3>
-<p>This action copies some space-delimited words from the first phrase to the second phrase using the skip interval specified by the integer number in the third phrase.&nbsp; The first word is always copied, unless the first phrase is empty.&nbsp; The skip interval is the distance between copied words.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>1 2 3 4 5 6 7 8</i></b> and the third phrase contains <b><i>2</i></b> then the second phrase will contain <b><i>1 3 5 7</i></b>.</p>
-
-
 <h3 id="generate-counts-from-integer-to-integer">generate-counts-from-integer-to-integer</h3>
 <p>This action generates a list of integers and puts them into the definition of the third phrase.&nbsp; The supplied integers indicate the starting and ending values. </p> <p> Example: <b><i>generate-counts-from-integer-to-integer 1 10 one-to-ten</i></b> defines the phrase <b><i>one-to-ten</i></b> as <b><i>1 2 3 4 5 6 7 8 9 10</i></b>.</p>
 
 
 <h3 id="generate-every-pairwise-combination-of-words">generate-every-pairwise-combination-of-words</h3>
-<p>This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible combination of words listed in the first phrase and the second phrase. </p> <p> Example: If the first phrase contains <b><i>dolphin eagle bear</i></b> and the second phrase contains <b><i>leaps flies ambles</i></b> then the third phrase will contain <b><i>dolphin dolphin dolphin eagle eagle eagle bear bear bear</i></b> and the fourth phrase will contain <b><i>leaps flies ambles leaps flies ambles leaps flies ambles</i></b>.</p>
+<p>This action generates two word-based lists that contain every possible pair of words in the first phrase and the second phrase. </p> <p> Example: If the first phrase contains <b><i>dolphin eagle bear</i></b> and the second phrase contains <b><i>leaps flies ambles</i></b> then the third phrase will contain <b><i>dolphin dolphin dolphin eagle eagle eagle bear bear bear</i></b> and the fourth phrase will contain <b><i>leaps flies ambles leaps flies ambles leaps flies ambles</i></b>.</p>
 
 
 <h3 id="generate-every-ordered-pairwise-combination-of-words">generate-every-ordered-pairwise-combination-of-words</h3>
-<p>This action generates two word-based lists that are named according to the third phrase and the fourth phrase, where each pair of words is one possible <b>ordered</b> combination of words listed in the first phrase and the second phrase. </p> <p> Example: If the first phrase contains <b><i>dolphin eagle bear</i></b> and the second phrase contains <b><i>leaps flies ambles</i></b> then the third phrase will contain <b><i>dolphin eagle bear eagle bear bear</i></b> and the fourth phrase will contain <b><i>leaps leaps leaps flies flies ambles</i></b>.</p>
+<p>This action generates two word-based lists that are pairs of the words in the first phrase, but in each pair of words the word in first list appears before the word in the second list.-This action is useful for doing pairwise counting. </p> <p> Example: If the first phrase contains <b><i>dolphin whale starfish octopus</i></b> then the second phrase will contain <b><i>dolphin dolphin dolphin whale whale starfish</i></b> and the third phrase will contain <b><i>whale starfish octopus starfish octopus octopus</i></b>.</p>
+
+
+<h3 id="generate-list-of-all-dashrep-phrases">generate-list-of-all-dashrep-phrases</h3>
+<p>This action generates a list of all the defined phrase names, using a space between adjacent phrase names, and puts that list into the specified phrase name.&nbsp; For security purposes this action can be disabled.&nbsp; The generated list excludes the phrase name <b>four-hyphens</b>.</p>
 
 
 <h2>Character-related phrases</h2>
@@ -595,11 +607,11 @@
 <p>This action specifies the zoom level that is used in the action <b><i>numeric-y-map-tile-number-based-on-latitude</i></b>.</p>
 
 
-<h2>XML-related phrases</h2>
+<h2>XML-related & HTML-related phrases</h2>
 
 
-<h3 id="xml-move-attributes-into-tag-elements">xml-move-attributes-into-tag-elements</h3>
-<p>This action moves the content of an <b><i>attribute</i></b> tag or a <b><i>specify</i></b> tag inside the preceding tag. </p> <p> Example: it converts the text <b><i>&lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt;</i></b> into the text <b><i>&lt;img href="image.jpg" alt="image" /&gt;</i></b>. </p> <p> The word <b><i>specify</i></b> can be used instead of <b><i>attribute</i></b>.&nbsp; This functionality is useful for generating XML and HTML code by using hyphenated phrases such as <b><i>image-here specify-href image.jpg specify-end specify-alt image specify-end</i></b>.&nbsp; Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as <b><i>image-here-begin</i></b> and <b><i>image-here-end</i></b>.</p>
+<h3 id="copy-and-move-attributes-into-xml-tags">copy-and-move-attributes-into-xml-tags</h3>
+<p>This action copies the content of the first phrase to the second phrase but with the content of each <b><i>attribute</i></b> tag or a <b><i>specify</i></b> tag inside the preceding XML (or HTML) tag. </p> <p> Example: If the first phrase contains the text <b><i>&lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt;</i></b> then the definition of the second phrase will be the text <b><i>&lt;img href="image.jpg" alt="image" /&gt;</i></b>. </p> <p> The word <b><i>specify</i></b> can be used instead of <b><i>attribute</i></b>.&nbsp; This functionality is useful for generating XML and HTML code by using hyphenated phrases such as <b><i>image-here specify-href image.jpg specify-end specify-alt image specify-end</i></b>.&nbsp; Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as <b><i>image-here-begin</i></b> and <b><i>image-here-end</i></b>.</p>
 
 
 <h3 id="copy-and-remove-attributes-from-xml-tags">copy-and-remove-attributes-from-xml-tags</h3>
@@ -768,13 +780,6 @@
 <p>See the description for the action <b><i>gather-from-tagged-file-one-entry</i></b>.</p>
 
 
-<h2>Definition-related phrases</h2>
-
-
-<h3 id="generate-list-of-all-dashrep-phrases">generate-list-of-all-dashrep-phrases</h3>
-<p>This action generates a list of all the defined phrase names, using a space between adjacent phrase names, and puts that list into the specified phrase name.&nbsp; For security purposes this action can be disabled.&nbsp; The generated list excludes the phrase name <b>four-hyphens</b>.</p>
-
-
 <h2>Debugging-support phrases</h2>
 
 
@@ -788,6 +793,10 @@
 
 <h3 id="dashrep-comments-ignored">dashrep-comments-ignored</h3>
 <p>This phrase contains text that the translation process has identified as comments.&nbsp; Comments are contained within the text <b><i>*---</i></b> and <b><i>---*</i></b>, but these delimiters cannot be nested, so this definition can be useful for debugging.</p>
+
+
+<h3 id="yes-or-no-count-phrase-usage">yes-or-no-count-phrase-usage</h3>
+<p></p>
 
 
 <h3 id="generate-phrase-usage-counts">generate-phrase-usage-counts</h3>
