@@ -1,0 +1,4 @@
+[-if-yes-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
+[-expand-text template-runtime-code-for-overdue-start-of-if-branch runtime-code-for-overdue-start-of-if-branch-]
+[-copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch [-filename-output-results-all-compiled-functions-]-]
+[-if-end-]

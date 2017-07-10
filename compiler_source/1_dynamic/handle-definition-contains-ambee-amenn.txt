@@ -1,3 +1,4 @@
+[-copy-text string-outside current-state-of-if-branching-]
 [-create-new-result-storage-position-]
 [-copy-text current-result-storage-position result-storage-position-for-current-phrase-]
 [-copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand-]
@@ -34,6 +35,9 @@
 [-handle-definition-simple-]
 
 [-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
+
+[-terminate-branching-if-not-terminated-]
+
 [-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
 [-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-current-result-storage-position-]
 [-get-all-operands-]
