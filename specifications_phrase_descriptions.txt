@@ -93,6 +93,13 @@ bold-begin \ no-space italics-begin t b-i-e
 no-space .
 -----
 
+description-for-phrase-character-underscore:
+This pre h-h defined phrase contains one underscore character
+( no-space
+b-i-b _ b-i-e
+no-space ).
+-----
+
 description-for-phrase-get-characters-from-position-to-position:
 This action gets the characters from the specified phrase starting at the position indicated by the first number, and ending at the position indicated by the second number. s-n The character positions are numbered starting with 1 at the first character position. s-n If the second number is greater than the number of characters, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many characters are in the phrase).
 -----
@@ -164,7 +171,7 @@ This action gets the space hyphen-here delimited words from the first phrase sta
 description-for-phrase-copy-words-offset-skip:
 This action copies some space hyphen-here delimited words from the first phrase to the second phrase using the skip interval specified by the integer number in the fourth operand, starting with the offset integer number specified in the third operand. s-n The skip interval is the distance between copied words. s-n If the offset position and skip interval are both zero, then all the words are copied. s-n The word positions are numbered starting with 1 at the beginning. s-n The first two phrase names can be the same.
 paragraph-next
-Example: If the first phrase contains b-i-b 1 2 3 4 5 6 7 8 b-i-e and the third operand is b-i-b 3 b-i-e and the fourth operand is b-i-b 2 b-i-e then the second phrase will contain b-i-b 3 5 7 b-i-e no-space .
+Example: If the first phrase contains b-i-b 1 2 3 4 5 6 7 8 b-i-e and the third operand is b-i-b 3 b-i-e and the fourth operand is b-i-b 1 b-i-e then the second phrase will contain b-i-b 3 5 7 b-i-e no-space .
 -----
 
 description-for-phrase-copy-words-rearrange-using-order-sort-alphabetic:
