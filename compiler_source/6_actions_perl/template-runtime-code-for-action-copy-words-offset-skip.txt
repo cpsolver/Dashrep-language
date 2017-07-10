@@ -1,0 +1,1 @@
+# todo: write code for new action copy-words-offset-skip , use new function that points to words in operand one <new_line>

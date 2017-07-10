@@ -1,1 +1,0 @@
-# todo: write code for new action copy-words-at-skip-interval  <new_line>
