@@ -430,6 +430,7 @@ get-source-code-character-at-adjacent-position:
 [-append-text adjacent-character list-of-adjacent-characters-]
 ----
 handle-definition-contains-ambee-amenn:
+[-copy-text string-outside current-state-of-if-branching-]
 [-create-new-result-storage-position-]
 [-copy-text current-result-storage-position result-storage-position-for-current-phrase-]
 [-copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand-]
@@ -466,6 +467,9 @@ handle-definition-contains-ambee-amenn:
 [-handle-definition-simple-]
 
 [-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
+
+[-terminate-branching-if-not-terminated-]
+
 [-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
 [-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-current-result-storage-position-]
 [-get-all-operands-]
@@ -660,6 +664,26 @@ handle-token-amenn-case-expand-text:
 [-numeric-increment current-accumulator-pointer-]
 [-handle-token-amenn-case-standard-action-]
 ----
+handle-token-amenn-case-if-else:
+[-start-branching-if-not-started-]
+[-handle-token-amenn-case-action-standard-or-has-template-]
+[-copy-text string-else current-state-of-if-branching-]
+----
+handle-token-amenn-case-if-end:
+[-start-branching-if-not-started-]
+[-handle-token-amenn-case-action-standard-or-has-template-]
+[-copy-text string-outside current-state-of-if-branching-]
+----
+handle-token-amenn-case-if-no-begin:
+[-terminate-branching-if-not-terminated-]
+[-handle-token-amenn-case-action-standard-or-has-template-]
+[-copy-text string-begin current-state-of-if-branching-]
+----
+handle-token-amenn-case-if-yes-begin:
+[-terminate-branching-if-not-terminated-]
+[-handle-token-amenn-case-action-standard-or-has-template-]
+[-copy-text string-begin current-state-of-if-branching-]
+----
 handle-token-amenn-case-standard-action:
 [-get-all-operands-]
 
@@ -835,8 +859,20 @@ run-compiler:
 
 [-check-elapsed-time-]
 ----
+start-branching-if-not-started:
+[-if-yes-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
+[-expand-text template-runtime-code-for-overdue-start-of-if-branch runtime-code-for-overdue-start-of-if-branch-]
+[-copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch [-filename-output-results-all-compiled-functions-]-]
+[-if-end-]
+----
 start-here:
 [-run-compiler-]
+----
+terminate-branching-if-not-terminated:
+[-if-no-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
+[-expand-text template-runtime-code-for-overdue-terminate-if-branch runtime-code-for-overdue-terminate-if-branch-]
+[-copy-from-phrase-append-to-file runtime-code-for-overdue-terminate-if-branch [-filename-output-results-all-compiled-functions-]-]
+[-if-end-]
 ----
 write-results-to-output-file:
 [-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
@@ -1459,6 +1495,9 @@ backslash
 string-bee:
 bee
 ----
+string-begin:
+begin
+----
 string-being:
 being
 ----
@@ -1482,6 +1521,9 @@ defined
 ----
 string-definition:
 definition
+----
+string-else:
+else
 ----
 string-empty:
 empty
@@ -1530,6 +1572,9 @@ no
 ----
 string-one:
 one
+----
+string-outside:
+outside
 ----
 string-phrase:
 phrase
@@ -9642,6 +9687,16 @@ template-runtime-code-for-every-action-end:
 # print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
 ---*
+----
+template-runtime-code-for-overdue-start-of-if-branch:
+# begin overdue start of if branch  <new_line>
+if ( 1 == 1 ) {  <new_line>
+# end overdue start of if branch  <new_line>
+----
+template-runtime-code-for-overdue-terminate-if-branch:
+# begin overdue end of if branch  <new_line>
+}  <new_line>
+# end overdue end of if branch  <new_line>
 ----
 template-runtime-code-identify-phrase-found:
 $global_yes_found_word{ runtime-code-word-within-source-text } = $global_yes ;  <new_line>
