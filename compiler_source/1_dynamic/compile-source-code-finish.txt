@@ -23,3 +23,7 @@
 [-copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-trace-show list-of-unconverted-dashrep-actions-used-]
+
+[-copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized-]
+[-copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized-]
+[-trace-show list-of-action-names-not-recognized-]

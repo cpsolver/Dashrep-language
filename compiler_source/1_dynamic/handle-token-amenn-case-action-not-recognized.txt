@@ -1,0 +1,7 @@
+[-copy-word-at-position definition-for-phrase-being-defined next-to-last-word-in-phrase-being-defined [-numeric-minus [-get-count-of-words definition-for-phrase-being-defined-] 1 -]-]
+
+[-if-no-begin [-yes-or-no-same-two-phrase-definitions next-to-last-word-in-phrase-being-defined action-name-]-]
+[-append-text action-name list-of-action-names-not-recognized-]
+[-if-end-]
+
+[-handle-token-amenn-case-executable-phrase-]
