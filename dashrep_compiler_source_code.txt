@@ -43,6 +43,10 @@ compile-source-code-finish:
 [-copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
 [-trace-show list-of-unconverted-dashrep-actions-used-]
+
+[-copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized-]
+[-copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized-]
+[-trace-show list-of-action-names-not-recognized-]
 ----
 compile-source-code-generate-output-results:
 [-compile-source-code-initialize-]
@@ -586,10 +590,19 @@ handle-token-amenn-case-action-not-empty:
 [-if-yes-begin [-yes-or-no-action-recognized-]-]
 [-handle-token-amenn-case-action-recognized-]
 [-if-else-]
-[-handle-token-amenn-case-executable-phrase-]
+[-handle-token-amenn-case-action-not-recognized-]
 [-if-end-]
 
 [-generate-code-for-one-action-]
+----
+handle-token-amenn-case-action-not-recognized:
+[-copy-word-at-position definition-for-phrase-being-defined next-to-last-word-in-phrase-being-defined [-numeric-minus [-get-count-of-words definition-for-phrase-being-defined-] 1 -]-]
+
+[-if-no-begin [-yes-or-no-same-two-phrase-definitions next-to-last-word-in-phrase-being-defined action-name-]-]
+[-append-text action-name list-of-action-names-not-recognized-]
+[-if-end-]
+
+[-handle-token-amenn-case-executable-phrase-]
 ----
 handle-token-amenn-case-action-recognized:
 [-if-yes-begin [-yes-or-no-empty-phrase handle-token-amenn-case-[-action-name-]-]-]
@@ -3569,9 +3582,6 @@ check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is
 operand-checks-for-action-copy-word-at-position:
 check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer
 ----
-operand-checks-for-action-copy-words-at-skip-interval:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
-----
 operand-checks-for-action-copy-words-found-in-both-lists:
 check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
 ----
@@ -3582,6 +3592,9 @@ operand-checks-for-action-copy-words-found-only-in-first-list:
 check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-words-from-position-to-position:
+check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
+----
+operand-checks-for-action-copy-words-offset-skip:
 check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
 ----
 operand-checks-for-action-copy-words-order-reversed:
@@ -8909,9 +8922,6 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
-template-runtime-code-for-action-copy-words-at-skip-interval:
-# todo: write code for new action copy-words-at-skip-interval  <new_line>
-----
 template-runtime-code-for-action-copy-words-found-in-both-lists:
 template-runtime-code-standard-action-begin
 
@@ -8953,6 +8963,9 @@ $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-words-offset-skip:
+# todo: write code for new action copy-words-offset-skip , use new function that points to words in operand one <new_line>
 ----
 template-runtime-code-for-action-copy-zero-pad-left-to-length:
 template-runtime-code-standard-action-begin
