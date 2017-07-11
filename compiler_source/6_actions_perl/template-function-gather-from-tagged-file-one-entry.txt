@@ -4,7 +4,6 @@ sub function__gather_from_tagged_file_one_entry( ) {  <new_line>
 
 template-interpreter-function-middle
 
-    } elsif ( ( $global_action_name eq "gather hyphen-here tagged hyphen-here info hyphen-here from hyphen-here file" ) || ( $global_action_name eq "gather hyphen-here from hyphen-here tagged hyphen-here file hyphen-here one hyphen-here entry" ) ) {  <new_line>
         $global_accumulated_matching_entry_info = "" ;  <new_line>
         if ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
             $global_possible_error_message .= "" ;  <new_line>

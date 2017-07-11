@@ -4,7 +4,6 @@ sub function__find_lines_in_file_that_begin_with_any_listed_word( ) {  <new_line
 
 template-interpreter-function-middle
 
-    } elsif ( ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here listed hyphen-here word" ) || ( $global_action_name eq "find hyphen-here lines hyphen-here in hyphen-here file hyphen-here that hyphen-here begin hyphen-here with hyphen-here any hyphen-here two hyphen-here words hyphen-here listed" ) ) {  <new_line>
         $global_list_of_storage_names = "" ;  <new_line>
         if ( ( $global_source_filename eq "" ) || ( $global_operand_two eq "" ) || ( $global_operand_three eq "" ) ) {  <new_line>
             $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . " and " . $global_operand_three . "]" ;  <new_line>
