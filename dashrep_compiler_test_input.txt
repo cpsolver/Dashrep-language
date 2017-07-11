@@ -455,7 +455,7 @@ text-that-occurs-after-parameter-phrases
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
-[-copy-words-at-skip-interval list-of-numbers skipped-list-of-numbers 2 -]
+[-copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1 -]
 [-[-handle-double-nested-executable-phrase-]-]
 --------
 
@@ -1087,4 +1087,8 @@ correct-value-for-result-numeric-y-map-tile-number:
 
 correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
+--------
+
+correct-value-for-skipped-list-of-numbers:
+???
 --------
