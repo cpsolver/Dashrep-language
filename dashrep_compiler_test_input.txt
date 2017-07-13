@@ -419,23 +419,22 @@ ambee expand-text template-date-time-full expanded-date-time-frozen amenn
 ambee copy-words-from-position-to-position expanded-date-time-frozen expanded-date-time-frozen-adjusted 4 7 amenn
 ambee put-into-phrase correct-value-for-expanded-date-time-frozen-adjusted  50 6 53 2017  amenn
 
-ambee put-into-phrase operand-one  dolphin buffalo bear  amenn
-ambee put-into-phrase operand-two  item-ambee-list-of-numbers-as-text-amenn  amenn
-ambee copy-and-replace operand-two operand-one character-space empty-text amenn
-ambee copy-listed-words-to-phrases-named-in-pattern operand-one operand-two amenn
-ambee put-into-phrase correct-value-for-item-one  dolphin  amenn
-ambee put-into-phrase correct-value-for-item-two  buffalo  amenn
-ambee put-into-phrase correct-value-for-item-three  bear  amenn
-
 ambee copy-words-from-position-to-position list-of-numbers-as-text short-list-of-numbers-as-text 1 4 amenn
-ambee put-into-phrase operand-one  item-ambee-short-list-of-numbers-as-text-amenn  amenn
-ambee put-into-phrase item-one  dolphin  amenn
-ambee put-into-phrase item-two  buffalo  amenn
-ambee put-into-phrase item-three  bear  amenn
-ambee put-into-phrase item-four  eagle  amenn
-ambee append-multiple-from-phrases-named-in-pattern operand-one result-append-multiple amenn
+ambee put-into-phrase copied-pattern-item-animal-type  copied-pattern-item-ambee-short-list-of-numbers-as-text-amenn  amenn
+ambee copy-listed-words-to-phrases-named-in-pattern list-of-animal-types copied-pattern-item-animal-type amenn
+ambee put-into-phrase correct-value-for-copied-pattern-item-one  dolphin  amenn
+ambee put-into-phrase correct-value-for-copied-pattern-item-two  whale  amenn
+ambee put-into-phrase correct-value-for-copied-pattern-item-three  starfish  amenn
+ambee put-into-phrase correct-value-for-copied-pattern-item-four  octopus  amenn
+
+ambee copy-words-from-position-to-position list-of-numbers-as-text shorter-list-of-numbers-as-text 1 3 amenn
+ambee put-into-phrase appended-pattern-item-animal-type  appended-pattern-item-ambee-shorter-list-of-numbers-as-text-amenn  amenn
+ambee put-into-phrase appended-pattern-item-one  dolphin  amenn
+ambee put-into-phrase appended-pattern-item-two  octopus  amenn
+ambee put-into-phrase appended-pattern-item-three  whale  amenn
+ambee append-multiple-from-phrases-named-in-pattern appended-pattern-item-animal-type result-append-multiple amenn
 ambee copy-without-extra-spaces result-append-multiple result-append-multiple amenn
-ambee put-into-phrase correct-value-for-result-append-multiple  dolphin buffalo bear eagle  amenn
+ambee put-into-phrase correct-value-for-result-append-multiple  dolphin octopus whale  amenn
 
 ambee generate-positions-of-delimiter character-open-angle-bracket simple-xml-with-tags pointers-to-beginning-of-tags amenn
 ambee generate-positions-of-first-matching-delimiter-after-listed-positions character-close-angle-bracket simple-xml-with-tags pointers-to-beginning-of-tags pointers-to-end-of-tags amenn
