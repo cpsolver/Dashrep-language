@@ -4,14 +4,8 @@
 
 sub handle_endless_loop_encountered( ) {  <new_line>
 
-
-*--- todo: eliminate use of phrase dashrep_debug_trace_log ---*
-
-
 print 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
-code-get-or-put-phrase-definition-begin 'dashrep-debug-trace-log' code-get-or-put-phrase-definition-end .= 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
-
-template-runtime-code-print-trace-output
+print TRACE_OUT 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
 
 exit ;  <new_line>
 

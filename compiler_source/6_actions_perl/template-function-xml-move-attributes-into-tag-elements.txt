@@ -9,7 +9,7 @@ while( $global_text_being_edited =~ / *\/> *<((attribute)|(specify)) ([^>]+)>/sg
     $global_text_being_edited =~ s/ *\/> *<((attribute)|(specify)) (([^"<>]*"[^"]*"[^"<>]*)+?)>/ $4 \/>/sg ;  <new_line>
     $global_replacement_count_for_item_name{ "loop within action " . $global_action_name } ++ ;  <new_line>
     if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
-        $global_trace_log .= "{{trace; Error: During the action " . $global_action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";  <new_line>
+        print TRACE_OUT "{{trace; Error: During the action " . $global_action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";  <new_line>
         last ;  <new_line>
     }  <new_line>
     $global_endless_loop_counter ++ ;  <new_line>
@@ -18,7 +18,7 @@ while( $global_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
     $global_text_being_edited =~ s/ *> *<((attribute)|(specify)) (([^"<>]*"[^"]*"[^"<>]*)+?)>/ $4>/sg ;  <new_line>
     $global_replacement_count_for_item_name{ "loop within action " . $global_action_name } ++ ;  <new_line>
     if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
-        $global_trace_log .= "{{trace; Error: During the action " . $global_action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";  <new_line>
+        print TRACE_OUT "{{trace; Error: During the action " . $global_action_name . " the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}\n";  <new_line>
         last ;  <new_line>
     }  <new_line>
     $global_endless_loop_counter ++ ;  <new_line>

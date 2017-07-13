@@ -65,8 +65,6 @@ print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
 print $output_results . "\n" ;  <new_line>
 }  <new_line>
 
-template-runtime-code-print-trace-output
-
 exit ;  <new_line>
 <new_line>
 <new_line>

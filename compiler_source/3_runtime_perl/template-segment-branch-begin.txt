@@ -13,7 +13,7 @@ template-runtime-code-check-for-time-limit-exceeded
 if ( $global_phrase_name_to_match eq $global_phrase_name_currently_executing ) {  <new_line>
 print 'ERROR:  Phrase ' . $global_phrase_name_to_match . ' has requested executing itself, which would cause an endless loop, so exiting now!' . "\n" ;  <new_line>
 
-template-runtime-code-print-trace-output
+print TRACE_OUT 'ERROR:  Phrase ' . $global_phrase_name_to_match . ' has requested executing itself, which would cause an endless loop, so exiting now!' . "\n" ;  <new_line>
 
 exit ;  <new_line>
 }  <new_line>
@@ -21,7 +21,7 @@ exit ;  <new_line>
 if ( index( $global_phrase_name_to_match , ' ' ) >= 0 ) {  <new_line>
 print 'ERROR:  Phrase "' . $global_phrase_name_to_match . '" is not a valid phrase name, which means a major error has occurred, so exiting now!' . "\n" ;  <new_line>
 
-template-runtime-code-print-trace-output
+print TRACE_OUT 'ERROR:  Phrase "' . $global_phrase_name_to_match . '" is not a valid phrase name, which means a major error has occurred, so exiting now!' . "\n" ;  <new_line>
 
 exit ;  <new_line>
 }  <new_line>

@@ -1,5 +1,0 @@
-template-runtime-code-standard-action-begin
-
-template-runtime-code-print-trace-output
-
-template-runtime-code-standard-action-end

@@ -3,10 +3,9 @@
 <new_line>
 
 sub handle_time_limit_exceeded( ) {  <new_line>
-print 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
-code-get-or-put-phrase-definition-begin 'dashrep-debug-trace-log' code-get-or-put-phrase-definition-end .= 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
 
-template-runtime-code-print-trace-output
+print 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
+print TRACE_OUT 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
 
 exit ;  <new_line>
 

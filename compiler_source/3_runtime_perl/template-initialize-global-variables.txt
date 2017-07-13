@@ -374,9 +374,3 @@ my $global_unique_value = '' ;  <new_line>
 my $global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_line>
 <new_line>
 <new_line>
-
-
-# todo: remove these when no longer used  <new_line>
-
-my $global_trace_log = '' ;  <new_line>
-$global_dashrep_replacement{ 'dashrep-debug-trace-log' } = '' ;  <new_line>
