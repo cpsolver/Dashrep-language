@@ -1,8 +1,12 @@
 template-runtime-code-standard-action-begin
 
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+
 if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) {  <new_line>
-print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is: ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
 } else {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'phrase ' . runtime-code-for-operand-number-one . ' is not defined' . "\n" ;  <new_line>
 }  <new_line>
 
