@@ -1,3 +1,40 @@
+test-file-related-dashrep-actions:
+
+ambee gather-tagged-info-from-file [-input-filename-tagged-info-] list-of-gathered-ids amenn
+ambee put-into-phrase correct-value-for-list-of-gathered-ids  101 102  amenn
+
+*---
+generate-list-of-files-in-current-read-directory
+generate-list-of-folders-in-current-read-directory
+yes-or-no-file-exists
+yes-or-no-folder-exists
+size-of-file
+modification-time-of-file
+set-file-permission-public-read
+create-empty-file
+rename-file
+delete-file
+create-empty-sub-folder
+copy-from-file-to-phrase
+copy-from-phrase-append-to-file
+copy-append-file-to-file
+linewise-read-from-file-and-use-handler
+linewise-input-line-from-file
+linewise-input-line-count
+get-definitions-from-file
+dashrep-phrase-prefix-for-imported-phrases
+dashrep-phrase-suffix-for-imported-phrases
+write-dashrep-definitions-listed-in-phrase-to-file
+find-line-in-file-that-begins-with-text
+find-lines-in-file-that-begin-with-any-listed-word
+find-lines-in-file-that-begin-with-any-two-words-listed
+copy-from-columns-in-file-to-named-phrases
+copy-from-columns-in-file-to-column-lists
+gather-from-tagged-file-one-entry
+write-gathered-listed-items-to-end-of-file
+---*
+-------
+
 start-here:
 
 *--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
@@ -8,6 +45,7 @@ start-here:
 [-clear-phrase list-of-displayed-input-phrases-]
 [-test-getting-of-cgi-information-]
 [-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
+[-test-file-related-dashrep-actions-]
 [-put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-] -]
 
 [-do-check-for-correct-values-]
@@ -49,6 +87,10 @@ yes
 
 yes-or-no-permission-administrator:
 yes
+--------
+
+input-filename-tagged-info:
+input-tagged-info.txt
 --------
 
 test-of-dashrep-actions:
@@ -458,47 +500,41 @@ additional-test-of-dashrep-actions-not-currently-being-tested:
 [-[-handle-double-nested-executable-phrase-]-]
 --------
 
-list-of-file-related-actions-to-test:
+dashrep-path-prefix-for-file-reading:
+--------
 
-yes-or-no-permission-to-append-to-files
-yes-or-no-permission-to-delete-or-overwrite-files
-dashrep-path-prefix-for-file-reading
-dashrep-path-prefix-for-file-writing
-generate-list-of-files-in-current-read-directory
-generate-list-of-folders-in-current-read-directory
-yes-or-no-file-exists
-yes-or-no-folder-exists
-size-of-file
-modification-time-of-file
-set-file-permission-public-read
-create-empty-file
-rename-file
-delete-file
-create-empty-sub-folder
-copy-from-file-to-phrase
-copy-from-phrase-append-to-file
-copy-append-file-to-file
-linewise-read-from-file-and-use-handler
-linewise-input-line-from-file
-linewise-input-line-count
-get-definitions-from-file
-dashrep-phrase-prefix-for-imported-phrases
-dashrep-phrase-suffix-for-imported-phrases
-write-dashrep-definitions-listed-in-phrase-to-file
-find-line-in-file-that-begins-with-text
-find-lines-in-file-that-begin-with-any-listed-word
-find-lines-in-file-that-begin-with-any-two-words-listed
-copy-from-columns-in-file-to-named-phrases
-copy-from-columns-in-file-to-column-lists
-yes-or-no-use-two-spaces-as-column-delimiter
-gather-tagged-info-from-file
-gather-from-tagged-file-one-entry
-write-gathered-listed-items-to-end-of-file
-dashrep-gather-tag-begin
-dashrep-gather-tag-end
-dashrep-gather-tag-unique
-dashrep-gather-tag-delete
-dashrep-gather-tag-matching-id
+dashrep-path-prefix-for-file-writing:
+--------
+
+yes-or-no-permission-to-append-to-files:
+yes
+--------
+
+yes-or-no-permission-to-delete-or-overwrite-files:
+yes
+--------
+
+yes-or-no-use-two-spaces-as-column-delimiter:
+no
+-------
+
+dashrep-gather-tag-begin:
+entry_begin
+-------
+
+dashrep-gather-tag-end:
+entry_end
+-------
+
+dashrep-gather-tag-unique:
+uniqueid
+-------
+
+dashrep-gather-tag-delete:
+tag_delete
+-------
+
+dashrep-gather-tag-matching-id:
 -------
 
 correct-value-for-expanded-test-of-dashrep-actions:
