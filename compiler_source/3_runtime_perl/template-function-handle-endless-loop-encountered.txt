@@ -5,6 +5,7 @@
 sub handle_endless_loop_encountered( ) {  <new_line>
 
 print 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
 
 exit ;  <new_line>

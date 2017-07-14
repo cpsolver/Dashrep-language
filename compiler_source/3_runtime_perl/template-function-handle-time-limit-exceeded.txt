@@ -5,6 +5,7 @@
 sub handle_time_limit_exceeded( ) {  <new_line>
 
 print 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;  <new_line>
 
 exit ;  <new_line>

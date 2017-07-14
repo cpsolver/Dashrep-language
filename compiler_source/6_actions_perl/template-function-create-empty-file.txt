@@ -7,6 +7,7 @@ template-interpreter-function-middle
 if ( ( $global_target_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
     $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_target_filename . " and " . $global_operand_two . "]" ;  <new_line>
 } elsif ( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files" } ne "yes" ) {  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
     print TRACE_OUT "{{trace; attempt to create empty file: " . $global_target_filename . "}}\n" ;  <new_line>
     $global_possible_error_message .= " [warning, do not have permission to delete or overwrite files]" ;  <new_line>
 } else  <new_line>
@@ -19,16 +20,19 @@ if ( ( $global_target_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <ne
     if ( $global_possible_error_message eq "" ) {  <new_line>
         print OUTFILE "" ;  <new_line>
         if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
             print TRACE_OUT "{{trace; created empty file: " . $global_target_filename . "}}\n" ;  <new_line>
         }  <new_line>
     } else {  <new_line>
         if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
             print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
         }  <new_line>
     }  <new_line>
     close( OUTFILE ) ;  <new_line>
     if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {  <new_line>
         if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
             print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . "  not successful}}\n" ;  <new_line>
         }  <new_line>
     }  <new_line>

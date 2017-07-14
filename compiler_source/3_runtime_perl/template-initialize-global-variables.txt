@@ -53,6 +53,12 @@ my $global_yes = 1 ;  <new_line>
 my $global_no = 0 ;  <new_line>
 my $global_yes_or_no = 0 ;  <new_line>
 my $global_yes_or_no_operand_error = $global_no ;  <new_line>
+my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
+my $global_tracking_on_yes_or_no = $global_no ;  <new_line>
+my $global_yes_or_no_within_ampersand_encoded_character = $global_no ;  <new_line>
+my $global_yes_or_no_trace_output_file_is_open = $global_no ;  <new_line>
+<new_line>
+
 my $global_storage_number = 1 ;  <new_line>
 my $global_accumulator_pointer = 1 ;  <new_line>
 my $global_plus_or_minus_one = 1 ;  <new_line>
@@ -102,7 +108,6 @@ my $global_starting_time = time ;  <new_line>
 my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
 my $global_nesting_level_of_file_actions = 0 ;  <new_line>
 my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
-my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 <new_line>
 
 my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
@@ -333,7 +338,6 @@ my $global_name = '' ;  <new_line>
 my $global_top_left_open_column = 0 ;  <new_line>
 my $global_top_right_open_column = 0 ;  <new_line>
 my $global_top_row_number = 0 ;  <new_line>
-my $global_tracking_on_yes_or_no = '' ;  <new_line>
 my $global_translation = '' ;  <new_line>
 my $global_undeleted_phrase_content = '' ;  <new_line>
 my $global_unicode_number = 0 ;  <new_line>
@@ -365,7 +369,6 @@ my $global_words_to_find = '' ;  <new_line>
 my $global_words_to_match = '' ;  <new_line>
 my $global_write_time = '' ;  <new_line>
 my $global_year = 0 ;  <new_line>
-my $global_yes_or_no_within_ampersand_encoded_character = '' ;  <new_line>
 my $global_zero_if_not_remaining_item_number = '' ;  <new_line>
 my $global_zero_padding = '' ;  <new_line>
 my $global_cgi_string_length_limit = 100000 ;  <new_line>

@@ -20,6 +20,7 @@ template-interpreter-function-middle
             if ( $global_action_name eq "find hyphen-here line hyphen-here in hyphen-here file hyphen-here that hyphen-here begins hyphen-here with hyphen-here text" ) {  <new_line>
                 $global_string_to_find = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
                 if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                     print TRACE_OUT "{{trace; searching in file " . $global_source_filename . " for string " . $global_string_to_find . "}}\n" ;  <new_line>
                 }  <new_line>
                 $global_length_of_string = length( $global_string_to_find ) ;  <new_line>
@@ -29,6 +30,7 @@ template-interpreter-function-middle
                     if ( $global_possible_match eq $global_string_to_find ) {  <new_line>
                         $global_dashrep_replacement{ $global_operand_three } = $global_input_line ;  <new_line>
                         if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                             print TRACE_OUT "{{trace; in file " . $global_source_filename . " found starting string " . $global_string_to_find . "}}\n" ;  <new_line>
                         }  <new_line>
                         last ;  <new_line>
@@ -36,6 +38,7 @@ template-interpreter-function-middle
                 }  <new_line>
             } else {  <new_line>
                 if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                     print TRACE_OUT "{{trace; searching in file " . $global_source_filename . " for words in phrase " . $global_operand_two . "}}\n" ;  <new_line>
                 }  <new_line>
                 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
@@ -86,10 +89,12 @@ template-interpreter-function-middle
                 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
             }  <new_line>
             if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
-                print TRACE_OUT "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;  <new_line>
+                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+               print TRACE_OUT "{{trace; finished searching, previous message indicates any matches " . "}}\n" ;  <new_line>
             }  <new_line>
         } else {  <new_line>
             if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                 print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
             }  <new_line>
         }  <new_line>

@@ -102,6 +102,7 @@ template-interpreter-function-middle
                                     $global_dashrep_replacement{ $global_tag_name . "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" . $global_unique_value } = $global_content_for_tag{ $global_tag_name } ;  <new_line>
                                 }  <new_line>
                             } elsif ( ( $global_entry_matching_id eq "" ) && ( $global_first_word eq $global_entry_end ) ) {  <new_line>
+                                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                                 print TRACE_OUT "{{trace; warning: action " . $global_action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items" . "}}\n" ;  <new_line>
                             }  <new_line>
                             $global_unique_value = "" ;  <new_line>
@@ -179,10 +180,12 @@ template-interpreter-function-middle
                 $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } = $global_list_of_tag_values_in_sequence_encountered ;  <new_line>
             }  <new_line>
             if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                 print TRACE_OUT "{{trace; did action " . $global_action_name ." with file " . $global_source_filename . " and target phrase " . $global_target_phrase_name . "}}\n" ;  <new_line>
             }  <new_line>
         } else {  <new_line>
             if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                 print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
             }  <new_line>
         }  <new_line>

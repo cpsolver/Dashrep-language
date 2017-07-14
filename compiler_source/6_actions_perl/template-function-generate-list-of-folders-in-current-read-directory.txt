@@ -11,6 +11,7 @@ template-interpreter-function-middle
             if ( ( $global_directory eq "" ) || ( $global_directory !~ /[\\\/]$/ ) ) {  <new_line>
                 $global_directory = './' ;  <new_line>
                 if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                     print TRACE_OUT "{{trace; warning, directory " . $global_directory . " is invalid so using local directory}}\n" ;  <new_line>
                 }  <new_line>
             }  <new_line>
@@ -32,11 +33,13 @@ template-interpreter-function-middle
                 $global_list_of_file_names =~ s / +$// ;  <new_line>
                 $global_dashrep_replacement{ $global_operands_all } = $global_list_of_file_names ;  <new_line>
                 if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                     print TRACE_OUT "{{trace; listed files or folders in directory " . $global_directory . "}}\n" ;  <new_line>
                 }  <new_line>
                 closedir( READDIR ) ;  <new_line>
             } else {  <new_line>
                 if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+                    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                     print TRACE_OUT "{{trace; warning, cannot list files in directory " . $global_directory . "}}\n" ;  <new_line>
                 }  <new_line>
             }  <new_line>

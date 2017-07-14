@@ -10,6 +10,7 @@ if ( ( $global_source_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <ne
 {  <new_line>
     ( $global_read_time , $global_write_time ) = ( stat( $global_source_filename ) )[8,9] ;  <new_line>
     if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+        &function__open_trace_output_file_if_not_open( ) ;  <new_line>
         print TRACE_OUT "{{trace; modification time of file " . $global_source_filename . " is " . $global_write_time . "}}\n" ;  <new_line>
     }  <new_line>
 }  <new_line>

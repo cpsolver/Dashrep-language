@@ -30,6 +30,7 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
         $global_endless_loop_counter ++ ;  <new_line>
         $global_replacement_count_for_item_name{ 'loop within action ' . $global_action_name } ++ ;  <new_line>
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
+            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
             print TRACE_OUT '{{trace; Error: During the action ' . $global_action_name . ' the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}' . "\n";  <new_line>
             last ;  <new_line>
         }  <new_line>
