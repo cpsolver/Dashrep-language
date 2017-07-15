@@ -1,7 +1,6 @@
 my %global_dashrep_replacement = ( ) ;  <new_line>
 
 my @global_phrase_usage_count_for_phrase_number = ( ) ;  <new_line>
-my %global_replacement_count_for_item_name = ( ) ;  <new_line>
 
 my @global_accumulator = ( ) ;  <new_line>
 $global_accumulator[ 0 ] = '' ;  <new_line>

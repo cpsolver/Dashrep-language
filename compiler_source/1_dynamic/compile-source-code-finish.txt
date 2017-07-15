@@ -1,3 +1,5 @@
+[-copy-text unique-phrase-number number-of-unique-phrases-]
+
 [-copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
 [-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
 [-copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]

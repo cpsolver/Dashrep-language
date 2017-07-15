@@ -5,26 +5,30 @@ sub function__generate_phrase_usage_counts( ) {  <new_line>
 $global_result_text = '' ;  <new_line>
 
 
-# todo: use $global_phrase_usage_count_for_phrase_number[ phrase-number-for-usage-counting ] ++  <new_line>
-# reason: much faster execution!!! (current use of associative array slows down code)  <new_line>
-# use $global_phrase_name_for_phrase_number[ phrase-number-for-usage-counting ] to get phrase names  <new_line>
 # do sorting subroutine with 0000000175_phrase_name where 175 is usage count  <new_line>
 # edits involve code-compiled-funtion-part-3  <new_line>
 
 
-foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
-    $global_replacement_count = $global_replacement_count_for_item_name{ $global_phrase_name } ;  <new_line>
+
+# for ( $global_phrase_number = 1 ; $global_phrase_number <= $global_number_of_unique_phrases ; $global_phrase_number ++ ) {  <new_line>
+# $global_phrase_usage_count_for_phrase_number[ $global_phrase_number ] ++ ;  <new_line>
+# $global_phrase_name = $global_phrase_name_for_phrase_number[ $global_phrase_number ] ;  <new_line>
+
+
+##foreach $global_phrase_name ( keys( %global_replacement_count_for_item_name ) ) {  <new_line>
+##    $global_replacement_count = $global_replacement_count_for_item_name{ $global_phrase_name } ;  <new_line>
 
 
 # edited 2017may25  <new_line>
-    if ( ( exists( $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } ) ) && ( $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } ne '' ) ) {  <new_line>
+#    if ( ( exists( $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } ) ) && ( $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } ne '' ) ) {  <new_line>
 
 
-    {  <new_line>
-        $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= "\n" ;  <new_line>
-    }  <new_line>
-    $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= $global_phrase_name ;  <new_line>
-}  <new_line>
+#    {  <new_line>
+#        $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= "\n" ;  <new_line>
+#    }  <new_line>
+#    $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= $global_phrase_name ;  <new_line>
+#}  <new_line>
+
 foreach $global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
     @global_list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
     foreach $global_phrase_name ( @global_list_of_phrase_names ) {  <new_line>
