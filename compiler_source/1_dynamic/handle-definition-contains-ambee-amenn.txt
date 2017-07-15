@@ -25,7 +25,7 @@
 [-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
 [-append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function-]
 
-
+*--- todo: avoid need for workaround ---*
 [-put-into-phrase unique-phrase-number-for-phrase-name-[-phrase-being-defined-]  99  -]
 [-append-text unique-phrase-number-for-phrase-name-[-phrase-being-defined-] runtime-code-compiled-function-]
 
