@@ -103,8 +103,8 @@ category_search_replace
 get-position-of-matching-text
 copy-and-replace
 copy-and-replace-using-paired-listed-words
-generate-positions-of-delimiter
 generate-positions-of-listed-words
+generate-positions-of-delimiter
 generate-positions-of-first-matching-delimiter-after-listed-positions
 
 category_time
