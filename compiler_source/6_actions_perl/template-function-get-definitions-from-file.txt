@@ -25,7 +25,7 @@ template-interpreter-function-middle
                 }  <new_line>
             }  <new_line>
             $global_numeric_return_value = &dashrep_import_replacements( $global_source_definitions ) ;  <new_line>
-            if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+            if ( 77 == 78 ) {  <new_line>
                 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
                 print TRACE_OUT "{{trace; imported " . $global_numeric_return_value . " definitions from file: " . $global_source_filename . "}}\n" ;  <new_line>
             }  <new_line>

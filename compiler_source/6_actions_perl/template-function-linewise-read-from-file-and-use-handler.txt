@@ -28,7 +28,7 @@ if ( $global_possible_error_message eq "" ) {  <new_line>
             $global_line_count ++ ;  <new_line>
         }  <new_line>
     }  <new_line>
-    if ( $global_dashrep_replacement{ "dashrep hyphen-here action hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
+    if ( 77 == 78 ) {  <new_line>
         &function__open_trace_output_file_if_not_open( ) ;  <new_line>
         print TRACE_OUT "{{trace; processed each line in file " . $global_source_filename . " using handler " . $global_target_phrase_name . "}}\n" ;  <new_line>
     }  <new_line>
