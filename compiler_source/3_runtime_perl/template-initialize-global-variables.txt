@@ -366,7 +366,6 @@ my $global_word_number_end = 0 ;  <new_line>
 my $global_word_position = 0 ;  <new_line>
 my $global_word_to_check = '' ;  <new_line>
 my $global_word_to_find = '' ;  <new_line>
-my $global_words_at_numeric_value = '' ;  <new_line>
 my $global_words_to_find = '' ;  <new_line>
 my $global_words_to_match = '' ;  <new_line>
 my $global_write_time = '' ;  <new_line>

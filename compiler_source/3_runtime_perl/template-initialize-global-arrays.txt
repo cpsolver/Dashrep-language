@@ -1,12 +1,23 @@
 my %global_dashrep_replacement = ( ) ;  <new_line>
+<new_line>
+
+my %global_yes_found_word = ( ) ;  <new_line>
+my %global_exists_tag_name = ( ) ;  <new_line>
+my %global_content_for_tag = ( ) ;  <new_line>
+my %global_endless_loop_replacements_with_count = ( ) ;  <new_line>
+my %global_found_unique_value = ( ) ;  <new_line>
+my %global_item_number_at_row_column = ( ) ;  <new_line>
+my %global_listed_word = ( ) ;  <new_line>
+my %global_occurrence_count_for_word = ( ) ;  <new_line>
+my %global_text_to_find_at_position = ( ) ;  <new_line>
+my %global_words_at_numeric_value = ( ) ;  <new_line>
+<new_line>
 
 my @global_phrase_usage_count_for_phrase_number = ( ) ;  <new_line>
 
 my @global_accumulator = ( ) ;  <new_line>
 $global_accumulator[ 0 ] = '' ;  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
-
-my %global_yes_found_word = ( ) ;  <new_line>
 
 my @global_count_of_items_appended_to_accumulator = ( ) ;  <new_line>
 $global_count_of_items_appended_to_accumulator[ 0 ] = 0 ;  <new_line>
@@ -92,17 +103,6 @@ my @global_up_direction_value_for_item_number = ( ) ;  <new_line>
 my @global_value_in_column = ( ) ;  <new_line>
 my @global_zero_if_not_remaining_item_number = ( ) ;  <new_line>
 my @global_name_value_pairs = ( ) ;  <new_line>
-<new_line>
-
-my %global_content_for_tag = ( ) ;  <new_line>
-my %global_endless_loop_replacements_with_count = ( ) ;  <new_line>
-my %global_found_unique_value = ( ) ;  <new_line>
-my %global_item_number_at_row_column = ( ) ;  <new_line>
-my %global_listed_word = ( ) ;  <new_line>
-my %global_occurrence_count_for_word = ( ) ;  <new_line>
-my %global_text_to_find_at_position = ( ) ;  <new_line>
-my %global_words_at_numeric_value = ( ) ;  <new_line>
-<new_line>
 <new_line>
 
 
