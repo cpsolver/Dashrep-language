@@ -2,193 +2,93 @@ template-interpreter-function-begin
 
 sub function__gather_from_tagged_file_one_entry( ) {  <new_line>
 
-template-interpreter-function-middle
+$global_action_result = '' ;  <new_line>
+$global_source_filename = $global_operand_one ;  <new_line>
+$global_target_phrase_name = $global_operand_two ;  <new_line>
+$global_source_filename = $global_dashrep_replacement{ 'dashrep<character_hyphen>path<character_hyphen>prefix<character_hyphen>for<character_hyphen>file<character_hyphen>reading' } . $global_source_filename ;  <new_line>
+$global_accumulated_matching_entry_info = "" ;  <new_line>
+if ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
+    $global_do_nothing ++ ;  <new_line>
+} else {  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+    print TRACE_OUT 'dashrep_runtime_error_action_gather_from_tagged_file_one_entry_case_file_could_not_be_opened' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+$global_entry_begin = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here begin" } ;  <new_line>
+if ( $global_entry_begin !~ /^[^ ]+$/ ) {  <new_line>
+    $global_entry_begin = "entry_begin" ;  <new_line>
+}  <new_line>
+$global_entry_end = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here end" } ;  <new_line>
+if ( $global_entry_end !~ /^[^ ]+$/ ) {  <new_line>
+    $global_entry_end = "entry_end" ;  <new_line>
+}  <new_line>
+$global_entry_unique = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here unique" } ;  <new_line>
+if ( $global_entry_unique !~ /^[^ ]+$/ ) {  <new_line>
+    $global_entry_unique = "url" ;  <new_line>
+}  <new_line>
+$global_entry_delete = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here delete" } ;  <new_line>
+if ( $global_entry_delete !~ /^[^ ]+$/ ) {  <new_line>
+    $global_entry_delete = "delete_id" ;  <new_line>
+}  <new_line>
+$global_entry_matching_id = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here matching hyphen-here id" } ;  <new_line>
+if ( $global_entry_matching_id !~ /^[^ ]+$/ ) {  <new_line>
+    $global_entry_matching_id = "1" ;  <new_line>
+}  <new_line>
+$global_possible_matching_entry_info = "" ;  <new_line>
+$global_unique_value = "" ;  <new_line>
+$global_list_of_tag_values_in_sequence_encountered = "" ;  <new_line>
+%global_content_for_tag = ( ) ;  <new_line>
+%global_found_unique_value = ( ) ;  <new_line>
+%global_exists_tag_name = ( ) ;  <new_line>
+$global_line_status = "between" ;  <new_line>
+while ( $global_input_line = <INFILE> ) {  <new_line>
+    chomp( $global_input_line ) ;  <new_line>
+    $global_pointer = index( $global_input_line , "\r" ) ;  <new_line>
+    if ( $global_pointer >= 0 ) {  <new_line>
+        $global_input_line =~ s/[\r\n]+//gs ;  <new_line>
+    }  <new_line>
 
-        $global_accumulated_matching_entry_info = "" ;  <new_line>
-        if ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
-            $global_possible_error_message .= "" ;  <new_line>
-        } else {  <new_line>
-            $global_possible_error_message .= " [warning: file named " . $global_source_filename . " not found, or could not be opened" . "]\n" ;  <new_line>
-        }  <new_line>
-        if ( $global_possible_error_message eq "" ) {  <new_line>
-            $global_entry_begin = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here begin" } ;  <new_line>
-            if ( $global_entry_begin !~ /^[^ ]+$/ ) {  <new_line>
-                $global_entry_begin = "entry_begin" ;  <new_line>
-            }  <new_line>
-            $global_entry_end = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here end" } ;  <new_line>
-            if ( $global_entry_end !~ /^[^ ]+$/ ) {  <new_line>
-                $global_entry_end = "entry_end" ;  <new_line>
-            }  <new_line>
-            $global_entry_unique = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here unique" } ;  <new_line>
-            if ( $global_entry_unique !~ /^[^ ]+$/ ) {  <new_line>
-                $global_entry_unique = "url" ;  <new_line>
-            }  <new_line>
-            $global_entry_delete = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here delete" } ;  <new_line>
-            if ( $global_entry_delete !~ /^[^ ]+$/ ) {  <new_line>
-                $global_entry_delete = "delete_id" ;  <new_line>
-            }  <new_line>
-            if ( $global_action_name eq "gather hyphen-here from hyphen-here tagged hyphen-here file hyphen-here one hyphen-here entry" ) {  <new_line>
-                $global_entry_matching_id = $global_dashrep_replacement{ "dashrep hyphen-here gather hyphen-here tag hyphen-here matching hyphen-here id" } ;  <new_line>
-                if ( $global_entry_matching_id !~ /^[^ ]+$/ ) {  <new_line>
-                    $global_entry_matching_id = "1" ;  <new_line>
-                }  <new_line>
-            } elsif ( $global_action_name eq "gather hyphen-here tagged hyphen-here info hyphen-here from hyphen-here file" ) {  <new_line>
-                $global_entry_matching_id = "" ;  <new_line>
-            }  <new_line>
-            $global_accumulated_matching_entry_info = "" ;  <new_line>
+    if ( $global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
+        $global_first_word = $1 ;  <new_line>
+        if ( $global_first_word eq $global_entry_begin ) {  <new_line>
+            $global_line_status = "within" ;  <new_line>
             $global_possible_matching_entry_info = "" ;  <new_line>
-            $global_unique_value = "" ;  <new_line>
-            $global_list_of_tag_values_in_sequence_encountered = "" ;  <new_line>
-            %content_for_tag = ( ) ;  <new_line>
-            %found_unique_value = ( ) ;  <new_line>
-            %exists_tag_name = ( ) ;  <new_line>
+        } elsif ( $global_first_word eq $global_entry_end ) {  <new_line>
+            if ( $global_line_status eq "within hyphen-here matching" ) {  <new_line>
+                $global_accumulated_matching_entry_info .= $global_possible_matching_entry_info ;  <new_line>
+            }  <new_line>
+            $global_possible_matching_entry_info = "" ;  <new_line>
             $global_line_status = "between" ;  <new_line>
-            while ( $global_input_line = <INFILE> ) {  <new_line>
-                chomp( $global_input_line ) ;  <new_line>
-                $global_pointer = index( $global_input_line , "\r" ) ;  <new_line>
-                if ( $global_pointer >= 0 ) {  <new_line>
-                    $global_input_line =~ s/[\r\n]+//gs ;  <new_line>
-                }  <new_line>
-                if ( $global_entry_matching_id ne "" ) {  <new_line>
-#                   This section of code applies to action: gather hyphen-here from hyphen-here tagged hyphen-here file hyphen-here one hyphen-here entry  <new_line>
-                    if ( $global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
-                        $global_first_word = $1 ;  <new_line>
-                        if ( $global_first_word eq $global_entry_begin ) {  <new_line>
-                            $global_line_status = "within" ;  <new_line>
-                            $global_possible_matching_entry_info = "" ;  <new_line>
-                        } elsif ( $global_first_word eq $global_entry_end ) {  <new_line>
-                            if ( $global_line_status eq "within hyphen-here matching" ) {  <new_line>
-                                $global_accumulated_matching_entry_info .= $global_possible_matching_entry_info ;  <new_line>
-                            }  <new_line>
-                            $global_possible_matching_entry_info = "" ;  <new_line>
-                            $global_line_status = "between" ;  <new_line>
-                        } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
-                            $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
-                        }  <new_line>
-
-                    } elsif ( $global_input_line =~ /^ *([^ ]+) +([^ \t\n\r]+) *$/ ) {  <new_line>
-                        $global_first_word = $1 ;  <new_line>
-                        $global_second_word = $2 ;  <new_line>
-                        if ( $global_first_word eq $global_entry_unique ) {  <new_line>
-                            if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
-                                $global_line_status = "within hyphen-here matching" ;  <new_line>
-                                $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
-                            } else {  <new_line>
-                                $global_line_status = "within hyphen-here not hyphen-here matching" ;  <new_line>
-                                $global_possible_matching_entry_info = "" ;  <new_line>
-                            }  <new_line>
-                        } elsif ( $global_first_word eq $global_entry_delete ) {  <new_line>
-                            if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
-                                $global_accumulated_matching_entry_info = "" ;  <new_line>
-                            } else {  <new_line>
-                                $global_possible_matching_entry_info = "" ;  <new_line>
-                                $global_line_status = "between" ;  <new_line>
-                            }  <new_line>
-                        } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
-                            $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
-                        }  <new_line>
-                    } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
-                        $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
-                    }  <new_line>
-                } else {  <new_line>
-#                   This section of code applies to action: gather hyphen-here tagged hyphen-here info hyphen-here from hyphen-here file  <new_line>
-                    if ( $global_input_line =~ /^ *([^ ]+) *$/ ) {  <new_line>
-                        $global_first_word = $1 ;  <new_line>
-                        if ( $global_first_word eq "multi_line_end" ) {  <new_line>
-                            $global_line_status = "within" ;  <new_line>
-                        } elsif ( ( $global_first_word eq $global_entry_end ) || ( $global_first_word eq $global_entry_begin ) ) {  <new_line>
-                            if ( $global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
-                                foreach $global_tag_name ( keys( %content_for_tag ) ) {  <new_line>
-                                    $global_dashrep_replacement{ $global_tag_name . "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" . $global_unique_value } = $global_content_for_tag{ $global_tag_name } ;  <new_line>
-                                }  <new_line>
-                            } elsif ( ( $global_entry_matching_id eq "" ) && ( $global_first_word eq $global_entry_end ) ) {  <new_line>
-                                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-                                print TRACE_OUT "{{trace; warning: action " . $global_action_name . " encountered a set of items that do not contain a unique value, so no definitions were created for this set of items" . "}}\n" ;  <new_line>
-                            }  <new_line>
-                            $global_unique_value = "" ;  <new_line>
-                            %content_for_tag = ( ) ;  <new_line>
-                            if ( $global_first_word eq $global_entry_begin ) {  <new_line>
-                                $global_line_status = "within" ;  <new_line>
-                            } else {  <new_line>
-                                $global_line_status = "between" ;  <new_line>
-                            }  <new_line>
-                        } elsif ( $global_line_status eq "within_multiline" ) {  <new_line>
-                            $global_content_for_tag{ $global_multiline_value_name } .= $global_input_line . " " ;  <new_line>
-                        } else {  <new_line>
-                            $global_content_for_tag{ $global_first_word } = "" ;  <new_line>
-                        }  <new_line>
-                    } elsif ( $global_line_status eq "within_multiline" ) {  <new_line>
-                        $global_content_for_tag{ $global_multiline_value_name } .= $global_input_line . " " ;  <new_line>
-                    } elsif ( $global_input_line =~ /^ *([^ ]+) +([^ ].*)$/ ) {  <new_line>
-                        $global_first_word = $1 ;  <new_line>
-                        $global_remainder_of_line = $2 ;  <new_line>
-                        if ( $global_first_word eq $global_entry_unique ) {  <new_line>
-                            $global_unique_value = $global_remainder_of_line ;  <new_line>
-                            $global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
-                            if ( not( exists( $global_found_unique_value{ $global_unique_value } ) ) ) {  <new_line>
-                                $global_found_unique_value{ $global_unique_value } = "found" ;  <new_line>
-                            }  <new_line>
-                        } elsif ( $global_first_word eq $global_entry_delete ) {  <new_line>
-                            $global_unique_value = $global_remainder_of_line ;  <new_line>
-                            $global_unique_value =~ s/[ \n\r]+/_/g ;  <new_line>
-                            $global_found_unique_value{ $global_unique_value } = "delete" ;  <new_line>
-                        } elsif ( $global_remainder_of_line =~ /^ *multi_line_begin/ ) {  <new_line>
-                            $global_line_status = "within_multiline" ;  <new_line>
-                            $global_multiline_value_name = $global_first_word ;  <new_line>
-                            $global_content_for_tag{ $global_multiline_value_name } = "" ;  <new_line>
-                        } else {  <new_line>
-                            $global_content_for_tag{ $global_first_word } = $global_remainder_of_line ;  <new_line>
-                            if ( not( exists( $global_exists_tag_name{ $global_first_word } ) ) ) {  <new_line>
-                                $global_exists_tag_name{ $global_first_word } = "yes" ;  <new_line>
-                                if ( $global_list_of_tag_values_in_sequence_encountered eq "" ) {  <new_line>
-                                    $global_list_of_tag_values_in_sequence_encountered = $global_entry_unique . " " ;  <new_line>
-                                } else {  <new_line>
-                                    $global_list_of_tag_values_in_sequence_encountered .= " " ;  <new_line>
-                                }  <new_line>
-                                $global_list_of_tag_values_in_sequence_encountered .= $global_first_word ;  <new_line>
-                            }  <new_line>
-                        }  <new_line>
-                    }  <new_line>
-                }  <new_line>
-            }  <new_line>
-            if ( $global_action_name eq "gather hyphen-here from hyphen-here tagged hyphen-here file hyphen-here one hyphen-here entry" ) {  <new_line>
-                $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_matching_entry_info ;  <new_line>
-            } elsif ( $global_action_name eq "gather hyphen-here tagged hyphen-here info hyphen-here from hyphen-here file" ) {  <new_line>
-                if ( $global_unique_value =~ /^[^ ]+$/ ) {  <new_line>
-                    foreach $global_tag_name ( keys( %content_for_tag ) ) {  <new_line>
-                        $global_dashrep_replacement{ $global_tag_name . "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" . $global_unique_value } = $global_content_for_tag{ $global_tag_name } ;  <new_line>
-                    }  <new_line>
-                }  <new_line>
-                $global_list_of_unique_values = "" ;  <new_line>
-                foreach $global_unique_value ( keys( %found_unique_value ) ) {  <new_line>
-                    if ( $global_found_unique_value{ $global_unique_value } ne "delete" ) {  <new_line>
-                        if ( $global_list_of_unique_values ne "" ) {  <new_line>
-                            $global_list_of_unique_values .= " " ;  <new_line>
-                        }  <new_line>
-                        $global_list_of_unique_values .= $global_unique_value ;  <new_line>
-                    }  <new_line>
-                }  <new_line>
-                $global_dashrep_replacement{ $global_target_phrase_name } = $global_list_of_unique_values ;  <new_line>
-                $global_list_of_tag_names = "" ;  <new_line>
-                foreach $global_tag_name ( keys( %exists_tag_name ) ) {  <new_line>
-                    if ( $global_list_of_tag_names ne "" ) {  <new_line>
-                        $global_list_of_tag_names .= " " ;  <new_line>
-                    }  <new_line>
-                    $global_list_of_tag_names .= $global_tag_name ;  <new_line>
-                }  <new_line>
-                $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names" } = $global_list_of_tag_names ;  <new_line>
-                $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } = $global_list_of_tag_values_in_sequence_encountered ;  <new_line>
-            }  <new_line>
-            if ( 77 == 78 ) {  <new_line>
-                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-                print TRACE_OUT "{{trace; did action " . $global_action_name ." with file " . $global_source_filename . " and target phrase " . $global_target_phrase_name . "}}\n" ;  <new_line>
-            }  <new_line>
-        } else {  <new_line>
-            if ( $global_dashrep_replacement{ "dashrep hyphen-here warning hyphen-here trace hyphen-here on hyphen-here yes hyphen-here or hyphen-here no" } eq "yes" ) {  <new_line>
-                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-                print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
-            }  <new_line>
+        } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
+            $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
         }  <new_line>
-        close( INFILE ) ;  <new_line>
+
+    } elsif ( $global_input_line =~ /^ *([^ ]+) +([^ \t\n\r]+) *$/ ) {  <new_line>
+        $global_first_word = $1 ;  <new_line>
+        $global_second_word = $2 ;  <new_line>
+        if ( $global_first_word eq $global_entry_unique ) {  <new_line>
+            if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
+                $global_line_status = "within hyphen-here matching" ;  <new_line>
+                $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
+            } else {  <new_line>
+                $global_line_status = "within hyphen-here not hyphen-here matching" ;  <new_line>
+                $global_possible_matching_entry_info = "" ;  <new_line>
+            }  <new_line>
+        } elsif ( $global_first_word eq $global_entry_delete ) {  <new_line>
+            if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
+                $global_accumulated_matching_entry_info = "" ;  <new_line>
+            } else {  <new_line>
+                $global_possible_matching_entry_info = "" ;  <new_line>
+                $global_line_status = "between" ;  <new_line>
+            }  <new_line>
+        } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
+            $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
+        }  <new_line>
+    } elsif ( ( $global_line_status eq "within" ) || ( $global_line_status eq "within hyphen-here matching" ) ) {  <new_line>
+        $global_possible_matching_entry_info .= $global_input_line . "\n" ;  <new_line>
+    }  <new_line>
+}  <new_line>
+$global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_matching_entry_info ;  <new_line>
+close( INFILE ) ;  <new_line>
 
 template-interpreter-function-end
