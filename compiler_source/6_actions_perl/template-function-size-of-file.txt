@@ -4,16 +4,7 @@ sub function__size_of_file( ) {  <new_line>
 
 template-interpreter-function-middle
 
-if ( ( $global_source_filename eq "" ) || ( $global_operand_two ne "" ) ) {  <new_line>
-    $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_operand_two . "]" ;  <new_line>
-} else  <new_line>
-{  <new_line>
-    $global_file_size = sprintf( "%d" , ( stat( $global_source_filename ) )[7] ) ;  <new_line>
-    if ( 77 == 78 ) {  <new_line>
-        &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-        print TRACE_OUT "{{trace; size of file " . $global_source_filename . " is " . $global_file_size . "}}\n" ;  <new_line>
-    }  <new_line>
-}  <new_line>
-$global_action_result = " " . $global_file_size . " " ;  <new_line>
+$global_file_size = sprintf( "%d" , ( stat( $global_source_filename ) )[7] ) ;  <new_line>
+$global_action_result = $global_file_size ;  <new_line>
 
 template-interpreter-function-end
