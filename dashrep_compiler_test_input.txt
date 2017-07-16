@@ -52,31 +52,31 @@ start-here:
 *--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
 *--- todo: convert bracket notation into ambee/amenn/etc. notation ; use dashrep code already written, but using line-by-line handling ---*
 
-ambee delete-file [-output-filename-] amenn
+ambee delete-file ambee output-filename amenn amenn
 
 ambee clear-phrase list-of-displayed-input-phrases amenn
 ambee test-getting-of-cgi-information amenn
 ambee expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions amenn
 ambee test-file-related-dashrep-actions amenn
-ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-]  amenn
+ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  ambee test-of-adjacent-parameter-values amenn  amenn
 
 ambee do-check-for-correct-values amenn
 ambee copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen amenn
 ambee copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values-version-html character-hyphen html-entity-hyphen amenn
 
-ambee if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-] amenn
-ambee copy-from-phrase-append-to-file display-values-all-ok [-output-filename-] amenn
+ambee if-yes-begin ambee yes-or-no-empty-phrase full-display-values-not-correct amenn amenn
+ambee copy-from-phrase-append-to-file display-values-all-ok ambee output-filename amenn amenn
 ambee copy-text display-values-all-ok displayed-text-ok-or-not-ok amenn
 ambee if-else amenn
-ambee copy-from-phrase-append-to-file display-values-not-ok [-output-filename-] amenn
-ambee copy-from-phrase-append-to-file character-newline [-output-filename-] amenn
-ambee copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file display-values-not-ok ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file character-newline ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file full-display-values-not-correct ambee output-filename amenn amenn
 ambee copy-text display-values-not-ok displayed-text-ok-or-not-ok amenn
 ambee if-end amenn
 
-ambee copy-from-phrase-append-to-file character-newline [-output-filename-] amenn
-ambee copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-] amenn
-ambee copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file character-newline ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file words-preface-to-list-of-correct-values ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file list-of-phrases-with-correct-values ambee output-filename amenn amenn
 
 ambee expand-text template-html-to-display-in-browser standard-output amenn
 --------
@@ -109,7 +109,7 @@ test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases
 ambee put-into-phrase test-assignment  17  amenn
 text-that-occurs-within-parameter-phrases
-ambee put-into-phrase should-be-17  [-test-assignment-]  amenn
+ambee put-into-phrase should-be-17  ambee test-assignment amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-17  17  amenn
 ambee put-into-phrase first-word-phrase  first_word  amenn
 ambee put-into-phrase second-word-phrase  second_word  amenn
@@ -131,75 +131,75 @@ ambee put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  firs
 
 ambee put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp;  amenn
 ambee put-into-phrase dashrep-special-replacement-hyphen  &ndash;  amenn
-ambee put-into-phrase should-be-zero  [-zero-one-multiple 0-]  amenn
+ambee put-into-phrase should-be-zero  ambee zero-one-multiple 0 amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-zero  zero  amenn
-ambee put-into-phrase should-be-one  [-zero-one-multiple 1-]  amenn
+ambee put-into-phrase should-be-one  ambee zero-one-multiple 1 amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-one  one  amenn
-ambee put-into-phrase should-be-multiple  [-zero-one-multiple 2-]  amenn
+ambee put-into-phrase should-be-multiple  ambee zero-one-multiple 2 amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-multiple  multiple  amenn
-ambee put-into-phrase should-be-size-zero  [-get-count-of-words empty-text-]  amenn
+ambee put-into-phrase should-be-size-zero  ambee get-count-of-words empty-text amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-size-zero  0  amenn
-ambee put-into-phrase should-be-size-one  [-get-count-of-words should-be-17-]  amenn
+ambee put-into-phrase should-be-size-one  ambee get-count-of-words should-be-17 amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-size-one  1  amenn
 ambee put-into-phrase list-of-size-three  4 5 6  amenn
-ambee put-into-phrase should-be-size-three  [-get-count-of-words list-of-size-three-]  amenn
+ambee put-into-phrase should-be-size-three  ambee get-count-of-words list-of-size-three amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-size-three  3  amenn
 
-ambee put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -]  amenn
+ambee put-into-phrase should-be-number-three  ambee get-word-at-position list-of-numbers 1  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-number-three  3  amenn
-ambee put-into-phrase should-be-number-four  [-get-word-at-position list-of-numbers 999 -]  amenn
+ambee put-into-phrase should-be-number-four  ambee get-word-at-position list-of-numbers 999  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-number-four  4  amenn
-ambee put-into-phrase should-be-same-words-yes  [-yes-or-no-same-two-words waltz waltz-]  amenn
+ambee put-into-phrase should-be-same-words-yes  ambee yes-or-no-same-two-words waltz waltz amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-same-words-yes  yes  amenn
-ambee put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-]  amenn
+ambee put-into-phrase should-be-same-words-no  ambee yes-or-no-same-two-words waltz dance amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-same-words-no  no  amenn
 
 ambee put-into-phrase item-one  waltz  amenn
 ambee put-into-phrase item-two  dance  amenn
-ambee put-into-phrase should-be-same-yes  [-yes-or-no-same-two-phrase-definitions item-one item-one-]  amenn
+ambee put-into-phrase should-be-same-yes  ambee yes-or-no-same-two-phrase-definitions item-one item-one amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-same-yes  yes  amenn
-ambee put-into-phrase should-be-same-no  [-yes-or-no-same-two-phrase-definitions item-one item-two-]  amenn
+ambee put-into-phrase should-be-same-no  ambee yes-or-no-same-two-phrase-definitions item-one item-two amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-same-no  no  amenn
 ambee put-into-phrase test-counter  17  amenn
 ambee put-into-phrase test-value  3  amenn
-ambee put-into-phrase compare-numbers-equal  [-numeric-equal-greater-less-compare 16 16 -]  amenn
+ambee put-into-phrase compare-numbers-equal  ambee numeric-equal-greater-less-compare 16 16  amenn  amenn
 ambee put-into-phrase correct-value-for-compare-numbers-equal  equal  amenn
-ambee put-into-phrase compare-numbers-less  [-numeric-equal-greater-less-compare 18 19 -]  amenn
+ambee put-into-phrase compare-numbers-less  ambee numeric-equal-greater-less-compare 18 19  amenn  amenn
 ambee put-into-phrase correct-value-for-compare-numbers-less  less  amenn
-ambee put-into-phrase compare-numbers-greater  [-numeric-equal-greater-less-compare 21 20 -]  amenn
+ambee put-into-phrase compare-numbers-greater  ambee numeric-equal-greater-less-compare 21 20  amenn  amenn
 ambee put-into-phrase correct-value-for-compare-numbers-greater  greater  amenn
 
-ambee put-into-phrase result-calculation-subtraction  [-numeric-minus 7 3 -] amenn
+ambee put-into-phrase result-calculation-subtraction  ambee numeric-minus 7 3  amenn amenn
 ambee put-into-phrase correct-value-for-result-calculation-subtraction  4  amenn
-ambee put-into-phrase result-calculation-absolute  [-numeric-absolute -6 -] amenn
+ambee put-into-phrase result-calculation-absolute  ambee numeric-absolute -6  amenn amenn
 ambee put-into-phrase correct-value-for-result-calculation-absolute  6  amenn
-ambee put-into-phrase result-calculation-integer  [-numeric-integer 7.3 -] amenn
+ambee put-into-phrase result-calculation-integer  ambee numeric-integer 7.3  amenn amenn
 ambee put-into-phrase correct-value-for-result-calculation-integer  7  amenn
 
-ambee put-into-phrase result-calculation-division [-numeric-divide-by 7 3 -] amenn
+ambee put-into-phrase result-calculation-division ambee numeric-divide-by 7 3  amenn amenn
 ambee copy-characters-from-position-to-position result-calculation-division result-calculation-division 1 6  amenn
 ambee put-into-phrase correct-value-for-result-calculation-division  2.3333  amenn
-ambee put-into-phrase result-calculation-sine [-numeric-sine 0.5 -] amenn
+ambee put-into-phrase result-calculation-sine ambee numeric-sine 0.5  amenn amenn
 ambee copy-characters-from-position-to-position result-calculation-sine result-calculation-sine 1 6  amenn
 ambee put-into-phrase correct-value-for-result-calculation-sine  0.4794  amenn
-ambee put-into-phrase result-calculation-cosine  [-numeric-cosine 0.5 -] amenn
+ambee put-into-phrase result-calculation-cosine  ambee numeric-cosine 0.5  amenn amenn
 ambee copy-characters-from-position-to-position result-calculation-cosine result-calculation-cosine 1 6  amenn
 ambee put-into-phrase correct-value-for-result-calculation-cosine  0.8775  amenn
-ambee put-into-phrase result-calculation-odd [-numeric-odd-or-even 3 -] amenn
+ambee put-into-phrase result-calculation-odd ambee numeric-odd-or-even 3  amenn amenn
 ambee put-into-phrase correct-value-for-result-calculation-odd  odd  amenn
-ambee put-into-phrase result-calculation-even [-numeric-odd-or-even 4 -] amenn
+ambee put-into-phrase result-calculation-even ambee numeric-odd-or-even 4  amenn amenn
 ambee put-into-phrase correct-value-for-result-calculation-even  even  amenn
 
 ambee copy-text empty-text test-text-length-0 amenn
-ambee put-into-phrase should-be-length-0  [-get-count-of-characters test-text-length-0 -]  amenn
+ambee put-into-phrase should-be-length-0  ambee get-count-of-characters test-text-length-0  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-length-0  0  amenn
 ambee put-into-phrase test-text-length-1  a  amenn
-ambee put-into-phrase should-be-length-1  [-get-count-of-characters test-text-length-1 -]  amenn
+ambee put-into-phrase should-be-length-1  ambee get-count-of-characters test-text-length-1  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-length-1  1  amenn
 ambee put-into-phrase test-text-length-7  abcdefg  amenn
-ambee put-into-phrase should-be-length-7  [-get-count-of-characters test-text-length-7 -]  amenn
+ambee put-into-phrase should-be-length-7  ambee get-count-of-characters test-text-length-7  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-length-7  7  amenn
-ambee put-into-phrase should-be-item-with-value-7  [-get-word-at-position list-of-numbers 3 -]  amenn
+ambee put-into-phrase should-be-item-with-value-7  ambee get-word-at-position list-of-numbers 3  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-item-with-value-7  7  amenn
 ambee generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7 amenn
 ambee put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7  amenn
@@ -224,21 +224,21 @@ ambee put-into-phrase correct-value-for-list-of-counter-increment-decrement-valu
 
 ambee generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4  amenn
 ambee put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4  amenn
-ambee put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -]  amenn
+ambee put-into-phrase minimum-maximum-result  ambee numeric-minimum 2 8  amenn ambee numeric-maximum 2 8  amenn ambee numeric-minimum 3  amenn ambee numeric-maximum 4  amenn  amenn
 ambee put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4  amenn
 ambee generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions amenn
 ambee put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions  0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7  amenn
 ambee put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions  5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4  amenn
-ambee put-into-phrase should-be-counts-3-and-minus-2 [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38 -]  amenn
+ambee put-into-phrase should-be-counts-3-and-minus-2 ambee get-word-at-position list-of-first-items-in-two-dimensions 38 amenn ambee get-word-at-position list-of-second-items-in-two-dimensions 38  amenn  amenn
 ambee put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2  amenn
 
-ambee put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-]  amenn
+ambee put-into-phrase calculation-result  ambee numeric-integer ambee numeric-multiply 3.14 7.39 amenn amenn  amenn
 ambee put-into-phrase correct-value-for-calculation-result  23  amenn
-ambee put-into-phrase compare-result  [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17 -] [-numeric-equal-greater-less-compare 17 23-] amenn
+ambee put-into-phrase compare-result  ambee numeric-equal-greater-less-compare 23 17 amenn ambee numeric-equal-greater-less-compare 17 17  amenn ambee numeric-equal-greater-less-compare 17 23 amenn amenn
 ambee put-into-phrase correct-value-for-compare-result  greater equal less  amenn
 
 ambee put-into-phrase string-to-test-character-actions  abc123 abc123 abc123  amenn
-ambee put-into-phrase character-result  [-get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21 -] amenn
+ambee put-into-phrase character-result  ambee get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21  amenn amenn
 ambee put-into-phrase correct-value-for-character-result  ab1233  amenn
 
 ambee put-into-phrase sample-word-list  alpha beta gamma delta  amenn
@@ -247,7 +247,7 @@ ambee put-into-phrase correct-value-for-should-be-beta-gamma  beta gamma  amenn
 ambee put-into-phrase word-alpha  alpha   amenn
 ambee put-into-phrase word-gamma  gamma   amenn
 ambee put-into-phrase word-other  other   amenn
-ambee put-into-phrase word-list-result  [-get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list-]  amenn
+ambee put-into-phrase word-list-result  ambee get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list amenn  amenn
 ambee put-into-phrase correct-value-for-word-list-result  1-3-0  amenn
 ambee clear-phrase list-of-prepended-items amenn
 ambee prepend-text word-other list-of-prepended-items amenn
@@ -353,17 +353,17 @@ ambee append-text-no-space character-space text-to-append-with-leading-and-trail
 ambee copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
 ambee append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
 ambee put-into-phrase text-containing-period  abc.def.ghi   amenn
-ambee put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-]  amenn
+ambee put-into-phrase results-position-of-matching-text  ambee get-position-of-matching-text character-period text-containing-period amenn  amenn
 ambee put-into-phrase correct-value-for-results-position-of-matching-text  4  amenn
 ambee convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities amenn
 ambee clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities amenn
 ambee put-into-phrase words-with-space-at-end  abc xyz 123  amenn
 ambee append-text-no-space character-space words-with-space-at-end amenn
-ambee put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-]  amenn
+ambee put-into-phrase word-count  ambee get-count-of-words words-with-space-at-end amenn  amenn
 ambee put-into-phrase correct-value-for-word-count  3  amenn
 ambee copy-text words-with-space-at-end words-with-spaces-at-end amenn
 ambee append-text-no-space character-space words-with-spaces-at-end amenn
-ambee put-into-phrase word-count-extra-space  [-get-count-of-words words-with-spaces-at-end-]  amenn
+ambee put-into-phrase word-count-extra-space  ambee get-count-of-words words-with-spaces-at-end amenn  amenn
 ambee put-into-phrase correct-value-for-word-count-extra-space  3  amenn
 
 ambee copy-and-replace text-with-periods text-with-spaces character-period character-space amenn
@@ -398,7 +398,7 @@ ambee copy-without-extra-spaces expanded-entire-standard-web-page expanded-entir
 ambee expand-text test-expand-text-inline result-of-test-expand-text-inline amenn
 result-of-test-expand-text-inline
 
-ambee expand-text [-contains-name-test-skip-level-executable-phrase-] unused-result-of-test-skip-level amenn
+ambee expand-text ambee contains-name-test-skip-level-executable-phrase amenn unused-result-of-test-skip-level amenn
 
 ambee put-into-phrase something-about-row-3  beta  amenn
 ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
@@ -509,7 +509,7 @@ text-that-occurs-after-parameter-phrases
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
 ambee copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1  amenn
-ambee [-handle-double-nested-executable-phrase-] amenn
+ambee ambee handle-double-nested-executable-phrase amenn amenn
 --------
 
 dashrep-path-prefix-for-file-reading:
@@ -607,7 +607,7 @@ ambee trace-show list-of-phrases-to-check-for-correct-value amenn
 ---*
 
 ambee use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value amenn
-ambee put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-] amenn
+ambee put-into-phrase yes-or-no-all-values-are-correct ambee yes-if-all-yes ambee list-of-yes-or-no-values-are-correct amenn amenn amenn
 
 *---
 ambee trace-show full-display-values-not-correct amenn
@@ -622,15 +622,15 @@ ambee copy-text word-to-use-in-handler phrase-name amenn
 ambee trace-show phrase-name amenn
 ---*
 
-ambee put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-] amenn
+ambee put-into-phrase yes-or-no-value-is-correct ambee yes-or-no-same-two-phrase-definitions ambee phrase-name amenn correct-value-for-[-phrase-name amenn amenn amenn
 ambee append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct amenn
 ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
 
-ambee if-no-begin [-yes-or-no-value-is-correct-] amenn
+ambee if-no-begin ambee yes-or-no-value-is-correct amenn amenn
 ambee expand-text template-display-value-is-not-correct display-value-is-not-correct amenn
 ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name [-phrase-name-] amenn
-ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name-] amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name ambee phrase-name amenn amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name amenn amenn
 ambee append-text-no-space display-value-is-not-correct full-display-values-not-correct amenn
 ambee append-text phrase-name list-of-phrases-with-incorrect-values amenn
 ambee if-else amenn
@@ -934,7 +934,7 @@ web-page-end
 --------
 
 page-participants-list:
-ambee put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  [-case-info-idlistparticipants-]  amenn
+ambee put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  ambee case-info-idlistparticipants amenn  amenn
 ambee use-handler-with-each-word-in-phrase handle-one-named-participant list-of-parameter-values-for-list-named-participant-names-full amenn
 ambee numeric-increment test-counter amenn
 format-begin-heading-level-1
@@ -994,7 +994,7 @@ ambee list-of-numbers amenn
 --------
 
 template-for-list-named-participant-names-full
-tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler-] no-space tag-begin /li tag-end
+tag-begin li tag-end no-space participant-fullname-for-participantid-[-word-to-use-in-handler amenn no-space tag-begin /li tag-end
 --------
 
 participant-fullname-for-participantid-3
