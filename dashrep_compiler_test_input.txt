@@ -1,23 +1,40 @@
 test-file-related-dashrep-actions:
 
-ambee gather-tagged-info-from-file [-input-filename-tagged-info-] list-of-gathered-ids amenn
-ambee put-into-phrase correct-value-for-list-of-gathered-ids  101 102  amenn
+ambee gather-tagged-info-from-file ambee input-filename-tagged-info amenn list-of-gathered-ids amenn
+ambee put-into-phrase correct-value-for-list-of-gathered-ids  102 101  amenn
+ambee gather-from-tagged-file-one-entry ambee input-filename-tagged-info amenn single-gathered-info amenn
+ambee put-into-phrase correct-value-for-single-gathered-info  ???  amenn
+
+ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_filename.txt amenn  amenn
+ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
+ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
+ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+
+ambee put-into-phrase correct-value-for-result-yes-or-no-file-exists-yes  yes  amenn
+ambee put-into-phrase correct-value-for-result-yes-or-no-file-exists-no  no  amenn
+ambee put-into-phrase correct-value-for-result-size-of-file  733  amenn
+ambee put-into-phrase correct-value-for-result-modification-time-of-file  ???  amenn
+ambee put-into-phrase correct-value-for-result-yes-or-no-folder-exists  ???  amenn
+ambee put-into-phrase correct-value-for-result-list-of-files-in-current-read-directory  ???  amenn
+ambee put-into-phrase correct-value-for-result-list-of-folders-in-current-read-directory  ???  amenn
 
 *---
-generate-list-of-files-in-current-read-directory
-generate-list-of-folders-in-current-read-directory
-yes-or-no-file-exists
-yes-or-no-folder-exists
-size-of-file
-modification-time-of-file
+find-line-in-file-that-begins-with-text
+find-lines-in-file-that-begin-with-any-listed-word
+find-lines-in-file-that-begin-with-any-two-words-listed
+write-gathered-listed-items-to-end-of-file
+copy-from-file-to-phrase
+copy-from-phrase-append-to-file
+copy-append-file-to-file
+
 set-file-permission-public-read
 create-empty-file
 rename-file
 delete-file
 create-empty-sub-folder
-copy-from-file-to-phrase
-copy-from-phrase-append-to-file
-copy-append-file-to-file
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
@@ -25,13 +42,8 @@ get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 write-dashrep-definitions-listed-in-phrase-to-file
-find-line-in-file-that-begins-with-text
-find-lines-in-file-that-begin-with-any-listed-word
-find-lines-in-file-that-begin-with-any-two-words-listed
 copy-from-columns-in-file-to-named-phrases
 copy-from-columns-in-file-to-column-lists
-gather-from-tagged-file-one-entry
-write-gathered-listed-items-to-end-of-file
 ---*
 -------
 
