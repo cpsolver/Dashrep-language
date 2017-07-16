@@ -52,33 +52,33 @@ start-here:
 *--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
 *--- todo: convert bracket notation into ambee/amenn/etc. notation ; use dashrep code already written, but using line-by-line handling ---*
 
-[-delete-file [-output-filename-]-]
+ambee delete-file [-output-filename-] amenn
 
-[-clear-phrase list-of-displayed-input-phrases-]
-[-test-getting-of-cgi-information-]
-[-expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions-]
-[-test-file-related-dashrep-actions-]
-[-put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-] -]
+ambee clear-phrase list-of-displayed-input-phrases amenn
+ambee test-getting-of-cgi-information amenn
+ambee expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions amenn
+ambee test-file-related-dashrep-actions amenn
+ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  [-test-of-adjacent-parameter-values-]  amenn
 
-[-do-check-for-correct-values-]
-[-copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen-]
-[-copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values-version-html character-hyphen html-entity-hyphen-]
+ambee do-check-for-correct-values amenn
+ambee copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen amenn
+ambee copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values-version-html character-hyphen html-entity-hyphen amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-]-]
-[-copy-from-phrase-append-to-file display-values-all-ok [-output-filename-]-]
-[-copy-text display-values-all-ok displayed-text-ok-or-not-ok-]
-[-if-else-]
-[-copy-from-phrase-append-to-file display-values-not-ok [-output-filename-]-]
-[-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
-[-copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-]-]
-[-copy-text display-values-not-ok displayed-text-ok-or-not-ok-]
-[-if-end-]
+ambee if-yes-begin [-yes-or-no-empty-phrase full-display-values-not-correct-] amenn
+ambee copy-from-phrase-append-to-file display-values-all-ok [-output-filename-] amenn
+ambee copy-text display-values-all-ok displayed-text-ok-or-not-ok amenn
+ambee if-else amenn
+ambee copy-from-phrase-append-to-file display-values-not-ok [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file character-newline [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file full-display-values-not-correct [-output-filename-] amenn
+ambee copy-text display-values-not-ok displayed-text-ok-or-not-ok amenn
+ambee if-end amenn
 
-[-copy-from-phrase-append-to-file character-newline [-output-filename-]-]
-[-copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-]-]
-[-copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-]-]
+ambee copy-from-phrase-append-to-file character-newline [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file words-preface-to-list-of-correct-values [-output-filename-] amenn
+ambee copy-from-phrase-append-to-file list-of-phrases-with-correct-values [-output-filename-] amenn
 
-[-expand-text template-html-to-display-in-browser standard-output-]
+ambee expand-text template-html-to-display-in-browser standard-output amenn
 --------
 
 output-filename:
@@ -107,209 +107,209 @@ input-tagged-info.txt
 
 test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases
-[-put-into-phrase test-assignment  17 -]
+ambee put-into-phrase test-assignment  17  amenn
 text-that-occurs-within-parameter-phrases
-[-put-into-phrase should-be-17  [-test-assignment-] -]
-[-put-into-phrase correct-value-for-should-be-17  17 -]
-[-put-into-phrase first-word-phrase  first_word -]
-[-put-into-phrase second-word-phrase  second_word -]
-[-copy-text empty-text copied-text-]
-[-append-text first-word-phrase copied-text-]
-[-append-text second-word-phrase copied-text-]
-[-copy-text copied-text should-be-copied-text-]
-[-put-into-phrase correct-value-for-should-be-copied-text  first_word second_word -]
-[-copy-text character-space multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space first-word-phrase multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space second-word-phrase multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types-]
-[-append-text-no-space character-space multiple-words-separated-by-whitespace-multiple-types-]
-[-copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types text-with-adjacent-spaces-replaced-]
-[-put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  first_word second_word -]
+ambee put-into-phrase should-be-17  [-test-assignment-]  amenn
+ambee put-into-phrase correct-value-for-should-be-17  17  amenn
+ambee put-into-phrase first-word-phrase  first_word  amenn
+ambee put-into-phrase second-word-phrase  second_word  amenn
+ambee copy-text empty-text copied-text amenn
+ambee append-text first-word-phrase copied-text amenn
+ambee append-text second-word-phrase copied-text amenn
+ambee copy-text copied-text should-be-copied-text amenn
+ambee put-into-phrase correct-value-for-should-be-copied-text  first_word second_word  amenn
+ambee copy-text character-space multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space first-word-phrase multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space second-word-phrase multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-space multiple-words-separated-by-whitespace-multiple-types amenn
+ambee copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types text-with-adjacent-spaces-replaced amenn
+ambee put-into-phrase correct-value-for-text-with-adjacent-spaces-replaced  first_word second_word  amenn
 
-[-put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp; -]
-[-put-into-phrase dashrep-special-replacement-hyphen  &ndash; -]
-[-put-into-phrase should-be-zero  [-zero-one-multiple 0-] -]
-[-put-into-phrase correct-value-for-should-be-zero  zero -]
-[-put-into-phrase should-be-one  [-zero-one-multiple 1-] -]
-[-put-into-phrase correct-value-for-should-be-one  one -]
-[-put-into-phrase should-be-multiple  [-zero-one-multiple 2-] -]
-[-put-into-phrase correct-value-for-should-be-multiple  multiple -]
-[-put-into-phrase should-be-size-zero  [-get-count-of-words empty-text-] -]
-[-put-into-phrase correct-value-for-should-be-size-zero  0 -]
-[-put-into-phrase should-be-size-one  [-get-count-of-words should-be-17-] -]
-[-put-into-phrase correct-value-for-should-be-size-one  1 -]
-[-put-into-phrase list-of-size-three  4 5 6 -]
-[-put-into-phrase should-be-size-three  [-get-count-of-words list-of-size-three-] -]
-[-put-into-phrase correct-value-for-should-be-size-three  3 -]
+ambee put-into-phrase dashrep-special-replacement-adjacent-space  &nbsp;  amenn
+ambee put-into-phrase dashrep-special-replacement-hyphen  &ndash;  amenn
+ambee put-into-phrase should-be-zero  [-zero-one-multiple 0-]  amenn
+ambee put-into-phrase correct-value-for-should-be-zero  zero  amenn
+ambee put-into-phrase should-be-one  [-zero-one-multiple 1-]  amenn
+ambee put-into-phrase correct-value-for-should-be-one  one  amenn
+ambee put-into-phrase should-be-multiple  [-zero-one-multiple 2-]  amenn
+ambee put-into-phrase correct-value-for-should-be-multiple  multiple  amenn
+ambee put-into-phrase should-be-size-zero  [-get-count-of-words empty-text-]  amenn
+ambee put-into-phrase correct-value-for-should-be-size-zero  0  amenn
+ambee put-into-phrase should-be-size-one  [-get-count-of-words should-be-17-]  amenn
+ambee put-into-phrase correct-value-for-should-be-size-one  1  amenn
+ambee put-into-phrase list-of-size-three  4 5 6  amenn
+ambee put-into-phrase should-be-size-three  [-get-count-of-words list-of-size-three-]  amenn
+ambee put-into-phrase correct-value-for-should-be-size-three  3  amenn
 
-[-put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -] -]
-[-put-into-phrase correct-value-for-should-be-number-three  3 -]
-[-put-into-phrase should-be-number-four  [-get-word-at-position list-of-numbers 999 -] -]
-[-put-into-phrase correct-value-for-should-be-number-four  4 -]
-[-put-into-phrase should-be-same-words-yes  [-yes-or-no-same-two-words waltz waltz-] -]
-[-put-into-phrase correct-value-for-should-be-same-words-yes  yes -]
-[-put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-] -]
-[-put-into-phrase correct-value-for-should-be-same-words-no  no -]
+ambee put-into-phrase should-be-number-three  [-get-word-at-position list-of-numbers 1 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-number-three  3  amenn
+ambee put-into-phrase should-be-number-four  [-get-word-at-position list-of-numbers 999 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-number-four  4  amenn
+ambee put-into-phrase should-be-same-words-yes  [-yes-or-no-same-two-words waltz waltz-]  amenn
+ambee put-into-phrase correct-value-for-should-be-same-words-yes  yes  amenn
+ambee put-into-phrase should-be-same-words-no  [-yes-or-no-same-two-words waltz dance-]  amenn
+ambee put-into-phrase correct-value-for-should-be-same-words-no  no  amenn
 
-[-put-into-phrase item-one  waltz -]
-[-put-into-phrase item-two  dance -]
-[-put-into-phrase should-be-same-yes  [-yes-or-no-same-two-phrase-definitions item-one item-one-] -]
-[-put-into-phrase correct-value-for-should-be-same-yes  yes -]
-[-put-into-phrase should-be-same-no  [-yes-or-no-same-two-phrase-definitions item-one item-two-] -]
-[-put-into-phrase correct-value-for-should-be-same-no  no -]
-[-put-into-phrase test-counter  17 -]
-[-put-into-phrase test-value  3 -]
-[-put-into-phrase compare-numbers-equal  [-numeric-equal-greater-less-compare 16 16 -] -]
-[-put-into-phrase correct-value-for-compare-numbers-equal  equal -]
-[-put-into-phrase compare-numbers-less  [-numeric-equal-greater-less-compare 18 19 -] -]
-[-put-into-phrase correct-value-for-compare-numbers-less  less -]
-[-put-into-phrase compare-numbers-greater  [-numeric-equal-greater-less-compare 21 20 -] -]
-[-put-into-phrase correct-value-for-compare-numbers-greater  greater -]
+ambee put-into-phrase item-one  waltz  amenn
+ambee put-into-phrase item-two  dance  amenn
+ambee put-into-phrase should-be-same-yes  [-yes-or-no-same-two-phrase-definitions item-one item-one-]  amenn
+ambee put-into-phrase correct-value-for-should-be-same-yes  yes  amenn
+ambee put-into-phrase should-be-same-no  [-yes-or-no-same-two-phrase-definitions item-one item-two-]  amenn
+ambee put-into-phrase correct-value-for-should-be-same-no  no  amenn
+ambee put-into-phrase test-counter  17  amenn
+ambee put-into-phrase test-value  3  amenn
+ambee put-into-phrase compare-numbers-equal  [-numeric-equal-greater-less-compare 16 16 -]  amenn
+ambee put-into-phrase correct-value-for-compare-numbers-equal  equal  amenn
+ambee put-into-phrase compare-numbers-less  [-numeric-equal-greater-less-compare 18 19 -]  amenn
+ambee put-into-phrase correct-value-for-compare-numbers-less  less  amenn
+ambee put-into-phrase compare-numbers-greater  [-numeric-equal-greater-less-compare 21 20 -]  amenn
+ambee put-into-phrase correct-value-for-compare-numbers-greater  greater  amenn
 
-[-put-into-phrase result-calculation-subtraction  [-numeric-minus 7 3 -]-]
-[-put-into-phrase correct-value-for-result-calculation-subtraction  4 -]
-[-put-into-phrase result-calculation-absolute  [-numeric-absolute -6 -]-]
-[-put-into-phrase correct-value-for-result-calculation-absolute  6 -]
-[-put-into-phrase result-calculation-integer  [-numeric-integer 7.3 -]-]
-[-put-into-phrase correct-value-for-result-calculation-integer  7 -]
+ambee put-into-phrase result-calculation-subtraction  [-numeric-minus 7 3 -] amenn
+ambee put-into-phrase correct-value-for-result-calculation-subtraction  4  amenn
+ambee put-into-phrase result-calculation-absolute  [-numeric-absolute -6 -] amenn
+ambee put-into-phrase correct-value-for-result-calculation-absolute  6  amenn
+ambee put-into-phrase result-calculation-integer  [-numeric-integer 7.3 -] amenn
+ambee put-into-phrase correct-value-for-result-calculation-integer  7  amenn
 
-[-put-into-phrase result-calculation-division [-numeric-divide-by 7 3 -]-]
-[-copy-characters-from-position-to-position result-calculation-division result-calculation-division 1 6 -]
-[-put-into-phrase correct-value-for-result-calculation-division  2.3333 -]
-[-put-into-phrase result-calculation-sine [-numeric-sine 0.5 -]-]
-[-copy-characters-from-position-to-position result-calculation-sine result-calculation-sine 1 6 -]
-[-put-into-phrase correct-value-for-result-calculation-sine  0.4794 -]
-[-put-into-phrase result-calculation-cosine  [-numeric-cosine 0.5 -]-]
-[-copy-characters-from-position-to-position result-calculation-cosine result-calculation-cosine 1 6 -]
-[-put-into-phrase correct-value-for-result-calculation-cosine  0.8775 -]
-[-put-into-phrase result-calculation-odd [-numeric-odd-or-even 3 -]-]
-[-put-into-phrase correct-value-for-result-calculation-odd  odd -]
-[-put-into-phrase result-calculation-even [-numeric-odd-or-even 4 -]-]
-[-put-into-phrase correct-value-for-result-calculation-even  even -]
+ambee put-into-phrase result-calculation-division [-numeric-divide-by 7 3 -] amenn
+ambee copy-characters-from-position-to-position result-calculation-division result-calculation-division 1 6  amenn
+ambee put-into-phrase correct-value-for-result-calculation-division  2.3333  amenn
+ambee put-into-phrase result-calculation-sine [-numeric-sine 0.5 -] amenn
+ambee copy-characters-from-position-to-position result-calculation-sine result-calculation-sine 1 6  amenn
+ambee put-into-phrase correct-value-for-result-calculation-sine  0.4794  amenn
+ambee put-into-phrase result-calculation-cosine  [-numeric-cosine 0.5 -] amenn
+ambee copy-characters-from-position-to-position result-calculation-cosine result-calculation-cosine 1 6  amenn
+ambee put-into-phrase correct-value-for-result-calculation-cosine  0.8775  amenn
+ambee put-into-phrase result-calculation-odd [-numeric-odd-or-even 3 -] amenn
+ambee put-into-phrase correct-value-for-result-calculation-odd  odd  amenn
+ambee put-into-phrase result-calculation-even [-numeric-odd-or-even 4 -] amenn
+ambee put-into-phrase correct-value-for-result-calculation-even  even  amenn
 
-[-copy-text empty-text test-text-length-0-]
-[-put-into-phrase should-be-length-0  [-get-count-of-characters test-text-length-0 -] -]
-[-put-into-phrase correct-value-for-should-be-length-0  0 -]
-[-put-into-phrase test-text-length-1  a -]
-[-put-into-phrase should-be-length-1  [-get-count-of-characters test-text-length-1 -] -]
-[-put-into-phrase correct-value-for-should-be-length-1  1 -]
-[-put-into-phrase test-text-length-7  abcdefg -]
-[-put-into-phrase should-be-length-7  [-get-count-of-characters test-text-length-7 -] -]
-[-put-into-phrase correct-value-for-should-be-length-7  7 -]
-[-put-into-phrase should-be-item-with-value-7  [-get-word-at-position list-of-numbers 3 -] -]
-[-put-into-phrase correct-value-for-should-be-item-with-value-7  7 -]
-[-generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7-]
-[-put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7 -]
+ambee copy-text empty-text test-text-length-0 amenn
+ambee put-into-phrase should-be-length-0  [-get-count-of-characters test-text-length-0 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-length-0  0  amenn
+ambee put-into-phrase test-text-length-1  a  amenn
+ambee put-into-phrase should-be-length-1  [-get-count-of-characters test-text-length-1 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-length-1  1  amenn
+ambee put-into-phrase test-text-length-7  abcdefg  amenn
+ambee put-into-phrase should-be-length-7  [-get-count-of-characters test-text-length-7 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-length-7  7  amenn
+ambee put-into-phrase should-be-item-with-value-7  [-get-word-at-position list-of-numbers 3 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-item-with-value-7  7  amenn
+ambee generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7 amenn
+ambee put-into-phrase correct-value-for-counts-from-0-to-7  0 1 2 3 4 5 6 7  amenn
 
-[-put-into-phrase some-text-with-hyphens  here - is - some - text - with - hyphens -]
-[-copy-and-replace some-text-with-hyphens some-text-with-underscores character-hyphen character-underscore-]
-[-put-into-phrase string-word-hyphens  hyphens -]
-[-put-into-phrase string-word-underscores  underscores -]
-[-copy-and-replace some-text-with-underscores some-text-with-underscores string-word-hyphens string-word-underscores-]
-[-put-into-phrase correct-value-for-some-text-with-underscores  here _ is _ some _ text _ with _ underscores -]
+ambee put-into-phrase some-text-with-hyphens  here - is - some - text - with - hyphens  amenn
+ambee copy-and-replace some-text-with-hyphens some-text-with-underscores character-hyphen character-underscore amenn
+ambee put-into-phrase string-word-hyphens  hyphens  amenn
+ambee put-into-phrase string-word-underscores  underscores  amenn
+ambee copy-and-replace some-text-with-underscores some-text-with-underscores string-word-hyphens string-word-underscores amenn
+ambee put-into-phrase correct-value-for-some-text-with-underscores  here _ is _ some _ text _ with _ underscores  amenn
 
-[-clear-phrase counter-increment-decrement-]
-[-numeric-increment counter-increment-decrement-]
-[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
-[-numeric-decrement counter-increment-decrement-]
-[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
-[-numeric-decrement counter-increment-decrement-]
-[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
-[-numeric-increment counter-increment-decrement-]
-[-append-text counter-increment-decrement list-of-counter-increment-decrement-values-]
-[-put-into-phrase correct-value-for-list-of-counter-increment-decrement-values  1 0 -1 0 -]
+ambee clear-phrase counter-increment-decrement amenn
+ambee numeric-increment counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-decrement counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-decrement counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-increment counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee put-into-phrase correct-value-for-list-of-counter-increment-decrement-values  1 0 -1 0  amenn
 
-[-generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4 -]
-[-put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4 -]
-[-put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -] -]
-[-put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4 -]
-[-generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions-]
-[-put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions  0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 -]
-[-put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions  5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 -]
-[-put-into-phrase should-be-counts-3-and-minus-2 [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38 -] -]
-[-put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2 -]
+ambee generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4  amenn
+ambee put-into-phrase correct-value-for-counts-from-5-to-minus-4  5 4 3 2 1 0 -1 -2 -3 -4  amenn
+ambee put-into-phrase minimum-maximum-result  [-numeric-minimum 2 8 -] [-numeric-maximum 2 8 -] [-numeric-minimum 3 -] [-numeric-maximum 4 -]  amenn
+ambee put-into-phrase correct-value-for-minimum-maximum-result  2 8 3 4  amenn
+ambee generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions amenn
+ambee put-into-phrase correct-value-for-list-of-first-items-in-two-dimensions  0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7  amenn
+ambee put-into-phrase correct-value-for-list-of-second-items-in-two-dimensions  5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4 5 4 3 2 1 0 -1 -2 -3 -4  amenn
+ambee put-into-phrase should-be-counts-3-and-minus-2 [-get-word-at-position list-of-first-items-in-two-dimensions 38-] [-get-word-at-position list-of-second-items-in-two-dimensions 38 -]  amenn
+ambee put-into-phrase correct-value-for-should-be-counts-3-and-minus-2  3 -2  amenn
 
-[-put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-] -]
-[-put-into-phrase correct-value-for-calculation-result  23 -]
-[-put-into-phrase compare-result  [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17 -] [-numeric-equal-greater-less-compare 17 23-]-]
-[-put-into-phrase correct-value-for-compare-result  greater equal less -]
+ambee put-into-phrase calculation-result  [-numeric-integer [-numeric-multiply 3.14 7.39-]-]  amenn
+ambee put-into-phrase correct-value-for-calculation-result  23  amenn
+ambee put-into-phrase compare-result  [-numeric-equal-greater-less-compare 23 17-] [-numeric-equal-greater-less-compare 17 17 -] [-numeric-equal-greater-less-compare 17 23-] amenn
+ambee put-into-phrase correct-value-for-compare-result  greater equal less  amenn
 
-[-put-into-phrase string-to-test-character-actions  abc123 abc123 abc123 -]
-[-put-into-phrase character-result  [-get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21 -]-]
-[-put-into-phrase correct-value-for-character-result  ab1233 -]
+ambee put-into-phrase string-to-test-character-actions  abc123 abc123 abc123  amenn
+ambee put-into-phrase character-result  [-get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21 -] amenn
+ambee put-into-phrase correct-value-for-character-result  ab1233  amenn
 
-[-put-into-phrase sample-word-list  alpha beta gamma delta -]
-[-copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3-]
-[-put-into-phrase correct-value-for-should-be-beta-gamma  beta gamma -]
-[-put-into-phrase word-alpha  alpha  -]
-[-put-into-phrase word-gamma  gamma  -]
-[-put-into-phrase word-other  other  -]
-[-put-into-phrase word-list-result  [-get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list-] -]
-[-put-into-phrase correct-value-for-word-list-result  1-3-0 -]
-[-clear-phrase list-of-prepended-items-]
-[-prepend-text word-other list-of-prepended-items-]
-[-prepend-text word-gamma list-of-prepended-items-]
-[-prepend-text word-alpha list-of-prepended-items-]
-[-put-into-phrase correct-value-for-list-of-prepended-items  alpha gamma other -]
-[-put-into-phrase sample-word-list-one  alpha alpha-here and beta gamma beta delta -]
-[-put-into-phrase sample-word-list-two  something-here alpha alpha-here beta delta whatever -]
-[-put-into-phrase sample-word-list-three  alpha-here and gamma delta something-here whatever -]
-[-prepend-text-no-space character-space sample-word-list-one-]
-[-append-new-line sample-word-list-one-]
-[-append-text-no-space character-space sample-word-list-one-]
-[-put-into-phrase correct-value-for-sample-word-list-one  " alpha alpha-here and beta gamma beta delta<new_line> " -]
-[-copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one character-double-quote empty-text-]
-[-copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one placeholder-new-line character-newline-]
-[-prepend-text-no-space character-space sample-word-list-two-]
-[-append-new-line sample-word-list-two-]
-[-append-text-no-space character-space sample-word-list-two-]
-[-put-into-phrase correct-value-for-sample-word-list-two  " something-here alpha alpha-here beta delta whatever<new_line> "  -]
-[-copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two character-double-quote empty-text-]
-[-copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two placeholder-new-line character-newline-]
-[-prepend-text-no-space character-space sample-word-list-three-]
-[-append-new-line sample-word-list-three-]
-[-append-text-no-space character-space sample-word-list-three-]
-[-put-into-phrase correct-value-for-sample-word-list-three  " alpha-here and gamma delta something-here whatever<new_line> " -]
-[-copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three character-double-quote empty-text-]
-[-copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three placeholder-new-line character-newline-]
-[-copy-text sample-word-list-one list-with-dups-]
-[-append-text sample-word-list-two list-with-dups-]
-[-copy-without-extra-spaces list-with-dups list-with-dups-without-extra-spaces-]
-[-put-into-phrase correct-value-for-list-with-dups-without-extra-spaces  alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever -]
+ambee put-into-phrase sample-word-list  alpha beta gamma delta  amenn
+ambee copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3 amenn
+ambee put-into-phrase correct-value-for-should-be-beta-gamma  beta gamma  amenn
+ambee put-into-phrase word-alpha  alpha   amenn
+ambee put-into-phrase word-gamma  gamma   amenn
+ambee put-into-phrase word-other  other   amenn
+ambee put-into-phrase word-list-result  [-get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list-]  amenn
+ambee put-into-phrase correct-value-for-word-list-result  1-3-0  amenn
+ambee clear-phrase list-of-prepended-items amenn
+ambee prepend-text word-other list-of-prepended-items amenn
+ambee prepend-text word-gamma list-of-prepended-items amenn
+ambee prepend-text word-alpha list-of-prepended-items amenn
+ambee put-into-phrase correct-value-for-list-of-prepended-items  alpha gamma other  amenn
+ambee put-into-phrase sample-word-list-one  alpha alpha-here and beta gamma beta delta  amenn
+ambee put-into-phrase sample-word-list-two  something-here alpha alpha-here beta delta whatever  amenn
+ambee put-into-phrase sample-word-list-three  alpha-here and gamma delta something-here whatever  amenn
+ambee prepend-text-no-space character-space sample-word-list-one amenn
+ambee append-new-line sample-word-list-one amenn
+ambee append-text-no-space character-space sample-word-list-one amenn
+ambee put-into-phrase correct-value-for-sample-word-list-one  " alpha alpha-here and beta gamma beta delta<new_line> "  amenn
+ambee copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one placeholder-new-line character-newline amenn
+ambee prepend-text-no-space character-space sample-word-list-two amenn
+ambee append-new-line sample-word-list-two amenn
+ambee append-text-no-space character-space sample-word-list-two amenn
+ambee put-into-phrase correct-value-for-sample-word-list-two  " something-here alpha alpha-here beta delta whatever<new_line> "   amenn
+ambee copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two placeholder-new-line character-newline amenn
+ambee prepend-text-no-space character-space sample-word-list-three amenn
+ambee append-new-line sample-word-list-three amenn
+ambee append-text-no-space character-space sample-word-list-three amenn
+ambee put-into-phrase correct-value-for-sample-word-list-three  " alpha-here and gamma delta something-here whatever<new_line> "  amenn
+ambee copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three placeholder-new-line character-newline amenn
+ambee copy-text sample-word-list-one list-with-dups amenn
+ambee append-text sample-word-list-two list-with-dups amenn
+ambee copy-without-extra-spaces list-with-dups list-with-dups-without-extra-spaces amenn
+ambee put-into-phrase correct-value-for-list-with-dups-without-extra-spaces  alpha alpha-here and beta gamma beta delta something-here alpha alpha-here beta delta whatever  amenn
 
-[-copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both-]
-[-copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either-]
-[-copy-words-found-only-in-first-list list-with-dups sample-word-list-three word-list-in-first-only-]
-[-copy-words-unique-only list-with-dups unique-words-]
-[-copy-without-extra-spaces find-in-lists-result find-in-lists-result-]
-[-put-into-phrase correct-value-for-word-list-in-both  alpha alpha-here beta delta -]
-[-put-into-phrase correct-value-for-word-list-in-either  beta whatever something-here gamma alpha-here alpha delta and -]
-[-put-into-phrase correct-value-for-word-list-in-first-only  alpha beta beta alpha beta -]
-[-put-into-phrase correct-value-for-unique-words  alpha alpha-here and beta gamma delta something-here whatever -]
-[-put-into-phrase correct-value-for-list-of-unique-word-counts  2 2 1 3 1 2 1 1 -]
-[-put-into-phrase correct-value-for-list-of-pointers-to-unique-words  1 2 3 4 5 7 8 13 -]
+ambee copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both amenn
+ambee copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either amenn
+ambee copy-words-found-only-in-first-list list-with-dups sample-word-list-three word-list-in-first-only amenn
+ambee copy-words-unique-only list-with-dups unique-words amenn
+ambee copy-without-extra-spaces find-in-lists-result find-in-lists-result amenn
+ambee put-into-phrase correct-value-for-word-list-in-both  alpha alpha-here beta delta  amenn
+ambee put-into-phrase correct-value-for-word-list-in-either  beta whatever something-here gamma alpha-here alpha delta and  amenn
+ambee put-into-phrase correct-value-for-word-list-in-first-only  alpha beta beta alpha beta  amenn
+ambee put-into-phrase correct-value-for-unique-words  alpha alpha-here and beta gamma delta something-here whatever  amenn
+ambee put-into-phrase correct-value-for-list-of-unique-word-counts  2 2 1 3 1 2 1 1  amenn
+ambee put-into-phrase correct-value-for-list-of-pointers-to-unique-words  1 2 3 4 5 7 8 13  amenn
 
-[-put-into-phrase contains-angle-bracketed-phrase-names  one<character_hyphen>two<character_hyphen>three <item_one> -]
-[-expand-text contains-angle-bracketed-phrase-names expanded-contains-angle-bracketed-phrase-names-]
-[-put-into-phrase expanded-contains-angle-bracketed-phrase-names  one-two-three waltz -]
-[-put-into-phrase yes-or-no-allow-user-defined-actions  yes -]
-[-put-into-phrase string-123  123  -]
-[-copy-zero-pad-left-to-length string-123 string-123-padded 5 -]
-[-put-into-phrase correct-value-for-string-123-padded  00123 -]
+ambee put-into-phrase contains-angle-bracketed-phrase-names  one<character_hyphen>two<character_hyphen>three <item_one>  amenn
+ambee expand-text contains-angle-bracketed-phrase-names expanded-contains-angle-bracketed-phrase-names amenn
+ambee put-into-phrase expanded-contains-angle-bracketed-phrase-names  one-two-three waltz  amenn
+ambee put-into-phrase yes-or-no-allow-user-defined-actions  yes  amenn
+ambee put-into-phrase string-123  123   amenn
+ambee copy-zero-pad-left-to-length string-123 string-123-padded 5  amenn
+ambee put-into-phrase correct-value-for-string-123-padded  00123  amenn
 
-[-put-into-phrase vector-one  17 23 -4  -]
-[-put-into-phrase vector-two  21 -9 0  -]
-[-numeric-vector-add-number vector-one -7 vector-result-add-number-]
-[-put-into-phrase correct-value-for-vector-result-add-number  10 16 -11 -]
-[-numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number-]
-[-put-into-phrase correct-value-for-vector-result-multiply-by-number  119 161 -28 -]
-[-numeric-vectors-add vector-one vector-two vector-result-addition-]
-[-put-into-phrase correct-value-for-vector-result-addition  38 14 -4 -]
-[-numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances-]
-[-put-into-phrase correct-value-for-vector-result-distances  27 25 4 -]
+ambee put-into-phrase vector-one  17 23 -4   amenn
+ambee put-into-phrase vector-two  21 -9 0   amenn
+ambee numeric-vector-add-number vector-one -7 vector-result-add-number amenn
+ambee put-into-phrase correct-value-for-vector-result-add-number  10 16 -11  amenn
+ambee numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number amenn
+ambee put-into-phrase correct-value-for-vector-result-multiply-by-number  119 161 -28  amenn
+ambee numeric-vectors-add vector-one vector-two vector-result-addition amenn
+ambee put-into-phrase correct-value-for-vector-result-addition  38 14 -4  amenn
+ambee numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances amenn
+ambee put-into-phrase correct-value-for-vector-result-distances  27 25 4  amenn
 
 ambee put-into-phrase vector-decimals-and-negatives  -1.73 82.5 -3.9  amenn
 ambee numeric-vectors-multiply vector-decimals-and-negatives vector-two result-of-numeric-vectors-multiply amenn
@@ -321,88 +321,88 @@ ambee put-into-phrase correct-value-for-result-of-numeric-vector-integers  -1 82
 ambee numeric-vector-absolutes vector-decimals-and-negatives result-of-numeric-vector-absolutes amenn
 ambee put-into-phrase correct-value-for-result-of-numeric-vector-absolutes 1 82 3  amenn
 
-[-put-into-phrase text-to-repeat  number 9  -]
-[-append-repeatedly-using-count text-to-repeat list-of-repeated-text 9 -]
-[-put-into-phrase correct-value-for-list-of-repeated-text  number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 -]
-[-put-into-phrase text-with-named-html-entities  abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def  -]
-[-put-into-phrase text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  -]
-[-copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag-]
-[-put-into-phrase correct-value-for-text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> -]
-[-put-into-phrase list-of-words-to-search-based-on-prefix  here-is-something here-is-something-else hereis-something-else and-something-else -]
-[-put-into-phrase text-begins-with  here-is -]
-[-copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-]
-[-put-into-phrase correct-value-for-list-of-words-that-begin-with-text  here-is-something here-is-something-else -]
-[-put-into-phrase text-contains  is  -]
-[-copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains-]
-[-put-into-phrase text-begins-with  and  -]
-[-copy-words-that-begin-with-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-listed-words text-begins-with-]
-[-put-into-phrase correct-value-for-list-of-words-that-begin-with-listed-words  and-something-else -]
-[-put-into-phrase text-for-multiple-find  fish bird -]
-[-put-into-phrase text-for-multiple-search  birds songbird fish clownfish -]
-[-generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words-]
-[-put-into-phrase correct-value-for-pointers-to-multiple-matching-words  1 4 11 14 16 19 26 29 -]
-[-put-into-phrase paired-words-for-replacements  bird flier fish swimmer -]
-[-copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements-]
-[-put-into-phrase correct-value-for-results-replacements-using-paired-words  fliers songflier swimmer clownswimmer -]
-[-put-into-phrase string-category-underscore  category_  -]
+ambee put-into-phrase text-to-repeat  number 9   amenn
+ambee append-repeatedly-using-count text-to-repeat list-of-repeated-text 9  amenn
+ambee put-into-phrase correct-value-for-list-of-repeated-text  number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9 number 9  amenn
+ambee put-into-phrase text-with-named-html-entities  abc &amp; &apos; &lt; &gt; &ldquo; &rdquo; &quot; def   amenn
+ambee put-into-phrase text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>   amenn
+ambee copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag amenn
+ambee put-into-phrase correct-value-for-text-with-tag-and-attribute  <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p>  amenn
+ambee put-into-phrase list-of-words-to-search-based-on-prefix  here-is-something here-is-something-else hereis-something-else and-something-else  amenn
+ambee put-into-phrase text-begins-with  here-is  amenn
+ambee copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with amenn
+ambee put-into-phrase correct-value-for-list-of-words-that-begin-with-text  here-is-something here-is-something-else  amenn
+ambee put-into-phrase text-contains  is   amenn
+ambee copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains amenn
+ambee put-into-phrase text-begins-with  and   amenn
+ambee copy-words-that-begin-with-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-listed-words text-begins-with amenn
+ambee put-into-phrase correct-value-for-list-of-words-that-begin-with-listed-words  and-something-else  amenn
+ambee put-into-phrase text-for-multiple-find  fish bird  amenn
+ambee put-into-phrase text-for-multiple-search  birds songbird fish clownfish  amenn
+ambee generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words amenn
+ambee put-into-phrase correct-value-for-pointers-to-multiple-matching-words  1 4 11 14 16 19 26 29  amenn
+ambee put-into-phrase paired-words-for-replacements  bird flier fish swimmer  amenn
+ambee copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements amenn
+ambee put-into-phrase correct-value-for-results-replacements-using-paired-words  fliers songflier swimmer clownswimmer  amenn
+ambee put-into-phrase string-category-underscore  category_   amenn
 
-[-put-into-phrase string-abc  abc -]
-[-copy-text character-space text-to-append-with-leading-and-trailing-space-]
-[-append-text-no-space string-abc text-to-append-with-leading-and-trailing-space-]
-[-append-text-no-space character-space text-to-append-with-leading-and-trailing-space-]
-[-copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending-]
-[-append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending-]
-[-put-into-phrase text-containing-period  abc.def.ghi  -]
-[-put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-] -]
-[-put-into-phrase correct-value-for-results-position-of-matching-text  4 -]
-[-convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities-]
-[-clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities-]
-[-put-into-phrase words-with-space-at-end  abc xyz 123 -]
-[-append-text-no-space character-space words-with-space-at-end-]
-[-put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-] -]
-[-put-into-phrase correct-value-for-word-count  3 -]
-[-copy-text words-with-space-at-end words-with-spaces-at-end-]
-[-append-text-no-space character-space words-with-spaces-at-end-]
-[-put-into-phrase word-count-extra-space  [-get-count-of-words words-with-spaces-at-end-] -]
-[-put-into-phrase correct-value-for-word-count-extra-space  3 -]
+ambee put-into-phrase string-abc  abc  amenn
+ambee copy-text character-space text-to-append-with-leading-and-trailing-space amenn
+ambee append-text-no-space string-abc text-to-append-with-leading-and-trailing-space amenn
+ambee append-text-no-space character-space text-to-append-with-leading-and-trailing-space amenn
+ambee copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
+ambee append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
+ambee put-into-phrase text-containing-period  abc.def.ghi   amenn
+ambee put-into-phrase results-position-of-matching-text  [-get-position-of-matching-text character-period text-containing-period-]  amenn
+ambee put-into-phrase correct-value-for-results-position-of-matching-text  4  amenn
+ambee convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities amenn
+ambee clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities amenn
+ambee put-into-phrase words-with-space-at-end  abc xyz 123  amenn
+ambee append-text-no-space character-space words-with-space-at-end amenn
+ambee put-into-phrase word-count  [-get-count-of-words words-with-space-at-end-]  amenn
+ambee put-into-phrase correct-value-for-word-count  3  amenn
+ambee copy-text words-with-space-at-end words-with-spaces-at-end amenn
+ambee append-text-no-space character-space words-with-spaces-at-end amenn
+ambee put-into-phrase word-count-extra-space  [-get-count-of-words words-with-spaces-at-end-]  amenn
+ambee put-into-phrase correct-value-for-word-count-extra-space  3  amenn
 
-[-copy-and-replace text-with-periods text-with-spaces character-period character-space-]
-[-put-into-phrase correct-value-for-text-with-spaces  12345 67890 54321 -]
+ambee copy-and-replace text-with-periods text-with-spaces character-period character-space amenn
+ambee put-into-phrase correct-value-for-text-with-spaces  12345 67890 54321  amenn
 
-[-put-into-phrase text-being-copied  abc DEF 123 -]
-[-copy-text text-being-copied text-copied-]
-[-copy-lowercase-only text-being-copied text-copied-lowercase-]
-[-copy-uppercase-only text-being-copied text-copied-uppercase-]
-[-put-into-phrase correct-value-for-text-copied-lowercase  abc def 123 -]
-[-put-into-phrase correct-value-for-text-copied-uppercase  ABC DEF 123 -]
+ambee put-into-phrase text-being-copied  abc DEF 123  amenn
+ambee copy-text text-being-copied text-copied amenn
+ambee copy-lowercase-only text-being-copied text-copied-lowercase amenn
+ambee copy-uppercase-only text-being-copied text-copied-uppercase amenn
+ambee put-into-phrase correct-value-for-text-copied-lowercase  abc def 123  amenn
+ambee put-into-phrase correct-value-for-text-copied-uppercase  ABC DEF 123  amenn
 
-[-copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999 -]
-[-copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2 -]
-[-put-into-phrase correct-value-for-text-copied-without-first-word  DEF 123 -]
-[-put-into-phrase correct-value-for-text-copied-without-last-word  abc DEF -]
+ambee copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999  amenn
+ambee copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2  amenn
+ambee put-into-phrase correct-value-for-text-copied-without-first-word  DEF 123  amenn
+ambee put-into-phrase correct-value-for-text-copied-without-last-word  abc DEF  amenn
 
-[-put-into-phrase text-being-copied  17 9 183 65 -]
-[-copy-words-sort-numeric text-being-copied text-copied-numeric-sorted-]
-[-put-into-phrase correct-value-for-text-copied-numeric-sorted  9 17 65 183 -]
+ambee put-into-phrase text-being-copied  17 9 183 65  amenn
+ambee copy-words-sort-numeric text-being-copied text-copied-numeric-sorted amenn
+ambee put-into-phrase correct-value-for-text-copied-numeric-sorted  9 17 65 183  amenn
 
-[-put-into-phrase correct-value-for-test-of-comment-delimiters  beginning text middle text ending text -]
+ambee put-into-phrase correct-value-for-test-of-comment-delimiters  beginning text middle text ending text  amenn
 
-[-two-dimensional-sort-]
-[-test-if-begin-actions-]
-[-test-yes-no-checks-]
+ambee two-dimensional-sort amenn
+ambee test-if-begin-actions amenn
+ambee test-yes-no-checks amenn
 
-[-expand-text entire-standard-web-page expanded-entire-standard-web-page-]
-[-copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page-]
+ambee expand-text entire-standard-web-page expanded-entire-standard-web-page amenn
+ambee copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page amenn
 *--- correct value for above is specified below as separate phrase ---*
 
-[-expand-text test-expand-text-inline result-of-test-expand-text-inline-]
+ambee expand-text test-expand-text-inline result-of-test-expand-text-inline amenn
 result-of-test-expand-text-inline
 
-[-expand-text [-contains-name-test-skip-level-executable-phrase-] unused-result-of-test-skip-level-]
+ambee expand-text [-contains-name-test-skip-level-executable-phrase-] unused-result-of-test-skip-level amenn
 
-[-put-into-phrase something-about-row-3  beta -]
-[-put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-] -]
-[-put-into-phrase correct-value-for-alpha-something-row-column  alphabeta5 -]
+ambee put-into-phrase something-about-row-3  beta  amenn
+ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
+ambee put-into-phrase correct-value-for-alpha-something-row-column  alphabeta5  amenn
 
 ambee copy-initial-caps list-of-animal-types initial-caps-list-of-animal-types amenn
 ambee put-into-phrase correct-value-for-initial-caps-list-of-animal-types  Dolphin Whale Starfish Octopus  amenn
@@ -508,8 +508,8 @@ text-that-occurs-after-parameter-phrases
 
 additional-test-of-dashrep-actions-not-currently-being-tested:
 
-[-copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1 -]
-[-[-handle-double-nested-executable-phrase-]-]
+ambee copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1  amenn
+ambee [-handle-double-nested-executable-phrase-] amenn
 --------
 
 dashrep-path-prefix-for-file-reading:
@@ -554,7 +554,7 @@ text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phra
 --------
 
 test-expand-text-inline:
-[-copy-text string-words-inline-text copy-of-string-words-inline-text-]
+ambee copy-text string-words-inline-text copy-of-string-words-inline-text amenn
 copy-of-string-words-inline-text
 --------
 
@@ -567,7 +567,7 @@ test-skip-level-executable-phrase
 --------
 
 test-skip-level-executable-phrase:
-[-put-into-phrase value-inserted-if-skip-level-ok  ok -]
+ambee put-into-phrase value-inserted-if-skip-level-ok  ok  amenn
 --------
 
 correct-value-for-value-inserted-if-skip-level-ok:
@@ -575,67 +575,67 @@ ok
 --------
 
 check-dashrep-recognized-phrase-names-in-documentation:
-[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names-]
-[-copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore-]
-[-copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names-]
-[-put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray -]
-[-expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words-]
-[-copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names-]
-[-copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized-]
-[-copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented-]
-[-put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined -]
-[-copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized-]
-[-copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented-]
-[-copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference-]
-[-append-text character-period list-of-phrase-names-difference-]
-[-append-text character-period list-of-phrase-names-difference-]
-[-append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference-]
-[-copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference-]
+ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names amenn
+ambee copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names amenn
+ambee put-into-phrase template-spoken-words-split-to-avoid-replacement-here  dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-space enn com no-space bee com no-space enn fe no-space n fenam no-space bee am no-space ennfen lin no-space bray  amenn
+ambee expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented amenn
+ambee put-into-phrase list-containing-only-phrase-name-list-of-phrases-newly-defined  list-of-phrases-newly-defined  amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented amenn
+ambee copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference amenn
+ambee copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference amenn
 --------
 
 do-check-for-correct-values:
-[-put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here -]
-[-expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen-]
-[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
-[-generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases-]
-[-put-into-phrase yes-or-no-export-delimited-definitions  no -]
-[-copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen-]
-[-copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text-]
+ambee put-into-phrase template-string-correct-value-for-hyphen correct hyphen-here value hyphen-here for hyphen-here  amenn
+ambee expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen amenn
+ambee put-into-phrase yes-or-no-export-delimited-definitions  yes  amenn
+ambee generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases amenn
+ambee put-into-phrase yes-or-no-export-delimited-definitions  no  amenn
+ambee copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen amenn
+ambee copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text amenn
 
 *---
-[-trace-show list-of-phrases-to-check-for-correct-value-]
+ambee trace-show list-of-phrases-to-check-for-correct-value amenn
 ---*
 
-[-use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value-]
-[-put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-]-]
+ambee use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value amenn
+ambee put-into-phrase yes-or-no-all-values-are-correct [-yes-if-all-yes [-list-of-yes-or-no-values-are-correct-]-] amenn
 
 *---
-[-trace-show full-display-values-not-correct-]
-[-trace-show list-of-phrases-with-correct-values-]
+ambee trace-show full-display-values-not-correct amenn
+ambee trace-show list-of-phrases-with-correct-values amenn
 ---*
 --------
 
 handle-one-check-for-correct-value:
-[-copy-text word-to-use-in-handler phrase-name-]
+ambee copy-text word-to-use-in-handler phrase-name amenn
 
 *---
-[-trace-show phrase-name-]
+ambee trace-show phrase-name amenn
 ---*
 
-[-put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-]-]
-[-append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct-]
-[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+ambee put-into-phrase yes-or-no-value-is-correct [-yes-or-no-same-two-phrase-definitions [-phrase-name-] correct-value-for-[-phrase-name-]-] amenn
+ambee append-text yes-or-no-value-is-correct list-of-yes-or-no-values-are-correct amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
 
-[-if-no-begin [-yes-or-no-value-is-correct-]-]
-[-expand-text template-display-value-is-not-correct display-value-is-not-correct-]
-[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name-]
-[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name [-phrase-name-]-]
-[-copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name-]-]
-[-append-text-no-space display-value-is-not-correct full-display-values-not-correct-]
-[-append-text phrase-name list-of-phrases-with-incorrect-values-]
-[-if-else-]
-[-append-text phrase-name list-of-phrases-with-correct-values-]
-[-if-end-]
+ambee if-no-begin [-yes-or-no-value-is-correct-] amenn
+ambee expand-text template-display-value-is-not-correct display-value-is-not-correct amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-phrase-name phrase-name amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-value-of-phrase-name [-phrase-name-] amenn
+ambee copy-and-replace display-value-is-not-correct display-value-is-not-correct placeholder-correct-value-for-phrase-name correct-value-for-[-phrase-name-] amenn
+ambee append-text-no-space display-value-is-not-correct full-display-values-not-correct amenn
+ambee append-text phrase-name list-of-phrases-with-incorrect-values amenn
+ambee if-else amenn
+ambee append-text phrase-name list-of-phrases-with-correct-values amenn
+ambee if-end amenn
 --------
 
 string-ok-colon:
@@ -740,7 +740,7 @@ No hyphen-here title no-space
 --------
 
 test-of-parameter-substitution:
-[-prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text-]
+ambee prefix-text-]-def-[-middle-text-]-jkl-[-suffix-text amenn
 --------
 
 prefix-text:
@@ -784,9 +784,9 @@ value-of-pi:
 --------
 
 test-of-insert-codeview-tags:
-[-put-into-phrase text-being-codified  <xyz>&amp;</xyz> -]
-[-copy-text text-being-codified dashrep-code-with-inserted-codeview-tags-]
-[-insert-codeview-tags dashrep-code-with-inserted-codeview-tags-]
+ambee put-into-phrase text-being-codified  <xyz>&amp;</xyz>  amenn
+ambee copy-text text-being-codified dashrep-code-with-inserted-codeview-tags amenn
+ambee insert-codeview-tags dashrep-code-with-inserted-codeview-tags amenn
 --------
 
 list-of-animal-types:
@@ -812,50 +812,50 @@ input-up-values:
 --------
 
 two-dimensional-sort:
-[-numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort-]
-[-put-into-phrase correct-value-for-results-of-two-dimensional-sort  row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 -]
+ambee numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort amenn
+ambee put-into-phrase correct-value-for-results-of-two-dimensional-sort  row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1  amenn
 --------
 
 test-if-begin-actions:
-[-clear-phrase result-of-testing-if-begin-actions-]
-[-if-yes-begin yes-]
-[-append-text string-one result-of-testing-if-begin-actions-]
-[-if-else-]
-[-append-text string-two result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-yes-begin no-]
-[-append-text string-three result-of-testing-if-begin-actions-]
-[-if-else-]
-[-append-text string-four result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-no-begin yes-]
-[-append-text string-five result-of-testing-if-begin-actions-]
-[-if-else-]
-[-append-text string-six result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-no-begin no-]
-[-append-text string-seven result-of-testing-if-begin-actions-]
-[-if-else-]
-[-append-text string-eight result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-yes-begin yes-]
-[-append-text string-nine result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-yes-begin no-]
-[-append-text string-ten result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-no-begin no-]
-[-append-text string-eleven result-of-testing-if-begin-actions-]
-[-if-end-]
-[-if-no-begin yes-]
-[-append-text string-twelve result-of-testing-if-begin-actions-]
-[-if-end-]
-[-put-into-phrase correct-value-for-result-of-testing-if-begin-actions  one four six seven nine eleven -]
+ambee clear-phrase result-of-testing-if-begin-actions amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-one result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-two result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-three result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-four result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-five result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-six result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-seven result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-eight result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-nine result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-ten result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-eleven result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-twelve result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee put-into-phrase correct-value-for-result-of-testing-if-begin-actions  one four six seven nine eleven  amenn
 --------
 
 test-yes-no-checks:
-[-put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-]-]
-[-put-into-phrase correct-value-for-multiple-yes-no-checks  no_yes_yes_no_no_yes_yes_no_yes_no_yes_no -]
+ambee put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-] amenn
+ambee put-into-phrase correct-value-for-multiple-yes-no-checks  no_yes_yes_no_no_yes_yes_no_yes_no_yes_no  amenn
 --------
 
 string-one:
@@ -929,14 +929,14 @@ g7r3c5
 entire-standard-web-page:
 web-page-begin-1-of-2
 web-page-begin-2-of-2
-[-page-participants-list-]
+ambee page-participants-list amenn
 web-page-end
 --------
 
 page-participants-list:
-[-put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  [-case-info-idlistparticipants-] -]
-[-use-handler-with-each-word-in-phrase handle-one-named-participant list-of-parameter-values-for-list-named-participant-names-full-]
-[-numeric-increment test-counter-]
+ambee put-into-phrase list-of-parameter-values-for-list-named-participant-names-full  [-case-info-idlistparticipants-]  amenn
+ambee use-handler-with-each-word-in-phrase handle-one-named-participant list-of-parameter-values-for-list-named-participant-names-full amenn
+ambee numeric-increment test-counter amenn
 format-begin-heading-level-1
 words-web-page-title
 format-end-heading-level-1
@@ -946,8 +946,8 @@ tag-begin /ul tag-end
 --------
 
 handle-one-named-participant:
-[-expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant-]
-[-append-text expanded-content-for-named-participant generated-list-named-participant-names-full-]
+ambee expand-text template-for-list-named-participant-names-full expanded-content-for-named-participant amenn
+ambee append-text expanded-content-for-named-participant generated-list-named-participant-names-full amenn
 --------
 
 words-web-page-title:
@@ -990,7 +990,7 @@ no-space  tag-begin /h1 tag-end
 --------
 
 case-info-idlistparticipants:
-[-list-of-numbers-]
+ambee list-of-numbers amenn
 --------
 
 template-for-list-named-participant-names-full
@@ -1042,23 +1042,23 @@ no-space
 --------
 
 test-getting-of-cgi-information:
-[-get-cgi-information-]
-[-put-into-phrase correct-value-for-input-cgi-value-one  123 -]
-[-put-into-phrase correct-value-for-input-cgi-value-two  abc xyz -]
-[-use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names-]
+ambee get-cgi-information amenn
+ambee put-into-phrase correct-value-for-input-cgi-value-one  123  amenn
+ambee put-into-phrase correct-value-for-input-cgi-value-two  abc xyz  amenn
+ambee use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names amenn
 --------
 
 handle-display-input-phrase-name-and-definition:
-[-copy-text word-to-use-in-handler input-phrase-name-]
-[-copy-text html-list-item-begin display-one-input-phrase-with-value-]
-[-copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen-]
-[-append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value-]
-[-append-text character-equal-sign display-one-input-phrase-with-value-]
-[-copy-definition-of-named-phrase input-phrase-name input-phrase-definition-]
-[-append-text input-phrase-definition display-one-input-phrase-with-value-]
-[-append-text-no-space html-list-item-end display-one-input-phrase-with-value-]
-[-append-text-no-space character-newline display-one-input-phrase-with-value-]
-[-append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases-]
+ambee copy-text word-to-use-in-handler input-phrase-name amenn
+ambee copy-text html-list-item-begin display-one-input-phrase-with-value amenn
+ambee copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen amenn
+ambee append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value amenn
+ambee append-text character-equal-sign display-one-input-phrase-with-value amenn
+ambee copy-definition-of-named-phrase input-phrase-name input-phrase-definition amenn
+ambee append-text input-phrase-definition display-one-input-phrase-with-value amenn
+ambee append-text-no-space html-list-item-end display-one-input-phrase-with-value amenn
+ambee append-text-no-space character-newline display-one-input-phrase-with-value amenn
+ambee append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases amenn
 --------
 
 html-list-item-begin:
