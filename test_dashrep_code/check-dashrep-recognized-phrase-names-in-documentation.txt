@@ -1,0 +1,14 @@
+ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names amenn
+ambee copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names category-words documented-phrase-names amenn
+ambee expand-text template-spoken-words-split-to-avoid-replacement-here spoken-words amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names spoken-words documented-phrase-names amenn
+ambee copy-words-found-only-in-first-list documented-phrase-names dashrep-list-of-recognized-phrase-names list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list dashrep-list-of-recognized-phrase-names documented-phrase-names list-of-phrase-names-recognized-minus-documented amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-documented-minus-recognized list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-documented-minus-recognized amenn
+ambee copy-words-found-only-in-first-list list-of-phrase-names-recognized-minus-documented list-containing-only-phrase-name-list-of-phrases-newly-defined list-of-phrase-names-recognized-minus-documented amenn
+ambee copy-text list-of-phrase-names-documented-minus-recognized list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text character-period list-of-phrase-names-difference amenn
+ambee append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference amenn
+ambee copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference amenn

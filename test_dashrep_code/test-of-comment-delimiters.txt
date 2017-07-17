@@ -1,0 +1,5 @@
+beginning text
+*---- comment text ----*
+middle text
+*--- comment text ---*
+ending text

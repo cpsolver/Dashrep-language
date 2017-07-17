@@ -1,0 +1,33 @@
+ambee clear-phrase result-of-testing-if-begin-actions amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-one result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-two result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-three result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-four result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-five result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-six result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-seven result-of-testing-if-begin-actions amenn
+ambee if-else amenn
+ambee append-text string-eight result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin yes amenn
+ambee append-text string-nine result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-yes-begin no amenn
+ambee append-text string-ten result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin no amenn
+ambee append-text string-eleven result-of-testing-if-begin-actions amenn
+ambee if-end amenn
+ambee if-no-begin yes amenn
+ambee append-text string-twelve result-of-testing-if-begin-actions amenn
+ambee if-end amenn

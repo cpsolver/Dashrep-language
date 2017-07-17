@@ -1,0 +1,5 @@
+abc
+empty-line
+def
+new-line
+ghi

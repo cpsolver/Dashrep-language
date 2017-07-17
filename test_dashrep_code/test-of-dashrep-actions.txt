@@ -1,0 +1,236 @@
+text-that-occurs-before-parameter-phrases
+ambee put-into-phrase test-assignment  17  amenn
+text-that-occurs-within-parameter-phrases
+ambee put-into-phrase should-be-17  ambee test-assignment amenn  amenn
+ambee copy-text empty-text copied-text amenn
+ambee append-text first-word-phrase copied-text amenn
+ambee append-text second-word-phrase copied-text amenn
+ambee copy-text copied-text should-be-copied-text amenn
+ambee copy-text character-space multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space first-word-phrase multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space second-word-phrase multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-newline multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-tab multiple-words-separated-by-whitespace-multiple-types amenn
+ambee append-text-no-space character-space multiple-words-separated-by-whitespace-multiple-types amenn
+ambee copy-without-extra-spaces multiple-words-separated-by-whitespace-multiple-types text-with-adjacent-spaces-replaced amenn
+
+ambee put-into-phrase should-be-zero  ambee zero-one-multiple 0 amenn  amenn
+ambee put-into-phrase should-be-one  ambee zero-one-multiple 1 amenn  amenn
+ambee put-into-phrase should-be-multiple  ambee zero-one-multiple 2 amenn  amenn
+ambee put-into-phrase should-be-size-zero  ambee get-count-of-words empty-text amenn  amenn
+ambee put-into-phrase should-be-size-one  ambee get-count-of-words should-be-17 amenn  amenn
+ambee put-into-phrase list-of-size-three  4 5 6  amenn
+ambee put-into-phrase should-be-size-three  ambee get-count-of-words list-of-size-three amenn  amenn
+
+ambee put-into-phrase should-be-number-three  ambee get-word-at-position list-of-numbers 1  amenn  amenn
+ambee put-into-phrase should-be-number-four  ambee get-word-at-position list-of-numbers 999  amenn  amenn
+ambee put-into-phrase should-be-same-words-yes  ambee yes-or-no-same-two-words waltz waltz amenn  amenn
+ambee put-into-phrase should-be-same-words-no  ambee yes-or-no-same-two-words waltz dance amenn  amenn
+
+ambee put-into-phrase item-one  waltz  amenn
+ambee put-into-phrase item-two  dance  amenn
+ambee put-into-phrase should-be-same-yes  ambee yes-or-no-same-two-phrase-definitions item-one item-one amenn  amenn
+ambee put-into-phrase should-be-same-no  ambee yes-or-no-same-two-phrase-definitions item-one item-two amenn  amenn
+ambee put-into-phrase test-counter  17  amenn
+ambee put-into-phrase test-value  3  amenn
+ambee put-into-phrase compare-numbers-equal  ambee numeric-equal-greater-less-compare 16 16  amenn  amenn
+ambee put-into-phrase compare-numbers-less  ambee numeric-equal-greater-less-compare 18 19  amenn  amenn
+ambee put-into-phrase compare-numbers-greater  ambee numeric-equal-greater-less-compare 21 20  amenn  amenn
+
+ambee put-into-phrase result-calculation-subtraction  ambee numeric-minus 7 3  amenn amenn
+ambee put-into-phrase result-calculation-absolute  ambee numeric-absolute -6  amenn amenn
+ambee put-into-phrase result-calculation-integer  ambee numeric-integer 7.3  amenn amenn
+
+ambee put-into-phrase result-calculation-division ambee numeric-divide-by 7 3  amenn amenn
+ambee copy-characters-from-position-to-position result-calculation-division result-calculation-division 1 6  amenn
+ambee put-into-phrase result-calculation-sine ambee numeric-sine 0.5  amenn amenn
+ambee copy-characters-from-position-to-position result-calculation-sine result-calculation-sine 1 6  amenn
+ambee put-into-phrase result-calculation-cosine  ambee numeric-cosine 0.5  amenn amenn
+ambee copy-characters-from-position-to-position result-calculation-cosine result-calculation-cosine 1 6  amenn
+ambee put-into-phrase result-calculation-odd ambee numeric-odd-or-even 3  amenn amenn
+ambee put-into-phrase result-calculation-even ambee numeric-odd-or-even 4  amenn amenn
+
+ambee copy-text empty-text test-text-length-0 amenn
+ambee put-into-phrase should-be-length-0  ambee get-count-of-characters test-text-length-0  amenn  amenn
+ambee put-into-phrase test-text-length-1  a  amenn
+ambee put-into-phrase should-be-length-1  ambee get-count-of-characters test-text-length-1  amenn  amenn
+ambee put-into-phrase test-text-length-7  abcdefg  amenn
+ambee put-into-phrase should-be-length-7  ambee get-count-of-characters test-text-length-7  amenn  amenn
+ambee put-into-phrase should-be-item-with-value-7  ambee get-word-at-position list-of-numbers 3  amenn  amenn
+ambee generate-counts-from-integer-to-integer 0 7 counts-from-0-to-7 amenn
+
+ambee copy-and-replace some-text-with-hyphens some-text-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace some-text-with-underscores some-text-with-underscores string-word-hyphens string-word-underscores amenn
+
+ambee clear-phrase counter-increment-decrement amenn
+ambee numeric-increment counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-decrement counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-decrement counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+ambee numeric-increment counter-increment-decrement amenn
+ambee append-text counter-increment-decrement list-of-counter-increment-decrement-values amenn
+
+ambee generate-counts-from-integer-to-integer 5 -4 counts-from-5-to-minus-4  amenn
+ambee put-into-phrase minimum-maximum-result  ambee numeric-minimum 2 8  amenn ambee numeric-maximum 2 8  amenn ambee numeric-minimum 3  amenn ambee numeric-maximum 4  amenn  amenn
+ambee generate-every-pairwise-combination-of-words counts-from-0-to-7 counts-from-5-to-minus-4 list-of-first-items-in-two-dimensions list-of-second-items-in-two-dimensions amenn
+ambee put-into-phrase should-be-counts-3-and-minus-2 ambee get-word-at-position list-of-first-items-in-two-dimensions 38 amenn ambee get-word-at-position list-of-second-items-in-two-dimensions 38  amenn  amenn
+
+ambee put-into-phrase calculation-result  ambee numeric-integer ambee numeric-multiply 3.14 7.39 amenn amenn  amenn
+ambee put-into-phrase compare-result  ambee numeric-equal-greater-less-compare 23 17 amenn ambee numeric-equal-greater-less-compare 17 17  amenn ambee numeric-equal-greater-less-compare 17 23 amenn amenn
+
+ambee put-into-phrase character-result  ambee get-characters-from-position-to-position string-to-test-character-actions 1 1 -][-get-characters-from-position-to-position string-to-test-character-actions 2 2 -][-get-characters-from-position-to-position string-to-test-character-actions 4 4 -][-get-characters-from-position-to-position string-to-test-character-actions 5 5 -][-get-characters-from-position-to-position string-to-test-character-actions 20 20 -][-get-characters-from-position-to-position string-to-test-character-actions 21 21  amenn amenn
+
+ambee copy-words-from-position-to-position sample-word-list should-be-beta-gamma 2 3 amenn
+ambee put-into-phrase word-list-result  ambee get-position-of-word word-alpha sample-word-list-]-[-get-position-of-word word-gamma sample-word-list-]-[-get-position-of-word word-other sample-word-list amenn  amenn
+ambee clear-phrase list-of-prepended-items amenn
+ambee prepend-text word-other list-of-prepended-items amenn
+ambee prepend-text word-gamma list-of-prepended-items amenn
+ambee prepend-text word-alpha list-of-prepended-items amenn
+ambee prepend-text-no-space character-space sample-word-list-one amenn
+ambee append-new-line sample-word-list-one amenn
+ambee append-text-no-space character-space sample-word-list-one amenn
+ambee copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-one correct-value-for-sample-word-list-one placeholder-new-line character-newline amenn
+ambee prepend-text-no-space character-space sample-word-list-two amenn
+ambee append-new-line sample-word-list-two amenn
+ambee append-text-no-space character-space sample-word-list-two amenn
+ambee copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-two correct-value-for-sample-word-list-two placeholder-new-line character-newline amenn
+ambee prepend-text-no-space character-space sample-word-list-three amenn
+ambee append-new-line sample-word-list-three amenn
+ambee append-text-no-space character-space sample-word-list-three amenn
+ambee copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three character-double-quote empty-text amenn
+ambee copy-and-replace correct-value-for-sample-word-list-three correct-value-for-sample-word-list-three placeholder-new-line character-newline amenn
+ambee copy-text sample-word-list-one list-with-dups amenn
+ambee append-text sample-word-list-two list-with-dups amenn
+ambee copy-without-extra-spaces list-with-dups list-with-dups-without-extra-spaces amenn
+
+ambee copy-words-found-in-both-lists sample-word-list-one sample-word-list-two word-list-in-both amenn
+ambee copy-words-found-in-either-list sample-word-list-one sample-word-list-two word-list-in-either amenn
+ambee copy-words-found-only-in-first-list list-with-dups sample-word-list-three word-list-in-first-only amenn
+ambee copy-words-unique-only list-with-dups unique-words amenn
+ambee copy-without-extra-spaces find-in-lists-result find-in-lists-result amenn
+
+ambee expand-text contains-angle-bracketed-phrase-names expanded-contains-angle-bracketed-phrase-names amenn
+ambee copy-zero-pad-left-to-length string-123 string-123-padded 5  amenn
+
+ambee numeric-vector-add-number vector-one -7 vector-result-add-number amenn
+ambee numeric-vector-multiply-by-number vector-one 7 vector-result-multiply-by-number amenn
+ambee numeric-vectors-add vector-one vector-two vector-result-addition amenn
+ambee numeric-vectors-from-delta-values-calculate-distances vector-one vector-two vector-result-distances amenn
+
+ambee numeric-vectors-multiply vector-decimals-and-negatives vector-two result-of-numeric-vectors-multiply amenn
+ambee numeric-vectors-divide-by vector-decimals-and-negatives vector-two result-of-numeric-vectors-divide-by amenn
+ambee numeric-vector-integers vector-decimals-and-negatives result-of-numeric-vector-integers amenn
+ambee numeric-vector-absolutes vector-decimals-and-negatives result-of-numeric-vector-absolutes amenn
+
+ambee append-repeatedly-using-count text-to-repeat list-of-repeated-text 9  amenn
+ambee copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag amenn
+ambee copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with amenn
+ambee copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains amenn
+ambee copy-words-that-begin-with-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-listed-words text-begins-with amenn
+ambee generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words amenn
+ambee copy-and-replace-using-paired-listed-words text-for-multiple-search results-replacements-using-paired-words paired-words-for-replacements amenn
+
+ambee copy-text character-space text-to-append-with-leading-and-trailing-space amenn
+ambee append-text-no-space string-abc text-to-append-with-leading-and-trailing-space amenn
+ambee append-text-no-space character-space text-to-append-with-leading-and-trailing-space amenn
+ambee copy-text text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
+ambee append-text-no-space text-to-append-with-leading-and-trailing-space text-after-double-appending amenn
+ambee put-into-phrase results-position-of-matching-text  ambee get-position-of-matching-text character-period text-containing-period amenn  amenn
+ambee convert-unicode-to-html-entities text-with-unicode-characters results-with-unicode-converted-to-html-entities amenn
+ambee clear-phrase correct-value-for-results-with-unicode-converted-to-html-entities amenn
+ambee append-text-no-space character-space words-with-space-at-end amenn
+ambee put-into-phrase word-count  ambee get-count-of-words words-with-space-at-end amenn  amenn
+ambee copy-text words-with-space-at-end words-with-spaces-at-end amenn
+ambee append-text-no-space character-space words-with-spaces-at-end amenn
+ambee put-into-phrase word-count-extra-space  ambee get-count-of-words words-with-spaces-at-end amenn  amenn
+
+ambee copy-and-replace text-with-periods text-with-spaces character-period character-space amenn
+
+ambee copy-text text-being-copied text-copied amenn
+ambee copy-lowercase-only text-being-copied text-copied-lowercase amenn
+ambee copy-uppercase-only text-being-copied text-copied-uppercase amenn
+
+ambee copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999  amenn
+ambee copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2  amenn
+
+ambee copy-words-sort-numeric text-being-copied text-copied-numeric-sorted amenn
+
+
+ambee two-dimensional-sort amenn
+ambee test-if-begin-actions amenn
+ambee test-yes-no-checks amenn
+
+ambee expand-text entire-standard-web-page expanded-entire-standard-web-page amenn
+ambee copy-without-extra-spaces expanded-entire-standard-web-page expanded-entire-standard-web-page amenn
+*--- correct value for above is specified below as separate phrase ---*
+
+ambee expand-text test-expand-text-inline result-of-test-expand-text-inline amenn
+result-of-test-expand-text-inline
+
+ambee expand-text ambee contains-name-test-skip-level-executable-phrase amenn unused-result-of-test-skip-level amenn
+
+ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
+
+ambee copy-initial-caps list-of-animal-types initial-caps-list-of-animal-types amenn
+ambee copy-words-order-reversed list-of-animal-types reversed-list amenn
+ambee copy-word-at-position list-of-animal-types single-animal-type 2 amenn
+ambee copy-words-sort-alphabetic list-of-animal-types alphabetically-sorted-animal-types amenn
+
+ambee generate-every-ordered-pairwise-combination-of-words list-of-animal-types list-ordered-pairwise-words-one list-ordered-pairwise-words-two amenn
+
+ambee copy-words-rearrange-using-order-sort-numeric operand-one list-from-rearranged-numeric operand-three  amenn
+
+ambee copy-words-rearrange-using-order-sort-alphabetic operand-one list-from-rearranged-alphabetic operand-three amenn
+
+ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 0 amenn  amenn
+ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 23 amenn  amenn
+
+ambee expand-text list-of-phrases-to-clear result-before-listed-phrases-cleared amenn
+ambee clear-listed-phrases list-of-phrases-to-clear amenn
+ambee expand-text list-of-phrases-to-clear result-after-listed-phrases-cleared amenn
+ambee copy-without-extra-spaces result-after-listed-phrases-cleared result-after-listed-phrases-cleared amenn
+ambee clear-phrase correct-value-for-result-after-listed-phrases-cleared amenn
+
+ambee expand-text list-of-phrases-to-delete result-before-listed-phrases-deleted amenn
+ambee delete-listed-phrases list-of-phrases-to-delete amenn
+ambee expand-text list-of-phrases-to-delete result-after-listed-phrases-deleted amenn
+ambee copy-without-extra-spaces result-after-listed-phrases-deleted result-after-listed-phrases-deleted amenn
+ambee copy-text list-of-phrases-to-delete correct-value-for-result-after-listed-phrases-deleted amenn
+
+ambee put-into-phrase result-of-numeric-add  ambee numeric-add 3.5 2.7 amenn amenn
+ambee put-into-phrase result-of-numeric-logarithm-base-e  ambee numeric-logarithm-base-e 3.5 amenn  amenn
+ambee put-into-phrase result-of-numeric-logarithm-base-10  ambee numeric-logarithm-base-10 3.5 amenn  amenn
+
+ambee put-into-phrase current-time-in-epoch-seconds  ambee get-current-time-in-epoch-seconds amenn  amenn
+ambee put-into-phrase check-current-time-in-epoch-seconds  ambee numeric-equal-greater-less-compare ambee current-time-in-epoch-seconds amenn 1498700000 amenn  amenn
+ambee split-epoch-seconds-into-named-components-for-zero-meridian ambee epoch-seconds-frozen-in-time amenn amenn
+ambee expand-text template-date-time-full expanded-date-time-frozen-zero-meridian amenn
+ambee split-epoch-seconds-into-named-components ambee epoch-seconds-frozen-in-time amenn amenn
+ambee expand-text template-date-time-full expanded-date-time-frozen amenn
+ambee copy-words-from-position-to-position expanded-date-time-frozen expanded-date-time-frozen-adjusted 4 7 amenn
+
+ambee copy-words-from-position-to-position list-of-numbers-as-text short-list-of-numbers-as-text 1 4 amenn
+ambee copy-listed-words-to-phrases-named-in-pattern list-of-animal-types copied-pattern-item-animal-type amenn
+
+ambee copy-words-from-position-to-position list-of-numbers-as-text shorter-list-of-numbers-as-text 1 3 amenn
+ambee append-multiple-from-phrases-named-in-pattern appended-pattern-item-animal-type result-append-multiple amenn
+ambee copy-without-extra-spaces result-append-multiple result-append-multiple amenn
+
+ambee generate-positions-of-delimiter character-open-angle-bracket simple-xml-with-tags pointers-to-beginning-of-tags amenn
+ambee generate-positions-of-first-matching-delimiter-after-listed-positions character-close-angle-bracket simple-xml-with-tags pointers-to-beginning-of-tags pointers-to-end-of-tags amenn
+
+ambee copy-and-remove-attributes-from-xml-tags text-with-tags-attributes-inside-tags result-text-after-remove-attributes-from-tags amenn
+ambee copy-and-move-attributes-into-xml-tags text-with-tags-attributes-outside-of-tags result-text-after-move-attributes-inside-tags amenn
+
+ambee put-into-phrase result-numeric-y-map-tile-number ambee numeric-y-map-tile-number-based-on-latitude 45.00 amenn amenn
+
+ambee encode-as-cgi-parameter text-with-tags-attributes-inside-tags encoded-cgi-parameter amenn
+ambee decode-from-cgi-parameter encoded-cgi-parameter result-decoded-cgi-parameter amenn
+
+text-that-occurs-after-parameter-phrases

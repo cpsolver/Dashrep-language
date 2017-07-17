@@ -1,0 +1,5 @@
+tag-begin html tag-end
+tag-begin head tag-end
+tag-begin title tag-end no-space
+words-web-page-title
+no-space tag-begin /title tag-end

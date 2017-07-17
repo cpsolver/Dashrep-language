@@ -1,0 +1,1 @@
+<html> <head> <title>List of participants</title> </head> <body> <h1>List of participants</h1> <ul> <li>James (Conservative)</li> <li>Nicole (Bloc Qu&eacute;b&eacute;cois)</li> <li>Eduard (Liberal)</li> <li>Robert (New Democratic)</li> <li>Diane (Conservative)</li> </ul> </body> </html>

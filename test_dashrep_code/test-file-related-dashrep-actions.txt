@@ -1,0 +1,36 @@
+
+ambee gather-tagged-info-from-file ambee input-filename-tagged-info amenn list-of-gathered-ids amenn
+ambee gather-from-tagged-file-one-entry ambee input-filename-tagged-info amenn single-gathered-info amenn
+
+ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_filename.txt amenn  amenn
+ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
+ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
+ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+
+*---
+find-line-in-file-that-begins-with-text
+find-lines-in-file-that-begin-with-any-listed-word
+find-lines-in-file-that-begin-with-any-two-words-listed
+write-gathered-listed-items-to-end-of-file
+copy-from-file-to-phrase
+copy-from-phrase-append-to-file
+copy-append-file-to-file
+
+set-file-permission-public-read
+create-empty-file
+rename-file
+delete-file
+create-empty-sub-folder
+linewise-read-from-file-and-use-handler
+linewise-input-line-from-file
+linewise-input-line-count
+get-definitions-from-file
+dashrep-phrase-prefix-for-imported-phrases
+dashrep-phrase-suffix-for-imported-phrases
+write-dashrep-definitions-listed-in-phrase-to-file
+copy-from-columns-in-file-to-named-phrases
+copy-from-columns-in-file-to-column-lists
+---*

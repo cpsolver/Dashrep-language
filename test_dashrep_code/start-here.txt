@@ -1,0 +1,31 @@
+
+*--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
+*--- todo: convert bracket notation into ambee/amenn/etc. notation ; use dashrep code already written, but using line-by-line handling ---*
+
+ambee delete-file ambee output-filename amenn amenn
+
+ambee clear-phrase list-of-displayed-input-phrases amenn
+ambee test-getting-of-cgi-information amenn
+ambee expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions amenn
+ambee test-file-related-dashrep-actions amenn
+ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  ambee test-of-adjacent-parameter-values amenn  amenn
+
+ambee do-check-for-correct-values amenn
+ambee copy-and-replace list-of-phrases-with-incorrect-values list-of-phrases-with-incorrect-values-version-html character-hyphen html-entity-hyphen amenn
+ambee copy-and-replace list-of-phrases-with-correct-values list-of-phrases-with-correct-values-version-html character-hyphen html-entity-hyphen amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase full-display-values-not-correct amenn amenn
+ambee copy-from-phrase-append-to-file display-values-all-ok ambee output-filename amenn amenn
+ambee copy-text display-values-all-ok displayed-text-ok-or-not-ok amenn
+ambee if-else amenn
+ambee copy-from-phrase-append-to-file display-values-not-ok ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file character-newline ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file full-display-values-not-correct ambee output-filename amenn amenn
+ambee copy-text display-values-not-ok displayed-text-ok-or-not-ok amenn
+ambee if-end amenn
+
+ambee copy-from-phrase-append-to-file character-newline ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file words-preface-to-list-of-correct-values ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file list-of-phrases-with-correct-values ambee output-filename amenn amenn
+
+ambee expand-text template-html-to-display-in-browser standard-output amenn

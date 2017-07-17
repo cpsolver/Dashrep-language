@@ -1,0 +1,10 @@
+ambee copy-text word-to-use-in-handler input-phrase-name amenn
+ambee copy-text html-list-item-begin display-one-input-phrase-with-value amenn
+ambee copy-and-replace input-phrase-name displayable-input-phrase-name character-hyphen html-entity-hyphen amenn
+ambee append-text-no-space displayable-input-phrase-name display-one-input-phrase-with-value amenn
+ambee append-text character-equal-sign display-one-input-phrase-with-value amenn
+ambee copy-definition-of-named-phrase input-phrase-name input-phrase-definition amenn
+ambee append-text input-phrase-definition display-one-input-phrase-with-value amenn
+ambee append-text-no-space html-list-item-end display-one-input-phrase-with-value amenn
+ambee append-text-no-space character-newline display-one-input-phrase-with-value amenn
+ambee append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases amenn

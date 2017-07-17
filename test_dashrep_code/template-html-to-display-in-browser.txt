@@ -1,0 +1,17 @@
+Content-type: text/html<new_line>
+<new_line>
+<html>  <new_line>
+<head>  <new_line>
+<title>Response from test code</title>  <new_line>
+</head>  <new_line>
+<body>  <new_line>
+<h1>CGI information</h1>  <new_line>
+<ul>  <new_line>
+list-of-displayed-input-phrases
+no-space
+</ul>  <new_line>
+<h1> no-space displayed-text-ok-or-not-ok no-space </h1>  <new_line>
+<p>Phrases with wrong values: list-of-phrases-with-incorrect-values-version-html no-space </p>  <new_line>
+<p>Phrases with correct values: list-of-phrases-with-correct-values-version-html no-space </p>  <new_line>
+</body>  <new_line>
+</html>  <new_line>

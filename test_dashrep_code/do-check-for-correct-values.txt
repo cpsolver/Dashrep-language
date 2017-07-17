@@ -1,0 +1,16 @@
+ambee expand-text template-string-correct-value-for-hyphen string-correct-value-for-hyphen amenn
+ambee generate-list-of-all-dashrep-phrases full-list-of-all-dashrep-phrases amenn
+ambee copy-words-that-begin-with-text full-list-of-all-dashrep-phrases list-of-phrases-beginning-with-string-correct-value string-correct-value-for-hyphen amenn
+ambee copy-and-replace list-of-phrases-beginning-with-string-correct-value list-of-phrases-to-check-for-correct-value string-correct-value-for-hyphen empty-text amenn
+
+*---
+ambee trace-show list-of-phrases-to-check-for-correct-value amenn
+---*
+
+ambee use-handler-with-each-word-in-phrase handle-one-check-for-correct-value list-of-phrases-to-check-for-correct-value amenn
+ambee put-into-phrase yes-or-no-all-values-are-correct ambee yes-if-all-yes ambee list-of-yes-or-no-values-are-correct amenn amenn amenn
+
+*---
+ambee trace-show full-display-values-not-correct amenn
+ambee trace-show list-of-phrases-with-correct-values amenn
+---*

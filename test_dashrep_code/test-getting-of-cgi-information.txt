@@ -1,0 +1,2 @@
+ambee get-cgi-information amenn
+ambee use-handler-with-each-word-in-phrase handle-display-input-phrase-name-and-definition dashrep-list-of-input-cgi-phrase-names amenn

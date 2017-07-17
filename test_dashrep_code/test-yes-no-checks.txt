@@ -1,0 +1,1 @@
+ambee put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-] amenn

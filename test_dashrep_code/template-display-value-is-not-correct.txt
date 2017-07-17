@@ -1,0 +1,2 @@
+ERROR: Value of phrase "<placeholder_phrase_name>" is "<placeholder_value_of_phrase_name>" but should be "<placeholder_correct_value_for_phrase_name>"
+<new_line>

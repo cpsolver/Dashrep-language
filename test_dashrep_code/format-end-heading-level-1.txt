@@ -1,0 +1,1 @@
+no-space  tag-begin /h1 tag-end
