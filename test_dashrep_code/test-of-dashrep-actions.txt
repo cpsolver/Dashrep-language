@@ -159,7 +159,7 @@ ambee copy-uppercase-only text-being-copied text-copied-uppercase amenn
 ambee copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999  amenn
 ambee copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2  amenn
 
-ambee copy-words-sort-numeric text-being-copied text-copied-numeric-sorted amenn
+ambee copy-words-sort-numeric text-being-copied-numeric text-copied-numeric-sorted amenn
 
 
 ambee two-dimensional-sort amenn
