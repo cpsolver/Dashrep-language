@@ -5,11 +5,17 @@ sub function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_phrase_name_containing_source_words = $global_operand_one ;  <new_line>
 $global_phrase_name_containing_pattern = $global_operand_two ;  <new_line>
+$global_phrase_name_containing_parameter_list = '' ;  <new_line>
 $global_target_phrase_name = '' ;  <new_line>
 if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } =~ /^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$/ ) ) {  <new_line>
     $global_prefix = $1 ;  <new_line>
     $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
     $global_suffix = $3 ;  <new_line>
+} else {  <new_line>
+    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern . "\n" ;  <new_line>
+    return ;  <new_line>
 }  <new_line>
 $global_prefix =~ s/[ \n]+//g ;  <new_line>
 $global_prefix =~ s/^<character_hyphen>+// ;  <new_line>
@@ -19,9 +25,9 @@ $global_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
 if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
+    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ;  <new_line>
@@ -29,9 +35,9 @@ $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
+    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 @global_list_of_parameter_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
@@ -39,9 +45,9 @@ $global_phrase_name_containing_source_words =~ s/[ \n]+//sg ;  <new_line>
 $global_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
 $global_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
 if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_list_empty ' . $global_phrase_name_containing_source_words ;  <new_line>
+    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_source_words ;  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_parameter_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ;  <new_line>
@@ -49,13 +55,18 @@ $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_operand_one_list_empty' ;  <new_line>
+    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty' ;  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error_copy_listed_words_to_phrases_named_in_pattern_case_operand_one_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 @global_list_of_source_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
-for ( $global_pointer = 0 ; $global_pointer <= $#global_list_of_parameter_words ; $global_pointer ++ ) {  <new_line>
+if ( $#global_list_of_source_words <= $#global_list_of_parameter_words ) {  <new_line>
+    $global_count = $#global_list_of_source_words ;  <new_line>
+} else {  <new_line>
+    $global_count = $#global_list_of_parameter_words ;  <new_line>
+}  <new_line>
+for ( $global_pointer = 0 ; $global_pointer <= $global_count ; $global_pointer ++ ) {  <new_line>
     $global_target_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } .= $global_list_of_source_words[ $global_pointer ] ;  <new_line>
 }  <new_line>
