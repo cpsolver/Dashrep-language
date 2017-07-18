@@ -228,7 +228,7 @@ correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
 ----
 correct-value-for-result-integers-positive-sorted:
-???
+-72 -36 -28 -1 0 1 3 12 17 94
 ----
 correct-value-for-result-list-of-files-in-current-read-directory:
 ??? 
@@ -237,7 +237,7 @@ correct-value-for-result-list-of-folders-in-current-read-directory:
 ??? 
 ----
 correct-value-for-result-modification-time-of-file:
-??? 
+???
 ----
 correct-value-for-result-numeric-y-map-tile-number:
 1473.433751
@@ -270,7 +270,7 @@ correct-value-for-result-of-zero-or-nonzero:
 nonzero 
 ----
 correct-value-for-result-size-of-file:
-733 
+???
 ----
 correct-value-for-result-text-after-move-attributes-inside-tags:
 <img href="image.jpg" alt="image" />
@@ -389,9 +389,6 @@ beginning text middle text ending text
 correct-value-for-text-copied-lowercase:
 abc def 123 
 ----
-correct-value-for-text-copied-numeric-sorted:
-9 17 65 183 
-----
 correct-value-for-text-copied-uppercase:
 ABC DEF 123 
 ----
@@ -445,6 +442,12 @@ alpha beta beta alpha beta
 ----
 correct-value-for-word-list-result:
 1-3-0 
+----
+correct-value-for-yes-if-file-size-non-zero:
+yes
+----
+correct-value-for-yes-if-got-modification-time-of-file:
+yes 
 ----
 dashrep-action-trace-on-yes-or-no:
 yes
@@ -571,11 +574,11 @@ html-list-item-begin:
 html-list-item-end:
 </li>
 ----
+input-filename-containing-data-to-test-gather-find-actions:
+input-data-to-test-gather-find-actions.txt
+----
 input-filename-for-cgi-information:
 input_cgi_information.txt
-----
-input-filename-tagged-info:
-input-tagged-info.txt
 ----
 input-right-values:
 12 -3 6 23 15 9 22 17 2 -5 10
@@ -677,6 +680,12 @@ Diane (Conservative)
 ----
 participant-fullname-for-participantid-7:
 Eduard (Liberal)
+----
+pattern-for-appended-items:
+appended-pattern-item-ambee-list-of-numbers-as-text-amenn
+----
+pattern-for-copied-items:
+copied-pattern-item-ambee-list-of-numbers-as-text-amenn
 ----
 phrase-that-contains-hyphenated-phrases:
 hyphenated-content-here hyphenated-content-here
@@ -911,13 +920,15 @@ copy-of-string-words-inline-text
 ----
 test-file-related-dashrep-actions:
 
-ambee gather-tagged-info-from-file ambee input-filename-tagged-info amenn list-of-gathered-ids amenn
-ambee gather-from-tagged-file-one-entry ambee input-filename-tagged-info amenn single-gathered-info amenn
+ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
+ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
 
-ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
 ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_filename.txt amenn  amenn
-ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-tagged-info amenn amenn  amenn
-ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
+ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
+ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
+ambee put-into-phrase yes-if-got-modification-time-of-file  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-modification-time-of-file amenn 150000 amenn amenn  amenn
 ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
@@ -1129,7 +1140,7 @@ ambee numeric-vector-absolutes vector-decimals-and-negatives result-of-numeric-v
 
 ambee append-repeatedly-using-count text-to-repeat list-of-repeated-text 9  amenn
 ambee copy-and-remove-attributes-from-xml-tags text-with-tag-and-attribute text-with-tag amenn
-ambee copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with amenn
+ambee copy-words-that-begin-with-text list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-text text-begins-with-here-is amenn
 ambee copy-words-that-contain-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-contain-listed-words text-contains amenn
 ambee copy-words-that-begin-with-listed-words list-of-words-to-search-based-on-prefix list-of-words-that-begin-with-listed-words text-begins-with amenn
 ambee generate-positions-of-listed-words text-for-multiple-find text-for-multiple-search pointers-to-multiple-matching-words amenn
@@ -1215,10 +1226,10 @@ ambee expand-text template-date-time-full expanded-date-time-frozen amenn
 ambee copy-words-from-position-to-position expanded-date-time-frozen expanded-date-time-frozen-adjusted 4 7 amenn
 
 ambee copy-words-from-position-to-position list-of-numbers-as-text short-list-of-numbers-as-text 1 4 amenn
-ambee copy-listed-words-to-phrases-named-in-pattern list-of-animal-types copied-pattern-item-animal-type amenn
+ambee copy-listed-words-to-phrases-named-in-pattern list-of-animal-types pattern-for-copied-items amenn
 
 ambee copy-words-from-position-to-position list-of-numbers-as-text shorter-list-of-numbers-as-text 1 3 amenn
-ambee append-multiple-from-phrases-named-in-pattern appended-pattern-item-animal-type result-append-multiple amenn
+ambee append-multiple-from-phrases-named-in-pattern pattern-for-appended-items result-append-multiple amenn
 ambee copy-without-extra-spaces result-append-multiple result-append-multiple amenn
 
 ambee generate-positions-of-delimiter character-open-angle-bracket simple-xml-with-tags pointers-to-beginning-of-tags amenn
@@ -1276,6 +1287,9 @@ test-value:
 ----
 test-yes-no-checks:
 ambee put-into-phrase multiple-yes-no-checks  [-no-if-any-no yes no yes-]_[-no-if-any-no yes yes-]_[-no-if-not-yes yes-]_[-no-if-not-yes no-]_[-yes-or-no-opposite yes-]_[-yes-or-no-opposite no-]_[-yes-if-all-yes yes yes yes-]_[-yes-if-all-yes yes no yes-]_[-yes-if-any-yes no yes no-]_[-yes-if-any-yes no no no-]_[-yes-if-not-no yes-]_[-yes-if-not-no no-] amenn
+----
+text-begins-with-here-is:
+here-is
 ----
 text-begins-with:
 and  
