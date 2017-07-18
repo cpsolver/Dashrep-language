@@ -100,6 +100,7 @@ my $global_word_pointer_operand_three = 0 ;  <new_line>
 my $global_word_pointer_operand_four = 0 ;  <new_line>
 my $global_phrase_number = 0 ;  <new_line>
 my $global_number_of_unique_phrases = 0 ;  <new_line>
+my $global_count_of_items_with_missing_unique_id = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
