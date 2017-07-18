@@ -1,11 +1,13 @@
 
-ambee gather-tagged-info-from-file ambee input-filename-tagged-info amenn list-of-gathered-ids amenn
-ambee gather-from-tagged-file-one-entry ambee input-filename-tagged-info amenn single-gathered-info amenn
+ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
+ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
 
-ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-yes-or-no-file-exists-yes  ambee yes-or-no-file-exists ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
 ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exists invalid_filename.txt amenn  amenn
-ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-tagged-info amenn amenn  amenn
-ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-tagged-info amenn amenn  amenn
+ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
+ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
+ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
+ambee put-into-phrase yes-if-got-modification-time-of-file  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-modification-time-of-file amenn 150000 amenn amenn  amenn
 ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
