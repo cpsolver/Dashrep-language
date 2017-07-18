@@ -37,6 +37,7 @@ $global_list_of_tag_values_in_sequence_encountered = "" ;  <new_line>
 %global_found_unique_value = ( ) ;  <new_line>
 %global_exists_tag_name = ( ) ;  <new_line>
 $global_line_status = "between" ;  <new_line>
+$global_count_of_items_with_missing_unique_id = 0 ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     $global_pointer = index( $global_input_line , "\r" ) ;  <new_line>
@@ -53,8 +54,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
                     $global_dashrep_replacement{ $global_tag_name . "<character_hyphen>value hyphen-here for hyphen-here unique hyphen-here id<character_hyphen>" . $global_unique_value } = $global_content_for_tag{ $global_tag_name } ;  <new_line>
                 }  <new_line>
             } elsif ( $global_first_word eq $global_entry_end ) {  <new_line>
-                &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-                print TRACE_OUT 'dashrep_runtime_error_action_gather_tagged_info_from_file_case_no_unique_value_in_one_set (' . $global_entry_unique . ')' ;  <new_line>
+                $global_count_of_items_with_missing_unique_id ++ ;  <new_line>
             }  <new_line>
             $global_unique_value = "" ;  <new_line>
             %global_content_for_tag = ( ) ;  <new_line>
@@ -125,7 +125,10 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names" } = $global_list_of_tag_names ;  <new_line>
     $global_dashrep_replacement{ "dashrep hyphen-here gathered hyphen-here tag hyphen-here names hyphen-here in hyphen-here sequence" } = $global_list_of_tag_values_in_sequence_encountered ;  <new_line>
 }  <new_line>
-
+if ( $global_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+    print TRACE_OUT 'dashrep_runtime_error__gather_tagged_info_from_file__case_missing_unique_values (count ' . $global_count_of_items_with_missing_unique_id . ')' ;  <new_line>
+}  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-interpreter-function-end

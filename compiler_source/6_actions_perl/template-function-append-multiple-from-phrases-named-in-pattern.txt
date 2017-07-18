@@ -5,13 +5,16 @@ sub function__append_multiple_from_phrases_named_in_pattern( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_phrase_name_containing_pattern = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
+$global_phrase_name_containing_parameter_list = '' ;  <new_line>
 $global_phrase_name_containing_source_words = '' ;  <new_line>
 if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } ) ) && ( $global_dashrep_replacement{ $global_phrase_name_containing_pattern } =~ /^([^ ]*)ambee<character_hyphen>([^ ]*)<character_hyphen>amenn([^ ]*)$/ ) ) {  <new_line>
     $global_prefix = $1 ;  <new_line>
     $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
     $global_suffix = $3 ;  <new_line>
 } else {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid' ;  <new_line>
+    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern . "\n" ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 $global_prefix =~ s/[ \n]+//g ;  <new_line>
