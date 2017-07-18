@@ -132,6 +132,8 @@ abc xyz
 correct-value-for-list-from-rearranged-alphabetic:
 Thomas_Jefferson Abe_Lincoln Paul_MacCready Nikola_Tesla 
 ----
+(2):
+----
 correct-value-for-list-from-rearranged-numeric:
 one three five seven twelve 
 ----
@@ -143,9 +145,6 @@ correct-value-for-list-of-first-items-in-two-dimensions:
 ----
 correct-value-for-list-of-gathered-ids:
 102 101 
-----
-correct-value-for-list-of-integers-positive-sorted:
-???
 ----
 correct-value-for-list-of-pointers-to-unique-words:
 1 2 3 4 5 7 8 13 
@@ -227,6 +226,9 @@ correct-value-for-result-calculation-subtraction:
 ----
 correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
+----
+correct-value-for-result-integers-positive-sorted:
+???
 ----
 correct-value-for-result-list-of-files-in-current-read-directory:
 ??? 
@@ -608,11 +610,23 @@ list-of-integers-positive-and-negative:
 list-of-integers-positive:
 12 72 0 3 28 94 36 103 17 1
 ----
+list-of-number-words-by-name:
+seven one five three twelve
+----
 list-of-numbers-as-text:
 one two three four five six seven eight nine ten
 ----
+list-of-numbers-matching-number-words-by-name:
+7 1 5 3 12
+----
 list-of-numbers:
 3 12 7 13 4
+----
+list-of-person-names-first-underscore-last:
+Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready 
+----
+list-of-person-names-lowercase-last-underscore-first:
+tesla_nikola lincoln_abe jefferson_thomas maccready_paul 
 ----
 list-of-phrases-to-clear:
 phrase-to-clear-one phrase-to-clear-two phrase-to-clear-three 
@@ -631,12 +645,6 @@ ghi
 ----
 numeric-map-tile-zoom:
 12
-----
-operand-one:
-Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready 
-----
-operand-three:
-tesla_nikola lincoln_abe jefferson_thomas maccready_paul 
 ----
 output-filename:
 output_display_values_not_correct.txt
@@ -1150,7 +1158,7 @@ ambee copy-uppercase-only text-being-copied text-copied-uppercase amenn
 ambee copy-words-from-position-to-position text-being-copied text-copied-without-first-word 2 999  amenn
 ambee copy-words-from-position-to-position text-being-copied text-copied-without-last-word 1 2  amenn
 
-ambee copy-words-sort-numeric text-being-copied-numeric text-copied-numeric-sorted amenn
+ambee copy-words-sort-numeric list-of-integers-positive-and-negative result-integers-positive-sorted amenn
 
 
 ambee two-dimensional-sort amenn
@@ -1175,9 +1183,9 @@ ambee copy-words-sort-alphabetic list-of-animal-types alphabetically-sorted-anim
 
 ambee generate-every-ordered-pairwise-combination-of-words list-of-animal-types list-ordered-pairwise-words-one list-ordered-pairwise-words-two amenn
 
-ambee copy-words-rearrange-using-order-sort-numeric operand-one list-from-rearranged-numeric operand-three  amenn
+ambee copy-words-rearrange-using-order-sort-numeric list-of-number-words-by-name list-from-rearranged-numeric list-of-numbers-matching-number-words-by-name  amenn
 
-ambee copy-words-rearrange-using-order-sort-alphabetic operand-one list-from-rearranged-alphabetic operand-three amenn
+ambee copy-words-rearrange-using-order-sort-alphabetic list-of-person-names-first-underscore-last list-from-rearranged-alphabetic list-of-person-names-lowercase-last-underscore-first amenn
 
 ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 0 amenn  amenn
 ambee put-into-phrase result-of-zero-or-nonzero  ambee zero-or-nonzero 23 amenn  amenn
