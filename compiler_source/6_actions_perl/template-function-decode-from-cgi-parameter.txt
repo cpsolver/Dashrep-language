@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__decode_from_cgi_parameter( ) {  <new_line>
 
@@ -17,4 +17,6 @@ $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_accumulated_text =~ s/\+/ /sg ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__copy_from_columns_in_file_to_column_lists( ) {  <new_line>
 
@@ -30,4 +30,6 @@ for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_num
 }  <new_line>
 close( INFILE ) ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

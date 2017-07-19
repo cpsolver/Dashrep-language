@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__copy_characters_from_position_to_position( ) {  <new_line>
 
@@ -23,4 +23,6 @@ if ( ( $global_pointer_one == -1 ) || ( $global_pointer_two == -1 ) || ( $global
 $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_source_text , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

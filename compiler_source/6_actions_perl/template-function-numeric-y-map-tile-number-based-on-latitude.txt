@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 
@@ -29,4 +29,6 @@ if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*
     $global_action_result = $1 ;  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

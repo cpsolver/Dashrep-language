@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__rename_file( ) {  <new_line>
 
@@ -8,4 +8,6 @@ $global_action_result = '' ;  <new_line>
 
 rename( $global_source_filename , $global_target_filename ) ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

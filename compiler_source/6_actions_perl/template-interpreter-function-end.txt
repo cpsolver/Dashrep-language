@@ -1,3 +1,0 @@
-$global_target_text = $global_action_result ;  <new_line>
-
-template-function-segment-ending

@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__copy_words_from_position_to_position( ) {  <new_line>
 
@@ -34,4 +34,6 @@ if ( ( $global_word_count < 1 ) || ( $global_word_number_begin < 1 ) || ( $globa
     $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

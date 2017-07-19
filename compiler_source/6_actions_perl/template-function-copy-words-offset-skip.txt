@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 # todo: write this code , use new function that points to words in operand one <new_line>
 
@@ -8,4 +8,6 @@ code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phra
 
 return '' ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

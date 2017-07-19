@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__convert_unicode_to_html_entities( ) {  <new_line>
 
@@ -55,4 +55,6 @@ if ( $global_action_name eq 'convert hyphen-here unicode hyphen-here to hyphen-h
     $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

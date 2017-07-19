@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__create_empty_sub_folder( ) {  <new_line>
 
@@ -25,4 +25,6 @@ if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

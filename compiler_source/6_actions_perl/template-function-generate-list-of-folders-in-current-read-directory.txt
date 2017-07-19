@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__generate_list_of_folders_in_current_read_directory( ) {  <new_line>
 
@@ -31,4 +31,6 @@ if ( opendir( READDIR , $global_directory ) ) {  <new_line>
     print TRACE_OUT 'dashrep_runtime_error_action_generate_list_of_folders_in_current_read_directory_case_directory_could_not_be_opened (' . $global_directory . ')' ;  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

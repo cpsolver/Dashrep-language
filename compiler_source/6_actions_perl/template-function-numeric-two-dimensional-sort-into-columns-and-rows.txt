@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__numeric_two_dimensional_sort_into_columns_and_rows( ) {  <new_line>
 
@@ -254,4 +254,6 @@ for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ;
 $global_final_result =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_four } = $global_final_result ;  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending

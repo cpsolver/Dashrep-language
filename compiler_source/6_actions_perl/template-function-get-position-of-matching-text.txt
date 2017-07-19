@@ -1,4 +1,4 @@
-template-interpreter-function-begin
+# no-space dashes-long-line  <new_line>
 
 sub function__get_position_of_matching_text( ) {  <new_line>
 
@@ -15,4 +15,6 @@ if ( $global_phrase_length > 0 ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
-template-interpreter-function-end
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending
