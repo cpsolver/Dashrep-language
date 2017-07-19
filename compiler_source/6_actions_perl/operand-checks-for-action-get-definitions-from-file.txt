@@ -1,1 +1,1 @@
-check-operand-count-is-one check-operand-one-is-file-name
+check-operand-count-is-one check-operand-one-input-file-exists

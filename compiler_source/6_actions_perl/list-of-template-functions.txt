@@ -14,6 +14,7 @@ template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-yes-or-no-valid-path
 template-function-parameterized-yes-or-no-input-file-exists
 template-function-parameterized-yes-or-no-output-file-exists
+template-function-parameterized-yes-or-no-folder-name
 
 template-function-point-to-words
 template-function-point-to-words-in-operand-one

@@ -1,0 +1,1 @@
+$global_yes_or_no = &function_parameterized__yes_or_no_folder_name(
