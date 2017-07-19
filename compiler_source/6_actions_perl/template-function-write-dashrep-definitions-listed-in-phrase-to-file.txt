@@ -2,66 +2,49 @@ template-interpreter-function-begin
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
 
-template-interpreter-function-middle
-
-@global_list_of_phrases = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_source_phrase_name } ) ;  <new_line>
-@global_sequence_of_phrases = @global_list_of_phrases ;  <new_line>
-
-if ( $#global_list_of_phrases < 0 ) {  <new_line>
-    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT "{{trace; warning: no phrases to write (to file)}}\n" ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here all hyphen-here begin" } ) ) {  <new_line>
-    $global_all_defs_begin = "[<character_hyphen>export hyphen-here defs hyphen-here all hyphen-here begin<character_hyphen>]\n\n" ;  <new_line>
+$global_action_result = '' ;  <new_line>
+@global_list_of_phrases = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here all hyphen-here begin' } ) ) {  <new_line>
+    $global_all_defs_begin = '[<character_hyphen>export hyphen-here defs hyphen-here all hyphen-here begin<character_hyphen>]' . "\n\n" ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_all_defs_begin = "" ;  <new_line>
+    $global_all_defs_begin = '' ;  <new_line>
 }  <new_line>
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here all hyphen-here end" } ) ) {  <new_line>
-    $global_all_defs_end = "[<character_hyphen>export hyphen-here defs hyphen-here all hyphen-here end<character_hyphen>]\n\n" ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here all hyphen-here end' } ) ) {  <new_line>
+    $global_all_defs_end = '[<character_hyphen>export hyphen-here defs hyphen-here all hyphen-here end<character_hyphen>]' . "\n\n" ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_all_defs_end = "" ;  <new_line>
+    $global_all_defs_end = '' ;  <new_line>
 }  <new_line>
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here phrase hyphen-here begin" } ) ) {  <new_line>
-    $global_phrase_begin = "[<character_hyphen>export hyphen-here defs hyphen-here phrase hyphen-here begin<character_hyphen>] " ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here phrase hyphen-here begin' } ) ) {  <new_line>
+    $global_phrase_begin = '[<character_hyphen>export hyphen-here defs hyphen-here phrase hyphen-here begin<character_hyphen>] ' ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_phrase_begin = "" ;  <new_line>
+    $global_phrase_begin = '' ;  <new_line>
 }  <new_line>
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here phrase hyphen-here end" } ) ) {  <new_line>
-    $global_phrase_end = " [<character_hyphen>export hyphen-here defs hyphen-here phrase hyphen-here end<character_hyphen>]\n\n" ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here phrase hyphen-here end' } ) ) {  <new_line>
+    $global_phrase_end = ' [<character_hyphen>export hyphen-here defs hyphen-here phrase hyphen-here end<character_hyphen>]' . "\n\n" ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_phrase_end = "" ;  <new_line>
+    $global_phrase_end = '' ;  <new_line>
 }  <new_line>
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here def hyphen-here begin" } ) ) {  <new_line>
-    $global_def_begin = "[<character_hyphen>export hyphen-here defs hyphen-here def hyphen-here begin<character_hyphen>] " ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here def hyphen-here begin' } ) ) {  <new_line>
+    $global_def_begin = '[<character_hyphen>export hyphen-here defs hyphen-here def hyphen-here begin<character_hyphen>] ' ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_def_begin = "" ;  <new_line>
+    $global_def_begin = '' ;  <new_line>
 }  <new_line>
-if ( exists( $global_dashrep_replacement{ "export hyphen-here defs hyphen-here def hyphen-here end" } ) ) {  <new_line>
-    $global_def_end = " [<character_hyphen>export hyphen-here defs hyphen-here def hyphen-here end<character_hyphen>]\n\n" ;  <new_line>
+if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here def hyphen-here end' } ) ) {  <new_line>
+    $global_def_end = ' [<character_hyphen>export hyphen-here defs hyphen-here def hyphen-here end<character_hyphen>]' . "\n\n" ;  <new_line>
 } else  <new_line>
 {  <new_line>
-    $global_def_end = "" ;  <new_line>
-}  <new_line>
-
-if ( open ( OUTFILE , '>' . $global_target_filename ) ) {  <new_line>
-    $global_possible_error_message .= "" ;  <new_line>
-} else  <new_line>
-{  <new_line>
-    $global_possible_error_message .= " [warning, file named " . $global_target_filename . " could not be opened for writing]" ;  <new_line>
-    return '' ;  <new_line>
+    $global_def_end = '' ;  <new_line>
 }  <new_line>
 
 $global_counter = 0 ;  <new_line>
 
-foreach $global_phrase_name ( @global_sequence_of_phrases ) {  <new_line>
-    if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne "four hyphen-here hyphens" ) ) {  <new_line>
+foreach $global_phrase_name ( @global_list_of_phrases ) {  <new_line>
+    if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne 'four hyphen-here hyphens' ) ) {  <new_line>
         print OUTFILE $global_phrase_name . "\n" ;  <new_line>
         $global_counter ++ ;  <new_line>
     }  <new_line>
@@ -71,7 +54,7 @@ close( OUTFILE ) ;  <new_line>
 
 if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . "  not successful}}\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_from_phrase_append_to_file__case_file_write_protection_not_successful' . $global_target_filename ;  <new_line>
 }  <new_line>
 
 template-interpreter-function-end

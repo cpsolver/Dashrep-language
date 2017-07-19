@@ -2,46 +2,16 @@ template-interpreter-function-begin
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 
-template-interpreter-function-middle
-
-if ( ( $global_source_filename eq "" ) || ( $global_target_filename eq "" ) ) {  <new_line>
-    $global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_target_filename . "]" ;  <new_line>
-} elsif ( $global_dashrep_replacement{ "yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files" } ne "yes" ) {  <new_line>
-    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT "{{trace; attempt to copy from phrase " . $global_source_phrase_name . " to end of file " . $global_target_filename . "}}\n" ;  <new_line>
-    $global_possible_error_message .= " [warning, do not have permission to append to files]" ;  <new_line>
-}  <new_line>
-if ( open ( INFILE , '<' . $global_source_filename ) ) {  <new_line>
-    $global_possible_error_message .= "" ;  <new_line>
-} else  <new_line>
-{  <new_line>
-    $global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;  <new_line>
-}  <new_line>
-if ( open ( OUTFILE , '>>' . $global_target_filename ) ) {  <new_line>
-    $global_possible_error_message .= "" ;  <new_line>
-} else  <new_line>
-{  <new_line>
-    $global_possible_error_message .= " [warning, file named " . $global_target_filename . " could not be opened for writing]" ;  <new_line>
-}  <new_line>
-if ( $global_possible_error_message eq "" ) {  <new_line>
-    while ( $global_input_line = <INFILE> ) {  <new_line>
-        chomp( $global_input_line ) ;  <new_line>
-        print OUTFILE $global_input_line . "\n" ;  <new_line>
-    }  <new_line>
-    if ( 77 == 78 ) {  <new_line>
-        &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-        print TRACE_OUT "{{trace; copied from file " . $global_source_filename . " to file " . $global_target_filename . "}}\n" ;  <new_line>
-    }  <new_line>
-} else  <new_line>
-{  <new_line>
-    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;  <new_line>
+$global_action_result = '' ;  <new_line>
+while ( $global_input_line = <INFILE> ) {  <new_line>
+    chomp( $global_input_line ) ;  <new_line>
+    print OUTFILE $global_input_line . "\n" ;  <new_line>
 }  <new_line>
 close( INFILE ) ;  <new_line>
 close( OUTFILE ) ;  <new_line>
-if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {  <new_line>
+if ( not( chmod( $global_file_write_protection_mode , $global_output_filename ) ) ) {  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . "  not successful}}\n" ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__copy_append_file_to_file__case_write_protect_not_successful ' . $global_output_filename ;  <new_line>
 }  <new_line>
 
 template-interpreter-function-end

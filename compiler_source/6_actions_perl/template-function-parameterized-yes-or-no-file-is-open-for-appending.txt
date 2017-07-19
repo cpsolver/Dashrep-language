@@ -1,8 +1,8 @@
 # no-space dashes-long-line  <new_line>
-# function_parameterized__yes_or_no_output_append_file  <new_line>
+# function_parameterized__yes_or_no_file_is_open_for_appending  <new_line>
 <new_line>
 
-sub function_parameterized__yes_or_no_output_append_file( ) {  <new_line>
+sub function_parameterized__yes_or_no_file_is_open_for_appending( ) {  <new_line>
 my $local_text ;  <new_line>
 $local_text = $_[ 0 ] ;  <new_line>
 
@@ -13,7 +13,9 @@ $global_runtime_error_type = 'file_name_contains_space' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( open ( OUTFILE , '>' . $global_output_filename ) ) {  <new_line>
+# todo: check if file exists, if not, then create empty file, then write protect it (while empty), then continue below  <new_line>
+
+if ( open ( OUTFILE , '>>' . $global_output_filename ) ) {  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
