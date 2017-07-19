@@ -47,6 +47,11 @@ my $global_bottom_row_number = '' ;  <new_line>
 my $global_character_code_to_decode = '' ;  <new_line>
 my $global_character_pointer_to_next_word_zero_based = 0 ;  <new_line>
 my $global_runtime_error_type = '' ;  <new_line>
+my $global_list_indicating_sort_order_text_string = '' ;  <new_line>
+my $global_list_name_prefix = '' ;  <new_line>
+my $global_list_of_words_as_text = '' ;  <new_line>
+my $global_list_of_x_values_as_text = '' ;  <new_line>
+my $global_list_of_y_values_as_text = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
@@ -101,6 +106,7 @@ my $global_word_pointer_operand_four = 0 ;  <new_line>
 my $global_phrase_number = 0 ;  <new_line>
 my $global_number_of_unique_phrases = 0 ;  <new_line>
 my $global_count_of_items_with_missing_unique_id = 0 ;  <new_line>
+my $global_list_length = 0 ;  <new_line>
 <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
