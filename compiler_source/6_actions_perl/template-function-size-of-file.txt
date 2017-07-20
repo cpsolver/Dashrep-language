@@ -2,7 +2,7 @@
 
 sub function__size_of_file( ) {  <new_line>
 
-$global_action_result = sprintf( "%d" , ( stat( $global_input_filename ) )[7] ) ;  <new_line>
+$global_action_result = sprintf( "%d" , ( stat( $global_input_file_name ) )[7] ) ;  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
 
