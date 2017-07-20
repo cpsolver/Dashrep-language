@@ -182,11 +182,11 @@ get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 write-dashrep-definitions-listed-in-phrase-to-file
+
+category_data
 find-line-in-file-that-begins-with-text
 find-lines-in-file-that-begin-with-any-listed-word
 find-lines-in-file-that-begin-with-any-two-words-listed
-
-category_data
 copy-from-columns-in-file-to-named-phrases
 copy-from-columns-in-file-to-column-lists
 yes-or-no-use-two-spaces-as-column-delimiter
