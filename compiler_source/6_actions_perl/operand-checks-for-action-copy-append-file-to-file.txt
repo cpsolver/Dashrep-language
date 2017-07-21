@@ -1,1 +1,1 @@
-check-user-has-permission-append-to-files check-operand-count-is-two check-operand-two-is-file-name check-operand-one-input-file-exists
+check-user-has-permission-append-to-files check-operand-count-is-two check-operand-two-is-file-name check-operand-one-is-input-file-open-for-reading

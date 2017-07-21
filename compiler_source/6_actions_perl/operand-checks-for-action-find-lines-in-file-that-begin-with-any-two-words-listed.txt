@@ -1,1 +1,1 @@
-check-operand-count-is-three check-operand-one-input-file-exists check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name
+check-operand-count-is-three check-operand-one-is-input-file-open-for-reading check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name
