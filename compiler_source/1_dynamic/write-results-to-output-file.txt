@@ -52,9 +52,6 @@
 
 [-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
 
-[-copy-and-replace template-function-interpreter_code_dashrep_expand_parameters modified-template-function-interpreter_code_dashrep_expand_parameters character-hyphen string-character-hyphen-in-brackets-]
-[-copy-and-replace template-function-interpreter_code_actions_file_related modified-template-function-interpreter_code_actions_file_related character-hyphen string-character-hyphen-in-brackets-]
-
 [-copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions-]
 [-copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions-]
 
