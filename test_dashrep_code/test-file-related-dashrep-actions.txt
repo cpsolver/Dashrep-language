@@ -1,3 +1,12 @@
+ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
+ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
+
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
+ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
+
 
 ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
 ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
@@ -17,9 +26,6 @@ find-line-in-file-that-begins-with-text
 find-lines-in-file-that-begin-with-any-listed-word
 find-lines-in-file-that-begin-with-any-two-words-listed
 write-gathered-listed-items-to-end-of-file
-copy-from-file-to-phrase
-copy-from-phrase-append-to-file
-copy-append-file-to-file
 
 set-file-permission-public-read
 create-empty-file
