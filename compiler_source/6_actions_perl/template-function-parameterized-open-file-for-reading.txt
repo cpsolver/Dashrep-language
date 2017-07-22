@@ -22,7 +22,7 @@ if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
-$global_source_file_full_path = '.' . $global_slash_or_backslash . 'zee_dashrep_empty_file.txt' ;  <new_line>
+$global_source_file_full_path = '.' . $global_slash_or_backslash_for_path . 'zee_dashrep_empty_file.txt' ;  <new_line>
 
 if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
 return $global_yes ;  <new_line>
