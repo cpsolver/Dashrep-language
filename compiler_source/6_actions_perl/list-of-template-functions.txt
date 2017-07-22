@@ -13,11 +13,10 @@ template-function-parameterized-get-list-of-words
 template-function-parameterized-yes-or-no-valid-path
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-yes-or-no-input-file-exists
-template-function-parameterized-yes-or-no-output-file-exists
 template-function-parameterized-yes-or-no-is-folder-name
-template-function-parameterized-open-for-reading-file-named
+template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
-template-function-parameterized-open-new-file-for-appending
+template-function-parameterized-open-file-for-writing-new-file
 
 template-function-point-to-words
 template-function-point-to-words-in-operand-one
