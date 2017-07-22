@@ -6,7 +6,7 @@ $global_action_result = '' ;  <new_line>
 
 # todo: check that target file does not exist  <new_line>
 
-rename( $global_source_filename , $global_target_filename ) ;  <new_line>
+rename( $global_source_file_name , $global_target_file_name ) ;  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
 

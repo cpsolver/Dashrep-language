@@ -9,7 +9,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     print OUTFILE $global_operand_one . "\n" ;  <new_line>
 }  <new_line>
 close( OUTFILE ) ;  <new_line>
-if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {  <new_line>
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_name ) ) ) {  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
     print TRACE_OUT 'runtime_operand_error__copy_from_phrase_append_to_file__case_file_write_protection_not_successful' ;  <new_line>
 }  <new_line>
