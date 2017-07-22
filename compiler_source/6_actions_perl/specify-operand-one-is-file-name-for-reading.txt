@@ -1,0 +1,1 @@
+$global_source_file_name = $global_operand_one ;  <new_line>

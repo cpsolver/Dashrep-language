@@ -1,0 +1,1 @@
+$global_target_file_name = $global_operand_two ;  <new_line>
