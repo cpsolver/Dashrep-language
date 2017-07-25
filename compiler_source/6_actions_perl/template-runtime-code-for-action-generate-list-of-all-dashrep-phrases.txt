@@ -1,5 +1,14 @@
 template-runtime-code-standard-action-begin
 
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+
+&function__generate_list_of_all_dashrep_phrases( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+*---
+
 $global_source_text = runtime-code-for-operand-number-one ;  <new_line>
 @global_list_of_items_one = sort( keys( %global_dashrep_replacement ) ) ;  <new_line>
 $global_count_of_items_appended = 0 ;  <new_line>
@@ -18,5 +27,7 @@ $global_count_of_items_appended ++ ;  <new_line>
 }  <new_line>
 
 runtime-code-storage-item-result = '' ;  <new_line>
+
+---*
 
 template-runtime-code-standard-action-end
