@@ -42,6 +42,7 @@ time-month-number
 time-second
 time-year
 yes-or-no-indicate-line-endings
+yes-or-no-permission-administrator
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 yes-or-no-use-two-spaces-as-column-delimiter
