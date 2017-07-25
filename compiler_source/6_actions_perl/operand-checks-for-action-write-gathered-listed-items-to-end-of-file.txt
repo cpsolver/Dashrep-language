@@ -1,1 +1,1 @@
-check-operand-count-is-two check-operand-one-is-phrase-name specify-operand-two-is-file-name-for-appending open-file-for-appending
+check-operand-count-is-two check-operand-one-is-phrase-not-empty specify-operand-two-is-file-name-for-appending open-file-for-appending
