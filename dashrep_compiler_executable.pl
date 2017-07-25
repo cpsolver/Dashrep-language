@@ -608,6 +608,9 @@ my $storage_item__47= 'no' ;
 $global_dashrep_replacement{ 'yes-or-no-use-two-spaces-as-column-delimiter' } = $storage_item__47;
 
 
+$global_dashrep_replacement{ 'yes-or-no-permission-administrator' } = 'yes' ;
+
+
 
 #------------------------------------------------------------
 # End of initialize variables
