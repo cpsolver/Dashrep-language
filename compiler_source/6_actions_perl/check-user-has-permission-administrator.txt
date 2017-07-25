@@ -1,5 +1,5 @@
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-administrator' code-get-or-put-phrase-definition-end ) ) && (
- code-get-or-put-phrase-definition-begin 'yes-or-no-permission-administrator' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
 $global_yes_or_no = $global_yes ;  <new_line>
 } else {  <new_line>
 $global_yes_or_no = $global_no ;  <new_line>
