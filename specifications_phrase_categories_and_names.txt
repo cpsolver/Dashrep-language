@@ -168,7 +168,6 @@ yes-or-no-folder-exists
 size-of-file
 modification-time-of-file
 set-file-permission-public-read
-create-empty-file
 rename-file
 delete-file
 create-empty-sub-folder
@@ -233,6 +232,7 @@ amennfenambee
 linbray
 
 category_deprecated
+create-empty-file
 expand-parameters-only
 dashrep-definitions-begin
 dashrep-definitions-end
