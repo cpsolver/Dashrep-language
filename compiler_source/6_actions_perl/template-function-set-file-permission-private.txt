@@ -1,0 +1,13 @@
+# no-space dashes-long-line  <new_line>
+
+sub function__set_file_permission_private( ) {  <new_line>
+
+$global_action_result = '' ;  <new_line>
+if ( not( chmod( $global_file_private_protection_mode , $global_output_filename ) ) ) {  <new_line>
+    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__set_file_permission_private__case_not_successful ' . $global_output_filename ;  <new_line>
+}  <new_line>
+
+$global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending
