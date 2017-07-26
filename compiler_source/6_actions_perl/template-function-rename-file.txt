@@ -6,8 +6,8 @@ $global_action_result = '' ;  <new_line>
 
 # todo: check that target file does not exist  <new_line>
 
-rename( $global_source_file_name , $global_target_file_name ) ;  <new_line>
+$global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_source_file_name ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
+rename( $global_source_file_full_path , $global_target_file_name ) ;  <new_line>
 
 template-function-segment-ending

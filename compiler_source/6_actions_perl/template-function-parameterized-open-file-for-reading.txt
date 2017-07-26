@@ -28,16 +28,16 @@ if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
-if ( open ( INFILE , '>' . $global_source_file_full_path  ) ) {  <new_line>
-print INFILE '' ;  <new_line>
-close ( INFILE ) ;  <new_line>
+if ( open ( OUTFILE_TEMP , '>' . $global_source_file_full_path  ) ) {  <new_line>
+print OUTFILE_TEMP '' ;  <new_line>
+close ( OUTFILE_TEMP ) ;  <new_line>
 
 if ( not( chmod( $global_file_write_protection_mode , $global_source_file_full_path ) ) ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__open_for_reading_file_named__case_setting_private_protection_not_successful ' . $global_source_file_full_path ;  <new_line>
 }  <new_line>
 
-if ( open ( INFILE , '>' . $global_source_file_full_path  ) ) {  <new_line>
+if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 

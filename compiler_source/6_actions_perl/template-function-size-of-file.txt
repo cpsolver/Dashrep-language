@@ -2,8 +2,8 @@
 
 sub function__size_of_file( ) {  <new_line>
 
-$global_action_result = sprintf( "%d" , ( stat( $global_input_file_name ) )[7] ) ;  <new_line>
+$global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_source_file_name ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
+$global_action_result = sprintf( "%d" , ( stat( $global_source_file_full_path ) )[7] ) ;  <new_line>
 
 template-function-segment-ending

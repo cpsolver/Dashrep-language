@@ -4,8 +4,10 @@ sub function__yes_or_no_file_exists( ) {  <new_line>
 
 #  todo: check if file name valid, not check if exists  <new_line>
 
+$global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_source_file_name ;  <new_line>
+
 $global_action_result = 'no' ;  <new_line>
-if ( open ( INFILE , '<' . $global_input_file_name ) ) {  <new_line>
+if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
     $global_action_result = 'yes' ;  <new_line>
 }  <new_line>
 close( INFILE ) ;  <new_line>
