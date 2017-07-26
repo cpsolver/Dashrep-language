@@ -19,6 +19,7 @@ dashrep-gather-tag-unique
 dashrep-gather-tag-delete
 dashrep-path-prefix-for-file-reading
 dashrep-path-prefix-for-file-writing
+dashrep-file-name-if-read-file-missing
 dashrep-time-limit
 dashrep-version
 export-defs-all-begin

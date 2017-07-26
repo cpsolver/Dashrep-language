@@ -322,6 +322,10 @@ description-for-phrase-linewise-input-line-count:
 See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h use h-h handler b-i-e no-space .
 -----
 
+description-for-phrase-dashrep-file-name-if-read-file-missing:
+This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase b-i-b dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading b-i-e no-space . n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.
+-----
+
 description-for-phrase-insert-angle-bracketed-definitions:
 This action modifies the specified phrase by replacing each occurrence of a specially identified hyphenated phrase with the definition of that phrase. s-n The specially identified hyphenated phrases begin and end with angle brackets ( no-space b-i-b &lt; b-i-e and b-i-b &gt; b-i-e no-space ) and contain at least one underscore ( no-space b-i-b _ b-i-e no-space ), such as b-i-b &lt;special_content&gt; b-i-e no-space . s-n For each such specially identified hyphenated phrase, the underscores are replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase. s-n The special text b-i-b &lt;character_hyphen&gt; b-i-e is replaced by a hyphen ( no-space b-i-b - b-i-e no-space ) and is especially useful for handling text that contains Dashrep phrases that must not be replaced. s-n The special text items b-i-b &lt;no_space&gt; b-i-e and b-i-b &lt;new_line&gt; b-i-e provide functionality that is equivalent to the b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e directives.
 -----
