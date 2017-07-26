@@ -168,6 +168,7 @@ yes-or-no-folder-exists
 size-of-file
 modification-time-of-file
 set-file-permission-public-read
+set-file-permission-private
 rename-file
 delete-file
 create-empty-sub-folder
