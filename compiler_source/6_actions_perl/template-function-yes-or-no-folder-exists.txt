@@ -3,7 +3,7 @@
 sub function__yes_or_no_folder_exists( ) {  <new_line>
 
 $global_action_result = 'no' ;  <new_line>
-$global_target_file_name = code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-reading' code-get-or-put-phrase-definition-end . $global_operand_one ;  <new_line>
+$global_target_file_name = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_operand_one ;  <new_line>
 if ( index( $global_target_file_name , ' ' ) < 0 ) {  <new_line>
     if ( <character_hyphen>d $global_target_file_name ) {  <new_line>
         $global_action_result = "yes" ;  <new_line>

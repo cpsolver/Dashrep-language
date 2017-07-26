@@ -1,6 +1,6 @@
 template-runtime-code-standard-action-begin
 
-$global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep-path-prefix-for-file-writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
+$global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
 unlink $global_temporary_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
