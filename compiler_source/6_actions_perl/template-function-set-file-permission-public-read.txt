@@ -2,10 +2,12 @@
 
 sub function__set_file_permission_public_read( ) {  <new_line>
 
+$global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $global_target_file_name ;  <new_line>
+
 $global_action_result = '' ;  <new_line>
-if ( not( chmod( $global_file_public_read_protection_mode , $global_output_filename ) ) ) {  <new_line>
+if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error__set_file_permission_public_read__case_not_successful ' . $global_output_filename ;  <new_line>
+    print TRACE_OUT 'runtime_operand_error__set_file_permission_public_read__case_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
