@@ -9,7 +9,7 @@ $local_text = $_[ 0 ] ;  <new_line>
 $global_output_filename = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $local_text ;  <new_line>
 
 if ( index( $global_output_filename , ' ' ) >= 0 ) {  <new_line>
-$global_runtime_error_type = 'file_name_contains_space' ;  <new_line>
+$global_runtime_error_type = 'file_name_invalid_contains_space' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
