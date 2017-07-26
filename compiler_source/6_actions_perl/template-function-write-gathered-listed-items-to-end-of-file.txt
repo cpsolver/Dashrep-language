@@ -28,10 +28,8 @@ foreach $global_unique_value ( @global_list_of_unique_values ) {  <new_line>
 }  <new_line>
 print OUTFILE $global_accumulated_text . "\n" ;  <new_line>
 close( OUTFILE ) ;  <new_line>
-if ( not( chmod( $global_file_write_protection_mode , $global_target_file_name ) ) ) {  <new_line>
-    &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'runtime_operand_error__write_gathered_listed_items_to_end_of_file__case_file_write_protection_not_successful ' . $global_target_file_name ;  <new_line>
-}  <new_line>
+
+template-runtime-code-protect-target-file
 
 $global_target_text = $global_action_result ;  <new_line>
 
