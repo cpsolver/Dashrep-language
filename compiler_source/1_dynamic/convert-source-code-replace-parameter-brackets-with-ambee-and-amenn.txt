@@ -1,6 +1,6 @@
 *---
-[-trace-show source-code-as-words-]
 ---*
+[-trace-show source-code-as-words-]
 
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
 [-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
