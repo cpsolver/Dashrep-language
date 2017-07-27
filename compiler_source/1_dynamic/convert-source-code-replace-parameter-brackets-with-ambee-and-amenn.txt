@@ -13,6 +13,8 @@
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
 [-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
 
+[-trace-show source-code-as-words-]
+
 [-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
 [-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
 [-generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end-]
@@ -22,6 +24,8 @@
 [-use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters-]
 [-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
 [-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
+
+[-trace-show pointers-to-adjacent-characters-]
 
 [-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters-]
 
