@@ -6048,7 +6048,7 @@ $global_phrase_name = 'action-name' ;
 
 sub function_compiled__assign_action_operand_characteristics( ) {
 $global_phrase_name = 'assign-action-operand-characteristics' ;
-&special_function_do_single_replacement_only( ) ;
+# &special_function_do_single_replacement_only( ) ;
 }
 
 sub function_compiled__check_elapsed_time( ) {
