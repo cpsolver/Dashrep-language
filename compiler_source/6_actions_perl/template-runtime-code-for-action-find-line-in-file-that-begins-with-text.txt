@@ -1,1 +1,13 @@
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__find_line_in_file_that_begins_with_text( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
