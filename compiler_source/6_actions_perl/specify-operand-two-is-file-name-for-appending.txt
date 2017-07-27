@@ -1,1 +1,1 @@
-$global_target_file_name = $global_operand_two ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
