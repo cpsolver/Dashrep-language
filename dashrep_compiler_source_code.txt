@@ -259,12 +259,9 @@ if unbalanced needs warning:
 [-put-into-phrase count-of-ambee-tokens  0 -]
 [-put-into-phrase count-of-amenn-tokens  0 -]
 
-*---
-todo: un-comment for faster execution
 [-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
 [-copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes-]
 [-delete-listed-phrases list-of-phrases-to-delete-]
----*
 ----
 generate-code-for-one-action:
 [-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
@@ -863,9 +860,16 @@ run-compiler:
 [-copy-from-file-to-phrase [-input-filename-] source-code-]
 [-compile-source-code-generate-output-results-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+
+*---
 [-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
+---*
+
 [-write-results-to-output-file-]
+
+*---
 [-write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases [-filename-output-debug-trace-all-dashrep-definitions-]-]
+---*
 
 [-check-elapsed-time-]
 ----
@@ -3909,13 +3913,13 @@ runtime-code-word-within-source-text:
 substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
 ----
 specify-operand-one-is-file-name-for-reading:
-$global_source_file_name = $global_operand_one ;  <new_line>
+$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 ----
 specify-operand-two-is-file-name-for-appending:
-$global_target_file_name = $global_operand_two ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
 ----
 specify-operand-two-is-filename-for-writing-new-file:
-$global_target_file_name = $global_operand_two ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
 ----
 template-current-word-in-operand-one:
 substr( $global_operand_one_words , $global_word_begin_operand_one_at_word[ $global_word_pointer_operand_one ] , $global_word_length_operand_one_at_word[ $global_word_pointer_operand_one ] )
@@ -7305,6 +7309,10 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
+
+print 'trace_diagnostic__open_file_for_reading__case_show_file >' . $local_file_name . '<' . "\n" ;  <new_line>
+
+
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'file_name_for_reading_invalid' ;  <new_line>
 return $global_no ;  <new_line>
@@ -8501,21 +8509,6 @@ $global_target_text = $global_action_result ;  <new_line>
 
 template-function-segment-ending
 ----
-template-runtime-code-file-related-action:
-template-runtime-code-standard-action-begin
-
-$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
-
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-standard-action-end
-----
 template-runtime-code-for-action-append-new-line:
 template-runtime-code-standard-action-begin
 
@@ -8555,6 +8548,19 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-copy-and-replace-using-paired-listed-words:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+
+&function__copy_and_replace_using_paired_listed_words( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
 template-runtime-code-for-action-copy-and-replace:
 template-runtime-code-standard-action-begin
 
@@ -8589,7 +8595,19 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-append-file-to-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_append_file_to_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-characters-from-position-to-position:
 template-runtime-code-standard-action-begin
@@ -8634,16 +8652,64 @@ runtime-code-storage-item-result = '' ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-from-columns-in-file-to-column-lists:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_from_columns_in_file_to_column_lists( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-from-columns-in-file-to-named-phrases:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_from_columns_in_file_to_named_phrases( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-from-file-to-phrase:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_from_file_to_phrase( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-from-phrase-append-to-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_from_phrase_append_to_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-copy-lowercase-only:
 template-runtime-code-standard-action-begin
@@ -8736,6 +8802,20 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-copy-words-from-position-to-position:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__copy_words_from_position_to_position( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
 template-runtime-code-for-action-copy-words-offset-skip:
 template-runtime-code-standard-action-begin
 
@@ -8744,6 +8824,44 @@ $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__copy_words_offset_skip( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-words-sort-alphabetic:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+
+&function__copy_words_sort_alphabetic( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-words-that-begin-with-listed-words:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+
+&function__copy_words_that_begin_with_listed_words( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-copy-words-unique-only:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+
+&function__copy_words_unique_only( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
@@ -8766,7 +8884,19 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-create-empty-sub-folder:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__create_empty_sub_folder( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-delete-file:
 template-runtime-code-standard-action-begin
@@ -8774,6 +8904,17 @@ template-runtime-code-standard-action-begin
 $global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
 unlink $global_temporary_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-delete-listed-phrases:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+
+&function__delete_listed_phrases( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
@@ -8833,19 +8974,79 @@ $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-find-line-in-file-that-begins-with-text:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__find_line_in_file_that_begins_with_text( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-listed-word:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__find_lines_in_file_that_begin_with_any_listed_word( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-two-words-listed:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__find_lines_in_file_that_begin_with_any_two_words_listed( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-gather-from-tagged-file-one-entry:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__gather_from_tagged_file_one_entry( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-gather-tagged-info-from-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__gather_tagged_info_from_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-generate-counts-from-integer-to-integer:
 template-runtime-code-standard-action-begin
@@ -8894,15 +9095,52 @@ runtime-code-storage-item-result = '' ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-generate-list-of-files-in-current-read-directory:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__generate_list_of_files_in_current_read_directory( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-generate-list-of-folders-in-current-read-directory:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__generate_list_of_folders_in_current_read_directory( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-generate-phrase-usage-counts:
 template-runtime-code-standard-action-begin
 
 &function__generate_phrase_usage_counts( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-generate-positions-of-delimiter:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+
+&function__generate_positions_of_delimiter( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
@@ -8938,7 +9176,19 @@ runtime-code-storage-item-result = sprintf( "%d" , time ) ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-get-definitions-from-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__get_definitions_from_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-get-position-of-matching-text:
 template-runtime-code-standard-action-begin
@@ -8999,10 +9249,34 @@ if ( $global_pointer_to_word >= 0 ) {  <new_line>
 # end action if yes begin  <new_line>
 ----
 template-runtime-code-for-action-linewise-read-from-file-and-use-handler:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__linewise_read_from_file_and_use_handler( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-modification-time-of-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__modification_time_of_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-no-if-any-no:
 template-runtime-code-for-every-action-begin
@@ -9149,6 +9423,19 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-numeric-vector-add-number:
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+
+&function__numeric_vector_add_number( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+template-runtime-code-standard-action-end
+----
 template-runtime-code-for-action-prepend-text-no-space:
 template-runtime-code-standard-action-begin
 
@@ -9183,16 +9470,64 @@ runtime-code-storage-item-result = '' ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-rename-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__rename_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-set-file-permission-private:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__set_file_permission_private( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-set-file-permission-public-read:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__set_file_permission_public_read( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-size-of-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__size-of-file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-trace-show-where:
 template-runtime-code-for-every-action-begin
@@ -9329,10 +9664,34 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__write_dashrep_definitions_listed_in_phrase_to_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__write_gathered_listed_items_to_end_of_file( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-yes-if-all-yes:
 template-runtime-code-for-every-action-begin
@@ -9400,10 +9759,34 @@ runtime-code-storage-item-result = 'no' ;  <new_line>
 template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-yes-or-no-file-exists:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__yes_or_no_file_exists( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-yes-or-no-folder-exists:
-template-runtime-code-file-related-action
+template-runtime-code-standard-action-begin
+
+$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+
+&function__yes_or_no_folder_exists( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-standard-action-end
 ----
 template-runtime-code-for-action-yes-or-no-opposite:
 template-runtime-code-for-every-action-begin
