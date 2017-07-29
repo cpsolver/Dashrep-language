@@ -1,3 +1,12 @@
+initialize-global-arrays
+initialize-global-variables
+runtime-code-statement-end-with-new-line
+runtime-code-at-top-if-warning-message
+runtime-code-for-text-storage-position-end
+runtime-code-for-overdue-start-of-if-branch
+warning-ambee-amenn-imbalance-introduction
+warning-more-ambee-than-amenn-tokens
+warning-more-amenn-than-ambee-tokens
 segment-initialize-begin
 segment-initialize-end
 segment-definition-items-begin
@@ -16,13 +25,6 @@ segment-functions-replacement-only-begin
 segment-functions-replacement-only-end
 segment-optional-extra-runtime-functions-begin
 segment-optional-extra-runtime-functions-end
-initialize-global-arrays
-initialize-global-variables
-runtime-code-statement-end-with-new-line
-warning-ambee-amenn-imbalance-introduction
-warning-more-ambee-than-amenn-tokens
-warning-more-amenn-than-ambee-tokens
-runtime-code-at-top-if-warning-message
 code-phrase-definition-simple-part-1
 code-phrase-definition-simple-part-2
 code-phrase-definition-simple-part-3
@@ -56,4 +58,3 @@ code-compiled-function-part-9
 code-compiled-function-part-10
 code-parameter-result-storage-part-1
 code-parameter-result-storage-part-2
-runtime-code-for-text-storage-position-end
