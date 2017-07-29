@@ -28,7 +28,7 @@ if ( opendir( READDIR , $global_directory ) ) {  <new_line>
     closedir( READDIR ) ;  <new_line>
 } else {  <new_line>
     &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-    print TRACE_OUT 'dashrep_runtime_error_action_generate_list_of_files_in_current_read_directory_case_directory_could_not_be_opened (' . $global_directory . ')' ;  <new_line>
+    print TRACE_OUT 'dashrep_runtime_error_action_generate_list_of_files_in_current_read_directory_case_directory_could_not_be_opened (' . $global_directory . ')' . "\n" ;  <new_line>
 }  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
