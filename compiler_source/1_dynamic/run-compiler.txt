@@ -2,8 +2,15 @@
 [-copy-from-file-to-phrase [-input-filename-] source-code-]
 [-compile-source-code-generate-output-results-]
 [-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+
+*---
 [-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
+---*
+
 [-write-results-to-output-file-]
+
+*---
 [-write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases [-filename-output-debug-trace-all-dashrep-definitions-]-]
+---*
 
 [-check-elapsed-time-]
