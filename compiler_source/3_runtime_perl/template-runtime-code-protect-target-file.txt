@@ -1,5 +1,5 @@
 # Protect target file as private  <new_line>
 if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;  <new_line>
 }  <new_line>
