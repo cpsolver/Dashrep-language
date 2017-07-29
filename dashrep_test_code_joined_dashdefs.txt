@@ -132,8 +132,6 @@ abc xyz
 correct-value-for-list-from-rearranged-alphabetic:
 Thomas_Jefferson Abe_Lincoln Paul_MacCready Nikola_Tesla 
 ----
-(2):
-----
 correct-value-for-list-from-rearranged-numeric:
 one three five seven twelve 
 ----
@@ -224,20 +222,14 @@ correct-value-for-result-calculation-sine:
 correct-value-for-result-calculation-subtraction:
 4 
 ----
+correct-value-for-result-contents-from-file-append-repeated:
+???
+----
 correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
 ----
 correct-value-for-result-integers-positive-sorted:
 -72 -36 -28 -1 0 1 3 12 17 94
-----
-correct-value-for-result-list-of-files-in-current-read-directory:
-??? 
-----
-correct-value-for-result-list-of-folders-in-current-read-directory:
-??? 
-----
-correct-value-for-result-modification-time-of-file:
-???
 ----
 correct-value-for-result-numeric-y-map-tile-number:
 1473.433751
@@ -269,23 +261,14 @@ one four six seven nine eleven
 correct-value-for-result-of-zero-or-nonzero:
 nonzero 
 ----
-correct-value-for-result-size-of-file:
-???
-----
 correct-value-for-result-text-after-move-attributes-inside-tags:
 <img href="image.jpg" alt="image" />
 ----
 correct-value-for-result-text-after-remove-attributes-from-tags:
 and a <span>dolphin</span>
 ----
-correct-value-for-result-yes-or-no-file-exists-no:
-no 
-----
-correct-value-for-result-yes-or-no-file-exists-yes:
-yes 
-----
-correct-value-for-result-yes-or-no-folder-exists:
-??? 
+correct-value-for-result-yes-or-no-file-write-read-successful:
+yesss
 ----
 correct-value-for-results-of-two-dimensional-sort:
 row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 
@@ -443,12 +426,6 @@ alpha beta beta alpha beta
 correct-value-for-word-list-result:
 1-3-0 
 ----
-correct-value-for-yes-if-file-size-non-zero:
-yes
-----
-correct-value-for-yes-if-got-modification-time-of-file:
-yes 
-----
 dashrep-action-trace-on-yes-or-no:
 yes
 ----
@@ -517,6 +494,12 @@ epoch-seconds-frozen-in-time:
 ----
 expanded-contains-angle-bracketed-phrase-names:
 one-two-three waltz 
+----
+filename-output-for-test-appending-to-file:
+output_for_test_appending_to_file.txt
+----
+filename-output-for-test-writing-to-file:
+output_for_test_writing_to_file.txt
 ----
 first-word-phrase:
 first_word 
@@ -919,6 +902,15 @@ ambee copy-text string-words-inline-text copy-of-string-words-inline-text amenn
 copy-of-string-words-inline-text
 ----
 test-file-related-dashrep-actions:
+ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
+ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
+
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
+ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
+ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
+
 
 ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
 ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
@@ -938,9 +930,6 @@ find-line-in-file-that-begins-with-text
 find-lines-in-file-that-begin-with-any-listed-word
 find-lines-in-file-that-begin-with-any-two-words-listed
 write-gathered-listed-items-to-end-of-file
-copy-from-file-to-phrase
-copy-from-phrase-append-to-file
-copy-append-file-to-file
 
 set-file-permission-public-read
 create-empty-file
@@ -1332,6 +1321,33 @@ and a <span style="whatever">dolphin</span>
 ----
 text-with-tags-attributes-outside-of-tags:
 <img /><attribute href="image.jpg"><attribute alt="image">
+----
+todo-correct-value-for-result-list-of-files-in-current-read-directory:
+??? 
+----
+todo-correct-value-for-result-list-of-folders-in-current-read-directory:
+??? 
+----
+todo-correct-value-for-result-modification-time-of-file:
+???
+----
+todo-correct-value-for-result-size-of-file:
+???
+----
+todo-correct-value-for-result-yes-or-no-file-exists-no:
+no 
+----
+todo-correct-value-for-result-yes-or-no-file-exists-yes:
+yes 
+----
+todo-correct-value-for-result-yes-or-no-folder-exists:
+??? 
+----
+todo-correct-value-for-yes-if-file-size-non-zero:
+yes
+----
+todo-correct-value-for-yes-if-got-modification-time-of-file:
+yes 
 ----
 two-dimensional-sort:
 ambee numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort amenn
