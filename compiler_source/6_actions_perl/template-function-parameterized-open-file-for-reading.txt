@@ -6,9 +6,8 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-
-print TRACE_OUT 'trace_diagnostic__open_file_for_reading__case_show_file >' . $local_file_name . '<' . "\n" ;  <new_line>
-
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . $local_file_name . "\n" ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'file_name_for_reading_invalid' ;  <new_line>
@@ -27,7 +26,7 @@ return $global_yes ;  <new_line>
 }  <new_line>
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'runtime_operand_error__open_file_for_reading__case_file_missing ' . $global_source_file_full_path . "\n" ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path . "\n" ;  <new_line>
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin 'dashrep hyphen-here file hyphen-here name hyphen-here if hyphen-here read hyphen-here file hyphen-here missing' code-get-or-put-phrase-definition-end ;  <new_line>
 
@@ -47,7 +46,7 @@ template-runtime-code-protect-target-file
 $global_target_file_full_path = $global_target_file_full_path_saved ;
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'runtime_operand_error__open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path . "\n" ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path . "\n" ;  <new_line>
 
 if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
 return $global_yes ;  <new_line>
