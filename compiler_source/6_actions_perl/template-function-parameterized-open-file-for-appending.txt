@@ -10,7 +10,7 @@ $local_file_name = $_[ 0 ] ;  <new_line>
 print TRACE_OUT 'trace_diagnostic__parameterized_open_file_for_appending__case_begin ' . $local_file_name . "\n" ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
-$global_runtime_error_type = 'file_name_invalid' ;  <new_line>
+$global_runtime_error_type = 'file_name_invalid_parameterized' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
