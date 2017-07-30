@@ -10636,7 +10636,9 @@ my $storage_item_new_5216 = 'template-function-parameterized-normalize-calculate
 my $storage_item_new_5217 = '# no-space dashes-long-line <new_line> # function_parameterized__normalize_calculated_value <new_line> <new_line> sub function_parameterized__normalize_calculated_value( ) { <new_line> $global_calculated_value = $_[ 0 ] ; <new_line> if ( $global_calculated_value == 0 ) { <new_line> $global_normalized_calculated_value = ' . "'" . '0' . "'" . ' ; <new_line> } else { <new_line> $global_normalized_calculated_value = sprintf( "%f" , $global_calculated_value ) ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+' . '\\' . '.[0-9]*[1-9])0+$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> if ( $global_normalized_calculated_value =~ /^(' . '\\' . '-?[0-9]+)' . '\\' . '.0*$/ ) { <new_line> $global_normalized_calculated_value = $1 ; <new_line> } <new_line> return $global_normalized_calculated_value ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item_new_5216 } = $storage_item_new_5217 ;
 my $storage_item_new_5218 = 'template-function-parameterized-open-file-for-appending' ;
-my $storage_item_new_5219 = '# no-space dashes-long-line <new_line> # function_parameterized__open_file_for_appending <new_line> <new_line> sub function_parameterized__open_file_for_appending( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace_diagnostic__parameterized_open_file_for_appending__case_begin ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'file_name_invalid' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'path_for_appending_invalid' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> $global_target_file_full_path = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end . $local_file_name ; <new_line> if ( open ( INFILE_TEMP , ' . "'" . '<' . "'" . ' . $global_target_file_full_path ) ) { <new_line> close( INFILE_TEMP ) ; <new_line> } else { <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_target_file_full_path ) ) { <new_line> print OUTFILE ' . "'" . "'" . ' ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file } <new_line> } <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_target_file_full_path ) ) { <new_line> return $global_yes ; <new_line> } <new_line> $global_target_file_full_path = ' . "'" . "'" . ' ; <new_line> close( OUTFILE ) ; <new_line> return $global_no ; <new_line> template-function-segment-ending' ;
+
+my $storage_item_new_5219 = '# no-space dashes-long-line <new_line> # function_parameterized__open_file_for_appending <new_line> <new_line> sub function_parameterized__open_file_for_appending( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace_diagnostic__parameterized_open_file_for_appending__case_begin ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'file_name_invalid_parameterized' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'path_for_appending_invalid' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> $global_target_file_full_path = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end . $local_file_name ; <new_line> if ( open ( INFILE_TEMP , ' . "'" . '<' . "'" . ' . $global_target_file_full_path ) ) { <new_line> close( INFILE_TEMP ) ; <new_line> } else { <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_target_file_full_path ) ) { <new_line> print OUTFILE ' . "'" . "'" . ' ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file } <new_line> } <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_target_file_full_path ) ) { <new_line> return $global_yes ; <new_line> } <new_line> $global_target_file_full_path = ' . "'" . "'" . ' ; <new_line> close( OUTFILE ) ; <new_line> return $global_no ; <new_line> template-function-segment-ending' ;
+
 $global_dashrep_replacement{ $storage_item_new_5218 } = $storage_item_new_5219 ;
 my $storage_item_new_5220 = 'template-function-parameterized-open-file-for-reading' ;
 my $storage_item_new_5221 = '# no-space dashes-long-line <new_line> # function_parameterized__open_file_for_reading <new_line> <new_line> sub function_parameterized__open_file_for_reading( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'file_name_for_reading_invalid' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end ) == $global_no ) { <new_line> $global_runtime_error_type = ' . "'" . 'path_for_reading_invalid' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> $global_source_file_full_path = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end . $local_file_name ; <new_line> if ( open ( INFILE , ' . "'" . '<' . "'" . ' . $global_source_file_full_path ) ) { <new_line> return $global_yes ; <new_line> } <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing ' . "'" . ' . $global_source_file_full_path . "' . '\\' . 'n" ; <new_line> $global_source_file_full_path = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space file no-space character-hyphen no-space name no-space character-hyphen no-space if no-space character-hyphen no-space read no-space character-hyphen no-space file no-space character-hyphen no-space missing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( open ( INFILE , ' . "'" . '<' . "'" . ' . $global_source_file_full_path ) ) { <new_line> return $global_yes ; <new_line> } <new_line> if ( open ( OUTFILE_TEMP , ' . "'" . '>' . "'" . ' . $global_source_file_full_path ) ) { <new_line> print OUTFILE_TEMP ' . "'" . "'" . ' ; <new_line> close ( OUTFILE_TEMP ) ; <new_line> $global_target_file_full_path_saved = $global_target_file_full_path ; $global_target_file_full_path = $global_source_file_full_path ; template-runtime-code-protect-target-file $global_target_file_full_path = $global_target_file_full_path_saved ; &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing_again ' . "'" . ' . $global_source_file_full_path . "' . '\\' . 'n" ; <new_line> if ( open ( INFILE , ' . "'" . '<' . "'" . ' . $global_source_file_full_path ) ) { <new_line> return $global_yes ; <new_line> } <new_line> } <new_line> $global_source_file_full_path = ' . "'" . "'" . ' ; <new_line> close( INFILE ) ; <new_line> return $global_no ; <new_line> template-function-segment-ending' ;
@@ -10651,7 +10653,9 @@ my $storage_item_new_5226 = 'template-function-parameterized-yes-or-no-empty' ;
 my $storage_item_new_5227 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_empty <new_line> <new_line> sub function_parameterized__yes_or_no_empty( ) { <new_line> if ( $_[ 0 ] =~ /[^ ]/ ) { <new_line> return $global_no ; <new_line> } else { <new_line> return $global_yes ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item_new_5226 } = $storage_item_new_5227 ;
 my $storage_item_new_5228 = 'template-function-parameterized-yes-or-no-file-is-open-for-appending' ;
+
 my $storage_item_new_5229 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_is_open_for_appending <new_line> <new_line> sub function_parameterized__yes_or_no_file_is_open_for_appending( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace_diagnostic__parameterized_yes_or_no_file_is_open_for_appending__case_begin ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> $global_output_filename = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end . $local_file_name ; <new_line> if ( index( $global_output_filename , ' . "'" . ' ' . "'" . ' ) >= 0 ) { <new_line> $global_runtime_error_type = ' . "'" . 'file_name_invalid_contains_space' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> # todo: check if file exists, if not, then create empty file, then write protect it (while empty), then continue below <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_output_filename ) ) { <new_line> return $global_yes ; <new_line> } <new_line> $global_output_filename = ' . "'" . "'" . ' ; <new_line> return $global_no ; <new_line> template-function-segment-ending' ;
+
 $global_dashrep_replacement{ $storage_item_new_5228 } = $storage_item_new_5229 ;
 my $storage_item_new_5230 = 'template-function-parameterized-yes-or-no-file-name' ;
 my $storage_item_new_5231 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_name <new_line> <new_line> sub function_parameterized__yes_or_no_file_name( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> if ( index( $local_file_name , ' . "'" . ' ' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '.' . "'" . ' ) < 0 ) { <new_line> return $global_no ; <new_line> } <new_line> $global_length_of_text = length( $local_file_name ) ; <new_line> if ( $global_length_of_text < 3 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '/' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . '\\' . '\\' . '" ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '*' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '&' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '!' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '@' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '$' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '%' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '^' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '~' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '`' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '"' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . "'" . '" ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ',' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ':' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ';' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '=' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '+' . "'" . ' ) >= 0 ) { <new_line> return $global_no ; <new_line> } <new_line> return $global_yes ; <new_line> template-function-segment-ending' ;
@@ -42300,81 +42304,6 @@ return @global_list_of_operands ;
 
 
 #------------------------------------------------------------
-# function_parameterized__yes_or_no_file_name
-
-sub function_parameterized__yes_or_no_file_name( ) {
-my $local_text ;
-$local_text = $_[ 0 ] ;
-if ( index( $local_text , ' ' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '.' ) < 0 ) {
-return $global_no ;
-}
-$global_length_of_text = length( $local_text ) ;
-if ( $global_length_of_text < 3 ) {
-return $global_no ;
-}
-if ( index( $local_text , '/' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , "\\" ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '*' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '&' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '!' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '@' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '$' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '%' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '^' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '~' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '`' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '"' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , "'" ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , ',' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , ':' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , ';' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '=' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '+' ) >= 0 ) {
-return $global_no ;
-}
-return $global_yes ;
-# end of function
-}
-
-
-#------------------------------------------------------------
 # function_parameterized__yes_or_no_valid_path
 
 # reminder: path "./" is valid, so period is OK
@@ -42446,15 +42375,98 @@ return $global_yes ;
 
 
 #------------------------------------------------------------
+# function_parameterized__yes_or_no_file_name
+
+sub function_parameterized__yes_or_no_file_name( ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+if ( index( $local_file_name , ' ' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '.' ) < 0 ) {
+return $global_no ;
+}
+$global_length_of_text = length( $local_file_name ) ;
+if ( $global_length_of_text < 3 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '/' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , "\\" ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '*' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '&' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '!' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '@' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '$' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '%' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '^' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '~' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '`' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '"' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , "'" ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , ',' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , ':' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , ';' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '=' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_file_name , '+' ) >= 0 ) {
+return $global_no ;
+}
+return $global_yes ;
+# end of function
+}
+
+
+#------------------------------------------------------------
 # function_parameterized__yes_or_no_input_file_exists
 
 sub function_parameterized__yes_or_no_input_file_exists( ) {
-my $local_text ;
-$local_text = $_[ 0 ] ;
-if ( open ( INFILE , '<' . $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $local_text ) ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'trace_diagnostic__yes_or_no_input_file_exists__case_begin ' . $local_file_name . "\n" ;
+$global_source_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $local_file_name ;
+if ( index( $global_source_file_full_path , ' ' ) >= 0 ) {
+$global_runtime_error_type = 'file_name_invalid_contains_space' ;
+return $global_no ;
+}
+if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {
 close( INFILE ) ;
 return $global_yes ;
 }
+$global_source_file_full_path = '' ;
 close( INFILE ) ;
 return $global_no ;
 # end of function
@@ -42462,16 +42474,197 @@ return $global_no ;
 
 
 #------------------------------------------------------------
-# function_parameterized__yes_or_no_output_file_exists
+# function_parameterized__yes_or_no_folder_name
 
-sub function_parameterized__yes_or_no_output_file_exists( ) {
+sub function_parameterized__yes_or_no_folder_name( ) {
 my $local_text ;
 $local_text = $_[ 0 ] ;
-if ( open ( INFILE , '<' . $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $local_text ) ) {
-close( INFILE ) ;
+if ( index( $local_text , ' ' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '.' ) < 0 ) {
+return $global_no ;
+}
+$global_length_of_text = length( $local_text ) ;
+if ( $global_length_of_text < 1 ) {
+return $global_no ;
+}
+if ( index( $local_text , '/' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , "\\" ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '*' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '&' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '!' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '@' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '$' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '%' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '^' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '~' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '`' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '"' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , "'" ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , ',' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , ':' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , ';' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '=' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '+' ) >= 0 ) {
+return $global_no ;
+}
+return $global_yes ;
+# end of function
+}
+
+
+#------------------------------------------------------------
+# function_parameterized__open_file_for_reading
+
+sub function_parameterized__open_file_for_reading( ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . $local_file_name . "\n" ;
+if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {
+$global_runtime_error_type = 'file_name_for_reading_invalid' ;
+return $global_no ;
+}
+if ( &function_parameterized__yes_or_no_valid_path( $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } ) == $global_no ) {
+$global_runtime_error_type = 'path_for_reading_invalid' ;
+return $global_no ;
+}
+$global_source_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $local_file_name ;
+if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {
 return $global_yes ;
 }
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path . "\n" ;
+$global_source_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $global_dashrep_replacement{ 'dashrep-file-name-if-read-file-missing' } ;
+if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {
+return $global_yes ;
+}
+if ( open ( OUTFILE_TEMP , '>' . $global_source_file_full_path ) ) {
+print OUTFILE_TEMP '' ;
+close ( OUTFILE_TEMP ) ;
+$global_target_file_full_path_saved = $global_target_file_full_path ; $global_target_file_full_path = $global_source_file_full_path ; # Protect target file as private
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
+}
+$global_target_file_full_path = $global_target_file_full_path_saved ; &function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path . "\n" ;
+if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {
+return $global_yes ;
+}
+}
+$global_source_file_full_path = '' ;
 close( INFILE ) ;
+return $global_no ;
+# end of function
+}
+
+
+#------------------------------------------------------------
+# function_parameterized__open_file_for_appending
+
+sub function_parameterized__open_file_for_appending( ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'trace_diagnostic__parameterized_open_file_for_appending__case_begin ' . $local_file_name . "\n" ;
+if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {
+$global_runtime_error_type = 'file_name_invalid_parameterized' ;
+return $global_no ;
+}
+if ( &function_parameterized__yes_or_no_valid_path( $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ) == $global_no ) {
+$global_runtime_error_type = 'path_for_appending_invalid' ;
+return $global_no ;
+}
+$global_target_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $local_file_name ;
+if ( open ( INFILE_TEMP , '<' . $global_target_file_full_path ) ) {
+close( INFILE_TEMP ) ;
+} else {
+if ( open ( OUTFILE , '>>' . $global_target_file_full_path ) ) {
+print OUTFILE '' ;
+close( OUTFILE ) ;
+# Protect target file as private
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
+}
+}
+}
+if ( open ( OUTFILE , '>>' . $global_target_file_full_path ) ) {
+return $global_yes ;
+}
+$global_target_file_full_path = '' ;
+close( OUTFILE ) ;
+return $global_no ;
+# end of function
+}
+
+
+#------------------------------------------------------------
+# function_parameterized__open_file_for_writing_new_file
+
+sub function_parameterized__open_file_for_writing_new_file( ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'trace_diagnostic__parameterized_open_file_for_writing_new_file__case_begin ' . $local_file_name . "\n" ;
+if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {
+$global_runtime_error_type = 'file_name_for_new_file_invalid' ;
+return $global_no ;
+}
+if ( &function_parameterized__yes_or_no_valid_path( $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ) == $global_no ) {
+$global_runtime_error_type = 'path_for_writing_invalid' ;
+return $global_no ;
+}
+$global_target_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $local_file_name ;
+if ( open ( OUTFILE , '>' . $global_target_file_full_path ) ) {
+close ( OUTFILE ) ;
+# Protect target file as private
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
+}
+}
+if ( open ( OUTFILE , '>' . $global_target_file_full_path ) ) {
+return $global_yes ;
+}
+$global_target_file_full_path = '' ;
+close( OUTFILE ) ;
 return $global_no ;
 # end of function
 }
@@ -42962,9 +43155,9 @@ return '' ;
 # handle_time_limit_exceeded
 
 sub handle_time_limit_exceeded( ) {
-print 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;
+print 'Exceeded time limit of ' . $global_time_limit . ' seconds' . "\n" ;
 &function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT 'Exceeded time limit of ' . $global_endless_loop_counter_limit . ' seconds' . "\n" ;
+print TRACE_OUT 'Exceeded time limit of ' . $global_time_limit . ' seconds' . "\n" ;
 exit ;
 # end of function
 }
@@ -43366,8 +43559,9 @@ $global_character_position = index( $global_source_text , $global_string_to_be_r
 $global_endless_loop_counter ++ ;
 $global_phrase_usage_count_for_phrase_number[ 1 ] ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {
+$global_action_result = 'runtime_operand_error__action_copy_and_replace__case_endless_loop' ;
 &function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT '{{trace; Error: During the action ' . $global_action_name . ' the endless loop counter got within 100 counts of exceeding its limit, so no more replacements will be done by this action.}}' . "\n";
+print TRACE_OUT 'runtime_operand_error__action_copy_and_replace__case_endless_loop' . "\n" ;
 last ;
 }
 }
@@ -43598,25 +43792,19 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__generate_list_of_all_dashrep_phrases( ) {
 $global_action_result = '' ;
-delete( $global_dashrep_replacement{ 'list-of-phrases-newly-defined' } ) ;
 @global_list_of_phrases = keys( %global_dashrep_replacement ) ;
 @global_sequence_of_phrases = sort( @global_list_of_phrases ) ;
 $global_counter = 0 ;
 $global_dashrep_replacement{ $global_operand_one } = '' ;
-if ( $global_dashrep_replacement{ 'yes-or-no-export-delimited-definitions' } eq 'yes' ) {
 foreach $global_phrase_name ( @global_sequence_of_phrases ) {
 if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne 'four-hyphens' ) ) {
-if ( $global_dashrep_replacement{ $global_operand_one } ne '' ) {
+if ( $global_counter > 0 ) {
 $global_dashrep_replacement{ $global_operand_one } .= ' ' ;
 }
 $global_dashrep_replacement{ $global_operand_one } .= $global_phrase_name ;
 $global_counter ++ ;
 }
 }
-} else {
-$global_dashrep_replacement{ $global_operand_one } = '' ;
-}
-$global_target_text = $global_action_result ;
 # end of function
 }
 
@@ -43673,59 +43861,16 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_from_phrase_append_to_file( ) {
 $global_action_result = '' ;
-$global_source_phrase_name = $global_operand_one ;
-$global_source_filename = $global_operand_one ;
-$global_target_phrase_name = $global_operand_two ;
-$global_target_filename = $global_operand_two ;
-if ( $global_operand_two eq '' ) {
-$global_target_phrase_name = $global_operand_one ;
-$global_target_filename = $global_operand_one ;
-}
-$global_source_filename =~ s/^.*[\\\/]// ;
-$global_source_filename =~ s/^\.+// ;
-$global_target_filename =~ s/^.*[\\\/]// ;
-$global_target_filename =~ s/^\.+// ;
-if ( $global_source_filename ne '' ) {
-$global_source_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $global_source_filename ;
-}
-if ( $global_target_filename ne '' ) {
-$global_target_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $global_target_filename ;
-}
-if ( $global_target_filename eq "" ) {
-$global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_phrase_name . " and " . $global_target_filename . "]" ;
-} elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } ne "yes" ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; attempt to copy from phrase " . $global_source_phrase_name . " to end of file " . $global_target_filename . "}}\n" ;
-$global_possible_error_message .= " [warning, do not have permission to append to files]" ;
-} elsif ( open ( OUTFILE , '>>' . $global_target_filename ) ) {
-$global_possible_error_message .= "" ;
-} else
-{
-$global_possible_error_message .= " [warning, file named " . $global_target_filename . " could not be opened for writing]" ;
-}
-if ( $global_possible_error_message eq "" ) {
-if ( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) {
-print OUTFILE $global_dashrep_replacement{ $global_source_phrase_name } . "\n" ;
+if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
+print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "\n" ;
 } else {
-print OUTFILE $global_source_phrase_name . "\n" ;
-}
-if ( 77 == 78 ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; copied from phrase " . $global_source_phrase_name . " to end of file " . $global_target_filename . "}}\n" ;
-}
-} else
-{
-if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;
-}
+print OUTFILE $global_operand_one . "\n" ;
 }
 close( OUTFILE ) ;
-if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {
-if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) {
+# Protect target file as private
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
 &function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . " not successful}}\n" ;
-}
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
 }
 $global_target_text = $global_action_result ;
 # end of function
@@ -43748,8 +43893,8 @@ $global_pointer_one = $1 ;
 if ( $global_operand_four =~ /^([0-9]+)$/ ) {
 $global_pointer_two = $1 ;
 }
-if ( ( $global_pointer_one == -1 ) || ( $global_pointer_two == -1 ) || ( $global_pointer_one > $global_pointer_two ) ) {
-$global_action_result = 'runtime_operand_error_copy_characters_from_position_to_position' ;
+if ( $global_pointer_one > $global_pointer_two ) {
+$global_action_result = 'runtime_operand_error__copy_characters_from_position_to_position' ;
 return '' ;
 }
 $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;
@@ -43814,156 +43959,28 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_from_file_to_phrase( ) {
 $global_action_result = '' ;
-$global_source_phrase_name = $global_operand_one ;
-$global_source_filename = $global_operand_one ;
-$global_target_phrase_name = $global_operand_two ;
-$global_target_filename = $global_operand_two ;
-if ( $global_operand_two eq '' ) {
-$global_target_phrase_name = $global_operand_one ;
-$global_target_filename = $global_operand_one ;
-}
-$global_source_filename =~ s/^.*[\\\/]// ;
-$global_source_filename =~ s/^\.+// ;
-$global_target_filename =~ s/^.*[\\\/]// ;
-$global_target_filename =~ s/^\.+// ;
-if ( $global_source_filename ne '' ) {
-$global_source_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $global_source_filename ;
-}
-if ( $global_target_filename ne '' ) {
-$global_target_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $global_target_filename ;
-}
-if ( ( $global_source_filename eq "" ) || ( $global_target_phrase_name eq "" ) ) {
-$global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_target_phrase_name . "]" ;
-} elsif ( open ( INFILE , '<' . $global_source_filename ) ) {
-$global_possible_error_message .= "" ;
-} else
-{
-$global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;
-}
-if ( $global_possible_error_message eq "" ) {
-$global_all_lines = "" ;
-$global_line_ending = "" ;
+$global_all_lines = '' ;
+$global_line_ending = '' ;
 $global_line_number = 0 ;
-if ( not( exists( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } ) ) ) {
-$global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } = "no" ;
+if ( not( exists( $global_dashrep_replacement{ 'yes-or-no-indicate-line-endings' } ) ) ) {
+$global_dashrep_replacement{ 'yes-or-no-indicate-line-endings' } = 'no' ;
 }
-if ( ( exists( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } ) ) && ( $global_dashrep_replacement{ "yes-or-no-indicate-line-endings" } eq "yes" ) ) {
-$global_line_ending = " end-of-line-here " ;
+if ( ( exists( $global_dashrep_replacement{ 'yes-or-no-indicate-line-endings' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-indicate-line-endings' } eq 'yes' ) ) {
+$global_line_ending = ' end-of-line-here ' ;
 } else {
-$global_line_ending = " " ;
+$global_line_ending = ' ' ;
 }
 while ( $global_input_line = <INFILE> ) {
 chomp( $global_input_line ) ;
 $global_input_line =~ s/[\t\f\n\r]+/ /g ;
 $global_input_line =~ s/^ +/ / ;
 $global_input_line =~ s/ +$/ / ;
-if ( $global_action_name eq "copy-from-file-to-phrase" ) {
-if ( ( $global_input_line ne "" ) || ( $global_line_ending ne " " ) ) {
+if ( ( $global_input_line ne '' ) || ( $global_line_ending ne ' ' ) ) {
 $global_all_lines .= $global_input_line . $global_line_ending ;
 }
 }
-}
-$global_dashrep_replacement{ $global_target_phrase_name } = $global_all_lines ;
-if ( 77 == 78 ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; copied from file " . $global_source_filename . " to phrase " . $global_target_phrase_name . "}}\n" ;
-}
-} else
-{
-if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;
-}
-}
+$global_dashrep_replacement{ $global_operand_two } = $global_all_lines ;
 close( INFILE ) ;
-$global_target_text = $global_action_result ;
-# end of function
-}
-
-
-#------------------------------------------------------------
-sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {
-$global_action_result = '' ;
-$global_source_phrase_name = $global_operand_one ;
-$global_source_filename = $global_operand_one ;
-$global_target_phrase_name = $global_operand_two ;
-$global_target_filename = $global_operand_two ;
-if ( $global_operand_two eq '' ) {
-$global_target_phrase_name = $global_operand_one ;
-$global_target_filename = $global_operand_one ;
-}
-$global_source_filename =~ s/^.*[\\\/]// ;
-$global_source_filename =~ s/^\.+// ;
-$global_target_filename =~ s/^.*[\\\/]// ;
-$global_target_filename =~ s/^\.+// ;
-if ( $global_source_filename ne '' ) {
-$global_source_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $global_source_filename ;
-}
-if ( $global_target_filename ne '' ) {
-$global_target_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $global_target_filename ;
-}
-@global_list_of_phrases = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_source_phrase_name } ) ;
-@global_sequence_of_phrases = @global_list_of_phrases ;
-if ( $#global_list_of_phrases < 0 ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: no phrases to write (to file)}}\n" ;
-return '' ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-all-begin" } ) ) {
-$global_all_defs_begin = "[-export-defs-all-begin-]\n\n" ;
-} else
-{
-$global_all_defs_begin = "" ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-all-end" } ) ) {
-$global_all_defs_end = "[-export-defs-all-end-]\n\n" ;
-} else
-{
-$global_all_defs_end = "" ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-phrase-begin" } ) ) {
-$global_phrase_begin = "[-export-defs-phrase-begin-] " ;
-} else
-{
-$global_phrase_begin = "" ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-phrase-end" } ) ) {
-$global_phrase_end = " [-export-defs-phrase-end-]\n\n" ;
-} else
-{
-$global_phrase_end = "" ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-def-begin" } ) ) {
-$global_def_begin = "[-export-defs-def-begin-] " ;
-} else
-{
-$global_def_begin = "" ;
-}
-if ( exists( $global_dashrep_replacement{ "export-defs-def-end" } ) ) {
-$global_def_end = " [-export-defs-def-end-]\n\n" ;
-} else
-{
-$global_def_end = "" ;
-}
-if ( open ( OUTFILE , '>' . $global_target_filename ) ) {
-$global_possible_error_message .= "" ;
-} else
-{
-$global_possible_error_message .= " [warning, file named " . $global_target_filename . " could not be opened for writing]" ;
-return '' ;
-}
-$global_counter = 0 ;
-foreach $global_phrase_name ( @global_sequence_of_phrases ) {
-if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne "four-hyphens" ) ) {
-print OUTFILE $global_phrase_name . "\n" ;
-$global_counter ++ ;
-}
-}
-close( OUTFILE ) ;
-if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . " not successful}}\n" ;
-}
 $global_target_text = $global_action_result ;
 # end of function
 }
@@ -43972,66 +43989,16 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_append_file_to_file( ) {
 $global_action_result = '' ;
-$global_source_phrase_name = $global_operand_one ;
-$global_source_filename = $global_operand_one ;
-$global_target_phrase_name = $global_operand_two ;
-$global_target_filename = $global_operand_two ;
-if ( $global_operand_two eq '' ) {
-$global_target_phrase_name = $global_operand_one ;
-$global_target_filename = $global_operand_one ;
-}
-$global_source_filename =~ s/^.*[\\\/]// ;
-$global_source_filename =~ s/^\.+// ;
-$global_target_filename =~ s/^.*[\\\/]// ;
-$global_target_filename =~ s/^\.+// ;
-if ( $global_source_filename ne '' ) {
-$global_source_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } . $global_source_filename ;
-}
-if ( $global_target_filename ne '' ) {
-$global_target_filename = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $global_target_filename ;
-}
-if ( ( $global_source_filename eq "" ) || ( $global_target_filename eq "" ) ) {
-$global_possible_error_message .= " [warning, action " . $global_action_name . " has invalid operands " . $global_source_filename . " and " . $global_target_filename . "]" ;
-} elsif ( $global_dashrep_replacement{ "yes-or-no-permission-to-append-to-files" } ne "yes" ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; attempt to copy from phrase " . $global_source_phrase_name . " to end of file " . $global_target_filename . "}}\n" ;
-$global_possible_error_message .= " [warning, do not have permission to append to files]" ;
-}
-if ( open ( INFILE , '<' . $global_source_filename ) ) {
-$global_possible_error_message .= "" ;
-} else
-{
-$global_possible_error_message .= " [warning, file named " . $global_source_filename . " not found, or could not be opened]" ;
-}
-if ( open ( OUTFILE , '>>' . $global_target_filename ) ) {
-$global_possible_error_message .= "" ;
-} else
-{
-$global_possible_error_message .= " [warning, file named " . $global_target_filename . " could not be opened for writing]" ;
-}
-if ( $global_possible_error_message eq "" ) {
 while ( $global_input_line = <INFILE> ) {
 chomp( $global_input_line ) ;
 print OUTFILE $global_input_line . "\n" ;
 }
-if ( 77 == 78 ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; copied from file " . $global_source_filename . " to file " . $global_target_filename . "}}\n" ;
-}
-} else
-{
-if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: " . $global_possible_error_message . "}}\n" ;
-}
-}
 close( INFILE ) ;
 close( OUTFILE ) ;
-if ( not( chmod( $global_file_write_protection_mode , $global_target_filename ) ) ) {
-if ( $global_dashrep_replacement{ "dashrep-warning-trace-on-yes-or-no" } eq "yes" ) {
+# Protect target file as private
+if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
 &function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT "{{trace; warning: protection of output file " . $global_target_filename . " not successful}}\n" ;
-}
+print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
 }
 $global_target_text = $global_action_result ;
 # end of function
