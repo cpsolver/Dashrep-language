@@ -32260,7 +32260,9 @@ $global_operand_one = $storage_item__3149 ;
 $global_operand_two = $storage_item__3150 ;
 $global_operand_three = '' ;
 $global_operand_four = '' ;
-&function__write_dashrep_definitions_listed_in_phrase_to_file( ) ;
+
+# &function__write_dashrep_definitions_listed_in_phrase_to_file( ) ;
+
 $storage_item__3148 = $global_action_result ;
 } else {
 $storage_item__3148 = 'dashrep_compiled_runtime_error_' . $global_runtime_error_type . ': write-dashrep-definitions-listed-in-phrase-to-file ' . $storage_item__3149 . ' ' . $storage_item__3150 . ' ' ;
@@ -42380,6 +42382,10 @@ return $global_yes ;
 sub function_parameterized__yes_or_no_file_name( ) {
 my $local_file_name ;
 $local_file_name = $_[ 0 ] ;
+
+&function__open_trace_output_file_if_not_open( ) ;
+print TRACE_OUT 'trace_diagnostic__parameterized_yes_or_no_file_name__case_begin ' . $local_file_name . "\n" ;
+
 if ( index( $local_file_name , ' ' ) >= 0 ) {
 return $global_no ;
 }
@@ -42654,11 +42660,7 @@ return $global_no ;
 $global_target_file_full_path = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } . $local_file_name ;
 if ( open ( OUTFILE , '>' . $global_target_file_full_path ) ) {
 close ( OUTFILE ) ;
-# Protect target file as private
-if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
-}
+
 }
 if ( open ( OUTFILE , '>' . $global_target_file_full_path ) ) {
 return $global_yes ;
@@ -43861,17 +43863,15 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_from_phrase_append_to_file( ) {
 $global_action_result = '' ;
+
+&function_parameterized__open_file_for_appending( $global_operand_two ) ;
+
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
 print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "\n" ;
 } else {
 print OUTFILE $global_operand_one . "\n" ;
 }
 close( OUTFILE ) ;
-# Protect target file as private
-if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
-}
 $global_target_text = $global_action_result ;
 # end of function
 }
@@ -43959,6 +43959,9 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_from_file_to_phrase( ) {
 $global_action_result = '' ;
+
+&function_parameterized__open_file_for_reading( $global_operand_one ) ;
+
 $global_all_lines = '' ;
 $global_line_ending = '' ;
 $global_line_number = 0 ;
@@ -43989,17 +43992,17 @@ $global_target_text = $global_action_result ;
 #------------------------------------------------------------
 sub function__copy_append_file_to_file( ) {
 $global_action_result = '' ;
+
+&function_parameterized__open_file_for_reading( $global_operand_one ) ;
+&function_parameterized__open_file_for_appending( $global_operand_two ) ;
+
 while ( $global_input_line = <INFILE> ) {
 chomp( $global_input_line ) ;
 print OUTFILE $global_input_line . "\n" ;
 }
 close( INFILE ) ;
 close( OUTFILE ) ;
-# Protect target file as private
-if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {
-&function__open_trace_output_file_if_not_open( ) ;
-print TRACE_OUT 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;
-}
+
 $global_target_text = $global_action_result ;
 # end of function
 }
