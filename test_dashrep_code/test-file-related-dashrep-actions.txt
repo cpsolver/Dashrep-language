@@ -1,3 +1,6 @@
+
+combee
+
 ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
 ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
@@ -20,6 +23,8 @@ ambee put-into-phrase yes-if-got-modification-time-of-file  ambee yes-or-no-same
 ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+
+comenn
 
 *---
 find-line-in-file-that-begins-with-text
