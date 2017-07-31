@@ -10381,7 +10381,7 @@ my $storage_item_new_5046 = 'specify-operand-one-is-file-name-for-reading' ;
 my $storage_item_new_5047 = '$global_source_file_name = runtime-code-for-operand-number-one ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item_new_5046 } = $storage_item_new_5047 ;
 my $storage_item_new_5048 = 'specify-operand-two-is-file-name-for-appending' ;
-my $storage_item_new_5049 = '$global_target_file_name = runtime-code-for-operand-number-one ; <new_line>' ;
+my $storage_item_new_5049 = '$global_target_file_name = runtime-code-for-operand-number-two ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item_new_5048 } = $storage_item_new_5049 ;
 my $storage_item_new_5050 = 'specify-operand-two-is-filename-for-writing-new-file' ;
 my $storage_item_new_5051 = '$global_target_file_name = runtime-code-for-operand-number-one ; <new_line>' ;
