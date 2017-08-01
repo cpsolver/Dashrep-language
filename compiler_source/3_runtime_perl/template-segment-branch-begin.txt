@@ -20,11 +20,8 @@ exit ;  <new_line>
 }  <new_line>
 
 if ( index( $global_phrase_name_to_match , ' ' ) >= 0 ) {  <new_line>
-print TRACE_OUT 'dashrep_runtime_error__function_branch_based_on_phrase_name__case_invalid_phrase_name ' . $global_phrase_name_to_match . "\n" ;  <new_line>
-
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'dashrep_runtime_error__function_branch_based_on_phrase_name__case_invalid_phrase_name ' . $global_phrase_name_to_match . "\n" ;  <new_line>
-
 exit ;  <new_line>
 }  <new_line>
 
