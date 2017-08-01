@@ -1,3 +1,5 @@
+$global_pi = 4.0 * atan2( 1.0 , 1.0 ) ;  <new_line>
+
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
@@ -103,7 +105,6 @@ my $global_count_of_items_appended = 0 ;  <new_line>
 my $global_word_pointer_operand_one = 0 ;  <new_line>
 my $global_word_pointer_operand_two = 0 ;  <new_line>
 my $global_word_pointer_operand_three = 0 ;  <new_line>
-my $global_word_pointer_operand_four = 0 ;  <new_line>
 my $global_phrase_number = 0 ;  <new_line>
 my $global_number_of_unique_phrases = 0 ;  <new_line>
 my $global_count_of_items_with_missing_unique_id = 0 ;  <new_line>
@@ -250,7 +251,6 @@ my $global_phrase_naming_convention_for_column = '' ;  <new_line>
 my $global_phrase_naming_convention_for_this_column = '' ;  <new_line>
 my $global_phrase_type = '' ;  <new_line>
 my $global_phrase_words = '' ;  <new_line>
-my $global_pi = 0 ;  <new_line>
 my $global_pointer = 0 ;  <new_line>
 my $global_pointer_one = 0 ;  <new_line>
 my $global_pointer_to_matching_text = 0 ;  <new_line>
