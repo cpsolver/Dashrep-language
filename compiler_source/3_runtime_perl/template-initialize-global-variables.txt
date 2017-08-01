@@ -1,4 +1,4 @@
-$global_pi = 4.0 * atan2( 1.0 , 1.0 ) ;  <new_line>
+$global_pi = 0 ; # (calculated if needed)  <new_line>
 
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
