@@ -1,1 +1,4 @@
-check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-not-empty
+check-operand-two-is-phrase-not-empty
+check-operand-three-is-phrase-name

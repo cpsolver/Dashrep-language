@@ -1,1 +1,4 @@
-check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-integer
+check-operand-two-is-integer
+check-operand-three-is-phrase-name

@@ -1,1 +1,2 @@
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name

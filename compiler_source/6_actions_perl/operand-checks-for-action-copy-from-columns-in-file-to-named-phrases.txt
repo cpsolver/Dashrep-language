@@ -1,1 +1,5 @@
-check-operand-count-is-three check-operand-two-is-phrase-name check-operand-three-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-three
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading

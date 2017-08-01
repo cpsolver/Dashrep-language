@@ -1,1 +1,3 @@
-check-operand-count-is-one specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-one
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading

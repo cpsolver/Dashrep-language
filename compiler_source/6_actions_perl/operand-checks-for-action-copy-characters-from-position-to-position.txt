@@ -1,1 +1,5 @@
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
+check-operand-four-is-positive-integer

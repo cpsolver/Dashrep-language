@@ -1,1 +1,6 @@
-check-user-has-permission-append-to-files check-operand-count-is-two specify-operand-two-is-file-name-for-appending open-file-for-appending specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-user-has-permission-append-to-files
+check-operand-count-is-two
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
