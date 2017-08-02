@@ -1925,9 +1925,6 @@ optional-import-statements:
 runtime-code-check-operand-begin-contains-real-numbers:
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_contains_real_numbers(
 ----
-runtime-code-check-operand-begin-input-file-exists:
-$global_yes_or_no = &function_parameterized__yes_or_no_input_file_exists(
-----
 runtime-code-check-operand-begin-is-file-name:
 $global_yes_or_no = &function_parameterized__yes_or_no_file_name(
 ----
@@ -2612,8 +2609,6 @@ my @global_word_begin_operand_two_at_word = ( ) ;  <new_line>
 my @global_word_length_operand_two_at_word = ( ) ;  <new_line>
 my @global_word_begin_operand_three_at_word = ( ) ;  <new_line>
 my @global_word_length_operand_three_at_word = ( ) ;  <new_line>
-my @global_word_begin_operand_four_at_word = ( ) ;  <new_line>
-my @global_word_length_operand_four_at_word = ( ) ;  <new_line>
 my @global_list_of_items_one = ( ) ;  <new_line>
 my @global_list_of_items_two = ( ) ;  <new_line>
 my @global_column_position_for_item_number = ( ) ;  <new_line>
@@ -2672,6 +2667,8 @@ my %global_number_of_times_encountered_phrase_named ;  <new_line>
 %global_number_of_times_encountered_phrase_named = ( ) ;  <new_line>
 ----
 template-initialize-global-variables:
+my $global_pi = 0 ; # (calculated if needed)  <new_line>
+
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
@@ -2777,7 +2774,6 @@ my $global_count_of_items_appended = 0 ;  <new_line>
 my $global_word_pointer_operand_one = 0 ;  <new_line>
 my $global_word_pointer_operand_two = 0 ;  <new_line>
 my $global_word_pointer_operand_three = 0 ;  <new_line>
-my $global_word_pointer_operand_four = 0 ;  <new_line>
 my $global_phrase_number = 0 ;  <new_line>
 my $global_number_of_unique_phrases = 0 ;  <new_line>
 my $global_count_of_items_with_missing_unique_id = 0 ;  <new_line>
@@ -2924,7 +2920,6 @@ my $global_phrase_naming_convention_for_column = '' ;  <new_line>
 my $global_phrase_naming_convention_for_this_column = '' ;  <new_line>
 my $global_phrase_type = '' ;  <new_line>
 my $global_phrase_words = '' ;  <new_line>
-my $global_pi = 0 ;  <new_line>
 my $global_pointer = 0 ;  <new_line>
 my $global_pointer_one = 0 ;  <new_line>
 my $global_pointer_to_matching_text = 0 ;  <new_line>
@@ -3135,11 +3130,8 @@ exit ;  <new_line>
 }  <new_line>
 
 if ( index( $global_phrase_name_to_match , ' ' ) >= 0 ) {  <new_line>
-print TRACE_OUT 'dashrep_runtime_error__function_branch_based_on_phrase_name__case_invalid_phrase_name ' . $global_phrase_name_to_match . "\n" ;  <new_line>
-
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'dashrep_runtime_error__function_branch_based_on_phrase_name__case_invalid_phrase_name ' . $global_phrase_name_to_match . "\n" ;  <new_line>
-
 exit ;  <new_line>
 }  <new_line>
 
@@ -3219,25 +3211,21 @@ template-segment-functions-runtime-begin:
 <new_line>
 
 
-# special initialization to fix bug somewhere earlier in code:  <new_line>
+# todo: special initialization to fix bug somewhere earlier in code:  <new_line>
 $global_dashrep_replacement{ 'four hyphen-here hyphens' } = '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' ;  <new_line>
 
 
 <new_line>
 
-if ( ( exists( $global_dashrep_replacement{ 'yes-or-no-count-phrase-usage' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-count-phrase-usage' } eq 'yes' ) ) {  <new_line>
+if ( ( exists( $global_dashrep_replacement{ 'yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage' } ) ) && ( $global_dashrep_replacement{ 'yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage' } eq 'yes' ) ) {  <new_line>
 $global_yes_or_no_count_phrase_usage = $global_yes ;  <new_line>
 } else {  <new_line>
 $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 }  <new_line>
 $global_accumulator[ 1 ] = '' ;  <new_line>
-# if ( length( code-get-or-put-phrase-definition-begin 'start<characer_hyphen>here' code-get-or-put-phrase-definition-end ) > 10 ) {  <new_line>
 & no-space function-name-prefix no-space start_here( ) ;  <new_line>
-# } else {  <new_line>
-# $global_accumulator[ 1 ] = code-get-or-put-phrase-definition-begin 'source<characer_hyphen>code<characer_hyphen>as<characer_hyphen>words' code-get-or-put-phrase-definition-end ;  <new_line>
-# }  <new_line>
 $output_results = &dashrep_expand_phrases( $global_accumulator[ 1 ] ) ;  <new_line>
-if ( ( exists( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
 print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
 if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) {  <new_line>
 print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
@@ -3433,20 +3421,18 @@ check-operand-two-is-real-number:
 runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end-is-real-number
 ----
 check-user-has-permission-administrator:
-*---
-todo: un-comment this code and debug here
-
 if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ) ) ) || (
  code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+
+# todo: debug here  <new_line>
+# $global_yes_or_no_operand_error = $global_yes ;  <new_line>
+
 $global_runtime_error_type = 'no_permission_administrator' ;  <new_line>
 }  <new_line>
-
----*
 ----
 check-user-has-permission-append-to-files:
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-append-to-files' code-get-or-put-phrase-definition-end ) ) && (
- code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-append-to-files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
 $global_yes_or_no = $global_yes ;  <new_line>
 } else {  <new_line>
 $global_yes_or_no = $global_no ;  <new_line>
@@ -3470,23 +3456,11 @@ $global_yes_or_no_operand_error = $global_yes ;  <new_line>
 $global_runtime_error_type = 'no_permission_delete_overwrite' ;  <new_line>
 }  <new_line>
 ----
-check-valid-path-for-reading:
-$global_yes_or_no = &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'path_reading_invalid' ;  <new_line>
-}  <new_line>
-----
-check-valid-path-for-writing:
-$global_yes_or_no = &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'path_writing_invalid' ;  <new_line>
-}  <new_line>
-----
 list-of-template-functions:
+template-function-dashrep-expand-phrases
+template-function-handle-endless-loop-encountered
+template-function-handle-time-limit-exceeded
+
 template-function-parameterized-yes-or-no-empty
 template-function-parameterized-remove-leading-trailing-spaces
 template-function-parameterized-yes-or-no-phrase-name
@@ -3501,8 +3475,6 @@ template-function-parameterized-convert-numeric-value-into-numeric-text
 template-function-parameterized-get-list-of-words
 template-function-parameterized-yes-or-no-valid-path
 template-function-parameterized-yes-or-no-file-name
-template-function-parameterized-yes-or-no-input-file-exists
-template-function-parameterized-yes-or-no-is-folder-name
 template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
 template-function-parameterized-open-file-for-writing-new-file
@@ -3514,10 +3486,7 @@ template-function-point-to-words-in-operand-three
 template-function-remove-extra-spaces
 template-function-get-count-of-words
 template-function-get-word-at-position
-template-function-handle-endless-loop-encountered
 template-function-open-trace-output-file-if-not-open
-template-function-handle-time-limit-exceeded
-template-function-dashrep-expand-phrases
 
 list-of-template-functions-for-requested-actions
 ----
@@ -3540,370 +3509,988 @@ $global_yes_or_no_operand_error = $global_yes ;  <new_line>
 }  <new_line>
 ----
 operand-checks-for-action-append-multiple-from-phrases-named-in-pattern:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-append-new-line:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-append-repeatedly-using-count:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
 ----
 operand-checks-for-action-append-text-no-space:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-append-text:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-clear-listed-phrases:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-clear-phrase:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-convert-from-spoken-dashrep-code:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-convert-into-spoken-dashrep-code:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-convert-unicode-to-html-entities:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-and-move-attributes-into-xml-tags:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-and-remove-attributes-from-xml-tags:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-and-replace-using-paired-listed-words:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-not-empty
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-not-empty
 ----
 operand-checks-for-action-copy-and-replace:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
+check-operand-four-is-phrase-name
 ----
 operand-checks-for-action-copy-append-file-to-file:
-check-user-has-permission-append-to-files check-operand-count-is-two specify-operand-two-is-file-name-for-appending open-file-for-appending specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-user-has-permission-append-to-files
+check-operand-count-is-two
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-copy-characters-from-position-to-position:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
+check-operand-four-is-positive-integer
 ----
 operand-checks-for-action-copy-definition-of-named-phrase:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-from-columns-in-file-to-column-lists:
-check-operand-count-is-two check-operand-two-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-two
+check-operand-two-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-copy-from-columns-in-file-to-named-phrases:
-check-operand-count-is-three check-operand-two-is-phrase-name check-operand-three-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-three
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-copy-from-file-to-phrase:
-check-operand-count-is-two check-operand-two-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-two
+check-operand-two-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-copy-from-phrase-append-to-file:
-check-user-has-permission-append-to-files check-operand-count-is-two check-operand-one-is-phrase-name specify-operand-two-is-file-name-for-appending open-file-for-appending
+check-user-has-permission-append-to-files
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
 ----
 operand-checks-for-action-copy-initial-caps:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-listed-words-to-phrases-named-in-pattern:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-lowercase-only:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-text:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-uppercase-only:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-without-extra-spaces:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-word-at-position:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
 ----
 operand-checks-for-action-copy-words-found-in-both-lists:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-found-in-either-list:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-found-only-in-first-list:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-words-from-position-to-position:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
+check-operand-four-is-positive-integer
 ----
 operand-checks-for-action-copy-words-offset-skip:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
+check-operand-four-is-positive-integer
 ----
 operand-checks-for-action-copy-words-order-reversed:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-words-rearrange-using-order-sort-alphabetic:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-rearrange-using-order-sort-numeric:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-sort-alphabetic:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-words-sort-numeric:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-words-that-begin-with-listed-words:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-that-begin-with-text:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-that-contain-listed-words:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-copy-words-unique-only:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-copy-zero-pad-left-to-length:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-positive-integer
 ----
 operand-checks-for-action-create-empty-sub-folder:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-one check-operand-one-is-folder-name
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-one
+check-operand-one-is-folder-name
 ----
 operand-checks-for-action-decode-from-cgi-parameter:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-delete-file:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-one check-operand-one-is-file-name
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-delete-listed-phrases:
 check-operand-count-is-one
 ----
 operand-checks-for-action-encode-as-cgi-parameter:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-expand-parameters-only:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-expand-text:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-find-line-in-file-that-begins-with-text:
-check-operand-count-is-three check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-three
+check-operand-two-is-phrase-not-empty
+check-operand-three-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-find-lines-in-file-that-begin-with-any-listed-word:
-check-operand-count-is-three check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-three
+check-operand-two-is-phrase-not-empty
+check-operand-three-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-find-lines-in-file-that-begin-with-any-two-words-listed:
-check-operand-count-is-three check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-three
+check-operand-two-is-phrase-not-empty
+check-operand-three-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-gather-from-tagged-file-one-entry:
-check-operand-count-is-two check-operand-two-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-two
+check-operand-two-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-gather-tagged-info-from-file:
-check-operand-count-is-two check-operand-two-is-phrase-name specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-two
+check-operand-two-is-phrase-name
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-generate-counts-from-integer-to-integer:
-check-operand-count-is-three check-operand-one-is-integer check-operand-two-is-integer check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-integer
+check-operand-two-is-integer
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-generate-every-ordered-pairwise-combination-of-words:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-generate-every-pairwise-combination-of-words:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
+check-operand-four-is-phrase-name
 ----
 operand-checks-for-action-generate-list-of-all-dashrep-phrases:
-check-operand-count-is-one check-user-has-permission-administrator check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-user-has-permission-administrator
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-generate-list-of-files-in-current-read-directory:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-generate-list-of-folders-in-current-read-directory:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-generate-phrase-usage-counts:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-generate-positions-of-delimiter:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions:
-check-operand-count-is-four check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name
+check-operand-count-is-four
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
+check-operand-four-is-phrase-name
 ----
 operand-checks-for-action-generate-positions-of-listed-words:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-get-cgi-information:
 check-operand-count-is-zero
 ----
 operand-checks-for-action-get-characters-from-position-to-position:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-positive-integer check-operand-three-is-positive-integer
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-positive-integer
+check-operand-three-is-positive-integer
 ----
 operand-checks-for-action-get-count-of-characters:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-get-count-of-words:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-get-current-time-in-epoch-seconds:
 check-operand-count-is-zero
 ----
 operand-checks-for-action-get-definitions-from-file:
-check-operand-count-is-one specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-one
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-get-position-of-matching-text:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-get-position-of-word:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-get-word-at-position:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-positive-integer
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-positive-integer
 ----
 operand-checks-for-action-insert-angle-bracketed-definitions:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-insert-codeview-tags:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-linewise-read-from-file-and-use-handler:
-check-operand-count-is-two check-operand-two-is-phrase-not-empty specify-operand-one-is-file-name-for-reading open-file-for-reading
+check-operand-count-is-two
+check-operand-two-is-phrase-not-empty
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 ----
 operand-checks-for-action-modification-time-of-file:
-check-operand-count-is-one check-operand-one-is-file-name
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-numeric-absolute:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-cosine:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-decrement:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-numeric-divide-by:
-check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number
+check-operand-count-is-two
+check-operand-one-is-real-number
+check-operand-two-is-real-number
 ----
 operand-checks-for-action-numeric-equal-greater-less-compare:
-check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number
+check-operand-count-is-two
+check-operand-one-is-real-number
+check-operand-two-is-real-number
 ----
 operand-checks-for-action-numeric-increment:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-numeric-integer:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-logarithm-base-10:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-logarithm-base-e:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-minus:
-check-operand-count-is-two check-operand-one-is-real-number check-operand-two-is-real-number
+check-operand-count-is-two
+check-operand-one-is-real-number
+check-operand-two-is-real-number
 ----
 operand-checks-for-action-numeric-odd-or-even:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-sine:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
-check-operand-count-is-four check-operand-one-is-positive-integer check-operand-two-contains-real-numbers check-operand-three-contains-real-numbers
+check-operand-count-is-four
+check-operand-one-is-positive-integer
+check-operand-two-contains-real-numbers
+check-operand-three-contains-real-numbers
 ----
 operand-checks-for-action-numeric-vector-absolutes:
-check-operand-count-is-two check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-numeric-vector-add-number:
-check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-not-empty
+check-operand-two-is-real-number
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-vector-integers:
-check-operand-count-is-two check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-numeric-vector-multiply-by-number:
-check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-real-number check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-not-empty
+check-operand-two-is-real-number
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-vectors-add:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-vectors-divide-by:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-vectors-from-delta-values-calculate-distances:
-check-operand-count-is-three check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-not-empty
+check-operand-two-is-phrase-not-empty
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-vectors-multiply:
-check-operand-count-is-three check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name
+check-operand-count-is-three
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 ----
 operand-checks-for-action-numeric-y-map-tile-number-based-on-latitude:
-check-operand-count-is-one check-operand-one-is-real-number
+check-operand-count-is-one
+check-operand-one-is-real-number
 ----
 operand-checks-for-action-prepend-text-no-space:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-prepend-text:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-put-into-phrase:
 check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-rename-file:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-two check-operand-one-input-file-exists check-operand-one-is-file-name
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-two
+check-operand-one-input-file-exists
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-set-file-permission-private:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-one check-operand-one-is-file-name
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-set-file-permission-public-read:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-one check-operand-one-is-file-name
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-size-of-file:
-check-operand-count-is-one check-operand-one-is-file-name
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-split-epoch-seconds-into-named-components-for-zero-meridian:
-check-operand-count-is-one check-operand-one-is-positive-integer
+check-operand-count-is-one
+check-operand-one-is-positive-integer
 ----
 operand-checks-for-action-split-epoch-seconds-into-named-components:
-check-operand-count-is-one check-operand-one-is-positive-integer
+check-operand-count-is-one
+check-operand-one-is-positive-integer
 ----
 operand-checks-for-action-trace-show:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-use-handler-with-each-word-in-phrase:
-check-operand-count-is-two check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-not-empty
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
-check-user-has-permission-delete-or-overwrite-files check-operand-count-is-two check-operand-one-is-phrase-not-empty specify-operand-two-is-filename-for-writing-new-file open-file-for-writing-new-file
+check-user-has-permission-delete-or-overwrite-files
+check-operand-count-is-two
+check-operand-one-is-phrase-not-empty
+specify-operand-two-is-filename-for-writing-new-file
+open-file-for-writing-new-file
 ----
 operand-checks-for-action-write-gathered-listed-items-to-end-of-file:
-check-operand-count-is-two check-operand-one-is-phrase-not-empty specify-operand-two-is-file-name-for-appending open-file-for-appending
+check-operand-count-is-two
+check-operand-one-is-phrase-not-empty
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
 ----
 operand-checks-for-action-xml-move-attributes-into-tag-elements:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-yes-or-no-empty-phrase:
-check-operand-count-is-one check-operand-one-is-phrase-name
+check-operand-count-is-one
+check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-yes-or-no-file-exists:
-check-operand-count-is-one check-operand-one-is-file-name
+check-operand-count-is-one
+check-operand-one-is-file-name
 ----
 operand-checks-for-action-yes-or-no-folder-exists:
-check-operand-count-is-one check-operand-one-is-folder-name
+check-operand-count-is-one
+check-operand-one-is-folder-name
 ----
 operand-checks-for-action-yes-or-no-same-two-phrase-definitions:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-yes-or-no-same-two-words:
 check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-yes-or-no-word-is-in-phrase:
-check-operand-count-is-two check-operand-one-is-phrase-name check-operand-two-is-phrase-name
+check-operand-count-is-two
+check-operand-one-is-phrase-name
+check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-zero-one-multiple:
-check-operand-count-is-one check-operand-one-is-positive-integer
+check-operand-count-is-one
+check-operand-one-is-positive-integer
 ----
 operand-checks-for-action-zero-or-nonzero:
-check-operand-count-is-one check-operand-one-is-positive-integer
+check-operand-count-is-one
+check-operand-one-is-positive-integer
+----
+required-operand-count-for-action-append-multiple-from-phrases-named-in-pattern:
+2
+----
+required-operand-count-for-action-append-new-line:
+1
+----
+required-operand-count-for-action-append-repeatedly-using-count:
+3
+----
+required-operand-count-for-action-append-text-no-space:
+2
+----
+required-operand-count-for-action-append-text:
+2
+----
+required-operand-count-for-action-clear-listed-phrases:
+1
+----
+required-operand-count-for-action-clear-phrase:
+1
+----
+required-operand-count-for-action-convert-from-spoken-dashrep-code:
+2
+----
+required-operand-count-for-action-convert-into-spoken-dashrep-code:
+2
+----
+required-operand-count-for-action-convert-unicode-to-html-entities:
+2
+----
+required-operand-count-for-action-copy-and-move-attributes-into-xml-tags:
+2
+----
+required-operand-count-for-action-copy-and-remove-attributes-from-xml-tags:
+2
+----
+required-operand-count-for-action-copy-and-replace-using-paired-listed-words:
+3
+----
+required-operand-count-for-action-copy-and-replace:
+4
+----
+required-operand-count-for-action-copy-append-file-to-file:
+2
+----
+required-operand-count-for-action-copy-characters-from-position-to-position:
+4
+----
+required-operand-count-for-action-copy-definition-of-named-phrase:
+2
+----
+required-operand-count-for-action-copy-from-columns-in-file-to-column-lists:
+2
+----
+required-operand-count-for-action-copy-from-columns-in-file-to-named-phrases:
+3
+----
+required-operand-count-for-action-copy-from-file-to-phrase:
+2
+----
+required-operand-count-for-action-copy-from-phrase-append-to-file:
+2
+----
+required-operand-count-for-action-copy-initial-caps:
+2
+----
+required-operand-count-for-action-copy-listed-words-to-phrases-named-in-pattern:
+2
+----
+required-operand-count-for-action-copy-lowercase-only:
+2
+----
+required-operand-count-for-action-copy-text:
+2
+----
+required-operand-count-for-action-copy-uppercase-only:
+2
+----
+required-operand-count-for-action-copy-without-extra-spaces:
+2
+----
+required-operand-count-for-action-copy-word-at-position:
+3
+----
+required-operand-count-for-action-copy-words-found-in-both-lists:
+3
+----
+required-operand-count-for-action-copy-words-found-in-either-list:
+3
+----
+required-operand-count-for-action-copy-words-found-only-in-first-list:
+3
+----
+required-operand-count-for-action-copy-words-from-position-to-position:
+4
+----
+required-operand-count-for-action-copy-words-offset-skip:
+4
+----
+required-operand-count-for-action-copy-words-order-reversed:
+2
+----
+required-operand-count-for-action-copy-words-rearrange-using-order-sort-alphabetic:
+3
+----
+required-operand-count-for-action-copy-words-rearrange-using-order-sort-numeric:
+3
+----
+required-operand-count-for-action-copy-words-sort-alphabetic:
+2
+----
+required-operand-count-for-action-copy-words-sort-numeric:
+2
+----
+required-operand-count-for-action-copy-words-that-begin-with-listed-words:
+3
+----
+required-operand-count-for-action-copy-words-that-begin-with-text:
+3
+----
+required-operand-count-for-action-copy-words-that-contain-listed-words:
+3
+----
+required-operand-count-for-action-copy-words-unique-only:
+2
+----
+required-operand-count-for-action-copy-zero-pad-left-to-length:
+3
+----
+required-operand-count-for-action-create-empty-sub-folder:
+1
+----
+required-operand-count-for-action-decode-from-cgi-parameter:
+2
+----
+required-operand-count-for-action-delete-file:
+1
+----
+required-operand-count-for-action-delete-listed-phrases:
+1
+----
+required-operand-count-for-action-encode-as-cgi-parameter:
+2
+----
+required-operand-count-for-action-expand-parameters-only:
+2
+----
+required-operand-count-for-action-expand-text:
+2
+----
+required-operand-count-for-action-find-line-in-file-that-begins-with-text:
+3
+----
+required-operand-count-for-action-find-lines-in-file-that-begin-with-any-listed-word:
+3
+----
+required-operand-count-for-action-find-lines-in-file-that-begin-with-any-two-words-listed:
+3
+----
+required-operand-count-for-action-gather-from-tagged-file-one-entry:
+2
+----
+required-operand-count-for-action-gather-tagged-info-from-file:
+2
+----
+required-operand-count-for-action-generate-counts-from-integer-to-integer:
+3
+----
+required-operand-count-for-action-generate-every-ordered-pairwise-combination-of-words:
+3
+----
+required-operand-count-for-action-generate-every-pairwise-combination-of-words:
+4
+----
+required-operand-count-for-action-generate-list-of-all-dashrep-phrases:
+1
+----
+required-operand-count-for-action-generate-list-of-files-in-current-read-directory:
+1
+----
+required-operand-count-for-action-generate-list-of-folders-in-current-read-directory:
+1
+----
+required-operand-count-for-action-generate-phrase-usage-counts:
+1
+----
+required-operand-count-for-action-generate-positions-of-delimiter:
+3
+----
+required-operand-count-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions:
+4
+----
+required-operand-count-for-action-generate-positions-of-listed-words:
+3
+----
+required-operand-count-for-action-get-cgi-information:
+0
+----
+required-operand-count-for-action-get-characters-from-position-to-position:
+3
+----
+required-operand-count-for-action-get-count-of-characters:
+1
+----
+required-operand-count-for-action-get-count-of-words:
+1
+----
+required-operand-count-for-action-get-current-time-in-epoch-seconds:
+0
+----
+required-operand-count-for-action-get-definitions-from-file:
+1
+----
+required-operand-count-for-action-get-position-of-matching-text:
+2
+----
+required-operand-count-for-action-get-position-of-word:
+2
+----
+required-operand-count-for-action-get-word-at-position:
+2
+----
+required-operand-count-for-action-insert-angle-bracketed-definitions:
+1
+----
+required-operand-count-for-action-insert-codeview-tags:
+1
+----
+required-operand-count-for-action-linewise-read-from-file-and-use-handler:
+2
+----
+required-operand-count-for-action-modification-time-of-file:
+1
+----
+required-operand-count-for-action-numeric-absolute:
+1
+----
+required-operand-count-for-action-numeric-cosine:
+1
+----
+required-operand-count-for-action-numeric-decrement:
+1
+----
+required-operand-count-for-action-numeric-divide-by:
+2
+----
+required-operand-count-for-action-numeric-equal-greater-less-compare:
+2
+----
+required-operand-count-for-action-numeric-increment:
+1
+----
+required-operand-count-for-action-numeric-integer:
+1
+----
+required-operand-count-for-action-numeric-logarithm-base-10:
+1
+----
+required-operand-count-for-action-numeric-logarithm-base-e:
+1
+----
+required-operand-count-for-action-numeric-minus:
+2
+----
+required-operand-count-for-action-numeric-odd-or-even:
+1
+----
+required-operand-count-for-action-numeric-sine:
+1
+----
+required-operand-count-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
+4
+----
+required-operand-count-for-action-numeric-vector-absolutes:
+2
+----
+required-operand-count-for-action-numeric-vector-add-number:
+3
+----
+required-operand-count-for-action-numeric-vector-integers:
+2
+----
+required-operand-count-for-action-numeric-vector-multiply-by-number:
+3
+----
+required-operand-count-for-action-numeric-vectors-add:
+3
+----
+required-operand-count-for-action-numeric-vectors-divide-by:
+3
+----
+required-operand-count-for-action-numeric-vectors-from-delta-values-calculate-distances:
+3
+----
+required-operand-count-for-action-numeric-vectors-multiply:
+3
+----
+required-operand-count-for-action-numeric-y-map-tile-number-based-on-latitude:
+1
+----
+required-operand-count-for-action-prepend-text-no-space:
+2
+----
+required-operand-count-for-action-prepend-text:
+2
+----
+required-operand-count-for-action-rename-file:
+2
+----
+required-operand-count-for-action-set-file-permission-private:
+1
+----
+required-operand-count-for-action-set-file-permission-public-read:
+1
+----
+required-operand-count-for-action-size-of-file:
+1
+----
+required-operand-count-for-action-split-epoch-seconds-into-named-components-for-zero-meridian:
+1
+----
+required-operand-count-for-action-split-epoch-seconds-into-named-components:
+1
+----
+required-operand-count-for-action-trace-show:
+1
+----
+required-operand-count-for-action-use-handler-with-each-word-in-phrase:
+2
+----
+required-operand-count-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
+2
+----
+required-operand-count-for-action-write-gathered-listed-items-to-end-of-file:
+2
+----
+required-operand-count-for-action-xml-move-attributes-into-tag-elements:
+1
+----
+required-operand-count-for-action-yes-or-no-empty-phrase:
+1
+----
+required-operand-count-for-action-yes-or-no-file-exists:
+1
+----
+required-operand-count-for-action-yes-or-no-folder-exists:
+1
+----
+required-operand-count-for-action-yes-or-no-same-two-phrase-definitions:
+2
+----
+required-operand-count-for-action-yes-or-no-word-is-in-phrase:
+2
+----
+required-operand-count-for-action-zero-one-multiple:
+1
+----
+required-operand-count-for-action-zero-or-nonzero:
+1
 ----
 runtime-code-word-within-source-text:
 substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
@@ -3915,7 +4502,7 @@ specify-operand-two-is-file-name-for-appending:
 $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 ----
 specify-operand-two-is-filename-for-writing-new-file:
-$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 ----
 template-current-word-in-operand-one:
 substr( $global_operand_one_words , $global_word_begin_operand_one_at_word[ $global_word_pointer_operand_one ] , $global_word_length_operand_one_at_word[ $global_word_pointer_operand_one ] )
@@ -7542,36 +8129,6 @@ return $global_yes ;  <new_line>
 
 template-function-segment-ending
 ----
-template-function-parameterized-yes-or-no-input-file-exists:
-# no-space dashes-long-line  <new_line>
-# function_parameterized__yes_or_no_input_file_exists  <new_line>
-<new_line>
-
-sub function_parameterized__yes_or_no_input_file_exists( ) {  <new_line>
-my $local_file_name ;  <new_line>
-$local_file_name = $_[ 0 ] ;  <new_line>
-
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace_diagnostic__yes_or_no_input_file_exists__case_begin ' . $local_file_name . "\n" ;  <new_line>
-
-$global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
-
-if ( index( $global_source_file_full_path , ' ' ) >= 0 ) {  <new_line>
-$global_runtime_error_type = 'file_name_invalid_contains_space' ;  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
-close( INFILE ) ;  <new_line>
-return $global_yes ;  <new_line>
-}  <new_line>
-
-$global_source_file_full_path = '' ;  <new_line>
-close( INFILE ) ;  <new_line>
-return $global_no ;  <new_line>
-
-template-function-segment-ending
-----
 template-function-parameterized-yes-or-no-integer:
 # no-space dashes-long-line  <new_line>
 # function_parameterized__yes_or_no_integer  <new_line>
@@ -7586,104 +8143,6 @@ return $global_yes ;  <new_line>
 } else {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
-
-template-function-segment-ending
-----
-template-function-parameterized-yes-or-no-is-folder-name:
-# no-space dashes-long-line  <new_line>
-# function_parameterized__yes_or_no_folder_name  <new_line>
-<new_line>
-
-sub function_parameterized__yes_or_no_folder_name( ) {  <new_line>
-my $local_text ;  <new_line>
-$local_text = $_[ 0 ] ;  <new_line>
-
-if ( index( $local_text , ' ' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '.' ) < 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-$global_length_of_text = length( $local_text ) ;  <new_line>
-if ( $global_length_of_text < 1 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '/' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , "\\" ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '*' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '&' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '!' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '@' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '$' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '%' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '^' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '~' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '`' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '"' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , "'" ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , ',' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , ':' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , ';' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '=' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-if ( index( $local_text , '+' ) >= 0 ) {  <new_line>
-return $global_no ;  <new_line>
-}  <new_line>
-
-return $global_yes ;  <new_line>
 
 template-function-segment-ending
 ----
