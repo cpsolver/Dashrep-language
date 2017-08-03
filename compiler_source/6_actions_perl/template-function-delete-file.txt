@@ -7,7 +7,7 @@ $global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hy
 
 if ( &function_parameterized__yes_or_no_valid_path( $global_target_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_folder ' . $global_target_path_prefix . "\n" ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
