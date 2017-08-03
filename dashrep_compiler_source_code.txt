@@ -2721,7 +2721,11 @@ my $global_list_name_prefix = '' ;  <new_line>
 my $global_list_of_words_as_text = '' ;  <new_line>
 my $global_list_of_x_values_as_text = '' ;  <new_line>
 my $global_list_of_y_values_as_text = '' ;  <new_line>
+my $global_source_file_name = '' ;  <new_line>
+my $global_source_path_prefix = '' ;  <new_line>
 my $global_source_file_full_path = '' ;  <new_line>
+my $global_target_file_name = '' ;  <new_line>
+my $global_target_path_prefix = '' ;  <new_line>
 my $global_target_file_full_path = '' ;  <new_line>
 my $global_target_file_full_path_saved = '' ;  <new_line>
 <new_line>
@@ -2969,7 +2973,6 @@ my $global_single_value = 0 ;  <new_line>
 my $global_slash_or_backslash_for_path = '' ;  <new_line>
 my $global_sort_order = '' ;  <new_line>
 my $global_source_definitions = '' ;  <new_line>
-my $global_source_file_name = '' ;  <new_line>
 my $global_source_phrase_name = '' ;  <new_line>
 my $global_starting_character_position = 0 ;  <new_line>
 my $global_starting_count = 0 ;  <new_line>
@@ -2984,7 +2987,6 @@ my $global_suffix = '' ;  <new_line>
 my $global_supplied_text = '' ;  <new_line>
 my $global_tag_name = '' ;  <new_line>
 my $global_target_column_number = 0 ;  <new_line>
-my $global_target_file_name = '' ;  <new_line>
 my $global_target_operand = '' ;  <new_line>
 my $global_target_phrase_name = '' ;  <new_line>
 my $global_target_row_number = 0 ;  <new_line>
@@ -4898,7 +4900,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     @global_value_in_column = split( / +/ , $global_input_line ) ;  <new_line>
     $global_number_of_columns = scalar( @global_value_in_column ) ;  <new_line>
     if ( $global_number_of_columns < 1 ) {  <new_line>
-        return '' ;  <new_line>
+        next ;  <new_line>
     } elsif ( $global_number_of_columns < $global_minimum_number_of_columns ) {  <new_line>
         $global_minimum_number_of_columns = $global_number_of_columns ;  <new_line>
     }  <new_line>
@@ -5805,6 +5807,35 @@ $global_accumulated_text =~ s/\+/ /sg ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-delete-file:
+# no-space dashes-long-line  <new_line>
+
+sub function__delete_file( ) {  <new_line>
+
+$global_action_result = '' ;  <new_line>
+$global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_valid_path( $global_target_path_prefix ) == $global_no ) {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix . "\n" ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_file_name ' . $global_target_file_name . "\n" ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+$global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
+
+unlink $global_target_file_full_path ;  <new_line>
+
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'trace_diagnostic__deleted_file ' . $global_target_file_full_path . "\n" ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -8881,7 +8912,10 @@ sub function__yes_or_no_file_exists( ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'trace_diagnostic__yes_or_no_file_exists__case_begin ' . $global_source_file_name . "\n" ;  <new_line>
 
-#  todo: check if file name valid, not check if exists  <new_line>
+if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'trace_diagnostic__yes_or_no_file_exists__case_invalid_file_name ' . $global_source_file_name . "\n" ;  <new_line>
+}  <new_line>
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_source_file_name ;  <new_line>
 
@@ -9333,9 +9367,9 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-delete-file:
 template-runtime-code-standard-action-begin
 
-$global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
-unlink $global_temporary_text ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
+&function__delete_file( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
@@ -10193,11 +10227,8 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-yes-or-no-file-exists:
 template-runtime-code-standard-action-begin
 
-$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+# $global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
+$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 
 &function__yes_or_no_file_exists( ) ;  <new_line>
 
