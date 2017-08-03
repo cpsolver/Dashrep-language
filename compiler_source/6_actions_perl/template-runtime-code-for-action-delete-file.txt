@@ -1,7 +1,30 @@
 template-runtime-code-standard-action-begin
 
-$global_temporary_text = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . runtime-code-for-operand-number-one ;  <new_line>
-unlink $global_temporary_text ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
+
+$global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_valid_path( $global_target_path_prefix ) == $global_no ) {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_folder ' . $global_target_path_prefix . "\n" ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) {  <new_line>
+&function__open_trace_output_file_if_not_open( ) ;  <new_line>
+print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_file_name ' . $global_target_file_name . "\n" ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+$global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
+
+unlink $global_target_file_full_path ;  <new_line>
+
+*---
+
+$global_target_file_name = runtime-code-for-operand-number-one ;  <new_line>
+&function__delete_file( ) ;  <new_line>
+runtime-code-storage-item-result = '' ;  <new_line>
+
+---*
 
 template-runtime-code-standard-action-end
