@@ -1,5 +1,4 @@
 
-*--- todo: move most (but not all!) put-into-phrase definitions into their own phrases ---*
 *--- todo: convert bracket notation into ambee/amenn/etc. notation ; use dashrep code already written, but using line-by-line handling ---*
 
 ambee delete-file ambee output-filename amenn amenn
