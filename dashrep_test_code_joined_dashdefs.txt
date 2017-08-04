@@ -120,6 +120,12 @@ correct-value-for-expanded-entire-standard-web-page:
 correct-value-for-expanded-test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases inline text text-that-occurs-after-parameter-phrases
 ----
+correct-value-for-found-line-about-dolphins:
+???
+----
+correct-value-for-found-lines-for-animal-combinations:
+???
+----
 correct-value-for-initial-caps-list-of-animal-types:
 Dolphin Whale Starfish Octopus 
 ----
@@ -230,6 +236,12 @@ correct-value-for-result-contents-from-file-write-and-read:
 ----
 correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
+----
+correct-value-for-result-for-action-copy-from-columns-in-file-to-column-lists:
+???
+----
+correct-value-for-result-for-action-copy-from-columns-in-file-to-named-phrases:
+???
 ----
 correct-value-for-result-integers-positive-sorted:
 -72 -36 -28 -1 0 1 3 12 17 94
@@ -858,6 +870,9 @@ underscores
 string-words-inline-text:
 inline text
 ----
+structure-of-column-data:
+data-item- column-one column-two column-three column-four column-five column-six column-seven column-eight column-nine column-ten
+----
 suffix-text:
 mno
 ----
@@ -948,11 +963,18 @@ ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exi
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
 
+ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
+
+ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
+
+ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-for-animal-combinations amenn
+
+ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
+
+ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column result-for-action-copy-from-columns-in-file-to-column-lists amenn
+
 combee
 
-find-line-in-file-that-begins-with-text
-find-lines-in-file-that-begin-with-any-listed-word
-find-lines-in-file-that-begin-with-any-two-words-listed
 write-gathered-listed-items-to-end-of-file
 
 set-file-permission-public-read
@@ -965,8 +987,6 @@ get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 write-dashrep-definitions-listed-in-phrase-to-file
-copy-from-columns-in-file-to-named-phrases
-copy-from-columns-in-file-to-column-lists
 
 comenn
 ----
@@ -1388,11 +1408,23 @@ No hyphen-here title no-space
 word-alpha:
 alpha  
 ----
+word-dolphin:
+dolphin
+----
 word-gamma:
 gamma  
 ----
+word-octopus:
+octopus
+----
 word-other:
 other  
+----
+words-dolphin-octopus-whale-otter:
+dolphin
+octopus
+whale
+otter
 ----
 words-preface-to-list-of-correct-values:
 List of phrases correctly calculated:
