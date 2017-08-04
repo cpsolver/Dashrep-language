@@ -40,7 +40,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
         @global_text_item_in_column = split( /[\t ]/ , $global_input_line ) ;  <new_line>
     }  <new_line>
     $global_number_of_columns = scalar( @global_text_item_in_column ) ;  <new_line>
-    if ( $global_number_of_columns < 1 ) {  <new_line>
+    if ( $global_number_of_columns < 2 ) {  <new_line>
         next ;  <new_line>
     }  <new_line>
     $global_unique_value = $global_text_item_in_column[ 0 ] ;  <new_line>
