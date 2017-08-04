@@ -3476,6 +3476,7 @@ template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
 template-function-parameterized-get-list-of-words
 template-function-parameterized-yes-or-no-valid-path
+template-function-parameterized-yes-or-no-valid-path-prefix
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
@@ -5818,7 +5819,7 @@ sub function__delete_file( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_target_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
@@ -7022,7 +7023,7 @@ sub function__modification_time_of_file( ) {  <new_line>
 $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_source_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__modification_time_of_file__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
@@ -7858,7 +7859,7 @@ $global_runtime_error_type = 'file_name_invalid_parameterized' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'path_for_appending_invalid' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
@@ -7908,7 +7909,7 @@ $global_runtime_error_type = 'file_name_for_reading_invalid' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'path_for_reading_invalid' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
@@ -7971,7 +7972,7 @@ $global_runtime_error_type = 'file_name_for_new_file_invalid' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'path_for_writing_invalid' ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
@@ -8874,7 +8875,7 @@ sub function__size_of_file( ) {  <new_line>
 $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_source_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
@@ -9077,7 +9078,7 @@ sub function__yes_or_no_file_exists( ) {  <new_line>
 $global_action_result = 'no' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_source_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__yes_or_no_file_exists__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
