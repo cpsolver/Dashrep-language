@@ -24,11 +24,18 @@ ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exi
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
 
+ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
+
+ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
+
+ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-for-animal-combinations amenn
+
+ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
+
+ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column result-for-action-copy-from-columns-in-file-to-column-lists amenn
+
 combee
 
-find-line-in-file-that-begins-with-text
-find-lines-in-file-that-begin-with-any-listed-word
-find-lines-in-file-that-begin-with-any-two-words-listed
 write-gathered-listed-items-to-end-of-file
 
 set-file-permission-public-read
@@ -41,7 +48,5 @@ get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 write-dashrep-definitions-listed-in-phrase-to-file
-copy-from-columns-in-file-to-named-phrases
-copy-from-columns-in-file-to-column-lists
 
 comenn
