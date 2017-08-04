@@ -15,6 +15,7 @@ template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
 template-function-parameterized-get-list-of-words
 template-function-parameterized-yes-or-no-valid-path
+template-function-parameterized-yes-or-no-valid-path-prefix
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
