@@ -32,7 +32,7 @@ ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filena
 
 ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
 
-ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column result-for-action-copy-from-columns-in-file-to-column-lists amenn
+ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column amenn
 
 combee
 
