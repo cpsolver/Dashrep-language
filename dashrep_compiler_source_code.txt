@@ -4892,7 +4892,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     $global_input_line =~ s/ +$// ;  <new_line>
     @global_value_in_column = split( / +/ , $global_input_line ) ;  <new_line>
     $global_number_of_columns = scalar( @global_value_in_column ) ;  <new_line>
-    if ( $global_number_of_columns < 1 ) {  <new_line>
+    if ( $global_number_of_columns < 2 ) {  <new_line>
         next ;  <new_line>
     } elsif ( $global_number_of_columns < $global_minimum_number_of_columns ) {  <new_line>
         $global_minimum_number_of_columns = $global_number_of_columns ;  <new_line>
@@ -4954,6 +4954,10 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
         @global_text_item_in_column = split( /<character_space> +/ , $global_input_line ) ;  <new_line>
     } else {  <new_line>
         @global_text_item_in_column = split( /[\t ]/ , $global_input_line ) ;  <new_line>
+    }  <new_line>
+    $global_number_of_columns = scalar( @global_text_item_in_column ) ;  <new_line>
+    if ( $global_number_of_columns < 2 ) {  <new_line>
+        next ;  <new_line>
     }  <new_line>
     $global_unique_value = $global_text_item_in_column[ 0 ] ;  <new_line>
     if ( $global_unique_value =~ / / ) {  <new_line>
