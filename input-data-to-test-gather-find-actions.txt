@@ -1,0 +1,26 @@
+entry_begin
+uniqueid 101
+datetime 2016 8 5 5 8 0
+title Robbery Investigation Underway
+description On Friday August 5&#44; 2016&#44; at 5&#58;29 p&#46;m&#46;&#44; Central Precinct officers responded to the report of an armed robbery at a pharmacy&#46;
+entry_end
+
+entry_begin
+uniqueid 102
+datetime 2016 8 5 5 8 0
+title Another Robbery Investigation Underway
+description On Friday August 5&#44; 2016&#44; at 5&#58;29 p&#46;m&#46;&#44; Central Precinct officers responded to the report of an armed robbery at a pharmacy&#46;
+entry_end
+
+dolphin info about dolphins
+octopus info about octopuses
+whale info about whales
+otter info about otters
+
+dolphin octopus intersection of dolphin and octopus
+dolphin whale intersection of dolphin and whale
+dolphin octopus intersection of dolphin and octopus
+dolphin otter intersection of dolphin and otter
+octopus whale intersection of octopus and whale
+octopus otter intersection of octopus and otter
+whale otter intersection of whale and otter
