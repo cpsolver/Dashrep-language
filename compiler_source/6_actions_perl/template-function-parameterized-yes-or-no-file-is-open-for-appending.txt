@@ -6,8 +6,7 @@ sub function_parameterized__yes_or_no_file_is_open_for_appending( ) {  <new_line
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace_diagnostic__parameterized_yes_or_no_file_is_open_for_appending__case_begin ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_is_open_for_appending__case_begin ' . $local_file_name . "\n" ;  <new_line>
 
 $global_output_filename = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 

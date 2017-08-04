@@ -5,8 +5,7 @@
 sub handle_time_limit_exceeded( ) {  <new_line>
 
 print 'Exceeded time limit of ' . $global_time_limit . ' seconds' . "\n" ;  <new_line>
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace_diagnostic__handle_time_limit_exceeded ' . $global_time_limit . "\n" ;  <new_line>
+$global_action_result = 'trace_diagnostic__handle_time_limit_exceeded ' . $global_time_limit . "\n" ;  <new_line>
 
 exit ;  <new_line>
 

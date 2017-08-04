@@ -131,8 +131,7 @@ $phrase_name = $phrase_name_with_highest_cycle_count ;  <new_line>
 }  <new_line>
 }  <new_line>
 print 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . "\n" ;  <new_line>
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . "\n" ;  <new_line>
+$global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . "\n" ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 }  <new_line>

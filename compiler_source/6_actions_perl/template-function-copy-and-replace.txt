@@ -31,8 +31,7 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
         $global_phrase_usage_count_for_phrase_number[ 1 ] ++ ;  <new_line>
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
             $global_action_result = 'runtime_operand_error__action_copy_and_replace__case_endless_loop' ;  <new_line>
-            &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-            print TRACE_OUT 'runtime_operand_error__copy_and_replace__case_endless_loop' . "\n" ;  <new_line>
+            $global_action_result = 'runtime_operand_error__copy_and_replace__case_endless_loop' . "\n" ;  <new_line>
             last ;  <new_line>
         }  <new_line>
     }  <new_line>
