@@ -5,7 +5,7 @@ sub function__size_of_file( ) {  <new_line>
 $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_source_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 print TRACE_OUT 'runtime_operand_error__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
 return '' ;  <new_line>
