@@ -4637,52 +4637,49 @@ sub function__convert_unicode_to_html_entities( ) {  <new_line>
 #  127 which is "del"  <new_line>
 
 $global_action_result = '' ;  <new_line>
-if ( $global_action_name eq 'convert hyphen-here unicode hyphen-here to hyphen-here html hyphen-here entities' ) {  <new_line>
-    $global_source_phrase_name = $global_operand_one ;  <new_line>
-    $global_target_phrase_name = $global_operand_two ;  <new_line>
-    if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>
-        $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
-    }  <new_line>
-    $global_accumulated_text = '' ;  <new_line>
-    @global_octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $global_source_phrase_name } ) ;  <new_line>
-    $global_yes_or_no_within_ampersand_encoded_character = 'no' ;  <new_line>
-    $global_pointer = -1 ;  <new_line>
-    while ( $global_pointer < $#global_octet_number_at_position ) {  <new_line>
-        $global_pointer ++ ;  <new_line>
-        $global_octet_number = $global_octet_number_at_position[ $global_pointer ] ;  <new_line>
-        if ( $global_octet_number < 32 ) {  <new_line>
-            $global_unicode_number = $global_octet_number ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-        } elsif ( $global_octet_number < 127 ) {  <new_line>
-            $global_accumulated_text .= chr( $global_octet_number ) ;  <new_line>
-        } elsif ( $global_octet_number >= 0xfc ) {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( ( ( ( ( $global_octet_number - 0xfc ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 5 ] - 128 ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-            $global_pointer += 5 ;  <new_line>
-        } elsif ( $global_octet_number >= 0xf8 ) {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( ( ( $global_octet_number - 0xf8 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-            $global_pointer += 4 ;  <new_line>
-        } elsif ( $global_octet_number >= 0xf0 ) {  <new_line>
-            $global_unicode_number = ( ( ( ( ( ( $global_octet_number - 0xf0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-            $global_pointer += 3 ;  <new_line>
-        } elsif ( $global_octet_number >= 0xe0 ) {  <new_line>
-            $global_unicode_number = ( ( ( ( $global_octet_number - 0xe0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-            $global_pointer += 2 ;  <new_line>
-        } elsif ( $global_octet_number >= 0xc0 ) {  <new_line>
-            $global_unicode_number = ( ( $global_octet_number - 0xc0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-            $global_pointer += 1 ;  <new_line>
-        } elsif ( $global_octet_number > 0 ) {  <new_line>
-            $global_unicode_number = $global_octet_number ;  <new_line>
-            $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
-        }  <new_line>
-    }  <new_line>
-    $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
+$global_source_phrase_name = $global_operand_one ;  <new_line>
+$global_target_phrase_name = $global_operand_two ;  <new_line>
+if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>
+    $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
 }  <new_line>
-
+$global_accumulated_text = '' ;  <new_line>
+@global_octet_number_at_position = unpack( "C*" , $global_dashrep_replacement{ $global_source_phrase_name } ) ;  <new_line>
+$global_yes_or_no_within_ampersand_encoded_character = 'no' ;  <new_line>
+$global_pointer = -1 ;  <new_line>
+while ( $global_pointer < $#global_octet_number_at_position ) {  <new_line>
+    $global_pointer ++ ;  <new_line>
+    $global_octet_number = $global_octet_number_at_position[ $global_pointer ] ;  <new_line>
+    if ( $global_octet_number < 32 ) {  <new_line>
+        $global_unicode_number = $global_octet_number ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+    } elsif ( $global_octet_number < 127 ) {  <new_line>
+        $global_accumulated_text .= chr( $global_octet_number ) ;  <new_line>
+    } elsif ( $global_octet_number >= 0xfc ) {  <new_line>
+        $global_unicode_number = ( ( ( ( ( ( ( ( ( ( $global_octet_number - 0xfc ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 5 ] - 128 ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+        $global_pointer += 5 ;  <new_line>
+    } elsif ( $global_octet_number >= 0xf8 ) {  <new_line>
+        $global_unicode_number = ( ( ( ( ( ( ( ( $global_octet_number - 0xf8 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 4 ] - 128 ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+        $global_pointer += 4 ;  <new_line>
+    } elsif ( $global_octet_number >= 0xf0 ) {  <new_line>
+        $global_unicode_number = ( ( ( ( ( ( $global_octet_number - 0xf0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 3 ] - 128 ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+        $global_pointer += 3 ;  <new_line>
+    } elsif ( $global_octet_number >= 0xe0 ) {  <new_line>
+        $global_unicode_number = ( ( ( ( $global_octet_number - 0xe0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 2 ] - 128 ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+        $global_pointer += 2 ;  <new_line>
+    } elsif ( $global_octet_number >= 0xc0 ) {  <new_line>
+        $global_unicode_number = ( ( $global_octet_number - 0xc0 ) * 64 ) + $global_octet_number_at_position[ $global_pointer + 1 ] - 128 ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+        $global_pointer += 1 ;  <new_line>
+    } elsif ( $global_octet_number > 0 ) {  <new_line>
+        $global_unicode_number = $global_octet_number ;  <new_line>
+        $global_accumulated_text .= '&#' . $global_unicode_number . ';' ;  <new_line>
+    }  <new_line>
+}  <new_line>
+$global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
 $global_target_text = $global_action_result ;  <new_line>
 
 template-function-segment-ending
@@ -5260,17 +5257,13 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_text_list_loop = '' ;  <new_line>
 }  <new_line>
 
-if ( $global_action_name eq 'copy<character_hyphen>words<character_hyphen>unique<character_hyphen>only' ) {  <new_line>
-    $global_text_list_key = '' ;  <new_line>
-    $global_destination_phrase = $global_operand_two ;  <new_line>
+if ( exists( $global_dashrep_replacement{ $global_operand_two } ) ) {  <new_line>
+    $global_text_list_key = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 } else {  <new_line>
-    if ( exists( $global_dashrep_replacement{ $global_operand_two } ) ) {  <new_line>
-        $global_text_list_key = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
-    } else {  <new_line>
-        $global_text_list_key = '' ;  <new_line>
-    }  <new_line>
-    $global_destination_phrase = $global_operand_three ;  <new_line>
+    $global_text_list_key = '' ;  <new_line>
 }  <new_line>
+
+$global_destination_phrase = $global_operand_three ;  <new_line>
 $global_text_list_key =~ s/\n/ /sg ;  <new_line>
 $global_text_list_key =~ s/^ +// ;  <new_line>
 $global_text_list_key =~ s/ +$// ;  <new_line>
@@ -5310,7 +5303,6 @@ if ( $global_length_of_loop_list > 0 ) {  <new_line>
 $global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_destination_phrase } = $global_result_word_list ;  <new_line>
-
 $global_target_text = $global_action_result ;  <new_line>
 
 template-function-segment-ending
