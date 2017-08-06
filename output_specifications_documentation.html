@@ -22,7 +22,7 @@
 <tr><td>6</td><td>Action</td><td><b><i>[-</i></b> zero-one-multiple 3 <b><i>-]</i></b></td><td>If the first (left-most) hyphenated phrase inside a parameter is one of the recognized actions (listed below), and the action is followed by text that the action knows how to handle, the action is performed.&nbsp; Some actions produce text that becomes the replacement for the parameter, whereas other actions operate on phrases or files and do not produce any text.</td></tr>
 <tr><td>7</td><td>Hyphenated phrase</td><td>needed-text-string</td><td>A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase.&nbsp; (A hyphen and a dash are different names for the same symbol.)&nbsp; A phrase name is case-sensitive.&nbsp; Lowercase-only names are recommended, but not required.&nbsp; Speakable names are recommended, but not required.&nbsp; The use of nouns before, rather than after, adjectives is recommended; this convention (for example <b><i>rectangle-large-begin</i></b> instead of <b><i>large-rectangle-begin</i></b>) is typical of many spoken languages, but not English.&nbsp; The first character cannot be a hyphen and cannot be a digit.&nbsp; The last character cannot be a hyphen.</td></tr>
 <tr><td>8</td><td>Colon</td><td>needed-text-string<b><i>:</i></b> definition here &nbsp; <b><i>----</i></b></td><td>When there is text after the <b><i>dashrep-definitions-begin</i></b> directive, a colon can appear at the end of the phrase being defined.&nbsp; This convention is optional.&nbsp; It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used.</td></tr>
-<tr><td>9</td><td>New line or line break</td><td>one line <b><i>line-break</i></b> next line</td><td>When a new line begins, it is replaced with a space.&nbsp; When a new line needs to be inserted into the resulting text, the new-line phrase (explained below) can be used.&nbsp; If a line break in the target language (such as HTML) is needed, the phrase line-break can be used to insert the appropriate target-specific code (which in HTML is the <b><i><br \></i></b> tag).</td></tr>
+<tr><td>9</td><td>New line or line break</td><td>one line <b><i><br \></i></b> next line</td><td>When a new line begins, it is replaced with a space.&nbsp; When a new line needs to be inserted into the resulting text, the new-line phrase (explained below) can be used.&nbsp; If a line break in the target language (such as HTML) is needed, the phrase line-break can be used to insert the appropriate target-specific code (which in HTML is the <b><i>&lt;br \&gt;</i></b> tag).</td></tr>
 <tr><td>10</td><td>Undefined hyphenated phrase</td><td>quite-talkative parrot</td><td>If a hyphenated phrase has not been defined, it is not translated; it remains unchanged.&nbsp; If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper.</td></tr>
 <tr><td>11</td><td>hyphen-here</td><td><b><i>hyphen-here</i></b></td><td>Explained below.</td></tr>
 <tr><td>12</td><td>non-breaking-space</td><td><b><i>non-breaking-space</i></b></td><td>Explained below.</td></tr>
@@ -180,6 +180,14 @@
 <p>This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, and inserts a single space between the prepended text and the existing text.</p>
 
 
+<h3 id="get-definitions-from-phrase">get-definitions-from-phrase</h3>
+<p>This action reads Dashrep definitions from the specified phrase and creates the named phrases with their associated definitions.&nbsp; An optional colon can appear at the end of each defined phrase name.&nbsp; This action overwrites any existing phrase definitions that have the same phrase names. </p> <p> Very importantly, the first phrase either must be generated or copied from a file because the phrase must contain the (space-delimited) word <b><i>defenn</i></b> at the end of each definition, but that word cannot appear within a definition that is supplied to the compiler as source code.&nbsp; A useful trick is to terminate each definition with a placeholder word such as <b><i>delayed_defenn</i></b>, and that placeholder word can be replaced with the word <b><i>defenn</i></b> before this action is used. </p> <p> Example: If the first phrase is <b><i>supplied-definitions</i></b> and it contains <b><i>animal-type: dolphin defenn animal-name: first flipper defenn</i></b> then this action will create a phrase named <b><i>animal-type</i></b> that is defined as <b><i>dolphin</i></b> and another phrase named <b><i>animal-name</i></b> that is defined as <b><i>first flipper</i></b>.</p>
+
+
+<h3 id="put-listed-phrase-definitions-into-phrase">put-listed-phrase-definitions-into-phrase</h3>
+<p>This action puts into the second phrase the phrase names and their associated Dashrep definitions that are listed in the first phrase.&nbsp; Each definition begins with the phrase name with an appended colon.&nbsp; Each definition is terminated with the word <b><i>defenn</i></b> followed by a newline character.&nbsp; This format is compatible with the format used by the action <b><i>get-definitions-from-phrase</i></b> because that action handles newline characters the same as spaces, and it ignores the colon at the end of a phrase name. </p> <p> Example: If the first phrase is <b><i>list-of-phrases-from-which-to-get-definitions</i></b> and it contains <b><i>animal-type animal-name</i></b> and the phrase <b><i>animal-type</i></b> contains <b><i>dolphin</i></b> and the phrase <b><i>animal-name</i></b> contains <b><i>first flipper</i></b> then this action creates a phrase that contains: <br \> <b><i>animal-type: dolphin defenn <br \> animal-name: first flipper defenn</i></b></p>
+
+
 <h2>Clear & delete phrases</h2>
 
 
@@ -254,7 +262,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>53</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
@@ -425,12 +433,12 @@
 <p>This action copies the definition of the first phrase into the definition of the second phrase, but replaces some text strings with associated text strings, using paired words in the third operand.&nbsp; The paired words in the third operand are delimited by spaces, and the first word in each pair specifies what text to find, and the second word in each pair specifies the replacement text for that found word. </p> <p> Example: To replace named HTML entities and some special characters with their unicode equivalent entities, the third phrase can contain text such as the following: <b><i>&#38;amp; &#38;#38; &#38;lt; &#38;#60; < &#38;#60 &#38;gt; &#38;#62; > &#38;#62; &#38;ldquo; &#38;#8220; &#38;rdquo; &#38;#8221; &#38;lsquo; &#38;#8216; &#38;rsquo; &#38;#8217; &#38;quot; &#38;#34; " &#38;#34; &#38;apos; &#38;#39; ' &#38;#39; &#38;nbsp; &#38;#160;</i></b> </p> <p> Another example: To identify a numeric pattern by converting all digits into the digit nine, the third phrase can contain the following text: <b><i>0 9 1 9 2 9 3 9 4 9 5 9 6 9 7 9 8 9</i></b>&nbsp; </p> <p> As these examples illustrate, the words can include single characters.&nbsp; Obviously none of the words in the third phrase can contain a space.&nbsp; If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable.&nbsp; The first two phrase names can be the same.</p>
 
 
-<h3 id="generate-positions-of-delimiter">generate-positions-of-delimiter</h3>
-<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
-
-
 <h3 id="generate-positions-of-listed-words">generate-positions-of-listed-words</h3>
 <p>This action searches for any of the space-delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches.&nbsp; The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match.&nbsp; If there is no match, the generated list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text. </p> <p> Example: If the first phrase contains <b><i>fish bird</i></b> and the second phrase contains <b><i>birds songbird fish clownfish</i></b> then the third phrase will contain <b><i>1 4 11 14 16 19 26 29</i></b>.</p>
+
+
+<h3 id="generate-positions-of-delimiter">generate-positions-of-delimiter</h3>
+<p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
 
 
 <h3 id="generate-positions-of-first-matching-delimiter-after-listed-positions">generate-positions-of-first-matching-delimiter-after-listed-positions</h3>
@@ -637,6 +645,10 @@
 <p>This phrase specifies a different (non-local-folder) path for file write operations.&nbsp; If this definition is empty (which is the default value), the local directory is used.&nbsp; If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-reading actions.</p>
 
 
+<h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
+<p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
+
+
 <h3 id="generate-list-of-files-in-current-read-directory">generate-list-of-files-in-current-read-directory</h3>
 <p>This action puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
@@ -665,8 +677,8 @@
 <p>This action changes the protection of the specified file to allow global access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 
-<h3 id="create-empty-file">create-empty-file</h3>
-<p>This action creates an empty file using the specified file name, and erases the file if it already exists.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<h3 id="set-file-permission-private">set-file-permission-private</h3>
+<p></p>
 
 
 <h3 id="rename-file">rename-file</h3>
@@ -705,10 +717,6 @@
 <p>See the description for <b><i>linewise-read-from-file-and-use-handler</i></b>.</p>
 
 
-<h3 id="get-definitions-from-file">get-definitions-from-file</h3>
-<p>This action reads the Dashrep definitions from the specified file.&nbsp; This action overwrites any existing definitions that have the same phrase name.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
-
-
 <h3 id="dashrep-phrase-prefix-for-imported-phrases">dashrep-phrase-prefix-for-imported-phrases</h3>
 <p>This prefix is placed at the beginning of each newly defined phrase imported from a file.&nbsp; This capability is useful to prevent user-written phrase names from overwriting phrase names that are executed with special permissions.&nbsp; Also this capability is useful for importing phrases from separate files that otherwise might have overlapping phrase names.</p>
 
@@ -717,8 +725,7 @@
 <p>This suffix is placed at the end of each newly defined phrase imported from a file.&nbsp; See the phrase <b><i>prefix-for-imported-phrases</i></b> for more details.</p>
 
 
-<h3 id="write-dashrep-definitions-listed-in-phrase-to-file">write-dashrep-definitions-listed-in-phrase-to-file</h3>
-<p>This action writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<h2>Data-related phrases</h2>
 
 
 <h3 id="find-line-in-file-that-begins-with-text">find-line-in-file-that-begins-with-text</h3>
@@ -731,9 +738,6 @@
 
 <h3 id="find-lines-in-file-that-begin-with-any-two-words-listed">find-lines-in-file-that-begin-with-any-two-words-listed</h3>
 <p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines.&nbsp; If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty.&nbsp; A line is regarded as a match if the first two words are the same, and if that word is in the specified word list.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
-
-
-<h2>Data-related phrases</h2>
 
 
 <h3 id="copy-from-columns-in-file-to-named-phrases">copy-from-columns-in-file-to-named-phrases</h3>
@@ -899,6 +903,18 @@
 
 
 <h2>Deprecated phrases, do not use</h2>
+
+
+<h3 id="get-definitions-from-file">get-definitions-from-file</h3>
+<p>This action reads the Dashrep definitions from the specified file.&nbsp; This action overwrites any existing definitions that have the same phrase name.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+
+
+<h3 id="write-dashrep-definitions-listed-in-phrase-to-file">write-dashrep-definitions-listed-in-phrase-to-file</h3>
+<p>This action writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+
+
+<h3 id="create-empty-file">create-empty-file</h3>
+<p>This action creates an empty file using the specified file name, and erases the file if it already exists.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
 
 
 <h3 id="expand-parameters-only">expand-parameters-only</h3>
