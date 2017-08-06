@@ -1923,19 +1923,18 @@ close OUTFILE;
 #-------------------------------------------
 #  Compare lists of action names and predefined phrases and all Dashrep-recognized phrases.
 
-$being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
-$test_number_count ++;
-#  remove-from-cpan-version-begin
-$string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phrase-names-difference" );
-#  remove-from-cpan-version-end
-#  uncomment-for-cpan-version-begin
-# $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
-#  uncomment-for-cpan-version-end
-# $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
-if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
-if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
-if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" . "[[" . $string_return_value . "]]" . "\n\n" };
-
+# $being_tested = "compare lists of action names and predefined phrases and all Dashrep-recognized phrases -- ";
+# $test_number_count ++;
+# #  remove-from-cpan-version-begin
+# $string_return_value = &dashrep_translate::dashrep_get_replacement( "list-of-phrase-names-difference" );
+# #  remove-from-cpan-version-end
+# #  uncomment-for-cpan-version-begin
+# # $string_return_value = &dashrep_get_replacement( "list-of-phrase-names-difference" );
+# #  uncomment-for-cpan-version-end
+# # $results_text .= "[[" . $string_return_value . "]]" . "\n" ;
+# if ( $string_return_value eq ". ." ) { $one_if_ok = 1; } else { $one_if_ok = 0; };
+# if ( $one_if_ok == 1 ) { $test_OK_counter ++ };
+# if ( $one_if_ok == 1 ) { $results_text .= $being_tested . "OK\n" } else { $results_text .= $being_tested . "ERROR\n\n" . "[[" . $string_return_value . "]]" . "\n\n" };
 
 
 #-------------------------------------------
