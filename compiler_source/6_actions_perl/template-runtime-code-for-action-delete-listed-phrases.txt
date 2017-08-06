@@ -1,8 +1,6 @@
 template-runtime-code-standard-action-begin
 
-$global_action_name = '<dashrep_placeholder_action_name>' ;  <new_line>
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-
 &function__delete_listed_phrases( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
