@@ -2,6 +2,9 @@ dashdef-copyright-notice:
 All the code and text in this collection of Dashrep phrase definitions are (c) Copyright 2017 by the entity who owns the source code from which this object code was generated, and who is specified in a separate copyright statement within one of the following files within this collection. ALL RIGHTS RESERVED.
 ----
 additional-test-of-dashrep-actions-not-currently-being-tested:
+get-definitions-from-phrase
+put-listed-phrase-definitions-into-phrase
+
 ambee copy-words-offset-skip list-of-numbers skipped-list-of-numbers 2 1  amenn
 ambee ambee handle-double-nested-executable-phrase amenn amenn
 ----
