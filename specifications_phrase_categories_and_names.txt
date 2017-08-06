@@ -33,6 +33,8 @@ append-repeatedly-using-count
 append-multiple-from-phrases-named-in-pattern
 prepend-text
 prepend-text-no-space
+get-definitions-from-phrase
+put-listed-phrase-definitions-into-phrase
 
 category_clear_delete
 clear-phrase
@@ -179,10 +181,8 @@ copy-append-file-to-file
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
-get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
-write-dashrep-definitions-listed-in-phrase-to-file
 
 category_data
 find-line-in-file-that-begins-with-text
@@ -234,6 +234,8 @@ amennfenambee
 linbray
 
 category_deprecated
+get-definitions-from-file
+write-dashrep-definitions-listed-in-phrase-to-file
 create-empty-file
 expand-parameters-only
 dashrep-definitions-begin

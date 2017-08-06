@@ -1,0 +1,7 @@
+# no-space dashes-long-line  <new_line>
+
+sub function__put_listed_definitions_into_phrase( ) {  <new_line>
+
+$global_action_result = 'todo__not_yet_written' ;  <new_line>
+
+template-function-segment-ending

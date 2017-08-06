@@ -975,6 +975,75 @@ description-for-phrase-dashrep-path-prefix-for-file-writing:
 This phrase specifies a different (non-local-folder) path for file write operations. s-n If this definition is empty (which is the default value), the local directory is used. s-n If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead. s-n This approach limits the chances of intentional or accidental access to files that should not be accessed. s-n A different path is used for file-reading actions.
 -----
 
+description-for-phrase-get-definitions-from-phrase:
+This action reads Dashrep definitions from the specified phrase and creates the named phrases with their associated definitions.
+s-n
+An optional colon can appear at the end of each defined phrase name.
+s-n
+This action overwrites any existing phrase definitions that have the same phrase names.
+paragraph-next
+Very importantly, the first phrase either must be generated or copied from a file because the phrase must contain the (space h-h delimited) word
+b-i-b def no-space enn b-i-e
+at the end of each definition, but that word cannot appear within a definition that is supplied to the compiler as source code.
+s-n
+A useful trick is to terminate each definition with a placeholder word such as
+b-i-b delayed_defenn b-i-e no-space , and that placeholder word can be replaced with the word
+b-i-b def no-space enn b-i-e
+before this action is used.
+paragraph-next
+Example: If the first phrase is b-i-b supplied h-h definitions b-i-e and it contains b-i-b
+animal h-h type: dolphin def no-space enn
+animal h-h name: first flipper def no-space enn
+b-i-e
+then this action will create a phrase named
+b-i-b animal h-h type b-i-e
+that is defined as
+b-i-b dolphin b-i-e
+and another phrase named
+b-i-b animal h-h name b-i-e
+that is defined as
+b-i-b first flipper b-i-e
+no-space .
+-----
+
+description-for-phrase-put-listed-phrase-definitions-into-phrase:
+This action puts into the second phrase the phrase names and their associated Dashrep definitions that are listed in the first phrase.
+s-n
+Each definition begins with the phrase name with an appended colon.
+s-n
+Each definition is terminated with the word
+b-i-b def no-space enn b-i-e
+followed by a newline character.
+s-n
+This format is compatible with the format used by the action
+b-i-b get-definitions-from-phrase b-i-e
+because that action handles newline characters the same as spaces,
+and it ignores the colon at the end of a phrase name.
+paragraph-next
+Example: If the first phrase is
+b-i-b list h-h of h-h phrases h-h from h-h which h-h to h-h get h-h definitions b-i-e
+and it contains b-i-b animal h-h type animal h-h name b-i-e
+and the phrase
+b-i-b animal h-h type b-i-e
+contains
+b-i-b dolphin b-i-e
+and the phrase
+b-i-b animal h-h name b-i-e
+contains
+b-i-b first flipper b-i-e
+then this action creates a phrase that contains:
+line-break
+b-i-b
+animal h-h type: dolphin def no-space enn
+line-break
+animal h-h name: first flipper def no-space enn
+b-i-e
+-----
+
+line-break:
+<br \>
+-----
+
 description-for-phrase-get-definitions-from-file:
 This action reads the Dashrep definitions from the specified file.
 s-n
@@ -1477,7 +1546,7 @@ r-b c-b 7 c-n Hyphenated phrase c-n needed h-h text h-h string c-n A hyphen surr
 
 r-b c-b 8 c-n Colon c-n needed h-h text h-h string no-space b-i-b : b-i-e definition here non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n When there is text after the b-i-b dashrep h-h definitions h-h begin b-i-e directive, a colon can appear at the end of the phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
 
-r-b c-b 9 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code (which in HTML is the b-i-b <br \> b-i-e tag). c-e r-e
+r-b c-b 9 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the new h-h line phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase line h-h break can be used to insert the appropriate target-specific code (which in HTML is the b-i-b &lt;br \&gt; b-i-e tag). c-e r-e
 
 r-b c-b 10 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
 
