@@ -183,6 +183,7 @@ linewise-input-line-from-file
 linewise-input-line-count
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
+get-url-resource
 
 category_data
 find-line-in-file-that-begins-with-text

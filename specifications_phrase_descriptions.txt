@@ -1156,6 +1156,34 @@ b-i-b + b-i-e into a space
 no-space .
 -----
 
+description-for-phrase-get-url-resource:
+This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.
+s-n
+location-of-write-file
+paragraph-next
+Example: If the first phrase contains
+b-i-b
+http://www.votefair.org/americanidol.html
+b-i-e
+and the second phrase contains
+b-i-b
+temp_url_output.txt
+b-i-e
+and the phrase
+b-i-b
+name-of-phrase-that-specifies-write-directory
+b-i-e
+contains
+b-i-b
+/home/rawfeeds/
+b-i-e
+then a copy of the specified web page will be put into the file
+b-i-b
+/home/rawfeeds/temp_url_output.txt
+b-i-e
+no-space .
+-----
+
 description-for-phrase-standard-output:
 This phrase contains the text that is written to standard output if em-dash but only if em-dash this phrase is not empty. s-n If this phrase is empty, then the normal convention is followed, which means that the expanded text is written to standard output. s-n In other programming languages the b-i-b print b-i-e statement is used to write text to standard output. s-n This phrase provides a way to completely control what is sent to standard output, without unexpected insertions of text caused by warnings and undefined Dashrep code.
 -----

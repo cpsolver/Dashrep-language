@@ -1,0 +1,61 @@
+# no-space dashes-long-line  <new_line>
+# function__get_url_resource  <new_line>
+#  <new_line>
+
+*---
+#  Inputs are the Dashrep phrases "url-source-for-single-resource-request" and "filename-target-for-single-resource-request"  <new_line>
+#  Output is the file specified by the (above) filename and the phrase "dashrep-path-prefix-for-file-writing", plus messages from the CURL command are put into phrase "trace-results-from-curl" <new_line>
+<new_line>
+#  The -k switch reqests ignoring any  <new_line>
+#  https certificate errors (which are not important  <new_line>
+#  because the downloaded resources are public).  <new_line>
+#  <new_line>
+#  The -s switch requests silent mode, which turns  <new_line>
+#  off both errors and progress info.  <new_line>
+#  <new_line>
+#  The -S switch requests that errors be shown.  <new_line>
+---*
+
+sub function__get_url_resource( ) {  <new_line>
+
+$global_action_result = '' ;  <new_line>
+
+$url_source_for_single_resource_request = $global_operand_one ;  <new_line>
+$filename_target_for_single_resource_request = $global_operand_two ;  <new_line>
+$dashrep_path_prefix_for_file_writing = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ;  <new_line>
+
+#    values for testing:  <new_line>
+    $url_source_for_single_resource_request = 'http://www.votefair.org/americanidol.html' ;  <new_line>
+    $filename_target_for_single_resource_request = 'temp_curl_output.txt' ;  <new_line>
+    $dashrep_path_prefix_for_file_writing = '/home/newsher2/news/rawfeeds/' ;  <new_line>
+
+$url_source_for_single_resource_request =~ s/ +//sg ;  <new_line>
+$filename_target_for_single_resource_request =~ s/ +//sg ;  <new_line>
+$dashrep_path_prefix_for_file_writing =~ s/ +//sg ;  <new_line>
+$combined_path_and_filename_for_target_resource = $dashrep_path_prefix_for_file_writing . $filename_target_for_single_resource_request ;  <new_line>
+$combined_path_and_filename_for_target_resource =~ s/\/\/+/\//sg ;  <new_line>
+
+# todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator  <new_line>
+$command_string_without_pipe = 'curl -k -s -S -o ' . $combined_path_and_filename_for_target_resource . ' ' . $url_source_for_single_resource_request ;  <new_line>
+
+$accumulated_curl_results .= "possible command string: " . $command_string_without_pipe . "\n" ;  <new_line>
+if ( ( $url_source_for_single_resource_request =~ /^http[^ ]+$/ ) && ( $dashrep_path_prefix_for_file_writing =~ /^\/home\/newsher2\/[^ ]+\/$/ ) && ( $filename_target_for_single_resource_request =~ /^[a-zA-Z][^ ]+\.txt$/ ) ) {  <new_line>
+    if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) {  <new_line>
+        $accumulated_curl_results .= "cannot run cURL command: " . $command_string_without_pipe . "\n" ;  <new_line>
+    } else {  <new_line>
+        $accumulated_curl_results .= "starting cURL command: " . $command_string_without_pipe . "\n" ;  <new_line>
+        while( $input_line = <CURLCMD> ) {  <new_line>
+            $accumulated_curl_results .= $input_line . "\n" ;  <new_line>
+        }  <new_line>
+        $accumulated_curl_results .= "ending cURL command" . "\n" ;  <new_line>
+        if ( not( close( CURLCMD ) ) ) {  <new_line>
+            $accumulated_curl_results .= "cannot close handle that runs cURL command" . "\n" ;  <new_line>
+        }  <new_line>
+        chmod( 0600 , $combined_path_and_filename_for_target_resource ) ;  <new_line>
+    }  <new_line>
+    $global_dashrep_replacement{ "trace-results-from-curl" } = $accumulated_curl_results ;  <new_line>
+}  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending
