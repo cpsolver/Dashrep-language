@@ -1,6 +1,7 @@
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
+ambee copy-without-extra-spaces result-contents-from-file-write-and-read result-contents-from-file-write-and-read amenn
 ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
 ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
 ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
@@ -9,6 +10,7 @@ ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
+ambee expand-text template-string-end-of-line-here string-end-of-line-here amenn
 ambee copy-and-replace result-contents-from-file-append-repeated result-contents-from-file-append-repeated string-end-of-line-here character-space amenn
 ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
 
@@ -29,7 +31,10 @@ ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-da
 
 ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
 
-ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-for-animal-combinations amenn
+ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter pointers-to-found-lines-for-animal-combinations amenn
+
+ambee copy-word-at-position pointers-to-found-lines-for-animal-combinations single-pointer-to-found-line-for-animal-combination 1 amenn
+ambee copy-definition-of-named-phrase single-pointer-to-found-line-for-animal-combination found-line-for-animal-combination amenn
 
 ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
 
