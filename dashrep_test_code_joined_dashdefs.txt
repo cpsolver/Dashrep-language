@@ -124,10 +124,10 @@ correct-value-for-expanded-test-of-dashrep-actions:
 text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phrases inline text text-that-occurs-after-parameter-phrases
 ----
 correct-value-for-found-line-about-dolphins:
-???
+dolphin info about dolphins
 ----
-correct-value-for-found-lines-for-animal-combinations:
-???
+correct-value-for-found-line-for-animal-combination:
+dolphin octopus intersection of dolphin and octopus
 ----
 correct-value-for-initial-caps-list-of-animal-types:
 Dolphin Whale Starfish Octopus 
@@ -167,6 +167,12 @@ correct-value-for-list-of-second-items-in-two-dimensions:
 ----
 correct-value-for-list-of-unique-word-counts:
 2 2 1 3 1 2 1 1 
+----
+correct-value-for-list-of-values-in-column-1:
+uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
+----
+correct-value-for-list-of-values-in-column-2:
+101 2016 Robbery On 102 2016 Another On info info info info octopus whale octopus otter whale otter otter
 ----
 correct-value-for-list-of-words-that-begin-with-listed-words:
 and-something-else 
@@ -235,16 +241,13 @@ correct-value-for-result-contents-from-file-append-repeated:
 dolphin whale starfish octopus end-of-line-here dolphin whale starfish octopus end-of-line-here
 ----
 correct-value-for-result-contents-from-file-write-and-read:
-???
+dolphin whale starfish octopus
 ----
 correct-value-for-result-decoded-cgi-parameter:
 and a <span style="whatever">dolphin</span>
 ----
-correct-value-for-result-for-action-copy-from-columns-in-file-to-column-lists:
-???
-----
 correct-value-for-result-for-action-copy-from-columns-in-file-to-named-phrases:
-???
+uniqueid datetime title description uniqueid datetime title description dolphin octopus whale otter dolphin dolphin dolphin dolphin octopus octopus whale
 ----
 correct-value-for-result-integers-positive-sorted:
 -72 -36 -28 -1 0 1 3 12 17 94
@@ -298,10 +301,10 @@ correct-value-for-result-yes-or-no-file-exists-yes:
 yes 
 ----
 correct-value-for-result-yes-or-no-file-write-read-successful:
-yesss
+yes
 ----
 correct-value-for-result-yes-or-no-folder-exists:
-??? 
+no
 ----
 correct-value-for-results-of-two-dimensional-sort:
 row-2-column-3 row-4-column-1 row-3-column-1 row-4-column-2 row-1-column-2 row-3-column-2 row-3-column-3 row-2-column-2 row-1-column-1 row-1-column-3 row-2-column-1 
@@ -419,6 +422,9 @@ correct-value-for-text-with-spaces:
 ----
 correct-value-for-text-with-tag-and-attribute:
 <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> 
+----
+correct-value-for-trace-results-from-curl:
+???
 ----
 correct-value-for-unique-words:
 alpha alpha-here and beta gamma delta something-here whatever 
@@ -929,6 +935,9 @@ dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-spac
 template-string-correct-value-for-hyphen:
 correct hyphen-here value hyphen-here for hyphen-here 
 ----
+template-string-end-of-line-here:
+end hyphen-here of hyphen-here line hyphen-here here
+----
 test-assignment:
 17 
 ----
@@ -943,6 +952,7 @@ test-file-related-dashrep-actions:
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
+ambee copy-without-extra-spaces result-contents-from-file-write-and-read result-contents-from-file-write-and-read amenn
 ambee put-into-phrase result-yes-or-no-file-write-read-successful  ambee yes-or-no-same-two-phrase-definitions result-contents-from-file-write-and-read list-of-animal-types amenn  amenn
 ambee put-into-phrase result-size-of-file  ambee size-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn amenn
 ambee put-into-phrase yes-if-file-size-non-zero  ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee result-size-of-file amenn 1 amenn amenn  amenn
@@ -951,6 +961,8 @@ ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
+ambee expand-text template-string-end-of-line-here string-end-of-line-here amenn
+ambee copy-and-replace result-contents-from-file-append-repeated result-contents-from-file-append-repeated string-end-of-line-here character-space amenn
 ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
 
 ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
@@ -970,7 +982,10 @@ ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-da
 
 ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
 
-ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-for-animal-combinations amenn
+ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter pointers-to-found-lines-for-animal-combinations amenn
+
+ambee copy-word-at-position pointers-to-found-lines-for-animal-combinations single-pointer-to-found-line-for-animal-combination 1 amenn
+ambee copy-definition-of-named-phrase single-pointer-to-found-line-for-animal-combination found-line-for-animal-combination amenn
 
 ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
 
@@ -1445,6 +1460,9 @@ yes
 ----
 yes-or-no-export-delimited-definitions:
 no 
+----
+yes-or-no-indicate-line-endings:
+no
 ----
 yes-or-no-permission-administrator:
 yes
