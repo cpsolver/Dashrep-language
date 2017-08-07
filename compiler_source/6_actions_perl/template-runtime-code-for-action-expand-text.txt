@@ -1,6 +1,8 @@
 template-runtime-code-standard-action-begin
 
-$saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
+$global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
+# $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
+
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;  <new_line>
@@ -15,6 +17,7 @@ runtime-code-storage-item-result = '' ;  <new_line>
 # print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
 ---*
 
-$global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
+$global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
+# $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
 template-runtime-code-standard-action-end
