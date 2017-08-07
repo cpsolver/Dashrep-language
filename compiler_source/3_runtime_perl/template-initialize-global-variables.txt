@@ -2,6 +2,7 @@ my $global_pi = 0 ; # (calculated if needed)  <new_line>
 
 my $global_string_word_to_use_in_handler = 'word-to-use-in-handler' ;  <new_line>
 my $global_word_to_use_in_handler = '' ;  <new_line>
+my $global_accumulated_text = '' ;  <new_line>
 my $global_source_text = '' ;  <new_line>
 my $global_target_text = '' ;  <new_line>
 my $global_temporary_text = '' ;  <new_line>
@@ -35,7 +36,6 @@ my $global_text_to_insert = '' ;  <new_line>
 my $global_word_pointer_text = '0' ;  <new_line>
 my $global_phrase_name_currently_executing = '' ;  <new_line>
 my $global_accumulated_matching_entry_info = '' ;  <new_line>
-my $global_accumulated_text = '' ;  <new_line>
 my $global_action_name_exists = '' ;  <new_line>
 my $global_all_defs_begin = '' ;  <new_line>
 my $global_all_defs_end = '' ;  <new_line>
@@ -59,6 +59,7 @@ my $global_target_file_name = '' ;  <new_line>
 my $global_target_path_prefix = '' ;  <new_line>
 my $global_target_file_full_path = '' ;  <new_line>
 my $global_target_file_full_path_saved = '' ;  <new_line>
+my $global_url = '' ;  <new_line>
 <new_line>
 
 my $global_yes = 1 ;  <new_line>
