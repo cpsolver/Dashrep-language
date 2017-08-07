@@ -976,6 +976,8 @@ ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing
 
 ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-values-in-column amenn
 
+ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output.txt amenn
+
 combee
 
 write-gathered-listed-items-to-end-of-file
