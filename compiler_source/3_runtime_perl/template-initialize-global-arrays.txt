@@ -21,6 +21,9 @@ my @global_count_of_items_appended_to_accumulator = ( ) ;  <new_line>
 $global_count_of_items_appended_to_accumulator[ 0 ] = 0 ;  <new_line>
 $global_count_of_items_appended_to_accumulator[ 1 ] = 0 ;  <new_line>
 
+my @global_saved_accumulator_pointer_at_recursion_location = ( ) ;  <new_line>
+$global_saved_accumulator_pointer_at_recursion_location[ 0 ] = 0 ;  <new_line>
+
 my @global_begin_position_for_word = ( ) ;  <new_line>
 $global_begin_position_for_word[ 0 ] = 0 ;  <new_line>
 $global_begin_position_for_word[ 1 ] = 0 ;  <new_line>
