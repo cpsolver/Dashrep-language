@@ -6360,34 +6360,30 @@ template-function-generate-list-of-files-in-current-read-directory:
 sub function__generate_list_of_files_in_current_read_directory( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_target_phrase_name = $global_operand_one ;  <new_line>
-$global_directory = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
-if ( ( $global_directory eq '' ) || ( $global_directory !~ /[\\\/]$/ ) ) {  <new_line>
+$global_source_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
+if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
 
-    $global_directory = "\.\\" ;  <new_line>
+    $global_source_path_prefix = "\.\\" ;  <new_line>
 
 *---
-    $global_directory = './' ;  <new_line>
+    $global_source_path_prefix = './' ;  <new_line>
 ---*
 
 }  <new_line>
-if ( opendir( READDIR , $global_directory ) ) {  <new_line>
+if ( opendir( READDIR , $global_source_path_prefix ) ) {  <new_line>
     while ( defined( $global_file_name = readdir( READDIR ) ) ) {  <new_line>
         if ( $global_file_name !~ /^\./ ) {  <new_line>
-            $global_full_path = $global_directory . $global_file_name ;  <new_line>
-            if ( <character_hyphen>f $global_full_path ) {  <new_line>
+            $global_source_file_full_path = $global_source_path_prefix . $global_file_name ;  <new_line>
+            if ( <character_hyphen>f $global_source_file_full_path ) {  <new_line>
                 $global_list_of_file_names .= $global_file_name . ' ' ;  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
     $global_list_of_file_names =~ s / +$// ;  <new_line>
-    $global_dashrep_replacement{ $global_operands_all } = $global_list_of_file_names ;  <new_line>
+    $global_dashrep_replacement{ $global_operand_one } = $global_list_of_file_names ;  <new_line>
     closedir( READDIR ) ;  <new_line>
-} else {  <new_line>
-    $global_action_result = 'dashrep_runtime_error_action_generate_list_of_files_in_current_read_directory_case_directory_could_not_be_opened ' . $global_directory . "\n" ;  <new_line>
 }  <new_line>
-
-$global_target_text = $global_action_result ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6397,34 +6393,30 @@ template-function-generate-list-of-folders-in-current-read-directory:
 sub function__generate_list_of_folders_in_current_read_directory( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_target_phrase_name = $global_operand_one ;  <new_line>
-$global_directory = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
-if ( ( $global_directory eq '' ) || ( $global_directory !~ /[\\\/]$/ ) ) {  <new_line>
+$global_source_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
+if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
 
-    $global_directory = "\.\\" ;  <new_line>
+    $global_source_path_prefix = "\.\\" ;  <new_line>
 
 *---
-    $global_directory = './' ;  <new_line>
+    $global_source_path_prefix = './' ;  <new_line>
 ---*
 
 }  <new_line>
-if ( opendir( READDIR , $global_directory ) ) {  <new_line>
+if ( opendir( READDIR , $global_source_path_prefix ) ) {  <new_line>
     while ( defined( $global_file_name = readdir( READDIR ) ) ) {  <new_line>
         if ( $global_file_name !~ /^\./ ) {  <new_line>
-            $global_full_path = $global_directory . $global_file_name ;  <new_line>
-            if ( <character_hyphen>d $global_full_path ) {  <new_line>
+            $global_source_file_full_path = $global_source_path_prefix . $global_file_name ;  <new_line>
+            if ( <character_hyphen>d $global_source_file_full_path ) {  <new_line>
                 $global_list_of_file_names .= $global_file_name . ' ' ;  <new_line>
             }  <new_line>
         }  <new_line>
     }  <new_line>
     $global_list_of_file_names =~ s / +$// ;  <new_line>
-    $global_dashrep_replacement{ $global_operands_all } = $global_list_of_file_names ;  <new_line>
+    $global_dashrep_replacement{ $global_operand_one } = $global_list_of_file_names ;  <new_line>
     closedir( READDIR ) ;  <new_line>
-} else {  <new_line>
-    $global_action_result = 'dashrep_runtime_error_action_generate_list_of_folders_in_current_read_directory_case_directory_could_not_be_opened ' . $global_directory . "\n" ;  <new_line>
 }  <new_line>
-
-$global_target_text = $global_action_result ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6918,7 +6910,7 @@ my $process_id ;  <new_line>
 
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_path_prefix' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
@@ -6926,6 +6918,8 @@ return '' ;  <new_line>
 $global_url = $global_operand_one ;  <new_line>
 $global_target_file_name = $global_operand_two ;  <new_line>
 $global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
+
+*---
 
 # todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator  <new_line>
 
@@ -6945,6 +6939,8 @@ if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) )
     chmod( 0600 , $global_target_file_full_path ) ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ 'trace-results-from-curl' } = $global_accumulated_text ;  <new_line>
+
+---*
 
 return '' ;  <new_line>
 
@@ -9134,12 +9130,12 @@ $global_action_result = 'no' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__yes_or_no_file_exists__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
+$global_action_result = 'no' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__yes_or_no_file_exists__case_invalid_file_name ' . $global_source_file_name . "\n" ;  <new_line>
+$global_action_result = 'no' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -9149,6 +9145,8 @@ if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
     $global_action_result = 'yes' ;  <new_line>
 }  <new_line>
 close( INFILE ) ;  <new_line>
+
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -9840,10 +9838,10 @@ $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_action_result = '' ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 return '' ;  <new_line>
-} elsif ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) ) {  <new_line>
+} elsif ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
 $global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_file_name ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 return '' ;  <new_line>
 } else { <new_line>
