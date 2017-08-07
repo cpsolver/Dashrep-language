@@ -24,7 +24,7 @@ my $process_id ;  <new_line>
 
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_path_prefix' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
@@ -32,6 +32,8 @@ return '' ;  <new_line>
 $global_url = $global_operand_one ;  <new_line>
 $global_target_file_name = $global_operand_two ;  <new_line>
 $global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
+
+*---
 
 # todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator  <new_line>
 
@@ -51,6 +53,8 @@ if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) )
     chmod( 0600 , $global_target_file_full_path ) ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ 'trace-results-from-curl' } = $global_accumulated_text ;  <new_line>
+
+---*
 
 return '' ;  <new_line>
 
