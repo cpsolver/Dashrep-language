@@ -6,10 +6,10 @@ $global_action_result = '' ;  <new_line>
 $global_source_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' } ;  <new_line>
 if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\\\/]$/ ) ) {  <new_line>
 
-    $global_source_path_prefix = "\.\\" ;  <new_line>
+    $global_source_path_prefix = './' ;  <new_line>
 
 *---
-    $global_source_path_prefix = './' ;  <new_line>
+    $global_source_path_prefix = "\.\\" ;  <new_line>
 ---*
 
 }  <new_line>
