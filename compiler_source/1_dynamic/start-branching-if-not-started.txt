@@ -1,3 +1,3 @@
-[-if-yes-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
-[-copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch [-filename-output-results-all-compiled-functions-]-]
-[-if-end-]
+[- if-yes-begin [- yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside -] -]
+[- copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch [- filename-output-results-all-compiled-functions -] -]
+[- if-end -]

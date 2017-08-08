@@ -1,2 +1,2 @@
-[-numeric-increment count-of-ambee-tokens-]
-[-append-text string-ambee list-of-tokens-in-current-definition-]
+[- numeric-increment count-of-ambee-tokens -]
+[- append-text string-ambee list-of-tokens-in-current-definition -]

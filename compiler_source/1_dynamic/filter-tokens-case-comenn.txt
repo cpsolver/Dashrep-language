@@ -1,1 +1,1 @@
-[-put-into-phrase yes-or-no-within-comment  no -]
+[- put-into-phrase yes-or-no-within-comment  no  -]

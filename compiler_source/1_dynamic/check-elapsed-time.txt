@@ -1,7 +1,7 @@
-*---
-[-put-into-phrase epoch-seconds-current-time  [-get-current-time-in-epoch-seconds-] -]
-[-put-into-phrase elapsed-time  [-numeric-minus [-epoch-seconds-current-time-] [-epoch-seconds-starting-time-]-] -]
+combee ****
+[- put-into-phrase epoch-seconds-current-time  [- get-current-time-in-epoch-seconds -]  -]
+[- put-into-phrase elapsed-time  [- numeric-minus [- epoch-seconds-current-time -] [- epoch-seconds-starting-time -] -]  -]
 
 
-[-trace-show elapsed-time-]
----*
+[- trace-show elapsed-time -]
+**** comenn

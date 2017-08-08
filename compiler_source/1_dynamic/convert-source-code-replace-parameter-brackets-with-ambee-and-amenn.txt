@@ -1,34 +1,34 @@
-*---
----*
-[-trace-show source-code-as-words-]
+combee ****
+**** comenn
+[- trace-show source-code-as-words -]
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash -]
+[- copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash -]
+[- copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash -]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket -]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket -]
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash -]
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space -]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space -]
 
-[-trace-show source-code-as-words-]
+[- trace-show source-code-as-words -]
 
-[-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
-[-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
-[-generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end-]
-[-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
-[-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
-[-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
-[-use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters-]
-[-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
-[-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
+[- generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin -]
+[- numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin -]
+[- generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end -]
+[- numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end -]
+[- copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters -]
+[- append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters -]
+[- use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters -]
+[- copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters -]
+[- copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters -]
 
-[-trace-show pointers-to-adjacent-characters-]
+[- trace-show pointers-to-adjacent-characters -]
 
-[-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters-]
+[- use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters -]
 
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space-]
+[- copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space -]
+[- copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space -]
+[- copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space -]

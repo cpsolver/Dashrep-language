@@ -1,4 +1,4 @@
-[-numeric-increment current-storage-position-]
-[-clear-phrase contents-at-storage-position-[-current-storage-position-]-]
-[-copy-text storage-type storage-type-at-storage-position-[-current-storage-position-]-]
-[-copy-text current-storage-position current-[-storage-type-]-storage-position-]
+[- numeric-increment current-storage-position -]
+[- clear-phrase contents-at-storage-position-[- current-storage-position -] -]
+[- copy-text storage-type storage-type-at-storage-position-[- current-storage-position -] -]
+[- copy-text current-storage-position current-[- storage-type -]-storage-position -]

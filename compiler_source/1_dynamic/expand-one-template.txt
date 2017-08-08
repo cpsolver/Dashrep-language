@@ -1,1 +1,1 @@
-[-expand-text template-[-word-to-use-in-handler-] [-word-to-use-in-handler-]-]
+[- expand-text template-[- word-to-use-in-handler -] [- word-to-use-in-handler -] -]

@@ -1,1 +1,1 @@
-[-run-compiler-]
+[- run-compiler -]

@@ -1,16 +1,16 @@
-[-initialize-input-output-files-]
-[-copy-from-file-to-phrase [-input-filename-] source-code-]
-[-compile-source-code-generate-output-results-]
-[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+[- initialize-input-output-files -]
+[- copy-from-file-to-phrase [- input-filename -] source-code -]
+[- compile-source-code-generate-output-results -]
+[- put-into-phrase yes-or-no-export-delimited-definitions  yes  -]
 
-*---
-[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
----*
+combee ****
+[- generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases -]
+**** comenn
 
-[-write-results-to-output-file-]
+[- write-results-to-output-file -]
 
-*---
-[-write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases [-filename-output-debug-trace-all-dashrep-definitions-]-]
----*
+combee ****
+[- write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases [- filename-output-debug-trace-all-dashrep-definitions -] -]
+**** comenn
 
-[-check-elapsed-time-]
+[- check-elapsed-time -]

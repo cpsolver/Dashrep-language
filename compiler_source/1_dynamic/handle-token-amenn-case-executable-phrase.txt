@@ -1,43 +1,43 @@
-[-copy-text digit-0 number-of-operands-]
-[-copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands-]
-[-numeric-increment current-accumulator-pointer-]
-[-copy-text action-name current-text-]
-[-generate-storage-for-current-text-]
-[-copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name-]
-[-append-text-no-space current-text-storage-position operand-instead-of-action-name-]
-[-append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name-]
-[-copy-text operand-instead-of-action-name list-of-operands-raw-]
-[-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
-[-copy-text operand-or-operands saved-operand-or-operands-]
+[- copy-text digit-0 number-of-operands -]
+[- copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands -]
+[- numeric-increment current-accumulator-pointer -]
+[- copy-text action-name current-text -]
+[- generate-storage-for-current-text -]
+[- copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name -]
+[- append-text-no-space current-text-storage-position operand-instead-of-action-name -]
+[- append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name -]
+[- copy-text operand-instead-of-action-name list-of-operands-raw -]
+[- append-text list-of-operands-for-result-storage-position-[- current-result-storage-position -] list-of-operands-raw -]
+[- copy-text operand-or-operands saved-operand-or-operands -]
 
 
-*---
-[-trace-show list-of-operands-raw-]
----*
+combee ****
+[- trace-show list-of-operands-raw -]
+**** comenn
 
 
-[-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
-[-copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen-]
-[-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
-[-copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay-]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-executable-phrase-]
+[- copy-without-extra-spaces list-of-operands-raw operand-or-operands -]
+[- copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen -]
+[- copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen -]
+[- copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay -]
+[- handle-fen-and-nospay-within-operand-or-operands -]
+[- copy-text operand-or-operands runtime-code-for-executable-phrase -]
 
 
-*---
-[-trace-show operand-or-operands-]
----*
+combee ****
+[- trace-show operand-or-operands -]
+**** comenn
 
 
-[-copy-text saved-operand-or-operands operand-or-operands-]
+[- copy-text saved-operand-or-operands operand-or-operands -]
 
-[-if-yes-begin [-yes-or-no-empty-phrase not-empty-if-operands-include-fen-]-]
-[-append-text action-name list-of-function-branches-needed-]
-[-expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase-]
-[-if-else-]
-[-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
-[-if-end-]
+[- if-yes-begin [- yes-or-no-empty-phrase not-empty-if-operands-include-fen -] -]
+[- append-text action-name list-of-function-branches-needed -]
+[- expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase -]
+[- if-else -]
+[- expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase -]
+[- if-end -]
 
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
-[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
+[- copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase -]
+[- copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore -]
+[- copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores -]
