@@ -49,12 +49,11 @@ write-gathered-listed-items-to-end-of-file
 set-file-permission-public-read
 rename-file
 create-empty-sub-folder
+
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
-get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
-write-dashrep-definitions-listed-in-phrase-to-file
 
 comenn
