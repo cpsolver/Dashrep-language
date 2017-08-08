@@ -426,7 +426,7 @@ correct-value-for-text-with-tag-and-attribute:
 <p style="xyz">... and a < span style="whatever" >wet< / span > dolphin ...<br />...</p> 
 ----
 correct-value-for-trace-results-from-curl:
-???
+starting_curl_command curl -k -s -S -o temp_url_output.txt http://www.votefair.org/americanidol.html ending_curl_command
 ----
 correct-value-for-unique-words:
 alpha alpha-here and beta gamma delta something-here whatever 
@@ -1024,6 +1024,9 @@ dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 
 comenn
+
+ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
+ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
 ----
 test-getting-of-cgi-information:
 ambee get-cgi-information amenn

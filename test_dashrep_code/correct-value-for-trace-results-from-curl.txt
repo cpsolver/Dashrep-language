@@ -1,1 +1,1 @@
-???
+starting_curl_command curl -k -s -S -o temp_url_output.txt http://www.votefair.org/americanidol.html ending_curl_command
