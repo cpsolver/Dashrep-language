@@ -252,11 +252,13 @@ uniqueid datetime title description uniqueid datetime title description dolphin 
 correct-value-for-result-integers-positive-sorted:
 -72 -36 -28 -1 0 1 3 12 17 94
 ----
-correct-value-for-result-list-of-files-in-current-read-directory:
-??? 
+correct-value-for-result-list-of-expected-files-found:
+output_for_test_appending_to_file.txt
+output_for_test_writing_to_file.txt
 ----
-correct-value-for-result-list-of-folders-in-current-read-directory:
-??? 
+correct-value-for-result-list-of-expected-folders-found:
+compiler_source
+test_dashrep_code
 ----
 correct-value-for-result-numeric-y-map-tile-number:
 1473.433751
@@ -632,6 +634,14 @@ dolphin whale starfish octopus
 list-of-decimal-numbers:
 1.0 0.0 -4.2 9.666 -0.002 32.7 21.4 -7.7 42.5 0.100
 ----
+list-of-files-to-find:
+output_for_test_writing_to_file.txt
+output_for_test_appending_to_file.txt
+----
+list-of-folders-to-find:
+compiler_source
+test_dashrep_code
+----
 list-of-integers-positive-and-negative:
 12 -72 0 3 -28 94 -36 1 17 -1
 ----
@@ -974,9 +984,15 @@ ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exis
 ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
 ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
 
-ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-files-in-current-read-directory list-of-files-to-find result-list-of-expected-files-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-files-found result-list-of-expected-files-found amenn
+
+ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
+
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-folders-in-current-read-directory list-of-folders-to-find result-list-of-expected-folders-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-folders-found result-list-of-expected-folders-found amenn
 
 ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
 
@@ -1000,13 +1016,12 @@ write-gathered-listed-items-to-end-of-file
 set-file-permission-public-read
 rename-file
 create-empty-sub-folder
+
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
-get-definitions-from-file
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
-write-dashrep-definitions-listed-in-phrase-to-file
 
 comenn
 ----
