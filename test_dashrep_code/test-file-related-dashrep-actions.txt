@@ -23,9 +23,15 @@ ambee put-into-phrase result-yes-or-no-file-exists-no  ambee yes-or-no-file-exis
 ambee gather-tagged-info-from-file ambee input-filename-containing-data-to-test-gather-find-actions amenn list-of-gathered-ids amenn
 ambee gather-from-tagged-file-one-entry ambee input-filename-containing-data-to-test-gather-find-actions amenn single-gathered-info amenn
 
-ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
 ambee generate-list-of-files-in-current-read-directory result-list-of-files-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-files-in-current-read-directory list-of-files-to-find result-list-of-expected-files-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-files-found result-list-of-expected-files-found amenn
+
+ambee put-into-phrase result-yes-or-no-folder-exists  ambee yes-or-no-folder-exists whatever\ amenn  amenn
+
 ambee generate-list-of-folders-in-current-read-directory result-list-of-folders-in-current-read-directory amenn
+ambee copy-words-found-in-both-lists result-list-of-folders-in-current-read-directory list-of-folders-to-find result-list-of-expected-folders-found amenn
+ambee copy-words-sort-alphabetic result-list-of-expected-folders-found result-list-of-expected-folders-found amenn
 
 ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-data-to-test-gather-find-actions amenn word-dolphin found-line-about-dolphins amenn
 
