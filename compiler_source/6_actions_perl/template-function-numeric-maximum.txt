@@ -2,11 +2,11 @@
 # function__numeric_maximum  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__numeric_maximum( ) {  <new_line>
 $global_default_text = '0' ;  <new_line>

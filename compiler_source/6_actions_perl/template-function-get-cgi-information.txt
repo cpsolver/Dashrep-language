@@ -2,11 +2,11 @@
 # function__get_cgi_information  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is standard input or standard environmental values  <new_line>
 #  Output are phrases that have names that begin with the text "input-" and otherwise are named using the cgi name  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_cgi_information( ) {  <new_line>
 

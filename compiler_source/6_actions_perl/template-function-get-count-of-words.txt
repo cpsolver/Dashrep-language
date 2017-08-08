@@ -2,11 +2,11 @@
 # function__get_count_of_words  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_count_of_words( ) {  <new_line>
 &function__point_to_words( ) ;  <new_line>

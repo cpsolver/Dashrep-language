@@ -2,7 +2,7 @@
 # function__get_url_resource  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Inputs are the Dashrep phrases "url-source-for-single-resource-request" and "filename-target-for-single-resource-request"  <new_line>
 #  Output is the file specified by the (above) filename and the phrase "dashrep-path-prefix-for-file-writing", plus messages from the CURL command are put into phrase "trace-results-from-curl" <new_line>
 <new_line>
@@ -14,7 +14,7 @@
 #  off both errors and progress info.  <new_line>
 #  <new_line>
 #  The -S switch requests that errors be shown.  <new_line>
----*
+**** comenn
 
 sub function__get_url_resource( ) {  <new_line>
 

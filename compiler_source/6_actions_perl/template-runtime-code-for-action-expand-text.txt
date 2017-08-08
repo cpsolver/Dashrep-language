@@ -13,9 +13,9 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-*---
+combee ****
 # print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
----*
+**** comenn
 
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
 # $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>

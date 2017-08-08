@@ -2,11 +2,11 @@
 # function__generate_counts_from_integer_to_integer  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_action_operand_one and $global_action_operand_two and $global_action_operand_three  <new_line>
 #  Output is the definition of the phrase specified by $global_action_operand_three  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__generate_counts_from_integer_to_integer( ) {  <new_line>
 

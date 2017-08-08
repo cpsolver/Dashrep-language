@@ -12,7 +12,7 @@ return $global_no ;  <new_line>
 
 if ( index( $local_text , '-' ) > 0 ) {  <new_line>
 
-*--- If the phrase is not defined, define it as empty ---*
+combee **** If the phrase is not defined, define it as empty **** comenn
 if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
 code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = '' ;  <new_line>
 }  <new_line>

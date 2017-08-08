@@ -7,7 +7,7 @@ $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-*---
+combee ****
 
 $global_source_text = runtime-code-for-operand-number-one ;  <new_line>
 @global_list_of_items_one = sort( keys( %global_dashrep_replacement ) ) ;  <new_line>
@@ -28,6 +28,6 @@ $global_count_of_items_appended ++ ;  <new_line>
 
 runtime-code-storage-item-result = '' ;  <new_line>
 
----*
+**** comenn
 
 template-runtime-code-standard-action-end

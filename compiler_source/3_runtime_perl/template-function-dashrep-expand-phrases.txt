@@ -34,9 +34,9 @@ my @code_at_recursion_level ;  <new_line>
 my @length_of_code_at_recursion_level ;  <new_line>
 my @pointer_to_remainder_of_code_at_recursion_level ;  <new_line>
 
-*---
+combee ****
 Get the hyphenated phrase or supplied string.
----*
+**** comenn
 
 if ( scalar( @_ ) == 1 ) {  <new_line>
 $supplied_text = $_[ 0 ] ;  <new_line>
@@ -45,9 +45,9 @@ $result_text = '' ;  <new_line>
 return $result_text ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 Initialization.
----*
+**** comenn
 
 $space_directive = 'none' ;  <new_line>
 $result_text = '' ;  <new_line>
@@ -65,10 +65,10 @@ $code_at_recursion_level[ 0 ] = 'unused' ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 $length_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 
-*---
+combee ****
 Begin a loop that handles each space delimited string
 in the phrase definition.
----*
+**** comenn
 
 $code_at_recursion_level[ 1 ] = $supplied_text ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;  <new_line>
@@ -77,13 +77,13 @@ $recursion_level = 1 ;  <new_line>
 while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) ) {  <new_line>
 $expand_endless_loop_counter ++ ;  <new_line>
 
-*---
+combee ****
 Get the next phrase name.
 If there is no more code at the current recursion
 level, shift back to the previous recursion level.
 When the recursion_level reaches zero, the loop
 will end.
----*
+**** comenn
 
 $length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ;  <new_line>
 if ( $length_of_code_at_recursion_level_current == 0 ) {  <new_line>
@@ -113,11 +113,11 @@ next ;  <new_line>
 }  <new_line>
 $current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end - $pointer_to_phrase_begin + 1 ) ) ;  <new_line>
 
-*---
+combee ****
 Check for an endless loop caused by the same
 phrase name being encountered too many times.
 If this occurs, exit the endless loop.
----*
+**** comenn
 
 if ( $global_yes_or_no_count_phrase_usage == $global_yes ) {  <new_line>
 $global_number_of_times_encountered_phrase_named{ $current_phrase } ++ ;  <new_line>
@@ -137,10 +137,10 @@ return '' ;  <new_line>
 }  <new_line>
 
 
-*---
+combee ****
 If the phrase name is a hyphen directive, or a
 space directive, or a line directive, handle it.
----*
+**** comenn
 
 if ( $current_phrase eq ( 'hyphen' . '-' . 'here' ) ) {  <new_line>
 $output_buffer .= '-' ;  <new_line>
@@ -186,12 +186,12 @@ $space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the phrase name has a definition (which can be
 empty), and it is not a space directive or line
 directive, insert phrase definition into the text
 being expanded, and remove the phrase name.
----*
+**** comenn
 
 if ( ( $current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) ) {  <new_line>
 $recursion_level ++ ;  <new_line>
@@ -201,32 +201,32 @@ $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;  <new
 next ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If a space should be inserted here, insert it.
 Specify a default of inserting one space after
 the next phrase insertion.
----*
+**** comenn
 
 if ( ( $space_directive eq 'one' ) || ( $space_directive eq 'one_requested' ) ) {  <new_line>
 $output_buffer .= ' ' ;  <new_line>
 }  <new_line>
 $space_directive = 'one' ;  <new_line>
 
-*---
+combee ****
 At this point the current text string is not the
 name of a defined phrase, so just use the text string.
----*
+**** comenn
 
 $output_buffer .= $current_phrase ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;  <new_line>
 
-*---
+combee ****
 In the output buffer, if there is a
 "<specify " string that needs to be
 combined with the preceding tag, combine it into
 a single XML or HTML tag.
 Handle tags of type "<xyz />" as well as "<xyz>".
----*
+**** comenn
 
 if ( index( $output_buffer , '<specify ' ) > 0 ) {  <new_line>
 $prior_length = 0 ;  <new_line>
@@ -243,13 +243,13 @@ $output_buffer =~ s/ *> *<specify +/ / ;  <new_line>
 }  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the output buffer contains a recognized phrase
 name using underscores instead of hyphens, and it
 is enclosed in angle brackets (with no spaces),
 then replace that text with the definition of the
 specified phrase.
----*
+**** comenn
 
 $output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ;  <new_line>
 $output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;  <new_line>
@@ -283,11 +283,11 @@ $new_output_buffer = '' ;  <new_line>
 $possible_phrase_name_with_underscores = '' ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the output buffer does not contain any text
 that might need to be revised, then append it to
 the result text.
----*
+**** comenn
 
 $pointer_to_close_angle_bracket = index( $output_buffer , '>' ) ;  <new_line>
 if ( $pointer_to_close_angle_bracket < 0 ) {  <new_line>
@@ -298,16 +298,16 @@ $result_text .= substr( $output_buffer , 0 , 500 ) ;  <new_line>
 $output_buffer = substr( $output_buffer , 500 ) ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 Repeat the loop that handles each space delimited
 string.
----*
+**** comenn
 
 }  <new_line>
 
-*---
+combee ****
 Supply the results.
----*
+**** comenn
 
 $result_text .= $output_buffer ;  <new_line>
 return $result_text ;  <new_line>

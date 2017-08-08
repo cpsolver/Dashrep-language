@@ -2,12 +2,12 @@
 # function__get_word_at_position  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text (type text) and $global_word_pointer_text (type text, not numeric!) {  <new_line>
 #  Output is $global_target_text  <new_line>
 #  And $global_word_pointer_text is modified if it exceeds the word count  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_word_at_position( ) {  <new_line>
 $global_default_text = '' ;  <new_line>

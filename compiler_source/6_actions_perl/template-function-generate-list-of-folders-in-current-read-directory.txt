@@ -8,9 +8,9 @@ if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\
 
     $global_source_path_prefix = './' ;  <new_line>
 
-*---
+combee ****
     $global_source_path_prefix = "\.\\" ;  <new_line>
----*
+**** comenn
 
 }  <new_line>
 $global_list_of_file_names = '' ;  <new_line>
