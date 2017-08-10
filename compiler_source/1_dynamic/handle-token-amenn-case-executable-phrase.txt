@@ -7,7 +7,7 @@ ambee copy-text runtime-code-storage-item-reference-before-pointer operand-inste
 ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn
 ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn
 ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn
-ambee append-text list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn list-of-operands-raw amenn
+ambee append-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
 ambee copy-text operand-or-operands saved-operand-or-operands amenn
 
 

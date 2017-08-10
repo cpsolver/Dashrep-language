@@ -11,4 +11,4 @@ ambee recursion-stack-pop amenn
 ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn
 ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn
 ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn
-ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
+ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn

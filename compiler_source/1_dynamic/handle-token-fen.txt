@@ -1,2 +1,2 @@
 ambee append-text string-fen definition-for-phrase-being-defined amenn
-ambee append-text string-fen list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
+ambee append-text string-fen list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn

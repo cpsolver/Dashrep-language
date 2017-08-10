@@ -4,5 +4,5 @@ ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non
 ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
 ambee filter-tokens-case-2 amenn
 ambee if-else amenn
-ambee filter-tokens-case fenambee non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
 ambee if-end amenn

@@ -1,9 +1,9 @@
 ambee numeric-increment storage-item-pointer amenn
-ambee copy-text storage-item-pointer storage-item-pointer-for fenambee word-to-use-in-handler amenn amenn
+ambee copy-text storage-item-pointer storage-item-pointer-for-[- word-to-use-in-handler amenn amenn
 ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn
 ambee append-text-no-space storage-item-pointer generated-runtime-code amenn
 ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn
-ambee append-text template-quoted fenambee word-to-use-in-handler amenn generated-runtime-code amenn
+ambee append-text template-quoted-[- word-to-use-in-handler amenn generated-runtime-code amenn
 ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn
 ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn
 ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn
