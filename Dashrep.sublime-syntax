@@ -1,0 +1,17 @@
+%YAML 1.2
+---
+name: Dashrep
+file_extensions: [txt]
+scope: source.Dashrep
+
+contexts:
+  main:
+    - match: \b(ambee|amenn|fenambee|amennfen)\b
+      scope: keyword.control.c
+    - match: combee
+      push: string
+
+  string:
+    - meta_scope: string.quoted.double.c
+    - match: comenn
+      pop: true
