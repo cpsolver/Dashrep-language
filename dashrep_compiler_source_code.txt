@@ -176,16 +176,16 @@ ambee create-new-storage-position amenn
 ----
 create-new-storage-position:
 ambee numeric-increment current-storage-position amenn
-ambee clear-phrase contents-at-storage-position-[- current-storage-position amenn amenn
-ambee copy-text storage-type storage-type-at-storage-position-[- current-storage-position amenn amenn
-ambee copy-text current-storage-position current-[- storage-type -]-storage-position amenn
+ambee clear-phrase contents-at-storage-position fenambee current-storage-position amenn amenn
+ambee copy-text storage-type storage-type-at-storage-position fenambee current-storage-position amenn amenn
+ambee copy-text current-storage-position current fenambee storage-type amennfen storage-position amenn
 ----
 create-new-text-storage-position:
 ambee put-into-phrase storage-type  text  amenn
 ambee create-new-storage-position amenn
 ----
 expand-one-template:
-ambee expand-text template-[- word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
+ambee expand-text template fenambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
 ----
 filter-tokens-case-1:
 ambee copy-text word-to-use-in-handler current-token amenn
@@ -194,7 +194,7 @@ ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non
 ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
 ambee filter-tokens-case-2 amenn
 ambee if-else amenn
-ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case fenambee non-empty-if-valid-token-handler-name amenn amenn
 ambee if-end amenn
 ----
 filter-tokens-case-2:
@@ -212,7 +212,7 @@ ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if
 ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
 ambee filter-tokens-case-4 amenn
 ambee if-else amenn
-ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case fenambee non-empty-if-valid-token-handler-name amenn amenn
 ambee if-end amenn
 ----
 filter-tokens-case-4:
@@ -281,7 +281,7 @@ ambee recursion-stack-pop amenn
 ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn
 ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn
 ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn
-ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ----
 generate-list-of-tokens-in-current-definition-quotable:
 ambee copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special amenn
@@ -354,11 +354,11 @@ ambee append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-d
 ----
 generate-runtime-code-using-quoted-string:
 ambee numeric-increment storage-item-pointer amenn
-ambee copy-text storage-item-pointer storage-item-pointer-for-[- word-to-use-in-handler amenn amenn
+ambee copy-text storage-item-pointer storage-item-pointer-for fenambee word-to-use-in-handler amenn amenn
 ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn
 ambee append-text-no-space storage-item-pointer generated-runtime-code amenn
 ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn
-ambee append-text template-quoted-[- word-to-use-in-handler amenn generated-runtime-code amenn
+ambee append-text template-quoted fenambee word-to-use-in-handler amenn generated-runtime-code amenn
 ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn
 ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn
 ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn
@@ -390,7 +390,7 @@ ambee copy-and-replace template-function-point-to-words-in-operand-whichever tem
 ----
 get-all-operands:
 ambee copy-text digit-0 number-of-operands amenn
-ambee copy-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
+ambee copy-text list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn list-of-operands-raw amenn
 ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn
 ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn
 ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn
@@ -468,8 +468,8 @@ ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-co
 ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn
 
 combee **** todo: avoid need for workaround **** comenn
-ambee put-into-phrase unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn  99   amenn
-ambee append-text unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn runtime-code-compiled-function amenn
+ambee put-into-phrase unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn  99   amenn
+ambee append-text unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn runtime-code-compiled-function amenn
 
 
 ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
@@ -485,8 +485,8 @@ ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-toke
 
 ambee terminate-branching-if-not-terminated amenn
 
-ambee copy-text phrase-name-storage-position-for-definition-number-[- current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
-ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
+ambee copy-text phrase-name-storage-position-for-definition-number fenambee current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
 ambee get-all-operands amenn
 ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn
 ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
@@ -502,7 +502,7 @@ ambee append-text-no-space code-compiled-function-part-10 runtime-code-compiled-
 ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 ambee append-text phrase-being-defined list-of-functions-generated amenn
 ambee clear-phrase phrase-being-defined amenn
-ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ----
 handle-definition-immediate:
 ambee generate-list-of-tokens-in-current-definition-quotable amenn
@@ -513,11 +513,11 @@ ambee copy-and-replace phrase-definition-modified phrase-definition-modified str
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special amenn
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn
-ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name -]-modified amenn
+ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amennfen modified amenn
 ----
 handle-definition-simple-or-immediate:
-ambee copy-text unique-phrase-number unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
-ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- unique-phrase-number amenn amenn
+ambee copy-text unique-phrase-number unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number fenambee unique-phrase-number amenn amenn
 ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn
 
 ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn
@@ -564,7 +564,7 @@ ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-
 ambee append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage amenn
 ambee append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage amenn
 ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage ambee filename-output-results-all-definition-items amenn amenn
-ambee clear-phrase action-name-at-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase action-name-at-storage-position fenambee current-result-storage-position amenn amenn
 ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
 handle-token-amenn-case-action-not-empty:
@@ -572,16 +572,16 @@ ambee clear-phrase needed-operand-checks amenn
 ambee append-text string-amenn definition-for-phrase-being-defined amenn
 ambee copy-text current-result-storage-position storage-item-pointer amenn
 ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn
-ambee copy-text action-name-at-storage-position-[- current-result-storage-position amenn action-name amenn
+ambee copy-text action-name-at-storage-position fenambee current-result-storage-position amenn action-name amenn
 ambee put-into-phrase yes-or-no-action-recognized  no  amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee if-end amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action-[- action-name amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fenambee action-name amenn amenn amenn
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
-ambee copy-text operand-checks-for-action-[- action-name amenn needed-operand-checks amenn
+ambee copy-text operand-checks-for-action fenambee action-name amenn needed-operand-checks amenn
 ambee if-end amenn
 
 ambee clear-phrase runtime-code-for-parameter-phrase amenn
@@ -604,25 +604,25 @@ ambee if-end amenn
 ambee handle-token-amenn-case-executable-phrase amenn
 ----
 handle-token-amenn-case-action-recognized:
-ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case-[- action-name amenn amenn amenn
+ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
 ambee handle-token-amenn-case-action-standard-or-has-template amenn
 ambee if-else amenn
-ambee handle-token-amenn-case-[- action-name amenn amenn
+ambee handle-token-amenn-case fenambee action-name amenn amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-action-standard-or-has-template:
 ambee get-all-operands amenn
 
-ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
 ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn
 ambee if-else amenn
-ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-converted-dashrep-actions-used amenn
 ambee if-end amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase template-function-[- action-name amenn amenn amenn
-ambee put-into-phrase requested-template-function  template-function-[- action-name amenn  amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
 ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
 ambee if-end amenn
 ----
@@ -636,7 +636,7 @@ ambee copy-text runtime-code-storage-item-reference-before-pointer operand-inste
 ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn
 ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn
 ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn
-ambee append-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
+ambee append-text list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn list-of-operands-raw amenn
 ambee copy-text operand-or-operands saved-operand-or-operands amenn
 
 
@@ -698,27 +698,27 @@ ambee copy-text string-begin current-state-of-if-branching amenn
 handle-token-amenn-case-standard-action:
 ambee get-all-operands amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
-ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-use-handler-with-each-word-in-phrase:
 ambee create-new-text-storage-position amenn
-ambee clear-phrase contents-at-storage-position-[- current-text-storage-position amenn amenn
-ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn amenn
-ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn
+ambee clear-phrase contents-at-storage-position fenambee current-text-storage-position amenn amenn
+ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn
 ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn
 ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn
 ambee get-all-operands amenn
-ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn handler-name 1  amenn
+ambee copy-word-at-position text-words-at-result-storage-position fenambee current-result-storage-position amenn handler-name 1  amenn
 ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn
-ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2  amenn
+ambee copy-word-at-position text-words-at-result-storage-position fenambee current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2  amenn
 ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
 ----
 handle-token-amenn:
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position-[- current-result-storage-position amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fenambee current-result-storage-position amenn amenn amenn
 ambee handle-token-amenn-case-action-not-empty amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn
@@ -727,7 +727,7 @@ ambee if-end amenn
 ----
 handle-token-fen:
 ambee append-text string-fen definition-for-phrase-being-defined amenn
-ambee append-text string-fen list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text string-fen list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ----
 handle-token-next-case-1:
 ambee copy-text word-to-use-in-handler current-token amenn
@@ -737,7 +737,7 @@ ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay n
 ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
 ambee handle-token-next-case-2 amenn
 ambee if-else amenn
-ambee handle-token-[- current-token amenn amenn
+ambee handle-token fenambee current-token amenn amenn
 ambee if-end amenn
 ----
 handle-token-next-case-2:
@@ -753,37 +753,37 @@ ambee append-text current-token definition-for-phrase-being-defined amenn
 ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions digit-1 count-of-tokens-after-ambee amenn amenn
 ambee handle-token-text-word amenn
 ambee if-else amenn
-ambee copy-text current-token action-name-at-storage-position-[- current-result-storage-position amenn amenn
+ambee copy-text current-token action-name-at-storage-position fenambee current-result-storage-position amenn amenn
 ambee if-end amenn
 ----
 handle-token-nospay:
 ambee append-text string-nospay definition-for-phrase-being-defined amenn
-ambee append-text string-nospay list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text string-nospay list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ----
 handle-token-phrase-name:
 ambee copy-text current-token phrase-being-defined amenn
 ambee numeric-increment current-definition-number amenn
 ambee copy-text phrase-being-defined current-text amenn
 ambee generate-storage-for-current-text amenn
-ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[- current-definition-number amenn amenn
+ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number fenambee current-definition-number amenn amenn
 ambee clear-phrase current-text amenn
 ambee create-new-result-storage-position amenn
-ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ambee clear-phrase recursion-stack amenn
 ambee recursion-stack-push amenn
-ambee copy-text current-definition-number phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
-ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- current-definition-number amenn amenn
+ambee copy-text current-definition-number phrase-number-for-phrase-name fenambee phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number fenambee current-definition-number amenn amenn
 ambee clear-phrase definition-for-phrase-being-defined amenn
 ----
 handle-token-text-word:
 ambee copy-text current-token current-text amenn
 ambee generate-storage-for-current-text amenn
-ambee append-text current-text contents-at-storage-position-[- current-text-storage-position amenn amenn
-ambee append-text current-text text-words-at-result-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text current-text contents-at-storage-position fenambee current-text-storage-position amenn amenn
+ambee append-text current-text text-words-at-result-storage-position fenambee current-result-storage-position amenn amenn
 ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn
 ambee append-text-no-space current-text-storage-position current-storage-operand amenn
 ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn
-ambee append-text current-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text current-storage-operand list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ----
 initialize-input-output-files:
 combee **** reminder: avoid backslashs here because they get interpreted in the runtime code **** comenn
