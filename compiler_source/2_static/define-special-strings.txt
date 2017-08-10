@@ -57,6 +57,16 @@ ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn
 ambee append-text string-fen string-space-amenn-fen-space amenn
 ambee append-text-no-space character-space string-space-amenn-fen-space amenn
 
+ambee copy-text string-fen string-space-fenambee-space amenn
+ambee prepend-text-no-space character-space string-space-fenambee-space amenn
+ambee append-text-no-space string-ambee string-space-fenambee-space amenn
+ambee append-text-no-space character-space string-space-fenambee-space amenn
+
+ambee copy-text string-amenn string-space-amennfen-space amenn
+ambee prepend-text-no-space character-space string-space-amennfen-space amenn
+ambee append-text-no-space string-fen string-space-amennfen-space amenn
+ambee append-text-no-space character-space string-space-amennfen-space amenn
+
 ambee copy-text character-period runtime-code-inserted-separator-space amenn
 ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn
 ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn

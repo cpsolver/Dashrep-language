@@ -13,6 +13,9 @@ ambee copy-and-replace source-code-as-words source-code-as-words string-dash-clo
 ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn
 
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space amenn
+
 ambee trace-show source-code-as-words amenn
 
 ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn
