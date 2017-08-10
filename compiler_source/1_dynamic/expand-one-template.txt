@@ -1,1 +1,1 @@
-ambee expand-text template-[- word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
+ambee expand-text template fenambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn

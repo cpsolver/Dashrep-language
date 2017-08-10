@@ -6,4 +6,4 @@ ambee copy-and-replace phrase-definition-modified phrase-definition-modified str
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special amenn
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn
 ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn
-ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name -]-modified amenn
+ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name amennfen modified amenn

@@ -1,4 +1,4 @@
 ambee numeric-increment current-storage-position amenn
-ambee clear-phrase contents-at-storage-position-[- current-storage-position amenn amenn
-ambee copy-text storage-type storage-type-at-storage-position-[- current-storage-position amenn amenn
-ambee copy-text current-storage-position current-[- storage-type -]-storage-position amenn
+ambee clear-phrase contents-at-storage-position fenambee current-storage-position amenn amenn
+ambee copy-text storage-type storage-type-at-storage-position fenambee current-storage-position amenn amenn
+ambee copy-text current-storage-position current fenambee storage-type amennfen storage-position amenn

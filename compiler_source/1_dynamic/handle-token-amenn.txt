@@ -1,4 +1,4 @@
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position-[- current-result-storage-position amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position fenambee current-result-storage-position amenn amenn amenn
 ambee handle-token-amenn-case-action-not-empty amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn

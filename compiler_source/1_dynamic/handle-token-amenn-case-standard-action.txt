@@ -1,7 +1,7 @@
 ambee get-all-operands amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
-ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
 ambee if-end amenn

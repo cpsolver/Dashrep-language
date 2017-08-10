@@ -1,5 +1,5 @@
-ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case-[- action-name amenn amenn amenn
+ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
 ambee handle-token-amenn-case-action-standard-or-has-template amenn
 ambee if-else amenn
-ambee handle-token-amenn-case-[- action-name amenn amenn
+ambee handle-token-amenn-case fenambee action-name amenn amenn
 ambee if-end amenn

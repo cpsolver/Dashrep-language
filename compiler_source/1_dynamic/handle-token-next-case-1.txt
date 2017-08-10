@@ -5,5 +5,5 @@ ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay n
 ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
 ambee handle-token-next-case-2 amenn
 ambee if-else amenn
-ambee handle-token-[- current-token amenn amenn
+ambee handle-token fenambee current-token amenn amenn
 ambee if-end amenn

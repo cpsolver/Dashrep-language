@@ -1,5 +1,5 @@
 ambee copy-text digit-0 number-of-operands amenn
-ambee copy-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
+ambee copy-text list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn list-of-operands-raw amenn
 ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn
 ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn
 ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn

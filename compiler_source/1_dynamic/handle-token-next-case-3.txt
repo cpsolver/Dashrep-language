@@ -3,5 +3,5 @@ ambee append-text current-token definition-for-phrase-being-defined amenn
 ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions digit-1 count-of-tokens-after-ambee amenn amenn
 ambee handle-token-text-word amenn
 ambee if-else amenn
-ambee copy-text current-token action-name-at-storage-position-[- current-result-storage-position amenn amenn
+ambee copy-text current-token action-name-at-storage-position fenambee current-result-storage-position amenn amenn
 ambee if-end amenn

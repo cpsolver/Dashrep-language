@@ -2,16 +2,16 @@ ambee clear-phrase needed-operand-checks amenn
 ambee append-text string-amenn definition-for-phrase-being-defined amenn
 ambee copy-text current-result-storage-position storage-item-pointer amenn
 ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn
-ambee copy-text action-name-at-storage-position-[- current-result-storage-position amenn action-name amenn
+ambee copy-text action-name-at-storage-position fenambee current-result-storage-position amenn action-name amenn
 ambee put-into-phrase yes-or-no-action-recognized  no  amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee if-end amenn
 
-ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action-[- action-name amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fenambee action-name amenn amenn amenn
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
-ambee copy-text operand-checks-for-action-[- action-name amenn needed-operand-checks amenn
+ambee copy-text operand-checks-for-action fenambee action-name amenn needed-operand-checks amenn
 ambee if-end amenn
 
 ambee clear-phrase runtime-code-for-parameter-phrase amenn

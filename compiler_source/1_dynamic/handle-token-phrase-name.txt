@@ -2,12 +2,12 @@ ambee copy-text current-token phrase-being-defined amenn
 ambee numeric-increment current-definition-number amenn
 ambee copy-text phrase-being-defined current-text amenn
 ambee generate-storage-for-current-text amenn
-ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[- current-definition-number amenn amenn
+ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number fenambee current-definition-number amenn amenn
 ambee clear-phrase current-text amenn
 ambee create-new-result-storage-position amenn
-ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn
 ambee clear-phrase recursion-stack amenn
 ambee recursion-stack-push amenn
-ambee copy-text current-definition-number phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
-ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- current-definition-number amenn amenn
+ambee copy-text current-definition-number phrase-number-for-phrase-name fenambee phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number fenambee current-definition-number amenn amenn
 ambee clear-phrase definition-for-phrase-being-defined amenn

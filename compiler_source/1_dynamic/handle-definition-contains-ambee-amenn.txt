@@ -26,8 +26,8 @@ ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-co
 ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn
 
 combee **** todo: avoid need for workaround **** comenn
-ambee put-into-phrase unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn  99   amenn
-ambee append-text unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn runtime-code-compiled-function amenn
+ambee put-into-phrase unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn  99   amenn
+ambee append-text unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn runtime-code-compiled-function amenn
 
 
 ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
@@ -43,8 +43,8 @@ ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-toke
 
 ambee terminate-branching-if-not-terminated amenn
 
-ambee copy-text phrase-name-storage-position-for-definition-number-[- current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
-ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
+ambee copy-text phrase-name-storage-position-for-definition-number fenambee current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
 ambee get-all-operands amenn
 ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn
 ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
@@ -60,4 +60,4 @@ ambee append-text-no-space code-compiled-function-part-10 runtime-code-compiled-
 ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 ambee append-text phrase-being-defined list-of-functions-generated amenn
 ambee clear-phrase phrase-being-defined amenn
-ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase list-of-operands-for-result-storage-position fenambee current-result-storage-position amenn amenn

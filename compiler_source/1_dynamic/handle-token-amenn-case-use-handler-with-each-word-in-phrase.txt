@@ -1,11 +1,11 @@
 ambee create-new-text-storage-position amenn
-ambee clear-phrase contents-at-storage-position-[- current-text-storage-position amenn amenn
-ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn amenn
-ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn
+ambee clear-phrase contents-at-storage-position fenambee current-text-storage-position amenn amenn
+ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position fenambee current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn
 ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn
 ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn
 ambee get-all-operands amenn
-ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn handler-name 1  amenn
+ambee copy-word-at-position text-words-at-result-storage-position fenambee current-result-storage-position amenn handler-name 1  amenn
 ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn
-ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2  amenn
+ambee copy-word-at-position text-words-at-result-storage-position fenambee current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2  amenn
 ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
