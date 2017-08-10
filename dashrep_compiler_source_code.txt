@@ -136,7 +136,8 @@ ambee copy-and-replace source-code-as-words source-code-as-words string-dash-clo
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space amenn
 ----
 convert-source-code-simplify-no-space-one-space-directives:
-ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn amenn amenn
+ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn
+ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee either-zero-if-not-found-else-non-zero amenn amenn amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn
@@ -3444,8 +3445,8 @@ $global_runtime_error_type = 'no_permission_append' ;  <new_line>
 }  <new_line>
 ----
 check-user-has-permission-delete-or-overwrite-files:
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-delete-or-overwrite-files' code-get-or-put-phrase-definition-end ) ) && (
- code-get-or-put-phrase-definition-begin 'yes-or-no-permission-to-delete-or-overwrite-files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
 $global_yes_or_no = $global_yes ;  <new_line>
 } else {  <new_line>
 $global_yes_or_no = $global_no ;  <new_line>
@@ -6910,7 +6911,7 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
-$global_target_path_prefix = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ;  <new_line>
+$global_target_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_path_prefix' ;  <new_line>
