@@ -1,6 +1,6 @@
-[- prepend-text-no-space character-hyphen string-hyphens-and-asterisk -]
-[- append-text-no-space character-hyphen string-asterisk-and-hyphens -]
-[- prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn -]
-[- prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn -]
-[- prepend-text string-combee paired-replacements-for-converting-to-combee-comenn -]
-[- prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn -]
+ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn
+ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn
+ambee prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-combee paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn amenn

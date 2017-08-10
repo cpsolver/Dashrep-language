@@ -1,15 +1,15 @@
-[- create-new-text-storage-position -]
-[- copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition -]
-[- append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition -]
-[- append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition -]
-[- copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special -]
-[- copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text -]
-[- copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe -]
-[- copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special -]
-[- copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text -]
-[- copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash -]
-[- copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text -]
-[- copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text -]
-[- append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition -]
-[- append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition -]
-[- copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition [- filename-output-results-all-definition-items -] -]
+ambee create-new-text-storage-position amenn
+ambee copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition amenn
+ambee append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition amenn
+ambee append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition amenn
+ambee copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe amenn
+ambee copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
+ambee append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition amenn
+ambee append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition ambee filename-output-results-all-definition-items amenn amenn

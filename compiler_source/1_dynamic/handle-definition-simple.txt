@@ -1,7 +1,7 @@
-[- create-new-text-storage-position -]
-[- copy-text current-text-storage-position pointer-storage-position-for-phrase-name -]
-[- create-new-text-storage-position -]
-[- copy-text current-text-storage-position pointer-storage-position-for-phrase-definition -]
-[- generate-list-of-tokens-in-current-definition-quotable -]
-[- generate-runtime-code-for-phrase-definition-simple -]
-[- copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [- filename-output-results-all-definition-items -] -]
+ambee create-new-text-storage-position amenn
+ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn
+ambee create-new-text-storage-position amenn
+ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn
+ambee generate-list-of-tokens-in-current-definition-quotable amenn
+ambee generate-runtime-code-for-phrase-definition-simple amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn

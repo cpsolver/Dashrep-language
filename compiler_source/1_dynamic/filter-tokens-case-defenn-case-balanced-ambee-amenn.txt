@@ -1,5 +1,5 @@
-[- if-no-begin [- yes-or-no-same-two-words greater [- numeric-equal-greater-less-compare [- numeric-add [- count-of-ambee-tokens -] [- count-of-amenn-tokens -] -] 0  -] -] -]
-[- handle-definition-simple-or-immediate -]
-[- if-else -]
-[- handle-definition-contains-ambee-amenn -]
-[- if-end -]
+ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0  amenn amenn amenn
+ambee handle-definition-simple-or-immediate amenn
+ambee if-else amenn
+ambee handle-definition-contains-ambee-amenn amenn
+ambee if-end amenn

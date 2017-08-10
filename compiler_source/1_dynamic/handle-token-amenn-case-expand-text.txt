@@ -1,2 +1,2 @@
-[- numeric-increment current-accumulator-pointer -]
-[- handle-token-amenn-case-standard-action -]
+ambee numeric-increment current-accumulator-pointer amenn
+ambee handle-token-amenn-case-standard-action amenn

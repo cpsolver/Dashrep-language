@@ -1,8 +1,8 @@
-[- copy-text word-to-use-in-handler phrase-name -]
-[- copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore -]
-[- copy-text code-function-branch-part-1 runtime-code-function-branch -]
-[- append-text-no-space phrase-name runtime-code-function-branch -]
-[- append-text-no-space code-function-branch-part-2 runtime-code-function-branch -]
-[- append-text-no-space phrase-name-with-underscores runtime-code-function-branch -]
-[- append-text-no-space code-function-branch-part-3 runtime-code-function-branch -]
-[- copy-from-phrase-append-to-file runtime-code-function-branch [- filename-output-results-all-function-branches -] -]
+ambee copy-text word-to-use-in-handler phrase-name amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn

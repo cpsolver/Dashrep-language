@@ -1,3 +1,3 @@
-[- start-branching-if-not-started -]
-[- handle-token-amenn-case-action-standard-or-has-template -]
-[- copy-text string-else current-state-of-if-branching -]
+ambee start-branching-if-not-started amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee copy-text string-else current-state-of-if-branching amenn

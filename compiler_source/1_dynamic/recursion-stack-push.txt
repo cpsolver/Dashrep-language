@@ -1,5 +1,5 @@
-[- append-text current-result-storage-position recursion-stack -]
+ambee append-text current-result-storage-position recursion-stack amenn
 
 combee ****
-[- recursion-stack-show -]
+ambee recursion-stack-show amenn
 **** comenn

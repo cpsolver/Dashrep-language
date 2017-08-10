@@ -1,7 +1,7 @@
-[- if-no-begin [- yes-or-no-within-comment -] -]
-[- filter-tokens-case-3 -]
-[- if-else -]
+ambee if-no-begin ambee yes-or-no-within-comment amenn amenn
+ambee filter-tokens-case-3 amenn
+ambee if-else amenn
 combee ****
-[- append-text current-token comments-ignored -]
+ambee append-text current-token comments-ignored amenn
 **** comenn
-[- if-end -]
+ambee if-end amenn

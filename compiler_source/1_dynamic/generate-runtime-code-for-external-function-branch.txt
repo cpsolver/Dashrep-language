@@ -1,17 +1,17 @@
-[- copy-text word-to-use-in-handler phrase-name -]
-[- copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore -]
+ambee copy-text word-to-use-in-handler phrase-name amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
 
-[- copy-text code-function-branch-part-1 runtime-code-function-branch -]
-[- append-text-no-space phrase-name runtime-code-function-branch -]
-[- append-text-no-space code-function-branch-part-2 runtime-code-function-branch -]
-[- append-text-no-space phrase-name-with-underscores runtime-code-function-branch -]
-[- append-text-no-space code-function-branch-part-3 runtime-code-function-branch -]
-[- copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text -]
-[- copy-from-phrase-append-to-file runtime-code-function-branch [- filename-output-results-all-function-branches -] -]
+ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn
+ambee copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
 
-[- copy-text code-function-external-part-1 runtime-code-function-external -]
-[- append-text-no-space phrase-name-with-underscores runtime-code-function-external -]
-[- append-text-no-space code-function-external-part-2 runtime-code-function-external -]
-[- append-text-no-space phrase-name-with-underscores runtime-code-function-external -]
-[- append-text-no-space code-function-external-part-3 runtime-code-function-external -]
-[- copy-from-phrase-append-to-file runtime-code-function-external [- filename-output-results-functions-replacement-only -] -]
+ambee copy-text code-function-external-part-1 runtime-code-function-external amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn
+ambee append-text-no-space code-function-external-part-2 runtime-code-function-external amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn
+ambee append-text-no-space code-function-external-part-3 runtime-code-function-external amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-external ambee filename-output-results-functions-replacement-only amenn amenn

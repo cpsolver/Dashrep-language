@@ -1,24 +1,24 @@
 combee **** reminder: avoid backslashs here because they get interpreted in the runtime code **** comenn
-[- copy-text character-period dashrep-path-prefix-for-file-writing -]
-[- append-text-no-space character-backslash dashrep-path-prefix-for-file-writing -]
-[- copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading -]
+ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn
+ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn
+ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn
 
-[- put-into-phrase input-filename  input_to_dashrep_compiler.txt  -]
-[- put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.txt  -]
-[- delete-file [- filename-output-results-from-compiler -] -]
-[- put-into-phrase filename-output-standard-runtime-functions  output_compiler_standard_runtime_functions.txt  -]
-[- delete-file [- filename-output-standard-runtime-functions -] -]
-[- put-into-phrase filename-output-results-all-definition-items  output_compiler_all_definition_items.txt  -]
-[- delete-file [- filename-output-results-all-definition-items -] -]
-[- put-into-phrase filename-output-results-all-function-branches  output_compiler_all_function_branches.txt  -]
-[- delete-file [- filename-output-results-all-function-branches -] -]
-[- put-into-phrase filename-output-results-functions-replacement-only  output_compiler_functions_replacement_only.txt  -]
-[- delete-file [- filename-output-results-functions-replacement-only -] -]
-[- put-into-phrase filename-output-results-all-compiled-functions  output_compiler_all_compiled_functions.txt  -]
-[- delete-file [- filename-output-results-all-compiled-functions -] -]
-[- put-into-phrase filename-output-all-definitions-complex  output_compiler_all_tokens_for_definitions_complex.txt  -]
-[- delete-file [- filename-output-all-definitions-complex -] -]
-[- put-into-phrase filename-output-all-phrase-names-complex  output_compiler_all_phrase_names_complex.txt  -]
-[- delete-file [- filename-output-all-phrase-names-complex -] -]
-[- put-into-phrase filename-output-debug-trace-all-dashrep-definitions  output_compiler_debug_trace_all_definitions.txt  -]
-[- delete-file [- filename-output-debug-trace-all-dashrep-definitions -] -]
+ambee put-into-phrase input-filename  input_to_dashrep_compiler.txt  amenn
+ambee put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.txt  amenn
+ambee delete-file ambee filename-output-results-from-compiler amenn amenn
+ambee put-into-phrase filename-output-standard-runtime-functions  output_compiler_standard_runtime_functions.txt  amenn
+ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn
+ambee put-into-phrase filename-output-results-all-definition-items  output_compiler_all_definition_items.txt  amenn
+ambee delete-file ambee filename-output-results-all-definition-items amenn amenn
+ambee put-into-phrase filename-output-results-all-function-branches  output_compiler_all_function_branches.txt  amenn
+ambee delete-file ambee filename-output-results-all-function-branches amenn amenn
+ambee put-into-phrase filename-output-results-functions-replacement-only  output_compiler_functions_replacement_only.txt  amenn
+ambee delete-file ambee filename-output-results-functions-replacement-only amenn amenn
+ambee put-into-phrase filename-output-results-all-compiled-functions  output_compiler_all_compiled_functions.txt  amenn
+ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn
+ambee put-into-phrase filename-output-all-definitions-complex  output_compiler_all_tokens_for_definitions_complex.txt  amenn
+ambee delete-file ambee filename-output-all-definitions-complex amenn amenn
+ambee put-into-phrase filename-output-all-phrase-names-complex  output_compiler_all_phrase_names_complex.txt  amenn
+ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn
+ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions  output_compiler_debug_trace_all_definitions.txt  amenn
+ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn

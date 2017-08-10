@@ -1,2 +1,2 @@
-[- put-into-phrase storage-type  text  -]
-[- create-new-storage-position -]
+ambee put-into-phrase storage-type  text  amenn
+ambee create-new-storage-position amenn

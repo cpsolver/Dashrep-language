@@ -1,69 +1,69 @@
-[- copy-text string-ambee string-space-ambee-space -]
-[- prepend-text-no-space character-space string-space-ambee-space -]
-[- append-text-no-space character-space string-space-ambee-space -]
+ambee copy-text string-ambee string-space-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-ambee-space amenn
+ambee append-text-no-space character-space string-space-ambee-space amenn
 
-[- copy-text string-amenn string-space-amenn-space -]
-[- prepend-text-no-space character-space string-space-amenn-space -]
-[- append-text-no-space character-space string-space-amenn-space -]
+ambee copy-text string-amenn string-space-amenn-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-space amenn
+ambee append-text-no-space character-space string-space-amenn-space amenn
 
-[- copy-text string-fen string-space-fen-space -]
-[- prepend-text-no-space character-space string-space-fen-space -]
-[- append-text-no-space character-space string-space-fen-space -]
+ambee copy-text string-fen string-space-fen-space amenn
+ambee prepend-text-no-space character-space string-space-fen-space amenn
+ambee append-text-no-space character-space string-space-fen-space amenn
 
-[- copy-text string-hyphen-here string-space-hyphen-here-space -]
-[- prepend-text-no-space character-space string-space-hyphen-here-space -]
-[- append-text-no-space character-space string-space-hyphen-here-space -]
+ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn
+ambee append-text-no-space character-space string-space-hyphen-here-space amenn
 
-[- copy-text string-combee string-space-combee-space -]
-[- prepend-text-no-space character-space string-space-combee-space -]
-[- append-text-no-space character-space string-space-combee-space -]
+ambee copy-text string-combee string-space-combee-space amenn
+ambee prepend-text-no-space character-space string-space-combee-space amenn
+ambee append-text-no-space character-space string-space-combee-space amenn
 
-[- copy-text string-comenn string-space-comenn-space -]
-[- prepend-text-no-space character-space string-space-comenn-space -]
-[- append-text-no-space character-space string-space-comenn-space -]
+ambee copy-text string-comenn string-space-comenn-space amenn
+ambee prepend-text-no-space character-space string-space-comenn-space amenn
+ambee append-text-no-space character-space string-space-comenn-space amenn
 
-[- copy-text code-concat string-space-concat-space -]
-[- prepend-text-no-space character-space string-space-concat-space -]
-[- append-text-no-space character-space string-space-concat-space -]
+ambee copy-text code-concat string-space-concat-space amenn
+ambee prepend-text-no-space character-space string-space-concat-space amenn
+ambee append-text-no-space character-space string-space-concat-space amenn
 
-[- copy-text string-one-space string-space-one-space-space -]
-[- prepend-text-no-space character-space string-space-one-space-space -]
-[- append-text-no-space character-space string-space-one-space-space -]
+ambee copy-text string-one-space string-space-one-space-space amenn
+ambee prepend-text-no-space character-space string-space-one-space-space amenn
+ambee append-text-no-space character-space string-space-one-space-space amenn
 
-[- copy-text character-hyphen string-space-hyphen-space -]
-[- prepend-text-no-space character-space string-space-hyphen-space -]
-[- append-text-no-space character-space string-space-hyphen-space -]
+ambee copy-text character-hyphen string-space-hyphen-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-space amenn
+ambee append-text-no-space character-space string-space-hyphen-space amenn
 
-[- copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space -]
-[- append-text-no-space character-space string-apostrophe-apostrophe-space-period-space -]
-[- append-text-no-space character-period string-apostrophe-apostrophe-space-period-space -]
-[- append-text-no-space character-space string-apostrophe-apostrophe-space-period-space -]
+ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
 
-[- copy-text character-space string-space-period-space-apostrophe-apostrophe -]
-[- append-text-no-space character-period string-space-period-space-apostrophe-apostrophe -]
-[- append-text-no-space character-space string-space-period-space-apostrophe-apostrophe -]
-[- append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe -]
+ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn
 
-[- copy-text string-end-of string-space-end-of-line-here-space -]
-[- prepend-text-no-space character-space string-space-end-of-line-here-space -]
-[- append-text-no-space character-hyphen string-space-end-of-line-here-space -]
-[- append-text-no-space string-line-here string-space-end-of-line-here-space -]
-[- append-text-no-space character-space string-space-end-of-line-here-space -]
+ambee copy-text string-end-of string-space-end-of-line-here-space amenn
+ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn
+ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn
+ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn
+ambee append-text-no-space character-space string-space-end-of-line-here-space amenn
 
-[- copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces -]
-[- prepend-text-no-space character-space string-code-nospay-between-spaces -]
-[- append-text-no-space character-space string-code-nospay-between-spaces -]
+ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn
+ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn
+ambee append-text-no-space character-space string-code-nospay-between-spaces amenn
 
-[- copy-text string-nospay string-space-nospay-space -]
-[- prepend-text-no-space character-space string-space-nospay-space -]
-[- append-text-no-space character-space string-space-nospay-space -]
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
 
-[- copy-text string-amennfenambee string-space-amennfenambee-space -]
-[- prepend-text-no-space character-space string-space-amennfenambee-space -]
-[- append-text-no-space character-space string-space-amennfenambee-space -]
+ambee copy-text string-amennfenambee string-space-amennfenambee-space amenn
+ambee prepend-text-no-space character-space string-space-amennfenambee-space amenn
+ambee append-text-no-space character-space string-space-amennfenambee-space amenn
 
-[- copy-text string-amenn string-space-amenn-fen-ambee-space -]
-[- prepend-text-no-space character-space string-space-amenn-fen-ambee-space -]
-[- append-text string-fen string-space-amenn-fen-ambee-space -]
-[- append-text string-ambee string-space-amenn-fen-ambee-space -]
-[- append-text-no-space character-space string-space-amenn-fen-ambee-space -]
+ambee copy-text string-amenn string-space-amenn-fen-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+ambee append-text string-fen string-space-amenn-fen-ambee-space amenn
+ambee append-text string-ambee string-space-amenn-fen-ambee-space amenn
+ambee append-text-no-space character-space string-space-amenn-fen-ambee-space amenn

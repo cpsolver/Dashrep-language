@@ -1,207 +1,207 @@
-[- define-special-strings-that-cannot-be-spelled-in-full -]
-[- define-special-strings-that-contain-hyphens -]
-[- define-special-strings-that-are-padded-with-spaces -]
+ambee define-special-strings-that-cannot-be-spelled-in-full amenn
+ambee define-special-strings-that-contain-hyphens amenn
+ambee define-special-strings-that-are-padded-with-spaces amenn
 
-[- copy-text character-open-bracket string-open-bracket-dash -]
-[- append-text-no-space character-hyphen string-open-bracket-dash -]
+ambee copy-text character-open-bracket string-open-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-open-bracket-dash amenn
 
-[- copy-text character-hyphen string-dash-close-bracket -]
-[- append-text-no-space character-close-bracket string-dash-close-bracket -]
+ambee copy-text character-hyphen string-dash-close-bracket amenn
+ambee append-text-no-space character-close-bracket string-dash-close-bracket amenn
 
-[- copy-text character-hyphen string-dash-open-bracket-dash -]
-[- append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash -]
+ambee copy-text character-hyphen string-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-dash -]
-[- append-text-no-space character-hyphen string-dash-close-bracket-dash -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-dash-close-bracket-dash amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash -]
-[- append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash -]
-[- append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash -]
-[- append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash -]
-[- append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
+ambee append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
 
-[- copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash -]
-[- append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash -]
+ambee copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn
 
-[- copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash -]
-[- append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash -]
+ambee copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket -]
-[- append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn
+ambee append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket -]
-[- append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
+ambee append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash -]
-[- append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash amenn
 
-[- copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash -]
-[- append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash -]
-[- append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash -]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash amenn
+ambee append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash amenn
 
-[- copy-text string-no-space string-space-no-space-character-hyphen-no-space-space -]
-[- prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space -]
-[- append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space -]
-[- append-text string-no-space string-space-no-space-character-hyphen-no-space-space -]
-[- append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space -]
+ambee copy-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn
 
-[- copy-text string-fen string-space-fen-ambee-space -]
-[- prepend-text-no-space character-space string-space-fen-ambee-space -]
-[- append-text string-ambee string-space-fen-ambee-space -]
-[- append-text-no-space character-space string-space-fen-ambee-space -]
+ambee copy-text string-fen string-space-fen-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-fen-ambee-space amenn
+ambee append-text string-ambee string-space-fen-ambee-space amenn
+ambee append-text-no-space character-space string-space-fen-ambee-space amenn
 
-[- copy-text string-amenn string-space-amenn-fen-space -]
-[- prepend-text-no-space character-space string-space-amenn-fen-space -]
-[- append-text string-fen string-space-amenn-fen-space -]
-[- append-text-no-space character-space string-space-amenn-fen-space -]
+ambee copy-text string-amenn string-space-amenn-fen-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn
+ambee append-text string-fen string-space-amenn-fen-space amenn
+ambee append-text-no-space character-space string-space-amenn-fen-space amenn
 
-[- copy-text character-period runtime-code-inserted-separator-space -]
-[- append-text character-apostrophe runtime-code-inserted-separator-space -]
-[- append-text character-apostrophe runtime-code-inserted-separator-space -]
-[- append-text character-period runtime-code-inserted-separator-space -]
-[- prepend-text-no-space character-space runtime-code-inserted-separator-space -]
-[- append-text-no-space character-space runtime-code-inserted-separator-space -]
+ambee copy-text character-period runtime-code-inserted-separator-space amenn
+ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn
+ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn
+ambee append-text character-period runtime-code-inserted-separator-space amenn
+ambee prepend-text-no-space character-space runtime-code-inserted-separator-space amenn
+ambee append-text-no-space character-space runtime-code-inserted-separator-space amenn
 
-[- copy-text character-newline new-empty-line -]
-[- copy-text new-empty-line new-empty-lines -]
-[- append-text-no-space character-newline new-empty-lines -]
+ambee copy-text character-newline new-empty-line amenn
+ambee copy-text new-empty-line new-empty-lines amenn
+ambee append-text-no-space character-newline new-empty-lines amenn
 
-[- copy-text string-one-space string-space-one-space-no-space-space -]
-[- prepend-text-no-space character-space string-space-one-space-no-space-space -]
-[- append-text string-no-space string-space-one-space-no-space-space -]
-[- append-text-no-space character-space string-space-one-space-no-space-space -]
+ambee copy-text string-one-space string-space-one-space-no-space-space amenn
+ambee prepend-text-no-space character-space string-space-one-space-no-space-space amenn
+ambee append-text string-no-space string-space-one-space-no-space-space amenn
+ambee append-text-no-space character-space string-space-one-space-no-space-space amenn
 
-[- copy-text string-no-space string-space-no-space-one-space-space -]
-[- prepend-text-no-space character-space string-space-no-space-one-space-space -]
-[- append-text string-one-space string-space-no-space-one-space-space -]
-[- append-text-no-space character-space string-space-no-space-one-space-space -]
+ambee copy-text string-no-space string-space-no-space-one-space-space amenn
+ambee prepend-text-no-space character-space string-space-no-space-one-space-space amenn
+ambee append-text string-one-space string-space-no-space-one-space-space amenn
+ambee append-text-no-space character-space string-space-no-space-one-space-space amenn
 
-[- copy-text four-hyphens string-of-hyphens -]
-[- generate-counts-from-integer-to-integer 2 8 list-2-to-8  -]
-[- use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8  -]
+ambee copy-text four-hyphens string-of-hyphens amenn
+ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8  amenn
+ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8  amenn
 
-[- clear-phrase paired-replacements-for-converting-to-combee-comenn -]
-[- put-into-phrase string-asterisk-and-hyphens  *  -]
-[- put-into-phrase string-hyphens-and-asterisk  *  -]
-[- append-text-no-space character-hyphen string-asterisk-and-hyphens -]
-[- prepend-text-no-space character-hyphen string-hyphens-and-asterisk -]
-[- generate-counts-from-integer-to-integer 2 8 list-2-to-8  -]
-[- use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8  -]
+ambee clear-phrase paired-replacements-for-converting-to-combee-comenn amenn
+ambee put-into-phrase string-asterisk-and-hyphens  *  amenn
+ambee put-into-phrase string-hyphens-and-asterisk  *  amenn
+ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn
+ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn
+ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8  amenn
+ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8  amenn
 
-[- copy-text character-period runtime-code-between-items-for-concatenation-type-fen -]
-[- prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen -]
-[- append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen -]
-[- append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen -]
-[- append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen -]
-[- append-text character-period runtime-code-between-items-for-concatenation-type-fen -]
-[- append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen -]
+ambee copy-text character-period runtime-code-between-items-for-concatenation-type-fen amenn
+ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text character-period runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn
 
-[- copy-text character-period runtime-code-between-items-for-concatenation-type-nospay -]
-[- prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay -]
-[- append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay -]
+ambee copy-text character-period runtime-code-between-items-for-concatenation-type-nospay amenn
+ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn
+ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn
 
-[- copy-text character-apostrophe runtime-code-concatenated-empty -]
-[- append-text-no-space character-apostrophe runtime-code-concatenated-empty -]
+ambee copy-text character-apostrophe runtime-code-concatenated-empty amenn
+ambee append-text-no-space character-apostrophe runtime-code-concatenated-empty amenn
 
-[- copy-text string-combee list-combee-comenn-defenn -]
-[- append-text string-comenn list-combee-comenn-defenn -]
-[- append-text string-defenn list-combee-comenn-defenn -]
+ambee copy-text string-combee list-combee-comenn-defenn amenn
+ambee append-text string-comenn list-combee-comenn-defenn amenn
+ambee append-text string-defenn list-combee-comenn-defenn amenn
 
-[- copy-text string-ambee list-ambee-amenn -]
-[- append-text string-amenn list-ambee-amenn -]
+ambee copy-text string-ambee list-ambee-amenn amenn
+ambee append-text string-amenn list-ambee-amenn amenn
 
-[- copy-text list-ambee-amenn list-ambee-amenn-fen-nospay -]
-[- append-text string-fen list-ambee-amenn-fen-nospay -]
-[- append-text string-nospay list-ambee-amenn-fen-nospay -]
+ambee copy-text list-ambee-amenn list-ambee-amenn-fen-nospay amenn
+ambee append-text string-fen list-ambee-amenn-fen-nospay amenn
+ambee append-text string-nospay list-ambee-amenn-fen-nospay amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-character-apostrophe -]
-[- append-text-no-space string-apostrophe string-placeholder-character-apostrophe -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe -]
+ambee copy-text string-placeholder-prefix string-placeholder-character-apostrophe amenn
+ambee append-text-no-space string-apostrophe string-placeholder-character-apostrophe amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-character-backslash -]
-[- append-text-no-space string-backslash string-placeholder-character-backslash -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-character-backslash -]
+ambee copy-text string-placeholder-prefix string-placeholder-character-backslash amenn
+ambee append-text-no-space string-backslash string-placeholder-character-backslash amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-character-backslash amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-action-name -]
-[- append-text-no-space string-action string-placeholder-action-name -]
-[- append-text-no-space character-underscore string-placeholder-action-name -]
-[- append-text-no-space string-name string-placeholder-action-name -]
-[- copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-action-name -]
-[- append-text-no-space character-underscore string-placeholder-action-name-with-underscores -]
-[- append-text-no-space string-with string-placeholder-action-name-with-underscores -]
-[- append-text-no-space character-underscore string-placeholder-action-name-with-underscores -]
-[- append-text-no-space string-underscores string-placeholder-action-name-with-underscores -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores -]
+ambee copy-text string-placeholder-prefix string-placeholder-action-name amenn
+ambee append-text-no-space string-action string-placeholder-action-name amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name amenn
+ambee append-text-no-space string-name string-placeholder-action-name amenn
+ambee copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space string-with string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space string-underscores string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-omit -]
-[- append-text-no-space string-omit string-placeholder-omit -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-omit -]
+ambee copy-text string-placeholder-prefix string-placeholder-omit amenn
+ambee append-text-no-space string-omit string-placeholder-omit amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-omit amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-fen -]
-[- append-text-no-space string-fen string-placeholder-fen -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-fen -]
+ambee copy-text string-placeholder-prefix string-placeholder-fen amenn
+ambee append-text-no-space string-fen string-placeholder-fen amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-fen amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-nospay -]
-[- append-text-no-space string-nospay string-placeholder-nospay -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-nospay -]
+ambee copy-text string-placeholder-prefix string-placeholder-nospay amenn
+ambee append-text-no-space string-nospay string-placeholder-nospay amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-nospay amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-special -]
-[- append-text-no-space string-special string-placeholder-special -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-special -]
+ambee copy-text string-placeholder-prefix string-placeholder-special amenn
+ambee append-text-no-space string-special string-placeholder-special amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-special amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-phrase-being-defined -]
-[- append-text-no-space string-phrase string-placeholder-phrase-being-defined -]
-[- append-text-no-space character-underscore string-placeholder-phrase-being-defined -]
-[- append-text-no-space string-being string-placeholder-phrase-being-defined -]
-[- append-text-no-space character-underscore string-placeholder-phrase-being-defined -]
-[- append-text-no-space string-defined string-placeholder-phrase-being-defined -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined -]
+ambee copy-text string-placeholder-prefix string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-phrase string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-being string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-defined string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined amenn
 
-[- copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space string-code string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space character-underscore string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space string-for string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space character-underscore string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space string-executable string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space character-underscore string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space string-phrase string-placeholder-code-for-executable-phrase -]
-[- copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase -]
-[- append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores -]
-[- append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores -]
-[- append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores -]
-[- append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores -]
+ambee copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-code string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-for string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-executable string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-phrase string-placeholder-code-for-executable-phrase amenn
+ambee copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores amenn
 
-[- copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space -]
-[- append-text-no-space string-one string-placeholder-for-space-one-space-space -]
-[- append-text-no-space character-underscore string-placeholder-for-space-one-space-space -]
-[- append-text-no-space string-space string-placeholder-for-space-one-space-space -]
-[- append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space -]
+ambee copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space string-one string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space character-underscore string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space string-space string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space amenn
 
-[- copy-text template-new-empty-line string-new-line-in-brackets -]
-[- copy-text string-new-line-in-brackets string-space-new-line-in-brackets -]
-[- prepend-text-no-space character-space string-space-new-line-in-brackets -]
-[- copy-text string-new-line-in-brackets string-new-line-in-brackets-space -]
-[- append-text-no-space character-space string-new-line-in-brackets-space -]
+ambee copy-text template-new-empty-line string-new-line-in-brackets amenn
+ambee copy-text string-new-line-in-brackets string-space-new-line-in-brackets amenn
+ambee prepend-text-no-space character-space string-space-new-line-in-brackets amenn
+ambee copy-text string-new-line-in-brackets string-new-line-in-brackets-space amenn
+ambee append-text-no-space character-space string-new-line-in-brackets-space amenn
 
-[- copy-text character-open-angle-bracket string-bracketed-hyphen-here -]
-[- append-text-no-space string-hyphen string-bracketed-hyphen-here -]
-[- append-text-no-space character-underscore string-bracketed-hyphen-here -]
-[- append-text-no-space string-here string-bracketed-hyphen-here -]
-[- append-text-no-space character-close-angle-bracket string-bracketed-hyphen-here -]
+ambee copy-text character-open-angle-bracket string-bracketed-hyphen-here amenn
+ambee append-text-no-space string-hyphen string-bracketed-hyphen-here amenn
+ambee append-text-no-space character-underscore string-bracketed-hyphen-here amenn
+ambee append-text-no-space string-here string-bracketed-hyphen-here amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-hyphen-here amenn
 
-[- copy-text character-open-angle-bracket string-bracketed-empty-line -]
-[- append-text-no-space string-empty string-bracketed-empty-line -]
-[- append-text-no-space character-underscore string-bracketed-empty-line -]
-[- append-text-no-space string-line string-bracketed-empty-line -]
-[- append-text-no-space character-close-angle-bracket string-bracketed-empty-line -]
+ambee copy-text character-open-angle-bracket string-bracketed-empty-line amenn
+ambee append-text-no-space string-empty string-bracketed-empty-line amenn
+ambee append-text-no-space character-underscore string-bracketed-empty-line amenn
+ambee append-text-no-space string-line string-bracketed-empty-line amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-empty-line amenn
 
-[- copy-text character-open-angle-bracket string-bracketed-new-line -]
-[- append-text-no-space string-new string-bracketed-new-line -]
-[- append-text-no-space character-underscore string-bracketed-new-line -]
-[- append-text-no-space string-line string-bracketed-new-line -]
-[- append-text-no-space character-close-angle-bracket string-bracketed-new-line -]
+ambee copy-text character-open-angle-bracket string-bracketed-new-line amenn
+ambee append-text-no-space string-new string-bracketed-new-line amenn
+ambee append-text-no-space character-underscore string-bracketed-new-line amenn
+ambee append-text-no-space string-line string-bracketed-new-line amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-new-line amenn

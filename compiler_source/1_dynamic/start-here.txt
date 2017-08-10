@@ -1,1 +1,1 @@
-[- run-compiler -]
+ambee run-compiler amenn

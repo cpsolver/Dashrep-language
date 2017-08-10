@@ -1,11 +1,11 @@
-[- compile-source-code-initialize -]
-[- convert-source-code-into-words -]
+ambee compile-source-code-initialize amenn
+ambee convert-source-code-into-words amenn
 
 
-[- trace-show source-code-as-words -]
+ambee trace-show source-code-as-words amenn
 
 
-[- clear-phrase phrase-being-defined -]
-[- put-into-phrase yes-or-no-within-comment  no  -]
-[- use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words -]
-[- compile-source-code-finish -]
+ambee clear-phrase phrase-being-defined amenn
+ambee put-into-phrase yes-or-no-within-comment  no  amenn
+ambee use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words amenn
+ambee compile-source-code-finish amenn

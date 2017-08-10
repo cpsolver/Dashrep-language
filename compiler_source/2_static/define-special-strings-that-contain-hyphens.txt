@@ -1,27 +1,27 @@
-[- copy-text string-hyphen string-hyphen-here -]
-[- append-text-no-space character-hyphen string-hyphen-here -]
-[- append-text-no-space string-here string-hyphen-here -]
+ambee copy-text string-hyphen string-hyphen-here amenn
+ambee append-text-no-space character-hyphen string-hyphen-here amenn
+ambee append-text-no-space string-here string-hyphen-here amenn
 
-[- copy-text string-character string-character-hyphen -]
-[- append-text-no-space character-hyphen string-character-hyphen -]
-[- append-text-no-space string-hyphen string-character-hyphen -]
+ambee copy-text string-character string-character-hyphen amenn
+ambee append-text-no-space character-hyphen string-character-hyphen amenn
+ambee append-text-no-space string-hyphen string-character-hyphen amenn
 
-[- copy-text string-no string-no-space -]
-[- append-text-no-space character-hyphen string-no-space -]
-[- append-text-no-space string-space string-no-space -]
+ambee copy-text string-no string-no-space amenn
+ambee append-text-no-space character-hyphen string-no-space amenn
+ambee append-text-no-space string-space string-no-space amenn
 
-[- copy-text string-one string-one-space -]
-[- append-text-no-space character-hyphen string-one-space -]
-[- append-text-no-space string-space string-one-space -]
+ambee copy-text string-one string-one-space amenn
+ambee append-text-no-space character-hyphen string-one-space amenn
+ambee append-text-no-space string-space string-one-space amenn
 
-[- copy-text string-new string-new-line -]
-[- append-text-no-space character-hyphen string-new-line -]
-[- append-text-no-space string-line string-new-line -]
+ambee copy-text string-new string-new-line amenn
+ambee append-text-no-space character-hyphen string-new-line amenn
+ambee append-text-no-space string-line string-new-line amenn
 
-[- copy-text string-empty string-empty-line -]
-[- append-text-no-space character-hyphen string-empty-line -]
-[- append-text-no-space string-line string-empty-line -]
+ambee copy-text string-empty string-empty-line amenn
+ambee append-text-no-space character-hyphen string-empty-line amenn
+ambee append-text-no-space string-line string-empty-line amenn
 
-[- copy-text string-empty string-empty-text -]
-[- append-text-no-space character-hyphen string-empty-text -]
-[- append-text-no-space string-text string-empty-text -]
+ambee copy-text string-empty string-empty-text amenn
+ambee append-text-no-space character-hyphen string-empty-text amenn
+ambee append-text-no-space string-text string-empty-text amenn

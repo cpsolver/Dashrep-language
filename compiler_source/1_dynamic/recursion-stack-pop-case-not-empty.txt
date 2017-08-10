@@ -1,8 +1,8 @@
-[- if-yes-begin [- yes-or-no-same-two-words greater [- numeric-equal-greater-less-compare [- position-top-of-stack -] 1  -] -] -]
-[- copy-word-at-position recursion-stack current-result-storage-position [- position-top-of-stack -] -]
-[- numeric-decrement position-top-of-stack -]
-[- copy-words-from-position-to-position recursion-stack recursion-stack 1 [- position-top-of-stack -] -]
-[- if-else -]
-[- copy-text recursion-stack current-result-storage-position -]
-[- clear-phrase recursion-stack -]
-[- if-end -]
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1  amenn amenn amenn
+ambee copy-word-at-position recursion-stack current-result-storage-position ambee position-top-of-stack amenn amenn
+ambee numeric-decrement position-top-of-stack amenn
+ambee copy-words-from-position-to-position recursion-stack recursion-stack 1 ambee position-top-of-stack amenn amenn
+ambee if-else amenn
+ambee copy-text recursion-stack current-result-storage-position amenn
+ambee clear-phrase recursion-stack amenn
+ambee if-end amenn

@@ -1,21 +1,21 @@
-[- if-yes-begin [- yes-or-no-same-two-words equal [- numeric-equal-greater-less-compare [- count-of-ambee-tokens -] [- count-of-amenn-tokens -] -] -] -]
-[- filter-tokens-case-defenn-case-balanced-ambee-amenn -]
-[- if-else -]
-[- handle-definition-simple-or-immediate -]
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn
+ambee filter-tokens-case-defenn-case-balanced-ambee-amenn amenn
+ambee if-else amenn
+ambee handle-definition-simple-or-immediate amenn
 
 combee ****
 if unbalanced needs warning:
-[- handle-non-zero-count-of-ambee-minus-amenn-tokens -]
+ambee handle-non-zero-count-of-ambee-minus-amenn-tokens amenn
 **** comenn
 
-[- if-end -]
+ambee if-end amenn
 
-[- clear-phrase phrase-being-defined -]
-[- put-into-phrase yes-or-no-within-comment  no  -]
-[- clear-phrase list-of-tokens-in-current-definition -]
-[- put-into-phrase count-of-ambee-tokens  0  -]
-[- put-into-phrase count-of-amenn-tokens  0  -]
+ambee clear-phrase phrase-being-defined amenn
+ambee put-into-phrase yes-or-no-within-comment  no  amenn
+ambee clear-phrase list-of-tokens-in-current-definition amenn
+ambee put-into-phrase count-of-ambee-tokens  0  amenn
+ambee put-into-phrase count-of-amenn-tokens  0  amenn
 
-[- generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases -]
-[- copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes -]
-[- delete-listed-phrases list-of-phrases-to-delete -]
+ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn
+ambee copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes amenn
+ambee delete-listed-phrases list-of-phrases-to-delete amenn

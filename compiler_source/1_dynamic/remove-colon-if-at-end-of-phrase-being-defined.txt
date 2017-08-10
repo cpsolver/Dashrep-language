@@ -1,6 +1,6 @@
-[- put-into-phrase phrase-length  [- get-count-of-characters phrase-being-defined -]  -]
-[- copy-characters-from-position-to-position phrase-being-defined possible-colon [- phrase-length -] [- phrase-length -] -]
+ambee put-into-phrase phrase-length  ambee get-count-of-characters phrase-being-defined amenn  amenn
+ambee copy-characters-from-position-to-position phrase-being-defined possible-colon ambee phrase-length amenn ambee phrase-length amenn amenn
 
-[- if-yes-begin [- yes-or-no-same-two-phrase-definitions possible-colon character-colon -] -]
-[- copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 [- numeric-minus [- phrase-length -] 1  -] -]
-[- if-end -]
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-colon character-colon amenn amenn
+ambee copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 ambee numeric-minus ambee phrase-length amenn 1  amenn amenn
+ambee if-end amenn

@@ -1,2 +1,2 @@
-[- numeric-increment count-of-amenn-tokens -]
-[- append-text string-amenn list-of-tokens-in-current-definition -]
+ambee numeric-increment count-of-amenn-tokens amenn
+ambee append-text string-amenn list-of-tokens-in-current-definition amenn

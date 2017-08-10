@@ -1,8 +1,8 @@
-[- put-into-phrase current-result-storage-position  0  -]
+ambee put-into-phrase current-result-storage-position  0  amenn
 
 combee ****
-[- copy-text warning-ambee-amenn-imbalance-introduction warning-message -]
-[- append-text phrase-being-defined warning-message -]
-[- append-text warning-more-amenn-than-ambee-tokens warning-message -]
-[- append-text-no-space warning-message warning-messages -]
+ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn
+ambee append-text phrase-being-defined warning-message amenn
+ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn
+ambee append-text-no-space warning-message warning-messages amenn
 **** comenn
