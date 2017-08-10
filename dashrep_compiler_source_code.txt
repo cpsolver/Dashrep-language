@@ -9,375 +9,375 @@ Limitations:
 * Within parameter brackets, the operands that follow the action name must not expand in a way that effectively inserts a space. In other words, the counting of an action's operands is done during compilation, not during runtime.
 ----
 check-elapsed-time:
-*---
-[-put-into-phrase epoch-seconds-current-time  [-get-current-time-in-epoch-seconds-] -]
-[-put-into-phrase elapsed-time  [-numeric-minus [-epoch-seconds-current-time-] [-epoch-seconds-starting-time-]-] -]
+combee ****
+ambee put-into-phrase epoch-seconds-current-time  ambee get-current-time-in-epoch-seconds amenn  amenn
+ambee put-into-phrase elapsed-time  ambee numeric-minus ambee epoch-seconds-current-time amenn ambee epoch-seconds-starting-time amenn amenn  amenn
 
 
-[-trace-show elapsed-time-]
----*
+ambee trace-show elapsed-time amenn
+**** comenn
 ----
 compile-source-code-finish:
-[-copy-text unique-phrase-number number-of-unique-phrases-]
+ambee copy-text unique-phrase-number number-of-unique-phrases amenn
 
-[-copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate-]
-[-copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
-[-copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate-]
-[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate-]
+ambee copy-words-found-only-in-first-list list-of-functions-generated list-of-function-branches-already-generated list-of-function-branches-yet-to-generate amenn
+ambee copy-words-unique-only list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn
+ambee copy-words-sort-alphabetic list-of-function-branches-yet-to-generate list-of-function-branches-yet-to-generate amenn
+ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-branch list-of-function-branches-yet-to-generate amenn
 
-[-use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-modified-]
+ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-external-function-branch list-of-functions-in-optional-code-modified amenn
 
-[-copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed-]
-[-copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-functions-in-optional-code-modified list-of-functions-replacement-only-needed-]
-[-copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate list-of-functions-replacement-only-needed-]
-[-copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
-[-copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed-]
-[-use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed-]
+ambee copy-words-found-only-in-first-list list-of-function-branches-needed list-of-functions-in-optional-code list-of-functions-replacement-only-needed amenn
+ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-functions-in-optional-code-modified list-of-functions-replacement-only-needed amenn
+ambee copy-words-found-only-in-first-list list-of-functions-replacement-only-needed list-of-function-branches-yet-to-generate list-of-functions-replacement-only-needed amenn
+ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn
+ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn
+ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn
 
-[-copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
-[-copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used-]
-[-trace-show list-of-converted-dashrep-actions-used-]
+ambee copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
+ambee copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
+ambee trace-show list-of-converted-dashrep-actions-used amenn
 
-[-copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
-[-copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used-]
-[-trace-show list-of-unconverted-dashrep-actions-used-]
+ambee copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
+ambee copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
+ambee trace-show list-of-unconverted-dashrep-actions-used amenn
 
-[-copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized-]
-[-copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized-]
-[-trace-show list-of-action-names-not-recognized-]
+ambee copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
+ambee copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
+ambee trace-show list-of-action-names-not-recognized amenn
 ----
 compile-source-code-generate-output-results:
-[-compile-source-code-initialize-]
-[-convert-source-code-into-words-]
+ambee compile-source-code-initialize amenn
+ambee convert-source-code-into-words amenn
 
 
-[-trace-show source-code-as-words-]
+ambee trace-show source-code-as-words amenn
 
 
-[-clear-phrase phrase-being-defined-]
-[-put-into-phrase yes-or-no-within-comment  no -]
-[-use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words-]
-[-compile-source-code-finish-]
+ambee clear-phrase phrase-being-defined amenn
+ambee put-into-phrase yes-or-no-within-comment  no  amenn
+ambee use-handler-with-each-word-in-phrase filter-tokens-case-1 source-code-as-words amenn
+ambee compile-source-code-finish amenn
 ----
 compile-source-code-initialize:
-[-put-into-phrase local-or-batch-mode  local -]
-[-put-into-phrase dashrep-time-limit  50000 -]
-[-put-into-phrase dashrep-endless-loop-counter-limit  900000000 -]
-[-put-into-phrase epoch-seconds-starting-time  [-get-current-time-in-epoch-seconds-] -]
+ambee put-into-phrase local-or-batch-mode  local  amenn
+ambee put-into-phrase dashrep-time-limit  50000  amenn
+ambee put-into-phrase dashrep-endless-loop-counter-limit  900000000  amenn
+ambee put-into-phrase epoch-seconds-starting-time  ambee get-current-time-in-epoch-seconds amenn  amenn
 
-[-define-special-strings-]
-[-generate-versions-of-function-point-to-word-in-operand-]
-[-use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand-]
-[-use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings-]
-[-put-into-phrase current-storage-position  1001 -]
-[-put-into-phrase count-of-ambee-tokens  0 -]
-[-put-into-phrase count-of-amenn-tokens  0 -]
-[-clear-phrase list-of-template-functions-for-requested-actions-]
+ambee define-special-strings amenn
+ambee generate-versions-of-function-point-to-word-in-operand amenn
+ambee use-handler-with-each-word-in-phrase expand-one-template list-of-static-segments-need-to-expand amenn
+ambee use-handler-with-each-word-in-phrase generate-runtime-code-using-quoted-string list-of-phrases-with-quoted-strings amenn
+ambee put-into-phrase current-storage-position  1001  amenn
+ambee put-into-phrase count-of-ambee-tokens  0  amenn
+ambee put-into-phrase count-of-amenn-tokens  0  amenn
+ambee clear-phrase list-of-template-functions-for-requested-actions amenn
 ----
 convert-source-code-into-words:
-[-copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special-]
-[-copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special-]
-[-copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space-]
-[-copy-without-extra-spaces source-code-as-words source-code-as-words-]
-[-convert-source-code-replace-parameter-brackets-with-ambee-and-amenn-]
-[-copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space-]
-[-copy-without-extra-spaces source-code-as-words source-code-as-words-]
+ambee copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn
+ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn
+ambee convert-source-code-replace-parameter-brackets-with-ambee-and-amenn amenn
+ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn
 
-*--- need to do at least twice because of potential overlap ---*
-[-put-into-phrase count-1-2  1 2 -]
-[-use-handler-with-each-word-in-phrase convert-source-code-simplify-no-space-one-space-directives count-1-2 -]
+combee **** need to do at least twice because of potential overlap **** comenn
+ambee put-into-phrase count-1-2  1 2  amenn
+ambee use-handler-with-each-word-in-phrase convert-source-code-simplify-no-space-one-space-directives count-1-2  amenn
 
-*---
-[-copy-and-replace source-code-as-words source-code-as-words string-space-one-space-space string-placeholder-for-space-one-space-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space character-space-]
----*
+combee ****
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-space string-placeholder-for-space-one-space-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space character-space amenn
+**** comenn
 
-[-copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-hyphens-into-defenns-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-replacement-for-hyphen-here-]
-[-copy-without-extra-spaces source-code-as-words source-code-as-words-]
-[-copy-and-replace source-code-as-words source-code-as-lines character-space character-newline-]
+ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-hyphens-into-defenns amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-replacement-for-hyphen-here amenn
+ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn
+ambee copy-and-replace source-code-as-words source-code-as-lines character-space character-newline amenn
 ----
 convert-source-code-replace-parameter-brackets-with-ambee-and-amenn:
-*---
----*
-[-trace-show source-code-as-words-]
+combee ****
+**** comenn
+ambee trace-show source-code-as-words amenn
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash amenn
 
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space-]
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn
 
-[-trace-show source-code-as-words-]
+ambee trace-show source-code-as-words amenn
 
-[-generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin-]
-[-numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin-]
-[-generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end-]
-[-numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end-]
-[-copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters-]
-[-append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters-]
-[-use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters-]
-[-copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters-]
-[-copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters-]
+ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn
+ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn
+ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn
+ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn
+ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn
+ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn
+ambee use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters amenn
+ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn
+ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn
 
-[-trace-show pointers-to-adjacent-characters-]
+ambee trace-show pointers-to-adjacent-characters amenn
 
-[-use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters-]
+ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters amenn
 
-[-copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space-]
+ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space amenn
 ----
 convert-source-code-simplify-no-space-one-space-directives:
-[-if-no-begin [-yes-or-no-same-two-words 0 [-put-into-phrase either-zero-if-not-found-else-non-zero [-get-position-of-matching-text string-space-one-space-space source-code-as-words-]-]-]-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space-]
-[-copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee put-into-phrase either-zero-if-not-found-else-non-zero ambee get-position-of-matching-text string-space-one-space-space source-code-as-words amenn amenn amenn amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-one-space-no-space-space string-placeholder-for-space-one-space-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn
+ambee if-end amenn
 ----
 convert-source-handle-nospay-insertions:
-[-copy-text word-to-use-in-handler current-symbol-]
+ambee copy-text word-to-use-in-handler current-symbol amenn
 
-[-copy-text current-symbol string-symbol-open-bracket-dash-]
-[-append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash-]
+ambee copy-text current-symbol string-symbol-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-symbol-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-symbol-]
-[-append-text-no-space current-symbol string-dash-close-bracket-symbol-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-symbol amenn
+ambee append-text-no-space current-symbol string-dash-close-bracket-symbol amenn
 
-[-copy-text current-symbol string-symbol-nospay-open-bracket-dash-]
-[-append-text string-nospay string-symbol-nospay-open-bracket-dash-]
-[-append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
+ambee copy-text current-symbol string-symbol-nospay-open-bracket-dash amenn
+ambee append-text string-nospay string-symbol-nospay-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol-]
-[-append-text string-nospay string-dash-close-bracket-nospay-symbol-]
-[-append-text current-symbol string-dash-close-bracket-nospay-symbol-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-symbol amenn
+ambee append-text string-nospay string-dash-close-bracket-nospay-symbol amenn
+ambee append-text current-symbol string-dash-close-bracket-nospay-symbol amenn
 
-*--- do twice in case symbol is adjacent to both open and close parameter brackets ---*
-[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
-[-copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol-]
+combee **** do twice in case symbol is adjacent to both open and close parameter brackets **** comenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-symbol-open-bracket-dash string-symbol-nospay-open-bracket-dash amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-symbol string-dash-close-bracket-nospay-symbol amenn
 ----
 create-new-result-storage-position:
-[-put-into-phrase storage-type  result -]
-[-create-new-storage-position-]
+ambee put-into-phrase storage-type  result  amenn
+ambee create-new-storage-position amenn
 ----
 create-new-storage-position:
-[-numeric-increment current-storage-position-]
-[-clear-phrase contents-at-storage-position-[-current-storage-position-]-]
-[-copy-text storage-type storage-type-at-storage-position-[-current-storage-position-]-]
-[-copy-text current-storage-position current-[-storage-type-]-storage-position-]
+ambee numeric-increment current-storage-position amenn
+ambee clear-phrase contents-at-storage-position-[- current-storage-position amenn amenn
+ambee copy-text storage-type storage-type-at-storage-position-[- current-storage-position amenn amenn
+ambee copy-text current-storage-position current-[- storage-type -]-storage-position amenn
 ----
 create-new-text-storage-position:
-[-put-into-phrase storage-type  text -]
-[-create-new-storage-position-]
+ambee put-into-phrase storage-type  text  amenn
+ambee create-new-storage-position amenn
 ----
 expand-one-template:
-[-expand-text template-[-word-to-use-in-handler-] [-word-to-use-in-handler-]-]
+ambee expand-text template-[- word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
 ----
 filter-tokens-case-1:
-[-copy-text word-to-use-in-handler current-token-]
-[-copy-words-found-in-both-lists current-token list-combee-comenn-defenn non-empty-if-valid-token-handler-name-]
+ambee copy-text word-to-use-in-handler current-token amenn
+ambee copy-words-found-in-both-lists current-token list-combee-comenn-defenn non-empty-if-valid-token-handler-name amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase non-empty-if-valid-token-handler-name-]-]
-[-filter-tokens-case-2-]
-[-if-else-]
-[-filter-tokens-case-[-non-empty-if-valid-token-handler-name-]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case-2 amenn
+ambee if-else amenn
+ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
+ambee if-end amenn
 ----
 filter-tokens-case-2:
-[-if-no-begin [-yes-or-no-within-comment-]-]
-[-filter-tokens-case-3-]
-[-if-else-]
-*---
-[-append-text current-token comments-ignored-]
----*
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-within-comment amenn amenn
+ambee filter-tokens-case-3 amenn
+ambee if-else amenn
+combee ****
+ambee append-text current-token comments-ignored amenn
+**** comenn
+ambee if-end amenn
 ----
 filter-tokens-case-3:
-[-copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name-]
+ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase non-empty-if-valid-token-handler-name-]-]
-[-filter-tokens-case-4-]
-[-if-else-]
-[-filter-tokens-case-[-non-empty-if-valid-token-handler-name-]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case-4 amenn
+ambee if-else amenn
+ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
+ambee if-end amenn
 ----
 filter-tokens-case-4:
-[-if-no-begin [-yes-or-no-empty-phrase phrase-being-defined-]-]
-[-append-text current-token list-of-tokens-in-current-definition-]
-[-if-else-]
-[-copy-text current-token phrase-being-defined-]
-[-remove-colon-if-at-end-of-phrase-being-defined-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn
+ambee append-text current-token list-of-tokens-in-current-definition amenn
+ambee if-else amenn
+ambee copy-text current-token phrase-being-defined amenn
+ambee remove-colon-if-at-end-of-phrase-being-defined amenn
+ambee if-end amenn
 ----
 filter-tokens-case-ambee:
-[-numeric-increment count-of-ambee-tokens-]
-[-append-text string-ambee list-of-tokens-in-current-definition-]
+ambee numeric-increment count-of-ambee-tokens amenn
+ambee append-text string-ambee list-of-tokens-in-current-definition amenn
 ----
 filter-tokens-case-amenn:
-[-numeric-increment count-of-amenn-tokens-]
-[-append-text string-amenn list-of-tokens-in-current-definition-]
+ambee numeric-increment count-of-amenn-tokens amenn
+ambee append-text string-amenn list-of-tokens-in-current-definition amenn
 ----
 filter-tokens-case-combee:
-[-put-into-phrase yes-or-no-within-comment  yes -]
+ambee put-into-phrase yes-or-no-within-comment  yes  amenn
 ----
 filter-tokens-case-comenn:
-[-put-into-phrase yes-or-no-within-comment  no -]
+ambee put-into-phrase yes-or-no-within-comment  no  amenn
 ----
 filter-tokens-case-defenn-case-balanced-ambee-amenn:
-[-if-no-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-numeric-add [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-] 0 -]-]-]
-[-handle-definition-simple-or-immediate-]
-[-if-else-]
-[-handle-definition-contains-ambee-amenn-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee numeric-add ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn 0  amenn amenn amenn
+ambee handle-definition-simple-or-immediate amenn
+ambee if-else amenn
+ambee handle-definition-contains-ambee-amenn amenn
+ambee if-end amenn
 ----
 filter-tokens-case-defenn:
-[-if-yes-begin [-yes-or-no-same-two-words equal [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
-[-filter-tokens-case-defenn-case-balanced-ambee-amenn-]
-[-if-else-]
-[-handle-definition-simple-or-immediate-]
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn
+ambee filter-tokens-case-defenn-case-balanced-ambee-amenn amenn
+ambee if-else amenn
+ambee handle-definition-simple-or-immediate amenn
 
-*---
+combee ****
 if unbalanced needs warning:
-[-handle-non-zero-count-of-ambee-minus-amenn-tokens-]
----*
+ambee handle-non-zero-count-of-ambee-minus-amenn-tokens amenn
+**** comenn
 
-[-if-end-]
+ambee if-end amenn
 
-[-clear-phrase phrase-being-defined-]
-[-put-into-phrase yes-or-no-within-comment  no -]
-[-clear-phrase list-of-tokens-in-current-definition-]
-[-put-into-phrase count-of-ambee-tokens  0 -]
-[-put-into-phrase count-of-amenn-tokens  0 -]
+ambee clear-phrase phrase-being-defined amenn
+ambee put-into-phrase yes-or-no-within-comment  no  amenn
+ambee clear-phrase list-of-tokens-in-current-definition amenn
+ambee put-into-phrase count-of-ambee-tokens  0  amenn
+ambee put-into-phrase count-of-amenn-tokens  0  amenn
 
-[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
-[-copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes-]
-[-delete-listed-phrases list-of-phrases-to-delete-]
+ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn
+ambee copy-words-that-begin-with-listed-words list-of-all-dashrep-phrases list-of-phrases-to-delete list-of-temporary-phrase-name-prefixes amenn
+ambee delete-listed-phrases list-of-phrases-to-delete amenn
 ----
 generate-code-for-one-action:
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name-]
-[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen-]
-*--- reminder: do not modify apostrophes or backslashes here because those characters need to appear in the code ---*
-[-copy-from-phrase-append-to-file runtime-code-for-parameter-phrase [-filename-output-results-all-compiled-functions-]-]
-[-copy-text current-result-storage-position higher-result-storage-position-]
-[-recursion-stack-pop-]
-[-copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand-]
-[-append-text-no-space higher-result-storage-position higher-result-storage-operand-]
-[-append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand-]
-[-append-text higher-result-storage-operand list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name amenn
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special amenn
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores amenn
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined amenn
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-character-hyphen-in-brackets character-hyphen amenn
+combee **** reminder: do not modify apostrophes or backslashes here because those characters need to appear in the code **** comenn
+ambee copy-from-phrase-append-to-file runtime-code-for-parameter-phrase ambee filename-output-results-all-compiled-functions amenn amenn
+ambee copy-text current-result-storage-position higher-result-storage-position amenn
+ambee recursion-stack-pop amenn
+ambee copy-text runtime-code-storage-item-reference-before-pointer higher-result-storage-operand amenn
+ambee append-text-no-space higher-result-storage-position higher-result-storage-operand amenn
+ambee append-text-no-space runtime-code-storage-item-reference-after-pointer higher-result-storage-operand amenn
+ambee append-text higher-result-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
 ----
 generate-list-of-tokens-in-current-definition-quotable:
-[-copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
+ambee copy-and-replace list-of-tokens-in-current-definition list-of-tokens-in-current-definition-quotable character-apostrophe string-placeholder-special amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-apostrophe character-apostrophe amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable character-backslash string-placeholder-special amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-placeholder-character-backslash character-backslash amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable list-of-tokens-in-current-definition-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
 
 
-*---
-[-trace-show list-of-tokens-in-current-definition-quotable-]
----*
+combee ****
+ambee trace-show list-of-tokens-in-current-definition-quotable amenn
+**** comenn
 ----
 generate-runtime-code-for-external-function-branch:
-[-copy-text word-to-use-in-handler phrase-name-]
-[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
+ambee copy-text word-to-use-in-handler phrase-name amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
 
-[-copy-text code-function-branch-part-1 runtime-code-function-branch-]
-[-append-text-no-space phrase-name runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-2 runtime-code-function-branch-]
-[-append-text-no-space phrase-name-with-underscores runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-3 runtime-code-function-branch-]
-[-copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text-]
-[-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
+ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn
+ambee copy-and-replace runtime-code-function-branch runtime-code-function-branch function-name-prefix empty-text amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
 
-[-copy-text code-function-external-part-1 runtime-code-function-external-]
-[-append-text-no-space phrase-name-with-underscores runtime-code-function-external-]
-[-append-text-no-space code-function-external-part-2 runtime-code-function-external-]
-[-append-text-no-space phrase-name-with-underscores runtime-code-function-external-]
-[-append-text-no-space code-function-external-part-3 runtime-code-function-external-]
-[-copy-from-phrase-append-to-file runtime-code-function-external [-filename-output-results-functions-replacement-only-]-]
+ambee copy-text code-function-external-part-1 runtime-code-function-external amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn
+ambee append-text-no-space code-function-external-part-2 runtime-code-function-external amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-external amenn
+ambee append-text-no-space code-function-external-part-3 runtime-code-function-external amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-external ambee filename-output-results-functions-replacement-only amenn amenn
 ----
 generate-runtime-code-for-one-function-branch:
-[-copy-text word-to-use-in-handler phrase-name-]
-[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
-[-copy-text code-function-branch-part-1 runtime-code-function-branch-]
-[-append-text-no-space phrase-name runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-2 runtime-code-function-branch-]
-[-append-text-no-space phrase-name-with-underscores runtime-code-function-branch-]
-[-append-text-no-space code-function-branch-part-3 runtime-code-function-branch-]
-[-copy-from-phrase-append-to-file runtime-code-function-branch [-filename-output-results-all-function-branches-]-]
+ambee copy-text word-to-use-in-handler phrase-name amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-text code-function-branch-part-1 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-2 runtime-code-function-branch amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-branch amenn
+ambee append-text-no-space code-function-branch-part-3 runtime-code-function-branch amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-branch ambee filename-output-results-all-function-branches amenn amenn
 ----
 generate-runtime-code-for-one-function-replacement-only:
-[-copy-text word-to-use-in-handler phrase-name-]
-[-copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore-]
-[-copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only-]
-[-append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only-]
-[-append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only-]
-[-append-text-no-space phrase-name runtime-code-function-replacement-only-]
-[-append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only-]
-[-copy-from-phrase-append-to-file runtime-code-function-replacement-only [-filename-output-results-functions-replacement-only-]-]
+ambee copy-text word-to-use-in-handler phrase-name amenn
+ambee copy-and-replace phrase-name phrase-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-text code-function-replacement-only-part-1 runtime-code-function-replacement-only amenn
+ambee append-text-no-space phrase-name-with-underscores runtime-code-function-replacement-only amenn
+ambee append-text-no-space code-function-replacement-only-part-2 runtime-code-function-replacement-only amenn
+ambee append-text-no-space phrase-name runtime-code-function-replacement-only amenn
+ambee append-text-no-space code-function-replacement-only-part-3 runtime-code-function-replacement-only amenn
+ambee copy-from-phrase-append-to-file runtime-code-function-replacement-only ambee filename-output-results-functions-replacement-only amenn amenn
 ----
 generate-runtime-code-for-phrase-definition-simple:
-[-copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple-]
-[-append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple-]
-[-append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple-]
-[-append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple-]
-[-append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple-]
-[-append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple-]
+ambee copy-text code-phrase-definition-simple-part-1 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn
+ambee append-text code-phrase-definition-simple-part-2 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space phrase-being-defined runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space code-phrase-definition-simple-part-3 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn
+ambee append-text code-phrase-definition-simple-part-4 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space list-of-tokens-in-current-definition-quotable runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space code-phrase-definition-simple-part-5 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space pointer-storage-position-for-phrase-name runtime-code-for-phrase-definition-simple amenn
+ambee append-text code-phrase-definition-simple-part-6 runtime-code-for-phrase-definition-simple amenn
+ambee append-text-no-space pointer-storage-position-for-phrase-definition runtime-code-for-phrase-definition-simple amenn
+ambee append-text code-phrase-definition-simple-part-7 runtime-code-for-phrase-definition-simple amenn
 ----
 generate-runtime-code-using-quoted-string:
-[-numeric-increment storage-item-pointer-]
-[-copy-text storage-item-pointer storage-item-pointer-for-[-word-to-use-in-handler-]-]
-[-copy-text code-quoted-string-storage-item-part-1 generated-runtime-code-]
-[-append-text-no-space storage-item-pointer generated-runtime-code-]
-[-append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code-]
-[-append-text template-quoted-[-word-to-use-in-handler-] generated-runtime-code-]
-[-append-text code-quoted-string-storage-item-part-3 generated-runtime-code-]
-[-append-text-no-space word-to-use-in-handler generated-runtime-code-]
-[-append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code-]
-[-append-text-no-space storage-item-pointer generated-runtime-code-]
-[-append-text-no-space code-quoted-string-storage-item-part-5 generated-runtime-code-]
-[-append-text-no-space generated-runtime-code output-results-all-storage-items-]
+ambee numeric-increment storage-item-pointer amenn
+ambee copy-text storage-item-pointer storage-item-pointer-for-[- word-to-use-in-handler amenn amenn
+ambee copy-text code-quoted-string-storage-item-part-1 generated-runtime-code amenn
+ambee append-text-no-space storage-item-pointer generated-runtime-code amenn
+ambee append-text-no-space code-quoted-string-storage-item-part-2 generated-runtime-code amenn
+ambee append-text template-quoted-[- word-to-use-in-handler amenn generated-runtime-code amenn
+ambee append-text code-quoted-string-storage-item-part-3 generated-runtime-code amenn
+ambee append-text-no-space word-to-use-in-handler generated-runtime-code amenn
+ambee append-text-no-space code-quoted-string-storage-item-part-4 generated-runtime-code amenn
+ambee append-text-no-space storage-item-pointer generated-runtime-code amenn
+ambee append-text-no-space code-quoted-string-storage-item-part-5 generated-runtime-code amenn
+ambee append-text-no-space generated-runtime-code output-results-all-storage-items amenn
 ----
 generate-storage-for-current-text:
-[-create-new-text-storage-position-]
-[-copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition-]
-[-append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition-]
-[-append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition-]
-[-copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special-]
-[-copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text-]
-[-copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe-]
-[-copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special-]
-[-copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text-]
-[-copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash-]
-[-copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text-]
-[-copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text-]
-[-append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition-]
-[-append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition-]
-[-copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition [-filename-output-results-all-definition-items-]-]
+ambee create-new-text-storage-position amenn
+ambee copy-text code-for-text-storage-position-part-1 runtime-code-for-storage-in-current-definition amenn
+ambee append-text-no-space current-text-storage-position runtime-code-for-storage-in-current-definition amenn
+ambee append-text code-for-text-storage-position-part-2 runtime-code-for-storage-in-current-definition amenn
+ambee copy-and-replace current-text current-text-quotable character-apostrophe string-placeholder-special amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-apostrophe-within-quoted-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-apostrophe character-apostrophe amenn
+ambee copy-and-replace current-text-quotable current-text-quotable character-backslash string-placeholder-special amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-special code-for-backslash-within-quoted-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-placeholder-character-backslash character-backslash amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-apostrophe-apostrophe-space-period-space empty-text amenn
+ambee copy-and-replace current-text-quotable current-text-quotable string-space-period-space-apostrophe-apostrophe empty-text amenn
+ambee append-text-no-space current-text-quotable runtime-code-for-storage-in-current-definition amenn
+ambee append-text-no-space code-for-text-storage-position-part-3 runtime-code-for-storage-in-current-definition amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-storage-in-current-definition ambee filename-output-results-all-definition-items amenn amenn
 ----
 generate-versions-of-function-point-to-word-in-operand:
 ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-one string-whichever string-one amenn
@@ -385,573 +385,573 @@ ambee copy-and-replace template-function-point-to-words-in-operand-whichever tem
 ambee copy-and-replace template-function-point-to-words-in-operand-whichever template-function-point-to-words-in-operand-three string-whichever string-three amenn
 ----
 get-all-operands:
-[-copy-text digit-0 number-of-operands-]
-[-copy-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
-[-copy-without-extra-spaces list-of-operands-raw list-of-operands-raw-]
-[-copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen-]
-[-copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay-]
-[-put-into-phrase number-of-operands [-get-count-of-words list-of-operands-for-counting-]-]
-[-copy-text list-of-operands-for-counting operand-or-operands-]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-concatenated-all-operands-]
+ambee copy-text digit-0 number-of-operands amenn
+ambee copy-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
+ambee copy-without-extra-spaces list-of-operands-raw list-of-operands-raw amenn
+ambee copy-and-replace list-of-operands-raw list-of-operands-for-counting string-space-fen-space string-placeholder-fen amenn
+ambee copy-and-replace list-of-operands-for-counting list-of-operands-for-counting string-space-nospay-space string-placeholder-nospay amenn
+ambee put-into-phrase number-of-operands ambee get-count-of-words list-of-operands-for-counting amenn amenn
+ambee copy-text list-of-operands-for-counting operand-or-operands amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-concatenated-all-operands amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands-]-]
-[-copy-text runtime-code-concatenated-empty runtime-code-for-concatenated-all-operands-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase runtime-code-for-concatenated-all-operands amenn amenn
+ambee copy-text runtime-code-concatenated-empty runtime-code-for-concatenated-all-operands amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 1 -]-]-]
-[-copy-word-at-position list-of-operands-for-counting operand-or-operands 1 -]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-operand-number-one-]
-[-if-else-]
-[-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 1  amenn amenn amenn
+ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 1  amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-operand-number-one amenn
+ambee if-else amenn
+ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-one amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 2 -]-]-]
-[-copy-word-at-position list-of-operands-for-counting operand-or-operands 2 -]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-operand-number-two-]
-[-if-else-]
-[-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 2  amenn amenn amenn
+ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 2  amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-operand-number-two amenn
+ambee if-else amenn
+ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-two amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 3 -]-]-]
-[-copy-word-at-position list-of-operands-for-counting operand-or-operands 3 -]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-operand-number-three-]
-[-if-else-]
-[-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 3  amenn amenn amenn
+ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 3  amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-operand-number-three amenn
+ambee if-else amenn
+ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-three amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-number-of-operands-] 4 -]-]-]
-[-copy-word-at-position list-of-operands-for-counting operand-or-operands 4 -]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-operand-number-four-]
-[-if-else-]
-[-copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee number-of-operands amenn 4  amenn amenn amenn
+ambee copy-word-at-position list-of-operands-for-counting operand-or-operands 4  amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-operand-number-four amenn
+ambee if-else amenn
+ambee copy-text runtime-code-concatenated-empty runtime-code-for-operand-number-four amenn
+ambee if-end amenn
 ----
 get-source-code-character-at-adjacent-position:
-[-copy-characters-from-position-to-position source-code-as-words adjacent-character [-word-to-use-in-handler-] [-word-to-use-in-handler-]-]
-[-append-text adjacent-character list-of-adjacent-characters-]
+ambee copy-characters-from-position-to-position source-code-as-words adjacent-character ambee word-to-use-in-handler amenn ambee word-to-use-in-handler amenn amenn
+ambee append-text adjacent-character list-of-adjacent-characters amenn
 ----
 handle-definition-contains-ambee-amenn:
-[-copy-text string-outside current-state-of-if-branching-]
-[-create-new-result-storage-position-]
-[-copy-text current-result-storage-position result-storage-position-for-current-phrase-]
-[-copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand-]
-[-append-text-no-space result-storage-position-for-current-phrase runtime-code-for-result-storage-at-end-of-expand-]
-[-append-text code-parameter-result-storage-part-2 runtime-code-for-result-storage-at-end-of-expand-]
-[-copy-from-phrase-append-to-file runtime-code-for-result-storage-at-end-of-expand [-filename-output-results-all-definition-items-]-]
+ambee copy-text string-outside current-state-of-if-branching amenn
+ambee create-new-result-storage-position amenn
+ambee copy-text current-result-storage-position result-storage-position-for-current-phrase amenn
+ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-for-result-storage-at-end-of-expand amenn
+ambee append-text code-parameter-result-storage-part-2 runtime-code-for-result-storage-at-end-of-expand amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-result-storage-at-end-of-expand ambee filename-output-results-all-definition-items amenn amenn
 
-[-copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore-]
-[-copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition-]
-[-copy-text character-space list-of-tokens-without-ambee-amenn-fen-]
-[-append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen-]
-[-append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit-]
-[-copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space-]
-[-copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen-]
+ambee copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore amenn
+ambee copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition amenn
+ambee copy-text character-space list-of-tokens-without-ambee-amenn-fen amenn
+ambee append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen amenn
+ambee append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn
+ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen amenn
 
-[-copy-text code-compiled-function-part-1 runtime-code-compiled-function-]
-[-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
-[-append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function-]
+ambee copy-text code-compiled-function-part-1 runtime-code-compiled-function amenn
+ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn
 
-*--- todo: avoid need for workaround ---*
-[-put-into-phrase unique-phrase-number-for-phrase-name-[-phrase-being-defined-]  99  -]
-[-append-text unique-phrase-number-for-phrase-name-[-phrase-being-defined-] runtime-code-compiled-function-]
+combee **** todo: avoid need for workaround **** comenn
+ambee put-into-phrase unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn  99   amenn
+ambee append-text unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn runtime-code-compiled-function amenn
 
 
-[-copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined-]
-[-append-text code-compiled-function-part-3 runtime-code-compiled-function-]
-[-append-text list-of-tokens-in-current-definition runtime-code-compiled-function-]
-[-append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function-]
-[-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
+ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
+ambee append-text code-compiled-function-part-3 runtime-code-compiled-function amenn
+ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn
+ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 
-[-copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition-]
-[-handle-definition-simple-]
+ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn
+ambee handle-definition-simple amenn
 
-[-use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition-]
+ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn
 
-[-terminate-branching-if-not-terminated-]
+ambee terminate-branching-if-not-terminated amenn
 
-[-copy-text phrase-name-storage-position-for-definition-number-[-current-definition-number-] phrase-name-storage-position-for-current-definition-]
-[-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-current-result-storage-position-]
-[-get-all-operands-]
-[-copy-text code-compiled-function-part-5 runtime-code-compiled-function-]
-[-append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function-]
-[-append-text code-compiled-function-part-6 runtime-code-compiled-function-]
-[-append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function-]
-[-append-text code-compiled-function-part-7 runtime-code-compiled-function-]
-[-append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function-]
-[-append-text code-compiled-function-part-8 runtime-code-compiled-function-]
-[-append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function-]
-[-append-text code-compiled-function-part-9 runtime-code-compiled-function-]
-[-append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function-]
-[-append-text-no-space code-compiled-function-part-10 runtime-code-compiled-function-]
-[-copy-from-phrase-append-to-file runtime-code-compiled-function [-filename-output-results-all-compiled-functions-]-]
-[-append-text phrase-being-defined list-of-functions-generated-]
-[-clear-phrase phrase-being-defined-]
-[-clear-phrase list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+ambee copy-text phrase-name-storage-position-for-definition-number-[- current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
+ambee get-all-operands amenn
+ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-6 runtime-code-compiled-function amenn
+ambee append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-7 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-8 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-9 runtime-code-compiled-function amenn
+ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-10 runtime-code-compiled-function amenn
+ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
+ambee append-text phrase-being-defined list-of-functions-generated amenn
+ambee clear-phrase phrase-being-defined amenn
+ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
 ----
 handle-definition-immediate:
-[-generate-list-of-tokens-in-current-definition-quotable-]
-[-copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space-]
-[-copy-without-extra-spaces phrase-definition-modified phrase-definition-modified-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets-]
-[-copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline-]
-[-copy-text phrase-definition-modified [-immediate-definition-phrase-name-]-modified-]
+ambee generate-list-of-tokens-in-current-definition-quotable amenn
+ambee copy-and-replace list-of-tokens-in-current-definition-quotable phrase-definition-modified string-placeholder-space character-space amenn
+ambee copy-without-extra-spaces phrase-definition-modified phrase-definition-modified amenn
+ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-space-new-line-in-brackets string-placeholder-special amenn
+ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn
+ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets-space string-placeholder-special amenn
+ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-placeholder-special string-new-line-in-brackets amenn
+ambee copy-and-replace phrase-definition-modified phrase-definition-modified string-new-line-in-brackets character-newline amenn
+ambee copy-text phrase-definition-modified ambee immediate-definition-phrase-name -]-modified amenn
 ----
 handle-definition-simple-or-immediate:
-[-copy-text unique-phrase-number unique-phrase-number-for-phrase-name-[-phrase-being-defined-]-]
-[-copy-text phrase-being-defined phrase-name-for-phrase-number-[-unique-phrase-number-]-]
-[-copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name-]
+ambee copy-text unique-phrase-number unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- unique-phrase-number amenn amenn
+ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase possible-immediate-definition-phrase-name-]-]
-[-handle-definition-simple-]
-[-if-else-]
-[-copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name-]
-[-handle-definition-immediate-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn
+ambee handle-definition-simple amenn
+ambee if-else amenn
+ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn
+ambee handle-definition-immediate amenn
+ambee if-end amenn
 
-[-numeric-increment unique-phrase-number-]
+ambee numeric-increment unique-phrase-number amenn
 ----
 handle-definition-simple:
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-name-]
-[-create-new-text-storage-position-]
-[-copy-text current-text-storage-position pointer-storage-position-for-phrase-definition-]
-[-generate-list-of-tokens-in-current-definition-quotable-]
-[-generate-runtime-code-for-phrase-definition-simple-]
-[-copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple [-filename-output-results-all-definition-items-]-]
+ambee create-new-text-storage-position amenn
+ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-name amenn
+ambee create-new-text-storage-position amenn
+ambee copy-text current-text-storage-position pointer-storage-position-for-phrase-definition amenn
+ambee generate-list-of-tokens-in-current-definition-quotable amenn
+ambee generate-runtime-code-for-phrase-definition-simple amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-phrase-definition-simple ambee filename-output-results-all-definition-items amenn amenn
 ----
 handle-fen-and-nospay-within-operand-or-operands:
-[-copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special-]
-[-copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen-]
-[-copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay-]
-[-copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space-]
+ambee copy-and-replace operand-or-operands operand-or-operands-step-1 character-space string-placeholder-special amenn
+ambee copy-and-replace operand-or-operands-step-1 operand-or-operands-step-2 string-placeholder-fen runtime-code-between-items-for-concatenation-type-fen amenn
+ambee copy-and-replace operand-or-operands-step-2 operand-or-operands-step-3 string-placeholder-nospay runtime-code-between-items-for-concatenation-type-nospay amenn
+ambee copy-and-replace operand-or-operands-step-3 operand-or-operands string-placeholder-special runtime-code-inserted-separator-space amenn
 ----
 handle-non-zero-count-of-ambee-minus-amenn-tokens:
-[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
-[-append-text phrase-being-defined warning-message-]
+ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn
+ambee append-text phrase-being-defined warning-message amenn
 
-[-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-count-of-ambee-tokens-] [-count-of-amenn-tokens-]-]-]-]
-[-append-text warning-more-ambee-than-amenn-tokens warning-message-]
-[-if-else-]
-[-append-text warning-more-amenn-than-ambee-tokens warning-message-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee count-of-ambee-tokens amenn ambee count-of-amenn-tokens amenn amenn amenn amenn
+ambee append-text warning-more-ambee-than-amenn-tokens warning-message amenn
+ambee if-else amenn
+ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn
+ambee if-end amenn
 
-[-append-text-no-space warning-message warning-messages-]
+ambee append-text-no-space warning-message warning-messages amenn
 ----
 handle-token-ambee:
-[-copy-text digit-0 count-of-tokens-after-ambee-]
-[-recursion-stack-push-]
-[-create-new-result-storage-position-]
-[-copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage-]
-[-append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage-]
-[-append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage-]
-[-copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage [-filename-output-results-all-definition-items-]-]
-[-clear-phrase action-name-at-storage-position-[-current-result-storage-position-]-]
-[-append-text string-ambee definition-for-phrase-being-defined-]
+ambee copy-text digit-0 count-of-tokens-after-ambee amenn
+ambee recursion-stack-push amenn
+ambee create-new-result-storage-position amenn
+ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-parameter-result-storage amenn
+ambee append-text-no-space current-result-storage-position runtime-code-for-parameter-result-storage amenn
+ambee append-text code-parameter-result-storage-part-2 runtime-code-for-parameter-result-storage amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage ambee filename-output-results-all-definition-items amenn amenn
+ambee clear-phrase action-name-at-storage-position-[- current-result-storage-position amenn amenn
+ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
 handle-token-amenn-case-action-not-empty:
-[-clear-phrase needed-operand-checks-]
-[-append-text string-amenn definition-for-phrase-being-defined-]
-[-copy-text current-result-storage-position storage-item-pointer-]
-[-expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result-]
-[-copy-text action-name-at-storage-position-[-current-result-storage-position-] action-name-]
-[-put-into-phrase yes-or-no-action-recognized  no -]
+ambee clear-phrase needed-operand-checks amenn
+ambee append-text string-amenn definition-for-phrase-being-defined amenn
+ambee copy-text current-result-storage-position storage-item-pointer amenn
+ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn
+ambee copy-text action-name-at-storage-position-[- current-result-storage-position amenn action-name amenn
+ambee put-into-phrase yes-or-no-action-recognized  no  amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase template-runtime-code-for-action-[-action-name-]-]-]
-[-put-into-phrase yes-or-no-action-recognized  yes -]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase operand-checks-for-action-[-action-name-]-]-]
-[-put-into-phrase yes-or-no-action-recognized  yes -]
-[-copy-text operand-checks-for-action-[-action-name-] needed-operand-checks-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action-[- action-name amenn amenn amenn
+ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
+ambee copy-text operand-checks-for-action-[- action-name amenn needed-operand-checks amenn
+ambee if-end amenn
 
-[-clear-phrase runtime-code-for-parameter-phrase-]
+ambee clear-phrase runtime-code-for-parameter-phrase amenn
 
-[-if-yes-begin [-yes-or-no-action-recognized-]-]
-[-handle-token-amenn-case-action-recognized-]
-[-if-else-]
-[-handle-token-amenn-case-action-not-recognized-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-action-recognized amenn amenn
+ambee handle-token-amenn-case-action-recognized amenn
+ambee if-else amenn
+ambee handle-token-amenn-case-action-not-recognized amenn
+ambee if-end amenn
 
-[-generate-code-for-one-action-]
+ambee generate-code-for-one-action amenn
 ----
 handle-token-amenn-case-action-not-recognized:
-[-copy-word-at-position definition-for-phrase-being-defined next-to-last-word-in-phrase-being-defined [-numeric-minus [-get-count-of-words definition-for-phrase-being-defined-] 1 -]-]
+ambee copy-word-at-position definition-for-phrase-being-defined next-to-last-word-in-phrase-being-defined ambee numeric-minus ambee get-count-of-words definition-for-phrase-being-defined amenn 1  amenn amenn
 
-[-if-no-begin [-yes-or-no-same-two-phrase-definitions next-to-last-word-in-phrase-being-defined action-name-]-]
-[-append-text action-name list-of-action-names-not-recognized-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions next-to-last-word-in-phrase-being-defined action-name amenn amenn
+ambee append-text action-name list-of-action-names-not-recognized amenn
+ambee if-end amenn
 
-[-handle-token-amenn-case-executable-phrase-]
+ambee handle-token-amenn-case-executable-phrase amenn
 ----
 handle-token-amenn-case-action-recognized:
-[-if-yes-begin [-yes-or-no-empty-phrase handle-token-amenn-case-[-action-name-]-]-]
-[-handle-token-amenn-case-action-standard-or-has-template-]
-[-if-else-]
-[-handle-token-amenn-case-[-action-name-]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case-[- action-name amenn amenn amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee if-else amenn
+ambee handle-token-amenn-case-[- action-name amenn amenn
+ambee if-end amenn
 ----
 handle-token-amenn-case-action-standard-or-has-template:
-[-get-all-operands-]
+ambee get-all-operands amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase template-runtime-code-for-action-[-action-name-]-]-]
-[-expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase-]
-[-append-text action-name list-of-unconverted-dashrep-actions-used-]
-[-if-else-]
-[-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
-[-append-text action-name list-of-converted-dashrep-actions-used-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-converted-dashrep-actions-used amenn
+ambee if-end amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase template-function-[-action-name-]-]-]
-[-put-into-phrase requested-template-function  template-function-[-action-name-] -]
-[-append-text requested-template-function list-of-template-functions-for-requested-actions-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function-[- action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function-[- action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
+ambee if-end amenn
 ----
 handle-token-amenn-case-executable-phrase:
-[-copy-text digit-0 number-of-operands-]
-[-copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands-]
-[-numeric-increment current-accumulator-pointer-]
-[-copy-text action-name current-text-]
-[-generate-storage-for-current-text-]
-[-copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name-]
-[-append-text-no-space current-text-storage-position operand-instead-of-action-name-]
-[-append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name-]
-[-copy-text operand-instead-of-action-name list-of-operands-raw-]
-[-append-text list-of-operands-for-result-storage-position-[-current-result-storage-position-] list-of-operands-raw-]
-[-copy-text operand-or-operands saved-operand-or-operands-]
+ambee copy-text digit-0 number-of-operands amenn
+ambee copy-text string-two-apostrophes runtime-code-for-concatenated-all-operands amenn
+ambee numeric-increment current-accumulator-pointer amenn
+ambee copy-text action-name current-text amenn
+ambee generate-storage-for-current-text amenn
+ambee copy-text runtime-code-storage-item-reference-before-pointer operand-instead-of-action-name amenn
+ambee append-text-no-space current-text-storage-position operand-instead-of-action-name amenn
+ambee append-text-no-space runtime-code-storage-item-reference-after-pointer operand-instead-of-action-name amenn
+ambee copy-text operand-instead-of-action-name list-of-operands-raw amenn
+ambee append-text list-of-operands-for-result-storage-position-[- current-result-storage-position amenn list-of-operands-raw amenn
+ambee copy-text operand-or-operands saved-operand-or-operands amenn
 
 
-*---
-[-trace-show list-of-operands-raw-]
----*
+combee ****
+ambee trace-show list-of-operands-raw amenn
+**** comenn
 
 
-[-copy-without-extra-spaces list-of-operands-raw operand-or-operands-]
-[-copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen-]
-[-copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen-]
-[-copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay-]
-[-handle-fen-and-nospay-within-operand-or-operands-]
-[-copy-text operand-or-operands runtime-code-for-executable-phrase-]
+ambee copy-without-extra-spaces list-of-operands-raw operand-or-operands amenn
+ambee copy-words-found-in-both-lists operand-or-operands string-fen not-empty-if-operands-include-fen amenn
+ambee copy-and-replace operand-or-operands operand-or-operands string-space-fen-space string-placeholder-fen amenn
+ambee copy-and-replace operand-or-operands operand-or-operands string-space-nospay-space string-placeholder-nospay amenn
+ambee handle-fen-and-nospay-within-operand-or-operands amenn
+ambee copy-text operand-or-operands runtime-code-for-executable-phrase amenn
 
 
-*---
-[-trace-show operand-or-operands-]
----*
+combee ****
+ambee trace-show operand-or-operands amenn
+**** comenn
 
 
-[-copy-text saved-operand-or-operands operand-or-operands-]
+ambee copy-text saved-operand-or-operands operand-or-operands amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase not-empty-if-operands-include-fen-]-]
-[-append-text action-name list-of-function-branches-needed-]
-[-expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase-]
-[-if-else-]
-[-expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase not-empty-if-operands-include-fen amenn amenn
+ambee append-text action-name list-of-function-branches-needed amenn
+ambee expand-text template-runtime-code-for-action-executable-phrase-without-fen runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action-executable-phrase runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
 
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase-]
-[-copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore-]
-[-copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores-]
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase runtime-code-for-executable-phrase amenn
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-code-for-executable-phrase-with-underscores action-name-with-underscores amenn
 ----
 handle-token-amenn-case-expand-text:
-[-numeric-increment current-accumulator-pointer-]
-[-handle-token-amenn-case-standard-action-]
+ambee numeric-increment current-accumulator-pointer amenn
+ambee handle-token-amenn-case-standard-action amenn
 ----
 handle-token-amenn-case-if-else:
-[-start-branching-if-not-started-]
-[-handle-token-amenn-case-action-standard-or-has-template-]
-[-copy-text string-else current-state-of-if-branching-]
+ambee start-branching-if-not-started amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee copy-text string-else current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-end:
-[-start-branching-if-not-started-]
-[-handle-token-amenn-case-action-standard-or-has-template-]
-[-copy-text string-outside current-state-of-if-branching-]
+ambee start-branching-if-not-started amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee copy-text string-outside current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-no-begin:
-[-terminate-branching-if-not-terminated-]
-[-handle-token-amenn-case-action-standard-or-has-template-]
-[-copy-text string-begin current-state-of-if-branching-]
+ambee terminate-branching-if-not-terminated amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-yes-begin:
-[-terminate-branching-if-not-terminated-]
-[-handle-token-amenn-case-action-standard-or-has-template-]
-[-copy-text string-begin current-state-of-if-branching-]
+ambee terminate-branching-if-not-terminated amenn
+ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-standard-action:
-[-get-all-operands-]
+ambee get-all-operands amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase template-runtime-code-for-action-[-action-name-]-]-]
-[-expand-text template-runtime-code-for-action-[-action-name-] runtime-code-for-parameter-phrase-]
-[-if-else-]
-[-expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
 ----
 handle-token-amenn-case-use-handler-with-each-word-in-phrase:
-[-create-new-text-storage-position-]
-[-clear-phrase contents-at-storage-position-[-current-text-storage-position-]-]
-[-copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-]-]
-[-copy-text storage-position-for-word-list-associated-with-result-storage-position-[-current-result-storage-position-] storage-position-for-word-list-associated-with-loop-]
-[-expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position-]
-[-copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position [-filename-output-results-all-definition-items-]-]
-[-get-all-operands-]
-[-copy-word-at-position text-words-at-result-storage-position-[-current-result-storage-position-] handler-name 1 -]
-[-copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore-]
-[-copy-word-at-position text-words-at-result-storage-position-[-current-result-storage-position-] phrase-name-for-list-of-words-for-loop 2 -]
-[-expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase-]
+ambee create-new-text-storage-position amenn
+ambee clear-phrase contents-at-storage-position-[- current-text-storage-position amenn amenn
+ambee copy-text current-text-storage-position storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-loop amenn
+ambee expand-text template-runtime-code-for-word-list-storage-position runtime-code-for-word-list-storage-position amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-word-list-storage-position ambee filename-output-results-all-definition-items amenn amenn
+ambee get-all-operands amenn
+ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn handler-name 1  amenn
+ambee copy-and-replace handler-name handler-name-with-underscores character-hyphen character-underscore amenn
+ambee copy-word-at-position text-words-at-result-storage-position-[- current-result-storage-position amenn phrase-name-for-list-of-words-for-loop 2  amenn
+ambee expand-text template-runtime-code-for-action-use-handler-with-each-word-in-phrase runtime-code-for-parameter-phrase amenn
 ----
 handle-token-amenn:
-[-if-no-begin [-yes-or-no-empty-phrase action-name-at-storage-position-[-current-result-storage-position-]-]-]
-[-handle-token-amenn-case-action-not-empty-]
-[-if-else-]
-[-expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase-]
-[-generate-code-for-one-action-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-at-storage-position-[- current-result-storage-position amenn amenn amenn
+ambee handle-token-amenn-case-action-not-empty amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action-not-recognized runtime-code-for-parameter-phrase amenn
+ambee generate-code-for-one-action amenn
+ambee if-end amenn
 ----
 handle-token-fen:
-[-append-text string-fen definition-for-phrase-being-defined-]
-[-append-text string-fen list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+ambee append-text string-fen definition-for-phrase-being-defined amenn
+ambee append-text string-fen list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
 ----
 handle-token-next-case-1:
-[-copy-text word-to-use-in-handler current-token-]
-[-numeric-increment count-of-tokens-after-ambee-]
-[-copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name-]
+ambee copy-text word-to-use-in-handler current-token amenn
+ambee numeric-increment count-of-tokens-after-ambee amenn
+ambee copy-words-found-in-both-lists current-token list-ambee-amenn-fen-nospay non-empty-if-valid-token-handler-name amenn
 
-[-if-yes-begin [-yes-or-no-empty-phrase non-empty-if-valid-token-handler-name-]-]
-[-handle-token-next-case-2-]
-[-if-else-]
-[-handle-token-[-current-token-]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
+ambee handle-token-next-case-2 amenn
+ambee if-else amenn
+ambee handle-token-[- current-token amenn amenn
+ambee if-end amenn
 ----
 handle-token-next-case-2:
-[-if-no-begin [-yes-or-no-empty-phrase phrase-being-defined-]-]
-[-handle-token-next-case-3-]
-[-if-else-]
-[-handle-token-phrase-name-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase phrase-being-defined amenn amenn
+ambee handle-token-next-case-3 amenn
+ambee if-else amenn
+ambee handle-token-phrase-name amenn
+ambee if-end amenn
 ----
 handle-token-next-case-3:
-[-append-text current-token definition-for-phrase-being-defined-]
+ambee append-text current-token definition-for-phrase-being-defined amenn
 
-[-if-no-begin [-yes-or-no-same-two-phrase-definitions digit-1 count-of-tokens-after-ambee-]-]
-[-handle-token-text-word-]
-[-if-else-]
-[-copy-text current-token action-name-at-storage-position-[-current-result-storage-position-]-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions digit-1 count-of-tokens-after-ambee amenn amenn
+ambee handle-token-text-word amenn
+ambee if-else amenn
+ambee copy-text current-token action-name-at-storage-position-[- current-result-storage-position amenn amenn
+ambee if-end amenn
 ----
 handle-token-nospay:
-[-append-text string-nospay definition-for-phrase-being-defined-]
-[-append-text string-nospay list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+ambee append-text string-nospay definition-for-phrase-being-defined amenn
+ambee append-text string-nospay list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
 ----
 handle-token-phrase-name:
-[-copy-text current-token phrase-being-defined-]
-[-numeric-increment current-definition-number-]
-[-copy-text phrase-being-defined current-text-]
-[-generate-storage-for-current-text-]
-[-copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[-current-definition-number-]-]
-[-clear-phrase current-text-]
-[-create-new-result-storage-position-]
-[-clear-phrase list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
-[-clear-phrase recursion-stack-]
-[-recursion-stack-push-]
-[-copy-text current-definition-number phrase-number-for-phrase-name-[-phrase-being-defined-]-]
-[-copy-text phrase-being-defined phrase-name-for-phrase-number-[-current-definition-number-]-]
-[-clear-phrase definition-for-phrase-being-defined-]
+ambee copy-text current-token phrase-being-defined amenn
+ambee numeric-increment current-definition-number amenn
+ambee copy-text phrase-being-defined current-text amenn
+ambee generate-storage-for-current-text amenn
+ambee copy-text current-text-storage-position phrase-name-storage-position-for-definition-number-[- current-definition-number amenn amenn
+ambee clear-phrase current-text amenn
+ambee create-new-result-storage-position amenn
+ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
+ambee clear-phrase recursion-stack amenn
+ambee recursion-stack-push amenn
+ambee copy-text current-definition-number phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- current-definition-number amenn amenn
+ambee clear-phrase definition-for-phrase-being-defined amenn
 ----
 handle-token-text-word:
-[-copy-text current-token current-text-]
-[-generate-storage-for-current-text-]
-[-append-text current-text contents-at-storage-position-[-current-text-storage-position-]-]
-[-append-text current-text text-words-at-result-storage-position-[-current-result-storage-position-]-]
-[-copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand-]
-[-append-text-no-space current-text-storage-position current-storage-operand-]
-[-append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand-]
-[-append-text current-storage-operand list-of-operands-for-result-storage-position-[-current-result-storage-position-]-]
+ambee copy-text current-token current-text amenn
+ambee generate-storage-for-current-text amenn
+ambee append-text current-text contents-at-storage-position-[- current-text-storage-position amenn amenn
+ambee append-text current-text text-words-at-result-storage-position-[- current-result-storage-position amenn amenn
+ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn
+ambee append-text-no-space current-text-storage-position current-storage-operand amenn
+ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn
+ambee append-text current-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn
 ----
 initialize-input-output-files:
-*--- reminder: avoid backslashs here because they get interpreted in the runtime code ---*
-[-copy-text character-period dashrep-path-prefix-for-file-writing-]
-[-append-text-no-space character-backslash dashrep-path-prefix-for-file-writing-]
-[-copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading-]
+combee **** reminder: avoid backslashs here because they get interpreted in the runtime code **** comenn
+ambee copy-text character-period dashrep-path-prefix-for-file-writing amenn
+ambee append-text-no-space character-backslash dashrep-path-prefix-for-file-writing amenn
+ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn
 
-[-put-into-phrase input-filename  input_to_dashrep_compiler.txt -]
-[-put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.txt -]
-[-delete-file [-filename-output-results-from-compiler-]-]
-[-put-into-phrase filename-output-standard-runtime-functions  output_compiler_standard_runtime_functions.txt -]
-[-delete-file [-filename-output-standard-runtime-functions-]-]
-[-put-into-phrase filename-output-results-all-definition-items  output_compiler_all_definition_items.txt -]
-[-delete-file [-filename-output-results-all-definition-items-]-]
-[-put-into-phrase filename-output-results-all-function-branches  output_compiler_all_function_branches.txt -]
-[-delete-file [-filename-output-results-all-function-branches-]-]
-[-put-into-phrase filename-output-results-functions-replacement-only  output_compiler_functions_replacement_only.txt -]
-[-delete-file [-filename-output-results-functions-replacement-only-]-]
-[-put-into-phrase filename-output-results-all-compiled-functions  output_compiler_all_compiled_functions.txt -]
-[-delete-file [-filename-output-results-all-compiled-functions-]-]
-[-put-into-phrase filename-output-all-definitions-complex  output_compiler_all_tokens_for_definitions_complex.txt -]
-[-delete-file [-filename-output-all-definitions-complex-]-]
-[-put-into-phrase filename-output-all-phrase-names-complex  output_compiler_all_phrase_names_complex.txt -]
-[-delete-file [-filename-output-all-phrase-names-complex-]-]
-[-put-into-phrase filename-output-debug-trace-all-dashrep-definitions  output_compiler_debug_trace_all_definitions.txt -]
-[-delete-file [-filename-output-debug-trace-all-dashrep-definitions-]-]
+ambee put-into-phrase input-filename  input_to_dashrep_compiler.txt  amenn
+ambee put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.txt  amenn
+ambee delete-file ambee filename-output-results-from-compiler amenn amenn
+ambee put-into-phrase filename-output-standard-runtime-functions  output_compiler_standard_runtime_functions.txt  amenn
+ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn
+ambee put-into-phrase filename-output-results-all-definition-items  output_compiler_all_definition_items.txt  amenn
+ambee delete-file ambee filename-output-results-all-definition-items amenn amenn
+ambee put-into-phrase filename-output-results-all-function-branches  output_compiler_all_function_branches.txt  amenn
+ambee delete-file ambee filename-output-results-all-function-branches amenn amenn
+ambee put-into-phrase filename-output-results-functions-replacement-only  output_compiler_functions_replacement_only.txt  amenn
+ambee delete-file ambee filename-output-results-functions-replacement-only amenn amenn
+ambee put-into-phrase filename-output-results-all-compiled-functions  output_compiler_all_compiled_functions.txt  amenn
+ambee delete-file ambee filename-output-results-all-compiled-functions amenn amenn
+ambee put-into-phrase filename-output-all-definitions-complex  output_compiler_all_tokens_for_definitions_complex.txt  amenn
+ambee delete-file ambee filename-output-all-definitions-complex amenn amenn
+ambee put-into-phrase filename-output-all-phrase-names-complex  output_compiler_all_phrase_names_complex.txt  amenn
+ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn
+ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions  output_compiler_debug_trace_all_definitions.txt  amenn
+ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
 ----
 recursion-stack-pop-case-empty:
-[-put-into-phrase current-result-storage-position  0 -]
+ambee put-into-phrase current-result-storage-position  0  amenn
 
-*---
-[-copy-text warning-ambee-amenn-imbalance-introduction warning-message-]
-[-append-text phrase-being-defined warning-message-]
-[-append-text warning-more-amenn-than-ambee-tokens warning-message-]
-[-append-text-no-space warning-message warning-messages-]
----*
+combee ****
+ambee copy-text warning-ambee-amenn-imbalance-introduction warning-message amenn
+ambee append-text phrase-being-defined warning-message amenn
+ambee append-text warning-more-amenn-than-ambee-tokens warning-message amenn
+ambee append-text-no-space warning-message warning-messages amenn
+**** comenn
 ----
 recursion-stack-pop-case-not-empty:
-[-if-yes-begin [-yes-or-no-same-two-words greater [-numeric-equal-greater-less-compare [-position-top-of-stack-] 1 -]-]-]
-[-copy-word-at-position recursion-stack current-result-storage-position [-position-top-of-stack-]-]
-[-numeric-decrement position-top-of-stack-]
-[-copy-words-from-position-to-position recursion-stack recursion-stack 1 [-position-top-of-stack-]-]
-[-if-else-]
-[-copy-text recursion-stack current-result-storage-position-]
-[-clear-phrase recursion-stack-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1  amenn amenn amenn
+ambee copy-word-at-position recursion-stack current-result-storage-position ambee position-top-of-stack amenn amenn
+ambee numeric-decrement position-top-of-stack amenn
+ambee copy-words-from-position-to-position recursion-stack recursion-stack 1 ambee position-top-of-stack amenn amenn
+ambee if-else amenn
+ambee copy-text recursion-stack current-result-storage-position amenn
+ambee clear-phrase recursion-stack amenn
+ambee if-end amenn
 ----
 recursion-stack-pop:
-[-put-into-phrase position-top-of-stack  [-get-count-of-words recursion-stack-] -]
+ambee put-into-phrase position-top-of-stack  ambee get-count-of-words recursion-stack amenn  amenn
 
-[-if-no-begin [-yes-or-no-same-two-words less [-numeric-equal-greater-less-compare [-position-top-of-stack-] 1 -]-]-]
-[-recursion-stack-pop-case-not-empty-]
-[-if-else-]
-[-recursion-stack-pop-case-empty-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee position-top-of-stack amenn 1  amenn amenn amenn
+ambee recursion-stack-pop-case-not-empty amenn
+ambee if-else amenn
+ambee recursion-stack-pop-case-empty amenn
+ambee if-end amenn
 
-*---
-[-recursion-stack-show-]
----*
+combee ****
+ambee recursion-stack-show amenn
+**** comenn
 ----
 recursion-stack-push:
-[-append-text current-result-storage-position recursion-stack-]
+ambee append-text current-result-storage-position recursion-stack amenn
 
-*---
-[-recursion-stack-show-]
----*
+combee ****
+ambee recursion-stack-show amenn
+**** comenn
 ----
 remove-colon-if-at-end-of-phrase-being-defined:
-[-put-into-phrase phrase-length  [-get-count-of-characters phrase-being-defined-] -]
-[-copy-characters-from-position-to-position phrase-being-defined possible-colon [-phrase-length-] [-phrase-length-]-]
+ambee put-into-phrase phrase-length  ambee get-count-of-characters phrase-being-defined amenn  amenn
+ambee copy-characters-from-position-to-position phrase-being-defined possible-colon ambee phrase-length amenn ambee phrase-length amenn amenn
 
-[-if-yes-begin [-yes-or-no-same-two-phrase-definitions possible-colon character-colon-]-]
-[-copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 [-numeric-minus [-phrase-length-] 1 -]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-colon character-colon amenn amenn
+ambee copy-characters-from-position-to-position phrase-being-defined phrase-being-defined 1 ambee numeric-minus ambee phrase-length amenn 1  amenn amenn
+ambee if-end amenn
 ----
 run-compiler:
-[-initialize-input-output-files-]
-[-copy-from-file-to-phrase [-input-filename-] source-code-]
-[-compile-source-code-generate-output-results-]
-[-put-into-phrase yes-or-no-export-delimited-definitions  yes -]
+ambee initialize-input-output-files amenn
+ambee copy-from-file-to-phrase ambee input-filename amenn source-code amenn
+ambee compile-source-code-generate-output-results amenn
+ambee put-into-phrase yes-or-no-export-delimited-definitions  yes  amenn
 
-*---
-[-generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases-]
----*
+combee ****
+ambee generate-list-of-all-dashrep-phrases list-of-all-dashrep-phrases amenn
+**** comenn
 
-[-write-results-to-output-file-]
+ambee write-results-to-output-file amenn
 
-*---
-[-write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases [-filename-output-debug-trace-all-dashrep-definitions-]-]
----*
+combee ****
+ambee write-dashrep-definitions-listed-in-phrase-to-file list-of-all-dashrep-phrases ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
+**** comenn
 
-[-check-elapsed-time-]
+ambee check-elapsed-time amenn
 ----
 start-branching-if-not-started:
-[-if-yes-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
-[-copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch [-filename-output-results-all-compiled-functions-]-]
-[-if-end-]
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside amenn amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-overdue-start-of-if-branch ambee filename-output-results-all-compiled-functions amenn amenn
+ambee if-end amenn
 ----
 start-here:
-[-run-compiler-]
+ambee run-compiler amenn
 ----
 terminate-branching-if-not-terminated:
-[-if-no-begin [-yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside-]-]
-[-expand-text template-runtime-code-for-overdue-terminate-if-branch runtime-code-for-overdue-terminate-if-branch-]
-[-copy-from-phrase-append-to-file runtime-code-for-overdue-terminate-if-branch [-filename-output-results-all-compiled-functions-]-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions current-state-of-if-branching string-outside amenn amenn
+ambee expand-text template-runtime-code-for-overdue-terminate-if-branch runtime-code-for-overdue-terminate-if-branch amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-overdue-terminate-if-branch ambee filename-output-results-all-compiled-functions amenn amenn
+ambee if-end amenn
 ----
 write-results-to-output-file:
-[-if-no-begin [-yes-or-no-empty-phrase warning-messages-]-]
-[-copy-text runtime-code-at-top-if-warning-message output-warning-messages-]
-[-append-text-no-space warning-messages output-warning-messages-]
-[-append-text-no-space new-empty-lines output-warning-messages-]
-[-copy-from-phrase-append-to-file output-warning-messages [-filename-output-results-from-compiler-]-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase warning-messages amenn amenn
+ambee copy-text runtime-code-at-top-if-warning-message output-warning-messages amenn
+ambee append-text-no-space warning-messages output-warning-messages amenn
+ambee append-text-no-space new-empty-lines output-warning-messages amenn
+ambee copy-from-phrase-append-to-file output-warning-messages ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 
-[-copy-from-phrase-append-to-file segment-start-object-code-begin [-filename-output-results-from-compiler-]-]
-[-copy-text character-pound-sign start-object-code-in-executable-code-]
-[-append-text source-code-copyright-notice start-object-code-in-executable-code-]
-[-copy-from-phrase-append-to-file start-object-code-in-executable-code [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-start-object-code-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-start-object-code-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-text character-pound-sign start-object-code-in-executable-code amenn
+ambee append-text source-code-copyright-notice start-object-code-in-executable-code amenn
+ambee copy-from-phrase-append-to-file start-object-code-in-executable-code ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-start-object-code-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-optional-import-statements-begin [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-optional-import-statements-begin ambee filename-output-results-from-compiler amenn amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase optional-import-statements-modified-]-]
-[-copy-from-phrase-append-to-file optional-import-statements-modified [-filename-output-results-from-compiler-]-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase optional-import-statements-modified amenn amenn
+ambee copy-from-phrase-append-to-file optional-import-statements-modified ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 
-[-copy-from-phrase-append-to-file segment-optional-import-statements-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-optional-import-statements-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-initialize-begin [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file initialize-global-arrays [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file initialize-global-variables [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file output-results-all-storage-items [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-initialize-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-definition-items-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-all-definition-items-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-definition-items-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-branch-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-all-function-branches-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-branch-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-functions-replacement-only-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-functions-replacement-only-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-replacement-only-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-functions-compiled-begin [-filename-output-results-from-compiler-]-]
-[-copy-append-file-to-file [-filename-output-results-all-compiled-functions-] [-filename-output-results-from-compiler-]-]
-[-copy-from-phrase-append-to-file segment-functions-compiled-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn
+ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn
+ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn
 
-[-if-no-begin [-yes-or-no-empty-phrase optional-extra-runtime-functions-modified-]-]
-[-copy-from-phrase-append-to-file optional-extra-runtime-functions-modified [-filename-output-results-from-compiler-]-]
-[-if-end-]
+ambee if-no-begin ambee yes-or-no-empty-phrase optional-extra-runtime-functions-modified amenn amenn
+ambee copy-from-phrase-append-to-file optional-extra-runtime-functions-modified ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 
-[-copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-end ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-functions-runtime-begin [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-functions-runtime-begin ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions-]
-[-copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions-]
+ambee copy-words-found-only-in-first-list list-of-template-functions-for-requested-actions list-of-template-functions list-of-template-functions-for-requested-actions amenn
+ambee copy-words-unique-only list-of-template-functions-for-requested-actions list-of-template-functions-for-requested-actions amenn
 
-[-expand-text list-of-template-functions output-results-all-runtime-functions-]
-[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-hyphen-here string-bracketed-hyphen-here-]
-[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-new-line string-bracketed-new-line-]
-[-copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-empty-line string-bracketed-empty-line-]
-[-copy-from-phrase-append-to-file output-results-all-runtime-functions [-filename-output-results-from-compiler-]-]
+ambee expand-text list-of-template-functions output-results-all-runtime-functions amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-hyphen-here string-bracketed-hyphen-here amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-new-line string-bracketed-new-line amenn
+ambee copy-and-replace output-results-all-runtime-functions output-results-all-runtime-functions bracketed-placeholder-for-empty-line string-bracketed-empty-line amenn
+ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-results-from-compiler amenn amenn
 
-[-copy-from-phrase-append-to-file segment-functions-runtime-end [-filename-output-results-from-compiler-]-]
+ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
 ----
 bracketed-placeholder-for-empty-line:
 <placeholder_for_empty_line>
@@ -963,17 +963,17 @@ bracketed-placeholder-for-new-line:
 <placeholder_for_new_line>
 ----
 build-paired-replacements-for-converting-hyphens-into-defenns:
-[-prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns-]
-[-prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns-]
-[-prepend-text-no-space character-hyphen string-of-hyphens-]
+ambee prepend-text string-defenn paired-replacements-for-converting-hyphens-into-defenns amenn
+ambee prepend-text string-of-hyphens paired-replacements-for-converting-hyphens-into-defenns amenn
+ambee prepend-text-no-space character-hyphen string-of-hyphens amenn
 ----
 build-paired-replacements-for-converting-to-combee-comenn:
-[-prepend-text-no-space character-hyphen string-hyphens-and-asterisk-]
-[-append-text-no-space character-hyphen string-asterisk-and-hyphens-]
-[-prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn-]
-[-prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn-]
-[-prepend-text string-combee paired-replacements-for-converting-to-combee-comenn-]
-[-prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn-]
+ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn
+ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn
+ambee prepend-text string-comenn paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-hyphens-and-asterisk paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-combee paired-replacements-for-converting-to-combee-comenn amenn
+ambee prepend-text string-asterisk-and-hyphens paired-replacements-for-converting-to-combee-comenn amenn
 ----
 character-apostrophe:
 '
@@ -1041,345 +1041,345 @@ four-hyphens no-space four-hyphens no-space four-hyphens no-space four-hyphens n
 dashrep-compiled-code-output-phrase-name:
 ----
 define-special-strings-that-are-padded-with-spaces:
-[-copy-text string-ambee string-space-ambee-space-]
-[-prepend-text-no-space character-space string-space-ambee-space-]
-[-append-text-no-space character-space string-space-ambee-space-]
+ambee copy-text string-ambee string-space-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-ambee-space amenn
+ambee append-text-no-space character-space string-space-ambee-space amenn
 
-[-copy-text string-amenn string-space-amenn-space-]
-[-prepend-text-no-space character-space string-space-amenn-space-]
-[-append-text-no-space character-space string-space-amenn-space-]
+ambee copy-text string-amenn string-space-amenn-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-space amenn
+ambee append-text-no-space character-space string-space-amenn-space amenn
 
-[-copy-text string-fen string-space-fen-space-]
-[-prepend-text-no-space character-space string-space-fen-space-]
-[-append-text-no-space character-space string-space-fen-space-]
+ambee copy-text string-fen string-space-fen-space amenn
+ambee prepend-text-no-space character-space string-space-fen-space amenn
+ambee append-text-no-space character-space string-space-fen-space amenn
 
-[-copy-text string-hyphen-here string-space-hyphen-here-space-]
-[-prepend-text-no-space character-space string-space-hyphen-here-space-]
-[-append-text-no-space character-space string-space-hyphen-here-space-]
+ambee copy-text string-hyphen-here string-space-hyphen-here-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-here-space amenn
+ambee append-text-no-space character-space string-space-hyphen-here-space amenn
 
-[-copy-text string-combee string-space-combee-space-]
-[-prepend-text-no-space character-space string-space-combee-space-]
-[-append-text-no-space character-space string-space-combee-space-]
+ambee copy-text string-combee string-space-combee-space amenn
+ambee prepend-text-no-space character-space string-space-combee-space amenn
+ambee append-text-no-space character-space string-space-combee-space amenn
 
-[-copy-text string-comenn string-space-comenn-space-]
-[-prepend-text-no-space character-space string-space-comenn-space-]
-[-append-text-no-space character-space string-space-comenn-space-]
+ambee copy-text string-comenn string-space-comenn-space amenn
+ambee prepend-text-no-space character-space string-space-comenn-space amenn
+ambee append-text-no-space character-space string-space-comenn-space amenn
 
-[-copy-text code-concat string-space-concat-space-]
-[-prepend-text-no-space character-space string-space-concat-space-]
-[-append-text-no-space character-space string-space-concat-space-]
+ambee copy-text code-concat string-space-concat-space amenn
+ambee prepend-text-no-space character-space string-space-concat-space amenn
+ambee append-text-no-space character-space string-space-concat-space amenn
 
-[-copy-text string-one-space string-space-one-space-space-]
-[-prepend-text-no-space character-space string-space-one-space-space-]
-[-append-text-no-space character-space string-space-one-space-space-]
+ambee copy-text string-one-space string-space-one-space-space amenn
+ambee prepend-text-no-space character-space string-space-one-space-space amenn
+ambee append-text-no-space character-space string-space-one-space-space amenn
 
-[-copy-text character-hyphen string-space-hyphen-space-]
-[-prepend-text-no-space character-space string-space-hyphen-space-]
-[-append-text-no-space character-space string-space-hyphen-space-]
+ambee copy-text character-hyphen string-space-hyphen-space amenn
+ambee prepend-text-no-space character-space string-space-hyphen-space amenn
+ambee append-text-no-space character-space string-space-hyphen-space amenn
 
-[-copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space-]
-[-append-text-no-space character-space string-apostrophe-apostrophe-space-period-space-]
-[-append-text-no-space character-period string-apostrophe-apostrophe-space-period-space-]
-[-append-text-no-space character-space string-apostrophe-apostrophe-space-period-space-]
+ambee copy-text string-two-apostrophes string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-period string-apostrophe-apostrophe-space-period-space amenn
+ambee append-text-no-space character-space string-apostrophe-apostrophe-space-period-space amenn
 
-[-copy-text character-space string-space-period-space-apostrophe-apostrophe-]
-[-append-text-no-space character-period string-space-period-space-apostrophe-apostrophe-]
-[-append-text-no-space character-space string-space-period-space-apostrophe-apostrophe-]
-[-append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe-]
+ambee copy-text character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn
+ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn
 
-[-copy-text string-end-of string-space-end-of-line-here-space-]
-[-prepend-text-no-space character-space string-space-end-of-line-here-space-]
-[-append-text-no-space character-hyphen string-space-end-of-line-here-space-]
-[-append-text-no-space string-line-here string-space-end-of-line-here-space-]
-[-append-text-no-space character-space string-space-end-of-line-here-space-]
+ambee copy-text string-end-of string-space-end-of-line-here-space amenn
+ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn
+ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn
+ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn
+ambee append-text-no-space character-space string-space-end-of-line-here-space amenn
 
-[-copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces-]
-[-prepend-text-no-space character-space string-code-nospay-between-spaces-]
-[-append-text-no-space character-space string-code-nospay-between-spaces-]
+ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn
+ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn
+ambee append-text-no-space character-space string-code-nospay-between-spaces amenn
 
-[-copy-text string-nospay string-space-nospay-space-]
-[-prepend-text-no-space character-space string-space-nospay-space-]
-[-append-text-no-space character-space string-space-nospay-space-]
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
 
-[-copy-text string-amennfenambee string-space-amennfenambee-space-]
-[-prepend-text-no-space character-space string-space-amennfenambee-space-]
-[-append-text-no-space character-space string-space-amennfenambee-space-]
+ambee copy-text string-amennfenambee string-space-amennfenambee-space amenn
+ambee prepend-text-no-space character-space string-space-amennfenambee-space amenn
+ambee append-text-no-space character-space string-space-amennfenambee-space amenn
 
-[-copy-text string-amenn string-space-amenn-fen-ambee-space-]
-[-prepend-text-no-space character-space string-space-amenn-fen-ambee-space-]
-[-append-text string-fen string-space-amenn-fen-ambee-space-]
-[-append-text string-ambee string-space-amenn-fen-ambee-space-]
-[-append-text-no-space character-space string-space-amenn-fen-ambee-space-]
+ambee copy-text string-amenn string-space-amenn-fen-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+ambee append-text string-fen string-space-amenn-fen-ambee-space amenn
+ambee append-text string-ambee string-space-amenn-fen-ambee-space amenn
+ambee append-text-no-space character-space string-space-amenn-fen-ambee-space amenn
 ----
 define-special-strings-that-cannot-be-spelled-in-full:
-[-copy-text character-f string-fen-]
-[-append-text-no-space character-e string-fen-]
-[-append-text-no-space character-n string-fen-]
+ambee copy-text character-f string-fen amenn
+ambee append-text-no-space character-e string-fen amenn
+ambee append-text-no-space character-n string-fen amenn
 
-[-copy-text string-am string-ambee-]
-[-append-text-no-space string-bee string-ambee-]
+ambee copy-text string-am string-ambee amenn
+ambee append-text-no-space string-bee string-ambee amenn
 
-[-copy-text string-am string-amenn-]
-[-append-text-no-space string-enn string-amenn-]
+ambee copy-text string-am string-amenn amenn
+ambee append-text-no-space string-enn string-amenn amenn
 
-[-copy-text string-amenn string-amennfen-]
-[-append-text-no-space string-fen string-amennfen-]
+ambee copy-text string-amenn string-amennfen amenn
+ambee append-text-no-space string-fen string-amennfen amenn
 
-[-copy-text string-com string-combee-]
-[-append-text-no-space string-bee string-combee-]
+ambee copy-text string-com string-combee amenn
+ambee append-text-no-space string-bee string-combee amenn
 
-[-copy-text string-com string-comenn-]
-[-append-text-no-space string-enn string-comenn-]
+ambee copy-text string-com string-comenn amenn
+ambee append-text-no-space string-enn string-comenn amenn
 
-[-copy-text string-def string-defenn-]
-[-append-text-no-space string-enn string-defenn-]
+ambee copy-text string-def string-defenn amenn
+ambee append-text-no-space string-enn string-defenn amenn
 
-[-copy-text string-fen string-fenambee-]
-[-append-text-no-space string-bee string-fenambee-]
+ambee copy-text string-fen string-fenambee amenn
+ambee append-text-no-space string-bee string-fenambee amenn
 
-[-copy-text string-no string-nospay-]
-[-append-text-no-space string-spay string-nospay-]
+ambee copy-text string-no string-nospay amenn
+ambee append-text-no-space string-spay string-nospay amenn
 
-[-copy-text string-amenn string-amennfenambee-]
-[-append-text-no-space string-fenambee string-amennfenambee-]
+ambee copy-text string-amenn string-amennfenambee amenn
+ambee append-text-no-space string-fenambee string-amennfenambee amenn
 ----
 define-special-strings-that-contain-hyphens:
-[-copy-text string-hyphen string-hyphen-here-]
-[-append-text-no-space character-hyphen string-hyphen-here-]
-[-append-text-no-space string-here string-hyphen-here-]
+ambee copy-text string-hyphen string-hyphen-here amenn
+ambee append-text-no-space character-hyphen string-hyphen-here amenn
+ambee append-text-no-space string-here string-hyphen-here amenn
 
-[-copy-text string-character string-character-hyphen-]
-[-append-text-no-space character-hyphen string-character-hyphen-]
-[-append-text-no-space string-hyphen string-character-hyphen-]
+ambee copy-text string-character string-character-hyphen amenn
+ambee append-text-no-space character-hyphen string-character-hyphen amenn
+ambee append-text-no-space string-hyphen string-character-hyphen amenn
 
-[-copy-text string-no string-no-space-]
-[-append-text-no-space character-hyphen string-no-space-]
-[-append-text-no-space string-space string-no-space-]
+ambee copy-text string-no string-no-space amenn
+ambee append-text-no-space character-hyphen string-no-space amenn
+ambee append-text-no-space string-space string-no-space amenn
 
-[-copy-text string-one string-one-space-]
-[-append-text-no-space character-hyphen string-one-space-]
-[-append-text-no-space string-space string-one-space-]
+ambee copy-text string-one string-one-space amenn
+ambee append-text-no-space character-hyphen string-one-space amenn
+ambee append-text-no-space string-space string-one-space amenn
 
-[-copy-text string-new string-new-line-]
-[-append-text-no-space character-hyphen string-new-line-]
-[-append-text-no-space string-line string-new-line-]
+ambee copy-text string-new string-new-line amenn
+ambee append-text-no-space character-hyphen string-new-line amenn
+ambee append-text-no-space string-line string-new-line amenn
 
-[-copy-text string-empty string-empty-line-]
-[-append-text-no-space character-hyphen string-empty-line-]
-[-append-text-no-space string-line string-empty-line-]
+ambee copy-text string-empty string-empty-line amenn
+ambee append-text-no-space character-hyphen string-empty-line amenn
+ambee append-text-no-space string-line string-empty-line amenn
 
-[-copy-text string-empty string-empty-text-]
-[-append-text-no-space character-hyphen string-empty-text-]
-[-append-text-no-space string-text string-empty-text-]
+ambee copy-text string-empty string-empty-text amenn
+ambee append-text-no-space character-hyphen string-empty-text amenn
+ambee append-text-no-space string-text string-empty-text amenn
 ----
 define-special-strings:
-[-define-special-strings-that-cannot-be-spelled-in-full-]
-[-define-special-strings-that-contain-hyphens-]
-[-define-special-strings-that-are-padded-with-spaces-]
+ambee define-special-strings-that-cannot-be-spelled-in-full amenn
+ambee define-special-strings-that-contain-hyphens amenn
+ambee define-special-strings-that-are-padded-with-spaces amenn
 
-[-copy-text character-open-bracket string-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-open-bracket-dash-]
+ambee copy-text character-open-bracket string-open-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-open-bracket-dash amenn
 
-[-copy-text character-hyphen string-dash-close-bracket-]
-[-append-text-no-space character-close-bracket string-dash-close-bracket-]
+ambee copy-text character-hyphen string-dash-close-bracket amenn
+ambee append-text-no-space character-close-bracket string-dash-close-bracket amenn
 
-[-copy-text character-hyphen string-dash-open-bracket-dash-]
-[-append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash-]
+ambee copy-text character-hyphen string-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-dash-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-dash-close-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash-]
-[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space character-hyphen string-dash-close-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-close-bracket-dash-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash-]
-[-append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
+ambee append-text string-fen string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn
 
-[-copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
-[-append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash-]
+ambee copy-text string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-open-bracket-dash-open-bracket-dash amenn
 
-[-copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
-[-append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash-]
+ambee copy-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket-]
-[-append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn
+ambee append-text-no-space string-dash-close-bracket string-dash-close-bracket-dash-close-bracket amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
-[-append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
+ambee append-text string-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash-]
-[-append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-open-bracket-dash amenn
+ambee append-text-no-space string-open-bracket-dash string-dash-close-bracket-open-bracket-dash amenn
 
-[-copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash-]
-[-append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash-]
-[-append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash-]
+ambee copy-text string-dash-close-bracket string-dash-close-bracket-nospay-open-bracket-dash amenn
+ambee append-text string-nospay string-dash-close-bracket-nospay-open-bracket-dash amenn
+ambee append-text string-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash amenn
 
-[-copy-text string-no-space string-space-no-space-character-hyphen-no-space-space-]
-[-prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space-]
-[-append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space-]
-[-append-text string-no-space string-space-no-space-character-hyphen-no-space-space-]
-[-append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space-]
+ambee copy-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee prepend-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text string-character-hyphen string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text string-no-space string-space-no-space-character-hyphen-no-space-space amenn
+ambee append-text-no-space character-space string-space-no-space-character-hyphen-no-space-space amenn
 
-[-copy-text string-fen string-space-fen-ambee-space-]
-[-prepend-text-no-space character-space string-space-fen-ambee-space-]
-[-append-text string-ambee string-space-fen-ambee-space-]
-[-append-text-no-space character-space string-space-fen-ambee-space-]
+ambee copy-text string-fen string-space-fen-ambee-space amenn
+ambee prepend-text-no-space character-space string-space-fen-ambee-space amenn
+ambee append-text string-ambee string-space-fen-ambee-space amenn
+ambee append-text-no-space character-space string-space-fen-ambee-space amenn
 
-[-copy-text string-amenn string-space-amenn-fen-space-]
-[-prepend-text-no-space character-space string-space-amenn-fen-space-]
-[-append-text string-fen string-space-amenn-fen-space-]
-[-append-text-no-space character-space string-space-amenn-fen-space-]
+ambee copy-text string-amenn string-space-amenn-fen-space amenn
+ambee prepend-text-no-space character-space string-space-amenn-fen-space amenn
+ambee append-text string-fen string-space-amenn-fen-space amenn
+ambee append-text-no-space character-space string-space-amenn-fen-space amenn
 
-[-copy-text character-period runtime-code-inserted-separator-space-]
-[-append-text character-apostrophe runtime-code-inserted-separator-space-]
-[-append-text character-apostrophe runtime-code-inserted-separator-space-]
-[-append-text character-period runtime-code-inserted-separator-space-]
-[-prepend-text-no-space character-space runtime-code-inserted-separator-space-]
-[-append-text-no-space character-space runtime-code-inserted-separator-space-]
+ambee copy-text character-period runtime-code-inserted-separator-space amenn
+ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn
+ambee append-text character-apostrophe runtime-code-inserted-separator-space amenn
+ambee append-text character-period runtime-code-inserted-separator-space amenn
+ambee prepend-text-no-space character-space runtime-code-inserted-separator-space amenn
+ambee append-text-no-space character-space runtime-code-inserted-separator-space amenn
 
-[-copy-text character-newline new-empty-line-]
-[-copy-text new-empty-line new-empty-lines-]
-[-append-text-no-space character-newline new-empty-lines-]
+ambee copy-text character-newline new-empty-line amenn
+ambee copy-text new-empty-line new-empty-lines amenn
+ambee append-text-no-space character-newline new-empty-lines amenn
 
-[-copy-text string-one-space string-space-one-space-no-space-space-]
-[-prepend-text-no-space character-space string-space-one-space-no-space-space-]
-[-append-text string-no-space string-space-one-space-no-space-space-]
-[-append-text-no-space character-space string-space-one-space-no-space-space-]
+ambee copy-text string-one-space string-space-one-space-no-space-space amenn
+ambee prepend-text-no-space character-space string-space-one-space-no-space-space amenn
+ambee append-text string-no-space string-space-one-space-no-space-space amenn
+ambee append-text-no-space character-space string-space-one-space-no-space-space amenn
 
-[-copy-text string-no-space string-space-no-space-one-space-space-]
-[-prepend-text-no-space character-space string-space-no-space-one-space-space-]
-[-append-text string-one-space string-space-no-space-one-space-space-]
-[-append-text-no-space character-space string-space-no-space-one-space-space-]
+ambee copy-text string-no-space string-space-no-space-one-space-space amenn
+ambee prepend-text-no-space character-space string-space-no-space-one-space-space amenn
+ambee append-text string-one-space string-space-no-space-one-space-space amenn
+ambee append-text-no-space character-space string-space-no-space-one-space-space amenn
 
-[-copy-text four-hyphens string-of-hyphens-]
-[-generate-counts-from-integer-to-integer 2 8 list-2-to-8 -]
-[-use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8 -]
+ambee copy-text four-hyphens string-of-hyphens amenn
+ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8  amenn
+ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-hyphens-into-defenns list-2-to-8  amenn
 
-[-clear-phrase paired-replacements-for-converting-to-combee-comenn-]
-[-put-into-phrase string-asterisk-and-hyphens  * -]
-[-put-into-phrase string-hyphens-and-asterisk  * -]
-[-append-text-no-space character-hyphen string-asterisk-and-hyphens-]
-[-prepend-text-no-space character-hyphen string-hyphens-and-asterisk-]
-[-generate-counts-from-integer-to-integer 2 8 list-2-to-8 -]
-[-use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8 -]
+ambee clear-phrase paired-replacements-for-converting-to-combee-comenn amenn
+ambee put-into-phrase string-asterisk-and-hyphens  *  amenn
+ambee put-into-phrase string-hyphens-and-asterisk  *  amenn
+ambee append-text-no-space character-hyphen string-asterisk-and-hyphens amenn
+ambee prepend-text-no-space character-hyphen string-hyphens-and-asterisk amenn
+ambee generate-counts-from-integer-to-integer 2 8 list-2-to-8  amenn
+ambee use-handler-with-each-word-in-phrase build-paired-replacements-for-converting-to-combee-comenn list-2-to-8  amenn
 
-[-copy-text character-period runtime-code-between-items-for-concatenation-type-fen-]
-[-prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen-]
-[-append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen-]
-[-append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen-]
-[-append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen-]
-[-append-text character-period runtime-code-between-items-for-concatenation-type-fen-]
-[-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen-]
+ambee copy-text character-period runtime-code-between-items-for-concatenation-type-fen amenn
+ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-hyphen runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-apostrophe runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text character-period runtime-code-between-items-for-concatenation-type-fen amenn
+ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-fen amenn
 
-[-copy-text character-period runtime-code-between-items-for-concatenation-type-nospay-]
-[-prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
-[-append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay-]
+ambee copy-text character-period runtime-code-between-items-for-concatenation-type-nospay amenn
+ambee prepend-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn
+ambee append-text-no-space character-space runtime-code-between-items-for-concatenation-type-nospay amenn
 
-[-copy-text character-apostrophe runtime-code-concatenated-empty-]
-[-append-text-no-space character-apostrophe runtime-code-concatenated-empty-]
+ambee copy-text character-apostrophe runtime-code-concatenated-empty amenn
+ambee append-text-no-space character-apostrophe runtime-code-concatenated-empty amenn
 
-[-copy-text string-combee list-combee-comenn-defenn-]
-[-append-text string-comenn list-combee-comenn-defenn-]
-[-append-text string-defenn list-combee-comenn-defenn-]
+ambee copy-text string-combee list-combee-comenn-defenn amenn
+ambee append-text string-comenn list-combee-comenn-defenn amenn
+ambee append-text string-defenn list-combee-comenn-defenn amenn
 
-[-copy-text string-ambee list-ambee-amenn-]
-[-append-text string-amenn list-ambee-amenn-]
+ambee copy-text string-ambee list-ambee-amenn amenn
+ambee append-text string-amenn list-ambee-amenn amenn
 
-[-copy-text list-ambee-amenn list-ambee-amenn-fen-nospay-]
-[-append-text string-fen list-ambee-amenn-fen-nospay-]
-[-append-text string-nospay list-ambee-amenn-fen-nospay-]
+ambee copy-text list-ambee-amenn list-ambee-amenn-fen-nospay amenn
+ambee append-text string-fen list-ambee-amenn-fen-nospay amenn
+ambee append-text string-nospay list-ambee-amenn-fen-nospay amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-character-apostrophe-]
-[-append-text-no-space string-apostrophe string-placeholder-character-apostrophe-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe-]
+ambee copy-text string-placeholder-prefix string-placeholder-character-apostrophe amenn
+ambee append-text-no-space string-apostrophe string-placeholder-character-apostrophe amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-character-apostrophe amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-character-backslash-]
-[-append-text-no-space string-backslash string-placeholder-character-backslash-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-character-backslash-]
+ambee copy-text string-placeholder-prefix string-placeholder-character-backslash amenn
+ambee append-text-no-space string-backslash string-placeholder-character-backslash amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-character-backslash amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-action-name-]
-[-append-text-no-space string-action string-placeholder-action-name-]
-[-append-text-no-space character-underscore string-placeholder-action-name-]
-[-append-text-no-space string-name string-placeholder-action-name-]
-[-copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-action-name-]
-[-append-text-no-space character-underscore string-placeholder-action-name-with-underscores-]
-[-append-text-no-space string-with string-placeholder-action-name-with-underscores-]
-[-append-text-no-space character-underscore string-placeholder-action-name-with-underscores-]
-[-append-text-no-space string-underscores string-placeholder-action-name-with-underscores-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores-]
+ambee copy-text string-placeholder-prefix string-placeholder-action-name amenn
+ambee append-text-no-space string-action string-placeholder-action-name amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name amenn
+ambee append-text-no-space string-name string-placeholder-action-name amenn
+ambee copy-text string-placeholder-action-name string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space string-with string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-underscore string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space string-underscores string-placeholder-action-name-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-action-name-with-underscores amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-omit-]
-[-append-text-no-space string-omit string-placeholder-omit-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-omit-]
+ambee copy-text string-placeholder-prefix string-placeholder-omit amenn
+ambee append-text-no-space string-omit string-placeholder-omit amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-omit amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-fen-]
-[-append-text-no-space string-fen string-placeholder-fen-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-fen-]
+ambee copy-text string-placeholder-prefix string-placeholder-fen amenn
+ambee append-text-no-space string-fen string-placeholder-fen amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-fen amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-nospay-]
-[-append-text-no-space string-nospay string-placeholder-nospay-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-nospay-]
+ambee copy-text string-placeholder-prefix string-placeholder-nospay amenn
+ambee append-text-no-space string-nospay string-placeholder-nospay amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-nospay amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-special-]
-[-append-text-no-space string-special string-placeholder-special-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-special-]
+ambee copy-text string-placeholder-prefix string-placeholder-special amenn
+ambee append-text-no-space string-special string-placeholder-special amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-special amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-phrase-being-defined-]
-[-append-text-no-space string-phrase string-placeholder-phrase-being-defined-]
-[-append-text-no-space character-underscore string-placeholder-phrase-being-defined-]
-[-append-text-no-space string-being string-placeholder-phrase-being-defined-]
-[-append-text-no-space character-underscore string-placeholder-phrase-being-defined-]
-[-append-text-no-space string-defined string-placeholder-phrase-being-defined-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined-]
+ambee copy-text string-placeholder-prefix string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-phrase string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-being string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-underscore string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space string-defined string-placeholder-phrase-being-defined amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-phrase-being-defined amenn
 
-[-copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space string-code string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space string-for string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space string-executable string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space string-phrase string-placeholder-code-for-executable-phrase-]
-[-copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-]
-[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
-[-append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores-]
-[-append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores-]
-[-append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores-]
+ambee copy-text string-placeholder-prefix string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-code string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-for string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-executable string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space string-phrase string-placeholder-code-for-executable-phrase amenn
+ambee copy-text string-placeholder-code-for-executable-phrase string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space string-with string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-underscore string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space string-underscores string-placeholder-code-for-executable-phrase-with-underscores amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-code-for-executable-phrase-with-underscores amenn
 
-[-copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space-]
-[-append-text-no-space string-one string-placeholder-for-space-one-space-space-]
-[-append-text-no-space character-underscore string-placeholder-for-space-one-space-space-]
-[-append-text-no-space string-space string-placeholder-for-space-one-space-space-]
-[-append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space-]
+ambee copy-text character-open-angle-bracket string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space string-one string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space character-underscore string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space string-space string-placeholder-for-space-one-space-space amenn
+ambee append-text-no-space character-close-angle-bracket string-placeholder-for-space-one-space-space amenn
 
-[-copy-text template-new-empty-line string-new-line-in-brackets-]
-[-copy-text string-new-line-in-brackets string-space-new-line-in-brackets-]
-[-prepend-text-no-space character-space string-space-new-line-in-brackets-]
-[-copy-text string-new-line-in-brackets string-new-line-in-brackets-space-]
-[-append-text-no-space character-space string-new-line-in-brackets-space-]
+ambee copy-text template-new-empty-line string-new-line-in-brackets amenn
+ambee copy-text string-new-line-in-brackets string-space-new-line-in-brackets amenn
+ambee prepend-text-no-space character-space string-space-new-line-in-brackets amenn
+ambee copy-text string-new-line-in-brackets string-new-line-in-brackets-space amenn
+ambee append-text-no-space character-space string-new-line-in-brackets-space amenn
 
-[-copy-text character-open-angle-bracket string-bracketed-hyphen-here-]
-[-append-text-no-space string-hyphen string-bracketed-hyphen-here-]
-[-append-text-no-space character-underscore string-bracketed-hyphen-here-]
-[-append-text-no-space string-here string-bracketed-hyphen-here-]
-[-append-text-no-space character-close-angle-bracket string-bracketed-hyphen-here-]
+ambee copy-text character-open-angle-bracket string-bracketed-hyphen-here amenn
+ambee append-text-no-space string-hyphen string-bracketed-hyphen-here amenn
+ambee append-text-no-space character-underscore string-bracketed-hyphen-here amenn
+ambee append-text-no-space string-here string-bracketed-hyphen-here amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-hyphen-here amenn
 
-[-copy-text character-open-angle-bracket string-bracketed-empty-line-]
-[-append-text-no-space string-empty string-bracketed-empty-line-]
-[-append-text-no-space character-underscore string-bracketed-empty-line-]
-[-append-text-no-space string-line string-bracketed-empty-line-]
-[-append-text-no-space character-close-angle-bracket string-bracketed-empty-line-]
+ambee copy-text character-open-angle-bracket string-bracketed-empty-line amenn
+ambee append-text-no-space string-empty string-bracketed-empty-line amenn
+ambee append-text-no-space character-underscore string-bracketed-empty-line amenn
+ambee append-text-no-space string-line string-bracketed-empty-line amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-empty-line amenn
 
-[-copy-text character-open-angle-bracket string-bracketed-new-line-]
-[-append-text-no-space string-new string-bracketed-new-line-]
-[-append-text-no-space character-underscore string-bracketed-new-line-]
-[-append-text-no-space string-line string-bracketed-new-line-]
-[-append-text-no-space character-close-angle-bracket string-bracketed-new-line-]
+ambee copy-text character-open-angle-bracket string-bracketed-new-line amenn
+ambee append-text-no-space string-new string-bracketed-new-line amenn
+ambee append-text-no-space character-underscore string-bracketed-new-line amenn
+ambee append-text-no-space string-line string-bracketed-new-line amenn
+ambee append-text-no-space character-close-angle-bracket string-bracketed-new-line amenn
 ----
 digit-0:
 0
@@ -2235,9 +2235,9 @@ my @code_at_recursion_level ;  <new_line>
 my @length_of_code_at_recursion_level ;  <new_line>
 my @pointer_to_remainder_of_code_at_recursion_level ;  <new_line>
 
-*---
+combee ****
 Get the hyphenated phrase or supplied string.
----*
+**** comenn
 
 if ( scalar( @_ ) == 1 ) {  <new_line>
 $supplied_text = $_[ 0 ] ;  <new_line>
@@ -2246,9 +2246,9 @@ $result_text = '' ;  <new_line>
 return $result_text ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 Initialization.
----*
+**** comenn
 
 $space_directive = 'none' ;  <new_line>
 $result_text = '' ;  <new_line>
@@ -2266,10 +2266,10 @@ $code_at_recursion_level[ 0 ] = 'unused' ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 $length_of_code_at_recursion_level[ 0 ] = 0 ;  <new_line>
 
-*---
+combee ****
 Begin a loop that handles each space delimited string
 in the phrase definition.
----*
+**** comenn
 
 $code_at_recursion_level[ 1 ] = $supplied_text ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ 1 ] = 0 ;  <new_line>
@@ -2278,13 +2278,13 @@ $recursion_level = 1 ;  <new_line>
 while ( ( $recursion_level > 0 ) && ( $expand_endless_loop_counter <= $expand_endless_loop_counter_maximum ) ) {  <new_line>
 $expand_endless_loop_counter ++ ;  <new_line>
 
-*---
+combee ****
 Get the next phrase name.
 If there is no more code at the current recursion
 level, shift back to the previous recursion level.
 When the recursion_level reaches zero, the loop
 will end.
----*
+**** comenn
 
 $length_of_code_at_recursion_level_current = $length_of_code_at_recursion_level[ $recursion_level ] ;  <new_line>
 if ( $length_of_code_at_recursion_level_current == 0 ) {  <new_line>
@@ -2314,11 +2314,11 @@ next ;  <new_line>
 }  <new_line>
 $current_phrase = substr( $code_at_recursion_level[ $recursion_level ] , $pointer_to_phrase_begin , ( $pointer_to_phrase_end - $pointer_to_phrase_begin + 1 ) ) ;  <new_line>
 
-*---
+combee ****
 Check for an endless loop caused by the same
 phrase name being encountered too many times.
 If this occurs, exit the endless loop.
----*
+**** comenn
 
 if ( $global_yes_or_no_count_phrase_usage == $global_yes ) {  <new_line>
 $global_number_of_times_encountered_phrase_named{ $current_phrase } ++ ;  <new_line>
@@ -2338,10 +2338,10 @@ return '' ;  <new_line>
 }  <new_line>
 
 
-*---
+combee ****
 If the phrase name is a hyphen directive, or a
 space directive, or a line directive, handle it.
----*
+**** comenn
 
 if ( $current_phrase eq ( 'hyphen' . '-' . 'here' ) ) {  <new_line>
 $output_buffer .= '-' ;  <new_line>
@@ -2387,12 +2387,12 @@ $space_directive = 'none' ;  <new_line>
 next ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the phrase name has a definition (which can be
 empty), and it is not a space directive or line
 directive, insert phrase definition into the text
 being expanded, and remove the phrase name.
----*
+**** comenn
 
 if ( ( $current_phrase =~ /[^ \<character_hyphen>]\<character_hyphen>[^ \<character_hyphen>]/ ) && ( exists( $global_dashrep_replacement{ $current_phrase } ) ) ) {  <new_line>
 $recursion_level ++ ;  <new_line>
@@ -2402,32 +2402,32 @@ $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = 0 ;  <new
 next ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If a space should be inserted here, insert it.
 Specify a default of inserting one space after
 the next phrase insertion.
----*
+**** comenn
 
 if ( ( $space_directive eq 'one' ) || ( $space_directive eq 'one_requested' ) ) {  <new_line>
 $output_buffer .= ' ' ;  <new_line>
 }  <new_line>
 $space_directive = 'one' ;  <new_line>
 
-*---
+combee ****
 At this point the current text string is not the
 name of a defined phrase, so just use the text string.
----*
+**** comenn
 
 $output_buffer .= $current_phrase ;  <new_line>
 $pointer_to_remainder_of_code_at_recursion_level[ $recursion_level ] = $pointer_to_phrase_end + 1 ;  <new_line>
 
-*---
+combee ****
 In the output buffer, if there is a
 "<specify " string that needs to be
 combined with the preceding tag, combine it into
 a single XML or HTML tag.
 Handle tags of type "<xyz />" as well as "<xyz>".
----*
+**** comenn
 
 if ( index( $output_buffer , '<specify ' ) > 0 ) {  <new_line>
 $prior_length = 0 ;  <new_line>
@@ -2444,13 +2444,13 @@ $output_buffer =~ s/ *> *<specify +/ / ;  <new_line>
 }  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the output buffer contains a recognized phrase
 name using underscores instead of hyphens, and it
 is enclosed in angle brackets (with no spaces),
 then replace that text with the definition of the
 specified phrase.
----*
+**** comenn
 
 $output_buffer =~ s/ *<placeholder_for_hyphen_here> */<character_hyphen>/sg ;  <new_line>
 $output_buffer =~ s/ *<placeholder_for_new_line> */\n/sg ;  <new_line>
@@ -2484,11 +2484,11 @@ $new_output_buffer = '' ;  <new_line>
 $possible_phrase_name_with_underscores = '' ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 If the output buffer does not contain any text
 that might need to be revised, then append it to
 the result text.
----*
+**** comenn
 
 $pointer_to_close_angle_bracket = index( $output_buffer , '>' ) ;  <new_line>
 if ( $pointer_to_close_angle_bracket < 0 ) {  <new_line>
@@ -2499,16 +2499,16 @@ $result_text .= substr( $output_buffer , 0 , 500 ) ;  <new_line>
 $output_buffer = substr( $output_buffer , 500 ) ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 Repeat the loop that handles each space delimited
 string.
----*
+**** comenn
 
 }  <new_line>
 
-*---
+combee ****
 Supply the results.
----*
+**** comenn
 
 $result_text .= $output_buffer ;  <new_line>
 return $result_text ;  <new_line>
@@ -3092,7 +3092,7 @@ template-runtime-code-for-text-storage-position-end:
 ' ;
 ----
 template-runtime-code-for-word-list-storage-position:
-my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  *--- # stores list of words for loop ---*
+my template-storage-item-prefix storage-position-for-word-list-associated-with-loop = '' ;  combee **** # stores list of words for loop **** comenn
 ----
 template-runtime-code-one-storage-position-declaration:
 my storage-position-name = '' ;  <new_line>
@@ -6205,11 +6205,11 @@ template-function-generate-counts-from-integer-to-integer:
 # function__generate_counts_from_integer_to_integer  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_action_operand_one and $global_action_operand_two and $global_action_operand_three  <new_line>
 #  Output is the definition of the phrase specified by $global_action_operand_three  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__generate_counts_from_integer_to_integer( ) {  <new_line>
 
@@ -6365,9 +6365,9 @@ if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\
 
     $global_source_path_prefix = './' ;  <new_line>
 
-*---
+combee ****
     $global_source_path_prefix = "\.\\" ;  <new_line>
----*
+**** comenn
 
 }  <new_line>
 $global_list_of_file_names = '' ;  <new_line>
@@ -6399,9 +6399,9 @@ if ( ( $global_source_path_prefix eq '' ) || ( $global_source_path_prefix !~ /[\
 
     $global_source_path_prefix = './' ;  <new_line>
 
-*---
+combee ****
     $global_source_path_prefix = "\.\\" ;  <new_line>
----*
+**** comenn
 
 }  <new_line>
 $global_list_of_file_names = '' ;  <new_line>
@@ -6604,11 +6604,11 @@ template-function-get-cgi-information:
 # function__get_cgi_information  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is standard input or standard environmental values  <new_line>
 #  Output are phrases that have names that begin with the text "input-" and otherwise are named using the cgi name  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_cgi_information( ) {  <new_line>
 
@@ -6789,11 +6789,11 @@ template-function-get-count-of-words:
 # function__get_count_of_words  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_count_of_words( ) {  <new_line>
 &function__point_to_words( ) ;  <new_line>
@@ -6890,7 +6890,7 @@ template-function-get-url-resource:
 # function__get_url_resource  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Inputs are the Dashrep phrases "url-source-for-single-resource-request" and "filename-target-for-single-resource-request"  <new_line>
 #  Output is the file specified by the (above) filename and the phrase "dashrep-path-prefix-for-file-writing", plus messages from the CURL command are put into phrase "trace-results-from-curl" <new_line>
 <new_line>
@@ -6902,7 +6902,7 @@ template-function-get-url-resource:
 #  off both errors and progress info.  <new_line>
 #  <new_line>
 #  The -S switch requests that errors be shown.  <new_line>
----*
+**** comenn
 
 sub function__get_url_resource( ) {  <new_line>
 
@@ -6951,12 +6951,12 @@ template-function-get-word-at-position:
 # function__get_word_at_position  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text (type text) and $global_word_pointer_text (type text, not numeric!) {  <new_line>
 #  Output is $global_target_text  <new_line>
 #  And $global_word_pointer_text is modified if it exceeds the word count  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__get_word_at_position( ) {  <new_line>
 $global_default_text = '' ;  <new_line>
@@ -7116,11 +7116,11 @@ template-function-numeric-add:
 # function__numeric_add  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__numeric_add( ) {  <new_line>
 $global_default_text = '0' ;  <new_line>
@@ -7165,11 +7165,11 @@ template-function-numeric-maximum:
 # function__numeric_maximum  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__numeric_maximum( ) {  <new_line>
 $global_default_text = '0' ;  <new_line>
@@ -7196,11 +7196,11 @@ template-function-numeric-minimum:
 # function__numeric_minimum  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__numeric_minimum( ) {  <new_line>
 $global_default_text = '0' ;  <new_line>
@@ -7227,11 +7227,11 @@ template-function-numeric-multiply:
 # function__numeric_multiply  <new_line>
 #  <new_line>
 
-*---
+combee ****
 #  Input is $global_source_text  <new_line>
 #  Output is $global_target_text  <new_line>
 <new_line>
----*
+**** comenn
 
 sub function__numeric_multiply( ) {  <new_line>
 $global_default_text = '1' ;  <new_line>
@@ -8302,7 +8302,7 @@ if ( index( $local_text , '-' ) < 0 ) {  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-*--- If the phrase is not defined, define it as empty ---*
+combee **** If the phrase is not defined, define it as empty **** comenn
 if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
 code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = '' ;  <new_line>
 return $global_no ;  <new_line>
@@ -8331,7 +8331,7 @@ return $global_no ;  <new_line>
 
 if ( index( $local_text , '-' ) > 0 ) {  <new_line>
 
-*--- If the phrase is not defined, define it as empty ---*
+combee **** If the phrase is not defined, define it as empty **** comenn
 if ( not( exists( code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end ) ) ) {  <new_line>
 code-get-or-put-phrase-definition-begin $local_text code-get-or-put-phrase-definition-end = '' ;  <new_line>
 }  <new_line>
@@ -9616,9 +9616,9 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-*---
+combee ****
 # print "fully expanded: " . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end . "\n" ;  <new_line>
----*
+**** comenn
 
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
 # $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
@@ -9706,7 +9706,7 @@ $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-*---
+combee ****
 
 $global_source_text = runtime-code-for-operand-number-one ;  <new_line>
 @global_list_of_items_one = sort( keys( %global_dashrep_replacement ) ) ;  <new_line>
@@ -9727,7 +9727,7 @@ $global_count_of_items_appended ++ ;  <new_line>
 
 runtime-code-storage-item-result = '' ;  <new_line>
 
----*
+**** comenn
 
 template-runtime-code-standard-action-end
 ----
@@ -10176,13 +10176,13 @@ template-storage-item-containing-word-list-associated-with-loop = code-get-or-pu
 $local_pointer_to_next_space = -1 ;  <new_line>
 $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ;  <new_line>
 
-*---
+combee ****
 # print "length of word list is " . $length_of_text_in_word_list . "\n" ;  <new_line>
----*
+**** comenn
 
-*---
+combee ****
 # start ABABA loop, which has exit in middle of loop  <new_line>
----*
+**** comenn
 
 $local_endless_loop_counter = 0 ;  <new_line>
 $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ;  <new_line>
@@ -10197,9 +10197,9 @@ if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) {  <new_line
 last ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 # start a second, inner, ABABA loop, which has exit in middle of loop  <new_line>
----*
+**** comenn
 
 $local_counter_number_of_adjacent_spaces = 0 ;  <new_line>
 while ( 1 == 1 ) {  <new_line>
@@ -10211,13 +10211,13 @@ last ;  <new_line>
 
 $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_space + 1 ) ;  <new_line>
 
-*---
+combee ****
 # print "future space at " . $local_pointer_to_future_space . "\n" ;  <new_line>
----*
+**** comenn
 
-*---
+combee ****
 # exit from second, inner, ABABA loop; if next line is edited, ensure it reaches an end point; otherwise there will be an endless loop  <new_line>
----*
+**** comenn
 
 if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) {  <new_line>
 last ;  <new_line>
@@ -10225,27 +10225,27 @@ last ;  <new_line>
 
 $local_pointer_to_next_space = $local_pointer_to_future_space ;  <new_line>
 
-}  *--- # end of second, inner, ABABA loop ---*  <new_line>
+}  combee **** # end of second, inner, ABABA loop **** comenn  <new_line>
 
 $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ;  <new_line>
 
-*---
+combee ****
 # print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
----*
+**** comenn
 
 $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' ' , $local_pointer_to_next_word ) ;  <new_line>
 
-*---
+combee ****
 # print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
----*
+**** comenn
 
 if ( $local_pointer_to_next_space < 0 ) {  <new_line>
 $local_pointer_to_next_space = $length_of_text_in_word_list ;  <new_line>
 }  <new_line>
 
-*---
+combee ****
 # exit from ABABA loop; if next line is edited, ensure it reaches an end point; otherwise there will be an endless loop  <new_line>
----*
+**** comenn
 
 if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) {  <new_line>
 last ;  <new_line>
@@ -10253,16 +10253,16 @@ last ;  <new_line>
 
 $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ;  <new_line>
 
-*---
+combee ****
 # print "next word starts at " . $local_pointer_to_next_word . "\n" ;  <new_line>
 # print "next space at " . $local_pointer_to_next_space . "\n" ;  <new_line>
 # print "word to use in handler is " . $global_word_to_use_in_handler . "\n" ;  <new_line>
----*
+**** comenn
 
 code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ;  <new_line>
 & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ;  <new_line>
 
-}  *--- # end of ABABA loop ---*  <new_line>
+}  combee **** # end of ABABA loop **** comenn  <new_line>
 
 template-runtime-code-standard-action-end
 ----
@@ -10446,15 +10446,15 @@ template-runtime-code-for-every-action-begin:
 # $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
 # print $global_action_debug_line . "\n" ;  <new_line>
 
-*---
+combee ****
 # <new_line>
----*
+**** comenn
 ----
 template-runtime-code-for-every-action-end:
-*---
+combee ****
 # print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
----*
+**** comenn
 ----
 template-runtime-code-for-overdue-start-of-if-branch:
 # begin overdue start of if branch  <new_line>
