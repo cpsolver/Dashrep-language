@@ -1,63 +1,63 @@
-[- copy-text string-outside current-state-of-if-branching -]
-[- create-new-result-storage-position -]
-[- copy-text current-result-storage-position result-storage-position-for-current-phrase -]
-[- copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand -]
-[- append-text-no-space result-storage-position-for-current-phrase runtime-code-for-result-storage-at-end-of-expand -]
-[- append-text code-parameter-result-storage-part-2 runtime-code-for-result-storage-at-end-of-expand -]
-[- copy-from-phrase-append-to-file runtime-code-for-result-storage-at-end-of-expand [- filename-output-results-all-definition-items -] -]
+ambee copy-text string-outside current-state-of-if-branching amenn
+ambee create-new-result-storage-position amenn
+ambee copy-text current-result-storage-position result-storage-position-for-current-phrase amenn
+ambee copy-text code-parameter-result-storage-part-1 runtime-code-for-result-storage-at-end-of-expand amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-for-result-storage-at-end-of-expand amenn
+ambee append-text code-parameter-result-storage-part-2 runtime-code-for-result-storage-at-end-of-expand amenn
+ambee copy-from-phrase-append-to-file runtime-code-for-result-storage-at-end-of-expand ambee filename-output-results-all-definition-items amenn amenn
 
-[- copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore -]
-[- copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition -]
-[- copy-text character-space list-of-tokens-without-ambee-amenn-fen -]
-[- append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen -]
-[- append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit -]
-[- copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space -]
-[- copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen -]
+ambee copy-and-replace phrase-being-defined phrase-being-defined-with-underscores character-hyphen character-underscore amenn
+ambee copy-text list-of-tokens-in-current-definition list-of-tokens-in-complex-definition amenn
+ambee copy-text character-space list-of-tokens-without-ambee-amenn-fen amenn
+ambee append-text-no-space list-of-tokens-in-current-definition list-of-tokens-without-ambee-amenn-fen amenn
+ambee append-text-no-space character-space list-of-tokens-without-ambee-amenn-fen amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-fen-space string-placeholder-special amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-special string-space-hyphen-space amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-ambee-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-space-amenn-space string-placeholder-omit amenn
+ambee copy-and-replace list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen string-placeholder-omit character-space amenn
+ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-without-ambee-amenn-fen amenn
 
-[- copy-text code-compiled-function-part-1 runtime-code-compiled-function -]
-[- append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function -]
-[- append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function -]
+ambee copy-text code-compiled-function-part-1 runtime-code-compiled-function amenn
+ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn
 
 combee **** todo: avoid need for workaround **** comenn
-[- put-into-phrase unique-phrase-number-for-phrase-name-[- phrase-being-defined -]  99   -]
-[- append-text unique-phrase-number-for-phrase-name-[- phrase-being-defined -] runtime-code-compiled-function -]
+ambee put-into-phrase unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn  99   amenn
+ambee append-text unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn runtime-code-compiled-function amenn
 
 
-[- copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined -]
-[- append-text code-compiled-function-part-3 runtime-code-compiled-function -]
-[- append-text list-of-tokens-in-current-definition runtime-code-compiled-function -]
-[- append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function -]
-[- copy-from-phrase-append-to-file runtime-code-compiled-function [- filename-output-results-all-compiled-functions -] -]
+ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
+ambee append-text code-compiled-function-part-3 runtime-code-compiled-function amenn
+ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn
+ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 
-[- copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition -]
-[- handle-definition-simple -]
+ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn
+ambee handle-definition-simple amenn
 
-[- use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition -]
+ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn
 
-[- terminate-branching-if-not-terminated -]
+ambee terminate-branching-if-not-terminated amenn
 
-[- copy-text phrase-name-storage-position-for-definition-number-[- current-definition-number -] phrase-name-storage-position-for-current-definition -]
-[- copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position -] storage-position-for-word-list-associated-with-current-result-storage-position -]
-[- get-all-operands -]
-[- copy-text code-compiled-function-part-5 runtime-code-compiled-function -]
-[- append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function -]
-[- append-text code-compiled-function-part-6 runtime-code-compiled-function -]
-[- append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function -]
-[- append-text code-compiled-function-part-7 runtime-code-compiled-function -]
-[- append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function -]
-[- append-text code-compiled-function-part-8 runtime-code-compiled-function -]
-[- append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function -]
-[- append-text code-compiled-function-part-9 runtime-code-compiled-function -]
-[- append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function -]
-[- append-text-no-space code-compiled-function-part-10 runtime-code-compiled-function -]
-[- copy-from-phrase-append-to-file runtime-code-compiled-function [- filename-output-results-all-compiled-functions -] -]
-[- append-text phrase-being-defined list-of-functions-generated -]
-[- clear-phrase phrase-being-defined -]
-[- clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position -] -]
+ambee copy-text phrase-name-storage-position-for-definition-number-[- current-definition-number amenn phrase-name-storage-position-for-current-definition amenn
+ambee copy-text storage-position-for-word-list-associated-with-result-storage-position-[- current-result-storage-position amenn storage-position-for-word-list-associated-with-current-result-storage-position amenn
+ambee get-all-operands amenn
+ambee copy-text code-compiled-function-part-5 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-6 runtime-code-compiled-function amenn
+ambee append-text runtime-code-for-concatenated-all-operands runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-7 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-8 runtime-code-compiled-function amenn
+ambee append-text-no-space result-storage-position-for-current-phrase runtime-code-compiled-function amenn
+ambee append-text code-compiled-function-part-9 runtime-code-compiled-function amenn
+ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-compiled-function amenn
+ambee append-text-no-space code-compiled-function-part-10 runtime-code-compiled-function amenn
+ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
+ambee append-text phrase-being-defined list-of-functions-generated amenn
+ambee clear-phrase phrase-being-defined amenn
+ambee clear-phrase list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn

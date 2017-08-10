@@ -1,8 +1,8 @@
-[- copy-text current-token current-text -]
-[- generate-storage-for-current-text -]
-[- append-text current-text contents-at-storage-position-[- current-text-storage-position -] -]
-[- append-text current-text text-words-at-result-storage-position-[- current-result-storage-position -] -]
-[- copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand -]
-[- append-text-no-space current-text-storage-position current-storage-operand -]
-[- append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand -]
-[- append-text current-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position -] -]
+ambee copy-text current-token current-text amenn
+ambee generate-storage-for-current-text amenn
+ambee append-text current-text contents-at-storage-position-[- current-text-storage-position amenn amenn
+ambee append-text current-text text-words-at-result-storage-position-[- current-result-storage-position amenn amenn
+ambee copy-text runtime-code-storage-item-reference-before-pointer current-storage-operand amenn
+ambee append-text-no-space current-text-storage-position current-storage-operand amenn
+ambee append-text-no-space runtime-code-storage-item-reference-after-pointer current-storage-operand amenn
+ambee append-text current-storage-operand list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn

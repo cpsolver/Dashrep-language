@@ -1,7 +1,7 @@
-[- copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name -]
+ambee copy-words-found-in-both-lists current-token list-ambee-amenn non-empty-if-valid-token-handler-name amenn
 
-[- if-yes-begin [- yes-or-no-empty-phrase non-empty-if-valid-token-handler-name -] -]
-[- filter-tokens-case-4 -]
-[- if-else -]
-[- filter-tokens-case-[- non-empty-if-valid-token-handler-name -] -]
-[- if-end -]
+ambee if-yes-begin ambee yes-or-no-empty-phrase non-empty-if-valid-token-handler-name amenn amenn
+ambee filter-tokens-case-4 amenn
+ambee if-else amenn
+ambee filter-tokens-case-[- non-empty-if-valid-token-handler-name amenn amenn
+ambee if-end amenn

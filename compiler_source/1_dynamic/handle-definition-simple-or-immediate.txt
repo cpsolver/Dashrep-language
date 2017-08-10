@@ -1,12 +1,12 @@
-[- copy-text unique-phrase-number unique-phrase-number-for-phrase-name-[- phrase-being-defined -] -]
-[- copy-text phrase-being-defined phrase-name-for-phrase-number-[- unique-phrase-number -] -]
-[- copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name -]
+ambee copy-text unique-phrase-number unique-phrase-number-for-phrase-name-[- phrase-being-defined amenn amenn
+ambee copy-text phrase-being-defined phrase-name-for-phrase-number-[- unique-phrase-number amenn amenn
+ambee copy-words-found-in-both-lists phrase-being-defined list-of-immediate-definition-phrases possible-immediate-definition-phrase-name amenn
 
-[- if-yes-begin [- yes-or-no-empty-phrase possible-immediate-definition-phrase-name -] -]
-[- handle-definition-simple -]
-[- if-else -]
-[- copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name -]
-[- handle-definition-immediate -]
-[- if-end -]
+ambee if-yes-begin ambee yes-or-no-empty-phrase possible-immediate-definition-phrase-name amenn amenn
+ambee handle-definition-simple amenn
+ambee if-else amenn
+ambee copy-text possible-immediate-definition-phrase-name immediate-definition-phrase-name amenn
+ambee handle-definition-immediate amenn
+ambee if-end amenn
 
-[- numeric-increment unique-phrase-number -]
+ambee numeric-increment unique-phrase-number amenn

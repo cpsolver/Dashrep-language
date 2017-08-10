@@ -1,2 +1,2 @@
-[- append-text string-nospay definition-for-phrase-being-defined -]
-[- append-text string-nospay list-of-operands-for-result-storage-position-[- current-result-storage-position -] -]
+ambee append-text string-nospay definition-for-phrase-being-defined amenn
+ambee append-text string-nospay list-of-operands-for-result-storage-position-[- current-result-storage-position amenn amenn

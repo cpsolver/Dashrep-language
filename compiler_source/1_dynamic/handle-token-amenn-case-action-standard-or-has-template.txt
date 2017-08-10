@@ -1,14 +1,14 @@
-[- get-all-operands -]
+ambee get-all-operands amenn
 
-[- if-yes-begin [- yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name -] -] -]
-[- expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase -]
-[- append-text action-name list-of-unconverted-dashrep-actions-used -]
-[- if-else -]
-[- expand-text template-runtime-code-for-action-[- action-name -] runtime-code-for-parameter-phrase -]
-[- append-text action-name list-of-converted-dashrep-actions-used -]
-[- if-end -]
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action-[- action-name amenn amenn amenn
+ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action-[- action-name amenn runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-converted-dashrep-actions-used amenn
+ambee if-end amenn
 
-[- if-no-begin [- yes-or-no-empty-phrase template-function-[- action-name -] -] -]
-[- put-into-phrase requested-template-function  template-function-[- action-name -]  -]
-[- append-text requested-template-function list-of-template-functions-for-requested-actions -]
-[- if-end -]
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function-[- action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function-[- action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
+ambee if-end amenn
