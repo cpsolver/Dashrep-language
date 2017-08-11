@@ -1,0 +1,6 @@
+ambee copy-text word-to-use-in-handler pointer-to-next-asterisk amenn
+ambee copy-characters-from-position-to-position sample-specifications-in-phrase current-specification-name-and-value ambee numeric-add ambee pointer-to-previous-asterisk amenn 2 amenn ambee numeric-minus ambee pointer-to-next-asterisk amenn 2 amenn amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-name 1 1 amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-value 2 9999 amenn
+ambee copy-text current-specification-value specification-value-for-name fenambee current-specification-name amenn amenn
+ambee copy-text pointer-to-next-asterisk pointer-to-previous-asterisk amenn

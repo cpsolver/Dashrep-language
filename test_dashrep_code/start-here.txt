@@ -7,6 +7,7 @@ ambee clear-phrase list-of-displayed-input-phrases amenn
 ambee test-getting-of-cgi-information amenn
 ambee expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions amenn
 ambee test-file-related-dashrep-actions amenn
+ambee test-get-specifications-from-phrase amenn
 ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  ambee test-of-adjacent-parameter-values amenn  amenn
 
 ambee do-check-for-correct-values amenn

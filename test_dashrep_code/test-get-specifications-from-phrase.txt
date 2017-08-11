@@ -1,0 +1,4 @@
+ambee copy-without-extra-spaces sample-specifications-in-phrase sample-specifications-in-phrase amenn
+ambee generate-positions-of-delimiter character-asterisk sample-specifications-in-phrase pointers-to-asterisks amenn
+ambee put-into-phrase pointer-to-previous-asterisk  -1  amenn
+ambee use-handler-with-each-word-in-phrase handle-get-next-specification-from-phrase pointers-to-asterisks amenn
