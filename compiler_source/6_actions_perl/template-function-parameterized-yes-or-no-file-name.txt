@@ -112,7 +112,7 @@ $global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_nam
 return $global_no ;  <new_line>
 }  <new_line>
 
-$global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
+# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
 
 return $global_yes ;  <new_line>
 
