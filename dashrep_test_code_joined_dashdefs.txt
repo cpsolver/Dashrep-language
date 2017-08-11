@@ -20,6 +20,9 @@ octopus
 case-info-idlistparticipants:
 ambee list-of-numbers amenn
 ----
+character-asterisk:
+*
+----
 character-close-angle-bracket:
 >
 ----
@@ -398,6 +401,15 @@ correct-value-for-single-gathered-info:
 correct-value-for-some-text-with-underscores:
 here _ is _ some _ text _ with _ underscores 
 ----
+correct-value-for-specification-value-for-name-value-two:
+some text here for value-two
+----
+correct-value-for-specification-value-for-name-valuethree:
+some text here for value three
+----
+correct-value-for-specification-value-for-name-value_one:
+some text here for value_one
+----
 correct-value-for-string-123-padded:
 00123 
 ----
@@ -565,6 +577,14 @@ ambee append-text input-phrase-definition display-one-input-phrase-with-value am
 ambee append-text-no-space html-list-item-end display-one-input-phrase-with-value amenn
 ambee append-text-no-space character-newline display-one-input-phrase-with-value amenn
 ambee append-text-no-space display-one-input-phrase-with-value list-of-displayed-input-phrases amenn
+----
+handle-get-next-specification-from-phrase:
+ambee copy-text word-to-use-in-handler pointer-to-next-asterisk amenn
+ambee copy-characters-from-position-to-position sample-specifications-in-phrase current-specification-name-and-value ambee numeric-add ambee pointer-to-previous-asterisk amenn 2 amenn ambee numeric-minus ambee pointer-to-next-asterisk amenn 2 amenn amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-name 1 1 amenn
+ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-value 2 9999 amenn
+ambee copy-text current-specification-value specification-value-for-name fenambee current-specification-name amenn amenn
+ambee copy-text pointer-to-next-asterisk pointer-to-previous-asterisk amenn
 ----
 handle-one-check-for-correct-value:
 ambee copy-text word-to-use-in-handler phrase-name amenn
@@ -764,6 +784,11 @@ g7r3c5
 row-number:
 3
 ----
+sample-specifications-in-phrase:
+value_one some text here for value_one *
+value-two some text here for value-two *
+valuethree some text here for value three *
+----
 sample-word-list-one:
 alpha alpha-here and beta gamma beta delta 
 ----
@@ -804,6 +829,7 @@ ambee clear-phrase list-of-displayed-input-phrases amenn
 ambee test-getting-of-cgi-information amenn
 ambee expand-text test-of-dashrep-actions expanded-test-of-dashrep-actions amenn
 ambee test-file-related-dashrep-actions amenn
+ambee test-get-specifications-from-phrase amenn
 ambee put-into-phrase result-of-testing-of-adjacent-parameter-values  ambee test-of-adjacent-parameter-values amenn  amenn
 
 ambee do-check-for-correct-values amenn
@@ -1027,6 +1053,12 @@ comenn
 
 ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
+----
+test-get-specifications-from-phrase:
+ambee copy-without-extra-spaces sample-specifications-in-phrase sample-specifications-in-phrase amenn
+ambee generate-positions-of-delimiter character-asterisk sample-specifications-in-phrase pointers-to-asterisks amenn
+ambee put-into-phrase pointer-to-previous-asterisk  -1  amenn
+ambee use-handler-with-each-word-in-phrase handle-get-next-specification-from-phrase pointers-to-asterisks amenn
 ----
 test-getting-of-cgi-information:
 ambee get-cgi-information amenn
