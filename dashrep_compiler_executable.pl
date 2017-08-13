@@ -833,7 +833,7 @@ my $storage_item__1199 = 'character-space' ;
 my $storage_item__1200 = 'character-newline' ;
 my $storage_item__1201 = '' ; # result storage
 my $storage_item__1202 = 'convert-source-code-replace-parameter-brackets-with-ambee-and-amenn' ;
-my $storage_item__1203 = 'trace-show source-code-as-words copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space trace-show source-code-as-words generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters trace-show pointers-to-adjacent-characters use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space' ;
+my $storage_item__1203 = 'trace-show source-code-as-words copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters trace-show list-of-adjacent-characters trace-show pointers-to-adjacent-characters use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space' ;
 $global_dashrep_replacement{ $storage_item__1202 } = $storage_item__1203 ;
 my $storage_item__1204 = '' ; # result storage
 my $storage_item__1205 = 'source-code-as-words' ;
@@ -888,39 +888,39 @@ my $storage_item__1253 = 'source-code-as-words' ;
 my $storage_item__1254 = 'string-space-amennfen-space' ;
 my $storage_item__1255 = 'string-space-amenn-fen-space' ;
 my $storage_item__1256 = '' ; # result storage
-my $storage_item__1257 = 'source-code-as-words' ;
-my $storage_item__1258 = '' ; # result storage
-my $storage_item__1259 = 'string-open-bracket-dash' ;
-my $storage_item__1260 = 'source-code-as-words' ;
+my $storage_item__1257 = 'string-open-bracket-dash' ;
+my $storage_item__1258 = 'source-code-as-words' ;
+my $storage_item__1259 = 'pointers-to-delimiters-begin' ;
+my $storage_item__1260 = '' ; # result storage
 my $storage_item__1261 = 'pointers-to-delimiters-begin' ;
-my $storage_item__1262 = '' ; # result storage
-my $storage_item__1263 = 'pointers-to-delimiters-begin' ;
-my $storage_item__1264 = '-1' ;
-my $storage_item__1265 = 'pointers-to-just-before-delimiters-begin' ;
-my $storage_item__1266 = '' ; # result storage
-my $storage_item__1267 = 'string-dash-close-bracket' ;
-my $storage_item__1268 = 'source-code-as-words' ;
+my $storage_item__1262 = '-1' ;
+my $storage_item__1263 = 'pointers-to-just-before-delimiters-begin' ;
+my $storage_item__1264 = '' ; # result storage
+my $storage_item__1265 = 'string-dash-close-bracket' ;
+my $storage_item__1266 = 'source-code-as-words' ;
+my $storage_item__1267 = 'pointers-to-delimiters-end' ;
+my $storage_item__1268 = '' ; # result storage
 my $storage_item__1269 = 'pointers-to-delimiters-end' ;
-my $storage_item__1270 = '' ; # result storage
-my $storage_item__1271 = 'pointers-to-delimiters-end' ;
-my $storage_item__1272 = '2' ;
-my $storage_item__1273 = 'pointers-to-just-after-delimiters-end' ;
-my $storage_item__1274 = '' ; # result storage
-my $storage_item__1275 = 'pointers-to-just-before-delimiters-begin' ;
-my $storage_item__1276 = 'pointers-to-adjacent-characters' ;
-my $storage_item__1277 = '' ; # result storage
-my $storage_item__1278 = 'pointers-to-just-after-delimiters-end' ;
-my $storage_item__1279 = 'pointers-to-adjacent-characters' ;
-my $storage_item__1280 = '' ; # result storage
-my $storage_item__1281 = 'get-source-code-character-at-adjacent-position' ;
-my $storage_item__1282 = 'pointers-to-adjacent-characters' ;
-my $storage_item__1283 = '' ;
-my $storage_item__1284 = '' ; # result storage
-my $storage_item__1285 = 'list-of-adjacent-characters' ;
+my $storage_item__1270 = '2' ;
+my $storage_item__1271 = 'pointers-to-just-after-delimiters-end' ;
+my $storage_item__1272 = '' ; # result storage
+my $storage_item__1273 = 'pointers-to-just-before-delimiters-begin' ;
+my $storage_item__1274 = 'pointers-to-adjacent-characters' ;
+my $storage_item__1275 = '' ; # result storage
+my $storage_item__1276 = 'pointers-to-just-after-delimiters-end' ;
+my $storage_item__1277 = 'pointers-to-adjacent-characters' ;
+my $storage_item__1278 = '' ; # result storage
+my $storage_item__1279 = 'get-source-code-character-at-adjacent-position' ;
+my $storage_item__1280 = 'pointers-to-adjacent-characters' ;
+my $storage_item__1281 = '' ;
+my $storage_item__1282 = '' ; # result storage
+my $storage_item__1283 = 'list-of-adjacent-characters' ;
+my $storage_item__1284 = 'list-of-adjacent-characters' ;
+my $storage_item__1285 = '' ; # result storage
 my $storage_item__1286 = 'list-of-adjacent-characters' ;
-my $storage_item__1287 = '' ; # result storage
+my $storage_item__1287 = 'character-hyphen' ;
 my $storage_item__1288 = 'list-of-adjacent-characters' ;
-my $storage_item__1289 = 'character-hyphen' ;
+my $storage_item__1289 = '' ; # result storage
 my $storage_item__1290 = 'list-of-adjacent-characters' ;
 my $storage_item__1291 = '' ; # result storage
 my $storage_item__1292 = 'pointers-to-adjacent-characters' ;
@@ -5856,7 +5856,7 @@ my $storage_item__5510 = 'template-function-parameterized-yes-or-no-file-is-open
 my $storage_item__5511 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_is_open_for_appending <new_line> <new_line> sub function_parameterized__yes_or_no_file_is_open_for_appending( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> $global_action_result = ' . "'" . 'trace_diagnostic__parameterized_yes_or_no_file_is_open_for_appending__case_begin ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> $global_output_filename = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end . $local_file_name ; <new_line> if ( index( $global_output_filename , ' . "'" . ' ' . "'" . ' ) >= 0 ) { <new_line> $global_runtime_error_type = ' . "'" . 'file_name_invalid_contains_space' . "'" . ' ; <new_line> return $global_no ; <new_line> } <new_line> # todo: check if file exists, if not, then create empty file, then write protect it (while empty), then continue below <new_line> if ( open ( OUTFILE , ' . "'" . '>>' . "'" . ' . $global_output_filename ) ) { <new_line> return $global_yes ; <new_line> } <new_line> $global_output_filename = ' . "'" . "'" . ' ; <new_line> return $global_no ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5510 } = $storage_item__5511 ;
 my $storage_item__5512 = 'template-function-parameterized-yes-or-no-file-name' ;
-my $storage_item__5513 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_name <new_line> <new_line> sub function_parameterized__yes_or_no_file_name( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> if ( index( $local_file_name , ' . "'" . ' ' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_space ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '.' . "'" . ' ) < 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> $global_length_of_text = length( $local_file_name ) ; <new_line> if ( $global_length_of_text < 3 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_too_short ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '/' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_slash ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . '\\' . '\\' . '" ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '*' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '&' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '!' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '@' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '$' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '%' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '^' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_caret ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '~' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '`' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '"' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . "'" . '" ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ',' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_comma ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ':' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_colon ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ';' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '=' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '+' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> $global_action_result = ' . "'" . 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_yes ; <new_line> template-function-segment-ending' ;
+my $storage_item__5513 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_file_name <new_line> <new_line> sub function_parameterized__yes_or_no_file_name( ) { <new_line> my $local_file_name ; <new_line> $local_file_name = $_[ 0 ] ; <new_line> if ( index( $local_file_name , ' . "'" . ' ' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_space ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '.' . "'" . ' ) < 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> $global_length_of_text = length( $local_file_name ) ; <new_line> if ( $global_length_of_text < 3 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_too_short ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '/' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_slash ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . '\\' . '\\' . '" ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '*' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '&' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '!' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '@' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '$' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '%' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '^' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_caret ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '~' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '`' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '"' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , "' . "'" . '" ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ',' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_comma ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ':' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_colon ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . ';' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '=' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> if ( index( $local_file_name , ' . "'" . '+' . "'" . ' ) >= 0 ) { <new_line> $global_action_result = ' . "'" . 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_no ; <new_line> } <new_line> # $global_action_result = ' . "'" . 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . "'" . ' . $local_file_name . "' . '\\' . 'n" ; <new_line> return $global_yes ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5512 } = $storage_item__5513 ;
 my $storage_item__5514 = 'template-function-parameterized-yes-or-no-integer' ;
 my $storage_item__5515 = '# no-space dashes-long-line <new_line> # function_parameterized__yes_or_no_integer <new_line> <new_line> sub function_parameterized__yes_or_no_integer( ) { <new_line> my $local_text ; <new_line> $local_text = $_[ 0 ] ; <new_line> if ( $local_text =~ /^-?[0-9]+$/ ) { <new_line> return $global_yes ; <new_line> } else { <new_line> return $global_no ; <new_line> } <new_line> template-function-segment-ending' ;
@@ -8648,7 +8648,7 @@ sub function_compiled__convert_source_code_replace_parameter_brackets_with_ambee
 $global_phrase_usage_count_for_phrase_number[ 99 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
-# ambee trace-show source-code-as-words amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space amenn ambee trace-show source-code-as-words amenn ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters amenn ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn ambee trace-show pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space amenn
+# ambee trace-show source-code-as-words amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-open-bracket-dash string-dash-close-bracket-space-fen-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash-open-bracket-dash string-open-bracket-dash-space-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash-close-bracket string-dash-close-bracket-space-dash-close-bracket amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-open-bracket-dash string-dash-close-bracket-nospay-open-bracket-dash amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-open-bracket-dash string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket-dash string-space-amenn-fen-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space amenn ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters amenn ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn ambee trace-show list-of-adjacent-characters amenn ambee trace-show pointers-to-adjacent-characters amenn ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters amenn ambee copy-and-replace source-code-as-words source-code-as-words string-open-bracket-dash string-space-ambee-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-dash-close-bracket string-space-amenn-space amenn ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfenambee-space string-space-amenn-fen-ambee-space amenn
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -9232,11 +9232,11 @@ $global_dashrep_replacement{ $storage_item__1253 } = $global_target_text ;
 $storage_item__1251 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-and-replace ' . $storage_item__1252 . ' ' . $storage_item__1253 . ' ' . $storage_item__1254 . ' ' . $storage_item__1255 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1256 *** trace-show ** 1 *' . $storage_item__1257 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1256 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1257 . ' ' . $storage_item__1258 . ' ' . $storage_item__1259 ;
 # print $global_action_debug_line . "\n" ;
-$global_number_of_operands = 1 ;
+$global_number_of_operands = 3 ;
 $global_yes_or_no_operand_error = $global_no ;
-if ( 1 != 1 ) {
+if ( 3 != 3 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
@@ -9245,51 +9245,27 @@ if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-if ( $global_yes_or_no_operand_error == $global_no ) {
-&function__open_trace_output_file_if_not_open( ) ;
-if ( exists( $global_dashrep_replacement{ $storage_item__1257 } ) ) {
-print TRACE_OUT $storage_item__1257 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1257 } . "\n" . '----' . "\n" ;
-} else {
-print TRACE_OUT 'dashrep_runtime_error__phrase_not_defined $storage_item__1257' . "\n" ;
-}
-} else {
-$storage_item__1256 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1257 . ' ' ;
-}
-
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1258 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 ;
-# print $global_action_debug_line . "\n" ;
-$global_number_of_operands = 3 ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( 3 != 3 ) {
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1258 ) ;
+if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'operand_count' ;
+$global_runtime_error_type = 'not_phrase_name' ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1259 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1260 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1261 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1259 ;
-$global_operand_two = $storage_item__1260 ;
-$global_operand_three = $storage_item__1261 ;
+$global_operand_one = $storage_item__1257 ;
+$global_operand_two = $storage_item__1258 ;
+$global_operand_three = $storage_item__1259 ;
 &function__generate_positions_of_delimiter( ) ;
-$storage_item__1258 = '' ;
+$storage_item__1256 = '' ;
 } else {
-$storage_item__1258 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': generate-positions-of-delimiter ' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 . ' ' ;
+$storage_item__1256 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': generate-positions-of-delimiter ' . $storage_item__1257 . ' ' . $storage_item__1258 . ' ' . $storage_item__1259 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1262 *** numeric-vector-add-number ** 3 *' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1260 *** numeric-vector-add-number ** 3 *' . $storage_item__1261 . ' ' . $storage_item__1262 . ' ' . $storage_item__1263 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 3 ;
 $global_yes_or_no_operand_error = $global_no ;
@@ -9297,65 +9273,65 @@ if ( 3 != 3 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1263 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1261 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'phrase_is_empty' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1264 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1262 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_real_number' ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1263 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'not_phrase_name' ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$global_operand_one = $storage_item__1261 ;
+$global_operand_two = $storage_item__1262 ;
+$global_operand_three = $storage_item__1263 ;
+&function__numeric_vector_add_number( ) ;
+$storage_item__1260 = '' ;
+} else {
+$storage_item__1260 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-vector-add-number ' . $storage_item__1261 . ' ' . $storage_item__1262 . ' ' . $storage_item__1263 . ' ' ;
+}
+
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1264 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1265 . ' ' . $storage_item__1266 . ' ' . $storage_item__1267 ;
+# print $global_action_debug_line . "\n" ;
+$global_number_of_operands = 3 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( 3 != 3 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'operand_count' ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1265 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1263 ;
-$global_operand_two = $storage_item__1264 ;
-$global_operand_three = $storage_item__1265 ;
-&function__numeric_vector_add_number( ) ;
-$storage_item__1262 = '' ;
-} else {
-$storage_item__1262 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-vector-add-number ' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 . ' ' ;
-}
-
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1266 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1267 . ' ' . $storage_item__1268 . ' ' . $storage_item__1269 ;
-# print $global_action_debug_line . "\n" ;
-$global_number_of_operands = 3 ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( 3 != 3 ) {
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1266 ) ;
+if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'operand_count' ;
+$global_runtime_error_type = 'not_phrase_name' ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1267 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1268 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1269 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1267 ;
-$global_operand_two = $storage_item__1268 ;
-$global_operand_three = $storage_item__1269 ;
+$global_operand_one = $storage_item__1265 ;
+$global_operand_two = $storage_item__1266 ;
+$global_operand_three = $storage_item__1267 ;
 &function__generate_positions_of_delimiter( ) ;
-$storage_item__1266 = '' ;
+$storage_item__1264 = '' ;
 } else {
-$storage_item__1266 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': generate-positions-of-delimiter ' . $storage_item__1267 . ' ' . $storage_item__1268 . ' ' . $storage_item__1269 . ' ' ;
+$storage_item__1264 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': generate-positions-of-delimiter ' . $storage_item__1265 . ' ' . $storage_item__1266 . ' ' . $storage_item__1267 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1270 *** numeric-vector-add-number ** 3 *' . $storage_item__1271 . ' ' . $storage_item__1272 . ' ' . $storage_item__1273 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1268 *** numeric-vector-add-number ** 3 *' . $storage_item__1269 . ' ' . $storage_item__1270 . ' ' . $storage_item__1271 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 3 ;
 $global_yes_or_no_operand_error = $global_no ;
@@ -9363,88 +9339,88 @@ if ( 3 != 3 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1271 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1269 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'phrase_is_empty' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1272 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1270 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_real_number' ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1271 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'not_phrase_name' ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+$global_operand_one = $storage_item__1269 ;
+$global_operand_two = $storage_item__1270 ;
+$global_operand_three = $storage_item__1271 ;
+&function__numeric_vector_add_number( ) ;
+$storage_item__1268 = '' ;
+} else {
+$storage_item__1268 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-vector-add-number ' . $storage_item__1269 . ' ' . $storage_item__1270 . ' ' . $storage_item__1271 . ' ' ;
+}
+
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1272 *** copy-text ** 2 *' . $storage_item__1273 . ' ' . $storage_item__1274 ;
+# print $global_action_debug_line . "\n" ;
+$global_number_of_operands = 2 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( 2 != 2 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'operand_count' ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1273 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1274 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'not_phrase_name' ;
+}
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1271 ;
-$global_operand_two = $storage_item__1272 ;
-$global_operand_three = $storage_item__1273 ;
-&function__numeric_vector_add_number( ) ;
-$storage_item__1270 = '' ;
+$global_target_text = $global_dashrep_replacement{ $storage_item__1273 } ;
+$global_dashrep_replacement{ $storage_item__1274 } = $global_target_text ;
+$storage_item__1272 = '' ;
 } else {
-$storage_item__1270 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-vector-add-number ' . $storage_item__1271 . ' ' . $storage_item__1272 . ' ' . $storage_item__1273 . ' ' ;
+$storage_item__1272 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-text ' . $storage_item__1273 . ' ' . $storage_item__1274 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1274 *** copy-text ** 2 *' . $storage_item__1275 . ' ' . $storage_item__1276 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1275 *** append-text ** 2 *' . $storage_item__1276 . ' ' . $storage_item__1277 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 2 ;
 $global_yes_or_no_operand_error = $global_no ;
 if ( 2 != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1275 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
 }
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1276 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_target_text = $global_dashrep_replacement{ $storage_item__1275 } ;
-$global_dashrep_replacement{ $storage_item__1276 } = $global_target_text ;
-$storage_item__1274 = '' ;
-} else {
-$storage_item__1274 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-text ' . $storage_item__1275 . ' ' . $storage_item__1276 . ' ' ;
-}
-
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1277 *** append-text ** 2 *' . $storage_item__1278 . ' ' . $storage_item__1279 ;
-# print $global_action_debug_line . "\n" ;
-$global_number_of_operands = 2 ;
-$global_yes_or_no_operand_error = $global_no ;
-if ( 2 != 2 ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'operand_count' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1278 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1279 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1277 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1278 } ) ;
-$global_target_text = $storage_item__1279 ;
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__1276 } ) ;
+$global_target_text = $storage_item__1277 ;
 if ( $global_dashrep_replacement{ $global_target_text } ne '' ) {
 $global_dashrep_replacement{ $global_target_text } .= ' ' ;
 }
 $global_dashrep_replacement{ $global_target_text } .= $global_source_text ;
-$storage_item__1277 = ' ' ;
+$storage_item__1275 = ' ' ;
 } else {
-$storage_item__1277 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': append-text ' . $storage_item__1278 . ' ' . $storage_item__1279 . ' ' ;
+$storage_item__1275 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': append-text ' . $storage_item__1276 . ' ' . $storage_item__1277 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1280 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1281 . ' ' . $storage_item__1282 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1278 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1279 . ' ' . $storage_item__1280 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 2 ;
 $global_yes_or_no_operand_error = $global_no ;
@@ -9452,12 +9428,12 @@ if ( 2 != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1281 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1279 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'phrase_is_empty' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1282 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1280 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
@@ -9469,9 +9445,9 @@ my $local_pointer_to_next_word ;
 my $local_endless_loop_counter ;
 my $local_endless_loop_counter_limit ;
 my $length_of_text_in_word_list ;
-$storage_item__1283 = $global_dashrep_replacement{ $storage_item__1282 } ;
+$storage_item__1281 = $global_dashrep_replacement{ $storage_item__1280 } ;
 $local_pointer_to_next_space = -1 ;
-$length_of_text_in_word_list = length( $storage_item__1283 ) ;
+$length_of_text_in_word_list = length( $storage_item__1281 ) ;
 $local_endless_loop_counter = 0 ;
 $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ;
 while ( 1 == 1 ) {
@@ -9488,29 +9464,29 @@ $local_counter_number_of_adjacent_spaces ++ ;
 if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) {
 last ;
 }
-$local_pointer_to_future_space = index( $storage_item__1283 , ' ' , $local_pointer_to_next_space + 1 ) ;
+$local_pointer_to_future_space = index( $storage_item__1281 , ' ' , $local_pointer_to_next_space + 1 ) ;
 if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) {
 last ;
 }
 $local_pointer_to_next_space = $local_pointer_to_future_space ;
 }
 $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ;
-$local_pointer_to_next_space = index( $storage_item__1283 , ' ' , $local_pointer_to_next_word ) ;
+$local_pointer_to_next_space = index( $storage_item__1281 , ' ' , $local_pointer_to_next_word ) ;
 if ( $local_pointer_to_next_space < 0 ) {
 $local_pointer_to_next_space = $length_of_text_in_word_list ;
 }
 if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) {
 last ;
 }
-$global_word_to_use_in_handler = substr( $storage_item__1283 , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ;
+$global_word_to_use_in_handler = substr( $storage_item__1281 , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ;
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__get_source_code_character_at_adjacent_position( ) ;
 }
 } else {
-$storage_item__1280 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1281 . ' ' . $storage_item__1282 . ' ' ;
+$storage_item__1278 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1279 . ' ' . $storage_item__1280 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1284 *** copy-words-unique-only ** 2 *' . $storage_item__1285 . ' ' . $storage_item__1286 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1282 *** copy-words-unique-only ** 2 *' . $storage_item__1283 . ' ' . $storage_item__1284 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 2 ;
 $global_yes_or_no_operand_error = $global_no ;
@@ -9518,26 +9494,26 @@ if ( 2 != 2 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1285 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1283 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1286 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1284 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1285 ;
-$global_operand_two = $storage_item__1286 ;
+$global_operand_one = $storage_item__1283 ;
+$global_operand_two = $storage_item__1284 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1284 = '' ;
+$storage_item__1282 = '' ;
 } else {
-$storage_item__1284 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-words-unique-only ' . $storage_item__1285 . ' ' . $storage_item__1286 . ' ' ;
+$storage_item__1282 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-words-unique-only ' . $storage_item__1283 . ' ' . $storage_item__1284 . ' ' ;
 }
 
-# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1287 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1288 . ' ' . $storage_item__1289 . ' ' . $storage_item__1290 ;
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1285 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1286 . ' ' . $storage_item__1287 . ' ' . $storage_item__1288 ;
 # print $global_action_debug_line . "\n" ;
 $global_number_of_operands = 3 ;
 $global_yes_or_no_operand_error = $global_no ;
@@ -9545,24 +9521,48 @@ if ( 3 != 3 ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'operand_count' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1288 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1286 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1289 ) ;
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1287 ) ;
 if ( $global_yes_or_no == $global_no ) {
 $global_yes_or_no_operand_error = $global_yes ;
 $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_operand_one = $storage_item__1288 ;
-$global_operand_two = $storage_item__1289 ;
-$global_operand_three = $storage_item__1290 ;
+$global_operand_one = $storage_item__1286 ;
+$global_operand_two = $storage_item__1287 ;
+$global_operand_three = $storage_item__1288 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1287 = '' ;
+$storage_item__1285 = '' ;
 } else {
-$storage_item__1287 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-words-found-only-in-first-list ' . $storage_item__1288 . ' ' . $storage_item__1289 . ' ' . $storage_item__1290 . ' ' ;
+$storage_item__1285 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-words-found-only-in-first-list ' . $storage_item__1286 . ' ' . $storage_item__1287 . ' ' . $storage_item__1288 . ' ' ;
+}
+
+# $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1289 *** trace-show ** 1 *' . $storage_item__1290 ;
+# print $global_action_debug_line . "\n" ;
+$global_number_of_operands = 1 ;
+$global_yes_or_no_operand_error = $global_no ;
+if ( 1 != 1 ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'operand_count' ;
+}
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1290 ) ;
+if ( $global_yes_or_no == $global_no ) {
+$global_yes_or_no_operand_error = $global_yes ;
+$global_runtime_error_type = 'not_phrase_name' ;
+}
+if ( $global_yes_or_no_operand_error == $global_no ) {
+&function__open_trace_output_file_if_not_open( ) ;
+if ( exists( $global_dashrep_replacement{ $storage_item__1290 } ) ) {
+print TRACE_OUT $storage_item__1290 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1290 } . "\n" . '----' . "\n" ;
+} else {
+print TRACE_OUT 'dashrep_runtime_error__phrase_not_defined $storage_item__1290' . "\n" ;
+}
+} else {
+$storage_item__1289 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1290 . ' ' ;
 }
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1291 *** trace-show ** 1 *' . $storage_item__1292 ;
@@ -9818,7 +9818,7 @@ $storage_item__1307 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 }
 
 # save concatenated result
-$storage_item__1201 = $storage_item__1204 . ' ' . $storage_item__1206 . ' ' . $storage_item__1211 . ' ' . $storage_item__1216 . ' ' . $storage_item__1221 . ' ' . $storage_item__1226 . ' ' . $storage_item__1231 . ' ' . $storage_item__1236 . ' ' . $storage_item__1241 . ' ' . $storage_item__1246 . ' ' . $storage_item__1251 . ' ' . $storage_item__1256 . ' ' . $storage_item__1258 . ' ' . $storage_item__1262 . ' ' . $storage_item__1266 . ' ' . $storage_item__1270 . ' ' . $storage_item__1274 . ' ' . $storage_item__1277 . ' ' . $storage_item__1280 . ' ' . $storage_item__1284 . ' ' . $storage_item__1287 . ' ' . $storage_item__1291 . ' ' . $storage_item__1293 . ' ' . $storage_item__1297 . ' ' . $storage_item__1302 . ' ' . $storage_item__1307 ;
+$storage_item__1201 = $storage_item__1204 . ' ' . $storage_item__1206 . ' ' . $storage_item__1211 . ' ' . $storage_item__1216 . ' ' . $storage_item__1221 . ' ' . $storage_item__1226 . ' ' . $storage_item__1231 . ' ' . $storage_item__1236 . ' ' . $storage_item__1241 . ' ' . $storage_item__1246 . ' ' . $storage_item__1251 . ' ' . $storage_item__1256 . ' ' . $storage_item__1260 . ' ' . $storage_item__1264 . ' ' . $storage_item__1268 . ' ' . $storage_item__1272 . ' ' . $storage_item__1275 . ' ' . $storage_item__1278 . ' ' . $storage_item__1282 . ' ' . $storage_item__1285 . ' ' . $storage_item__1289 . ' ' . $storage_item__1291 . ' ' . $storage_item__1293 . ' ' . $storage_item__1297 . ' ' . $storage_item__1302 . ' ' . $storage_item__1307 ;
 if ( $global_no == &function_parameterized__yes_or_no_empty( $storage_item__1201 ) ) {
 if ( $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] > 0 ) {
 $global_accumulator[ $global_accumulator_pointer ] .= ' ' ;
@@ -38475,7 +38475,7 @@ if ( index( $local_file_name , '+' ) >= 0 ) {
 $global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . $local_file_name . "\n" ;
 return $global_no ;
 }
-$global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;
+# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;
 return $global_yes ;
 # end of function
 }
