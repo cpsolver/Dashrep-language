@@ -118,7 +118,9 @@ ambee copy-and-replace source-code-as-words source-code-as-words string-dash-clo
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-fenambee-space string-space-fen-ambee-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-amennfen-space string-space-amenn-fen-space amenn
 
+combee ***
 ambee trace-show source-code-as-words amenn
+*** comenn
 
 ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn
 ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn
@@ -130,6 +132,7 @@ ambee use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent
 ambee copy-words-unique-only list-of-adjacent-characters list-of-adjacent-characters amenn
 ambee copy-words-found-only-in-first-list list-of-adjacent-characters character-hyphen list-of-adjacent-characters amenn
 
+ambee trace-show list-of-adjacent-characters amenn
 ambee trace-show pointers-to-adjacent-characters amenn
 
 ambee use-handler-with-each-word-in-phrase convert-source-handle-nospay-insertions list-of-adjacent-characters amenn
@@ -8247,7 +8250,7 @@ $global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_nam
 return $global_no ;  <new_line>
 }  <new_line>
 
-$global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
+# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
 
 return $global_yes ;  <new_line>
 
