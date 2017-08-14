@@ -1,9 +1,14 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+# todo: do operand count check during compile time  <new_line>
+if ( number-of-operands code-not-equals 2 ) {  <new_line>
+runtime-code-storage-item-result = 'runtime_operand_error__rename_file__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 &function__rename_file( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-template-runtime-code-standard-action-end
+template-runtime-code-for-every-action-end
