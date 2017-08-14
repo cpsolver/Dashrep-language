@@ -8887,7 +8887,7 @@ template-function-rename-file:
 
 sub function__rename_file( ) {  <new_line>
 
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
+if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
 $global_action_result = 'runtime_operand_error__rename_file__case_no_permission_to_write_files' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
