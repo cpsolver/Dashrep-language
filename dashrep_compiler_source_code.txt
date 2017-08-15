@@ -3122,7 +3122,7 @@ my storage-position-name = '' ;  <new_line>
 template-runtime-code-protect-target-file:
 # Protect target file as private  <new_line>
 if ( not( chmod( $global_file_write_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
-$global_action_result = 'runtime_operand_error__setting_private_protection_not_successful ' . $global_target_file_full_path . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__setting_private_protection_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
 ----
 template-runtime-code-statement-end-with-new-line:
@@ -4561,8 +4561,7 @@ if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_patt
     $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
     $global_suffix = $3 ;  <new_line>
 } else {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 $global_prefix =~ s/[ \n]+//g ;  <new_line>
@@ -4573,7 +4572,7 @@ $global_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
 if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_parameter_list_empty' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_parameter_list_empty' ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ;  <new_line>
@@ -4581,7 +4580,7 @@ $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_word_list_empty' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_word_list_empty' ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 @global_list_of_parameter_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
@@ -4848,8 +4847,7 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
         $global_endless_loop_counter ++ ;  <new_line>
         $global_phrase_usage_count_for_phrase_number[ 1 ] ++ ;  <new_line>
         if ( $global_endless_loop_counter > $global_endless_loop_counter_limit - 100 ) {  <new_line>
-            $global_action_result = 'runtime_operand_error__action_copy_and_replace__case_endless_loop' ;  <new_line>
-            $global_action_result = 'runtime_operand_error__copy_and_replace__case_endless_loop' . "\n" ;  <new_line>
+            $global_action_result = 'dashrep_compiled_runtime_error__copy_and_replace__case_endless_loop' ;  <new_line>
             last ;  <new_line>
         }  <new_line>
     }  <new_line>
@@ -4899,7 +4897,9 @@ if ( $global_operand_four =~ /^([0<character_hyphen>9]+)$/ ) {  <new_line>
     $global_pointer_two = $1 ;  <new_line>
 }  <new_line>
 if ( $global_pointer_one > $global_pointer_two ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_characters_from_position_to_position' ;  <new_line>
+# todo: verify this code ok:  <new_line>
+    $global_action_result = '' ;  <new_line>
+    $global_target_text = $global_action_result ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
@@ -4965,13 +4965,13 @@ if ( $global_temp_text =~ / / ) {  <new_line>
     $global_prefix_text = $global_temp_text ;  <new_line>
 }  <new_line>
 if ( $global_prefix_text !~ /^[^ ]+$/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . $global_prefix_text . "\n" ;  <new_line>
-    return 'runtime_operand_error__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . $global_prefix_text ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . $global_prefix_text ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 $global_name_of_phrase_that_contains_list_of_index_values = $global_operand_three ;  <new_line>
 if ( $global_name_of_phrase_that_contains_list_of_index_values !~ /^[a hyphen-here z0<character_hyphen>9_\<character_hyphen>]+$/i ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . $global_name_of_phrase_that_contains_list_of_index_values . "\n" ;  <new_line>
-    return 'runtime_operand_error__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . $global_name_of_phrase_that_contains_list_of_index_values ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . $global_name_of_phrase_that_contains_list_of_index_values ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 $global_list_of_unique_values = '' ;  <new_line>
 $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
@@ -5125,9 +5125,8 @@ if ( ( defined( $global_dashrep_replacement{ $global_phrase_name_containing_patt
     $global_phrase_name_containing_parameter_list = $2 ;  <new_line>
     $global_suffix = $3 ;  <new_line>
 } else {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern . "\n" ;  <new_line>
-    return ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern__case_pattern_invalid ' . $global_phrase_name_containing_pattern ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 $global_prefix =~ s/[ \n]+//g ;  <new_line>
 $global_prefix =~ s/^<character_hyphen>+// ;  <new_line>
@@ -5137,26 +5136,23 @@ $global_phrase_name_containing_parameter_list =~ s/[ \n]+//g ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/^<character_hyphen>+// ;  <new_line>
 $global_phrase_name_containing_parameter_list =~ s/<character_hyphen>+$// ;  <new_line>
 if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
-    return ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_phrase_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_parameter_list } ;  <new_line>
 $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list . "\n" ;  <new_line>
-    return ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_parameter_list ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 @global_list_of_parameter_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
 $global_phrase_name_containing_source_words =~ s/[ \n]+//sg ;  <new_line>
 $global_phrase_name_containing_source_words =~ s/^<character_hyphen>+// ;  <new_line>
 $global_phrase_name_containing_source_words =~ s/<character_hyphen>+$// ;  <new_line>
 if ( not( defined( $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_source_words ;  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern__case_parameter_list_empty ' . $global_phrase_name_containing_source_words ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_phrase_name_containing_source_words } ;  <new_line>
@@ -5164,8 +5160,7 @@ $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
 $global_list_of_words_as_text =~ s/^ +// ;  <new_line>
 $global_list_of_words_as_text =~ s/ +$// ;  <new_line>
 if ( $global_list_of_words_as_text !~ /[^ ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty' ;  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty ' . $global_phrase_name_containing_source_words . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern__case_operand_one_list_empty ' . $global_phrase_name_containing_source_words ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 @global_list_of_source_words = split( / +/ , $global_list_of_words_as_text ) ;  <new_line>
@@ -5491,7 +5486,7 @@ sub function__copy_words_rearrange_using_order_sort_numeric( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 
 if ( $global_dashrep_replacement{ $global_operand_three } =~ /[^0<character_hyphen>9\.\<character_hyphen> ]/ ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__copy_words_rearrange_using_order_sort_numeric' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_words_rearrange_using_order_sort_numeric' ;  <new_line>
     return ;  <new_line>
 }  <new_line>
 
@@ -5789,12 +5784,12 @@ if ( $global_dashrep_replacement{ "dashrep hyphen-here path hyphen-here prefix h
 }  <new_line>
 
 if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_sub_folder_already_exists' . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_sub_folder_already_exists' ;  <new_line>
 } else {  <new_line>
     umask( 0077 ) ;  <new_line>
     if ( mkdir( $global_target_sub_folder ) ) {  <new_line>
     } else {  <new_line>
-        $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_creating_sub_folder_not_successful' . "\n" ;  <new_line>
+        $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_creating_sub_folder_not_successful' ;  <new_line>
     }  <new_line>
 }  <new_line>
 
@@ -5835,12 +5830,12 @@ $global_action_result = '' ;  <new_line>
 $global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__delete_file__case_invalid_file_name ' . $global_target_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_file_name ' . $global_target_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -5848,7 +5843,7 @@ $global_target_file_full_path = $global_target_path_prefix . $global_target_file
 
 unlink $global_target_file_full_path ;  <new_line>
 
-$global_action_result = 'trace_diagnostic__deleted_file ' . $global_target_file_full_path . "\n" ;  <new_line>
+$global_action_result = 'trace_diagnostic__deleted_file ' . $global_target_file_full_path ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6932,6 +6927,21 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
+if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__case_no_permission_to_write_files' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
+$global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
+$global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_file_name ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
@@ -6939,14 +6949,11 @@ $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__inval
 return '' ;  <new_line>
 }  <new_line>
 
-$global_url = $global_operand_one ;  <new_line>
-$global_target_file_name = $global_operand_two ;  <new_line>
-$global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
-
+$global_target_file_full_path = $global_target_path_prefix . $global_operand_two ;  <new_line>
 
 # todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator  <new_line>
 
-$command_string_without_pipe = 'curl -k -s -S -o ' . $global_target_file_full_path . ' ' . $global_url ;  <new_line>
+$command_string_without_pipe = 'curl -k -s -S -o ' . $global_target_file_full_path . ' ' . $global_operand_one ;  <new_line>
 
 if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) {  <new_line>
     $global_accumulated_text = 'cannot_run_curl_command ' . $command_string_without_pipe ;  <new_line>
@@ -7097,12 +7104,12 @@ $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__modification_time_of_file__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__modification_time_of_file__case_invalid_path_prefix ' . $global_source_path_prefix ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__modification_time_of_file__case_invalid_file_name ' . $global_source_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__modification_time_of_file__case_invalid_file_name ' . $global_source_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -7600,7 +7607,7 @@ $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_two ;  <new_line>
 if ( $global_dashrep_replacement{ $global_operand_one } !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
     $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
-    $global_action_result = 'runtime_operand_error__numeric_vector_integers' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__numeric_vector_integers' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_list_of_x_values_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -7731,7 +7738,7 @@ $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 if ( $global_dashrep_replacement{ $global_operand_one } !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
     $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
-    $global_action_result = 'runtime_operand_error__numeric_vectors_from_delta_values_calculate_distances' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__numeric_vectors_from_delta_values_calculate_distances' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_list_of_x_values_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -7800,7 +7807,7 @@ sub function__numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen>85.0 ) ) {  <new_line>
     $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
-    $global_action_result = 'runtime_operand_error__numeric_y_map_tile_number_based_on_latitude' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__numeric_y_map_tile_number_based_on_latitude' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 if ( ( exists( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } ) ) && ( $global_dashrep_replacement{ 'numeric<character_hyphen>map<character_hyphen>tile<character_hyphen>zoom' } =~ /^[0<character_hyphen>9]+$/ ) ) {  <new_line>
@@ -7971,7 +7978,7 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-$global_action_result = 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . $local_file_name ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
 $global_runtime_error_type = 'file_name_for_reading_invalid' ;  <new_line>
@@ -7989,7 +7996,7 @@ if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
-$global_action_result = 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path ;  <new_line>
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin 'dashrep hyphen-here file hyphen-here name hyphen-here if hyphen-here read hyphen-here file hyphen-here missing' code-get-or-put-phrase-definition-end ;  <new_line>
 
@@ -8008,7 +8015,7 @@ template-runtime-code-protect-target-file
 
 $global_target_file_full_path = $global_target_file_full_path_saved ;
 
-$global_action_result = 'runtime_operand_error__parameterized_open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path ;  <new_line>
 
 if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
 return $global_yes ;  <new_line>
@@ -8150,112 +8157,112 @@ my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
 if ( index( $local_file_name , ' ' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_space ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_space ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '.' ) < 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 $global_length_of_text = length( $local_file_name ) ;  <new_line>
 if ( $global_length_of_text < 3 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_too_short ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_too_short ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '/' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_slash ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_slash ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , "\\" ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '*' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '&' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '!' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '@' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '$' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '%' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '^' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_caret ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_caret ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '~' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '`' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '"' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , "'" ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ',' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_comma ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_comma ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ':' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_colon ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_colon ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ';' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '=' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '+' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
+# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name ;  <new_line>
 
 return $global_yes ;  <new_line>
 
@@ -8888,7 +8895,7 @@ template-function-rename-file:
 sub function__rename_file( ) {  <new_line>
 
 if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-$global_action_result = 'runtime_operand_error__rename_file__case_no_permission_to_write_files' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__rename_file__case_no_permission_to_write_files' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -8903,7 +8910,7 @@ code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here pr
 &function__yes_or_no_file_exists( ) ;  <new_line>
 if ( $global_action_result eq 'no') {  <new_line>
 code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ;  <new_line>
-$global_action_result = 'runtime_operand_error__rename_file__case_source_file_invalid_name_or_not_exists ' . $global_source_file_name ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__rename_file__case_source_file_invalid_name_or_not_exists ' . $global_source_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -8912,7 +8919,7 @@ $global_source_file_name = $global_target_file_name_saved ;  <new_line>
 &function__yes_or_no_file_exists( ) ;  <new_line>
 code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ;  <new_line>
 if ( $global_action_result eq 'yes') {  <new_line>
-$global_action_result = 'runtime_operand_error__rename_file__case_target_file_already_exists ' . $global_target_file_name ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__rename_file__case_target_file_already_exists ' . $global_target_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -8947,7 +8954,7 @@ $global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep
 
 $global_action_result = '' ;  <new_line>
 if ( not( chmod( $global_file_private_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__set_file_permission_private__case_not_successful ' . $global_target_file_full_path . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_private__case_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
@@ -8963,7 +8970,7 @@ $global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep
 
 $global_action_result = '' ;  <new_line>
 if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__set_file_permission_public_read__case_not_successful ' . $global_target_file_full_path . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
 
 $global_target_text = $global_action_result ;  <new_line>
@@ -8979,12 +8986,12 @@ $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'runtime_operand_error__size_of_file__case_invalid_file_name ' . $global_source_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__size_of_file__case_invalid_file_name ' . $global_source_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -9882,19 +9889,16 @@ template-runtime-code-standard-action-end
 template-runtime-code-for-action-get-url-resource:
 template-runtime-code-for-every-action-begin
 
+# todo: do operand count check during compile time  <new_line>
+if ( number-of-operands code-not-equals 2 ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__get_url_resource__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_action_result = '' ;  <new_line>
-
-if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
-$global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-return '' ;  <new_line>
-} elsif ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
-$global_action_result = ' dashrep_compiled_runtime_error__get_url_resource__invalid_file_name ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-return '' ;  <new_line>
-} else { <new_line>
 &function__get_url_resource( ) ;  <new_line>
-}  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
@@ -10147,7 +10151,7 @@ template-runtime-code-for-every-action-begin
 
 # todo: do operand count check during compile time  <new_line>
 if ( number-of-operands code-not-equals 2 ) {  <new_line>
-runtime-code-storage-item-result = 'runtime_operand_error__rename_file__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__rename_file__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -10191,7 +10195,7 @@ template-runtime-code-for-action-trace-show-where:
 template-runtime-code-for-every-action-begin
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace_show_where phrase-being-defined no-space ' . "\n" ;  <new_line>
+print TRACE_OUT 'trace-show-where:' . "\n" . ' no-space phrase-being-defined no-space ' . "\n" . '----' . "\n" ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
