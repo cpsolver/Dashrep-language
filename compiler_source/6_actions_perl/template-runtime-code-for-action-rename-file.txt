@@ -2,7 +2,7 @@ template-runtime-code-for-every-action-begin
 
 # todo: do operand count check during compile time  <new_line>
 if ( number-of-operands code-not-equals 2 ) {  <new_line>
-runtime-code-storage-item-result = 'runtime_operand_error__rename_file__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__rename_file__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 

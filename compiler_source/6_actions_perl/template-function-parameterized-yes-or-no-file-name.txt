@@ -7,112 +7,112 @@ my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
 if ( index( $local_file_name , ' ' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_space ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_space ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '.' ) < 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_period_is_missing ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 $global_length_of_text = length( $local_file_name ) ;  <new_line>
 if ( $global_length_of_text < 3 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_too_short ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_too_short ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '/' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_slash ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_slash ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , "\\" ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_backslash ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '*' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_asterisk ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '&' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_ampersand ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '!' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_exclamation_point ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '@' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_at_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '$' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_dollar_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '%' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_percent_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '^' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_caret ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_caret ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '~' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_tilde ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '`' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_backtick ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '"' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_quotation_mark ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , "'" ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_apostrophe ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ',' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_comma ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_comma ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ':' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_colon ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_colon ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , ';' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_semicolon ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '=' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_equal_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( index( $local_file_name , '+' ) >= 0 ) {  <new_line>
-$global_action_result = 'runtime_operand_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . $local_file_name . "\n" ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_file_name__case_contains_plus_sign ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
-# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name . "\n" ;  <new_line>
+# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name ;  <new_line>
 
 return $global_yes ;  <new_line>
 

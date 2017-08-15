@@ -14,12 +14,12 @@ if ( $global_dashrep_replacement{ "dashrep hyphen-here path hyphen-here prefix h
 }  <new_line>
 
 if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
-    $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_sub_folder_already_exists' . "\n" ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_sub_folder_already_exists' ;  <new_line>
 } else {  <new_line>
     umask( 0077 ) ;  <new_line>
     if ( mkdir( $global_target_sub_folder ) ) {  <new_line>
     } else {  <new_line>
-        $global_action_result = 'runtime_operand_error__append_multiple_from_phrases_named_in_pattern__case_creating_sub_folder_not_successful' . "\n" ;  <new_line>
+        $global_action_result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern__case_creating_sub_folder_not_successful' ;  <new_line>
     }  <new_line>
 }  <new_line>
 
