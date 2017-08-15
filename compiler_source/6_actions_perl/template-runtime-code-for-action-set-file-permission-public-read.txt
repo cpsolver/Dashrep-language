@@ -1,8 +1,14 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+# todo: do operand count check during compile time  <new_line>
+if ( number-of-operands code-not-equals 1 ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_wrong_operand_count ' . runtime-code-for-concatenated-all-operands ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__set_file_permission_public_read( ) ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-template-runtime-code-standard-action-end
+template-runtime-code-for-every-action-end
