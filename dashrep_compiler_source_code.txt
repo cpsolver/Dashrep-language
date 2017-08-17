@@ -9285,6 +9285,33 @@ $global_target_text = $global_action_result ;  <new_line>
 
 template-function-segment-ending
 ----
+template-runtime-code-for-action-append-multiple-from-phrases-named-in-pattern:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-append-new-line:
 template-runtime-code-standard-action-begin
 
@@ -9323,6 +9350,60 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code
 runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-convert-unicode-to-html-entities:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-copy-and-remove-attributes-from-xml-tags:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-replace-using-paired-listed-words:
 template-runtime-code-standard-action-begin
@@ -9576,6 +9657,63 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-copy-words-order-reversed:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-copy-words-rearrange-using-order-sort-numeric:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-copy-words-sort-alphabetic:
 template-runtime-code-standard-action-begin
 
@@ -9785,6 +9923,39 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-generate-every-pairwise-combination-of-words:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+check-operand-four-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-generate-list-of-all-dashrep-phrases:
 template-runtime-code-standard-action-begin
 
@@ -9858,12 +10029,106 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+check-operand-four-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-generate-positions-of-listed-words:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-get-cgi-information:
 template-runtime-code-standard-action-begin
 
 &function__get_cgi_information( ) ;  <new_line>
 
 template-runtime-code-standard-action-end
+----
+template-runtime-code-for-action-get-characters-from-position-to-position:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-positive-integer
+
+check-operand-three-is-positive-integer
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-count-of-characters:
 template-runtime-code-standard-action-begin
@@ -10147,6 +10412,96 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-standard-action-end
 ----
+template-runtime-code-for-action-numeric-vector-multiply-by-number:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-not-empty
+
+check-operand-two-is-real-number
+
+check-operand-three-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-numeric-vectors-add:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-numeric-vectors-divide-by:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-phrase-name
+
+check-operand-two-is-phrase-name
+
+check-operand-three-is-phrase-name
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
 template-runtime-code-for-action-prepend-text-no-space:
 template-runtime-code-standard-action-begin
 
@@ -10234,6 +10589,54 @@ template-runtime-code-for-every-action-begin
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 &function__size_of_file( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-split-epoch-seconds-into-named-components-for-zero-meridian:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-positive-integer
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-for-action-split-epoch-seconds-into-named-components:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+check-operand-one-is-positive-integer
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -10609,7 +11012,15 @@ runtime-code-storage-item-result = $global_target_text ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-action:
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10620,7 +11031,13 @@ $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+
+}  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-store-result-for-case-error:
 runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
