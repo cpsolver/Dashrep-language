@@ -48,15 +48,14 @@ ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-
 
 ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output.txt amenn
 
+ambee rename-file amenn
+ambee create-empty-sub-folder amenn
+ambee write-gathered-listed-items-to-end-of-file amenn
+ambee set-file-permission-public-read amenn
+ambee linewise-read-from-file-and-use-handler amenn
+
 combee
 
-write-gathered-listed-items-to-end-of-file
-
-set-file-permission-public-read
-rename-file
-create-empty-sub-folder
-
-linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
 dashrep-phrase-prefix-for-imported-phrases
