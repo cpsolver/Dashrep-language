@@ -36,7 +36,7 @@ prepend-text-no-space
 get-definitions-from-phrase
 put-listed-phrase-definitions-into-phrase
 
-category_clear_delete
+ category_clear_delete
 clear-phrase
 clear-listed-phrases
 delete-listed-phrases
@@ -204,6 +204,7 @@ dashrep-gather-tag-matching-id
 category_debug
 trace-show
 trace-show-where
+output-trace-file-name
 dashrep-comments-ignored
 yes-or-no-count-phrase-usage
 generate-phrase-usage-counts

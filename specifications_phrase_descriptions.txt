@@ -217,11 +217,15 @@ If this phrase equals b-i-b yes b-i-e then trace messages are added to the trace
 -----
 
 description-for-phrase-trace-show:
-This action inserts into the trace log the definition of the specified phrase. s-n These insertions are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep h-h action h-h trace h-h on h-h yes h-h or h-h no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
+This action writes to the trace log file the name and definition of the specified phrase. s-n The format is the same as the standard format for Dashrep definitions.
 -----
 
 description-for-phrase-trace-show-where:
-This action inserts into the trace log the name of the phrase currently being expanded. s-n These insertions are highlighted with multiple asterisks ( no-space b-i-b ******* b-i-e no-space ). s-n The requested information appears in the trace log regardless of whether the b-i-b dashrep h-h action h-h trace h-h on h-h yes h-h or h-h no b-i-e definition is b-i-b yes b-i-e or b-i-b no b-i-e no-space .
+This action inserts into the trace log the name of the phrase currently being expanded. s-n The format is the same as the standard format for Dashrep definitions.
+-----
+
+description-for-phrase-output-trace-file-name:
+This phrase contains the filename to which b-i-b trace h-h show b-i-e and b-i-b trace h-h show h-h where b-i-e messages are written. s-n The default filename is b-i-b output_trace.txt b-i-e no-space . s-n If the filename specified in this phrase changes during execution, the filename used is the one in effect at the time the first b-i-b trace h-h show b-i-e and b-i-b trace h-h show h-h where b-i-e message was written.
 -----
 
 description-for-phrase-dashrep-endless-loop-count:
