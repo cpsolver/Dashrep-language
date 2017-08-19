@@ -1,4 +1,13 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -6,4 +15,7 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__numeric_vector_add_number( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end

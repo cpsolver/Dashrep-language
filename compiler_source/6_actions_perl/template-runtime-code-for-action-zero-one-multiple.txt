@@ -1,4 +1,13 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
 
 runtime-code-storage-item-result = 'multiple' ;  <new_line>
 
@@ -8,4 +17,7 @@ runtime-code-storage-item-result = 'zero' ;  <new_line>
 runtime-code-storage-item-result = 'one' ;  <new_line>
 }  <new_line>
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end

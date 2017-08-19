@@ -1,4 +1,13 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 
@@ -8,4 +17,7 @@ print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . code-get-or-p
 print TRACE_OUT 'dashrep_runtime_error__phrase_not_defined runtime-code-for-operand-number-one no-space ' . "\n" ;  <new_line>
 }  <new_line>
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end

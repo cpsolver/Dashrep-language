@@ -1,8 +1,20 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
 
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end

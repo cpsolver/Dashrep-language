@@ -1,4 +1,13 @@
-template-runtime-code-standard-action-begin
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+
 
 $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
 $global_count_number = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ;  <new_line>
@@ -12,4 +21,7 @@ $global_counter -- ;  <new_line>
 
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_text_to_insert . $global_source_text ;
 
-template-runtime-code-standard-action-end
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end
