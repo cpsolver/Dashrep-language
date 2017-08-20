@@ -1,4 +1,0 @@
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-template-runtime-code-for-every-action-end
