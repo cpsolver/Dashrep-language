@@ -676,7 +676,13 @@ ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parame
 ----
 handle-token-amenn-case-expand-text:
 ambee numeric-increment current-accumulator-pointer amenn
-ambee handle-token-amenn-case-standard-action amenn
+ambee get-all-operands amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
 ----
 handle-token-amenn-case-if-else:
 ambee start-branching-if-not-started amenn
@@ -11277,7 +11283,13 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-add:
-template-runtime-code-standard-action-with-minimum-operand-count
+template-runtime-code-for-every-action-begin
+
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-cosine:
 template-runtime-code-for-every-action-begin
@@ -11445,10 +11457,22 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-maximum:
-template-runtime-code-standard-action-with-minimum-operand-count
+template-runtime-code-for-every-action-begin
+
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-minimum:
-template-runtime-code-standard-action-with-minimum-operand-count
+template-runtime-code-for-every-action-begin
+
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-minus:
 template-runtime-code-for-every-action-begin
@@ -11470,7 +11494,13 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-multiply:
-template-runtime-code-standard-action-with-minimum-operand-count
+template-runtime-code-for-every-action-begin
+
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
+&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+runtime-code-storage-item-result = $global_target_text ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-odd-or-even:
 template-runtime-code-for-every-action-begin
@@ -12436,23 +12466,6 @@ template-runtime-code-identify-phrase-found
 template-runtime-code-if-case-yes-phrase-found:
 if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>
 ----
-template-runtime-code-standard-action-begin:
-template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-----
-template-runtime-code-standard-action-end:
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-standard-action-with-minimum-operand-count:
 template-runtime-code-for-every-action-begin
 
@@ -12492,4 +12505,21 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-store-result-for-case-error:
 runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+----
+unused-template-runtime-code-standard-action-begin:
+template-runtime-code-for-every-action-begin
+
+$global_number_of_operands = number-of-operands ;  <new_line>
+
+runtime-code-check-operand-initialize
+
+needed-operand-checks
+
+if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+----
+unused-template-runtime-code-standard-action-end:
+} else {  <new_line>
+template-runtime-code-store-result-for-case-error
+}  <new_line>
+template-runtime-code-for-every-action-end
 ----
