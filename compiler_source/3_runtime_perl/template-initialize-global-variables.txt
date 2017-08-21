@@ -132,8 +132,9 @@ my $global_nesting_level_of_file_actions = 0 ;  <new_line>
 my $global_recursion_level_of_expand_parameters = 0 ;  <new_line>
 <new_line>
 
-my $global_file_write_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
+my $global_file_private_protection_mode = 0600 ;  # octal number that specifies no "world" read access  <new_line>
 my $global_file_public_read_protection_mode = 0644 ;  # octal number that specifies public "world" read access  <new_line>
+my $global_file_private_but_executable_protection_mode = 0711 ;  # octal number that specifies private but "world" executable access  <new_line>
 <new_line>
 
 my $global_character_position = 0 ;  <new_line>

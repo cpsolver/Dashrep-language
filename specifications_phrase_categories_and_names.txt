@@ -172,6 +172,7 @@ size-of-file
 modification-time-of-file
 set-file-permission-public-read
 set-file-permission-private
+set-file-permission-private-but-executable
 rename-file
 delete-file
 create-empty-sub-folder
