@@ -1,5 +1,5 @@
 template-runtime-code-for-every-action-begin
 
-runtime-code-storage-item-result = ' dashrep_compile_time_error__<dashrep_placeholder_action_name_with_underscores>__case_wrong_number_of_operands ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compile_time_error__<dashrep_placeholder_action_name_with_underscores>__case_wrong_number_of_operands' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
 template-runtime-code-for-every-action-end
