@@ -1,0 +1,18 @@
+ambee get-all-operands amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee put-into-phrase required-operand-count-for-action fenambee action-name amenn  0  amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions required-operand-count-for-action fenambee action-name amenn number-of-operands amenn amenn
+ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
+ambee if-end amenn

@@ -1,3 +1,3 @@
 ambee terminate-branching-if-not-terminated amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
