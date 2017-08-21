@@ -14,13 +14,9 @@ ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-f
 ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn
 ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn
 
-ambee copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
-ambee copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
-ambee trace-show list-of-converted-dashrep-actions-used amenn
-
-ambee copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
-ambee copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
-ambee trace-show list-of-unconverted-dashrep-actions-used amenn
+ambee copy-words-unique-only list-of-dashrep-actions-used list-of-dashrep-actions-used amenn
+ambee copy-words-sort-alphabetic list-of-dashrep-actions-used list-of-dashrep-actions-used amenn
+ambee trace-show list-of-dashrep-actions-used amenn
 
 ambee copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
