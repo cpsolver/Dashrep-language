@@ -4,7 +4,7 @@
 
 
 # todo: special initialization to fix bug somewhere earlier in code:  <new_line>
-$global_dashrep_replacement{ 'four hyphen-here hyphens' } = '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' ;  <new_line>
+# $global_dashrep_replacement{ 'four hyphen-here hyphens' } = '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' ;  <new_line>
 
 
 <new_line>
