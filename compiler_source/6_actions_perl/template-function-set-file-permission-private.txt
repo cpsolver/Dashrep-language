@@ -14,7 +14,7 @@ return '' ;  <new_line>
 
 $global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_valid_path( $global_target_path_prefix ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_private__case_invalid_path_prefix' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
