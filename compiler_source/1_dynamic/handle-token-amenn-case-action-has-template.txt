@@ -5,7 +5,7 @@ ambee put-into-phrase required-operand-count-for-action fenambee action-name ame
 ambee if-end amenn
 
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions required-operand-count-for-action fenambee action-name amenn number-of-operands amenn amenn
-ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-used amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
