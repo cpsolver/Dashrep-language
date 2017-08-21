@@ -1,6 +1,6 @@
 template-runtime-code-for-every-action-begin
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT 'trace-show-where:' . "\n" . ' no-space phrase-being-defined no-space ' . "\n" . '----' . "\n" ;  <new_line>
+print TRACE_OUT 'trace-show-where:' . "\n" . ' no-space phrase-being-defined no-space ' . "\n" . '-' . '-' . '-' . '-' . "\n" ;  <new_line>
 
 template-runtime-code-for-every-action-end
