@@ -1,7 +1,7 @@
 ambee get-all-operands amenn
 
 ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee put-into-phrase required-operand-count-for-action fenambee action-name amenn  0  amenn
+ambee copy-text digit-0 required-operand-count-for-action fenambee action-name amenn amenn
 ambee if-end amenn
 
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions required-operand-count-for-action fenambee action-name amenn number-of-operands amenn amenn
