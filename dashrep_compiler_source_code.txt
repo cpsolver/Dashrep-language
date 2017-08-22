@@ -41,6 +41,10 @@ ambee trace-show list-of-dashrep-actions-used amenn
 ambee copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee trace-show list-of-action-names-not-recognized amenn
+
+ambee copy-words-unique-only list-of-dashrep-actions-with-wrong-number-of-operands list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee copy-words-sort-alphabetic list-of-dashrep-actions-with-wrong-number-of-operands list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee trace-show list-of-dashrep-actions-with-wrong-number-of-operands amenn
 ----
 compile-source-code-generate-output-results:
 ambee compile-source-code-initialize amenn
@@ -567,6 +571,35 @@ ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage 
 ambee clear-phrase action-name-at-storage-position fenambee current-result-storage-position amenn amenn
 ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
+handle-token-amenn-case-action-has-template:
+ambee get-all-operands amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee copy-text digit-0 required-operand-count-for-action fenambee action-name amenn amenn
+ambee if-end amenn
+
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+
+
+combee ***
+
+code not yet working:
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
+
+ambee if-else amenn
+ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee if-end amenn
+*** comenn
+
+
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
+ambee if-end amenn
+----
 handle-token-amenn-case-action-not-empty:
 ambee clear-phrase needed-operand-checks amenn
 ambee append-text string-amenn definition-for-phrase-being-defined amenn
@@ -580,8 +613,15 @@ ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee if-end amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fenambee action-name amenn amenn amenn
-ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee copy-text operand-checks-for-action fenambee action-name amenn needed-operand-checks amenn
+ambee if-else amenn
+ambee clear-phrase needed-operand-checks amenn
+ambee if-end amenn
+
+ambee copy-words-found-in-both-lists action-name list-of-not-really-action-names possible-not-really-action-name amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase possible-not-really-action-name amenn amenn
+ambee put-into-phrase yes-or-no-action-recognized  no  amenn
 ambee if-end amenn
 
 ambee clear-phrase runtime-code-for-parameter-phrase amenn
@@ -605,25 +645,9 @@ ambee handle-token-amenn-case-executable-phrase amenn
 ----
 handle-token-amenn-case-action-recognized:
 ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee if-else amenn
 ambee handle-token-amenn-case fenambee action-name amenn amenn
-ambee if-end amenn
-----
-handle-token-amenn-case-action-standard-or-has-template:
-ambee get-all-operands amenn
-
-ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
-ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
-ambee append-text action-name list-of-unconverted-dashrep-actions-used amenn
-ambee if-else amenn
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee append-text action-name list-of-converted-dashrep-actions-used amenn
-ambee if-end amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
-ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
-ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-executable-phrase:
@@ -683,22 +707,22 @@ ambee if-end amenn
 ----
 handle-token-amenn-case-if-else:
 ambee start-branching-if-not-started amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-else current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-end:
 ambee start-branching-if-not-started amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-outside current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-no-begin:
 ambee terminate-branching-if-not-terminated amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-yes-begin:
 ambee terminate-branching-if-not-terminated amenn
-ambee handle-token-amenn-case-action-standard-or-has-template amenn
+ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-standard-action:
@@ -816,6 +840,14 @@ ambee put-into-phrase filename-output-all-phrase-names-complex  output_compiler_
 ambee delete-file ambee filename-output-all-phrase-names-complex amenn amenn
 ambee put-into-phrase filename-output-debug-trace-all-dashrep-definitions  output_compiler_debug_trace_all_definitions.txt  amenn
 ambee delete-file ambee filename-output-debug-trace-all-dashrep-definitions amenn amenn
+----
+list-of-not-really-action-names:
+recognized
+not-recognized
+executable-phrase-begin
+executable-phrase-end
+executable-phrase-without-fen
+unchanged
 ----
 recursion-stack-pop-case-empty:
 ambee put-into-phrase current-result-storage-position  0  amenn
