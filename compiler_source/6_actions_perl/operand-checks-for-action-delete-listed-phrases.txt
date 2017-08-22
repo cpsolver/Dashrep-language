@@ -1,1 +1,1 @@
-check-operand-count-is-one
+no-operand-checks-needed

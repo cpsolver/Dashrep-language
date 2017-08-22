@@ -1,4 +1,3 @@
-check-operand-count-is-two
 check-operand-two-is-phrase-name
 specify-operand-one-is-file-name-for-reading
 open-file-for-reading

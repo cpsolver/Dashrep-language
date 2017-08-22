@@ -1,4 +1,3 @@
-check-operand-count-is-three
 check-operand-two-is-phrase-not-empty
 check-operand-three-is-phrase-name
 specify-operand-one-is-file-name-for-reading

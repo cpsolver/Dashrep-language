@@ -1,3 +1,2 @@
-check-operand-count-is-one
 check-user-has-permission-administrator
 check-operand-one-is-phrase-name

@@ -1,2 +1,1 @@
-check-operand-count-is-one
 check-operand-one-is-real-number

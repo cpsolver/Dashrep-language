@@ -1,1 +1,0 @@
-if ( number-of-operands code-not-equals
