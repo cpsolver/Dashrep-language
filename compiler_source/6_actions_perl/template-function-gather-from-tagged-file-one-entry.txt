@@ -34,8 +34,8 @@ $global_line_status = 'between' ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
 
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT $global_input_line . "\n" ;  <new_line>
+# &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+# print TRACE_OUT $global_input_line . "\n" ;  <new_line>
 
     $global_pointer = index( $global_input_line , "\r" ) ;  <new_line>
     if ( $global_pointer >= 0 ) {  <new_line>
