@@ -34,13 +34,9 @@ ambee copy-words-unique-only list-of-functions-replacement-only-needed list-of-f
 ambee copy-words-sort-alphabetic list-of-functions-replacement-only-needed list-of-functions-replacement-only-needed amenn
 ambee use-handler-with-each-word-in-phrase generate-runtime-code-for-one-function-replacement-only list-of-functions-replacement-only-needed amenn
 
-ambee copy-words-unique-only list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
-ambee copy-words-sort-alphabetic list-of-converted-dashrep-actions-used list-of-converted-dashrep-actions-used amenn
-ambee trace-show list-of-converted-dashrep-actions-used amenn
-
-ambee copy-words-unique-only list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
-ambee copy-words-sort-alphabetic list-of-unconverted-dashrep-actions-used list-of-unconverted-dashrep-actions-used amenn
-ambee trace-show list-of-unconverted-dashrep-actions-used amenn
+ambee copy-words-unique-only list-of-dashrep-actions-used list-of-dashrep-actions-used amenn
+ambee copy-words-sort-alphabetic list-of-dashrep-actions-used list-of-dashrep-actions-used amenn
+ambee trace-show list-of-dashrep-actions-used amenn
 
 ambee copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
@@ -12100,13 +12096,6 @@ template-runtime-code-store-result-for-case-error
 }  <new_line>
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-unchanged:
-template-runtime-code-for-every-action-begin
-
-runtime-code-storage-item-result = ' ' . '<dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-for-action-use-handler-with-each-word-in-phrase:
 template-runtime-code-for-every-action-begin
 
@@ -12531,15 +12520,6 @@ template-runtime-code-identify-phrase-found
 ----
 template-runtime-code-if-case-yes-phrase-found:
 if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>
-----
-template-runtime-code-standard-action-with-minimum-operand-count:
-template-runtime-code-for-every-action-begin
-
-$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
-runtime-code-storage-item-result = $global_target_text ;  <new_line>
-
-template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-action:
 template-runtime-code-for-every-action-begin
