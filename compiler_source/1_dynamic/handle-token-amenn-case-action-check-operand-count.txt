@@ -1,0 +1,6 @@
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee if-end amenn

@@ -1,24 +1,11 @@
 ambee get-all-operands amenn
-
-ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee copy-text digit-0 required-operand-count-for-action fenambee action-name amenn amenn
-ambee if-end amenn
-
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-used amenn
 
-
-combee ***
-
-code not yet working:
-
-ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
-
+ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee handle-token-amenn-case-action-check-operand-count amenn
 ambee if-else amenn
-ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
-ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee if-end amenn
-*** comenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
 ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
