@@ -21,3 +21,7 @@ ambee trace-show list-of-dashrep-actions-used amenn
 ambee copy-words-unique-only list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee copy-words-sort-alphabetic list-of-action-names-not-recognized list-of-action-names-not-recognized amenn
 ambee trace-show list-of-action-names-not-recognized amenn
+
+ambee copy-words-unique-only list-of-dashrep-actions-with-wrong-number-of-operands list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee copy-words-sort-alphabetic list-of-dashrep-actions-with-wrong-number-of-operands list-of-dashrep-actions-with-wrong-number-of-operands amenn
+ambee trace-show list-of-dashrep-actions-with-wrong-number-of-operands amenn
