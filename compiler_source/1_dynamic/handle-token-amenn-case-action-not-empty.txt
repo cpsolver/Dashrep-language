@@ -8,21 +8,12 @@ ambee clear-phrase runtime-code-for-parameter-phrase amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
-<<<<<<< HEAD
-=======
 ambee if-end amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fenambee action-name amenn amenn amenn
->>>>>>> debug_2
 ambee copy-text operand-checks-for-action fenambee action-name amenn needed-operand-checks amenn
 ambee if-else amenn
 ambee clear-phrase needed-operand-checks amenn
-ambee if-end amenn
-
-ambee copy-words-found-in-both-lists action-name list-of-not-really-action-names possible-not-really-action-name amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase possible-not-really-action-name amenn amenn
-ambee put-into-phrase yes-or-no-action-recognized  no  amenn
 ambee if-end amenn
 
 ambee copy-words-found-in-both-lists action-name list-of-not-really-action-names possible-not-really-action-name amenn
