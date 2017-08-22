@@ -4,13 +4,31 @@ ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-actio
 ambee copy-text digit-0 required-operand-count-for-action fenambee action-name amenn amenn
 ambee if-end amenn
 
+<<<<<<< HEAD
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions required-operand-count-for-action fenambee action-name amenn number-of-operands amenn amenn
 ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-used amenn
+=======
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+
+
+combee ***
+
+code not yet working:
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
+
+>>>>>>> debug_2
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
 ambee if-end amenn
+<<<<<<< HEAD
+=======
+*** comenn
+
+>>>>>>> debug_2
 
 ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
 ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
