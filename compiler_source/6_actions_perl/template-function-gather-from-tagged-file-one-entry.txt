@@ -59,7 +59,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
         $global_first_word = $1 ;  <new_line>
         $global_second_word = $2 ;  <new_line>
 
-print TRACE_OUT $global_first_word . "\n" ;  <new_line>
+# print TRACE_OUT $global_first_word . "\n" ;  <new_line>
 
         if ( $global_first_word eq $global_entry_unique ) {  <new_line>
             if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
