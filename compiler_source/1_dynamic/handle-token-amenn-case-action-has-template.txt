@@ -5,7 +5,7 @@ ambee copy-text digit-0 required-operand-count-for-action fenambee action-name a
 ambee if-end amenn
 
 ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee append-text action-name list-of-converted-dashrep-actions-used amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
 
 
 combee ***
