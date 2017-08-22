@@ -10,7 +10,6 @@ ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee if-end amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks-for-action fenambee action-name amenn amenn amenn
-ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee copy-text operand-checks-for-action fenambee action-name amenn needed-operand-checks amenn
 ambee if-end amenn
 
