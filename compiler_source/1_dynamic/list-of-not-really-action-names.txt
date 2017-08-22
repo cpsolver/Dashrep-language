@@ -1,0 +1,6 @@
+recognized
+not-recognized
+executable-phrase-begin
+executable-phrase-end
+executable-phrase-without-fen
+unchanged
