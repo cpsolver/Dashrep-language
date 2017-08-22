@@ -571,28 +571,23 @@ ambee copy-from-phrase-append-to-file runtime-code-for-parameter-result-storage 
 ambee clear-phrase action-name-at-storage-position fenambee current-result-storage-position amenn amenn
 ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
-handle-token-amenn-case-action-has-template:
-ambee get-all-operands amenn
-
-ambee if-yes-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee copy-text digit-0 required-operand-count-for-action fenambee action-name amenn amenn
-ambee if-end amenn
-
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee append-text action-name list-of-dashrep-actions-used amenn
-
-
-combee ***
-
-code not yet working:
-
+handle-token-amenn-case-action-check-operand-count:
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
-
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
 ambee if-end amenn
-*** comenn
+----
+handle-token-amenn-case-action-has-template:
+ambee get-all-operands amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee handle-token-amenn-case-action-check-operand-count amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
 ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
@@ -6093,8 +6088,8 @@ $global_line_status = 'between' ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
 
-&function__open_trace_output_file_if_not_open( ) ;  <new_line>
-print TRACE_OUT $global_input_line . "\n" ;  <new_line>
+# &function__open_trace_output_file_if_not_open( ) ;  <new_line>
+# print TRACE_OUT $global_input_line . "\n" ;  <new_line>
 
     $global_pointer = index( $global_input_line , "\r" ) ;  <new_line>
     if ( $global_pointer >= 0 ) {  <new_line>
@@ -6118,7 +6113,7 @@ print TRACE_OUT $global_input_line . "\n" ;  <new_line>
         $global_first_word = $1 ;  <new_line>
         $global_second_word = $2 ;  <new_line>
 
-print TRACE_OUT $global_first_word . "\n" ;  <new_line>
+# print TRACE_OUT $global_first_word . "\n" ;  <new_line>
 
         if ( $global_first_word eq $global_entry_unique ) {  <new_line>
             if ( $global_second_word eq $global_entry_matching_id ) {  <new_line>
