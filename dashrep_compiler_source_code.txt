@@ -691,12 +691,8 @@ ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parame
 handle-token-amenn-case-expand-text:
 ambee numeric-increment current-accumulator-pointer amenn
 ambee get-all-operands amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee if-else amenn
-ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
-ambee if-end amenn
+ambee append-text action-name list-of-dashrep-actions-used amenn
+ambee expand-text template-runtime-code-for-action-expand-text runtime-code-for-parameter-phrase amenn
 ----
 handle-token-amenn-case-if-else:
 ambee start-branching-if-not-started amenn
@@ -717,15 +713,6 @@ handle-token-amenn-case-if-yes-begin:
 ambee terminate-branching-if-not-terminated amenn
 ambee handle-token-amenn-case-action-has-template amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
-----
-handle-token-amenn-case-standard-action:
-ambee get-all-operands amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee if-else amenn
-ambee expand-text template-runtime-code-standard-action runtime-code-for-parameter-phrase amenn
-ambee if-end amenn
 ----
 handle-token-amenn-case-use-handler-with-each-word-in-phrase:
 ambee create-new-text-storage-position amenn
@@ -12405,34 +12392,6 @@ template-runtime-code-identify-phrase-found
 ----
 template-runtime-code-if-case-yes-phrase-found:
 if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>
-----
-template-runtime-code-standard-action:
-template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
-
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
-
-template-runtime-code-for-every-action-end
 ----
 template-runtime-code-store-result-for-case-error:
 runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
