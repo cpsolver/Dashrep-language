@@ -1,4 +1,3 @@
-ambee clear-phrase needed-operand-checks amenn
 ambee append-text string-amenn definition-for-phrase-being-defined amenn
 ambee copy-text current-result-storage-position storage-item-pointer amenn
 ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn
