@@ -478,7 +478,12 @@ ambee append-text unique-phrase-number-for-phrase-name fenambee phrase-being-def
 
 ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
 ambee append-text code-compiled-function-part-3 runtime-code-compiled-function amenn
+
+ambee append-text string-placeholder-list-of-tokens-can-go-here runtime-code-compiled-function amenn
+combee ****
 ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn
+**** comenn
+
 ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn
 ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 
@@ -595,7 +600,6 @@ ambee append-text requested-template-function list-of-template-functions-for-req
 ambee if-end amenn
 ----
 handle-token-amenn-case-action-not-empty:
-ambee clear-phrase needed-operand-checks amenn
 ambee append-text string-amenn definition-for-phrase-being-defined amenn
 ambee copy-text current-result-storage-position storage-item-pointer amenn
 ambee expand-text template-runtime-code-storage-item-with-pointer runtime-code-storage-item-result amenn
@@ -1622,6 +1626,9 @@ outside
 ----
 string-phrase:
 phrase
+----
+string-placeholder-list-of-tokens-can-go-here:
+list_of_tokens_can_go_here
 ----
 string-placeholder-prefix:
 <dashrep_placeholder_
@@ -3741,9 +3748,6 @@ operand-checks-for-action-delete-file:
 check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-file-name
 ----
-operand-checks-for-action-delete-listed-phrases:
-no-operand-checks-needed
-----
 operand-checks-for-action-encode-as-cgi-parameter:
 check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
@@ -3829,9 +3833,6 @@ check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 check-operand-three-is-phrase-name
 ----
-operand-checks-for-action-get-cgi-information:
-no-operand-checks-needed
-----
 operand-checks-for-action-get-characters-from-position-to-position:
 check-operand-one-is-phrase-name
 check-operand-two-is-positive-integer
@@ -3842,9 +3843,6 @@ check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-get-count-of-words:
 check-operand-one-is-phrase-name
-----
-operand-checks-for-action-get-current-time-in-epoch-seconds:
-no-operand-checks-needed
 ----
 operand-checks-for-action-get-definitions-from-file:
 specify-operand-one-is-file-name-for-reading
@@ -12357,8 +12355,10 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-every-action-begin:
+combee ****
 # $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
 # print $global_action_debug_line . "\n" ;  <new_line>
+**** comenn
 
 combee ****
 # <new_line>
