@@ -32,7 +32,12 @@ ambee append-text unique-phrase-number-for-phrase-name fenambee phrase-being-def
 
 ambee copy-and-replace code-compiled-function-part-3 code-compiled-function-part-3 string-placeholder-phrase-being-defined phrase-being-defined amenn
 ambee append-text code-compiled-function-part-3 runtime-code-compiled-function amenn
+
+ambee append-text string-placeholder-list-of-tokens-can-go-here runtime-code-compiled-function amenn
+combee ****
 ambee append-text list-of-tokens-in-current-definition runtime-code-compiled-function amenn
+**** comenn
+
 ambee append-text-no-space code-compiled-function-part-4 runtime-code-compiled-function amenn
 ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filename-output-results-all-compiled-functions amenn amenn
 
