@@ -1,1 +1,0 @@
-no-operand-checks-needed
