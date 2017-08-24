@@ -1,4 +1,3 @@
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-phrase-not-empty
 specify-operand-two-is-filename-for-writing-new-file
 open-file-for-writing-new-file
