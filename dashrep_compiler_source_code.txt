@@ -3102,6 +3102,20 @@ my $global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_lin
 <new_line>
 <new_line>
 ----
+template-return-if-no-permission-administrator:
+if ( not( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end eq 'yes' ) ) ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_administrator ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+----
+template-return-if-no-permission-to-append-to-files:
+if ( not( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_append_to_files ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+----
 template-return-if-no-permission-to-delete-overwrite-files:
 if ( not( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
  code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) ) {  <new_line>
@@ -3455,42 +3469,6 @@ runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-nu
 check-operand-two-is-real-number:
 runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end-is-real-number
 ----
-check-user-has-permission-administrator:
-if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ) ) ) || (
- code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here administrator' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-
-# todo: debug here  <new_line>
-# $global_yes_or_no_operand_error = $global_yes ;  <new_line>
-
-$global_runtime_error_type = 'no_permission_administrator' ;  <new_line>
-}  <new_line>
-----
-check-user-has-permission-append-to-files:
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
- code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
-$global_yes_or_no = $global_yes ;  <new_line>
-} else {  <new_line>
-$global_yes_or_no = $global_no ;  <new_line>
-}  <new_line>
-
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'no_permission_append' ;  <new_line>
-}  <new_line>
-----
-check-user-has-permission-delete-or-overwrite-files:
-if ( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
- code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) {  <new_line>
-$global_yes_or_no = $global_yes ;  <new_line>
-} else {  <new_line>
-$global_yes_or_no = $global_no ;  <new_line>
-}  <new_line>
-
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'no_permission_delete_overwrite' ;  <new_line>
-}  <new_line>
-----
 list-of-template-functions:
 template-function-dashrep-expand-phrases
 template-function-handle-endless-loop-encountered
@@ -3605,7 +3583,6 @@ check-operand-three-is-phrase-name
 check-operand-four-is-phrase-name
 ----
 operand-checks-for-action-copy-append-file-to-file:
-check-user-has-permission-append-to-files
 specify-operand-two-is-file-name-for-appending
 open-file-for-appending
 specify-operand-one-is-file-name-for-reading
@@ -3638,7 +3615,6 @@ specify-operand-one-is-file-name-for-reading
 open-file-for-reading
 ----
 operand-checks-for-action-copy-from-phrase-append-to-file:
-check-user-has-permission-append-to-files
 check-operand-one-is-phrase-name
 specify-operand-two-is-file-name-for-appending
 open-file-for-appending
@@ -3744,15 +3720,11 @@ check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 check-operand-three-is-positive-integer
 ----
-operand-checks-for-action-create-empty-sub-folder:
-check-user-has-permission-delete-or-overwrite-files
-----
 operand-checks-for-action-decode-from-cgi-parameter:
 check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-delete-file:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-file-name
 ----
 operand-checks-for-action-encode-as-cgi-parameter:
@@ -3812,7 +3784,6 @@ check-operand-three-is-phrase-name
 check-operand-four-is-phrase-name
 ----
 operand-checks-for-action-generate-list-of-all-dashrep-phrases:
-check-user-has-permission-administrator
 check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-generate-list-of-files-in-current-read-directory:
@@ -3976,20 +3947,16 @@ operand-checks-for-action-put-into-phrase:
 check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-rename-file:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-input-file-exists
 check-operand-one-is-file-name
 ----
 operand-checks-for-action-set-file-permission-private-but-executable:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-file-name
 ----
 operand-checks-for-action-set-file-permission-private:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-file-name
 ----
 operand-checks-for-action-set-file-permission-public-read:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-file-name
 ----
 operand-checks-for-action-size-of-file:
@@ -4009,7 +3976,6 @@ check-operand-one-is-phrase-not-empty
 check-operand-two-is-phrase-name
 ----
 operand-checks-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
-check-user-has-permission-delete-or-overwrite-files
 check-operand-one-is-phrase-not-empty
 specify-operand-two-is-filename-for-writing-new-file
 open-file-for-writing-new-file
@@ -4758,6 +4724,8 @@ template-function-copy-append-file-to-file:
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 
+template-return-if-no-permission-to-append-to-files
+
 $global_action_result = '' ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
@@ -4955,6 +4923,8 @@ template-function-copy-from-phrase-append-to-file:
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_from_phrase_append_to_file( ) {  <new_line>
+
+template-return-if-no-permission-to-append-to-files
 
 $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
@@ -6835,10 +6805,7 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
-if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__case_no_permission_to_write_files' ;  <new_line>
-return '' ;  <new_line>
-}  <new_line>
+template-return-if-no-permission-to-delete-overwrite-files
 
 if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . $global_operand_one . ' ' ;  <new_line>
