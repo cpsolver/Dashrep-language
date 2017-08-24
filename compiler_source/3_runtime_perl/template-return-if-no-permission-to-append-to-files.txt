@@ -1,0 +1,5 @@
+if ( not( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
+ code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here append hyphen-here to hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_append_to_files ' ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>

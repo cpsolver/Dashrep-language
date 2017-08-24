@@ -2,6 +2,8 @@
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 
+template-return-if-no-permission-to-append-to-files
+
 $global_action_result = '' ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
