@@ -2,10 +2,7 @@
 
 sub function__set_file_permission_private_but_executable( ) {  <new_line>
 
-if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_no_permission_to_write_files' ;  <new_line>
-return '' ;  <new_line>
-}  <new_line>
+template-return-if-no-permission-to-delete-overwrite-files
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_invalid_file_name ' . $global_operand_one ;  <new_line>

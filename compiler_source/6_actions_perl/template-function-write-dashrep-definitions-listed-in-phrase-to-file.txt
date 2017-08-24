@@ -2,6 +2,8 @@
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
 
+template-return-if-no-permission-to-delete-overwrite-files
+
 $global_action_result = '' ;  <new_line>
 @global_list_of_phrases = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
 if ( exists( $global_dashrep_replacement{ 'export hyphen-here defs hyphen-here all hyphen-here begin' } ) ) {  <new_line>
