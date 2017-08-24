@@ -1,2 +1,1 @@
-check-user-has-permission-administrator
 check-operand-one-is-phrase-name

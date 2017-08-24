@@ -22,10 +22,7 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
-if ( ( not( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) ) || ( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ne 'yes' ) ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__case_no_permission_to_write_files' ;  <new_line>
-return '' ;  <new_line>
-}  <new_line>
+template-return-if-no-permission-to-delete-overwrite-files
 
 if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . $global_operand_one . ' ' ;  <new_line>
