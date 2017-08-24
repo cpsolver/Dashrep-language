@@ -10289,22 +10289,10 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-delete-listed-phrases:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__delete_listed_phrases( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-encode-as-cgi-parameter:
@@ -10814,20 +10802,8 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-cgi-information:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-
 &function__get_cgi_information( ) ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-characters-from-position-to-position:
@@ -10903,20 +10879,8 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-current-time-in-epoch-seconds:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-
 runtime-code-storage-item-result = sprintf( "%d" , time ) ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-definitions-from-file:
