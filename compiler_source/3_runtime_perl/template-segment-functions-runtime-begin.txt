@@ -2,13 +2,6 @@
 #  Execute starting/main function  <new_line>
 <new_line>
 
-
-# todo: special initialization to fix bug somewhere earlier in code:  <new_line>
-# $global_dashrep_replacement{ 'four hyphen-here hyphens' } = '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' ;  <new_line>
-
-
-<new_line>
-
 if ( ( exists( $global_dashrep_replacement{ 'yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage' } ) ) && ( $global_dashrep_replacement{ 'yes<character_hyphen>or<character_hyphen>no<character_hyphen>count<character_hyphen>phrase<character_hyphen>usage' } eq 'yes' ) ) {  <new_line>
 $global_yes_or_no_count_phrase_usage = $global_yes ;  <new_line>
 } else {  <new_line>
