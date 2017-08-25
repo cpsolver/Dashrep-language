@@ -5,3 +5,7 @@ ambee copy-and-replace source-code-as-words source-code-as-words string-placehol
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn
 ambee if-end amenn
+
+combee **** do twice in case overlapping cases **** comenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-nospay-space-nospay-space string-space-nospay-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-nospay-space-nospay-space string-space-nospay-space amenn

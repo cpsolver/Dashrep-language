@@ -67,3 +67,11 @@ ambee prepend-text-no-space character-space string-space-amenn-fen-ambee-space a
 ambee append-text string-fen string-space-amenn-fen-ambee-space amenn
 ambee append-text string-ambee string-space-amenn-fen-ambee-space amenn
 ambee append-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
+
+ambee copy-text string-space-nospay-space string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space string-nospay string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space-nospay-space amenn
