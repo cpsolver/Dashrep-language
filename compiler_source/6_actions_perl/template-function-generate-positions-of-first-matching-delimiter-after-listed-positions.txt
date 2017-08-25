@@ -2,6 +2,26 @@
 
 sub function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) {  <new_line>
 
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 $global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
