@@ -1,0 +1,7 @@
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase first-word amenn amenn
+ambee append-text first-word list-of-first-words-in-file amenn
+ambee if-end amenn
+
+ambee append-text linewise-input-line-count list-of-file-line-numbers amenn
