@@ -3,16 +3,28 @@
 sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
 
-# todo: in operand checks, verify no recursive loop  <new_line>
+if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_source_file_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $global_target_phrase_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_target_phrase_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_target_phrase_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
 
 $global_line_count = 1 ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = $global_input_line ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $global_line_count ;  <new_line>
-    &global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
+    $global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
     &function_branch_based_on_phrase_name( );  <new_line>
     $global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
     $global_line_count ++ ;  <new_line>
