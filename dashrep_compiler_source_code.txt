@@ -150,6 +150,10 @@ ambee copy-and-replace source-code-as-words source-code-as-words string-placehol
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-no-space-one-space-space string-placeholder-for-space-one-space-space amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-for-space-one-space-space string-space-one-space-space amenn
 ambee if-end amenn
+
+combee **** do twice in case overlapping cases **** comenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-nospay-space-nospay-space string-space-nospay-space amenn
+ambee copy-and-replace source-code-as-words source-code-as-words string-space-nospay-space-nospay-space string-space-nospay-space amenn
 ----
 convert-source-handle-nospay-insertions:
 ambee copy-text word-to-use-in-handler current-symbol amenn
@@ -1136,6 +1140,14 @@ ambee prepend-text-no-space character-space string-space-amenn-fen-ambee-space a
 ambee append-text string-fen string-space-amenn-fen-ambee-space amenn
 ambee append-text string-ambee string-space-amenn-fen-ambee-space amenn
 ambee append-text-no-space character-space string-space-amenn-fen-ambee-space amenn
+
+ambee copy-text string-nospay string-space-nospay-space amenn
+ambee prepend-text-no-space character-space string-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space amenn
+
+ambee copy-text string-space-nospay-space string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space string-nospay string-space-nospay-space-nospay-space amenn
+ambee append-text-no-space character-space string-space-nospay-space-nospay-space amenn
 ----
 define-special-strings-that-cannot-be-spelled-in-full:
 ambee copy-text character-f string-fen amenn
@@ -3574,6 +3586,7 @@ check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 check-operand-three-is-phrase-name
 check-operand-four-is-phrase-name
+no-operand-checks-needed
 ----
 operand-checks-for-action-copy-append-file-to-file:
 specify-operand-two-is-file-name-for-appending
@@ -3775,6 +3788,7 @@ check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 check-operand-three-is-phrase-name
 check-operand-four-is-phrase-name
+no-operand-checks-needed
 ----
 operand-checks-for-action-generate-list-of-all-dashrep-phrases:
 check-operand-one-is-phrase-name
@@ -3798,6 +3812,7 @@ check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
 check-operand-three-is-phrase-name
 check-operand-four-is-phrase-name
+no-operand-checks-needed
 ----
 operand-checks-for-action-generate-positions-of-listed-words:
 check-operand-one-is-phrase-name
@@ -3836,11 +3851,6 @@ check-operand-one-is-phrase-name
 ----
 operand-checks-for-action-insert-codeview-tags:
 check-operand-one-is-phrase-name
-----
-operand-checks-for-action-linewise-read-from-file-and-use-handler:
-check-operand-two-is-phrase-not-empty
-specify-operand-one-is-file-name-for-reading
-open-file-for-reading
 ----
 operand-checks-for-action-modification-time-of-file:
 check-operand-one-is-file-name
@@ -4677,8 +4687,28 @@ $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
 
+if ( &function_parameterized__yes_or_no_phrase_name( $global_source_phrase_name ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_and_replace__case_not_phrase_name ' . $global_source_phrase_name . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>
     $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_target_phrase_name ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_and_replace__case_not_phrase_name ' . $global_target_phrase_name . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_and_replace__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__copy_and_replace__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 
 $global_string_to_be_replaced = $global_dashrep_replacement{ $global_operand_three } ;  <new_line>
@@ -6174,6 +6204,26 @@ template-function-generate-every-pairwise-combination-of-words:
 
 sub function__generate_every_pairwise_combination_of_words( ) {  <new_line>
 
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 $global_action_result = '' ;  <new_line>
 $global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
 $global_input_list_two_phrase_name = $global_operand_two ;  <new_line>
@@ -6389,6 +6439,26 @@ template-function-generate-positions-of-first-matching-delimiter-after-listed-po
 # no-space dashes-long-line  <new_line>
 
 sub function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) {  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
 
 $global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -6944,16 +7014,28 @@ template-function-linewise-read-from-file-and-use-handler:
 sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
 
-# todo: in operand checks, verify no recursive loop  <new_line>
+if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_source_file_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $global_target_phrase_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_target_phrase_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_target_phrase_name ;  <new_line>
+return '' ;  <new_line>
+}  <new_line>
 
 $global_line_count = 1 ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = $global_input_line ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $global_line_count ;  <new_line>
-    &global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
+    $global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
     &function_branch_based_on_phrase_name( );  <new_line>
     $global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
     $global_line_count ++ ;  <new_line>
@@ -7845,15 +7927,17 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-$global_action_result = 'trace_diagnostic__parameterized_open_file_for_reading__case_begin ' . $local_file_name ;  <new_line>
+
+# todo: avoid recursive loop; track when open file and don't allow open file if another is already open  <new_line>
+
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
-$global_runtime_error_type = 'file_name_for_reading_invalid' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_file_name_for_reading_invalid ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
-$global_runtime_error_type = 'path_for_reading_invalid' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_path_for_reading_invalid ' . $local_file_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
 
@@ -7864,6 +7948,8 @@ return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path ;  <new_line>
+
+combee ****
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin 'dashrep hyphen-here file hyphen-here name hyphen-here if hyphen-here read hyphen-here file hyphen-here missing' code-get-or-put-phrase-definition-end ;  <new_line>
 
@@ -7893,6 +7979,8 @@ return $global_yes ;  <new_line>
 $global_source_file_full_path = '' ;  <new_line>
 close( INFILE ) ;  <new_line>
 return $global_no ;  <new_line>
+
+**** comenn
 
 template-function-segment-ending
 ----
@@ -11038,25 +11126,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-linewise-read-from-file-and-use-handler:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
-runtime-code-check-operand-initialize
-
-needed-operand-checks
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_target_phrase_name = runtime-code-for-operand-number-two ;  <new_line>
 &function__linewise_read_from_file_and_use_handler( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-modification-time-of-file:
