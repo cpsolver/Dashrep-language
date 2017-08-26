@@ -150,8 +150,14 @@ one three five seven twelve
 correct-value-for-list-of-counter-increment-decrement-values:
 1 0 -1 0 
 ----
+correct-value-for-list-of-file-line-numbers:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+----
 correct-value-for-list-of-first-items-in-two-dimensions:
 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 
+----
+correct-value-for-list-of-first-words-in-file:
+entry_begin uniqueid datetime title description entry_end  entry_begin uniqueid datetime title description entry_end  dolphin octopus whale otter  dolphin dolphin dolphin dolphin octopus octopus whale
 ----
 correct-value-for-list-of-gathered-ids:
 102 101 
@@ -585,6 +591,15 @@ ambee copy-words-from-position-to-position current-specification-name-and-value 
 ambee copy-words-from-position-to-position current-specification-name-and-value current-specification-value 2 9999 amenn
 ambee copy-text current-specification-value specification-value-for-name fenambee current-specification-name amenn amenn
 ambee copy-text pointer-to-next-asterisk pointer-to-previous-asterisk amenn
+----
+handle-linewise-read-from-file:
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase first-word amenn amenn
+ambee append-text first-word list-of-first-words-in-file amenn
+ambee if-end amenn
+
+ambee append-text linewise-input-line-count list-of-file-line-numbers amenn
 ----
 handle-one-check-for-correct-value:
 ambee copy-text word-to-use-in-handler phrase-name amenn
@@ -1035,16 +1050,16 @@ ambee copy-from-columns-in-file-to-column-lists ambee input-filename-containing-
 
 ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output.txt amenn
 
+ambee linewise-read-from-file-and-use-handler ambee input-filename-containing-data-to-test-gather-find-actions amenn handle-linewise-read-from-file amenn
+
+
 ambee rename-file amenn
 ambee create-empty-sub-folder amenn
 ambee write-gathered-listed-items-to-end-of-file amenn
 ambee set-file-permission-public-read amenn
-ambee linewise-read-from-file-and-use-handler amenn
 
 combee
 
-linewise-input-line-from-file
-linewise-input-line-count
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 
