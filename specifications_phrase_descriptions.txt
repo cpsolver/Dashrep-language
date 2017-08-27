@@ -954,7 +954,7 @@ This action supplies either b-i-b zero b-i-e or b-i-b one b-i-e or b-i-b multipl
 -----
 
 description-for-phrase-length-of-text-in-phrase:
-Counts the number of characters in the definition of the named phrase. s-n It is useful for adding leading zeros to integer numbers, and handling monospace fonts.
+Counts the number of characters in the definition of the named phrase, and supplied that length. s-n It is useful for character manipulations, and adding leading zeros to integer numbers, and managing formatting when using monospace fonts.
 -----
 
 description-for-phrase-yes-if-all-yes:
