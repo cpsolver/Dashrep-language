@@ -5,7 +5,7 @@ sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
 $global_action_result = '' ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_source_file_name ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_file_name_invalid ' . $global_source_file_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
