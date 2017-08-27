@@ -1,0 +1,7 @@
+ambee trace-show-where amenn
+
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-from amenn amenn
+ambee append-text-no-space linewise-input-line-from-file operand-checks-for-action fenambee action-name-from amenn amenn
+ambee append-new-line operand-checks-for-action fenambee action-name-from amenn amenn
+ambee if-end amenn

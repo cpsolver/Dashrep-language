@@ -65,3 +65,6 @@ comenn
 
 ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
+
+ambee grep-compiler-source-code amenn
+ambee trace-show revised-compiler-source-code amenn

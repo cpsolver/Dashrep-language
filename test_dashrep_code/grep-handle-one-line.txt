@@ -1,0 +1,13 @@
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+
+
+ambee trace-show linewise-input-line-from-file amenn
+
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-start-of-next-file-bracketed amenn amenn
+ambee grep-at-file-name amenn
+ambee if-else amenn
+ambee grep-not-at-file-name amenn
+ambee if-end amenn
