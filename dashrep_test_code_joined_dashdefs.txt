@@ -23,6 +23,9 @@ ambee list-of-numbers amenn
 character-asterisk:
 *
 ----
+character-backslash:
+\
+----
 character-close-angle-bracket:
 >
 ----
@@ -157,7 +160,7 @@ correct-value-for-list-of-first-items-in-two-dimensions:
 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 
 ----
 correct-value-for-list-of-first-words-in-file:
-entry_begin uniqueid datetime title description entry_end  entry_begin uniqueid datetime title description entry_end  dolphin octopus whale otter  dolphin dolphin dolphin dolphin octopus octopus whale
+entry_begin uniqueid datetime title description entry_end entry_begin uniqueid datetime title description entry_end dolphin octopus whale otter  dolphin dolphin dolphin dolphin octopus octopus whale
 ----
 correct-value-for-list-of-gathered-ids:
 102 101 
@@ -572,6 +575,64 @@ tag-begin h1 tag-end no-space
 format-end-heading-level-1:
 no-space  tag-begin /h1 tag-end
 ----
+grep-at-file-name:
+ambee trace-show-where amenn
+
+
+ambee clear-phrase action-name-from amenn
+ambee clear-phrase action-name-to amenn
+
+ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
+ambee copy-word-at-position list-of-backslash-character-positions last-backslash-position 9999 amenn
+ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
+ambee copy-and-replace file-name file-name-split character-hyphen character-space amenn
+ambee copy-word-at-position file-name-split file-name-root 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
+ambee put-into-phrase prefix-length-plus one ambee numeric-add 1 ambee length-of-text-in-phrase string-operand-checks-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-from ambee prefix-length-plus amenn 9999 amenn
+ambee if-else amenn
+ambee clear-phrase action-name-from amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
+ambee put-into-phrase prefix-length-plus one ambee numeric-add 1 ambee length-of-text-in-phrase string-template-function amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-to ambee prefix-length-plus amenn 9999 amenn
+ambee append-text-no-space operand-checks-for-action fenambee action-name-from amenn revised-compiler-source-code amenn
+ambee if-else amenn
+ambee clear-phrase action-name-to amenn
+ambee if-end amenn
+
+ambee trace-show action-name-from amenn
+ambee trace-show action-name-to amenn
+----
+grep-compiler-source-code:
+ambee linewise-read-from-file-and-use-handler copy_of_dashrep_compiler_source_code.txt grep-handle-one-line amenn
+----
+grep-handle-one-line:
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+
+
+ambee trace-show linewise-input-line-from-file amenn
+
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-start-of-next-file-bracketed amenn amenn
+ambee grep-at-file-name amenn
+ambee if-else amenn
+ambee grep-not-at-file-name amenn
+ambee if-end amenn
+----
+grep-not-at-file-name:
+ambee trace-show-where amenn
+
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-from amenn amenn
+ambee append-text-no-space operand-checks-for-action fenambee action-name-from amenn revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+----
 handle-display-input-phrase-name-and-definition:
 ambee copy-text word-to-use-in-handler input-phrase-name amenn
 ambee copy-text html-list-item-begin display-one-input-phrase-with-value amenn
@@ -900,11 +961,20 @@ OK:
 string-one:
 one
 ----
+string-operand-checks-for-action:
+operand-checks-for-action-
+----
 string-seven:
 seven
 ----
 string-six:
 six
+----
+string-start-of-next-file-bracketed:
+<START_OF_NEXT_FILE>
+----
+string-template-function:
+template-function-
 ----
 string-ten:
 ten
@@ -1067,6 +1137,9 @@ comenn
 
 ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
+
+ambee grep-compiler-source-code amenn
+ambee trace-show revised-compiler-source-code amenn
 ----
 test-get-specifications-from-phrase:
 ambee copy-without-extra-spaces sample-specifications-in-phrase sample-specifications-in-phrase amenn
