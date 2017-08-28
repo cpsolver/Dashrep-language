@@ -1,4 +1,4 @@
-ambee trace-show-where amenn
+ambee trace-show linewise-input-line-from-file amenn
 
 
 ambee clear-phrase action-name-from amenn
@@ -10,16 +10,26 @@ ambee copy-characters-from-position-to-position linewise-input-line-from-file fi
 ambee copy-and-replace file-name file-name-split character-hyphen character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
 
+
+ambee put-into-phrase position-pointer ambee numeric-equal-greater-less-compare  ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn   amenn
+ambee trace-show position-pointer amenn
+
+
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
-ambee put-into-phrase prefix-length-plus one ambee numeric-add 1 ambee length-of-text-in-phrase string-operand-checks-for-action amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name-from ambee prefix-length-plus amenn 9999 amenn
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee length-of-text-in-phrase string-operand-checks-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-from ambee prefix-length-plus-one amenn 9999 amenn
 ambee if-else amenn
 ambee clear-phrase action-name-from amenn
 ambee if-end amenn
 
+
+ambee put-into-phrase position-pointer  ambee get-position-of-matching-text string-template-function file-name-root file-name-root amenn 1 amenn   amenn
+ambee trace-show position-pointer amenn
+
+
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
-ambee put-into-phrase prefix-length-plus one ambee numeric-add 1 ambee length-of-text-in-phrase string-template-function amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name-to ambee prefix-length-plus amenn 9999 amenn
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee length-of-text-in-phrase string-template-function amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-to ambee prefix-length-plus-one amenn 9999 amenn
 ambee append-text-no-space operand-checks-for-action fenambee action-name-from amenn revised-compiler-source-code amenn
 ambee if-else amenn
 ambee clear-phrase action-name-to amenn
