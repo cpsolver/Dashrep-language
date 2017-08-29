@@ -1,0 +1,2 @@
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-operand-checks-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-for-getting-operand-checks ambee prefix-length-plus-one amenn 9999 amenn
