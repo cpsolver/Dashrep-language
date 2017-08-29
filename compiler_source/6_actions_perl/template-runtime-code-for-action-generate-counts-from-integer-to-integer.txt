@@ -9,9 +9,9 @@ needed-operand-checks
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 
-$global_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__generate_counts_from_integer_to_integer( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
