@@ -7,10 +7,10 @@ sub function__gather_from_tagged_file_one_entry( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
+# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+#     return '' ;  <new_line>
+# }  <new_line>
 
 $global_accumulated_matching_entry_info = '' ;  <new_line>
 $global_entry_begin = $global_dashrep_replacement{ 'dashrep hyphen-here gather hyphen-here tag hyphen-here begin' } ;  <new_line>
