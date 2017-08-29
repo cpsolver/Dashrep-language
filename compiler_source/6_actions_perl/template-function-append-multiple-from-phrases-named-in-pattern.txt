@@ -57,6 +57,4 @@ for ( $global_pointer = 0 ; $global_pointer <= $#global_list_of_parameter_words 
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending
