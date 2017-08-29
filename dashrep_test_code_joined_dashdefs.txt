@@ -576,47 +576,45 @@ format-end-heading-level-1:
 no-space  tag-begin /h1 tag-end
 ----
 grep-at-file-name:
-ambee trace-show linewise-input-line-from-file amenn
-
-
-ambee clear-phrase action-name-from amenn
-ambee clear-phrase action-name-to amenn
-
+ambee clear-phrase action-name amenn
+ambee clear-phrase action-name-for-getting-operand-checks amenn
 ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
 ambee copy-word-at-position list-of-backslash-character-positions last-backslash-position 9999 amenn
 ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
-ambee copy-and-replace file-name file-name-split character-hyphen character-space amenn
+ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
 
-
-ambee put-into-phrase position-pointer ambee numeric-equal-greater-less-compare  ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn   amenn
-ambee trace-show position-pointer amenn
-
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-template-function amenn
+ambee if-end amenn
 
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
-ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee length-of-text-in-phrase string-operand-checks-for-action amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name-from ambee prefix-length-plus-one amenn 9999 amenn
-ambee if-else amenn
-ambee clear-phrase action-name-from amenn
+ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
+ambee if-end amenn
+----
+grep-case-file-name-root-begins-with-operand-checks-for-action:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-operand-checks-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name-for-getting-operand-checks ambee prefix-length-plus-one amenn 9999 amenn
+----
+grep-case-file-name-root-begins-with-template-function:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-function amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
 ambee if-end amenn
 
-
-ambee put-into-phrase position-pointer  ambee get-position-of-matching-text string-template-function file-name-root file-name-root amenn 1 amenn   amenn
-ambee trace-show position-pointer amenn
-
-
-ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
-ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee length-of-text-in-phrase string-template-function amenn amenn amenn
-ambee copy-characters-from-position-to-position file-name-root action-name-to ambee prefix-length-plus-one amenn 9999 amenn
-ambee append-text-no-space operand-checks-for-action fenambee action-name-from amenn revised-compiler-source-code amenn
-ambee if-else amenn
-ambee clear-phrase action-name-to amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
 ambee if-end amenn
 
-ambee trace-show action-name-from amenn
-ambee trace-show action-name-to amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
+ambee append-text-no-space operand-checks revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+ambee clear-phrase action-name amenn
 ----
 grep-compiler-source-code:
+ambee put-into-phrase string-begin-operand-check  begin_operand_check  amenn
+ambee put-into-phrase string-end-operand-check  end_operand_check  amenn
 ambee linewise-read-from-file-and-use-handler copy_of_dashrep_compiler_source_code.txt grep-handle-one-line amenn
 ----
 grep-handle-one-line:
@@ -631,15 +629,13 @@ ambee grep-not-at-file-name amenn
 ambee if-end amenn
 ----
 grep-not-at-file-name:
-combee ****
-ambee trace-show-where amenn
-ambee trace-show linewise-input-line-from-file amenn
-**** comenn
-
-
-ambee if-yes-begin ambee yes-or-no-empty-phrase action-name-from amenn amenn
-ambee append-text-no-space linewise-input-line-from-file operand-checks-for-action fenambee action-name-from amenn amenn
-ambee append-new-line operand-checks-for-action fenambee action-name-from amenn amenn
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn operand-checks amenn
+ambee append-text-no-space string-begin-operand-check operand-checks amenn
+ambee append-text linewise-input-line-from-file operand-checks amenn
+ambee append-text string-end-operand-check operand-checks amenn
+ambee append-new-line operand-checks amenn
+ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
 ambee if-end amenn
 ----
 handle-display-input-phrase-name-and-definition:
