@@ -8,10 +8,10 @@ sub function__find_lines_in_file_that_begin_with_any_two_words_listed( ) {  <new
 
 $global_action_result = '' ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
+# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+#     return '' ;  <new_line>
+# }  <new_line>
 
 $global_list_of_storage_names = '' ;  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>

@@ -14,10 +14,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $g
     return '' ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
+# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+#     return '' ;  <new_line>
+# }  <new_line>
 
 if ( $global_dashrep_replacement{ $global_operand_three } =~ /[^0<character_hyphen>9\.\<character_hyphen> ]/ ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__copy_words_rearrange_using_order_sort_numeric' ;  <new_line>

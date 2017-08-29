@@ -8,10 +8,10 @@ sub function__numeric_vectors_from_delta_values_calculate_distances( ) {  <new_l
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
+# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
+#     return '' ;  <new_line>
+# }  <new_line>
 
 $global_target_operand = $global_operand_three ;  <new_line>
 if ( $global_dashrep_replacement{ $global_operand_one } !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
