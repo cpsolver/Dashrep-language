@@ -213,7 +213,6 @@ generate-phrase-usage-counts
 category_advanced
 dashrep-language-yes
 dashrep-version
-dashrep-undefined
 delayed-nospace
 delayed-newline
 dashrep-endless-loop-counter-limit
@@ -237,6 +236,7 @@ amennfenambee
 linbray
 
 category_deprecated
+dashrep-undefined
 get-definitions-from-file
 write-dashrep-definitions-listed-in-phrase-to-file
 create-empty-file
