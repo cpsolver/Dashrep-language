@@ -1480,8 +1480,6 @@ character-tab
 character-open-square-bracket
 character-close-square-bracket
 comments-ignored
-dashrep-undefined
-dashrep-delete
 dashrep-endless-loop-counter-limit
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
@@ -1490,7 +1488,6 @@ dashrep-gather-tag-unique
 dashrep-gather-tag-delete
 dashrep-path-prefix-for-file-reading
 dashrep-path-prefix-for-file-writing
-dashrep-file-name-if-read-file-missing
 dashrep-time-limit
 dashrep-version
 export-defs-all-begin
@@ -1712,14 +1709,8 @@ template-quoted-character-underscore:
 template-quoted-comments-ignored:
 ''
 ----
-template-quoted-dashrep-delete:
-'delete_id'
-----
 template-quoted-dashrep-endless-loop-counter-limit:
 '900000000'
-----
-template-quoted-dashrep-file-name-if-read-file-missing:
-'zee_dashrep_empty_file.txt'
 ----
 template-quoted-dashrep-gather-tag-begin:
 'entry_begin'
@@ -1750,9 +1741,6 @@ template-quoted-dashrep-path-prefix-for-file-writing:
 ----
 template-quoted-dashrep-time-limit:
 '1200'
-----
-template-quoted-dashrep-undefined:
-'dashrep_undefined'
 ----
 template-quoted-dashrep-version:
 '5.00'
@@ -7770,7 +7758,6 @@ $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_two ;  <new_line>
 if ( $global_dashrep_replacement{ $global_operand_one } !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
-    $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__numeric_vector_integers' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -7917,7 +7904,6 @@ $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 if ( $global_dashrep_replacement{ $global_operand_one } !~ /^[ \<character_hyphen>0<character_hyphen>9\.]+$/ ) {  <new_line>
-    $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__numeric_vectors_from_delta_values_calculate_distances' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -7992,7 +7978,6 @@ sub function__numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
 if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen>85.0 ) ) {  <new_line>
-    $global_action_result = $global_dashrep_replacement{ 'dashrep<character_hyphen>undefined' } ;  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__numeric_y_map_tile_number_based_on_latitude' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -8185,39 +8170,6 @@ return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path ;  <new_line>
-
-combee ****
-
-$global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin 'dashrep hyphen-here file hyphen-here name hyphen-here if hyphen-here read hyphen-here file hyphen-here missing' code-get-or-put-phrase-definition-end ;  <new_line>
-
-if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
-return $global_yes ;  <new_line>
-}  <new_line>
-
-if ( open ( OUTFILE_TEMP , '>' . $global_source_file_full_path  ) ) {  <new_line>
-print OUTFILE_TEMP '' ;  <new_line>
-close ( OUTFILE_TEMP ) ;  <new_line>
-
-$global_target_file_full_path_saved = $global_target_file_full_path ;
-$global_target_file_full_path = $global_source_file_full_path ;
-
-template-runtime-code-protect-target-file
-
-$global_target_file_full_path = $global_target_file_full_path_saved ;
-
-$global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing_again ' . $global_source_file_full_path ;  <new_line>
-
-if ( open ( INFILE , '<' . $global_source_file_full_path  ) ) {  <new_line>
-return $global_yes ;  <new_line>
-}  <new_line>
-
-}  <new_line>
-
-$global_source_file_full_path = '' ;  <new_line>
-close( INFILE ) ;  <new_line>
-return $global_no ;  <new_line>
-
-**** comenn
 
 template-function-segment-ending
 ----
