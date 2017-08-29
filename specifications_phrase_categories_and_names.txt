@@ -36,7 +36,7 @@ prepend-text-no-space
 get-definitions-from-phrase
 put-listed-phrase-definitions-into-phrase
 
- category_clear_delete
+category_clear_delete
 clear-phrase
 clear-listed-phrases
 delete-listed-phrases
