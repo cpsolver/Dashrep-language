@@ -10,7 +10,6 @@ character-open-square-bracket
 character-close-square-bracket
 comments-ignored
 dashrep-undefined
-dashrep-delete
 dashrep-endless-loop-counter-limit
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
