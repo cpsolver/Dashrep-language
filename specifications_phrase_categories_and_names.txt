@@ -236,6 +236,7 @@ amennfenambee
 linbray
 
 category_deprecated
+dashrep-file-name-if-read-file-missing
 dashrep-undefined
 get-definitions-from-file
 write-dashrep-definitions-listed-in-phrase-to-file
