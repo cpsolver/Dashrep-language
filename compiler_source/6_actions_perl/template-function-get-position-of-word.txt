@@ -1,11 +1,19 @@
-combee **** check-operand-one-is-phrase-name **** comenn
-combee **** check-operand-two-is-phrase-name **** comenn
-
 # no-space dashes-long-line  <new_line>
 
 sub function__get_position_of_word( ) {  <new_line>
 
 $global_action_result = ' ' ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 $global_word_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_temp_text = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_temp_text =~ s/\n/ /sg ;  <new_line>

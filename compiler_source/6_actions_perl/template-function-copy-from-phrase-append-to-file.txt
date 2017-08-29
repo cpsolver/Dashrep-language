@@ -1,4 +1,3 @@
-combee **** check-operand-one-is-phrase-name **** comenn
 combee **** specify-operand-two-is-file-name-for-appending **** comenn
 combee **** open-file-for-appending **** comenn
 
@@ -9,6 +8,12 @@ sub function__copy_from_phrase_append_to_file( ) {  <new_line>
 template-return-if-no-permission-to-append-to-files
 
 $global_action_result = '' ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "\n" ;  <new_line>
 } else {  <new_line>

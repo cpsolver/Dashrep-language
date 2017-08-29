@@ -1,4 +1,3 @@
-combee **** check-operand-two-is-phrase-name **** comenn
 combee **** specify-operand-one-is-file-name-for-reading **** comenn
 combee **** open-file-for-reading **** comenn
 
@@ -7,6 +6,12 @@ combee **** open-file-for-reading **** comenn
 sub function__copy_from_file_to_phrase( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 $global_all_lines = '' ;  <new_line>
 $global_line_ending = '' ;  <new_line>
 $global_line_number = 0 ;  <new_line>
