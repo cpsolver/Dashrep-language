@@ -1,3 +1,7 @@
+combee **** check-operand-one-is-phrase-not-empty **** comenn
+combee **** specify-operand-two-is-file-name-for-appending **** comenn
+combee **** open-file-for-appending **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__write_gathered_listed_items_to_end_of_file( ) {  <new_line>

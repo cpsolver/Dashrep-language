@@ -1,3 +1,6 @@
+combee **** specify-operand-one-is-file-name-for-reading **** comenn
+combee **** open-file-for-reading **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__get_definitions_from_file( ) {  <new_line>

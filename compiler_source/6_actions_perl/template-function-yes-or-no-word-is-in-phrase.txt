@@ -1,3 +1,6 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+combee **** check-operand-two-is-phrase-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__yes_or_no_word_is_in_phrase( ) {  <new_line>

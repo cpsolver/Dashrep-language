@@ -1,3 +1,6 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+combee **** check-operand-two-is-phrase-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>

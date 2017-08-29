@@ -1,3 +1,7 @@
+combee **** check-operand-one-is-integer **** comenn
+combee **** check-operand-two-is-integer **** comenn
+combee **** check-operand-three-is-phrase-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 # function__generate_counts_from_integer_to_integer  <new_line>
 #  <new_line>

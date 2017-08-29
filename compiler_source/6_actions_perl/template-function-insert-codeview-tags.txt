@@ -1,3 +1,5 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__insert_codeview_tags( ) {  <new_line>

@@ -1,3 +1,5 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 # function__get_count_of_words  <new_line>
 #  <new_line>

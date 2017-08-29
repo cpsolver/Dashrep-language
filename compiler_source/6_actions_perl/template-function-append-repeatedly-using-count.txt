@@ -1,3 +1,7 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+combee **** check-operand-two-is-phrase-name **** comenn
+combee **** check-operand-three-is-positive-integer **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__append_repeatedly_using_count( ) {  <new_line>

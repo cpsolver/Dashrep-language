@@ -1,3 +1,6 @@
+combee **** check-operand-one-is-phrase-name **** comenn
+combee **** check-operand-two-is-positive-integer **** comenn
+
 # no-space dashes-long-line  <new_line>
 # function__get_word_at_position  <new_line>
 #  <new_line>

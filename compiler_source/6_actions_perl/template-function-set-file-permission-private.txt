@@ -1,3 +1,5 @@
+combee **** check-operand-one-is-file-name **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__set_file_permission_private( ) {  <new_line>

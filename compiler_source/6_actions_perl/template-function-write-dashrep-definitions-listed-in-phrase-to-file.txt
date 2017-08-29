@@ -1,3 +1,7 @@
+combee **** check-operand-one-is-phrase-not-empty **** comenn
+combee **** specify-operand-two-is-filename-for-writing-new-file **** comenn
+combee **** open-file-for-writing-new-file **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
