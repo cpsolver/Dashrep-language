@@ -160,7 +160,7 @@ correct-value-for-list-of-first-items-in-two-dimensions:
 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 
 ----
 correct-value-for-list-of-first-words-in-file:
-entry_begin uniqueid datetime title description entry_end entry_begin uniqueid datetime title description entry_end dolphin octopus whale otter  dolphin dolphin dolphin dolphin octopus octopus whale
+entry_begin uniqueid datetime title description entry_end entry_end entry_begin uniqueid datetime title description entry_end entry_end dolphin octopus whale otter otter dolphin dolphin dolphin dolphin octopus octopus whale
 ----
 correct-value-for-list-of-gathered-ids:
 102 101 
