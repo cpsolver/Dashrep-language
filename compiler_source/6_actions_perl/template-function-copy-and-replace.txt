@@ -64,6 +64,4 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
     $global_dashrep_replacement{ $global_target_phrase_name } = $global_source_text ;  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

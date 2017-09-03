@@ -77,6 +77,4 @@ $global_list_of_unique_values =~ s/^ +// ;  <new_line>
 $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
 close( INFILE ) ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

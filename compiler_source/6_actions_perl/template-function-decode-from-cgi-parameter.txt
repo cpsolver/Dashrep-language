@@ -21,6 +21,4 @@ $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_accumulated_text =~ s/\+/ /sg ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

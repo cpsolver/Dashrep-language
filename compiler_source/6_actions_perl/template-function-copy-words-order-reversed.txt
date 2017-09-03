@@ -26,6 +26,4 @@ if ( $global_count > 0 ) {  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_temp_text ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

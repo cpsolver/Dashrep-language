@@ -21,6 +21,4 @@ $global_temp_text =~ s/ +$// ;  <new_line>
 $global_temp_text = join( ' ' , @global_list_of_sorted_numbers ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

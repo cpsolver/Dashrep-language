@@ -28,6 +28,4 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
 }  <new_line>
 $global_dashrep_replacement{ $global_target_operand } =~ s/ +$// ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

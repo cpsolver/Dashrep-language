@@ -26,6 +26,4 @@ while( $global_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

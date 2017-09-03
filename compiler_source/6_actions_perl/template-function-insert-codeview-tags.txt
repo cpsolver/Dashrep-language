@@ -62,6 +62,4 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_dashrep_replacement{ $global_operand_one } = $global_string_in_phrase ;  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

@@ -19,6 +19,4 @@ if ( $global_phrase_length > 0 ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

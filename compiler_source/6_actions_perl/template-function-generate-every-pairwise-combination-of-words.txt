@@ -51,6 +51,4 @@ for ( $global_counter_one = 1 ; $global_counter_one <= $global_ending_first_coun
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

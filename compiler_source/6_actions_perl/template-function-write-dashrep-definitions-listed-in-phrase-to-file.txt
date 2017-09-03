@@ -61,6 +61,4 @@ close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

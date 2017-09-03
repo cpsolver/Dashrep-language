@@ -13,6 +13,4 @@ foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_li
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

@@ -70,6 +70,4 @@ for ( $global_pointer = 1 ; $global_pointer <= $global_number_of_unique_words ; 
 $global_dashrep_replacement{ 'list<character_hyphen>of<character_hyphen>unique<character_hyphen>word<character_hyphen>counts' } = $global_text_list_of_unique_word_counts ;  <new_line>
 $global_dashrep_replacement{ 'list<character_hyphen>of<character_hyphen>pointers<character_hyphen>to<character_hyphen>unique<character_hyphen>words' } = $global_text_list_of_unique_word_pointers ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

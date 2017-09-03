@@ -34,6 +34,4 @@ if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

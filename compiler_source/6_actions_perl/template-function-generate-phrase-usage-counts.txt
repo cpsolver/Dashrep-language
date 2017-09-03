@@ -40,6 +40,4 @@ foreach $global_replacement_count_text ( reverse( sort( keys( %global_endless_lo
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_one } = $global_result_text ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

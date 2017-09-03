@@ -26,6 +26,4 @@ if ( not( chmod( $global_file_private_protection_mode , $global_target_file_full
     $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_private__case_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

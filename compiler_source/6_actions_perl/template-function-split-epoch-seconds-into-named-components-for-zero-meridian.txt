@@ -18,6 +18,4 @@ $global_dashrep_replacement{ "time<character_hyphen>year" } = sprintf( "%d" , $g
 $global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<character_hyphen>week" } = sprintf( "%d" , $global_weekday ) ;  <new_line>
 $global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<character_hyphen>year" } = sprintf( "%d" , $global_day_of_year ) ;  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

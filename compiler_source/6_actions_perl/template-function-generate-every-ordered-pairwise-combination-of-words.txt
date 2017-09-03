@@ -27,6 +27,4 @@ if ( $global_count_list > 0 ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

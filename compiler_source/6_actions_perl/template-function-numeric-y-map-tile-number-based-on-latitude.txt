@@ -31,6 +31,4 @@ if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*
     $global_action_result = $1 ;  <new_line>
 }  <new_line>
 
-$global_target_text = $global_action_result ;  <new_line>
-
 template-function-segment-ending

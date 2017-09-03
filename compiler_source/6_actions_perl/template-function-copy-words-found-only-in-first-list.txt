@@ -60,6 +60,5 @@ if ( $global_length_of_loop_list > 0 ) {  <new_line>
 $global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_destination_phrase } = $global_result_word_list ;  <new_line>
-$global_target_text = $global_action_result ;  <new_line>
 
 template-function-segment-ending
