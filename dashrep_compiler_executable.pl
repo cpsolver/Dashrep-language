@@ -5764,7 +5764,7 @@ my $storage_item__5467 = 'template-function-get-count-of-words-old-version' ;
 my $storage_item__5468 = '# no-space dashes-long-line <new_line> # function__get_count_of_words <new_line> # <new_line> sub function__get_count_of_words_old_version( ) { <new_line> &function__point_to_words( ) ; <new_line> $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . ' . "'" . "'" . ' ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5467 } = $storage_item__5468 ;
 my $storage_item__5469 = 'template-function-get-count-of-words' ;
-my $storage_item__5470 = '# no-space dashes-long-line <new_line> # function__get_count_of_words <new_line> # <new_line> sub function__get_count_of_words( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'get_count_of_words' . "'" . ' ; <new_line> &function__point_to_words( ) ; <new_line> $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . ' . "'" . "'" . ' ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__5470 = '# no-space dashes-long-line <new_line> # function__get_count_of_words <new_line> # <new_line> sub function__get_count_of_words( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'get_count_of_words' . "'" . ' ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> &function__point_to_words( ) ; <new_line> $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . ' . "'" . "'" . ' ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5469 } = $storage_item__5470 ;
 my $storage_item__5471 = 'template-function-get-definitions-from-file' ;
 my $storage_item__5472 = '# no-space dashes-long-line <new_line> sub function__get_definitions_from_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'get_definitions_from_file' . "'" . ' ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> # todo: fix this code ... <new_line> $global_source_definitions = ' . "'" . "'" . ' ; <new_line> while ( $global_input_line = <INFILE> ) { <new_line> chomp( $global_input_line ) ; <new_line> $global_input_line =~ s/[' . '\\' . 'n' . '\\' . 'r' . '\\' . 'f' . '\\' . 't]+/ /g ; <new_line> if ( ( defined( $global_input_line ) ) && ( $global_input_line =~ /[^ ]/ ) ) { <new_line> $global_source_definitions .= $global_input_line . ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> } <new_line> close( INFILE ) ; <new_line> $global_target_text = $global_action_result ; <new_line> template-function-segment-ending' ;
@@ -34025,6 +34025,7 @@ return '' ;
 #
 sub function__get_count_of_words( ) {
 $global_action_name_with_underscores = 'get_count_of_words' ;
+$global_source_text = $global_dashrep_replacement{ $global_operand_one } ;
 &function__point_to_words( ) ;
 $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . '' ) ;
 return '' ;
