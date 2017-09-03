@@ -32,13 +32,3 @@ template-function-get-word-at-position
 template-function-open-trace-output-file-if-not-open
 
 list-of-template-functions-for-requested-actions
-
-
-template-function-copy-word-at-position-old-version
-template-function-generate-counts-from-integer-to-integer-old-version
-template-function-get-count-of-words-old-version
-template-function-get-word-at-position-old-version
-template-function-numeric-add-old-version
-template-function-numeric-maximum-old-version
-template-function-numeric-minimum-old-version
-template-function-numeric-multiply-old-version
