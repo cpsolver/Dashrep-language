@@ -10440,7 +10440,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-&function__copy_word_at_position( ) ;  <new_line>
+&function__copy_word_at_position_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 } else {  <new_line>
@@ -11135,7 +11135,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 $global_action_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_action_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_action_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-&function__generate_counts_from_integer_to_integer( ) ;  <new_line>
+&function__generate_counts_from_integer_to_integer_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
 } else {  <new_line>
@@ -11470,7 +11470,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-&function__get_count_of_words( ) ;  <new_line>
+&function__get_count_of_words_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 } else {  <new_line>
@@ -11579,7 +11579,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
 $global_word_pointer_text = runtime-code-for-operand-number-two ;  <new_line>
-&function__get_word_at_position( ) ;  <new_line>
+&function__get_word_at_position_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 } else {  <new_line>
@@ -11709,7 +11709,7 @@ template-runtime-code-for-action-numeric-add:
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__numeric_add_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -11883,7 +11883,7 @@ template-runtime-code-for-action-numeric-maximum:
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__numeric_maximum_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -11892,7 +11892,7 @@ template-runtime-code-for-action-numeric-minimum:
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__numeric_minimum_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -11920,7 +11920,7 @@ template-runtime-code-for-action-numeric-multiply:
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__numeric_multiply_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-for-every-action-end
