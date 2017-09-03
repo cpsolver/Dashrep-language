@@ -1,6 +1,9 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__size_of_file( ) {  <new_line>
+$global_action_name_with_underscores = 'size_of_file' ; <new_line>
+combee **** template-check-operand-one-is-file-name **** comenn
+
 
 $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>

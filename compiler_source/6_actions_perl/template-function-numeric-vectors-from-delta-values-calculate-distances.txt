@@ -1,6 +1,11 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__numeric_vectors_from_delta_values_calculate_distances( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_vectors_from_delta_values_calculate_distances' ; <new_line>
+combee **** template-check-operand-one-is-phrase-not-empty **** comenn
+combee **** template-check-operand-two-is-phrase-not-empty **** comenn
+combee **** template-check-operand-three-is-phrase-name **** comenn
+
 
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>

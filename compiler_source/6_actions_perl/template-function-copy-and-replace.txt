@@ -1,6 +1,13 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_and_replace( ) {  <new_line>
+$global_action_name_with_underscores = 'copy_and_replace' ; <new_line>
+combee **** template-check-operand-one-is-phrase-name **** comenn
+combee **** template-check-operand-two-is-phrase-name **** comenn
+combee **** template-check-operand-three-is-phrase-name **** comenn
+combee **** template-check-operand-four-is-phrase-name **** comenn
+combee **** template-no-operand-checks-needed **** comenn
+
 
 $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>

@@ -1,6 +1,9 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__split_epoch_seconds_into_named_components( ) {  <new_line>
+$global_action_name_with_underscores = 'split_epoch_seconds_into_named_components' ; <new_line>
+combee **** template-check-operand-one-is-positive-integer **** comenn
+
 
 $global_action_result = '' ;  <new_line>
 ( $global_second_time , $global_minute , $global_hour , $global_day_of_month , $global_month_number , $global_year , $global_weekday , $global_day_of_year , $global_extra_info ) = localtime( $global_operand_one ) ;  <new_line>

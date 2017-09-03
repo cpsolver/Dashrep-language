@@ -1,6 +1,11 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__generate_positions_of_delimiter( ) {  <new_line>
+$global_action_name_with_underscores = 'generate_positions_of_delimiter' ; <new_line>
+combee **** template-check-operand-one-is-phrase-name **** comenn
+combee **** template-check-operand-two-is-phrase-name **** comenn
+combee **** template-check-operand-three-is-phrase-name **** comenn
+
 
 $global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>

@@ -1,6 +1,9 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__set_file_permission_public_read( ) {  <new_line>
+$global_action_name_with_underscores = 'set_file_permission_public_read' ; <new_line>
+combee **** template-check-operand-one-is-file-name **** comenn
+
 
 template-return-if-no-permission-to-delete-overwrite-files
 
