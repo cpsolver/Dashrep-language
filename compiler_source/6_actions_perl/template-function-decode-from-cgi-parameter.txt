@@ -3,17 +3,6 @@
 sub function__decode_from_cgi_parameter( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
-
-# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
-#     return '' ;  <new_line>
-# }  <new_line>
-
-# if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
-#     $global_action_result = 'dashrep_compiled_runtime_error__whatever__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
-#     return '' ;  <new_line>
-# }  <new_line>
-
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_text_being_edited =~ s/\+/ /sg ;  <new_line>
 $global_remaining_text = $global_text_being_edited ;  <new_line>
