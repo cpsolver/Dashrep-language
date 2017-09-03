@@ -6986,16 +6986,11 @@ template-function-get-count-of-words:
 # function__get_count_of_words  <new_line>
 #  <new_line>
 
-combee ****
-#  Input is $global_source_text  <new_line>
-#  Output is $global_action_result  <new_line>
-<new_line>
-**** comenn
-
 sub function__get_count_of_words( ) {  <new_line>
 $global_action_name_with_underscores = 'get_count_of_words' ; <new_line>
 combee **** template-check-operand-one-is-phrase-name **** comenn
 
+$global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 &function__point_to_words( ) ;  <new_line>
 $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . '' ) ;  <new_line>
 
