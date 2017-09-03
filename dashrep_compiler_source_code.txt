@@ -3491,6 +3491,8 @@ template-function-get-word-at-position
 template-function-open-trace-output-file-if-not-open
 
 list-of-template-functions-for-requested-actions
+
+template-function-get-count-of-words-old-version
 ----
 no-operand-checks-needed:
 ----
@@ -11315,7 +11317,7 @@ check-operand-one-is-phrase-name
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-&function__get_count_of_words( ) ;  <new_line>
+&function__get_count_of_words_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 } else {  <new_line>
