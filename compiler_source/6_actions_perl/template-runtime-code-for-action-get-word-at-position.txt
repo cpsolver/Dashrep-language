@@ -11,7 +11,7 @@ if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
 $global_word_pointer_text = runtime-code-for-operand-number-two ;  <new_line>
-&function__get_word_at_position( ) ;  <new_line>
+&function__get_word_at_position_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 } else {  <new_line>

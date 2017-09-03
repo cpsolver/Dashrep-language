@@ -1,7 +1,7 @@
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__numeric_maximum_old_version( ) ;  <new_line>
 runtime-code-storage-item-result = $global_target_text ;  <new_line>
 
 template-runtime-code-for-every-action-end
