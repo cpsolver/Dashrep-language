@@ -4,10 +4,9 @@ $global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
-needed-operand-checks
+check-operand-one-is-real-number
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 
 runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( abs( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ;  <new_line>
 

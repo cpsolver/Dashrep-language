@@ -4,10 +4,9 @@ $global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
-needed-operand-checks
+check-operand-one-is-positive-integer
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 
 runtime-code-storage-item-result = 'multiple' ;  <new_line>
 
