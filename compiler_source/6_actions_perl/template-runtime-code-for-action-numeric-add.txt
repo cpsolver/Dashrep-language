@@ -1,7 +1,7 @@
 template-runtime-code-for-every-action-begin
 
 $global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__numeric_add_old_version( ) ;  <new_line>
-runtime-code-storage-item-result = $global_target_text ;  <new_line>
+&function__numeric_add( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 template-runtime-code-for-every-action-end
