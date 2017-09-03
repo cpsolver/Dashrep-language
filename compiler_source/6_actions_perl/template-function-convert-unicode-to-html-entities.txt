@@ -1,6 +1,3 @@
-combee **** check-operand-one-is-phrase-name **** comenn
-combee **** check-operand-two-is-phrase-name **** comenn
-
 # no-space dashes-long-line  <new_line>
 
 sub function__convert_unicode_to_html_entities( ) {  <new_line>

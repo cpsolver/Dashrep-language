@@ -1,9 +1,3 @@
-combee **** check-operand-one-is-phrase-name **** comenn
-combee **** check-operand-two-is-phrase-name **** comenn
-combee **** check-operand-three-is-phrase-name **** comenn
-combee **** check-operand-four-is-phrase-name **** comenn
-combee **** no-operand-checks-needed **** comenn
-
 # no-space dashes-long-line  <new_line>
 
 sub function__generate_every_pairwise_combination_of_words( ) {  <new_line>

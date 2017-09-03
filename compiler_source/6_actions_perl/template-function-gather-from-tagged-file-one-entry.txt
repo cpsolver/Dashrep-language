@@ -1,7 +1,3 @@
-combee **** check-operand-two-is-phrase-name **** comenn
-combee **** specify-operand-one-is-file-name-for-reading **** comenn
-combee **** open-file-for-reading **** comenn
-
 # no-space dashes-long-line  <new_line>
 
 sub function__gather_from_tagged_file_one_entry( ) {  <new_line>
