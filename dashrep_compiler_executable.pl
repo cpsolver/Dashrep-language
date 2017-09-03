@@ -4837,7 +4837,7 @@ my $storage_item__4849 = 'check-operand-two-is-real-number' ;
 my $storage_item__4850 = 'runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end-is-real-number' ;
 $global_dashrep_replacement{ $storage_item__4849 } = $storage_item__4850 ;
 my $storage_item__4851 = 'list-of-template-functions' ;
-my $storage_item__4852 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-parameterized-open-file-for-writing-new-file template-function-parameterized-yes-or-no-valid-url template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions' ;
+my $storage_item__4852 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-parameterized-open-file-for-writing-new-file template-function-parameterized-yes-or-no-valid-url template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions template-function-get-count-of-words-old-version' ;
 $global_dashrep_replacement{ $storage_item__4851 } = $storage_item__4852 ;
 my $storage_item__4853 = 'no-operand-checks-needed' ;
 my $storage_item__4854 = '' ;
@@ -6166,7 +6166,7 @@ my $storage_item__5735 = 'template-runtime-code-for-action-get-count-of-characte
 my $storage_item__5736 = 'template-runtime-code-for-every-action-begin $global_number_of_operands = number-of-operands ; <new_line> runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = length( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5735 } = $storage_item__5736 ;
 my $storage_item__5737 = 'template-runtime-code-for-action-get-count-of-words' ;
-my $storage_item__5738 = 'template-runtime-code-for-every-action-begin $global_number_of_operands = number-of-operands ; <new_line> runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> &function__get_count_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5738 = 'template-runtime-code-for-every-action-begin $global_number_of_operands = number-of-operands ; <new_line> runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> &function__get_count_of_words_old_version( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5737 } = $storage_item__5738 ;
 my $storage_item__5739 = 'template-runtime-code-for-action-get-current-time-in-epoch-seconds' ;
 my $storage_item__5740 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = sprintf( "%d" , time ) ; <new_line> template-runtime-code-for-every-action-end' ;
@@ -15386,7 +15386,7 @@ $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
 $global_source_text = $global_dashrep_replacement{ $storage_item__2017 } ;
-&function__get_count_of_words( ) ;
+&function__get_count_of_words_old_version( ) ;
 $storage_item__2016 = $global_action_result ;
 } else {
 $storage_item__2016 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': get-count-of-words ' . $storage_item__2017 . ' ' ;
@@ -20281,7 +20281,7 @@ $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
 $global_source_text = $global_dashrep_replacement{ $storage_item__2629 } ;
-&function__get_count_of_words( ) ;
+&function__get_count_of_words_old_version( ) ;
 $storage_item__2628 = $global_action_result ;
 } else {
 $storage_item__2628 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': get-count-of-words ' . $storage_item__2629 . ' ' ;
@@ -24277,7 +24277,7 @@ $global_runtime_error_type = 'not_phrase_name' ;
 }
 if ( $global_yes_or_no_operand_error == $global_no ) {
 $global_source_text = $global_dashrep_replacement{ $storage_item__3128 } ;
-&function__get_count_of_words( ) ;
+&function__get_count_of_words_old_version( ) ;
 $storage_item__3127 = $global_action_result ;
 } else {
 $storage_item__3127 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': get-count-of-words ' . $storage_item__3128 . ' ' ;
@@ -34814,6 +34814,17 @@ $global_dashrep_replacement{ $global_operand_three } .= sprintf( "%d" , $global_
 }
 # end of loop
 }
+return '' ;
+# end of function
+}
+
+
+#------------------------------------------------------------
+# function__get_count_of_words
+#
+sub function__get_count_of_words_old_version( ) {
+&function__point_to_words( ) ;
+$global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . '' ) ;
 return '' ;
 # end of function
 }
