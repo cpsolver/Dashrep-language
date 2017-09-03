@@ -588,12 +588,16 @@ ambee copy-characters-from-position-to-position linewise-input-line-from-file fi
 ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
 
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
+ambee if-end amenn
+
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-function file-name-root amenn 1 amenn amenn amenn
 ambee grep-case-file-name-root-begins-with-template-function amenn
 ambee if-end amenn
 
-ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
-ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-runtime-code-for-action file-name-root amenn 1 amenn amenn amenn
+ambee grep-case-file-name-root-begins-with-template-runtime-code-for-action amenn
 ambee if-end amenn
 ----
 grep-case-file-name-root-begins-with-operand-checks-for-action:
@@ -603,10 +607,52 @@ ambee copy-characters-from-position-to-position file-name-root action-name-for-g
 grep-case-file-name-root-begins-with-template-function:
 ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-function amenn amenn amenn
 ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
+----
+grep-case-file-name-root-begins-with-template-runtime-code-for-action:
+ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-runtime-code-for-action amenn amenn amenn
+ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
+----
+grep-collect-operand-checks:
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn operand-checks amenn
+ambee append-text-no-space string-begin-operand-check operand-checks amenn
+ambee append-text-no-space linewise-input-line-from-file operand-checks amenn
+ambee append-text string-end-operand-check operand-checks amenn
+ambee append-new-line operand-checks amenn
+ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
 ambee if-end amenn
+----
+grep-compiler-source-code:
+ambee linewise-read-from-file-and-use-handler compiler_joined_files_for_possible_global_updates.txt grep-handle-one-line amenn
+----
+grep-handle-one-line:
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee put-into-phrase word-count  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee word-count amenn amenn amenn
+ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+ambee if-else amenn
+ambee clear-phrase first-word amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-start-of-next-file-bracketed amenn amenn
+ambee grep-at-file-name amenn
+ambee if-else amenn
+ambee grep-not-at-file-name amenn
+ambee if-end amenn
+----
+grep-insert-operand-checks:
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
+ambee append-text-no-space string-got-here-begin revised-compiler-source-code amenn
+ambee append-text-no-space action-name-with-underscores revised-compiler-source-code amenn
+ambee append-text-no-space string-got-here-end revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
 ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
+ambee if-else amenn
+ambee clear-phrase operand-checks amenn
 ambee if-end amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
@@ -616,30 +662,20 @@ ambee if-end amenn
 
 ambee clear-phrase action-name amenn
 ----
-grep-compiler-source-code:
-ambee put-into-phrase string-begin-operand-check  begin_operand_check  amenn
-ambee put-into-phrase string-end-operand-check  end_operand_check  amenn
-ambee linewise-read-from-file-and-use-handler copy_of_dashrep_compiler_source_code.txt grep-handle-one-line amenn
-----
-grep-handle-one-line:
-ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
-
-ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-start-of-next-file-bracketed amenn amenn
-ambee grep-at-file-name amenn
+grep-not-at-file-name:
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
+ambee grep-insert-operand-checks amenn
 ambee if-else amenn
-ambee grep-not-at-file-name amenn
+ambee grep-not-at-sub-function amenn
 ambee if-end amenn
 ----
-grep-not-at-file-name:
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
-ambee copy-text operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn operand-checks amenn
-ambee append-text-no-space string-begin-operand-check operand-checks amenn
-ambee append-text linewise-input-line-from-file operand-checks amenn
-ambee append-text string-end-operand-check operand-checks amenn
-ambee append-new-line operand-checks amenn
-ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
+grep-not-at-needed-operand-checks:
+----
+grep-not-at-sub-function:
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-needed-operand-checks amenn amenn
+ambee grep-insert-operand-checks amenn
+ambee if-else amenn
+ambee grep-collect-operand-checks amenn
 ambee if-end amenn
 ----
 handle-display-input-phrase-name-and-definition:
@@ -943,6 +979,12 @@ string-123:
 string-abc:
 abc 
 ----
+string-assignment-line-to-insert:
+$global_action_name = 'whatever' ;  <new_line>
+----
+string-begin-operand-check:
+com_bee **** template-
+----
 string-category-underscore:
 category_  
 ----
@@ -952,11 +994,23 @@ eight
 string-eleven:
 eleven
 ----
+string-end-operand-check:
+**** com_enn
+----
 string-five:
 five
 ----
 string-four:
 four
+----
+string-got-here-begin:
+$global_action_name_with_underscores = '
+----
+string-got-here-end:
+' ;  <new_line>
+----
+string-needed-operand-checks:
+needed-operand-checks
 ----
 string-nine:
 nine
@@ -982,8 +1036,14 @@ six
 string-start-of-next-file-bracketed:
 <START_OF_NEXT_FILE>
 ----
+string-sub:
+sub
+----
 string-template-function:
 template-function-
+----
+string-template-runtime-code-for-action:
+template-runtime-code-for-action-
 ----
 string-ten:
 ten
