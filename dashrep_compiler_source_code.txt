@@ -6133,6 +6133,7 @@ template-function-generate-counts-from-integer-to-integer:
 sub function__generate_counts_from_integer_to_integer( ) {  <new_line>
 
 $global_action_result = '' ;  <new_line>
+
 $global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ;  <new_line>
 $global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
 
@@ -6204,26 +6205,6 @@ template-function-generate-every-pairwise-combination-of-words:
 # no-space dashes-long-line  <new_line>
 
 sub function__generate_every_pairwise_combination_of_words( ) {  <new_line>
-
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
-    $global_action_result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
 
 $global_action_result = '' ;  <new_line>
 $global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
@@ -9366,11 +9347,7 @@ needed-operand-checks
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__clear_listed_phrases( ) ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
