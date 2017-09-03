@@ -4,11 +4,12 @@
 
 combee ****
 #  Input is $global_source_text  <new_line>
-#  Output is $global_target_text  <new_line>
+#  Output is $global_action_result  <new_line>
 <new_line>
 **** comenn
 
 sub function__numeric_multiply( ) {  <new_line>
+$global_action_result = '1' ;  <new_line>
 $global_default_text = '1' ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
@@ -20,7 +21,7 @@ if ( $global_yes == &function_parameterized__yes_or_no_real_number( $global_curr
 $global_calculated_value = $global_calculated_value * &function_parameterized__convert_numeric_text_into_numeric_value( $global_current_word ) ;  <new_line>
 }  <new_line>
 }  <new_line>
-$global_target_text = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ;  <new_line>
+$global_action_result = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ;  <new_line>
 
 return '' ;  <new_line>
 
