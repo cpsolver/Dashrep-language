@@ -32,3 +32,5 @@ template-function-get-word-at-position
 template-function-open-trace-output-file-if-not-open
 
 list-of-template-functions-for-requested-actions
+
+template-function-get-count-of-words-old-version
