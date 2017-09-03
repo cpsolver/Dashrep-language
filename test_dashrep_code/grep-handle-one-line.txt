@@ -1,6 +1,12 @@
 ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
 ambee append-new-line revised-compiler-source-code amenn
+ambee put-into-phrase word-count  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee word-count amenn amenn amenn
 ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
+ambee if-else amenn
+ambee clear-phrase first-word amenn
+ambee if-end amenn
 
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-start-of-next-file-bracketed amenn amenn
 ambee grep-at-file-name amenn

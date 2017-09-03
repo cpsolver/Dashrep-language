@@ -1,0 +1,1 @@
+$global_action_name = 'whatever' ;  <new_line>

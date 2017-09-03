@@ -1,0 +1,8 @@
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn operand-checks amenn
+ambee append-text-no-space string-begin-operand-check operand-checks amenn
+ambee append-text-no-space linewise-input-line-from-file operand-checks amenn
+ambee append-text string-end-operand-check operand-checks amenn
+ambee append-new-line operand-checks amenn
+ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
+ambee if-end amenn

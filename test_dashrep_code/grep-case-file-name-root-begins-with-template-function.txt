@@ -1,14 +1,2 @@
 ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-template-function amenn amenn amenn
 ambee copy-characters-from-position-to-position file-name-root action-name ambee prefix-length-plus-one amenn 9999 amenn
-ambee if-end amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
-ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
-ambee if-end amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
-ambee append-text-no-space operand-checks revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
-ambee if-end amenn
-
-ambee clear-phrase action-name amenn

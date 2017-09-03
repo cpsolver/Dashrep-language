@@ -1,0 +1,18 @@
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
+ambee append-text-no-space string-got-here-begin revised-compiler-source-code amenn
+ambee append-text-no-space action-name-with-underscores revised-compiler-source-code amenn
+ambee append-text-no-space string-got-here-end revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase action-name amenn amenn
+ambee copy-text operand-checks-for-action fenambee action-name amenn operand-checks amenn
+ambee if-else amenn
+ambee clear-phrase operand-checks amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase operand-checks amenn amenn
+ambee append-text-no-space operand-checks revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+ambee clear-phrase action-name amenn

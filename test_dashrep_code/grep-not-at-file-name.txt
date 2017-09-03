@@ -1,8 +1,5 @@
-ambee if-no-begin ambee yes-or-no-empty-phrase action-name-for-getting-operand-checks amenn amenn
-ambee copy-text operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn operand-checks amenn
-ambee append-text-no-space string-begin-operand-check operand-checks amenn
-ambee append-text linewise-input-line-from-file operand-checks amenn
-ambee append-text string-end-operand-check operand-checks amenn
-ambee append-new-line operand-checks amenn
-ambee copy-text operand-checks operand-checks-for-action fenambee action-name-for-getting-operand-checks amenn amenn
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
+ambee grep-insert-operand-checks amenn
+ambee if-else amenn
+ambee grep-not-at-sub-function amenn
 ambee if-end amenn

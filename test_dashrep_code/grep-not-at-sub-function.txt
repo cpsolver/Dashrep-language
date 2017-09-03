@@ -1,0 +1,5 @@
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-needed-operand-checks amenn amenn
+ambee grep-insert-operand-checks amenn
+ambee if-else amenn
+ambee grep-collect-operand-checks amenn
+ambee if-end amenn
