@@ -628,9 +628,9 @@ ambee linewise-read-from-file-and-use-handler compiler_joined_files_for_possible
 grep-handle-one-line:
 ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
 ambee append-new-line revised-compiler-source-code amenn
-ambee put-into-phrase word-count  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
+ambee put-into-phrase word-count-input-line  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
 
-ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee word-count amenn amenn amenn
+ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee word-count-input-line amenn amenn amenn
 ambee copy-word-at-position linewise-input-line-from-file first-word 1 amenn
 ambee if-else amenn
 ambee clear-phrase first-word amenn
