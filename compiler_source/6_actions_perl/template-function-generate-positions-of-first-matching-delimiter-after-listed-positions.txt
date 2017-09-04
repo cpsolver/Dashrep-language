@@ -6,7 +6,6 @@ combee **** template-check-operand-one-is-phrase-name **** comenn
 combee **** template-check-operand-two-is-phrase-name **** comenn
 combee **** template-check-operand-three-is-phrase-name **** comenn
 combee **** template-check-operand-four-is-phrase-name **** comenn
-combee **** template-no-operand-checks-needed **** comenn
 
 
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {

@@ -6,7 +6,6 @@ combee **** template-check-operand-one-is-phrase-name **** comenn
 combee **** template-check-operand-two-is-phrase-name **** comenn
 combee **** template-check-operand-three-is-phrase-name **** comenn
 combee **** template-check-operand-four-is-phrase-name **** comenn
-combee **** template-no-operand-checks-needed **** comenn
 
 
 $global_action_result = '' ;  <new_line>
