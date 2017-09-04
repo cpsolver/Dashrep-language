@@ -2,10 +2,10 @@
 
 sub function__copy_and_replace( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_replace' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-check-operand-four-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>

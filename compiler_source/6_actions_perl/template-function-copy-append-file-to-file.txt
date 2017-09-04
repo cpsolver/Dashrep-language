@@ -1,16 +1,16 @@
-combee **** specify-operand-two-is-file-name-for-appending **** comenn
-combee **** open-file-for-appending **** comenn
-combee **** specify-operand-one-is-file-name-for-reading **** comenn
-combee **** open-file-for-reading **** comenn
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_append_file_to_file' ; <new_line>
-combee **** template-specify-operand-two-is-file-name-for-appending **** comenn
-combee **** template-open-file-for-appending **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-specify-operand-two-is-file-name-for-appending
+template-open-file-for-appending
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 template-return-if-no-permission-to-append-to-files

@@ -1,12 +1,12 @@
-combee **** specify-operand-one-is-file-name-for-reading **** comenn
-combee **** open-file-for-reading **** comenn
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 
 # no-space dashes-long-line  <new_line>
 
 sub function__get_definitions_from_file( ) {  <new_line>
 $global_action_name_with_underscores = 'get_definitions_from_file' ; <new_line>
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>

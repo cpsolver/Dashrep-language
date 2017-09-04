@@ -4,10 +4,10 @@
 
 sub function__copy_words_offset_skip( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_offset_skip' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
-combee **** template-check-operand-four-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+template-check-operand-four-is-positive-integer
 
 
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>

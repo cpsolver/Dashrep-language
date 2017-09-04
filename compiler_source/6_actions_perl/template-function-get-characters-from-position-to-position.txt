@@ -2,9 +2,9 @@
 
 sub function__get_characters_from_position_to_position( ) {  <new_line>
 $global_action_name_with_underscores = 'get_characters_from_position_to_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-positive-integer **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-positive-integer
+template-check-operand-three-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>

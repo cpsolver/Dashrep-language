@@ -2,8 +2,8 @@
 
 sub function__get_position_of_word( ) {  <new_line>
 $global_action_name_with_underscores = 'get_position_of_word' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = ' ' ;  <new_line>

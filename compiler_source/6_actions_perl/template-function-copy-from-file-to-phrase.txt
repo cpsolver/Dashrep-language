@@ -2,9 +2,9 @@
 
 sub function__copy_from_file_to_phrase( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_file_to_phrase' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>

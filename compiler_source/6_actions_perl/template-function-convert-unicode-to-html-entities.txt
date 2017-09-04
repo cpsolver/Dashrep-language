@@ -2,8 +2,8 @@
 
 sub function__convert_unicode_to_html_entities( ) {  <new_line>
 $global_action_name_with_underscores = 'convert_unicode_to_html_entities' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 #  Converts non hyphen-here ASCII characters, and convert a few  <new_line>
