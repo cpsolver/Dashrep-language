@@ -1,2 +1,0 @@
-check-operand-one-is-real-number
-check-operand-two-is-real-number

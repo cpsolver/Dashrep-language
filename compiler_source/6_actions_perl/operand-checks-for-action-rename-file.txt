@@ -1,2 +1,0 @@
-check-operand-one-input-file-exists
-check-operand-one-is-file-name

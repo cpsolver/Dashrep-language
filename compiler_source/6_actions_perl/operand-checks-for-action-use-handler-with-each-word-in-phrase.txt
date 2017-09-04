@@ -1,2 +1,0 @@
-check-operand-one-is-phrase-not-empty
-check-operand-two-is-phrase-name

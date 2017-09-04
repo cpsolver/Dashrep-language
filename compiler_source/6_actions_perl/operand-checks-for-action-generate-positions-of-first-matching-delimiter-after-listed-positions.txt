@@ -1,5 +1,0 @@
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-check-operand-four-is-phrase-name
-no-operand-checks-needed

@@ -1,3 +1,0 @@
-check-operand-one-is-positive-integer
-check-operand-two-contains-real-numbers
-check-operand-three-contains-real-numbers

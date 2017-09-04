@@ -1,3 +1,0 @@
-check-operand-one-is-integer
-check-operand-two-is-integer
-check-operand-three-is-phrase-name

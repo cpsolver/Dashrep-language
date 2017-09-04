@@ -1,3 +1,0 @@
-check-operand-one-is-phrase-name
-specify-operand-two-is-file-name-for-appending
-open-file-for-appending
