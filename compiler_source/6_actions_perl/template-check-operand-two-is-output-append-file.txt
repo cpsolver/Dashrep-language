@@ -1,0 +1,6 @@
+combee ******
+if ( &function_parameterized__yes_or_no_file_open_for_appending( $global_operand_two ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_append_to_file ' . $global_operand_two . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+****** comenn

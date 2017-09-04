@@ -1,0 +1,6 @@
+combee ******
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_three ) == $global_no ) {
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_empty_phrase ' . $global_operand_three . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+****** comenn
