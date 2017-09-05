@@ -4094,8 +4094,8 @@ template-function-append-multiple-from-phrases-named-in-pattern:
 
 sub function__append_multiple_from_phrases_named_in_pattern( ) {  <new_line>
 $global_action_name_with_underscores = 'append_multiple_from_phrases_named_in_pattern' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4149,9 +4149,9 @@ template-function-append-repeatedly-using-count:
 
 sub function__append_repeatedly_using_count( ) {  <new_line>
 $global_action_name_with_underscores = 'append_repeatedly_using_count' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -4193,7 +4193,7 @@ template-function-clear-listed-phrases:
 
 sub function__clear_listed_phrases( ) {  <new_line>
 $global_action_name_with_underscores = 'clear_listed_phrases' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4214,8 +4214,8 @@ template-function-convert-unicode-to-html-entities:
 
 sub function__convert_unicode_to_html_entities( ) {  <new_line>
 $global_action_name_with_underscores = 'convert_unicode_to_html_entities' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 #  Converts non hyphen-here ASCII characters, and convert a few  <new_line>
@@ -4276,8 +4276,8 @@ template-function-copy-and-move-attributes-into-xml-tags:
 
 sub function__copy_and_move_attributes_into_xml_tags( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_move_attributes_into_xml_tags' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4307,8 +4307,8 @@ template-function-copy-and-remove-attributes-from-xml-tags:
 
 sub function__copy_and_remove_attributes_from_xml_tags( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_remove_attributes_from_xml_tags' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4325,9 +4325,9 @@ template-function-copy-and-replace-using-paired-listed-words:
 
 sub function__copy_and_replace_using_paired_listed_words( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_replace_using_paired_listed_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-not-empty **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-not-empty
 
 
 $global_action_result = '' ;  <new_line>
@@ -4378,10 +4378,10 @@ template-function-copy-and-replace:
 
 sub function__copy_and_replace( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_replace' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-check-operand-four-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4442,19 +4442,19 @@ if ( ( length( $global_text_to_insert ) >= length( $global_string_to_be_replaced
 template-function-segment-ending
 ----
 template-function-copy-append-file-to-file:
-combee **** specify-operand-two-is-file-name-for-appending **** comenn
-combee **** open-file-for-appending **** comenn
-combee **** specify-operand-one-is-file-name-for-reading **** comenn
-combee **** open-file-for-reading **** comenn
+specify-operand-two-is-file-name-for-appending
+open-file-for-appending
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_append_file_to_file' ; <new_line>
-combee **** template-specify-operand-two-is-file-name-for-appending **** comenn
-combee **** template-open-file-for-appending **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-specify-operand-two-is-file-name-for-appending
+template-open-file-for-appending
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 template-return-if-no-permission-to-append-to-files
@@ -4476,10 +4476,10 @@ template-function-copy-characters-from-position-to-position:
 
 sub function__copy_characters_from_position_to_position( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_characters_from_position_to_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
-combee **** template-check-operand-four-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+template-check-operand-four-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -4510,9 +4510,9 @@ template-function-copy-from-columns-in-file-to-column-lists:
 
 sub function__copy_from_columns_in_file_to_column_lists( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_columns_in_file_to_column_lists' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -4550,10 +4550,10 @@ template-function-copy-from-columns-in-file-to-named-phrases:
 
 sub function__copy_from_columns_in_file_to_named_phrases( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_columns_in_file_to_named_phrases' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -4632,9 +4632,9 @@ template-function-copy-from-file-to-phrase:
 
 sub function__copy_from_file_to_phrase( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_file_to_phrase' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -4668,9 +4668,9 @@ template-function-copy-from-phrase-append-to-file:
 
 sub function__copy_from_phrase_append_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_phrase_append_to_file' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-specify-operand-two-is-file-name-for-appending **** comenn
-combee **** template-open-file-for-appending **** comenn
+template-check-operand-one-is-phrase-name
+template-specify-operand-two-is-file-name-for-appending
+template-open-file-for-appending
 
 
 template-return-if-no-permission-to-append-to-files
@@ -4692,8 +4692,8 @@ template-function-copy-initial-caps:
 
 sub function__copy_initial_caps( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_initial_caps' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4729,8 +4729,8 @@ template-function-copy-listed-words-to-phrases-named-in-pattern:
 
 sub function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_listed_words_to_phrases_named_in_pattern' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4801,9 +4801,9 @@ template-function-copy-word-at-position:
 
 sub function__copy_word_at_position( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_word_at_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
 
 $global_action_result = '' ;  <new_line>
 
@@ -4831,9 +4831,9 @@ template-function-copy-words-found-in-both-lists:
 
 sub function__copy_words_found_in_both_lists( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_found_in_both_lists' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 
@@ -4903,9 +4903,9 @@ template-function-copy-words-found-in-either-list:
 
 sub function__copy_words_found_in_either_list( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_found_in_either_list' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -4934,8 +4934,8 @@ template-function-copy-words-found-only-in-first-list:
 
 sub function__copy_words_found_only_in_first_list( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_found_only_in_first_list' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5000,10 +5000,10 @@ template-function-copy-words-from-position-to-position:
 
 sub function__copy_words_from_position_to_position( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_from_position_to_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
-combee **** template-check-operand-four-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+template-check-operand-four-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -5047,10 +5047,10 @@ template-function-copy-words-offset-skip:
 
 sub function__copy_words_offset_skip( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_offset_skip' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
-combee **** template-check-operand-four-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-positive-integer
+template-check-operand-four-is-positive-integer
 
 
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
@@ -5064,8 +5064,8 @@ template-function-copy-words-order-reversed:
 
 sub function__copy_words_order_reversed( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_order_reversed' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5095,9 +5095,9 @@ template-function-copy-words-rearrange-using-order-sort-alphabetic:
 
 sub function__copy_words_rearrange_using_order_sort_alphabetic( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_rearrange_using_order_sort_alphabetic' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5153,9 +5153,9 @@ template-function-copy-words-rearrange-using-order-sort-numeric:
 
 sub function__copy_words_rearrange_using_order_sort_numeric( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_rearrange_using_order_sort_numeric' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5217,8 +5217,8 @@ template-function-copy-words-sort-alphabetic:
 
 sub function__copy_words_sort_alphabetic( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_sort_alphabetic' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5243,8 +5243,8 @@ template-function-copy-words-sort-numeric:
 
 sub function__copy_words_sort_numeric( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_sort_numeric' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5269,9 +5269,9 @@ template-function-copy-words-that-begin-with-listed-words:
 
 sub function__copy_words_that_begin_with_listed_words( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_that_begin_with_listed_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5307,9 +5307,9 @@ template-function-copy-words-that-begin-with-text:
 
 sub function__copy_words_that_begin_with_text( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_that_begin_with_text' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5349,9 +5349,9 @@ template-function-copy-words-that-contain-listed-words:
 
 sub function__copy_words_that_contain_listed_words( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_that_contain_listed_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5385,8 +5385,8 @@ template-function-copy-words-unique-only:
 
 sub function__copy_words_unique_only( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_unique_only' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5500,8 +5500,8 @@ template-function-decode-from-cgi-parameter:
 
 sub function__decode_from_cgi_parameter( ) {  <new_line>
 $global_action_name_with_underscores = 'decode_from_cgi_parameter' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5526,7 +5526,7 @@ template-function-delete-file:
 
 sub function__delete_file( ) {  <new_line>
 $global_action_name_with_underscores = 'delete_file' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -5575,8 +5575,8 @@ template-function-encode-as-cgi-parameter:
 
 sub function__encode_as_cgi_parameter( ) {  <new_line>
 $global_action_name_with_underscores = 'encode_as_cgi_parameter' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5601,10 +5601,10 @@ template-function-find-line-in-file-that-begins-with-text:
 
 sub function__find_line_in_file_that_begins_with_text( ) {  <new_line>
 $global_action_name_with_underscores = 'find_line_in_file_that_begins_with_text' ; <new_line>
-combee **** template-check-operand-two-is-phrase-not-empty **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -5628,10 +5628,10 @@ template-function-find-lines-in-file-that-begin-with-any-listed-word:
 
 sub function__find_lines_in_file_that_begin_with_any_listed_word( ) {  <new_line>
 $global_action_name_with_underscores = 'find_lines_in_file_that_begin_with_any_listed_word' ; <new_line>
-combee **** template-check-operand-two-is-phrase-not-empty **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -5670,10 +5670,10 @@ template-function-find-lines-in-file-that-begin-with-any-two-words-listed:
 
 sub function__find_lines_in_file_that_begin_with_any_two_words_listed( ) {  <new_line>
 $global_action_name_with_underscores = 'find_lines_in_file_that_begin_with_any_two_words_listed' ; <new_line>
-combee **** template-check-operand-two-is-phrase-not-empty **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -5721,9 +5721,9 @@ template-function-gather-from-tagged-file-one-entry:
 
 sub function__gather_from_tagged_file_one_entry( ) {  <new_line>
 $global_action_name_with_underscores = 'gather_from_tagged_file_one_entry' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -5810,9 +5810,9 @@ template-function-gather-tagged-info-from-file:
 
 sub function__gather_tagged_info_from_file( ) {  <new_line>
 $global_action_name_with_underscores = 'gather_tagged_info_from_file' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-check-operand-two-is-phrase-name
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -5940,9 +5940,9 @@ template-function-generate-counts-from-integer-to-integer:
 
 sub function__generate_counts_from_integer_to_integer( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_counts_from_integer_to_integer' ; <new_line>
-combee **** template-check-operand-one-is-integer **** comenn
-combee **** template-check-operand-two-is-integer **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-integer
+template-check-operand-two-is-integer
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -5990,9 +5990,9 @@ template-function-generate-every-ordered-pairwise-combination-of-words:
 
 sub function__generate_every_ordered_pairwise_combination_of_words( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_every_ordered_pairwise_combination_of_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6022,10 +6022,10 @@ template-function-generate-every-pairwise-combination-of-words:
 
 sub function__generate_every_pairwise_combination_of_words( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_every_pairwise_combination_of_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-check-operand-four-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6077,7 +6077,7 @@ template-function-generate-list-of-all-dashrep-phrases:
 
 sub function__generate_list_of_all_dashrep_phrases( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_list_of_all_dashrep_phrases' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6102,7 +6102,7 @@ template-function-generate-list-of-files-in-current-read-directory:
 
 sub function__generate_list_of_files_in_current_read_directory( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_list_of_files_in_current_read_directory' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6139,7 +6139,7 @@ template-function-generate-list-of-folders-in-current-read-directory:
 
 sub function__generate_list_of_folders_in_current_read_directory( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_list_of_folders_in_current_read_directory' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6176,7 +6176,7 @@ template-function-generate-phrase-usage-counts:
 
 sub function__generate_phrase_usage_counts( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_phrase_usage_counts' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_result_text = '' ;  <new_line>
@@ -6221,9 +6221,9 @@ template-function-generate-positions-of-delimiter:
 
 sub function__generate_positions_of_delimiter( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_positions_of_delimiter' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6255,10 +6255,10 @@ template-function-generate-positions-of-first-matching-delimiter-after-listed-po
 
 sub function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_positions_of_first_matching_delimiter_after_listed_positions' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
-combee **** template-check-operand-four-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
+template-check-operand-four-is-phrase-name
 
 
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -6316,9 +6316,9 @@ template-function-generate-positions-of-listed-words:
 
 sub function__generate_positions_of_listed_words( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_positions_of_listed_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6520,9 +6520,9 @@ template-function-get-characters-from-position-to-position:
 
 sub function__get_characters_from_position_to_position( ) {  <new_line>
 $global_action_name_with_underscores = 'get_characters_from_position_to_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-positive-integer **** comenn
-combee **** template-check-operand-three-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-positive-integer
+template-check-operand-three-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -6555,7 +6555,7 @@ template-function-get-count-of-characters:
 
 sub function__get_count_of_characters( ) {  <new_line>
 $global_action_name_with_underscores = 'get_count_of_characters' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '0' ;  <new_line>
@@ -6575,7 +6575,7 @@ template-function-get-count-of-words:
 
 sub function__get_count_of_words( ) {  <new_line>
 $global_action_name_with_underscores = 'get_count_of_words' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 &function__point_to_words( ) ;  <new_line>
@@ -6586,15 +6586,15 @@ return '' ;  <new_line>
 template-function-segment-ending
 ----
 template-function-get-definitions-from-file:
-combee **** specify-operand-one-is-file-name-for-reading **** comenn
-combee **** open-file-for-reading **** comenn
+specify-operand-one-is-file-name-for-reading
+open-file-for-reading
 
 # no-space dashes-long-line  <new_line>
 
 sub function__get_definitions_from_file( ) {  <new_line>
 $global_action_name_with_underscores = 'get_definitions_from_file' ; <new_line>
-combee **** template-specify-operand-one-is-file-name-for-reading **** comenn
-combee **** template-open-file-for-reading **** comenn
+template-specify-operand-one-is-file-name-for-reading
+template-open-file-for-reading
 
 
 $global_action_result = '' ;  <new_line>
@@ -6628,8 +6628,8 @@ template-function-get-position-of-matching-text:
 
 sub function__get_position_of_matching_text( ) {  <new_line>
 $global_action_name_with_underscores = 'get_position_of_matching_text' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6652,8 +6652,8 @@ template-function-get-position-of-word:
 
 sub function__get_position_of_word( ) {  <new_line>
 $global_action_name_with_underscores = 'get_position_of_word' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = ' ' ;  <new_line>
@@ -6753,8 +6753,8 @@ template-function-get-word-at-position:
 
 sub function__get_word_at_position( ) {  <new_line>
 $global_action_name_with_underscores = 'get_word_at_position' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-positive-integer **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-positive-integer
 
 $global_action_result = '' ;  <new_line>
 
@@ -6782,7 +6782,7 @@ template-function-insert-codeview-tags:
 
 sub function__insert_codeview_tags( ) {  <new_line>
 $global_action_name_with_underscores = 'insert_codeview_tags' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -6885,7 +6885,7 @@ template-function-modification-time-of-file:
 
 sub function__modification_time_of_file( ) {  <new_line>
 $global_action_name_with_underscores = 'modification_time_of_file' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 $global_action_result = '0' ;  <new_line>
@@ -6913,7 +6913,7 @@ template-function-numeric-absolute:
 
 sub function__numeric_absolute( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_absolute' ; <new_line>
-combee **** template-check-operand-one-is-real-number **** comenn
+template-check-operand-one-is-real-number
 
 
 $global_action_result = '' ;  <new_line>
@@ -6964,8 +6964,8 @@ template-function-numeric-equal-greater-less-compare:
 
 sub function__numeric_equal_greater_less_compare( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_equal_greater_less_compare' ; <new_line>
-combee **** template-check-operand-one-is-real-number **** comenn
-combee **** template-check-operand-two-is-real-number **** comenn
+template-check-operand-one-is-real-number
+template-check-operand-two-is-real-number
 
 
 $global_action_result = '' ;  <new_line>
@@ -7080,9 +7080,9 @@ template-function-numeric-two-dimensional-sort-into-columns-and-rows:
 
 sub function__numeric_two_dimensional_sort_into_columns_and_rows( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_two_dimensional_sort_into_columns_and_rows' ; <new_line>
-combee **** template-check-operand-one-is-positive-integer **** comenn
-combee **** template-check-operand-two-contains-real-numbers **** comenn
-combee **** template-check-operand-three-contains-real-numbers **** comenn
+template-check-operand-one-is-positive-integer
+template-check-operand-two-contains-real-numbers
+template-check-operand-three-contains-real-numbers
 
 
 $global_action_result = '' ;  <new_line>
@@ -7344,7 +7344,7 @@ template-function-numeric-vector-absolutes:
 
 sub function__numeric_vector_absolutes( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_absolutes' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7373,9 +7373,9 @@ template-function-numeric-vector-add-number:
 
 sub function__numeric_vector_add_number( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_add_number' ; <new_line>
-combee **** template-check-operand-one-is-phrase-not-empty **** comenn
-combee **** template-check-operand-two-is-real-number **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-not-empty
+template-check-operand-two-is-real-number
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7404,7 +7404,7 @@ template-function-numeric-vector-integers:
 
 sub function__numeric_vector_integers( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_integers' ; <new_line>
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7437,9 +7437,9 @@ template-function-numeric-vector-multiply-by-number:
 
 sub function__numeric_vector_multiply_by_number( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_multiply_by_number' ; <new_line>
-combee **** template-check-operand-one-is-phrase-not-empty **** comenn
-combee **** template-check-operand-two-is-real-number **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-not-empty
+template-check-operand-two-is-real-number
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7468,9 +7468,9 @@ template-function-numeric-vectors-add:
 
 sub function__numeric_vectors_add( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vectors_add' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7504,9 +7504,9 @@ template-function-numeric-vectors-divide-by:
 
 sub function__numeric_vectors_divide_by( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vectors_divide_by' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7544,9 +7544,9 @@ template-function-numeric-vectors-from-delta-values-calculate-distances:
 
 sub function__numeric_vectors_from_delta_values_calculate_distances( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vectors_from_delta_values_calculate_distances' ; <new_line>
-combee **** template-check-operand-one-is-phrase-not-empty **** comenn
-combee **** template-check-operand-two-is-phrase-not-empty **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-not-empty
+template-check-operand-two-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7584,9 +7584,9 @@ template-function-numeric-vectors-multiply:
 
 sub function__numeric_vectors_multiply( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vectors_multiply' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
-combee **** template-check-operand-three-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+template-check-operand-three-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -7620,7 +7620,7 @@ template-function-numeric-y-map-tile-number-based-on-latitude:
 
 sub function__numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_y_map_tile_number_based_on_latitude' ; <new_line>
-combee **** template-check-operand-one-is-real-number **** comenn
+template-check-operand-one-is-real-number
 
 
 $global_action_result = '' ;  <new_line>
@@ -8683,8 +8683,8 @@ template-function-rename-file:
 
 sub function__rename_file( ) {  <new_line>
 $global_action_name_with_underscores = 'rename_file' ; <new_line>
-combee **** template-check-operand-one-input-file-exists **** comenn
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-input-file-exists
+template-check-operand-one-is-file-name
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -8740,7 +8740,7 @@ template-function-set-file-permission-private-but-executable:
 
 sub function__set_file_permission_private_but_executable( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private_but_executable' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -8771,7 +8771,7 @@ template-function-set-file-permission-private:
 
 sub function__set_file_permission_private( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -8802,7 +8802,7 @@ template-function-set-file-permission-public-read:
 
 sub function__set_file_permission_public_read( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_public_read' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -8833,7 +8833,7 @@ template-function-size-of-file:
 
 sub function__size_of_file( ) {  <new_line>
 $global_action_name_with_underscores = 'size_of_file' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 $global_action_result = '0' ;  <new_line>
@@ -8860,7 +8860,7 @@ template-function-split-epoch-seconds-into-named-components-for-zero-meridian:
 
 sub function__split_epoch_seconds_into_named_components_for_zero_meridian( ) {  <new_line>
 $global_action_name_with_underscores = 'split_epoch_seconds_into_named_components_for_zero_meridian' ; <new_line>
-combee **** template-check-operand-one-is-positive-integer **** comenn
+template-check-operand-one-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -8883,7 +8883,7 @@ template-function-split-epoch-seconds-into-named-components:
 
 sub function__split_epoch_seconds_into_named_components( ) {  <new_line>
 $global_action_name_with_underscores = 'split_epoch_seconds_into_named_components' ; <new_line>
-combee **** template-check-operand-one-is-positive-integer **** comenn
+template-check-operand-one-is-positive-integer
 
 
 $global_action_result = '' ;  <new_line>
@@ -8906,9 +8906,9 @@ template-function-write-dashrep-definitions-listed-in-phrase-to-file:
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'write_dashrep_definitions_listed_in_phrase_to_file' ; <new_line>
-combee **** template-check-operand-one-is-phrase-not-empty **** comenn
-combee **** template-specify-operand-two-is-filename-for-writing-new-file **** comenn
-combee **** template-open-file-for-writing-new-file **** comenn
+template-check-operand-one-is-phrase-not-empty
+template-specify-operand-two-is-filename-for-writing-new-file
+template-open-file-for-writing-new-file
 
 
 template-return-if-no-permission-to-delete-overwrite-files
@@ -8972,9 +8972,9 @@ template-function-write-gathered-listed-items-to-end-of-file:
 
 sub function__write_gathered_listed_items_to_end_of_file( ) {  <new_line>
 $global_action_name_with_underscores = 'write_gathered_listed_items_to_end_of_file' ; <new_line>
-combee **** template-check-operand-one-is-phrase-not-empty **** comenn
-combee **** template-specify-operand-two-is-file-name-for-appending **** comenn
-combee **** template-open-file-for-appending **** comenn
+template-check-operand-one-is-phrase-not-empty
+template-specify-operand-two-is-file-name-for-appending
+template-open-file-for-appending
 
 
 $global_action_result = '' ;  <new_line>
@@ -9013,7 +9013,7 @@ template-function-xml-move-attributes-into-tag-elements:
 
 sub function__xml_move_attributes_into_tag_elements( ) {  <new_line>
 $global_action_name_with_underscores = 'xml_move_attributes_into_tag_elements' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
 
 
 $global_action_result = '' ;  <new_line>
@@ -9046,7 +9046,7 @@ template-function-yes-or-no-file-exists:
 
 sub function__yes_or_no_file_exists( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_file_exists' ; <new_line>
-combee **** template-check-operand-one-is-file-name **** comenn
+template-check-operand-one-is-file-name
 
 
 $global_action_result = 'no' ;  <new_line>
@@ -9078,7 +9078,7 @@ template-function-yes-or-no-folder-exists:
 
 sub function__yes_or_no_folder_exists( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_folder_exists' ; <new_line>
-combee **** template-check-operand-one-is-folder-name **** comenn
+template-check-operand-one-is-folder-name
 
 
 $global_action_result = 'no' ;  <new_line>
@@ -9097,8 +9097,8 @@ template-function-yes-or-no-word-is-in-phrase:
 
 sub function__yes_or_no_word_is_in_phrase( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_word_is_in_phrase' ; <new_line>
-combee **** template-check-operand-one-is-phrase-name **** comenn
-combee **** template-check-operand-two-is-phrase-name **** comenn
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
 
 
 $global_action_result = ' ' ;  <new_line>
@@ -9121,6 +9121,12 @@ if ( $global_list_length >= 1 ) {  <new_line>
 }  <new_line>
 
 template-function-segment-ending
+----
+template-open-file-for-appending:
+combee ****** todo ****** comenn
+----
+template-open-file-for-reading:
+combee ****** todo ****** comenn
 ----
 template-runtime-code-for-action-append-multiple-from-phrases-named-in-pattern:
 template-runtime-code-for-every-action-begin
@@ -12244,4 +12250,10 @@ template-runtime-code-for-every-action-begin
 runtime-code-storage-item-result = 'dashrep_compile_time_error__<dashrep_placeholder_action_name_with_underscores>__case_wrong_number_of_operands' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
 template-runtime-code-for-every-action-end
+----
+template-specify-operand-one-is-file-name-for-reading:
+combee ****** todo ****** comenn
+----
+template-specify-operand-two-is-file-name-for-appending:
+combee ****** todo ****** comenn
 ----
