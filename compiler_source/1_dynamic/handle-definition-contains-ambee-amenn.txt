@@ -26,7 +26,7 @@ ambee append-text-no-space phrase-being-defined-with-underscores runtime-code-co
 ambee append-text-no-space code-compiled-function-part-2 runtime-code-compiled-function amenn
 
 combee **** todo: avoid need for workaround **** comenn
-ambee put-into-phrase unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn  99   amenn
+ambee put-into-phrase unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn  ambee unique-phrase-number amenn  amenn
 ambee append-text unique-phrase-number-for-phrase-name fenambee phrase-being-defined amenn runtime-code-compiled-function amenn
 
 
