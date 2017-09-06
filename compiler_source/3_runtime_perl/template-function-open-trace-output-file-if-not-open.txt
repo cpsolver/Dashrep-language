@@ -4,13 +4,14 @@
 
 sub function__open_trace_output_file_if_not_open( ) {  <new_line>
 
+if ( $global_yes_or_no_trace_output_file_is_open == $global_no ) {  <new_line>
+
 if ( ( exists( $global_dashrep_replacement{ 'output hyphen-here trace hyphen-here file hyphen-here name' } ) ) && ( $global_dashrep_replacement{ 'output hyphen-here trace hyphen-here file hyphen-here name' } ne '' ) ) {  <new_line>
 $global_trace_file_name = $global_dashrep_replacement{ 'output hyphen-here trace hyphen-here file hyphen-here name' } ;  <new_line>
 } else {  <new_line>
 $global_trace_file_name = 'output_trace.txt' ;  <new_line>
 }  <new_line>
 
-if ( $global_yes_or_no_trace_output_file_is_open == $global_no ) {  <new_line>
 open ( TRACE_OUT , '>' . $global_trace_file_name ) ;  <new_line>
 $global_yes_or_no_trace_output_file_is_open = $global_yes ;  <new_line>
 }  <new_line>
