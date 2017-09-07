@@ -9,13 +9,13 @@ check-operand-one-is-positive-integer
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__<dashrep_placeholder_action_name_with_underscores>( ) ;  <new_line>
+&function__split_epoch_seconds_into_named_components( ) ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 } else {  <new_line>
 
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__<dashrep_placeholder_action_name_with_underscores>' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__split_epoch_seconds_into_named_components' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
 }  <new_line>
 
