@@ -6,6 +6,7 @@ ambee copy-characters-from-position-to-position linewise-input-line-from-file fi
 ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
 
+combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
 ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
 ambee if-end amenn
@@ -17,3 +18,4 @@ ambee if-end amenn
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-runtime-code-for-action file-name-root amenn 1 amenn amenn amenn
 ambee grep-case-file-name-root-begins-with-template-runtime-code-for-action amenn
 ambee if-end amenn
+**** comenn

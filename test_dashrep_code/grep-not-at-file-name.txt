@@ -1,5 +1,11 @@
+ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
+ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
+
+combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
 ambee grep-insert-operand-checks amenn
 ambee if-else amenn
 ambee grep-not-at-sub-function amenn
 ambee if-end amenn
+**** comenn
