@@ -85,6 +85,7 @@ my $global_length_of_text = 0 ;  <new_line>
 my $global_length_of_text_source = 0 ;  <new_line>
 my $global_length_of_text_segment = 0 ;  <new_line>
 my $global_length_of_string_to_be_replaced = 0 ;  <new_line>
+my $global_length_of_text_to_insert = 0 ;  <new_line>
 my $global_pointer_to_next_space = 0 ;  <new_line>
 my $global_pointer_to_first_space = 0 ;  <new_line>
 my $global_pointer_to_future_space = 0 ;  <new_line>
