@@ -588,6 +588,7 @@ ambee copy-characters-from-position-to-position linewise-input-line-from-file fi
 ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
 
+combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
 ambee grep-case-file-name-root-begins-with-operand-checks-for-action amenn
 ambee if-end amenn
@@ -599,6 +600,7 @@ ambee if-end amenn
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-template-runtime-code-for-action file-name-root amenn 1 amenn amenn amenn
 ambee grep-case-file-name-root-begins-with-template-runtime-code-for-action amenn
 ambee if-end amenn
+**** comenn
 ----
 grep-case-file-name-root-begins-with-operand-checks-for-action:
 ambee put-into-phrase prefix-length-plus-one ambee numeric-add 1 ambee get-count-of-characters string-operand-checks-for-action amenn amenn amenn
@@ -626,8 +628,6 @@ grep-compiler-source-code:
 ambee linewise-read-from-file-and-use-handler compiler_joined_files_for_possible_global_updates.txt grep-handle-one-line amenn
 ----
 grep-handle-one-line:
-ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
-ambee append-new-line revised-compiler-source-code amenn
 ambee put-into-phrase word-count-input-line  ambee get-count-of-words linewise-input-line-from-file amenn  amenn
 
 ambee if-no-begin ambee yes-or-no-same-two-words 0 ambee word-count-input-line amenn amenn amenn
@@ -641,6 +641,9 @@ ambee grep-at-file-name amenn
 ambee if-else amenn
 ambee grep-not-at-file-name amenn
 ambee if-end amenn
+
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
 ----
 grep-insert-operand-checks:
 ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
@@ -663,11 +666,17 @@ ambee if-end amenn
 ambee clear-phrase action-name amenn
 ----
 grep-not-at-file-name:
+ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
+ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
+ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
+
+combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
 ambee grep-insert-operand-checks amenn
 ambee if-else amenn
 ambee grep-not-at-sub-function amenn
 ambee if-end amenn
+**** comenn
 ----
 grep-not-at-needed-operand-checks:
 ----
