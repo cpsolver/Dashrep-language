@@ -5671,7 +5671,7 @@ my $storage_item__5400 = 'template-function-yes-or-no-word-is-in-phrase' ;
 my $storage_item__5401 = '# no-space dashes-long-line <new_line> sub function__yes_or_no_word_is_in_phrase( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'yes_or_no_word_is_in_phrase' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name $global_action_result = ' . "'" . ' ' . "'" . ' ; <new_line> $global_word_to_find = $global_operand_one ; <new_line> $global_temp_text = $global_dashrep_replacement{ $global_operand_two } ; <new_line> $global_temp_text =~ s/' . '\\' . 'n/ /sg ; <new_line> $global_temp_text =~ s/^ +// ; <new_line> $global_temp_text =~ s/ +$// ; <new_line> @global_list = split( / +/ , $global_temp_text ) ; <new_line> $global_list_length = $#global_list + 1 ; <new_line> $global_action_result = ' . "'" . 'no' . "'" . ' ; <new_line> if ( $global_list_length >= 1 ) { <new_line> $global_last_pointer = 0 ; <new_line> for ( $global_pointer = 1 ; $global_pointer <= $global_list_length ; $global_pointer ++ ) { <new_line> if ( $global_list[ $global_pointer - 1 ] eq $global_word_to_find ) { <new_line> $global_action_result = ' . "'" . 'yes' . "'" . ' ; <new_line> last ; <new_line> } <new_line> } <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5400 } = $storage_item__5401 ;
 my $storage_item__5402 = 'template-get-phrase-contents-from-operand-one-and-check-contains-integer' ;
-my $storage_item__5403 = '$global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $glboal_no ) { <new_line> $global_phrase_contents = ' . "'" . '0' . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_integer( &global_phrase_contents ) == $glboal_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_not_integer ' . "'" . ' . $global_phrase_contents . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
+my $storage_item__5403 = '$global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) { <new_line> $global_phrase_contents = ' . "'" . '0' . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_not_integer ' . "'" . ' . $global_phrase_contents . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5402 } = $storage_item__5403 ;
 my $storage_item__5404 = 'template-open-file-for-appending' ;
 my $storage_item__5405 = '' ;
@@ -34446,10 +34446,10 @@ return '' ;
 }
 $global_action_result = ' ' ;
 $global_phrase_contents = $global_dashrep_replacement{ $global_operand_one } ;
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $glboal_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {
 $global_phrase_contents = '0' ;
 }
-if ( &function_parameterized__yes_or_no_integer( &global_phrase_contents ) == $glboal_no ) {
+if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_phrase_contents . ' ' ;
 return '' ;
 }
@@ -34763,10 +34763,10 @@ return '' ;
 }
 $global_action_result = ' ' ;
 $global_phrase_contents = $global_dashrep_replacement{ $global_operand_one } ;
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $glboal_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {
 $global_phrase_contents = '0' ;
 }
-if ( &function_parameterized__yes_or_no_integer( &global_phrase_contents ) == $glboal_no ) {
+if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_phrase_contents . ' ' ;
 return '' ;
 }
