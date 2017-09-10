@@ -2721,6 +2721,7 @@ my $global_operand_one_words = '' ;  <new_line>
 my $global_operand_two_words = '' ;  <new_line>
 my $global_operand_three_words = '' ;  <new_line>
 my $global_phrase_name = '' ;  <new_line>
+my $global_phrase_contents = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
 my $output_results = '' ;  <new_line>
 my $global_current_word = '' ;  <new_line>
@@ -3893,7 +3894,7 @@ $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 ----
 template-check-operand-four-is-phrase-name:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_four . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3901,7 +3902,7 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $
 ----
 template-check-operand-four-is-positive-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_four ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_four ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_four . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3917,7 +3918,7 @@ if ( &function_parameterized__yes_or_no_integer( code-get-or-put-phrase-definiti
 ----
 template-check-operand-one-input-file-exists:
 combee ******
-if ( &function_parameterized__yes_or_no_input_file_exists( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_input_file_exists( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_exists_file ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3925,7 +3926,7 @@ if ( &function_parameterized__yes_or_no_input_file_exists( $global_operand_one )
 ----
 template-check-operand-one-is-file-name:
 combee ******
-if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_file_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3933,7 +3934,7 @@ if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $glo
 ----
 template-check-operand-one-is-folder-name:
 combee ******
-if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_folder_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3941,7 +3942,7 @@ if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $g
 ----
 template-check-operand-one-is-input-file-open-for-reading:
 combee ******
-if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3949,23 +3950,21 @@ if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_o
 ----
 template-check-operand-one-is-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_integer( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_integer( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 ****** comenn
 ----
 template-check-operand-one-is-phrase-name:
-combee ******
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-one-is-phrase-not-empty:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_empty_phrase ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3973,7 +3972,7 @@ if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_ope
 ----
 template-check-operand-one-is-positive-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3981,7 +3980,7 @@ if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_one ) 
 ----
 template-check-operand-one-is-real-number:
 combee ******
-if ( &function_parameterized__yes_or_no_real_number( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_real_number( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_real_number ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3989,7 +3988,7 @@ if ( &function_parameterized__yes_or_no_real_number( $global_operand_one ) == $g
 ----
 template-check-operand-three-contains-real-numbers:
 combee ******
-if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_three ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_three ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_list_of_real_numbers ' . $global_operand_three . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -3997,7 +3996,7 @@ if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_t
 ----
 template-check-operand-three-is-phrase-name:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_three . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4005,7 +4004,7 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_three ) == 
 ----
 template-check-operand-three-is-phrase-not-empty:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_three ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_three ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_empty_phrase ' . $global_operand_three . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4013,7 +4012,7 @@ if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_ope
 ----
 template-check-operand-three-is-positive-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_three ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_three ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_three . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4021,7 +4020,7 @@ if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_three 
 ----
 template-check-operand-two-contains-real-numbers:
 combee ******
-if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_list_of_real_numbers ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4029,7 +4028,7 @@ if ( &function_parameterized__yes_or_no_contains_real_numbers( $global_operand_t
 ----
 template-check-operand-two-is-file-name:
 combee ******
-if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_file_name ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4037,7 +4036,7 @@ if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $glo
 ----
 template-check-operand-two-is-input-file-open-for-reading:
 combee ******
-if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4045,7 +4044,7 @@ if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_t
 ----
 template-check-operand-two-is-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_integer( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_integer( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4053,7 +4052,7 @@ if ( &function_parameterized__yes_or_no_integer( $global_operand_two ) == $globa
 ----
 template-check-operand-two-is-output-append-file:
 combee ******
-if ( &function_parameterized__yes_or_no_file_open_for_appending( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_file_open_for_appending( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_append_to_file ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4061,7 +4060,7 @@ if ( &function_parameterized__yes_or_no_file_open_for_appending( $global_operand
 ----
 template-check-operand-two-is-phrase-name:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4069,7 +4068,7 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $g
 ----
 template-check-operand-two-is-phrase-not-empty:
 combee ******
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_phrase_empty ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4077,7 +4076,7 @@ if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_ope
 ----
 template-check-operand-two-is-positive-integer:
 combee ******
-if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -4085,7 +4084,7 @@ if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_two ) 
 ----
 template-check-operand-two-is-real-number:
 combee ******
-if ( &function_parameterized__yes_or_no_real_number( $global_operand_two ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_real_number( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_real_number ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -6951,6 +6950,24 @@ return '' ;  <new_line>
 
 template-function-segment-ending
 ----
+template-function-numeric-decrement:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_decrement( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_decrement' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+
+$global_action_result = ' ' ;  <new_line>
+
+template-get-phrase-contents-from-operand-one-and-check-contains-integer
+
+code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $global_phrase_contents ) - 1 ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending
+----
 template-function-numeric-equal-greater-less-compare:
 # no-space dashes-long-line  <new_line>
 
@@ -6978,10 +6995,16 @@ template-function-numeric-increment:
 
 sub function__numeric_increment( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_increment' ; <new_line>
-template-check-operand-one-contains-integer
+
+template-check-operand-one-is-phrase-name
 
 $global_action_result = ' ' ;  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) ;  <new_line>
+
+template-get-phrase-contents-from-operand-one-and-check-contains-integer
+
+code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( $global_phrase_contents ) ) ;  <new_line>
+
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -9126,6 +9149,17 @@ if ( $global_list_length >= 1 ) {  <new_line>
 
 template-function-segment-ending
 ----
+template-get-phrase-contents-from-operand-one-and-check-contains-integer:
+$global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $glboal_no ) {  <new_line>
+    $global_phrase_contents = '0' ;  <new_line>
+}  <new_line>
+
+if ( &function_parameterized__yes_or_no_integer( &global_phrase_contents ) == $glboal_no ) {  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_phrase_contents . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+----
 template-open-file-for-appending:
 combee ****** todo ****** comenn
 ----
@@ -11130,6 +11164,15 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_increment( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-divide-by:
@@ -11197,6 +11240,15 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_increment( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-integer:
