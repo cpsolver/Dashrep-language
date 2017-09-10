@@ -5248,7 +5248,7 @@ my $storage_item__5118 = 'template-check-operand-one-is-integer' ;
 my $storage_item__5119 = '' ;
 $global_dashrep_replacement{ $storage_item__5118 } = $storage_item__5119 ;
 my $storage_item__5120 = 'template-check-operand-one-is-phrase-name' ;
-my $storage_item__5121 = 'if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_not_phrase_name ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
+my $storage_item__5121 = '' ;
 $global_dashrep_replacement{ $storage_item__5120 } = $storage_item__5121 ;
 my $storage_item__5122 = 'template-check-operand-one-is-phrase-not-empty' ;
 my $storage_item__5123 = '' ;
@@ -34045,10 +34045,6 @@ return '' ;
 #
 sub function__get_count_of_words( ) {
 $global_action_name_with_underscores = 'get_count_of_words' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_source_text = $global_dashrep_replacement{ $global_operand_one } ;
 &function__point_to_words( ) ;
 $global_action_result = &function_parameterized__normalize_calculated_value( $global_number_of_words . '' ) ;
@@ -34062,10 +34058,6 @@ return '' ;
 #
 sub function__get_word_at_position( ) {
 $global_action_name_with_underscores = 'get_word_at_position' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_source_text = $global_dashrep_replacement{ $global_operand_one } ;
 $global_word_pointer_text = $global_operand_two ;
@@ -34108,10 +34100,6 @@ return '' ;
 #------------------------------------------------------------
 sub function__copy_words_found_only_in_first_list( ) {
 $global_action_name_with_underscores = 'copy_words_found_only_in_first_list' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
 $global_text_list_loop = $global_dashrep_replacement{ $global_operand_one } ;
@@ -34170,10 +34158,6 @@ $global_dashrep_replacement{ $global_destination_phrase } = $global_result_word_
 #------------------------------------------------------------
 sub function__copy_words_unique_only( ) {
 $global_action_name_with_underscores = 'copy_words_unique_only' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
 $global_text_list_loop = $global_dashrep_replacement{ $global_operand_one } ;
@@ -34242,10 +34226,6 @@ $global_dashrep_replacement{ 'list-of-pointers-to-unique-words' } = $global_text
 #------------------------------------------------------------
 sub function__copy_words_sort_alphabetic( ) {
 $global_action_name_with_underscores = 'copy_words_sort_alphabetic' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_source_phrase_name = $global_operand_one ;
 $global_target_phrase_name = $global_operand_two ;
@@ -34267,10 +34247,6 @@ $global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;
 #------------------------------------------------------------
 sub function__copy_and_replace( ) {
 $global_action_name_with_underscores = 'copy_and_replace' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_target_text = '' ;
 $global_source_phrase_name = $global_operand_one ;
@@ -34313,10 +34289,6 @@ $global_dashrep_replacement{ $global_target_phrase_name } = $global_target_text 
 #------------------------------------------------------------
 sub function__copy_and_replace_using_paired_listed_words( ) {
 $global_action_name_with_underscores = 'copy_and_replace_using_paired_listed_words' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 if ( not( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) {
 $global_dashrep_replacement{ $global_operand_one } = '' ;
@@ -34360,10 +34332,6 @@ $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;
 #------------------------------------------------------------
 sub function__generate_positions_of_delimiter( ) {
 $global_action_name_with_underscores = 'generate_positions_of_delimiter' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;
@@ -34417,10 +34385,6 @@ $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;
 #------------------------------------------------------------
 sub function__get_position_of_matching_text( ) {
 $global_action_name_with_underscores = 'get_position_of_matching_text' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;
@@ -34440,10 +34404,6 @@ $global_action_result = sprintf( "%d" , $global_position ) ;
 #------------------------------------------------------------
 sub function__numeric_increment( ) {
 $global_action_name_with_underscores = 'numeric_increment' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = ' ' ;
 $global_phrase_contents = $global_dashrep_replacement{ $global_operand_one } ;
 if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {
@@ -34462,10 +34422,6 @@ return '' ;
 #------------------------------------------------------------
 sub function__copy_words_found_in_both_lists( ) {
 $global_action_name_with_underscores = 'copy_words_found_in_both_lists' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 # todo: rewrite this code to use new functions: point_to_words_in_operand_one and point_to_words_in_operand_two
 # also use: $global_yes_found_word{ }
 $global_action_result = '' ;
@@ -34569,10 +34525,6 @@ $global_action_result = 'less' ;
 #------------------------------------------------------------
 sub function__generate_list_of_all_dashrep_phrases( ) {
 $global_action_name_with_underscores = 'generate_list_of_all_dashrep_phrases' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 @global_list_of_phrases = keys( %global_dashrep_replacement ) ;
 @global_sequence_of_phrases = sort( @global_list_of_phrases ) ;
@@ -34594,10 +34546,6 @@ $global_counter ++ ;
 #------------------------------------------------------------
 sub function__copy_words_that_begin_with_listed_words( ) {
 $global_action_name_with_underscores = 'copy_words_that_begin_with_listed_words' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_one } ;
 $global_list_of_words_as_text =~ s/\n/ /sg ;
@@ -34646,10 +34594,6 @@ delete( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ;
 #------------------------------------------------------------
 sub function__copy_from_phrase_append_to_file( ) {
 $global_action_name_with_underscores = 'copy_from_phrase_append_to_file' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 if ( not( ( exists( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } eq 'yes' ) ) ) {
 $global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_append_to_files ' ;
 return '' ;
@@ -34674,10 +34618,6 @@ $global_action_result = 'dashrep_compiled_runtime_error__setting_private_protect
 #
 sub function__copy_word_at_position( ) {
 $global_action_name_with_underscores = 'copy_word_at_position' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_source_text = $global_dashrep_replacement{ $global_operand_one } ;
 $global_word_pointer_text = $global_operand_three ;
@@ -34702,10 +34642,6 @@ return '' ;
 #------------------------------------------------------------
 sub function__copy_characters_from_position_to_position( ) {
 $global_action_name_with_underscores = 'copy_characters_from_position_to_position' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_source_phrase_name = $global_operand_one ;
 $global_target_phrase_name = $global_operand_two ;
@@ -34757,10 +34693,6 @@ $global_action_result = 'trace_diagnostic__deleted_file ' . $global_target_file_
 #------------------------------------------------------------
 sub function__numeric_decrement( ) {
 $global_action_name_with_underscores = 'numeric_decrement' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = ' ' ;
 $global_phrase_contents = $global_dashrep_replacement{ $global_operand_one } ;
 if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {
@@ -34779,10 +34711,6 @@ return '' ;
 #------------------------------------------------------------
 sub function__copy_words_from_position_to_position( ) {
 $global_action_name_with_underscores = 'copy_words_from_position_to_position' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '' ;
 $global_word_number_begin = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;
 $global_word_number_end = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;
@@ -34821,10 +34749,6 @@ $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;
 #------------------------------------------------------------
 sub function__get_count_of_characters( ) {
 $global_action_name_with_underscores = 'get_count_of_characters' ;
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;
-return '' ;
-}
 $global_action_result = '0' ;
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
 $global_action_result = length( $global_dashrep_replacement{ $global_operand_one } ) ;
