@@ -20,6 +20,7 @@ my $global_operand_one_words = '' ;  <new_line>
 my $global_operand_two_words = '' ;  <new_line>
 my $global_operand_three_words = '' ;  <new_line>
 my $global_phrase_name = '' ;  <new_line>
+my $global_phrase_contents = '' ;  <new_line>
 my $global_phrase_name_to_match = '' ;  <new_line>
 my $output_results = '' ;  <new_line>
 my $global_current_word = '' ;  <new_line>
