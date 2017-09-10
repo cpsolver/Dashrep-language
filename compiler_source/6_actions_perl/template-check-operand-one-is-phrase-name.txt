@@ -1,6 +1,4 @@
-combee ******
-if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
