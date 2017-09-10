@@ -3957,10 +3957,12 @@ if ( &function_parameterized__yes_or_no_integer( $global_operand_one ) == $globa
 ****** comenn
 ----
 template-check-operand-one-is-phrase-name:
+combee ******
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
+****** comenn
 ----
 template-check-operand-one-is-phrase-not-empty:
 combee ******
@@ -9151,11 +9153,11 @@ template-function-segment-ending
 ----
 template-get-phrase-contents-from-operand-one-and-check-contains-integer:
 $global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $glboal_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {  <new_line>
     $global_phrase_contents = '0' ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_integer( &global_phrase_contents ) == $glboal_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_phrase_contents . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
@@ -11168,7 +11170,7 @@ template-runtime-code-store-result-for-case-error
 
 combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__numeric_increment( ) ;  <new_line>
+&function__numeric_decrement( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 comenn
 
