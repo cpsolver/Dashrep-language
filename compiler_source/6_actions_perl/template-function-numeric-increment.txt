@@ -2,10 +2,15 @@
 
 sub function__numeric_increment( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_increment' ; <new_line>
-template-check-operand-one-contains-integer-or-empty
+
+template-check-operand-one-is-phrase-name
 
 $global_action_result = ' ' ;  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) ;  <new_line>
+
+template-get-phrase-contents-from-operand-one-and-check-contains-integer
+
+code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( $global_phrase_contents ) ) ;  <new_line>
+
 return '' ;  <new_line>
 
 template-function-segment-ending

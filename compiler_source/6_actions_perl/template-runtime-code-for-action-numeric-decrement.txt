@@ -15,4 +15,13 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_decrement( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
