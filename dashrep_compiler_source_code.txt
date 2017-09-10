@@ -3907,6 +3907,14 @@ if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_four )
 }  <new_line>
 ****** comenn
 ----
+template-check-operand-one-contains-integer:
+template-check-operand-one-is-phrase-name
+
+if ( &function_parameterized__yes_or_no_integer( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_contains_integer ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+----
 template-check-operand-one-input-file-exists:
 combee ******
 if ( &function_parameterized__yes_or_no_input_file_exists( $global_operand_one ) == $global_no ) {
@@ -6962,6 +6970,18 @@ if ( $global_first_object_of_action == $global_second_object_of_action ) {  <new
 } else {  <new_line>
     $global_action_result = 'less' ;  <new_line>
 }  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-increment:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_increment( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_increment' ; <new_line>
+template-check-operand-one-contains-integer
+
+$global_action_result = ' ' ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) ;  <new_line>
 
 template-function-segment-ending
 ----
