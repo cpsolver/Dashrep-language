@@ -1,0 +1,14 @@
+# no-space dashes-long-line  <new_line>
+
+sub function__trace_show( ) {  <new_line>
+# $global_action_name_with_underscores = 'trace_show' ; <new_line>
+$global_action_result = '' ;  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+print TRACE_OUT 'trace text:' . "\n" . $global_operand_one . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+} elsif ( exists( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) {  <new_line>
+print TRACE_OUT $global_operand_one . ':' . "\n" . code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+} else {  <new_line>
+print TRACE_OUT $global_operand_one . ':' . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
