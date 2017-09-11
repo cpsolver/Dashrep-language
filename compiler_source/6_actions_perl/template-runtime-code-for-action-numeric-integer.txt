@@ -13,4 +13,13 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_integer( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
