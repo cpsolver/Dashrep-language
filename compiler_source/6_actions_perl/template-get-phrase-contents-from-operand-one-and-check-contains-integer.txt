@@ -1,5 +1,5 @@
 $global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_phrase_contents ) == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_empty( $global_phrase_contents ) == $global_yes ) {  <new_line>
     $global_phrase_contents = '0' ;  <new_line>
 }  <new_line>
 
