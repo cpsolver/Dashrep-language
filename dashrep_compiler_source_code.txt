@@ -4200,6 +4200,43 @@ if ( ( $global_repeat_count < 1 ) || ( $global_repeat_count > 99999 ) ) {  <new_
 
 template-function-segment-ending
 ----
+template-function-append-text-no-space:
+# no-space dashes-long-line  <new_line>
+
+sub function__append_text_no_space( ) {  <new_line>
+$global_action_name_with_underscores = 'append_text_no_space' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+$global_action_result = '' ;  <new_line>
+
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-append-text:
+# no-space dashes-long-line  <new_line>
+
+sub function__append_text( ) {  <new_line>
+$global_action_name_with_underscores = 'append_text' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+$global_action_result = '' ;  <new_line>
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= ' ' ;  <new_line>
+}  <new_line>
+
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
+runtime-code-storage-item-result = ' ' ;  <new_line>
+
+template-function-segment-ending
+----
 template-function-clear-listed-phrases:
 # no-space dashes-long-line  <new_line>
 
@@ -4390,11 +4427,11 @@ template-function-copy-and-replace:
 
 sub function__copy_and_replace( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_and_replace' ; <new_line>
+
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 template-check-operand-four-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_target_text = '' ;  <new_line>
@@ -6955,6 +6992,17 @@ return '' ;  <new_line>
 
 template-function-segment-ending
 ----
+template-function-numeric-cosine:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_cosine( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_cosine' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( cosine( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+
+template-function-segment-ending
+----
 template-function-numeric-decrement:
 # no-space dashes-long-line  <new_line>
 
@@ -6973,6 +7021,19 @@ return '' ;  <new_line>
 
 template-function-segment-ending
 ----
+template-function-numeric-divide-by:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_divide_by( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_divide_by' ; <new_line>
+template-check-operand-one-is-real-number
+template-check-operand-two-is-real-number
+
+$global_action_result = '' ;  <new_line>
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) / &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ) ;  <new_line>
+
+template-function-segment-ending
+----
 template-function-numeric-equal-greater-less-compare:
 # no-space dashes-long-line  <new_line>
 
@@ -6980,7 +7041,6 @@ sub function__numeric_equal_greater_less_compare( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_equal_greater_less_compare' ; <new_line>
 template-check-operand-one-is-real-number
 template-check-operand-two-is-real-number
-
 
 $global_action_result = '' ;  <new_line>
 $global_first_object_of_action = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ;  <new_line>
@@ -7010,6 +7070,42 @@ template-get-phrase-contents-from-operand-one-and-check-contains-integer
 code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( $global_phrase_contents ) ) ;  <new_line>
 
 return '' ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-integer:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_integer( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_integer' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_action_result = '' ;  <new_line>
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( int( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-logarithm-base-10:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_logarithm_base_10( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_logarithm_base_10' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_action_result = '' ;  <new_line>
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) / log( 10.0 ) ) ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-logarithm-base-e:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_logarithm_base_e( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_logarithm_base_e' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_action_result = '' ;  <new_line>
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7077,6 +7173,19 @@ return '' ;  <new_line>
 
 template-function-segment-ending
 ----
+template-function-numeric-minus:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_minus( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_minus' ; <new_line>
+template-check-operand-one-is-real-number
+template-check-operand-two-is-real-number
+
+$global_action_result = '' ;  <new_line>
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) - &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ) ;  <new_line>
+
+template-function-segment-ending
+----
 template-function-numeric-multiply:
 # no-space dashes-long-line  <new_line>
 # function__numeric_multiply  <new_line>
@@ -7104,6 +7213,34 @@ $global_calculated_value = $global_calculated_value * &function_parameterized__c
 $global_action_result = &function_parameterized__normalize_calculated_value( $global_calculated_value ) ;  <new_line>
 
 return '' ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-odd-or-even:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_odd_or_even( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_odd_or_even' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_numeric_value_first = int( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ;  <new_line>
+$global_numeric_value_second = $global_numeric_value_first - ( 2 * int( $global_numeric_value_first / 2 ) ) ;  <new_line>
+if ( $global_numeric_value_second == 0 ) {  <new_line>
+$global_action_result = "even" ;  <new_line>
+} else {  <new_line>
+$global_action_result = "odd" ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
+----
+template-function-numeric-sine:
+# no-space dashes-long-line  <new_line>
+
+sub function__numeric_sine( ) {  <new_line>
+$global_action_name_with_underscores = 'numeric_sine' ; <new_line>
+template-check-operand-one-is-real-number
+
+$global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( sine( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -8675,6 +8812,46 @@ $global_length_of_word[ $global_number_of_words ] = $global_length_of_text - $gl
 
 template-function-segment-ending
 ----
+template-function-prepend-text-no-space:
+# no-space dashes-long-line  <new_line>
+
+sub function__prepend_text_no_space( ) {  <new_line>
+$global_action_name_with_underscores = 'prepend_text_no_space' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+$global_action_result = '' ;  <new_line>
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_source_text . ' ' . code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ;  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
+----
+template-function-prepend-text:
+# no-space dashes-long-line  <new_line>
+
+sub function__prepend_text( ) {  <new_line>
+$global_action_name_with_underscores = 'prepend_text' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+$global_action_result = '' ;  <new_line>
+$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+if ( code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_source_text . ' ' . code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ;  <new_line>
+} else {  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
+----
 template-function-put-listed-phrase-definitions-into-phrase:
 # no-space dashes-long-line  <new_line>
 
@@ -8933,6 +9110,22 @@ $global_dashrep_replacement{ "time<character_hyphen>day<character_hyphen>of<char
 
 template-function-segment-ending
 ----
+template-function-trace-show:
+# no-space dashes-long-line  <new_line>
+
+sub function__trace_show( ) {  <new_line>
+# $global_action_name_with_underscores = 'trace_show' ; <new_line>
+$global_action_result = '' ;  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+print TRACE_OUT 'trace text:' . "\n" . $global_operand_one . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+} elsif ( exists( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) {  <new_line>
+print TRACE_OUT $global_operand_one . ':' . "\n" . code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+} else {  <new_line>
+print TRACE_OUT $global_operand_one . ':' . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
+----
 template-function-write-dashrep-definitions-listed-in-phrase-to-file:
 # no-space dashes-long-line  <new_line>
 
@@ -9070,6 +9263,32 @@ while( $global_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
     $global_endless_loop_counter ++ ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_phrase_being_edited } = $global_text_being_edited ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-yes-if-all-yes:
+# no-space dashes-long-line  <new_line>
+
+sub function__yes_if_all_yes( ) {  <new_line>
+# $global_action_name_with_underscores = 'yes_if_all_yes' ; <new_line>
+$global_concatenated_all_operands_modified = ' ' . $global_concatenated_all_operands . ' ' ;  <new_line>
+$accumulated_remaining_text = '' ;  <new_line>
+$pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+
+while ( $pointer_to_next_match > 0 ) {  <new_line>
+$accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ;  <new_line>
+$global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ;  <new_line>
+$pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'yes' ) ;  <new_line>
+}  <new_line>
+
+$accumulated_remaining_text .= ' ' . $global_concatenated_all_operands_modified ;  <new_line>
+$accumulated_remaining_text =~ s/ //g ;  <new_line>
+
+if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>
+$global_action_result = 'yes' ;  <new_line>
+} else {  <new_line>
+$global_action_result = 'no' ;  <new_line>
+}  <new_line>
 
 template-function-segment-ending
 ----
@@ -9493,6 +9712,18 @@ code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+&function__copy_and_replace( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-append-file-to-file:
@@ -11149,6 +11380,15 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_cosine( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-decrement:
@@ -11197,6 +11437,16 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__numeric_divide_by( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-equal-greater-less-compare:
@@ -11225,6 +11475,15 @@ runtime-code-storage-item-result = 'less' ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_equal_greater_less_compare( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-increment:
@@ -11272,6 +11531,15 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_integer( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-logarithm-base-10:
@@ -11378,6 +11646,15 @@ runtime-code-storage-item-result = "odd" ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_odd_or_even( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-sine:
@@ -11396,6 +11673,15 @@ runtime-code-storage-item-result = &function_parameterized__convert_numeric_valu
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__numeric_sine( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
@@ -11731,6 +12017,16 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__prepend_text( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-put-into-phrase:
@@ -11881,6 +12177,15 @@ print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . '<character_h
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
+
+combee
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__trace_show( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-use-handler-with-each-word-in-phrase:
@@ -12072,6 +12377,14 @@ $global_action_result = 'no' ;  <new_line>
 }  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+
+combee
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+&function__yes_if_all_yes( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+comenn
+
 
 template-runtime-code-for-every-action-end
 ----
