@@ -580,6 +580,10 @@ format-end-heading-level-1:
 no-space  tag-begin /h1 tag-end
 ----
 grep-at-file-name:
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+
+combee
 ambee clear-phrase action-name amenn
 ambee clear-phrase action-name-for-getting-operand-checks amenn
 ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
@@ -587,6 +591,8 @@ ambee copy-word-at-position list-of-backslash-character-positions last-backslash
 ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
 ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
+comenn
+
 
 combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
@@ -642,8 +648,10 @@ ambee if-else amenn
 ambee grep-not-at-file-name amenn
 ambee if-end amenn
 
+combee
 ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
 ambee append-new-line revised-compiler-source-code amenn
+comenn
 ----
 grep-insert-operand-checks:
 ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
@@ -666,9 +674,20 @@ ambee if-end amenn
 ambee clear-phrase action-name amenn
 ----
 grep-not-at-file-name:
+ambee put-into-phrase text-to-find  function__  amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words nonzero ambee zero-or-nonzero ambee get-position-of-matching-text text-to-find linewise-input-line-from-file amenn amenn amenn amenn
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+
+combee
 ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
 ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
 ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
+comenn
+
 
 combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn
