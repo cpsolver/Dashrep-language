@@ -4,6 +4,7 @@ runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
