@@ -9393,8 +9393,6 @@ combee ****** todo ****** comenn
 template-runtime-code-for-action-append-multiple-from-phrases-named-in-pattern:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9420,26 +9418,21 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-append-new-line:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 
-runtime-code-check-operand-initialize
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+} else {  <new_line>
 
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-append-repeatedly-using-count:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9467,34 +9460,33 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-append-text-no-space:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 
-runtime-code-check-operand-initialize
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
+} else {  <new_line>
 
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-append-text:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
+} else {  <new_line>
 
 $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
 $global_target_text = runtime-code-for-operand-number-two ;  <new_line>
@@ -9506,15 +9498,12 @@ code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phra
 code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-clear-listed-phrases:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9538,8 +9527,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-clear-phrase:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9556,8 +9543,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-convert-unicode-to-html-entities:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9583,8 +9568,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-move-attributes-into-xml-tags:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9613,8 +9596,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-and-remove-attributes-from-xml-tags:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9640,8 +9621,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-and-replace-using-paired-listed-words:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9663,8 +9642,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-replace:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9729,8 +9706,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-append-file-to-file:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 specify-operand-two-is-file-name-for-appending
@@ -9753,8 +9728,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-characters-from-position-to-position:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9791,8 +9764,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-definition-of-named-phrase:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9822,8 +9793,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-from-columns-in-file-to-column-lists:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-name
@@ -9847,8 +9816,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-from-columns-in-file-to-named-phrases:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9876,8 +9843,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-from-file-to-phrase:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-name
@@ -9900,8 +9865,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-from-phrase-append-to-file:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9923,8 +9886,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-initial-caps:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -9953,8 +9914,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-listed-words-to-phrases-named-in-pattern:
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -9982,8 +9941,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-lowercase-only:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10003,29 +9960,25 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-text:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 
-runtime-code-check-operand-initialize
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
+} else {  <new_line>
 
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_target_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+$global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-uppercase-only:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10046,8 +9999,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-without-extra-spaces:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10066,8 +10017,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-word-at-position:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10091,8 +10040,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-found-in-both-lists:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10114,8 +10061,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-found-in-either-list:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10139,12 +10084,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-found-only-in-first-list:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
+check-operand-three-is-phrase-name
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
@@ -10161,8 +10105,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-from-position-to-position:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10188,8 +10130,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-offset-skip:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10213,8 +10153,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-order-reversed:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10240,8 +10178,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-rearrange-using-order-sort-alphabetic:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10271,8 +10207,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-rearrange-using-order-sort-numeric:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10301,8 +10235,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-sort-alphabetic:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10322,8 +10254,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-sort-numeric:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10352,8 +10282,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-that-begin-with-listed-words:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10375,8 +10303,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-that-begin-with-text:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10406,8 +10332,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-that-contain-listed-words:
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10436,8 +10360,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-words-unique-only:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10457,8 +10379,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-zero-pad-left-to-length:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10496,8 +10416,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-decode-from-cgi-parameter:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10543,8 +10461,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-encode-as-cgi-parameter:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10611,8 +10527,6 @@ template-runtime-code-for-action-executable-phrase-end
 template-runtime-code-for-action-expand-text:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10648,8 +10562,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-find-line-in-file-that-begins-with-text:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-not-empty
@@ -10673,8 +10585,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-listed-word:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10700,8 +10610,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-two-words-listed:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-not-empty
@@ -10726,8 +10634,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-gather-from-tagged-file-one-entry:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-name
@@ -10750,8 +10656,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-gather-tagged-info-from-file:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10776,8 +10680,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-counts-from-integer-to-integer:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-integer
@@ -10799,8 +10701,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-every-ordered-pairwise-combination-of-words:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10829,8 +10729,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-every-pairwise-combination-of-words:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10862,8 +10760,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-list-of-all-dashrep-phrases:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10909,8 +10805,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-list-of-files-in-current-read-directory:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10930,8 +10824,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-list-of-folders-in-current-read-directory:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10950,8 +10842,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-phrase-usage-counts:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -10968,8 +10858,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-delimiter:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -10992,8 +10880,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11025,8 +10911,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-listed-words:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11064,8 +10948,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-characters-from-position-to-position:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11094,8 +10976,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-count-of-characters:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11111,8 +10991,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-count-of-words:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11139,8 +11017,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-definitions-from-file:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 specify-operand-one-is-file-name-for-reading
@@ -11160,8 +11036,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-position-of-matching-text:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11183,8 +11057,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-position-of-word:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11218,8 +11090,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-word-at-position:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11262,8 +11132,6 @@ if ( $global_pointer_to_word >= 0 ) {  <new_line>
 ----
 template-runtime-code-for-action-insert-codeview-tags:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11340,8 +11208,6 @@ runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ; 
 template-runtime-code-for-action-numeric-absolute:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11366,8 +11232,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-cosine:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11395,8 +11259,6 @@ template-runtime-code-for-action-numeric-decrement:
 template-runtime-code-for-every-action-begin
 
 combee
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11422,8 +11284,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-divide-by:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11451,8 +11311,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-equal-greater-less-compare:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11490,8 +11348,6 @@ template-runtime-code-for-action-numeric-increment:
 template-runtime-code-for-every-action-begin
 
 combee
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11518,8 +11374,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-integer:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11545,8 +11399,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-logarithm-base-10:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11562,8 +11414,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-logarithm-base-e:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11599,8 +11449,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-minus:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11626,8 +11474,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-odd-or-even:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11660,8 +11506,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-sine:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11686,8 +11530,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11717,8 +11559,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-vector-absolutes:
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-two-is-phrase-name
@@ -11745,8 +11585,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-vector-add-number:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-not-empty
@@ -11768,8 +11606,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-integers:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11796,8 +11632,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-multiply-by-number:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11827,8 +11661,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-vectors-add:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11856,8 +11688,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-divide-by:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11887,8 +11717,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-vectors-from-delta-values-calculate-distances:
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-not-empty
@@ -11916,8 +11744,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-multiply:
  template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -11947,8 +11773,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-y-map-tile-number-based-on-latitude:
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-real-number
@@ -11975,8 +11799,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-prepend-text-no-space:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -11994,8 +11816,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-prepend-text:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12031,8 +11851,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-put-into-phrase:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12102,8 +11920,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-split-epoch-seconds-into-named-components-for-zero-meridian:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-positive-integer
@@ -12125,8 +11941,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-split-epoch-seconds-into-named-components:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12158,8 +11972,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-trace-show:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -12190,8 +12002,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-use-handler-with-each-word-in-phrase:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12307,8 +12117,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-not-empty
@@ -12330,8 +12138,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12416,15 +12222,13 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-or-no-empty-phrase:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 
-runtime-code-check-operand-initialize
+if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
+runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__yes_or_no_empty_phrase__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+} else {  <new_line>
 
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( $global_yes == &function_parameterized__yes_or_no_empty( $global_source_text ) ) {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -12432,9 +12236,8 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 }  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-or-no-file-exists:
@@ -12448,8 +12251,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-or-no-folder-exists:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12481,8 +12282,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12516,8 +12315,6 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-or-no-word-is-in-phrase:
 template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-phrase-name
@@ -12538,8 +12335,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-zero-one-multiple:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
@@ -12562,8 +12357,6 @@ template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-zero-or-nonzero:
 template-runtime-code-for-every-action-begin
-
-$global_number_of_operands = number-of-operands ;  <new_line>
 
 runtime-code-check-operand-initialize
 
