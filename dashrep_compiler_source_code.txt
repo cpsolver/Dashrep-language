@@ -4200,43 +4200,6 @@ if ( ( $global_repeat_count < 1 ) || ( $global_repeat_count > 99999 ) ) {  <new_
 
 template-function-segment-ending
 ----
-template-function-append-text-no-space:
-# no-space dashes-long-line  <new_line>
-
-sub function__append_text_no_space( ) {  <new_line>
-$global_action_name_with_underscores = 'append_text_no_space' ; <new_line>
-
-template-check-operand-one-is-phrase-name
-template-check-operand-two-is-phrase-name
-
-$global_action_result = '' ;  <new_line>
-
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-template-function-segment-ending
-----
-template-function-append-text:
-# no-space dashes-long-line  <new_line>
-
-sub function__append_text( ) {  <new_line>
-$global_action_name_with_underscores = 'append_text' ; <new_line>
-
-template-check-operand-one-is-phrase-name
-template-check-operand-two-is-phrase-name
-
-$global_action_result = '' ;  <new_line>
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-if ( code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= ' ' ;  <new_line>
-}  <new_line>
-
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-template-function-segment-ending
-----
 template-function-clear-listed-phrases:
 # no-space dashes-long-line  <new_line>
 
@@ -4821,6 +4784,42 @@ for ( $global_pointer = 0 ; $global_pointer <= $global_count ; $global_pointer +
     $global_target_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } .= $global_list_of_source_words[ $global_pointer ] ;  <new_line>
 }  <new_line>
+
+template-function-segment-ending
+----
+template-function-copy-lowercase-only:
+# no-space dashes-long-line  <new_line>
+
+sub function__copy_lowercase_only( ) {  <new_line>
+$global_action_name_with_underscores = 'copy_lowercase_only' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+
+template-check-operand-two-is-phrase-name
+
+$global_action_result = ' ' ;  <new_line>
+
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin $$global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+return '' ;  <new_line>
+
+template-function-segment-ending
+----
+template-function-copy-uppercase-only:
+# no-space dashes-long-line  <new_line>
+
+sub function__copy_uppercase_only( ) {  <new_line>
+$global_action_name_with_underscores = 'copy_uppercase_only' ; <new_line>
+
+template-check-operand-one-is-phrase-name
+
+template-check-operand-two-is-phrase-name
+
+$global_action_result = ' ' ;  <new_line>
+
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin $$global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
