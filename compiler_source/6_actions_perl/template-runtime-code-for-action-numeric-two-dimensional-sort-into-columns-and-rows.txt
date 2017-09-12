@@ -1,7 +1,5 @@
  template-runtime-code-for-every-action-begin
 
-$global_number_of_operands = number-of-operands ;  <new_line>
-
 runtime-code-check-operand-initialize
 
 check-operand-one-is-positive-integer
