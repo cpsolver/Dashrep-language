@@ -1,6 +1,17 @@
+ambee put-into-phrase text-to-find  function__  amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words nonzero ambee zero-or-nonzero ambee get-position-of-matching-text text-to-find linewise-input-line-from-file amenn amenn amenn amenn
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+ambee if-end amenn
+
+
+combee
 ambee put-into-phrase placeholder-text  <dashrep_placeholder_action_name_with_underscores>  amenn
 ambee copy-and-replace file-name-root file-name-root-with-underscores character-hyphen character-underscore amenn
 ambee copy-and-replace linewise-input-line-from-file linewise-input-line-from-file placeholder-text file-name-root-with-underscores amenn
+comenn
+
 
 combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions first-word string-sub amenn amenn

@@ -12,5 +12,7 @@ ambee if-else amenn
 ambee grep-not-at-file-name amenn
 ambee if-end amenn
 
+combee
 ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
 ambee append-new-line revised-compiler-source-code amenn
+comenn

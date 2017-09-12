@@ -1,3 +1,7 @@
+ambee append-text-no-space linewise-input-line-from-file revised-compiler-source-code amenn
+ambee append-new-line revised-compiler-source-code amenn
+
+combee
 ambee clear-phrase action-name amenn
 ambee clear-phrase action-name-for-getting-operand-checks amenn
 ambee generate-positions-of-delimiter character-backslash linewise-input-line-from-file list-of-backslash-character-positions amenn
@@ -5,6 +9,8 @@ ambee copy-word-at-position list-of-backslash-character-positions last-backslash
 ambee copy-characters-from-position-to-position linewise-input-line-from-file file-name ambee numeric-add ambee last-backslash-position amenn 1 amenn 9999 amenn
 ambee copy-and-replace file-name file-name-split character-period character-space amenn
 ambee copy-word-at-position file-name-split file-name-root 1 amenn
+comenn
+
 
 combee ****
 ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee get-position-of-matching-text string-operand-checks-for-action file-name-root amenn 1 amenn amenn amenn
