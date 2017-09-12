@@ -207,7 +207,6 @@ trace-show
 trace-show-where
 output-trace-file-name
 dashrep-comments-ignored
-yes-or-no-count-phrase-usage
 generate-phrase-usage-counts
 
 category_advanced
@@ -236,6 +235,7 @@ amennfenambee
 linbray
 
 category_deprecated
+yes-or-no-count-phrase-usage
 dashrep-file-name-if-read-file-missing
 dashrep-undefined
 get-definitions-from-file
