@@ -5980,7 +5980,7 @@ my $storage_item__5606 = 'template-runtime-code-for-action-not-recognized' ;
 my $storage_item__5607 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5606 } = $storage_item__5607 ;
 my $storage_item__5608 = 'template-runtime-code-for-action-numeric-absolute' ;
-my $storage_item__5609 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( abs( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5609 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_absolute( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5608 } = $storage_item__5609 ;
 my $storage_item__5610 = 'template-runtime-code-for-action-numeric-add' ;
 my $storage_item__5611 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_add( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
@@ -5992,22 +5992,22 @@ my $storage_item__5614 = 'template-runtime-code-for-action-numeric-decrement' ;
 my $storage_item__5615 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_decrement( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5614 } = $storage_item__5615 ;
 my $storage_item__5616 = 'template-runtime-code-for-action-numeric-divide-by' ;
-my $storage_item__5617 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number check-operand-two-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) / &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5617 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_divide_by( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5616 } = $storage_item__5617 ;
 my $storage_item__5618 = 'template-runtime-code-for-action-numeric-equal-greater-less-compare' ;
-my $storage_item__5619 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number check-operand-two-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ; <new_line> $global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ; <new_line> if ( $global_numeric_value_first == $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'equal' . "'" . ' ; <new_line> } elsif ( $global_numeric_value_first > $global_numeric_value_second ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'greater' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'less' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5619 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_equal_greater_less_compare( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5618 } = $storage_item__5619 ;
 my $storage_item__5620 = 'template-runtime-code-for-action-numeric-increment' ;
 my $storage_item__5621 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_increment( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5620 } = $storage_item__5621 ;
 my $storage_item__5622 = 'template-runtime-code-for-action-numeric-integer' ;
-my $storage_item__5623 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( int( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5623 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_integer( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5622 } = $storage_item__5623 ;
 my $storage_item__5624 = 'template-runtime-code-for-action-numeric-logarithm-base-10' ;
-my $storage_item__5625 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) / log( 10.0 ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5625 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_logarithm_base_10( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5624 } = $storage_item__5625 ;
 my $storage_item__5626 = 'template-runtime-code-for-action-numeric-logarithm-base-e' ;
-my $storage_item__5627 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5627 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_logarithm_base_e( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5626 } = $storage_item__5627 ;
 my $storage_item__5628 = 'template-runtime-code-for-action-numeric-maximum' ;
 my $storage_item__5629 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_maximum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
@@ -6016,13 +6016,13 @@ my $storage_item__5630 = 'template-runtime-code-for-action-numeric-minimum' ;
 my $storage_item__5631 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_minimum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5630 } = $storage_item__5631 ;
 my $storage_item__5632 = 'template-runtime-code-for-action-numeric-minus' ;
-my $storage_item__5633 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number check-operand-two-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) - &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5633 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_minus( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5632 } = $storage_item__5633 ;
 my $storage_item__5634 = 'template-runtime-code-for-action-numeric-multiply' ;
 my $storage_item__5635 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_multiply( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5634 } = $storage_item__5635 ;
 my $storage_item__5636 = 'template-runtime-code-for-action-numeric-odd-or-even' ;
-my $storage_item__5637 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_numeric_value_first = int( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ; <new_line> $global_numeric_value_second = $global_numeric_value_first - ( 2 * int( $global_numeric_value_first / 2 ) ) ; <new_line> if ( $global_numeric_value_second == 0 ) { <new_line> runtime-code-storage-item-result = "even" ; <new_line> } else { <new_line> runtime-code-storage-item-result = "odd" ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5637 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_odd_or_even( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5636 } = $storage_item__5637 ;
 my $storage_item__5638 = 'template-runtime-code-for-action-numeric-sine' ;
 my $storage_item__5639 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( sin( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
@@ -6061,7 +6061,7 @@ my $storage_item__5660 = 'template-runtime-code-for-action-prepend-text-no-space
 my $storage_item__5661 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5660 } = $storage_item__5661 ;
 my $storage_item__5662 = 'template-runtime-code-for-action-prepend-text' ;
-my $storage_item__5663 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text . ' . "'" . ' ' . "'" . ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ; <new_line> } <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5663 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__prepend_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5662 } = $storage_item__5663 ;
 my $storage_item__5664 = 'template-runtime-code-for-action-put-into-phrase' ;
 my $storage_item__5665 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
@@ -10798,30 +10798,10 @@ $global_source_text = $storage_item__1562 . ' ' . $storage_item__1564 ;
 &function__numeric_add( ) ;
 $storage_item__1561 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1561 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1566 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__1561 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__1566 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__1560 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__1560 = 'greater' ;
-} else {
-$storage_item__1560 = 'less' ;
-}
-} else {
-$storage_item__1560 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__1561 . ' ' . $storage_item__1566 . ' ' ;
-}
+$global_operand_one = $storage_item__1561 ;
+$global_operand_two = $storage_item__1566 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__1560 = $global_action_result ;
 
 if ( $storage_item__1559 eq $storage_item__1560 ) {
 $storage_item__1558 = 'yes' ;
@@ -10948,30 +10928,10 @@ $storage_item__1584 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 31 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1582 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__1584 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__1582 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__1584 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__1581 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__1581 = 'greater' ;
-} else {
-$storage_item__1581 = 'less' ;
-}
-} else {
-$storage_item__1581 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__1582 . ' ' . $storage_item__1584 . ' ' ;
-}
+$global_operand_one = $storage_item__1582 ;
+$global_operand_two = $storage_item__1584 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__1581 = $global_action_result ;
 
 if ( $storage_item__1580 eq $storage_item__1581 ) {
 $storage_item__1579 = 'yes' ;
@@ -14218,30 +14178,10 @@ $storage_item__2039 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 47 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2039 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2041 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2039 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2041 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__2038 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__2038 = 'greater' ;
-} else {
-$storage_item__2038 = 'less' ;
-}
-} else {
-$storage_item__2038 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__2039 . ' ' . $storage_item__2041 . ' ' ;
-}
+$global_operand_one = $storage_item__2039 ;
+$global_operand_two = $storage_item__2041 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__2038 = $global_action_result ;
 
 if ( $storage_item__2037 eq $storage_item__2038 ) {
 $storage_item__2036 = 'yes' ;
@@ -14324,30 +14264,10 @@ $storage_item__2060 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 49 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2060 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2062 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2060 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2062 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__2059 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__2059 = 'greater' ;
-} else {
-$storage_item__2059 = 'less' ;
-}
-} else {
-$storage_item__2059 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__2060 . ' ' . $storage_item__2062 . ' ' ;
-}
+$global_operand_one = $storage_item__2060 ;
+$global_operand_two = $storage_item__2062 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__2059 = $global_action_result ;
 
 if ( $storage_item__2058 eq $storage_item__2059 ) {
 $storage_item__2057 = 'yes' ;
@@ -14430,30 +14350,10 @@ $storage_item__2081 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 51 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2081 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2083 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2081 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2083 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__2080 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__2080 = 'greater' ;
-} else {
-$storage_item__2080 = 'less' ;
-}
-} else {
-$storage_item__2080 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__2081 . ' ' . $storage_item__2083 . ' ' ;
-}
+$global_operand_one = $storage_item__2081 ;
+$global_operand_two = $storage_item__2083 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__2080 = $global_action_result ;
 
 if ( $storage_item__2079 eq $storage_item__2080 ) {
 $storage_item__2078 = 'yes' ;
@@ -14536,30 +14436,10 @@ $storage_item__2102 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 53 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2102 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2104 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2102 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2104 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__2101 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__2101 = 'greater' ;
-} else {
-$storage_item__2101 = 'less' ;
-}
-} else {
-$storage_item__2101 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__2102 . ' ' . $storage_item__2104 . ' ' ;
-}
+$global_operand_one = $storage_item__2102 ;
+$global_operand_two = $storage_item__2104 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__2101 = $global_action_result ;
 
 if ( $storage_item__2100 eq $storage_item__2101 ) {
 $storage_item__2099 = 'yes' ;
@@ -17176,30 +17056,10 @@ $storage_item__2456 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 82 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2454 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2456 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2454 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2456 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__2453 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__2453 = 'greater' ;
-} else {
-$storage_item__2453 = 'less' ;
-}
-} else {
-$storage_item__2453 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__2454 . ' ' . $storage_item__2456 . ' ' ;
-}
+$global_operand_one = $storage_item__2454 ;
+$global_operand_two = $storage_item__2456 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__2453 = $global_action_result ;
 
 if ( $storage_item__2452 eq $storage_item__2453 ) {
 $storage_item__2451 = 'yes' ;
@@ -18263,22 +18123,10 @@ $global_operand_one = $storage_item__2618 ;
 &function__get_count_of_words( ) ;
 $storage_item__2617 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2617 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__2619 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__2616 = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2617 ) - &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2619 ) ) ;
-} else {
-$storage_item__2616 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-minus ' . $storage_item__2617 . ' ' . $storage_item__2619 . ' ' ;
-}
+$global_operand_one = $storage_item__2617 ;
+$global_operand_two = $storage_item__2619 ;
+&function__numeric_minus( ) ;
+$storage_item__2616 = $global_action_result ;
 
 $global_operand_one = $storage_item__2614 ;
 $global_operand_two = $storage_item__2615 ;
@@ -21501,30 +21349,10 @@ $storage_item__3088 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 168 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3088 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3090 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3088 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3090 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__3087 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__3087 = 'greater' ;
-} else {
-$storage_item__3087 = 'less' ;
-}
-} else {
-$storage_item__3087 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__3088 . ' ' . $storage_item__3090 . ' ' ;
-}
+$global_operand_one = $storage_item__3088 ;
+$global_operand_two = $storage_item__3090 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__3087 = $global_action_result ;
 
 if ( $storage_item__3086 eq $storage_item__3087 ) {
 $storage_item__3085 = 'yes' ;
@@ -21692,30 +21520,10 @@ $storage_item__3122 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 171 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3122 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3124 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3122 ) ;
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3124 ) ;
-if ( $global_numeric_value_first == $global_numeric_value_second ) {
-$storage_item__3121 = 'equal' ;
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {
-$storage_item__3121 = 'greater' ;
-} else {
-$storage_item__3121 = 'less' ;
-}
-} else {
-$storage_item__3121 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-equal-greater-less-compare ' . $storage_item__3122 . ' ' . $storage_item__3124 . ' ' ;
-}
+$global_operand_one = $storage_item__3122 ;
+$global_operand_two = $storage_item__3124 ;
+&function__numeric_equal_greater_less_compare( ) ;
+$storage_item__3121 = $global_action_result ;
 
 if ( $storage_item__3120 eq $storage_item__3121 ) {
 $storage_item__3119 = 'yes' ;
@@ -22000,22 +21808,10 @@ $storage_item__3160 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 176 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3160 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number( $storage_item__3162 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_real_number' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__3159 = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3160 ) - &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3162 ) ) ;
-} else {
-$storage_item__3159 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': numeric-minus ' . $storage_item__3160 . ' ' . $storage_item__3162 . ' ' ;
-}
+$global_operand_one = $storage_item__3160 ;
+$global_operand_two = $storage_item__3162 ;
+&function__numeric_minus( ) ;
+$storage_item__3159 = $global_action_result ;
 
 $global_yes_or_no_operand_error = $global_no ;
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3156 ) ;
@@ -24042,51 +23838,15 @@ exit ;
 }
 }
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3403 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3404 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3403 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3404 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3404 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3404 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3404 } = $global_source_text ;
-}
-$storage_item__3402 = ' ' ;
-} else {
-$storage_item__3402 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3403 . ' ' . $storage_item__3404 . ' ' ;
-}
+$global_operand_one = $storage_item__3403 ;
+$global_operand_two = $storage_item__3404 ;
+&function__prepend_text( ) ;
+$storage_item__3402 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3406 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3407 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3406 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3407 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3407 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3407 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3407 } = $global_source_text ;
-}
-$storage_item__3405 = ' ' ;
-} else {
-$storage_item__3405 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3406 . ' ' . $storage_item__3407 . ' ' ;
-}
+$global_operand_one = $storage_item__3406 ;
+$global_operand_two = $storage_item__3407 ;
+&function__prepend_text( ) ;
+$storage_item__3405 = $global_action_result ;
 
 $global_yes_or_no_operand_error = $global_no ;
 $global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3409 ) ;
@@ -24173,97 +23933,25 @@ $global_dashrep_replacement{ $global_operand_two } .= $global_dashrep_replacemen
 $storage_item__3417 = ' ' ;
 }
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3421 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3422 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3421 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3422 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3422 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3422 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3422 } = $global_source_text ;
-}
-$storage_item__3420 = ' ' ;
-} else {
-$storage_item__3420 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3421 . ' ' . $storage_item__3422 . ' ' ;
-}
+$global_operand_one = $storage_item__3421 ;
+$global_operand_two = $storage_item__3422 ;
+&function__prepend_text( ) ;
+$storage_item__3420 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3424 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3425 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3424 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3425 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3425 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3425 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3425 } = $global_source_text ;
-}
-$storage_item__3423 = ' ' ;
-} else {
-$storage_item__3423 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3424 . ' ' . $storage_item__3425 . ' ' ;
-}
+$global_operand_one = $storage_item__3424 ;
+$global_operand_two = $storage_item__3425 ;
+&function__prepend_text( ) ;
+$storage_item__3423 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3427 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3428 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3427 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3428 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3428 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3428 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3428 } = $global_source_text ;
-}
-$storage_item__3426 = ' ' ;
-} else {
-$storage_item__3426 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3427 . ' ' . $storage_item__3428 . ' ' ;
-}
+$global_operand_one = $storage_item__3427 ;
+$global_operand_two = $storage_item__3428 ;
+&function__prepend_text( ) ;
+$storage_item__3426 = $global_action_result ;
 
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3430 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3431 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( $global_dashrep_replacement{ $storage_item__3430 } ) ;
-if ( $global_dashrep_replacement{ $storage_item__3431 } ne '' ) {
-$global_dashrep_replacement{ $storage_item__3431 } = $global_source_text . ' ' . $global_dashrep_replacement{ $storage_item__3431 } ;
-} else {
-$global_dashrep_replacement{ $storage_item__3431 } = $global_source_text ;
-}
-$storage_item__3429 = ' ' ;
-} else {
-$storage_item__3429 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': prepend-text ' . $storage_item__3430 . ' ' . $storage_item__3431 . ' ' ;
-}
+$global_operand_one = $storage_item__3430 ;
+$global_operand_two = $storage_item__3431 ;
+&function__prepend_text( ) ;
+$storage_item__3429 = $global_action_result ;
 
 # save concatenated result
 $storage_item__3411 = $storage_item__3414 . ' ' . $storage_item__3417 . ' ' . $storage_item__3420 . ' ' . $storage_item__3423 . ' ' . $storage_item__3426 . ' ' . $storage_item__3429 ;
