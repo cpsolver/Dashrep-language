@@ -2,8 +2,8 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-integer
-check-operand-two-is-integer
+combee *** check-operand-one-is-integer *** comenn
+combee *** check-operand-two-is-integer *** comenn
 check-operand-three-is-phrase-name
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
