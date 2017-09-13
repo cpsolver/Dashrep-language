@@ -1,4 +1,4 @@
- template-runtime-code-for-every-action-begin
+template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
