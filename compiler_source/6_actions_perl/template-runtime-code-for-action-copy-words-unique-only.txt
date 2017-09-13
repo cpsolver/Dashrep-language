@@ -1,18 +1,8 @@
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__copy_words_unique_only( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
