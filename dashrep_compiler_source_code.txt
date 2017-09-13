@@ -9358,25 +9358,10 @@ combee ****** todo ****** comenn
 template-runtime-code-for-action-append-multiple-from-phrases-named-in-pattern:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__append_multiple_from_phrases_named_in_pattern( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_multiple_from_phrases_named_in_pattern' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9397,28 +9382,13 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-append-repeatedly-using-count:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__append_repeatedly_using_count( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_repeatedly_using_count' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9468,24 +9438,11 @@ runtime-code-storage-item-result = ' ' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-clear-listed-phrases:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__clear_listed_phrases( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__clear_listed_phrases' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9509,90 +9466,37 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-convert-unicode-to-html-entities:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__convert_unicode_to_html_entities( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__convert_unicode_to_html_entities' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-move-attributes-into-xml-tags:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_and_move_attributes_into_xml_tags( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_and_move_attributes_into_xml_tags' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-remove-attributes-from-xml-tags:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__copy_and_remove_attributes_from_xml_tags( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_and_remove_attributes_from_xml_tags' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-replace-using-paired-listed-words:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-not-empty
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -9600,9 +9504,6 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_and_replace_using_paired_listed_words( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-and-replace:
@@ -9860,56 +9761,26 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-initial-caps:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_initial_caps( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_initial_caps' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-listed-words-to-phrases-named-in-pattern:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_listed_words_to_phrases_named_in_pattern( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_listed_words_to_phrases_named_in_pattern' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9993,35 +9864,16 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-word-at-position:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_word_at_position( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-found-in-both-lists:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10029,21 +9881,10 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_words_found_in_both_lists( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-found-in-either-list:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10051,21 +9892,10 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_words_found_in_either_list( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-found-only-in-first-list:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10073,22 +9903,10 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_words_found_only_in_first_list( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-from-position-to-position:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-positive-integer
-check-operand-four-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10097,22 +9915,10 @@ $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__copy_words_from_position_to_position( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-offset-skip:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-positive-integer
-check-operand-four-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10121,149 +9927,65 @@ $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__copy_words_offset_skip( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-order-reversed:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__copy_words_order_reversed( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_order_reversed' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-rearrange-using-order-sort-alphabetic:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_words_rearrange_using_order_sort_alphabetic( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_rearrange_using_order_sort_alphabetic' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-rearrange-using-order-sort-numeric:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_words_rearrange_using_order_sort_numeric( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_rearrange_using_order_sort_numeric' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-sort-alphabetic:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__copy_words_sort_alphabetic( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-sort-numeric:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_words_sort_numeric( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_sort_numeric' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-that-begin-with-listed-words:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10271,85 +9993,40 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__copy_words_that_begin_with_listed_words( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-that-begin-with-text:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_words_that_begin_with_text( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_that_begin_with_text' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-that-contain-listed-words:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__copy_words_that_contain_listed_words( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_words_that_contain_listed_words' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-words-unique-only:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__copy_words_unique_only( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-zero-pad-left-to-length:
@@ -10400,29 +10077,14 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-decode-from-cgi-parameter:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__decode_from_cgi_parameter( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__decode_from_cgi_parameter' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -10445,29 +10107,14 @@ runtime-code-storage-item-result = '' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-encode-as-cgi-parameter:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__encode_as_cgi_parameter( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__encode_as_cgi_parameter' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -10665,126 +10312,46 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-counts-from-integer-to-integer:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-combee *** check-operand-one-is-integer *** comenn
-combee *** check-operand-two-is-integer *** comenn
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__generate_counts_from_integer_to_integer( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-every-ordered-pairwise-combination-of-words:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__generate_every_ordered_pairwise_combination_of_words( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__generate_every_ordered_pairwise_combination_of_words' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-every-pairwise-combination-of-words:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-check-operand-four-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__generate_every_pairwise_combination_of_words( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__generate_every_pairwise_combination_of_words' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-list-of-all-dashrep-phrases:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-
 &function__generate_list_of_all_dashrep_phrases( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-combee ****
-
-$global_source_text = runtime-code-for-operand-number-one ;  <new_line>
-@global_list_of_items_one = sort( keys( %global_dashrep_replacement ) ) ;  <new_line>
-$global_count_of_items_appended = 0 ;  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = '' ;  <new_line>
-
-foreach $global_phrase_name ( @global_list_of_items_one ) {  <new_line>
-if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /^[^ ]+$/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne "four<character_hyphen>hyphens" ) ) {  <new_line>
-
-if ( $global_count_of_items_appended > 0 ) {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end .= ' ' ;  <new_line>
-}  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end .= $global_phrase_name ;  <new_line>
-$global_count_of_items_appended ++ ;  <new_line>
-}  <new_line>
-}  <new_line>
-
-runtime-code-storage-item-result = '' ;  <new_line>
-
-**** comenn
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-list-of-files-in-current-read-directory:
@@ -10827,30 +10394,14 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-generate-phrase-usage-counts:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__generate_phrase_usage_counts( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-delimiter:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -10858,68 +10409,29 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__generate_positions_of_delimiter( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-check-operand-four-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-generate-positions-of-listed-words:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__generate_positions_of_listed_words( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__generate_positions_of_listed_words' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -10933,28 +10445,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-characters-from-position-to-position:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-positive-integer
-
-check-operand-three-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__get_characters_from_position_to_position( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__get_characters_from_position_to_position' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -10977,19 +10472,10 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-count-of-words:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__get_count_of_words( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-current-time-in-epoch-seconds:
@@ -11022,43 +10508,21 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-position-of-matching-text:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__get_position_of_matching_text( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-position-of-word:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__get_position_of_word( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-url-resource:
@@ -11076,21 +10540,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-get-word-at-position:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__get_word_at_position( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-if-else:
@@ -11116,28 +10570,14 @@ if ( $global_pointer_to_word >= 0 ) {  <new_line>
 # end action if yes begin  <new_line>
 ----
 template-runtime-code-for-action-insert-codeview-tags:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__insert_codeview_tags( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__insert_codeview_tags' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -11251,27 +10691,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-decrement:
 template-runtime-code-for-every-action-begin
 
-combee
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) - 1 ) ;  <new_line>
-
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-comenn
-
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__numeric_decrement( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
 
 template-runtime-code-for-every-action-end
 ----
@@ -11336,27 +10758,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-increment:
 template-runtime-code-for-every-action-begin
 
-combee
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = &function_parameterized__convert_numeric_value_into_numeric_text( 1 + &function_parameterized__convert_numeric_text_into_numeric_value( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) ;  <new_line>
-
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-comenn
-
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__numeric_increment( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
 
 template-runtime-code-for-every-action-end
 ----
@@ -11542,69 +10946,31 @@ comenn
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-two-dimensional-sort-into-columns-and-rows:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-positive-integer
-check-operand-two-contains-real-numbers
-check-operand-three-contains-real-numbers
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_two_dimensional_sort_into_columns_and_rows( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_two_dimensional_sort_into_columns_and_rows' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-absolutes:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_vector_absolutes( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vector_absolutes' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-add-number:
 template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-not-empty
-check-operand-two-is-real-number
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
@@ -11612,201 +10978,86 @@ $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__numeric_vector_add_number( ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-integers:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_vector_integers( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vector_integers' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vector-multiply-by-number:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-not-empty
-
-check-operand-two-is-real-number
-
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__numeric_vector_multiply_by_number( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vector_multiply_by_number' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-add:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__numeric_vectors_add( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vectors_add' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-divide-by:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-check-operand-two-is-phrase-name
-
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__numeric_vectors_divide_by( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vectors_divide_by' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-from-delta-values-calculate-distances:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-not-empty
-check-operand-two-is-phrase-not-empty
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_vectors_from_delta_values_calculate_distances( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vectors_from_delta_values_calculate_distances' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-vectors-multiply:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_vectors_multiply( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_vectors_multiply' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-y-map-tile-number-based-on-latitude:
- template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
 &function__numeric_y_map_tile_number_based_on_latitude( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__numeric_y_map_tile_number_based_on_latitude' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -11934,44 +11185,18 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-split-epoch-seconds-into-named-components-for-zero-meridian:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__split_epoch_seconds_into_named_components_for_zero_meridian( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__split_epoch_seconds_into_named_components_for_zero_meridian' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-split-epoch-seconds-into-named-components:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-positive-integer
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__split_epoch_seconds_into_named_components( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__split_epoch_seconds_into_named_components' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
-
-}  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -12131,23 +11356,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-not-empty
-specify-operand-two-is-filename-for-writing-new-file
-open-file-for-writing-new-file
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__write_dashrep_definitions_listed_in_phrase_to_file( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file:
@@ -12329,22 +11542,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-or-no-word-is-in-phrase:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__yes_or_no_word_is_in_phrase( ) ;  <new_line>
-
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-zero-one-multiple:
