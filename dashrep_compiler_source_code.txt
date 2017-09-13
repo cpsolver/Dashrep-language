@@ -10633,26 +10633,9 @@ runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ; 
 template-runtime-code-for-action-numeric-absolute:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( abs( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee ****
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__numeric_absolute( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-**** comenn
 
 template-runtime-code-for-every-action-end
 ----
@@ -10700,58 +10683,20 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-divide-by:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-check-operand-two-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) / &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__numeric_divide_by( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-equal-greater-less-compare:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-check-operand-two-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_numeric_value_first = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ;  <new_line>
-$global_numeric_value_second = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ;  <new_line>
-
-if ( $global_numeric_value_first == $global_numeric_value_second ) {  <new_line>
-runtime-code-storage-item-result = 'equal' ;  <new_line>
-} elsif ( $global_numeric_value_first > $global_numeric_value_second ) {  <new_line>
-runtime-code-storage-item-result = 'greater' ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = 'less' ;  <new_line>
-}  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__numeric_equal_greater_less_compare( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
 
 template-runtime-code-for-every-action-end
 ----
@@ -10767,75 +10712,27 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-integer:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( int( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__numeric_integer( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-logarithm-base-10:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) / log( 10.0 ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee ****
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__numeric_logarithm_base_10( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-**** comenn
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-numeric-logarithm-base-e:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee ****
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__numeric_logarithm_base_e( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-**** comenn
 
 template-runtime-code-for-every-action-end
 ----
@@ -10860,27 +10757,10 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-minus:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-check-operand-two-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) - &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-two ) ) ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee ****
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 &function__numeric_minus( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-**** comenn
 
 template-runtime-code-for-every-action-end
 ----
@@ -10896,29 +10776,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-numeric-odd-or-even:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-real-number
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_numeric_value_first = int( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ;  <new_line>
-$global_numeric_value_second = $global_numeric_value_first - ( 2 * int( $global_numeric_value_first / 2 ) ) ;  <new_line>
-if ( $global_numeric_value_second == 0 ) {  <new_line>
-runtime-code-storage-item-result = "even" ;  <new_line>
-} else {  <new_line>
-runtime-code-storage-item-result = "odd" ;  <new_line>
-}  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__numeric_odd_or_even( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
 
 template-runtime-code-for-every-action-end
 ----
@@ -11082,35 +10942,10 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-prepend-text:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ne '' ) {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text . ' ' . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
-} else {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_source_text ;  <new_line>
-}  <new_line>
-
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-
-combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 &function__prepend_text( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
-
 
 template-runtime-code-for-every-action-end
 ----
