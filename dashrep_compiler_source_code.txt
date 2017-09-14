@@ -583,7 +583,7 @@ ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
 handle-token-amenn-case-action-check-operand-count:
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee handle-token-amenn-case-action-standard-or-special amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
@@ -616,6 +616,10 @@ ambee if-no-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action 
 ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
 ambee if-end amenn
 
+ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee put-into-phrase yes-or-no-action-recognized  yes  amenn
+ambee if-end amenn
+
 ambee copy-words-found-in-both-lists action-name list-of-not-really-action-names possible-not-really-action-name amenn
 
 ambee if-no-begin ambee yes-or-no-empty-phrase possible-not-really-action-name amenn amenn
@@ -644,6 +648,14 @@ ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee
 ambee handle-token-amenn-case-action-has-template amenn
 ambee if-else amenn
 ambee handle-token-amenn-case fenambee action-name amenn amenn
+ambee if-end amenn
+----
+handle-token-amenn-case-action-standard-or-special:
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee copy-word-at-position list-of-counts-as-words operand-count-as-word ambee number-of-operands amenn amenn
+ambee expand-text template-runtime-code-standard-for-operand-count fenambee operand-count-as-word amenn runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-executable-phrase:
@@ -1450,6 +1462,9 @@ export-defs-phrase-begin:
 ----
 export-defs-phrase-end:
 <def_phrase_end>
+----
+list-of-counts-as-words:
+one two three four five six
 ----
 list-of-function-branches-already-generated:
 start-here
@@ -4789,7 +4804,7 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
 $global_action_result = ' ' ;  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin $$global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
 return '' ;  <new_line>
 
 template-function-segment-ending
@@ -4803,7 +4818,7 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
 $global_action_result = ' ' ;  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin $$global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
 return '' ;  <new_line>
 
 template-function-segment-ending
@@ -11670,6 +11685,48 @@ template-runtime-code-identify-phrase-found
 ----
 template-runtime-code-if-case-yes-phrase-found:
 if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>
+----
+template-runtime-code-standard-for-operand-count-four:
+template-runtime-code-for-every-action-begin
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-standard-for-operand-count-one:
+template-runtime-code-for-every-action-begin
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-standard-for-operand-count-three:
+template-runtime-code-for-every-action-begin
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-standard-for-operand-count-two:
+template-runtime-code-for-every-action-begin
+
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-store-result-for-case-error:
 runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': <dashrep_placeholder_action_name> ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
