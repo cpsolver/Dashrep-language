@@ -17,6 +17,7 @@ template-function-parameterized-get-list-of-words
 template-function-parameterized-yes-or-no-valid-path
 template-function-parameterized-yes-or-no-valid-path-prefix
 template-function-parameterized-yes-or-no-file-name
+template-function-parameterized-yes-or-no-folder-name
 template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
 template-function-parameterized-open-file-for-writing-new-file
