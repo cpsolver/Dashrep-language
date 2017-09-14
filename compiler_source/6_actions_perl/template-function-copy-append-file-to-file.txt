@@ -1,19 +1,13 @@
-specify-operand-two-is-file-name-for-appending
-open-file-for-appending
-specify-operand-one-is-file-name-for-reading
-open-file-for-reading
-
 # no-space dashes-long-line  <new_line>
 
 sub function__copy_append_file_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_append_file_to_file' ; <new_line>
-template-specify-operand-two-is-file-name-for-appending
-template-open-file-for-appending
-template-specify-operand-one-is-file-name-for-reading
-template-open-file-for-reading
-
 
 template-return-if-no-permission-to-append-to-files
+$global_target_file_name = $global_operand_two ;  <new_line>
+template-open-file-for-appending
+$global_source_file_name = $global_operand_one ;  <new_line>
+template-open-file-for-reading
 
 $global_action_result = '' ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>

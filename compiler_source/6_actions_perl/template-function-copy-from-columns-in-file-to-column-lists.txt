@@ -3,9 +3,8 @@
 sub function__copy_from_columns_in_file_to_column_lists( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_from_columns_in_file_to_column_lists' ; <new_line>
 template-check-operand-two-is-phrase-name
-template-specify-operand-one-is-file-name-for-reading
+$global_source_file_name = $global_operand_one ;  <new_line>
 template-open-file-for-reading
-
 
 $global_action_result = '' ;  <new_line>
 $global_list_name_prefix = $global_operand_two ;  <new_line>

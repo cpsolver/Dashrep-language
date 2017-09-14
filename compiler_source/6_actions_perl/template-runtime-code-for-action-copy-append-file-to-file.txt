@@ -2,9 +2,9 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-specify-operand-two-is-file-name-for-appending
+$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 open-file-for-appending
-specify-operand-one-is-file-name-for-reading
+$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
