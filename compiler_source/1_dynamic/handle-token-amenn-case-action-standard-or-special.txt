@@ -1,0 +1,12 @@
+ambee trace-show action-name amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee copy-word-at-position list-of-counts-as-words operand-count-as-word ambee number-of-operands amenn amenn
+
+ambee trace-show template-runtime-code-for-action fenambee action-name amenn amenn
+ambee trace-show operand-count-as-word amenn
+
+ambee expand-text template-runtime-code-standard-for-operand-count fenambee operand-count-as-word amenn runtime-code-for-parameter-phrase amenn
+ambee if-else amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
