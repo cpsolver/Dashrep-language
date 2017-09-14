@@ -2,15 +2,11 @@
 
 sub function__copy_lowercase_only( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_lowercase_only' ; <new_line>
-
 template-check-operand-one-is-phrase-name
-
 template-check-operand-two-is-phrase-name
 
 $global_action_result = ' ' ;  <new_line>
-
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin $$global_operand_one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
 return '' ;  <new_line>
 
 template-function-segment-ending
