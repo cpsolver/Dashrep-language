@@ -1,0 +1,14 @@
+# no-space dashes-long-line  <new_line>
+
+sub function__zero_one_multiple( ) {  <new_line>
+$global_action_name_with_underscores = 'zero_one_multiple' ; <new_line>
+template-check-operand-one-is-positive-integer
+
+$global_action_result = 'multiple' ;  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) {  <new_line>
+    $global_action_result = 'zero' ;  <new_line>
+} elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) {  <new_line>
+    $global_action_result = 'one' ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending

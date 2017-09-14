@@ -1,0 +1,14 @@
+# no-space dashes-long-line  <new_line>
+
+sub function__yes_or_no_same_two_phrase_definitions( ) {  <new_line>
+$global_action_name_with_underscores = 'yes_or_no_same_two_phrase_definitions' ; <new_line>
+template-check-operand-one-is-phrase-name
+template-check-operand-two-is-phrase-name
+
+if ( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end ) {  <new_line>
+runtime-code-storage-item-result = 'yes' ;  <new_line>
+} else {  <new_line>
+runtime-code-storage-item-result = 'no' ;  <new_line>
+}  <new_line>
+
+template-function-segment-ending
