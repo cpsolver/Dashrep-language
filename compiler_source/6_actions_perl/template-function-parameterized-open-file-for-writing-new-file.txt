@@ -32,6 +32,7 @@ return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = '' ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 return $global_no ;  <new_line>
 

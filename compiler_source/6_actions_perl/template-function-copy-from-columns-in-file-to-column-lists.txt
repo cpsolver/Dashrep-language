@@ -32,6 +32,7 @@ for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_num
     $global_list_of_values_in_column[ $global_column_pointer ] =~ s/ +$// ;  <new_line>
     $global_dashrep_replacement{ $global_list_name_prefix . "<character_hyphen>" . $global_column_pointer } = $global_list_of_values_in_column[ $global_column_pointer ] ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending

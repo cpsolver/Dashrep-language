@@ -71,6 +71,8 @@ my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 my $global_tracking_on_yes_or_no = $global_no ;  <new_line>
 my $global_yes_or_no_within_ampersand_encoded_character = $global_no ;  <new_line>
 my $global_yes_or_no_trace_output_file_is_open = $global_no ;  <new_line>
+my $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
+my $global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 <new_line>
 
 my $global_storage_number = 1 ;  <new_line>

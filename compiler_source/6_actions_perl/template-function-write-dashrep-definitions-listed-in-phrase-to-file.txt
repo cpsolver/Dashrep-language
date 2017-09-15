@@ -56,6 +56,7 @@ foreach $global_phrase_name ( @global_list_of_phrases ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file

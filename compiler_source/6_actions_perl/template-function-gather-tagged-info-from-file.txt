@@ -120,6 +120,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 if ( $global_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
     $global_action_result = 'dashrep_runtime_error__gather_tagged_info_from_file__case_missing_unique_values ' . $global_count_of_items_with_missing_unique_id . "\n" ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending

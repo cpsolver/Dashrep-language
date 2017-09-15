@@ -42,6 +42,7 @@ $global_line_count ++ ;  <new_line>
 # end of while loop  <new_line>
 }  <new_line>
 
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 } elsif ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'POST' ) ) {  <new_line>
