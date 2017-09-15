@@ -14,12 +14,11 @@ $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 $global_length_of_text_source = length( $global_source_text ) ;  <new_line>
-$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
+$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ;  <new_line>
 $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
-$global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
+$global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ;  <new_line>
 $global_character_pointer_begin = 0 ;  <new_line>
 $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ;  <new_line>
 $global_target_text = '' ;  <new_line>
@@ -41,21 +40,10 @@ if ( $global_character_pointer_begin < $global_length_of_text_source ) {  <new_l
 $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ;  <new_line>
 }  <new_line>
 
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
-
-
-combee
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-&function__copy_and_replace( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
-
 
 template-runtime-code-for-every-action-end
