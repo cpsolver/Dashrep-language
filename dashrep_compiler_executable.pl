@@ -5802,462 +5802,249 @@ $global_dashrep_replacement{ $storage_item__5503 } = $storage_item__5504 ;
 my $storage_item__5505 = 'template-open-file-for-reading' ;
 my $storage_item__5506 = '' ;
 $global_dashrep_replacement{ $storage_item__5505 } = $storage_item__5506 ;
-my $storage_item__5507 = 'template-runtime-code-for-action-append-multiple-from-phrases-named-in-pattern' ;
-my $storage_item__5508 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__append_multiple_from_phrases_named_in_pattern( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5507 = 'template-runtime-code-for-action-append-new-line' ;
+my $storage_item__5508 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5507 } = $storage_item__5508 ;
-my $storage_item__5509 = 'template-runtime-code-for-action-append-new-line' ;
-my $storage_item__5510 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5509 = 'template-runtime-code-for-action-append-repeatedly-using-count' ;
+my $storage_item__5510 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__append_repeatedly_using_count( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5509 } = $storage_item__5510 ;
-my $storage_item__5511 = 'template-runtime-code-for-action-append-repeatedly-using-count' ;
-my $storage_item__5512 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__append_repeatedly_using_count( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5511 = 'template-runtime-code-for-action-append-text-no-space' ;
+my $storage_item__5512 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5511 } = $storage_item__5512 ;
-my $storage_item__5513 = 'template-runtime-code-for-action-append-text-no-space' ;
-my $storage_item__5514 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text_no_space__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end .= code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5513 = 'template-runtime-code-for-action-append-text' ;
+my $storage_item__5514 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> if ( code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) { <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5513 } = $storage_item__5514 ;
-my $storage_item__5515 = 'template-runtime-code-for-action-append-text' ;
-my $storage_item__5516 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> if ( code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) { <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5515 = 'template-runtime-code-for-action-copy-and-replace' ;
+my $storage_item__5516 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_text_source = length( $global_source_text ) ; <new_line> $global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ; <new_line> $global_character_pointer_begin = 0 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> $global_target_text = ' . "'" . "'" . ' ; <new_line> while ( $global_character_pointer_end >= -1 ) { <new_line> $global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ; <new_line> if ( $global_length_of_text_segment > 0 ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ; <new_line> } <new_line> $global_target_text .= $global_text_to_insert ; <new_line> $global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> } <new_line> if ( $global_character_pointer_begin < $global_length_of_text_source ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5515 } = $storage_item__5516 ;
-my $storage_item__5517 = 'template-runtime-code-for-action-clear-listed-phrases' ;
-my $storage_item__5518 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__clear_listed_phrases( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5517 = 'template-runtime-code-for-action-copy-append-file-to-file' ;
+my $storage_item__5518 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_target_file_name = runtime-code-for-operand-number-two ; <new_line> open-file-for-appending $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_append_file_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5517 } = $storage_item__5518 ;
-my $storage_item__5519 = 'template-runtime-code-for-action-clear-phrase' ;
-my $storage_item__5520 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5519 = 'template-runtime-code-for-action-copy-definition-of-named-phrase' ;
+my $storage_item__5520 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_phrase_name = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_yes ) { <new_line> if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5519 } = $storage_item__5520 ;
-my $storage_item__5521 = 'template-runtime-code-for-action-convert-unicode-to-html-entities' ;
-my $storage_item__5522 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__convert_unicode_to_html_entities( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5521 = 'template-runtime-code-for-action-copy-from-columns-in-file-to-column-lists' ;
+my $storage_item__5522 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_from_columns_in_file_to_column_lists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5521 } = $storage_item__5522 ;
-my $storage_item__5523 = 'template-runtime-code-for-action-copy-and-move-attributes-into-xml-tags' ;
-my $storage_item__5524 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_and_move_attributes_into_xml_tags( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5523 = 'template-runtime-code-for-action-copy-from-columns-in-file-to-named-phrases' ;
+my $storage_item__5524 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_from_columns_in_file_to_named_phrases( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5523 } = $storage_item__5524 ;
-my $storage_item__5525 = 'template-runtime-code-for-action-copy-and-remove-attributes-from-xml-tags' ;
-my $storage_item__5526 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_and_remove_attributes_from_xml_tags( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5525 = 'template-runtime-code-for-action-copy-from-file-to-phrase' ;
+my $storage_item__5526 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_from_file_to_phrase( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5525 } = $storage_item__5526 ;
-my $storage_item__5527 = 'template-runtime-code-for-action-copy-and-replace-using-paired-listed-words' ;
-my $storage_item__5528 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_and_replace_using_paired_listed_words( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5527 = 'template-runtime-code-for-action-copy-from-phrase-append-to-file' ;
+my $storage_item__5528 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name $global_target_file_name = runtime-code-for-operand-number-two ; <new_line> open-file-for-appending if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_from_phrase_append_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5527 } = $storage_item__5528 ;
-my $storage_item__5529 = 'template-runtime-code-for-action-copy-and-replace' ;
-my $storage_item__5530 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_text_source = length( $global_source_text ) ; <new_line> $global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ; <new_line> $global_character_pointer_begin = 0 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> $global_target_text = ' . "'" . "'" . ' ; <new_line> while ( $global_character_pointer_end >= -1 ) { <new_line> $global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ; <new_line> if ( $global_length_of_text_segment > 0 ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ; <new_line> } <new_line> $global_target_text .= $global_text_to_insert ; <new_line> $global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> } <new_line> if ( $global_character_pointer_begin < $global_length_of_text_source ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5529 = 'template-runtime-code-for-action-copy-text' ;
+my $storage_item__5530 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5529 } = $storage_item__5530 ;
-my $storage_item__5531 = 'template-runtime-code-for-action-copy-append-file-to-file' ;
-my $storage_item__5532 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_target_file_name = runtime-code-for-operand-number-two ; <new_line> open-file-for-appending $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_append_file_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5531 = 'template-runtime-code-for-action-create-empty-sub-folder' ;
+my $storage_item__5532 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__create_empty_sub_folder( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5531 } = $storage_item__5532 ;
-my $storage_item__5533 = 'template-runtime-code-for-action-copy-characters-from-position-to-position' ;
-my $storage_item__5534 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer check-operand-four-is-positive-integer if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_length_of_text_source = length( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> # reminder: index function starts counting at 0 but Dashrep language starts counting at 1 <new_line> $global_character_pointer_begin = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ; <new_line> $global_character_pointer_end = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-four ) ; <new_line> if ( ( $global_length_of_text_source > 0 ) && ( $global_character_pointer_begin < $global_length_of_text_source ) ) { <new_line> if ( $global_character_pointer_end > $global_length_of_text_source - 1 ) { <new_line> $global_character_pointer_end = $global_length_of_text_source - 1 ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = substr( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end , $global_character_pointer_begin , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5533 = 'template-runtime-code-for-action-delete-file' ;
+my $storage_item__5534 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_target_file_name = $global_operand_one ; <new_line> &function__delete_file( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5533 } = $storage_item__5534 ;
-my $storage_item__5535 = 'template-runtime-code-for-action-copy-definition-of-named-phrase' ;
-my $storage_item__5536 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_phrase_name = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_yes ) { <new_line> if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = ' . "'" . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5535 = 'template-runtime-code-for-action-executable-phrase-begin' ;
+my $storage_item__5536 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5535 } = $storage_item__5536 ;
-my $storage_item__5537 = 'template-runtime-code-for-action-copy-from-columns-in-file-to-column-lists' ;
-my $storage_item__5538 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_from_columns_in_file_to_column_lists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5537 = 'template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5538 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5537 } = $storage_item__5538 ;
-my $storage_item__5539 = 'template-runtime-code-for-action-copy-from-columns-in-file-to-named-phrases' ;
-my $storage_item__5540 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_from_columns_in_file_to_named_phrases( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5539 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
+my $storage_item__5540 = 'template-runtime-code-for-action-executable-phrase-begin &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5539 } = $storage_item__5540 ;
-my $storage_item__5541 = 'template-runtime-code-for-action-copy-from-file-to-phrase' ;
-my $storage_item__5542 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_from_file_to_phrase( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5541 = 'template-runtime-code-for-action-executable-phrase' ;
+my $storage_item__5542 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5541 } = $storage_item__5542 ;
-my $storage_item__5543 = 'template-runtime-code-for-action-copy-from-phrase-append-to-file' ;
-my $storage_item__5544 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name $global_target_file_name = runtime-code-for-operand-number-two ; <new_line> open-file-for-appending if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_from_phrase_append_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5543 = 'template-runtime-code-for-action-expand-text' ;
+my $storage_item__5544 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5543 } = $storage_item__5544 ;
-my $storage_item__5545 = 'template-runtime-code-for-action-copy-initial-caps' ;
-my $storage_item__5546 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_initial_caps( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5545 = 'template-runtime-code-for-action-find-line-in-file-that-begins-with-text' ;
+my $storage_item__5546 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_line_in_file_that_begins_with_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5545 } = $storage_item__5546 ;
-my $storage_item__5547 = 'template-runtime-code-for-action-copy-listed-words-to-phrases-named-in-pattern' ;
-my $storage_item__5548 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_listed_words_to_phrases_named_in_pattern( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5547 = 'template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-listed-word' ;
+my $storage_item__5548 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_lines_in_file_that_begin_with_any_listed_word( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5547 } = $storage_item__5548 ;
-my $storage_item__5549 = 'template-runtime-code-for-action-copy-text' ;
-my $storage_item__5550 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5549 = 'template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-two-words-listed' ;
+my $storage_item__5550 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_lines_in_file_that_begin_with_any_two_words_listed( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5549 } = $storage_item__5550 ;
-my $storage_item__5551 = 'template-runtime-code-for-action-copy-without-extra-spaces' ;
-my $storage_item__5552 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ; <new_line> &function__remove_extra_spaces( ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5551 = 'template-runtime-code-for-action-gather-from-tagged-file-one-entry' ;
+my $storage_item__5552 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__gather_from_tagged_file_one_entry( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5551 } = $storage_item__5552 ;
-my $storage_item__5553 = 'template-runtime-code-for-action-copy-word-at-position' ;
-my $storage_item__5554 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_word_at_position( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5553 = 'template-runtime-code-for-action-gather-tagged-info-from-file' ;
+my $storage_item__5554 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__gather_tagged_info_from_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5553 } = $storage_item__5554 ;
-my $storage_item__5555 = 'template-runtime-code-for-action-copy-words-found-in-both-lists' ;
-my $storage_item__5556 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_words_found_in_both_lists( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5555 = 'template-runtime-code-for-action-generate-list-of-files-in-current-read-directory' ;
+my $storage_item__5556 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_list_of_files_in_current_read_directory( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5555 } = $storage_item__5556 ;
-my $storage_item__5557 = 'template-runtime-code-for-action-copy-words-found-in-either-list' ;
-my $storage_item__5558 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_words_found_in_either_list( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5557 = 'template-runtime-code-for-action-generate-list-of-folders-in-current-read-directory' ;
+my $storage_item__5558 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_list_of_folders_in_current_read_directory( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5557 } = $storage_item__5558 ;
-my $storage_item__5559 = 'template-runtime-code-for-action-copy-words-found-only-in-first-list' ;
-my $storage_item__5560 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_words_found_only_in_first_list( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5559 = 'template-runtime-code-for-action-generate-phrase-usage-counts' ;
+my $storage_item__5560 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_phrase_usage_counts( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5559 } = $storage_item__5560 ;
-my $storage_item__5561 = 'template-runtime-code-for-action-copy-words-from-position-to-position' ;
-my $storage_item__5562 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_from_position_to_position( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5561 = 'template-runtime-code-for-action-get-cgi-information' ;
+my $storage_item__5562 = 'template-runtime-code-standard-for-operand-count-zero' ;
 $global_dashrep_replacement{ $storage_item__5561 } = $storage_item__5562 ;
-my $storage_item__5563 = 'template-runtime-code-for-action-copy-words-offset-skip' ;
-my $storage_item__5564 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_offset_skip( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5563 = 'template-runtime-code-for-action-get-current-time-in-epoch-seconds' ;
+my $storage_item__5564 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = sprintf( "%d" , time ) ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5563 } = $storage_item__5564 ;
-my $storage_item__5565 = 'template-runtime-code-for-action-copy-words-order-reversed' ;
-my $storage_item__5566 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_words_order_reversed( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5565 = 'template-runtime-code-for-action-get-definitions-from-file' ;
+my $storage_item__5566 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__get_definitions_from_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5565 } = $storage_item__5566 ;
-my $storage_item__5567 = 'template-runtime-code-for-action-copy-words-rearrange-using-order-sort-alphabetic' ;
-my $storage_item__5568 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_rearrange_using_order_sort_alphabetic( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5567 = 'template-runtime-code-for-action-if-else' ;
+my $storage_item__5568 = '# begin action if else <new_line> } else { <new_line> # end action if else <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5567 } = $storage_item__5568 ;
-my $storage_item__5569 = 'template-runtime-code-for-action-copy-words-rearrange-using-order-sort-numeric' ;
-my $storage_item__5570 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_words_rearrange_using_order_sort_numeric( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5569 = 'template-runtime-code-for-action-if-end' ;
+my $storage_item__5570 = '# begin action if end <new_line> } <new_line> # end action if end <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5569 } = $storage_item__5570 ;
-my $storage_item__5571 = 'template-runtime-code-for-action-copy-words-sort-alphabetic' ;
-my $storage_item__5572 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_words_sort_alphabetic( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5571 = 'template-runtime-code-for-action-if-no-begin' ;
+my $storage_item__5572 = '# begin action if no begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'no' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) { <new_line> # end action if no begin <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5571 } = $storage_item__5572 ;
-my $storage_item__5573 = 'template-runtime-code-for-action-copy-words-sort-numeric' ;
-my $storage_item__5574 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_sort_numeric( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5573 = 'template-runtime-code-for-action-if-yes-begin' ;
+my $storage_item__5574 = '# begin action if yes begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'yes' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) { <new_line> # end action if yes begin <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5573 } = $storage_item__5574 ;
-my $storage_item__5575 = 'template-runtime-code-for-action-copy-words-that-begin-with-listed-words' ;
-my $storage_item__5576 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__copy_words_that_begin_with_listed_words( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5575 = 'template-runtime-code-for-action-linewise-read-from-file-and-use-handler' ;
+my $storage_item__5576 = 'template-runtime-code-for-every-action-begin $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> $global_target_phrase_name = runtime-code-for-operand-number-two ; <new_line> &function__linewise_read_from_file_and_use_handler( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5575 } = $storage_item__5576 ;
-my $storage_item__5577 = 'template-runtime-code-for-action-copy-words-that-begin-with-text' ;
-my $storage_item__5578 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_that_begin_with_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5577 = 'template-runtime-code-for-action-modification-time-of-file' ;
+my $storage_item__5578 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__modification_time_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5577 } = $storage_item__5578 ;
-my $storage_item__5579 = 'template-runtime-code-for-action-copy-words-that-contain-listed-words' ;
-my $storage_item__5580 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__copy_words_that_contain_listed_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5579 = 'template-runtime-code-for-action-no-if-any-no' ;
+my $storage_item__5580 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5579 } = $storage_item__5580 ;
-my $storage_item__5581 = 'template-runtime-code-for-action-copy-words-unique-only' ;
-my $storage_item__5582 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_words_unique_only( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5581 = 'template-runtime-code-for-action-no-if-not-yes' ;
+my $storage_item__5582 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5581 } = $storage_item__5582 ;
-my $storage_item__5583 = 'template-runtime-code-for-action-copy-zero-pad-left-to-length' ;
-my $storage_item__5584 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-positive-integer if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> $global_count_number = &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-three ) ; <new_line> $global_counter = $global_count_number - length( $global_source_text ) ; <new_line> $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> while ( ( $global_counter > 0 ) && ( $global_counter < 99 ) ) { <new_line> $global_text_to_insert .= ' . "'" . '0' . "'" . ' ; <new_line> $global_counter -- ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_text_to_insert . $global_source_text ; } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5583 = 'template-runtime-code-for-action-not-recognized' ;
+my $storage_item__5584 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5583 } = $storage_item__5584 ;
-my $storage_item__5585 = 'template-runtime-code-for-action-create-empty-sub-folder' ;
-my $storage_item__5586 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__create_empty_sub_folder( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5585 = 'template-runtime-code-for-action-numeric-add' ;
+my $storage_item__5586 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_add( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5585 } = $storage_item__5586 ;
-my $storage_item__5587 = 'template-runtime-code-for-action-decode-from-cgi-parameter' ;
-my $storage_item__5588 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__decode_from_cgi_parameter( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5587 = 'template-runtime-code-for-action-numeric-maximum' ;
+my $storage_item__5588 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_maximum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5587 } = $storage_item__5588 ;
-my $storage_item__5589 = 'template-runtime-code-for-action-delete-file' ;
-my $storage_item__5590 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_target_file_name = $global_operand_one ; <new_line> &function__delete_file( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5589 = 'template-runtime-code-for-action-numeric-minimum' ;
+my $storage_item__5590 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_minimum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5589 } = $storage_item__5590 ;
-my $storage_item__5591 = 'template-runtime-code-for-action-delete-listed-phrases' ;
-my $storage_item__5592 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__delete_listed_phrases( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5591 = 'template-runtime-code-for-action-numeric-multiply' ;
+my $storage_item__5592 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_multiply( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5591 } = $storage_item__5592 ;
-my $storage_item__5593 = 'template-runtime-code-for-action-encode-as-cgi-parameter' ;
-my $storage_item__5594 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__encode_as_cgi_parameter( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5593 = 'template-runtime-code-for-action-prepend-text-no-space' ;
+my $storage_item__5594 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5593 } = $storage_item__5594 ;
-my $storage_item__5595 = 'template-runtime-code-for-action-executable-phrase-begin' ;
-my $storage_item__5596 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line>' ;
+my $storage_item__5595 = 'template-runtime-code-for-action-put-into-phrase' ;
+my $storage_item__5596 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5595 } = $storage_item__5596 ;
-my $storage_item__5597 = 'template-runtime-code-for-action-executable-phrase-end' ;
-my $storage_item__5598 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5597 = 'template-runtime-code-for-action-rename-file' ;
+my $storage_item__5598 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> &function__rename_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5597 } = $storage_item__5598 ;
-my $storage_item__5599 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
-my $storage_item__5600 = 'template-runtime-code-for-action-executable-phrase-begin &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5599 = 'template-runtime-code-for-action-set-file-permission-private-but-executable' ;
+my $storage_item__5600 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_private_but_executable( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5599 } = $storage_item__5600 ;
-my $storage_item__5601 = 'template-runtime-code-for-action-executable-phrase' ;
-my $storage_item__5602 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
+my $storage_item__5601 = 'template-runtime-code-for-action-set-file-permission-private' ;
+my $storage_item__5602 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_private( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5601 } = $storage_item__5602 ;
-my $storage_item__5603 = 'template-runtime-code-for-action-expand-text' ;
-my $storage_item__5604 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5603 = 'template-runtime-code-for-action-set-file-permission-public-read' ;
+my $storage_item__5604 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_public_read( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5603 } = $storage_item__5604 ;
-my $storage_item__5605 = 'template-runtime-code-for-action-find-line-in-file-that-begins-with-text' ;
-my $storage_item__5606 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_line_in_file_that_begins_with_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5605 = 'template-runtime-code-for-action-size-of-file' ;
+my $storage_item__5606 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__size_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5605 } = $storage_item__5606 ;
-my $storage_item__5607 = 'template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-listed-word' ;
-my $storage_item__5608 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_lines_in_file_that_begin_with_any_listed_word( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5607 = 'template-runtime-code-for-action-trace-show-where' ;
+my $storage_item__5608 = 'template-runtime-code-for-every-action-begin &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace-show-where:' . "'" . ' . "' . '\\' . 'n" . ' . "'" . ' no-space phrase-being-defined no-space ' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . "' . '\\' . 'n" ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5607 } = $storage_item__5608 ;
-my $storage_item__5609 = 'template-runtime-code-for-action-find-lines-in-file-that-begin-with-any-two-words-listed' ;
-my $storage_item__5610 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-not-empty check-operand-three-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_lines_in_file_that_begin_with_any_two_words_listed( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5609 = 'template-runtime-code-for-action-trace-show' ;
+my $storage_item__5610 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5609 } = $storage_item__5610 ;
-my $storage_item__5611 = 'template-runtime-code-for-action-gather-from-tagged-file-one-entry' ;
-my $storage_item__5612 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__gather_from_tagged_file_one_entry( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5611 = 'template-runtime-code-for-action-use-handler-with-each-word-in-phrase' ;
+my $storage_item__5612 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5611 } = $storage_item__5612 ;
-my $storage_item__5613 = 'template-runtime-code-for-action-gather-tagged-info-from-file' ;
-my $storage_item__5614 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-two-is-phrase-name $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__gather_tagged_info_from_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5613 = 'template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file' ;
+my $storage_item__5614 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__write_dashrep_definitions_listed_in_phrase_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5613 } = $storage_item__5614 ;
-my $storage_item__5615 = 'template-runtime-code-for-action-generate-counts-from-integer-to-integer' ;
-my $storage_item__5616 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__generate_counts_from_integer_to_integer( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5615 = 'template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file' ;
+my $storage_item__5616 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-not-empty $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> open-file-for-appending if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__write_gathered_listed_items_to_end_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5615 } = $storage_item__5616 ;
-my $storage_item__5617 = 'template-runtime-code-for-action-generate-every-ordered-pairwise-combination-of-words' ;
-my $storage_item__5618 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__generate_every_ordered_pairwise_combination_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5617 = 'template-runtime-code-for-action-yes-if-all-yes' ;
+my $storage_item__5618 = 'template-runtime-code-for-every-action-begin $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_concatenated_all_operands_modified = ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands . ' . "'" . ' ' . "'" . ' ; <new_line> $accumulated_remaining_text = ' . "'" . "'" . ' ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> while ( $pointer_to_next_match > 0 ) { <new_line> $accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ; <new_line> $global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> } <new_line> $accumulated_remaining_text .= ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands_modified ; <new_line> $accumulated_remaining_text =~ s/ //g ; <new_line> if ( length( $accumulated_remaining_text ) == 0 ) { <new_line> $global_action_result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> $global_action_result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5617 } = $storage_item__5618 ;
-my $storage_item__5619 = 'template-runtime-code-for-action-generate-every-pairwise-combination-of-words' ;
-my $storage_item__5620 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__generate_every_pairwise_combination_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5619 = 'template-runtime-code-for-action-yes-if-any-yes' ;
+my $storage_item__5620 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5619 } = $storage_item__5620 ;
-my $storage_item__5621 = 'template-runtime-code-for-action-generate-list-of-all-dashrep-phrases' ;
-my $storage_item__5622 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__generate_list_of_all_dashrep_phrases( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5621 = 'template-runtime-code-for-action-yes-if-not-no' ;
+my $storage_item__5622 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5621 } = $storage_item__5622 ;
-my $storage_item__5623 = 'template-runtime-code-for-action-generate-list-of-files-in-current-read-directory' ;
-my $storage_item__5624 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_list_of_files_in_current_read_directory( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5623 = 'template-runtime-code-for-action-yes-or-no-empty-phrase' ;
+my $storage_item__5624 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__yes_or_no_empty_phrase__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_empty( $global_source_text ) ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5623 } = $storage_item__5624 ;
-my $storage_item__5625 = 'template-runtime-code-for-action-generate-list-of-folders-in-current-read-directory' ;
-my $storage_item__5626 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_list_of_folders_in_current_read_directory( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5625 = 'template-runtime-code-for-action-yes-or-no-file-exists' ;
+my $storage_item__5626 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5625 } = $storage_item__5626 ;
-my $storage_item__5627 = 'template-runtime-code-for-action-generate-phrase-usage-counts' ;
-my $storage_item__5628 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__generate_phrase_usage_counts( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5627 = 'template-runtime-code-for-action-yes-or-no-folder-exists' ;
+my $storage_item__5628 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-folder-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__yes_or_no_folder_exists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5627 } = $storage_item__5628 ;
-my $storage_item__5629 = 'template-runtime-code-for-action-generate-positions-of-delimiter' ;
-my $storage_item__5630 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__generate_positions_of_delimiter( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5629 = 'template-runtime-code-for-action-yes-or-no-opposite' ;
+my $storage_item__5630 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5629 } = $storage_item__5630 ;
-my $storage_item__5631 = 'template-runtime-code-for-action-generate-positions-of-first-matching-delimiter-after-listed-positions' ;
-my $storage_item__5632 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__generate_positions_of_first_matching_delimiter_after_listed_positions( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5631 = 'template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions' ;
+my $storage_item__5632 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5631 } = $storage_item__5632 ;
-my $storage_item__5633 = 'template-runtime-code-for-action-generate-positions-of-listed-words' ;
-my $storage_item__5634 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__generate_positions_of_listed_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5633 = 'template-runtime-code-for-action-yes-or-no-same-two-words' ;
+my $storage_item__5634 = 'template-runtime-code-for-every-action-begin if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5633 } = $storage_item__5634 ;
-my $storage_item__5635 = 'template-runtime-code-for-action-get-cgi-information' ;
-my $storage_item__5636 = 'template-runtime-code-for-every-action-begin &function__get_cgi_information( ) ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5635 = 'template-runtime-code-for-action-zero-one-multiple' ;
+my $storage_item__5636 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-positive-integer if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'multiple' . "'" . ' ; <new_line> if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'one' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5635 } = $storage_item__5636 ;
-my $storage_item__5637 = 'template-runtime-code-for-action-get-characters-from-position-to-position' ;
-my $storage_item__5638 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__get_characters_from_position_to_position( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5637 = 'template-runtime-code-for-every-action-begin' ;
+my $storage_item__5638 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5637 } = $storage_item__5638 ;
-my $storage_item__5639 = 'template-runtime-code-for-action-get-count-of-characters' ;
-my $storage_item__5640 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = length( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5639 = 'template-runtime-code-for-every-action-end' ;
+my $storage_item__5640 = '# print ' . "'" . 'result: ' . "'" . ' . runtime-code-storage-item-result . "' . '\\' . 'n" ; <new_line> # end of action <dashrep_placeholder_action_name><new_line>' ;
 $global_dashrep_replacement{ $storage_item__5639 } = $storage_item__5640 ;
-my $storage_item__5641 = 'template-runtime-code-for-action-get-count-of-words' ;
-my $storage_item__5642 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__get_count_of_words( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5641 = 'template-runtime-code-for-overdue-start-of-if-branch' ;
+my $storage_item__5642 = '# begin overdue start of if branch <new_line> if ( 1 == 1 ) { <new_line> # end overdue start of if branch <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5641 } = $storage_item__5642 ;
-my $storage_item__5643 = 'template-runtime-code-for-action-get-current-time-in-epoch-seconds' ;
-my $storage_item__5644 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = sprintf( "%d" , time ) ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5643 = 'template-runtime-code-for-overdue-terminate-if-branch' ;
+my $storage_item__5644 = '# begin overdue end of if branch <new_line> } <new_line> # end overdue end of if branch <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5643 } = $storage_item__5644 ;
-my $storage_item__5645 = 'template-runtime-code-for-action-get-definitions-from-file' ;
-my $storage_item__5646 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__get_definitions_from_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5645 = 'template-runtime-code-identify-phrase-found' ;
+my $storage_item__5646 = '$global_yes_found_word{ runtime-code-word-within-source-text } = $global_yes ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5645 } = $storage_item__5646 ;
-my $storage_item__5647 = 'template-runtime-code-for-action-get-position-of-matching-text' ;
-my $storage_item__5648 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__get_position_of_matching_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5647 = 'template-runtime-code-identify-phrases-all-found' ;
+my $storage_item__5648 = 'for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) { <new_line> template-runtime-code-identify-phrase-found } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5647 } = $storage_item__5648 ;
-my $storage_item__5649 = 'template-runtime-code-for-action-get-position-of-word' ;
-my $storage_item__5650 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__get_position_of_word( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5649 = 'template-runtime-code-if-case-yes-phrase-found' ;
+my $storage_item__5650 = 'if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) { <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5649 } = $storage_item__5650 ;
-my $storage_item__5651 = 'template-runtime-code-for-action-get-url-resource' ;
-my $storage_item__5652 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> &function__get_url_resource( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5651 = 'template-runtime-code-standard-for-operand-count-four' ;
+my $storage_item__5652 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5651 } = $storage_item__5652 ;
-my $storage_item__5653 = 'template-runtime-code-for-action-get-word-at-position' ;
-my $storage_item__5654 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__get_word_at_position( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5653 = 'template-runtime-code-standard-for-operand-count-one' ;
+my $storage_item__5654 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5653 } = $storage_item__5654 ;
-my $storage_item__5655 = 'template-runtime-code-for-action-if-else' ;
-my $storage_item__5656 = '# begin action if else <new_line> } else { <new_line> # end action if else <new_line>' ;
+my $storage_item__5655 = 'template-runtime-code-standard-for-operand-count-three' ;
+my $storage_item__5656 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5655 } = $storage_item__5656 ;
-my $storage_item__5657 = 'template-runtime-code-for-action-if-end' ;
-my $storage_item__5658 = '# begin action if end <new_line> } <new_line> # end action if end <new_line>' ;
+my $storage_item__5657 = 'template-runtime-code-standard-for-operand-count-two' ;
+my $storage_item__5658 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5657 } = $storage_item__5658 ;
-my $storage_item__5659 = 'template-runtime-code-for-action-if-no-begin' ;
-my $storage_item__5660 = '# begin action if no begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'no' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) { <new_line> # end action if no begin <new_line>' ;
+my $storage_item__5659 = 'template-runtime-code-standard-for-operand-count-zero' ;
+my $storage_item__5660 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5659 } = $storage_item__5660 ;
-my $storage_item__5661 = 'template-runtime-code-for-action-if-yes-begin' ;
-my $storage_item__5662 = '# begin action if yes begin <new_line> $global_pointer_to_word = index( runtime-code-for-operand-number-one , ' . "'" . 'yes' . "'" . ' ) ; <new_line> if ( $global_pointer_to_word >= 0 ) { <new_line> # end action if yes begin <new_line>' ;
+my $storage_item__5661 = 'template-runtime-code-store-result-for-case-error' ;
+my $storage_item__5662 = 'runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_runtime_error_type . ' . "'" . ': <dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5661 } = $storage_item__5662 ;
-my $storage_item__5663 = 'template-runtime-code-for-action-insert-codeview-tags' ;
-my $storage_item__5664 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__insert_codeview_tags( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5663 = 'template-runtime-code-wrong-number-of-operands' ;
+my $storage_item__5664 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = ' . "'" . 'dashrep_compile_time_error__template_runtime_code_wrong_number_of_operands__case_wrong_number_of_operands' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5663 } = $storage_item__5664 ;
-my $storage_item__5665 = 'template-runtime-code-for-action-linewise-read-from-file-and-use-handler' ;
-my $storage_item__5666 = 'template-runtime-code-for-every-action-begin $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> $global_target_phrase_name = runtime-code-for-operand-number-two ; <new_line> &function__linewise_read_from_file_and_use_handler( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5665 = 'template-specify-operand-one-is-file-name-for-reading' ;
+my $storage_item__5666 = '' ;
 $global_dashrep_replacement{ $storage_item__5665 } = $storage_item__5666 ;
-my $storage_item__5667 = 'template-runtime-code-for-action-modification-time-of-file' ;
-my $storage_item__5668 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__modification_time_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5667 = 'template-specify-operand-two-is-file-name-for-appending' ;
+my $storage_item__5668 = '' ;
 $global_dashrep_replacement{ $storage_item__5667 } = $storage_item__5668 ;
-my $storage_item__5669 = 'template-runtime-code-for-action-no-if-any-no' ;
-my $storage_item__5670 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5669 } = $storage_item__5670 ;
-my $storage_item__5671 = 'template-runtime-code-for-action-no-if-not-yes' ;
-my $storage_item__5672 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5671 } = $storage_item__5672 ;
-my $storage_item__5673 = 'template-runtime-code-for-action-not-recognized' ;
-my $storage_item__5674 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** action name not recognized, so direct replacement *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ; <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5673 } = $storage_item__5674 ;
-my $storage_item__5675 = 'template-runtime-code-for-action-numeric-absolute' ;
-my $storage_item__5676 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_absolute( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5675 } = $storage_item__5676 ;
-my $storage_item__5677 = 'template-runtime-code-for-action-numeric-add' ;
-my $storage_item__5678 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_add( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5677 } = $storage_item__5678 ;
-my $storage_item__5679 = 'template-runtime-code-for-action-numeric-cosine' ;
-my $storage_item__5680 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( cos( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5679 } = $storage_item__5680 ;
-my $storage_item__5681 = 'template-runtime-code-for-action-numeric-decrement' ;
-my $storage_item__5682 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_decrement( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5681 } = $storage_item__5682 ;
-my $storage_item__5683 = 'template-runtime-code-for-action-numeric-divide-by' ;
-my $storage_item__5684 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_divide_by( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5683 } = $storage_item__5684 ;
-my $storage_item__5685 = 'template-runtime-code-for-action-numeric-equal-greater-less-compare' ;
-my $storage_item__5686 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_equal_greater_less_compare( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5685 } = $storage_item__5686 ;
-my $storage_item__5687 = 'template-runtime-code-for-action-numeric-increment' ;
-my $storage_item__5688 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_increment( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5687 } = $storage_item__5688 ;
-my $storage_item__5689 = 'template-runtime-code-for-action-numeric-integer' ;
-my $storage_item__5690 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_integer( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5689 } = $storage_item__5690 ;
-my $storage_item__5691 = 'template-runtime-code-for-action-numeric-logarithm-base-10' ;
-my $storage_item__5692 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_logarithm_base_10( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5691 } = $storage_item__5692 ;
-my $storage_item__5693 = 'template-runtime-code-for-action-numeric-logarithm-base-e' ;
-my $storage_item__5694 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_logarithm_base_e( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5693 } = $storage_item__5694 ;
-my $storage_item__5695 = 'template-runtime-code-for-action-numeric-maximum' ;
-my $storage_item__5696 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_maximum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5695 } = $storage_item__5696 ;
-my $storage_item__5697 = 'template-runtime-code-for-action-numeric-minimum' ;
-my $storage_item__5698 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_minimum( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5697 } = $storage_item__5698 ;
-my $storage_item__5699 = 'template-runtime-code-for-action-numeric-minus' ;
-my $storage_item__5700 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__numeric_minus( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5699 } = $storage_item__5700 ;
-my $storage_item__5701 = 'template-runtime-code-for-action-numeric-multiply' ;
-my $storage_item__5702 = 'template-runtime-code-for-every-action-begin $global_source_text = runtime-code-for-concatenated-all-operands ; <new_line> &function__numeric_multiply( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5701 } = $storage_item__5702 ;
-my $storage_item__5703 = 'template-runtime-code-for-action-numeric-odd-or-even' ;
-my $storage_item__5704 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__numeric_odd_or_even( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5703 } = $storage_item__5704 ;
-my $storage_item__5705 = 'template-runtime-code-for-action-numeric-sine' ;
-my $storage_item__5706 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-real-number if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = &function_parameterized__convert_numeric_value_into_numeric_text( sin( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) ) ) ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5705 } = $storage_item__5706 ;
-my $storage_item__5707 = 'template-runtime-code-for-action-numeric-two-dimensional-sort-into-columns-and-rows' ;
-my $storage_item__5708 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_two_dimensional_sort_into_columns_and_rows( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5707 } = $storage_item__5708 ;
-my $storage_item__5709 = 'template-runtime-code-for-action-numeric-vector-absolutes' ;
-my $storage_item__5710 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_vector_absolutes( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5709 } = $storage_item__5710 ;
-my $storage_item__5711 = 'template-runtime-code-for-action-numeric-vector-add-number' ;
-my $storage_item__5712 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__numeric_vector_add_number( ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5711 } = $storage_item__5712 ;
-my $storage_item__5713 = 'template-runtime-code-for-action-numeric-vector-integers' ;
-my $storage_item__5714 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_vector_integers( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5713 } = $storage_item__5714 ;
-my $storage_item__5715 = 'template-runtime-code-for-action-numeric-vector-multiply-by-number' ;
-my $storage_item__5716 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__numeric_vector_multiply_by_number( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5715 } = $storage_item__5716 ;
-my $storage_item__5717 = 'template-runtime-code-for-action-numeric-vectors-add' ;
-my $storage_item__5718 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__numeric_vectors_add( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5717 } = $storage_item__5718 ;
-my $storage_item__5719 = 'template-runtime-code-for-action-numeric-vectors-divide-by' ;
-my $storage_item__5720 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__numeric_vectors_divide_by( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5719 } = $storage_item__5720 ;
-my $storage_item__5721 = 'template-runtime-code-for-action-numeric-vectors-from-delta-values-calculate-distances' ;
-my $storage_item__5722 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_vectors_from_delta_values_calculate_distances( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5721 } = $storage_item__5722 ;
-my $storage_item__5723 = 'template-runtime-code-for-action-numeric-vectors-multiply' ;
-my $storage_item__5724 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_vectors_multiply( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5723 } = $storage_item__5724 ;
-my $storage_item__5725 = 'template-runtime-code-for-action-numeric-y-map-tile-number-based-on-latitude' ;
-my $storage_item__5726 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__numeric_y_map_tile_number_based_on_latitude( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5725 } = $storage_item__5726 ;
-my $storage_item__5727 = 'template-runtime-code-for-action-prepend-text-no-space' ;
-my $storage_item__5728 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5727 } = $storage_item__5728 ;
-my $storage_item__5729 = 'template-runtime-code-for-action-prepend-text' ;
-my $storage_item__5730 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__prepend_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5729 } = $storage_item__5730 ;
-my $storage_item__5731 = 'template-runtime-code-for-action-put-into-phrase' ;
-my $storage_item__5732 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5731 } = $storage_item__5732 ;
-my $storage_item__5733 = 'template-runtime-code-for-action-rename-file' ;
-my $storage_item__5734 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> &function__rename_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5733 } = $storage_item__5734 ;
-my $storage_item__5735 = 'template-runtime-code-for-action-set-file-permission-private-but-executable' ;
-my $storage_item__5736 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_private_but_executable( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5735 } = $storage_item__5736 ;
-my $storage_item__5737 = 'template-runtime-code-for-action-set-file-permission-private' ;
-my $storage_item__5738 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_private( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5737 } = $storage_item__5738 ;
-my $storage_item__5739 = 'template-runtime-code-for-action-set-file-permission-public-read' ;
-my $storage_item__5740 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__set_file_permission_public_read( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5739 } = $storage_item__5740 ;
-my $storage_item__5741 = 'template-runtime-code-for-action-size-of-file' ;
-my $storage_item__5742 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__size_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5741 } = $storage_item__5742 ;
-my $storage_item__5743 = 'template-runtime-code-for-action-split-epoch-seconds-into-named-components-for-zero-meridian' ;
-my $storage_item__5744 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__split_epoch_seconds_into_named_components_for_zero_meridian( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5743 } = $storage_item__5744 ;
-my $storage_item__5745 = 'template-runtime-code-for-action-split-epoch-seconds-into-named-components' ;
-my $storage_item__5746 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__split_epoch_seconds_into_named_components( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5745 } = $storage_item__5746 ;
-my $storage_item__5747 = 'template-runtime-code-for-action-trace-show-where' ;
-my $storage_item__5748 = 'template-runtime-code-for-every-action-begin &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace-show-where:' . "'" . ' . "' . '\\' . 'n" . ' . "'" . ' no-space phrase-being-defined no-space ' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . "' . '\\' . 'n" ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5747 } = $storage_item__5748 ;
-my $storage_item__5749 = 'template-runtime-code-for-action-trace-show' ;
-my $storage_item__5750 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5749 } = $storage_item__5750 ;
-my $storage_item__5751 = 'template-runtime-code-for-action-use-handler-with-each-word-in-phrase' ;
-my $storage_item__5752 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5751 } = $storage_item__5752 ;
-my $storage_item__5753 = 'template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file' ;
-my $storage_item__5754 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__write_dashrep_definitions_listed_in_phrase_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5753 } = $storage_item__5754 ;
-my $storage_item__5755 = 'template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file' ;
-my $storage_item__5756 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-not-empty $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> open-file-for-appending if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__write_gathered_listed_items_to_end_of_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5755 } = $storage_item__5756 ;
-my $storage_item__5757 = 'template-runtime-code-for-action-yes-if-all-yes' ;
-my $storage_item__5758 = 'template-runtime-code-for-every-action-begin $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_concatenated_all_operands_modified = ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands . ' . "'" . ' ' . "'" . ' ; <new_line> $accumulated_remaining_text = ' . "'" . "'" . ' ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> while ( $pointer_to_next_match > 0 ) { <new_line> $accumulated_remaining_text .= substr( $global_concatenated_all_operands_modified , 0 , ( $pointer_to_next_match - 1 ) ) ; <new_line> $global_concatenated_all_operands_modified = substr( $global_concatenated_all_operands_modified , ( $pointer_to_next_match + 3 ) ) ; <new_line> $pointer_to_next_match = index( $global_concatenated_all_operands_modified , ' . "'" . 'yes' . "'" . ' ) ; <new_line> } <new_line> $accumulated_remaining_text .= ' . "'" . ' ' . "'" . ' . $global_concatenated_all_operands_modified ; <new_line> $accumulated_remaining_text =~ s/ //g ; <new_line> if ( length( $accumulated_remaining_text ) == 0 ) { <new_line> $global_action_result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> $global_action_result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5757 } = $storage_item__5758 ;
-my $storage_item__5759 = 'template-runtime-code-for-action-yes-if-any-yes' ;
-my $storage_item__5760 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5759 } = $storage_item__5760 ;
-my $storage_item__5761 = 'template-runtime-code-for-action-yes-if-not-no' ;
-my $storage_item__5762 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'no' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5761 } = $storage_item__5762 ;
-my $storage_item__5763 = 'template-runtime-code-for-action-yes-or-no-empty-phrase' ;
-my $storage_item__5764 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__yes_or_no_empty_phrase__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> if ( $global_yes == &function_parameterized__yes_or_no_empty( $global_source_text ) ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5763 } = $storage_item__5764 ;
-my $storage_item__5765 = 'template-runtime-code-for-action-yes-or-no-file-exists' ;
-my $storage_item__5766 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_source_file_name = $global_operand_one ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5765 } = $storage_item__5766 ;
-my $storage_item__5767 = 'template-runtime-code-for-action-yes-or-no-folder-exists' ;
-my $storage_item__5768 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-folder-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__yes_or_no_folder_exists( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5767 } = $storage_item__5768 ;
-my $storage_item__5769 = 'template-runtime-code-for-action-yes-or-no-opposite' ;
-my $storage_item__5770 = 'template-runtime-code-for-every-action-begin $concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5769 } = $storage_item__5770 ;
-my $storage_item__5771 = 'template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions' ;
-my $storage_item__5772 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5771 } = $storage_item__5772 ;
-my $storage_item__5773 = 'template-runtime-code-for-action-yes-or-no-same-two-words' ;
-my $storage_item__5774 = 'template-runtime-code-for-every-action-begin if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5773 } = $storage_item__5774 ;
-my $storage_item__5775 = 'template-runtime-code-for-action-yes-or-no-word-is-in-phrase' ;
-my $storage_item__5776 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__yes_or_no_word_is_in_phrase( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5775 } = $storage_item__5776 ;
-my $storage_item__5777 = 'template-runtime-code-for-action-zero-one-multiple' ;
-my $storage_item__5778 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-positive-integer if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'multiple' . "'" . ' ; <new_line> if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'one' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5777 } = $storage_item__5778 ;
-my $storage_item__5779 = 'template-runtime-code-for-action-zero-or-nonzero' ;
-my $storage_item__5780 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-positive-integer if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'nonzero' . "'" . ' ; <new_line> if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'zero' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5779 } = $storage_item__5780 ;
-my $storage_item__5781 = 'template-runtime-code-for-every-action-begin' ;
-my $storage_item__5782 = '# $global_action_debug_line = ' . "'" . '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . "'" . ' . runtime-code-for-concatenated-all-operands ; <new_line> # print $global_action_debug_line . "' . '\\' . 'n" ; <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5781 } = $storage_item__5782 ;
-my $storage_item__5783 = 'template-runtime-code-for-every-action-end' ;
-my $storage_item__5784 = '# print ' . "'" . 'result: ' . "'" . ' . runtime-code-storage-item-result . "' . '\\' . 'n" ; <new_line> # end of action <dashrep_placeholder_action_name><new_line>' ;
-$global_dashrep_replacement{ $storage_item__5783 } = $storage_item__5784 ;
-my $storage_item__5785 = 'template-runtime-code-for-overdue-start-of-if-branch' ;
-my $storage_item__5786 = '# begin overdue start of if branch <new_line> if ( 1 == 1 ) { <new_line> # end overdue start of if branch <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5785 } = $storage_item__5786 ;
-my $storage_item__5787 = 'template-runtime-code-for-overdue-terminate-if-branch' ;
-my $storage_item__5788 = '# begin overdue end of if branch <new_line> } <new_line> # end overdue end of if branch <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5787 } = $storage_item__5788 ;
-my $storage_item__5789 = 'template-runtime-code-identify-phrase-found' ;
-my $storage_item__5790 = '$global_yes_found_word{ runtime-code-word-within-source-text } = $global_yes ; <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5789 } = $storage_item__5790 ;
-my $storage_item__5791 = 'template-runtime-code-identify-phrases-all-found' ;
-my $storage_item__5792 = 'for ( $global_word_pointer_numeric = 1 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) { <new_line> template-runtime-code-identify-phrase-found } <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5791 } = $storage_item__5792 ;
-my $storage_item__5793 = 'template-runtime-code-if-case-yes-phrase-found' ;
-my $storage_item__5794 = 'if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) { <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5793 } = $storage_item__5794 ;
-my $storage_item__5795 = 'template-runtime-code-standard-for-operand-count-four' ;
-my $storage_item__5796 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5795 } = $storage_item__5796 ;
-my $storage_item__5797 = 'template-runtime-code-standard-for-operand-count-one' ;
-my $storage_item__5798 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5797 } = $storage_item__5798 ;
-my $storage_item__5799 = 'template-runtime-code-standard-for-operand-count-three' ;
-my $storage_item__5800 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5799 } = $storage_item__5800 ;
-my $storage_item__5801 = 'template-runtime-code-standard-for-operand-count-two' ;
-my $storage_item__5802 = '# this code generated from standard template <new_line> template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__ no-space action-name-with-underscores no-space ( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5801 } = $storage_item__5802 ;
-my $storage_item__5803 = 'template-runtime-code-store-result-for-case-error' ;
-my $storage_item__5804 = 'runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_runtime_error_type . ' . "'" . ': <dashrep_placeholder_action_name> ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line>' ;
-$global_dashrep_replacement{ $storage_item__5803 } = $storage_item__5804 ;
-my $storage_item__5805 = 'template-runtime-code-wrong-number-of-operands' ;
-my $storage_item__5806 = 'template-runtime-code-for-every-action-begin runtime-code-storage-item-result = ' . "'" . 'dashrep_compile_time_error__template_runtime_code_wrong_number_of_operands__case_wrong_number_of_operands' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> template-runtime-code-for-every-action-end' ;
-$global_dashrep_replacement{ $storage_item__5805 } = $storage_item__5806 ;
-my $storage_item__5807 = 'template-specify-operand-one-is-file-name-for-reading' ;
-my $storage_item__5808 = '' ;
-$global_dashrep_replacement{ $storage_item__5807 } = $storage_item__5808 ;
-my $storage_item__5809 = 'template-specify-operand-two-is-file-name-for-appending' ;
-my $storage_item__5810 = '' ;
-$global_dashrep_replacement{ $storage_item__5809 } = $storage_item__5810 ;
 
 
 #------------------------------------------------------------
@@ -6692,31 +6479,34 @@ $storage_item__1011 = '' ;
 # print 'result: ' . $storage_item__1011 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1014 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1015 . ' ' . $storage_item__1016 . ' ' . $storage_item__1017 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1015 ;
 $global_operand_two = $storage_item__1016 ;
 $global_operand_three = $storage_item__1017 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1014 = '' ;
+$storage_item__1014 = $global_action_result ;
 # print 'result: ' . $storage_item__1014 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1018 *** copy-words-unique-only ** 2 *' . $storage_item__1019 . ' ' . $storage_item__1020 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1019 ;
 $global_operand_two = $storage_item__1020 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1018 = '' ;
+$storage_item__1018 = $global_action_result ;
 # print 'result: ' . $storage_item__1018 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1021 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1022 . ' ' . $storage_item__1023 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1022 ;
 $global_operand_two = $storage_item__1023 ;
 &function__copy_words_sort_alphabetic( ) ;
-$storage_item__1021 = '' ;
+$storage_item__1021 = $global_action_result ;
 # print 'result: ' . $storage_item__1021 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
@@ -6846,51 +6636,56 @@ $storage_item__1028 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1028 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1032 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1033 . ' ' . $storage_item__1034 . ' ' . $storage_item__1035 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1033 ;
 $global_operand_two = $storage_item__1034 ;
 $global_operand_three = $storage_item__1035 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1032 = '' ;
+$storage_item__1032 = $global_action_result ;
 # print 'result: ' . $storage_item__1032 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1036 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1037 . ' ' . $storage_item__1038 . ' ' . $storage_item__1039 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1037 ;
 $global_operand_two = $storage_item__1038 ;
 $global_operand_three = $storage_item__1039 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1036 = '' ;
+$storage_item__1036 = $global_action_result ;
 # print 'result: ' . $storage_item__1036 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1040 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1041 . ' ' . $storage_item__1042 . ' ' . $storage_item__1043 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1041 ;
 $global_operand_two = $storage_item__1042 ;
 $global_operand_three = $storage_item__1043 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1040 = '' ;
+$storage_item__1040 = $global_action_result ;
 # print 'result: ' . $storage_item__1040 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1044 *** copy-words-unique-only ** 2 *' . $storage_item__1045 . ' ' . $storage_item__1046 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1045 ;
 $global_operand_two = $storage_item__1046 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1044 = '' ;
+$storage_item__1044 = $global_action_result ;
 # print 'result: ' . $storage_item__1044 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1047 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1048 . ' ' . $storage_item__1049 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1048 ;
 $global_operand_two = $storage_item__1049 ;
 &function__copy_words_sort_alphabetic( ) ;
-$storage_item__1047 = '' ;
+$storage_item__1047 = $global_action_result ;
 # print 'result: ' . $storage_item__1047 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
@@ -6957,21 +6752,23 @@ $storage_item__1050 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1050 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1054 *** copy-words-unique-only ** 2 *' . $storage_item__1055 . ' ' . $storage_item__1056 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1055 ;
 $global_operand_two = $storage_item__1056 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1054 = '' ;
+$storage_item__1054 = $global_action_result ;
 # print 'result: ' . $storage_item__1054 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1057 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1058 . ' ' . $storage_item__1059 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1058 ;
 $global_operand_two = $storage_item__1059 ;
 &function__copy_words_sort_alphabetic( ) ;
-$storage_item__1057 = '' ;
+$storage_item__1057 = $global_action_result ;
 # print 'result: ' . $storage_item__1057 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
@@ -6996,21 +6793,23 @@ $storage_item__1060 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1060 . "\n" ;
 # end of action trace-show
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1062 *** copy-words-unique-only ** 2 *' . $storage_item__1063 . ' ' . $storage_item__1064 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1063 ;
 $global_operand_two = $storage_item__1064 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1062 = '' ;
+$storage_item__1062 = $global_action_result ;
 # print 'result: ' . $storage_item__1062 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1065 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1066 . ' ' . $storage_item__1067 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1066 ;
 $global_operand_two = $storage_item__1067 ;
 &function__copy_words_sort_alphabetic( ) ;
-$storage_item__1065 = '' ;
+$storage_item__1065 = $global_action_result ;
 # print 'result: ' . $storage_item__1065 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
@@ -7035,21 +6834,23 @@ $storage_item__1068 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1068 . "\n" ;
 # end of action trace-show
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1070 *** copy-words-unique-only ** 2 *' . $storage_item__1071 . ' ' . $storage_item__1072 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1071 ;
 $global_operand_two = $storage_item__1072 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1070 = '' ;
+$storage_item__1070 = $global_action_result ;
 # print 'result: ' . $storage_item__1070 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-finish **** 1073 *** copy-words-sort-alphabetic ** 2 *' . $storage_item__1074 . ' ' . $storage_item__1075 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1074 ;
 $global_operand_two = $storage_item__1075 ;
 &function__copy_words_sort_alphabetic( ) ;
-$storage_item__1073 = '' ;
+$storage_item__1073 = $global_action_result ;
 # print 'result: ' . $storage_item__1073 . "\n" ;
 # end of action copy-words-sort-alphabetic
 
@@ -7173,20 +6974,12 @@ $storage_item__1085 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1085 . "\n" ;
 # end of action trace-show
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1087 *** clear-phrase ** 1 *' . $storage_item__1088 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1088 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__1088 } = '' ;
-$storage_item__1087 = '' ;
-} else {
-$storage_item__1087 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__1088 . ' ' ;
-}
+$global_operand_one = $storage_item__1088 ;
+&function__clear_phrase( ) ;
+$storage_item__1087 = $global_action_result ;
 # print 'result: ' . $storage_item__1087 . "\n" ;
 # end of action clear-phrase
 
@@ -7635,20 +7428,12 @@ $storage_item__1131 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1131 . "\n" ;
 # end of action put-into-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1134 *** clear-phrase ** 1 *' . $storage_item__1135 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1135 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__1135 } = '' ;
-$storage_item__1134 = '' ;
-} else {
-$storage_item__1134 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__1135 . ' ' ;
-}
+$global_operand_one = $storage_item__1135 ;
+&function__clear_phrase( ) ;
+$storage_item__1134 = $global_action_result ;
 # print 'result: ' . $storage_item__1134 . "\n" ;
 # end of action clear-phrase
 
@@ -7910,26 +7695,13 @@ $storage_item__1154 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1154 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1159 *** copy-without-extra-spaces ** 2 *' . $storage_item__1160 . ' ' . $storage_item__1161 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1160 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1161 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__1160 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__1161 } = $global_target_text ;
-} else {
-$storage_item__1159 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__1160 . ' ' . $storage_item__1161 . ' ' ;
-}
+$global_operand_one = $storage_item__1160 ;
+$global_operand_two = $storage_item__1161 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__1159 = $global_action_result ;
 # print 'result: ' . $storage_item__1159 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -7953,13 +7725,14 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__1162 . "\n" ;
 # end of action convert-source-code-replace-parameter-brackets-with-ambee-and-amenn
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1164 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1165 . ' ' . $storage_item__1166 . ' ' . $storage_item__1167 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1165 ;
 $global_operand_two = $storage_item__1166 ;
 $global_operand_three = $storage_item__1167 ;
 &function__copy_and_replace_using_paired_listed_words( ) ;
-$storage_item__1164 = '' ;
+$storage_item__1164 = $global_action_result ;
 # print 'result: ' . $storage_item__1164 . "\n" ;
 # end of action copy-and-replace-using-paired-listed-words
 
@@ -8018,26 +7791,13 @@ $storage_item__1168 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1168 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1173 *** copy-without-extra-spaces ** 2 *' . $storage_item__1174 . ' ' . $storage_item__1175 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1174 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1175 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__1174 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__1175 } = $global_target_text ;
-} else {
-$storage_item__1173 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__1174 . ' ' . $storage_item__1175 . ' ' ;
-}
+$global_operand_one = $storage_item__1174 ;
+$global_operand_two = $storage_item__1175 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__1173 = $global_action_result ;
 # print 'result: ' . $storage_item__1173 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -8123,13 +7883,14 @@ $storage_item__1180 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1180 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1184 *** copy-and-replace-using-paired-listed-words ** 3 *' . $storage_item__1185 . ' ' . $storage_item__1186 . ' ' . $storage_item__1187 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1185 ;
 $global_operand_two = $storage_item__1186 ;
 $global_operand_three = $storage_item__1187 ;
 &function__copy_and_replace_using_paired_listed_words( ) ;
-$storage_item__1184 = '' ;
+$storage_item__1184 = $global_action_result ;
 # print 'result: ' . $storage_item__1184 . "\n" ;
 # end of action copy-and-replace-using-paired-listed-words
 
@@ -8188,26 +7949,13 @@ $storage_item__1188 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1188 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1193 *** copy-without-extra-spaces ** 2 *' . $storage_item__1194 . ' ' . $storage_item__1195 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1194 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1195 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__1194 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__1195 } = $global_target_text ;
-} else {
-$storage_item__1193 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__1194 . ' ' . $storage_item__1195 . ' ' ;
-}
+$global_operand_one = $storage_item__1194 ;
+$global_operand_two = $storage_item__1195 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__1193 = $global_action_result ;
 # print 'result: ' . $storage_item__1193 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -8896,43 +8644,47 @@ $storage_item__1256 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1256 . "\n" ;
 # end of action trace-show
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1258 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1259 . ' ' . $storage_item__1260 . ' ' . $storage_item__1261 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1259 ;
 $global_operand_two = $storage_item__1260 ;
 $global_operand_three = $storage_item__1261 ;
 &function__generate_positions_of_delimiter( ) ;
-$storage_item__1258 = '' ;
+$storage_item__1258 = $global_action_result ;
 # print 'result: ' . $storage_item__1258 . "\n" ;
 # end of action generate-positions-of-delimiter
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1262 *** numeric-vector-add-number ** 3 *' . $storage_item__1263 . ' ' . $storage_item__1264 . ' ' . $storage_item__1265 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1263 ;
 $global_operand_two = $storage_item__1264 ;
 $global_operand_three = $storage_item__1265 ;
 &function__numeric_vector_add_number( ) ;
-$storage_item__1262 = '' ;
+$storage_item__1262 = $global_action_result ;
 # print 'result: ' . $storage_item__1262 . "\n" ;
 # end of action numeric-vector-add-number
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1266 *** generate-positions-of-delimiter ** 3 *' . $storage_item__1267 . ' ' . $storage_item__1268 . ' ' . $storage_item__1269 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1267 ;
 $global_operand_two = $storage_item__1268 ;
 $global_operand_three = $storage_item__1269 ;
 &function__generate_positions_of_delimiter( ) ;
-$storage_item__1266 = '' ;
+$storage_item__1266 = $global_action_result ;
 # print 'result: ' . $storage_item__1266 . "\n" ;
 # end of action generate-positions-of-delimiter
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1270 *** numeric-vector-add-number ** 3 *' . $storage_item__1271 . ' ' . $storage_item__1272 . ' ' . $storage_item__1273 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1271 ;
 $global_operand_two = $storage_item__1272 ;
 $global_operand_three = $storage_item__1273 ;
 &function__numeric_vector_add_number( ) ;
-$storage_item__1270 = '' ;
+$storage_item__1270 = $global_action_result ;
 # print 'result: ' . $storage_item__1270 . "\n" ;
 # end of action numeric-vector-add-number
 
@@ -9035,22 +8787,24 @@ $storage_item__1280 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1280 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1284 *** copy-words-unique-only ** 2 *' . $storage_item__1285 . ' ' . $storage_item__1286 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1285 ;
 $global_operand_two = $storage_item__1286 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__1284 = '' ;
+$storage_item__1284 = $global_action_result ;
 # print 'result: ' . $storage_item__1284 . "\n" ;
 # end of action copy-words-unique-only
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1287 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__1288 . ' ' . $storage_item__1289 . ' ' . $storage_item__1290 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1288 ;
 $global_operand_two = $storage_item__1289 ;
 $global_operand_three = $storage_item__1290 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__1287 = '' ;
+$storage_item__1287 = $global_action_result ;
 # print 'result: ' . $storage_item__1287 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
@@ -9383,6 +9137,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** convert-source-code-simplify-no-space-one-space-directives **** 1321 *** get-position-of-matching-text ** 2 *' . $storage_item__1322 . ' ' . $storage_item__1323 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1322 ;
@@ -10343,6 +10098,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** create-new-storage-position **** 1427 *** numeric-increment ** 1 *' . $storage_item__1428 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1428 ;
@@ -10371,20 +10127,12 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__1431 . "\n" ;
 # end of action current-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** create-new-storage-position **** 1429 *** clear-phrase ** 1 *' . $storage_item__1430 . '-' . $storage_item__1431 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1430 . '-' . $storage_item__1431 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__1430 . '-' . $storage_item__1431 } = '' ;
-$storage_item__1429 = '' ;
-} else {
-$storage_item__1429 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__1430 . '-' . $storage_item__1431 . ' ' ;
-}
+$global_operand_one = $storage_item__1430 . '-' . $storage_item__1431 ;
+&function__clear_phrase( ) ;
+$storage_item__1429 = $global_action_result ;
 # print 'result: ' . $storage_item__1429 . "\n" ;
 # end of action clear-phrase
 
@@ -10702,13 +10450,14 @@ $storage_item__1464 = '' ;
 # print 'result: ' . $storage_item__1464 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-1 **** 1467 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1468 . ' ' . $storage_item__1469 . ' ' . $storage_item__1470 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1468 ;
 $global_operand_two = $storage_item__1469 ;
 $global_operand_three = $storage_item__1470 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__1467 = '' ;
+$storage_item__1467 = $global_action_result ;
 # print 'result: ' . $storage_item__1467 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -10932,13 +10681,14 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-3 **** 1495 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__1496 . ' ' . $storage_item__1497 . ' ' . $storage_item__1498 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1496 ;
 $global_operand_two = $storage_item__1497 ;
 $global_operand_three = $storage_item__1498 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__1495 = '' ;
+$storage_item__1495 = $global_action_result ;
 # print 'result: ' . $storage_item__1495 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -11194,6 +10944,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-ambee **** 1529 *** numeric-increment ** 1 *' . $storage_item__1530 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1530 ;
@@ -11260,6 +11011,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-amenn **** 1537 *** numeric-increment ** 1 *' . $storage_item__1538 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1538 ;
@@ -11488,6 +11240,7 @@ $storage_item__1561 = $global_action_result ;
 # print 'result: ' . $storage_item__1561 . "\n" ;
 # end of action numeric-add
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn-case-balanced-ambee-amenn **** 1560 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1561 . ' ' . $storage_item__1566 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1561 ;
@@ -11598,6 +11351,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1576 *** numeric-increment ** 1 *' . $storage_item__1577 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1577 ;
@@ -11646,6 +11400,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__1584 . "\n" ;
 # end of action count-of-amenn-tokens
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1581 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__1582 . ' ' . $storage_item__1584 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1582 ;
@@ -11718,20 +11473,12 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 }
 # end action if end
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1592 *** clear-phrase ** 1 *' . $storage_item__1593 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1593 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__1593 } = '' ;
-$storage_item__1592 = '' ;
-} else {
-$storage_item__1592 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__1593 . ' ' ;
-}
+$global_operand_one = $storage_item__1593 ;
+&function__clear_phrase( ) ;
+$storage_item__1592 = $global_action_result ;
 # print 'result: ' . $storage_item__1592 . "\n" ;
 # end of action clear-phrase
 
@@ -11754,20 +11501,12 @@ $storage_item__1594 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1594 . "\n" ;
 # end of action put-into-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1597 *** clear-phrase ** 1 *' . $storage_item__1598 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1598 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__1598 } = '' ;
-$storage_item__1597 = '' ;
-} else {
-$storage_item__1597 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__1598 . ' ' ;
-}
+$global_operand_one = $storage_item__1598 ;
+&function__clear_phrase( ) ;
+$storage_item__1597 = $global_action_result ;
 # print 'result: ' . $storage_item__1597 . "\n" ;
 # end of action clear-phrase
 
@@ -11809,30 +11548,32 @@ $storage_item__1602 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__1602 . "\n" ;
 # end of action put-into-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1605 *** generate-list-of-all-dashrep-phrases ** 1 *' . $storage_item__1606 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1606 ;
-$global_operand_two = '' ;
 &function__generate_list_of_all_dashrep_phrases( ) ;
 $storage_item__1605 = $global_action_result ;
 # print 'result: ' . $storage_item__1605 . "\n" ;
 # end of action generate-list-of-all-dashrep-phrases
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1607 *** copy-words-that-begin-with-listed-words ** 3 *' . $storage_item__1608 . ' ' . $storage_item__1609 . ' ' . $storage_item__1610 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1608 ;
 $global_operand_two = $storage_item__1609 ;
 $global_operand_three = $storage_item__1610 ;
 &function__copy_words_that_begin_with_listed_words( ) ;
-$storage_item__1607 = '' ;
+$storage_item__1607 = $global_action_result ;
 # print 'result: ' . $storage_item__1607 . "\n" ;
 # end of action copy-words-that-begin-with-listed-words
 
+# this code generated from standard template
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1611 *** delete-listed-phrases ** 1 *' . $storage_item__1612 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1612 ;
 &function__delete_listed_phrases( ) ;
-$storage_item__1611 = '' ;
+$storage_item__1611 = $global_action_result ;
 # print 'result: ' . $storage_item__1611 . "\n" ;
 # end of action delete-listed-phrases
 
@@ -13947,6 +13688,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** generate-runtime-code-using-quoted-string **** 1866 *** numeric-increment ** 1 *' . $storage_item__1867 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__1867 ;
@@ -15088,26 +14830,13 @@ $storage_item__1993 = '' ;
 # print 'result: ' . $storage_item__1993 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 1998 *** copy-without-extra-spaces ** 2 *' . $storage_item__1999 . ' ' . $storage_item__2000 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1999 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2000 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__1999 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__2000 } = $global_target_text ;
-} else {
-$storage_item__1998 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__1999 . ' ' . $storage_item__2000 . ' ' ;
-}
+$global_operand_one = $storage_item__1999 ;
+$global_operand_two = $storage_item__2000 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__1998 = $global_action_result ;
 # print 'result: ' . $storage_item__1998 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -15221,6 +14950,7 @@ $storage_item__2006 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__2006 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2013 *** get-count-of-words ** 1 *' . $storage_item__2014 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2014 ;
@@ -15361,6 +15091,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2034 . "\n" ;
 # end of action number-of-operands
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2033 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2034 . ' ' . $storage_item__2036 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2034 ;
@@ -15385,6 +15116,7 @@ $global_pointer_to_word = index( $storage_item__2031 , 'no' ) ;
 if ( $global_pointer_to_word >= 0 ) {
 # end action if no begin
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2037 *** copy-word-at-position ** 3 *' . $storage_item__2038 . ' ' . $storage_item__2039 . ' ' . $storage_item__2040 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2038 ;
@@ -15475,6 +15207,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2055 . "\n" ;
 # end of action number-of-operands
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2054 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2055 . ' ' . $storage_item__2057 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2055 ;
@@ -15499,6 +15232,7 @@ $global_pointer_to_word = index( $storage_item__2052 , 'no' ) ;
 if ( $global_pointer_to_word >= 0 ) {
 # end action if no begin
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2058 *** copy-word-at-position ** 3 *' . $storage_item__2059 . ' ' . $storage_item__2060 . ' ' . $storage_item__2061 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2059 ;
@@ -15589,6 +15323,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2076 . "\n" ;
 # end of action number-of-operands
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2075 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2076 . ' ' . $storage_item__2078 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2076 ;
@@ -15613,6 +15348,7 @@ $global_pointer_to_word = index( $storage_item__2073 , 'no' ) ;
 if ( $global_pointer_to_word >= 0 ) {
 # end action if no begin
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2079 *** copy-word-at-position ** 3 *' . $storage_item__2080 . ' ' . $storage_item__2081 . ' ' . $storage_item__2082 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2080 ;
@@ -15703,6 +15439,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2097 . "\n" ;
 # end of action number-of-operands
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2096 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2097 . ' ' . $storage_item__2099 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2097 ;
@@ -15727,6 +15464,7 @@ $global_pointer_to_word = index( $storage_item__2094 , 'no' ) ;
 if ( $global_pointer_to_word >= 0 ) {
 # end action if no begin
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-all-operands **** 2100 *** copy-word-at-position ** 3 *' . $storage_item__2101 . ' ' . $storage_item__2102 . ' ' . $storage_item__2103 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2101 ;
@@ -15875,46 +15613,15 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2122 . "\n" ;
 # end of action word-to-use-in-handler
 
+# this code generated from standard template
 # $global_action_debug_line = '***** get-source-code-character-at-adjacent-position **** 2117 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__2118 . ' ' . $storage_item__2119 . ' ' . $storage_item__2120 . ' ' . $storage_item__2122 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2118 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2119 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__2120 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__2122 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_length_of_text_source = length( $global_dashrep_replacement{ $storage_item__2118 } ) ;
-# reminder: index function starts counting at 0 but Dashrep language starts counting at 1
-$global_character_pointer_begin = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2120 ) ;
-$global_character_pointer_end = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__2122 ) ;
-if ( ( $global_length_of_text_source > 0 ) && ( $global_character_pointer_begin < $global_length_of_text_source ) ) {
-if ( $global_character_pointer_end > $global_length_of_text_source - 1 ) {
-$global_character_pointer_end = $global_length_of_text_source - 1 ;
-}
-$global_dashrep_replacement{ $storage_item__2119 } = substr( $global_dashrep_replacement{ $storage_item__2118 } , $global_character_pointer_begin , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ;
-} else {
-$global_dashrep_replacement{ $storage_item__2119 } = '' ;
-}
-$storage_item__2117 = '' ;
-} else {
-$storage_item__2117 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-characters-from-position-to-position ' . $storage_item__2118 . ' ' . $storage_item__2119 . ' ' . $storage_item__2120 . ' ' . $storage_item__2122 . ' ' ;
-}
+$global_operand_one = $storage_item__2118 ;
+$global_operand_two = $storage_item__2119 ;
+$global_operand_three = $storage_item__2120 ;
+$global_operand_four = $storage_item__2122 ;
+&function__copy_characters_from_position_to_position( ) ;
+$storage_item__2117 = $global_action_result ;
 # print 'result: ' . $storage_item__2117 . "\n" ;
 # end of action copy-characters-from-position-to-position
 
@@ -16680,26 +16387,13 @@ $storage_item__2203 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__2203 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2208 *** copy-without-extra-spaces ** 2 *' . $storage_item__2209 . ' ' . $storage_item__2210 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2209 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2210 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__2209 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__2210 } = $global_target_text ;
-} else {
-$storage_item__2208 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__2209 . ' ' . $storage_item__2210 . ' ' ;
-}
+$global_operand_one = $storage_item__2209 ;
+$global_operand_two = $storage_item__2210 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__2208 = $global_action_result ;
 # print 'result: ' . $storage_item__2208 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -17002,26 +16696,13 @@ $storage_item__2245 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__2245 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2249 *** copy-without-extra-spaces ** 2 *' . $storage_item__2250 . ' ' . $storage_item__2251 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2250 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2251 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__2250 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__2251 } = $global_target_text ;
-} else {
-$storage_item__2249 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__2250 . ' ' . $storage_item__2251 . ' ' ;
-}
+$global_operand_one = $storage_item__2250 ;
+$global_operand_two = $storage_item__2251 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__2249 = $global_action_result ;
 # print 'result: ' . $storage_item__2249 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -17475,20 +17156,12 @@ $storage_item__2309 = ' ' ;
 # print 'result: ' . $storage_item__2309 . "\n" ;
 # end of action append-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2312 *** clear-phrase ** 1 *' . $storage_item__2313 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2313 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__2313 } = '' ;
-$storage_item__2312 = '' ;
-} else {
-$storage_item__2312 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__2313 . ' ' ;
-}
+$global_operand_one = $storage_item__2313 ;
+&function__clear_phrase( ) ;
+$storage_item__2312 = $global_action_result ;
 # print 'result: ' . $storage_item__2312 . "\n" ;
 # end of action clear-phrase
 
@@ -17512,20 +17185,12 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2316 . "\n" ;
 # end of action current-result-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2314 *** clear-phrase ** 1 *' . $storage_item__2315 . '-' . $storage_item__2316 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2315 . '-' . $storage_item__2316 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__2315 . '-' . $storage_item__2316 } = '' ;
-$storage_item__2314 = '' ;
-} else {
-$storage_item__2314 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__2315 . '-' . $storage_item__2316 . ' ' ;
-}
+$global_operand_one = $storage_item__2315 . '-' . $storage_item__2316 ;
+&function__clear_phrase( ) ;
+$storage_item__2314 = $global_action_result ;
 # print 'result: ' . $storage_item__2314 . "\n" ;
 # end of action clear-phrase
 
@@ -17642,26 +17307,13 @@ $storage_item__2323 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__2323 . "\n" ;
 # end of action copy-and-replace
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-immediate **** 2328 *** copy-without-extra-spaces ** 2 *' . $storage_item__2329 . ' ' . $storage_item__2330 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2329 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2330 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__2329 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__2330 } = $global_target_text ;
-} else {
-$storage_item__2328 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__2329 . ' ' . $storage_item__2330 . ' ' ;
-}
+$global_operand_one = $storage_item__2329 ;
+$global_operand_two = $storage_item__2330 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__2328 = $global_action_result ;
 # print 'result: ' . $storage_item__2328 . "\n" ;
 # end of action copy-without-extra-spaces
 
@@ -18086,13 +17738,14 @@ $storage_item__2369 = '' ;
 # print 'result: ' . $storage_item__2369 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2374 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2375 . ' ' . $storage_item__2376 . ' ' . $storage_item__2377 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2375 ;
 $global_operand_two = $storage_item__2376 ;
 $global_operand_three = $storage_item__2377 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__2374 = '' ;
+$storage_item__2374 = $global_action_result ;
 # print 'result: ' . $storage_item__2374 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -18181,6 +17834,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 }
 # end action if end
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-definition-simple-or-immediate **** 2390 *** numeric-increment ** 1 *' . $storage_item__2391 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2391 ;
@@ -18755,6 +18409,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2451 . "\n" ;
 # end of action count-of-amenn-tokens
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-non-zero-count-of-ambee-minus-amenn-tokens **** 2448 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__2449 . ' ' . $storage_item__2451 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2449 ;
@@ -19051,20 +18706,12 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2489 . "\n" ;
 # end of action current-result-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-ambee **** 2487 *** clear-phrase ** 1 *' . $storage_item__2488 . '-' . $storage_item__2489 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2488 . '-' . $storage_item__2489 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__2488 . '-' . $storage_item__2489 } = '' ;
-$storage_item__2487 = '' ;
-} else {
-$storage_item__2487 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__2488 . '-' . $storage_item__2489 . ' ' ;
-}
+$global_operand_one = $storage_item__2488 . '-' . $storage_item__2489 ;
+&function__clear_phrase( ) ;
+$storage_item__2487 = $global_action_result ;
 # print 'result: ' . $storage_item__2487 . "\n" ;
 # end of action clear-phrase
 
@@ -19376,6 +19023,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2526 . "\n" ;
 # end of action number-of-operands
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-might-have-template **** 2523 *** copy-word-at-position ** 3 *' . $storage_item__2524 . ' ' . $storage_item__2525 . ' ' . $storage_item__2526 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2524 ;
@@ -19662,20 +19310,12 @@ $storage_item__2557 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__2557 . "\n" ;
 # end of action put-into-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2560 *** clear-phrase ** 1 *' . $storage_item__2561 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2561 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__2561 } = '' ;
-$storage_item__2560 = '' ;
-} else {
-$storage_item__2560 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__2561 . ' ' ;
-}
+$global_operand_one = $storage_item__2561 ;
+&function__clear_phrase( ) ;
+$storage_item__2560 = $global_action_result ;
 # print 'result: ' . $storage_item__2560 . "\n" ;
 # end of action clear-phrase
 
@@ -19807,13 +19447,14 @@ $storage_item__2576 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 }
 # end action if end
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2580 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2581 . ' ' . $storage_item__2582 . ' ' . $storage_item__2583 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2581 ;
 $global_operand_two = $storage_item__2582 ;
 $global_operand_three = $storage_item__2583 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__2580 = '' ;
+$storage_item__2580 = $global_action_result ;
 # print 'result: ' . $storage_item__2580 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -19992,6 +19633,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-recognized **** 2609 *** get-count-of-words ** 1 *' . $storage_item__2610 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2610 ;
@@ -20000,6 +19642,7 @@ $storage_item__2609 = $global_action_result ;
 # print 'result: ' . $storage_item__2609 . "\n" ;
 # end of action get-count-of-words
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-recognized **** 2608 *** numeric-minus ** 2 *' . $storage_item__2609 . ' ' . $storage_item__2611 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2609 ;
@@ -20009,6 +19652,7 @@ $storage_item__2608 = $global_action_result ;
 # print 'result: ' . $storage_item__2608 . "\n" ;
 # end of action numeric-minus
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-recognized **** 2605 *** copy-word-at-position ** 3 *' . $storage_item__2606 . ' ' . $storage_item__2607 . ' ' . $storage_item__2608 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2606 ;
@@ -20671,6 +20315,7 @@ $storage_item__2685 = '' ;
 # print 'result: ' . $storage_item__2685 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2688 *** numeric-increment ** 1 *' . $storage_item__2689 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2689 ;
@@ -20833,36 +20478,24 @@ $storage_item__2712 = '' ;
 # print 'result: ' . $storage_item__2712 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2715 *** copy-without-extra-spaces ** 2 *' . $storage_item__2716 . ' ' . $storage_item__2717 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2716 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2717 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_source_text = $global_dashrep_replacement{ $storage_item__2716 } ;
-&function__remove_extra_spaces( ) ;
-$global_dashrep_replacement{ $storage_item__2717 } = $global_target_text ;
-} else {
-$storage_item__2715 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-without-extra-spaces ' . $storage_item__2716 . ' ' . $storage_item__2717 . ' ' ;
-}
+$global_operand_one = $storage_item__2716 ;
+$global_operand_two = $storage_item__2717 ;
+&function__copy_without_extra_spaces( ) ;
+$storage_item__2715 = $global_action_result ;
 # print 'result: ' . $storage_item__2715 . "\n" ;
 # end of action copy-without-extra-spaces
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2718 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2719 . ' ' . $storage_item__2720 . ' ' . $storage_item__2721 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2719 ;
 $global_operand_two = $storage_item__2720 ;
 $global_operand_three = $storage_item__2721 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__2718 = '' ;
+$storage_item__2718 = $global_action_result ;
 # print 'result: ' . $storage_item__2718 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -21346,6 +20979,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2772 *** numeric-increment ** 1 *' . $storage_item__2773 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2773 ;
@@ -22093,20 +21727,12 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2849 . "\n" ;
 # end of action current-text-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2847 *** clear-phrase ** 1 *' . $storage_item__2848 . '-' . $storage_item__2849 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2848 . '-' . $storage_item__2849 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__2848 . '-' . $storage_item__2849 } = '' ;
-$storage_item__2847 = '' ;
-} else {
-$storage_item__2847 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__2848 . '-' . $storage_item__2849 . ' ' ;
-}
+$global_operand_one = $storage_item__2848 . '-' . $storage_item__2849 ;
+&function__clear_phrase( ) ;
+$storage_item__2847 = $global_action_result ;
 # print 'result: ' . $storage_item__2847 . "\n" ;
 # end of action clear-phrase
 
@@ -22299,6 +21925,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2872 . "\n" ;
 # end of action current-result-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2870 *** copy-word-at-position ** 3 *' . $storage_item__2871 . '-' . $storage_item__2872 . ' ' . $storage_item__2874 . ' ' . $storage_item__2875 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2871 . '-' . $storage_item__2872 ;
@@ -22384,6 +22011,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__2883 . "\n" ;
 # end of action current-result-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2881 *** copy-word-at-position ** 3 *' . $storage_item__2882 . '-' . $storage_item__2883 . ' ' . $storage_item__2885 . ' ' . $storage_item__2886 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2882 . '-' . $storage_item__2883 ;
@@ -22739,6 +22367,7 @@ $storage_item__2921 = '' ;
 # print 'result: ' . $storage_item__2921 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2924 *** numeric-increment ** 1 *' . $storage_item__2925 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2925 ;
@@ -22747,13 +22376,14 @@ $storage_item__2924 = $global_action_result ;
 # print 'result: ' . $storage_item__2924 . "\n" ;
 # end of action numeric-increment
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-next-case-1 **** 2926 *** copy-words-found-in-both-lists ** 3 *' . $storage_item__2927 . ' ' . $storage_item__2928 . ' ' . $storage_item__2929 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2927 ;
 $global_operand_two = $storage_item__2928 ;
 $global_operand_three = $storage_item__2929 ;
 &function__copy_words_found_in_both_lists( ) ;
-$storage_item__2926 = '' ;
+$storage_item__2926 = $global_action_result ;
 # print 'result: ' . $storage_item__2926 . "\n" ;
 # end of action copy-words-found-in-both-lists
 
@@ -23259,6 +22889,7 @@ $storage_item__2986 = '' ;
 # print 'result: ' . $storage_item__2986 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-phrase-name **** 2989 *** numeric-increment ** 1 *' . $storage_item__2990 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__2990 ;
@@ -23339,20 +22970,12 @@ $storage_item__2996 = '' ;
 # print 'result: ' . $storage_item__2996 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-phrase-name **** 3001 *** clear-phrase ** 1 *' . $storage_item__3002 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3002 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__3002 } = '' ;
-$storage_item__3001 = '' ;
-} else {
-$storage_item__3001 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__3002 . ' ' ;
-}
+$global_operand_one = $storage_item__3002 ;
+&function__clear_phrase( ) ;
+$storage_item__3001 = $global_action_result ;
 # print 'result: ' . $storage_item__3001 . "\n" ;
 # end of action clear-phrase
 
@@ -23396,37 +23019,21 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3007 . "\n" ;
 # end of action current-result-storage-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-phrase-name **** 3005 *** clear-phrase ** 1 *' . $storage_item__3006 . '-' . $storage_item__3007 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3006 . '-' . $storage_item__3007 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__3006 . '-' . $storage_item__3007 } = '' ;
-$storage_item__3005 = '' ;
-} else {
-$storage_item__3005 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__3006 . '-' . $storage_item__3007 . ' ' ;
-}
+$global_operand_one = $storage_item__3006 . '-' . $storage_item__3007 ;
+&function__clear_phrase( ) ;
+$storage_item__3005 = $global_action_result ;
 # print 'result: ' . $storage_item__3005 . "\n" ;
 # end of action clear-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-phrase-name **** 3009 *** clear-phrase ** 1 *' . $storage_item__3010 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3010 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__3010 } = '' ;
-$storage_item__3009 = '' ;
-} else {
-$storage_item__3009 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__3010 . ' ' ;
-}
+$global_operand_one = $storage_item__3010 ;
+&function__clear_phrase( ) ;
+$storage_item__3009 = $global_action_result ;
 # print 'result: ' . $storage_item__3009 . "\n" ;
 # end of action clear-phrase
 
@@ -23522,20 +23129,12 @@ $storage_item__3018 = '' ;
 # print 'result: ' . $storage_item__3018 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** handle-token-phrase-name **** 3023 *** clear-phrase ** 1 *' . $storage_item__3024 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3024 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__3024 } = '' ;
-$storage_item__3023 = '' ;
-} else {
-$storage_item__3023 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__3024 . ' ' ;
-}
+$global_operand_one = $storage_item__3024 ;
+&function__clear_phrase( ) ;
+$storage_item__3023 = $global_action_result ;
 # print 'result: ' . $storage_item__3023 . "\n" ;
 # end of action clear-phrase
 
@@ -24430,6 +24029,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3141 . "\n" ;
 # end of action position-top-of-stack
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 3140 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__3141 . ' ' . $storage_item__3143 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3141 ;
@@ -24474,6 +24074,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3147 . "\n" ;
 # end of action position-top-of-stack
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 3144 *** copy-word-at-position ** 3 *' . $storage_item__3145 . ' ' . $storage_item__3146 . ' ' . $storage_item__3147 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3145 ;
@@ -24484,6 +24085,7 @@ $storage_item__3144 = $global_action_result ;
 # print 'result: ' . $storage_item__3144 . "\n" ;
 # end of action copy-word-at-position
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 3149 *** numeric-decrement ** 1 *' . $storage_item__3150 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3150 ;
@@ -24512,6 +24114,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3155 . "\n" ;
 # end of action position-top-of-stack
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 3151 *** copy-words-from-position-to-position ** 4 *' . $storage_item__3152 . ' ' . $storage_item__3153 . ' ' . $storage_item__3154 . ' ' . $storage_item__3155 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3152 ;
@@ -24519,7 +24122,7 @@ $global_operand_two = $storage_item__3153 ;
 $global_operand_three = $storage_item__3154 ;
 $global_operand_four = $storage_item__3155 ;
 &function__copy_words_from_position_to_position( ) ;
-$storage_item__3151 = '' ;
+$storage_item__3151 = $global_action_result ;
 # print 'result: ' . $storage_item__3151 . "\n" ;
 # end of action copy-words-from-position-to-position
 
@@ -24543,20 +24146,12 @@ $storage_item__3158 = '' ;
 # print 'result: ' . $storage_item__3158 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop-case-not-empty **** 3161 *** clear-phrase ** 1 *' . $storage_item__3162 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3162 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__3162 } = '' ;
-$storage_item__3161 = '' ;
-} else {
-$storage_item__3161 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__3162 . ' ' ;
-}
+$global_operand_one = $storage_item__3162 ;
+&function__clear_phrase( ) ;
+$storage_item__3161 = $global_action_result ;
 # print 'result: ' . $storage_item__3161 . "\n" ;
 # end of action clear-phrase
 
@@ -24602,6 +24197,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop **** 3169 *** get-count-of-words ** 1 *' . $storage_item__3170 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3170 ;
@@ -24649,6 +24245,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3175 . "\n" ;
 # end of action position-top-of-stack
 
+# this code generated from standard template
 # $global_action_debug_line = '***** recursion-stack-pop **** 3174 *** numeric-equal-greater-less-compare ** 2 *' . $storage_item__3175 . ' ' . $storage_item__3177 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3175 ;
@@ -24817,19 +24414,12 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3195 *** get-count-of-characters ** 1 *' . $storage_item__3196 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3196 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$storage_item__3195 = length( $global_dashrep_replacement{ $storage_item__3196 } ) ;
-} else {
-$storage_item__3195 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': get-count-of-characters ' . $storage_item__3196 . ' ' ;
-}
+$global_operand_one = $storage_item__3196 ;
+&function__get_count_of_characters( ) ;
+$storage_item__3195 = $global_action_result ;
 # print 'result: ' . $storage_item__3195 . "\n" ;
 # end of action get-count-of-characters
 
@@ -24892,46 +24482,15 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3202 . "\n" ;
 # end of action phrase-length
 
+# this code generated from standard template
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3197 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__3198 . ' ' . $storage_item__3199 . ' ' . $storage_item__3200 . ' ' . $storage_item__3202 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3198 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3199 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__3200 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__3202 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_length_of_text_source = length( $global_dashrep_replacement{ $storage_item__3198 } ) ;
-# reminder: index function starts counting at 0 but Dashrep language starts counting at 1
-$global_character_pointer_begin = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3200 ) ;
-$global_character_pointer_end = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3202 ) ;
-if ( ( $global_length_of_text_source > 0 ) && ( $global_character_pointer_begin < $global_length_of_text_source ) ) {
-if ( $global_character_pointer_end > $global_length_of_text_source - 1 ) {
-$global_character_pointer_end = $global_length_of_text_source - 1 ;
-}
-$global_dashrep_replacement{ $storage_item__3199 } = substr( $global_dashrep_replacement{ $storage_item__3198 } , $global_character_pointer_begin , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ;
-} else {
-$global_dashrep_replacement{ $storage_item__3199 } = '' ;
-}
-$storage_item__3197 = '' ;
-} else {
-$storage_item__3197 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-characters-from-position-to-position ' . $storage_item__3198 . ' ' . $storage_item__3199 . ' ' . $storage_item__3200 . ' ' . $storage_item__3202 . ' ' ;
-}
+$global_operand_one = $storage_item__3198 ;
+$global_operand_two = $storage_item__3199 ;
+$global_operand_three = $storage_item__3200 ;
+$global_operand_four = $storage_item__3202 ;
+&function__copy_characters_from_position_to_position( ) ;
+$storage_item__3197 = $global_action_result ;
 # print 'result: ' . $storage_item__3197 . "\n" ;
 # end of action copy-characters-from-position-to-position
 
@@ -24985,6 +24544,7 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 # print 'result: ' . $storage_item__3213 . "\n" ;
 # end of action phrase-length
 
+# this code generated from standard template
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3212 *** numeric-minus ** 2 *' . $storage_item__3213 . ' ' . $storage_item__3215 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3213 ;
@@ -24994,46 +24554,15 @@ $storage_item__3212 = $global_action_result ;
 # print 'result: ' . $storage_item__3212 . "\n" ;
 # end of action numeric-minus
 
+# this code generated from standard template
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3208 *** copy-characters-from-position-to-position ** 4 *' . $storage_item__3209 . ' ' . $storage_item__3210 . ' ' . $storage_item__3211 . ' ' . $storage_item__3212 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3209 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3210 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__3211 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer( $storage_item__3212 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_positive_integer' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_length_of_text_source = length( $global_dashrep_replacement{ $storage_item__3209 } ) ;
-# reminder: index function starts counting at 0 but Dashrep language starts counting at 1
-$global_character_pointer_begin = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3211 ) ;
-$global_character_pointer_end = -1 + &function_parameterized__convert_numeric_text_into_numeric_value( $storage_item__3212 ) ;
-if ( ( $global_length_of_text_source > 0 ) && ( $global_character_pointer_begin < $global_length_of_text_source ) ) {
-if ( $global_character_pointer_end > $global_length_of_text_source - 1 ) {
-$global_character_pointer_end = $global_length_of_text_source - 1 ;
-}
-$global_dashrep_replacement{ $storage_item__3210 } = substr( $global_dashrep_replacement{ $storage_item__3209 } , $global_character_pointer_begin , $global_character_pointer_end - $global_character_pointer_begin + 1 ) ;
-} else {
-$global_dashrep_replacement{ $storage_item__3210 } = '' ;
-}
-$storage_item__3208 = '' ;
-} else {
-$storage_item__3208 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': copy-characters-from-position-to-position ' . $storage_item__3209 . ' ' . $storage_item__3210 . ' ' . $storage_item__3211 . ' ' . $storage_item__3212 . ' ' ;
-}
+$global_operand_one = $storage_item__3209 ;
+$global_operand_two = $storage_item__3210 ;
+$global_operand_three = $storage_item__3211 ;
+$global_operand_four = $storage_item__3212 ;
+&function__copy_characters_from_position_to_position( ) ;
+$storage_item__3208 = $global_action_result ;
 # print 'result: ' . $storage_item__3208 . "\n" ;
 # end of action copy-characters-from-position-to-position
 
@@ -27052,22 +26581,24 @@ $storage_item__3409 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__3409 . "\n" ;
 # end of action copy-from-phrase-append-to-file
 
+# this code generated from standard template
 # $global_action_debug_line = '***** write-results-to-output-file **** 3413 *** copy-words-found-only-in-first-list ** 3 *' . $storage_item__3414 . ' ' . $storage_item__3415 . ' ' . $storage_item__3416 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3414 ;
 $global_operand_two = $storage_item__3415 ;
 $global_operand_three = $storage_item__3416 ;
 &function__copy_words_found_only_in_first_list( ) ;
-$storage_item__3413 = '' ;
+$storage_item__3413 = $global_action_result ;
 # print 'result: ' . $storage_item__3413 . "\n" ;
 # end of action copy-words-found-only-in-first-list
 
+# this code generated from standard template
 # $global_action_debug_line = '***** write-results-to-output-file **** 3417 *** copy-words-unique-only ** 2 *' . $storage_item__3418 . ' ' . $storage_item__3419 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3418 ;
 $global_operand_two = $storage_item__3419 ;
 &function__copy_words_unique_only( ) ;
-$storage_item__3417 = '' ;
+$storage_item__3417 = $global_action_result ;
 # print 'result: ' . $storage_item__3417 . "\n" ;
 # end of action copy-words-unique-only
 
@@ -27395,6 +26926,7 @@ exit ;
 }
 }
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3455 *** prepend-text ** 2 *' . $storage_item__3456 . ' ' . $storage_item__3457 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3456 ;
@@ -27404,6 +26936,7 @@ $storage_item__3455 = $global_action_result ;
 # print 'result: ' . $storage_item__3455 . "\n" ;
 # end of action prepend-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-hyphens-into-defenns **** 3458 *** prepend-text ** 2 *' . $storage_item__3459 . ' ' . $storage_item__3460 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3459 ;
@@ -27510,6 +27043,7 @@ $storage_item__3470 = ' ' ;
 # print 'result: ' . $storage_item__3470 . "\n" ;
 # end of action append-text-no-space
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3473 *** prepend-text ** 2 *' . $storage_item__3474 . ' ' . $storage_item__3475 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3474 ;
@@ -27519,6 +27053,7 @@ $storage_item__3473 = $global_action_result ;
 # print 'result: ' . $storage_item__3473 . "\n" ;
 # end of action prepend-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3476 *** prepend-text ** 2 *' . $storage_item__3477 . ' ' . $storage_item__3478 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3477 ;
@@ -27528,6 +27063,7 @@ $storage_item__3476 = $global_action_result ;
 # print 'result: ' . $storage_item__3476 . "\n" ;
 # end of action prepend-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3479 *** prepend-text ** 2 *' . $storage_item__3480 . ' ' . $storage_item__3481 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3480 ;
@@ -27537,6 +27073,7 @@ $storage_item__3479 = $global_action_result ;
 # print 'result: ' . $storage_item__3479 . "\n" ;
 # end of action prepend-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** build-paired-replacements-for-converting-to-combee-comenn **** 3482 *** prepend-text ** 2 *' . $storage_item__3483 . ' ' . $storage_item__3484 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__3483 ;
@@ -30582,13 +30119,14 @@ $storage_item__4048 = '' ;
 # print 'result: ' . $storage_item__4048 . "\n" ;
 # end of action copy-text
 
+# this code generated from standard template
 # $global_action_debug_line = '***** define-special-strings **** 4051 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4052 . ' ' . $storage_item__4053 . ' ' . $storage_item__4054 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__4052 ;
 $global_operand_two = $storage_item__4053 ;
 $global_operand_three = $storage_item__4054 ;
 &function__generate_counts_from_integer_to_integer( ) ;
-$storage_item__4051 = '' ;
+$storage_item__4051 = $global_action_result ;
 # print 'result: ' . $storage_item__4051 . "\n" ;
 # end of action generate-counts-from-integer-to-integer
 
@@ -30655,20 +30193,12 @@ $storage_item__4055 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__4055 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
+# this code generated from standard template
 # $global_action_debug_line = '***** define-special-strings **** 4059 *** clear-phrase ** 1 *' . $storage_item__4060 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__4060 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
-$global_dashrep_replacement{ $storage_item__4060 } = '' ;
-$storage_item__4059 = '' ;
-} else {
-$storage_item__4059 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': clear-phrase ' . $storage_item__4060 . ' ' ;
-}
+$global_operand_one = $storage_item__4060 ;
+&function__clear_phrase( ) ;
+$storage_item__4059 = $global_action_result ;
 # print 'result: ' . $storage_item__4059 . "\n" ;
 # end of action clear-phrase
 
@@ -30747,13 +30277,14 @@ $storage_item__4070 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 # print 'result: ' . $storage_item__4070 . "\n" ;
 # end of action prepend-text-no-space
 
+# this code generated from standard template
 # $global_action_debug_line = '***** define-special-strings **** 4073 *** generate-counts-from-integer-to-integer ** 3 *' . $storage_item__4074 . ' ' . $storage_item__4075 . ' ' . $storage_item__4076 ;
 # print $global_action_debug_line . "\n" ;
 $global_operand_one = $storage_item__4074 ;
 $global_operand_two = $storage_item__4075 ;
 $global_operand_three = $storage_item__4076 ;
 &function__generate_counts_from_integer_to_integer( ) ;
-$storage_item__4073 = '' ;
+$storage_item__4073 = $global_action_result ;
 # print 'result: ' . $storage_item__4073 . "\n" ;
 # end of action generate-counts-from-integer-to-integer
 
