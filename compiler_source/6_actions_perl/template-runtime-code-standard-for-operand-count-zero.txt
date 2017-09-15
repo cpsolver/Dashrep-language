@@ -1,0 +1,8 @@
+# this code generated from standard template  <new_line>
+
+template-runtime-code-for-every-action-begin
+
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end

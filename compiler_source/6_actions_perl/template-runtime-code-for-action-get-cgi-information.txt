@@ -1,5 +1,1 @@
-template-runtime-code-for-every-action-begin
-
-&function__get_cgi_information( ) ;  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-for-operand-count-zero
