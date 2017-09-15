@@ -278,7 +278,6 @@ ambee delete-listed-phrases list-of-phrases-to-delete amenn
 ----
 generate-code-for-one-action:
 ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name action-name amenn
-ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
 ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-action-name-with-underscores string-placeholder-special amenn
 ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-special action-name-with-underscores amenn
 ambee copy-and-replace runtime-code-for-parameter-phrase runtime-code-for-parameter-phrase string-placeholder-phrase-being-defined phrase-being-defined amenn
@@ -648,6 +647,7 @@ ambee if-end amenn
 ----
 handle-token-amenn-case-action-recognized:
 ambee append-text action-name list-of-dashrep-actions-used amenn
+ambee copy-and-replace action-name action-name-with-underscores character-hyphen character-underscore amenn
 
 ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
 ambee handle-token-amenn-case-action-possible-variable-operand-count amenn
@@ -9992,25 +9992,6 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-copy-lowercase-only:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = lc( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-for-action-copy-text:
 template-runtime-code-for-every-action-begin
 
@@ -10029,25 +10010,6 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 }  <new_line>
 
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-uppercase-only:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = uc( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-without-extra-spaces:
@@ -11642,9 +11604,9 @@ template-runtime-code-store-result-for-case-error
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-every-action-begin:
-combee ****
 # $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
 # print $global_action_debug_line . "\n" ;  <new_line>
+combee ****
 **** comenn
 
 combee ****
@@ -11653,9 +11615,9 @@ combee ****
 ----
 template-runtime-code-for-every-action-end:
 combee ****
+**** comenn
 # print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
-**** comenn
 ----
 template-runtime-code-for-overdue-start-of-if-branch:
 # begin overdue start of if branch  <new_line>
@@ -11681,6 +11643,8 @@ template-runtime-code-if-case-yes-phrase-found:
 if ( exists( $global_yes_found_word{ substr( $global_source_text , $global_begin_position_for_word[ $global_word_number ] , $global_length_of_word[ $global_word_number ] ) } ) ) {  <new_line>
 ----
 template-runtime-code-standard-for-operand-count-four:
+# this code generated from standard template  <new_line>
+
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
@@ -11693,6 +11657,8 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-for-operand-count-one:
+# this code generated from standard template  <new_line>
+
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
@@ -11702,6 +11668,8 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-for-operand-count-three:
+# this code generated from standard template  <new_line>
+
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
@@ -11713,6 +11681,8 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-for-operand-count-two:
+# this code generated from standard template  <new_line>
+
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
