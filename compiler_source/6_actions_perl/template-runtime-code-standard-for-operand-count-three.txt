@@ -1,3 +1,5 @@
+# this code generated from standard template  <new_line>
+
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
