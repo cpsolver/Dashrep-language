@@ -7,7 +7,6 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 template-check-operand-four-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
 $global_input_list_two_phrase_name = $global_operand_two ;  <new_line>

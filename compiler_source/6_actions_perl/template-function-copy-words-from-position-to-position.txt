@@ -7,7 +7,6 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 template-check-operand-four-is-positive-integer
 
-
 $global_action_result = '' ;  <new_line>
 $global_word_number_begin = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
 $global_word_number_end = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;  <new_line>

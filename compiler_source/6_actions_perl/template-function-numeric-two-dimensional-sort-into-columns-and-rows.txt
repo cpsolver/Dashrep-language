@@ -6,7 +6,6 @@ template-check-operand-one-is-positive-integer
 template-check-operand-two-contains-real-numbers
 template-check-operand-three-contains-real-numbers
 
-
 $global_action_result = '' ;  <new_line>
 $global_number_of_columns = $global_operand_one ;  <new_line>
 $global_text_for_right_direction_values = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>

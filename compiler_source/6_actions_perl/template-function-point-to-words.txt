@@ -11,9 +11,7 @@
 
 sub function__point_to_words( ) {  <new_line>
 
-
 # print "\n" . $global_source_text . "\n" ;  <new_line>
-
 
 $global_number_of_words = 0 ;  <new_line>
 $global_length_of_text = length( $global_source_text ) ;  <new_line>

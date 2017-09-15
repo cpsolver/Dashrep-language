@@ -6,7 +6,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 
 if ( $global_dashrep_replacement{ $global_operand_three } =~ /[^0<character_hyphen>9\.\<character_hyphen> ]/ ) {  <new_line>

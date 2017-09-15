@@ -6,7 +6,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_operand_one =~ s/\n/ /g ;  <new_line>
 

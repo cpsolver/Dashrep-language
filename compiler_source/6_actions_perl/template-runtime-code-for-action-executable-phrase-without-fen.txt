@@ -1,7 +1,5 @@
 template-runtime-code-for-action-executable-phrase-begin
 
-
 &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ;  <new_line>
-
 
 template-runtime-code-for-action-executable-phrase-end

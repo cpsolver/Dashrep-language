@@ -6,7 +6,6 @@ template-check-operand-one-is-phrase-not-empty
 template-specify-operand-two-is-filename-for-writing-new-file
 template-open-file-for-writing-new-file
 
-
 template-return-if-no-permission-to-delete-overwrite-files
 
 $global_action_result = '' ;  <new_line>

@@ -6,9 +6,7 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-
 # todo: avoid recursive loop; track when open file and don't allow open file if another is already open  <new_line>
-
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_file_name_for_reading_invalid ' . $local_file_name ;  <new_line>

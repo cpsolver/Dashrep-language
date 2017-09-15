@@ -5,7 +5,6 @@ $global_action_name_with_underscores = 'convert_unicode_to_html_entities' ; <new
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 #  Converts non hyphen-here ASCII characters, and convert a few  <new_line>
 #  ASCII characters such as:  <new_line>
 #  11 which is "LF" (line feed)  <new_line>

@@ -22,12 +22,10 @@ $global_action_result = 'no' ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-
 combee
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 &function__yes_if_all_yes( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 comenn
-
 
 template-runtime-code-for-every-action-end

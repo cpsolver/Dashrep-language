@@ -4,7 +4,6 @@ sub function__numeric_vector_absolutes( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_absolutes' ; <new_line>
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_two ;  <new_line>

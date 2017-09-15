@@ -5,7 +5,6 @@ $global_action_name_with_underscores = 'copy_and_remove_attributes_from_xml_tags
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z]+)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;  <new_line>

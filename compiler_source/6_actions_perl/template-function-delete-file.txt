@@ -4,7 +4,6 @@ sub function__delete_file( ) {  <new_line>
 $global_action_name_with_underscores = 'delete_file' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 template-return-if-no-permission-to-delete-overwrite-files
 
 $global_action_result = '' ;  <new_line>

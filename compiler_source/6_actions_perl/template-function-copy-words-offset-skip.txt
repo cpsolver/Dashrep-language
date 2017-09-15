@@ -9,7 +9,6 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 template-check-operand-four-is-positive-integer
 
-
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
 
 return '' ;  <new_line>

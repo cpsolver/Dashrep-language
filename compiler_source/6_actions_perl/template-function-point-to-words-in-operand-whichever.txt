@@ -11,9 +11,7 @@
 
 sub function__point_to_words_in_operand_whichever( ) {  <new_line>
 
-
 # print "\n" . $global_operand_whichever . "\n" ;  <new_line>
-
 
 $global_word_count_operand_whichever = 0 ;  <new_line>
 

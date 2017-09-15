@@ -6,7 +6,6 @@ template-check-operand-one-is-phrase-not-empty
 template-check-operand-two-is-real-number
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 $global_single_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
