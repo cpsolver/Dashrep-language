@@ -1,7 +1,0 @@
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__delete_listed_phrases( ) ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-
-template-runtime-code-for-every-action-end
