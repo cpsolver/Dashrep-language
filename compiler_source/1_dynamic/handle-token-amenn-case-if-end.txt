@@ -1,3 +1,4 @@
 ambee start-branching-if-not-started amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee copy-text string-outside current-state-of-if-branching amenn

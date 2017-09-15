@@ -1,5 +1,12 @@
+ambee append-text action-name list-of-dashrep-actions-used amenn
+
 ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee handle-token-amenn-case-action-possible-variable-operand-count amenn
 ambee if-else amenn
 ambee handle-token-amenn-case fenambee action-name amenn amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
 ambee if-end amenn

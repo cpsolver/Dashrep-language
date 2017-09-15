@@ -1,5 +1,7 @@
+ambee get-all-operands amenn
+
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-standard-or-special amenn
+ambee handle-token-amenn-case-action-might-have-template amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn

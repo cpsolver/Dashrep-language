@@ -1,0 +1,6 @@
+ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee handle-token-amenn-case-action-check-operand-count amenn
+ambee if-else amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
