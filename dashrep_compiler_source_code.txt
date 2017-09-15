@@ -582,26 +582,21 @@ ambee clear-phrase action-name-at-storage-position fenambee current-result-stora
 ambee append-text string-ambee definition-for-phrase-being-defined amenn
 ----
 handle-token-amenn-case-action-check-operand-count:
+ambee get-all-operands amenn
+
 ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions number-of-operands required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-standard-or-special amenn
+ambee handle-token-amenn-case-action-might-have-template amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-wrong-number-of-operands runtime-code-for-parameter-phrase amenn
 ambee append-text action-name list-of-dashrep-actions-with-wrong-number-of-operands amenn
 ambee if-end amenn
 ----
-handle-token-amenn-case-action-has-template:
-ambee get-all-operands amenn
-ambee append-text action-name list-of-dashrep-actions-used amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-check-operand-count amenn
+handle-token-amenn-case-action-might-have-template:
+ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
+ambee copy-word-at-position list-of-counts-as-words operand-count-as-word ambee number-of-operands amenn amenn
+ambee expand-text template-runtime-code-standard-for-operand-count fenambee operand-count-as-word amenn runtime-code-for-parameter-phrase amenn
 ambee if-else amenn
 ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
-ambee if-end amenn
-
-ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
-ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
-ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-action-not-empty:
@@ -643,19 +638,26 @@ ambee if-end amenn
 
 ambee handle-token-amenn-case-executable-phrase amenn
 ----
+handle-token-amenn-case-action-possible-variable-operand-count:
+ambee if-no-begin ambee yes-or-no-empty-phrase required-operand-count-for-action fenambee action-name amenn amenn amenn
+ambee handle-token-amenn-case-action-check-operand-count amenn
+ambee if-else amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+ambee if-end amenn
+----
 handle-token-amenn-case-action-recognized:
+ambee append-text action-name list-of-dashrep-actions-used amenn
+
 ambee if-yes-begin ambee yes-or-no-empty-phrase handle-token-amenn-case fenambee action-name amenn amenn amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee handle-token-amenn-case-action-possible-variable-operand-count amenn
 ambee if-else amenn
 ambee handle-token-amenn-case fenambee action-name amenn amenn
 ambee if-end amenn
-----
-handle-token-amenn-case-action-standard-or-special:
-ambee if-yes-begin ambee yes-or-no-empty-phrase template-runtime-code-for-action fenambee action-name amenn amenn amenn
-ambee copy-word-at-position list-of-counts-as-words operand-count-as-word ambee number-of-operands amenn amenn
-ambee expand-text template-runtime-code-standard-for-operand-count fenambee operand-count-as-word amenn runtime-code-for-parameter-phrase amenn
-ambee if-else amenn
-ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase template-function fenambee action-name amenn amenn amenn
+ambee put-into-phrase requested-template-function  template-function fenambee action-name amenn  amenn
+ambee append-text requested-template-function list-of-template-functions-for-requested-actions amenn
 ambee if-end amenn
 ----
 handle-token-amenn-case-executable-phrase:
@@ -711,22 +713,26 @@ ambee expand-text template-runtime-code-for-action-expand-text runtime-code-for-
 ----
 handle-token-amenn-case-if-else:
 ambee start-branching-if-not-started amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee copy-text string-else current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-end:
 ambee start-branching-if-not-started amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee copy-text string-outside current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-no-begin:
 ambee terminate-branching-if-not-terminated amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-if-yes-begin:
 ambee terminate-branching-if-not-terminated amenn
-ambee handle-token-amenn-case-action-has-template amenn
+ambee get-all-operands amenn
+ambee expand-text template-runtime-code-for-action fenambee action-name amenn runtime-code-for-parameter-phrase amenn
 ambee copy-text string-begin current-state-of-if-branching amenn
 ----
 handle-token-amenn-case-use-handler-with-each-word-in-phrase:
@@ -9737,12 +9743,11 @@ $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 $global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
 
-
-$global_source_text = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+$global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
 $global_length_of_text_source = length( $global_source_text ) ;  <new_line>
-$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-three code-get-or-put-phrase-definition-end ;  <new_line>
+$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ;  <new_line>
 $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
-$global_text_to_insert = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-four code-get-or-put-phrase-definition-end ;  <new_line>
+$global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ;  <new_line>
 $global_character_pointer_begin = 0 ;  <new_line>
 $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ;  <new_line>
 $global_target_text = '' ;  <new_line>
@@ -9764,22 +9769,11 @@ if ( $global_character_pointer_begin < $global_length_of_text_source ) {  <new_l
 $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ;  <new_line>
 }  <new_line>
 
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
-
-
-combee
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-&function__copy_and_replace( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
-
 
 template-runtime-code-for-every-action-end
 ----
