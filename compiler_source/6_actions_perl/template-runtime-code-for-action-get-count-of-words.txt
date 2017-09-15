@@ -1,7 +1,0 @@
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__get_count_of_words( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
