@@ -2,9 +2,8 @@
 
 sub function__set_file_permission_public_read( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_public_read' ; <new_line>
-template-check-operand-one-is-file-name
-
 template-return-if-no-permission-to-delete-overwrite-files
+template-check-operand-one-is-file-name
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_invalid_file_name ' . $global_operand_one ;  <new_line>
