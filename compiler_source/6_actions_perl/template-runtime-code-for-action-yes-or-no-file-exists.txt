@@ -1,8 +1,0 @@
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_source_file_name = $global_operand_one ;  <new_line>
-&function__yes_or_no_file_exists( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
