@@ -2,12 +2,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__find_lines_in_file_that_begin_with_any_listed_word( ) ;  <new_line>
