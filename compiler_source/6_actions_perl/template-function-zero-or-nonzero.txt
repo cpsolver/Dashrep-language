@@ -2,7 +2,7 @@
 
 sub function__zero_or_nonzero( ) {  <new_line>
 $global_action_name_with_underscores = 'zero_or_nonzero' ; <new_line>
-template-check-operand-one-is-positive-integer
+template-check-operand-one-is-integer
 
 $global_action_result = 'nonzero' ;  <new_line>
 if ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) <= 0 ) {  <new_line>
