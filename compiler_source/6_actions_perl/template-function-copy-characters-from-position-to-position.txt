@@ -25,7 +25,6 @@ if ( $global_pointer_one > $global_pointer_two ) {  <new_line>
     $global_action_result = '' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-$global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
-$global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_source_text , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
+$global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_dashrep_replacement{ $global_source_phrase_name } , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
 
 template-function-segment-ending
