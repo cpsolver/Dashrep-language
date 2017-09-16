@@ -5575,9 +5575,8 @@ template-function-delete-file:
 
 sub function__delete_file( ) {  <new_line>
 $global_action_name_with_underscores = 'delete_file' ; <new_line>
-template-check-operand-one-is-file-name
-
 template-return-if-no-permission-to-delete-overwrite-files
+template-check-operand-one-is-file-name
 
 $global_target_file_name = $global_operand_one ;  <new_line>
 $global_action_result = '' ;  <new_line>
@@ -9806,25 +9805,6 @@ runtime-code-storage-item-result = '' ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-create-empty-sub-folder:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__create_empty_sub_folder( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-delete-file:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_target_file_name = $global_operand_one ;  <new_line>
-&function__delete_file( ) ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-for-action-executable-phrase-begin:
 template-runtime-code-for-every-action-begin
 
@@ -9923,12 +9903,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__find_lines_in_file_that_begin_with_any_listed_word( ) ;  <new_line>
@@ -9945,12 +9925,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__find_lines_in_file_that_begin_with_any_two_words_listed( ) ;  <new_line>
@@ -9967,12 +9947,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__gather_from_tagged_file_one_entry( ) ;  <new_line>
@@ -9989,12 +9969,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__gather_tagged_info_from_file( ) ;  <new_line>
@@ -10063,12 +10043,12 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
 open-file-for-reading
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__get_definitions_from_file( ) ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
@@ -10103,8 +10083,10 @@ if ( $global_pointer_to_word >= 0 ) {  <new_line>
 template-runtime-code-for-action-linewise-read-from-file-and-use-handler:
 template-runtime-code-for-every-action-begin
 
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
-$global_target_phrase_name = runtime-code-for-operand-number-two ;  <new_line>
+$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
+$global_source_file_name = $global_operand_one ;  <new_line>
+$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+$global_target_phrase_name = $global_operand_two ;  <new_line>
 &function__linewise_read_from_file_and_use_handler( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
@@ -10207,16 +10189,6 @@ $global_source_file_name = $global_operand_one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_target_file_name = $global_operand_two ;  <new_line>
 &function__rename_file( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-size-of-file:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_source_file_name = $global_operand_one ;  <new_line>
-&function__size_of_file( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 template-runtime-code-for-every-action-end
