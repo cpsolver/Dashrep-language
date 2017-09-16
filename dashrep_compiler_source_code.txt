@@ -2604,7 +2604,7 @@ $global_trace_file_name = $global_dashrep_replacement{ 'output hyphen-here trace
 $global_trace_file_name = 'output_trace.txt' ;  <new_line>
 }  <new_line>
 
-open ( TRACE_OUT , '>' . $global_trace_file_name ) ;  <new_line>
+open( TRACE_OUT , '>' . $global_trace_file_name ) ;  <new_line>
 $global_yes_or_no_trace_output_file_is_open = $global_yes ;  <new_line>
 }  <new_line>
 
@@ -2793,6 +2793,8 @@ my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 my $global_tracking_on_yes_or_no = $global_no ;  <new_line>
 my $global_yes_or_no_within_ampersand_encoded_character = $global_no ;  <new_line>
 my $global_yes_or_no_trace_output_file_is_open = $global_no ;  <new_line>
+my $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
+my $global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 <new_line>
 
 my $global_storage_number = 1 ;  <new_line>
@@ -4097,7 +4099,6 @@ $global_action_name_with_underscores = 'append_multiple_from_phrases_named_in_pa
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_phrase_name_containing_pattern = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
@@ -4153,7 +4154,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 
-
 $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_text_to_append = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -4164,8 +4164,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
 if ( not( exists( $global_dashrep_replacement{ $global_operand_two } ) ) ) {  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
 }  <new_line>
-$global_text_to_append =~ s/^ +//s ;  <new_line>
-$global_text_to_append =~ s/ +$//s ;  <new_line>
+$global_text_to_append = &function_parameterized__remove_leading_trailing_spaces( $global_text_to_append ) ;  <new_line>
 if ( $global_operand_three eq '0' ) {  <new_line>
     $global_repeat_count = 0 ;  <new_line>
 } else {  <new_line>
@@ -4194,7 +4193,6 @@ template-function-clear-listed-phrases:
 sub function__clear_listed_phrases( ) {  <new_line>
 $global_action_name_with_underscores = 'clear_listed_phrases' ; <new_line>
 template-check-operand-one-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 if ( not ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) {  <new_line>
@@ -4230,7 +4228,6 @@ sub function__convert_unicode_to_html_entities( ) {  <new_line>
 $global_action_name_with_underscores = 'convert_unicode_to_html_entities' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 #  Converts non hyphen-here ASCII characters, and convert a few  <new_line>
 #  ASCII characters such as:  <new_line>
@@ -4293,7 +4290,6 @@ $global_action_name_with_underscores = 'copy_and_move_attributes_into_xml_tags' 
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 while( $global_text_being_edited =~ / *\/> *<((attribute)|(specify)) ([^>]+)>/sg ) {  <new_line>
@@ -4324,7 +4320,6 @@ $global_action_name_with_underscores = 'copy_and_remove_attributes_from_xml_tags
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z]+)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;  <new_line>
@@ -4342,7 +4337,6 @@ $global_action_name_with_underscores = 'copy_and_replace_using_paired_listed_wor
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-not-empty
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -4453,7 +4447,9 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     print OUTFILE $global_input_line . "\n" ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
@@ -4476,20 +4472,13 @@ $global_target_phrase_name = $global_operand_two ;  <new_line>
 if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) {  <new_line>
     $global_dashrep_replacement{ $global_source_phrase_name } = '' ;  <new_line>
 }  <new_line>
-$global_pointer_one = -1 ;  <new_line>
-$global_pointer_two = -1 ;  <new_line>
-if ( $global_operand_three =~ /^([0<character_hyphen>9]+)$/ ) {  <new_line>
-    $global_pointer_one = $1 ;  <new_line>
-}  <new_line>
-if ( $global_operand_four =~ /^([0<character_hyphen>9]+)$/ ) {  <new_line>
-    $global_pointer_two = $1 ;  <new_line>
-}  <new_line>
+$global_pointer_one = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
+$global_pointer_two = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;  <new_line>
 if ( $global_pointer_one > $global_pointer_two ) {  <new_line>
     $global_action_result = '' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-$global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ;  <new_line>
-$global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_source_text , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
+$global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_dashrep_replacement{ $global_source_phrase_name } , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4551,6 +4540,7 @@ for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_num
     $global_list_of_values_in_column[ $global_column_pointer ] =~ s/ +$// ;  <new_line>
     $global_dashrep_replacement{ $global_list_name_prefix . "<character_hyphen>" . $global_column_pointer } = $global_list_of_values_in_column[ $global_column_pointer ] ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -4632,6 +4622,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_list_of_unique_values =~ s/^ +// ;  <new_line>
 $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -4667,6 +4658,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_all_lines ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -4688,6 +4680,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
 } else {  <new_line>
     print OUTFILE $global_operand_one . "\n" ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
@@ -4701,7 +4694,6 @@ sub function__copy_initial_caps( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_initial_caps' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
@@ -4738,7 +4730,6 @@ sub function__copy_listed_words_to_phrases_named_in_pattern( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_listed_words_to_phrases_named_in_pattern' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_phrase_name_containing_source_words = $global_operand_one ;  <new_line>
@@ -4887,10 +4878,8 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
 
-
 # todo: rewrite this code to use new functions: point_to_words_in_operand_one and point_to_words_in_operand_two  <new_line>
 # also use: $global_yes_found_word{ }  <new_line>
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -4958,7 +4947,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_text_list_key = $global_dashrep_replacement{ $global_operand_one } . ' ' . $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
 $global_text_list_key =~ s/\n/ /sg ;  <new_line>
@@ -4987,7 +4975,6 @@ sub function__copy_words_found_only_in_first_list( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_found_only_in_first_list' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -5056,7 +5043,6 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 template-check-operand-four-is-positive-integer
 
-
 $global_action_result = '' ;  <new_line>
 $global_word_number_begin = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ;  <new_line>
 $global_word_number_end = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ;  <new_line>
@@ -5103,7 +5089,6 @@ template-check-operand-two-is-phrase-name
 template-check-operand-three-is-positive-integer
 template-check-operand-four-is-positive-integer
 
-
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
 
 return '' ;  <new_line>
@@ -5117,7 +5102,6 @@ sub function__copy_words_order_reversed( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_order_reversed' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
@@ -5149,7 +5133,6 @@ $global_action_name_with_underscores = 'copy_words_rearrange_using_order_sort_al
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_operand_one =~ s/\n/ /g ;  <new_line>
@@ -5207,7 +5190,6 @@ $global_action_name_with_underscores = 'copy_words_rearrange_using_order_sort_nu
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -5271,7 +5253,6 @@ $global_action_name_with_underscores = 'copy_words_sort_alphabetic' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
 $global_target_phrase_name = $global_operand_two ;  <new_line>
@@ -5296,7 +5277,6 @@ sub function__copy_words_sort_numeric( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_sort_numeric' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_source_phrase_name = $global_operand_one ;  <new_line>
@@ -5323,7 +5303,6 @@ $global_action_name_with_underscores = 'copy_words_that_begin_with_listed_words'
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -5361,7 +5340,6 @@ $global_action_name_with_underscores = 'copy_words_that_begin_with_text' ; <new_
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -5404,7 +5382,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_list_of_words_as_text = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_list_of_words_as_text =~ s/\n/ /sg ;  <new_line>
@@ -5438,7 +5415,6 @@ sub function__copy_words_unique_only( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_words_unique_only' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -5577,7 +5553,6 @@ $global_action_name_with_underscores = 'decode_from_cgi_parameter' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_text_being_edited =~ s/\+/ /sg ;  <new_line>
@@ -5602,20 +5577,20 @@ sub function__delete_file( ) {  <new_line>
 $global_action_name_with_underscores = 'delete_file' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 template-return-if-no-permission-to-delete-overwrite-files
 
+$global_target_file_name = $global_operand_one ;  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_target_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix ;  <new_line>
-return '' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_path_prefix ' . $global_target_path_prefix ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_file_name ' . $global_target_file_name ;  <new_line>
-return '' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__delete_file__case_invalid_file_name ' . $global_target_file_name ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ;  <new_line>
@@ -5654,7 +5629,6 @@ sub function__encode_as_cgi_parameter( ) {  <new_line>
 $global_action_name_with_underscores = 'encode_as_cgi_parameter' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -5695,6 +5669,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
         last ;  <new_line>
     }  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -5736,6 +5711,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_list_of_storage_names =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -5786,6 +5762,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_list_of_storage_names =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -5874,6 +5851,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_matching_entry_info ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -6001,6 +5979,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 if ( $global_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
     $global_action_result = 'dashrep_runtime_error__gather_tagged_info_from_file__case_missing_unique_values ' . $global_count_of_items_with_missing_unique_id . "\n" ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -6015,7 +5994,6 @@ $global_action_name_with_underscores = 'generate_counts_from_integer_to_integer'
 template-check-operand-one-is-integer
 template-check-operand-two-is-integer
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 
@@ -6066,7 +6044,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = '' ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = '' ;  <new_line>
@@ -6098,7 +6075,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 template-check-operand-four-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_input_list_one_phrase_name = $global_operand_one ;  <new_line>
@@ -6150,7 +6126,6 @@ template-function-generate-list-of-all-dashrep-phrases:
 sub function__generate_list_of_all_dashrep_phrases( ) {  <new_line>
 $global_action_name_with_underscores = 'generate_list_of_all_dashrep_phrases' ; <new_line>
 template-check-operand-one-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 @global_list_of_phrases = keys( %global_dashrep_replacement ) ;  <new_line>
@@ -6296,7 +6271,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
 $global_string_to_search = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
@@ -6330,7 +6304,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 template-check-operand-four-is-phrase-name
-
 
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
     $global_action_result = 'dashrep_compiled_runtime_error__generate_positions_of_first_matching_delimiter_after_listed_positions__case_not_phrase_name ' . $global_operand_one . ' ' ;  <new_line>
@@ -6390,7 +6363,6 @@ $global_action_name_with_underscores = 'generate_positions_of_listed_words' ; <n
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_words_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -6482,6 +6454,8 @@ $global_raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
 
 } elsif ( ( exists( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) && ( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } =~ /^[^ ]+\.[^ ]+$/ ) && ( open( INFILE , $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) ) {  <new_line>
 
+$global_yes_or_no_file_opened_for_reading = $global_yes ;  <new_line>
+
 while( $global_input_line = <INFILE> ) {  <new_line>
 chomp( $global_input_line ) ;  <new_line>
 
@@ -6495,6 +6469,7 @@ $global_line_count ++ ;  <new_line>
 # end of while loop  <new_line>
 }  <new_line>
 
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 } elsif ( ( exists( $ENV{ 'REQUEST_METHOD' } ) ) && ( $ENV{ 'REQUEST_METHOD' } eq 'POST' ) ) {  <new_line>
@@ -6595,7 +6570,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-positive-integer
 template-check-operand-three-is-positive-integer
 
-
 $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_string_in_phrase = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -6675,6 +6649,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
         $global_source_definitions .= $global_input_line . ' ' ;  <new_line>
     }  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -6696,7 +6671,6 @@ sub function__get_position_of_matching_text( ) {  <new_line>
 $global_action_name_with_underscores = 'get_position_of_matching_text' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_string_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -6720,7 +6694,6 @@ sub function__get_position_of_word( ) {  <new_line>
 $global_action_name_with_underscores = 'get_position_of_word' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = ' ' ;  <new_line>
 $global_word_to_find = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
@@ -6850,7 +6823,6 @@ sub function__insert_codeview_tags( ) {  <new_line>
 $global_action_name_with_underscores = 'insert_codeview_tags' ; <new_line>
 template-check-operand-one-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 if ( not( exists( $global_action_name_exists{ 'no<character_hyphen>space' } ) ) || ( $global_action_name_exists{ 'no<character_hyphen>space' } ne 'yes' ) ) {  <new_line>
     @global_list_of_action_names = split( / / , $global_dashrep_text_list_of_phrase_names ) ;  <new_line>
@@ -6942,6 +6914,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
     $global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
     $global_line_count ++ ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 template-function-segment-ending
@@ -6980,7 +6953,6 @@ sub function__numeric_absolute( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_absolute' ; <new_line>
 template-check-operand-one-is-real-number
 
-
 $global_action_result = '' ;  <new_line>
 $global_result_value = abs( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ;  <new_line>
 if ( $global_result_value == 0 ) {  <new_line>
@@ -6999,15 +6971,15 @@ template-function-numeric-add:
 # function__numeric_add  <new_line>
 #  <new_line>
 
-combee ****
-#  Input is $global_source_text  <new_line>
-#  Output is $global_action_result  <new_line>
-<new_line>
-**** comenn
-
 sub function__numeric_add( ) {  <new_line>
 $global_action_result = '0' ;  <new_line>
 $global_default_text = '0' ;  <new_line>
+
+combee ****
+#  Input is $global_source_text  <new_line>
+**** comenn
+# todo: activate
+# $global_source_text = $global_concatenated_all_operands ;  <new_line>
 
 template-function-segment-if-zero-words-return-default-text
 
@@ -7285,7 +7257,6 @@ template-check-operand-one-is-positive-integer
 template-check-operand-two-contains-real-numbers
 template-check-operand-three-contains-real-numbers
 
-
 $global_action_result = '' ;  <new_line>
 $global_number_of_columns = $global_operand_one ;  <new_line>
 $global_text_for_right_direction_values = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
@@ -7547,7 +7518,6 @@ sub function__numeric_vector_absolutes( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_absolutes' ; <new_line>
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_two ;  <new_line>
@@ -7578,7 +7548,6 @@ template-check-operand-one-is-phrase-not-empty
 template-check-operand-two-is-real-number
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 $global_single_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
@@ -7606,7 +7575,6 @@ template-function-numeric-vector-integers:
 sub function__numeric_vector_integers( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_vector_integers' ; <new_line>
 template-check-operand-two-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
@@ -7642,7 +7610,6 @@ template-check-operand-one-is-phrase-not-empty
 template-check-operand-two-is-real-number
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
 $global_single_value = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ;  <new_line>
@@ -7672,7 +7639,6 @@ $global_action_name_with_underscores = 'numeric_vectors_add' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
@@ -7708,7 +7674,6 @@ $global_action_name_with_underscores = 'numeric_vectors_divide_by' ; <new_line>
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
@@ -7749,7 +7714,6 @@ template-check-operand-one-is-phrase-not-empty
 template-check-operand-two-is-phrase-not-empty
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
@@ -7789,7 +7753,6 @@ template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 template-check-operand-three-is-phrase-name
 
-
 $global_action_result = '' ;  <new_line>
 $global_single_value = 0 ;  <new_line>
 $global_target_operand = $global_operand_three ;  <new_line>
@@ -7822,7 +7785,6 @@ template-function-numeric-y-map-tile-number-based-on-latitude:
 sub function__numeric_y_map_tile_number_based_on_latitude( ) {  <new_line>
 $global_action_name_with_underscores = 'numeric_y_map_tile_number_based_on_latitude' ; <new_line>
 template-check-operand-one-is-real-number
-
 
 $global_action_result = '' ;  <new_line>
 if ( ( $global_operand_one > 85.0 ) || ( $global_operand_one < <character_hyphen>85.0 ) ) {  <new_line>
@@ -7960,14 +7922,16 @@ return $global_no ;  <new_line>
 
 $global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
-if ( open ( INFILE_TEMP , '<' . $global_target_file_full_path ) ) {  <new_line>
+if ( open( INFILE_TEMP , '<' . $global_target_file_full_path ) ) {  <new_line>
 close( INFILE_TEMP ) ;  <new_line>
 
 } else {  <new_line>
 
-if ( open ( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
+if ( open( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
 
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 print OUTFILE '' ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
@@ -7976,11 +7940,13 @@ template-runtime-code-protect-target-file
 
 }  <new_line>
 
-if ( open ( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
+if ( open( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = '' ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 return $global_no ;  <new_line>
 
@@ -7995,9 +7961,7 @@ sub function_parameterized__open_file_for_reading( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-
 # todo: avoid recursive loop; track when open file and don't allow open file if another is already open  <new_line>
-
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_file_name_for_reading_invalid ' . $local_file_name ;  <new_line>
@@ -8011,7 +7975,8 @@ return $global_no ;  <new_line>
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
-if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
+if ( open( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
@@ -8042,18 +8007,20 @@ return $global_no ;  <new_line>
 
 $global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
-if ( open ( OUTFILE , '>' . $global_target_file_full_path ) ) {  <new_line>
+if ( open( OUTFILE , '>' . $global_target_file_full_path ) ) {  <new_line>
 close ( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
 
 }  <new_line>
 
-if ( open ( OUTFILE , '>' . $global_target_file_full_path  ) ) {  <new_line>
+if ( open( OUTFILE , '>' . $global_target_file_full_path  ) ) {  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = '' ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 return $global_no ;  <new_line>
 
@@ -8128,7 +8095,8 @@ return $global_no ;  <new_line>
 
 # todo: check if file exists, if not, then create empty file, then write protect it (while empty), then continue below  <new_line>
 
-if ( open ( OUTFILE , '>>' . $global_output_filename ) ) {  <new_line>
+if ( open( OUTFILE , '>>' . $global_output_filename ) ) {  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
@@ -8733,9 +8701,7 @@ template-function-point-to-words-in-operand-whichever:
 
 sub function__point_to_words_in_operand_whichever( ) {  <new_line>
 
-
 # print "\n" . $global_operand_whichever . "\n" ;  <new_line>
-
 
 $global_word_count_operand_whichever = 0 ;  <new_line>
 
@@ -8856,9 +8822,7 @@ template-function-point-to-words:
 
 sub function__point_to_words( ) {  <new_line>
 
-
 # print "\n" . $global_source_text . "\n" ;  <new_line>
-
 
 $global_number_of_words = 0 ;  <new_line>
 $global_length_of_text = length( $global_source_text ) ;  <new_line>
@@ -9092,7 +9056,6 @@ sub function__set_file_permission_private_but_executable( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private_but_executable' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 template-return-if-no-permission-to-delete-overwrite-files
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
@@ -9122,7 +9085,6 @@ template-function-set-file-permission-private:
 sub function__set_file_permission_private( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private' ; <new_line>
 template-check-operand-one-is-file-name
-
 
 template-return-if-no-permission-to-delete-overwrite-files
 
@@ -9154,7 +9116,6 @@ sub function__set_file_permission_public_read( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_public_read' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 template-return-if-no-permission-to-delete-overwrite-files
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
@@ -9185,7 +9146,6 @@ sub function__size_of_file( ) {  <new_line>
 $global_action_name_with_underscores = 'size_of_file' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
@@ -9212,7 +9172,6 @@ sub function__split_epoch_seconds_into_named_components_for_zero_meridian( ) {  
 $global_action_name_with_underscores = 'split_epoch_seconds_into_named_components_for_zero_meridian' ; <new_line>
 template-check-operand-one-is-positive-integer
 
-
 $global_action_result = '' ;  <new_line>
 ( $global_second_time , $global_minute , $global_hour , $global_day_of_month , $global_month_number , $global_year , $global_weekday , $global_day_of_year , $global_extra_info ) = gmtime( $global_operand_one ) ;  <new_line>
 $global_month_number ++ ;  <new_line>
@@ -9234,7 +9193,6 @@ template-function-split-epoch-seconds-into-named-components:
 sub function__split_epoch_seconds_into_named_components( ) {  <new_line>
 $global_action_name_with_underscores = 'split_epoch_seconds_into_named_components' ; <new_line>
 template-check-operand-one-is-positive-integer
-
 
 $global_action_result = '' ;  <new_line>
 ( $global_second_time , $global_minute , $global_hour , $global_day_of_month , $global_month_number , $global_year , $global_weekday , $global_day_of_year , $global_extra_info ) = localtime( $global_operand_one ) ;  <new_line>
@@ -9275,7 +9233,6 @@ $global_action_name_with_underscores = 'write_dashrep_definitions_listed_in_phra
 template-check-operand-one-is-phrase-not-empty
 template-specify-operand-two-is-filename-for-writing-new-file
 template-open-file-for-writing-new-file
-
 
 template-return-if-no-permission-to-delete-overwrite-files
 
@@ -9327,6 +9284,7 @@ foreach $global_phrase_name ( @global_list_of_phrases ) {  <new_line>
     }  <new_line>
 }  <new_line>
 
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
@@ -9367,6 +9325,7 @@ foreach $global_unique_value ( @global_list_of_unique_values ) {  <new_line>
     $global_accumulated_text .= $global_entry_end . "\n\n" ;  <new_line>
 }  <new_line>
 print OUTFILE $global_accumulated_text . "\n" ;  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
@@ -9379,7 +9338,6 @@ template-function-xml-move-attributes-into-tag-elements:
 sub function__xml_move_attributes_into_tag_elements( ) {  <new_line>
 $global_action_name_with_underscores = 'xml_move_attributes_into_tag_elements' ; <new_line>
 template-check-operand-one-is-phrase-name
-
 
 $global_action_result = '' ;  <new_line>
 $global_phrase_being_edited = $global_operand_one ;  <new_line>
@@ -9422,7 +9380,7 @@ $pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'ye
 }  <new_line>
 
 $accumulated_remaining_text .= ' ' . $global_concatenated_all_operands_modified ;  <new_line>
-$accumulated_remaining_text =~ s/ //g ;  <new_line>
+$accumulated_remaining_text = &function_parameterized__remove_leading_trailing_spaces( $accumulated_remaining_text ) ;  <new_line>
 
 if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>
 $global_action_result = 'yes' ;  <new_line>
@@ -9439,7 +9397,6 @@ sub function__yes_or_no_file_exists( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_file_exists' ; <new_line>
 template-check-operand-one-is-file-name
 
-
 $global_action_result = 'no' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
@@ -9455,9 +9412,11 @@ return '' ;  <new_line>
 
 $global_source_file_full_path = $global_source_path_prefix . $global_source_file_name ;  <new_line>
 
-if ( open ( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
+if ( open( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
+    $global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
     $global_action_result = 'yes' ;  <new_line>
 }  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 return '' ;  <new_line>
@@ -9506,7 +9465,6 @@ $global_action_name_with_underscores = 'yes_or_no_word_is_in_phrase' ; <new_line
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
 
-
 $global_action_result = ' ' ;  <new_line>
 $global_word_to_find = $global_operand_one ;  <new_line>
 $global_temp_text = $global_dashrep_replacement{ $global_operand_two } ;  <new_line>
@@ -9536,9 +9494,9 @@ $global_action_name_with_underscores = 'zero_one_multiple' ; <new_line>
 template-check-operand-one-is-positive-integer
 
 $global_action_result = 'multiple' ;  <new_line>
-if ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) <= 0 ) {  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) <= 0 ) {  <new_line>
     $global_action_result = 'zero' ;  <new_line>
-} elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( runtime-code-for-operand-number-one ) == 1 ) {  <new_line>
+} elsif ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) == 1 ) {  <new_line>
     $global_action_result = 'one' ;  <new_line>
 }  <new_line>
 
@@ -9549,10 +9507,10 @@ template-function-zero-or-nonzero:
 
 sub function__zero_or_nonzero( ) {  <new_line>
 $global_action_name_with_underscores = 'zero_or_nonzero' ; <new_line>
-template-check-operand-one-is-positive-integer
+template-check-operand-one-is-integer
 
 $global_action_result = 'nonzero' ;  <new_line>
-if ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) <= 0 ) {  <new_line>
+if ( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) == 0 ) {  <new_line>
     $global_action_result = 'zero' ;  <new_line>
 }  <new_line>
 
@@ -9579,26 +9537,12 @@ template-runtime-code-for-action-append-new-line:
 template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
 } else {  <new_line>
-
-code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
-runtime-code-storage-item-result = ' ' ;  <new_line>
-
+    code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
+    runtime-code-storage-item-result = ' ' ;  <new_line>
 }  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-append-repeatedly-using-count:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-&function__append_repeatedly_using_count( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9755,7 +9699,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -9779,8 +9722,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -9805,7 +9746,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -9827,7 +9767,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-phrase-name
 $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 open-file-for-appending
 
@@ -9849,17 +9788,14 @@ template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
-runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__copy_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
 } else {  <new_line>
-
-$global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
+    $global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
+    code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
-
 }  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -9906,9 +9842,7 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-executable-phrase-without-fen:
 template-runtime-code-for-action-executable-phrase-begin
 
-
 &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ;  <new_line>
-
 
 template-runtime-code-for-action-executable-phrase-end
 ----
@@ -9961,8 +9895,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-not-empty
-check-operand-three-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -9985,8 +9917,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-not-empty
-check-operand-three-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -10009,8 +9939,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-not-empty
-check-operand-three-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -10033,7 +9961,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -10056,7 +9983,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
@@ -10079,8 +10005,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-phrase-name
-
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
@@ -10097,8 +10021,6 @@ template-runtime-code-for-action-generate-list-of-folders-in-current-read-direct
 template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
@@ -10195,8 +10117,8 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-no-if-any-no:
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
-if ( index( $concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+if ( index( $global_concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -10207,8 +10129,8 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-no-if-not-yes:
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
-if ( index( $concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+if ( index( $global_concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
@@ -10376,13 +10298,11 @@ print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . '<character_h
 template-runtime-code-store-result-for-case-error
 }  <new_line>
 
-
 combee
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 &function__trace_show( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 comenn
-
 
 template-runtime-code-for-every-action-end
 ----
@@ -10515,7 +10435,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-phrase-not-empty
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_target_file_name = $global_operand_two ;  <new_line>
 open-file-for-appending
@@ -10523,7 +10442,6 @@ open-file-for-appending
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__write_gathered_listed_items_to_end_of_file( ) ;  <new_line>
 
@@ -10559,21 +10477,19 @@ $global_action_result = 'no' ;  <new_line>
 
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
-
 combee
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 &function__yes_if_all_yes( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 comenn
 
-
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-if-any-yes:
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
-if ( index( $concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+if ( index( $global_concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
@@ -10584,9 +10500,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-if-not-no:
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 
-if ( index( $concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
+if ( index( $global_concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -10630,8 +10546,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-folder-name
-
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
@@ -10646,9 +10560,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-or-no-opposite:
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 
-if ( index( $concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
+if ( index( $global_concatenated_all_operands , 'yes' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -10794,6 +10708,17 @@ template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
+&function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
+runtime-code-storage-item-result = $global_action_result ;  <new_line>
+
+template-runtime-code-for-every-action-end
+----
+template-runtime-code-standard-for-operand-count-variable:
+# this code generated from standard template  <new_line>
+
+template-runtime-code-for-every-action-begin
+
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 &function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
