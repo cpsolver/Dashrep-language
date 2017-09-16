@@ -2,10 +2,12 @@
 
 sub function__rename_file( ) {  <new_line>
 $global_action_name_with_underscores = 'rename_file' ; <new_line>
+template-return-if-no-permission-to-delete-overwrite-files
 template-check-operand-one-input-file-exists
 template-check-operand-one-is-file-name
 
-template-return-if-no-permission-to-delete-overwrite-files
+$global_source_file_name = $global_operand_one ;  <new_line>
+$global_target_file_name = $global_operand_two ;  <new_line>
 
 # save some values because function yes_or_no_file_exists is used for non hyphen-here standard purposes here  <new_line>
 $global_source_file_name_saved = $global_source_file_name ;  <new_line>
