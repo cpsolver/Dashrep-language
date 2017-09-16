@@ -9230,11 +9230,10 @@ template-function-write-dashrep-definitions-listed-in-phrase-to-file:
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'write_dashrep_definitions_listed_in_phrase_to_file' ; <new_line>
-template-check-operand-one-is-phrase-not-empty
-template-specify-operand-two-is-filename-for-writing-new-file
-template-open-file-for-writing-new-file
-
 template-return-if-no-permission-to-delete-overwrite-files
+template-check-operand-one-is-phrase-not-empty
+$global_target_file_name = $global_operand_two ;  <new_line>
+template-open-file-for-writing-new-file
 
 $global_action_result = '' ;  <new_line>
 @global_list_of_phrases = split( /[ \n\r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ;  <new_line>
@@ -9528,10 +9527,20 @@ if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $g
 }  <new_line>
 ----
 template-open-file-for-appending:
-combee ****** todo ****** comenn
+if ( $global_yes_or_no_file_opened_for_writing == $global_no ) {  <new_line>
+if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) {  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_appending ' . $global_target_file_name . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+}  <new_line>
 ----
 template-open-file-for-reading:
-combee ****** todo ****** comenn
+if ( $global_yes_or_no_file_opened_for_reading == $global_no ) {  <new_line>
+if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading ' . $global_source_file_name . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+}  <new_line>
 ----
 template-runtime-code-for-action-append-new-line:
 template-runtime-code-for-every-action-begin
@@ -10145,40 +10154,16 @@ template-runtime-code-for-action-not-recognized:
 runtime-code-storage-item-result = runtime-code-for-concatenated-all-operands ;  <new_line>
 ----
 template-runtime-code-for-action-numeric-add:
-template-runtime-code-for-every-action-begin
-
-$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__numeric_add( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-for-operand-count-variable
 ----
 template-runtime-code-for-action-numeric-maximum:
-template-runtime-code-for-every-action-begin
-
-$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__numeric_maximum( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-for-operand-count-variable
 ----
 template-runtime-code-for-action-numeric-minimum:
-template-runtime-code-for-every-action-begin
-
-$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__numeric_minimum( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-for-operand-count-variable
 ----
 template-runtime-code-for-action-numeric-multiply:
-template-runtime-code-for-every-action-begin
-
-$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
-&function__numeric_multiply( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
+template-runtime-code-standard-for-operand-count-variable
 ----
 template-runtime-code-for-action-prepend-text-no-space:
 template-runtime-code-for-every-action-begin
@@ -10714,11 +10699,11 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-standard-for-operand-count-variable:
-# this code generated from standard template  <new_line>
+# this object code generated from standard template with variable number of operands placed into global_source_text  <new_line>
 
 template-runtime-code-for-every-action-begin
 
-$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
 &function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
