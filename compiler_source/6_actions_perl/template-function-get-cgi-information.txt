@@ -29,6 +29,8 @@ $global_raw_input = $ENV{ 'QUERY_STRING' } ;  <new_line>
 
 } elsif ( ( exists( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) && ( $dashrep_get_replacement{ 'input-filename-for-cgi-information' } =~ /^[^ ]+\.[^ ]+$/ ) && ( open( INFILE , $dashrep_get_replacement{ 'input-filename-for-cgi-information' } ) ) ) {  <new_line>
 
+$global_yes_or_no_file_opened_for_reading = $global_yes ;  <new_line>
+
 while( $global_input_line = <INFILE> ) {  <new_line>
 chomp( $global_input_line ) ;  <new_line>
 

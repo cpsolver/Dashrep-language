@@ -17,7 +17,8 @@ return $global_no ;  <new_line>
 
 # todo: check if file exists, if not, then create empty file, then write protect it (while empty), then continue below  <new_line>
 
-if ( open ( OUTFILE , '>>' . $global_output_filename ) ) {  <new_line>
+if ( open( OUTFILE , '>>' . $global_output_filename ) ) {  <new_line>
+$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
