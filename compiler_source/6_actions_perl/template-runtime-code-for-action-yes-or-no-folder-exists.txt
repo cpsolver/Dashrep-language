@@ -2,8 +2,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-folder-name
-
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>

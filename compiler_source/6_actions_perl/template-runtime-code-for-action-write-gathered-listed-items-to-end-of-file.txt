@@ -2,7 +2,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-phrase-not-empty
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_target_file_name = $global_operand_two ;  <new_line>
 open-file-for-appending
@@ -10,7 +9,6 @@ open-file-for-appending
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 $global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
 &function__write_gathered_listed_items_to_end_of_file( ) ;  <new_line>
 

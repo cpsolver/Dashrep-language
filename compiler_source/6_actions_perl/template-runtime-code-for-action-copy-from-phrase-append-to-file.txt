@@ -2,7 +2,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-one-is-phrase-name
 $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 open-file-for-appending
 

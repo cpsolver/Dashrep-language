@@ -2,7 +2,6 @@ template-runtime-code-for-every-action-begin
 
 runtime-code-check-operand-initialize
 
-check-operand-two-is-phrase-name
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
 open-file-for-reading
 
