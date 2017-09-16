@@ -13,7 +13,7 @@ $pointer_to_next_match = index( $global_concatenated_all_operands_modified , 'ye
 }  <new_line>
 
 $accumulated_remaining_text .= ' ' . $global_concatenated_all_operands_modified ;  <new_line>
-$accumulated_remaining_text =~ s/ //g ;  <new_line>
+$accumulated_remaining_text = &function_parameterized__remove_leading_trailing_spaces( $accumulated_remaining_text ) ;  <new_line>
 
 if ( length( $accumulated_remaining_text ) == 0 ) {  <new_line>
 $global_action_result = 'yes' ;  <new_line>
