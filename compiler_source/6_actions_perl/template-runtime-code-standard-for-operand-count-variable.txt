@@ -1,8 +1,8 @@
-# this code generated from standard template  <new_line>
+# this object code generated from standard template with variable number of operands placed into global_source_text  <new_line>
 
 template-runtime-code-for-every-action-begin
 
-$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+$global_source_text = runtime-code-for-concatenated-all-operands ;  <new_line>
 &function__ no-space action-name-with-underscores no-space ( ) ;  <new_line>
 runtime-code-storage-item-result = $global_action_result ;  <new_line>
 
