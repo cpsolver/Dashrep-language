@@ -1,7 +1,7 @@
 template-runtime-code-for-every-action-begin
 
-$concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
-if ( index( $concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
+$global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
+if ( index( $global_concatenated_all_operands , 'no' ) >= 0 ) {  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 } else {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
