@@ -5,7 +5,7 @@ $global_action_name_with_underscores = 'generate_phrase_usage_counts' ; <new_lin
 template-check-operand-one-is-phrase-name
 
 
-$global_result_text = '' ;  <new_line>
+$global_action_result = '' ;  <new_line>
 
 
 # do sorting subroutine with 0000000175_phrase_name where 175 is usage count  <new_line>
@@ -32,12 +32,13 @@ $global_result_text = '' ;  <new_line>
 #    $global_endless_loop_replacements_with_count{ sprintf( "%08d" , $global_replacement_count ) } .= $global_phrase_name ;  <new_line>
 #}  <new_line>
 
-foreach $global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
-    @global_list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
-    foreach $global_phrase_name ( @global_list_of_phrase_names ) {  <new_line>
-        $global_result_text .= $global_replacement_count_text . ' ' . $global_phrase_name  . "\n" ;  <new_line>
-    }  <new_line>
-}  <new_line>
-$global_dashrep_replacement{ $global_operand_one } = $global_result_text ;  <new_line>
+# foreach $global_replacement_count_text ( reverse( sort( keys( %global_endless_loop_replacements_with_count ) ) ) ) {  <new_line>
+#     @global_list_of_phrase_names = sort( split( /\n/ , $global_endless_loop_replacements_with_count{ $global_replacement_count_text } ) ) ;  <new_line>
+#     foreach $global_phrase_name ( @global_list_of_phrase_names ) {  <new_line>
+#         $global_action_result .= $global_replacement_count_text . ' ' . $global_phrase_name  . "\n" ;  <new_line>
+#     }  <new_line>
+# }  <new_line>
+
+$global_dashrep_replacement{ $global_operand_one } = $global_action_result ;  <new_line>
 
 template-function-segment-ending
