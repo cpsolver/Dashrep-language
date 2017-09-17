@@ -9688,35 +9688,6 @@ template-runtime-code-store-result-for-case-error
 }  <new_line>
 template-runtime-code-for-every-action-end
 ----
-template-runtime-code-for-action-copy-definition-of-named-phrase:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_phrase_name = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ;  <new_line>
-
-if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_yes ) {  <new_line>
-if ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end  <new_line>
-} else {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
-}  <new_line>
-} else {  <new_line>
-code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = '' ;  <new_line>
-}  <new_line>
-
-runtime-code-storage-item-result = '' ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-template-runtime-code-for-every-action-end
-----
 template-runtime-code-for-action-copy-from-columns-in-file-to-column-lists:
 template-runtime-code-for-every-action-begin
 
@@ -9958,15 +9929,6 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-generate-phrase-usage-counts:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__generate_phrase_usage_counts( ) ;  <new_line>
-runtime-code-storage-item-result = '' ;  <new_line>
-
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-get-cgi-information:
