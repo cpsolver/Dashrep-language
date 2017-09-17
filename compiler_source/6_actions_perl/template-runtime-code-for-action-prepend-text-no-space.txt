@@ -1,16 +1,16 @@
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__prepend_text_no_space__not_phrase_name' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
+} elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__prepend_text_no_space__not_phrase_name ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+} else {  <new_line>
 
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
