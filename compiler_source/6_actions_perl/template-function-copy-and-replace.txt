@@ -5,7 +5,7 @@ $global_action_name_with_underscores = 'copy_and_replace' ; <new_line>
 
 template-check-operand-one-is-phrase-name
 template-check-operand-two-is-phrase-name
-template-check-operand-three-is-phrase-not-empty
+template-check-operand-three-is-phrase-name
 template-check-operand-four-is-phrase-name
 
 $global_action_result = '' ;  <new_line>
@@ -43,6 +43,5 @@ if ( ( $global_length_of_text_to_insert >= $global_length_of_string_to_be_replac
     }  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } = $global_target_text ;  <new_line>
 }  <new_line>
-return '' ;  <new_line>
 
 template-function-segment-ending
