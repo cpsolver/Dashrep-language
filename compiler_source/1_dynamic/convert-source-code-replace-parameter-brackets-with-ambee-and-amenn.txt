@@ -21,9 +21,20 @@ combee ***
 *** comenn
 
 ambee generate-positions-of-delimiter string-open-bracket-dash source-code-as-words pointers-to-delimiters-begin amenn
-ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn
 ambee generate-positions-of-delimiter string-dash-close-bracket source-code-as-words pointers-to-delimiters-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase pointers-to-delimiters-begin amenn amenn
+ambee numeric-vector-add-number pointers-to-delimiters-begin -1 pointers-to-just-before-delimiters-begin amenn
+ambee if-else amenn
+ambee clear-phrase pointers-to-just-before-delimiters-begin amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase pointers-to-delimiters-end amenn amenn
 ambee numeric-vector-add-number pointers-to-delimiters-end 2 pointers-to-just-after-delimiters-end amenn
+ambee if-else amenn
+ambee clear-phrase pointers-to-just-before-delimiters-end amenn
+ambee if-end amenn
+
 ambee copy-text pointers-to-just-before-delimiters-begin pointers-to-adjacent-characters amenn
 ambee append-text pointers-to-just-after-delimiters-end pointers-to-adjacent-characters amenn
 ambee use-handler-with-each-word-in-phrase get-source-code-character-at-adjacent-position pointers-to-adjacent-characters amenn
