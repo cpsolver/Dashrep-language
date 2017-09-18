@@ -1,11 +1,10 @@
 template-runtime-code-for-every-action-begin
 
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
-
-check-operand-one-is-phrase-not-empty
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+} else {  <new_line>
 
 my $local_pointer_to_next_space ;  <new_line>
 my $local_pointer_to_future_space ;  <new_line>
@@ -106,7 +105,6 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 
 }  combee **** # end of ABABA loop **** comenn  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
