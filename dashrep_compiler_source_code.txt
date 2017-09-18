@@ -4436,7 +4436,8 @@ template-function-copy-append-file-to-file:
 sub function__copy_append_file_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'copy_append_file_to_file' ; <new_line>
 
-template-return-if-no-permission-to-append-to-files
+combee template-return-if-no-permission-to-append-to-files comenn
+
 $global_target_file_name = $global_operand_two ;  <new_line>
 template-open-file-for-appending
 $global_source_file_name = $global_operand_one ;  <new_line>
@@ -4674,7 +4675,7 @@ template-check-operand-one-is-phrase-name
 $global_target_file_name = $global_operand_two ;  <new_line>
 template-open-file-for-appending
 
-template-return-if-no-permission-to-append-to-files
+combee template-return-if-no-permission-to-append-to-files comenn
 
 $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
@@ -5513,7 +5514,7 @@ template-function-create-empty-sub-folder:
 sub function__create_empty_sub_folder( ) {  <new_line>
 $global_action_name_with_underscores = 'create-empty-sub-folder' ; <new_line>
 
-template-return-if-no-permission-to-delete-overwrite-files
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
 
 $global_action_result = '' ;  <new_line>
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
@@ -5577,7 +5578,9 @@ template-function-delete-file:
 
 sub function__delete_file( ) {  <new_line>
 $global_action_name_with_underscores = 'delete_file' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-is-file-name
 
 $global_target_file_name = $global_operand_one ;  <new_line>
@@ -6743,7 +6746,7 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
-template-return-if-no-permission-to-delete-overwrite-files
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
 
 if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . $global_operand_one . ' ' ;  <new_line>
@@ -9013,7 +9016,9 @@ template-function-rename-file:
 
 sub function__rename_file( ) {  <new_line>
 $global_action_name_with_underscores = 'rename_file' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-input-file-exists
 template-check-operand-one-is-file-name
 
@@ -9071,7 +9076,9 @@ template-function-set-file-permission-private-but-executable:
 
 sub function__set_file_permission_private_but_executable( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private_but_executable' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-is-file-name
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
@@ -9100,7 +9107,9 @@ template-function-set-file-permission-private:
 
 sub function__set_file_permission_private( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_private' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-is-file-name
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
@@ -9129,7 +9138,9 @@ template-function-set-file-permission-public-read:
 
 sub function__set_file_permission_public_read( ) {  <new_line>
 $global_action_name_with_underscores = 'set_file_permission_public_read' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-is-file-name
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
@@ -9244,7 +9255,9 @@ template-function-write-dashrep-definitions-listed-in-phrase-to-file:
 
 sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) {  <new_line>
 $global_action_name_with_underscores = 'write_dashrep_definitions_listed_in_phrase_to_file' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-is-phrase-not-empty
 $global_target_file_name = $global_operand_two ;  <new_line>
 template-open-file-for-writing-new-file
@@ -9617,7 +9630,7 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-and-replace:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
 check-operand-one-is-phrase-name
 check-operand-two-is-phrase-name
@@ -9833,12 +9846,11 @@ template-runtime-code-for-action-executable-phrase-end
 template-runtime-code-for-action-expand-text:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+} else {  <new_line>
 
 $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
 # $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
@@ -9860,9 +9872,8 @@ combee ****
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
 # $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-find-line-in-file-that-begins-with-text:
@@ -10038,20 +10049,17 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-put-into-phrase:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+} else {  <new_line>
 
 $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ;  <new_line>
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;  <new_line>
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-trace-show-where:
@@ -10065,11 +10073,9 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-trace-show:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} else {  <new_line>
 
 &function__open_trace_output_file_if_not_open( ) ;  <new_line>
 
@@ -10079,27 +10085,18 @@ print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . code-get-or-p
 print TRACE_OUT runtime-code-for-operand-number-one . ':' . "\n" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "\n" ;  <new_line>
 }  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
-
-combee
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-&function__trace_show( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-comenn
 
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-use-handler-with-each-word-in-phrase:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-not-empty
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+} else {  <new_line>
 
 my $local_pointer_to_next_space ;  <new_line>
 my $local_pointer_to_future_space ;  <new_line>
@@ -10200,9 +10197,8 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 
 }  combee **** # end of ABABA loop **** comenn  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
@@ -10302,12 +10298,11 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+} else {  <new_line>
 
 if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>
 runtime-code-storage-item-result = 'yes' ;  <new_line>
@@ -10315,9 +10310,8 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 runtime-code-storage-item-result = 'no' ;  <new_line>
 }  <new_line>
 
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-or-no-same-two-words:
