@@ -5394,7 +5394,7 @@ my $storage_item__5231 = 'template-function-copy-and-replace' ;
 my $storage_item__5232 = '# no-space dashes-long-line <new_line> sub function__copy_and_replace( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_and_replace' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name template-check-operand-three-is-phrase-name template-check-operand-four-is-phrase-name $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_target_text = ' . "'" . "'" . ' ; <new_line> $global_source_phrase_name = $global_operand_one ; <new_line> $global_target_phrase_name = $global_operand_two ; <new_line> $global_string_to_be_replaced = $global_dashrep_replacement{ $global_operand_three } ; <new_line> if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) { <new_line> $global_dashrep_replacement{ $global_source_phrase_name } = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ $global_operand_four } ) ) { <new_line> $global_text_to_insert = $global_dashrep_replacement{ $global_operand_four } ; <new_line> } else { <new_line> $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> } <new_line> $global_source_text = $global_dashrep_replacement{ $global_source_phrase_name } ; <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_length_of_text_to_insert = length( $global_text_to_insert ) ; <new_line> if ( ( $global_length_of_text_to_insert >= $global_length_of_string_to_be_replaced ) && ( index( $global_text_to_insert , $global_string_to_be_replaced ) >= 0 ) ) { <new_line> } elsif ( ( $global_length_of_string_to_be_replaced >= $global_length_of_text_to_insert ) && ( $global_length_of_text_to_insert > 0 ) && ( index( $global_string_to_be_replaced , $global_text_to_insert ) >= 0 ) ) { <new_line> } else { <new_line> $global_character_pointer_begin = 0 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> while ( $global_character_pointer_end >= -1 ) { <new_line> $global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ; <new_line> if ( $global_length_of_text_segment > 0 ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ; <new_line> } <new_line> $global_target_text .= $global_text_to_insert ; <new_line> $global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> } <new_line> if ( $global_character_pointer_begin < $global_length_of_text_source ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ; <new_line> } <new_line> $global_dashrep_replacement{ $global_target_phrase_name } = $global_target_text ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5231 } = $storage_item__5232 ;
 my $storage_item__5233 = 'template-function-copy-append-file-to-file' ;
-my $storage_item__5234 = '# no-space dashes-long-line <new_line> sub function__copy_append_file_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_append_file_to_file' . "'" . ' ; <new_line> template-return-if-no-permission-to-append-to-files $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-appending $global_source_file_name = $global_operand_one ; <new_line> template-open-file-for-reading $global_action_result = ' . "'" . "'" . ' ; <new_line> while ( $global_input_line = <INFILE> ) { <new_line> chomp( $global_input_line ) ; <new_line> print OUTFILE $global_input_line . "' . '\\' . 'n" ; <new_line> } <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( INFILE ) ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
+my $storage_item__5234 = '# no-space dashes-long-line <new_line> sub function__copy_append_file_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_append_file_to_file' . "'" . ' ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-appending $global_source_file_name = $global_operand_one ; <new_line> template-open-file-for-reading $global_action_result = ' . "'" . "'" . ' ; <new_line> while ( $global_input_line = <INFILE> ) { <new_line> chomp( $global_input_line ) ; <new_line> print OUTFILE $global_input_line . "' . '\\' . 'n" ; <new_line> } <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( INFILE ) ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5233 } = $storage_item__5234 ;
 my $storage_item__5235 = 'template-function-copy-characters-from-position-to-position' ;
 my $storage_item__5236 = '# no-space dashes-long-line <new_line> sub function__copy_characters_from_position_to_position( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_characters_from_position_to_position' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name template-check-operand-three-is-positive-integer template-check-operand-four-is-positive-integer $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_source_phrase_name = $global_operand_one ; <new_line> $global_target_phrase_name = $global_operand_two ; <new_line> if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) { <new_line> $global_dashrep_replacement{ $global_source_phrase_name } = ' . "'" . "'" . ' ; <new_line> } <new_line> $global_pointer_one = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ; <new_line> $global_pointer_two = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_four ) ; <new_line> if ( $global_pointer_one > $global_pointer_two ) { <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_dashrep_replacement{ $global_source_phrase_name } , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ; <new_line> template-function-segment-ending' ;
@@ -5412,7 +5412,7 @@ my $storage_item__5243 = 'template-function-copy-from-file-to-phrase' ;
 my $storage_item__5244 = '# no-space dashes-long-line <new_line> sub function__copy_from_file_to_phrase( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_from_file_to_phrase' . "'" . ' ; <new_line> template-check-operand-two-is-phrase-name $global_source_file_name = $global_operand_one ; <new_line> template-open-file-for-reading $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_all_lines = ' . "'" . "'" . ' ; <new_line> $global_line_ending = ' . "'" . "'" . ' ; <new_line> $global_line_number = 0 ; <new_line> if ( not( exists( $global_dashrep_replacement{ ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space indicate no-space character-hyphen no-space line no-space character-hyphen no-space endings' . "'" . ' } ) ) ) { <new_line> $global_dashrep_replacement{ ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space indicate no-space character-hyphen no-space line no-space character-hyphen no-space endings' . "'" . ' } = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> if ( ( exists( $global_dashrep_replacement{ ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space indicate no-space character-hyphen no-space line no-space character-hyphen no-space endings' . "'" . ' } ) ) && ( $global_dashrep_replacement{ ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space indicate no-space character-hyphen no-space line no-space character-hyphen no-space endings' . "'" . ' } eq ' . "'" . 'yes' . "'" . ' ) ) { <new_line> $global_line_ending = ' . "'" . ' end no-space character-hyphen no-space of no-space character-hyphen no-space line no-space character-hyphen no-space here ' . "'" . ' ; <new_line> } else { <new_line> $global_line_ending = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> while ( $global_input_line = <INFILE> ) { <new_line> chomp( $global_input_line ) ; <new_line> $global_input_line =~ s/[' . '\\' . 't' . '\\' . 'f' . '\\' . 'n' . '\\' . 'r]+/ /g ; <new_line> $global_input_line =~ s/^ +/ / ; <new_line> $global_input_line =~ s/ +$/ / ; <new_line> if ( ( $global_input_line ne ' . "'" . "'" . ' ) || ( $global_line_ending ne ' . "'" . ' ' . "'" . ' ) ) { <new_line> $global_all_lines .= $global_input_line . $global_line_ending ; <new_line> } <new_line> } <new_line> $global_dashrep_replacement{ $global_operand_two } = $global_all_lines ; <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( INFILE ) ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5243 } = $storage_item__5244 ;
 my $storage_item__5245 = 'template-function-copy-from-phrase-append-to-file' ;
-my $storage_item__5246 = '# no-space dashes-long-line <new_line> sub function__copy_from_phrase_append_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_from_phrase_append_to_file' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-appending template-return-if-no-permission-to-append-to-files $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) { <new_line> print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "' . '\\' . 'n" ; <new_line> } else { <new_line> print OUTFILE $global_operand_one . "' . '\\' . 'n" ; <new_line> } <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
+my $storage_item__5246 = '# no-space dashes-long-line <new_line> sub function__copy_from_phrase_append_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_from_phrase_append_to_file' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-appending $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) { <new_line> print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "' . '\\' . 'n" ; <new_line> } else { <new_line> print OUTFILE $global_operand_one . "' . '\\' . 'n" ; <new_line> } <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5245 } = $storage_item__5246 ;
 my $storage_item__5247 = 'template-function-copy-initial-caps' ;
 my $storage_item__5248 = '# no-space dashes-long-line <new_line> sub function__copy_initial_caps( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_initial_caps' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_source_phrase_name = $global_operand_one ; <new_line> $global_target_phrase_name = $global_operand_two ; <new_line> if ( not( exists( $global_dashrep_replacement{ $global_source_phrase_name } ) ) ) { <new_line> $global_dashrep_replacement{ $global_source_phrase_name } = ' . "'" . "'" . ' ; <new_line> } <new_line> $global_temp_text = $global_dashrep_replacement{ $global_source_phrase_name } ; <new_line> $global_temp_text =~ s/' . '\\' . 'n/ /sg ; <new_line> $global_temp_text =~ s/^ +// ; <new_line> $global_temp_text =~ s/ +$// ; <new_line> $global_remaining_text = $global_temp_text ; <new_line> $global_accumulated_text = ' . "'" . "'" . ' ; <new_line> if ( $global_remaining_text =~ /^([a<character_hyphen>z])(.*)$/ ) { <new_line> $global_character_to_capitalize = $1 ; <new_line> $global_remaining_text = $2 ; <new_line> $global_accumulated_text .= uc( $global_character_to_capitalize ) ; <new_line> } <new_line> while ( $global_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) { <new_line> $global_accumulated_text .= $1 ; <new_line> $global_character_to_capitalize = $2 ; <new_line> $global_remaining_text = $3 ; <new_line> $global_accumulated_text .= ' . "'" . ' ' . "'" . ' . uc( $global_character_to_capitalize ) ; <new_line> } <new_line> $global_accumulated_text .= $global_remaining_text ; <new_line> $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ; <new_line> template-function-segment-ending' ;
@@ -5478,13 +5478,13 @@ my $storage_item__5287 = 'template-function-copy-zero-pad-left-to-length' ;
 my $storage_item__5288 = '# no-space dashes-long-line <new_line> sub function__copy_zero_pad_left_to_length( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'copy_zero_pad_left_to_length' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name template-check-operand-three-is-positive-integer $global_action_result = ' . "'" . ' ' . "'" . ' ; <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ; <new_line> $global_count_number = &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_three ) ; <new_line> $global_counter = $global_count_number - length( $global_source_text ) ; <new_line> $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> while ( ( $global_counter > 0 ) && ( $global_counter < 99 ) ) { <new_line> $global_text_to_insert .= ' . "'" . '0' . "'" . ' ; <new_line> $global_counter -- ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_text_to_insert . $global_source_text ; return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5287 } = $storage_item__5288 ;
 my $storage_item__5289 = 'template-function-create-empty-sub-folder' ;
-my $storage_item__5290 = '# no-space dashes-long-line <new_line> sub function__create_empty_sub_folder( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'create-empty-sub-folder' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_target_path_prefix = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' } ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( $global_target_path_prefix =~ /([' . '\\' . '/' . '\\' . '\\' . '])/ ) { <new_line> $global_slash_or_backslash_for_path = $1 ; <new_line> } else { <new_line> $global_slash_or_backslash_for_path = ' . "'" . '/' . "'" . ' ; <new_line> } <new_line> $global_target_sub_folder = $global_target_path_prefix . $global_operand_one . $global_slash_or_backslash_for_path ; <new_line> if ( &function_parameterized__yes_or_no_valid_path( $global_target_sub_folder ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__invalid_full_path' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( <character_hyphen>d $global_target_sub_folder ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_sub_folder_already_exists' . "'" . ' ; <new_line> } else { <new_line> umask( 0077 ) ; <new_line> if ( mkdir( $global_target_sub_folder ) ) { <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_creating_sub_folder_not_successful' . "'" . ' ; <new_line> } <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__5290 = '# no-space dashes-long-line <new_line> sub function__create_empty_sub_folder( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'create-empty-sub-folder' . "'" . ' ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_target_path_prefix = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' } ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( $global_target_path_prefix =~ /([' . '\\' . '/' . '\\' . '\\' . '])/ ) { <new_line> $global_slash_or_backslash_for_path = $1 ; <new_line> } else { <new_line> $global_slash_or_backslash_for_path = ' . "'" . '/' . "'" . ' ; <new_line> } <new_line> $global_target_sub_folder = $global_target_path_prefix . $global_operand_one . $global_slash_or_backslash_for_path ; <new_line> if ( &function_parameterized__yes_or_no_valid_path( $global_target_sub_folder ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__invalid_full_path' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( <character_hyphen>d $global_target_sub_folder ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_sub_folder_already_exists' . "'" . ' ; <new_line> } else { <new_line> umask( 0077 ) ; <new_line> if ( mkdir( $global_target_sub_folder ) ) { <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_creating_sub_folder_not_successful' . "'" . ' ; <new_line> } <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5289 } = $storage_item__5290 ;
 my $storage_item__5291 = 'template-function-decode-from-cgi-parameter' ;
 my $storage_item__5292 = '# no-space dashes-long-line <new_line> sub function__decode_from_cgi_parameter( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'decode_from_cgi_parameter' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ; <new_line> $global_text_being_edited =~ s/' . '\\' . '+/ /sg ; <new_line> $global_remaining_text = $global_text_being_edited ; <new_line> $global_accumulated_text = ' . "'" . "'" . ' ; <new_line> while ( $global_remaining_text =~ /^(.*?)' . '\\' . '%([0<character_hyphen>9a no-space character-hyphen no-space fA no-space character-hyphen no-space F][0<character_hyphen>9a no-space character-hyphen no-space fA no-space character-hyphen no-space F])(.*)$/s ) { <new_line> $global_accumulated_text .= $1 ; <new_line> $global_character_code_to_decode = $2 ; <new_line> $global_remaining_text = $3 ; <new_line> $global_accumulated_text .= chr( hex( $global_character_code_to_decode ) ) ; <new_line> } <new_line> $global_accumulated_text .= $global_remaining_text ; <new_line> $global_accumulated_text =~ s/' . '\\' . '+/ /sg ; <new_line> $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5291 } = $storage_item__5292 ;
 my $storage_item__5293 = 'template-function-delete-file' ;
-my $storage_item__5294 = '# no-space dashes-long-line <new_line> sub function__delete_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'delete_file' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-is-file-name $global_target_file_name = $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__delete_file__case_invalid_path_prefix ' . "'" . ' . $global_target_path_prefix ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__delete_file__case_invalid_file_name ' . "'" . ' . $global_target_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ; <new_line> unlink $global_target_file_full_path ; <new_line> $global_action_result = ' . "'" . 'trace_diagnostic__deleted_file ' . "'" . ' . $global_target_file_full_path ; <new_line> template-function-segment-ending' ;
+my $storage_item__5294 = '# no-space dashes-long-line <new_line> sub function__delete_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'delete_file' . "'" . ' ; <new_line> template-check-operand-one-is-file-name $global_target_file_name = $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__delete_file__case_invalid_path_prefix ' . "'" . ' . $global_target_path_prefix ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_file_name( $global_target_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__delete_file__case_invalid_file_name ' . "'" . ' . $global_target_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_target_file_name ; <new_line> unlink $global_target_file_full_path ; <new_line> $global_action_result = ' . "'" . 'trace_diagnostic__deleted_file ' . "'" . ' . $global_target_file_full_path ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5293 } = $storage_item__5294 ;
 my $storage_item__5295 = 'template-function-delete-listed-phrases' ;
 my $storage_item__5296 = '# no-space dashes-long-line <new_line> sub function__delete_listed_phrases( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'delete_listed_phrases' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> @global_list_of_phrase_names = split( / +/ , $global_dashrep_replacement{ $global_operand_one } ) ; <new_line> foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) { <new_line> if ( exists( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ) { <new_line> delete( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ; <new_line> } <new_line> } <new_line> template-function-segment-ending' ;
@@ -5562,7 +5562,7 @@ my $storage_item__5343 = 'template-function-get-position-of-word' ;
 my $storage_item__5344 = '# no-space dashes-long-line <new_line> sub function__get_position_of_word( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'get_position_of_word' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-phrase-name $global_action_result = ' . "'" . ' ' . "'" . ' ; <new_line> $global_word_to_find = $global_dashrep_replacement{ $global_operand_one } ; <new_line> $global_temp_text = $global_dashrep_replacement{ $global_operand_two } ; <new_line> $global_temp_text =~ s/' . '\\' . 'n/ /sg ; <new_line> $global_temp_text =~ s/^ +// ; <new_line> $global_temp_text =~ s/ +$// ; <new_line> @global_list = split( / +/ , $global_temp_text ) ; <new_line> $global_list_length = $#global_list + 1 ; <new_line> $global_action_result = ' . "'" . '0' . "'" . ' ; <new_line> if ( $global_list_length >= 1 ) { <new_line> $global_last_pointer = 0 ; <new_line> for ( $global_pointer = 1 ; $global_pointer <= $global_list_length ; $global_pointer ++ ) { <new_line> if ( $global_list[ $global_pointer - 1 ] eq $global_word_to_find ) { <new_line> $global_action_result = sprintf( "%d" , $global_pointer ) ; <new_line> last ; <new_line> } <new_line> } <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5343 } = $storage_item__5344 ;
 my $storage_item__5345 = 'template-function-get-url-resource' ;
-my $storage_item__5346 = '# no-space dashes-long-line <new_line> # function__get_url_resource <new_line> # <new_line> sub function__get_url_resource( ) { <new_line> # use local variables for command-related variables for added security <new_line> my $command_string_without_pipe ; <new_line> my $process_id ; <new_line> template-return-if-no-permission-to-delete-overwrite-files if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_file_name ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' } ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_two ; <new_line> # todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator <new_line> $command_string_without_pipe = ' . "'" . 'curl -k -s -S -o ' . "'" . ' . $global_target_file_full_path . ' . "'" . ' ' . "'" . ' . $global_operand_one ; <new_line> if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) { <new_line> $global_accumulated_text = ' . "'" . 'cannot_run_curl_command ' . "'" . ' . $command_string_without_pipe ; <new_line> } else { <new_line> $global_accumulated_text = ' . "'" . 'starting_curl_command ' . "'" . ' . $command_string_without_pipe ; <new_line> while( $global_input_line = <CURLCMD> ) { <new_line> $global_accumulated_text .= ' . "'" . ' ' . "'" . ' . $global_input_line ; <new_line> } <new_line> $global_accumulated_text .= ' . "'" . ' ending_curl_command' . "'" . ' ; <new_line> if ( not( close( CURLCMD ) ) ) { <new_line> $global_accumulated_text .= ' . "'" . ' cannot_close_handle_that_runs_curl_command' . "'" . ' ; <new_line> } <new_line> chmod( 0600 , $global_target_file_full_path ) ; <new_line> } <new_line> $global_dashrep_replacement{ ' . "'" . 'trace-results-from-curl' . "'" . ' } = $global_accumulated_text ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__5346 = '# no-space dashes-long-line <new_line> # function__get_url_resource <new_line> # <new_line> sub function__get_url_resource( ) { <new_line> # use local variables for command-related variables for added security <new_line> my $command_string_without_pipe ; <new_line> my $process_id ; <new_line> if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_url ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_file_name ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' } ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__get_url_resource__invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_two ; <new_line> # todo: pipe error output to ignored file because it shows progress indicator info; or, use flag to ignore progress indicator <new_line> $command_string_without_pipe = ' . "'" . 'curl -k -s -S -o ' . "'" . ' . $global_target_file_full_path . ' . "'" . ' ' . "'" . ' . $global_operand_one ; <new_line> if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) { <new_line> $global_accumulated_text = ' . "'" . 'cannot_run_curl_command ' . "'" . ' . $command_string_without_pipe ; <new_line> } else { <new_line> $global_accumulated_text = ' . "'" . 'starting_curl_command ' . "'" . ' . $command_string_without_pipe ; <new_line> while( $global_input_line = <CURLCMD> ) { <new_line> $global_accumulated_text .= ' . "'" . ' ' . "'" . ' . $global_input_line ; <new_line> } <new_line> $global_accumulated_text .= ' . "'" . ' ending_curl_command' . "'" . ' ; <new_line> if ( not( close( CURLCMD ) ) ) { <new_line> $global_accumulated_text .= ' . "'" . ' cannot_close_handle_that_runs_curl_command' . "'" . ' ; <new_line> } <new_line> chmod( 0600 , $global_target_file_full_path ) ; <new_line> } <new_line> $global_dashrep_replacement{ ' . "'" . 'trace-results-from-curl' . "'" . ' } = $global_accumulated_text ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5345 } = $storage_item__5346 ;
 my $storage_item__5347 = 'template-function-get-word-at-position' ;
 my $storage_item__5348 = '# no-space dashes-long-line <new_line> # function__get_word_at_position <new_line> # <new_line> sub function__get_word_at_position( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'get_word_at_position' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-name template-check-operand-two-is-positive-integer $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> $global_word_pointer_text = $global_operand_two ; <new_line> $global_default_text = ' . "'" . "'" . ' ; <new_line> template-function-segment-if-zero-words-return-default-text $global_word_pointer_numeric = &function_parameterized__convert_numeric_text_into_numeric_value( $global_word_pointer_text ) ; <new_line> if ( $global_number_of_words < $global_word_pointer_numeric ) { <new_line> $global_word_pointer_numeric = $global_number_of_words ; <new_line> } <new_line> $global_action_result = runtime-code-word-within-source-text ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
@@ -5739,7 +5739,7 @@ my $storage_item__5461 = 'template-function-remove-extra-spaces' ;
 my $storage_item__5462 = '# no-space dashes-long-line <new_line> # function__remove_extra_spaces <new_line> # <new_line> # Input is $global_source_text <new_line> # Output is $global_target_text <new_line> <new_line> sub function__remove_extra_spaces( ) { <new_line> $global_default_text = $global_source_text ; <new_line> template-function-segment-if-zero-words-return-default-text $global_target_text = substr( $global_source_text , $global_begin_position_for_word[ 1 ] , $global_length_of_word[ 1 ] ) ; <new_line> if ( $global_number_of_words == 1 ) { <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> for ( $global_word_pointer_numeric = 2 ; $global_word_pointer_numeric <= $global_number_of_words ; $global_word_pointer_numeric ++ ) { <new_line> $global_target_text .= ' . "'" . ' ' . "'" . ' . runtime-code-word-within-source-text ; <new_line> } <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5461 } = $storage_item__5462 ;
 my $storage_item__5463 = 'template-function-rename-file' ;
-my $storage_item__5464 = '# no-space dashes-long-line <new_line> sub function__rename_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'rename_file' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-input-file-exists template-check-operand-one-is-file-name $global_source_file_name = $global_operand_one ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> # save some values because function yes_or_no_file_exists is used for non no-space character-hyphen no-space standard purposes here <new_line> $global_source_file_name_saved = $global_source_file_name ; <new_line> $global_target_file_name_saved = $global_target_file_name ; <new_line> $global_source_path_prefix_saved = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> $global_target_path_prefix_saved = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> # ensure source file exists <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_target_path_prefix_saved ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> if ( $global_action_result eq ' . "'" . 'no' . "'" . ') { <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ; <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__rename_file__case_source_file_invalid_name_or_not_exists ' . "'" . ' . $global_source_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> # ensure target file does not exist <new_line> $global_source_file_name = $global_target_file_name_saved ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ; <new_line> if ( $global_action_result eq ' . "'" . 'yes' . "'" . ') { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__rename_file__case_target_file_already_exists ' . "'" . ' . $global_target_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_source_file_full_path = $global_target_path_prefix_saved . $global_source_file_name_saved ; <new_line> rename( $global_source_file_full_path , $global_target_file_name_saved ) ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
+my $storage_item__5464 = '# no-space dashes-long-line <new_line> sub function__rename_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'rename_file' . "'" . ' ; <new_line> template-check-operand-one-input-file-exists template-check-operand-one-is-file-name $global_source_file_name = $global_operand_one ; <new_line> $global_target_file_name = $global_operand_two ; <new_line> # save some values because function yes_or_no_file_exists is used for non no-space character-hyphen no-space standard purposes here <new_line> $global_source_file_name_saved = $global_source_file_name ; <new_line> $global_target_file_name_saved = $global_target_file_name ; <new_line> $global_source_path_prefix_saved = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> $global_target_path_prefix_saved = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> # ensure source file exists <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_target_path_prefix_saved ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> if ( $global_action_result eq ' . "'" . 'no' . "'" . ') { <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ; <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__rename_file__case_source_file_invalid_name_or_not_exists ' . "'" . ' . $global_source_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> # ensure target file does not exist <new_line> $global_source_file_name = $global_target_file_name_saved ; <new_line> &function__yes_or_no_file_exists( ) ; <new_line> code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end = $global_source_path_prefix_saved ; <new_line> if ( $global_action_result eq ' . "'" . 'yes' . "'" . ') { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__rename_file__case_target_file_already_exists ' . "'" . ' . $global_target_file_name ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_source_file_full_path = $global_target_path_prefix_saved . $global_source_file_name_saved ; <new_line> rename( $global_source_file_full_path , $global_target_file_name_saved ) ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5463 } = $storage_item__5464 ;
 my $storage_item__5465 = 'template-function-segment-ending' ;
 my $storage_item__5466 = '# end of function <new_line> } <new_line> <new_line> <new_line>' ;
@@ -5748,13 +5748,13 @@ my $storage_item__5467 = 'template-function-segment-if-zero-words-return-default
 my $storage_item__5468 = '# begin code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line> &function__point_to_words( ) ; <new_line> if ( $global_number_of_words == 0 ) { <new_line> $global_target_text = $global_default_text ; <new_line> return $global_default_text ; <new_line> } <new_line> # end code generated from "template<character_hyphen>function<character_hyphen>segment<character_hyphen>if<character_hyphen>zero<character_hyphen>words<character_hyphen>return<character_hyphen>default<character_hyphen>text" <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5467 } = $storage_item__5468 ;
 my $storage_item__5469 = 'template-function-set-file-permission-private-but-executable' ;
-my $storage_item__5470 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_private_but_executable( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_private_but_executable' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__5470 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_private_but_executable( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_private_but_executable' . "'" . ' ; <new_line> template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private_but_executable__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5469 } = $storage_item__5470 ;
 my $storage_item__5471 = 'template-function-set-file-permission-private' ;
-my $storage_item__5472 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_private( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_private' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_private_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__5472 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_private( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_private' . "'" . ' ; <new_line> template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_private_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_private__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5471 } = $storage_item__5472 ;
 my $storage_item__5473 = 'template-function-set-file-permission-public-read' ;
-my $storage_item__5474 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_public_read( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_public_read' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
+my $storage_item__5474 = '# no-space dashes-long-line <new_line> sub function__set_file_permission_public_read( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'set_file_permission_public_read' . "'" . ' ; <new_line> template-check-operand-one-is-file-name if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space writing' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_invalid_path_prefix' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_target_file_full_path = $global_target_path_prefix . $global_operand_one ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( not( chmod( $global_file_public_read_protection_mode , $global_target_file_full_path ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__set_file_permission_public_read__case_not_successful ' . "'" . ' . $global_target_file_full_path ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5473 } = $storage_item__5474 ;
 my $storage_item__5475 = 'template-function-size-of-file' ;
 my $storage_item__5476 = '# no-space dashes-long-line <new_line> sub function__size_of_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'size_of_file' . "'" . ' ; <new_line> template-check-operand-one-is-file-name $global_action_result = ' . "'" . '0' . "'" . ' ; <new_line> $global_source_path_prefix = code-get-or-put-phrase-definition-begin ' . "'" . 'dashrep no-space character-hyphen no-space path no-space character-hyphen no-space prefix no-space character-hyphen no-space for no-space character-hyphen no-space file no-space character-hyphen no-space reading' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__size_of_file__case_invalid_path_prefix ' . "'" . ' . $global_source_path_prefix ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__size_of_file__case_invalid_file_name ' . "'" . ' . $global_operand_one ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> $global_source_file_full_path = $global_source_path_prefix . $global_operand_one ; <new_line> $global_action_result = sprintf( "%d" , ( stat( $global_source_file_full_path ) )[7] ) ; <new_line> template-function-segment-ending' ;
@@ -5769,7 +5769,7 @@ my $storage_item__5481 = 'template-function-trace-show' ;
 my $storage_item__5482 = '# no-space dashes-long-line <new_line> sub function__trace_show( ) { <new_line> # $global_action_name_with_underscores = ' . "'" . 'trace_show' . "'" . ' ; <new_line> $global_action_result = ' . "'" . "'" . ' ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> print TRACE_OUT ' . "'" . 'trace text:' . "'" . ' . "' . '\\' . 'n" . $global_operand_one . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } elsif ( exists( code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ) ) { <new_line> print TRACE_OUT $global_operand_one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT $global_operand_one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5481 } = $storage_item__5482 ;
 my $storage_item__5483 = 'template-function-write-dashrep-definitions-listed-in-phrase-to-file' ;
-my $storage_item__5484 = '# no-space dashes-long-line <new_line> sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'write_dashrep_definitions_listed_in_phrase_to_file' . "'" . ' ; <new_line> template-return-if-no-permission-to-delete-overwrite-files template-check-operand-one-is-phrase-not-empty $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-writing-new-file $global_action_result = ' . "'" . "'" . ' ; <new_line> @global_list_of_phrases = split( /[ ' . '\\' . 'n' . '\\' . 'r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ; <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_all_defs_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space begin<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_all_defs_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_all_defs_end = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_all_defs_end = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_phrase_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space begin<character_hyphen>] ' . "'" . ' ; <new_line> } else <new_line> { <new_line> $global_phrase_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_phrase_end = ' . "'" . ' [<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_phrase_end = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_def_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space begin<character_hyphen>] ' . "'" . ' ; <new_line> } else <new_line> { <new_line> $global_def_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_def_end = ' . "'" . ' [<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_def_end = ' . "'" . "'" . ' ; <new_line> } <new_line> $global_counter = 0 ; <new_line> foreach $global_phrase_name ( @global_list_of_phrases ) { <new_line> if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne ' . "'" . 'four no-space character-hyphen no-space hyphens' . "'" . ' ) ) { <new_line> print OUTFILE $global_phrase_name . "' . '\\' . 'n" ; <new_line> $global_counter ++ ; <new_line> } <new_line> } <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
+my $storage_item__5484 = '# no-space dashes-long-line <new_line> sub function__write_dashrep_definitions_listed_in_phrase_to_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'write_dashrep_definitions_listed_in_phrase_to_file' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-not-empty $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-writing-new-file $global_action_result = ' . "'" . "'" . ' ; <new_line> @global_list_of_phrases = split( /[ ' . '\\' . 'n' . '\\' . 'r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ; <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_all_defs_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space begin<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_all_defs_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_all_defs_end = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space all no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_all_defs_end = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_phrase_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space begin<character_hyphen>] ' . "'" . ' ; <new_line> } else <new_line> { <new_line> $global_phrase_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_phrase_end = ' . "'" . ' [<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space phrase no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_phrase_end = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space begin' . "'" . ' } ) ) { <new_line> $global_def_begin = ' . "'" . '[<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space begin<character_hyphen>] ' . "'" . ' ; <new_line> } else <new_line> { <new_line> $global_def_begin = ' . "'" . "'" . ' ; <new_line> } <new_line> if ( exists( $global_dashrep_replacement{ ' . "'" . 'export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space end' . "'" . ' } ) ) { <new_line> $global_def_end = ' . "'" . ' [<character_hyphen>export no-space character-hyphen no-space defs no-space character-hyphen no-space def no-space character-hyphen no-space end<character_hyphen>]' . "'" . ' . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } else <new_line> { <new_line> $global_def_end = ' . "'" . "'" . ' ; <new_line> } <new_line> $global_counter = 0 ; <new_line> foreach $global_phrase_name ( @global_list_of_phrases ) { <new_line> if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) && ( $global_phrase_name ne ' . "'" . 'four no-space character-hyphen no-space hyphens' . "'" . ' ) ) { <new_line> print OUTFILE $global_phrase_name . "' . '\\' . 'n" ; <new_line> $global_counter ++ ; <new_line> } <new_line> } <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
 $global_dashrep_replacement{ $storage_item__5483 } = $storage_item__5484 ;
 my $storage_item__5485 = 'template-function-write-gathered-listed-items-to-end-of-file' ;
 my $storage_item__5486 = '# no-space dashes-long-line <new_line> sub function__write_gathered_listed_items_to_end_of_file( ) { <new_line> $global_action_name_with_underscores = ' . "'" . 'write_gathered_listed_items_to_end_of_file' . "'" . ' ; <new_line> template-check-operand-one-is-phrase-not-empty $global_target_file_name = $global_operand_two ; <new_line> template-open-file-for-appending $global_action_result = ' . "'" . "'" . ' ; <new_line> $global_accumulated_text = ' . "'" . "'" . ' ; <new_line> $global_entry_begin = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gather no-space character-hyphen no-space tag no-space character-hyphen no-space begin' . "'" . ' } ; <new_line> $global_entry_end = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gather no-space character-hyphen no-space tag no-space character-hyphen no-space end' . "'" . ' } ; <new_line> $global_entry_unique = $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gather no-space character-hyphen no-space tag no-space character-hyphen no-space unique' . "'" . ' } ; <new_line> @global_list_of_tag_names = ( ) ; <new_line> if ( ( exists( $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gathered no-space character-hyphen no-space tag no-space character-hyphen no-space names no-space character-hyphen no-space in no-space character-hyphen no-space sequence' . "'" . ' } ) ) && ( $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gathered no-space character-hyphen no-space tag no-space character-hyphen no-space names no-space character-hyphen no-space in no-space character-hyphen no-space sequence' . "'" . ' } =~ /[^ ]/ ) ) { <new_line> @global_list_of_tag_names = split( /[ ' . '\\' . 'n' . '\\' . 'r]+/ , $global_dashrep_replacement{ ' . "'" . 'dashrep no-space character-hyphen no-space gathered no-space character-hyphen no-space tag no-space character-hyphen no-space names no-space character-hyphen no-space in no-space character-hyphen no-space sequence' . "'" . ' } ) ; <new_line> } <new_line> @global_list_of_unique_values = ( ) ; <new_line> if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) { <new_line> @global_list_of_unique_values = split( /[ ' . '\\' . 'n' . '\\' . 'r]+/ , $global_dashrep_replacement{ $global_operand_one } ) ; <new_line> } <new_line> foreach $global_unique_value ( @global_list_of_unique_values ) { <new_line> $global_accumulated_text .= $global_entry_begin . "' . '\\' . 'n" ; <new_line> $global_accumulated_text .= $global_entry_unique . ' . "'" . ' ' . "'" . ' . $global_unique_value . "' . '\\' . 'n" ; <new_line> foreach $global_tag_name ( @global_list_of_tag_names ) { <new_line> $global_phrase_name = $global_tag_name . ' . "'" . '<character_hyphen>value no-space character-hyphen no-space for no-space character-hyphen no-space unique no-space character-hyphen no-space id<character_hyphen>' . "'" . ' . $global_unique_value ; <new_line> if ( exists( $global_dashrep_replacement{ $global_phrase_name } ) ) { <new_line> $global_accumulated_text .= $global_tag_name . ' . "'" . ' ' . "'" . ' . $global_dashrep_replacement{ $global_phrase_name } . "' . '\\' . 'n" ; <new_line> } <new_line> } <new_line> $global_accumulated_text .= $global_entry_end . "' . '\\' . 'n' . '\\' . 'n" ; <new_line> } <new_line> print OUTFILE $global_accumulated_text . "' . '\\' . 'n" ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> close( OUTFILE ) ; <new_line> template-runtime-code-protect-target-file template-function-segment-ending' ;
@@ -5817,7 +5817,7 @@ my $storage_item__5513 = 'template-runtime-code-for-action-append-text' ;
 my $storage_item__5514 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_source_text = &function_parameterized__remove_leading_trailing_spaces( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ; <new_line> $global_target_text = runtime-code-for-operand-number-two ; <new_line> if ( code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) { <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5513 } = $storage_item__5514 ;
 my $storage_item__5515 = 'template-runtime-code-for-action-copy-and-replace' ;
-my $storage_item__5516 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_text_source = length( $global_source_text ) ; <new_line> $global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ; <new_line> $global_character_pointer_begin = 0 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> $global_target_text = ' . "'" . "'" . ' ; <new_line> while ( $global_character_pointer_end >= -1 ) { <new_line> $global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ; <new_line> if ( $global_length_of_text_segment > 0 ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ; <new_line> } <new_line> $global_target_text .= $global_text_to_insert ; <new_line> $global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> } <new_line> if ( $global_character_pointer_begin < $global_length_of_text_source ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5516 = 'template-runtime-code-for-every-action-begin $global_yes_or_no_operand_error = $global_no ; <new_line> check-operand-one-is-phrase-name check-operand-two-is-phrase-name check-operand-three-is-phrase-name check-operand-four-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> $global_operand_four = runtime-code-for-operand-number-four ; <new_line> $global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_text_source = length( $global_source_text ) ; <new_line> $global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ; <new_line> $global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ; <new_line> $global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ; <new_line> $global_character_pointer_begin = 0 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> $global_target_text = ' . "'" . "'" . ' ; <new_line> while ( $global_character_pointer_end >= -1 ) { <new_line> $global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ; <new_line> if ( $global_length_of_text_segment > 0 ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ; <new_line> } <new_line> $global_target_text .= $global_text_to_insert ; <new_line> $global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ; <new_line> $global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ; <new_line> } <new_line> if ( $global_character_pointer_begin < $global_length_of_text_source ) { <new_line> $global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ; <new_line> } <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5515 } = $storage_item__5516 ;
 my $storage_item__5517 = 'template-runtime-code-for-action-copy-append-file-to-file' ;
 my $storage_item__5518 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_target_file_name = runtime-code-for-operand-number-two ; <new_line> open-file-for-appending $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__copy_append_file_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
@@ -5850,7 +5850,7 @@ my $storage_item__5535 = 'template-runtime-code-for-action-executable-phrase' ;
 my $storage_item__5536 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5535 } = $storage_item__5536 ;
 my $storage_item__5537 = 'template-runtime-code-for-action-expand-text' ;
-my $storage_item__5538 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5538 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5537 } = $storage_item__5538 ;
 my $storage_item__5539 = 'template-runtime-code-for-action-find-line-in-file-that-begins-with-text' ;
 my $storage_item__5540 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize $global_source_file_name = runtime-code-for-operand-number-one ; <new_line> open-file-for-reading if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> $global_operand_three = runtime-code-for-operand-number-three ; <new_line> &function__find_line_in_file_that_begins_with_text( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
@@ -5907,16 +5907,16 @@ my $storage_item__5573 = 'template-runtime-code-for-action-prepend-text-no-space
 my $storage_item__5574 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__prepend_text_no_space__not_phrase_name' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__prepend_text_no_space__not_phrase_name ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5573 } = $storage_item__5574 ;
 my $storage_item__5575 = 'template-runtime-code-for-action-put-into-phrase' ;
-my $storage_item__5576 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5576 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . "'" . ' . runtime-code-for-concatenated-all-operands . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' . "'" . ' ' . "'" . ' ) ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5575 } = $storage_item__5576 ;
 my $storage_item__5577 = 'template-runtime-code-for-action-trace-show-where' ;
 my $storage_item__5578 = 'template-runtime-code-for-every-action-begin &function__open_trace_output_file_if_not_open( ) ; <new_line> print TRACE_OUT ' . "'" . 'trace-show-where:' . "'" . ' . "' . '\\' . 'n" . ' . "'" . ' no-space phrase-being-defined no-space ' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . ' . "'" . '-' . "'" . ' . "' . '\\' . 'n" ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5577 } = $storage_item__5578 ;
 my $storage_item__5579 = 'template-runtime-code-for-action-trace-show' ;
-my $storage_item__5580 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5580 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> &function__open_trace_output_file_if_not_open( ) ; <new_line> if ( exists( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) ) { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } else { <new_line> print TRACE_OUT runtime-code-for-operand-number-one . ' . "'" . ':' . "'" . ' . "' . '\\' . 'n" . ' . "'" . '<character_hyphen><character_hyphen><character_hyphen><character_hyphen>' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5579 } = $storage_item__5580 ;
 my $storage_item__5581 = 'template-runtime-code-for-action-use-handler-with-each-word-in-phrase' ;
-my $storage_item__5582 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-not-empty check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5582 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> my $local_pointer_to_next_space ; <new_line> my $local_pointer_to_future_space ; <new_line> my $local_pointer_to_next_word ; <new_line> my $local_endless_loop_counter ; <new_line> my $local_endless_loop_counter_limit ; <new_line> my $length_of_text_in_word_list ; <new_line> template-storage-item-containing-word-list-associated-with-loop = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ; <new_line> $local_pointer_to_next_space = -1 ; <new_line> $length_of_text_in_word_list = length( template-storage-item-containing-word-list-associated-with-loop ) ; <new_line> $local_endless_loop_counter = 0 ; <new_line> $local_endless_loop_counter_limit = int( ( $length_of_text_in_word_list / 2 ) ) + 10 ; <new_line> while ( 1 == 1 ) { <new_line> $local_endless_loop_counter ++ ; <new_line> if ( $local_endless_loop_counter > $local_endless_loop_counter_limit ) { <new_line> last ; <new_line> } <new_line> if ( $local_pointer_to_next_space >= $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_counter_number_of_adjacent_spaces = 0 ; <new_line> while ( 1 == 1 ) { <new_line> $local_counter_number_of_adjacent_spaces ++ ; <new_line> if ( $local_counter_number_of_adjacent_spaces > $length_of_text_in_word_list ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_future_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_space + 1 ) ; <new_line> if ( $local_pointer_to_future_space != $local_pointer_to_next_space + 1 ) { <new_line> last ; <new_line> } <new_line> $local_pointer_to_next_space = $local_pointer_to_future_space ; <new_line> } <new_line> $local_pointer_to_next_word = $local_pointer_to_next_space + 1 ; <new_line> $local_pointer_to_next_space = index( template-storage-item-containing-word-list-associated-with-loop , ' . "'" . ' ' . "'" . ' , $local_pointer_to_next_word ) ; <new_line> if ( $local_pointer_to_next_space < 0 ) { <new_line> $local_pointer_to_next_space = $length_of_text_in_word_list ; <new_line> } <new_line> if ( ( $local_pointer_to_next_word >= $local_pointer_to_next_space ) || ( $local_pointer_to_next_word < 0 ) || ( $local_pointer_to_next_space < 0 ) ) { <new_line> last ; <new_line> } <new_line> $global_word_to_use_in_handler = substr( template-storage-item-containing-word-list-associated-with-loop , $local_pointer_to_next_word , $local_pointer_to_next_space - $local_pointer_to_next_word ) ; <new_line> code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler code-get-or-put-phrase-definition-end = $global_word_to_use_in_handler ; <new_line> & no-space function-name-prefix no-space handler-name-with-underscores no-space ( ) ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5581 } = $storage_item__5582 ;
 my $storage_item__5583 = 'template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file' ;
 my $storage_item__5584 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> &function__write_dashrep_definitions_listed_in_phrase_to_file( ) ; <new_line> runtime-code-storage-item-result = $global_action_result ; <new_line> template-runtime-code-for-every-action-end' ;
@@ -5940,7 +5940,7 @@ my $storage_item__5595 = 'template-runtime-code-for-action-yes-or-no-opposite' ;
 my $storage_item__5596 = 'template-runtime-code-for-every-action-begin $global_concatenated_all_operands = runtime-code-for-concatenated-all-operands ; <new_line> if ( index( $global_concatenated_all_operands , ' . "'" . 'yes' . "'" . ' ) >= 0 ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5595 } = $storage_item__5596 ;
 my $storage_item__5597 = 'template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions' ;
-my $storage_item__5598 = 'template-runtime-code-for-every-action-begin runtime-code-check-operand-initialize check-operand-one-is-phrase-name check-operand-two-is-phrase-name if ( $global_yes_or_no_operand_error == $global_no ) { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } else { <new_line> template-runtime-code-store-result-for-case-error } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5598 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5597 } = $storage_item__5598 ;
 my $storage_item__5599 = 'template-runtime-code-for-action-yes-or-no-same-two-words' ;
 my $storage_item__5600 = 'template-runtime-code-for-every-action-begin if ( runtime-code-for-operand-number-one eq runtime-code-for-operand-number-two ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'yes' . "'" . ' ; <new_line> } else { <new_line> runtime-code-storage-item-result = ' . "'" . 'no' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
@@ -6463,18 +6463,11 @@ $storage_item__1021 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1024 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1025 . ' ' . $storage_item__1026 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1025 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1026 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1025 ) == $global_no ) {
+$storage_item__1024 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1025 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1026 ) == $global_no ) {
+$storage_item__1024 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1026 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -6518,26 +6511,17 @@ $global_word_to_use_in_handler = substr( $storage_item__1027 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__generate_runtime_code_for_one_function_branch( ) ;
 }
-} else {
-$storage_item__1024 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1025 . ' ' . $storage_item__1026 . ' ' ;
 }
 # print 'result: ' . $storage_item__1024 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1028 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1029 . ' ' . $storage_item__1030 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1029 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1030 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1029 ) == $global_no ) {
+$storage_item__1028 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1029 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1030 ) == $global_no ) {
+$storage_item__1028 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1030 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -6581,8 +6565,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1031 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__generate_runtime_code_for_external_function_branch( ) ;
 }
-} else {
-$storage_item__1028 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1029 . ' ' . $storage_item__1030 . ' ' ;
 }
 # print 'result: ' . $storage_item__1028 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -6642,18 +6624,11 @@ $storage_item__1047 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1050 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1051 . ' ' . $storage_item__1052 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1051 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1052 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1051 ) == $global_no ) {
+$storage_item__1050 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1051 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1052 ) == $global_no ) {
+$storage_item__1050 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1052 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -6697,8 +6672,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1053 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__generate_runtime_code_for_one_function_replacement_only( ) ;
 }
-} else {
-$storage_item__1050 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1051 . ' ' . $storage_item__1052 . ' ' ;
 }
 # print 'result: ' . $storage_item__1050 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -6725,21 +6698,15 @@ $storage_item__1057 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1060 *** trace-show ** 1 *' . $storage_item__1061 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1061 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1061 ) == $global_no ) {
+$storage_item__1060 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1061 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1061 } ) ) {
 print TRACE_OUT $storage_item__1061 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1061 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1061 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1060 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1061 . ' ' ;
 }
 # print 'result: ' . $storage_item__1060 . "\n" ;
 # end of action trace-show
@@ -6766,21 +6733,15 @@ $storage_item__1065 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1068 *** trace-show ** 1 *' . $storage_item__1069 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1069 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1069 ) == $global_no ) {
+$storage_item__1068 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1069 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1069 } ) ) {
 print TRACE_OUT $storage_item__1069 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1069 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1069 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1068 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1069 . ' ' ;
 }
 # print 'result: ' . $storage_item__1068 . "\n" ;
 # end of action trace-show
@@ -6807,21 +6768,15 @@ $storage_item__1073 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-finish **** 1076 *** trace-show ** 1 *' . $storage_item__1077 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1077 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1077 ) == $global_no ) {
+$storage_item__1076 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1077 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1077 } ) ) {
 print TRACE_OUT $storage_item__1077 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1077 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1077 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1076 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1077 . ' ' ;
 }
 # print 'result: ' . $storage_item__1076 . "\n" ;
 # end of action trace-show
@@ -6906,21 +6861,15 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1085 *** trace-show ** 1 *' . $storage_item__1086 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1086 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1086 ) == $global_no ) {
+$storage_item__1085 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1086 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1086 } ) ) {
 print TRACE_OUT $storage_item__1086 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1086 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1086 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1085 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1086 . ' ' ;
 }
 # print 'result: ' . $storage_item__1085 . "\n" ;
 # end of action trace-show
@@ -6936,37 +6885,24 @@ $storage_item__1087 = $global_action_result ;
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1089 *** put-into-phrase ** 2 *' . $storage_item__1090 . ' ' . $storage_item__1091 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1090 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1090 ) == $global_no ) {
+$storage_item__1089 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1090 . ' ' . $storage_item__1091 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1090 . ' ' . $storage_item__1091 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1090 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1089 = '' ;
-} else {
-$storage_item__1089 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1090 . ' ' . $storage_item__1091 . ' ' ;
 }
 # print 'result: ' . $storage_item__1089 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** compile-source-code-generate-output-results **** 1092 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1093 . ' ' . $storage_item__1094 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1093 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1094 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1093 ) == $global_no ) {
+$storage_item__1092 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1093 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1094 ) == $global_no ) {
+$storage_item__1092 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1094 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -7010,8 +6946,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1095 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__filter_tokens_case_1( ) ;
 }
-} else {
-$storage_item__1092 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1093 . ' ' . $storage_item__1094 . ' ' ;
 }
 # print 'result: ' . $storage_item__1092 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -7076,57 +7010,39 @@ exit ;
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1101 *** put-into-phrase ** 2 *' . $storage_item__1102 . ' ' . $storage_item__1103 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1102 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1102 ) == $global_no ) {
+$storage_item__1101 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1102 . ' ' . $storage_item__1103 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1102 . ' ' . $storage_item__1103 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1102 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1101 = '' ;
-} else {
-$storage_item__1101 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1102 . ' ' . $storage_item__1103 . ' ' ;
 }
 # print 'result: ' . $storage_item__1101 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1104 *** put-into-phrase ** 2 *' . $storage_item__1105 . ' ' . $storage_item__1106 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1105 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1105 ) == $global_no ) {
+$storage_item__1104 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1105 . ' ' . $storage_item__1106 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1105 . ' ' . $storage_item__1106 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1105 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1104 = '' ;
-} else {
-$storage_item__1104 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1105 . ' ' . $storage_item__1106 . ' ' ;
 }
 # print 'result: ' . $storage_item__1104 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1107 *** put-into-phrase ** 2 *' . $storage_item__1108 . ' ' . $storage_item__1109 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1108 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1108 ) == $global_no ) {
+$storage_item__1107 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1108 . ' ' . $storage_item__1109 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1108 . ' ' . $storage_item__1109 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1108 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1107 = '' ;
-} else {
-$storage_item__1107 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1108 . ' ' . $storage_item__1109 . ' ' ;
 }
 # print 'result: ' . $storage_item__1107 . "\n" ;
 # end of action put-into-phrase
@@ -7139,19 +7055,13 @@ $storage_item__1112 = sprintf( "%d" , time ) ;
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1110 *** put-into-phrase ** 2 *' . $storage_item__1111 . ' ' . $storage_item__1112 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1111 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1111 ) == $global_no ) {
+$storage_item__1110 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1111 . ' ' . $storage_item__1112 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1111 . ' ' . $storage_item__1112 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1111 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1110 = '' ;
-} else {
-$storage_item__1110 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1111 . ' ' . $storage_item__1112 . ' ' ;
 }
 # print 'result: ' . $storage_item__1110 . "\n" ;
 # end of action put-into-phrase
@@ -7198,18 +7108,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1117 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1118 . ' ' . $storage_item__1119 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1118 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1119 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1118 ) == $global_no ) {
+$storage_item__1117 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1118 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1119 ) == $global_no ) {
+$storage_item__1117 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1119 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -7253,26 +7156,17 @@ $global_word_to_use_in_handler = substr( $storage_item__1120 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__expand_one_template( ) ;
 }
-} else {
-$storage_item__1117 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1118 . ' ' . $storage_item__1119 . ' ' ;
 }
 # print 'result: ' . $storage_item__1117 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1121 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1122 . ' ' . $storage_item__1123 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1122 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1123 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1122 ) == $global_no ) {
+$storage_item__1121 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1122 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1123 ) == $global_no ) {
+$storage_item__1121 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1123 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -7316,65 +7210,45 @@ $global_word_to_use_in_handler = substr( $storage_item__1124 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__generate_runtime_code_using_quoted_string( ) ;
 }
-} else {
-$storage_item__1121 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1122 . ' ' . $storage_item__1123 . ' ' ;
 }
 # print 'result: ' . $storage_item__1121 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1125 *** put-into-phrase ** 2 *' . $storage_item__1126 . ' ' . $storage_item__1127 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1126 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1126 ) == $global_no ) {
+$storage_item__1125 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1126 . ' ' . $storage_item__1127 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1126 . ' ' . $storage_item__1127 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1126 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1125 = '' ;
-} else {
-$storage_item__1125 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1126 . ' ' . $storage_item__1127 . ' ' ;
 }
 # print 'result: ' . $storage_item__1125 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1128 *** put-into-phrase ** 2 *' . $storage_item__1129 . ' ' . $storage_item__1130 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1129 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1129 ) == $global_no ) {
+$storage_item__1128 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1129 . ' ' . $storage_item__1130 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1129 . ' ' . $storage_item__1130 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1129 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1128 = '' ;
-} else {
-$storage_item__1128 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1129 . ' ' . $storage_item__1130 . ' ' ;
 }
 # print 'result: ' . $storage_item__1128 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** compile-source-code-initialize **** 1131 *** put-into-phrase ** 2 *' . $storage_item__1132 . ' ' . $storage_item__1133 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1132 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1132 ) == $global_no ) {
+$storage_item__1131 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1132 . ' ' . $storage_item__1133 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1132 . ' ' . $storage_item__1133 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1132 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1131 = '' ;
-} else {
-$storage_item__1131 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1132 . ' ' . $storage_item__1133 . ' ' ;
 }
 # print 'result: ' . $storage_item__1131 . "\n" ;
 # end of action put-into-phrase
@@ -7754,37 +7628,24 @@ $storage_item__1173 = $global_action_result ;
 
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1176 *** put-into-phrase ** 3 *' . $storage_item__1177 . ' ' . $storage_item__1178 . ' ' . $storage_item__1179 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1177 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1177 ) == $global_no ) {
+$storage_item__1176 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1177 . ' ' . $storage_item__1178 . ' ' . $storage_item__1179 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1177 . ' ' . $storage_item__1178 . ' ' . $storage_item__1179 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1177 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1176 = '' ;
-} else {
-$storage_item__1176 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1177 . ' ' . $storage_item__1178 . ' ' . $storage_item__1179 . ' ' ;
 }
 # print 'result: ' . $storage_item__1176 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** convert-source-code-into-words **** 1180 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1181 . ' ' . $storage_item__1182 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1181 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1182 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1181 ) == $global_no ) {
+$storage_item__1180 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1181 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1182 ) == $global_no ) {
+$storage_item__1180 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1182 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -7828,8 +7689,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1183 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__convert_source_code_simplify_no_space_one_space_directives( ) ;
 }
-} else {
-$storage_item__1180 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1181 . ' ' . $storage_item__1182 . ' ' ;
 }
 # print 'result: ' . $storage_item__1180 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -8005,21 +7864,15 @@ exit ;
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1204 *** trace-show ** 1 *' . $storage_item__1205 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1205 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1205 ) == $global_no ) {
+$storage_item__1204 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1205 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1205 } ) ) {
 print TRACE_OUT $storage_item__1205 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1205 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1205 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1204 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1205 . ' ' ;
 }
 # print 'result: ' . $storage_item__1204 . "\n" ;
 # end of action trace-show
@@ -8576,21 +8429,15 @@ $storage_item__1251 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1256 *** trace-show ** 1 *' . $storage_item__1257 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1257 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1257 ) == $global_no ) {
+$storage_item__1256 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1257 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1257 } ) ) {
 print TRACE_OUT $storage_item__1257 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1257 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1257 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1256 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1257 . ' ' ;
 }
 # print 'result: ' . $storage_item__1256 . "\n" ;
 # end of action trace-show
@@ -8677,18 +8524,11 @@ $storage_item__1277 = ' ' ;
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1280 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1281 . ' ' . $storage_item__1282 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1281 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1282 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1281 ) == $global_no ) {
+$storage_item__1280 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1281 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1282 ) == $global_no ) {
+$storage_item__1280 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1282 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -8732,8 +8572,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1283 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__get_source_code_character_at_adjacent_position( ) ;
 }
-} else {
-$storage_item__1280 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1281 . ' ' . $storage_item__1282 . ' ' ;
 }
 # print 'result: ' . $storage_item__1280 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -8761,81 +8599,56 @@ $storage_item__1287 = $global_action_result ;
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1291 *** trace-show ** 1 *' . $storage_item__1292 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1292 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1292 ) == $global_no ) {
+$storage_item__1291 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1292 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1292 } ) ) {
 print TRACE_OUT $storage_item__1292 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1292 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1292 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1291 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1292 . ' ' ;
 }
 # print 'result: ' . $storage_item__1291 . "\n" ;
 # end of action trace-show
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1293 *** trace-show ** 1 *' . $storage_item__1294 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1294 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1294 ) == $global_no ) {
+$storage_item__1293 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1294 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1294 } ) ) {
 print TRACE_OUT $storage_item__1294 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1294 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1294 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1293 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1294 . ' ' ;
 }
 # print 'result: ' . $storage_item__1293 . "\n" ;
 # end of action trace-show
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1295 *** trace-show ** 1 *' . $storage_item__1296 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1296 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1296 ) == $global_no ) {
+$storage_item__1295 = 'dashrep_compiled_runtime_error__trace_show__not_phrase_name ' . $storage_item__1296 . ' ' ;
+} else {
 &function__open_trace_output_file_if_not_open( ) ;
 if ( exists( $global_dashrep_replacement{ $storage_item__1296 } ) ) {
 print TRACE_OUT $storage_item__1296 . ':' . "\n" . $global_dashrep_replacement{ $storage_item__1296 } . "\n" . '----' . "\n" ;
 } else {
 print TRACE_OUT $storage_item__1296 . ':' . "\n" . '----' . "\n" ;
 }
-} else {
-$storage_item__1295 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': trace-show ' . $storage_item__1296 . ' ' ;
 }
 # print 'result: ' . $storage_item__1295 . "\n" ;
 # end of action trace-show
 
 # $global_action_debug_line = '***** convert-source-code-replace-parameter-brackets-with-ambee-and-amenn **** 1297 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__1298 . ' ' . $storage_item__1299 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1298 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1299 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1298 ) == $global_no ) {
+$storage_item__1297 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1298 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1299 ) == $global_no ) {
+$storage_item__1297 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1299 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -8879,8 +8692,6 @@ $global_word_to_use_in_handler = substr( $storage_item__1300 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__convert_source_handle_nospay_insertions( ) ;
 }
-} else {
-$storage_item__1297 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__1298 . ' ' . $storage_item__1299 . ' ' ;
 }
 # print 'result: ' . $storage_item__1297 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -9100,19 +8911,13 @@ $storage_item__1321 = $global_action_result ;
 
 # $global_action_debug_line = '***** convert-source-code-simplify-no-space-one-space-directives **** 1319 *** put-into-phrase ** 2 *' . $storage_item__1320 . ' ' . $storage_item__1321 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1320 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1320 ) == $global_no ) {
+$storage_item__1319 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1320 . ' ' . $storage_item__1321 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1320 . ' ' . $storage_item__1321 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1320 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1319 = '' ;
-} else {
-$storage_item__1319 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1320 . ' ' . $storage_item__1321 . ' ' ;
 }
 # print 'result: ' . $storage_item__1319 . "\n" ;
 # end of action put-into-phrase
@@ -9974,19 +9779,13 @@ exit ;
 
 # $global_action_debug_line = '***** create-new-result-storage-position **** 1419 *** put-into-phrase ** 2 *' . $storage_item__1420 . ' ' . $storage_item__1421 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1420 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1420 ) == $global_no ) {
+$storage_item__1419 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1420 . ' ' . $storage_item__1421 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1420 . ' ' . $storage_item__1421 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1420 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1419 = '' ;
-} else {
-$storage_item__1419 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1420 . ' ' . $storage_item__1421 . ' ' ;
 }
 # print 'result: ' . $storage_item__1419 . "\n" ;
 # end of action put-into-phrase
@@ -10199,19 +9998,13 @@ exit ;
 
 # $global_action_debug_line = '***** create-new-text-storage-position **** 1447 *** put-into-phrase ** 2 *' . $storage_item__1448 . ' ' . $storage_item__1449 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1448 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1448 ) == $global_no ) {
+$storage_item__1447 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1448 . ' ' . $storage_item__1449 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1448 . ' ' . $storage_item__1449 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1448 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1447 = '' ;
-} else {
-$storage_item__1447 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1448 . ' ' . $storage_item__1449 . ' ' ;
 }
 # print 'result: ' . $storage_item__1447 . "\n" ;
 # end of action put-into-phrase
@@ -10316,18 +10109,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** expand-one-template **** 1455 *** expand-text ** 2 *' . $storage_item__1456 . '-' . $storage_item__1457 . ' ' . $storage_item__1459 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1456 . '-' . $storage_item__1457 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1459 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1456 . '-' . $storage_item__1457 ) == $global_no ) {
+$storage_item__1455 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__1456 . '-' . $storage_item__1457 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1459 ) == $global_no ) {
+$storage_item__1455 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__1459 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 16 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 16 ;
@@ -10341,8 +10127,6 @@ $global_dashrep_replacement{ $storage_item__1459 } = &dashrep_expand_phrases( $g
 $storage_item__1455 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 16 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__1455 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__1456 . '-' . $storage_item__1457 . ' ' . $storage_item__1459 . ' ' ;
 }
 # print 'result: ' . $storage_item__1455 . "\n" ;
 # end of action expand-text
@@ -11031,19 +10815,13 @@ exit ;
 
 # $global_action_debug_line = '***** filter-tokens-case-combee **** 1545 *** put-into-phrase ** 2 *' . $storage_item__1546 . ' ' . $storage_item__1547 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1546 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1546 ) == $global_no ) {
+$storage_item__1545 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1546 . ' ' . $storage_item__1547 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1546 . ' ' . $storage_item__1547 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1546 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1545 = '' ;
-} else {
-$storage_item__1545 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1546 . ' ' . $storage_item__1547 . ' ' ;
 }
 # print 'result: ' . $storage_item__1545 . "\n" ;
 # end of action put-into-phrase
@@ -11088,19 +10866,13 @@ exit ;
 
 # $global_action_debug_line = '***** filter-tokens-case-comenn **** 1551 *** put-into-phrase ** 2 *' . $storage_item__1552 . ' ' . $storage_item__1553 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1552 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1552 ) == $global_no ) {
+$storage_item__1551 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1552 . ' ' . $storage_item__1553 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1552 . ' ' . $storage_item__1553 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1552 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1551 = '' ;
-} else {
-$storage_item__1551 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1552 . ' ' . $storage_item__1553 . ' ' ;
 }
 # print 'result: ' . $storage_item__1551 . "\n" ;
 # end of action put-into-phrase
@@ -11436,19 +11208,13 @@ $storage_item__1592 = $global_action_result ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1594 *** put-into-phrase ** 2 *' . $storage_item__1595 . ' ' . $storage_item__1596 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1595 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1595 ) == $global_no ) {
+$storage_item__1594 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1595 . ' ' . $storage_item__1596 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1595 . ' ' . $storage_item__1596 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1595 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1594 = '' ;
-} else {
-$storage_item__1594 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1595 . ' ' . $storage_item__1596 . ' ' ;
 }
 # print 'result: ' . $storage_item__1594 . "\n" ;
 # end of action put-into-phrase
@@ -11464,38 +11230,26 @@ $storage_item__1597 = $global_action_result ;
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1599 *** put-into-phrase ** 2 *' . $storage_item__1600 . ' ' . $storage_item__1601 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1600 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1600 ) == $global_no ) {
+$storage_item__1599 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1600 . ' ' . $storage_item__1601 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1600 . ' ' . $storage_item__1601 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1600 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1599 = '' ;
-} else {
-$storage_item__1599 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1600 . ' ' . $storage_item__1601 . ' ' ;
 }
 # print 'result: ' . $storage_item__1599 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** filter-tokens-case-defenn **** 1602 *** put-into-phrase ** 2 *' . $storage_item__1603 . ' ' . $storage_item__1604 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__1603 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1603 ) == $global_no ) {
+$storage_item__1602 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__1603 . ' ' . $storage_item__1604 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__1603 . ' ' . $storage_item__1604 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__1603 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__1602 = '' ;
-} else {
-$storage_item__1602 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__1603 . ' ' . $storage_item__1604 . ' ' ;
 }
 # print 'result: ' . $storage_item__1602 . "\n" ;
 # end of action put-into-phrase
@@ -14883,19 +14637,13 @@ $storage_item__2013 = $global_action_result ;
 
 # $global_action_debug_line = '***** get-all-operands **** 2011 *** put-into-phrase ** 2 *' . $storage_item__2012 . ' ' . $storage_item__2013 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2012 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2012 ) == $global_no ) {
+$storage_item__2011 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2012 . ' ' . $storage_item__2013 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2012 . ' ' . $storage_item__2013 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2012 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2011 = '' ;
-} else {
-$storage_item__2011 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2012 . ' ' . $storage_item__2013 . ' ' ;
 }
 # print 'result: ' . $storage_item__2011 . "\n" ;
 # end of action put-into-phrase
@@ -16402,19 +16150,13 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2220 *** put-into-phrase ** 2 *' . $storage_item__2221 . '-' . $storage_item__2222 . ' ' . $storage_item__2224 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2221 . '-' . $storage_item__2222 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2221 . '-' . $storage_item__2222 ) == $global_no ) {
+$storage_item__2220 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2221 . '-' . $storage_item__2222 . ' ' . $storage_item__2224 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2221 . '-' . $storage_item__2222 . ' ' . $storage_item__2224 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2221 . '-' . $storage_item__2222 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2220 = '' ;
-} else {
-$storage_item__2220 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2221 . '-' . $storage_item__2222 . ' ' . $storage_item__2224 . ' ' ;
 }
 # print 'result: ' . $storage_item__2220 . "\n" ;
 # end of action put-into-phrase
@@ -16640,18 +16382,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-definition-contains-ambee-amenn **** 2254 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__2255 . ' ' . $storage_item__2256 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2255 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2256 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2255 ) == $global_no ) {
+$storage_item__2254 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__2255 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2256 ) == $global_no ) {
+$storage_item__2254 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__2256 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -16695,8 +16430,6 @@ $global_word_to_use_in_handler = substr( $storage_item__2257 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__handle_token_next_case_1( ) ;
 }
-} else {
-$storage_item__2254 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__2255 . ' ' . $storage_item__2256 . ' ' ;
 }
 # print 'result: ' . $storage_item__2254 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -18712,25 +18445,16 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-check-operand-count **** 2500 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__2501 . ' ' . $storage_item__2502 . '-' . $storage_item__2503 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2501 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2502 . '-' . $storage_item__2503 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2501 ) == $global_no ) {
+$storage_item__2500 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2501 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2502 . '-' . $storage_item__2503 ) == $global_no ) {
+$storage_item__2500 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2502 . '-' . $storage_item__2503 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__2501 } eq $global_dashrep_replacement{ $storage_item__2502 . '-' . $storage_item__2503 } ) {
 $storage_item__2500 = 'yes' ;
 } else {
 $storage_item__2500 = 'no' ;
 }
-} else {
-$storage_item__2500 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__2501 . ' ' . $storage_item__2502 . '-' . $storage_item__2503 . ' ' ;
 }
 # print 'result: ' . $storage_item__2500 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -18766,18 +18490,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-check-operand-count **** 2508 *** expand-text ** 2 *' . $storage_item__2509 . ' ' . $storage_item__2510 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2509 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2510 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2509 ) == $global_no ) {
+$storage_item__2508 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2509 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2510 ) == $global_no ) {
+$storage_item__2508 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2510 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 90 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 90 ;
@@ -18791,8 +18508,6 @@ $global_dashrep_replacement{ $storage_item__2510 } = &dashrep_expand_phrases( $g
 $storage_item__2508 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 90 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2508 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2509 . ' ' . $storage_item__2510 . ' ' ;
 }
 # print 'result: ' . $storage_item__2508 . "\n" ;
 # end of action expand-text
@@ -18953,18 +18668,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-might-have-template **** 2528 *** expand-text ** 2 *' . $storage_item__2529 . '-' . $storage_item__2530 . ' ' . $storage_item__2532 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2529 . '-' . $storage_item__2530 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2532 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2529 . '-' . $storage_item__2530 ) == $global_no ) {
+$storage_item__2528 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2529 . '-' . $storage_item__2530 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2532 ) == $global_no ) {
+$storage_item__2528 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2532 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 94 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 94 ;
@@ -18978,8 +18686,6 @@ $global_dashrep_replacement{ $storage_item__2532 } = &dashrep_expand_phrases( $g
 $storage_item__2528 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 94 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2528 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2529 . '-' . $storage_item__2530 . ' ' . $storage_item__2532 . ' ' ;
 }
 # print 'result: ' . $storage_item__2528 . "\n" ;
 # end of action expand-text
@@ -19010,18 +18716,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-might-have-template **** 2534 *** expand-text ** 2 *' . $storage_item__2535 . '-' . $storage_item__2536 . ' ' . $storage_item__2538 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2535 . '-' . $storage_item__2536 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2538 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2535 . '-' . $storage_item__2536 ) == $global_no ) {
+$storage_item__2534 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2535 . '-' . $storage_item__2536 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2538 ) == $global_no ) {
+$storage_item__2534 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2538 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 96 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 96 ;
@@ -19035,8 +18734,6 @@ $global_dashrep_replacement{ $storage_item__2538 } = &dashrep_expand_phrases( $g
 $storage_item__2534 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 96 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2534 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2535 . '-' . $storage_item__2536 . ' ' . $storage_item__2538 . ' ' ;
 }
 # print 'result: ' . $storage_item__2534 . "\n" ;
 # end of action expand-text
@@ -19121,18 +18818,11 @@ $storage_item__2546 = '' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2549 *** expand-text ** 2 *' . $storage_item__2550 . ' ' . $storage_item__2551 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2550 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2551 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2550 ) == $global_no ) {
+$storage_item__2549 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2550 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2551 ) == $global_no ) {
+$storage_item__2549 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2551 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 97 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 97 ;
@@ -19146,8 +18836,6 @@ $global_dashrep_replacement{ $storage_item__2551 } = &dashrep_expand_phrases( $g
 $storage_item__2549 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 97 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2549 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2550 . ' ' . $storage_item__2551 . ' ' ;
 }
 # print 'result: ' . $storage_item__2549 . "\n" ;
 # end of action expand-text
@@ -19190,19 +18878,13 @@ $storage_item__2552 = '' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2557 *** put-into-phrase ** 2 *' . $storage_item__2558 . ' ' . $storage_item__2559 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2558 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2558 ) == $global_no ) {
+$storage_item__2557 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2558 . ' ' . $storage_item__2559 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2558 . ' ' . $storage_item__2559 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2558 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2557 = '' ;
-} else {
-$storage_item__2557 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2558 . ' ' . $storage_item__2559 . ' ' ;
 }
 # print 'result: ' . $storage_item__2557 . "\n" ;
 # end of action put-into-phrase
@@ -19259,19 +18941,13 @@ if ( $global_pointer_to_word >= 0 ) {
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2567 *** put-into-phrase ** 2 *' . $storage_item__2568 . ' ' . $storage_item__2569 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2568 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2568 ) == $global_no ) {
+$storage_item__2567 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2568 . ' ' . $storage_item__2569 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2568 . ' ' . $storage_item__2569 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2568 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2567 = '' ;
-} else {
-$storage_item__2567 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2568 . ' ' . $storage_item__2569 . ' ' ;
 }
 # print 'result: ' . $storage_item__2567 . "\n" ;
 # end of action put-into-phrase
@@ -19323,19 +18999,13 @@ if ( $global_pointer_to_word >= 0 ) {
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2576 *** put-into-phrase ** 2 *' . $storage_item__2577 . ' ' . $storage_item__2578 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2577 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2577 ) == $global_no ) {
+$storage_item__2576 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2577 . ' ' . $storage_item__2578 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2577 . ' ' . $storage_item__2578 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2577 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2576 = '' ;
-} else {
-$storage_item__2576 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2577 . ' ' . $storage_item__2578 . ' ' ;
 }
 # print 'result: ' . $storage_item__2576 . "\n" ;
 # end of action put-into-phrase
@@ -19378,19 +19048,13 @@ if ( $global_pointer_to_word >= 0 ) {
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-empty **** 2587 *** put-into-phrase ** 2 *' . $storage_item__2588 . ' ' . $storage_item__2589 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2588 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2588 ) == $global_no ) {
+$storage_item__2587 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2588 . ' ' . $storage_item__2589 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2588 . ' ' . $storage_item__2589 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2588 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2587 = '' ;
-} else {
-$storage_item__2587 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2588 . ' ' . $storage_item__2589 . ' ' ;
 }
 # print 'result: ' . $storage_item__2587 . "\n" ;
 # end of action put-into-phrase
@@ -19562,25 +19226,16 @@ $storage_item__2605 = $global_action_result ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-not-recognized **** 2613 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__2614 . ' ' . $storage_item__2615 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2614 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2615 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2614 ) == $global_no ) {
+$storage_item__2613 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2614 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2615 ) == $global_no ) {
+$storage_item__2613 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2615 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__2614 } eq $global_dashrep_replacement{ $storage_item__2615 } ) {
 $storage_item__2613 = 'yes' ;
 } else {
 $storage_item__2613 = 'no' ;
 }
-} else {
-$storage_item__2613 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__2614 . ' ' . $storage_item__2615 . ' ' ;
 }
 # print 'result: ' . $storage_item__2613 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -19779,18 +19434,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-possible-variable-operand-count **** 2635 *** expand-text ** 2 *' . $storage_item__2636 . '-' . $storage_item__2637 . ' ' . $storage_item__2639 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2636 . '-' . $storage_item__2637 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2639 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2636 . '-' . $storage_item__2637 ) == $global_no ) {
+$storage_item__2635 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2636 . '-' . $storage_item__2637 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2639 ) == $global_no ) {
+$storage_item__2635 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2639 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 110 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 110 ;
@@ -19804,8 +19452,6 @@ $global_dashrep_replacement{ $storage_item__2639 } = &dashrep_expand_phrases( $g
 $storage_item__2635 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 110 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2635 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2636 . '-' . $storage_item__2637 . ' ' . $storage_item__2639 . ' ' ;
 }
 # print 'result: ' . $storage_item__2635 . "\n" ;
 # end of action expand-text
@@ -20101,19 +19747,13 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-action-recognized **** 2670 *** put-into-phrase ** 2 *' . $storage_item__2671 . ' ' . $storage_item__2672 . '-' . $storage_item__2673 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2671 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2671 ) == $global_no ) {
+$storage_item__2670 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__2671 . ' ' . $storage_item__2672 . '-' . $storage_item__2673 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__2671 . ' ' . $storage_item__2672 . '-' . $storage_item__2673 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__2671 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__2670 = '' ;
-} else {
-$storage_item__2670 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__2671 . ' ' . $storage_item__2672 . '-' . $storage_item__2673 . ' ' ;
 }
 # print 'result: ' . $storage_item__2670 . "\n" ;
 # end of action put-into-phrase
@@ -20601,18 +20241,11 @@ $storage_item__2743 = ' ' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2746 *** expand-text ** 2 *' . $storage_item__2747 . ' ' . $storage_item__2748 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2747 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2748 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2747 ) == $global_no ) {
+$storage_item__2746 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2747 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2748 ) == $global_no ) {
+$storage_item__2746 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2748 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 120 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 120 ;
@@ -20626,8 +20259,6 @@ $global_dashrep_replacement{ $storage_item__2748 } = &dashrep_expand_phrases( $g
 $storage_item__2746 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 120 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2746 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2747 . ' ' . $storage_item__2748 . ' ' ;
 }
 # print 'result: ' . $storage_item__2746 . "\n" ;
 # end of action expand-text
@@ -20638,18 +20269,11 @@ $storage_item__2746 = 'dashrep_compiled_runtime_error__' . $global_runtime_error
 
 # $global_action_debug_line = '***** handle-token-amenn-case-executable-phrase **** 2750 *** expand-text ** 2 *' . $storage_item__2751 . ' ' . $storage_item__2752 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2751 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2752 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2751 ) == $global_no ) {
+$storage_item__2750 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2751 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2752 ) == $global_no ) {
+$storage_item__2750 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2752 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 121 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 121 ;
@@ -20663,8 +20287,6 @@ $global_dashrep_replacement{ $storage_item__2752 } = &dashrep_expand_phrases( $g
 $storage_item__2750 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 121 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2750 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2751 . ' ' . $storage_item__2752 . ' ' ;
 }
 # print 'result: ' . $storage_item__2750 . "\n" ;
 # end of action expand-text
@@ -20927,18 +20549,11 @@ $storage_item__2776 = ' ' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-expand-text **** 2779 *** expand-text ** 2 *' . $storage_item__2780 . ' ' . $storage_item__2781 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2780 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2781 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2780 ) == $global_no ) {
+$storage_item__2779 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2780 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2781 ) == $global_no ) {
+$storage_item__2779 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2781 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 123 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 123 ;
@@ -20952,8 +20567,6 @@ $global_dashrep_replacement{ $storage_item__2781 } = &dashrep_expand_phrases( $g
 $storage_item__2779 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 123 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2779 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2780 . ' ' . $storage_item__2781 . ' ' ;
 }
 # print 'result: ' . $storage_item__2779 . "\n" ;
 # end of action expand-text
@@ -21058,18 +20671,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-if-else **** 2789 *** expand-text ** 2 *' . $storage_item__2790 . '-' . $storage_item__2791 . ' ' . $storage_item__2793 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2790 . '-' . $storage_item__2791 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2793 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2790 . '-' . $storage_item__2791 ) == $global_no ) {
+$storage_item__2789 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2790 . '-' . $storage_item__2791 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2793 ) == $global_no ) {
+$storage_item__2789 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2793 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 127 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 127 ;
@@ -21083,8 +20689,6 @@ $global_dashrep_replacement{ $storage_item__2793 } = &dashrep_expand_phrases( $g
 $storage_item__2789 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 127 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2789 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2790 . '-' . $storage_item__2791 . ' ' . $storage_item__2793 . ' ' ;
 }
 # print 'result: ' . $storage_item__2789 . "\n" ;
 # end of action expand-text
@@ -21205,18 +20809,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-if-end **** 2804 *** expand-text ** 2 *' . $storage_item__2805 . '-' . $storage_item__2806 . ' ' . $storage_item__2808 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2805 . '-' . $storage_item__2806 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2808 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2805 . '-' . $storage_item__2806 ) == $global_no ) {
+$storage_item__2804 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2805 . '-' . $storage_item__2806 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2808 ) == $global_no ) {
+$storage_item__2804 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2808 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 131 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 131 ;
@@ -21230,8 +20827,6 @@ $global_dashrep_replacement{ $storage_item__2808 } = &dashrep_expand_phrases( $g
 $storage_item__2804 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 131 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2804 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2805 . '-' . $storage_item__2806 . ' ' . $storage_item__2808 . ' ' ;
 }
 # print 'result: ' . $storage_item__2804 . "\n" ;
 # end of action expand-text
@@ -21352,18 +20947,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-if-no-begin **** 2819 *** expand-text ** 2 *' . $storage_item__2820 . '-' . $storage_item__2821 . ' ' . $storage_item__2823 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2820 . '-' . $storage_item__2821 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2823 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2820 . '-' . $storage_item__2821 ) == $global_no ) {
+$storage_item__2819 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2820 . '-' . $storage_item__2821 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2823 ) == $global_no ) {
+$storage_item__2819 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2823 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 135 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 135 ;
@@ -21377,8 +20965,6 @@ $global_dashrep_replacement{ $storage_item__2823 } = &dashrep_expand_phrases( $g
 $storage_item__2819 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 135 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2819 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2820 . '-' . $storage_item__2821 . ' ' . $storage_item__2823 . ' ' ;
 }
 # print 'result: ' . $storage_item__2819 . "\n" ;
 # end of action expand-text
@@ -21499,18 +21085,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn-case-if-yes-begin **** 2834 *** expand-text ** 2 *' . $storage_item__2835 . '-' . $storage_item__2836 . ' ' . $storage_item__2838 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2835 . '-' . $storage_item__2836 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2838 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2835 . '-' . $storage_item__2836 ) == $global_no ) {
+$storage_item__2834 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2835 . '-' . $storage_item__2836 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2838 ) == $global_no ) {
+$storage_item__2834 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2838 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 139 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 139 ;
@@ -21524,8 +21103,6 @@ $global_dashrep_replacement{ $storage_item__2838 } = &dashrep_expand_phrases( $g
 $storage_item__2834 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 139 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2834 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2835 . '-' . $storage_item__2836 . ' ' . $storage_item__2838 . ' ' ;
 }
 # print 'result: ' . $storage_item__2834 . "\n" ;
 # end of action expand-text
@@ -21707,18 +21284,11 @@ $storage_item__2856 = '' ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2861 *** expand-text ** 2 *' . $storage_item__2862 . ' ' . $storage_item__2863 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2862 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2863 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2862 ) == $global_no ) {
+$storage_item__2861 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2862 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2863 ) == $global_no ) {
+$storage_item__2861 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2863 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 144 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 144 ;
@@ -21732,8 +21302,6 @@ $global_dashrep_replacement{ $storage_item__2863 } = &dashrep_expand_phrases( $g
 $storage_item__2861 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 144 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2861 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2862 . ' ' . $storage_item__2863 . ' ' ;
 }
 # print 'result: ' . $storage_item__2861 . "\n" ;
 # end of action expand-text
@@ -21916,18 +21484,11 @@ $storage_item__2881 = $global_action_result ;
 
 # $global_action_debug_line = '***** handle-token-amenn-case-use-handler-with-each-word-in-phrase **** 2887 *** expand-text ** 2 *' . $storage_item__2888 . ' ' . $storage_item__2889 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2888 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2889 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2888 ) == $global_no ) {
+$storage_item__2887 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2888 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2889 ) == $global_no ) {
+$storage_item__2887 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2889 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 149 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 149 ;
@@ -21941,8 +21502,6 @@ $global_dashrep_replacement{ $storage_item__2889 } = &dashrep_expand_phrases( $g
 $storage_item__2887 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 149 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2887 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2888 . ' ' . $storage_item__2889 . ' ' ;
 }
 # print 'result: ' . $storage_item__2887 . "\n" ;
 # end of action expand-text
@@ -22052,18 +21611,11 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** handle-token-amenn **** 2901 *** expand-text ** 2 *' . $storage_item__2902 . ' ' . $storage_item__2903 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2902 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2903 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2902 ) == $global_no ) {
+$storage_item__2901 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2902 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2903 ) == $global_no ) {
+$storage_item__2901 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2903 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 152 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 152 ;
@@ -22077,8 +21629,6 @@ $global_dashrep_replacement{ $storage_item__2903 } = &dashrep_expand_phrases( $g
 $storage_item__2901 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 152 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__2901 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__2902 . ' ' . $storage_item__2903 . ' ' ;
 }
 # print 'result: ' . $storage_item__2901 . "\n" ;
 # end of action expand-text
@@ -22537,25 +22087,16 @@ $storage_item__2956 = ' ' ;
 
 # $global_action_debug_line = '***** handle-token-next-case-3 **** 2960 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__2961 . ' ' . $storage_item__2962 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2961 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__2962 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2961 ) == $global_no ) {
+$storage_item__2960 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2961 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2962 ) == $global_no ) {
+$storage_item__2960 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2962 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__2961 } eq $global_dashrep_replacement{ $storage_item__2962 } ) {
 $storage_item__2960 = 'yes' ;
 } else {
 $storage_item__2960 = 'no' ;
 }
-} else {
-$storage_item__2960 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__2961 . ' ' . $storage_item__2962 . ' ' ;
 }
 # print 'result: ' . $storage_item__2960 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -23357,38 +22898,26 @@ $storage_item__3066 = '' ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3069 *** put-into-phrase ** 2 *' . $storage_item__3070 . ' ' . $storage_item__3071 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3070 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3070 ) == $global_no ) {
+$storage_item__3069 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3070 . ' ' . $storage_item__3071 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3070 . ' ' . $storage_item__3071 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3070 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3069 = '' ;
-} else {
-$storage_item__3069 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3070 . ' ' . $storage_item__3071 . ' ' ;
 }
 # print 'result: ' . $storage_item__3069 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3072 *** put-into-phrase ** 2 *' . $storage_item__3073 . ' ' . $storage_item__3074 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3073 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3073 ) == $global_no ) {
+$storage_item__3072 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3073 . ' ' . $storage_item__3074 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3073 . ' ' . $storage_item__3074 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3073 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3072 = '' ;
-} else {
-$storage_item__3072 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3073 . ' ' . $storage_item__3074 . ' ' ;
 }
 # print 'result: ' . $storage_item__3072 . "\n" ;
 # end of action put-into-phrase
@@ -23424,19 +22953,13 @@ $storage_item__3075 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3078 *** put-into-phrase ** 2 *' . $storage_item__3079 . ' ' . $storage_item__3080 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3079 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3079 ) == $global_no ) {
+$storage_item__3078 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3079 . ' ' . $storage_item__3080 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3079 . ' ' . $storage_item__3080 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3079 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3078 = '' ;
-} else {
-$storage_item__3078 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3079 . ' ' . $storage_item__3080 . ' ' ;
 }
 # print 'result: ' . $storage_item__3078 . "\n" ;
 # end of action put-into-phrase
@@ -23472,19 +22995,13 @@ $storage_item__3081 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3084 *** put-into-phrase ** 2 *' . $storage_item__3085 . ' ' . $storage_item__3086 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3085 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3085 ) == $global_no ) {
+$storage_item__3084 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3085 . ' ' . $storage_item__3086 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3085 . ' ' . $storage_item__3086 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3085 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3084 = '' ;
-} else {
-$storage_item__3084 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3085 . ' ' . $storage_item__3086 . ' ' ;
 }
 # print 'result: ' . $storage_item__3084 . "\n" ;
 # end of action put-into-phrase
@@ -23520,19 +23037,13 @@ $storage_item__3087 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3090 *** put-into-phrase ** 2 *' . $storage_item__3091 . ' ' . $storage_item__3092 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3091 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3091 ) == $global_no ) {
+$storage_item__3090 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3091 . ' ' . $storage_item__3092 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3091 . ' ' . $storage_item__3092 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3091 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3090 = '' ;
-} else {
-$storage_item__3090 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3091 . ' ' . $storage_item__3092 . ' ' ;
 }
 # print 'result: ' . $storage_item__3090 . "\n" ;
 # end of action put-into-phrase
@@ -23568,19 +23079,13 @@ $storage_item__3093 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3096 *** put-into-phrase ** 2 *' . $storage_item__3097 . ' ' . $storage_item__3098 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3097 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3097 ) == $global_no ) {
+$storage_item__3096 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3097 . ' ' . $storage_item__3098 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3097 . ' ' . $storage_item__3098 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3097 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3096 = '' ;
-} else {
-$storage_item__3096 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3097 . ' ' . $storage_item__3098 . ' ' ;
 }
 # print 'result: ' . $storage_item__3096 . "\n" ;
 # end of action put-into-phrase
@@ -23616,19 +23121,13 @@ $storage_item__3099 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3102 *** put-into-phrase ** 2 *' . $storage_item__3103 . ' ' . $storage_item__3104 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3103 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3103 ) == $global_no ) {
+$storage_item__3102 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3103 . ' ' . $storage_item__3104 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3103 . ' ' . $storage_item__3104 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3103 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3102 = '' ;
-} else {
-$storage_item__3102 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3103 . ' ' . $storage_item__3104 . ' ' ;
 }
 # print 'result: ' . $storage_item__3102 . "\n" ;
 # end of action put-into-phrase
@@ -23664,19 +23163,13 @@ $storage_item__3105 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3108 *** put-into-phrase ** 2 *' . $storage_item__3109 . ' ' . $storage_item__3110 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3109 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3109 ) == $global_no ) {
+$storage_item__3108 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3109 . ' ' . $storage_item__3110 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3109 . ' ' . $storage_item__3110 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3109 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3108 = '' ;
-} else {
-$storage_item__3108 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3109 . ' ' . $storage_item__3110 . ' ' ;
 }
 # print 'result: ' . $storage_item__3108 . "\n" ;
 # end of action put-into-phrase
@@ -23712,19 +23205,13 @@ $storage_item__3111 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3114 *** put-into-phrase ** 2 *' . $storage_item__3115 . ' ' . $storage_item__3116 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3115 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3115 ) == $global_no ) {
+$storage_item__3114 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3115 . ' ' . $storage_item__3116 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3115 . ' ' . $storage_item__3116 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3115 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3114 = '' ;
-} else {
-$storage_item__3114 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3115 . ' ' . $storage_item__3116 . ' ' ;
 }
 # print 'result: ' . $storage_item__3114 . "\n" ;
 # end of action put-into-phrase
@@ -23760,19 +23247,13 @@ $storage_item__3117 = $global_action_result ;
 
 # $global_action_debug_line = '***** initialize-input-output-files **** 3120 *** put-into-phrase ** 2 *' . $storage_item__3121 . ' ' . $storage_item__3122 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3121 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3121 ) == $global_no ) {
+$storage_item__3120 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3121 . ' ' . $storage_item__3122 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3121 . ' ' . $storage_item__3122 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3121 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3120 = '' ;
-} else {
-$storage_item__3120 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3121 . ' ' . $storage_item__3122 . ' ' ;
 }
 # print 'result: ' . $storage_item__3120 . "\n" ;
 # end of action put-into-phrase
@@ -23846,19 +23327,13 @@ exit ;
 
 # $global_action_debug_line = '***** recursion-stack-pop-case-empty **** 3131 *** put-into-phrase ** 2 *' . $storage_item__3132 . ' ' . $storage_item__3133 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3132 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3132 ) == $global_no ) {
+$storage_item__3131 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3132 . ' ' . $storage_item__3133 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3132 . ' ' . $storage_item__3133 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3132 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3131 = '' ;
-} else {
-$storage_item__3131 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3132 . ' ' . $storage_item__3133 . ' ' ;
 }
 # print 'result: ' . $storage_item__3131 . "\n" ;
 # end of action put-into-phrase
@@ -24100,19 +23575,13 @@ $storage_item__3169 = $global_action_result ;
 
 # $global_action_debug_line = '***** recursion-stack-pop **** 3167 *** put-into-phrase ** 2 *' . $storage_item__3168 . ' ' . $storage_item__3169 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3168 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3168 ) == $global_no ) {
+$storage_item__3167 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3168 . ' ' . $storage_item__3169 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3168 . ' ' . $storage_item__3169 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3168 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3167 = '' ;
-} else {
-$storage_item__3167 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3168 . ' ' . $storage_item__3169 . ' ' ;
 }
 # print 'result: ' . $storage_item__3167 . "\n" ;
 # end of action put-into-phrase
@@ -24317,19 +23786,13 @@ $storage_item__3195 = $global_action_result ;
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3193 *** put-into-phrase ** 2 *' . $storage_item__3194 . ' ' . $storage_item__3195 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3194 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3194 ) == $global_no ) {
+$storage_item__3193 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3194 . ' ' . $storage_item__3195 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3194 . ' ' . $storage_item__3195 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3194 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3193 = '' ;
-} else {
-$storage_item__3193 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3194 . ' ' . $storage_item__3195 . ' ' ;
 }
 # print 'result: ' . $storage_item__3193 . "\n" ;
 # end of action put-into-phrase
@@ -24388,25 +23851,16 @@ $storage_item__3197 = $global_action_result ;
 
 # $global_action_debug_line = '***** remove-colon-if-at-end-of-phrase-being-defined **** 3205 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__3206 . ' ' . $storage_item__3207 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3206 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3207 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3206 ) == $global_no ) {
+$storage_item__3205 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3206 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3207 ) == $global_no ) {
+$storage_item__3205 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3207 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__3206 } eq $global_dashrep_replacement{ $storage_item__3207 } ) {
 $storage_item__3205 = 'yes' ;
 } else {
 $storage_item__3205 = 'no' ;
 }
-} else {
-$storage_item__3205 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__3206 . ' ' . $storage_item__3207 . ' ' ;
 }
 # print 'result: ' . $storage_item__3205 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -24581,19 +24035,13 @@ $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_loc
 
 # $global_action_debug_line = '***** run-compiler **** 3228 *** put-into-phrase ** 2 *' . $storage_item__3229 . ' ' . $storage_item__3230 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3229 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3229 ) == $global_no ) {
+$storage_item__3228 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__3229 . ' ' . $storage_item__3230 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__3229 . ' ' . $storage_item__3230 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__3229 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__3228 = '' ;
-} else {
-$storage_item__3228 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__3229 . ' ' . $storage_item__3230 . ' ' ;
 }
 # print 'result: ' . $storage_item__3228 . "\n" ;
 # end of action put-into-phrase
@@ -24678,25 +24126,16 @@ exit ;
 
 # $global_action_debug_line = '***** start-branching-if-not-started **** 3239 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__3240 . ' ' . $storage_item__3241 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3240 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3241 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3240 ) == $global_no ) {
+$storage_item__3239 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3240 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3241 ) == $global_no ) {
+$storage_item__3239 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3241 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__3240 } eq $global_dashrep_replacement{ $storage_item__3241 } ) {
 $storage_item__3239 = 'yes' ;
 } else {
 $storage_item__3239 = 'no' ;
 }
-} else {
-$storage_item__3239 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__3240 . ' ' . $storage_item__3241 . ' ' ;
 }
 # print 'result: ' . $storage_item__3239 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -24847,25 +24286,16 @@ exit ;
 
 # $global_action_debug_line = '***** terminate-branching-if-not-terminated **** 3256 *** yes-or-no-same-two-phrase-definitions ** 2 *' . $storage_item__3257 . ' ' . $storage_item__3258 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3257 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3258 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3257 ) == $global_no ) {
+$storage_item__3256 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3257 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3258 ) == $global_no ) {
+$storage_item__3256 = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__3258 . ' ' ;
+} else {
 if ( $global_dashrep_replacement{ $storage_item__3257 } eq $global_dashrep_replacement{ $storage_item__3258 } ) {
 $storage_item__3256 = 'yes' ;
 } else {
 $storage_item__3256 = 'no' ;
 }
-} else {
-$storage_item__3256 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': yes-or-no-same-two-phrase-definitions ' . $storage_item__3257 . ' ' . $storage_item__3258 . ' ' ;
 }
 # print 'result: ' . $storage_item__3256 . "\n" ;
 # end of action yes-or-no-same-two-phrase-definitions
@@ -24877,18 +24307,11 @@ if ( $global_pointer_to_word >= 0 ) {
 
 # $global_action_debug_line = '***** terminate-branching-if-not-terminated **** 3259 *** expand-text ** 2 *' . $storage_item__3260 . ' ' . $storage_item__3261 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3260 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3261 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3260 ) == $global_no ) {
+$storage_item__3259 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3260 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3261 ) == $global_no ) {
+$storage_item__3259 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3261 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 199 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 199 ;
@@ -24902,8 +24325,6 @@ $global_dashrep_replacement{ $storage_item__3261 } = &dashrep_expand_phrases( $g
 $storage_item__3259 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 199 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__3259 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__3260 . ' ' . $storage_item__3261 . ' ' ;
 }
 # print 'result: ' . $storage_item__3259 . "\n" ;
 # end of action expand-text
@@ -26361,18 +25782,11 @@ $storage_item__3417 = $global_action_result ;
 
 # $global_action_debug_line = '***** write-results-to-output-file **** 3420 *** expand-text ** 2 *' . $storage_item__3421 . ' ' . $storage_item__3422 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3421 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__3422 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3421 ) == $global_no ) {
+$storage_item__3420 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3421 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3422 ) == $global_no ) {
+$storage_item__3420 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3422 . ' ' ;
+} else {
 $global_saved_accumulator_pointer_at_recursion_location[ 233 ] = $global_accumulator_pointer ;
 # $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 233 ;
@@ -26386,8 +25800,6 @@ $global_dashrep_replacement{ $storage_item__3422 } = &dashrep_expand_phrases( $g
 $storage_item__3420 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 233 ] ;
 # $global_accumulator_pointer = $saved_accumulator_pointer ;
-} else {
-$storage_item__3420 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': expand-text ' . $storage_item__3421 . ' ' . $storage_item__3422 . ' ' ;
 }
 # print 'result: ' . $storage_item__3420 . "\n" ;
 # end of action expand-text
@@ -29654,18 +29066,11 @@ $storage_item__4051 = $global_action_result ;
 
 # $global_action_debug_line = '***** define-special-strings **** 4055 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4056 . ' ' . $storage_item__4057 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__4056 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__4057 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__4056 ) == $global_no ) {
+$storage_item__4055 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__4056 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__4057 ) == $global_no ) {
+$storage_item__4055 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__4057 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -29709,8 +29114,6 @@ $global_word_to_use_in_handler = substr( $storage_item__4058 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__build_paired_replacements_for_converting_hyphens_into_defenns( ) ;
 }
-} else {
-$storage_item__4055 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__4056 . ' ' . $storage_item__4057 . ' ' ;
 }
 # print 'result: ' . $storage_item__4055 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -29726,38 +29129,26 @@ $storage_item__4059 = $global_action_result ;
 
 # $global_action_debug_line = '***** define-special-strings **** 4061 *** put-into-phrase ** 2 *' . $storage_item__4062 . ' ' . $storage_item__4063 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__4062 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__4062 ) == $global_no ) {
+$storage_item__4061 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__4062 . ' ' . $storage_item__4063 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__4062 . ' ' . $storage_item__4063 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__4062 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__4061 = '' ;
-} else {
-$storage_item__4061 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__4062 . ' ' . $storage_item__4063 . ' ' ;
 }
 # print 'result: ' . $storage_item__4061 . "\n" ;
 # end of action put-into-phrase
 
 # $global_action_debug_line = '***** define-special-strings **** 4064 *** put-into-phrase ** 2 *' . $storage_item__4065 . ' ' . $storage_item__4066 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__4065 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__4065 ) == $global_no ) {
+$storage_item__4064 = 'dashrep_compiled_runtime_error__put_into_phrase__not_phrase_name ' . $storage_item__4065 . ' ' . $storage_item__4066 . ' ' ;
+} else {
 $global_concatenated_all_operands = $storage_item__4065 . ' ' . $storage_item__4066 ;
 $global_pointer_to_first_space = index( $global_concatenated_all_operands , ' ' ) ;
 $global_dashrep_replacement{ $storage_item__4065 } = substr( $global_concatenated_all_operands , ( $global_pointer_to_first_space + 1 ) ) ;
 $storage_item__4064 = '' ;
-} else {
-$storage_item__4064 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': put-into-phrase ' . $storage_item__4065 . ' ' . $storage_item__4066 . ' ' ;
 }
 # print 'result: ' . $storage_item__4064 . "\n" ;
 # end of action put-into-phrase
@@ -29803,18 +29194,11 @@ $storage_item__4073 = $global_action_result ;
 
 # $global_action_debug_line = '***** define-special-strings **** 4077 *** use-handler-with-each-word-in-phrase ** 2 *' . $storage_item__4078 . ' ' . $storage_item__4079 ;
 # print $global_action_debug_line . "\n" ;
-$global_yes_or_no_operand_error = $global_no ;
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__4078 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'phrase_is_empty' ;
-}
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( $storage_item__4079 ) ;
-if ( $global_yes_or_no == $global_no ) {
-$global_yes_or_no_operand_error = $global_yes ;
-$global_runtime_error_type = 'not_phrase_name' ;
-}
-if ( $global_yes_or_no_operand_error == $global_no ) {
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__4078 ) == $global_no ) {
+$storage_item__4077 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__4078 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__4079 ) == $global_no ) {
+$storage_item__4077 = 'dashrep_compiled_runtime_error__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__4079 . ' ' ;
+} else {
 my $local_pointer_to_next_space ;
 my $local_pointer_to_future_space ;
 my $local_pointer_to_next_word ;
@@ -29858,8 +29242,6 @@ $global_word_to_use_in_handler = substr( $storage_item__4080 , $local_pointer_to
 $global_dashrep_replacement{ $global_string_word_to_use_in_handler } = $global_word_to_use_in_handler ;
 &function_compiled__build_paired_replacements_for_converting_to_combee_comenn( ) ;
 }
-} else {
-$storage_item__4077 = 'dashrep_compiled_runtime_error__' . $global_runtime_error_type . ': use-handler-with-each-word-in-phrase ' . $storage_item__4078 . ' ' . $storage_item__4079 . ' ' ;
 }
 # print 'result: ' . $storage_item__4077 . "\n" ;
 # end of action use-handler-with-each-word-in-phrase
@@ -33532,10 +32914,6 @@ $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name
 return '' ;
 }
 }
-if ( not( ( exists( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } eq 'yes' ) ) ) {
-$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_append_to_files ' ;
-return '' ;
-}
 $global_action_result = '' ;
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {
 print OUTFILE $global_dashrep_replacement{ $global_operand_one } . "\n" ;
@@ -33666,10 +33044,6 @@ $global_action_result = &function_parameterized__convert_numeric_value_into_nume
 #------------------------------------------------------------
 sub function__delete_file( ) {
 $global_action_name_with_underscores = 'delete_file' ;
-if ( not( ( exists( $global_dashrep_replacement{ 'yes-or-no-permission-to-delete-or-overwrite-files' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-permission-to-delete-or-overwrite-files' } eq 'yes' ) ) ) {
-$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_delete_overwrite_files ' ;
-return '' ;
-}
 $global_target_file_name = $global_operand_one ;
 $global_action_result = '' ;
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-writing' } ;
@@ -33827,10 +33201,6 @@ close( INFILE ) ;
 #------------------------------------------------------------
 sub function__copy_append_file_to_file( ) {
 $global_action_name_with_underscores = 'copy_append_file_to_file' ;
-if ( not( ( exists( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } ) ) && ( $global_dashrep_replacement{ 'yes-or-no-permission-to-append-to-files' } eq 'yes' ) ) ) {
-$global_action_result = 'dashrep_compiled_runtime_error__case_no_permission_to_append_to_files ' ;
-return '' ;
-}
 $global_target_file_name = $global_operand_two ;
 if ( $global_yes_or_no_file_opened_for_writing == $global_no ) {
 if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) {
