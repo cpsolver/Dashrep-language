@@ -36,5 +36,6 @@ $global_list_of_storage_names =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

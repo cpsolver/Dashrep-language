@@ -54,5 +54,6 @@ if ( ( $global_phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $gl
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_four } = $global_list_of_positions ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

@@ -19,5 +19,6 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

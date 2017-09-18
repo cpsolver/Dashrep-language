@@ -34,5 +34,6 @@ if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
         $global_action_result = 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_creating_sub_folder_not_successful' ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

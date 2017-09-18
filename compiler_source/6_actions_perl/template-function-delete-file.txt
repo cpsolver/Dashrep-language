@@ -25,4 +25,6 @@ $global_target_file_full_path = $global_target_path_prefix . $global_target_file
 
 unlink $global_target_file_full_path ;  <new_line>
 
+return '' ;  <new_line>
+
 template-function-segment-ending

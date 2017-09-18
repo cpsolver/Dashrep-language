@@ -31,5 +31,6 @@ foreach $global_word_to_check ( @global_list_of_words_to_check ) {  <new_line>
 }  <new_line>
 $global_generated_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_generated_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

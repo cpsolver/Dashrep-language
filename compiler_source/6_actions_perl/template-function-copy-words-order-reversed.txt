@@ -24,5 +24,6 @@ if ( $global_count > 0 ) {  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_temp_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

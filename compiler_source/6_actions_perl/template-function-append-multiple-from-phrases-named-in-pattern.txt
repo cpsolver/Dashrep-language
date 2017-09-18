@@ -48,5 +48,6 @@ for ( $global_pointer = 0 ; $global_pointer <= $#global_list_of_parameter_words 
         $global_dashrep_replacement{ $global_target_phrase_name } .= ' ' . $global_text_string ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

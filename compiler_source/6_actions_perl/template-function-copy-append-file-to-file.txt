@@ -22,4 +22,6 @@ close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
 
+return '' ;  <new_line>
+
 template-function-segment-ending

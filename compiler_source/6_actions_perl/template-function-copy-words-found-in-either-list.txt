@@ -24,5 +24,6 @@ if ( $global_text_list_key ne '' ) {  <new_line>
 }  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_result_word_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

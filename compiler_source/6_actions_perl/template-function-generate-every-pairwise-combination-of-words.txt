@@ -48,5 +48,6 @@ for ( $global_counter_one = 1 ; $global_counter_one <= $global_ending_first_coun
         $global_dashrep_replacement{ $global_output_list_two_phrase_name } .= $global_value_two . $global_separator_two ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

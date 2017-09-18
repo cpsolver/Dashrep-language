@@ -122,5 +122,6 @@ if ( $global_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

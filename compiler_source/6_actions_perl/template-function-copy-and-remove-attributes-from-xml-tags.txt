@@ -11,5 +11,6 @@ $global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphe
 $global_text_being_edited =~ s/><!\[CDATA\[/>/gi ;  <new_line>
 $global_text_being_edited =~ s/\]\]></</gi ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

@@ -46,5 +46,6 @@ for ( $global_pair_pointer_offset_zero = 0 ; $global_pair_pointer_offset_zero <=
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

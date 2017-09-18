@@ -28,5 +28,6 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     }  <new_line>
     $global_action_result = substr( $global_string_in_phrase , ( $global_starting_character_position - 1 ) , $global_number_of_characters_to_get ) ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

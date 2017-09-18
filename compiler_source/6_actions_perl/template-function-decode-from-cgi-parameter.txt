@@ -19,5 +19,6 @@ while ( $global_remaining_text =~ /^(.*?)\%([0<character_hyphen>9a hyphen-here f
 $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_accumulated_text =~ s/\+/ /sg ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

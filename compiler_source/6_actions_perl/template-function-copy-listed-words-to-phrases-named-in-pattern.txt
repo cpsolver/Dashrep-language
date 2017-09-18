@@ -63,5 +63,6 @@ for ( $global_pointer = 0 ; $global_pointer <= $global_count ; $global_pointer +
     $global_target_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } .= $global_list_of_source_words[ $global_pointer ] ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

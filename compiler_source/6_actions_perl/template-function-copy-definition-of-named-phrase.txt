@@ -19,5 +19,6 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $g
 } else {  <new_line>
     code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

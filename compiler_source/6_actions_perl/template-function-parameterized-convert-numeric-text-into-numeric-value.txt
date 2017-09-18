@@ -11,5 +11,6 @@ return $1 + 0 ;  <new_line>
 } else {  <new_line>
 return 0 ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

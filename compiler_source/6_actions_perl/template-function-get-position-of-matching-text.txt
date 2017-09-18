@@ -17,5 +17,6 @@ if ( $global_phrase_length > 0 ) {  <new_line>
         $global_action_result = sprintf( "%d" , $global_position ) ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

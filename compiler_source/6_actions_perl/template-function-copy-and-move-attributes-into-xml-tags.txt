@@ -24,5 +24,6 @@ while( $global_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
     $global_endless_loop_counter ++ ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

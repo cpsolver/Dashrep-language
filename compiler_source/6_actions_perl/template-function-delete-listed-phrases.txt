@@ -15,5 +15,6 @@ foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_li
         delete( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

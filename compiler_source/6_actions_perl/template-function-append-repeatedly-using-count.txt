@@ -36,5 +36,6 @@ if ( ( $global_repeat_count < 1 ) || ( $global_repeat_count > 99999 ) ) {  <new_
     }  <new_line>
     $global_dashrep_replacement{ $global_operand_two } .= $global_growing_text_to_append ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

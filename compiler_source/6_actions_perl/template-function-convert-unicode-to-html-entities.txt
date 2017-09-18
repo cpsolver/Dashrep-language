@@ -55,5 +55,6 @@ while ( $global_pointer < $#global_octet_number_at_position ) {  <new_line>
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

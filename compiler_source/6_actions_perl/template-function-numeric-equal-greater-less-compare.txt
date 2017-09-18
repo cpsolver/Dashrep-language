@@ -15,5 +15,6 @@ if ( $global_first_object_of_action == $global_second_object_of_action ) {  <new
 } else {  <new_line>
     $global_action_result = 'less' ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

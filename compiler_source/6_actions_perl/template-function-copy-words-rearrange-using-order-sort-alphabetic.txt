@@ -51,5 +51,6 @@ if ( ( $global_operand_one !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_repl
     $global_text_string =~ s/ $// ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = $global_text_string ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

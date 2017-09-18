@@ -18,5 +18,6 @@ foreach $global_phrase_name ( @global_sequence_of_phrases ) {  <new_line>
         $global_counter ++ ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

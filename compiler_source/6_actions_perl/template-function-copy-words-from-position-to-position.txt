@@ -38,5 +38,6 @@ if ( ( $global_word_count < 1 ) || ( $global_word_number_begin < 1 ) || ( $globa
     $global_result_text =~ s/ +$// ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending

@@ -61,5 +61,6 @@ foreach $global_position_of_text_found ( sort( keys( %global_text_to_find_at_pos
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_positions ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
