@@ -2388,8 +2388,8 @@ $maximum_cycle_count = $cycle_count ;  <new_line>
 $phrase_name = $phrase_name_with_highest_cycle_count ;  <new_line>
 }  <new_line>
 }  <new_line>
-print 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . "\n" ;  <new_line>
 $global_action_result = 'trace_diagnostic__expand_phrases__error_endless_loop__highest_count ' . $phrase_name_with_highest_cycle_count . ' ' . $maximum_cycle_count . "\n" ;  <new_line>
+print $global_action_result . "\n" ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 }  <new_line>
@@ -2581,6 +2581,7 @@ sub handle_endless_loop_encountered( ) {  <new_line>
 
 print 'Exceeded endless hyphen-here loop count of ' . $global_endless_loop_counter_limit . "\n" ;  <new_line>
 $global_action_result = 'trace_diagnostic__handle_endless_loop_encountered' . "\n" ;  <new_line>
+print $global_action_result . "\n" ;  <new_line>
 
 exit ;  <new_line>
 
@@ -2595,6 +2596,7 @@ sub handle_time_limit_exceeded( ) {  <new_line>
 
 print 'Exceeded time limit of ' . $global_time_limit . ' seconds' . "\n" ;  <new_line>
 $global_action_result = 'trace_diagnostic__handle_time_limit_exceeded ' . $global_time_limit . "\n" ;  <new_line>
+print $global_action_result . "\n" ;  <new_line>
 
 exit ;  <new_line>
 
@@ -3948,36 +3950,28 @@ if ( &function_parameterized__yes_or_no_integer( code-get-or-put-phrase-definiti
 }  <new_line>
 ----
 template-check-operand-one-input-file-exists:
-combee ******
 if ( &function_parameterized__yes_or_no_input_file_exists( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_exists_file ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-one-is-file-name:
-combee ******
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_file_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-one-is-folder-name:
-combee ******
 if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_folder_name ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-one-is-input-file-open-for-reading:
-combee ******
 if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading ' . $global_operand_one . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-one-is-integer:
 if ( &function_parameterized__yes_or_no_integer( $global_operand_one ) == $global_no ) {  <new_line>
@@ -4040,20 +4034,16 @@ if ( &function_parameterized__yes_or_no_phrase_contains_real_numbers( $global_op
 }  <new_line>
 ----
 template-check-operand-two-is-file-name:
-combee ******
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_file_name ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-two-is-input-file-open-for-reading:
-combee ******
 if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-two-is-integer:
 if ( &function_parameterized__yes_or_no_integer( $global_operand_two ) == $global_no ) {  <new_line>
@@ -4062,12 +4052,10 @@ if ( &function_parameterized__yes_or_no_integer( $global_operand_two ) == $globa
 }  <new_line>
 ----
 template-check-operand-two-is-output-append-file:
-combee ******
 if ( &function_parameterized__yes_or_no_file_open_for_appending( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_append_to_file ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
-****** comenn
 ----
 template-check-operand-two-is-phrase-name:
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
@@ -8228,8 +8216,6 @@ $global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no
 return $global_no ;  <new_line>
 }  <new_line>
 
-# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_file_name__case_valid_file_name ' . $local_file_name ;  <new_line>
-
 return $global_yes ;  <new_line>
 
 template-function-segment-ending
@@ -8337,8 +8323,6 @@ if ( index( $local_folder_name , '+' ) >= 0 ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__parameterized_yes_or_no_folder_name__case_contains_plus_sign ' . $local_folder_name ;  <new_line>
 return $global_no ;  <new_line>
 }  <new_line>
-
-# $global_action_result = 'trace_diagnostic__parameterized_yes_or_no_folder_name__case_valid_folder_name ' . $local_folder_name ;  <new_line>
 
 return $global_yes ;  <new_line>
 
@@ -9430,28 +9414,30 @@ template-function-yes-or-no-file-exists:
 
 sub function__yes_or_no_file_exists( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_file_exists' ; <new_line>
-template-check-operand-one-is-file-name
-
 $global_action_result = 'no' ;  <new_line>
+
+if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
+    $global_action_result = 'no' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'no' ;  <new_line>
-return '' ;  <new_line>
-}  <new_line>
-
-if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
-$global_action_result = 'no' ;  <new_line>
-return '' ;  <new_line>
+    $global_action_result = 'no' ;  <new_line>
+    return '' ;  <new_line>
 }  <new_line>
 
 $global_source_file_full_path = $global_source_path_prefix . $global_operand_one ;  <new_line>
 
+if ( $global_yes_or_no_file_opened_for_reading == $global_yes ) {  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__yes_or_no_file_exists__case_another_file_already_open_for_reading ' . $global_operand_one . ' ' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
+
 if ( open( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
-    $global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
     $global_action_result = 'yes' ;  <new_line>
 }  <new_line>
-$global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
 
 return '' ;  <new_line>
@@ -9463,8 +9449,10 @@ template-function-yes-or-no-folder-exists:
 
 sub function__yes_or_no_folder_exists( ) {  <new_line>
 $global_action_name_with_underscores = 'yes_or_no_folder_exists' ; <new_line>
-template-check-operand-one-is-folder-name
-
+if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $global_no ) {  <new_line>
+    $global_action_result = 'no' ;  <new_line>
+    return '' ;  <new_line>
+}  <new_line>
 $global_action_result = 'no' ;  <new_line>
 $global_target_file_name = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $global_operand_one ;  <new_line>
 if ( index( $global_target_file_name , ' ' ) < 0 ) {  <new_line>
