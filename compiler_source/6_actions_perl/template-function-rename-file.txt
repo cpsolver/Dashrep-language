@@ -2,7 +2,9 @@
 
 sub function__rename_file( ) {  <new_line>
 $global_action_name_with_underscores = 'rename_file' ; <new_line>
-template-return-if-no-permission-to-delete-overwrite-files
+
+combee template-return-if-no-permission-to-delete-overwrite-files comenn
+
 template-check-operand-one-input-file-exists
 template-check-operand-one-is-file-name
 
