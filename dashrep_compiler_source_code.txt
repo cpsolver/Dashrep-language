@@ -4141,6 +4141,7 @@ for ( $global_pointer = 0 ; $global_pointer <= $#global_list_of_parameter_words 
         $global_dashrep_replacement{ $global_target_phrase_name } .= ' ' . $global_text_string ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4183,6 +4184,7 @@ if ( ( $global_repeat_count < 1 ) || ( $global_repeat_count > 99999 ) ) {  <new_
     }  <new_line>
     $global_dashrep_replacement{ $global_operand_two } .= $global_growing_text_to_append ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4203,6 +4205,7 @@ foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_li
         $global_dashrep_replacement{ $global_phrase_name_to_clear } = '' ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4217,6 +4220,7 @@ $global_action_result = '' ;  <new_line>
 if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line>
     $global_dashrep_replacement{ $global_operand_one } = '' ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4278,6 +4282,7 @@ while ( $global_pointer < $#global_octet_number_at_position ) {  <new_line>
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4308,6 +4313,7 @@ while( $global_text_being_edited =~ / *> *<((attribute)|(specify)) ([^>]+)>/sg )
     $global_endless_loop_counter ++ ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4325,6 +4331,7 @@ $global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphe
 $global_text_being_edited =~ s/><!\[CDATA\[/>/gi ;  <new_line>
 $global_text_being_edited =~ s/\]\]></</gi ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4377,6 +4384,7 @@ for ( $global_pair_pointer_offset_zero = 0 ; $global_pair_pointer_offset_zero <=
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4441,6 +4449,8 @@ close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
 
+return '' ;  <new_line>
+
 template-function-segment-ending
 ----
 template-function-copy-characters-from-position-to-position:
@@ -4466,6 +4476,7 @@ if ( $global_pointer_one > $global_pointer_two ) {  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = substr( $global_dashrep_replacement{ $global_source_phrase_name } , ( $global_pointer_one - 1 ) , ( $global_pointer_two - $global_pointer_one + 1 ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4491,6 +4502,7 @@ if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $g
 } else {  <new_line>
     code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = '' ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4531,6 +4543,7 @@ for ( $global_column_pointer = 1 ; $global_column_pointer <= $global_minimum_num
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4613,6 +4626,7 @@ $global_list_of_unique_values =~ s/^ +// ;  <new_line>
 $global_dashrep_replacement{ $global_name_of_phrase_that_contains_list_of_index_values } = $global_list_of_unique_values ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4649,6 +4663,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_all_lines ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4673,6 +4688,8 @@ $global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
 close( OUTFILE ) ;  <new_line>
 
 template-runtime-code-protect-target-file
+
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4709,6 +4726,7 @@ while ( $global_remaining_text =~ /^(.*?) ([a<character_hyphen>z])(.*)$/ ) {  <n
 }  <new_line>
 $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4778,6 +4796,7 @@ for ( $global_pointer = 0 ; $global_pointer <= $global_count ; $global_pointer +
     $global_target_phrase_name = $global_prefix . $global_list_of_parameter_words[ $global_pointer ] . $global_suffix ;  <new_line>
     $global_dashrep_replacement{ $global_target_phrase_name } .= $global_list_of_source_words[ $global_pointer ] ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4924,6 +4943,7 @@ if ( $global_length_of_loop_list > 0 ) {  <new_line>
 $global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_destination_phrase } = $global_result_word_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -4954,6 +4974,7 @@ if ( $global_text_list_key ne '' ) {  <new_line>
 }  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_result_word_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5019,6 +5040,7 @@ if ( $global_length_of_loop_list > 0 ) {  <new_line>
 $global_text_list_of_unique_word_pointers =~ s/ +$// ;  <new_line>
 $global_result_word_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_destination_phrase } = $global_result_word_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5063,6 +5085,7 @@ if ( ( $global_word_count < 1 ) || ( $global_word_number_begin < 1 ) || ( $globa
     $global_result_text =~ s/ +$// ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = $global_result_text ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5111,6 +5134,7 @@ if ( $global_count > 0 ) {  <new_line>
     $global_temp_text =~ s/ +$// ;  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_temp_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5168,6 +5192,7 @@ if ( ( $global_operand_one !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_repl
     $global_text_string =~ s/ $// ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = $global_text_string ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5231,6 +5256,7 @@ if ( ( $global_operand_one !~ /^[^ ]+$/ ) || ( not( exists( $global_dashrep_repl
     $global_text_string =~ s/ $// ;  <new_line>
     $global_dashrep_replacement{ $global_operand_two } = $global_text_string ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5256,6 +5282,7 @@ $global_temp_text =~ s/ +$// ;  <new_line>
 @global_list_of_sorted_numbers = sort( @global_list ) ;  <new_line>
 $global_temp_text = join( ' ' , @global_list_of_sorted_numbers ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5281,6 +5308,7 @@ $global_temp_text =~ s/ +$// ;  <new_line>
 @global_list_of_sorted_numbers = sort { $a <=> $b } @global_list ;  <new_line>
 $global_temp_text = join( ' ' , @global_list_of_sorted_numbers ) ;  <new_line>
 $global_dashrep_replacement{ $global_target_phrase_name } = $global_temp_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5318,6 +5346,7 @@ foreach $global_word_to_check ( @global_list_of_words_to_check ) {  <new_line>
 }  <new_line>
 $global_generated_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_generated_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5359,6 +5388,7 @@ foreach $global_word ( @global_list_of_words ) {  <new_line>
 }  <new_line>
 $global_generated_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_generated_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5394,6 +5424,7 @@ foreach $global_word_to_check ( @global_list_of_words_to_check ) {  <new_line>
 }  <new_line>
 $global_generated_list =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_generated_list ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5468,6 +5499,7 @@ for ( $global_pointer = 1 ; $global_pointer <= $global_number_of_unique_words ; 
 }  <new_line>
 $global_dashrep_replacement{ 'list<character_hyphen>of<character_hyphen>unique<character_hyphen>word<character_hyphen>counts' } = $global_text_list_of_unique_word_counts ;  <new_line>
 $global_dashrep_replacement{ 'list<character_hyphen>of<character_hyphen>pointers<character_hyphen>to<character_hyphen>unique<character_hyphen>words' } = $global_text_list_of_unique_word_pointers ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5531,6 +5563,7 @@ if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
         $global_action_result = 'dashrep_compiled_runtime_error__create_empty_sub_folder__case_creating_sub_folder_not_successful' ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5556,6 +5589,7 @@ while ( $global_remaining_text =~ /^(.*?)\%([0<character_hyphen>9a hyphen-here f
 $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_accumulated_text =~ s/\+/ /sg ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5587,6 +5621,8 @@ $global_target_file_full_path = $global_target_path_prefix . $global_target_file
 
 unlink $global_target_file_full_path ;  <new_line>
 
+return '' ;  <new_line>
+
 template-function-segment-ending
 ----
 template-function-delete-listed-phrases:
@@ -5607,6 +5643,7 @@ foreach $global_phrase_name_to_clear ( @global_list_of_phrase_names ) {  <new_li
         delete( $global_dashrep_replacement{ $global_phrase_name_to_clear } ) ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5632,6 +5669,7 @@ while ( $global_remaining_text =~ /^(.*?)([^a hyphen-here zA hyphen-here Z0<char
 }  <new_line>
 $global_accumulated_text .= $global_remaining_text ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_text ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5659,6 +5697,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5701,6 +5740,7 @@ $global_list_of_storage_names =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5752,6 +5792,7 @@ $global_list_of_storage_names =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_storage_names ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5841,6 +5882,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_accumulated_matching_entry_info ;  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -5969,6 +6011,7 @@ if ( $global_count_of_items_with_missing_unique_id > 0 ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6051,6 +6094,7 @@ if ( $global_count_list > 0 ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6105,6 +6149,7 @@ for ( $global_counter_one = 1 ; $global_counter_one <= $global_ending_first_coun
         $global_dashrep_replacement{ $global_output_list_two_phrase_name } .= $global_value_two . $global_separator_two ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6129,6 +6174,7 @@ foreach $global_phrase_name ( @global_sequence_of_phrases ) {  <new_line>
         $global_counter ++ ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6248,6 +6294,7 @@ $global_action_result = '' ;  <new_line>
 # }  <new_line>
 
 $global_dashrep_replacement{ $global_operand_one } = $global_action_result ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6281,6 +6328,7 @@ if ( $global_phrase_length > 0 ) {  <new_line>
     }  <new_line>
     $global_dashrep_replacement{ $global_operand_three } = $global_list_of_positions ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6341,6 +6389,7 @@ if ( ( $global_phrase_length > 0 ) && ( exists( $global_dashrep_replacement{ $gl
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_four } = $global_list_of_positions ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6408,6 +6457,7 @@ foreach $global_position_of_text_found ( sort( keys( %global_text_to_find_at_pos
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } = $global_list_of_positions ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6581,6 +6631,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     }  <new_line>
     $global_action_result = substr( $global_string_in_phrase , ( $global_starting_character_position - 1 ) , $global_number_of_characters_to_get ) ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6598,6 +6649,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
         $global_action_result = '0' ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6640,6 +6692,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6650,6 +6703,7 @@ sub function__get_definitions_from_phrase( ) {  <new_line>
 $global_action_name_with_underscores = 'get_definitions_from_phrase' ; <new_line>
 
 $global_action_result = 'todo__not_yet_written' ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6673,6 +6727,7 @@ if ( $global_phrase_length > 0 ) {  <new_line>
         $global_action_result = sprintf( "%d" , $global_position ) ;  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6702,6 +6757,7 @@ if ( $global_list_length >= 1 ) {  <new_line>
         }  <new_line>
     }  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6868,6 +6924,7 @@ if ( exists( $global_dashrep_replacement{ $global_operand_one } ) ) {  <new_line
     $global_string_in_phrase = $global_accumulated_text . $global_remaining_text ;  <new_line>
     $global_dashrep_replacement{ $global_operand_one } = $global_string_in_phrase ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6906,6 +6963,7 @@ while ( $global_input_line = <INFILE> ) {  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6933,6 +6991,7 @@ $global_source_file_full_path = $global_source_path_prefix . $global_source_file
 
 ( $global_read_time , $global_write_time ) = ( stat( $global_source_file_full_path ) )[8,9] ;  <new_line>
 $global_action_result = $global_write_time ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6953,6 +7012,7 @@ if ( $global_result_value == 0 ) {  <new_line>
 if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*$/ ) {  <new_line>
     $global_action_result = $1 ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -6987,6 +7047,7 @@ $global_action_name_with_underscores = 'numeric_cosine' ; <new_line>
 template-check-operand-one-is-real-number
 
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( cos( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7018,6 +7079,7 @@ template-check-operand-two-is-real-number
 
 $global_action_result = '' ;  <new_line>
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) / &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7039,6 +7101,7 @@ if ( $global_first_object_of_action == $global_second_object_of_action ) {  <new
 } else {  <new_line>
     $global_action_result = 'less' ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7069,6 +7132,7 @@ template-check-operand-one-is-real-number
 
 $global_action_result = '' ;  <new_line>
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( int( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7081,6 +7145,7 @@ template-check-operand-one-is-real-number
 
 $global_action_result = '' ;  <new_line>
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) / log( 10.0 ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7093,6 +7158,7 @@ template-check-operand-one-is-real-number
 
 $global_action_result = '' ;  <new_line>
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( log( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7170,6 +7236,7 @@ template-check-operand-two-is-real-number
 
 $global_action_result = '' ;  <new_line>
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) - &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_two ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7217,6 +7284,7 @@ $global_action_result = "even" ;  <new_line>
 } else {  <new_line>
 $global_action_result = "odd" ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7228,6 +7296,7 @@ $global_action_name_with_underscores = 'numeric_sine' ; <new_line>
 template-check-operand-one-is-real-number
 
 $global_action_result = &function_parameterized__convert_numeric_value_into_numeric_text( sin( &function_parameterized__convert_numeric_text_into_numeric_value( $global_operand_one ) ) ) ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7491,6 +7560,7 @@ for ( $global_item_number = 1 ; $global_item_number <= $global_number_of_items ;
 }  <new_line>
 $global_final_result =~ s/ +$// ;  <new_line>
 $global_dashrep_replacement{ $global_operand_four } = $global_final_result ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7519,6 +7589,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_operand } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7549,6 +7620,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7581,6 +7653,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_target_operand } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7611,6 +7684,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7646,6 +7720,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7685,6 +7760,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7724,6 +7800,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7759,6 +7836,7 @@ for( $global_pair_pointer = 0 ; $global_pair_pointer <= $#global_list_of_x_value
     }  <new_line>
 }  <new_line>
 $global_dashrep_replacement{ $global_operand_three } =~ s/ +$// ;  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7794,6 +7872,7 @@ if ( $global_result_value == 0 ) {  <new_line>
 if ( $global_action_result =~ /^(<character_hyphen>?[0<character_hyphen>9]+)\.0*$/ ) {  <new_line>
     $global_action_result = $1 ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -7811,6 +7890,7 @@ return $1 + 0 ;  <new_line>
 } else {  <new_line>
 return 0 ;  <new_line>
 }  <new_line>
+return '' ;  <new_line>
 
 template-function-segment-ending
 ----
@@ -9607,59 +9687,6 @@ code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phra
 code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-and-replace:
-template-runtime-code-for-every-action-begin
-
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
-
-check-operand-one-is-phrase-name
-check-operand-two-is-phrase-name
-check-operand-three-is-phrase-name
-check-operand-four-is-phrase-name
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-$global_operand_four = runtime-code-for-operand-number-four ;  <new_line>
-
-
-
-$global_source_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
-$global_length_of_text_source = length( $global_source_text ) ;  <new_line>
-$global_string_to_be_replaced = code-get-or-put-phrase-definition-begin $global_operand_three code-get-or-put-phrase-definition-end ;  <new_line>
-$global_length_of_string_to_be_replaced = length( $global_string_to_be_replaced ) ;  <new_line>
-$global_text_to_insert = code-get-or-put-phrase-definition-begin $global_operand_four code-get-or-put-phrase-definition-end ;  <new_line>
-$global_character_pointer_begin = 0 ;  <new_line>
-$global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ;  <new_line>
-$global_target_text = '' ;  <new_line>
-
-while ( $global_character_pointer_end >= -1 ) {  <new_line>
-$global_length_of_text_segment = $global_character_pointer_end - $global_character_pointer_begin + 1 ;  <new_line>
-
-if ( $global_length_of_text_segment > 0 ) {  <new_line>
-$global_target_text .= substr( $global_source_text , $global_character_pointer_begin , $global_length_of_text_segment ) ;  <new_line>
-}  <new_line>
-
-$global_target_text .= $global_text_to_insert ;  <new_line>
-$global_character_pointer_begin = $global_character_pointer_end + $global_length_of_string_to_be_replaced + 1 ;  <new_line>
-$global_character_pointer_end = index( $global_source_text , $global_string_to_be_replaced , $global_character_pointer_begin ) - 1 ;  <new_line>
-
-}  <new_line>
-
-if ( $global_character_pointer_begin < $global_length_of_text_source ) {  <new_line>
-$global_target_text .= substr( $global_source_text , $global_character_pointer_begin ) ;  <new_line>
-}  <new_line>
-
-code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
 
 template-runtime-code-for-every-action-end
