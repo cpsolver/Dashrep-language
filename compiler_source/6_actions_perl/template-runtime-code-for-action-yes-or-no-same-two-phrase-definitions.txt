@@ -1,8 +1,13 @@
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
-check-operand-one-is-phrase-name
+$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) ;  <new_line>
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+$global_runtime_error_type = 'not_phrase_name' ;  <new_line>
+}  <new_line>
+
 check-operand-two-is-phrase-name
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>

@@ -1,6 +1,6 @@
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
 check-operand-one-is-phrase-not-empty
 check-operand-two-is-phrase-name
