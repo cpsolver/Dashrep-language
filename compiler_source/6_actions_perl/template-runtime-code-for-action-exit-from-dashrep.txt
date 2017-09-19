@@ -1,0 +1,5 @@
+template-runtime-code-for-every-action-begin
+
+exit ;  <new_line>
+
+template-runtime-code-for-every-action-end
