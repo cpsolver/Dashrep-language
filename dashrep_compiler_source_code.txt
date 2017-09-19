@@ -1988,9 +1988,6 @@ optional-extra-runtime-functions:
 ----
 optional-import-statements:
 ----
-runtime-code-check-operand-initialize:
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
-----
 runtime-code-conditionally-insert-separator-space-begin:
 # todo: use this new code to more-fastly append repeatedly -- in places where code currently uses ".= ' '" or "ne"  <new_line>
 
@@ -9594,6 +9591,13 @@ $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> 
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 
 template-runtime-code-for-action-executable-phrase-end
+----
+template-runtime-code-for-action-exit-from-dashrep:
+template-runtime-code-for-every-action-begin
+
+exit ;  <new_line>
+
+template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-expand-text:
 template-runtime-code-for-every-action-begin
