@@ -674,11 +674,15 @@
 
 
 <h3 id="set-file-permission-public-read">set-file-permission-public-read</h3>
-<p>This action changes the protection of the specified file to allow global access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 
 <h3 id="set-file-permission-private">set-file-permission-private</h3>
-<p></p>
+<p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command i-b chmod 0600 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+
+
+<h3 id="set-file-permission-private-but-executable">set-file-permission-private-but-executable</h3>
+<p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command i-b chmod 0711 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
 
 
 <h3 id="rename-file">rename-file</h3>
@@ -792,19 +796,19 @@
 
 
 <h3 id="trace-show">trace-show</h3>
-<p>This action inserts into the trace log the definition of the specified phrase.&nbsp; These insertions are highlighted with multiple asterisks (<b><i>*******</i></b>).&nbsp; The requested information appears in the trace log regardless of whether the <b><i>dashrep-action-trace-on-yes-or-no</i></b> definition is <b><i>yes</i></b> or <b><i>no</i></b>.</p>
+<p>This action writes to the trace log file the name and definition of the specified phrase.&nbsp; The format is the same as the standard format for Dashrep definitions.</p>
 
 
 <h3 id="trace-show-where">trace-show-where</h3>
-<p>This action inserts into the trace log the name of the phrase currently being expanded.&nbsp; These insertions are highlighted with multiple asterisks (<b><i>*******</i></b>).&nbsp; The requested information appears in the trace log regardless of whether the <b><i>dashrep-action-trace-on-yes-or-no</i></b> definition is <b><i>yes</i></b> or <b><i>no</i></b>.</p>
+<p>This action inserts into the trace log the name of the phrase currently being expanded.&nbsp; The format is the same as the standard format for Dashrep definitions.</p>
+
+
+<h3 id="output-trace-file-name">output-trace-file-name</h3>
+<p>This phrase contains the filename to which <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> messages are written.&nbsp; The default filename is <b><i>output_trace.txt</i></b>.&nbsp; If the filename specified in this phrase changes during execution, the filename used is the one in effect at the time the first <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> message was written.</p>
 
 
 <h3 id="dashrep-comments-ignored">dashrep-comments-ignored</h3>
 <p>This phrase contains text that the translation process has identified as comments.&nbsp; Comments are contained within the text <b><i>*---</i></b> and <b><i>---*</i></b>, but these delimiters cannot be nested, so this definition can be useful for debugging.</p>
-
-
-<h3 id="yes-or-no-count-phrase-usage">yes-or-no-count-phrase-usage</h3>
-<p></p>
 
 
 <h3 id="generate-phrase-usage-counts">generate-phrase-usage-counts</h3>
@@ -822,10 +826,6 @@
 <p>This pre-defined phrase contains the Dashrep version number.&nbsp; This number is not changed with every change in the Dashrep language, but rather tracks major Dashrep changes.</p>
 
 
-<h3 id="dashrep-undefined">dashrep-undefined</h3>
-<p>This phrase contains the text that is inserted in some cases when the result of an action is undefined.&nbsp; The default value is <b><i>dashrep_undefined</i></b>.</p>
-
-
 <h3 id="delayed-nospace">delayed-nospace</h3>
 <p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>no-space</i></b> needs to be inserted later, after other replacements have been done.&nbsp; When ready, this phrase should be defined as <b><i>no-space</i></b> just before the final translation step.</p>
 
@@ -833,6 +833,10 @@
 <h3 id="delayed-newline">delayed-newline</h3>
 <p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>new-line</i></b> needs to be inserted later, after other replacements have been done.&nbsp; Normally this phrase is not needed because the text <b><i>
 </i></b> serves this purpose.&nbsp; When this phrase is used, this phrase should be defined as <b><i>new-line</i></b> just before the final translation step.</p>
+
+
+<h3 id="exit-from-dashrep">exit-from-dashrep</h3>
+<p>This action exits a compiled Dashrep application (executable file).&nbsp; The Dashrep translation process cannot be resumed.&nbsp; This action is only needed to handle unusual situations such as reaching some kind of limit where a graceful ending is not appropriate.&nbsp; This action also can be used for debugging, in which case this action serves as a breakpoint.</p>
 
 
 <h3 id="dashrep-endless-loop-counter-limit">dashrep-endless-loop-counter-limit</h3>
@@ -907,6 +911,18 @@
 
 
 <h2>Deprecated phrases, do not use</h2>
+
+
+<h3 id="yes-or-no-count-phrase-usage">yes-or-no-count-phrase-usage</h3>
+<p></p>
+
+
+<h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
+<p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
+
+
+<h3 id="dashrep-undefined">dashrep-undefined</h3>
+<p>This phrase contains the text that is inserted in some cases when the result of an action is undefined.&nbsp; The default value is <b><i>dashrep_undefined</i></b>.</p>
 
 
 <h3 id="get-definitions-from-file">get-definitions-from-file</h3>
