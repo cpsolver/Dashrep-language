@@ -9694,12 +9694,21 @@ template-runtime-code-for-every-action-end
 template-runtime-code-for-action-copy-append-file-to-file:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
 $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
-open-file-for-appending
+
+$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
+
 $global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
-open-file-for-reading
+
+$global_yes_or_no = &function_parameterized__open_file_for_reading( $global_source_file_name ) ;  <new_line>
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
@@ -9712,15 +9721,20 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-from-phrase-append-to-file:
 template-runtime-code-for-every-action-begin
 
-runtime-code-check-operand-initialize
+$global_yes_or_no_operand_error = $global_no ;  <new_line>
 
 $global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
-open-file-for-appending
+
+$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
+if ( $global_yes_or_no == $global_no ) {  <new_line>
+$global_yes_or_no_operand_error = $global_yes ;  <new_line>
+}  <new_line>
 
 if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
 
@@ -9733,6 +9747,7 @@ runtime-code-storage-item-result = $global_action_result ;  <new_line>
 } else {  <new_line>
 template-runtime-code-store-result-for-case-error
 }  <new_line>
+
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-copy-text:
@@ -9852,18 +9867,6 @@ template-runtime-code-for-action-if-yes-begin:
 $global_pointer_to_word = index( runtime-code-for-operand-number-one , 'yes' ) ;  <new_line>
 if ( $global_pointer_to_word >= 0 ) {  <new_line>
 # end action if yes begin  <new_line>
-----
-template-runtime-code-for-action-linewise-read-from-file-and-use-handler:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_source_file_name = $global_operand_one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
-&function__linewise_read_from_file_and_use_handler( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-no-if-any-no:
 template-runtime-code-for-every-action-begin
@@ -10078,38 +10081,6 @@ code-get-or-put-phrase-definition-begin $global_string_word_to_use_in_handler co
 
 }  <new_line>
 
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-write-dashrep-definitions-listed-in-phrase-to-file:
-template-runtime-code-for-every-action-begin
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-&function__write_dashrep_definitions_listed_in_phrase_to_file( ) ;  <new_line>
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-write-gathered-listed-items-to-end-of-file:
-template-runtime-code-for-every-action-begin
-
-runtime-code-check-operand-initialize
-
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-$global_target_file_name = $global_operand_two ;  <new_line>
-open-file-for-appending
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_three = runtime-code-for-operand-number-three ;  <new_line>
-&function__write_gathered_listed_items_to_end_of_file( ) ;  <new_line>
-
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-if-all-yes:
