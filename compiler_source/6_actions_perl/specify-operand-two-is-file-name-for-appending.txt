@@ -1,1 +1,0 @@
-$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>

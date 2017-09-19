@@ -1,1 +1,0 @@
-runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-two runtime-code-check-operand-end-is-integer

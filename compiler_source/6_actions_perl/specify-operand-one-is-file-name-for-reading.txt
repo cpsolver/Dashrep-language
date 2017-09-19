@@ -1,1 +1,0 @@
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>

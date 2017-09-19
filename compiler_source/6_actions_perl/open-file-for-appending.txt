@@ -1,4 +1,0 @@
-$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
