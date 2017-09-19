@@ -1988,115 +1988,6 @@ optional-extra-runtime-functions:
 ----
 optional-import-statements:
 ----
-runtime-code-check-operand-begin-contains-real-numbers:
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_contains_real_numbers(
-----
-runtime-code-check-operand-begin-is-file-name:
-$global_yes_or_no = &function_parameterized__yes_or_no_file_name(
-----
-runtime-code-check-operand-begin-is-folder-name:
-$global_yes_or_no = &function_parameterized__yes_or_no_valid_path_prefix(
-----
-runtime-code-check-operand-begin-is-input-file-open-for-reading:
-$global_yes_or_no = &function_parameterized__open_for_reading_file_named(
-----
-runtime-code-check-operand-begin-is-integer:
-$global_yes_or_no = &function_parameterized__yes_or_no_integer(
-----
-runtime-code-check-operand-begin-is-phrase-name:
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_name(
-----
-runtime-code-check-operand-begin-is-phrase-not-empty:
-$global_yes_or_no = &function_parameterized__yes_or_no_phrase_definition_not_empty(
-----
-runtime-code-check-operand-begin-is-positive-integer:
-$global_yes_or_no = &function_parameterized__yes_or_no_positive_integer(
-----
-runtime-code-check-operand-begin-is-real-number:
-$global_yes_or_no = &function_parameterized__yes_or_no_real_number(
-----
-runtime-code-check-operand-begin-output-append-file:
-$global_yes_or_no = &function_parameterized__yes_or_output_append_file(
-----
-runtime-code-check-operand-begin-output-file-exists:
-$global_yes_or_no = &function_parameterized__yes_or_no_output_file_exists(
-----
-runtime-code-check-operand-end-contains-real-numbers:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'not_real_numbers' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-input-file-exists:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'file_for_reading_not_exists' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-file-name:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'file_name_invalid' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-folder-name:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'folder_name_invalid' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-input-file-open-for-reading:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'file_does_not_open_for_reading' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-integer:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'not_integer' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-phrase-name:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'not_phrase_name' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-phrase-not-empty:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'phrase_is_empty' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-positive-integer:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'not_positive_integer' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-is-real-number:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-$global_runtime_error_type = 'not_real_number' ;  <new_line>
-}  <new_line>
-----
-runtime-code-check-operand-end-output-append-file:
-) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-----
 runtime-code-check-operand-initialize:
 $global_yes_or_no_operand_error = $global_no ;  <new_line>
 ----
@@ -3418,78 +3309,6 @@ template-storage-item-prefix storage-position-for-word-list-associated-with-loop
 template-storage-item-prefix:
 $storage_item__ no-space
 ----
-check-operand-four-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-four runtime-code-check-operand-end-is-phrase-name
-----
-check-operand-four-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-four runtime-code-check-operand-end-is-positive-integer
-----
-check-operand-one-input-file-exists:
-runtime-code-check-operand-begin-input-file-exists runtime-code-for-operand-number-one runtime-code-check-operand-end-input-file-exists
-----
-check-operand-one-is-file-name:
-runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-one runtime-code-check-operand-end-is-file-name
-----
-check-operand-one-is-folder-name:
-runtime-code-check-operand-begin-is-folder-name runtime-code-for-operand-number-one runtime-code-check-operand-end-is-folder-name
-----
-check-operand-one-is-input-file-open-for-reading:
-runtime-code-check-operand-begin-is-input-file-open-for-reading runtime-code-for-operand-number-one runtime-code-check-operand-end-is-input-file-open-for-reading
-----
-check-operand-one-is-integer:
-runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-one runtime-code-check-operand-end-is-integer
-----
-check-operand-one-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-one runtime-code-check-operand-end-is-phrase-name
-----
-check-operand-one-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-one runtime-code-check-operand-end-is-phrase-not-empty
-----
-check-operand-one-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-one runtime-code-check-operand-end-is-positive-integer
-----
-check-operand-one-is-real-number:
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-one runtime-code-check-operand-end-is-real-number
-----
-check-operand-three-contains-real-numbers:
-runtime-code-check-operand-begin-contains-real-numbers runtime-code-for-operand-number-three runtime-code-check-operand-end-contains-real-numbers
-----
-check-operand-three-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-three runtime-code-check-operand-end-is-phrase-name
-----
-check-operand-three-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-three runtime-code-check-operand-end-is-phrase-not-empty
-----
-check-operand-three-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-three runtime-code-check-operand-end-is-positive-integer
-----
-check-operand-two-contains-real-numbers:
-runtime-code-check-operand-begin-contains-real-numbers runtime-code-for-operand-number-two runtime-code-check-operand-end-contains-real-numbers
-----
-check-operand-two-is-file-name:
-runtime-code-check-operand-begin-is-file-name runtime-code-for-operand-number-two runtime-code-check-operand-end-is-file-name
-----
-check-operand-two-is-input-file-open-for-reading:
-runtime-code-check-operand-begin-is-input-file-open-for-reading runtime-code-for-operand-number-two runtime-code-check-operand-end-is-input-file-open-for-reading
-----
-check-operand-two-is-integer:
-runtime-code-check-operand-begin-is-integer runtime-code-for-operand-number-two runtime-code-check-operand-end-is-integer
-----
-check-operand-two-is-output-append-file:
-runtime-code-check-operand-begin-output-append-file runtime-code-for-operand-number-two runtime-code-check-operand-end-output-append-file
-----
-check-operand-two-is-phrase-name:
-runtime-code-check-operand-begin-is-phrase-name runtime-code-for-operand-number-two runtime-code-check-operand-end-is-phrase-name
-----
-check-operand-two-is-phrase-not-empty:
-runtime-code-check-operand-begin-is-phrase-not-empty runtime-code-for-operand-number-two runtime-code-check-operand-end-is-phrase-not-empty
-----
-check-operand-two-is-positive-integer:
-runtime-code-check-operand-begin-is-positive-integer runtime-code-for-operand-number-two runtime-code-check-operand-end-is-positive-integer
-----
-check-operand-two-is-real-number:
-runtime-code-check-operand-begin-is-real-number runtime-code-for-operand-number-two runtime-code-check-operand-end-is-real-number
-----
 list-of-template-functions:
 template-function-dashrep-expand-phrases
 template-function-handle-endless-loop-encountered
@@ -3526,24 +3345,6 @@ template-function-get-word-at-position
 template-function-open-trace-output-file-if-not-open
 
 list-of-template-functions-for-requested-actions
-----
-open-file-for-appending:
-$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-----
-open-file-for-reading:
-$global_yes_or_no = &function_parameterized__open_file_for_reading( $global_source_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-----
-open-file-for-writing-new-file:
-$global_yes_or_no = &function_parameterized__open_file_for_writing_new_file( $global_target_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
 ----
 required-operand-count-for-action-append-multiple-from-phrases-named-in-pattern:
 2
@@ -3919,15 +3720,6 @@ required-operand-count-for-action-zero-or-nonzero:
 ----
 runtime-code-word-within-source-text:
 substr( $global_source_text , $global_begin_position_for_word[ $global_word_pointer_numeric ] , $global_length_of_word[ $global_word_pointer_numeric ] )
-----
-specify-operand-one-is-file-name-for-reading:
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
-----
-specify-operand-two-is-file-name-for-appending:
-$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
-----
-specify-operand-two-is-filename-for-writing-new-file:
-$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
 ----
 template-check-operand-four-is-phrase-name:
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_four ) == $global_no ) {  <new_line>
@@ -10294,10 +10086,4 @@ template-runtime-code-for-every-action-begin
 runtime-code-storage-item-result = 'dashrep_compile_time_error__template_runtime_code_wrong_number_of_operands__case_wrong_number_of_operands' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
 
 template-runtime-code-for-every-action-end
-----
-template-specify-operand-one-is-file-name-for-reading:
-combee ****** todo ****** comenn
-----
-template-specify-operand-two-is-file-name-for-appending:
-combee ****** todo ****** comenn
 ----
