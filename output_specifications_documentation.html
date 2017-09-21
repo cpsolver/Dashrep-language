@@ -630,11 +630,11 @@
 
 
 <h3 id="yes-or-no-permission-to-append-to-files">yes-or-no-permission-to-append-to-files</h3>
-<p>If this phrase equals <b><i>yes</i></b> then actions have permission to append to existing files.&nbsp; Any other value indicates that actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; For security purposes this value should be set to <b><i>no</i></b> before translating (or expanding) Dashrep code that might be tainted by outside users.</p>
+<p>If this phrase equals <b><i>yes</i></b> then actions have permission to append to existing files.&nbsp; Any other value indicates that actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; This permission is intended for use during debugging Dashrep code that might accidentally modify the wrong files.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
 
 
 <h3 id="yes-or-no-permission-to-delete-or-overwrite-files">yes-or-no-permission-to-delete-or-overwrite-files</h3>
-<p>If this phrase equals <b><i>yes</i></b> then actions have permission to delete or overwrite existing files.&nbsp; Any other value indicates that actions do not have these permissions.&nbsp; This value can be changed as needed.&nbsp; For security purposes this value should be set to <b><i>no</i></b> before translating (or expanding) Dashrep code that might be tainted by outside users.</p>
+<p>If this phrase equals <b><i>yes</i></b> then actions have permission to delete or overwrite existing files.&nbsp; Any other value indicates that actions do not have these permissions.&nbsp; This value can be changed as needed.&nbsp; This permission is intended for use during debugging Dashrep code that might accidentally delete or overwrite the wrong files.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
 
 
 <h3 id="dashrep-path-prefix-for-file-reading">dashrep-path-prefix-for-file-reading</h3>
@@ -835,8 +835,12 @@
 </i></b> serves this purpose.&nbsp; When this phrase is used, this phrase should be defined as <b><i>new-line</i></b> just before the final translation step.</p>
 
 
+<h3 id="yes-or-no-permission-administrator">yes-or-no-permission-administrator</h3>
+<p>If this phrase equals <b><i>yes</i></b> then special actions have permission to be used.&nbsp; Any other value indicates that the special actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; This phrase is intended to protect a general user from being able to easily gain access to Dashrep phrase definitions that should be kept private.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
+
+
 <h3 id="exit-from-dashrep">exit-from-dashrep</h3>
-<p>This action exits a compiled Dashrep application (executable file).&nbsp; The Dashrep translation process cannot be resumed.&nbsp; This action is only needed to handle unusual situations such as reaching some kind of limit where a graceful ending is not appropriate.&nbsp; This action also can be used for debugging, in which case this action serves as a breakpoint.</p>
+<p>This action first prints (to standard output) the contents of phrase <b><i>standard-output</i></b> and then immediately stops execution of a compiled Dashrep application (executable file).&nbsp; If phrase <b><i>standard-output</i></b> is empty, nothing is printed.&nbsp; This action is intended for unusual situations where normal exiting is not appropriate, such as reaching a hard limit.&nbsp; This action can be used as a breakpoint when debugging Dashrep source code.</p>
 
 
 <h3 id="dashrep-endless-loop-counter-limit">dashrep-endless-loop-counter-limit</h3>
