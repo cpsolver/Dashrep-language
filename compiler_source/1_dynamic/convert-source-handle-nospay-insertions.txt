@@ -1,3 +1,5 @@
+combee **** note: when the word n_o_s_p_a_y (which cannot be spelled correctly here) is used in source code it has an effect only when it is adjacent to the words ambee or amenn or fenambee or amennfen **** comenn
+
 ambee copy-text word-to-use-in-handler current-symbol amenn
 
 ambee copy-text current-symbol string-symbol-open-bracket-dash amenn
