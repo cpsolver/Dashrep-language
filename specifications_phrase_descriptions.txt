@@ -585,12 +585,16 @@ name-of-phrase-that-specifies-write-directory
 no-space .
 ----
 
+description-for-phrase-yes-or-no-permission-administrator:
+If this phrase equals b-i-b yes b-i-e then special actions have permission to be used. s-n Any other value indicates that the special actions do not have this permission. s-n This value can be changed as needed. s-n This phrase is intended to protect a general user from being able to easily gain access to Dashrep phrase definitions that should be kept private. s-n This permission should not be trusted for advanced security purposes. s-n The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code. s-n The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.
+----
+
 description-for-phrase-yes-or-no-permission-to-append-to-files:
-If this phrase equals b-i-b yes b-i-e then actions have permission to append to existing files. s-n Any other value indicates that actions do not have this permission. s-n This value can be changed as needed. s-n For security purposes this value should be set to b-i-b no b-i-e before translating (or expanding) Dashrep code that might be tainted by outside users.
+If this phrase equals b-i-b yes b-i-e then actions have permission to append to existing files. s-n Any other value indicates that actions do not have this permission. s-n This value can be changed as needed. s-n This permission is intended for use during debugging Dashrep code that might accidentally modify the wrong files. s-n This permission should not be trusted for advanced security purposes. s-n The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code. s-n The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.
 ----
 
 description-for-phrase-yes-or-no-permission-to-delete-or-overwrite-files:
-If this phrase equals b-i-b yes b-i-e then actions have permission to delete or overwrite existing files. s-n Any other value indicates that actions do not have these permissions. s-n This value can be changed as needed. s-n For security purposes this value should be set to b-i-b no b-i-e before translating (or expanding) Dashrep code that might be tainted by outside users.
+If this phrase equals b-i-b yes b-i-e then actions have permission to delete or overwrite existing files. s-n Any other value indicates that actions do not have these permissions. s-n This value can be changed as needed. s-n This permission is intended for use during debugging Dashrep code that might accidentally delete or overwrite the wrong files. s-n This permission should not be trusted for advanced security purposes. s-n The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code. s-n The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.
 ----
 
 description-for-phrase-generate-list-of-files-in-current-read-directory:
@@ -762,7 +766,7 @@ If this phrase is b-i-b yes b-i-e then the Dashrep translation process is stoppe
 ----
 
 description-for-phrase-exit-from-dashrep:
-This action immediately stops execution of a compiled Dashrep application (executable file). s-n If a message should be sent before exiting, then that message must be supplied before this action is used. s-n This action is intended for unusual situations where a graceful ending is not appropriate, such as reaching a hard limit. s-n This action can be used as a breakpoint when debugging Dashrep source code.
+This action first prints (to standard output) the contents of phrase b-i-b standard h-h output b-i-e and then immediately stops execution of a compiled Dashrep application (executable file). s-n If phrase b-i-b standard h-h output b-i-e is empty, nothing is printed. s-n This action is intended for unusual situations where normal exiting is not appropriate, such as reaching a hard limit. s-n This action can be used as a breakpoint when debugging Dashrep source code.
 ----
 
 description-for-phrase-escape-from-dashrep:
