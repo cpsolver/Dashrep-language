@@ -1,5 +1,9 @@
 template-runtime-code-for-every-action-begin
 
+if ( ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
+print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
+}  <new_line>
+
 exit ;  <new_line>
 
 template-runtime-code-for-every-action-end
