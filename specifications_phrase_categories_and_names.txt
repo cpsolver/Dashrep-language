@@ -214,6 +214,7 @@ dashrep-language-yes
 dashrep-version
 delayed-nospace
 delayed-newline
+yes-or-no-permission-administrator
 exit-from-dashrep
 dashrep-endless-loop-counter-limit
 dashrep-time-limit
