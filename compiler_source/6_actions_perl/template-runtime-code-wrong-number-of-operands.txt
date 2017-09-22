@@ -1,5 +1,6 @@
+combee **** todo: use placeholder versions with underscores **** comenn
 template-runtime-code-for-every-action-begin
 
-runtime-code-storage-item-result = 'dashrep_compile_time_error__template_runtime_code_wrong_number_of_operands__case_wrong_number_of_operands' . runtime-code-for-concatenated-all-operands . ' ' ;  <new_line>
+runtime-code-storage-item-result = 'dashrep_compile_time_error__<dashrep_placeholder_phrase_being_defined>__<dashrep_placeholder_action_name>__case_wrong_number_of_operands [' . runtime-code-for-concatenated-all-operands . '] ' ;  <new_line>
 
 template-runtime-code-for-every-action-end
