@@ -6723,9 +6723,11 @@ template-function-linewise-read-from-file-and-use-handler:
 # no-space dashes-long-line  <new_line>
 
 sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
+my $local_line_count ;  <new_line>
+my $local_target_phrase_name ;  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_source_file_name = $global_operand_one ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
+$local_target_phrase_name = $global_operand_two ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_file_name_invalid ' . $global_source_file_name ;  <new_line>
@@ -6733,24 +6735,24 @@ return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $global_target_phrase_name ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $local_target_phrase_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_target_phrase_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_target_phrase_name ;  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $local_target_phrase_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $local_target_phrase_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
-$global_line_count = 1 ;  <new_line>
+$local_line_count = 1 ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = $global_input_line ;  <new_line>
-    $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $global_line_count ;  <new_line>
-    $global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
+    $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $local_line_count ;  <new_line>
+    $global_phrase_name_to_match = $local_target_phrase_name ;  <new_line>
     &function_branch_based_on_phrase_name( );  <new_line>
     $global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
-    $global_line_count ++ ;  <new_line>
+    $local_line_count ++ ;  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
@@ -7830,7 +7832,7 @@ return $global_no ;  <new_line>
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
 if ( open( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
-$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
+$global_yes_or_no_file_opened_for_reading = $global_yes ;  <new_line>
 return $global_yes ;  <new_line>
 }  <new_line>
 
@@ -9297,6 +9299,8 @@ return '' ;  <new_line>
 template-function-segment-ending
 ----
 template-function-yes-or-no-same-two-phrase-definitions:
+combee **** todo: fix bug in this function, then delete associated inline template to switch to standardized template **** comenn
+
 # no-space dashes-long-line  <new_line>
 
 sub function__yes_or_no_same_two_phrase_definitions( ) {  <new_line>
@@ -9452,65 +9456,6 @@ code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phra
 code-get-or-put-phrase-definition-begin $global_target_text code-get-or-put-phrase-definition-end .= $global_source_text ;  <new_line>
 runtime-code-storage-item-result = ' ' ;  <new_line>
 
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-append-file-to-file:
-template-runtime-code-for-every-action-begin
-
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
-
-$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
-
-$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-
-$global_source_file_name = runtime-code-for-operand-number-one ;  <new_line>
-
-$global_yes_or_no = &function_parameterized__open_file_for_reading( $global_source_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-&function__copy_append_file_to_file( ) ;  <new_line>
-
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
-}  <new_line>
-
-template-runtime-code-for-every-action-end
-----
-template-runtime-code-for-action-copy-from-phrase-append-to-file:
-template-runtime-code-for-every-action-begin
-
-$global_yes_or_no_operand_error = $global_no ;  <new_line>
-
-$global_target_file_name = runtime-code-for-operand-number-two ;  <new_line>
-
-$global_yes_or_no = &function_parameterized__open_file_for_appending( $global_target_file_name ) ;  <new_line>
-if ( $global_yes_or_no == $global_no ) {  <new_line>
-$global_yes_or_no_operand_error = $global_yes ;  <new_line>
-}  <new_line>
-
-if ( $global_yes_or_no_operand_error == $global_no ) {  <new_line>
-
-$global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
-$global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
-&function__copy_from_phrase_append_to_file( ) ;  <new_line>
-
-runtime-code-storage-item-result = $global_action_result ;  <new_line>
-
-} else {  <new_line>
-template-runtime-code-store-result-for-case-error
 }  <new_line>
 
 template-runtime-code-for-every-action-end
@@ -9922,6 +9867,8 @@ runtime-code-storage-item-result = 'yes' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-action-yes-or-no-same-two-phrase-definitions:
+combee **** todo: fix bug in associated function, then delete this file to switch to standardized template **** comenn
+
 template-runtime-code-for-every-action-begin
 
 if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
