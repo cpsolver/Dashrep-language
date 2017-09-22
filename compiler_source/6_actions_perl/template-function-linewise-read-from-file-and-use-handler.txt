@@ -1,9 +1,11 @@
 # no-space dashes-long-line  <new_line>
 
 sub function__linewise_read_from_file_and_use_handler( ) {  <new_line>
+my $local_line_count ;  <new_line>
+my $local_target_phrase_name ;  <new_line>
 $global_action_result = '' ;  <new_line>
 $global_source_file_name = $global_operand_one ;  <new_line>
-$global_target_phrase_name = $global_operand_two ;  <new_line>
+$local_target_phrase_name = $global_operand_two ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_source_file_name ) == $global_no ) {  <new_line>
 $global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_file_name_invalid ' . $global_source_file_name ;  <new_line>
@@ -11,24 +13,24 @@ return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $global_target_phrase_name ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_cannot_open_file_for_reading ' . $local_target_phrase_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
-if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $global_target_phrase_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $global_target_phrase_name ;  <new_line>
+if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $local_target_phrase_name ) == $global_no ) {  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__linewise_read_from_file_and_use_handler__case_phrase_empty ' . $local_target_phrase_name ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
-$global_line_count = 1 ;  <new_line>
+$local_line_count = 1 ;  <new_line>
 while ( $global_input_line = <INFILE> ) {  <new_line>
     chomp( $global_input_line ) ;  <new_line>
     $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here from hyphen-here file" } = $global_input_line ;  <new_line>
-    $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $global_line_count ;  <new_line>
-    $global_phrase_name_to_match = $global_target_phrase_name ;  <new_line>
+    $global_dashrep_replacement{ "linewise hyphen-here input hyphen-here line hyphen-here count" } = $local_line_count ;  <new_line>
+    $global_phrase_name_to_match = $local_target_phrase_name ;  <new_line>
     &function_branch_based_on_phrase_name( );  <new_line>
     $global_nesting_level_of_file_actions <character_hyphen><character_hyphen> ;  <new_line>
-    $global_line_count ++ ;  <new_line>
+    $local_line_count ++ ;  <new_line>
 }  <new_line>
 $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
 close( INFILE ) ;  <new_line>
