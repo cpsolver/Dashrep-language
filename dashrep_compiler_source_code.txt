@@ -3752,18 +3752,6 @@ if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $glo
     return '' ;  <new_line>
 }  <new_line>
 ----
-template-check-operand-one-is-folder-name:
-if ( &function_parameterized__yes_or_no_folder_name( $global_operand_one ) == $global_no ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_folder_name ' . $global_operand_one . ' ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-----
-template-check-operand-one-is-input-file-open-for-reading:
-if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_one ) == $global_no ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading [' . $global_operand_one . '] ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-----
 template-check-operand-one-is-integer:
 if ( &function_parameterized__yes_or_no_integer( $global_operand_one ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_not_integer ' . $global_operand_one . ' ' ;  <new_line>
@@ -3827,12 +3815,6 @@ if ( &function_parameterized__yes_or_no_phrase_contains_real_numbers( $global_op
 template-check-operand-two-is-file-name:
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_two ) == $global_no ) {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_invalid_file_name [' . $global_operand_two . '] ' ;  <new_line>
-    return '' ;  <new_line>
-}  <new_line>
-----
-template-check-operand-two-is-input-file-open-for-reading:
-if ( &function_parameterized__yes_or_no_file_open_for_reading( $global_operand_two ) == $global_no ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading [' . $global_operand_two . '] ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 ----
@@ -7758,41 +7740,32 @@ sub function_parameterized__open_file_for_appending( ) {  <new_line>
 my $local_file_name ;  <new_line>
 $local_file_name = $_[ 0 ] ;  <new_line>
 
-$global_action_result = 'trace_diagnostic__parameterized_open_file_for_appending__case_begin ' . $local_file_name . "\n" ;  <new_line>
-
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
-$global_runtime_error_type = 'file_name_invalid_parameterized' ;  <new_line>
-return $global_no ;  <new_line>
+    $global_runtime_error_type = 'file_name_invalid_parameterized' ;  <new_line>
+    return $global_no ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
-$global_runtime_error_type = 'path_for_appending_invalid' ;  <new_line>
-return $global_no ;  <new_line>
+    $global_runtime_error_type = 'path_for_appending_invalid' ;  <new_line>
+    return $global_no ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
 if ( open( INFILE_TEMP , '<' . $global_target_file_full_path ) ) {  <new_line>
-close( INFILE_TEMP ) ;  <new_line>
-
+    close( INFILE_TEMP ) ;  <new_line>
 } else {  <new_line>
-
-if ( open( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
-
-$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
-print OUTFILE '' ;  <new_line>
-$global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
-close( OUTFILE ) ;  <new_line>
-
+    if ( open( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
+        print OUTFILE '' ;  <new_line>
+        close( OUTFILE ) ;  <new_line>
 template-runtime-code-protect-target-file
-
-}  <new_line>
-
+    }  <new_line>
 }  <new_line>
 
 if ( open( OUTFILE , '>>' . $global_target_file_full_path  ) ) {  <new_line>
-$global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
-return $global_yes ;  <new_line>
+    $global_yes_or_no_file_opened_for_writing = $global_yes ;  <new_line>
+    $global_action_result = '' ;  <new_line>
+    return $global_yes ;  <new_line>
 }  <new_line>
 
 $global_target_file_full_path = '' ;  <new_line>
@@ -7814,23 +7787,24 @@ $local_file_name = $_[ 0 ] ;  <new_line>
 # todo: avoid recursive loop; track when open file and don't allow open file if another is already open  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_file_name_for_reading_invalid [' . $local_file_name . '] ' ;  <new_line>
-return $global_no ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_file_name_for_reading_invalid [' . $local_file_name . '] ' ;  <new_line>
+    return $global_no ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_path_for_reading_invalid ' . $local_file_name ;  <new_line>
-return $global_no ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__parameterized__open_file_for_reading__case_path_for_reading_invalid [' . $local_file_name . '] ' ;  <new_line>
+    return $global_no ;  <new_line>
 }  <new_line>
 
 $global_source_file_full_path = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end . $local_file_name ;  <new_line>
 
 if ( open( INFILE , '<' . $global_source_file_full_path ) ) {  <new_line>
-$global_yes_or_no_file_opened_for_reading = $global_yes ;  <new_line>
-return $global_yes ;  <new_line>
+    $global_yes_or_no_file_opened_for_reading = $global_yes ;  <new_line>
+    $global_action_result = '' ;  <new_line>
+    return $global_yes ;  <new_line>
 }  <new_line>
 
-$global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing ' . $global_source_file_full_path ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__parameterized_open_file_for_reading__case_file_missing [' . $global_source_file_full_path . '] ' ;  <new_line>
 return $global_no ;  <new_line>
 
 template-function-segment-ending
