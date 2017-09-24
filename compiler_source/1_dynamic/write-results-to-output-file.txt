@@ -31,15 +31,21 @@ ambee copy-append-file-to-file ambee filename-output-results-all-definition-item
 ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-function-branches amenn amenn amenn
 ambee copy-append-file-to-file ambee filename-output-results-all-function-branches amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 ambee copy-from-phrase-append-to-file segment-branch-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-functions-replacement-only-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-functions-replacement-only amenn amenn amenn
 ambee copy-append-file-to-file ambee filename-output-results-functions-replacement-only amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 ambee copy-from-phrase-append-to-file segment-functions-replacement-only-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-functions-compiled-begin ambee filename-output-results-from-compiler amenn amenn
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-compiled-functions amenn amenn amenn
 ambee copy-append-file-to-file ambee filename-output-results-all-compiled-functions amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
 ambee copy-from-phrase-append-to-file segment-functions-compiled-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-optional-extra-runtime-functions-begin ambee filename-output-results-from-compiler amenn amenn
