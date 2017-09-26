@@ -9849,9 +9849,9 @@ runtime-code-storage-item-result = 'no' ;  <new_line>
 template-runtime-code-for-every-action-end
 ----
 template-runtime-code-for-every-action-begin:
+combee ****
 # $global_action_debug_line = '***** <dashrep_placeholder_phrase_being_defined> **** current-result-storage-position *** <dashrep_placeholder_action_name> ** number-of-operands *' . runtime-code-for-concatenated-all-operands ;  <new_line>
 # print $global_action_debug_line . "\n" ;  <new_line>
-combee ****
 **** comenn
 
 combee ****
@@ -9860,9 +9860,9 @@ combee ****
 ----
 template-runtime-code-for-every-action-end:
 combee ****
-**** comenn
 # print 'result: ' . runtime-code-storage-item-result . "\n" ;  <new_line>
 # end of action <dashrep_placeholder_action_name><new_line>
+**** comenn
 ----
 template-runtime-code-for-overdue-start-of-if-branch:
 # begin overdue start of if branch  <new_line>
