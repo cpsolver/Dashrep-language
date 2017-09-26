@@ -223,9 +223,6 @@ end-of-line-here
 yes-or-no-indicate-line-endings
 
 category_spoken_words
-dashbee
-dashenn
-dashnex
 ambee
 amenn
 combee
@@ -237,3 +234,6 @@ amennfenambee
 linbray
 
 category_deprecated
+dashbee
+dashenn
+dashnex
