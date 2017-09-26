@@ -182,8 +182,6 @@ copy-append-file-to-file
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
-dashrep-phrase-prefix-for-imported-phrases
-dashrep-phrase-suffix-for-imported-phrases
 get-url-resource
 
 category_data
@@ -231,9 +229,11 @@ fen
 fenambee
 amennfen
 amennfenambee
-linbray
 
 category_deprecated
+linbray
 dashbee
 dashenn
 dashnex
+dashrep-phrase-prefix-for-imported-phrases
+dashrep-phrase-suffix-for-imported-phrases
