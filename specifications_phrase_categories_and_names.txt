@@ -216,7 +216,6 @@ yes-or-no-permission-administrator
 exit-from-dashrep
 dashrep-endless-loop-counter-limit
 dashrep-time-limit
-insert-codeview-tags
 end-of-line-here
 yes-or-no-indicate-line-endings
 
@@ -232,6 +231,7 @@ amennfenambee
 nospay
 
 category_deprecated
+insert-codeview-tags
 linbray
 dashbee
 dashenn
