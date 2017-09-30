@@ -7,7 +7,6 @@ if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-nu
 } else {  <new_line>
 
 $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
-# $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
@@ -24,7 +23,6 @@ combee ****
 **** comenn
 
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
-# $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
 }  <new_line>
 
