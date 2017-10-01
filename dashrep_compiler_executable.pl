@@ -5687,7 +5687,7 @@ my $storage_item__5436 = 'template-runtime-code-for-action-exit-from-dashrep' ;
 my $storage_item__5437 = 'template-runtime-code-for-every-action-begin if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard<character_hyphen>output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard<character_hyphen>output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> } <new_line> exit ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5436 } = $storage_item__5437 ;
 my $storage_item__5438 = 'template-runtime-code-for-action-expand-text' ;
-my $storage_item__5439 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5439 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5438 } = $storage_item__5439 ;
 my $storage_item__5440 = 'template-runtime-code-for-action-get-cgi-information' ;
 my $storage_item__5441 = 'template-runtime-code-standard-for-operand-count-zero' ;
@@ -8203,9 +8203,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1470 . '-' .
 $storage_item__1469 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__1470 . '-' . $storage_item__1471 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1473 ) == $global_no ) {
 $storage_item__1469 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__1473 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1470 . '-' . $storage_item__1471 ) == $global_no ) {
+$storage_item__1469 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 16 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 16 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -8216,7 +8217,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__1473 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__1469 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 16 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # save concatenated result
@@ -13087,9 +13087,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2523 ) == $g
 $storage_item__2522 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2523 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2524 ) == $global_no ) {
 $storage_item__2522 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2524 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2523 ) == $global_no ) {
+$storage_item__2522 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 90 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 90 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -13100,7 +13101,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2524 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2522 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 90 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 $global_operand_one = $storage_item__2526 ;
@@ -13237,9 +13237,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2543 . '-' .
 $storage_item__2542 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2543 . '-' . $storage_item__2544 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2546 ) == $global_no ) {
 $storage_item__2542 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2546 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2543 . '-' . $storage_item__2544 ) == $global_no ) {
+$storage_item__2542 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 94 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 94 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -13250,7 +13251,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2546 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2542 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 94 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # begin action if else
@@ -13277,9 +13277,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2549 . '-' .
 $storage_item__2548 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2549 . '-' . $storage_item__2550 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2552 ) == $global_no ) {
 $storage_item__2548 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2552 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2549 . '-' . $storage_item__2550 ) == $global_no ) {
+$storage_item__2548 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 96 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 96 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -13290,7 +13291,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2552 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2548 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 96 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # begin action if end
@@ -13367,9 +13367,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2564 ) == $g
 $storage_item__2563 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2564 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2565 ) == $global_no ) {
 $storage_item__2563 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2565 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2564 ) == $global_no ) {
+$storage_item__2563 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 97 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 97 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -13380,7 +13381,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2565 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2563 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 97 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # Check for endless loop
@@ -13867,9 +13867,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2650 . '-' .
 $storage_item__2649 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2650 . '-' . $storage_item__2651 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2653 ) == $global_no ) {
 $storage_item__2649 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2653 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2650 . '-' . $storage_item__2651 ) == $global_no ) {
+$storage_item__2649 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 110 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 110 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -13880,7 +13881,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2653 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2649 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 110 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # begin action if end
@@ -14409,9 +14409,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2761 ) == $g
 $storage_item__2760 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2761 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2762 ) == $global_no ) {
 $storage_item__2760 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2762 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2761 ) == $global_no ) {
+$storage_item__2760 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 120 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 120 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14422,7 +14423,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2762 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2760 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 120 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # begin action if else
@@ -14433,9 +14433,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2765 ) == $g
 $storage_item__2764 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2765 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2766 ) == $global_no ) {
 $storage_item__2764 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2766 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2765 ) == $global_no ) {
+$storage_item__2764 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 121 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 121 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14446,7 +14447,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2766 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2764 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 121 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # begin action if end
@@ -14556,9 +14556,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2794 ) == $g
 $storage_item__2793 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2794 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2795 ) == $global_no ) {
 $storage_item__2793 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2795 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2794 ) == $global_no ) {
+$storage_item__2793 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 123 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 123 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14569,7 +14570,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2795 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2793 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 123 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # save concatenated result
@@ -14662,9 +14662,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2804 . '-' .
 $storage_item__2803 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2804 . '-' . $storage_item__2805 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2807 ) == $global_no ) {
 $storage_item__2803 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2807 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2804 . '-' . $storage_item__2805 ) == $global_no ) {
+$storage_item__2803 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 127 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 127 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14675,7 +14676,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2807 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2803 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 127 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 $global_operand_one = $storage_item__2809 ;
@@ -14780,9 +14780,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2819 . '-' .
 $storage_item__2818 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2819 . '-' . $storage_item__2820 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2822 ) == $global_no ) {
 $storage_item__2818 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2822 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2819 . '-' . $storage_item__2820 ) == $global_no ) {
+$storage_item__2818 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 131 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 131 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14793,7 +14794,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2822 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2818 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 131 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 $global_operand_one = $storage_item__2824 ;
@@ -14898,9 +14898,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2834 . '-' .
 $storage_item__2833 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2834 . '-' . $storage_item__2835 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2837 ) == $global_no ) {
 $storage_item__2833 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2837 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2834 . '-' . $storage_item__2835 ) == $global_no ) {
+$storage_item__2833 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 135 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 135 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14911,7 +14912,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2837 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2833 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 135 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 $global_operand_one = $storage_item__2839 ;
@@ -15016,9 +15016,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2849 . '-' .
 $storage_item__2848 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2849 . '-' . $storage_item__2850 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2852 ) == $global_no ) {
 $storage_item__2848 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2852 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2849 . '-' . $storage_item__2850 ) == $global_no ) {
+$storage_item__2848 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 139 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 139 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -15029,7 +15030,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2852 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2848 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 139 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 $global_operand_one = $storage_item__2854 ;
@@ -15179,9 +15179,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2876 ) == $g
 $storage_item__2875 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2876 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2877 ) == $global_no ) {
 $storage_item__2875 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2877 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2876 ) == $global_no ) {
+$storage_item__2875 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 144 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 144 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -15192,7 +15193,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2877 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2875 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 144 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # Check for endless loop
@@ -15291,9 +15291,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2902 ) == $g
 $storage_item__2901 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2902 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2903 ) == $global_no ) {
 $storage_item__2901 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2903 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2902 ) == $global_no ) {
+$storage_item__2901 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 149 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 149 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -15304,7 +15305,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2903 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2901 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 149 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # save concatenated result
@@ -15402,9 +15402,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2916 ) == $g
 $storage_item__2915 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2916 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2917 ) == $global_no ) {
 $storage_item__2915 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__2917 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__2916 ) == $global_no ) {
+$storage_item__2915 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 152 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 152 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -15415,7 +15416,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__2917 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__2915 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 152 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # Check for endless loop
@@ -17592,9 +17592,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3274 ) == $g
 $storage_item__3273 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3274 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3275 ) == $global_no ) {
 $storage_item__3273 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3275 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__3274 ) == $global_no ) {
+$storage_item__3273 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 199 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 199 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -17605,7 +17606,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__3275 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__3273 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 199 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # Check for endless loop
@@ -18584,9 +18584,10 @@ if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3450 ) == $g
 $storage_item__3449 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3450 . ' ' ;
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3451 ) == $global_no ) {
 $storage_item__3449 = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . $storage_item__3451 . ' ' ;
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__3450 ) == $global_no ) {
+$storage_item__3449 = '' ;
 } else {
 $global_saved_accumulator_pointer_at_recursion_location[ 236 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 236 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -18597,7 +18598,6 @@ $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_dashrep_replacement{ $storage_item__3451 } = &dashrep_expand_phrases( $global_target_text ) ;
 $storage_item__3449 = '' ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 236 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 }
 
 # this code generated from standard template
