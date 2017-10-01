@@ -9481,10 +9481,11 @@ if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-nu
     runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
 } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
     runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__expand_text__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = '' ;  <new_line>
 } else {  <new_line>
 
 $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
-# $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
@@ -9493,6 +9494,7 @@ $global_phrase_name_currently_executing = '<dashrep_placeholder_phrase_being_def
 $global_phrase_name_to_match = runtime-code-for-operand-number-one ;  <new_line>
 &function_branch_based_on_phrase_name( ) ;  <new_line>
 $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
+combee **** reminder: do not move this action code into a runtime function because then next line must be split into a two-step process **** comenn
 code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ;  <new_line>
 runtime-code-storage-item-result = '' ;  <new_line>
 
@@ -9501,7 +9503,6 @@ combee ****
 **** comenn
 
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
-# $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
 }  <new_line>
 
