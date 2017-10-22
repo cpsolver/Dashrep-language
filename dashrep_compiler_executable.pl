@@ -4775,7 +4775,7 @@ my $storage_item__4828 = 'template-storage-item-prefix' ;
 my $storage_item__4829 = '$storage_item__ no-space' ;
 $global_dashrep_replacement{ $storage_item__4828 } = $storage_item__4829 ;
 my $storage_item__4830 = 'list-of-template-functions' ;
-my $storage_item__4831 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-folder-name template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-parameterized-open-file-for-writing-new-file template-function-parameterized-yes-or-no-valid-url template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions' ;
+my $storage_item__4831 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-url template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-folder-name template-function-parameterized-yes-or-no-input-file-exists template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-parameterized-open-file-for-writing-new-file template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions' ;
 $global_dashrep_replacement{ $storage_item__4830 } = $storage_item__4831 ;
 my $storage_item__4832 = 'required-operand-count-for-action-append-multiple-from-phrases-named-in-pattern' ;
 my $storage_item__4833 = '2' ;
@@ -22756,6 +22756,27 @@ return @global_list_of_operands ;
 
 
 #------------------------------------------------------------
+# function_parameterized__yes_or_no_valid_url
+
+sub function_parameterized__yes_or_no_valid_url( ) {
+my $local_text ;
+$local_text = $_[ 0 ] ;
+$global_length_of_text = length( $local_text ) ;
+if ( $global_length_of_text == 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , ' ' ) >= 0 ) {
+return $global_no ;
+}
+if ( index( $local_text , '/' ) < 0 ) {
+return $global_no ;
+}
+return $global_yes ;
+# end of function
+}
+
+
+#------------------------------------------------------------
 # function_parameterized__yes_or_no_valid_path
 
 # reminder: path "./" is valid, so period is OK
@@ -23081,6 +23102,30 @@ return $global_yes ;
 
 
 #------------------------------------------------------------
+# function_parameterized__yes_or_no_input_file_exists
+
+sub function_parameterized__yes_or_no_input_file_exists( ) {
+my $local_file_name ;
+$local_file_name = $_[ 0 ] ;
+if ( &function_parameterized__yes_or_no_file_name( $local_file_name ) == $global_no ) {
+return $global_no ;
+}
+$global_source_path_prefix = $global_dashrep_replacement{ 'dashrep-path-prefix-for-file-reading' } ;
+if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {
+return $global_no ;
+}
+$global_source_file_full_path = $global_source_path_prefix . $local_file_name ;
+if ( not( open( INFILE_TEMP , '<' . $global_source_file_full_path ) ) ) {
+close( INFILE_TEMP ) ;
+return $global_no ;
+}
+close( INFILE_TEMP ) ;
+return $global_yes ;
+# end of function
+}
+
+
+#------------------------------------------------------------
 # function_parameterized__open_file_for_reading
 
 sub function_parameterized__open_file_for_reading( ) {
@@ -23178,27 +23223,6 @@ $global_target_file_full_path = '' ;
 $global_yes_or_no_file_opened_for_writing = $global_no ;
 close( OUTFILE ) ;
 return $global_no ;
-# end of function
-}
-
-
-#------------------------------------------------------------
-# function_parameterized__yes_or_no_valid_url
-
-sub function_parameterized__yes_or_no_valid_url( ) {
-my $local_text ;
-$local_text = $_[ 0 ] ;
-$global_length_of_text = length( $local_text ) ;
-if ( $global_length_of_text == 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , ' ' ) >= 0 ) {
-return $global_no ;
-}
-if ( index( $local_text , '/' ) < 0 ) {
-return $global_no ;
-}
-return $global_yes ;
 # end of function
 }
 
