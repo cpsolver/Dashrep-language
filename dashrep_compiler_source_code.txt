@@ -3331,14 +3331,15 @@ template-function-parameterized-normalize-calculated-value
 template-function-parameterized-convert-numeric-text-into-numeric-value
 template-function-parameterized-convert-numeric-value-into-numeric-text
 template-function-parameterized-get-list-of-words
+template-function-parameterized-yes-or-no-valid-url
 template-function-parameterized-yes-or-no-valid-path
 template-function-parameterized-yes-or-no-valid-path-prefix
 template-function-parameterized-yes-or-no-file-name
 template-function-parameterized-yes-or-no-folder-name
+template-function-parameterized-yes-or-no-input-file-exists
 template-function-parameterized-open-file-for-reading
 template-function-parameterized-open-file-for-appending
 template-function-parameterized-open-file-for-writing-new-file
-template-function-parameterized-yes-or-no-valid-url
 
 template-function-point-to-words
 template-function-point-to-words-in-operand-one
