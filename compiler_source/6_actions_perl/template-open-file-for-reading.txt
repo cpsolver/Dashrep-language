@@ -1,9 +1,17 @@
 if ( $global_yes_or_no_file_opened_for_reading == $global_no ) {  <new_line>
     if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {  <new_line>
         $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading [' . $global_source_file_name . '] ' ;  <new_line>
+        $global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
+        $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
+        close( OUTFILE ) ;  <new_line>
+        close( INFILE ) ;  <new_line>
         return '' ;  <new_line>
     }  <new_line>
 } else {  <new_line>
     $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_another_file_already_open_for_reading [' . $global_source_file_name . '] ' ;  <new_line>
+    $global_yes_or_no_file_opened_for_writing = $global_no ;  <new_line>
+    $global_yes_or_no_file_opened_for_reading = $global_no ;  <new_line>
+    close( OUTFILE ) ;  <new_line>
+    close( INFILE ) ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
