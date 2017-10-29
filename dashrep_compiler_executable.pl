@@ -5657,10 +5657,10 @@ my $storage_item__5416 = 'template-get-phrase-contents-from-operand-one-and-chec
 my $storage_item__5417 = '$global_phrase_contents = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> if ( &function_parameterized__yes_or_no_empty( $global_phrase_contents ) == $global_yes ) { <new_line> $global_phrase_contents = ' . "'" . '0' . "'" . ' ; <new_line> } <new_line> if ( &function_parameterized__yes_or_no_integer( $global_phrase_contents ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_not_integer ' . "'" . ' . $global_phrase_contents . ' . "'" . ' ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5416 } = $storage_item__5417 ;
 my $storage_item__5418 = 'template-open-file-for-appending' ;
-my $storage_item__5419 = 'if ( $global_yes_or_no_file_opened_for_writing == $global_no ) { <new_line> if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_cannot_open_file_for_appending [' . "'" . ' . $global_target_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_another_file_already_open_for_appending [' . "'" . ' . $global_target_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
+my $storage_item__5419 = 'if ( $global_yes_or_no_file_opened_for_writing == $global_no ) { <new_line> if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_cannot_open_file_for_appending [' . "'" . ' . $global_target_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( OUTFILE ) ; <new_line> close( INFILE ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_another_file_already_open_for_appending [' . "'" . ' . $global_target_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( OUTFILE ) ; <new_line> close( INFILE ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5418 } = $storage_item__5419 ;
 my $storage_item__5420 = 'template-open-file-for-reading' ;
-my $storage_item__5421 = 'if ( $global_yes_or_no_file_opened_for_reading == $global_no ) { <new_line> if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_cannot_open_file_for_reading [' . "'" . ' . $global_source_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_another_file_already_open_for_reading [' . "'" . ' . $global_source_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
+my $storage_item__5421 = 'if ( $global_yes_or_no_file_opened_for_reading == $global_no ) { <new_line> if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_cannot_open_file_for_reading [' . "'" . ' . $global_source_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( OUTFILE ) ; <new_line> close( INFILE ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line> } else { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_action_name_with_underscores . ' . "'" . '__case_another_file_already_open_for_reading [' . "'" . ' . $global_source_file_name . ' . "'" . '] ' . "'" . ' ; <new_line> $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> close( OUTFILE ) ; <new_line> close( INFILE ) ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5420 } = $storage_item__5421 ;
 my $storage_item__5422 = 'template-runtime-code-for-action-append-new-line' ;
 my $storage_item__5423 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__append_new_line__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "' . '\\' . 'n" ; <new_line> runtime-code-storage-item-result = ' . "'" . ' ' . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
@@ -24421,10 +24421,18 @@ $global_target_file_name = $global_operand_two ;
 if ( $global_yes_or_no_file_opened_for_writing == $global_no ) {
 if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_appending [' . $global_target_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 } else {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_another_file_already_open_for_appending [' . $global_target_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 $global_action_result = '' ;
@@ -24689,10 +24697,18 @@ $global_source_file_name = $global_operand_one ;
 if ( $global_yes_or_no_file_opened_for_reading == $global_no ) {
 if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading [' . $global_source_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 } else {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_another_file_already_open_for_reading [' . $global_source_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 $global_action_result = '' ;
@@ -24731,20 +24747,36 @@ $global_target_file_name = $global_operand_two ;
 if ( $global_yes_or_no_file_opened_for_writing == $global_no ) {
 if ( &function_parameterized__open_file_for_appending( $global_target_file_name ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_appending [' . $global_target_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 } else {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_another_file_already_open_for_appending [' . $global_target_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 $global_source_file_name = $global_operand_one ;
 if ( $global_yes_or_no_file_opened_for_reading == $global_no ) {
 if ( &function_parameterized__open_file_for_reading( $global_source_file_name ) == $global_no ) {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_cannot_open_file_for_reading [' . $global_source_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 } else {
 $global_action_result = 'dashrep_compiled_runtime_error__' . $global_action_name_with_underscores . '__case_another_file_already_open_for_reading [' . $global_source_file_name . '] ' ;
+$global_yes_or_no_file_opened_for_writing = $global_no ;
+$global_yes_or_no_file_opened_for_reading = $global_no ;
+close( OUTFILE ) ;
+close( INFILE ) ;
 return '' ;
 }
 $global_action_result = '' ;
