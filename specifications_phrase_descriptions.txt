@@ -1099,6 +1099,9 @@ s-n
 The location of the file is specified by the phrase 
 name-of-phrase-that-specifies-write-directory
 no-space .
+s-n
+This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling,
+which prevents other parallel tasks from handling the same data.
 -----
 
 description-for-phrase-delete-file:
