@@ -57,6 +57,7 @@ ambee delete-file ambee new-file-name amenn amenn
 ambee copy-from-phrase-append-to-file list-of-animal-types ambee name-of-file-to-rename amenn amenn
 ambee rename-file ambee name-of-file-to-rename amenn ambee new-file-name amenn amenn
 ambee copy-from-file-to-phrase ambee new-file-name amenn result-contents-from-file-renamed amenn
+ambee copy-without-extra-spaces result-contents-from-file-renamed result-contents-from-file-renamed amenn
 ambee delete-file ambee new-file-name amenn amenn
 
 
