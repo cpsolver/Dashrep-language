@@ -47,7 +47,7 @@
 <tr><td>fenambee</td><td>-[-</td><td>Indicates the continuation of a hyphenated phrase that includes a parameter as part of the phrase.&nbsp; For example, <b><i>info-for-dolphin-named fenambee dolphin-name amennfen</i></b> becomes <b><i>info-for-dolphin-named-leaper</i></b> if <b><i>dolphin-name</i></b> equals <b><i>leaper</i></b>.</td></tr>
 <tr><td>amennfen</td><td>-]-</td><td>Indicates the end of a parameter that, when it is translated, becomes part of a hyphenated phrase.</td></tr>
 <tr><td>amennfenambee</td><td>-]-[-</td><td>Indicates the continuation of a hyphenated phrase that includes two adjacent parameters as part of the phrase.&nbsp; For example, <b><i>info-at-row-and-column fenambee row-number amennfenambee column-number amenn</i></b> becomes <b><i>info-at-row-and-column-2-3</i></b> if <b><i>row-number</i></b> equals <b><i>2</i></b> and <b><i>column-number</i></b> equals <b><i>3</i></b>.</td></tr>
-<tr><td>linbray</td><td>(line break)</td><td>Indicates that a line break should be inserted here.&nbsp; If the resulting text goes through additional translation steps, the inserted line break is likely to be converted into a space (rather than remaining as a line break).</td></tr>
+<tr><td>nospay</td><td></td><td>Indicates that there should be no space to the right when it appears immediately before <b><i>ambee</i></b> and no space to the left when it appears immediately after <b><i>amenn</i></b>.-This word has no special meaning when it is not adjacent to either of these other words.-For other places where spaces should be removed, the phrase <b><i>no-space</i></b> should be used instead.</td></tr>
 </table>
 
 
@@ -686,7 +686,7 @@
 
 
 <h3 id="rename-file">rename-file</h3>
-<p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.&nbsp; This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling, which prevents other parallel tasks from handling the same data.</p>
 
 
 <h3 id="delete-file">delete-file</h3>
@@ -719,14 +719,6 @@
 
 <h3 id="linewise-input-line-count">linewise-input-line-count</h3>
 <p>See the description for <b><i>linewise-read-from-file-and-use-handler</i></b>.</p>
-
-
-<h3 id="dashrep-phrase-prefix-for-imported-phrases">dashrep-phrase-prefix-for-imported-phrases</h3>
-<p>This prefix is placed at the beginning of each newly defined phrase imported from a file.&nbsp; This capability is useful to prevent user-written phrase names from overwriting phrase names that are executed with special permissions.&nbsp; Also this capability is useful for importing phrases from separate files that otherwise might have overlapping phrase names.</p>
-
-
-<h3 id="dashrep-phrase-suffix-for-imported-phrases">dashrep-phrase-suffix-for-imported-phrases</h3>
-<p>This suffix is placed at the end of each newly defined phrase imported from a file.&nbsp; See the phrase <b><i>prefix-for-imported-phrases</i></b> for more details.</p>
 
 
 <h3 id="get-url-resource">get-url-resource</h3>
@@ -851,10 +843,6 @@
 <p>This phrase contains the current number of seconds for use as a time limit.&nbsp; When the time limit is exceeded, translation ends.&nbsp; The default value is 300 seconds, which equals 5 minutes.&nbsp; A different value can be specified, although the changed time limit may not take effect immediately.</p>
 
 
-<h3 id="insert-codeview-tags">insert-codeview-tags</h3>
-<p>This action inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page.&nbsp; The special inserted tags, such as <b><i>&lt;dashrep_codeview_action_begin&gt;</i></b> and <b><i>&lt;dashrep_codeview_action_middle_1&gt;</i></b>, are expected to be replaced by the text items in phrases such as <b><i>dashrep-codeview-action-begin</i></b> and <b><i>dashrep-codeview-action-middle-1</i></b>.</p>
-
-
 <h3 id="end-of-line-here">end-of-line-here</h3>
 <p>This phrase contains text that is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used, and if the phrase <b><i>yes-or-no-indicate-line-endings</i></b> equals <b><i>yes</i></b>.</p>
 
@@ -864,18 +852,6 @@
 
 
 <h2>Special Dashrep spoken words</h2>
-
-
-<h3 id="dashbee">dashbee</h3>
-<p>(described in table above)</p>
-
-
-<h3 id="dashenn">dashenn</h3>
-<p>(described in table above)</p>
-
-
-<h3 id="dashnex">dashnex</h3>
-<p>(described in table above)</p>
 
 
 <h3 id="ambee">ambee</h3>
@@ -910,215 +886,39 @@
 <p>(described in table above)</p>
 
 
-<h3 id="linbray">linbray</h3>
-<p>(described in table above)</p>
+<h3 id="nospay">nospay</h3>
+<p></p>
 
 
 <h2>Deprecated phrases, do not use</h2>
 
 
-<h3 id="yes-or-no-count-phrase-usage">yes-or-no-count-phrase-usage</h3>
-<p></p>
+<h3 id="insert-codeview-tags">insert-codeview-tags</h3>
+<p>This action inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page.&nbsp; The special inserted tags, such as <b><i>&lt;dashrep_codeview_action_begin&gt;</i></b> and <b><i>&lt;dashrep_codeview_action_middle_1&gt;</i></b>, are expected to be replaced by the text items in phrases such as <b><i>dashrep-codeview-action-begin</i></b> and <b><i>dashrep-codeview-action-middle-1</i></b>.</p>
 
 
-<h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
-<p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
+<h3 id="linbray">linbray</h3>
+<p>(described in table above)</p>
 
 
-<h3 id="dashrep-undefined">dashrep-undefined</h3>
-<p>This phrase contains the text that is inserted in some cases when the result of an action is undefined.&nbsp; The default value is <b><i>dashrep_undefined</i></b>.</p>
+<h3 id="dashbee">dashbee</h3>
+<p>(described in table above)</p>
 
 
-<h3 id="get-definitions-from-file">get-definitions-from-file</h3>
-<p>This action reads the Dashrep definitions from the specified file.&nbsp; This action overwrites any existing definitions that have the same phrase name.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<h3 id="dashenn">dashenn</h3>
+<p>(described in table above)</p>
 
 
-<h3 id="write-dashrep-definitions-listed-in-phrase-to-file">write-dashrep-definitions-listed-in-phrase-to-file</h3>
-<p>This action writes (in Dashrep-readable form) the definitions of the phrases that are named in the definition of the phrase that follows this action name, and writes those definitions to the named file that follows the specified phrase.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<h3 id="dashnex">dashnex</h3>
+<p>(described in table above)</p>
 
 
-<h3 id="create-empty-file">create-empty-file</h3>
-<p>This action creates an empty file using the specified file name, and erases the file if it already exists.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<h3 id="dashrep-phrase-prefix-for-imported-phrases">dashrep-phrase-prefix-for-imported-phrases</h3>
+<p>This prefix is placed at the beginning of each newly defined phrase imported from a file.&nbsp; This capability is useful to prevent user-written phrase names from overwriting phrase names that are executed with special permissions.&nbsp; Also this capability is useful for importing phrases from separate files that otherwise might have overlapping phrase names.</p>
 
 
-<h3 id="expand-parameters-only">expand-parameters-only</h3>
-<p>This action expands ("translates") any parameters in the first phrase and puts the results into the second phrase.&nbsp; Unlike the related action <b><i>expand-text</i></b>, this action does not expand any phrases (except the starting named phrase) that appear outside of parameter brackets.&nbsp; This action is especially useful if there needs to be a delay in expanding the non-parameter phrases.</p>
-
-
-<h3 id="dashrep-definitions-begin">dashrep-definitions-begin</h3>
-<p>This directive specifies that the text that follows are phrases and definitions.&nbsp; This phrase cannot be nested.&nbsp; This change continues until the phrase <b><i>dashrep-definitions-end</i></b> is encountered.</p>
-
-
-<h3 id="dashrep-definitions-end">dashrep-definitions-end</h3>
-<p>This directive specifies the end of phrases and definitions that began with the directive <b><i>dashrep-definitions-begin</i></b>.</p>
-
-
-<h3 id="dashrep-definition-append-next">dashrep-definition-append-next</h3>
-<p>This directive requests that the next definition be appended to the existing definition of the specified phrase.&nbsp; This directive allows a list to be created during the reading of definitions because it overrides the normal convention of replacing the existing definition (when the same phrase name is defined more than once).</p>
-
-
-<h3 id="define-end">define-end</h3>
-<p>This directive functions the same as several hyphens (<b><i>----</i></b>) at the end of a definition.&nbsp; It is provided as a speakable alternative for ending a definition.</p>
-
-
-<h3 id="define-begin">define-begin</h3>
-<p>This directive is ignored, but is defined for symmetry so that it can be used after the directive <b><i>define-end</i></b>.&nbsp; It is not needed because the context already determines where a definition begins.</p>
-
-
-<h3 id="list-of-phrases-newly-defined">list-of-phrases-newly-defined</h3>
-<p>This phrase contains a list of all the hyphenated phrases that have been imported or defined.&nbsp; This definition can be cleared to limit the list to phrases that were imported or defined after the definition was cleared.</p>
-
-
-<h3 id="yes-or-no-append-not-replace-for-imported-phrases">yes-or-no-append-not-replace-for-imported-phrases</h3>
-<p>If this phrase equals <b><i>yes</i></b>, and if a phrase definition is being imported from a file, and if that phrase has the same name as an existing phrase, then the definition is appended to the end of the existing definition, rather than replacing the existing definition.&nbsp; A space is inserted to separate the two definitions.&nbsp; This capability is useful when multiple files contain phrase definitions with the same names, and those definitions are lists that should be combined.</p>
-
-
-<h3 id="yes-or-no-export-delimited-definitions">yes-or-no-export-delimited-definitions</h3>
-<p>If this phrase equals <b><i>yes</i></b> then the action <b><i>write-all-dashrep-definitions-to-file</i></b> or the action <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, special text is inserted at the beginning and end of each phrase name and phrase definition.&nbsp; Otherwise exported definitions are written using the normal Dashrep convention.&nbsp; This capability enables the exported definitions to be converted into special formats such as HTML or XML.</p>
-
-
-<h3 id="export-defs-all-begin">export-defs-all-begin</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the action <b><i>write-all-dashrep-definitions-to-file</i></b> or the action <b><i>write-all-dashrep-phrase-names-to-file</i></b> or the action <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> is used, this phrase name (enclosed in brackets) is inserted at the beginning of all the written-to-a-file phrase definitions.&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="export-defs-all-end">export-defs-all-end</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the action <b><i>write-all-dashrep-definitions-to-file</i></b> or the action <b><i>write-all-dashrep-phrase-names-to-file</i></b> or the action <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of all the written-to-a-file phrase definitions.&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="export-defs-def-begin">export-defs-def-begin</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the action <b><i>write-all-dashrep-definitions-to-file</i></b> or the action <b><i>write-all-dashrep-phrase-names-to-file</i></b> or the action <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the beginning of each definition.&nbsp; (A separate phrase is inserted at the end of the phrase name).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="export-defs-def-end">export-defs-def-end</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of each definition.&nbsp; (A separate phrase is inserted at the beginning of the phrase name).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="export-defs-phrase-begin">export-defs-phrase-begin</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the beginning of each phrase name.&nbsp; (A separate phrase is inserted at the end of the definition).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="export-defs-phrase-end">export-defs-phrase-end</h3>
-<p>If the phrase <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> equals <b><i>yes</i></b> when the <b><i>write-all-dashrep-definitions-to-file</i></b> or <b><i>write-all-dashrep-phrase-names-to-file</i></b> or <b><i>write-dashrep-definitions-listed-in-phrase-to-file</i></b> action is used, this phrase name (enclosed in brackets) is inserted at the end of each phrase name.&nbsp; (A separate phrase is inserted at the beginning of the definition).&nbsp; This capability is useful if the written definitions need to be translated into a different format.</p>
-
-
-<h3 id="delete-all-dashrep-phrases">delete-all-dashrep-phrases</h3>
-<p>This action deletes all the definitions of all the phrases.&nbsp; Specifically, this action resets (undefines) every definition of every phrase, except the phrases that are defined internally.&nbsp; If the phrase <b><i>undeleted-phrase</i></b> exists and contains at least one non-space character, the contents of this special phrase is restored after all the phrases have been deleted.&nbsp; The phrase <b><i>undeleted-phrase</i></b> is useful for holding instructions that need to be executed after this action has deleted all other phrases.</p>
-
-
-<h3 id="undeleted-phrase">undeleted-phrase</h3>
-<p>See the action <b><i>delete-all-dashrep-phrases</i></b> for details.</p>
-
-
-<h3 id="yes-or-no-expand-special-phrases">yes-or-no-expand-special-phrases</h3>
-<p>If this phrase equals <b><i>no</i></b> then the following special phrases are not handled: <b><i>non-breaking-space</i></b>, <b><i>tab-here</i></b>, <b><i>empty-line</i></b>, <b><i>new-line</i></b>, <b><i>no-space</i></b>, and <b><i>one-space</i></b>.&nbsp; Any other value causes these special phrases to be handled.&nbsp; The default value is <b><i>yes</i></b>.</p>
-
-
-<h3 id="insert-angle-bracketed-definitions">insert-angle-bracketed-definitions</h3>
-<p>This action modifies the specified phrase by replacing each occurrence of a specially identified hyphenated phrase with the definition of that phrase.&nbsp; The specially identified hyphenated phrases begin and end with angle brackets (<b><i>&lt;</i></b> and <b><i>&gt;</i></b>) and contain at least one underscore (<b><i>_</i></b>), such as <b><i>&lt;special_content&gt;</i></b>.&nbsp; For each such specially identified hyphenated phrase, the underscores are replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase.&nbsp; The special text <b><i>&lt;character_hyphen&gt;</i></b> is replaced by a hyphen (<b><i>-</i></b>) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.&nbsp; The special text items <b><i>&lt;no_space&gt;</i></b> and <b><i>&lt;new_line&gt;</i></b> provide functionality that is equivalent to the <b><i>no-space</i></b> and <b><i>new-line</i></b> directives.</p>
-
-
-<h3 id="dashrep-debug-trace-log">dashrep-debug-trace-log</h3>
-<p>This phrase contains the "trace" messages that are written when "trace" and warning messages are requested.&nbsp; This information is useful for debugging.&nbsp; This phrase should be used on a read-only basis, although it can be cleared to remove messages that are not of interest.</p>
-
-
-<h3 id="dashrep-debug-trace-on-yes-or-no">dashrep-debug-trace-on-yes-or-no</h3>
-<p>If this phrase equals <b><i>yes</i></b> then trace messages are added to the trace log.&nbsp; Any other value causes silence when a trace message would otherwise be written.</p>
-
-
-<h3 id="dashrep-recent-phrase-name-replaced">dashrep-recent-phrase-name-replaced</h3>
-<p>This phrase contains the most recently replaced phrase name that was replaced when it appeared in parameter brackets.&nbsp; This phrase definition is useful for debugging by showing its definition at the beginning of the replaced phrase.</p>
-
-
-<h3 id="dashrep-warning-trace-on-yes-or-no">dashrep-warning-trace-on-yes-or-no</h3>
-<p>If this phrase equals <b><i>yes</i></b>, then warning messages are written to the phrase <b><i>dashrep-debug-trace-log</i></b>, and if this phrase equals <b><i>no</i></b> (or any other value), warning messages are not written.</p>
-
-
-<h3 id="dashrep-action-trace-on-yes-or-no">dashrep-action-trace-on-yes-or-no</h3>
-<p>If this phrase equals <b><i>yes</i></b> then each encountered action adds a message to the trace log to indicate which action occurred.&nbsp; Any other value causes silence when each encountered action is handled.&nbsp; For some actions, additional information about the action is included.</p>
-
-
-<h3 id="dashrep-list-of-action-names">dashrep-list-of-action-names</h3>
-<p>This phrase contains a list of all the Dashrep action names.</p>
-
-
-<h3 id="dashrep-list-of-predefined-phrases">dashrep-list-of-predefined-phrases</h3>
-<p>This phrase contains a list of all the phrases that are initialized or predefined by the Dashrep engine.</p>
-
-
-<h3 id="dashrep-list-of-special-phrases">dashrep-list-of-special-phrases</h3>
-<p>This phrase contains a list of all the phrases that Dashrep recognizes, but which are not action names and not predefined.</p>
-
-
-<h3 id="dashrep-stop-translation">dashrep-stop-translation</h3>
-<p>If this phrase is <b><i>yes</i></b> then the Dashrep translation process is stopped, which causes an exit from the Dashrep engine.&nbsp; If this phrase contains anything other than <b><i>yes</i></b> then the Dashrep translation process continues.</p>
-
-
-<h3 id="escape-from-dashrep">escape-from-dashrep</h3>
-<p>This action saves a copy of the current replacement results &mdash; in the phrase <b><i>dashrep-replacement-results-at-time-of-escape</i></b> &mdash; and exits the Dashrep engine.&nbsp; The Dashrep translation process can be resumed using the action <b><i>resume-after-escape-from-dashrep</i></b>.&nbsp; This action is intended for running software that is written in a different coding language, which makes this action useful for implementing <b><i>make</i></b> files and batch scripts, and for accessing a SQL database (with a query that is generated by expanding a template phrase).&nbsp; This action also can be used for debugging, in which case this action serves as a breakpoint.</p>
-
-
-<h3 id="resume-after-escape-from-dashrep">resume-after-escape-from-dashrep</h3>
-<p>This action resumes (restarts) the Dashrep translation process using the contents of the phrase <b><i>dashrep-replacement-results-at-time-of-escape</i></b> as the starting point.&nbsp; Typically this action is invoked from Perl code outside the Dashrep engine, after the action <b><i>escape-from-dashrep</i></b> was used.&nbsp; This action is useful after running software that is written in a different coding language, which makes this action &mdash; and the action <b><i>escape-from-dashrep</i></b> &mdash; useful for implementing <b><i>make</i></b> files and batch scripts.</p>
-
-
-<h3 id="dashrep-replacement-results-at-time-of-escape">dashrep-replacement-results-at-time-of-escape</h3>
-<p>This special phrase is used by the actions <b><i>escape-from-dashrep</i></b> and <b><i>resume-after-escape-from-dashrep</i></b>.&nbsp; This phrase can be viewed (outside of the Dashrep code) for debugging purposes, in which case the first-encountered occurrence of the action <b><i>escape-from-dashrep</i></b> serves as a breakpoint.</p>
-
-
-<h3 id="use-handler-with-each-word-in-phrase-currently-at-character-position">use-handler-with-each-word-in-phrase-currently-at-character-position</h3>
-<p>This action is for internal use only.&nbsp; It should not be used.</p>
-
-
-<h3 id="convert-from-spoken-dashrep-code">convert-from-spoken-dashrep-code</h3>
-<p>This action copies the definition of the first phrase into the definition of the second phrase, but recognizes and translates Dashrep spoken words.&nbsp; Specifically the words <b><i>fen</i></b> <b><i>dashbee</i></b> <b><i>dashenn</i></b> <b><i>dashnex</i></b> <b><i>ambee</i></b> <b><i>amenn</i></b> <b><i>combee</i></b> <b><i>comenn</i></b> <b><i>fenambee</i></b> <b><i>amennfen</i></b> <b><i>linbray</i></b> are translated.</p>
-
-
-<h3 id="convert-into-spoken-dashrep-code">convert-into-spoken-dashrep-code</h3>
-<p>This action copies the definition of first phrase into the definition of the second phrase, but Dashrep-special characters are translated into Dashrep spoken words.&nbsp; Specifically the words <b><i>fen</i></b> <b><i>dashbee</i></b> <b><i>dashenn</i></b> <b><i>dashnex</i></b> <b><i>ambee</i></b> <b><i>amenn</i></b> <b><i>combee</i></b> <b><i>comenn</i></b> <b><i>fenambee</i></b> <b><i>amennfen</i></b> <b><i>linbray</i></b> are inserted where appropriate.</p>
-
-
-<h3 id="dashrep-endless-loop-count">dashrep-endless-loop-count</h3>
-<p>This action supplies the current value of the internal endless-loop counter.&nbsp; This special action, which has no operands, supplies the count on a read-only basis.</p>
-
-
-<h3 id="get-phrase-definition-without-expanding">get-phrase-definition-without-expanding</h3>
-<p>This action inserts the definition of the specified phrase.&nbsp; This action is rarely needed.&nbsp; It provides a way to immediately expand a phrase by just one level of recursion, without also expanding parameter phrases within the definition.</p>
-
-
-<h3 id="write-all-dashrep-definitions-to-file">write-all-dashrep-definitions-to-file</h3>
-<p>This action writes all the Dashrep definitions to a new file with the specified file name, and erases the file if it already exists.&nbsp; By default the definitions are written in Dashrep-readable format, which means the phrase being defined appears first, then is followed by the definition, and multiple dashes terminate the definition.&nbsp; If the <b><i>dashrep-yes-or-no-export-delimited-definitions</i></b> phrase is set to <i>yes</i> , the exported definitions are delimited by the following phrases at appropriate positions: <b><i>export-defs-all-begin</i></b> , <b><i>export-defs-all-end</i></b> , <b><i>export-defs-phrase-begin</i></b> , <b><i>export-defs-phrase-end</i></b> , <b><i>export-defs-def-begin</i></b> , and <b><i>export-defs-def-end</i></b>.&nbsp; This special format allows a separate Dashrep translation to convert the written definitions into code such as HTML, XML, or SQL.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
-
-
-<h3 id="yes-or-no-use-slower-subset-expand">yes-or-no-use-slower-subset-expand</h3>
-<p>If this phrase equals <b><i>yes</i></b> then older and slower code is used to do expansions.&nbsp; Any other value causes the newer and faster expansion code to be used.</p>
-
-
-<h3 id="unique-value">unique-value</h3>
-<p>This special phrase contains a unique value each time this phrase appears in parameter brackets.&nbsp; Currently this action simply supplies a number that is incremented, but future versions may use non-sequential numbers (to accomodate parallel processing).</p>
-
-
-<h3 id="yes-or-no-word-is-in-phrase">yes-or-no-word-is-in-phrase</h3>
-<p>This action supplies <b><i>yes</i></b> if the following first word is one of the words in the following phrase, and supplies <b><i>no</i></b> otherwise. If the first word is a phrase name in parameter brackets and that phrase is empty, then a warning is put into the trace information because the number of operands is not two.&nbsp; A match does not occur if the word is contained within a longer word, or if the word is not isolated by spaces. </p> <p> Example: If the first operand is the word <b><i>dolphin</i></b> and the second phrase contains <b><i>dolphin tuna</i></b> then the result is <b><i>yes</i></b>. </p> <p> Example: If the first operand is the word <b><i>dolphin</i></b> and the second phrase contains <b><i>dolphin-oriented</i></b> then the result is <b><i>no</i></b>.</p>
-
-
-<h3 id="copy-to-phrase-from-following-text">copy-to-phrase-from-following-text</h3>
-<p></p>
-
-
-<h3 id="dashrep-first-xml-tag-name">dashrep-first-xml-tag-name</h3>
-<p>This phrase will no longer be recognized when the deprecated subroutine <b><i>dashrep_xml_tags_to_dashrep</i></b> has been removed.</p>
-
-
-<h3 id="dashrep-xml-level-reset-if-zero">dashrep-xml-level-reset-if-zero</h3>
-<p>This phrase will no longer be recognized when the deprecated subroutine <b><i>dashrep_xml_tags_to_dashrep</i></b> has been removed.</p>
-
-
-<h3 id="dashrep-xml-trace-on-yes-or-no">dashrep-xml-trace-on-yes-or-no</h3>
-<p>This phrase will no longer be recognized when the deprecated subroutine <b><i>dashrep_xml_tags_to_dashrep</i></b> has been removed.</p>
-
-
-<h3 id="dashrep-xml-yes-ignore-if-no-tag-replacement">dashrep-xml-yes-ignore-if-no-tag-replacement</h3>
-<p>This phrase will no longer be recognized when the deprecated subroutine <b><i>dashrep_xml_tags_to_dashrep</i></b> has been removed.</p>
+<h3 id="dashrep-phrase-suffix-for-imported-phrases">dashrep-phrase-suffix-for-imported-phrases</h3>
+<p>This suffix is placed at the end of each newly defined phrase imported from a file.&nbsp; See the phrase <b><i>prefix-for-imported-phrases</i></b> for more details.</p>
 
 
 <p>&nbsp;</p>
