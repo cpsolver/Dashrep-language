@@ -256,6 +256,9 @@ correct-value-for-result-calculation-subtraction:
 correct-value-for-result-contents-from-file-append-repeated:
 dolphin whale starfish octopus end-of-line-here dolphin whale starfish octopus end-of-line-here
 ----
+correct-value-for-result-contents-from-file-renamed:
+dolphin whale starfish octopus
+----
 correct-value-for-result-contents-from-file-write-and-read:
 dolphin whale starfish octopus
 ----
@@ -1219,18 +1222,27 @@ ambee get-url-resource http://www.votefair.org/americanidol.html temp_url_output
 
 ambee linewise-read-from-file-and-use-handler ambee input-filename-containing-data-to-test-gather-find-actions amenn handle-linewise-read-from-file amenn
 
+ambee put-into-phrase name-of-file-to-rename  temp_file_to_rename.txt  amenn
+ambee put-into-phrase new-file-name  temp_file_after_renamed.txt  amenn
+ambee delete-file ambee name-of-file-to-rename amenn amenn
+ambee delete-file ambee new-file-name amenn amenn
+ambee copy-from-phrase-append-to-file list-of-animal-types ambee name-of-file-to-rename amenn amenn
+ambee rename-file ambee name-of-file-to-rename amenn ambee new-file-name amenn amenn
+ambee copy-from-file-to-phrase ambee new-file-name amenn result-contents-from-file-renamed amenn
+ambee copy-without-extra-spaces result-contents-from-file-renamed result-contents-from-file-renamed amenn
+ambee delete-file ambee new-file-name amenn amenn
 
-ambee rename-file amenn
-ambee create-empty-sub-folder amenn
-ambee write-gathered-listed-items-to-end-of-file amenn
-ambee set-file-permission-public-read amenn
 
 combee
 
+ambee create-empty-sub-folder amenn
+ambee write-gathered-listed-items-to-end-of-file amenn
+ambee set-file-permission-public-read amenn
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
 
 comenn
+
 
 ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
