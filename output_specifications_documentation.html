@@ -129,6 +129,10 @@
 <p>This action copies to the second operand the definition of the phrase that is named in the definition of the first operand.&nbsp; This action is only needed when the name of a phrase is being supplied as the defintion of another phrase.&nbsp; In one sense this action provides a way to immediately expand a phrase by just one level of recursion, without also expanding any parameter phrases within the definition.&nbsp; The first operand must contain only a single phrase name.&nbsp; The named phrase can contain anything, and that content is copied without being expanded.</p>
 
 
+<h3 id="expand-indirect">expand-indirect</h3>
+<p>This action expands the phrase definition that is named in the second operand, and puts the expanded result into the second operand.&nbsp; This action is only needed when the phrase to expand can vary according to a phrase name, instead of always needing to expand a specfic phrase.&nbsp; In one sense this action provides a way to expand a phrase that does not have an ambee and amenn within the phrase definition, which is a special case that the action <b><i>expand-text</i></b> cannot handle.</p>
+
+
 <h2>Text-transfer-related phrases</h2>
 
 
@@ -262,7 +266,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>56</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
