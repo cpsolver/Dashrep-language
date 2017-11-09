@@ -19,6 +19,7 @@ character-underscore
 category_expand
 expand-text
 copy-definition-of-named-phrase
+expand-indirect
 
 category_transfer
 get-cgi-information

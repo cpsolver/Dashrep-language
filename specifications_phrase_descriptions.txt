@@ -749,6 +749,10 @@ description-for-phrase-copy-definition-of-named-phrase:
 This action copies to the second operand the definition of the phrase that is named in the definition of the first operand. s-n This action is only needed when the name of a phrase is being supplied as the defintion of another phrase. s-n In one sense this action provides a way to immediately expand a phrase by just one level of recursion, without also expanding any parameter phrases within the definition. s-n The first operand must contain only a single phrase name. s-n The named phrase can contain anything, and that content is copied without being expanded.
 ----
 
+description-for-phrase-expand-indirect:
+This action expands the phrase definition that is named in the second operand, and puts the expanded result into the second operand. s-n This action is only needed when the phrase to expand can vary according to a phrase name, instead of always needing to expand a specfic phrase. s-n In one sense this action provides a way to expand a phrase that does not have an am no-space bee and am no-space enn within the phrase definition, which is a special case that the action b-i-b expand h-h text b-i-e cannot handle.
+----
+
 description-for-phrase-get-phrase-definition-without-expanding:
 This action inserts the definition of the specified phrase. s-n This action is rarely needed. s-n It provides a way to immediately expand a phrase by just one level of recursion, without also expanding parameter phrases within the definition.
 ----
