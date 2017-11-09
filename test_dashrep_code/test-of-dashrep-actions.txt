@@ -175,6 +175,10 @@ result-of-test-expand-text-inline
 
 ambee expand-text ambee contains-name-test-skip-level-executable-phrase amenn unused-result-of-test-skip-level amenn
 
+combee ****
+ambee expand-indirect code-indirect expanded-code-indirect amenn
+**** comenn
+
 ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
 
 ambee copy-initial-caps list-of-animal-types initial-caps-list-of-animal-types amenn
