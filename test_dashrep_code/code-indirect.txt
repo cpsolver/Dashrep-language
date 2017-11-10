@@ -1,4 +1,1 @@
-ambee put-into-phrase sample-count 234 amenn
-ambee numeric-increment sample-count amenn
-ambee numeric-increment sample-count amenn
-sample-count
+code-indirect-executable
