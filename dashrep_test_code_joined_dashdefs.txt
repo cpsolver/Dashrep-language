@@ -67,11 +67,14 @@ ambee append-text character-period list-of-phrase-names-difference amenn
 ambee append-text list-of-phrase-names-recognized-minus-documented list-of-phrase-names-difference amenn
 ambee copy-without-extra-spaces list-of-phrase-names-difference list-of-phrase-names-difference amenn
 ----
-code-indirect:
+code-indirect-executable:
 ambee put-into-phrase sample-count 234 amenn
 ambee numeric-increment sample-count amenn
 ambee numeric-increment sample-count amenn
 sample-count
+----
+code-indirect:
+code-indirect-executable
 ----
 column-number:
 5
@@ -128,7 +131,7 @@ correct-value-for-counts-from-5-to-minus-4:
 5 4 3 2 1 0 -1 -2 -3 -4 
 ----
 correct-value-for-expanded-code-indirect:
-????
+236
 ----
 correct-value-for-expanded-date-time-frozen-adjusted:
 50 6 53 2017 
@@ -1492,9 +1495,7 @@ result-of-test-expand-text-inline
 
 ambee expand-text ambee contains-name-test-skip-level-executable-phrase amenn unused-result-of-test-skip-level amenn
 
-combee ****
 ambee expand-indirect code-indirect expanded-code-indirect amenn
-**** comenn
 
 ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
 
