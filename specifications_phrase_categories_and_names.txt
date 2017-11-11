@@ -229,14 +229,3 @@ amennfenambee
 nospay
 combee
 comenn
-
-category_deprecated
-insert-codeview-tags
-linbray
-dashbee
-dashenn
-dashnex
-dashrep-phrase-prefix-for-imported-phrases
-dashrep-phrase-suffix-for-imported-phrases
-expand-indirect
-copy-definition-of-named-phrase
