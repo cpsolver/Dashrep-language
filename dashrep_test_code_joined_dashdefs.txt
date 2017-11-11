@@ -1495,7 +1495,7 @@ result-of-test-expand-text-inline
 
 ambee expand-text ambee contains-name-test-skip-level-executable-phrase amenn unused-result-of-test-skip-level amenn
 
-ambee expand-indirect code-indirect expanded-code-indirect amenn
+ambee expand-text code-indirect expanded-code-indirect amenn
 
 ambee put-into-phrase alpha-something-row-column  alpha[-something-about-row-[-row-number-]-][-column-number-]  amenn
 
