@@ -753,6 +753,10 @@ description-for-phrase-expand-indirect:
 This action expands the phrase definition that is named in the second operand, and puts the expanded result into the second operand. s-n This action is only needed when the phrase to expand can vary according to a phrase name, instead of always needing to expand a specfic phrase. s-n In one sense this action provides a way to expand a phrase that does not have an am no-space bee and am no-space enn within the phrase definition, which is a special case that the action b-i-b expand h-h text b-i-e cannot handle.
 ----
 
+description-for-phrase-get-phrase-name-from-phrase:
+This action gets the phrase name that is in the definition of the operand, and supplies that phrase name as its result. s-n This action is useful when a phrase contains a phrase name and a different action needs to operate on the contained phrase, not the supplied phrase. s-n For example it is useful when using the action b-i-b expand h-h text b-i-e and the text to be expanded can change according to the phrase name contained in a phrase.
+----
+
 description-for-phrase-get-phrase-definition-without-expanding:
 This action inserts the definition of the specified phrase. s-n This action is rarely needed. s-n It provides a way to immediately expand a phrase by just one level of recursion, without also expanding parameter phrases within the definition.
 ----

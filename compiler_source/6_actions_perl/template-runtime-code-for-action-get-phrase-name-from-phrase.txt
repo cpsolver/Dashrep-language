@@ -1,0 +1,13 @@
+template-runtime-code-for-every-action-begin
+
+if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__get_phrase_name_from_phrase__case_not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__get_phrase_name_from_phrase__case_phrase_empty ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} elsif ( &function_parameterized__yes_or_no_phrase_name( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ) == $global_no ) {  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__get_phrase_name_from_phrase__case_phrase_does_not_contain_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+} else {  <new_line>
+    runtime-code-storage-item-result = code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end ;  <new_line>
+}  <new_line>
+
+template-runtime-code-for-every-action-end
