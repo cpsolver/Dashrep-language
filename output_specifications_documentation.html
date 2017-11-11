@@ -125,14 +125,6 @@
 <p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file-path template to point to different file paths.&nbsp; If the name of the phrase that needs to be expanded can change, then the first phrase can be surrounded with ambee and amenn delimiters.&nbsp; If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am-bee and am-enn delimiters).&nbsp; The first phrase name and the second phrase name can be the same (without automatically causing an endless loop). </p> <p> In addition to replacing hyphenated phrase names with their associated definitions, the expansion also replaces each occurrence of a specially identified hyphenated phrase with the definition of that phrase.&nbsp; The specially identified hyphenated phrases begin and end with angle brackets (<b><i>&lt;</i></b> and <b><i>&gt;</i></b>) and contain at least one underscore (<b><i>_</i></b>), such as <b><i>&lt;special_content&gt;</i></b>.&nbsp; For each such specially identified hyphenated phrase, the underscores are (internally) replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase (but the underscores are not changed if there is no associated phrase).&nbsp; The special text <b><i>&lt;character_hyphen&gt;</i></b> is replaced by a hyphen (<b><i>-</i></b>) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.&nbsp; The special text items <b><i>&lt;no_space&gt;</i></b> and <b><i>&lt;new_line&gt;</i></b> provide functionality that is equivalent to the <b><i>no-space</i></b> and <b><i>new-line</i></b> directives. </p> <p> This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed for complex expansions of Dashrep code.</p>
 
 
-<h3 id="copy-definition-of-named-phrase">copy-definition-of-named-phrase</h3>
-<p>This action copies to the second operand the definition of the phrase that is named in the definition of the first operand.&nbsp; This action is only needed when the name of a phrase is being supplied as the defintion of another phrase.&nbsp; In one sense this action provides a way to immediately expand a phrase by just one level of recursion, without also expanding any parameter phrases within the definition.&nbsp; The first operand must contain only a single phrase name.&nbsp; The named phrase can contain anything, and that content is copied without being expanded.</p>
-
-
-<h3 id="expand-indirect">expand-indirect</h3>
-<p>This action expands the phrase definition that is named in the second operand, and puts the expanded result into the second operand.&nbsp; This action is only needed when the phrase to expand can vary according to a phrase name, instead of always needing to expand a specfic phrase.&nbsp; In one sense this action provides a way to expand a phrase that does not have an ambee and amenn within the phrase definition, which is a special case that the action <b><i>expand-text</i></b> cannot handle.</p>
-
-
 <h2>Text-transfer-related phrases</h2>
 
 
@@ -190,6 +182,10 @@
 
 <h3 id="put-listed-phrase-definitions-into-phrase">put-listed-phrase-definitions-into-phrase</h3>
 <p>This action puts into the second phrase the phrase names and their associated Dashrep definitions that are listed in the first phrase.&nbsp; Each definition begins with the phrase name with an appended colon.&nbsp; Each definition is terminated with the word <b><i>defenn</i></b> followed by a newline character.&nbsp; This format is compatible with the format used by the action <b><i>get-definitions-from-phrase</i></b> because that action handles newline characters the same as spaces, and it ignores the colon at the end of a phrase name. </p> <p> Example: If the first phrase is <b><i>list-of-phrases-from-which-to-get-definitions</i></b> and it contains <b><i>animal-type animal-name</i></b> and the phrase <b><i>animal-type</i></b> contains <b><i>dolphin</i></b> and the phrase <b><i>animal-name</i></b> contains <b><i>first flipper</i></b> then this action creates a phrase that contains: <br \> <b><i>animal-type: dolphin defenn <br \> animal-name: first flipper defenn</i></b></p>
+
+
+<h3 id="get-phrase-name-from-phrase">get-phrase-name-from-phrase</h3>
+<p>This action gets the phrase name that is in the definition of the operand, and supplies that phrase name as its result.&nbsp; This action is useful when a phrase contains a phrase name and a different action needs to operate on the contained phrase, not the supplied phrase.&nbsp; For example it is useful when using the action <b><i>expand-text</i></b> and the text to be expanded can change according to the phrase name contained in a phrase.</p>
 
 
 <h2>Clear & delete phrases</h2>
@@ -266,7 +262,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>56</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
@@ -465,35 +461,35 @@
 
 
 <h3 id="time-day-of-month">time-day-of-month</h3>
-<p>This phrase contains the day of the month (such as 1, 2, ... 31), based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the day of the month (such as 1, 2, ... 31), based-on-epoch-seconds</p>
 
 
 <h3 id="time-day-of-week">time-day-of-week</h3>
-<p>This phrase contains the numerical day of the week where 1 indicates Monday, 2 indicates Tuesday, and so on, based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the numerical day of the week where 1 indicates Monday, 2 indicates Tuesday, and so on, based-on-epoch-seconds</p>
 
 
 <h3 id="time-day-of-year">time-day-of-year</h3>
-<p>This phrase contains the numerical day of the year (1, 2, ... 365, 366), based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the numerical day of the year (1, 2, ... 365, 366), based-on-epoch-seconds</p>
 
 
 <h3 id="time-hour">time-hour</h3>
-<p>This phrase contains the hour of the day, based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.&nbsp; The 24-hour notation is used.&nbsp; If a 12-hour format is needed, this can be done by defining phrases that handle each case for the 24 cases, such as by defining <b><i>am-or-pm-for-hour-17</i></b> to equal <b><i>pm</i></b> and defining <b><i>adjusted-hour-for-hour-17</i></b> to equal <b><i>5</i></b>.</p>
+<p>This phrase contains the hour of the day, based-on-epoch-seconds&nbsp; The 24-hour notation is used.&nbsp; If a 12-hour format is needed, this can be done by defining phrases that handle each case for the 24 cases, such as by defining <b><i>am-or-pm-for-hour-17</i></b> to equal <b><i>pm</i></b> and defining <b><i>adjusted-hour-for-hour-17</i></b> to equal <b><i>5</i></b>.</p>
 
 
 <h3 id="time-minute">time-minute</h3>
-<p>This phrase contains the minute of the hour, based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the minute of the hour, based-on-epoch-seconds</p>
 
 
 <h3 id="time-month-number">time-month-number</h3>
-<p>This phrase contains the numerical month number where 1 indicates January, 2 indicates February, and so on, based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the numerical month number where 1 indicates January, 2 indicates February, and so on, based-on-epoch-seconds</p>
 
 
 <h3 id="time-second">time-second</h3>
-<p>This phrase contains the seconds of the minute (0, 1, 2, ... 59), based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the seconds of the minute (0, 1, 2, ... 59), based-on-epoch-seconds</p>
 
 
 <h3 id="time-year">time-year</h3>
-<p>This phrase contains the year (such as <b><i>2012</i></b>), based on the epoch seconds supplied to the action <b><i>split-epoch-seconds-into-named-components</i></b> or <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>.</p>
+<p>This phrase contains the year (such as <b><i>2012</i></b>), based-on-epoch-seconds</p>
 
 
 <h2>Number-related phrases</h2>
@@ -654,67 +650,67 @@
 
 
 <h3 id="generate-list-of-files-in-current-read-directory">generate-list-of-files-in-current-read-directory</h3>
-<p>This action puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory.</p>
 
 
 <h3 id="generate-list-of-folders-in-current-read-directory">generate-list-of-folders-in-current-read-directory</h3>
-<p>This action puts into the specified phrase a list of all the folders (directories) that are in the current directory, where the current directory is specified by the value of phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action puts into the specified phrase a list of all the folders (directories) that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory.</p>
 
 
 <h3 id="yes-or-no-file-exists">yes-or-no-file-exists</h3>
-<p>This action determines whether the specified file exists, and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the file exists.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action determines whether the specified file exists, and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the file exists.&nbsp; location-of-read-file</p>
 
 
 <h3 id="yes-or-no-folder-exists">yes-or-no-folder-exists</h3>
-<p>This action determines whether a folder exists and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the folder exists.&nbsp; The folder name, without any path, is specified in the supplied phrase.&nbsp; The location in which to look for the folder is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action determines whether a folder exists and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the folder exists.&nbsp; The folder name, without any path, is specified in the supplied phrase.&nbsp; The location in which to look for the folder is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
 
 <h3 id="size-of-file">size-of-file</h3>
-<p>This action gets the file size &mdash; in bytes &mdash; of the specified file.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action gets the file size &mdash; in bytes &mdash; of the specified file.&nbsp; location-of-read-file</p>
 
 
 <h3 id="modification-time-of-file">modification-time-of-file</h3>
-<p>This action gets the modification time &mdash; in epoch seconds &mdash; of the specified file.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action gets the modification time &mdash; in epoch seconds &mdash; of the specified file.&nbsp; location-of-read-file</p>
 
 
 <h3 id="set-file-permission-public-read">set-file-permission-public-read</h3>
-<p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; location-of-read-file</p>
 
 
 <h3 id="set-file-permission-private">set-file-permission-private</h3>
-<p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command i-b chmod 0600 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command i-b chmod 0600 i-e.&nbsp; location-of-read-file</p>
 
 
 <h3 id="set-file-permission-private-but-executable">set-file-permission-private-but-executable</h3>
-<p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command i-b chmod 0711 i-e.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command i-b chmod 0711 i-e.&nbsp; location-of-read-file</p>
 
 
 <h3 id="rename-file">rename-file</h3>
-<p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.&nbsp; This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling, which prevents other parallel tasks from handling the same data.</p>
+<p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase name-of-phrase-that-specifies-write-directory.&nbsp; This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling, which prevents other parallel tasks from handling the same data.</p>
 
 
 <h3 id="delete-file">delete-file</h3>
-<p>This action deletes the specified file.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<p>This action deletes the specified file.&nbsp; location-of-write-file</p>
 
 
 <h3 id="create-empty-sub-folder">create-empty-sub-folder</h3>
-<p>This action creates an empty folder (directory) using the specified folder name, or does nothing if the sub-folder (directory) already exists.&nbsp; The sub-folder must be directly beneath the directory specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.&nbsp; The specified name must contain only letters (a to z and A to Z) and digits and underscores and hyphens; any other characters, including slashes or backslashes, are not allowed.</p>
+<p>This action creates an empty folder (directory) using the specified folder name, or does nothing if the sub-folder (directory) already exists.&nbsp; The sub-folder must be directly beneath the directory specified by the phrase name-of-phrase-that-specifies-write-directory.&nbsp; The specified name must contain only letters (a to z and A to Z) and digits and underscores and hyphens; any other characters, including slashes or backslashes, are not allowed.</p>
 
 
 <h3 id="copy-from-file-to-phrase">copy-from-file-to-phrase</h3>
-<p>This action copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The phrase <b><i>dashrep-yes-indicate-line-endings</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered.&nbsp; If it is important to keep newline characters (at the end of each line), consider using the action <b><i>copy-append-file-to-file</i></b>.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The phrase <b><i>dashrep-yes-indicate-line-endings</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered.&nbsp; If it is important to keep newline characters (at the end of each line), consider using the action <b><i>copy-append-file-to-file</i></b>.&nbsp; location-of-read-file</p>
 
 
 <h3 id="copy-from-phrase-append-to-file">copy-from-phrase-append-to-file</h3>
-<p>This action copies the definition of the hyphenated phrase onto the end of the specified file.&nbsp; No separation is inserted (either at the beginning or at the end.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<p>This action copies the definition of the hyphenated phrase onto the end of the specified file.&nbsp; No separation is inserted (either at the beginning or at the end.&nbsp; location-of-write-file</p>
 
 
 <h3 id="copy-append-file-to-file">copy-append-file-to-file</h3>
-<p>This action gets the text from the source file and appends a copy of that text to the end of the target file.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>, and the location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>.</p>
+<p>This action gets the text from the source file and appends a copy of that text to the end of the target file.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory, and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory.</p>
 
 
 <h3 id="linewise-read-from-file-and-use-handler">linewise-read-from-file-and-use-handler</h3>
-<p>This action reads each and every line from the text file whose name is specified by the first phrase, and that expands the handler specified by the second phrase.&nbsp; When the handler phrase is expanded, the contents of the current line is available in the phrase named <b><i>storage-input-line-from-file</i></b>, and the current line number (starting at one for the first line in the file) is available in the phrase named <b><i>linewise-input-line-count</i></b>.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action reads each and every line from the text file whose name is specified by the first phrase, and that expands the handler specified by the second phrase.&nbsp; When the handler phrase is expanded, the contents of the current line is available in the phrase named <b><i>storage-input-line-from-file</i></b>, and the current line number (starting at one for the first line in the file) is available in the phrase named <b><i>linewise-input-line-count</i></b>.&nbsp; location-of-read-file</p>
 
 
 <h3 id="linewise-input-line-from-file">linewise-input-line-from-file</h3>
@@ -726,30 +722,30 @@
 
 
 <h3 id="get-url-resource">get-url-resource</h3>
-<p>This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.&nbsp; The location of the target file is specified by the phrase <b><i>dashrep-path-prefix-for-file-writing</i></b>. </p> <p> Example: If the first phrase contains <b><i>http://www.votefair.org/americanidol.html</i></b> and the second phrase contains <b><i>temp_url_output.txt</i></b> and the phrase <b><i><b><i>dashrep-path-prefix-for-file-writing</i></b></i></b> contains <b><i>/home/rawfeeds/</i></b> then a copy of the specified web page will be put into the file <b><i>/home/rawfeeds/temp_url_output.txt</i></b>.</p>
+<p>This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.&nbsp; location-of-write-file </p> <p> Example: If the first phrase contains <b><i>http://www.votefair.org/americanidol.html</i></b> and the second phrase contains <b><i>temp_url_output.txt</i></b> and the phrase <b><i>name-of-phrase-that-specifies-write-directory</i></b> contains <b><i>/home/rawfeeds/</i></b> then a copy of the specified web page will be put into the file <b><i>/home/rawfeeds/temp_url_output.txt</i></b>.</p>
 
 
 <h2>Data-related phrases</h2>
 
 
 <h3 id="find-line-in-file-that-begins-with-text">find-line-in-file-that-begins-with-text</h3>
-<p>This action reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase.&nbsp; If none of the lines in the file begin with the specified text, then the third phrase will be empty.&nbsp; The text being searched for can contain a trailing space, which is useful when full-word matches are needed.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase.&nbsp; If none of the lines in the file begin with the specified text, then the third phrase will be empty.&nbsp; The text being searched for can contain a trailing space, which is useful when full-word matches are needed.&nbsp; location-of-read-file</p>
 
 
 <h3 id="find-lines-in-file-that-begin-with-any-listed-word">find-lines-in-file-that-begin-with-any-listed-word</h3>
-<p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines.&nbsp; If none of the lines in the file begin with any of the specified words, then the third phrase will be empty.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines.&nbsp; If none of the lines in the file begin with any of the specified words, then the third phrase will be empty.&nbsp; location-of-read-file</p>
 
 
 <h3 id="find-lines-in-file-that-begin-with-any-two-words-listed">find-lines-in-file-that-begin-with-any-two-words-listed</h3>
-<p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines.&nbsp; If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty.&nbsp; A line is regarded as a match if the first two words are the same, and if that word is in the specified word list.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines.&nbsp; If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty.&nbsp; A line is regarded as a match if the first two words are the same, and if that word is in the specified word list.&nbsp; location-of-read-file</p>
 
 
 <h3 id="copy-from-columns-in-file-to-named-phrases">copy-from-columns-in-file-to-named-phrases</h3>
-<p>This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name.&nbsp; The specified phrase must begin with the (space-delimited) prefix for all the names, is followed by the (space-delimited) name of each column.&nbsp; The third operand is the name of a phrase that will contain the list of unique values that come from the first word in each line.&nbsp; This action is useful for reading spreadsheet-like data.&nbsp; If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. </p> <p> Example: If the second operand is a phrase that contains <b><i>cell-contents-for-nickname phone-number city state</i></b> and one line of text in the file is <b><i>flipper 123-456-7890 san_diego ca</i></b> then the phrase <b><i>cell-contents-for-nickname-flipper-phone-number</i></b> will contain <b><i>123-456-7890</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-city</i></b> will contain <b><i>san_diego</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-state</i></b> will contain <b><i>ca</i></b>. </p> <p> If the phrase <b><i>dashrep-use-two-spaces-as-column-delimiter</i></b> is defined as <b><i>yes</i></b>, then two spaces (instead of one) are required between cells.&nbsp; This option is useful if the spreadsheet-like cell of data might contain any spaces. </p> <p> If the second phrase contains only a single word, then the file is assumed to contain only two columns of data on each line, and a suffix is not appended to the end of the generated phrase names.</p>
+<p>This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name.&nbsp; The specified phrase must begin with the (space-delimited) prefix for all the names, is followed by the (space-delimited) name of each column.&nbsp; The third operand is the name of a phrase that will contain the list of unique values that come from the first word in each line.&nbsp; This action is useful for reading spreadsheet-like data.&nbsp; If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory. </p> <p> Example: If the second operand is a phrase that contains <b><i>cell-contents-for-nickname phone-number city state</i></b> and one line of text in the file is <b><i>flipper 123-456-7890 san_diego ca</i></b> then the phrase <b><i>cell-contents-for-nickname-flipper-phone-number</i></b> will contain <b><i>123-456-7890</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-city</i></b> will contain <b><i>san_diego</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-state</i></b> will contain <b><i>ca</i></b>. </p> <p> If the phrase <b><i>dashrep-use-two-spaces-as-column-delimiter</i></b> is defined as <b><i>yes</i></b>, then two spaces (instead of one) are required between cells.&nbsp; This option is useful if the spreadsheet-like cell of data might contain any spaces. </p> <p> If the second phrase contains only a single word, then the file is assumed to contain only two columns of data on each line, and a suffix is not appended to the end of the generated phrase names.</p>
 
 
 <h3 id="copy-from-columns-in-file-to-column-lists">copy-from-columns-in-file-to-column-lists</h3>
-<p>This action reads from the specified file all the spreadsheet-like lines of text, and puts the first (space-delimited) word from each line into one list, and puts the second word from each line into another list, and puts the third word from each line into yet another list, and so on.&nbsp; The generated lists are given the phrase name specified by the second operand (not by the definition in the second operand) followed by a hyphen and the column number.&nbsp; This action is useful for reading spreadsheet-like data that contains columns of values, where each column of values is meaningful, such as for doing numeric vector calculations and finding the unique values in each column.&nbsp; Empty lines are ignored.&nbsp; The line of data with the fewest words determines how many lists are generated, and words beyond that number are ignored.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. </p> <p> Example: If the second operand is the phrase <b><i>list-of-values-in-column</i></b> and the specified file contains three lines of text, with <b><i>flipper 123 234 san_diego</i></b> in the first line, and <b><i>adolph 456 567 miami fl</i></b> in the second line, and <b><i>dory 789 890 los_angeles</i></b> in the third line, then the phrase <b><i>list-of-values-in-column-1</i></b> will contain <b><i>flipper adolph dory</i></b> and the phrase <b><i>list-of-values-in-column-2</i></b> will contain <b><i>123 456 789</i></b> and the phrase <b><i>list-of-values-in-column-3</i></b> will contain <b><i>234 567 890</i></b> and the phrase <b><i>list-of-numbers-in-column-4</i></b> will contain <b><i>san_diego miami los_angeles</i></b>.</p>
+<p>This action reads from the specified file all the spreadsheet-like lines of text, and puts the first (space-delimited) word from each line into one list, and puts the second word from each line into another list, and puts the third word from each line into yet another list, and so on.&nbsp; The generated lists are given the phrase name specified by the second operand (not by the definition in the second operand) followed by a hyphen and the column number.&nbsp; This action is useful for reading spreadsheet-like data that contains columns of values, where each column of values is meaningful, such as for doing numeric vector calculations and finding the unique values in each column.&nbsp; Empty lines are ignored.&nbsp; The line of data with the fewest words determines how many lists are generated, and words beyond that number are ignored.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory. </p> <p> Example: If the second operand is the phrase <b><i>list-of-values-in-column</i></b> and the specified file contains three lines of text, with <b><i>flipper 123 234 san_diego</i></b> in the first line, and <b><i>adolph 456 567 miami fl</i></b> in the second line, and <b><i>dory 789 890 los_angeles</i></b> in the third line, then the phrase <b><i>list-of-values-in-column-1</i></b> will contain <b><i>flipper adolph dory</i></b> and the phrase <b><i>list-of-values-in-column-2</i></b> will contain <b><i>123 456 789</i></b> and the phrase <b><i>list-of-values-in-column-3</i></b> will contain <b><i>234 567 890</i></b> and the phrase <b><i>list-of-numbers-in-column-4</i></b> will contain <b><i>san_diego miami los_angeles</i></b>.</p>
 
 
 <h3 id="yes-or-no-use-two-spaces-as-column-delimiter">yes-or-no-use-two-spaces-as-column-delimiter</h3>
@@ -757,7 +753,7 @@
 
 
 <h3 id="gather-tagged-info-from-file">gather-tagged-info-from-file</h3>
-<p>This action reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-begin</i></b> phrase (which has a default value of <b><i>entry_begin</i></b> ), a new set of related items begins, and when the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-end</i></b> phrase (which has a default value of <b><i>entry_end</i></b> ), that set of items ends.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-unique</i></b> phrase (which has a default value of <b><i>url</i></b>, and which must appear within a set of items), the next (space-delimited) word in that line is used as the unique identifier for the items in that set.&nbsp; If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier.&nbsp; Each generated phrase name begins with the tag name (that preceded that item) followed by the text <b><i>-value-for-unique-id-</i></b> and then followed by the unique value.&nbsp; The list of encountered unique values is put into the second-operand phrase. </p> <p> If the text <b><i>multi_line_begin</i></b> immediately follows an item's name, the lines that follow, up to a line that contains (only) <b><i>multi_line_end</i></b>, are combined (with a space between each line's content) into a long value for that named item. </p> <p> If a normal (non-multi) line begins with the definition of the <b><i>dashrep-gather-tag-delete</i></b> phrase (which has a default value of <b><i>delete_id</i></b> ) then the unique value in the second word (of that line) is omitted from the list of encountered unique values.&nbsp; If a later entry specifies a definition for an entry that was requested to be deleted, the later entry overrides the deletion request.&nbsp; A deletion request does not delete any of the already-defined phrases, but those phrases will not be accessed if the created phrases are only accessed using the list of encountered unique values.&nbsp; As an example, an entry with the unique ID of <b><i>1776</i></b> can be deleted by appending (to the file) the line <b><i>delete_id 1776</i></b>. </p> <p> A list of the encountered tag names is put into the phrase <b><i>dashrep-gathered-tag-names</i></b>.&nbsp; The order of the list is the order in which the tag names were first encountered. </p> <p> This "gather" action is useful for accessing database-like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record.&nbsp; This action is also useful for spreadsheet-like information where the tag names are analogous to single-word column titles, and one row of spreadsheet data is stored in multiple lines, with each cell's content on a separate (labelled) line.&nbsp; The order of the items within each set is not significant, and the order does not need to be the same from one set to another.&nbsp; This action does not require that each set of items use the same first words that are used in other sets, but in that case the generated phrases should be checked for undefined (empty) phrase definitions. </p> <p> The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.</p>
+<p>This action reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-begin</i></b> phrase (which has a default value of <b><i>entry_begin</i></b> ), a new set of related items begins, and when the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-end</i></b> phrase (which has a default value of <b><i>entry_end</i></b> ), that set of items ends.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-unique</i></b> phrase (which has a default value of <b><i>url</i></b>, and which must appear within a set of items), the next (space-delimited) word in that line is used as the unique identifier for the items in that set.&nbsp; If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier.&nbsp; Each generated phrase name begins with the tag name (that preceded that item) followed by the text <b><i>-value-for-unique-id-</i></b> and then followed by the unique value.&nbsp; The list of encountered unique values is put into the second-operand phrase. </p> <p> If the text <b><i>multi_line_begin</i></b> immediately follows an item's name, the lines that follow, up to a line that contains (only) <b><i>multi_line_end</i></b>, are combined (with a space between each line's content) into a long value for that named item. </p> <p> If a normal (non-multi) line begins with the definition of the <b><i>dashrep-gather-tag-delete</i></b> phrase (which has a default value of <b><i>delete_id</i></b> ) then the unique value in the second word (of that line) is omitted from the list of encountered unique values.&nbsp; If a later entry specifies a definition for an entry that was requested to be deleted, the later entry overrides the deletion request.&nbsp; A deletion request does not delete any of the already-defined phrases, but those phrases will not be accessed if the created phrases are only accessed using the list of encountered unique values.&nbsp; As an example, an entry with the unique ID of <b><i>1776</i></b> can be deleted by appending (to the file) the line <b><i>delete_id 1776</i></b>. </p> <p> A list of the encountered tag names is put into the phrase <b><i>dashrep-gathered-tag-names</i></b>.&nbsp; The order of the list is the order in which the tag names were first encountered. </p> <p> This "gather" action is useful for accessing database-like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record.&nbsp; This action is also useful for spreadsheet-like information where the tag names are analogous to single-word column titles, and one row of spreadsheet data is stored in multiple lines, with each cell's content on a separate (labelled) line.&nbsp; The order of the items within each set is not significant, and the order does not need to be the same from one set to another.&nbsp; This action does not require that each set of items use the same first words that are used in other sets, but in that case the generated phrases should be checked for undefined (empty) phrase definitions. </p> <p> location-of-read-file</p>
 
 
 <h3 id="gather-from-tagged-file-one-entry">gather-from-tagged-file-one-entry</h3>
@@ -765,7 +761,7 @@
 
 
 <h3 id="write-gathered-listed-items-to-end-of-file">write-gathered-listed-items-to-end-of-file</h3>
-<p>This action writes to the end of the specified file all or most of the information that was recently gathered using the action <b><i>gather-tagged-info-from-file</i></b>.&nbsp; The first operand specifies a phrase that contains the list of unique values for the gathered items to be written, which allows some of the items to be omitted.&nbsp; This action, unlike the "gather" action, does not support the use of multi-line entries.&nbsp; The second operand is the name of the target file.&nbsp; The location of the source file is specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>.&nbsp; This action uses the list of tag names in the phrase <b><i>dashrep-gathered-tag-names-in-sequence</i></b> to determine which tag names to use, and the sequence in which they are written.</p>
+<p>This action writes to the end of the specified file all or most of the information that was recently gathered using the action <b><i>gather-tagged-info-from-file</i></b>.&nbsp; The first operand specifies a phrase that contains the list of unique values for the gathered items to be written, which allows some of the items to be omitted.&nbsp; This action, unlike the "gather" action, does not support the use of multi-line entries.&nbsp; The second operand is the name of the target file.&nbsp; location-of-read-file&nbsp; This action uses the list of tag names in the phrase <b><i>dashrep-gathered-tag-names-in-sequence</i></b> to determine which tag names to use, and the sequence in which they are written.</p>
 
 
 <h3 id="dashrep-gather-tag-begin">dashrep-gather-tag-begin</h3>
@@ -866,14 +862,6 @@
 <p>(described in table above)</p>
 
 
-<h3 id="combee">combee</h3>
-<p>(described in table above)</p>
-
-
-<h3 id="comenn">comenn</h3>
-<p>(described in table above)</p>
-
-
 <h3 id="fen">fen</h3>
 <p>(described in table above)</p>
 
@@ -894,35 +882,51 @@
 <p></p>
 
 
+<h3 id="combee">combee</h3>
+<p>(described in table above)</p>
+
+
+<h3 id="comenn">comenn</h3>
+<p>(described in table above)</p>
+
+
 <h2>Deprecated phrases, do not use</h2>
 
 
 <h3 id="insert-codeview-tags">insert-codeview-tags</h3>
-<p>This action inserts into the specified phrase definition special tags that enable the raw Dashrep code to be displayed, such as on a web page.&nbsp; The special inserted tags, such as <b><i>&lt;dashrep_codeview_action_begin&gt;</i></b> and <b><i>&lt;dashrep_codeview_action_middle_1&gt;</i></b>, are expected to be replaced by the text items in phrases such as <b><i>dashrep-codeview-action-begin</i></b> and <b><i>dashrep-codeview-action-middle-1</i></b>.</p>
+<p></p>
 
 
 <h3 id="linbray">linbray</h3>
-<p>(described in table above)</p>
+<p></p>
 
 
 <h3 id="dashbee">dashbee</h3>
-<p>(described in table above)</p>
+<p></p>
 
 
 <h3 id="dashenn">dashenn</h3>
-<p>(described in table above)</p>
+<p></p>
 
 
 <h3 id="dashnex">dashnex</h3>
-<p>(described in table above)</p>
+<p></p>
 
 
 <h3 id="dashrep-phrase-prefix-for-imported-phrases">dashrep-phrase-prefix-for-imported-phrases</h3>
-<p>This prefix is placed at the beginning of each newly defined phrase imported from a file.&nbsp; This capability is useful to prevent user-written phrase names from overwriting phrase names that are executed with special permissions.&nbsp; Also this capability is useful for importing phrases from separate files that otherwise might have overlapping phrase names.</p>
+<p></p>
 
 
 <h3 id="dashrep-phrase-suffix-for-imported-phrases">dashrep-phrase-suffix-for-imported-phrases</h3>
-<p>This suffix is placed at the end of each newly defined phrase imported from a file.&nbsp; See the phrase <b><i>prefix-for-imported-phrases</i></b> for more details.</p>
+<p></p>
+
+
+<h3 id="expand-indirect">expand-indirect</h3>
+<p></p>
+
+
+<h3 id="copy-definition-of-named-phrase">copy-definition-of-named-phrase</h3>
+<p></p>
 
 
 <p>&nbsp;</p>
