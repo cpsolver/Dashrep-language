@@ -18,8 +18,6 @@ character-underscore
 
 category_expand
 expand-text
-copy-definition-of-named-phrase
-expand-indirect
 
 category_transfer
 get-cgi-information
@@ -36,6 +34,7 @@ prepend-text
 prepend-text-no-space
 get-definitions-from-phrase
 put-listed-phrase-definitions-into-phrase
+get-phrase-name-from-phrase
 
 category_clear_delete
 clear-phrase
@@ -223,13 +222,13 @@ yes-or-no-indicate-line-endings
 category_spoken_words
 ambee
 amenn
-combee
-comenn
 fen
 fenambee
 amennfen
 amennfenambee
 nospay
+combee
+comenn
 
 category_deprecated
 insert-codeview-tags
@@ -239,3 +238,5 @@ dashenn
 dashnex
 dashrep-phrase-prefix-for-imported-phrases
 dashrep-phrase-suffix-for-imported-phrases
+expand-indirect
+copy-definition-of-named-phrase
