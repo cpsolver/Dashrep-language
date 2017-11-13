@@ -215,3 +215,5 @@ ambee append-text-no-space string-new string-bracketed-new-line amenn
 ambee append-text-no-space character-underscore string-bracketed-new-line amenn
 ambee append-text-no-space string-line string-bracketed-new-line amenn
 ambee append-text-no-space character-close-angle-bracket string-bracketed-new-line amenn
+
+ambee copy-text character-space end-of-line-indicator amenn
