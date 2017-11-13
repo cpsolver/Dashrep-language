@@ -8,7 +8,6 @@ line-break
 character-tab
 character-open-square-bracket
 character-close-square-bracket
-comments-ignored
 dashrep-endless-loop-counter-limit
 dashrep-gather-tag-begin
 dashrep-gather-tag-end
@@ -19,15 +18,8 @@ dashrep-path-prefix-for-file-reading
 dashrep-path-prefix-for-file-writing
 dashrep-time-limit
 dashrep-version
-export-defs-all-begin
-export-defs-all-end
-export-defs-def-begin
-export-defs-def-end
-export-defs-phrase-begin
-export-defs-phrase-end
 linewise-input-line-from-file
 linewise-input-line-count
-list-of-compiled-executable-phrases
 list-of-pointers-to-unique-words
 list-of-unique-word-counts
 numeric-map-tile-zoom
@@ -44,3 +36,4 @@ yes-or-no-permission-administrator
 yes-or-no-permission-to-append-to-files
 yes-or-no-permission-to-delete-or-overwrite-files
 yes-or-no-use-two-spaces-as-column-delimiter
+text-end-of-line-here-space-delimited
