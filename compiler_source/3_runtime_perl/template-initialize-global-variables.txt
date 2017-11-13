@@ -66,6 +66,8 @@ my $global_url = '' ;  <new_line>
 my $global_yes = 1 ;  <new_line>
 my $global_no = 0 ;  <new_line>
 my $global_yes_or_no = 0 ;  <new_line>
+my $global_yes_or_no_remove = 0 ;  <new_line>
+my $global_yes_or_no_skip = 0 ;  <new_line>
 my $global_yes_or_no_operand_error = $global_no ;  <new_line>
 my $global_yes_or_no_count_phrase_usage = $global_no ;  <new_line>
 my $global_tracking_on_yes_or_no = $global_no ;  <new_line>
@@ -392,5 +394,6 @@ my $global_cgi_string_length_limit = 100000 ;  <new_line>
 my $global_cgi_line_length_limit = 100 ;  <new_line>
 my $global_unique_value = '' ;  <new_line>
 my $global_yes_or_no_conditionally_need_separator_space = $global_no ;  <new_line>
+my $global_multiple_spaces = '<character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space>' ;  <new_line>
 <new_line>
 <new_line>
