@@ -68,11 +68,7 @@ ambee put-into-phrase count-of-amenn-tokens  0  amenn
 ambee clear-phrase list-of-template-functions-for-requested-actions amenn
 ----
 convert-source-code-into-words:
-ambee copy-and-replace source-code source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn
-ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn
-ambee copy-and-replace source-code-as-words source-code-as-words string-space-end-of-line-here-space string-placeholder-special amenn
-ambee copy-and-replace source-code-as-words source-code-as-words string-placeholder-special character-space amenn
-ambee copy-without-extra-spaces source-code-as-words source-code-as-words amenn
+ambee copy-without-extra-spaces source-code source-code-as-words amenn
 ambee convert-source-code-replace-parameter-brackets-with-ambee-and-amenn amenn
 ambee copy-and-replace-using-paired-listed-words source-code-as-words source-code-as-words paired-replacements-for-converting-to-combee-comenn amenn
 ambee copy-and-replace source-code-as-words source-code-as-words string-space-hyphen-here-space string-space-no-space-character-hyphen-no-space-space amenn
@@ -1141,12 +1137,6 @@ ambee copy-text character-space string-space-period-space-apostrophe-apostrophe 
 ambee append-text-no-space character-period string-space-period-space-apostrophe-apostrophe amenn
 ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn
 ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn
-
-ambee copy-text string-end-of string-space-end-of-line-here-space amenn
-ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn
-ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn
-ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn
-ambee append-text-no-space character-space string-space-end-of-line-here-space amenn
 
 ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn
 ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn
