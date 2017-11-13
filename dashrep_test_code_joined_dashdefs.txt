@@ -263,7 +263,7 @@ correct-value-for-result-calculation-subtraction:
 4 
 ----
 correct-value-for-result-contents-from-file-append-repeated:
-dolphin whale starfish octopus end-of-line-here dolphin whale starfish octopus end-of-line-here
+dolphin whale starfish octopus dolphin whale starfish octopus
 ----
 correct-value-for-result-contents-from-file-renamed:
 dolphin whale starfish octopus
