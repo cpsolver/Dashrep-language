@@ -48,8 +48,24 @@ An action is not recognized if it is not within parameter brackets, or if it is 
 phrase-description-end
 -----
 
-description-for-phrase-dashrep-definition-append-next:
-This directive requests that the next definition be appended to the existing definition of the specified phrase. s-n This directive allows a list to be created during the reading of definitions because it overrides the normal convention of replacing the existing definition (when the same phrase name is defined more than once).
+description-for-phrase-yes-or-no-indicate-line-endings:
+If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
+----
+
+description-for-phrase-yes-or-no-skip-empty-lines-when-copy-from-file:
+If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e skips empty lines. s-n Any other value for this phrase causes empty lines to be included in the copied text. s-n The default value of this phrase is b-i-b yes b-i-e no-space . s-n If a line contains only spaces, it is regarded as an empty line.
+----
+
+description-for-phrase-end-of-line-indicator:
+This phrase is inserted at the end of each line when the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e is used. s-n The definition of this phrase can be changed at any time, and the next use of the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e will use the current definition. s-n This phrase has a default definition of a single newline character. s-n Typically the phrases that are copied to this phrase are b-i-b character h-h space b-i-e no-space , b-i-b character h-h newline b-i-e no-space , and b-i-b text h-h end h-h of h-h line h-h here h-h space h-h delimited b-i-e no-space .
+-----
+
+description-for-phrase-text-end-of-line-here-space-delimited:
+This pre h-h defined phrase contains the text b-i-b text h-h end h-h of h-h line h-h here b-i-e and contains a leading space and a trailing space. s-n When this text is copied into the phrase b-i-b end h-h of h-h line h-h indicator b-i-e no-space , use of the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts this special phrase into the text at each newline location, which can assist in inserting anything into those positions when the text is expanded. s-n This phrase is not protected from being overwitten, so its definition can change.
+-----
+
+description-for-phrase-yes-or-no-trim-spaces-when-copy-from-file:
+If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h file b-i-e removes the leading and trailing spaces from each line that is read from the file. s-n Any other value for this phrase causes the leading and trailing spaces to be retained. s-n The default value of this phrase is b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-delayed-nospace:
@@ -642,10 +658,6 @@ This action first prints (to standard output) the contents of phrase b-i-b stand
 
 description-for-phrase-dashrep-endless-loop-counter-limit:
 This phrase specifies the maximum number of replacements allowed during a Dashrep translation. s-n This number can be redefined, such as to a larger number. s-n If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times. s-n If large amounts of data are processed, the default number is not going to be large enough. s-n This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.
-----
-
-description-for-phrase-yes-or-no-indicate-line-endings:
-If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
 ----
 
 description-for-phrase-no-space:
