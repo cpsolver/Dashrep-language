@@ -1,1 +1,1 @@
-' end-of-line-here '
+' end' . '-' . 'of' . '-' . 'line' . '-' . 'here '
