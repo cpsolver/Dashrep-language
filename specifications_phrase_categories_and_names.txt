@@ -177,6 +177,10 @@ rename-file
 delete-file
 create-empty-sub-folder
 copy-from-file-to-phrase
+end-of-line-indicator
+text-end-of-line-here-space-delimited
+yes-or-no-trim-spaces-when-copy-from-file
+yes-or-no-skip-empty-lines-when-copy-from-file
 copy-from-phrase-append-to-file
 copy-append-file-to-file
 linewise-read-from-file-and-use-handler
@@ -208,16 +212,14 @@ dashrep-comments-ignored
 generate-phrase-usage-counts
 
 category_advanced
+exit-from-dashrep
 dashrep-language-yes
 dashrep-version
 delayed-nospace
 delayed-newline
 yes-or-no-permission-administrator
-exit-from-dashrep
 dashrep-endless-loop-counter-limit
 dashrep-time-limit
-end-of-line-here
-yes-or-no-indicate-line-endings
 
 category_spoken_words
 ambee
