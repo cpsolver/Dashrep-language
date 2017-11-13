@@ -44,12 +44,6 @@ ambee append-text-no-space character-period string-space-period-space-apostrophe
 ambee append-text-no-space character-space string-space-period-space-apostrophe-apostrophe amenn
 ambee append-text-no-space string-two-apostrophes string-space-period-space-apostrophe-apostrophe amenn
 
-ambee copy-text string-end-of string-space-end-of-line-here-space amenn
-ambee prepend-text-no-space character-space string-space-end-of-line-here-space amenn
-ambee append-text-no-space character-hyphen string-space-end-of-line-here-space amenn
-ambee append-text-no-space string-line-here string-space-end-of-line-here-space amenn
-ambee append-text-no-space character-space string-space-end-of-line-here-space amenn
-
 ambee copy-text string-code-nospay-between-spaces-without-padded-spaces string-code-nospay-between-spaces amenn
 ambee prepend-text-no-space character-space string-code-nospay-between-spaces amenn
 ambee append-text-no-space character-space string-code-nospay-between-spaces amenn
