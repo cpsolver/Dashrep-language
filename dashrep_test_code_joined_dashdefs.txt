@@ -148,9 +148,6 @@ text-that-occurs-before-parameter-phrases text-that-occurs-within-parameter-phra
 correct-value-for-found-line-about-dolphins:
 dolphin info about dolphins
 ----
-correct-value-for-found-line-for-animal-combination:
-dolphin octopus intersection of dolphin and octopus
-----
 correct-value-for-initial-caps-list-of-animal-types:
 Dolphin Whale Starfish Octopus 
 ----
@@ -1168,9 +1165,6 @@ dash no-space bee dash no-space enn dash no-space nex am no-space bee am no-spac
 template-string-correct-value-for-hyphen:
 correct hyphen-here value hyphen-here for hyphen-here 
 ----
-template-string-end-of-line-here:
-end hyphen-here of hyphen-here line hyphen-here here
-----
 test-assignment:
 17 
 ----
@@ -1182,6 +1176,9 @@ ambee copy-text string-words-inline-text copy-of-string-words-inline-text amenn
 copy-of-string-words-inline-text
 ----
 test-file-related-dashrep-actions:
+ambee copy-text character-space end-of-line-indicator amenn
+ambee put-into-phrase yes-or-no-trim-spaces-when-copy-from-file yes amenn
+ambee put-into-phrase yes-or-no-skip-empty-lines-when-copy-from-file yes amenn
 ambee delete-file ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-phrase-append-to-file list-of-animal-types ambee filename-output-for-test-writing-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-writing-to-file amenn result-contents-from-file-write-and-read amenn
@@ -1194,8 +1191,6 @@ ambee delete-file ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-append-file-to-file ambee filename-output-for-test-writing-to-file amenn ambee filename-output-for-test-appending-to-file amenn amenn
 ambee copy-from-file-to-phrase ambee filename-output-for-test-appending-to-file amenn result-contents-from-file-append-repeated amenn
-ambee expand-text template-string-end-of-line-here string-end-of-line-here amenn
-ambee copy-and-replace result-contents-from-file-append-repeated result-contents-from-file-append-repeated string-end-of-line-here character-space amenn
 ambee copy-without-extra-spaces result-contents-from-file-append-repeated result-contents-from-file-append-repeated amenn
 
 ambee put-into-phrase result-modification-time-of-file  ambee modification-time-of-file ambee input-filename-containing-data-to-test-gather-find-actions amenn amenn  amenn
@@ -1222,9 +1217,6 @@ ambee find-line-in-file-that-begins-with-text ambee input-filename-containing-da
 ambee find-lines-in-file-that-begin-with-any-listed-word ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter found-lines-about-multiple-animals amenn
 
 ambee find-lines-in-file-that-begin-with-any-two-words-listed ambee input-filename-containing-data-to-test-gather-find-actions amenn words-dolphin-octopus-whale-otter pointers-to-found-lines-for-animal-combinations amenn
-
-ambee copy-word-at-position pointers-to-found-lines-for-animal-combinations single-pointer-to-found-line-for-animal-combination 1 amenn
-ambee copy-definition-of-named-phrase single-pointer-to-found-line-for-animal-combination found-line-for-animal-combination amenn
 
 ambee copy-from-columns-in-file-to-named-phrases ambee input-filename-containing-data-to-test-gather-find-actions amenn structure-of-column-data result-for-action-copy-from-columns-in-file-to-named-phrases amenn
 
@@ -1650,6 +1642,12 @@ todo-correct-value-for-skipped-list-of-numbers:
 ----
 two-dimensional-sort:
 ambee numeric-two-dimensional-sort-into-columns-and-rows 3 input-right-values input-up-values results-of-two-dimensional-sort amenn
+----
+unused-correct-value-for-found-line-for-animal-combination:
+dolphin octopus intersection of dolphin and octopus
+----
+unused-template-string-end-of-line-here:
+end hyphen-here of hyphen-here line hyphen-here here
 ----
 value-inserted-if-skip-level-ok:
 ok 
