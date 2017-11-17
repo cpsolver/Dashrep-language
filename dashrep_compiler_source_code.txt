@@ -6538,6 +6538,8 @@ sub function__get_url_resource( ) {  <new_line>
 my $command_string_without_pipe ;  <new_line>
 my $process_id ;  <new_line>
 
+$global_dashrep_replacement{ 'trace-results-from-curl' } = 'starting_get_url_resource' ;  <new_line>
+
 combee template-return-if-no-permission-to-delete-overwrite-files comenn
 
 if ( &function_parameterized__yes_or_no_valid_url( $global_operand_one ) == $global_no ) {  <new_line>
@@ -6564,9 +6566,9 @@ $global_target_file_full_path = $global_target_path_prefix . $global_operand_two
 $command_string_without_pipe = 'curl -k -s -S -o ' . $global_target_file_full_path . ' ' . $global_operand_one ;  <new_line>
 
 if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) ) {  <new_line>
-    $global_accumulated_text = 'cannot_run_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
+    $global_accumulated_text .= ' cannot_run_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
 } else {  <new_line>
-    $global_accumulated_text = 'starting_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
+    $global_accumulated_text .= ' starting_curl_command [' . $command_string_without_pipe . '] ' ;  <new_line>
     while( $global_input_line = <CURLCMD> ) {  <new_line>
         $global_accumulated_text .= ' ' . $global_input_line ;  <new_line>
     }  <new_line>
@@ -6576,6 +6578,7 @@ if ( not( $process_id = open( CURLCMD , $command_string_without_pipe . "|" ) ) )
     }  <new_line>
     chmod( 0600 , $global_target_file_full_path ) ;  <new_line>
 }  <new_line>
+$global_accumulated_text .= ' ending_get_url_resource' ;  <new_line>
 $global_dashrep_replacement{ 'trace-results-from-curl' } = $global_accumulated_text ;  <new_line>
 
 return '' ;  <new_line>
