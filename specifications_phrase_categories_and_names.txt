@@ -187,7 +187,7 @@ linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
 get-url-resource
-trace-results-from-curl
+trace-from-get-url-resource
 
 category_data
 find-line-in-file-that-begins-with-text

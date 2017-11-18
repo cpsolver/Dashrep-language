@@ -934,7 +934,7 @@ no-space .
 -----
 
 description-for-phrase-get-url-resource:
-This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.
+This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase. s-n Diagnostic messages are written to the phrase b-i-b trace h-h from get h-h url h-h resource b-i-e no-space .
 s-n
 location-of-write-file
 paragraph-next
@@ -959,6 +959,10 @@ b-i-b
 /home/rawfeeds/temp_url_output.txt
 b-i-e
 no-space .
+-----
+
+description-for-phrase-trace-from-get-url-resource:
+This phrase contains diagnostic information after using the action b-i-b get h-h url h-h resource b-i-e no-space . s-n Specifically it indicates steps in the process of getting the URL resource, and it contains messages from the software that gets the URL resource, which currently is the b-i-b curl b-i-e utility.
 -----
 
 description-for-phrase-standard-output:
