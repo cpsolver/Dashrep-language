@@ -7,9 +7,10 @@ template-check-operand-two-is-phrase-name
 
 $global_action_result = '' ;  <new_line>
 $global_text_being_edited = $global_dashrep_replacement{ $global_operand_one } ;  <new_line>
-$global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z]+)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;  <new_line>
+$global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;  <new_line>
 $global_text_being_edited =~ s/><!\[CDATA\[/>/gi ;  <new_line>
 $global_text_being_edited =~ s/\]\]></</gi ;  <new_line>
+$global_text_being_edited =~ s/< *(\/?) *([a<character_hyphen>zA<character_hyphen>Z][a<character_hyphen>zA<character_hyphen>Z0<character_hyphen>9]*)[^>\/]*(\/?)[^>]*>/<$1$2$3>/gi ;  <new_line>
 $global_dashrep_replacement{ $global_operand_two } = $global_text_being_edited ;  <new_line>
 return '' ;  <new_line>
 
