@@ -3,9 +3,9 @@ combee **** todo: fix bug in associated function, then delete this file to switc
 template-runtime-code-for-every-action-begin
 
 if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) {  <new_line>
-    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-one . ' ' ;  <new_line>
 } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) {  <new_line>
-    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . runtime-code-for-operand-number-two . ' ' ;  <new_line>
 } else {  <new_line>
 
 if ( code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-one code-get-or-put-phrase-definition-end eq code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end ) {  <new_line>

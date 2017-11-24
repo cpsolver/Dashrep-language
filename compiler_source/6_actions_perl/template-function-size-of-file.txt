@@ -8,12 +8,12 @@ $global_action_result = '0' ;  <new_line>
 $global_source_path_prefix = code-get-or-put-phrase-definition-begin 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here reading' code-get-or-put-phrase-definition-end ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_source_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__size_of_file__case_invalid_path_prefix ' . $global_source_path_prefix ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( &function_parameterized__yes_or_no_file_name( $global_operand_one ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__size_of_file__case_invalid_file_name [' . $global_operand_one . '] ' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__size_of_file__case_invalid_file_name [' . $global_operand_one . '] ' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
