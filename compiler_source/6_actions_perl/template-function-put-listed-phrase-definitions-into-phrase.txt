@@ -39,7 +39,7 @@ if ( exists( code-get-or-put-phrase-definition-begin 'export hyphen-here defs hy
 }  <new_line>
 foreach $global_phrase_name ( @global_list_of_phrases ) {  <new_line>
     if ( ( defined( $global_phrase_name ) ) && ( $global_phrase_name =~ /[^ ]/ ) && ( exists( code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end ) ) && ( $global_phrase_name ne 'four hyphen-here hyphens' ) ) {  <new_line>
-        $global_accumulated_text .= $global_defs_phrase_begin . $global_phrase_name . $global_defs_phrase_end . $global_defs_def_begin . code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end . $global_defs_def_end "\n" ;  <new_line>
+        $global_accumulated_text .= $global_defs_phrase_begin . $global_phrase_name . $global_defs_phrase_end . $global_defs_def_begin . code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end . $global_defs_def_end . "\n" ;  <new_line>
     }  <new_line>
 }  <new_line>
 code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_accumulated_text ;  <new_line>
