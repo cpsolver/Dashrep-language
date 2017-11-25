@@ -3,9 +3,9 @@ template-runtime-code-for-every-action-begin
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 $global_operand_two = runtime-code-for-operand-number-two ;  <new_line>
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
-    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__copy_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__copy_text__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
 } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) {  <new_line>
-    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__copy_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__copy_text__case_not_phrase ' . $global_operand_two . ' ' ;  <new_line>
 } else {  <new_line>
     $global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ;  <new_line>
     code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ;  <new_line>

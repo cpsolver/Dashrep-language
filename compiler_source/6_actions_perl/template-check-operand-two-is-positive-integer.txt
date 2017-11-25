@@ -1,4 +1,4 @@
 if ( &function_parameterized__yes_or_no_positive_integer( $global_operand_two ) == $global_no ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_two . ' ' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__' . $global_action_name_with_underscores . '__case_not_positive_integer ' . $global_operand_two . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>

@@ -9,7 +9,7 @@ $global_action_result = '' ;  <new_line>
 $global_target_path_prefix = $global_dashrep_replacement{ 'dashrep hyphen-here path hyphen-here prefix hyphen-here for hyphen-here file hyphen-here writing' } ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path_prefix( $global_target_path_prefix ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__create_empty_sub_folder__invalid_path_prefix' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__invalid_path_prefix' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
@@ -21,17 +21,17 @@ if ( $global_target_path_prefix =~ /([\/\\])/ ) {  <new_line>
 $global_target_sub_folder = $global_target_path_prefix . $global_operand_one . $global_slash_or_backslash_for_path ;  <new_line>
 
 if ( &function_parameterized__yes_or_no_valid_path( $global_target_sub_folder ) == $global_no ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__create_empty_sub_folder__invalid_full_path' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__invalid_full_path' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>
 
 if ( <character_hyphen>d $global_target_sub_folder ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__create_empty_sub_folder__case_sub_folder_already_exists' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__case_sub_folder_already_exists' ;  <new_line>
 } else {  <new_line>
     umask( 0077 ) ;  <new_line>
     if ( mkdir( $global_target_sub_folder ) ) {  <new_line>
     } else {  <new_line>
-        $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__create_empty_sub_folder__case_creating_sub_folder_not_successful' ;  <new_line>
+        $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__create_empty_sub_folder__case_creating_sub_folder_not_successful' ;  <new_line>
     }  <new_line>
 }  <new_line>
 return '' ;  <new_line>

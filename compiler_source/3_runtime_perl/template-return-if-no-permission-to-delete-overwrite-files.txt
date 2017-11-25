@@ -1,5 +1,5 @@
 if ( not( ( exists( code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end ) ) && (
  code-get-or-put-phrase-definition-begin 'yes hyphen-here or hyphen-here no hyphen-here permission hyphen-here to hyphen-here delete hyphen-here or hyphen-here overwrite hyphen-here files' code-get-or-put-phrase-definition-end eq 'yes' ) ) ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__case_no_permission_to_delete_overwrite_files ' ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__case_no_permission_to_delete_overwrite_files ' ;  <new_line>
 return '' ;  <new_line>
 }  <new_line>

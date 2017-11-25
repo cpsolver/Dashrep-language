@@ -8,7 +8,7 @@ $global_action_result = '' ;  <new_line>
 $global_pointer_to_first_space = index( $global_source_text , ' ' ) ;  <new_line>
 $global_phrase_name = substr( $global_source_text , 0 , ( $global_pointer_to_first_space - 1 ) ) ;  <new_line>
 if ( &function_parameterized__yes_or_no_phrase_name( $global_phrase_name ) == $global_no ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_phrase_name . ' ' ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__' . $global_action_name_with_underscores . '__case_not_phrase_name ' . $global_phrase_name . ' ' ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 code-get-or-put-phrase-definition-begin $global_phrase_name code-get-or-put-phrase-definition-end = substr( $global_source_text , ( $global_pointer_to_first_space + 1 ) ) ;  <new_line>

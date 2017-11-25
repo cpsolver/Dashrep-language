@@ -21,12 +21,12 @@ if ( $global_temp_text =~ / / ) {  <new_line>
     $global_prefix_text = $global_temp_text ;  <new_line>
 }  <new_line>
 if ( $global_prefix_text !~ /^[^ ]+$/ ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . $global_prefix_text ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__copy_from_columns_in_file_to_named_phrase__case_prefix_invalid ' . $global_prefix_text ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_name_of_phrase_that_contains_list_of_index_values = $global_operand_three ;  <new_line>
 if ( $global_name_of_phrase_that_contains_list_of_index_values !~ /^[a hyphen-here z0<character_hyphen>9_\<character_hyphen>]+$/i ) {  <new_line>
-    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . $global_name_of_phrase_that_contains_list_of_index_values ;  <new_line>
+    $global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__copy_from_columns_in_file_to_named_phrase__case_invalid_third_operand ' . $global_name_of_phrase_that_contains_list_of_index_values ;  <new_line>
     return '' ;  <new_line>
 }  <new_line>
 $global_list_of_unique_values = '' ;  <new_line>

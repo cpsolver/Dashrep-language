@@ -2,7 +2,7 @@ template-runtime-code-for-every-action-begin
 
 $global_operand_one = runtime-code-for-operand-number-one ;  <new_line>
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {  <new_line>
-    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__append_new_line__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
+    runtime-code-storage-item-result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__append_new_line__case_not_phrase ' . $global_operand_one . ' ' ;  <new_line>
 } else {  <new_line>
     code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end .= "\n" ;  <new_line>
     runtime-code-storage-item-result = ' ' ;  <new_line>

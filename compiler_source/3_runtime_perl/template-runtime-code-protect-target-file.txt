@@ -1,4 +1,4 @@
 # Protect target file as private  <new_line>
 if ( not( chmod( $global_file_private_protection_mode , $global_target_file_full_path ) ) ) {  <new_line>
-$global_action_result = 'dashrep_compiled_runtime_error__' . $global_phrase_name_currently_executing . '__setting_private_protection_not_successful ' . $global_target_file_full_path ;  <new_line>
+$global_action_result = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__setting_private_protection_not_successful ' . $global_target_file_full_path ;  <new_line>
 }  <new_line>
