@@ -8754,8 +8754,8 @@ template-function-segment-ending
 template-function-put-listed-phrase-definitions-into-phrase:
 # no-space dashes-long-line  <new_line>
 
-sub function__put_listed_definitions_into_phrase( ) {  <new_line>
-$global_action_name_with_underscores = 'put_listed_definitions_into_phrase' ; <new_line>
+sub function__put_listed_phrase_definitions_into_phrase( ) {  <new_line>
+$global_action_name_with_underscores = 'put_listed_phrase_definitions_into_phrase' ; <new_line>
 template-check-operand-one-is-phrase-not-empty
 template-check-operand-two-is-phrase-name
 $global_action_result = '' ;  <new_line>
