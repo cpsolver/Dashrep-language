@@ -152,6 +152,7 @@ my $global_operand_one_words = '' ;
 my $global_operand_two_words = '' ;
 my $global_operand_three_words = '' ;
 my $global_phrase_name = '' ;
+my $global_currently_executing_phrase_name_with_underscores = '' ;
 my $global_phrase_contents = '' ;
 my $global_phrase_name_to_match = '' ;
 my $output_results = '' ;
@@ -4531,7 +4532,7 @@ my $storage_item__4662 = 'template-code-compiled-function-part-3' ;
 my $storage_item__4663 = '] ++ ; <new_line> my $saved_accumulator_pointer = -1 ; <new_line> <new_line> #' ;
 $global_dashrep_replacement{ $storage_item__4662 } = $storage_item__4663 ;
 my $storage_item__4664 = 'template-code-compiled-function-part-4' ;
-my $storage_item__4665 = '<new_line> <new_line> template-runtime-code-check-for-endless-loop <new_line> template-runtime-code-check-for-time-limit-exceeded' ;
+my $storage_item__4665 = '<new_line> <new_line> # $global_currently_executing_phrase_name_with_underscores = ' . "'" . ' no-space phrase-name-with-underscores no-space ' . "'" . ' ; <new_line> <new_line> template-runtime-code-check-for-endless-loop <new_line> template-runtime-code-check-for-time-limit-exceeded' ;
 $global_dashrep_replacement{ $storage_item__4664 } = $storage_item__4665 ;
 my $storage_item__4666 = 'template-code-compiled-function-part-5' ;
 my $storage_item__4667 = '# save concatenated result <new_line> template-storage-item-prefix' ;
@@ -4636,7 +4637,7 @@ my $storage_item__4732 = 'template-initialize-global-arrays' ;
 my $storage_item__4733 = 'my %global_dashrep_replacement = ( ) ; <new_line> <new_line> my %global_yes_found_word = ( ) ; <new_line> my %global_exists_tag_name = ( ) ; <new_line> my %global_content_for_tag = ( ) ; <new_line> my %global_endless_loop_replacements_with_count = ( ) ; <new_line> my %global_found_unique_value = ( ) ; <new_line> my %global_item_number_at_row_column = ( ) ; <new_line> my %global_listed_word = ( ) ; <new_line> my %global_occurrence_count_for_word = ( ) ; <new_line> my %global_text_to_find_at_position = ( ) ; <new_line> my %global_words_at_numeric_value = ( ) ; <new_line> <new_line> my @global_accumulator = ( ) ; <new_line> $global_accumulator[ 0 ] = ' . "'" . "'" . ' ; <new_line> $global_accumulator[ 1 ] = ' . "'" . "'" . ' ; <new_line> my @global_count_of_items_appended_to_accumulator = ( ) ; <new_line> $global_count_of_items_appended_to_accumulator[ 0 ] = 0 ; <new_line> $global_count_of_items_appended_to_accumulator[ 1 ] = 0 ; <new_line> my @global_saved_accumulator_pointer_at_recursion_location = ( ) ; <new_line> $global_saved_accumulator_pointer_at_recursion_location[ 0 ] = 0 ; <new_line> my @global_begin_position_for_word = ( ) ; <new_line> $global_begin_position_for_word[ 0 ] = 0 ; <new_line> $global_begin_position_for_word[ 1 ] = 0 ; <new_line> my @global_length_of_word = ( ) ; <new_line> $global_length_of_word[ 0 ] = 0 ; <new_line> $global_length_of_word[ 1 ] = 0 ; <new_line> my @global_pointer_to_whitespace_type = ( ) ; <new_line> $global_pointer_to_whitespace_type[ 0 ] = 0 ; <new_line> $global_pointer_to_whitespace_type[ 1 ] = 0 ; <new_line> my @global_yes_find_next_whitespace_of_type = ( ) ; <new_line> $global_yes_find_next_whitespace_of_type[ 0 ] = 0 ; <new_line> $global_yes_find_next_whitespace_of_type[ 1 ] = 0 ; <new_line> my @global_phrase_usage_count_for_phrase_number = ( ) ; <new_line> my @global_word_begin_operand_one_at_word = ( ) ; <new_line> my @global_word_length_operand_one_at_word = ( ) ; <new_line> my @global_word_begin_operand_two_at_word = ( ) ; <new_line> my @global_word_length_operand_two_at_word = ( ) ; <new_line> my @global_word_begin_operand_three_at_word = ( ) ; <new_line> my @global_word_length_operand_three_at_word = ( ) ; <new_line> my @global_list_of_items_one = ( ) ; <new_line> my @global_list_of_items_two = ( ) ; <new_line> my @global_column_position_for_item_number = ( ) ; <new_line> my @global_input_list = ( ) ; <new_line> my @global_input_list_one = ( ) ; <new_line> my @global_input_list_two = ( ) ; <new_line> my @global_item_number_found_at_position = ( ) ; <new_line> my @global_left_and_up_direction_value_for_item_number = ( ) ; <new_line> my @global_list = ( ) ; <new_line> my @global_list_of_file_names = ' . "'" . "'" . ' ; <new_line> my @global_list_of_positions = ' . "'" . "'" . ' ; <new_line> my @global_list_of_storage_names = ' . "'" . "'" . ' ; <new_line> my @global_list_indicating_sort_order = ( ) ; <new_line> my @global_list_of_action_names = ( ) ; <new_line> my @global_list_of_key_values = ( ) ; <new_line> my @global_list_of_loop_words = ( ) ; <new_line> my @global_list_of_paired_words = ( ) ; <new_line> my @global_list_of_parameter_words = ( ) ; <new_line> my @global_list_of_phrase_names = ( ) ; <new_line> my @global_list_of_phrases = ( ) ; <new_line> my @global_list_of_remaining_item_numbers = ( ) ; <new_line> my @global_list_of_sorted_numbers = ( ) ; <new_line> my @global_list_of_source_words = ( ) ; <new_line> my @global_list_of_start_matching_positions = ( ) ; <new_line> my @global_list_of_strings_to_match = ( ) ; <new_line> my @global_list_of_tag_names = ( ) ; <new_line> my @global_list_of_tag_values_in_sequence_encountered = ( ) ; <new_line> my @global_list_of_text_items_to_find = ( ) ; <new_line> my @global_list_of_unique_values = ( ) ; <new_line> my @global_list_of_values_in_column = ( ) ; <new_line> my @global_list_of_words = ( ) ; <new_line> my @global_list_of_words_to_check = ( ) ; <new_line> my @global_list_of_x_values = ( ) ; <new_line> my @global_list_of_y_values = ( ) ; <new_line> my @global_octet_number_at_position = ( ) ; <new_line> my @global_phrase_naming_convention_for_column = ( ) ; <new_line> my @global_right_and_up_direction_value_for_item_number = ( ) ; <new_line> my @global_right_direction_text_for_item_number = ( ) ; <new_line> my @global_right_direction_value_for_item_number = ( ) ; <new_line> my @global_row_position_for_item_number = ( ) ; <new_line> my @global_sequence_of_phrases = ( ) ; <new_line> my @global_sort_order = ( ) ; <new_line> my @global_text_item_in_column = ( ) ; <new_line> my @global_unique_word_at_position = ( ) ; <new_line> my @global_up_direction_text_for_item_number = ( ) ; <new_line> my @global_up_direction_value_for_item_number = ( ) ; <new_line> my @global_value_in_column = ( ) ; <new_line> my @global_zero_if_not_remaining_item_number = ( ) ; <new_line> my @global_name_value_pairs = ( ) ; <new_line> <new_line> # todo: remove these when no longer used <new_line> my %global_number_of_times_encountered_phrase_named ; <new_line> %global_number_of_times_encountered_phrase_named = ( ) ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4732 } = $storage_item__4733 ;
 my $storage_item__4734 = 'template-initialize-global-variables' ;
-my $storage_item__4735 = 'my $global_pi = 0 ; # (calculated if needed) <new_line> my $global_string_word_to_use_in_handler = ' . "'" . 'word-to-use-in-handler' . "'" . ' ; <new_line> my $global_word_to_use_in_handler = ' . "'" . "'" . ' ; <new_line> my $global_accumulated_text = ' . "'" . "'" . ' ; <new_line> my $global_source_text = ' . "'" . "'" . ' ; <new_line> my $global_target_text = ' . "'" . "'" . ' ; <new_line> my $global_temporary_text = ' . "'" . "'" . ' ; <new_line> my $global_default_text = ' . "'" . "'" . ' ; <new_line> my $global_text_expanded_parameters_only = ' . "'" . "'" . ' ; <new_line> my $global_action_name = ' . "'" . "'" . ' ; <new_line> my $global_action_result = ' . "'" . "'" . ' ; <new_line> my $global_operand_one = ' . "'" . "'" . ' ; <new_line> my $global_operand_two = ' . "'" . "'" . ' ; <new_line> my $global_operand_three = ' . "'" . "'" . ' ; <new_line> my $global_operand_four = ' . "'" . "'" . ' ; <new_line> my $global_operand_five = ' . "'" . "'" . ' ; <new_line> my $global_operands_all = ' . "'" . "'" . ' ; <new_line> my $global_operand_one_words = ' . "'" . "'" . ' ; <new_line> my $global_operand_two_words = ' . "'" . "'" . ' ; <new_line> my $global_operand_three_words = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_phrase_contents = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_match = ' . "'" . "'" . ' ; <new_line> my $output_results = ' . "'" . "'" . ' ; <new_line> my $global_current_word = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands_modified = ' . "'" . "'" . ' ; <new_line> my $global_string_to_be_replaced = ' . "'" . "'" . ' ; <new_line> my $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> my $global_word_pointer_text = ' . "'" . '0' . "'" . ' ; <new_line> my $global_phrase_name_currently_executing = ' . "'" . "'" . ' ; <new_line> my $global_accumulated_matching_entry_info = ' . "'" . "'" . ' ; <new_line> my $global_action_name_exists = ' . "'" . "'" . ' ; <new_line> my $global_all_defs_begin = ' . "'" . "'" . ' ; <new_line> my $global_all_defs_end = ' . "'" . "'" . ' ; <new_line> my $global_all_lines = ' . "'" . "'" . ' ; <new_line> my $global_angle_in_radians = ' . "'" . "'" . ' ; <new_line> my $global_bottom_left_open_column = ' . "'" . "'" . ' ; <new_line> my $global_bottom_right_open_column = ' . "'" . "'" . ' ; <new_line> my $global_bottom_row_number = ' . "'" . "'" . ' ; <new_line> my $global_character_code_to_decode = ' . "'" . "'" . ' ; <new_line> my $global_character_pointer_to_next_word_zero_based = 0 ; <new_line> my $global_runtime_error_type = ' . "'" . "'" . ' ; <new_line> my $global_list_indicating_sort_order_text_string = ' . "'" . "'" . ' ; <new_line> my $global_list_name_prefix = ' . "'" . "'" . ' ; <new_line> my $global_list_of_words_as_text = ' . "'" . "'" . ' ; <new_line> my $global_list_of_x_values_as_text = ' . "'" . "'" . ' ; <new_line> my $global_list_of_y_values_as_text = ' . "'" . "'" . ' ; <new_line> my $global_source_file_name = ' . "'" . "'" . ' ; <new_line> my $global_source_file_name_saved = ' . "'" . "'" . ' ; <new_line> my $global_source_path_prefix = ' . "'" . "'" . ' ; <new_line> my $global_source_path_prefix_saved = ' . "'" . "'" . ' ; <new_line> my $global_source_file_full_path = ' . "'" . "'" . ' ; <new_line> my $global_source_file_full_path_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_file_name = ' . "'" . "'" . ' ; <new_line> my $global_target_file_name_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_path_prefix = ' . "'" . "'" . ' ; <new_line> my $global_target_path_prefix_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_file_full_path = ' . "'" . "'" . ' ; <new_line> my $global_target_file_full_path_saved = ' . "'" . "'" . ' ; <new_line> my $global_trace_file_name = ' . "'" . "'" . ' ; <new_line> my $global_url = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_yes = 1 ; <new_line> my $global_no = 0 ; <new_line> my $global_yes_or_no = 0 ; <new_line> my $global_yes_or_no_remove = 0 ; <new_line> my $global_yes_or_no_skip = 0 ; <new_line> my $global_yes_or_no_operand_error = $global_no ; <new_line> my $global_yes_or_no_count_phrase_usage = $global_no ; <new_line> my $global_tracking_on_yes_or_no = $global_no ; <new_line> my $global_yes_or_no_within_ampersand_encoded_character = $global_no ; <new_line> my $global_yes_or_no_trace_output_file_is_open = $global_no ; <new_line> my $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> my $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> <new_line> my $global_storage_number = 1 ; <new_line> my $global_accumulator_pointer = 1 ; <new_line> my $global_plus_or_minus_one = 1 ; <new_line> my $global_number_of_operands = 0 ; <new_line> my $global_numeric_value_first = 0 ; <new_line> my $global_numeric_value_second = 0 ; <new_line> my $global_character_pointer = 0 ; <new_line> my $global_character_pointer_begin = 0 ; <new_line> my $global_character_pointer_end = 0 ; <new_line> my $global_length_of_text = 0 ; <new_line> my $global_length_of_text_source = 0 ; <new_line> my $global_length_of_text_segment = 0 ; <new_line> my $global_length_of_string_to_be_replaced = 0 ; <new_line> my $global_length_of_text_to_insert = 0 ; <new_line> my $global_pointer_to_next_space = 0 ; <new_line> my $global_pointer_to_first_space = 0 ; <new_line> my $global_pointer_to_future_space = 0 ; <new_line> my $global_pointer_to_previous_space = 0 ; <new_line> my $global_pointer_to_next_whitespace = 0 ; <new_line> my $global_pointer_to_previous_whitespace = 0 ; <new_line> my $global_pointer_to_left_bracket = 0 ; <new_line> my $global_pointer_to_right_bracket = 0 ; <new_line> my $global_pointer_to_hyphen = 0 ; <new_line> my $global_pointer_to_underscore = 0 ; <new_line> my $global_whitespace_type = 0 ; <new_line> my $global_counter_number_of_adjacent_spaces = 0 ; <new_line> my $global_pointer_to_word = 0 ; <new_line> my $global_pointer_to_next_word = 0 ; <new_line> my $global_number_of_words = 0 ; <new_line> my $global_word_pointer_numeric = 0 ; <new_line> my $global_calculated_value = 0 ; <new_line> my $global_normalized_calculated_value = 0 ; <new_line> my $global_count_range = 0 ; <new_line> my $global_counter = 0 ; <new_line> my $global_count_number = 0 ; <new_line> my $global_count_of_items_appended = 0 ; <new_line> my $global_word_pointer_operand_one = 0 ; <new_line> my $global_word_pointer_operand_two = 0 ; <new_line> my $global_word_pointer_operand_three = 0 ; <new_line> my $global_phrase_number = 0 ; <new_line> my $global_number_of_unique_phrases = 0 ; <new_line> my $global_count_of_items_with_missing_unique_id = 0 ; <new_line> my $global_list_length = 0 ; <new_line> <new_line> my $global_action_debug_line = ' . "'" . "'" . ' ; <new_line> my $global_endless_loop_counter = 0 ; <new_line> my $global_endless_loop_counter_limit = 900000 ; <new_line> my $global_time_limit = 300 ; # 300 seconds = 5 minutes <new_line> my $global_starting_time = time ; <new_line> my $global_interval_count_for_time_limit_check = 0 ; <new_line> my $global_nesting_level_of_file_actions = 0 ; <new_line> my $global_recursion_level_of_expand_parameters = 0 ; <new_line> <new_line> my $global_file_private_protection_mode = 0600 ; # octal number that specifies no "world" read access <new_line> my $global_file_public_read_protection_mode = 0644 ; # octal number that specifies public "world" read access <new_line> my $global_file_private_but_executable_protection_mode = 0711 ; # octal number that specifies private but "world" executable access <new_line> <new_line> my $global_character_position = 0 ; <new_line> my $global_character_to_capitalize = ' . "'" . "'" . ' ; <new_line> my $global_character_to_replace = ' . "'" . "'" . ' ; <new_line> my $global_column_number = 0 ; <new_line> my $global_column_pointer = 0 ; <new_line> my $global_content_for_tag = ' . "'" . "'" . ' ; <new_line> my $global_cosine_of_angle = 0 ; <new_line> my $global_count = 0 ; <new_line> my $global_count_list_one = 0 ; <new_line> my $global_count_list_two = 0 ; <new_line> my $global_counter_one = 0 ; <new_line> my $global_counter_two = 0 ; <new_line> my $global_current_character_position_number = 0 ; <new_line> my $global_day_of_month = 0 ; <new_line> my $global_day_of_year = 0 ; <new_line> my $global_def_begin = ' . "'" . "'" . ' ; <new_line> my $global_def_end = ' . "'" . "'" . ' ; <new_line> my $global_definitions_or_phrase_names = ' . "'" . "'" . ' ; <new_line> my $global_destination_phrase = ' . "'" . "'" . ' ; <new_line> my $global_possible_phrase = ' . "'" . "'" . ' ; <new_line> my $global_directory = ' . "'" . "'" . ' ; <new_line> my $global_do_nothing = 0 ; <new_line> my $global_elapsed_time = 0 ; <new_line> my $global_ending_character_position = 0 ; <new_line> my $global_ending_count = 0 ; <new_line> my $global_ending_first_count = 0 ; <new_line> my $global_endless_loop_replacements_with_count = 0 ; <new_line> my $global_entry_begin = ' . "'" . "'" . ' ; <new_line> my $global_entry_delete = ' . "'" . "'" . ' ; <new_line> my $global_entry_end = ' . "'" . "'" . ' ; <new_line> my $global_entry_matching_id = ' . "'" . "'" . ' ; <new_line> my $global_entry_unique = ' . "'" . "'" . ' ; <new_line> my $global_epoch_seconds = 0 ; <new_line> my $global_extra_info = ' . "'" . "'" . ' ; <new_line> my $global_extra_words_without_sort_value = ' . "'" . "'" . ' ; <new_line> my $global_file_name = ' . "'" . "'" . ' ; <new_line> my $global_file_size = 0 ; <new_line> my $global_fill_direction = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_bottom_left = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_bottom_right = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_top_left = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_top_right = ' . "'" . "'" . ' ; <new_line> my $global_final_result = ' . "'" . "'" . ' ; <new_line> my $global_first_object_of_action = ' . "'" . "'" . ' ; <new_line> my $global_first_or_second = ' . "'" . "'" . ' ; <new_line> my $global_first_word = ' . "'" . "'" . ' ; <new_line> my $global_found_unique_value = ' . "'" . "'" . ' ; <new_line> my $global_full_path = ' . "'" . "'" . ' ; <new_line> my $global_generated_list = ' . "'" . "'" . ' ; <new_line> my $global_dashrep_text_list_of_phrase_names = ' . "'" . "'" . ' ; <new_line> my $global_growing_text_to_append = ' . "'" . "'" . ' ; <new_line> my $global_handler_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_hour = 0 ; <new_line> my $global_input_line = ' . "'" . "'" . ' ; <new_line> my $global_input_list_one_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_input_list_two_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_item_number = 0 ; <new_line> my $global_item_number_at_min_or_max = 0 ; <new_line> my $global_item_number_at_row_column = 0 ; <new_line> my $global_item_number_found_at_position = 0 ; <new_line> my $global_last_pointer = 0 ; <new_line> my $global_length_desired = 0 ; <new_line> my $global_length_of_first_word = 0 ; <new_line> my $global_length_of_loop_list = 0 ; <new_line> my $global_length_of_string = 0 ; <new_line> my $global_line_count = 0 ; <new_line> my $global_line_ending = ' . "'" . "'" . ' ; <new_line> my $global_line_number = 0 ; <new_line> my $global_line_status = ' . "'" . "'" . ' ; <new_line> my $global_listed_word = ' . "'" . "'" . ' ; <new_line> my $global_local_endless_loop_counter = 0 ; <new_line> my $global_local_endless_loop_counter_maximum = 0 ; <new_line> my $global_loop_status_done = ' . "'" . "'" . ' ; <new_line> my $global_map_tile_n = 0 ; <new_line> my $global_map_tile_zoom = 0 ; <new_line> my $global_matching_text = ' . "'" . "'" . ' ; <new_line> my $global_max_or_min_value = 0 ; <new_line> my $global_minimum_number_of_columns = 0 ; <new_line> my $global_minute = 0 ; <new_line> my $global_month_number = 0 ; <new_line> my $global_multiline_value_name = ' . "'" . "'" . ' ; <new_line> my $global_multiplier_for_right_direction_values = 0 ; <new_line> my $global_multiplier_for_up_direction_values = 0 ; <new_line> my $global_name_of_parameter_for_handler = ' . "'" . "'" . ' ; <new_line> my $global_name_of_phrase_that_contains_list_of_index_values = ' . "'" . "'" . ' ; <new_line> my $global_need_maximum = ' . "'" . "'" . ' ; <new_line> my $global_need_maximum_or_minimum = ' . "'" . "'" . ' ; <new_line> my $global_need_minimum = ' . "'" . "'" . ' ; <new_line> my $global_next_number = 0 ; <new_line> my $global_next_value_to_compare = 0 ; <new_line> my $global_number_of_characters_to_get = 0 ; <new_line> my $global_number_of_column_names = 0 ; <new_line> my $global_number_of_columns = 0 ; <new_line> my $global_number_of_full_rows = 0 ; <new_line> my $global_number_of_items = 0 ; <new_line> my $global_number_of_items_in_bottom_row = 0 ; <new_line> my $global_number_of_items_remaining = 0 ; <new_line> my $global_number_of_items_to_find = 0 ; <new_line> my $global_number_of_rows = 0 ; <new_line> my $global_number_of_unique_words = 0 ; <new_line> my $global_number_of_zeros_needed = 0 ; <new_line> my $global_numeric_return_value = 0 ; <new_line> my $global_numeric_value = 0 ; <new_line> my $global_octet_number = 0 ; <new_line> my $global_odd_or_even_based_on_zero_or_one = ' . "'" . "'" . ' ; <new_line> my $global_output_list_one_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_output_list_two_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_pair_pointer = 0 ; <new_line> my $global_pair_pointer_offset_zero = 0 ; <new_line> my $global_pair_status = ' . "'" . "'" . ' ; <new_line> my $global_paired_words_as_text = ' . "'" . "'" . ' ; <new_line> my $global_parameter_begin_or_end_string = ' . "'" . "'" . ' ; <new_line> my $global_parameter_level = 0 ; <new_line> my $global_partial_translation = ' . "'" . "'" . ' ; <new_line> my $global_phrase_begin = ' . "'" . "'" . ' ; <new_line> my $global_phrase_being_edited = ' . "'" . "'" . ' ; <new_line> my $global_phrase_end = ' . "'" . "'" . ' ; <new_line> my $global_phrase_length = 0 ; <new_line> my $global_phrase_name_containing_parameter_list = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_containing_pattern = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_containing_source_words = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_clear = ' . "'" . "'" . ' ; <new_line> my $global_phrase_naming_convention_for_column = ' . "'" . "'" . ' ; <new_line> my $global_phrase_naming_convention_for_this_column = ' . "'" . "'" . ' ; <new_line> my $global_phrase_type = ' . "'" . "'" . ' ; <new_line> my $global_phrase_words = ' . "'" . "'" . ' ; <new_line> my $global_pointer = 0 ; <new_line> my $global_pointer_one = 0 ; <new_line> my $global_pointer_to_matching_text = 0 ; <new_line> my $global_pointer_two = 0 ; <new_line> my $global_position = 0 ; <new_line> my $global_position_as_string = 0 ; <new_line> my $global_position_begin = 0 ; <new_line> my $global_position_end = 0 ; <new_line> my $global_position_of_text_found = 0 ; <new_line> my $global_possible_error_message = ' . "'" . "'" . ' ; <new_line> my $global_possible_match = ' . "'" . "'" . ' ; <new_line> my $global_possible_matching_entry_info = ' . "'" . "'" . ' ; <new_line> my $global_possible_new_limit = ' . "'" . "'" . ' ; <new_line> my $global_possible_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_prefix = ' . "'" . "'" . ' ; <new_line> my $global_prefix_text = ' . "'" . "'" . ' ; <new_line> my $global_range_of_right_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_range_of_up_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_read_time = 0 ; <new_line> my $global_remainder = 0 ; <new_line> my $global_remainder_of_line = ' . "'" . "'" . ' ; <new_line> my $global_remaining_text = ' . "'" . "'" . ' ; <new_line> my $global_repeat_count = 0 ; <new_line> my $global_replacement_count = 0 ; <new_line> my $global_replacement_count_text = ' . "'" . "'" . ' ; <new_line> my $global_result_text = ' . "'" . "'" . ' ; <new_line> my $global_result_value = 0 ; <new_line> my $global_result_word_list = ' . "'" . "'" . ' ; <new_line> my $global_right_and_up_direction_value_for_item_number = ' . "'" . "'" . ' ; <new_line> my $global_right_direction_maximum_value = 0 ; <new_line> my $global_right_direction_minimum_value = 0 ; <new_line> my $global_row_number = 0 ; <new_line> my $global_row_position_for_item_number = 0 ; <new_line> my $global_search_starting_position = 0 ; <new_line> my $global_second_object_of_action = ' . "'" . "'" . ' ; <new_line> my $global_second_time = 0 ; <new_line> my $global_second_word = ' . "'" . "'" . ' ; <new_line> my $global_segment_if_first = ' . "'" . "'" . ' ; <new_line> my $global_segment_if_second = ' . "'" . "'" . ' ; <new_line> my $global_segment_that_might_include_else = ' . "'" . "'" . ' ; <new_line> my $global_separator = ' . "'" . "'" . ' ; <new_line> my $global_separator_one = ' . "'" . "'" . ' ; <new_line> my $global_separator_two = ' . "'" . "'" . ' ; <new_line> my $global_sequence_of_phrases = ' . "'" . "'" . ' ; <new_line> my $global_sine_of_angle = 0 ; <new_line> my $global_single_value = 0 ; <new_line> my $global_slash_or_backslash_for_path = ' . "'" . "'" . ' ; <new_line> my $global_sort_order = ' . "'" . "'" . ' ; <new_line> my $global_source_definitions = ' . "'" . "'" . ' ; <new_line> my $global_source_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_starting_character_position = 0 ; <new_line> my $global_starting_count = 0 ; <new_line> my $global_starting_second_count = 0 ; <new_line> my $global_storage_name = ' . "'" . "'" . ' ; <new_line> my $global_string_in_phrase = ' . "'" . "'" . ' ; <new_line> my $global_string_to_find = ' . "'" . "'" . ' ; <new_line> my $global_string_to_insert = ' . "'" . "'" . ' ; <new_line> my $global_string_to_match = ' . "'" . "'" . ' ; <new_line> my $global_string_to_search = ' . "'" . "'" . ' ; <new_line> my $global_suffix = ' . "'" . "'" . ' ; <new_line> my $global_supplied_text = ' . "'" . "'" . ' ; <new_line> my $global_tag_name = ' . "'" . "'" . ' ; <new_line> my $global_target_column_number = 0 ; <new_line> my $global_target_operand = ' . "'" . "'" . ' ; <new_line> my $global_target_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_target_row_number = 0 ; <new_line> my $global_target_sub_folder = ' . "'" . "'" . ' ; <new_line> my $global_temp_text = ' . "'" . "'" . ' ; <new_line> my $global_text_begin = ' . "'" . "'" . ' ; <new_line> my $global_text_being_edited = ' . "'" . "'" . ' ; <new_line> my $global_text_end = ' . "'" . "'" . ' ; <new_line> my $global_text_for_right_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_text_for_up_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_text_item_in_column = ' . "'" . "'" . ' ; <new_line> my $global_text_list_key = ' . "'" . "'" . ' ; <new_line> my $global_text_list_loop = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_start_matching_positions = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_unique_word_counts = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_unique_word_pointers = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_content = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_name = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_value = ' . "'" . "'" . ' ; <new_line> my $global_text_string = ' . "'" . "'" . ' ; <new_line> my $global_text_to_append = ' . "'" . "'" . ' ; <new_line> my $global_text_to_expand = ' . "'" . "'" . ' ; <new_line> my $global_text_to_find = ' . "'" . "'" . ' ; <new_line> my $global_text_to_find_at_position = ' . "'" . "'" . ' ; <new_line> my $global_raw_input = ' . "'" . "'" . ' ; <new_line> my $global_name_value = ' . "'" . "'" . ' ; <new_line> my $global_name = ' . "'" . "'" . ' ; <new_line> my $global_top_left_open_column = 0 ; <new_line> my $global_top_right_open_column = 0 ; <new_line> my $global_top_row_number = 0 ; <new_line> my $global_translation = ' . "'" . "'" . ' ; <new_line> my $global_undeleted_phrase_content = ' . "'" . "'" . ' ; <new_line> my $global_unicode_number = 0 ; <new_line> my $global_unique_word_at_position = ' . "'" . "'" . ' ; <new_line> my $global_up_direction_maximum_value = 0 ; <new_line> my $global_up_direction_minimum_value = 0 ; <new_line> my $global_use_two_spaces_as_delimiter = ' . "'" . "'" . ' ; <new_line> my $global_use_value_direction = ' . "'" . "'" . ' ; <new_line> my $global_value = 0 ; <new_line> my $global_value_direction_left_and_up = 0 ; <new_line> my $global_value_direction_right = 0 ; <new_line> my $global_value_direction_right_and_up = 0 ; <new_line> my $global_value_direction_up = 0 ; <new_line> my $global_value_in_column = 0 ; <new_line> my $global_value_of_operand_one = 0 ; <new_line> my $global_value_one = 0 ; <new_line> my $global_value_two = 0 ; <new_line> my $global_weekday = ' . "'" . "'" . ' ; <new_line> my $global_word = ' . "'" . "'" . ' ; <new_line> my $global_word_count = 0 ; <new_line> my $global_word_number = 0 ; <new_line> my $global_word_number_begin = 0 ; <new_line> my $global_word_number_end = 0 ; <new_line> my $global_word_position = 0 ; <new_line> my $global_word_to_check = ' . "'" . "'" . ' ; <new_line> my $global_word_to_find = ' . "'" . "'" . ' ; <new_line> my $global_words_to_find = ' . "'" . "'" . ' ; <new_line> my $global_words_to_match = ' . "'" . "'" . ' ; <new_line> my $global_write_time = ' . "'" . "'" . ' ; <new_line> my $global_year = 0 ; <new_line> my $global_zero_if_not_remaining_item_number = ' . "'" . "'" . ' ; <new_line> my $global_zero_padding = ' . "'" . "'" . ' ; <new_line> my $global_cgi_string_length_limit = 100000 ; <new_line> my $global_cgi_line_length_limit = 100 ; <new_line> my $global_unique_value = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no_conditionally_need_separator_space = $global_no ; <new_line> my $global_multiple_spaces = ' . "'" . '<character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space>' . "'" . ' ; <new_line> <new_line> <new_line>' ;
+my $storage_item__4735 = 'my $global_pi = 0 ; # (calculated if needed) <new_line> my $global_string_word_to_use_in_handler = ' . "'" . 'word-to-use-in-handler' . "'" . ' ; <new_line> my $global_word_to_use_in_handler = ' . "'" . "'" . ' ; <new_line> my $global_accumulated_text = ' . "'" . "'" . ' ; <new_line> my $global_source_text = ' . "'" . "'" . ' ; <new_line> my $global_target_text = ' . "'" . "'" . ' ; <new_line> my $global_temporary_text = ' . "'" . "'" . ' ; <new_line> my $global_default_text = ' . "'" . "'" . ' ; <new_line> my $global_text_expanded_parameters_only = ' . "'" . "'" . ' ; <new_line> my $global_action_name = ' . "'" . "'" . ' ; <new_line> my $global_action_result = ' . "'" . "'" . ' ; <new_line> my $global_operand_one = ' . "'" . "'" . ' ; <new_line> my $global_operand_two = ' . "'" . "'" . ' ; <new_line> my $global_operand_three = ' . "'" . "'" . ' ; <new_line> my $global_operand_four = ' . "'" . "'" . ' ; <new_line> my $global_operand_five = ' . "'" . "'" . ' ; <new_line> my $global_operands_all = ' . "'" . "'" . ' ; <new_line> my $global_operand_one_words = ' . "'" . "'" . ' ; <new_line> my $global_operand_two_words = ' . "'" . "'" . ' ; <new_line> my $global_operand_three_words = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_currently_executing_phrase_name_with_underscores = ' . "'" . "'" . ' ; <new_line> my $global_phrase_contents = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_match = ' . "'" . "'" . ' ; <new_line> my $output_results = ' . "'" . "'" . ' ; <new_line> my $global_current_word = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands = ' . "'" . "'" . ' ; <new_line> my $global_concatenated_all_operands_modified = ' . "'" . "'" . ' ; <new_line> my $global_string_to_be_replaced = ' . "'" . "'" . ' ; <new_line> my $global_text_to_insert = ' . "'" . "'" . ' ; <new_line> my $global_word_pointer_text = ' . "'" . '0' . "'" . ' ; <new_line> my $global_phrase_name_currently_executing = ' . "'" . "'" . ' ; <new_line> my $global_accumulated_matching_entry_info = ' . "'" . "'" . ' ; <new_line> my $global_action_name_exists = ' . "'" . "'" . ' ; <new_line> my $global_all_defs_begin = ' . "'" . "'" . ' ; <new_line> my $global_all_defs_end = ' . "'" . "'" . ' ; <new_line> my $global_all_lines = ' . "'" . "'" . ' ; <new_line> my $global_angle_in_radians = ' . "'" . "'" . ' ; <new_line> my $global_bottom_left_open_column = ' . "'" . "'" . ' ; <new_line> my $global_bottom_right_open_column = ' . "'" . "'" . ' ; <new_line> my $global_bottom_row_number = ' . "'" . "'" . ' ; <new_line> my $global_character_code_to_decode = ' . "'" . "'" . ' ; <new_line> my $global_character_pointer_to_next_word_zero_based = 0 ; <new_line> my $global_runtime_error_type = ' . "'" . "'" . ' ; <new_line> my $global_list_indicating_sort_order_text_string = ' . "'" . "'" . ' ; <new_line> my $global_list_name_prefix = ' . "'" . "'" . ' ; <new_line> my $global_list_of_words_as_text = ' . "'" . "'" . ' ; <new_line> my $global_list_of_x_values_as_text = ' . "'" . "'" . ' ; <new_line> my $global_list_of_y_values_as_text = ' . "'" . "'" . ' ; <new_line> my $global_source_file_name = ' . "'" . "'" . ' ; <new_line> my $global_source_file_name_saved = ' . "'" . "'" . ' ; <new_line> my $global_source_path_prefix = ' . "'" . "'" . ' ; <new_line> my $global_source_path_prefix_saved = ' . "'" . "'" . ' ; <new_line> my $global_source_file_full_path = ' . "'" . "'" . ' ; <new_line> my $global_source_file_full_path_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_file_name = ' . "'" . "'" . ' ; <new_line> my $global_target_file_name_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_path_prefix = ' . "'" . "'" . ' ; <new_line> my $global_target_path_prefix_saved = ' . "'" . "'" . ' ; <new_line> my $global_target_file_full_path = ' . "'" . "'" . ' ; <new_line> my $global_target_file_full_path_saved = ' . "'" . "'" . ' ; <new_line> my $global_trace_file_name = ' . "'" . "'" . ' ; <new_line> my $global_url = ' . "'" . "'" . ' ; <new_line> <new_line> my $global_yes = 1 ; <new_line> my $global_no = 0 ; <new_line> my $global_yes_or_no = 0 ; <new_line> my $global_yes_or_no_remove = 0 ; <new_line> my $global_yes_or_no_skip = 0 ; <new_line> my $global_yes_or_no_operand_error = $global_no ; <new_line> my $global_yes_or_no_count_phrase_usage = $global_no ; <new_line> my $global_tracking_on_yes_or_no = $global_no ; <new_line> my $global_yes_or_no_within_ampersand_encoded_character = $global_no ; <new_line> my $global_yes_or_no_trace_output_file_is_open = $global_no ; <new_line> my $global_yes_or_no_file_opened_for_reading = $global_no ; <new_line> my $global_yes_or_no_file_opened_for_writing = $global_no ; <new_line> <new_line> my $global_storage_number = 1 ; <new_line> my $global_accumulator_pointer = 1 ; <new_line> my $global_plus_or_minus_one = 1 ; <new_line> my $global_number_of_operands = 0 ; <new_line> my $global_numeric_value_first = 0 ; <new_line> my $global_numeric_value_second = 0 ; <new_line> my $global_character_pointer = 0 ; <new_line> my $global_character_pointer_begin = 0 ; <new_line> my $global_character_pointer_end = 0 ; <new_line> my $global_length_of_text = 0 ; <new_line> my $global_length_of_text_source = 0 ; <new_line> my $global_length_of_text_segment = 0 ; <new_line> my $global_length_of_string_to_be_replaced = 0 ; <new_line> my $global_length_of_text_to_insert = 0 ; <new_line> my $global_pointer_to_next_space = 0 ; <new_line> my $global_pointer_to_first_space = 0 ; <new_line> my $global_pointer_to_future_space = 0 ; <new_line> my $global_pointer_to_previous_space = 0 ; <new_line> my $global_pointer_to_next_whitespace = 0 ; <new_line> my $global_pointer_to_previous_whitespace = 0 ; <new_line> my $global_pointer_to_left_bracket = 0 ; <new_line> my $global_pointer_to_right_bracket = 0 ; <new_line> my $global_pointer_to_hyphen = 0 ; <new_line> my $global_pointer_to_underscore = 0 ; <new_line> my $global_whitespace_type = 0 ; <new_line> my $global_counter_number_of_adjacent_spaces = 0 ; <new_line> my $global_pointer_to_word = 0 ; <new_line> my $global_pointer_to_next_word = 0 ; <new_line> my $global_number_of_words = 0 ; <new_line> my $global_word_pointer_numeric = 0 ; <new_line> my $global_calculated_value = 0 ; <new_line> my $global_normalized_calculated_value = 0 ; <new_line> my $global_count_range = 0 ; <new_line> my $global_counter = 0 ; <new_line> my $global_count_number = 0 ; <new_line> my $global_count_of_items_appended = 0 ; <new_line> my $global_word_pointer_operand_one = 0 ; <new_line> my $global_word_pointer_operand_two = 0 ; <new_line> my $global_word_pointer_operand_three = 0 ; <new_line> my $global_phrase_number = 0 ; <new_line> my $global_number_of_unique_phrases = 0 ; <new_line> my $global_count_of_items_with_missing_unique_id = 0 ; <new_line> my $global_list_length = 0 ; <new_line> <new_line> my $global_action_debug_line = ' . "'" . "'" . ' ; <new_line> my $global_endless_loop_counter = 0 ; <new_line> my $global_endless_loop_counter_limit = 900000 ; <new_line> my $global_time_limit = 300 ; # 300 seconds = 5 minutes <new_line> my $global_starting_time = time ; <new_line> my $global_interval_count_for_time_limit_check = 0 ; <new_line> my $global_nesting_level_of_file_actions = 0 ; <new_line> my $global_recursion_level_of_expand_parameters = 0 ; <new_line> <new_line> my $global_file_private_protection_mode = 0600 ; # octal number that specifies no "world" read access <new_line> my $global_file_public_read_protection_mode = 0644 ; # octal number that specifies public "world" read access <new_line> my $global_file_private_but_executable_protection_mode = 0711 ; # octal number that specifies private but "world" executable access <new_line> <new_line> my $global_character_position = 0 ; <new_line> my $global_character_to_capitalize = ' . "'" . "'" . ' ; <new_line> my $global_character_to_replace = ' . "'" . "'" . ' ; <new_line> my $global_column_number = 0 ; <new_line> my $global_column_pointer = 0 ; <new_line> my $global_content_for_tag = ' . "'" . "'" . ' ; <new_line> my $global_cosine_of_angle = 0 ; <new_line> my $global_count = 0 ; <new_line> my $global_count_list_one = 0 ; <new_line> my $global_count_list_two = 0 ; <new_line> my $global_counter_one = 0 ; <new_line> my $global_counter_two = 0 ; <new_line> my $global_current_character_position_number = 0 ; <new_line> my $global_day_of_month = 0 ; <new_line> my $global_day_of_year = 0 ; <new_line> my $global_def_begin = ' . "'" . "'" . ' ; <new_line> my $global_def_end = ' . "'" . "'" . ' ; <new_line> my $global_definitions_or_phrase_names = ' . "'" . "'" . ' ; <new_line> my $global_destination_phrase = ' . "'" . "'" . ' ; <new_line> my $global_possible_phrase = ' . "'" . "'" . ' ; <new_line> my $global_directory = ' . "'" . "'" . ' ; <new_line> my $global_do_nothing = 0 ; <new_line> my $global_elapsed_time = 0 ; <new_line> my $global_ending_character_position = 0 ; <new_line> my $global_ending_count = 0 ; <new_line> my $global_ending_first_count = 0 ; <new_line> my $global_endless_loop_replacements_with_count = 0 ; <new_line> my $global_entry_begin = ' . "'" . "'" . ' ; <new_line> my $global_entry_delete = ' . "'" . "'" . ' ; <new_line> my $global_entry_end = ' . "'" . "'" . ' ; <new_line> my $global_entry_matching_id = ' . "'" . "'" . ' ; <new_line> my $global_entry_unique = ' . "'" . "'" . ' ; <new_line> my $global_epoch_seconds = 0 ; <new_line> my $global_extra_info = ' . "'" . "'" . ' ; <new_line> my $global_extra_words_without_sort_value = ' . "'" . "'" . ' ; <new_line> my $global_file_name = ' . "'" . "'" . ' ; <new_line> my $global_file_size = 0 ; <new_line> my $global_fill_direction = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_bottom_left = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_bottom_right = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_top_left = ' . "'" . "'" . ' ; <new_line> my $global_fill_direction_top_right = ' . "'" . "'" . ' ; <new_line> my $global_final_result = ' . "'" . "'" . ' ; <new_line> my $global_first_object_of_action = ' . "'" . "'" . ' ; <new_line> my $global_first_or_second = ' . "'" . "'" . ' ; <new_line> my $global_first_word = ' . "'" . "'" . ' ; <new_line> my $global_found_unique_value = ' . "'" . "'" . ' ; <new_line> my $global_full_path = ' . "'" . "'" . ' ; <new_line> my $global_generated_list = ' . "'" . "'" . ' ; <new_line> my $global_dashrep_text_list_of_phrase_names = ' . "'" . "'" . ' ; <new_line> my $global_growing_text_to_append = ' . "'" . "'" . ' ; <new_line> my $global_handler_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_hour = 0 ; <new_line> my $global_input_line = ' . "'" . "'" . ' ; <new_line> my $global_input_list_one_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_input_list_two_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_item_number = 0 ; <new_line> my $global_item_number_at_min_or_max = 0 ; <new_line> my $global_item_number_at_row_column = 0 ; <new_line> my $global_item_number_found_at_position = 0 ; <new_line> my $global_last_pointer = 0 ; <new_line> my $global_length_desired = 0 ; <new_line> my $global_length_of_first_word = 0 ; <new_line> my $global_length_of_loop_list = 0 ; <new_line> my $global_length_of_string = 0 ; <new_line> my $global_line_count = 0 ; <new_line> my $global_line_ending = ' . "'" . "'" . ' ; <new_line> my $global_line_number = 0 ; <new_line> my $global_line_status = ' . "'" . "'" . ' ; <new_line> my $global_listed_word = ' . "'" . "'" . ' ; <new_line> my $global_local_endless_loop_counter = 0 ; <new_line> my $global_local_endless_loop_counter_maximum = 0 ; <new_line> my $global_loop_status_done = ' . "'" . "'" . ' ; <new_line> my $global_map_tile_n = 0 ; <new_line> my $global_map_tile_zoom = 0 ; <new_line> my $global_matching_text = ' . "'" . "'" . ' ; <new_line> my $global_max_or_min_value = 0 ; <new_line> my $global_minimum_number_of_columns = 0 ; <new_line> my $global_minute = 0 ; <new_line> my $global_month_number = 0 ; <new_line> my $global_multiline_value_name = ' . "'" . "'" . ' ; <new_line> my $global_multiplier_for_right_direction_values = 0 ; <new_line> my $global_multiplier_for_up_direction_values = 0 ; <new_line> my $global_name_of_parameter_for_handler = ' . "'" . "'" . ' ; <new_line> my $global_name_of_phrase_that_contains_list_of_index_values = ' . "'" . "'" . ' ; <new_line> my $global_need_maximum = ' . "'" . "'" . ' ; <new_line> my $global_need_maximum_or_minimum = ' . "'" . "'" . ' ; <new_line> my $global_need_minimum = ' . "'" . "'" . ' ; <new_line> my $global_next_number = 0 ; <new_line> my $global_next_value_to_compare = 0 ; <new_line> my $global_number_of_characters_to_get = 0 ; <new_line> my $global_number_of_column_names = 0 ; <new_line> my $global_number_of_columns = 0 ; <new_line> my $global_number_of_full_rows = 0 ; <new_line> my $global_number_of_items = 0 ; <new_line> my $global_number_of_items_in_bottom_row = 0 ; <new_line> my $global_number_of_items_remaining = 0 ; <new_line> my $global_number_of_items_to_find = 0 ; <new_line> my $global_number_of_rows = 0 ; <new_line> my $global_number_of_unique_words = 0 ; <new_line> my $global_number_of_zeros_needed = 0 ; <new_line> my $global_numeric_return_value = 0 ; <new_line> my $global_numeric_value = 0 ; <new_line> my $global_octet_number = 0 ; <new_line> my $global_odd_or_even_based_on_zero_or_one = ' . "'" . "'" . ' ; <new_line> my $global_output_list_one_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_output_list_two_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_pair_pointer = 0 ; <new_line> my $global_pair_pointer_offset_zero = 0 ; <new_line> my $global_pair_status = ' . "'" . "'" . ' ; <new_line> my $global_paired_words_as_text = ' . "'" . "'" . ' ; <new_line> my $global_parameter_begin_or_end_string = ' . "'" . "'" . ' ; <new_line> my $global_parameter_level = 0 ; <new_line> my $global_partial_translation = ' . "'" . "'" . ' ; <new_line> my $global_phrase_begin = ' . "'" . "'" . ' ; <new_line> my $global_phrase_being_edited = ' . "'" . "'" . ' ; <new_line> my $global_phrase_end = ' . "'" . "'" . ' ; <new_line> my $global_phrase_length = 0 ; <new_line> my $global_phrase_name_containing_parameter_list = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_containing_pattern = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_containing_source_words = ' . "'" . "'" . ' ; <new_line> my $global_phrase_name_to_clear = ' . "'" . "'" . ' ; <new_line> my $global_phrase_naming_convention_for_column = ' . "'" . "'" . ' ; <new_line> my $global_phrase_naming_convention_for_this_column = ' . "'" . "'" . ' ; <new_line> my $global_phrase_type = ' . "'" . "'" . ' ; <new_line> my $global_phrase_words = ' . "'" . "'" . ' ; <new_line> my $global_pointer = 0 ; <new_line> my $global_pointer_one = 0 ; <new_line> my $global_pointer_to_matching_text = 0 ; <new_line> my $global_pointer_two = 0 ; <new_line> my $global_position = 0 ; <new_line> my $global_position_as_string = 0 ; <new_line> my $global_position_begin = 0 ; <new_line> my $global_position_end = 0 ; <new_line> my $global_position_of_text_found = 0 ; <new_line> my $global_possible_error_message = ' . "'" . "'" . ' ; <new_line> my $global_possible_match = ' . "'" . "'" . ' ; <new_line> my $global_possible_matching_entry_info = ' . "'" . "'" . ' ; <new_line> my $global_possible_new_limit = ' . "'" . "'" . ' ; <new_line> my $global_possible_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_prefix = ' . "'" . "'" . ' ; <new_line> my $global_prefix_text = ' . "'" . "'" . ' ; <new_line> my $global_range_of_right_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_range_of_up_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_read_time = 0 ; <new_line> my $global_remainder = 0 ; <new_line> my $global_remainder_of_line = ' . "'" . "'" . ' ; <new_line> my $global_remaining_text = ' . "'" . "'" . ' ; <new_line> my $global_repeat_count = 0 ; <new_line> my $global_replacement_count = 0 ; <new_line> my $global_replacement_count_text = ' . "'" . "'" . ' ; <new_line> my $global_result_text = ' . "'" . "'" . ' ; <new_line> my $global_result_value = 0 ; <new_line> my $global_result_word_list = ' . "'" . "'" . ' ; <new_line> my $global_right_and_up_direction_value_for_item_number = ' . "'" . "'" . ' ; <new_line> my $global_right_direction_maximum_value = 0 ; <new_line> my $global_right_direction_minimum_value = 0 ; <new_line> my $global_row_number = 0 ; <new_line> my $global_row_position_for_item_number = 0 ; <new_line> my $global_search_starting_position = 0 ; <new_line> my $global_second_object_of_action = ' . "'" . "'" . ' ; <new_line> my $global_second_time = 0 ; <new_line> my $global_second_word = ' . "'" . "'" . ' ; <new_line> my $global_segment_if_first = ' . "'" . "'" . ' ; <new_line> my $global_segment_if_second = ' . "'" . "'" . ' ; <new_line> my $global_segment_that_might_include_else = ' . "'" . "'" . ' ; <new_line> my $global_separator = ' . "'" . "'" . ' ; <new_line> my $global_separator_one = ' . "'" . "'" . ' ; <new_line> my $global_separator_two = ' . "'" . "'" . ' ; <new_line> my $global_sequence_of_phrases = ' . "'" . "'" . ' ; <new_line> my $global_sine_of_angle = 0 ; <new_line> my $global_single_value = 0 ; <new_line> my $global_slash_or_backslash_for_path = ' . "'" . "'" . ' ; <new_line> my $global_sort_order = ' . "'" . "'" . ' ; <new_line> my $global_source_definitions = ' . "'" . "'" . ' ; <new_line> my $global_source_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_starting_character_position = 0 ; <new_line> my $global_starting_count = 0 ; <new_line> my $global_starting_second_count = 0 ; <new_line> my $global_storage_name = ' . "'" . "'" . ' ; <new_line> my $global_string_in_phrase = ' . "'" . "'" . ' ; <new_line> my $global_string_to_find = ' . "'" . "'" . ' ; <new_line> my $global_string_to_insert = ' . "'" . "'" . ' ; <new_line> my $global_string_to_match = ' . "'" . "'" . ' ; <new_line> my $global_string_to_search = ' . "'" . "'" . ' ; <new_line> my $global_suffix = ' . "'" . "'" . ' ; <new_line> my $global_supplied_text = ' . "'" . "'" . ' ; <new_line> my $global_tag_name = ' . "'" . "'" . ' ; <new_line> my $global_target_column_number = 0 ; <new_line> my $global_target_operand = ' . "'" . "'" . ' ; <new_line> my $global_target_phrase_name = ' . "'" . "'" . ' ; <new_line> my $global_target_row_number = 0 ; <new_line> my $global_target_sub_folder = ' . "'" . "'" . ' ; <new_line> my $global_temp_text = ' . "'" . "'" . ' ; <new_line> my $global_text_begin = ' . "'" . "'" . ' ; <new_line> my $global_text_being_edited = ' . "'" . "'" . ' ; <new_line> my $global_text_end = ' . "'" . "'" . ' ; <new_line> my $global_text_for_right_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_text_for_up_direction_values = ' . "'" . "'" . ' ; <new_line> my $global_text_item_in_column = ' . "'" . "'" . ' ; <new_line> my $global_text_list_key = ' . "'" . "'" . ' ; <new_line> my $global_text_list_loop = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_start_matching_positions = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_unique_word_counts = ' . "'" . "'" . ' ; <new_line> my $global_text_list_of_unique_word_pointers = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_content = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_name = ' . "'" . "'" . ' ; <new_line> my $global_text_parameter_value = ' . "'" . "'" . ' ; <new_line> my $global_text_string = ' . "'" . "'" . ' ; <new_line> my $global_text_to_append = ' . "'" . "'" . ' ; <new_line> my $global_text_to_expand = ' . "'" . "'" . ' ; <new_line> my $global_text_to_find = ' . "'" . "'" . ' ; <new_line> my $global_text_to_find_at_position = ' . "'" . "'" . ' ; <new_line> my $global_raw_input = ' . "'" . "'" . ' ; <new_line> my $global_name_value = ' . "'" . "'" . ' ; <new_line> my $global_name = ' . "'" . "'" . ' ; <new_line> my $global_top_left_open_column = 0 ; <new_line> my $global_top_right_open_column = 0 ; <new_line> my $global_top_row_number = 0 ; <new_line> my $global_translation = ' . "'" . "'" . ' ; <new_line> my $global_undeleted_phrase_content = ' . "'" . "'" . ' ; <new_line> my $global_unicode_number = 0 ; <new_line> my $global_unique_word_at_position = ' . "'" . "'" . ' ; <new_line> my $global_up_direction_maximum_value = 0 ; <new_line> my $global_up_direction_minimum_value = 0 ; <new_line> my $global_use_two_spaces_as_delimiter = ' . "'" . "'" . ' ; <new_line> my $global_use_value_direction = ' . "'" . "'" . ' ; <new_line> my $global_value = 0 ; <new_line> my $global_value_direction_left_and_up = 0 ; <new_line> my $global_value_direction_right = 0 ; <new_line> my $global_value_direction_right_and_up = 0 ; <new_line> my $global_value_direction_up = 0 ; <new_line> my $global_value_in_column = 0 ; <new_line> my $global_value_of_operand_one = 0 ; <new_line> my $global_value_one = 0 ; <new_line> my $global_value_two = 0 ; <new_line> my $global_weekday = ' . "'" . "'" . ' ; <new_line> my $global_word = ' . "'" . "'" . ' ; <new_line> my $global_word_count = 0 ; <new_line> my $global_word_number = 0 ; <new_line> my $global_word_number_begin = 0 ; <new_line> my $global_word_number_end = 0 ; <new_line> my $global_word_position = 0 ; <new_line> my $global_word_to_check = ' . "'" . "'" . ' ; <new_line> my $global_word_to_find = ' . "'" . "'" . ' ; <new_line> my $global_words_to_find = ' . "'" . "'" . ' ; <new_line> my $global_words_to_match = ' . "'" . "'" . ' ; <new_line> my $global_write_time = ' . "'" . "'" . ' ; <new_line> my $global_year = 0 ; <new_line> my $global_zero_if_not_remaining_item_number = ' . "'" . "'" . ' ; <new_line> my $global_zero_padding = ' . "'" . "'" . ' ; <new_line> my $global_cgi_string_length_limit = 100000 ; <new_line> my $global_cgi_line_length_limit = 100 ; <new_line> my $global_unique_value = ' . "'" . "'" . ' ; <new_line> my $global_yes_or_no_conditionally_need_separator_space = $global_no ; <new_line> my $global_multiple_spaces = ' . "'" . '<character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space><character_space>' . "'" . ' ; <new_line> <new_line> <new_line>' ;
 $global_dashrep_replacement{ $storage_item__4734 } = $storage_item__4735 ;
 my $storage_item__4736 = 'template-return-if-no-permission-administrator' ;
 my $storage_item__4737 = 'if ( not( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space permission no-space character-hyphen no-space administrator' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'yes no-space character-hyphen no-space or no-space character-hyphen no-space no no-space character-hyphen no-space permission no-space character-hyphen no-space administrator' . "'" . ' code-get-or-put-phrase-definition-end eq ' . "'" . 'yes' . "'" . ' ) ) ) { <new_line> $global_action_result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_phrase_name_currently_executing . ' . "'" . '__case_no_permission_administrator ' . "'" . ' ; <new_line> return ' . "'" . "'" . ' ; <new_line> } <new_line>' ;
@@ -6145,6 +6146,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -6466,6 +6469,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -6626,6 +6631,8 @@ $global_phrase_usage_count_for_phrase_number[ 17 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -6867,6 +6874,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -7035,6 +7044,8 @@ $global_phrase_usage_count_for_phrase_number[ 19 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -7462,6 +7473,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -7593,6 +7606,8 @@ $global_phrase_usage_count_for_phrase_number[ 21 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -7810,6 +7825,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -7872,6 +7889,8 @@ $global_phrase_usage_count_for_phrase_number[ 23 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -7993,6 +8012,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8055,6 +8076,8 @@ $global_phrase_usage_count_for_phrase_number[ 25 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8145,6 +8168,8 @@ $global_phrase_usage_count_for_phrase_number[ 26 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8278,6 +8303,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8360,6 +8387,8 @@ $global_phrase_usage_count_for_phrase_number[ 28 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8481,6 +8510,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8588,6 +8619,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8646,6 +8679,8 @@ $global_phrase_usage_count_for_phrase_number[ 31 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8706,6 +8741,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8753,6 +8790,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -8799,6 +8838,8 @@ $global_phrase_usage_count_for_phrase_number[ 34 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8931,6 +8972,8 @@ $global_phrase_usage_count_for_phrase_number[ 35 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -9117,6 +9160,8 @@ $global_phrase_usage_count_for_phrase_number[ 36 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -9312,6 +9357,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -9413,6 +9460,8 @@ $global_phrase_usage_count_for_phrase_number[ 38 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -9636,6 +9685,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -9772,6 +9823,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -9907,6 +9960,8 @@ $global_phrase_usage_count_for_phrase_number[ 41 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -10109,6 +10164,8 @@ $global_phrase_usage_count_for_phrase_number[ 42 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -10318,6 +10375,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -10519,6 +10578,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -10580,6 +10641,8 @@ $global_phrase_usage_count_for_phrase_number[ 45 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -11120,6 +11183,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -11213,6 +11278,8 @@ $global_phrase_usage_count_for_phrase_number[ 47 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12028,6 +12095,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -12163,6 +12232,8 @@ $global_phrase_usage_count_for_phrase_number[ 49 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12339,6 +12410,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -12487,6 +12560,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -12556,6 +12631,8 @@ $global_phrase_usage_count_for_phrase_number[ 52 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12722,6 +12799,8 @@ $global_phrase_usage_count_for_phrase_number[ 53 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12903,6 +12982,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -13049,6 +13130,8 @@ $global_phrase_usage_count_for_phrase_number[ 55 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -13223,6 +13306,8 @@ $global_phrase_usage_count_for_phrase_number[ 56 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -13558,6 +13643,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -13666,6 +13753,8 @@ $global_phrase_usage_count_for_phrase_number[ 58 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -13813,6 +13902,8 @@ $global_phrase_usage_count_for_phrase_number[ 59 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14044,6 +14135,8 @@ $global_phrase_usage_count_for_phrase_number[ 60 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14404,6 +14497,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -14498,6 +14593,8 @@ $global_phrase_usage_count_for_phrase_number[ 62 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14617,6 +14714,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -14734,6 +14833,8 @@ $global_phrase_usage_count_for_phrase_number[ 64 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14853,6 +14954,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -14970,6 +15073,8 @@ $global_phrase_usage_count_for_phrase_number[ 66 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15234,6 +15339,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -15365,6 +15472,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -15450,6 +15559,8 @@ $global_phrase_usage_count_for_phrase_number[ 69 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15588,6 +15699,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -15682,6 +15795,8 @@ $global_phrase_usage_count_for_phrase_number[ 71 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15806,6 +15921,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -15891,6 +16008,8 @@ $global_phrase_usage_count_for_phrase_number[ 73 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16127,6 +16246,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -16322,6 +16443,8 @@ $global_phrase_usage_count_for_phrase_number[ 75 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16675,6 +16798,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -16721,6 +16846,8 @@ $global_phrase_usage_count_for_phrase_number[ 79 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16870,6 +16997,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -16995,6 +17124,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -17048,6 +17179,8 @@ $global_phrase_usage_count_for_phrase_number[ 82 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -17192,6 +17325,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -17325,6 +17460,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -17406,6 +17543,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -17459,6 +17598,8 @@ $global_phrase_usage_count_for_phrase_number[ 86 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -17560,6 +17701,8 @@ $global_phrase_usage_count_for_phrase_number[ 87 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18595,6 +18738,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -18653,6 +18798,8 @@ $global_phrase_usage_count_for_phrase_number[ 95 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18735,6 +18882,8 @@ $global_phrase_usage_count_for_phrase_number[ 140 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -19378,6 +19527,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -19657,6 +19808,8 @@ my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
 
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
+
 # Check for endless loop
 $global_endless_loop_counter ++ ;
 if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
@@ -19932,6 +20085,8 @@ $global_phrase_usage_count_for_phrase_number[ 143 ] ++ ;
 my $saved_accumulator_pointer = -1 ;
 
 # list_of_tokens_can_go_here
+
+# $global_currently_executing_phrase_name_with_underscores = 'phrase-name-with-underscores' ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
