@@ -1,5 +1,7 @@
 <new_line>
 <new_line>
+# $global_currently_executing_phrase_name_with_underscores = ' no-space phrase-name-with-underscores no-space ' ;  <new_line>
+<new_line>
 template-runtime-code-check-for-endless-loop
 <new_line>
 template-runtime-code-check-for-time-limit-exceeded
