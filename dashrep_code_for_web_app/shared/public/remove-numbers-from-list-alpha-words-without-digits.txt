@@ -1,3 +1,3 @@
-[-copy-and-replace-using-paired-listed-words list-alpha-words-without-digits list-alpha-words-without-digits digits-paired-replacements-to-9s -]
-[-copy-and-replace list-alpha-words-without-digits list-alpha-words-without-digits digit-9 empty-text-]
-[-copy-without-extra-spaces list-alpha-words-without-digits list-alpha-words-without-digits-]
+ambee copy-and-replace-using-paired-listed-words list-alpha-words-without-digits list-alpha-words-without-digits digits-paired-replacements-to-9s  amenn
+ambee copy-and-replace list-alpha-words-without-digits list-alpha-words-without-digits digit-9 empty-text amenn
+ambee copy-without-extra-spaces list-alpha-words-without-digits list-alpha-words-without-digits amenn

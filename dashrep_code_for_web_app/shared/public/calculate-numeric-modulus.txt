@@ -1,2 +1,2 @@
-[-put-into-phrase intermediate-result  [-numeric-multiply [-modulus-operand-second-] [-numeric-integer [-numeric-divide-by [-modulus-operand-first-] [-modulus-operand-second-]-]-]-] -]
-[-put-into-phrase modulus-result  [-numeric-minus [-modulus-operand-first-] [-intermediate-result-]-] -]
+ambee put-into-phrase intermediate-result  ambee numeric-multiply ambee modulus-operand-second amenn ambee numeric-integer ambee numeric-divide-by ambee modulus-operand-first amenn ambee modulus-operand-second amenn amenn amenn amenn  amenn
+ambee put-into-phrase modulus-result  ambee numeric-minus ambee modulus-operand-first amenn ambee intermediate-result amenn amenn  amenn
