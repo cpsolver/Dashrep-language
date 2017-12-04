@@ -1,6 +1,6 @@
 jsfunction-ballot-clear js-equals function( ) {
     var jsvar-question-number comma-sep jsvar-choice-number comma-sep jsvar-choice-number-maximum comma-sep jsvar-ranking-number comma-sep jsvar-ranking-number-maximum comma-sep jsvar-id-element-name-for-oval comma-sep jsvar-id-element-name-for-ranking comma-sep jsvar-id-element-name-for-choice-name comma-sep jsvar-id-element-name-for-ranking-name comma-sep jsvar-attribute-value js-statement-end
-    js-for-loop-define jsvar-question-number = 1 ; jsvar-question-number js-is-less-than-or-equal-to 2 ; jsvar-question-number ++ js-for-loop-start
+    js-for-loop-define jsvar-question-number = 1 ; jsvar-question-number js-is-less-than-or-equal-to 4 ; jsvar-question-number ++ js-for-loop-start
         jsvar-choice-number-maximum js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-ballot-choice-count-for-question underscore-double-here code-close-quote js-concat jsvar-question-number js-params-next "contents"  js-params-end js-statement-end
         jsvar-ranking-number-maximum js-equals Math.min no-space js-params-begin 12 js-params-next jsvar-choice-number-maximum js-params-end js-statement-end
         js-for-loop-define jsvar-choice-number = 1 ; jsvar-choice-number js-is-less-than-or-equal-to 12 ; jsvar-choice-number ++ js-for-loop-start
