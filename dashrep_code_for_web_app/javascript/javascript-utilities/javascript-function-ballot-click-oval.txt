@@ -1,0 +1,45 @@
+jsfunction-ballot-click-oval js-equals function( jsvar-question-number , jsvar-choice-number-clicked , jsvar-ranking-number-clicked ) {
+    var jsvar-choice-count comma-sep jsvar-choice-number comma-sep jsvar-ranking-number comma-sep jsvar-ranking-number-maximum comma-sep jsvar-id-element-name comma-sep jsvar-pointer comma-sep jsvar-attribute-value js-statement-end
+    jsvar-choice-count js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-ballot-choice-count-for-question underscore-double-here code-close-quote js-concat jsvar-question-number js-params-next "contents"  js-params-end js-statement-end
+    jsvar-ranking-number-maximum js-equals jsvar-choice-count js-statement-end
+    js-if jsvar-ranking-number-maximum js-is-greater-than 12 js-then
+        jsvar-ranking-number-maximum js-equals 12 js-statement-end
+    js-if-end
+
+combee **** if click oval in first choice column, move any first-ranked choices into second rank before marking oval in first choice column **** comenn
+    js-if jsvar-ranking-number-clicked js-is-equal-to code-open-quote 1 code-close-quote js-then
+        js-for-loop-define jsvar-choice-number = 1 ; jsvar-choice-number js-is-less-than-or-equal-to jsvar-choice-count ; jsvar-choice-number ++ js-for-loop-start
+            jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-statement-end
+            jsvar-ranking-number js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "contents" js-params-end js-statement-end
+            js-if jsvar-ranking-number js-is-equal-to jsvar-ranking-number-clicked js-then
+                jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-concat code-open-quote underscore-double-here 1 code-close-quote js-statement-end
+                jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-not-highlighted code-close-quote js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+
+                jslog-begin code-open-quote jsvar-id-element-name code-close-quote jslog-equal-sign jsvar-id-element-name jslog-end
+
+                jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-concat code-open-quote underscore-double-here 2 code-close-quote js-statement-end
+                jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-highlighted code-close-quote js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+
+                jslog-begin code-open-quote jsvar-id-element-name code-close-quote jslog-equal-sign jsvar-id-element-name jslog-end
+
+                jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "contents" js-params-next code-open-quote 2 code-close-quote js-params-end js-statement-end
+            js-if-end
+        js-loop-end
+    js-if-end
+
+    js-for-loop-define jsvar-ranking-number = 1 ; jsvar-ranking-number js-is-less-than-or-equal-to jsvar-ranking-number-maximum ; jsvar-ranking-number ++ js-for-loop-start
+        jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number-clicked js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-ranking-number js-statement-end
+        jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-not-highlighted code-close-quote js-statement-end
+        jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+    js-loop-end
+    jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number-clicked js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-ranking-number-clicked js-statement-end
+    jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-highlighted code-close-quote js-statement-end
+    jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+    jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number-clicked js-statement-end
+    jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "contents" js-params-next jsvar-ranking-number-clicked js-params-end js-statement-end
+    return true js-statement-end
+} js-statement-end
+<new_line>

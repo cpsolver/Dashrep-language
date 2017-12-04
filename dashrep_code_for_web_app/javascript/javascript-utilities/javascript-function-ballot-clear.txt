@@ -1,0 +1,42 @@
+jsfunction-ballot-clear js-equals function( ) {
+    var jsvar-question-number comma-sep jsvar-choice-number comma-sep jsvar-choice-number-maximum comma-sep jsvar-ranking-number comma-sep jsvar-ranking-number-maximum comma-sep jsvar-id-element-name-for-oval comma-sep jsvar-id-element-name-for-ranking comma-sep jsvar-id-element-name-for-choice-name comma-sep jsvar-id-element-name-for-ranking-name comma-sep jsvar-attribute-value js-statement-end
+    js-for-loop-define jsvar-question-number = 1 ; jsvar-question-number js-is-less-than-or-equal-to 2 ; jsvar-question-number ++ js-for-loop-start
+        jsvar-choice-number-maximum js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-ballot-choice-count-for-question underscore-double-here code-close-quote js-concat jsvar-question-number js-params-next "contents"  js-params-end js-statement-end
+        jsvar-ranking-number-maximum js-equals Math.min no-space js-params-begin 12 js-params-next jsvar-choice-number-maximum js-params-end js-statement-end
+        js-for-loop-define jsvar-choice-number = 1 ; jsvar-choice-number js-is-less-than-or-equal-to 12 ; jsvar-choice-number ++ js-for-loop-start
+            jsvar-id-element-name-for-ranking js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-statement-end
+            jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-ranking js-params-next "contents" js-params-next jsvar-ranking-number-maximum js-params-end js-statement-end
+            js-if jsvar-choice-number > jsvar-choice-number-maximum js-then
+                jsvar-id-element-name-for-choice-name js-equals code-open-quote selectext-id-ballot-choice-name underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote _ code-close-quote js-concat jsvar-choice-number js-statement-end
+                jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-end js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-next "class" js-params-next code-open-quote class-style-padding-none code-close-quote js-params-end js-statement-end
+            js-if-end
+            js-for-loop-define jsvar-ranking-number = 1 ; jsvar-ranking-number js-is-less-than-or-equal-to 12 ; jsvar-ranking-number ++ js-for-loop-start
+                jsvar-id-element-name-for-oval js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-ranking-number js-statement-end
+                js-if jsvar-choice-number > jsvar-choice-number-maximum js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-padding-none code-close-quote js-statement-end
+                    jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else-if jsvar-ranking-number > jsvar-ranking-number-maximum js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-padding-none code-close-quote js-statement-end
+                    jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else-if jsvar-ranking-number js-is-equal-to jsvar-ranking-number-maximum js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-highlighted code-close-quote js-statement-end
+                    jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else
+                    jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-not-highlighted code-close-quote js-statement-end
+                    jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-if-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+            js-loop-end
+        js-loop-end
+        js-if jsvar-ranking-number-maximum < 12 js-then
+            js-for-loop-define jsvar-ranking-number = jsvar-ranking-number-maximum + 1 ; jsvar-ranking-number js-is-less-than-or-equal-to 12 ; jsvar-ranking-number ++ js-for-loop-start
+                jsvar-id-element-name-for-ranking-name js-equals code-open-quote selectext-id-ranking-name underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote _ code-close-quote js-concat jsvar-ranking-number js-statement-end
+                jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-ranking-name js-params-end js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-ranking-name js-params-next "class" js-params-next code-open-quote class-style-padding-none code-close-quote js-params-end js-statement-end
+            js-loop-end
+        js-if-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>
