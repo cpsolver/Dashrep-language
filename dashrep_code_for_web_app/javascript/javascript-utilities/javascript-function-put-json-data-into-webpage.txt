@@ -1,7 +1,7 @@
 jsfunction-put-json-data-into-webpage js-equals function( ) {
 
-*--- this list of variable includes some that do not appear in this file, but do appear in the inserted "javascript-post-json-actions-for-case-..." files ---*
-    var jsvar-json-reply comma-sep jsvar-keyed-values comma-sep jsvar-list-trio-id-atr-val comma-sep jsvar-element-selected comma-sep jsvar-id-of-element-selected comma-sep jsvar-id-element-name comma-sep jsvar-show-hide-element-name comma-sep jsvar-item-pointer comma-sep jsvar-item-pointer-limit comma-sep jsvar-show-hide-pointer comma-sep jsvar-attribute-name comma-sep jsvar-value-after-update comma-sep jsvar-post-json-action comma-sep jsvar-class-name comma-sep jsvar-yes-or-no js-statement-end
+combee *** reminder: this list of variables includes some that do not appear in this file, but do appear in the inserted "javascript-post-json-actions-for-case-..." files *** comenn
+    var jsvar-json-reply comma-sep jsvar-keyed-values comma-sep jsvar-list-trio-id-atr-val comma-sep jsvar-element-selected comma-sep jsvar-id-of-element-selected comma-sep jsvar-id-element-name comma-sep jsvar-show-hide-element-name comma-sep jsvar-item-pointer comma-sep jsvar-item-pointer-limit comma-sep jsvar-show-hide-pointer comma-sep jsvar-attribute-name comma-sep jsvar-value-after-update comma-sep jsvar-post-json-action comma-sep jsvar-class-name comma-sep jsvar-yes-or-no comma-sep jsvar-text-contents comma-sep jsvar-value-from-element js-statement-end
 
     jsfunction-un-brighten-button js-params-begin js-params-end js-statement-end
     jsfunction-scroll-to-top no-space ( ) js-statement-end
@@ -14,8 +14,8 @@ jsfunction-put-json-data-into-webpage js-equals function( ) {
         jsvar-id-element-name js-equals jsvar-list-trio-id-atr-val no-space [ jsvar-item-pointer ] js-statement-end
         jsvar-attribute-name js-equals jsvar-list-trio-id-atr-val no-space [ jsvar-item-pointer + 1 ] js-statement-end
 
-*--- allow special attribute name of "show" or "hide" in which case the element id name is used as a class name (and the value is ignored) ---*
-*--- reminder: selected elements must have id name in addition to class name! ---*
+combee *** allow special attribute name of "show" or "hide" in which case the element id name is used as a class name (and the value is ignored) *** comenn
+combee *** reminder: selected elements must have id name in addition to class name! *** comenn
         js-if js-paren-begin jsvar-attribute-name js-is-equal-to "show" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "hide" js-paren-end js-then
             jsvar-class-name js-equals jsvar-id-element-name js-statement-end
             var jsvar-elements-to-update js-equals document.getElementsByClassName( jsvar-class-name ) js-statement-end
@@ -51,20 +51,17 @@ jsfunction-put-json-data-into-webpage js-equals function( ) {
     js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-location code-close-quote js-then
         javascript-post-json-actions-for-case-got-location
     js-if-end
-
-    jsvar-yes-or-no js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-yes-no-got-loc-news code-close-quote js-params-end js-statement-end
-    js-if jsvar-yes-or-no js-is-equal-to code-open-quote selectext-yes code-close-quote js-then
-        javascript-post-json-actions-for-case-got-location
-        jsfunction-update-page-map-for-info-type js-params-begin code-open-quote selectext-location code-close-quote js-params-end js-statement-end
-        jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-nav-tab-current code-close-quote js-params-next code-open-quote selectext-news code-close-quote js-params-end js-statement-end
-        jsfunction-update-contents-of-html-element-with-id js-params-begin code-open-quote selectext-id-yes-no-got-loc-news code-close-quote js-params-next code-open-close-quote js-params-end js-statement-end
-    js-if-end
-
     js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-news code-close-quote js-then
         javascript-post-json-actions-for-case-got-news
     js-if-end
     js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-biz code-close-quote js-then
         javascript-post-json-actions-for-case-got-biz
+    js-if-end
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-got-poll code-close-quote js-then
+        javascript-post-json-actions-for-case-got-poll
+    js-if-end
+    js-if jsvar-post-json-action js-is-equal-to code-open-quote selectext-busymessage code-close-quote js-then
+        javascript-post-json-actions-for-case-busymessage
     js-if-end
     javascript-post-json-actions-for-server-error
     jsfunction-show-next-page-segment js-params-begin js-params-end js-statement-end

@@ -1,0 +1,68 @@
+jsfunction-ballot-initialize js-equals function( ) {
+combee **** reminder: hiding of some elements, using class names, is done elsewhere **** comenn
+    var jsvar-question-number comma-sep jsvar-question-count comma-sep jsvar-question-count-maximum comma-sep jsvar-choice-number comma-sep jsvar-choice-count comma-sep jsvar-choice-count-maximum comma-sep jsvar-ranking-number comma-sep jsvar-ranking-count comma-sep jsvar-ranking-count-maximum comma-sep jsvar-id-element-name-for-question-background comma-sep jsvar-id-element-name-for-oval comma-sep jsvar-id-element-name-for-ranking comma-sep jsvar-id-element-name-for-choice-name comma-sep jsvar-id-element-name-for-ranking-name comma-sep jsvar-attribute-value comma-sep jsvar-id-element-name-for-choice-row js-statement-end
+    jsvar-question-count-maximum js-equals 4 js-statement-end
+    jsvar-ranking-count-maximum js-equals 12 js-statement-end
+    jsvar-choice-count-maximum js-equals 12 js-statement-end
+    jsvar-question-count js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-poll-question-count code-close-quote js-params-next "contents"  js-params-end js-statement-end
+
+    jslog-begin code-open-quote jsvar-question-count code-close-quote jslog-equal-sign jsvar-question-count jslog-end
+
+    js-for-loop-define jsvar-question-number js-equals 1 ; jsvar-question-number js-is-less-than-or-equal-to jsvar-question-count-maximum ; jsvar-question-number js-increment js-for-loop-start
+
+        jslog-begin code-open-quote jsvar-question-number code-close-quote jslog-equal-sign jsvar-question-number jslog-end
+
+        jsvar-id-element-name-for-question-background js-equals code-open-quote selectext-id-ballot-background-question underscore-double-here code-close-quote js-concat jsvar-question-number js-statement-end
+        js-if jsvar-question-number js-is-less-than-or-equal-to jsvar-question-count js-then
+            jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-question-background js-params-end js-statement-end
+            jsvar-choice-count js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-ballot-choice-count-for-question underscore-double-here code-close-quote js-concat jsvar-question-number js-params-next "contents"  js-params-end js-statement-end
+            jsvar-ranking-count js-equals Math.min no-space js-params-begin jsvar-ranking-count-maximum js-params-next jsvar-choice-count js-params-end js-statement-end
+        js-else
+            jsvar-choice-count js-equals code-open-quote 1 code-close-quote js-statement-end
+            jsvar-ranking-count js-equals code-open-quote 1 code-close-quote js-statement-end
+        js-if-end
+
+        jslog-begin code-open-quote jsvar-choice-count code-close-quote jslog-equal-sign jsvar-choice-count jslog-end
+        jslog-begin code-open-quote jsvar-ranking-count code-close-quote jslog-equal-sign jsvar-ranking-count jslog-end
+
+        js-for-loop-define jsvar-choice-number js-equals 1 ; jsvar-choice-number js-is-less-than-or-equal-to jsvar-choice-count-maximum ; jsvar-choice-number js-increment js-for-loop-start
+combee **** reminder: the following element is always hidden, and holds ranking number that will be sent when cast ballot **** comenn
+            jsvar-id-element-name-for-ranking js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-statement-end
+            jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-ranking js-params-next "contents" js-params-next jsvar-ranking-count js-params-end js-statement-end
+            jsvar-id-element-name-for-choice-name js-equals code-open-quote selectext-id-ballot-choice-name underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote _ code-close-quote js-concat jsvar-choice-number js-statement-end
+            js-if jsvar-choice-number js-is-less-than-or-equal-to jsvar-choice-count js-then
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-next "class" js-params-next code-open-quote class-style-ballot-choice-name code-close-quote js-params-end js-statement-end
+                jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-end js-statement-end
+            js-else
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-next "class" js-params-next code-open-quote class-style-padding-none code-close-quote js-params-end js-statement-end
+                jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-choice-name js-params-end js-statement-end
+            js-if-end
+            js-for-loop-define jsvar-ranking-number js-equals 1 ; jsvar-ranking-number js-is-less-than-or-equal-to jsvar-ranking-count-maximum ; jsvar-ranking-number ++ js-for-loop-start
+                jsvar-id-element-name-for-oval js-equals code-open-quote selectext-id-ballot-oval underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-ranking-number js-statement-end
+                js-if jsvar-choice-number js-is-greater-than jsvar-choice-count js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-padding-none code-close-quote js-statement-end
+                    jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else-if jsvar-ranking-number js-is-greater-than jsvar-ranking-count js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-padding-none code-close-quote js-statement-end
+                    jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else-if jsvar-ranking-number js-is-equal-to jsvar-ranking-count js-then
+                    jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-highlighted code-close-quote js-statement-end
+                    jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-else
+                    jsvar-attribute-value js-equals code-open-quote class-style-button-in-group underscore-double-here selectext-ballot-group underscore-double-here selectext-not-highlighted code-close-quote js-statement-end
+                    jsfunction-show-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-end js-statement-end
+                js-if-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-oval js-params-next "class" js-params-next jsvar-attribute-value js-params-end js-statement-end
+            js-loop-end
+        js-loop-end
+        js-if jsvar-ranking-count js-is-less-than jsvar-ranking-count-maximum js-then
+            js-for-loop-define jsvar-ranking-number js-equals jsvar-ranking-count js-plus 1 ; jsvar-ranking-number js-is-less-than-or-equal-to jsvar-ranking-count-maximum ; jsvar-ranking-number js-increment js-for-loop-start
+                jsvar-id-element-name-for-ranking-name js-equals code-open-quote selectext-id-ranking-name underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote _ code-close-quote js-concat jsvar-ranking-number js-statement-end
+                jsfunction-update-attribute-of-html-element-with-id js-params-begin jsvar-id-element-name-for-ranking-name js-params-next "class" js-params-next code-open-quote class-style-padding-none code-close-quote js-params-end js-statement-end
+                jsfunction-hide-element-with-id js-params-begin jsvar-id-element-name-for-ranking-name js-params-end js-statement-end
+            js-loop-end
+        js-if-end
+    js-loop-end
+    return true js-statement-end
+} js-statement-end
+<new_line>
