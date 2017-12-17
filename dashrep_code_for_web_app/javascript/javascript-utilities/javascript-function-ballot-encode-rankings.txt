@@ -1,25 +1,15 @@
 jsfunction-ballot-encode-rankings js-equals function( ) {
-
-combee ****
-reminder: to parse encoded text:
-step 1: replace "q" with space, splits into space delimited words, one word for each question;
-step 2: replace "r" with space, splits into question number and rankings;
-step 3: replace "_" within rankings, splits into separate rankings;
-step 4: use Dashrep action copy-words-rearrange-using-order-sort-numeric with list "1 2 3 4 ..." to put into ranking sequence;
-step 5: insert either comma or space after each choice, with space indicating adjacent choices that have same ranking level
-**** comenn
-
     var jsvar-question-number comma-sep jsvar-question-number-maximum comma-sep jsvar-choice-number comma-sep jsvar-choice-number-maximum comma-sep jsvar-ranking-number comma-sep jsvar-ranking-number-maximum comma-sep jsvar-id-element-name comma-sep jsvar-attribute-value comma-sep jsvar-rankings-encoded js-statement-end
     jsvar-rankings-encoded js-equals code-open-close-quote js-statement-end
     jsvar-question-number-maximum js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-poll-question-count code-close-quote js-params-next "contents"  js-params-end js-statement-end
     js-for-loop-define jsvar-question-number js-equals 1 ; jsvar-question-number js-is-less-than-or-equal-to jsvar-question-number-maximum ; jsvar-question-number ++ js-for-loop-start
         jsvar-choice-number-maximum js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin code-open-quote selectext-id-ballot-choice-count-for-question underscore-double-here code-close-quote js-concat jsvar-question-number js-params-next "contents"  js-params-end js-statement-end
         jsvar-ranking-number-maximum js-equals jsvar-choice-number-maximum js-statement-end
-        jsvar-rankings-encoded js-equals-concatenate code-open-quote q code-close-quote js-concat jsvar-question-number js-concat code-open-quote r code-close-quote js-statement-end
+        jsvar-rankings-encoded js-equals-concatenate code-open-quote q code-close-quote js-concat jsvar-question-number js-statement-end
         js-for-loop-define jsvar-choice-number js-equals 1 ; jsvar-choice-number js-is-less-than-or-equal-to jsvar-choice-number-maximum ; jsvar-choice-number ++ js-for-loop-start
             jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-oval-ranking-for-question-choice underscore-double-here code-close-quote js-concat jsvar-question-number js-concat code-open-quote underscore-double-here code-close-quote js-concat jsvar-choice-number js-statement-end
             jsvar-ranking-number js-equals jsfunction-get-attribute-value-from-html-element-with-id js-params-begin jsvar-id-element-name js-params-next "contents" js-params-end js-statement-end
-            jsvar-rankings-encoded js-equals-concatenate jsvar-ranking-number js-concat code-open-quote _ code-close-quote js-statement-end
+            jsvar-rankings-encoded js-equals-concatenate code-open-quote c code-close-quote js-concat jsvar-choice-number js-concat code-open-quote r code-close-quote jsvar-ranking-number js-statement-end
         js-loop-end
     js-loop-end
     jsvar-id-element-name js-equals code-open-quote selectext-id-ballot-rankings-encoded code-close-quote js-statement-end
