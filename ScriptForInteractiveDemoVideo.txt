@@ -1,0 +1,220 @@
+Script for video,
+do split screen,
+use Snagit (at TechSmith.com)
+-----------------------------
+
+The Dashrep language
+
+The dolphin is talkative
+
+[update]
+
+start-here:
+The dolphin is talkative
+----
+
+[update]
+
+The animal-name is talkative
+
+animal-name:
+dolphin
+----
+
+[update]
+
+characteristic-for-animal-dolphin:
+talkative
+----
+
+The animal-name is characteristic-for-animal fenambee animal-name amenn
+
+[update]
+
+animal-name:
+octopus
+----
+
+characteristic-for-animal-octopus
+clever
+----
+
+[update]
+
+list-of-animal-names:
+dolphin octopus
+----
+
+template-sentence:
+
+start-here:
+ambee put-into-phrase count-of-animal-types  ambee get-count-of-words list-of-animal-names amenn  amenn
+ambee append-text count-of-animal-types standard-output amenn
+----
+
+[update]
+
+ambee generate-counts-from-integer-to-integer list-of-pointers-to-list-of-animal-names 1 ambee count-of-animal-types amenn amenn
+ambee append-text list-of-pointers-to-list-of-animal-names standard-output amenn
+
+[update]
+
+generate-sentence:
+ambee append-text word-to-use-in-handler standard-output amenn
+----
+
+ambee use-handler-with-each-word-in-phrase generate-sentence list-of-pointers-to-list-of-animal-names amenn
+
+[update]
+
+ambee copy-text word-to-use-in-handler pointer-to-list-of-animal-names amenn
+
+ambee append-text pointer-to-list-of-animal-names standard-output amenn
+
+[update]
+
+ambee copy-word-at-position list-of-animal-names animal-name ambee pointer-to-list-of-animal-names amenn amenn
+ambee append-text animal-name standard-output amenn
+
+[update]
+
+ambee expand-text template-sentence expanded-sentence amenn
+ambee append-text expanded-sentence standard-output amenn
+
+[update]
+
+The
+animal-name
+is
+characteristic-for-animal fenambee animal-name amenn
+
+[update]
+
+no-space . character-newline
+
+[update]
+
+list-of-animal-counts:
+7 2
+----
+
+ambee copy-word-at-position list-of-animal-counts animal-count ambee pointer-to-list-of-animal-names amenn amenn
+
+animal-count
+
+[update]
+
+list-of-animal-counts:
+1 3
+----
+
+[update]
+
+animal-name-dolphin-one:
+dolphin
+----
+animal-name-dolphin-multiple:
+dolphins
+----
+animal-name-octopus-one:
+octopus
+----
+animal-name-octopus-multiple:
+octopuses
+----
+
+ambee put-into-phrase one-or-multiple  ambee zero-one-multiple ambee animal-count amenn amenn  amenn
+
+animal-name fenambee animal-name amennfen ambee one-or-multiple amenn
+
+[update]
+
+list-of-count-words:
+one two three four five six seven eight nine ten
+----
+
+ambee copy-word-at-position list-of-count-words word-count ambee animal-count amenn amenn
+
+word-count
+
+[update]
+
+word-is-or-are-one:
+is
+----
+
+word-is-or-are-multiple:
+are
+----
+
+word-is-or-are fenambee one-or-multiple amenn
+
+[update]
+
+word-the-capitalized:
+The
+----
+
+[update]
+
+language-choice:
+fr
+----
+
+fr-list-of-count-words
+un
+deux
+trois
+quatre
+cinq
+six
+sept
+huit
+nuef
+dix
+----
+
+ambee copy-word-at-position fr-list-of-count-words word-count ambee animal-count amenn amenn
+
+[update]
+
+fr-animal-name-dolphin-one dauphin ----
+fr-animal-name-dolphin-multiple dauphins ----
+fr-animal-name-octopus-one poulpe ----
+fr-animal-name-octopus-multiple poulpes ----
+
+fr-animal-name...
+
+[update]
+
+fr-characteristic-for-animal-dolphin-one bavard ----
+fr-characteristic-for-animal-dolphin-multiple bavards ----
+fr-characteristic-for-animal-octopus-one intelligent ----
+fr-characteristic-for-animal-octopus-multiple intelligents ----
+
+fr-characteristic...
+
+[update]
+
+fr-word-the-capitalized-one Le ----
+fr-word-the-capitalized-multiple Les ----
+fr-word-is-or-are-one est ----
+fr-word-is-or-are-multiple sont ----
+
+fr-...
+
+[update]
+
+ambee numeric-vector-add-number list-of-animal-counts list-of-animal-counts 3 amenn
+
+[update]
+
+ambee numeric-vector-add-number list-of-animal-counts list-of-animal-counts -4 amenn
+
+[update]
+
+en
+
+en- prefixes
+
+[update]
