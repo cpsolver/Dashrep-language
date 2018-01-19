@@ -95,7 +95,7 @@ no-space . character-newline
 [update]
 
 list-of-animal-counts:
-7 2
+7 3
 ----
 
 ambee copy-word-at-position list-of-animal-counts animal-count ambee pointer-to-list-of-animal-names amenn amenn
@@ -123,9 +123,9 @@ animal-name-octopus-multiple:
 octopuses
 ----
 
-ambee put-into-phrase one-or-multiple  ambee zero-one-multiple ambee animal-count amenn amenn  amenn
+ambee put-into-phrase animal-count-category  ambee zero-one-multiple ambee animal-count amenn amenn  amenn
 
-animal-name fenambee animal-name amennfen ambee one-or-multiple amenn
+word-animal-name fenambee animal-name amennfen ambee animal-count-category amenn
 
 [update]
 
@@ -147,13 +147,31 @@ word-is-or-are-multiple:
 are
 ----
 
-word-is-or-are fenambee one-or-multiple amenn
+word-is-or-are fenambee animal-count-category amenn
 
 [update]
 
-word-the-capitalized:
-The
+list-of-animal-counts:
+1 0
 ----
+
+words-sentence-zero-count:
+There are no
+word-animal-name fenambee animal-name amennfen ambee animal-count-category amenn
+no-space . character-newline
+----
+
+template-sentence-zero-count:
+words-sentence-zero-count
+----
+
+change: ambee expand-text template-sentence expanded-sentence amenn
+to:
+ambee if-yes-begin ambee 
+ambee expand-text template-sentence expanded-sentence amenn
+ambee if-else amenn
+ambee expand-text template-sentence-zero-count expanded-sentence amenn
+ambee if-end amenn
 
 [update]
 
@@ -175,6 +193,12 @@ dix
 ----
 
 ambee copy-word-at-position fr-list-of-count-words word-count ambee animal-count amenn amenn
+
+[update]
+
+word-the-capitalized:
+The
+----
 
 [update]
 
@@ -218,3 +242,13 @@ en
 en- prefixes
 
 [update]
+
+demo-end:
+Detailed specifications for the Dashrep language are at:  <new_line>
+www.Dashrep.org/specifications.html  <new_line>
+<new_line>
+To see the power of the Dashrep language, go to the following website, which is a web app that is completely written in the Dashrep language:
+<new_line>
+ www.NewsHereNow.com
+<new_line>
+----
