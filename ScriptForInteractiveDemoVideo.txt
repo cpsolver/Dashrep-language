@@ -42,7 +42,7 @@ clever
 [update]
 
 list-of-animal-names:
-dolphin octopus
+dolphin octopus whale otter
 ----
 
 template-sentence:
@@ -167,7 +167,7 @@ words-sentence-zero-count
 
 change: ambee expand-text template-sentence expanded-sentence amenn
 to:
-ambee if-yes-begin ambee 
+ambee if-yes-begin ambee yes-or-no-same-two-words nonzero ambee zero-or-nonzero ambee animal-count amenn amenn amenn amenn
 ambee expand-text template-sentence expanded-sentence amenn
 ambee if-else amenn
 ambee expand-text template-sentence-zero-count expanded-sentence amenn
@@ -225,7 +225,19 @@ fr-word-the-capitalized-multiple Les ----
 fr-word-is-or-are-one est ----
 fr-word-is-or-are-multiple sont ----
 
+fr-words-sentence-zero-count:
+Il n'y a pas de
+fr-word-animal-name fenambee animal-name amennfen ambee animal-count-category amenn
+no-space . character-newline
+----
+
 fr-...
+
+[update]
+
+en
+
+en- prefixes
 
 [update]
 
@@ -234,12 +246,6 @@ ambee numeric-vector-add-number list-of-animal-counts list-of-animal-counts 3 am
 [update]
 
 ambee numeric-vector-add-number list-of-animal-counts list-of-animal-counts -4 amenn
-
-[update]
-
-en
-
-en- prefixes
 
 [update]
 
@@ -252,3 +258,5 @@ To see the power of the Dashrep language, go to the following website, which is 
  www.NewsHereNow.com
 <new_line>
 ----
+
+[update]
