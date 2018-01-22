@@ -256,7 +256,7 @@
 
 
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list). </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list).&nbsp; The first operand must be a phrase name that does not change, which means it cannot use any ambee/amenn words. </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
@@ -639,6 +639,10 @@
 <p>This phrase specifies a different (non-local-folder) path for file write operations.&nbsp; If this definition is empty (which is the default value), the local directory is used.&nbsp; If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-reading actions.</p>
 
 
+<h3 id="operating-system-slash-or-backslash">operating-system-slash-or-backslash</h3>
+<p>This pre-defined phrase contains a slash character (<b><i>/</i></b>) if the operating system is not a Microsoft Windows operating-system, and it contains a backslash (<b><i>\</i></b>) if the operating system is a Microsoft Windows operating-system.</p>
+
+
 <h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
 <p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
 
@@ -695,6 +699,22 @@
 <p>This action copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The phrase <b><i>dashrep-yes-indicate-line-endings</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered.&nbsp; If it is important to keep newline characters (at the end of each line), consider using the action <b><i>copy-append-file-to-file</i></b>.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
 
+<h3 id="end-of-line-indicator">end-of-line-indicator</h3>
+<p>This phrase is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used.&nbsp; The definition of this phrase can be changed at any time, and the next use of the action <b><i>copy-from-file-to-phrase</i></b> will use the current definition.&nbsp; This phrase has a default definition of a single newline character.&nbsp; Typically the phrases that are copied to this phrase are <b><i>character-space</i></b>, <b><i>character-newline</i></b>, and <b><i>text-end-of-line-here-space-delimited</i></b>.</p>
+
+
+<h3 id="text-end-of-line-here-space-delimited">text-end-of-line-here-space-delimited</h3>
+<p>This pre-defined phrase contains the text <b><i>text-end-of-line-here</i></b> and contains a leading space and a trailing space.&nbsp; When this text is copied into the phrase <b><i>end-of-line-indicator</i></b>, use of the action <b><i>copy-from-file-to-phrase</i></b> inserts this special phrase into the text at each newline location, which can assist in inserting anything into those positions when the text is expanded.&nbsp; This phrase is not protected from being overwitten, so its definition can change.</p>
+
+
+<h3 id="yes-or-no-trim-spaces-when-copy-from-file">yes-or-no-trim-spaces-when-copy-from-file</h3>
+<p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-file-to-file</i></b> removes the leading and trailing spaces from each line that is read from the file.&nbsp; Any other value for this phrase causes the leading and trailing spaces to be retained.&nbsp; The default value of this phrase is <b><i>yes</i></b>.</p>
+
+
+<h3 id="yes-or-no-skip-empty-lines-when-copy-from-file">yes-or-no-skip-empty-lines-when-copy-from-file</h3>
+<p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-file-to-phrase</i></b> skips empty lines.&nbsp; Any other value for this phrase causes empty lines to be included in the copied text.&nbsp; The default value of this phrase is <b><i>yes</i></b>.&nbsp; If a line contains only spaces, it is regarded as an empty line.</p>
+
+
 <h3 id="copy-from-phrase-append-to-file">copy-from-phrase-append-to-file</h3>
 <p>This action copies the definition of the hyphenated phrase onto the end of the specified file.&nbsp; No separation is inserted (either at the beginning or at the end.&nbsp; location-of-write-file</p>
 
@@ -716,7 +736,11 @@
 
 
 <h3 id="get-url-resource">get-url-resource</h3>
-<p>This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.&nbsp; location-of-write-file </p> <p> Example: If the first phrase contains <b><i>http://www.votefair.org/americanidol.html</i></b> and the second phrase contains <b><i>temp_url_output.txt</i></b> and the phrase <b><i>name-of-phrase-that-specifies-write-directory</i></b> contains <b><i>/home/rawfeeds/</i></b> then a copy of the specified web page will be put into the file <b><i>/home/rawfeeds/temp_url_output.txt</i></b>.</p>
+<p>This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.&nbsp; Diagnostic messages are written to the phrase <b><i>trace-from get-url-resource</i></b>.&nbsp; location-of-write-file </p> <p> Example: If the first phrase contains <b><i>http://www.votefair.org/americanidol.html</i></b> and the second phrase contains <b><i>temp_url_output.txt</i></b> and the phrase <b><i>name-of-phrase-that-specifies-write-directory</i></b> contains <b><i>/home/rawfeeds/</i></b> then a copy of the specified web page will be put into the file <b><i>/home/rawfeeds/temp_url_output.txt</i></b>.</p>
+
+
+<h3 id="trace-from-get-url-resource">trace-from-get-url-resource</h3>
+<p>This phrase contains diagnostic information after using the action <b><i>get-url-resource</i></b>.&nbsp; Specifically it indicates steps in the process of getting the URL resource, and it contains messages from the software that gets the URL resource, which currently is the <b><i>curl</i></b> utility.</p>
 
 
 <h2>Data-related phrases</h2>
@@ -804,6 +828,10 @@
 <h2>Advanced phrases</h2>
 
 
+<h3 id="exit-from-dashrep">exit-from-dashrep</h3>
+<p>This action first prints (to standard output) the contents of phrase <b><i>standard-output</i></b> and then immediately stops execution of a compiled Dashrep application (executable file).&nbsp; If phrase <b><i>standard-output</i></b> is empty, nothing is printed.&nbsp; This action is intended for unusual situations where normal exiting is not appropriate, such as reaching a hard limit.&nbsp; This action can be used as a breakpoint when debugging Dashrep source code.</p>
+
+
 <h3 id="dashrep-language-yes">dashrep-language-yes</h3>
 <p>This phrase is written to the beginning of the file created by the action <b><i>write-all-dashrep-definitions-to-file</i></b> so that the first word identifies the file contents to be written in the Dashrep language.&nbsp; The default value for this phrase is <b><i>yes</i></b>, but this definition is not used.</p>
 
@@ -825,24 +853,12 @@
 <p>If this phrase equals <b><i>yes</i></b> then special actions have permission to be used.&nbsp; Any other value indicates that the special actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; This phrase is intended to protect a general user from being able to easily gain access to Dashrep phrase definitions that should be kept private.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
 
 
-<h3 id="exit-from-dashrep">exit-from-dashrep</h3>
-<p>This action first prints (to standard output) the contents of phrase <b><i>standard-output</i></b> and then immediately stops execution of a compiled Dashrep application (executable file).&nbsp; If phrase <b><i>standard-output</i></b> is empty, nothing is printed.&nbsp; This action is intended for unusual situations where normal exiting is not appropriate, such as reaching a hard limit.&nbsp; This action can be used as a breakpoint when debugging Dashrep source code.</p>
-
-
 <h3 id="dashrep-endless-loop-counter-limit">dashrep-endless-loop-counter-limit</h3>
 <p>This phrase specifies the maximum number of replacements allowed during a Dashrep translation.&nbsp; This number can be redefined, such as to a larger number.&nbsp; If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times.&nbsp; If large amounts of data are processed, the default number is not going to be large enough.&nbsp; This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.</p>
 
 
 <h3 id="dashrep-time-limit">dashrep-time-limit</h3>
 <p>This phrase contains the current number of seconds for use as a time limit.&nbsp; When the time limit is exceeded, translation ends.&nbsp; The default value is 300 seconds, which equals 5 minutes.&nbsp; A different value can be specified, although the changed time limit may not take effect immediately.</p>
-
-
-<h3 id="end-of-line-here">end-of-line-here</h3>
-<p>This phrase contains text that is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used, and if the phrase <b><i>yes-or-no-indicate-line-endings</i></b> equals <b><i>yes</i></b>.</p>
-
-
-<h3 id="yes-or-no-indicate-line-endings">yes-or-no-indicate-line-endings</h3>
-<p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-file-to-phrase</i></b> inserts the text <b><i>end-of-line-here</i></b> at line-break positions.&nbsp; The <b><i>end-of-line-here</i></b> phrase does not have a default definition.</p>
 
 
 <h2>Special Dashrep spoken words</h2>
