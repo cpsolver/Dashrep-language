@@ -958,11 +958,14 @@ ambee copy-from-phrase-append-to-file segment-initialize-begin ambee filename-ou
 ambee copy-from-phrase-append-to-file initialize-global-arrays ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file initialize-global-variables ambee filename-output-results-from-compiler amenn amenn
 ambee copy-from-phrase-append-to-file output-results-all-storage-items ambee filename-output-results-from-compiler amenn amenn
-
 ambee copy-from-phrase-append-to-file segment-initialize-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-definition-items-begin ambee filename-output-results-from-compiler amenn amenn
+
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-output-results-all-definition-items amenn amenn amenn
 ambee copy-append-file-to-file ambee filename-output-results-all-definition-items amenn ambee filename-output-results-from-compiler amenn amenn
+ambee if-end amenn
+
 ambee copy-from-phrase-append-to-file segment-definition-items-end ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-branch-begin ambee filename-output-results-from-compiler amenn amenn
