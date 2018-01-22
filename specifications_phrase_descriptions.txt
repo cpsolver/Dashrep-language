@@ -94,6 +94,15 @@ bold-begin \ no-space italics-begin n b-i-e
 no-space .
 -----
 
+description-for-phrase-operating-system-slash-or-backslash:
+This pre h-h defined phrase contains a slash character
+( no-space b-i-b / b-i-e no-space )
+if the operating system is not a Microsoft Windows operating h-h system,
+and it contains a backslash
+( no-space b-i-b \ b-i-e no-space )
+if the operating system is a Microsoft Windows operating h-h system.
+-----
+
 description-for-phrase-character-open-square-bracket:
 This pre h-h defined phrase contains the open h-h square h-h bracket character ( no-space b-b [ b-e no-space ).
 -----
