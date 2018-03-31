@@ -25,10 +25,7 @@ contexts:
     - match: <START_OF_NEXT_FILE>
       scope: storage.modifier.perl
 
-    - match: ----
-      scope: storage.modifier.perl
-
-    - match: ---
+    - match: ---+
       scope: storage.modifier.perl
 
     - match: \b(combee)\b
