@@ -28,7 +28,9 @@ phrase-heading-end
 phrase-description-begin
 A b-b phrase b-e is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.
 s-n
-Phrases are recognized regardless of whether or not they appear within parameter brackets.
+Phrases are recognized regardless of whether or not they appear within a parameter phrase,
+which is started with the word
+am no-space bee (or a variation) and is ended with the word am no-space enn (or a variation).
 phrase-description-end
 phrase-heading-begin
 Directive
@@ -36,15 +38,17 @@ phrase-heading-end
 phrase-description-begin
 A b-b directive b-e is a hyphenated phrase that triggers a special functionality in the translation.
 s-n
-Directives are not recognized if they appear within parameter brackets.
+Directives are not recognized if they appear within a parameter phrase,
+which is started with the word
+am no-space bee (or a variation) and is ended with the word am no-space enn (or a variation).
 phrase-description-end
 phrase-heading-begin
 Action
 phrase-heading-end
 phrase-description-begin
-An b-b action b-e is a hyphenated phrase that has special significance when it appears at the beginning of text that is enclosed by parameter brackets.
+An b-b action b-e is a hyphenated phrase that has special significance when it appears at the beginning of a parameter phrase.
 s-n
-An action is not recognized if it is not within parameter brackets, or if it is not the first hyphenated phrase in the parameter brackets.
+An action is not recognized if it is not at the beginning of a parameter phrase.
 phrase-description-end
 -----
 
@@ -318,11 +322,11 @@ This action works similar to the action b-i-b if hyphen-here yes hyphen-here beg
 -----
 
 description-for-phrase-if-else:
-This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed by parameter brackets in order to be recognized.
+This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed in a parameter phrase (indicated by am no-space bee and am no-space enn) to be recognized.
 -----
 
 description-for-phrase-if-end:
-This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed by parameter brackets in order to be recognized.
+This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed in a parameter phrase (indicated by am no-space bee and am no-space enn) to be recognized.
 -----
 
 description-for-phrase-linewise-input-line-count:
@@ -984,7 +988,7 @@ This action must be followed by two phrase names, not one. s-n The previous defi
 -----
 
 description-for-phrase-put-into-phrase:
-This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
+This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter phrase. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
 paragraph-next
 Example: After expanding the code b-i-b am no-space bee put-into-phrase target-phrase whale dolphin starfish am no-space enn b-i-e the phrase b-i-b target h-h phrase b-i-e
 will contain b-i-b whale dolphin starfish b-i-e no-space .
@@ -1318,7 +1322,7 @@ Interpreter supported (not compiler supported)
 -----
 
 heading-for-phrases-in-category_hyphens_spaces_lines:
-Hyphens, spaces, lines, & square brackets
+Hyphens, spaces, lines, & special characters
 -----
 
 heading-for-phrases-in-category_definitions:
