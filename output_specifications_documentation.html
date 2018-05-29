@@ -45,7 +45,7 @@
 </table>
 
 
-<h2> Directives versus actions versus phrases </h2> <h3> Phrase </h3> <p> A <b>phrase</b> is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.&nbsp; Phrases are recognized regardless of whether or not they appear within parameter brackets. </p> <h3> Directive </h3> <p> A <b>directive</b> is a hyphenated phrase that triggers a special functionality in the translation.&nbsp; Directives are not recognized if they appear within parameter brackets. </p> <h3> Action </h3> <p> An <b>action</b> is a hyphenated phrase that has special significance when it appears at the beginning of text that is enclosed by parameter brackets.&nbsp; An action is not recognized if it is not within parameter brackets, or if it is not the first hyphenated phrase in the parameter brackets. </p><h2>Hyphens, spaces, lines, & square brackets</h2>
+<h2> Directives versus actions versus phrases </h2> <h3> Phrase </h3> <p> A <b>phrase</b> is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.&nbsp; Phrases are recognized regardless of whether or not they appear within a parameter phrase, which is started with the word ambee (or a variation) and is ended with the word amenn (or a variation). </p> <h3> Directive </h3> <p> A <b>directive</b> is a hyphenated phrase that triggers a special functionality in the translation.&nbsp; Directives are not recognized if they appear within a parameter phrase, which is started with the word ambee (or a variation) and is ended with the word amenn (or a variation). </p> <h3> Action </h3> <p> An <b>action</b> is a hyphenated phrase that has special significance when it appears at the beginning of a parameter phrase.&nbsp; An action is not recognized if it is not at the beginning of a parameter phrase. </p><h2>Hyphens, spaces, lines, & special characters</h2>
 
 
 <h3 id="hyphen-here">hyphen-here</h3>
@@ -135,7 +135,7 @@
 
 
 <h3 id="put-into-phrase">put-into-phrase</h3>
-<p>This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter brackets.&nbsp; The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket.&nbsp; Trailing spaces and trailing hyphens are ignored. </p> <p> Example: After expanding the code <b><i>ambee put-into-phrase target-phrase whale dolphin starfish amenn</i></b> the phrase <b><i>target-phrase</i></b> will contain <b><i>whale dolphin starfish</i></b>.</p>
+<p>This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter phrase.&nbsp; The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket.&nbsp; Trailing spaces and trailing hyphens are ignored. </p> <p> Example: After expanding the code <b><i>ambee put-into-phrase target-phrase whale dolphin starfish amenn</i></b> the phrase <b><i>target-phrase</i></b> will contain <b><i>whale dolphin starfish</i></b>.</p>
 
 
 <h3 id="copy-listed-words-to-phrases-named-in-pattern">copy-listed-words-to-phrases-named-in-pattern</h3>
@@ -209,11 +209,11 @@
 
 
 <h3 id="if-else">if-else</h3>
-<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed by parameter brackets in order to be recognized.</p>
+<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed in a parameter phrase (indicated by ambee and amenn) to be recognized.</p>
 
 
 <h3 id="if-end">if-end</h3>
-<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed by parameter brackets in order to be recognized.</p>
+<p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed in a parameter phrase (indicated by ambee and amenn) to be recognized.</p>
 
 
 <h3 id="yes-or-no-empty-phrase">yes-or-no-empty-phrase</h3>
