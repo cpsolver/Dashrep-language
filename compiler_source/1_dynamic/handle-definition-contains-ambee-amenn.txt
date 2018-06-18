@@ -39,6 +39,7 @@ ambee copy-from-phrase-append-to-file runtime-code-compiled-function ambee filen
 ambee copy-without-extra-spaces list-of-tokens-without-ambee-amenn-fen list-of-tokens-in-current-definition amenn
 ambee handle-definition-simple amenn
 
+ambee copy-text digit-1 count-of-tokens-after-ambee amenn
 ambee use-handler-with-each-word-in-phrase handle-token-next-case-1 list-of-tokens-in-complex-definition amenn
 
 ambee terminate-branching-if-not-terminated amenn
