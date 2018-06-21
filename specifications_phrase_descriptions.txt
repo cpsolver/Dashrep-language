@@ -273,7 +273,7 @@ b-i-e no-space .
 -----
 
 description-for-phrase-generate-every-ordered-pairwise-combination-of-words:
-This action generates two word h-h based lists that are pairs of the words in the first phrase, but in each pair of words the word in first list appears before the word in the second list. h-h This action is useful for doing pairwise counting.
+This action generates two word h-h based lists that are pairs of the words in the first phrase, but in each pair of words the word in first list appears before the word in the second list. s-n This action is useful for doing pairwise counting.
 paragraph-next
 Example: If the first phrase contains b-i-b
 dolphin whale starfish octopus
