@@ -15,34 +15,50 @@ RUNNING
 
 These instructions explain how to run the Dashrep compiler, and the compiled program, in the Windows environment.
 
-Use these commands to prepare to use the Perl "interpreter."  Replace the "whatever" string as needed.
+Use this command to prepare to use the Perl "interpreter."  Replace the "whatever" string as needed.
 
     set PerlPath=C:\whatever\
-    set PERL5LIB=C:\whatever\
 
 Verify that the needed files are available.
 
     dir %PerlPath%perl.exe
     dir %PerlPath%perl512.dll
     dir dashrep_compiler_executable.pl
-    dir input_dashrep_dolphin_talkative.txt
+    dir dashrep_test_code_joined_dashdefs.txt
 
-Compile the "..._dolphin_talkative" sample Dashrep code.
+Compile the Dashrep code that tests the compiler.
 
     del input_to_dashrep_compiler.txt
-    copy input_dashrep_dolphin_talkative.txt input_to_dashrep_compiler.txt
+    copy dashrep_test_code_joined_dashdefs.txt input_to_dashrep_compiler.txt
     del output_trace.txt
-    %PerlPath%perl -w dashrep_compiler_executable.pl > output_piped_results_from_compiling_dashrep_dolphin_talkative.txt
-    del output_dashrep_dolphin_talkative.pl
-    rename output_from_dashrep_compiler.txt output_dashrep_dolphin_talkative.pl
+    %PerlPath%perl -w dashrep_compiler_executable.pl > output_piped_results_from_compiling_dashrep_test_code.txt
+    del output_executable_dashrep_test_code.pl
+    rename output_from_dashrep_compiler.txt output_ex output_executable_dashrep_test_code.pl
 
-(Note: The above code will be simplified when the Dashrep compiler gets an action that reads from standard input.)
+(Note: The above code will be simplified soon.)
 
-Run the compiled program.
+Run the compiled program and then view the results.
 
-    %PerlPath%perl output_dashrep_dolphin_talkative.pl > output_piped_results_from_dashrep_dolphin_talkative.txt
+    %PerlPath%perl output_executable_dashrep_test_code.pl > output_results_from_dashrep_test.txt
 
-To fully test the compiler, use the code above but replace "input_dashrep_dolphin_talkative.txt" with "dashrep_test_code_joined_dashdefs.txt" and adjust the output filenames as desired.  Some tests that expect specific environments (specifically "cgi" and "curl") may fail, even though the compiler is working correctly.
+Important: Some tests that expect the specific environments listed below may fail, even though the compiler is working correctly.
+    * specific test folder names
+    * specific test file contents
+    * specific "cgi" values
+    * specific webpage retrieved using "curl" utility
+
+
+HOW TO COMPILE THE COMPILER
+
+Note that the file "dashrep_compiler_source_code.txt" is not the original source code, rather it is a copy of the actual source code.  The actual source code is in the many separate files within the "compiler_source" folder.  (In a similar way, the source code for the test code is in the many files within the "test_dashrep_code" folder.)
+
+The utility "combine_listed_dashdefs.pl" combines separate source-code files into a single file that can be supplied to the compiler.
+
+To update the compiler, use the current compiler to generate a new compiler, and then use that new compiler to generate yet another new compiler.  The second new compiler is a candidate for becoming the newest compiler.  However, to test the newest compiler, it must be used to generate yet another version that should exactly match itself (the "newest" compiler).  If an update passes this test and passes the usual compiler test (above), and passes other tests that are specific for the target application, then probably it can replace the "dashrep_compiler_executable.pl" file.
+
+If changes to the compiler occur within some parts of the compiler source code, it might be necessary to manually edit the "first new" compiler before using it to generate the "newest" compiler.
+
+Yes, this is confusing.  If you aren't sure what to do, please do not attempt to change the Dashrep compiler source code.
 
 
 SUPPORT AND DOCUMENTATION
