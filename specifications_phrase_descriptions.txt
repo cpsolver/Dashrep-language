@@ -1,24 +1,15 @@
-*----- Descriptions of Dashrep-recognized phrase names, used to generate "Specifications" web page -----*
+combee ****
 
-*----- Do edits here, not on the web page -----*
+Descriptions of Dashrep-recognized phrase names,
+used to generate "Specifications" for the Dashrep.org web page
 
+Do edits here, not on the Dashrep.org web page!!!
 
-
-*----------
-
-Usage:
-
-perl dashrep_do_translation.pl < specifications_phrase_descriptions.txt > output_log_documentation.txt
-
-result is in file: output_specifications_documentation.html
-
-----------*
-
-
-dashrep-definitions-begin
+**** comenn
 
 
 section-directive-phrase-action:
+
 category-heading-begin
 Directives versus actions versus phrases
 category-heading-end
@@ -51,10 +42,6 @@ s-n
 An action is not recognized if it is not at the beginning of a parameter phrase.
 phrase-description-end
 -----
-
-description-for-phrase-yes-or-no-indicate-line-endings:
-If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e inserts the text b-i-b end h-h of h-h line h-h here b-i-e at line h-h break positions. s-n The b-i-b end h-h of h-h line h-h here b-i-e phrase does not have a default definition.
-----
 
 description-for-phrase-yes-or-no-skip-empty-lines-when-copy-from-file:
 If this phrase equals b-i-b yes b-i-e then the action b-i-b copy h-h from h-h file h-h to h-h phrase b-i-e skips empty lines. s-n Any other value for this phrase causes empty lines to be included in the copied text. s-n The default value of this phrase is b-i-b yes b-i-e no-space . s-n If a line contains only spaces, it is regarded as an empty line.
@@ -133,10 +120,6 @@ description-for-phrase-get-characters-from-position-to-position:
 This action gets the characters from the specified phrase starting at the position indicated by the first number, and ending at the position indicated by the second number. s-n The character positions are numbered starting with 1 at the first character position. s-n If the second number is greater than the number of characters, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many characters are in the phrase).
 -----
 
-description-for-phrase-clear-all-expanded-text-up-to-here:
-This action removes all the expanded text up to this action. s-n It is useful when earlier actions might have failed to recognize some phrase names and left those phrase names in the text being expanded.
------
-
 description-for-phrase-copy-words-sort-alphabetic:
 This action gets the space hyphen-here delimited words in the first phrase, and sorts those words alphabetically, and puts those sorted words into the second phrase. s-n The two phrase names can be the same.
 paragraph-next
@@ -155,14 +138,10 @@ description-for-phrase-copy-without-extra-spaces:
 This action removes multiple adjacent spaces so that only single spaces occur, and removes all spaces at the beginning and end of the text. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same.
 -----
 
-description-for-phrase-undeleted-phrase:
-See the action b-i-b delete h-h all h-h dashrep h-h phrases b-i-e for details.
------
-
 description-for-phrase-copy-and-remove-attributes-from-xml-tags:
 This action removes attributes from XML and HTML tags, and also removes RSS h-h style b-i-b CDATA b-i-e strings. s-n The first phrase specifies the source text, and the second phrase specifies the destination. s-n The two phrase names can be the same.
 paragraph-next
-Example: If the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the result is b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space .
+Example: If the first and second phrase names are the same, and if the specified phrase contains b-i-b and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt; b-i-e no-space , the modified phrase will contain b-i-b and a &lt;span&gt;dolphin&lt;/span&gt; b-i-e no-space .
 paragraph-next
 The change assumes that none of the tag's attributes contain a close angle bracket ( no-space b-i-b &gt; b-i-e no-space ). s-n The result is not intended to be valid XML or HTML or RSS code. s-n Instead the intended purpose is to simplify the text as preparation for further manipulations.
 -----
@@ -257,11 +236,6 @@ description-for-phrase-generate-phrase-usage-counts:
 This action puts into the specified phrase a list of counts for how many times each phrase name was replaced. s-n Each count and its associated phrase name are separated from the next count and phrase name by a newline character. s-n The phrases are sorted by the count number, with the highest counts appearing first. s-n Within each count, the order is alphabetical.
 -----
 
-description-for-phrase-end-of-line-here:
-This phrase contains text that is inserted at the end of each line when the action
-b-i-b copy-from-file-to-phrase b-i-e is used, and if the phrase b-i-b yes h-h or h-h no h-h indicate h-h line h-h endings b-i-e equals b-i-b yes b-i-e no-space .
------
-
 description-for-phrase-generate-every-pairwise-combination-of-words:
 This action generates two word h-h based lists that contain every possible pair of words in the first phrase and the second phrase.
 paragraph-next
@@ -343,7 +317,7 @@ location-of-read-file
 -----
 
 description-for-phrase-linewise-read-from-standard-input:
-This action reads each and every line from &#8220;standard input&#8221; (which typically is the file specified in the command that runs the compiled code) and expands the handler specified by the first (and only) phrase. s-n When the handler phrase is expanded, the contents of the current line is available in the phrase named b-i-b storage h-h input h-h line h-h from h-h file b-i-e no-space , and the current line number (starting at one for the first line in the file) is available in the phrase named b-i-b linewise h-h input h-h line h-h count b-i-e no-space .
+This action reads each and every line from &#8220;standard input&#8221; (which typically is a file specified in the command that runs the compiled code, or else text that is interactively typed line by line) and expands the handler specified by the first (and only) phrase. s-n When the handler phrase is expanded, the contents of the current line is available in the phrase named b-i-b storage h-h input h-h line h-h from h-h file b-i-e no-space , and the current line number (starting at one for the first line) is available in the phrase named b-i-b linewise h-h input h-h line h-h count b-i-e no-space .
 -----
 
 description-for-phrase-numeric-absolute:
@@ -494,11 +468,11 @@ This phrase is used with the action b-i-b use-handler-with-each-word-in-phrase b
 -----
 
 description-for-phrase-copy-and-move-attributes-into-xml-tags:
-This action copies the content of the first phrase to the second phrase but with the content of each b-i-b attribute b-i-e tag or a b-i-b specify b-i-e tag inside the preceding XML (or HTML) tag.
+This action copies the content of the first phrase to the second phrase but with the content of each b-i-b specify b-i-e tag (or b-i-b attribute b-i-e tag) moved inside the preceding XML (or HTML) tag.
 paragraph-next
-Example: If the first phrase contains the text b-i-b &lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
+Example: If th first phrase contains the text b-i-b &lt;img /&gt;&lt;specify href="image.jpg"&gt;&lt;specify alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
 paragraph-next
-The word b-i-b specify b-i-e can be used instead of b-i-b attribute b-i-e no-space . s-n This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
+This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
@@ -1035,38 +1009,6 @@ description-for-phrase-convert-unicode-to-html-entities
 This action copies all the text from the first phrase into the second phrase but converts non-ASCII characters into HTML entities. s-n The HTML entities use decimal numbers, which means that open double quotation marks become & no-space # no-space 8220 no-space ; and & no-space # no-space 8221 no-space ;.
 ----
 
-description-for-phrase-convert-from-spoken-dashrep-code:
-This action copies the definition of the first phrase into the definition of the second phrase, but recognizes and translates Dashrep spoken words. s-n Specifically the words
-b-i-b f no-space e no-space n b-i-e
-b-i-b d no-space a no-space s no-space h no-space b no-space e no-space e b-i-e
-b-i-b d no-space a no-space s no-space h no-space e no-space n no-space n b-i-e
-b-i-b d no-space a no-space s no-space h no-space n no-space e no-space x b-i-e
-b-i-b a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n b-i-e
-b-i-b c no-space o no-space m no-space b no-space e no-space e b-i-e
-b-i-b c no-space o no-space m no-space e no-space n no-space n b-i-e
-b-i-b f no-space e no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n no-space f no-space e no-space n b-i-e
-b-i-b l no-space i no-space n no-space b no-space r no-space a no-space y b-i-e
-are translated.
-----
-
-description-for-phrase-convert-into-spoken-dashrep-code:
-This action copies the definition of first phrase into the definition of the second phrase, but Dashrep-special characters are translated into Dashrep spoken words. s-n Specifically the words
-b-i-b f no-space e no-space n b-i-e
-b-i-b d no-space a no-space s no-space h no-space b no-space e no-space e b-i-e
-b-i-b d no-space a no-space s no-space h no-space e no-space n no-space n b-i-e
-b-i-b d no-space a no-space s no-space h no-space n no-space e no-space x b-i-e
-b-i-b a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n b-i-e
-b-i-b c no-space o no-space m no-space b no-space e no-space e b-i-e
-b-i-b c no-space o no-space m no-space e no-space n no-space n b-i-e
-b-i-b f no-space e no-space n no-space a no-space m no-space b no-space e no-space e b-i-e
-b-i-b a no-space m no-space e no-space n no-space n no-space f no-space e no-space n b-i-e
-b-i-b l no-space i no-space n no-space b no-space r no-space a no-space y b-i-e
-are inserted where appropriate.
-----
-
 description-for-phrase-dashrep-language-yes:
 This phrase is written to the beginning of the file created by the action b-i-b write h-h all h-h dashrep h-h definitions h-h to h-h file b-i-e so that the first word identifies the file contents to be written in the Dashrep language. s-n The default value for this phrase is b-i-b yes b-i-e no-space , but this definition is not used.
 ----
@@ -1321,20 +1263,8 @@ t-e
 
 
 
-heading-for-phrases-in-category_interpreted:
-Interpreter supported (not compiler supported)
------
-
 heading-for-phrases-in-category_hyphens_spaces_lines:
 Hyphens, spaces, lines, & special characters
------
-
-heading-for-phrases-in-category_definitions:
-Definition-related phrases
------
-
-heading-for-phrases-in-category_clear_delete:
-Clear & delete phrases
 -----
 
 heading-for-phrases-in-category_expand:
@@ -1345,36 +1275,44 @@ heading-for-phrases-in-category_transfer:
 Text-transfer-related phrases
 -----
 
-heading-for-phrases-in-category_search_replace:
-Search-and-replace-related phrases
+heading-for-phrases-in-category_clear_delete:
+Clear & delete phrases
 -----
 
 heading-for-phrases-in-category_decision:
 Decision-related phrases
 -----
 
-heading-for-phrases-in-category_numeric:
-Number-related phrases
------
-
-unused-heading-for-phrases-in-category_alphabetic:
-Alphabetical-order-related phrases
------
-
-heading-for-phrases-in-category_character:
-Character-related phrases
+heading-for-phrases-in-category_loop:
+Loop-related phrases
 -----
 
 heading-for-phrases-in-category_word:
 Word-related phrases
 -----
 
-heading-for-phrases-in-category_loop:
-Loop-related phrases
------
-
 heading-for-phrases-in-category_manipulate_list:
 List-manipulation phrases
+-----
+
+heading-for-phrases-in-category_character:
+Character-related phrases
+-----
+
+heading-for-phrases-in-category_search_replace:
+Search-and-replace-related phrases
+-----
+
+heading-for-phrases-in-category_time:
+Time-related phrases
+-----
+
+heading-for-phrases-in-category_numeric:
+Number-related phrases
+-----
+
+heading-for-phrases-in-category_xml:
+XML-related & HTML-related phrases
 -----
 
 heading-for-phrases-in-category_file_related:
@@ -1383,14 +1321,6 @@ File-related phrases
 
 heading-for-phrases-in-category_data:
 Data-related phrases
------
-
-heading-for-phrases-in-category_xml:
-XML-related & HTML-related phrases
------
-
-heading-for-phrases-in-category_time:
-Time-related phrases
 -----
 
 heading-for-phrases-in-category_debug:
@@ -1405,86 +1335,8 @@ heading-for-phrases-in-category_spoken_words:
 Special Dashrep spoken words
 -----
 
-heading-for-phrases-in-category_deprecated:
-Deprecated phrases, do not use
------
-
-
-dashrep-definitions-end
-
-
-
-
-[-dashrep-action-trace-on-or-off =off-]
-
-[-dashrep-endless-loop-counter-limit = 200000-]
-
-dashrep-definitions-begin
-
-handler-for-category-and-phrase-list:
-[-category-or-phrase-name = [-get-word-at-position all-phrases-and-categories [-word-to-use-in-handler-]-]-]
-[-dashrep-action-trace-on-or-off =on-]
-[-category-or-phrase = [-type-if-[-yes-or-no-empty-phrase heading-for-phrases-in-[-category-or-phrase-name-]-]-empty-]-]
-[-template-for-[-category-or-phrase-]-]
-[-append-new-line full-contents-final-]
-[-append-new-line full-contents-final-]
------
-
-type-if-no-empty:
-category
------
-
-type-if-yes-empty:
-phrase
------
-
-type-if-dashrep_undefined:
-undefined
------
-
-template-for-category:
-[-append-text-no-space category-heading-begin full-contents-final-]
-[-append-text-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
-[-append-text-no-space category-heading-end full-contents-final-]
-[-append-new-line full-contents-final-]
------
-
-template-for-phrase:
-[-append-text-no-space phrase-heading-begin-before-id full-contents-final-]
-[-append-text-no-space category-or-phrase-name full-contents-final-]
-[-append-text-no-space phrase-heading-begin-after-id full-contents-final-]
-[-append-text-no-space category-or-phrase-name full-contents-final-]
-[-append-text-no-space phrase-heading-end full-contents-final-]
-[-append-new-line full-contents-final-]
-[-append-text-no-space phrase-description-begin full-contents-final-]
-[-dashrep-action-trace-on-or-off = on-]
-[-dashrep-ignore-actions-off-else-on = off-]
-[-dashrep-capture-actions-off-else-on = off-]
-[-expand-text description-for-phrase-[-category-or-phrase-name-] description-translated-]
-[-append-text-no-space description-translated full-contents-final-]
-[-dashrep-action-trace-on-or-off = off-]
-[-append-text-no-space phrase-description-end full-contents-final-]
-[-append-new-line full-contents-final-]
------
-
-template-for-undefined:
-[-append-text-no-space category-heading-begin full-contents-final-]
-[-append-text-no-space words-undefined full-contents-final-]
-[-append-text-no-space category-heading-end full-contents-final-]
------
-
-words-undefined:
-(undefined phrase name)
------
-
-heading-for-phrases-in-dashrep_undefined:
-(undefined phrase name)
------
-
-n-y-w:
-[-append-text-no-space heading-for-phrases-in-[-category-or-phrase-name-] full-contents-final-]
-[-expand-text description-for-phrase-[-category-or-phrase-name-] expanded-description-]
-[-convert-from-spoken-dashrep-code expanded-description description-with-hyphens-handled-]
+dashrep-endless-loop-counter-limit:
+200000
 -----
 
 category-heading-begin:
@@ -1525,10 +1377,6 @@ phrase-description-begin
 -----
 
 sentence-next:
-no-space &nbsp;
------
-
-Sentence-next:
 no-space &nbsp;
 -----
 
@@ -1736,31 +1584,57 @@ new-line
 </html>
 -----
 
+handler-for-category-and-phrase-list:
+ambee copy-text word-to-use-in-handler category-or-phrase-name amenn
 
-dashrep-definitions-end
+ambee if-no-begin ambee yes-or-no-empty-phrase heading-for-phrases-in fenambee category-or-phrase-name amenn amenn amenn
+ambee expand-text handler-for-category unused-result amenn
+ambee if-else amenn
+ambee expand-text handler-for-phrase unused-result amenn
+ambee if-end amenn
 
+ambee append-new-line full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+-----
 
-[-copy-from-file-to-phrase specifications_phrase_categories_and_names.txt all-phrases-and-categories-]
-[-convert-from-spoken-dashrep-code dashed-line-spoken dashed-line-actual-]
-[-dashrep-ignore-actions-off-else-on = off-]
-[-dashrep-capture-actions-off-else-on = off-]
-[-expand-text web-page-begin expanded-web-page-begin-]
-[-append-text-no-space expanded-web-page-begin full-contents-final-]
-[-expand-text table-of-dashrep-spoken-words expanded-table-of-dashrep-spoken-words-]
-[-append-text-no-space expanded-table-of-dashrep-spoken-words full-contents-final-]
-[-append-new-line full-contents-final-]
-[-append-new-line full-contents-final-]
-[-expand-text table-of-fundamental-text-items expanded-table-of-fundamental-text-items-]
-[-append-text-no-space expanded-table-of-fundamental-text-items full-contents-final-]
-[-append-new-line full-contents-final-]
-[-append-new-line full-contents-final-]
-[-expand-text section-directive-phrase-action expanded-section-directive-phrase-action-]
-[-append-text-no-space expanded-section-directive-phrase-action full-contents-final-]
-[-item-count = [-get-count-of-words all-phrases-and-categories-]-]
-[-generate-counts-from-integer-to-integer 1 [-item-count-] list-of-position-numbers-]
-[-dashrep-action-trace-on-or-off =off-]
-[-use-handler-with-each-word-in-phrase  handler-for-category-and-phrase-list  list-of-position-numbers-]
-[-expand-text web-page-end expanded-web-page-end-]
-[-append-text-no-space expanded-web-page-end full-contents-final-]
-[-delete-file output_specifications_documentation.html-]
-[-copy-from-phrase-append-to-file  full-contents-final  output_specifications_documentation.html-]
+handler-for-category:
+ambee append-text-no-space category-heading-begin full-contents-final amenn
+ambee append-text-no-space heading-for-phrases-in fenambee category-or-phrase-name amenn full-contents-final amenn
+ambee append-text-no-space category-heading-end full-contents-final amenn
+-----
+
+handler-for-phrase:
+ambee append-text-no-space phrase-heading-begin-before-id full-contents-final amenn
+ambee append-text-no-space category-or-phrase-name full-contents-final amenn
+ambee append-text-no-space phrase-heading-begin-after-id full-contents-final amenn
+ambee append-text-no-space category-or-phrase-name full-contents-final amenn
+ambee append-text-no-space phrase-heading-end full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+ambee append-text-no-space phrase-description-begin full-contents-final amenn
+ambee expand-text description-for-phrase fenambee category-or-phrase-name amenn description-translated amenn
+ambee append-text-no-space description-translated full-contents-final amenn
+ambee append-text-no-space phrase-description-end full-contents-final amenn
+-----
+
+start-here:
+ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt all-phrases-and-categories amenn
+ambee convert-from-spoken-dashrep-code dashed-line-spoken dashed-line-actual amenn
+ambee expand-text web-page-begin expanded-web-page-begin amenn
+ambee append-text-no-space expanded-web-page-begin full-contents-final amenn
+ambee expand-text table-of-dashrep-spoken-words expanded-table-of-dashrep-spoken-words amenn
+ambee append-text-no-space expanded-table-of-dashrep-spoken-words full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+ambee expand-text table-of-fundamental-text-items expanded-table-of-fundamental-text-items amenn
+ambee append-text-no-space expanded-table-of-fundamental-text-items full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+ambee append-new-line full-contents-final amenn
+ambee expand-text section-directive-phrase-action expanded-section-directive-phrase-action amenn
+ambee append-text-no-space expanded-section-directive-phrase-action full-contents-final amenn
+ambee copy-without-extra-spaces all-phrases-and-categories all-phrases-and-categories amenn
+ambee use-handler-with-each-word-in-phrase handler-for-category-and-phrase-list all-phrases-and-categories amenn
+ambee expand-text web-page-end expanded-web-page-end amenn
+ambee append-text-no-space expanded-web-page-end full-contents-final amenn
+ambee delete-file output_specifications_documentation.html amenn
+ambee copy-from-phrase-append-to-file  full-contents-final  output_specifications_documentation.html amenn
+-----
