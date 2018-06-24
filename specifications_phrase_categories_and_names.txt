@@ -187,6 +187,7 @@ copy-append-file-to-file
 linewise-read-from-file-and-use-handler
 linewise-input-line-from-file
 linewise-input-line-count
+linewise-read-from-standard-input
 get-url-resource
 trace-from-get-url-resource
 
