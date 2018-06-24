@@ -1,24 +1,48 @@
 Language::Dashrep
 
-Dashrep is a versatile descriptive programming language based on hyphenated phrases (such as "rectangle-outline-attention-begin") being successively expanded into replacement text.  The resulting expanded text can be an HTML web page, an XML file, a JavaScript program, a boilerplate-based document, etc.  It is a much more flexible alternative to using a template language, yet it is much more useful than simply being a text-manipulation language.
+Dashrep is a programming language that is simple, powerful, and fast.
 
 See www.Dashrep.org for details.
 
-The Dashrep compiler is written in the Dashrep language.  The current implementation of this compiler generates Perl code that is directly executable as Perl code.  In the future the runtime language is expected to be changed to a combination of C and C++ code that is compiled by the Clang compiler.
+The Dashrep compiler is written in the Dashrep language.
+
+The current implementation of the Dashrep compiler generates Perl code that is directly executable as Perl code.  In the future the runtime code will be changed to a combination of C and C++ code that is compiled by the Clang compiler.
 
 Version 3.03
 
 
 RUNNING
 
-To run the example, run the following command:
+These instructions explain how to run the Dashrep compiler, and the compiled program, in the Windows environment.
 
-    perl dashrep_do_translation.pl < input_dashrep_sample.txt > output_dashrep_sample.txt
+Use these commands to prepare to use the Perl "interpreter."  Replace the "whatever" string as needed.
 
+    set PerlPath=C:\whatever\
+    set PERL5LIB=C:\whatever\
 
-To run a test of the code, run the following command:
+Verify that the needed files are available.
 
-    perl dashrep_test.pl
+    dir %PerlPath%perl.exe
+    dir %PerlPath%perl512.dll
+    dir dashrep_compiler_executable.pl
+    dir input_dashrep_dolphin_talkative.txt
+
+Compile the "..._dolphin_talkative" sample Dashrep code.
+
+    del input_to_dashrep_compiler.txt
+    copy input_dashrep_dolphin_talkative.txt input_to_dashrep_compiler.txt
+    del output_trace.txt
+    %PerlPath%perl -w dashrep_compiler_executable.pl > output_piped_results_from_compiling_dashrep_dolphin_talkative.txt
+    del output_dashrep_dolphin_talkative.pl
+    rename output_from_dashrep_compiler.txt output_dashrep_dolphin_talkative.pl
+
+(Note: The above code will be simplified when the Dashrep compiler gets an action that reads from standard input.)
+
+Run the compiled program.
+
+    %PerlPath%perl output_dashrep_dolphin_talkative.pl > output_piped_results_from_dashrep_dolphin_talkative.txt
+
+To fully test the compiler, use the code above but replace "input_dashrep_dolphin_talkative.txt" with "dashrep_test_code_joined_dashdefs.txt" and adjust the output filenames as desired.  Some tests that expect specific environments (specifically "cgi" and "curl") may fail, even though the compiler is working correctly.
 
 
 SUPPORT AND DOCUMENTATION
@@ -30,9 +54,9 @@ You can find documentation for the Dashrep language at:
 
 COPYRIGHT AND LICENCE
 
-Copyright (c) 2009-2017 Richard Fobes at www.Dashrep.org, all rights reserved.
+Copyright (c) 2009-2018 Richard Fobes at www.Dashrep.org, all rights reserved.
 
-You can redistribute and/or modify this library module
+You can redistribute and/or modify the Dashrep-language code
 under the Perl Artistic License 2.0, a copy
 of which is included in the LICENSE file.
 
