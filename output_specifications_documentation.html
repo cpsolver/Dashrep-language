@@ -26,15 +26,15 @@
 
 <h2> Fundamental syntax conventions </h2> <table>
 <tr><th>Normal <br \> priority</th><th>Name</th><th>Appearance</th><th>Description</th></tr>
-<tr><td>1</td><td>Space</td><td>&nbsp;</td><td>Each space is significant as a delimiter for hyphenated phrases and words (without hyphens).</td></tr>
-<tr><td>2</td><td>Comment</td><td><b><i>combee</i></b> &nbsp; comment here &nbsp; <b><i>comenn</i></b></td><td>Comments are ignored.&nbsp; The word <b><i>combee</i></b> indicates the beginning of a comment, and the word <b><i>comenn</i></b> indicates the end of the comment.&nbsp; Comments cannot be nested; if they are, the results are unpredictable.</td></tr>
+<tr><td>1</td><td>Space</td><td>&#160;</td><td>Each space is significant as a delimiter for hyphenated phrases and words (without hyphens).</td></tr>
+<tr><td>2</td><td>Comment</td><td><b><i>combee</i></b>&#160;comment here&#160;<b><i>comenn</i></b></td><td>Comments are ignored.&nbsp; The word <b><i>combee</i></b> indicates the beginning of a comment, and the word <b><i>comenn</i></b> indicates the end of the comment.&nbsp; Comments cannot be nested; if they are, the results are unpredictable.</td></tr>
 <tr><td>3</td><td>Hyphen</td><td>-</td><td>A hyphen joins words that together form a hyphenated phrase.&nbsp; For example, <b><i>dolphin-name</i></b> and <b><i>animals-under-the-sea</i></b> are hyphenated phrases.&nbsp; A hyphen and a dash are different names for the same symbol.</td></tr>
 <tr><td>4</td><td>Three or more adjacent hyphens</td><td><b><i>----</i></b></td><td>Indicates the end of a phrase definition in Dashrep source code supplied to the Dashrep compiler.&nbsp; This text is equivalent to the <b><i>defenn</i></b> word.&nbsp; The adjacent hyphens are easier to see when the Dashrep code is viewed in a text editor.</td></tr>
 <tr><td>5</td><td>Action within parameter phrase</td><td><b><i>ambee</i></b> zero-one-multiple 3 <b><i>amenn</i></b></td><td>If the first (left-most) hyphenated phrase following the word <b><i>ambee</i></b> is a recognized action (see below), and the action is followed by text that the action knows how to handle, and the word <b><i>amenn</i></b> terminates the sequence &mdash; called a <b><i>parameter phrase</i></b> &mdash; then the action is performed.&nbsp; Some actions produce text that become a replacement for the parameter phrase.&nbsp; Other actions operate on specified phrases or files and do not produce any text, in which case a space is supplied as the result that is inserted to replace the action phrase. <br \> <br \> In general, the word <b><i>ambee</i></b> indicates the beginning of a parameter phrase, and the word <b><i>amenn</i></b> indicates the end of a parameter phrase.&nbsp; A parameter phrase is expanded before the surrounding text is expanded.&nbsp; When a parameter phrase contains a nested parameter phrase (up to any level of nesting), the first-encountered innermost parameter phrase is expanded first.&nbsp; After a parameter phrase is expanded, any spaces at the beginning or end of the supplied result are removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality.</td></tr>
 <tr><td>5</td><td>Phrase name within parameter phrase</td><td><b><i>ambee</i></b> user-phrase-name <b><i>amenn</i></b></td><td>A hyphenated phrase within the words <b><i>ambee</i></b> and <b><i>amenn</i></b> is expanded in-place using the phrase's definition as the result.&nbsp; The phrase definition can, in turn, contain parameter phrases, and they also will be expanded.&nbsp; If the phrase name is not defined, it is left as-is, and the surrounding parameter words (<b><i>ambee</i></b> and <b><i>amenn</i></b>) are removed.&nbsp; Spaces at the beginning and end of the parameter phrase are also removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality.&nbsp; The expansion of subordinate hyphenated phrases stops when there are no surrounding parameter words (<b><i>ambee</i></b> and <b><i>amenn</i></b>), even if that un-surrounded hyphenated phrase contains (in its definition) the words <b><i>ambee</i></b> and <b><i>amenn</i></b> no-space.&nbsp; The expansion of subordinate hyphenated phrases also stops if a definition contains use of the words <b><i>ambee</i></b> and <b><i>amenn</i></b> without correct pairing. <br \> <br \> The same general comments about action phrases (see above) also apply to a phrase name within a parameter phrase.</td></tr>
 <tr><td>6</td><td>Hyphenated phrase</td><td>dolphin-name</td><td>A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase.&nbsp; A phrase name is case-sensitive.&nbsp; Lowercase-only names are recommended, but not required.&nbsp; Speakable names are recommended, but not required.&nbsp; The use of nouns before, rather than after, adjectives is recommended; this convention (for example <b><i>rectangle-large-begin</i></b> instead of <b><i>large-rectangle-begin</i></b>) is typical of many spoken languages, but not English.&nbsp; The first character cannot be a hyphen and cannot be a digit.&nbsp; The last character cannot be a hyphen.</td></tr>
 <tr><td>7</td><td>Undefined hyphenated phrase</td><td>quite-talkative parrot</td><td>If a hyphenated phrase has not been defined, it is not translated; it remains unchanged.&nbsp; If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper.</td></tr>
-<tr><td>8</td><td>Colon</td><td>dolphin-name<b><i>:</i></b> leaper &nbsp; <b><i>----</i></b></td><td>A colon can appear at the end of a hyphenated phrase being defined.&nbsp; This convention is optional.&nbsp; It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used.</td></tr>
+<tr><td>8</td><td>Colon</td><td>dolphin-name<b><i>:</i></b> leaper&#160;<b><i>----</i></b></td><td>A colon can appear at the end of a hyphenated phrase being defined.&nbsp; This convention is optional.&nbsp; It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used.</td></tr>
 <tr><td>9</td><td>New line or line break</td><td>one line <b><i><br \></i></b> next line</td><td>When a new line begins, it is replaced with a space.&nbsp; When a new line needs to be inserted into the resulting text, the <b><i>new-line</i></b> phrase (explained below) can be used.&nbsp; If a line break in the target language (such as HTML) is needed, the phrase <b><i>line-break</i></b> can be used to insert the appropriate target-specific code (which in HTML is the <b><i>&lt;br \&gt;</i></b> tag).&nbsp; Newline characters can be inserted into text using special actions (explained below) and by using the special phrase <b><i>character-newline</i></b> as an operand with some actions.</td></tr>
 <tr><td>10</td><td>hyphen-here</td><td><b><i>hyphen-here</i></b></td><td>Explained below.</td></tr>
 <tr><td>11</td><td>non-breaking-space</td><td><b><i>non-breaking-space</i></b></td><td>Explained below.</td></tr>
@@ -47,858 +47,643 @@
 
 <h2> Directives versus actions versus phrases </h2> <h3> Phrase </h3> <p> A <b>phrase</b> is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.&nbsp; Phrases are recognized regardless of whether or not they appear within a parameter phrase, which is started with the word ambee (or a variation) and is ended with the word amenn (or a variation). </p> <h3> Directive </h3> <p> A <b>directive</b> is a hyphenated phrase that triggers a special functionality in the translation.&nbsp; Directives are not recognized if they appear within a parameter phrase, which is started with the word ambee (or a variation) and is ended with the word amenn (or a variation). </p> <h3> Action </h3> <p> An <b>action</b> is a hyphenated phrase that has special significance when it appears at the beginning of a parameter phrase.&nbsp; An action is not recognized if it is not at the beginning of a parameter phrase. </p><h2>Hyphens, spaces, lines, & special characters</h2>
 
-
 <h3 id="hyphen-here">hyphen-here</h3>
 <p>This directive inserts a hyphen, with no adjacent spaces, where it appears within text that is expanded (translated).&nbsp; Internally this phrase is defined as <b><i>no-space - no-space</i></b>.</p>
-
 
 <h3 id="character-hyphen">character-hyphen</h3>
 <p>This pre-defined phrase contains one hyphen character (<b><i>-</i></b>).</p>
 
-
 <h3 id="four-hyphens">four-hyphens</h3>
 <p>This pre-defined phrase contains four adjacent hyphen characters (<b><i>----</i></b>).</p>
-
 
 <h3 id="no-space">no-space</h3>
 <p>This directive removes any spaces (concatenation) after all other phrases have been replaced (during expansion).&nbsp; If the <b><i>one-space</i></b> directive is adjacent, the <b><i>no-space</i></b> directive is ignored.</p>
 
-
 <h3 id="empty-text">empty-text</h3>
 <p>This pre-defined phrase contains no text.&nbsp; To clear a phrase, use the action <b><i>clear-phrase</i></b>.&nbsp; To test whether a phrase's definition is empty, use the action <b><i>yes-or-no-empty-phrase</i></b>.</p>
-
 
 <h3 id="one-space">one-space</h3>
 <p>This directive inserts a single space.&nbsp; If the <b><i>no-space</i></b> directive is adjacent, the <b><i>no-space</i></b> directive is ignored.&nbsp; Repeating this directive does not insert multiple adjacent spaces, just a single space.&nbsp; If multiple spaces are needed, a phrase such as <b><i>four-spaces</i></b> can be defined as multiple spaces, and then those spaces will be inserted where the text <b><i><four_spaces></i></b> appears.</p>
 
-
 <h3 id="character-space">character-space</h3>
 <p>This pre-defined phrase contains one space character.</p>
-
 
 <h3 id="non-breaking-space">non-breaking-space</h3>
 <p>This directive inserts a non-breaking space where it is encountered within text that is expanded.&nbsp; This text is inserted even if the <b><i>no-space</i></b> directive is adjacent.&nbsp; The default value that is inserted, which is intended for use in HTML, is <b><i>&amp;nbsp;</i></b>.</p>
 
-
 <h3 id="new-line">new-line</h3>
 <p>This directive inserts a <b><i>newline</i></b> character, which specifies the start of a new line.&nbsp; If the target language, such as HTML, ignores line breaks, the line break will not be visible in the displayed result.</p>
-
 
 <h3 id="empty-line">empty-line</h3>
 <p>This directive specifies an empty line, which is equivalent to two adjacent <b><i>new-line</i></b> directives.</p>
 
-
 <h3 id="line-break">line-break</h3>
 <p>This phrase should be defined as text that, in turn, specifies a line break in the target language. </p> <p> Example: If the target language is HTML, normally this phrase would be defined as <b><i>&lt;br&nbsp;/&gt;</i></b>.</p>
-
 
 <h3 id="character-newline">character-newline</h3>
 <p>This pre-defined phrase contains a newline character.&nbsp; In some other programming languages this character is represented by the text <b>\<i>n</i></b>.</p>
 
-
 <h3 id="character-open-square-bracket">character-open-square-bracket</h3>
 <p>This pre-defined phrase contains the open-square-bracket character (<b>[</b>).</p>
-
 
 <h3 id="character-close-square-bracket">character-close-square-bracket</h3>
 <p>This pre-defined phrase contains the close-square-bracket character (<b>]</b>).</p>
 
-
 <h3 id="character-tab">character-tab</h3>
 <p>This pre-defined phrase contains a tab character.&nbsp; In some other programming languages this character is represented by the text <b>\<i>t</i></b>.</p>
-
 
 <h3 id="character-underscore">character-underscore</h3>
 <p>This pre-defined phrase contains one underscore character (<b><i>_</i></b>).</p>
 
-
 <h2>Expansion-related phrases</h2>
-
 
 <h3 id="expand-text">expand-text</h3>
 <p>This action expands ("translates") the contents of the first phrase and puts the results into the second phrase.&nbsp; This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file-path template to point to different file paths.&nbsp; If the name of the phrase that needs to be expanded can change, then the action <b><i>get-phrase-name-from-phrase</i></b> can be used.&nbsp; If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am-bee and am-enn delimiters).&nbsp; The first phrase name and the second phrase name can be the same (without automatically causing an endless loop). </p> <p> In addition to replacing hyphenated phrase names with their associated definitions, the expansion also replaces each occurrence of a specially identified hyphenated phrase with the definition of that phrase.&nbsp; The specially identified hyphenated phrases begin and end with angle brackets (<b><i>&lt;</i></b> and <b><i>&gt;</i></b>) and contain at least one underscore (<b><i>_</i></b>), such as <b><i>&lt;special_content&gt;</i></b>.&nbsp; For each such specially identified hyphenated phrase, the underscores are (internally) replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase (but the underscores are not changed if there is no associated phrase).&nbsp; The special text <b><i>&lt;character_hyphen&gt;</i></b> is replaced by a hyphen (<b><i>-</i></b>) and is especially useful for handling text that contains Dashrep phrases that must not be replaced.&nbsp; The special text items <b><i>&lt;no_space&gt;</i></b> and <b><i>&lt;new_line&gt;</i></b> provide functionality that is equivalent to the <b><i>no-space</i></b> and <b><i>new-line</i></b> directives. </p> <p> This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed for complex expansions of Dashrep code.</p>
 
-
 <h2>Text-transfer-related phrases</h2>
-
 
 <h3 id="get-cgi-information">get-cgi-information</h3>
 <p>This action gets the CGI (Common Gateway Interface) input information &mdash; which was sent from the browser to the server &mdash; and puts that information into phrases that begin their names with the prefix <b><i>input-</i></b> and use the supplied information names as the remainder of each name.&nbsp; In addition, the full raw CGI text in put into a phrase named <b><i>input-raw-cgi-string</i></b>. </p> <p> Example: If a user clicks a link that has the URL <b><i>www.example.org/cgi-bin/value%1Fone=123&value%2Dtwo=abc+def</i></b> then the new phrase <b><i>input-value_one</i></b> will contain the text <b><i>123</i></b> and <b><i>input-value-two</i></b> will contain the text <b><i>abc def</i></b> and <b><i>input-raw-cgi-string</i></b> will contain the text <b><i>value%1Fone=123&value%2Dtwo=abc+def</i></b>.&nbsp; As indicated by this example, the CGI conversion converts <b><i>%1F</i></b> into <b><i>_</i></b> (underscore) and converts <b><i>%20</i></b> into a hyphen and converts <b><i>+</i></b> into a space.</p>
 
-
 <h3 id="standard-output">standard-output</h3>
 <p>This phrase contains the text that is written to standard output if &mdash; but only if &mdash; this phrase is not empty.&nbsp; If this phrase is empty, then the normal convention is followed, which means that the expanded text is written to standard output.&nbsp; In other programming languages the <b><i>print</i></b> statement is used to write text to standard output.&nbsp; This phrase provides a way to completely control what is sent to standard output, without unexpected insertions of text caused by warnings and undefined Dashrep code.</p>
-
 
 <h3 id="copy-text">copy-text</h3>
 <p>This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase.&nbsp; This action must be followed by two phrase names, not one.&nbsp; The previous definition of the second hyphenated phrase is deleted.</p>
 
-
 <h3 id="put-into-phrase">put-into-phrase</h3>
 <p>This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter phrase.&nbsp; The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket.&nbsp; Trailing spaces and trailing hyphens are ignored. </p> <p> Example: After expanding the code <b><i>ambee put-into-phrase target-phrase whale dolphin starfish amenn</i></b> the phrase <b><i>target-phrase</i></b> will contain <b><i>whale dolphin starfish</i></b>.</p>
-
 
 <h3 id="copy-listed-words-to-phrases-named-in-pattern">copy-listed-words-to-phrases-named-in-pattern</h3>
 <p>This action copies multiple phrase definitions.&nbsp; Specifically space-delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase.&nbsp; The pattern must contain characters between the text <b><i>ambee-</i></b> (or <b><i>fenambee-</i></b>) and the text <b><i>-amenn</i></b> (or <b><i>amennfen-</i></b>), and these characters must be the name of a phrase that contains the space-delimited words that will be inserted at that position within the pattern.&nbsp; If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied.&nbsp; If the list is empty, nothing will be copied.&nbsp; If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted.&nbsp; This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied. </p> <p> Example: If the first phrase contains <b><i>dolphin buffalo bear</i></b>, and the second phrase contains <b><i>item-ambee-list-of-numbers-as-text-amenn</i></b>, and the phrase <b><i>list-of-numbers-as-text</i></b> contains the text <b><i>one two three</i></b>, then the phrase <b><i>item-one</i></b> will contain <b><i>dolphin</i></b> and the phrase <b><i>item-two</i></b> will contain <b><i>buffalo</i></b> and the phrase <b><i>item-three</i></b> will contain <b><i>bear</i></b>.</p>
 
-
 <h3 id="append-text">append-text</h3>
 <p>This action appends the definition of the first phrase to the end of the definition of the second phrase, and inserts a single space between the existing text and the appended text.&nbsp; The two phrase names can be the same.&nbsp; If the target phrase is initially empty, the space is not inserted.</p>
-
 
 <h3 id="append-text-no-space">append-text-no-space</h3>
 <p>This action appends the definition of the first phrase to the end of the definition of the second phrase, without inserting a separating space, and without removing any adjacent trailing spaces (in the second phrase definition) or leading spaces (in the first phrase definition).&nbsp; The two phrase names can be the same.</p>
 
-
 <h3 id="append-new-line">append-new-line</h3>
 <p>This action appends a newline code to the end of a definition.</p>
-
 
 <h3 id="append-repeatedly-using-count">append-repeatedly-using-count</h3>
 <p>This action repeatedly appends the definition of the first hyphenated phrase to the end of the definition of the second hyphenated phrase, until the number of copies specified in the third operand have been inserted.&nbsp; Spaces separate the appended text items.&nbsp; This action must be followed by two phrase names and a positive integer number.&nbsp; This action avoids complications that can arise if the text being copied should not be expanded, and is much faster than using the <b><i>use-handler-with-each-word-in-phrase</i></b>.</p>
 
-
 <h3 id="append-multiple-from-phrases-named-in-pattern">append-multiple-from-phrases-named-in-pattern</h3>
 <p>This action appends multiple phrase definitions onto the end of the definition of the second phrase.&nbsp; The pattern for the multiple phrase names is specified in the first phrase.&nbsp; The pattern must contain characters between the text <b><i>ambee-</i></b> and the text <b><i>-amenn</i></b>, and these characters must be the name of a phrase that contains the space-delimited words that will be inserted at that position within the pattern.&nbsp; (Although <b><i>fenambee</i></b> or <b><i>amennfen</i></b> might normally be used to indicate the inclusion of a hyphen, they are not recognized by this action.)&nbsp; If the phrase that contains the word list contains only a single word without any spaces, then only one item will be appended.&nbsp; If the list is empty, nothing will be appended.&nbsp; This action is useful for building a long list fast, without needing to use a separate Dashrep action for each item appended. </p> <p> Example:&nbsp; If the first phrase contains the text <b><i>item-ambee-list-of-numbers-as-text-amenn</i></b> and the phrase <b><i>list-of-numbers-as-text</i></b> contains the text <b><i>one two three</i></b> and the second phrase already contains the text <b><i>dolphin</i></b> and the phrase <b><i>item-one</i></b> contains <b><i>buffalo</i></b> and the phrase <b><i>item-two</i></b> contains <b><i>bear</i></b> and the phrase <b><i>item-three</i></b> contains <b><i>eagle</i></b> then the second phrase will contain <b><i>dolphin buffalo bear eagle</i></b>.</p>
-
 
 <h3 id="prepend-text">prepend-text</h3>
 <p>This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, without inserting a separating space.&nbsp; If the target phrase is initially empty, the space is not inserted.</p>
 
-
 <h3 id="prepend-text-no-space">prepend-text-no-space</h3>
 <p>This action prepends the definition of the first phrase into the beginning of the definition of the second phrase, and inserts a single space between the prepended text and the existing text.</p>
-
 
 <h3 id="get-definitions-from-phrase">get-definitions-from-phrase</h3>
 <p>This action reads Dashrep definitions from the specified phrase and creates the named phrases with their associated definitions.&nbsp; An optional colon can appear at the end of each defined phrase name.&nbsp; This action overwrites any existing phrase definitions that have the same phrase names. </p> <p> Very importantly, the first phrase either must be generated or copied from a file because the phrase must contain the (space-delimited) word <b><i>defenn</i></b> at the end of each definition, but that word cannot appear within a definition that is supplied to the compiler as source code.&nbsp; A useful trick is to terminate each definition with a placeholder word such as <b><i>delayed_defenn</i></b>, and that placeholder word can be replaced with the word <b><i>defenn</i></b> before this action is used. </p> <p> Example: If the first phrase is <b><i>supplied-definitions</i></b> and it contains <b><i>animal-type: dolphin defenn animal-name: first flipper defenn</i></b> then this action will create a phrase named <b><i>animal-type</i></b> that is defined as <b><i>dolphin</i></b> and another phrase named <b><i>animal-name</i></b> that is defined as <b><i>first flipper</i></b>.</p>
 
-
 <h3 id="put-listed-phrase-definitions-into-phrase">put-listed-phrase-definitions-into-phrase</h3>
 <p>This action puts into the second phrase the phrase names and their associated Dashrep definitions that are listed in the first phrase.&nbsp; Each definition begins with the phrase name with an appended colon.&nbsp; Each definition is terminated with the word <b><i>defenn</i></b> followed by a newline character.&nbsp; This format is compatible with the format used by the action <b><i>get-definitions-from-phrase</i></b> because that action handles newline characters the same as spaces, and it ignores the colon at the end of a phrase name. </p> <p> Example: If the first phrase is <b><i>list-of-phrases-from-which-to-get-definitions</i></b> and it contains <b><i>animal-type animal-name</i></b> and the phrase <b><i>animal-type</i></b> contains <b><i>dolphin</i></b> and the phrase <b><i>animal-name</i></b> contains <b><i>first flipper</i></b> then this action creates a phrase that contains: <br \> <b><i>animal-type: dolphin defenn <br \> animal-name: first flipper defenn</i></b></p>
-
 
 <h3 id="get-phrase-name-from-phrase">get-phrase-name-from-phrase</h3>
 <p>This action gets the phrase name that is in the definition of the operand, and supplies that phrase name as its result.&nbsp; This action is useful when a phrase contains a phrase name and a different action needs to operate on the contained phrase, not the supplied phrase.&nbsp; For example it is useful when using the action <b><i>expand-text</i></b> and the text to be expanded can change according to the phrase name contained in a phrase.</p>
 
-
 <h2>Clear & delete phrases</h2>
-
 
 <h3 id="clear-phrase">clear-phrase</h3>
 <p>This action clears the definition for the specified phrase.&nbsp; The specified phrase continues to be defined, but the definition is empty.</p>
 
-
 <h3 id="clear-listed-phrases">clear-listed-phrases</h3>
 <p>This action clears the definitions for the phrases that are named in the specified phrase.&nbsp; The phrases continue to exist, but their definitions are empty.</p>
-
 
 <h3 id="delete-listed-phrases">delete-listed-phrases</h3>
 <p>This action deletes (removes) the phrases that are named in the specified phrase.&nbsp; This phrase is related to the action <b><i>clear-listed-phrases</i></b> except that instead of just clearing the definition, this delete version removes (deletes) the phrase so that it will not be recognized.&nbsp; This action is useful when the text being expanded contains phrases that should remain in the text if they are not defined, instead of being replaced by their empty definitions.</p>
 
-
 <h2>Decision-related phrases</h2>
-
 
 <h3 id="if-yes-begin">if-yes-begin</h3>
 <p>This action looks at the first space-delimited word, and if it is <b><i>yes</i></b> (or contains that word) then this action ignores all the text between the next occurrences of <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; Otherwise (if the first word that follows does not contain <b><i>yes</i></b>) then this action ignores all the text between itself (the action name) and the next occurrence of <b><i>ambee if-else amenn</i></b> (and ignores the <b><i>ambee if-else amenn</i></b> and <b><i>ambee if-end amenn</i></b> text items).&nbsp; This action provides a major branching capability.&nbsp; However, the action <b><i>if-yes-begin</i></b> and the text <b><i>ambee if-else amenn</i></b> and the text <b><i>ambee if-end amenn</i></b> <b>cannot</b> be nested (as allowed in most programming languages).&nbsp; Specifically, an inner <b><i>if</i></b> action must not appear within an outer <b><i>if</i></b> action within the same Dashrep code.&nbsp; The functional nesting of <b><i>if</i></b> branches is allowed if the inner <b><i>if</i></b> action appears within a separate phrase that is not expanded until after the outer <b><i>if</i></b> directive is handled.</p>
 
-
 <h3 id="if-no-begin">if-no-begin</h3>
 <p>This action works similar to the action <b><i>if-yes-begin</i></b> except that the word <b><i>no</i></b> is used instead of the word <b><i>yes</i></b>.</p>
-
 
 <h3 id="if-else">if-else</h3>
 <p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed in a parameter phrase (indicated by ambee and amenn) to be recognized.</p>
 
-
 <h3 id="if-end">if-end</h3>
 <p>This special text is recognized by the action <b><i>if-yes-begin</i></b> and the action <b><i>if-no-begin</i></b>.&nbsp; It must be enclosed in a parameter phrase (indicated by ambee and amenn) to be recognized.</p>
-
 
 <h3 id="yes-or-no-empty-phrase">yes-or-no-empty-phrase</h3>
 <p>This action supplies <b><i>yes</i></b> if the following specified phrase is empty, and supplies <b><i>no</i></b> otherwise.&nbsp; A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined.&nbsp; If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies <b><i>yes</i></b>.</p>
 
-
 <h3 id="yes-or-no-same-two-phrase-definitions">yes-or-no-same-two-phrase-definitions</h3>
 <p>This action supplies <b><i>yes</i></b> if the following two phrase contain the same text, and supplies <b><i>no</i></b> otherwise.</p>
-
 
 <h3 id="yes-or-no-same-two-words">yes-or-no-same-two-words</h3>
 <p>This action supplies <b><i>yes</i></b> if the following two space-delimited words are the same, and supplies <b><i>no</i></b> otherwise. If only one word is supplied, or if no word is supplied, then this action supplies <b><i>no</i></b>.</p>
 
-
 <h3 id="yes-or-no-opposite">yes-or-no-opposite</h3>
 <p>This action supplies <b><i>no</i></b> if the text that follows contains the word <b><i>yes</i></b>, and otherwise this action supplies <b><i>yes</i></b>.&nbsp; If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies <b><i>yes</i></b>.</p>
-
 
 <h3 id="yes-if-all-yes">yes-if-all-yes</h3>
 <p>This action supplies <b><i>yes</i></b> if the following text contains the text <b><i>yes</i></b> or any number of <b><i>yes</i></b> words (either with or without separating spaces) and no other (non-space) characters, and supplies <b><i>no</i></b> otherwise.&nbsp; This action is similar to the logic AND operator in other languages.&nbsp; If there are no operands, this action supplies <b><i>no</i></b>.</p>
 
-
 <h3 id="yes-if-any-yes">yes-if-any-yes</h3>
 <p>This action supplies <b><i>yes</i></b> if the following text contains the text <b><i>yes</i></b>, and supplies <b><i>no</i></b> otherwise.&nbsp; This action is similar to the logic OR operator in other languages.&nbsp; If there are no operands, this action supplies <b><i>no</i></b>.</p>
-
 
 <h3 id="no-if-any-no">no-if-any-no</h3>
 <p>This action supplies <b><i>no</i></b> if the following text contains the text <b><i>no</i></b>, and supplies <b><i>yes</i></b> otherwise.&nbsp; If there are no operands, this action supplies <b><i>yes</i></b>.</p>
 
-
 <h3 id="yes-if-not-no">yes-if-not-no</h3>
 <p>This action supplies <b><i>no</i></b> if the following word (space-delimited characters) is <b><i>no</i></b>, and supplies <b><i>yes</i></b> otherwise.&nbsp; This action is useful if the word can be something other than <b><i>yes</i></b> or <b><i>no</i></b>, but only <b><i>no</i></b> is significant.&nbsp; If there are no operands, this action supplies <b><i>yes</i></b>.</p>
-
 
 <h3 id="no-if-not-yes">no-if-not-yes</h3>
 <p>This action supplies <b><i>yes</i></b> if the following word (space-delimited characters) is <b><i>yes</i></b>, and supplies <b><i>no</i></b> otherwise.&nbsp; This action is useful if the word can be something other than <b><i>yes</i></b> or <b><i>no</i></b>, but only <b><i>yes</i></b> is significant.&nbsp; If there are no operands, this action supplies <b><i>no</i></b>.</p>
 
-
 <h2>Loop-related phrases</h2>
 
-
 <h3 id="use-handler-with-each-word-in-phrase">use-handler-with-each-word-in-phrase</h3>
-<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>55</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list).&nbsp; The first operand must be a phrase name that does not change, which means it cannot use any ambee/amenn words. </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
-
+<p>This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase.&nbsp; Each time the handler is expanded, the phrase <b><i>use-handler-with-each-word-in-phrase</i></b> contains the next word.&nbsp; Nothing is supplied as a result.&nbsp; Instead, the handler needs to store any changes in specified phrases (or in specified files).&nbsp; The content in the second phrase must not change during the time this expansion is being done.&nbsp; If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read-only list).&nbsp; The first operand must be a phrase name that does not change, which means it cannot use any ambee/amenn words. </p> <p> Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase <b><i>word-to-use-in-handler</i></b> as part of the phrase name).&nbsp; Internally this action inserts parameter phrases that make use of an internal dashrep action named <b><i>use-handler-with-each-word-in-phrase-currently-at-character-position</i></b>.</p>
 
 <h3 id="word-to-use-in-handler">word-to-use-in-handler</h3>
 <p>This phrase is used with the action <b><i>use-handler-with-each-word-in-phrase</i></b>.</p>
 
-
 <h2>Word-related phrases</h2>
-
 
 <h3 id="get-count-of-words">get-count-of-words</h3>
 <p>This action counts the number of words in the definition of a specified phrase, and supplies the count as its result.&nbsp; Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.&nbsp; If the definition contains only spaces, or is empty, the value <b><i>0</i></b> (zero) is supplied.</p>
 
-
 <h3 id="get-word-at-position">get-word-at-position</h3>
 <p>This action supplies a word that is contained at the specified <b><i>word</i></b> position (not character position) within the second phrase.&nbsp; The word position is supplied as an integer number.&nbsp; The word positions are numbered starting with 1 at the first word position.&nbsp; Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. </p> <p> Example: If the first phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> and the second operand is <b><i>2</i></b> then the supplied value is <b><i>dolphin</i></b>.</p>
-
 
 <h3 id="get-position-of-word">get-position-of-word</h3>
 <p>This action searches for a specified word within text that contains the space-delimited word, and supplies the <b>word</b> position (not character position) of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The word positions are numbered starting with 1 at the first word position.&nbsp; The supplied word is the word in the first phrase. </p> <p> Example: If the first phrase contains the word <b><i>dolphin</i></b> and the second phrase contains <b><i>whale dolphin starfish jellyfish dolphin</i></b> then the supplied value is <b><i>2</i></b>.</p>
 
-
 <h3 id="copy-word-at-position">copy-word-at-position</h3>
 <p>This action copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number.&nbsp; A position number of 1 indicates the first word in the definition.&nbsp; The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words.</p>
-
 
 <h3 id="copy-words-from-position-to-position">copy-words-from-position-to-position</h3>
 <p>This action gets the space-delimited words from the first phrase starting at the position indicated by the integer number in the third parameter, and ending at the position indicated by the integer number in the fourth parameter.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; If the ending number is greater than the number of words, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many words are in the phrase).&nbsp; The first two phrase names can be the same.</p>
 
-
 <h3 id="copy-words-offset-skip">copy-words-offset-skip</h3>
 <p>This action copies some space-delimited words from the first phrase to the second phrase using the skip interval specified by the integer number in the fourth operand, starting with the offset integer number specified in the third operand.&nbsp; The skip interval is the distance between copied words.&nbsp; If the offset position and skip interval are both zero, then all the words are copied.&nbsp; The word positions are numbered starting with 1 at the beginning.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>1 2 3 4 5 6 7 8</i></b> and the third operand is <b><i>3</i></b> and the fourth operand is <b><i>1</i></b> then the second phrase will contain <b><i>3 5 7</i></b>.</p>
 
-
 <h2>List-manipulation phrases</h2>
-
 
 <h3 id="copy-words-found-in-both-lists">copy-words-found-in-both-lists</h3>
 <p>This action copies into the definition of the third phrase any words that appear in both of the indicated phrase definitions.&nbsp; If a word appears more than once in either list, and it appears in both lists, it appears only once in the result.&nbsp; The order of the words in the result matches the order in which those words first appear in the first list. </p> <p> Example: If the first phrase definition is <b><i>abc 123 def 456</i></b> and the second definition is <b><i>def 789 xyz 123</i></b> then the third phrase is defined as <b><i>123 def</i></b>.</p>
 
-
 <h3 id="copy-words-found-in-either-list">copy-words-found-in-either-list</h3>
 <p>This action copies into the definition of the third phrase the words that appear in either of the indicated phrase definitions, without repeating any word. </p> <p> Example: If the first phrase definition is <b><i>abc 123 def 456</i></b> and the second definition is <b><i>def 789 xyz 123</i></b> then the third phrase is defined as <b><i>abc 123 def 456 xyz 789</i></b> (although the word order can be different).</p>
-
 
 <h3 id="copy-words-found-only-in-first-list">copy-words-found-only-in-first-list</h3>
 <p>This action copies into the definition of the third phrase any words that appear in the first phrase definition but do not appear in the second phrase definition.&nbsp; The order of words in the target phrase matches the order of words in the first list.&nbsp; If a word appears multiple times in the first list and it qualifies to appear in the result, that word appears multiple times, in the same order as in the first list.&nbsp; The action <b><i>copy-words-unique-only</i></b> can be used to eliminate duplicate words. </p> <p> Example: If the first phrase definition is <b><i>abc 123 def 456 abc</i></b> and the second definition is <b><i>def 789 xyz 123</i></b> then the third phrase is defined as <b><i>abc 456 abc</i></b>.</p>
 
-
 <h3 id="copy-words-that-begin-with-text">copy-words-that-begin-with-text</h3>
 <p>This action looks at all the words in the first phrase and identifies the words that begin with the text in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name. </p> <p> Example: If the first phrase contains <b><i>honeybees bees honey hives beehives</i></b> and the third phrase contains <b><i>bee</i></b> then the second phrase will contain <b><i>bees beehives</i></b>.</p>
-
 
 <h3 id="copy-words-that-begin-with-listed-words">copy-words-that-begin-with-listed-words</h3>
 <p>This action looks at all the words in the first phrase and identifies the words that begin with text that match any of the words listed in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name. </p> <p> Example: If the first phrase contains <b><i>honeybees bees honey hives beehives</i></b> and the third phrase contains <b><i>bee hive</i></b> then the second phrase will contain <b><i>bees hives beehives</i></b>.</p>
 
-
 <h3 id="copy-words-that-contain-listed-words">copy-words-that-contain-listed-words</h3>
 <p>This action looks at all the words in the first phrase and identifies the words that contain text that match any of the words listed in the third phrase, and puts those partially (or fully) matching words into the second phrase, with a space between each phrase name. </p> <p> Example: If the first phrase contains <b><i>honeybees bees honey hives beehives</i></b> and the third phrase contains <b><i>bee hive</i></b> then the second phrase will contain <b><i>honeybees bees hives beehives</i></b> (but not <b><i>honey</i></b> ).</p>
-
 
 <h3 id="copy-words-unique-only">copy-words-unique-only</h3>
 <p>This action copies from the definition of the first phrase all the words that appear in that definition, but without repeating any words that are repeated in the definition.&nbsp; The position of the first occurrence of a word determines the position of that word in the result list.&nbsp; In addition, the special phrase <b><i>list-of-unique-word-counts</i></b> contains a list of counts that indicate how many times each word (in the result list) occurs in the original list.&nbsp; In addition, the special phrase <b><i>list-of-pointers-to-unique-words</i></b> contains a list of pointers to the space-delimited words in the original list, and these pointers are in the same sequence as the result list, but without including any positions of words that are duplicate words.&nbsp; The pointer list is useful when the original list is in the same sequence as other lists that contain other information about the same items, and a specific number of unique items at the beginning of the result list need to be identified in a way that does not lose the association between the unique items and the other information in the other lists. </p> <p> Example: If the first phrase definition is <b><i>dolphin whale whale starfish dolphin</i></b> then the second phrase is defined as <b><i>dolphin whale starfish</i></b>.&nbsp; In addition, the phrase <b><i>list-of-unique-word-counts</i></b> contains <b><i>2 2 1</i></b>.&nbsp; In addition, the phrase <b><i>list-of-pointers-to-unique-words</i></b> contains <b><i>1 2 4</i></b>.</p>
 
-
 <h3 id="list-of-unique-word-counts">list-of-unique-word-counts</h3>
 <p>This phrase contains a list of word counts for the unique words found by the most recent use of the action <b><i>copy-words-unique-only</i></b>.&nbsp; If that action has not yet been used, this phrase is empty.&nbsp; See <b><i>copy-words-unique-only</i></b> for details.</p>
-
 
 <h3 id="list-of-pointers-to-unique-words">list-of-pointers-to-unique-words</h3>
 <p>This phrase contains a list of word pointers for the unique words found by the most recent use of the action <b><i>copy-words-unique-only</i></b>.&nbsp; If that action has not yet been used, this phrase is empty.&nbsp; See <b><i>copy-words-unique-only</i></b> for details.</p>
 
-
 <h3 id="copy-words-order-reversed">copy-words-order-reversed</h3>
 <p>This action gets the space-delimited words in the first phrase, and reverses their order (sequence), and puts those reverse-ordered words into the second phrase.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains <b><i>dolphin whale octopus</i></b> then the second phrase will contain <b><i>octopus whale dolphin</i></b>.</p>
-
 
 <h3 id="copy-words-sort-numeric">copy-words-sort-numeric</h3>
 <p>This action copies from a phrase definition to the specified phrase and numerically sorts the list of (space-delimited) numbers.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>7 1 5 3 12</i></b> then the text placed into the second phrase will be <b><i>1 3 5 7 12</i></b>.</p>
 
-
 <h3 id="copy-words-rearrange-using-order-sort-numeric">copy-words-rearrange-using-order-sort-numeric</h3>
 <p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the numeric sort order specified in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>seven one five three twelve</i></b> and the third phrase contains the text <b><i>7 1 5 3 12</i></b> then the text placed into the second phrase will be <b><i>one three five seven twelve</i></b>.</p>
-
 
 <h3 id="copy-words-sort-alphabetic">copy-words-sort-alphabetic</h3>
 <p>This action gets the space-delimited words in the first phrase, and sorts those words alphabetically, and puts those sorted words into the second phrase.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>dolphin whale seal</i></b> then the text placed into the second phrase will be <b><i>dolphin seal whale</i></b>.</p>
 
-
 <h3 id="copy-words-rearrange-using-order-sort-alphabetic">copy-words-rearrange-using-order-sort-alphabetic</h3>
 <p>This action gets the space-delimited words in the first phrase, and moves those words into the second phrase using the alphabetical sort order specified by the words in the third phrase.&nbsp; The first two phrase names can be the same. </p> <p> Example: If the first phrase contains the text <b><i>Nikola_Tesla Abe_Lincoln Thomas_Jefferson Paul_MacCready</i></b> and the third phrase contains the text <b><i>tesla_nikola jefferson_thomas da_vinci_leonardo maccready_paul</i></b> then the text placed into the second phrase will be <b><i>Leonardo_da_Vinci Thomas_Jefferson Paul_MacCready Nikola_Tesla</i></b>.</p>
-
 
 <h3 id="generate-counts-from-integer-to-integer">generate-counts-from-integer-to-integer</h3>
 <p>This action generates a list of integers and puts them into the definition of the third phrase.&nbsp; The supplied integers indicate the starting and ending values. </p> <p> Example: <b><i>ambee generate-counts-from-integer-to-integer 1 10 one-to-ten amenn</i></b> defines the phrase <b><i>one-to-ten</i></b> as <b><i>1 2 3 4 5 6 7 8 9 10</i></b>.</p>
 
-
 <h3 id="generate-every-pairwise-combination-of-words">generate-every-pairwise-combination-of-words</h3>
 <p>This action generates two word-based lists that contain every possible pair of words in the first phrase and the second phrase. </p> <p> Example: If the first phrase contains <b><i>dolphin eagle bear</i></b> and the second phrase contains <b><i>leaps flies ambles</i></b> then the third phrase will contain <b><i>dolphin dolphin dolphin eagle eagle eagle bear bear bear</i></b> and the fourth phrase will contain <b><i>leaps flies ambles leaps flies ambles leaps flies ambles</i></b>.</p>
-
 
 <h3 id="generate-every-ordered-pairwise-combination-of-words">generate-every-ordered-pairwise-combination-of-words</h3>
 <p>This action generates two word-based lists that are pairs of the words in the first phrase, but in each pair of words the word in first list appears before the word in the second list.&nbsp; This action is useful for doing pairwise counting. </p> <p> Example: If the first phrase contains <b><i>dolphin whale starfish octopus</i></b> then the second phrase will contain <b><i>dolphin dolphin dolphin whale whale starfish</i></b> and the third phrase will contain <b><i>whale starfish octopus starfish octopus octopus</i></b>.</p>
 
-
 <h3 id="generate-list-of-all-dashrep-phrases">generate-list-of-all-dashrep-phrases</h3>
 <p>This action generates a list of all the defined phrase names, using a space between adjacent phrase names, and puts that list into the specified phrase name.&nbsp; For security purposes this action can be disabled.&nbsp; The generated list excludes the phrase name <b>four-hyphens</b>.</p>
 
-
 <h2>Character-related phrases</h2>
-
 
 <h3 id="get-count-of-characters">get-count-of-characters</h3>
 <p>This action counts the number of characters in the definition that is associated with the specified phrase, and supplies the number as its result.&nbsp; Spaces and non-visible characters (such as the newline character) are included in the count.</p>
 
-
 <h3 id="get-characters-from-position-to-position">get-characters-from-position-to-position</h3>
 <p>This action gets the characters from the specified phrase starting at the position indicated by the first number, and ending at the position indicated by the second number.&nbsp; The character positions are numbered starting with 1 at the first character position.&nbsp; If the second number is greater than the number of characters, then the entire remainder of the phrase is retrieved (which means that using a large second number such as 9999 eliminates needing to know how many characters are in the phrase).</p>
-
 
 <h3 id="copy-characters-from-position-to-position">copy-characters-from-position-to-position</h3>
 <p>This action copies specified characters from the first phrase to the second phrase.&nbsp; The third and fourth operands indicate the starting and ending character positions, with the first character position being numbered one (1).&nbsp; The starting character position must not be larger than the ending character position.&nbsp; The first two phrase names can be the same.</p>
 
-
 <h3 id="copy-without-extra-spaces">copy-without-extra-spaces</h3>
 <p>This action removes multiple adjacent spaces so that only single spaces occur, and removes all spaces at the beginning and end of the text.&nbsp; The first phrase specifies the source text, and the second phrase specifies the destination.&nbsp; The two phrase names can be the same.</p>
-
 
 <h3 id="copy-lowercase-only">copy-lowercase-only</h3>
 <p>This action copies the definition of the first phrase into the definition of the second phrase, but changes any uppercase characters (such as <b><i>A</i></b> and <b><i>B</i></b>) into lowercase characters (such as <b><i>a</i></b> and <b><i>b</i></b>).&nbsp; The two phrase names can be the same.</p>
 
-
 <h3 id="copy-uppercase-only">copy-uppercase-only</h3>
 <p>This action copies the definition of the first phrase into the definition of the second phrase, but changes any lowercase characters (such as <b><i>a</i></b> and <b><i>b</i></b>) into uppercase characters (such as <b><i>A</i></b> and <b><i>B</i></b>).&nbsp; The two phrase names can be the same.</p>
-
 
 <h3 id="copy-initial-caps">copy-initial-caps</h3>
 <p>This action copies the definition of the first phrase into the definition of the second phrase, but changes the first letter of each space-delimited word into its equivalent uppercase letter.&nbsp; The remaining letters within the same word are not changed.&nbsp; If the first character after a space is a symbol or digit, that word remains unchanged.&nbsp; If the definition begins with a letter, that letter is converted to uppercase, even though it does not follow a space.&nbsp; The two phrase names can be the same.</p>
 
-
 <h3 id="copy-zero-pad-left-to-length">copy-zero-pad-left-to-length</h3>
 <p>This action copies text from the definition of the first phrase into the definition of the second phrase and inserts zeros (<b><i>0</i></b>) to the left of the copied characters.&nbsp; The resulting padded text has the length specified by the number in the third operand.&nbsp; Normally this action is used with numbers, but the action does not check whether the copied text is a number.</p>
-
 
 <h3 id="encode-as-cgi-parameter">encode-as-cgi-parameter</h3>
 <p>This action converts symbols and other non-alphabetic and non-digit characters into the special format that allows the text to be passed to a web server as a CGI parameter.&nbsp; As an example, a comma is represented as <b>%2c</b>.&nbsp; The two phrase names can be the same.</p>
 
-
 <h3 id="decode-from-cgi-parameter">decode-from-cgi-parameter</h3>
 <p>This action converts a CGI parameter into normal (non-encoded) characters.&nbsp; This action is the inverse of the <b><i>copy-from-phrase-to-phrase-and-encode-as-cgi-parameter</i></b> action.&nbsp; As an example, the text <b>%2c</b> is converted into a space character.&nbsp; The two phrase names can be the same.</p>
-
 
 <h3 id="convert-unicode-to-html-entities">convert-unicode-to-html-entities</h3>
 <p>This action copies all the text from the first phrase into the second phrase but converts non-ASCII characters into HTML entities.&nbsp; The HTML entities use decimal numbers, which means that open double quotation marks become &#8220; and &#8221;.</p>
 
-
 <h2>Search-and-replace-related phrases</h2>
-
 
 <h3 id="get-position-of-matching-text">get-position-of-matching-text</h3>
 <p>This action searches for the characters from the first phrase, and performs the search within the second phrase, and supplies the character position of the first match.&nbsp; If there is no match, a <b><i>0</i></b> (zero) is supplied.&nbsp; The character positions are numbered starting with 1 at the first character position.</p>
 
-
 <h3 id="copy-and-replace">copy-and-replace</h3>
 <p>This action replaces each occurrence of the third phrase with the text in the fourth phrase, based on the text in the first phrase, and places the result into the second phrase.&nbsp; If the replacement phrase contains the search phrase, nothing is changed, and a warning is put into the trace information because that could cause an endless loop.&nbsp; The special phrases <b><i>character-space</i></b> and <b><i>character-hyphen</i></b> and <b><i>character-newline</i></b> are useful here (because the language does not have ways to define those characters).&nbsp; The first two phrase names can be the same.</p>
-
 
 <h3 id="copy-and-replace-using-paired-listed-words">copy-and-replace-using-paired-listed-words</h3>
 <p>This action copies the definition of the first phrase into the definition of the second phrase, but replaces some text strings with associated text strings, using paired words in the third operand.&nbsp; The paired words in the third operand are delimited by spaces, and the first word in each pair specifies what text to find, and the second word in each pair specifies the replacement text for that found word. </p> <p> Example: To replace named HTML entities and some special characters with their unicode equivalent entities, the third phrase can contain text such as the following: <b><i>&#38;amp; &#38;#38; &#38;lt; &#38;#60; < &#38;#60 &#38;gt; &#38;#62; > &#38;#62; &#38;ldquo; &#38;#8220; &#38;rdquo; &#38;#8221; &#38;lsquo; &#38;#8216; &#38;rsquo; &#38;#8217; &#38;quot; &#38;#34; " &#38;#34; &#38;apos; &#38;#39; ' &#38;#39; &#38;nbsp; &#38;#160;</i></b> </p> <p> Another example: To identify a numeric pattern by converting all digits into the digit nine, the third phrase can contain the following text: <b><i>0 9 1 9 2 9 3 9 4 9 5 9 6 9 7 9 8 9</i></b>&nbsp; </p> <p> As these examples illustrate, the words can include single characters.&nbsp; Obviously none of the words in the third phrase can contain a space.&nbsp; If any searched words or any inserted words contain text that matches other searched words, the result becomes unpredictable.&nbsp; The first two phrase names can be the same.</p>
 
-
 <h3 id="generate-positions-of-listed-words">generate-positions-of-listed-words</h3>
 <p>This action searches for any of the space-delimited words contained in the first phrase, and finds those text items within the second phrase, and puts into the third phrase the list of beginning and ending character positions of all the matches.&nbsp; The spaces in the first phrase are needed to separate the text items, but spaces in the second phrase are not needed in order for a text item to match.&nbsp; If there is no match, the generated list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the listed numbers indicate the beginning and ending character positions of any matching text. </p> <p> Example: If the first phrase contains <b><i>fish bird</i></b> and the second phrase contains <b><i>birds songbird fish clownfish</i></b> then the third phrase will contain <b><i>1 4 11 14 16 19 26 29</i></b>.</p>
-
 
 <h3 id="generate-positions-of-delimiter">generate-positions-of-delimiter</h3>
 <p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, and puts into the third phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
 
-
 <h3 id="generate-positions-of-first-matching-delimiter-after-listed-positions">generate-positions-of-first-matching-delimiter-after-listed-positions</h3>
 <p>This action searches for the text contained in the first phrase, and performs repeated searches within the second phrase, but starts each search at the positions listed in the third phrase, and only finds the first match after that position, and puts into the fourth phrase the list of character positions of all the matches.&nbsp; If there is no match, the list is empty.&nbsp; The character positions are numbered starting with 1 at the first character position, and the numbers indicate the position of the first character in the matching text.</p>
 
-
 <h2>Time-related phrases</h2>
-
 
 <h3 id="get-current-time-in-epoch-seconds">get-current-time-in-epoch-seconds</h3>
 <p>This action gets the current time as an integer number that indicates the number of seconds since January 1, 1970 at midnight GMT (UTC).&nbsp; This convention matches the convention used in Linux and Windows, but not the convention used by Apple.</p>
 
-
 <h3 id="split-epoch-seconds-into-named-components">split-epoch-seconds-into-named-components</h3>
 <p>This action uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word <b><i>time</i></b>.&nbsp; The results are specific to local time at the server location.&nbsp; Simple Dashrep definitions can use these values to easily generate nearly any date and time format.&nbsp; See also <b><i>split-epoch-seconds-into-named-components-for-zero-meridian</i></b>, which applies to the time at zero meridian.</p>
-
 
 <h3 id="split-epoch-seconds-into-named-components-for-zero-meridian">split-epoch-seconds-into-named-components-for-zero-meridian</h3>
 <p>This action uses the supplied epoch seconds to put appropriate numbers into the phrases that begin with the word <b><i>time</i></b>.&nbsp; The results are specific for UTC.&nbsp; Addition and substraction can be used to convert to a specific time zone.&nbsp; Simple Dashrep definitions can use these values to easily generate nearly any date and time format.&nbsp; See also <b><i>split-epoch-seconds-into-named-components</i></b>, which applies to local time at the server.</p>
 
-
 <h3 id="time-day-of-month">time-day-of-month</h3>
 <p>This phrase contains the day of the month (such as 1, 2, ... 31), based-on-epoch-seconds</p>
-
 
 <h3 id="time-day-of-week">time-day-of-week</h3>
 <p>This phrase contains the numerical day of the week where 1 indicates Monday, 2 indicates Tuesday, and so on, based-on-epoch-seconds</p>
 
-
 <h3 id="time-day-of-year">time-day-of-year</h3>
 <p>This phrase contains the numerical day of the year (1, 2, ... 365, 366), based-on-epoch-seconds</p>
-
 
 <h3 id="time-hour">time-hour</h3>
 <p>This phrase contains the hour of the day, based-on-epoch-seconds&nbsp; The 24-hour notation is used.&nbsp; If a 12-hour format is needed, this can be done by defining phrases that handle each case for the 24 cases, such as by defining <b><i>am-or-pm-for-hour-17</i></b> to equal <b><i>pm</i></b> and defining <b><i>adjusted-hour-for-hour-17</i></b> to equal <b><i>5</i></b>.</p>
 
-
 <h3 id="time-minute">time-minute</h3>
 <p>This phrase contains the minute of the hour, based-on-epoch-seconds</p>
-
 
 <h3 id="time-month-number">time-month-number</h3>
 <p>This phrase contains the numerical month number where 1 indicates January, 2 indicates February, and so on, based-on-epoch-seconds</p>
 
-
 <h3 id="time-second">time-second</h3>
 <p>This phrase contains the seconds of the minute (0, 1, 2, ... 59), based-on-epoch-seconds</p>
-
 
 <h3 id="time-year">time-year</h3>
 <p>This phrase contains the year (such as <b><i>2012</i></b>), based-on-epoch-seconds</p>
 
-
 <h2>Number-related phrases</h2>
-
 
 <h3 id="zero-or-nonzero">zero-or-nonzero</h3>
 <p>This action supplies either <b><i>zero</i></b> or <b><i>nonzero</i></b> depending upon whether the following integer number equals zero.&nbsp; This phrase is useful when a value of zero requires special handling.</p>
 
-
 <h3 id="zero-one-multiple">zero-one-multiple</h3>
 <p>This action supplies either <b><i>zero</i></b> or <b><i>one</i></b> or <b><i>multiple</i></b> depending upon whether the following integer number equals zero, one, or multiple (more than one).&nbsp; This phrase is very useful for choosing between singular and plural forms of words based on a data-supplied count.</p>
-
 
 <h3 id="numeric-equal-greater-less-compare">numeric-equal-greater-less-compare</h3>
 <p>This action supplies the word <b><i>equal</i></b> if the two numbers that follow are numerically equal, or supplies the word <b><i>greater</i></b> if the first number is greater than the second number, or supplies the word <b><i>less</i></b> if the first number is less than the second number.</p>
 
-
 <h3 id="numeric-add">numeric-add</h3>
 <p>This action adds the numbers that follow, and supplies the result.&nbsp; The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized.&nbsp; As applies to all Dashrep numeric calculations, each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.&nbsp; If more than a few simple calculations are being done, consider doing the intensive numerical processing in a different programming language.</p>
-
 
 <h3 id="numeric-minus">numeric-minus</h3>
 <p>This action subtracts the second number from the first number, and supplies the result.&nbsp; See <b><i>numeric-add</i></b> for additional information.</p>
 
-
 <h3 id="numeric-multiply">numeric-multiply</h3>
 <p>This action multiplies the first number times the second number, and supplies the result.&nbsp; See <b><i>numeric-add</i></b> for additional information.</p>
-
 
 <h3 id="numeric-divide-by">numeric-divide-by</h3>
 <p>This action divides the first number by the second number, and supplies the result.&nbsp; See <b><i>numeric-add</i></b> for additional information.</p>
 
-
 <h3 id="numeric-maximum">numeric-maximum</h3>
 <p>This action determines the maximum value of the numbers that follow, and supplies the result.&nbsp; See <b><i>numeric-add</i></b> for additional information.</p>
-
 
 <h3 id="numeric-minimum">numeric-minimum</h3>
 <p>This action determines the minimum value of the numbers that follow, and supplies the result.&nbsp; See <b><i>numeric-add</i></b> for additional information.</p>
 
-
 <h3 id="numeric-increment">numeric-increment</h3>
 <p>This action increments (increases by one) the integer value in the named phrase.&nbsp; This action does not insert the result into text being expanded.&nbsp; The number in the specified phrase is incremented each time this special action is encountered.&nbsp; Use of this action should be avoided.&nbsp; Usually the action <b><i>use-handler-with-each-word-in-phrase</i></b>, or the action <b><i>generate-counts-from-integer-to-integer</i></b>, or the action <b><i>unique-value</i></b> can be used instead.</p>
-
 
 <h3 id="numeric-decrement">numeric-decrement</h3>
 <p>This action decrements (reduces by one) the integer value in the named phrase.&nbsp; Use of this action should be avoided.&nbsp; Usually the actions <b><i>generate-counts-from-integer-to-integer</i></b> and <b><i>copy-words-order-reversed</i></b> can be used instead. This action is useful for debugging situations that loop many more times than expected.</p>
 
-
 <h3 id="numeric-integer">numeric-integer</h3>
 <p>This action calculates the integer value of a real number, and supplies the result.&nbsp; If an integer is supplied, the same integer is returned (although leading zeros, if present, are removed).</p>
-
 
 <h3 id="numeric-absolute">numeric-absolute</h3>
 <p>This action calculates the absolute value of the number that follows, and supplies the result.</p>
 
-
 <h3 id="numeric-odd-or-even">numeric-odd-or-even</h3>
 <p>This action supplies the word <b><i>odd</i></b> or <b><i>even</i></b> based on whether the value of the following operand is an odd or even integer.&nbsp; It is useful for handling row (or column) numbers in a table.&nbsp; The result is unpredictable if the operand is not a positive integer.</p>
-
 
 <h3 id="numeric-sine">numeric-sine</h3>
 <p>This action calculates the (trigonometric) sine of the number that follows, and supplies the result.</p>
 
-
 <h3 id="numeric-cosine">numeric-cosine</h3>
 <p>This action calculates the (trigonometric) cosine of the number that follows, and supplies the result.</p>
-
 
 <h3 id="numeric-logarithm-base-e">numeric-logarithm-base-e</h3>
 <p>This action calculates the base-e logarithm of the specified number, and supplies the result.&nbsp; The number is assumed to be a positive number.&nbsp; If the supplied value is a very small number less than one (typically less than 0.000001) then the result is a large negative number such as -999999.</p>
 
-
 <h3 id="numeric-logarithm-base-10">numeric-logarithm-base-10</h3>
 <p>This action calculates the base-10 logarithm of the specified number, and supplies the result.&nbsp; The number is assumed to be a positive number.&nbsp; If the supplied value is a very small number less than one (typically less than 0.000001) then the result is a large negative number such as -999999.</p>
-
 
 <h3 id="numeric-pi">numeric-pi</h3>
 <p>This action supplies the text representation for the value of pi.</p>
 
-
 <h3 id="numeric-vector-add-number">numeric-vector-add-number</h3>
 <p>This action adds a single number to each number in the supplied vector and produces a vector sum.&nbsp; Each vector is a space-delimited list of numbers.&nbsp; The vector in the definition of the first operand is added to the single number that is supplied as the second operand.&nbsp; The resulting vector is put into the definition of the third operand.&nbsp; The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized.&nbsp; If subtraction is needed, either insert a minus sign in front of a positive integer, or multiply the single number times minus one before using it in this action.&nbsp; As applies to all Dashrep numeric calculations, each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.</p>
-
 
 <h3 id="numeric-vector-multiply-by-number">numeric-vector-multiply-by-number</h3>
 <p>This action multiplies a vector times a single number and produces a resulting vector.&nbsp; Each vector is a space-delimited list of numbers.&nbsp; The vector in the definition of the first operand is multiplied by the second operand, and the resulting vector is put into the definition of the third operand.&nbsp; The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized.&nbsp; As applies to all Dashrep numeric calculations, each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.</p>
 
-
 <h3 id="numeric-vectors-add">numeric-vectors-add</h3>
 <p>This action adds two vectors and produces a vector sum.&nbsp; Each vector is a space-delimited list of numbers.&nbsp; The vector in the definition of the first operand is added to the vector in the definition of the second operand, and the resulting vector is put into the definition of the third operand.&nbsp; The numbers can be positive or negative integers, or they can be positive or negative decimal numbers, but floating-point numbers are not recognized.&nbsp; If vector subtraction is needed, use the action <b><i>numeric-vector-multiply-by-number</i></b> to multiply one of the vectors by minus one, and then add the resulting vector to the positive-sign vector.&nbsp; As applies to all Dashrep numeric calculations, each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.</p>
-
 
 <h3 id="numeric-vectors-multiply">numeric-vectors-multiply</h3>
 <p>This action multiplies two vectors and produces a vector result.&nbsp; See the description of the action <b><i>numeric-vectors-add</i></b> for additional information.</p>
 
-
 <h3 id="numeric-vectors-divide-by">numeric-vectors-divide-by</h3>
 <p>This action divides two vectors and produces a vector result.&nbsp; To prevent dividing by zero, if a calculation involves dividing by a very small decimal number, a very large number is supplied as a result (regardless of the size of the other number).&nbsp; See the description of the action <b><i>numeric-vectors-add</i></b> for additional information.</p>
-
 
 <h3 id="numeric-vector-integers">numeric-vector-integers</h3>
 <p>This action converts into integers the real numbers that are supplied in the vector that is named in the first operand.&nbsp; The vector is a space-delimited list of numbers, which can include integers as well as real numbers.&nbsp; The resulting vector is put into the definition of the second operand.&nbsp; Floating-point numbers are not recognized.</p>
 
-
 <h3 id="numeric-vector-absolutes">numeric-vector-absolutes</h3>
 <p>This action converts a list of numbers within a vector into their absolute values, and puts the resulting list into the definition of the second operand.&nbsp; The vector is a space-delimited list of numbers, which can include integers as well as real numbers.&nbsp; Floating-point numbers are not recognized.</p>
-
 
 <h3 id="numeric-vectors-from-delta-values-calculate-distances">numeric-vectors-from-delta-values-calculate-distances</h3>
 <p>This action gets the list of space-delimited delta X integer numbers in the definition of the first operand and gets the list of space-delimited delta Y integer numbers in the definition of the second operand, and calculates a list of integer distances that are put into the definition of the third operand.&nbsp; The numbers can be positive or negative integers.&nbsp; Although decimal numbers can be supplied, the resulting values are truncated to integer values, so the decimal portion is lost.&nbsp; Floating-point numbers are not recognized.&nbsp; As applies to all Dashrep numeric calculations, each calculation converts the text-based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.</p>
 
-
 <h3 id="numeric-two-dimensional-sort-into-columns-and-rows">numeric-two-dimensional-sort-into-columns-and-rows</h3>
 <p>This action arranges a set of items into a table of rows and columns based on numeric values along two dimensions.&nbsp; The resulting arrangement roughly arranges the items from left to right according to one set of numeric values and arranges the items from bottom to top according to a second (independent) set of numeric values.&nbsp; This action requires four operands, where the first operand is the number of columns, the second operand is the name of a phrase that contains space-delimited numbers that affect horizontal (left-to-right) placement, the third operand is the name of a phrase that contains space-delimited numbers that affect vertical (top-to-bottom) placement, and the fourth operand is the name of the phrase into which the results are placed.&nbsp; The result contains a sequence of words such as <b><i>row-3-column-2</i></b> that indicate the sorted position of each item, with the result sequence being the same sequence as the two lists of numeric values.&nbsp; The number of items to be sorted is determined by the number of values in the two numeric lists (which must be the same length).&nbsp; The items with the largest vertical values appear at the top, the items with the smallest vertical values appear at the bottom, the items with the largest horizontal values appear at the right, and the items with the smallest horizontal values appear at the left.&nbsp; This vertical convention is the opposite of the document-oriented convention of placing larger vertical values at the bottom, and instead this convention matches the natural-world-oriented convention of placing larger vertical values at the top.</p>
 
-
 <h3 id="numeric-y-map-tile-number-based-on-latitude">numeric-y-map-tile-number-based-on-latitude</h3>
-<p>This action calculates the "y" value for the upper-left corner of the Open Street Maps map tile, based on the latitude that is supplied, and based on the zoom value in the phrase <b><i>numeric-map-tile-zoom</i></b>, and supplies the result.</p>
-
+<p>This action calculates the "y" value for the upper-left corner of the Open Street Maps map tile, based on the latitude that is supplied, and based on the zoom value in the phrase <b><i>1</i></b>, and supplies the result.</p>
 
 <h3 id="numeric-map-tile-zoom">numeric-map-tile-zoom</h3>
 <p>This action specifies the zoom level that is used in the action <b><i>numeric-y-map-tile-number-based-on-latitude</i></b>.</p>
 
-
 <h2>XML-related & HTML-related phrases</h2>
 
-
 <h3 id="copy-and-move-attributes-into-xml-tags">copy-and-move-attributes-into-xml-tags</h3>
-<p>This action copies the content of the first phrase to the second phrase but with the content of each <b><i>attribute</i></b> tag or a <b><i>specify</i></b> tag inside the preceding XML (or HTML) tag. </p> <p> Example: If the first phrase contains the text <b><i>&lt;img /&gt;&lt;attribute href="image.jpg"&gt;&lt;attribute alt="image"&gt;</i></b> then the definition of the second phrase will be the text <b><i>&lt;img href="image.jpg" alt="image" /&gt;</i></b>. </p> <p> The word <b><i>specify</i></b> can be used instead of <b><i>attribute</i></b>.&nbsp; This functionality is useful for generating XML and HTML code by using hyphenated phrases such as <b><i>image-here specify-href image.jpg specify-end specify-alt image specify-end</i></b>.&nbsp; Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as <b><i>image-here-begin</i></b> and <b><i>image-here-end</i></b>.</p>
-
+<p>This action copies the content of the first phrase to the second phrase but with the content of each <b><i>specify</i></b> tag (or <b><i>attribute</i></b> tag) moved inside the preceding XML (or HTML) tag. </p> <p> Example: If th first phrase contains the text <b><i>&lt;img /&gt;&lt;specify href="image.jpg"&gt;&lt;specify alt="image"&gt;</i></b> then the definition of the second phrase will be the text <b><i>&lt;img href="image.jpg" alt="image" /&gt;</i></b>. </p> <p> This functionality is useful for generating XML and HTML code by using hyphenated phrases such as <b><i>image-here specify-href image.jpg specify-end specify-alt image specify-end</i></b>.&nbsp; Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as <b><i>image-here-begin</i></b> and <b><i>image-here-end</i></b>.</p>
 
 <h3 id="copy-and-remove-attributes-from-xml-tags">copy-and-remove-attributes-from-xml-tags</h3>
-<p>This action removes attributes from XML and HTML tags, and also removes RSS-style <b><i>CDATA</i></b> strings.&nbsp; The first phrase specifies the source text, and the second phrase specifies the destination.&nbsp; The two phrase names can be the same. </p> <p> Example: If the specified phrase contains <b><i>and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt;</i></b>, the result is <b><i>and a &lt;span&gt;dolphin&lt;/span&gt;</i></b>. </p> <p> The change assumes that none of the tag's attributes contain a close angle bracket (<b><i>&gt;</i></b>).&nbsp; The result is not intended to be valid XML or HTML or RSS code.&nbsp; Instead the intended purpose is to simplify the text as preparation for further manipulations.</p>
-
+<p>This action removes attributes from XML and HTML tags, and also removes RSS-style <b><i>CDATA</i></b> strings.&nbsp; The first phrase specifies the source text, and the second phrase specifies the destination.&nbsp; The two phrase names can be the same. </p> <p> Example: If the first and second phrase names are the same, and if the specified phrase contains <b><i>and a &lt;span style="whatever"&gt;dolphin&lt;/span&gt;</i></b>, the modified phrase will contain <b><i>and a &lt;span&gt;dolphin&lt;/span&gt;</i></b>. </p> <p> The change assumes that none of the tag's attributes contain a close angle bracket (<b><i>&gt;</i></b>).&nbsp; The result is not intended to be valid XML or HTML or RSS code.&nbsp; Instead the intended purpose is to simplify the text as preparation for further manipulations.</p>
 
 <h2>File-related phrases</h2>
-
 
 <h3 id="yes-or-no-permission-to-append-to-files">yes-or-no-permission-to-append-to-files</h3>
 <p>If this phrase equals <b><i>yes</i></b> then actions have permission to append to existing files.&nbsp; Any other value indicates that actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; This permission is intended for use during debugging Dashrep code that might accidentally modify the wrong files.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
 
-
 <h3 id="yes-or-no-permission-to-delete-or-overwrite-files">yes-or-no-permission-to-delete-or-overwrite-files</h3>
 <p>If this phrase equals <b><i>yes</i></b> then actions have permission to delete or overwrite existing files.&nbsp; Any other value indicates that actions do not have these permissions.&nbsp; This value can be changed as needed.&nbsp; This permission is intended for use during debugging Dashrep code that might accidentally delete or overwrite the wrong files.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
-
 
 <h3 id="dashrep-path-prefix-for-file-reading">dashrep-path-prefix-for-file-reading</h3>
 <p>This phrase specifies a different (non-local-folder) path for file read operations.&nbsp; If this definition is empty (which is the default value), the local directory is used.&nbsp; If a path prefix is included with any of the file-reading actions, that path is ignored and this path is used instead.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-writing actions.</p>
 
-
 <h3 id="dashrep-path-prefix-for-file-writing">dashrep-path-prefix-for-file-writing</h3>
 <p>This phrase specifies a different (non-local-folder) path for file write operations.&nbsp; If this definition is empty (which is the default value), the local directory is used.&nbsp; If a path prefix is included with any of the file-writing actions, that path is ignored and this path is used instead.&nbsp; This approach limits the chances of intentional or accidental access to files that should not be accessed.&nbsp; A different path is used for file-reading actions.</p>
-
 
 <h3 id="operating-system-slash-or-backslash">operating-system-slash-or-backslash</h3>
 <p>This pre-defined phrase contains a slash character (<b><i>/</i></b>) if the operating system is not a Microsoft Windows operating-system, and it contains a backslash (<b><i>\</i></b>) if the operating system is a Microsoft Windows operating-system.</p>
 
-
 <h3 id="dashrep-file-name-if-read-file-missing">dashrep-file-name-if-read-file-missing</h3>
 <p>This phrase specifies the name of an empty file that is created if a file for reading cannot be found. n-s This file is created in the folder specified by the phrase <b><i>dashrep-path-prefix-for-file-reading</i></b>. n-s If this file already exists when a file for reading cannot be found, the existing file is used as the source file.</p>
-
 
 <h3 id="generate-list-of-files-in-current-read-directory">generate-list-of-files-in-current-read-directory</h3>
 <p>This action puts into the specified phrase a list of all the files that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="generate-list-of-folders-in-current-read-directory">generate-list-of-folders-in-current-read-directory</h3>
 <p>This action puts into the specified phrase a list of all the folders (directories) that are in the current directory, where the current directory is specified by the value of phrase name-of-phrase-that-specifies-read-directory.</p>
-
 
 <h3 id="yes-or-no-file-exists">yes-or-no-file-exists</h3>
 <p>This action determines whether the specified file exists, and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the file exists.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="yes-or-no-folder-exists">yes-or-no-folder-exists</h3>
 <p>This action determines whether a folder exists and supplies either <b><i>yes</i></b> or <b><i>no</i></b> to indicate whether the folder exists.&nbsp; The folder name, without any path, is specified in the supplied phrase.&nbsp; The location in which to look for the folder is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
-
 
 <h3 id="size-of-file">size-of-file</h3>
 <p>This action gets the file size &mdash; in bytes &mdash; of the specified file.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="modification-time-of-file">modification-time-of-file</h3>
 <p>This action gets the modification time &mdash; in epoch seconds &mdash; of the specified file.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
-
 
 <h3 id="set-file-permission-public-read">set-file-permission-public-read</h3>
 <p>This action changes the protection of the specified file to allow global read access.&nbsp; It does not allow global write access.&nbsp; It is equivalent to the Linux command i-b chmod 0644 i-e.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="set-file-permission-private">set-file-permission-private</h3>
 <p>This action changes the protection of the specified file to be private, which means no global read or write access.&nbsp; It is equivalent to the Linux command i-b chmod 0600 i-e.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
-
 
 <h3 id="set-file-permission-private-but-executable">set-file-permission-private-but-executable</h3>
 <p>This action changes the protection of the specified file to allow global executable access, but without global read access.&nbsp; It is equivalent to the Linux command i-b chmod 0711 i-e.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="rename-file">rename-file</h3>
 <p>This action renames the specified file.&nbsp; The first operand is the old filename, and the second operand is the new filename.&nbsp; The location of the file is specified by the phrase name-of-phrase-that-specifies-write-directory.&nbsp; This action is useful for coordinating parallel tasks by renaming the data file that the current task will be handling, which prevents other parallel tasks from handling the same data.</p>
-
 
 <h3 id="delete-file">delete-file</h3>
 <p>This action deletes the specified file.&nbsp; location-of-write-file</p>
 
-
 <h3 id="create-empty-sub-folder">create-empty-sub-folder</h3>
 <p>This action creates an empty folder (directory) using the specified folder name, or does nothing if the sub-folder (directory) already exists.&nbsp; The sub-folder must be directly beneath the directory specified by the phrase name-of-phrase-that-specifies-write-directory.&nbsp; The specified name must contain only letters (a to z and A to Z) and digits and underscores and hyphens; any other characters, including slashes or backslashes, are not allowed.</p>
-
 
 <h3 id="copy-from-file-to-phrase">copy-from-file-to-phrase</h3>
 <p>This action copies the text in the specified file to the definition of the specified hyphenated phrase (without preserving the previous definition).&nbsp; The phrase <b><i>dashrep-yes-indicate-line-endings</i></b> can be defined as <i>yes</i> to insert the phrase <b><i>end-of-line-here</i></b> at each line break that is encountered.&nbsp; If it is important to keep newline characters (at the end of each line), consider using the action <b><i>copy-append-file-to-file</i></b>.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="end-of-line-indicator">end-of-line-indicator</h3>
 <p>This phrase is inserted at the end of each line when the action <b><i>copy-from-file-to-phrase</i></b> is used.&nbsp; The definition of this phrase can be changed at any time, and the next use of the action <b><i>copy-from-file-to-phrase</i></b> will use the current definition.&nbsp; This phrase has a default definition of a single newline character.&nbsp; Typically the phrases that are copied to this phrase are <b><i>character-space</i></b>, <b><i>character-newline</i></b>, and <b><i>text-end-of-line-here-space-delimited</i></b>.</p>
-
 
 <h3 id="text-end-of-line-here-space-delimited">text-end-of-line-here-space-delimited</h3>
 <p>This pre-defined phrase contains the text <b><i>text-end-of-line-here</i></b> and contains a leading space and a trailing space.&nbsp; When this text is copied into the phrase <b><i>end-of-line-indicator</i></b>, use of the action <b><i>copy-from-file-to-phrase</i></b> inserts this special phrase into the text at each newline location, which can assist in inserting anything into those positions when the text is expanded.&nbsp; This phrase is not protected from being overwitten, so its definition can change.</p>
 
-
 <h3 id="yes-or-no-trim-spaces-when-copy-from-file">yes-or-no-trim-spaces-when-copy-from-file</h3>
 <p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-file-to-file</i></b> removes the leading and trailing spaces from each line that is read from the file.&nbsp; Any other value for this phrase causes the leading and trailing spaces to be retained.&nbsp; The default value of this phrase is <b><i>yes</i></b>.</p>
-
 
 <h3 id="yes-or-no-skip-empty-lines-when-copy-from-file">yes-or-no-skip-empty-lines-when-copy-from-file</h3>
 <p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-file-to-phrase</i></b> skips empty lines.&nbsp; Any other value for this phrase causes empty lines to be included in the copied text.&nbsp; The default value of this phrase is <b><i>yes</i></b>.&nbsp; If a line contains only spaces, it is regarded as an empty line.</p>
 
-
 <h3 id="copy-from-phrase-append-to-file">copy-from-phrase-append-to-file</h3>
 <p>This action copies the definition of the hyphenated phrase onto the end of the specified file.&nbsp; No separation is inserted (either at the beginning or at the end.&nbsp; location-of-write-file</p>
-
 
 <h3 id="copy-append-file-to-file">copy-append-file-to-file</h3>
 <p>This action gets the text from the source file and appends a copy of that text to the end of the target file.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory, and the location of the target file is specified by the phrase name-of-phrase-that-specifies-write-directory.</p>
 
-
 <h3 id="linewise-read-from-file-and-use-handler">linewise-read-from-file-and-use-handler</h3>
-<p>This action reads each and every line from the text file whose name is specified by the first phrase, and that expands the handler specified by the second phrase.&nbsp; When the handler phrase is expanded, the contents of the current line is available in the phrase named <b><i>storage-input-line-from-file</i></b>, and the current line number (starting at one for the first line in the file) is available in the phrase named <b><i>linewise-input-line-count</i></b>.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
-
+<p>This action reads each and every line from the text file whose name is specified by the first phrase, and expands the handler specified by the second phrase.&nbsp; When the handler phrase is expanded, the contents of the current line is available in the phrase named <b><i>storage-input-line-from-file</i></b>, and the current line number (starting at one for the first line in the file) is available in the phrase named <b><i>linewise-input-line-count</i></b>.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
 <h3 id="linewise-input-line-from-file">linewise-input-line-from-file</h3>
 <p>See the description for <b><i>linewise-read-from-file-and-use-handler</i></b>.</p>
 
-
 <h3 id="linewise-input-line-count">linewise-input-line-count</h3>
 <p>See the description for <b><i>linewise-read-from-file-and-use-handler</i></b>.</p>
 
+<h3 id="linewise-read-from-standard-input">linewise-read-from-standard-input</h3>
+<p>This action reads each and every line from &#8220;standard input&#8221; (which typically is a file specified in the command that runs the compiled code, or else text that is interactively typed line by line) and expands the handler specified by the first (and only) phrase.&nbsp; When the handler phrase is expanded, the contents of the current line is available in the phrase named <b><i>storage-input-line-from-file</i></b>, and the current line number (starting at one for the first line) is available in the phrase named <b><i>linewise-input-line-count</i></b>.</p>
 
 <h3 id="get-url-resource">get-url-resource</h3>
 <p>This action gets one URL resource (which is usually a text file or image file) from the URL location specified in the first phrase and puts the resource into a file that is named in the second phrase.&nbsp; Diagnostic messages are written to the phrase <b><i>trace-from get-url-resource</i></b>.&nbsp; location-of-write-file </p> <p> Example: If the first phrase contains <b><i>http://www.votefair.org/americanidol.html</i></b> and the second phrase contains <b><i>temp_url_output.txt</i></b> and the phrase <b><i>name-of-phrase-that-specifies-write-directory</i></b> contains <b><i>/home/rawfeeds/</i></b> then a copy of the specified web page will be put into the file <b><i>/home/rawfeeds/temp_url_output.txt</i></b>.</p>
 
-
 <h3 id="trace-from-get-url-resource">trace-from-get-url-resource</h3>
 <p>This phrase contains diagnostic information after using the action <b><i>get-url-resource</i></b>.&nbsp; Specifically it indicates steps in the process of getting the URL resource, and it contains messages from the software that gets the URL resource, which currently is the <b><i>curl</i></b> utility.</p>
 
-
 <h2>Data-related phrases</h2>
-
 
 <h3 id="find-line-in-file-that-begins-with-text">find-line-in-file-that-begins-with-text</h3>
 <p>This action reads the specified file (named in the first phrase) and finds the first line that begins with the text in the second phrase, and puts the found line into the third phrase.&nbsp; If none of the lines in the file begin with the specified text, then the third phrase will be empty.&nbsp; The text being searched for can contain a trailing space, which is useful when full-word matches are needed.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="find-lines-in-file-that-begin-with-any-listed-word">find-lines-in-file-that-begin-with-any-listed-word</h3>
 <p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any word in the second phrase, and appends to the third phrase hyphenated phrase names that contain the matching lines.&nbsp; If none of the lines in the file begin with any of the specified words, then the third phrase will be empty.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
-
 
 <h3 id="find-lines-in-file-that-begin-with-any-two-words-listed">find-lines-in-file-that-begin-with-any-two-words-listed</h3>
 <p>This action reads the specified file (named in the first phrase) and finds all the lines that begin with any of the words in the second phrase, and puts into the third phrase a list of hyphenated phrases that contain the matching lines.&nbsp; If none of the lines in the file begin with any two of the specified words, then the third phrase will be empty.&nbsp; A line is regarded as a match if the first two words are the same, and if that word is in the specified word list.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="copy-from-columns-in-file-to-named-phrases">copy-from-columns-in-file-to-named-phrases</h3>
 <p>This action reads from the specified file all the spreadsheet-like lines of text, and puts each (space-delimited) word into a phrase that has a special name.&nbsp; The specified phrase must begin with the (space-delimited) prefix for all the names, is followed by the (space-delimited) name of each column.&nbsp; The third operand is the name of a phrase that will contain the list of unique values that come from the first word in each line.&nbsp; This action is useful for reading spreadsheet-like data.&nbsp; If a unique value is used more than once, the information in the last occurrence overwrites the earlier information.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory. </p> <p> Example: If the second operand is a phrase that contains <b><i>cell-contents-for-nickname phone-number city state</i></b> and one line of text in the file is <b><i>flipper 123-456-7890 san_diego ca</i></b> then the phrase <b><i>cell-contents-for-nickname-flipper-phone-number</i></b> will contain <b><i>123-456-7890</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-city</i></b> will contain <b><i>san_diego</i></b> and the phrase <b><i>cell-contents-for-nickname-flipper-state</i></b> will contain <b><i>ca</i></b>. </p> <p> If the phrase <b><i>dashrep-use-two-spaces-as-column-delimiter</i></b> is defined as <b><i>yes</i></b>, then two spaces (instead of one) are required between cells.&nbsp; This option is useful if the spreadsheet-like cell of data might contain any spaces. </p> <p> If the second phrase contains only a single word, then the file is assumed to contain only two columns of data on each line, and a suffix is not appended to the end of the generated phrase names.</p>
-
 
 <h3 id="copy-from-columns-in-file-to-column-lists">copy-from-columns-in-file-to-column-lists</h3>
 <p>This action reads from the specified file all the spreadsheet-like lines of text, and puts the first (space-delimited) word from each line into one list, and puts the second word from each line into another list, and puts the third word from each line into yet another list, and so on.&nbsp; The generated lists are given the phrase name specified by the second operand (not by the definition in the second operand) followed by a hyphen and the column number.&nbsp; This action is useful for reading spreadsheet-like data that contains columns of values, where each column of values is meaningful, such as for doing numeric vector calculations and finding the unique values in each column.&nbsp; Empty lines are ignored.&nbsp; The line of data with the fewest words determines how many lists are generated, and words beyond that number are ignored.&nbsp; The filename is specified by the first operand, and the location of that file is specified in the phrase name-of-phrase-that-specifies-read-directory. </p> <p> Example: If the second operand is the phrase <b><i>list-of-values-in-column</i></b> and the specified file contains three lines of text, with <b><i>flipper 123 234 san_diego</i></b> in the first line, and <b><i>adolph 456 567 miami fl</i></b> in the second line, and <b><i>dory 789 890 los_angeles</i></b> in the third line, then the phrase <b><i>list-of-values-in-column-1</i></b> will contain <b><i>flipper adolph dory</i></b> and the phrase <b><i>list-of-values-in-column-2</i></b> will contain <b><i>123 456 789</i></b> and the phrase <b><i>list-of-values-in-column-3</i></b> will contain <b><i>234 567 890</i></b> and the phrase <b><i>list-of-numbers-in-column-4</i></b> will contain <b><i>san_diego miami los_angeles</i></b>.</p>
 
-
 <h3 id="yes-or-no-use-two-spaces-as-column-delimiter">yes-or-no-use-two-spaces-as-column-delimiter</h3>
 <p>If this phrase equals <b><i>yes</i></b> then the action <b><i>copy-from-columns-in-file-to-named-phrases</i></b> regards two adjacent spaces as the delimiter between words.&nbsp; Any other value for this phrase causes a single space to be regarded as the delimiter between words.&nbsp; This adjustment enables the text in any column of (text) data to contain single spaces.&nbsp; This adjustment avoids the complications that arise from using a tab character as a column delimiter, such as in exported spreadsheet data.</p>
-
 
 <h3 id="gather-tagged-info-from-file">gather-tagged-info-from-file</h3>
 <p>This action reads from the specified file all the lines in that text file, and creates phrase definitions that are based on the first word in each line.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-begin</i></b> phrase (which has a default value of <b><i>entry_begin</i></b> ), a new set of related items begins, and when the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-end</i></b> phrase (which has a default value of <b><i>entry_end</i></b> ), that set of items ends.&nbsp; When the first word (of a line) matches the definition of the <b><i>dashrep-gather-tag-unique</i></b> phrase (which has a default value of <b><i>url</i></b>, and which must appear within a set of items), the next (space-delimited) word in that line is used as the unique identifier for the items in that set.&nbsp; If the same unique identifier appears in a later set, the items in the new set overwrite the previous items that have the same identifier.&nbsp; Each generated phrase name begins with the tag name (that preceded that item) followed by the text <b><i>-value-for-unique-id-</i></b> and then followed by the unique value.&nbsp; The list of encountered unique values is put into the second-operand phrase. </p> <p> If the text <b><i>multi_line_begin</i></b> immediately follows an item's name, the lines that follow, up to a line that contains (only) <b><i>multi_line_end</i></b>, are combined (with a space between each line's content) into a long value for that named item. </p> <p> If a normal (non-multi) line begins with the definition of the <b><i>dashrep-gather-tag-delete</i></b> phrase (which has a default value of <b><i>delete_id</i></b> ) then the unique value in the second word (of that line) is omitted from the list of encountered unique values.&nbsp; If a later entry specifies a definition for an entry that was requested to be deleted, the later entry overrides the deletion request.&nbsp; A deletion request does not delete any of the already-defined phrases, but those phrases will not be accessed if the created phrases are only accessed using the list of encountered unique values.&nbsp; As an example, an entry with the unique ID of <b><i>1776</i></b> can be deleted by appending (to the file) the line <b><i>delete_id 1776</i></b>. </p> <p> A list of the encountered tag names is put into the phrase <b><i>dashrep-gathered-tag-names</i></b>.&nbsp; The order of the list is the order in which the tag names were first encountered. </p> <p> This "gather" action is useful for accessing database-like text files where the first word in each line acts as the "field" name for a database record, and each set of items corresponds to one database record.&nbsp; This action is also useful for spreadsheet-like information where the tag names are analogous to single-word column titles, and one row of spreadsheet data is stored in multiple lines, with each cell's content on a separate (labelled) line.&nbsp; The order of the items within each set is not significant, and the order does not need to be the same from one set to another.&nbsp; This action does not require that each set of items use the same first words that are used in other sets, but in that case the generated phrases should be checked for undefined (empty) phrase definitions.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.</p>
 
-
 <h3 id="gather-from-tagged-file-one-entry">gather-from-tagged-file-one-entry</h3>
 <p>This action reads from a file that also can be read by the action <b><i>gather-tagged-info-from-file-and-put-unique-values-into-phrase</i></b> but only gets a single entry and puts that entry into the phrase that is named as the second operand.&nbsp; The first operand is the name of the file.&nbsp; The selected entry is specified by a value in the phrase <b><i>dashrep-gather-tag-matching-id</i></b>.&nbsp; If the text that is defined in the phrase <b><i>dashrep-gather-tag-delete</i></b> appears within the file and applies to the selected entry, then the content prior to that point is deleted, although later entries (after the last deletion) with the same matching value are recognized.</p>
-
 
 <h3 id="write-gathered-listed-items-to-end-of-file">write-gathered-listed-items-to-end-of-file</h3>
 <p>This action writes to the end of the specified file all or most of the information that was recently gathered using the action <b><i>gather-tagged-info-from-file</i></b>.&nbsp; The first operand specifies a phrase that contains the list of unique values for the gathered items to be written, which allows some of the items to be omitted.&nbsp; This action, unlike the "gather" action, does not support the use of multi-line entries.&nbsp; The second operand is the name of the target file.&nbsp; The location of the source file is specified by the phrase name-of-phrase-that-specifies-read-directory.&nbsp; This action uses the list of tag names in the phrase <b><i>dashrep-gathered-tag-names-in-sequence</i></b> to determine which tag names to use, and the sequence in which they are written.</p>
 
-
 <h3 id="dashrep-gather-tag-begin">dashrep-gather-tag-begin</h3>
 <p>See the description for the action <b><i>gather-tagged-info-from-file</i></b>.</p>
-
 
 <h3 id="dashrep-gather-tag-end">dashrep-gather-tag-end</h3>
 <p>See the description for the action <b><i>gather-tagged-info-from-file</i></b>.</p>
 
-
 <h3 id="dashrep-gather-tag-unique">dashrep-gather-tag-unique</h3>
 <p>See the description for the action <b><i>gather-tagged-info-from-file</i></b>.</p>
-
 
 <h3 id="dashrep-gather-tag-delete">dashrep-gather-tag-delete</h3>
 <p>See the description for the action <b><i>gather-tagged-info-from-file</i></b>.</p>
 
-
 <h3 id="dashrep-gather-tag-matching-id">dashrep-gather-tag-matching-id</h3>
 <p>See the description for the action <b><i>gather-from-tagged-file-one-entry</i></b>.</p>
 
-
 <h2>Debugging-support phrases</h2>
-
 
 <h3 id="trace-show">trace-show</h3>
 <p>This action writes to the trace log file the name and definition of the specified phrase.&nbsp; The format is the same as the standard format for Dashrep definitions.</p>
 
-
 <h3 id="trace-show-where">trace-show-where</h3>
 <p>This action inserts into the trace log the name of the phrase currently being expanded.&nbsp; The format is the same as the standard format for Dashrep definitions.</p>
-
 
 <h3 id="output-trace-file-name">output-trace-file-name</h3>
 <p>This phrase contains the filename to which <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> messages are written.&nbsp; The default filename is <b><i>output_trace.txt</i></b>.&nbsp; If the filename specified in this phrase changes during execution, the filename used is the one in effect at the time the first <b><i>trace-show</i></b> and <b><i>trace-show-where</i></b> message was written.</p>
 
-
 <h3 id="dashrep-comments-ignored">dashrep-comments-ignored</h3>
 <p>This phrase contains text that the translation process has identified as comments.&nbsp; Comments are contained within the text <b><i>*---</i></b> and <b><i>---*</i></b>, but these delimiters cannot be nested, so this definition can be useful for debugging.</p>
-
 
 <h3 id="generate-phrase-usage-counts">generate-phrase-usage-counts</h3>
 <p>This action puts into the specified phrase a list of counts for how many times each phrase name was replaced.&nbsp; Each count and its associated phrase name are separated from the next count and phrase name by a newline character.&nbsp; The phrases are sorted by the count number, with the highest counts appearing first.&nbsp; Within each count, the order is alphabetical.</p>
 
-
 <h2>Advanced phrases</h2>
-
 
 <h3 id="exit-from-dashrep">exit-from-dashrep</h3>
 <p>This action first prints (to standard output) the contents of phrase <b><i>standard-output</i></b> and then immediately stops execution of a compiled Dashrep application (executable file).&nbsp; If phrase <b><i>standard-output</i></b> is empty, nothing is printed.&nbsp; This action is intended for unusual situations where normal exiting is not appropriate, such as reaching a hard limit.&nbsp; This action can be used as a breakpoint when debugging Dashrep source code.</p>
 
-
 <h3 id="dashrep-language-yes">dashrep-language-yes</h3>
 <p>This phrase is written to the beginning of the file created by the action <b><i>write-all-dashrep-definitions-to-file</i></b> so that the first word identifies the file contents to be written in the Dashrep language.&nbsp; The default value for this phrase is <b><i>yes</i></b>, but this definition is not used.</p>
-
 
 <h3 id="dashrep-version">dashrep-version</h3>
 <p>This pre-defined phrase contains the Dashrep version number.&nbsp; This number is not changed with every change in the Dashrep language, but rather tracks major Dashrep changes.</p>
 
-
 <h3 id="delayed-nospace">delayed-nospace</h3>
 <p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>no-space</i></b> needs to be inserted later, after other replacements have been done.&nbsp; When ready, this phrase should be defined as <b><i>no-space</i></b> just before the final translation step.</p>
-
 
 <h3 id="delayed-newline">delayed-newline</h3>
 <p>This phrase is not defined, but this name is reserved for use as a placeholder where the phrase <b><i>new-line</i></b> needs to be inserted later, after other replacements have been done.&nbsp; Normally this phrase is not needed because the text <b><i>
 </i></b> serves this purpose.&nbsp; When this phrase is used, this phrase should be defined as <b><i>new-line</i></b> just before the final translation step.</p>
 
-
 <h3 id="yes-or-no-permission-administrator">yes-or-no-permission-administrator</h3>
 <p>If this phrase equals <b><i>yes</i></b> then special actions have permission to be used.&nbsp; Any other value indicates that the special actions do not have this permission.&nbsp; This value can be changed as needed.&nbsp; This phrase is intended to protect a general user from being able to easily gain access to Dashrep phrase definitions that should be kept private.&nbsp; This permission should not be trusted for advanced security purposes.&nbsp; The Dashrep language does not include actions that implement advanced security because real security involves hiding the nature of that real security code.&nbsp; The real security code can be written as Dashrep code or supplied as part of optional runtime executable code.</p>
-
 
 <h3 id="dashrep-endless-loop-counter-limit">dashrep-endless-loop-counter-limit</h3>
 <p>This phrase specifies the maximum number of replacements allowed during a Dashrep translation.&nbsp; This number can be redefined, such as to a larger number.&nbsp; If this limit is exceeded, Dashrep translation is stopped and an error message indicates which phrase was replaced the most number of times.&nbsp; If large amounts of data are processed, the default number is not going to be large enough.&nbsp; This limit interrupts endless loops, which can occur if a phrase is defined in a way that (either directly or indirectly) includes its own name.</p>
 
-
 <h3 id="dashrep-time-limit">dashrep-time-limit</h3>
 <p>This phrase contains the current number of seconds for use as a time limit.&nbsp; When the time limit is exceeded, translation ends.&nbsp; The default value is 300 seconds, which equals 5 minutes.&nbsp; A different value can be specified, although the changed time limit may not take effect immediately.</p>
 
-
 <h2>Special Dashrep spoken words</h2>
-
 
 <h3 id="ambee">ambee</h3>
 <p>(described in table above)</p>
 
-
 <h3 id="amenn">amenn</h3>
 <p>(described in table above)</p>
-
 
 <h3 id="fen">fen</h3>
 <p>(described in table above)</p>
 
-
 <h3 id="fenambee">fenambee</h3>
 <p>(described in table above)</p>
-
 
 <h3 id="amennfen">amennfen</h3>
 <p>(described in table above)</p>
 
-
 <h3 id="amennfenambee">amennfenambee</h3>
 <p>(described in table above)</p>
-
 
 <h3 id="nospay">nospay</h3>
 <p>(described in table above)</p>
 
-
 <h3 id="combee">combee</h3>
 <p>(described in table above)</p>
 
-
 <h3 id="comenn">comenn</h3>
 <p>(described in table above)</p>
-
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
