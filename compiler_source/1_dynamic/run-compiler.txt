@@ -1,5 +1,11 @@
 ambee initialize-input-output-files amenn
+
+ambee linewise-read-from-standard-input read-one-line-of-source-code amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase source-code amenn amenn
 ambee copy-from-file-to-phrase ambee input-filename amenn source-code amenn
+ambee if-end amenn
+
 ambee compile-source-code-generate-output-results amenn
 ambee put-into-phrase yes-or-no-export-delimited-definitions  yes  amenn
 
