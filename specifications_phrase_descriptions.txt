@@ -1509,7 +1509,7 @@ new-line
 new-line
 <title>HTML code for Dashrep Specifications page</title>
 new-line
-<meta name="copyright" content="Copyright 2015 by Richard Fobes at www.Dashrep.org" />
+<meta name="copyright" content="Copyright 2015-2018 by Richard Fobes at www.Dashrep.org" />
 new-line
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 new-line
@@ -1517,7 +1517,7 @@ new-line
 new-line
 <meta name="author" content="Richard Fobes" />
 new-line
-<meta http-equiv="copyright" content="Richard Fobes 2015" />
+<meta http-equiv="copyright" content="Richard Fobes 2015-2018" />
 new-line
 <style type="text/css">
 table {
@@ -1576,7 +1576,7 @@ web-page-end:
 new-line
 <p>&nbsp;</p>
 new-line
-<p style="margin-left:0px;">Copyright 2015 by Richard Fobes at www.Dashrep.org</p>
+<p style="margin-left:0px;">Copyright 2015-2018 by Richard Fobes at www.Dashrep.org</p>
 new-line
 new-line
 </body>
