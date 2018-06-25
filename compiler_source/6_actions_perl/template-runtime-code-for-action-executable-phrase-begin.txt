@@ -3,7 +3,6 @@ template-runtime-code-for-every-action-begin
 template-runtime-code-check-for-endless-loop
 
 $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
-# $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
