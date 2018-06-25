@@ -71,3 +71,6 @@ ambee copy-and-replace output-results-all-runtime-functions output-results-all-r
 ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee filename-output-results-from-compiler amenn amenn
 
 ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
+
+ambee clear-phrase standard-output amenn
+ambee linewise-read-from-file-and-use-handler ambee filename-output-results-from-compiler amenn append-one-line-to-standard-output amenn

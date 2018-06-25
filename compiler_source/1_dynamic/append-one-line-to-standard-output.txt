@@ -1,0 +1,2 @@
+ambee append-text-no-space linewise-input-line-from-file standard-output amenn
+ambee append-text-no-space character-newline standard-output amenn
