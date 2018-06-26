@@ -5663,10 +5663,10 @@ my $storage_item__5429 = 'template-runtime-code-for-action-copy-text' ;
 my $storage_item__5430 = 'template-runtime-code-for-every-action-begin $global_operand_one = runtime-code-for-operand-number-one ; <new_line> $global_operand_two = runtime-code-for-operand-number-two ; <new_line> if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_currently_executing_phrase_name_with_underscores . ' . "'" . '__copy_text__case_not_phrase ' . "'" . ' . $global_operand_one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( $global_operand_two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_currently_executing_phrase_name_with_underscores . ' . "'" . '__copy_text__case_not_phrase ' . "'" . ' . $global_operand_two . ' . "'" . ' ' . "'" . ' ; <new_line> } else { <new_line> $global_target_text = code-get-or-put-phrase-definition-begin $global_operand_one code-get-or-put-phrase-definition-end ; <new_line> code-get-or-put-phrase-definition-begin $global_operand_two code-get-or-put-phrase-definition-end = $global_target_text ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5429 } = $storage_item__5430 ;
 my $storage_item__5431 = 'template-runtime-code-for-action-executable-phrase-begin' ;
-my $storage_item__5432 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> # $saved_accumulator_pointer = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line>' ;
+my $storage_item__5432 = 'template-runtime-code-for-every-action-begin template-runtime-code-check-for-endless-loop $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line>' ;
 $global_dashrep_replacement{ $storage_item__5431 } = $storage_item__5432 ;
 my $storage_item__5433 = 'template-runtime-code-for-action-executable-phrase-end' ;
-my $storage_item__5434 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> # $global_accumulator_pointer = $saved_accumulator_pointer ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5434 = 'runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5433 } = $storage_item__5434 ;
 my $storage_item__5435 = 'template-runtime-code-for-action-executable-phrase-without-fen' ;
 my $storage_item__5436 = 'template-runtime-code-for-action-executable-phrase-begin &function_compiled__<dashrep_placeholder_code_for_executable_phrase_with_underscores>( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
@@ -5675,7 +5675,7 @@ my $storage_item__5437 = 'template-runtime-code-for-action-executable-phrase' ;
 my $storage_item__5438 = 'template-runtime-code-for-action-executable-phrase-begin $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = <dashrep_placeholder_code_for_executable_phrase> ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> template-runtime-code-for-action-executable-phrase-end' ;
 $global_dashrep_replacement{ $storage_item__5437 } = $storage_item__5438 ;
 my $storage_item__5439 = 'template-runtime-code-for-action-exit-from-dashrep' ;
-my $storage_item__5440 = 'template-runtime-code-for-every-action-begin if ( ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard<character_hyphen>output' . "'" . ' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin ' . "'" . 'standard<character_hyphen>output' . "'" . ' code-get-or-put-phrase-definition-end ne ' . "'" . "'" . ' ) ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> } <new_line> exit ; <new_line> template-runtime-code-for-every-action-end' ;
+my $storage_item__5440 = 'template-runtime-code-for-every-action-begin if ( exists( code-get-or-put-phrase-definition-begin ' . "'" . 'standard<character_hyphen>output' . "'" . ' code-get-or-put-phrase-definition-end ) ) { <new_line> if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( ' . "'" . 'standard<character_hyphen>output' . "'" . ' ) == $global_yes ) { <new_line> print code-get-or-put-phrase-definition-begin ' . "'" . 'standard-output' . "'" . ' code-get-or-put-phrase-definition-end ; <new_line> if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) { <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> } else { <new_line> print $output_results . "' . '\\' . 'n" ; <new_line> } <new_line> } <new_line> if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) { <new_line> print TRACE_OUT "' . '\\' . 'n' . '\\' . 'n' . '\\' . 'n" . ' . "'" . 'Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep' . "'" . ' . "' . '\\' . 'n" ; <new_line> } <new_line> exit ; <new_line> template-runtime-code-for-every-action-end' ;
 $global_dashrep_replacement{ $storage_item__5439 } = $storage_item__5440 ;
 my $storage_item__5441 = 'template-runtime-code-for-action-expand-text' ;
 my $storage_item__5442 = 'template-runtime-code-for-every-action-begin if ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_currently_executing_phrase_name_with_underscores . ' . "'" . '__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-one . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_name( runtime-code-for-operand-number-two ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . 'dashrep_compiled_runtime_error__' . "'" . ' . $global_currently_executing_phrase_name_with_underscores . ' . "'" . '__expand_text__not_phrase_name ' . "'" . ' . runtime-code-for-operand-number-two . ' . "'" . ' ' . "'" . ' ; <new_line> } elsif ( &function_parameterized__yes_or_no_phrase_definition_not_empty( runtime-code-for-operand-number-one ) == $global_no ) { <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> } else { <new_line> $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ; <new_line> $global_accumulator_pointer = current-accumulator-pointer ; <new_line> $global_accumulator[ $global_accumulator_pointer ] = ' . "'" . "'" . ' ; <new_line> $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ; <new_line> $global_phrase_name_currently_executing = ' . "'" . '<dashrep_placeholder_phrase_being_defined>' . "'" . ' ; <new_line> $global_phrase_name_to_match = runtime-code-for-operand-number-one ; <new_line> &function_branch_based_on_phrase_name( ) ; <new_line> $global_target_text = $global_accumulator[ $global_accumulator_pointer ] ; <new_line> code-get-or-put-phrase-definition-begin runtime-code-for-operand-number-two code-get-or-put-phrase-definition-end = &dashrep_expand_phrases( $global_target_text ) ; <new_line> runtime-code-storage-item-result = ' . "'" . "'" . ' ; <new_line> $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ; <new_line> } <new_line> template-runtime-code-for-every-action-end' ;
@@ -6607,14 +6607,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 2 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 2 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__compile_source_code_initialize( ) ;
 $storage_item__1088 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 2 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -6623,14 +6621,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 3 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 3 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__convert_source_code_into_words( ) ;
 $storage_item__1090 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 3 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1093 ) == $global_no ) {
 $storage_item__1092 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__trace_show__not_phrase_name ' . $storage_item__1093 . ' ' ;
@@ -6714,14 +6710,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 4 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 4 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__compile_source_code_finish( ) ;
 $storage_item__1103 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 4 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__1085 = $storage_item__1088 . ' ' . $storage_item__1090 . ' ' . $storage_item__1092 . ' ' . $storage_item__1094 . ' ' . $storage_item__1096 . ' ' . $storage_item__1099 . ' ' . $storage_item__1103 ;
@@ -6805,14 +6799,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 5 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 5 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__define_special_strings( ) ;
 $storage_item__1120 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 5 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -6821,14 +6813,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 6 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 6 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_versions_of_function_point_to_word_in_operand( ) ;
 $storage_item__1122 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 6 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( $storage_item__1125 ) == $global_no ) {
 $storage_item__1124 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__use_handler_with_each_word_in_phrase__not_phrase_name ' . $storage_item__1125 . ' ' ;
@@ -7012,14 +7002,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 7 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 7 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__convert_source_code_replace_parameter_brackets_with_ambee_and_amenn( ) ;
 $storage_item__1149 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 7 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1152 ;
@@ -7614,14 +7602,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 8 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 8 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__either_zero_if_not_found_else_non_zero( ) ;
 $storage_item__1328 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 8 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( $storage_item__1327 eq $storage_item__1328 ) {
 $storage_item__1326 = 'yes' ;
@@ -7954,14 +7940,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 9 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 9 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_storage_position( ) ;
 $storage_item__1423 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 9 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__1417 = $storage_item__1420 . ' ' . $storage_item__1423 ;
@@ -8012,14 +7996,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 10 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 10 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_storage_position( ) ;
 $storage_item__1432 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 10 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1431 . '-' . $storage_item__1432 ;
@@ -8033,14 +8015,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 11 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 11 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_storage_position( ) ;
 $storage_item__1437 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 11 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1435 ;
 $global_operand_two = $storage_item__1436 . '-' . $storage_item__1437 ;
@@ -8061,14 +8041,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 12 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 12 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__storage_type( ) ;
 $storage_item__1442 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 12 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1440 ;
 $global_operand_two = $storage_item__1441 . '-' . $storage_item__1442 . '-' . $storage_item__1444 ;
@@ -8135,14 +8113,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 13 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 13 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_storage_position( ) ;
 $storage_item__1451 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 13 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__1445 = $storage_item__1448 . ' ' . $storage_item__1451 ;
@@ -8188,14 +8164,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 14 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 14 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1458 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 14 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8204,14 +8178,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 15 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 15 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1460 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 15 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__1457 . '-' . $storage_item__1458 ) == $global_no ) {
 $storage_item__1456 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__1457 . '-' . $storage_item__1458 . ' ' ;
@@ -8313,14 +8285,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 17 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 17 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filter_tokens_case_2( ) ;
 $storage_item__1475 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 17 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -8333,14 +8303,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 18 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 18 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__non_empty_if_valid_token_handler_name( ) ;
 $storage_item__1479 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 18 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8349,7 +8317,6 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 19 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 19 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -8358,7 +8325,6 @@ $global_phrase_name_to_match = $storage_item__1481 . '-' . $storage_item__1479 ;
 &function_branch_based_on_phrase_name( ) ;
 $storage_item__1478 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 19 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -8408,14 +8374,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 20 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 20 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__yes_or_no_within_comment( ) ;
 $storage_item__1487 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 20 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if no begin
 $global_pointer_to_word = index( $storage_item__1487 , 'no' ) ;
@@ -8429,14 +8393,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 21 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 21 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filter_tokens_case_3( ) ;
 $storage_item__1489 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 21 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -8514,14 +8476,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 22 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 22 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filter_tokens_case_4( ) ;
 $storage_item__1503 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 22 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -8534,14 +8494,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 23 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 23 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__non_empty_if_valid_token_handler_name( ) ;
 $storage_item__1507 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 23 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8550,7 +8508,6 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 24 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 24 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -8559,7 +8516,6 @@ $global_phrase_name_to_match = $storage_item__1509 . '-' . $storage_item__1507 ;
 &function_branch_based_on_phrase_name( ) ;
 $storage_item__1506 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 24 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -8658,14 +8614,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 25 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 25 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__remove_colon_if_at_end_of_phrase_being_defined( ) ;
 $storage_item__1524 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 25 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -8923,14 +8877,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 26 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 26 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__1563 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 26 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -8939,14 +8891,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 27 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 27 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__1565 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 27 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this object code generated from standard template with variable number of operands placed into global_source_text
 $global_source_text = $storage_item__1563 . ' ' . $storage_item__1565 ;
@@ -8977,14 +8927,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 28 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 28 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_simple_or_immediate( ) ;
 $storage_item__1568 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 28 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -8997,14 +8945,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 29 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 29 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_contains_ambee_amenn( ) ;
 $storage_item__1571 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 29 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -9059,14 +9005,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 30 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 30 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__1583 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 30 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -9075,14 +9019,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 31 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 31 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__1585 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 31 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1583 ;
@@ -9108,14 +9050,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 32 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 32 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filter_tokens_case_defenn_case_balanced_ambee_amenn( ) ;
 $storage_item__1587 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 32 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -9128,14 +9068,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 33 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 33 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_simple_or_immediate( ) ;
 $storage_item__1590 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 33 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -9279,14 +9217,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 34 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 34 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__1644 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 34 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1643 ;
@@ -9313,14 +9249,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 35 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 35 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__recursion_stack_pop( ) ;
 $storage_item__1649 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 35 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1652 ;
 $global_operand_two = $storage_item__1653 ;
@@ -9363,14 +9297,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 36 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 36 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__1663 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 36 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1661 ;
 $global_operand_two = $storage_item__1662 . '-' . $storage_item__1663 ;
@@ -9617,14 +9549,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 37 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 37 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__1741 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 37 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1740 ;
@@ -9695,14 +9625,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 38 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 38 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__1760 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 38 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1759 ;
@@ -9830,14 +9758,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 39 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 39 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__1790 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 39 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1789 ;
@@ -9965,14 +9891,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 40 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 40 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__1820 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 40 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1819 ;
@@ -10230,14 +10154,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 41 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 41 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1872 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 41 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1870 ;
 $global_operand_two = $storage_item__1871 . '-' . $storage_item__1872 ;
@@ -10292,14 +10214,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 42 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 42 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__1885 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 42 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1884 . '-' . $storage_item__1885 ;
 $global_operand_two = $storage_item__1887 ;
@@ -10432,14 +10352,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 43 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 43 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_text_storage_position( ) ;
 $storage_item__1909 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 43 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1912 ;
 $global_operand_two = $storage_item__1913 ;
@@ -10573,14 +10491,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 44 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 44 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__1968 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 44 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__1967 ;
@@ -10705,14 +10621,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 45 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 45 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__1996 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 45 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__1995 . '-' . $storage_item__1996 ;
 $global_operand_two = $storage_item__1998 ;
@@ -10781,14 +10695,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 46 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 46 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2019 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 46 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2022 ;
 $global_operand_two = $storage_item__2023 ;
@@ -10842,14 +10754,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 47 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 47 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__number_of_operands( ) ;
 $storage_item__2035 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 47 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2035 ;
@@ -10882,14 +10792,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 48 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 48 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2042 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 48 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2045 ;
 $global_operand_two = $storage_item__2046 ;
@@ -10930,14 +10838,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 49 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 49 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__number_of_operands( ) ;
 $storage_item__2056 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 49 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2056 ;
@@ -10970,14 +10876,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 50 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 50 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2063 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 50 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2066 ;
 $global_operand_two = $storage_item__2067 ;
@@ -11018,14 +10922,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 51 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 51 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__number_of_operands( ) ;
 $storage_item__2077 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 51 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2077 ;
@@ -11058,14 +10960,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 52 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 52 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2084 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 52 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2087 ;
 $global_operand_two = $storage_item__2088 ;
@@ -11106,14 +11006,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 53 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 53 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__number_of_operands( ) ;
 $storage_item__2098 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 53 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2098 ;
@@ -11146,14 +11044,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 54 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 54 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2105 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 54 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2108 ;
 $global_operand_two = $storage_item__2109 ;
@@ -11231,14 +11127,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 55 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 55 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__2121 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 55 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -11247,14 +11141,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 56 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 56 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__word_to_use_in_handler( ) ;
 $storage_item__2123 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 56 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2119 ;
@@ -11336,14 +11228,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 57 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 57 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_result_storage_position( ) ;
 $storage_item__2134 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 57 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2137 ;
 $global_operand_two = $storage_item__2138 ;
@@ -11403,14 +11293,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 58 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 58 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2150 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 58 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2149 ;
@@ -11583,14 +11471,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 59 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 59 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_being_defined( ) ;
 $storage_item__2223 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 59 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -11599,14 +11485,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 60 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 60 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__unique_phrase_number( ) ;
 $storage_item__2225 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 60 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2222 . '-' . $storage_item__2223 ) == $global_no ) {
 $storage_item__2221 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__put_into_phrase__not_phrase_name ' . $storage_item__2222 . '-' . $storage_item__2223 . ' ' . $storage_item__2225 . ' ' ;
@@ -11624,14 +11508,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 61 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 61 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_being_defined( ) ;
 $storage_item__2229 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 61 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2228 . '-' . $storage_item__2229 ;
 $global_operand_two = $storage_item__2231 ;
@@ -11702,14 +11584,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 62 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 62 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__2248 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 62 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2247 ;
@@ -11730,14 +11610,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 63 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 63 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_simple( ) ;
 $storage_item__2253 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 63 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2256 ;
 $global_operand_two = $storage_item__2257 ;
@@ -11808,14 +11686,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 64 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 64 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__terminate_branching_if_not_terminated( ) ;
 $storage_item__2262 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 64 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -11824,14 +11700,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 65 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 65 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_definition_number( ) ;
 $storage_item__2266 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 65 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2265 . '-' . $storage_item__2266 ;
 $global_operand_two = $storage_item__2268 ;
@@ -11852,14 +11726,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 66 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 66 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2271 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 66 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2270 . '-' . $storage_item__2271 ;
 $global_operand_two = $storage_item__2273 ;
@@ -11880,14 +11752,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 67 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 67 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2274 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 67 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2277 ;
 $global_operand_two = $storage_item__2278 ;
@@ -12043,14 +11913,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 68 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 68 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__2311 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 68 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2310 ;
@@ -12086,14 +11954,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 69 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 69 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2320 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 69 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2319 . '-' . $storage_item__2320 ;
@@ -12144,14 +12010,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 70 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 70 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
 $storage_item__2325 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 70 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2328 ;
@@ -12214,14 +12078,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 71 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 71 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__immediate_definition_phrase_name( ) ;
 $storage_item__2362 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 71 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2361 ;
 $global_operand_two = $storage_item__2362 . '-' . $storage_item__2364 ;
@@ -12279,14 +12141,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 72 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 72 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_being_defined( ) ;
 $storage_item__2371 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 72 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2369 ;
 $global_operand_two = $storage_item__2370 . '-' . $storage_item__2371 ;
@@ -12307,14 +12167,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 73 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 73 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__unique_phrase_number( ) ;
 $storage_item__2376 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 73 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2374 ;
 $global_operand_two = $storage_item__2375 . '-' . $storage_item__2376 ;
@@ -12359,14 +12217,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 74 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 74 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_simple( ) ;
 $storage_item__2385 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 74 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -12391,14 +12247,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 75 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 75 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_definition_immediate( ) ;
 $storage_item__2391 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 75 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -12453,14 +12307,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 76 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 76 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2399 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 76 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2402 ;
 $global_operand_two = $storage_item__2403 ;
@@ -12481,14 +12333,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 77 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 77 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2404 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 77 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2407 ;
 $global_operand_two = $storage_item__2408 ;
@@ -12509,14 +12359,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 78 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 78 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_list_of_tokens_in_current_definition_quotable( ) ;
 $storage_item__2409 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 78 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12525,14 +12373,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 79 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 79 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_runtime_code_for_phrase_definition_simple( ) ;
 $storage_item__2411 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 79 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12541,14 +12387,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 80 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 80 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2415 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 80 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2414 ;
@@ -12697,14 +12541,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 81 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 81 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_ambee_tokens( ) ;
 $storage_item__2453 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 81 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12713,14 +12555,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 82 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 82 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__count_of_amenn_tokens( ) ;
 $storage_item__2455 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 82 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2453 ;
@@ -12846,14 +12686,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 83 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 83 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__recursion_stack_push( ) ;
 $storage_item__2474 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 83 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -12862,14 +12700,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 84 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 84 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_result_storage_position( ) ;
 $storage_item__2476 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 84 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2479 ;
 $global_operand_two = $storage_item__2480 ;
@@ -12917,14 +12753,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 85 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 85 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2489 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 85 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2488 ;
@@ -12939,14 +12773,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 86 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 86 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2493 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 86 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2492 . '-' . $storage_item__2493 ;
@@ -13013,14 +12845,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 87 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 87 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2501 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 87 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -13029,14 +12859,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 88 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 88 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2507 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 88 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2505 ) == $global_no ) {
 $storage_item__2504 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__yes_or_no_same_two_phrase_definitions__not_phrase_name ' . $storage_item__2505 . ' ' ;
@@ -13062,14 +12890,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 89 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 89 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_might_have_template( ) ;
 $storage_item__2509 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 89 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -13159,14 +12985,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 91 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 91 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2525 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 91 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2524 . '-' . $storage_item__2525 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -13192,14 +13016,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 92 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 92 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__number_of_operands( ) ;
 $storage_item__2530 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 92 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2528 ;
@@ -13215,14 +13037,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 93 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 93 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__operand_count_as_word( ) ;
 $storage_item__2534 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 93 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2533 . '-' . $storage_item__2534 ) == $global_no ) {
 $storage_item__2532 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2533 . '-' . $storage_item__2534 . ' ' ;
@@ -13255,14 +13075,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 95 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 95 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2540 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 95 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2539 . '-' . $storage_item__2540 ) == $global_no ) {
 $storage_item__2538 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2539 . '-' . $storage_item__2540 . ' ' ;
@@ -13380,14 +13198,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 98 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 98 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2558 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 98 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2557 . '-' . $storage_item__2558 ;
 $global_operand_two = $storage_item__2560 ;
@@ -13422,14 +13238,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 99 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 99 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2569 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 99 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2568 . '-' . $storage_item__2569 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -13468,14 +13282,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 100 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 100 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2578 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 100 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2577 . '-' . $storage_item__2578 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -13551,14 +13363,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 101 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 101 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__yes_or_no_action_recognized( ) ;
 $storage_item__2596 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 101 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if yes begin
 $global_pointer_to_word = index( $storage_item__2596 , 'yes' ) ;
@@ -13572,14 +13382,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 102 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 102 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_recognized( ) ;
 $storage_item__2598 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 102 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -13592,14 +13400,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 103 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 103 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_not_recognized( ) ;
 $storage_item__2601 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 103 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -13612,14 +13418,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 104 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 104 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_code_for_one_action( ) ;
 $storage_item__2604 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 104 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__2544 = $storage_item__2547 . ' ' . $storage_item__2550 . ' ' . $storage_item__2553 . ' ' . $storage_item__2556 . ' ' . $storage_item__2561 . ' ' . $storage_item__2564 . ' ' . $storage_item__2566 . ' ' . $storage_item__2571 . ' ' . $storage_item__2574 . ' ' . $storage_item__2575 . ' ' . $storage_item__2580 . ' ' . $storage_item__2583 . ' ' . $storage_item__2584 . ' ' . $storage_item__2588 . ' ' . $storage_item__2591 . ' ' . $storage_item__2594 . ' ' . $storage_item__2595 . ' ' . $storage_item__2598 . ' ' . $storage_item__2600 . ' ' . $storage_item__2601 . ' ' . $storage_item__2603 . ' ' . $storage_item__2604 ;
@@ -13720,14 +13524,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 105 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 105 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_executable_phrase( ) ;
 $storage_item__2624 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 105 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__2606 = $storage_item__2609 . ' ' . $storage_item__2616 . ' ' . $storage_item__2620 . ' ' . $storage_item__2623 . ' ' . $storage_item__2624 ;
@@ -13773,14 +13575,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 106 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 106 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2632 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 106 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2631 . '-' . $storage_item__2632 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -13806,14 +13606,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 107 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 107 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_check_operand_count( ) ;
 $storage_item__2634 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 107 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -13826,14 +13624,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 108 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 108 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2637 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 108 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -13842,14 +13638,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 109 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 109 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2641 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 109 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2640 . '-' . $storage_item__2641 ) == $global_no ) {
 $storage_item__2639 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2640 . '-' . $storage_item__2641 . ' ' ;
@@ -13943,14 +13737,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 111 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 111 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2659 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 111 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2658 . '-' . $storage_item__2659 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -13976,14 +13768,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 112 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 112 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_possible_variable_operand_count( ) ;
 $storage_item__2661 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 112 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -13996,14 +13786,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 113 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 113 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2665 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 113 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14012,7 +13800,6 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 114 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 114 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -14021,7 +13808,6 @@ $global_phrase_name_to_match = $storage_item__2667 . '-' . $storage_item__2665 ;
 &function_branch_based_on_phrase_name( ) ;
 $storage_item__2664 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 114 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -14034,14 +13820,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 115 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 115 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2672 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 115 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2671 . '-' . $storage_item__2672 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -14067,14 +13851,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 116 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 116 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2677 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 116 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2675 ) == $global_no ) {
 $storage_item__2674 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__put_into_phrase__not_phrase_name ' . $storage_item__2675 . ' ' . $storage_item__2676 . '-' . $storage_item__2677 . ' ' ;
@@ -14190,14 +13972,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 117 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 117 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2697 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 117 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2700 ;
 $global_operand_two = $storage_item__2701 ;
@@ -14252,14 +14032,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 118 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 118 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2713 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 118 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2712 . '-' . $storage_item__2713 ;
 $global_operand_two = $storage_item__2715 ;
@@ -14325,14 +14103,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 119 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 119 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_fen_and_nospay_within_operand_or_operands( ) ;
 $storage_item__2736 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 119 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2739 ;
 $global_operand_two = $storage_item__2740 ;
@@ -14512,14 +14288,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 122 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 122 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2778 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 122 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2781 ;
 $global_operand_two = $storage_item__2782 ;
@@ -14601,14 +14375,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 124 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 124 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__start_branching_if_not_started( ) ;
 $storage_item__2789 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 124 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14617,14 +14389,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 125 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 125 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2791 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 125 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14633,14 +14403,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 126 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 126 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2795 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 126 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2794 . '-' . $storage_item__2795 ) == $global_no ) {
 $storage_item__2793 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2794 . '-' . $storage_item__2795 . ' ' ;
@@ -14718,14 +14486,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 128 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 128 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__start_branching_if_not_started( ) ;
 $storage_item__2804 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 128 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14734,14 +14500,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 129 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 129 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2806 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 129 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14750,14 +14514,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 130 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 130 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2810 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 130 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2809 . '-' . $storage_item__2810 ) == $global_no ) {
 $storage_item__2808 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2809 . '-' . $storage_item__2810 . ' ' ;
@@ -14835,14 +14597,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 132 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 132 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__terminate_branching_if_not_terminated( ) ;
 $storage_item__2819 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 132 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14851,14 +14611,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 133 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 133 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2821 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 133 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14867,14 +14625,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 134 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 134 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2825 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 134 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2824 . '-' . $storage_item__2825 ) == $global_no ) {
 $storage_item__2823 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2824 . '-' . $storage_item__2825 . ' ' ;
@@ -14952,14 +14708,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 136 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 136 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__terminate_branching_if_not_terminated( ) ;
 $storage_item__2834 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 136 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14968,14 +14722,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 137 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 137 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2836 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 137 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -14984,14 +14736,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 138 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 138 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__action_name( ) ;
 $storage_item__2840 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 138 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__2839 . '-' . $storage_item__2840 ) == $global_no ) {
 $storage_item__2838 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__expand_text__not_phrase_name ' . $storage_item__2839 . '-' . $storage_item__2840 . ' ' ;
@@ -15069,14 +14819,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 140 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 140 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_text_storage_position( ) ;
 $storage_item__2849 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 140 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15085,14 +14833,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 141 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 141 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_text_storage_position( ) ;
 $storage_item__2853 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 141 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2852 . '-' . $storage_item__2853 ;
@@ -15106,14 +14852,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 142 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 142 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2858 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 142 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2856 ;
 $global_operand_two = $storage_item__2857 . '-' . $storage_item__2858 ;
@@ -15134,14 +14878,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 143 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 143 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2862 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 143 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2861 . '-' . $storage_item__2862 ;
 $global_operand_two = $storage_item__2864 ;
@@ -15182,14 +14924,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 145 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 145 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__2870 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 145 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2869 ;
@@ -15204,14 +14944,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 146 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 146 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__get_all_operands( ) ;
 $storage_item__2872 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 146 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15220,14 +14958,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 147 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 147 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2876 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 147 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2875 . '-' . $storage_item__2876 ;
@@ -15251,14 +14987,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 148 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 148 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2887 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 148 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__2886 . '-' . $storage_item__2887 ;
@@ -15331,14 +15065,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 150 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 150 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2900 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 150 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2899 . '-' . $storage_item__2900 ;
 if ( &function_parameterized__yes_or_no_phrase_name( $global_operand_one ) == $global_no ) {
@@ -15364,14 +15096,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 151 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 151 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_amenn_case_action_not_empty( ) ;
 $storage_item__2902 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 151 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -15404,14 +15134,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 153 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 153 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_code_for_one_action( ) ;
 $storage_item__2908 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 153 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -15477,14 +15205,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 154 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 154 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2920 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 154 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2918 ;
 $global_operand_two = $storage_item__2919 . '-' . $storage_item__2920 ;
@@ -15587,14 +15313,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 155 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 155 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_next_case_2( ) ;
 $storage_item__2937 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 155 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -15607,14 +15331,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 156 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 156 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_token( ) ;
 $storage_item__2941 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 156 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -15623,7 +15345,6 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 157 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 157 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
@@ -15632,7 +15353,6 @@ $global_phrase_name_to_match = $storage_item__2943 . '-' . $storage_item__2941 ;
 &function_branch_based_on_phrase_name( ) ;
 $storage_item__2940 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 157 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -15699,14 +15419,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 158 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 158 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_next_case_3( ) ;
 $storage_item__2951 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 158 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -15719,14 +15437,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 159 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 159 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_phrase_name( ) ;
 $storage_item__2954 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 159 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -15809,14 +15525,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 160 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 160 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__handle_token_text_word( ) ;
 $storage_item__2967 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 160 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -15829,14 +15543,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 161 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 161 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2973 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 161 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2971 ;
 $global_operand_two = $storage_item__2972 . '-' . $storage_item__2973 ;
@@ -15914,14 +15626,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 162 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 162 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__2985 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 162 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__2983 ;
 $global_operand_two = $storage_item__2984 . '-' . $storage_item__2985 ;
@@ -16012,14 +15722,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 163 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 163 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__2998 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 163 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16028,14 +15736,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 164 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 164 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_definition_number( ) ;
 $storage_item__3003 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 164 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3001 ;
 $global_operand_two = $storage_item__3002 . '-' . $storage_item__3003 ;
@@ -16061,14 +15767,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 165 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 165 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__create_new_result_storage_position( ) ;
 $storage_item__3007 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 165 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16077,14 +15781,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 166 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 166 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__3011 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 166 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3010 . '-' . $storage_item__3011 ;
@@ -16103,14 +15805,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 167 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 167 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__recursion_stack_push( ) ;
 $storage_item__3015 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 167 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16119,14 +15819,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 168 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 168 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_being_defined( ) ;
 $storage_item__3020 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 168 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3018 ;
 $global_operand_two = $storage_item__3019 . '-' . $storage_item__3020 ;
@@ -16147,14 +15845,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 169 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 169 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_definition_number( ) ;
 $storage_item__3025 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 169 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3023 ;
 $global_operand_two = $storage_item__3024 . '-' . $storage_item__3025 ;
@@ -16229,14 +15925,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 170 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 170 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__generate_storage_for_current_text( ) ;
 $storage_item__3035 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 170 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -16245,14 +15939,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 171 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 171 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_text_storage_position( ) ;
 $storage_item__3040 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 171 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3038 ;
 $global_operand_two = $storage_item__3039 . '-' . $storage_item__3040 ;
@@ -16277,14 +15969,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 172 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 172 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__3045 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 172 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3043 ;
 $global_operand_two = $storage_item__3044 . '-' . $storage_item__3045 ;
@@ -16343,14 +16033,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 173 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 173 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__current_result_storage_position( ) ;
 $storage_item__3059 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 173 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3057 ;
 $global_operand_two = $storage_item__3058 . '-' . $storage_item__3059 ;
@@ -16495,14 +16183,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 174 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 174 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3088 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 174 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3088 ;
@@ -16525,14 +16211,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 175 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 175 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_standard_runtime_functions( ) ;
 $storage_item__3094 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 175 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3094 ;
@@ -16555,14 +16239,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 176 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 176 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__3100 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 176 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3100 ;
@@ -16585,14 +16267,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 177 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 177 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__3106 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 177 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3106 ;
@@ -16615,14 +16295,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 178 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 178 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__3112 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 178 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3112 ;
@@ -16645,14 +16323,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 179 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 179 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3118 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 179 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3118 ;
@@ -16675,14 +16351,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 180 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 180 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_all_definitions_complex( ) ;
 $storage_item__3124 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 180 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3124 ;
@@ -16705,14 +16379,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 181 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 181 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_all_phrase_names_complex( ) ;
 $storage_item__3130 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 181 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3130 ;
@@ -16735,14 +16407,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 182 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 182 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_debug_trace_all_dashrep_definitions( ) ;
 $storage_item__3136 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 182 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3136 ;
@@ -16892,14 +16562,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 183 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 183 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__position_top_of_stack( ) ;
 $storage_item__3159 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 183 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3159 ;
@@ -16925,14 +16593,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 184 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 184 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__position_top_of_stack( ) ;
 $storage_item__3165 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 184 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3163 ;
@@ -16953,14 +16619,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 185 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 185 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__position_top_of_stack( ) ;
 $storage_item__3173 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 185 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3170 ;
@@ -17053,14 +16717,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 186 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 186 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__position_top_of_stack( ) ;
 $storage_item__3193 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 186 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3193 ;
@@ -17086,14 +16748,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 187 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 187 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__recursion_stack_pop_case_not_empty( ) ;
 $storage_item__3196 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 187 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if else
 } else {
@@ -17106,14 +16766,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 188 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 188 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__recursion_stack_pop_case_empty( ) ;
 $storage_item__3199 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 188 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # begin action if end
 }
@@ -17230,14 +16888,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 189 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 189 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_length( ) ;
 $storage_item__3218 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 189 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -17246,14 +16902,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 190 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 190 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_length( ) ;
 $storage_item__3220 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 190 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3216 ;
@@ -17287,14 +16941,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 191 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 191 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__phrase_length( ) ;
 $storage_item__3231 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 191 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3231 ;
@@ -17358,14 +17010,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 192 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 192 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__initialize_input_output_files( ) ;
 $storage_item__3238 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 192 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3241 ;
@@ -17396,14 +17046,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 193 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 193 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__input_filename( ) ;
 $storage_item__3246 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 193 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3246 ;
@@ -17422,14 +17070,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 194 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 194 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__compile_source_code_generate_output_results( ) ;
 $storage_item__3250 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 194 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 if ( &function_parameterized__yes_or_no_phrase_name( $storage_item__3253 ) == $global_no ) {
 $storage_item__3252 = 'dashrep_compiled_runtime_error__' . $global_currently_executing_phrase_name_with_underscores . '__put_into_phrase__not_phrase_name ' . $storage_item__3253 . ' ' . $storage_item__3254 . ' ' ;
@@ -17447,14 +17093,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 195 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 195 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__write_results_to_output_file( ) ;
 $storage_item__3255 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 195 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -17463,14 +17107,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 196 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 196 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__check_elapsed_time( ) ;
 $storage_item__3257 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 196 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__3235 = $storage_item__3238 . ' ' . $storage_item__3240 . ' ' . $storage_item__3242 . ' ' . $storage_item__3245 . ' ' . $storage_item__3249 . ' ' . $storage_item__3250 . ' ' . $storage_item__3252 . ' ' . $storage_item__3255 . ' ' . $storage_item__3257 ;
@@ -17533,14 +17175,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 197 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 197 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3268 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 197 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3267 ;
@@ -17596,14 +17236,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 198 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 198 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__run_compiler( ) ;
 $storage_item__3274 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 198 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # save concatenated result
 $storage_item__3271 = $storage_item__3274 ;
@@ -17686,14 +17324,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 200 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 200 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3288 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 200 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3287 ;
@@ -17800,14 +17436,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 201 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 201 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3308 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 201 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3307 ;
@@ -17826,14 +17460,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 202 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 202 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3313 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 202 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3312 ;
@@ -17876,14 +17508,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 203 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 203 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3323 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 203 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3322 ;
@@ -17898,14 +17528,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 204 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 204 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3327 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 204 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3326 ;
@@ -17920,14 +17548,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 205 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 205 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3331 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 205 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3330 ;
@@ -17959,14 +17585,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 206 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 206 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3338 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 206 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3337 ;
@@ -17985,14 +17609,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 207 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 207 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3343 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 207 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3342 ;
@@ -18007,14 +17629,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 208 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 208 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3347 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 208 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3346 ;
@@ -18029,14 +17649,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 209 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 209 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3351 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 209 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3350 ;
@@ -18051,14 +17669,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 210 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 210 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3355 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 210 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3354 ;
@@ -18073,14 +17689,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 211 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 211 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3359 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 211 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3358 ;
@@ -18095,14 +17709,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 212 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 212 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3363 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 212 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3362 ;
@@ -18117,14 +17729,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 213 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 213 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3367 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 213 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3366 ;
@@ -18139,14 +17749,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 214 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 214 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__3371 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 214 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3371 ;
@@ -18165,14 +17773,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 215 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 215 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_definition_items( ) ;
 $storage_item__3374 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 215 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18181,14 +17787,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 216 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 216 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3376 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 216 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3374 ;
@@ -18207,14 +17811,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 217 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 217 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3381 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 217 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3380 ;
@@ -18229,14 +17831,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 218 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 218 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3385 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 218 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3384 ;
@@ -18251,14 +17851,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 219 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 219 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__3389 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 219 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3389 ;
@@ -18277,14 +17875,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 220 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 220 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_function_branches( ) ;
 $storage_item__3392 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 220 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18293,14 +17889,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 221 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 221 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3394 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 221 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3392 ;
@@ -18319,14 +17913,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 222 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 222 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3399 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 222 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3398 ;
@@ -18341,14 +17933,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 223 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 223 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3403 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 223 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3402 ;
@@ -18363,14 +17953,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 224 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 224 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__3407 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 224 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3407 ;
@@ -18389,14 +17977,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 225 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 225 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_functions_replacement_only( ) ;
 $storage_item__3410 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 225 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18405,14 +17991,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 226 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 226 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3412 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 226 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3410 ;
@@ -18431,14 +18015,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 227 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 227 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3417 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 227 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3416 ;
@@ -18453,14 +18035,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 228 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 228 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3421 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 228 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3420 ;
@@ -18475,14 +18055,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 229 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 229 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3425 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 229 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3425 ;
@@ -18501,14 +18079,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 230 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 230 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_all_compiled_functions( ) ;
 $storage_item__3428 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 230 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -18517,14 +18093,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 231 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 231 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3430 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 231 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3428 ;
@@ -18543,14 +18117,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 232 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 232 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3435 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 232 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3434 ;
@@ -18565,14 +18137,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 233 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 233 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3439 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 233 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3438 ;
@@ -18604,14 +18174,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 234 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 234 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3446 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 234 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3445 ;
@@ -18630,14 +18198,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 235 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 235 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3451 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 235 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3450 ;
@@ -18652,14 +18218,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 236 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 236 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3455 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 236 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3454 ;
@@ -18731,14 +18295,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 238 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 238 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3484 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 238 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3483 ;
@@ -18753,14 +18315,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 239 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 239 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3488 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 239 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3487 ;
@@ -18780,14 +18340,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 240 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 240 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__filename_output_results_from_compiler( ) ;
 $storage_item__3493 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 240 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # this code generated from standard template
 $global_operand_one = $storage_item__3493 ;
@@ -20172,14 +19730,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 241 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 241 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__define_special_strings_that_cannot_be_spelled_in_full( ) ;
 $storage_item__3884 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 241 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -20188,14 +19744,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 242 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 242 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__define_special_strings_that_contain_hyphens( ) ;
 $storage_item__3886 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 242 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 # Check for endless loop
 $global_endless_loop_counter ++ ;
@@ -20204,14 +19758,12 @@ if ( $global_endless_loop_counter > $global_endless_loop_counter_limit ) {
 exit ;
 }
 $global_saved_accumulator_pointer_at_recursion_location[ 243 ] = $global_accumulator_pointer ;
-# $saved_accumulator_pointer = $global_accumulator_pointer ;
 $global_accumulator_pointer = 243 ;
 $global_accumulator[ $global_accumulator_pointer ] = '' ;
 $global_count_of_items_appended_to_accumulator[ $global_accumulator_pointer ] = 0 ;
 &function_compiled__define_special_strings_that_are_padded_with_spaces( ) ;
 $storage_item__3888 = $global_accumulator[ $global_accumulator_pointer ] ;
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ 243 ] ;
-# $global_accumulator_pointer = $saved_accumulator_pointer ;
 
 $global_operand_one = $storage_item__3891 ;
 $global_operand_two = $storage_item__3892 ;
