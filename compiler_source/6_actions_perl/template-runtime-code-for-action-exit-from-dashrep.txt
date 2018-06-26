@@ -1,7 +1,18 @@
 template-runtime-code-for-every-action-begin
 
-if ( ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
-print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) {  <new_line>
+    if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( 'standard<character_hyphen>output' ) == $global_yes ) {  <new_line>
+        print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
+        if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) {  <new_line>
+            print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
+        }  <new_line>
+    } else {  <new_line>
+        print $output_results . "\n" ;  <new_line>
+    }  <new_line>
+}  <new_line>
+
+if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) {  <new_line>
+    print TRACE_OUT "\n\n\n" . 'Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep' . "\n" ;  <new_line>
 }  <new_line>
 
 exit ;  <new_line>
