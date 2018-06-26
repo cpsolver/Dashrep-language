@@ -9508,7 +9508,6 @@ template-runtime-code-for-every-action-begin
 template-runtime-code-check-for-endless-loop
 
 $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] = $global_accumulator_pointer ;  <new_line>
-# $saved_accumulator_pointer = $global_accumulator_pointer ;  <new_line>
 
 $global_accumulator_pointer = current-accumulator-pointer ;  <new_line>
 $global_accumulator[ $global_accumulator_pointer ] = '' ;  <new_line>
@@ -9518,7 +9517,6 @@ template-runtime-code-for-action-executable-phrase-end:
 runtime-code-storage-item-result = $global_accumulator[ $global_accumulator_pointer ] ;  <new_line>
 
 $global_accumulator_pointer = $global_saved_accumulator_pointer_at_recursion_location[ current-accumulator-pointer ] ;  <new_line>
-# $global_accumulator_pointer = $saved_accumulator_pointer ;  <new_line>
 
 template-runtime-code-for-every-action-end
 ----
@@ -9541,8 +9539,19 @@ template-runtime-code-for-action-executable-phrase-end
 template-runtime-code-for-action-exit-from-dashrep:
 template-runtime-code-for-every-action-begin
 
-if ( ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) && ( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ne '' ) ) {  <new_line>
-print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
+if ( exists( code-get-or-put-phrase-definition-begin 'standard<character_hyphen>output' code-get-or-put-phrase-definition-end ) ) {  <new_line>
+    if ( &function_parameterized__yes_or_no_phrase_definition_not_empty( 'standard<character_hyphen>output' ) == $global_yes ) {  <new_line>
+        print code-get-or-put-phrase-definition-begin 'standard-output' code-get-or-put-phrase-definition-end ;  <new_line>
+        if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) {  <new_line>
+            print TRACE_OUT "\n\n\n" . $output_results . "\n" ;  <new_line>
+        }  <new_line>
+    } else {  <new_line>
+        print $output_results . "\n" ;  <new_line>
+    }  <new_line>
+}  <new_line>
+
+if ( $global_yes_or_no_trace_output_file_is_open == $global_yes ) {  <new_line>
+    print TRACE_OUT "\n\n\n" . 'Exiting, as requested by action exit<character_hyphen>from<character_hyphen>dashrep' . "\n" ;  <new_line>
 }  <new_line>
 
 exit ;  <new_line>
