@@ -13,13 +13,13 @@ Version 3.03
 
 RUNNING
 
-These instructions explain how to run the Dashrep compiler, and the compiled program, in the Windows environment.
+These instructions explain how to run the Dashrep compiler, and the compiled program, in the Windows environment.  (Note: Running in the Linux environment is similar, but does not require setting the "PerlPath".)
 
 Use this command to prepare to use the Perl "interpreter."  Replace the "whatever" string as needed.
 
     set PerlPath=C:\whatever\
 
-Verify that the needed files are available.
+Optionally, verify that the needed files are available.
 
     dir %PerlPath%perl.exe
     dir %PerlPath%perl512.dll
@@ -28,18 +28,13 @@ Verify that the needed files are available.
 
 Compile the Dashrep code that tests the compiler.
 
-    del input_to_dashrep_compiler.txt
-    copy dashrep_test_code_joined_dashdefs.txt input_to_dashrep_compiler.txt
-    del output_trace.txt
-    %PerlPath%perl -w dashrep_compiler_executable.pl > output_piped_results_from_compiling_dashrep_test_code.txt
-    del output_executable_dashrep_test_code.pl
-    rename output_from_dashrep_compiler.txt output_ex output_executable_dashrep_test_code.pl
+    %PerlPath%perl -w dashrep_compiler_executable.pl < dashrep_test_code_joined_dashdefs.txt > output_log_from_dashrep_compiler.txt
+    del executable_test_dashrep_compiler.pl
+    rename output_from_dashrep_compiler.pl executable_test_dashrep_compiler.pl
 
-(Note: The above code will be simplified soon.)
+Run the compiled program, which generates an HTML file that shows the test results.
 
-Run the compiled program and then view the results.
-
-    %PerlPath%perl output_executable_dashrep_test_code.pl > output_results_from_dashrep_test.txt
+    %PerlPath%perl -w executable_test_dashrep_compiler.pl > output_results_from_dashrep_test.html
 
 Important: Some tests that expect the specific environments listed below may fail, even though the compiler is working correctly.
     * specific test folder names
