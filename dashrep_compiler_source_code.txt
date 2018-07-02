@@ -830,7 +830,7 @@ ambee if-end amenn
 
 ambee copy-text dashrep-path-prefix-for-file-writing dashrep-path-prefix-for-file-reading amenn
 ambee put-into-phrase input-filename  input_to_dashrep_compiler.txt  amenn
-ambee put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.txt  amenn
+ambee put-into-phrase filename-output-results-from-compiler  output_from_dashrep_compiler.pl  amenn
 ambee delete-file ambee filename-output-results-from-compiler amenn amenn
 ambee put-into-phrase filename-output-standard-runtime-functions  output_compiler_standard_runtime_functions.txt  amenn
 ambee delete-file ambee filename-output-standard-runtime-functions amenn amenn
