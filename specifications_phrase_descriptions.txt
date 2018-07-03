@@ -17,29 +17,72 @@ phrase-heading-begin
 Phrase
 phrase-heading-end
 phrase-description-begin
-A b-b phrase b-e is a hyphenated phrase that has a definition, and the definition is inserted in place of the hyphenated phrase.
+The word b-b phrase b-e refers to the combination of a b-b phrase name b-e and its associated b-b phrase definition b-e no-space .
+line-break line-break
+A b-b phrase name b-e is a hyphenated phrase, such as
+b-i-b animal hyphen-here type b-i-e no-space .
+line-break line-break
+A b-b phrase definition b-e is text that is associated with a phrase name.
 s-n
-Phrases are recognized regardless of whether or not they appear within a parameter phrase,
-which is started with the word
-am no-space bee (or a variation) and is ended with the word am no-space enn (or a variation).
+For example, the phrase name
+b-i-b animal hyphen-here type b-i-e
+can have a current definition of
+b-i-b dolphin b-i-e no-space .
+line-break line-break
+A b-b pre hyphen-here defined phrase b-e is a special phrase name for which the Dashrep language supplies a default definition.
+s-n
+Some pre hyphen-here defined phrases can be re hyphen-here defined,
+but others cannot be re hyphen-here defined.
+line-break line-break
+If a phrase name is encountered within text being translated (or &ldquo;expanded&rdquo;), and if the phrase name has an associated definition, then the phrase definition is inserted where the phrase name appears.
+line-break line-break
+The name b-b parameter phrase b-e refers to the text between the word b-i-b am no-space bee b-i-e (or equivalent) and its matching b-i-b am no-space enn b-i-e (or equivalent) no-space .
+s-n
+Parameter phrases can be nested within one another.
+line-break line-break
+Normally a phrase name is recognized regardless of whether or not it appears within the words
+b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e (or their equivalents).
+s-n
+An exception to this convention occurs when the action b-i-b put h-h into h-h phrase b-i-e is used.
 phrase-description-end
 phrase-heading-begin
 Directive
 phrase-heading-end
 phrase-description-begin
-A b-b directive b-e is a hyphenated phrase that triggers a special functionality in the translation.
+A b-b directive b-e is a special Dashrep hyphen-here defined phrase name that triggers a special functionality in the translation.
 s-n
-Directives are not recognized if they appear within a parameter phrase,
-which is started with the word
-am no-space bee (or a variation) and is ended with the word am no-space enn (or a variation).
+Directives are not recognized if they appear between the paired words
+b-i-b am no-space bee b-i-e (or equivalent) and b-i-b am no-space enn b-i-e (or equivalent).
 phrase-description-end
 phrase-heading-begin
 Action
 phrase-heading-end
 phrase-description-begin
-An b-b action b-e is a hyphenated phrase that has special significance when it appears at the beginning of a parameter phrase.
+An b-b action b-e is a special Dashrep hyphen-here defined phrase name that has special significance when it immediately follows the word b-i-b am no-space bee b-i-e (or equivalent).
 s-n
-An action is not recognized if it is not at the beginning of a parameter phrase.
+An action is not recognized if it does not immediately follow the word b-i-b am no-space bee b-i-e (or equivalent).
+line-break line-break
+Most actions must be followed by one or more b-b operands b-e no-space .
+s-n
+Typically an operand is either a phrase name,
+or a space hyphen-here delimited word,
+or a group of words delimited by b-i-b am no-space bee b-i-e and b-i-b am no-space bee b-i-e (or equivalents).
+s-n
+An action uses the operands to determine exactly what to do.
+phrase-description-end
+phrase-heading-begin
+Analogies to spoken languages
+phrase-heading-end
+phrase-description-begin
+The word b-i-b am no-space bee b-i-e is analogous to saying &ldquo;begin sentence,&rdquo;
+an action is analogous to a verb (as if it were the first word in the sentence),
+an inner group of words that begins with
+b-i-b am no-space bee b-i-e
+and ends with
+b-i-b am no-space enn b-i-e
+is analogous to a &ldquo;clause,&rdquo;
+and the final word b-i-b am no-space enn b-i-e
+is analogous to saying &ldquo;period&rdquo; (or &ldquo;end sentence &rdquo;).
 phrase-description-end
 -----
 
@@ -67,10 +110,6 @@ description-for-phrase-delayed-newline:
 This phrase is not defined, but this name is reserved for use as a placeholder where the phrase b-i-b new h-h line b-i-e needs to be inserted later, after other replacements have been done. s-n Normally this phrase is not needed because the text b-i-b <new_ no-space line> b-i-e serves this purpose. s-n When this phrase is used, this phrase should be defined as b-i-b new h-h line b-i-e just before the final translation step.
 -----
 
-description-for-phrase-character-close-square-bracket:
-This pre h-h defined phrase contains the close h-h square h-h bracket character ( no-space b-b ] b-e no-space ).
------
-
 description-for-phrase-character-hyphen:
 This pre h-h defined phrase contains one hyphen character
 ( no-space
@@ -92,10 +131,6 @@ if the operating system is not a Microsoft Windows operating h-h system,
 and it contains a backslash
 ( no-space b-i-b \ b-i-e no-space )
 if the operating system is a Microsoft Windows operating h-h system.
------
-
-description-for-phrase-character-open-square-bracket:
-This pre h-h defined phrase contains the open h-h square h-h bracket character ( no-space b-b [ b-e no-space ).
 -----
 
 description-for-phrase-character-space:
@@ -296,11 +331,11 @@ This action works similar to the action b-i-b if hyphen-here yes hyphen-here beg
 -----
 
 description-for-phrase-if-else:
-This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed in a parameter phrase (indicated by am no-space bee and am no-space enn) to be recognized.
+This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed within b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e to be recognized.
 -----
 
 description-for-phrase-if-end:
-This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed in a parameter phrase (indicated by am no-space bee and am no-space enn) to be recognized.
+This special text is recognized by the action b-i-b if hyphen-here yes hyphen-here begin b-i-e and the action b-i-b if hyphen-here no hyphen-here begin b-i-e no-space . sentence-next It must be enclosed within b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e to be recognized.
 -----
 
 description-for-phrase-linewise-input-line-count:
@@ -460,7 +495,7 @@ See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h us
 description-for-phrase-use-handler-with-each-word-in-phrase:
 This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase. s-n Each time the handler is expanded, the phrase b-i-b word-to-use-in-handler b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the handler needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done. s-n If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read h-h only list). s-n The first operand must be a phrase name that does not change, which means it cannot use any am no-space bee/am no-space enn words.
 paragraph-next
-Most commonly this action is used to generate a list, in which case the handler either appends text to a single phrase, or generates multiple new phrases (which are typically named using the content of the phrase b-i-b word h-h to h-h use h-h in h-h handler b-i-e as part of the phrase name). s-n Internally this action inserts parameter phrases that make use of an internal dashrep action named b-i-b use h-h handler h-h with h-h each h-h word h-h in h-h phrase h-h currently h-h at h-h character h-h position b-i-e no-space .
+Most commonly this action is used to either append multiple items of text to a single phrase, or generate multiple new phrases (which are typically named using the content of the phrase b-i-b word h-h to h-h use h-h in h-h handler b-i-e as part of the phrase name).
 -----
 
 description-for-phrase-word-to-use-in-handler:
@@ -476,15 +511,15 @@ This functionality is useful for generating XML and HTML code by using hyphenate
 -----
 
 description-for-phrase-yes-or-no-empty-phrase:
-This action supplies b-i-b yes b-i-e if the following specified phrase is empty no-space , and supplies b-i-b no b-i-e otherwise. s-n A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined. s-n If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies b-i-b yes b-i-e no-space .
+This action supplies b-i-b yes b-i-e if the following specified phrase is empty no-space , and supplies b-i-b no b-i-e otherwise. s-n A phrase is empty if it contains nothing, or if it contains only spaces, or if it has not yet been defined. s-n If no operand is supplied (which occurs if an innermost b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e group yields empty text), then this action supplies b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-opposite:
-This action supplies b-i-b no b-i-e if the text that follows contains the word b-i-b yes b-i-e no-space , and otherwise this action supplies b-i-b yes b-i-e no-space . s-n If no operand is supplied (which occurs if the intended operand is a parameter phrase that supplies no text), then this action supplies b-i-b yes b-i-e no-space .
+This action supplies b-i-b no b-i-e if the text that follows contains the word b-i-b yes b-i-e no-space , and otherwise this action supplies b-i-b yes b-i-e no-space . s-n If no operand is supplied (which occurs if an innermost b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e group yields empty text), then this action supplies b-i-b yes b-i-e no-space .
 -----
 
 description-for-phrase-yes-or-no-same-two-phrase-definitions:
-This action supplies b-i-b yes b-i-e if the following two phrase contain the same text, and supplies b-i-b no b-i-e otherwise.
+This action supplies b-i-b yes b-i-e if the following two phrases contain the same text, and supplies b-i-b no b-i-e otherwise. s-n If one phrase contains a space (or multiple spaces) and the other phrase contains a different number of spaces at the same location, the two phrases are not the same, even if the surrounding text is the same.
 -----
 
 description-for-phrase-yes-or-no-same-two-words:
@@ -632,11 +667,11 @@ to determine which tag names to use, and the sequence in which they are written.
 ----
 
 description-for-phrase-expand-text:
-This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file h-h path template to point to different file paths. s-n If the name of the phrase that needs to be expanded can change, then the action b-i-b get h-h phrase h-h name h-h from h-h phrase b-i-e can be used. s-n If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding am h-h bee and am h-h enn delimiters). s-n The first phrase name and the second phrase name can be the same (without automatically causing an endless loop).
+This action expands ("translates") the contents of the first phrase and puts the results into the second phrase. s-n This action provides a way to separately expand the same phrase repeatedly, such as for generating multiple items that will appear in different table cells, and for expanding the same file h-h path template to point to different file paths. s-n If the name of the phrase that needs to be expanded can change, then the action b-i-b get h-h phrase h-h name h-h from h-h phrase b-i-e can be used. s-n If needed, the expanded result can be inserted inline (into the code that contains this action) by following this action with the expanded phrase name (without surrounding b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e delimiters). s-n The first phrase name and the second phrase name can be the same (without automatically causing an endless loop).
 paragraph-next
-In addition to replacing hyphenated phrase names with their associated definitions, the expansion also replaces each occurrence of a specially identified hyphenated phrase with the definition of that phrase. s-n The specially identified hyphenated phrases begin and end with angle brackets ( no-space b-i-b &lt; b-i-e and b-i-b &gt; b-i-e no-space ) and contain at least one underscore ( no-space b-i-b _ b-i-e no-space ), such as b-i-b &lt;special_content&gt; b-i-e no-space . s-n For each such specially identified hyphenated phrase, the underscores are (internally) replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase (but the underscores are not changed if there is no associated phrase). s-n The special text b-i-b &lt;character_hyphen&gt; b-i-e is replaced by a hyphen ( no-space b-i-b - b-i-e no-space ) and is especially useful for handling text that contains Dashrep phrases that must not be replaced. s-n The special text items b-i-b &lt;no_space&gt; b-i-e and b-i-b &lt;new_line&gt; b-i-e provide functionality that is equivalent to the b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e directives.
+In addition to replacing hyphenated phrase names with their associated definitions, the expansion also replaces each occurrence of a specially identified hyphenated phrase with the definition of that phrase. s-n The specially identified hyphenated phrases begin and end with angle brackets ( no-space b-i-b &lt; b-i-e and b-i-b &gt; b-i-e no-space ) and contain at least one underscore ( no-space b-i-b _ b-i-e no-space ), such as b-i-b &lt;special_content&gt; b-i-e no-space . s-n For each such specially identified hyphenated phrase, the underscores are (internally) replaced with hyphens, and if the resulting hyphenated phrase has a definition, then that definition is inserted in place of the specially identified hyphenated phrase (but the underscores are not changed if there is no associated phrase). s-n The special text b-i-b &lt;character_hyphen&gt; b-i-e is replaced by a hyphen ( no-space b-i-b - b-i-e no-space ) and is especially useful for handling text that contains hyphenated phrases that must not be replaced. s-n The special text items b-i-b &lt;no_space&gt; b-i-e and b-i-b &lt;new_line&gt; b-i-e provide functionality that is equivalent to the b-i-b no h-h space b-i-e and b-i-b new h-h line b-i-e directives.
 paragraph-next
-This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed for complex expansions of Dashrep code.
+This action does the same translation of Dashrep text as the default expansion of Dashrep text, so this action is usually only needed when the same phrase must be expanded multiple times (with one or more different definitions each time).
 ----
 
 description-for-phrase-get-phrase-name-from-phrase:
@@ -679,15 +714,16 @@ directives.
 -----
 
 description-for-phrase-line-break:
-This phrase should be defined as text that, in turn, specifies a line break in the target language.
-paragraph-next
-Example: If the target language is HTML, normally this phrase would be defined as
-b-i-b &lt;br&nbsp;/&gt; b-i-e
-no-space .
+This phrase is pre h-h defined as
+b-i-b no h-h space &lt;br&nbsp;/&gt; no h-h space b-i-e
+no-space , which specifies a line break in the HTML language.
+s-n
+This definition can be changed, which is useful if the target language is not HTML.
 -----
 
 description-for-phrase-empty-text:
 This pre h-h defined phrase contains no text. s-n
+This phrase is seldom needed. s-n
 To clear a phrase, use the action b-i-b clear h-h phrase b-i-e no-space . s-n To test whether a phrase's definition is empty, use the action
 b-i-b yes h-h or h-h no h-h empty h-h phrase b-i-e
 no-space .
@@ -716,10 +752,6 @@ description-for-phrase-copy-listed-words-to-phrases-named-in-pattern:
 This action copies multiple phrase definitions. s-n Specifically space h-h delimited words in the first phrase are copied to multiple phrase names, where the phrase names have the pattern specified in the second phrase. s-n The pattern must contain characters between the text b-i-b am no-space bee hyphen-here no-space b-i-e (or b-i-b fenam no-space bee hyphen-here no-space b-i-e no-space ) and the text b-i-b no-space hyphen-here am no-space enn b-i-e (or b-i-b am no-space ennfen hyphen-here no-space b-i-e no-space ) no-space , and these characters must be the name of a phrase that contains the space hyphen-here delimited words that will be inserted at that position within the pattern. s-n If the phrase that contains the target word list contains only a single word without any spaces, then only one item will be copied. s-n If the list is empty, nothing will be copied. s-n If the number of words in the first phrase is different from the number of words in the list that is specified within the pattern, the copying will stop when the shorter list is exhausted. s-n This action is useful for copying a long list fast, without needing to use a separate Dashrep action for each item copied.
 paragraph-next
 Example: If the first phrase contains b-i-b dolphin buffalo bear b-i-e no-space , and the second phrase contains b-i-b item h-h am no-space bee h-h list h-h of h-h numbers h-h as h-h text h-h am no-space enn b-i-e no-space , and the phrase b-i-b list h-h of h-h numbers h-h as h-h text b-i-e contains the text b-i-b one two three b-i-e no-space , then the phrase b-i-b item h-h one b-i-e will contain b-i-b dolphin b-i-e and the phrase b-i-b item h-h two b-i-e will contain b-i-b buffalo b-i-e and the phrase b-i-b item h-h three b-i-e will contain b-i-b bear b-i-e no-space .
------
-
-description-for-phrase-use-handler-with-each-word-in-phrase-currently-at-character-position:
-This action is for internal use only. s-n It should not be used.
 -----
 
 description-for-phrase-zero-one-multiple:
@@ -957,16 +989,16 @@ This phrase contains diagnostic information after using the action b-i-b get h-h
 -----
 
 description-for-phrase-standard-output:
-This phrase contains the text that is written to standard output if em-dash but only if em-dash this phrase is not empty. s-n If this phrase is empty, then the normal convention is followed, which means that the expanded text is written to standard output. s-n In other programming languages the b-i-b print b-i-e statement is used to write text to standard output. s-n This phrase provides a way to completely control what is sent to standard output, without unexpected insertions of text caused by warnings and undefined Dashrep code.
+This phrase contains the text that is written to standard output if em-dash but only if em-dash this phrase is not empty when the compiled code finishes execution. s-n If this phrase is empty, then the normal convention is followed, which means that the expanded text is written to standard output. s-n In other programming languages the b-i-b print b-i-e statement is used to write text to standard output. s-n This phrase provides a way to completely control what is sent to standard output, without unexpected insertions of text caused by warnings and undefined Dashrep code, which is especially important when generating and sending HTML or JSON code to a browser.
 -----
 
 description-for-phrase-copy-text:
 This action copies the definition of the first hyphenated phrase into the definition of the second hyphenated phrase. s-n 
-This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted.
+This action must be followed by two phrase names, not one. s-n The previous definition of the second hyphenated phrase is deleted, and is no longer available.
 -----
 
 description-for-phrase-put-into-phrase:
-This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the end of the parameter phrase. s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
+This action copies into the first hyphenated phrase the text that follows the first hyphenated phrase, up to the next (innermost) b-i-b am no-space enn b-i-e no-space . s-n The text can contain hyphens if they are not adjacent to an open angle bracket or close angle bracket. s-n Trailing spaces and trailing hyphens are ignored.
 paragraph-next
 Example: After expanding the code b-i-b am no-space bee put-into-phrase target-phrase whale dolphin starfish am no-space enn b-i-e the phrase b-i-b target h-h phrase b-i-e
 will contain b-i-b whale dolphin starfish b-i-e no-space .
@@ -1198,11 +1230,11 @@ r-b c-b am no-space enn c-n Indicates the end of a parameter phrase. line-break 
 
 r-b c-b def no-space enn c-n Indicates the end of a phrase definition. s-n The beginning of the definition follows the word being defined. s-n The first space hyphen-here delimited word after the word b-i-b def no-space enn b-i-e is the next hyphenated phrase name to be defined. line-break line-break The beginning of the Dashrep code supplied to the Dashrep compiler is assumed to be the first hyphenated phrase name followed by its definition, and followed by the word b-i-b def no-space enn b-i-e no-space . s-n If the supplied Dashrep code does not contain any occurrence of the word b-i-b def no-space enn b-i-e no-space , then the entire Dashrep code is treated as a sequence of text that only has replacements when the hyphenated phrases are the ones defined within the Dashrep language. line-break line-break When spoken, the accent is on the characters b-i-b enn b-i-e no-space . c-e r-e
 
-r-b c-b fenam no-space bee c-n Indicates the continuation of a hyphenated phrase that includes a parameter phrase as part of the phrase. line-break line-break For example, b-i-b info h-h for h-h dolphin h-h named b-i-e red-b fenam no-space bee red-e b-i-b dolphin h-h name am no-space enn b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e no-space . c-e r-e
+r-b c-b fenam no-space bee c-n Indicates the continuation of a hyphenated phrase that includes a parameter phrase as part of the phrase name. line-break line-break For example, b-i-b info h-h for h-h dolphin h-h named b-i-e red-b fenam no-space bee red-e b-i-b dolphin h-h name am no-space enn b-i-e becomes b-i-b info h-h for h-h dolphin h-h named h-h leaper b-i-e if b-i-b dolphin h-h name b-i-e equals b-i-b leaper b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e no-space . c-e r-e
 
-r-b c-b am no-space ennfen c-n Indicates the end of a parameter phrase that, when it is translated, becomes part of a hyphenated phrase. line-break line-break For example, b-i-b info h-h in h-h row b-i-e red-b fenam no-space bee red-e b-i-b row h-h number b-i-e red-b am no-space ennfen red-e b-i-b column b-i-e red-b fenam no-space bee red-e b-i-b column h-h number am no-space enn b-i-e becomes b-i-b info h-h in h-h row h-h 2 h-h column h-h 3 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 2 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 3 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e no-space . c-e r-e
+r-b c-b am no-space ennfen c-n Indicates the end of a parameter phrase that, when it is translated, becomes part of a phrase name. line-break line-break For example, b-i-b info h-h in h-h row b-i-e red-b fenam no-space bee red-e b-i-b row h-h number b-i-e red-b am no-space ennfen red-e b-i-b column b-i-e red-b fenam no-space bee red-e b-i-b column h-h number am no-space enn b-i-e becomes b-i-b info h-h in h-h row h-h 2 h-h column h-h 3 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 2 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 3 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e no-space . c-e r-e
 
-r-b c-b am no-space enn no-space fenam no-space bee c-n Indicates the continuation of a hyphenated phrase that includes two adjacent parameter phrases as part of the phrase. line-break line-break For example, b-i-b info h-h at h-h row h-h and h-h column b-i-e red-b fenam no-space bee red-e b-i-b row h-h number b-i-e red-b am no-space enn no-space fenam no-space bee red-e b-i-b column h-h number am no-space enn b-i-e becomes b-i-b info h-h at h-h row h-h and h-h column h-h 2 h-h 3 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 2 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 3 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e em-dash in both places. c-e r-e
+r-b c-b am no-space enn no-space fenam no-space bee c-n Indicates the continuation of a phrase name that includes two adjacent parameter phrases as part of the phrase name. line-break line-break For example, b-i-b info h-h at h-h row h-h and h-h column b-i-e red-b fenam no-space bee red-e b-i-b row h-h number b-i-e red-b am no-space enn no-space fenam no-space bee red-e b-i-b column h-h number am no-space enn b-i-e becomes b-i-b info h-h at h-h row h-h and h-h column h-h 2 h-h 3 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 2 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 3 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b am b-i-e em-dash in both places. c-e r-e
 
 r-b c-b no no-space spay c-n This word is rarely needed. s-n It indicates that there should be no space to the right when it appears immediately before b-i-b am no-space bee b-i-e and no space to the left when it appears immediately after b-i-b am no-space enn b-i-e no-space . s-n This word has no special meaning when it is not adjacent to either of these other words. s-n For other places where spaces should be removed, the phrase b-i-b no h-h space b-i-e should be used instead. line-break line-break For example, b-i-b info h-h at h-h row h-h and h-h column b-i-e red-b fenam no-space bee red-e b-i-b row h-h number b-i-e red-b am no-space enn no no-space spay am no-space bee red-e b-i-b column h-h number b-i-e red-b am no-space enn red-e becomes b-i-b info h-h at h-h row h-h and h-h column h-h 002003 b-i-e if b-i-b row h-h number b-i-e equals b-i-b 002 b-i-e and b-i-b column h-h number b-i-e equals b-i-b 003 b-i-e no-space . line-break line-break When spoken, the accent is on the characters b-i-b no b-i-e no-space . c-e r-e
 
@@ -1222,41 +1254,41 @@ r-b c-b 1 c-n Space c-n non-breaking-space c-n Each space is significant as a de
 
 r-b c-b 2 c-n Comment c-n b-i-b com no-space bee b-i-e non-breaking-space comment here non-breaking-space b-i-b com no-space enn b-i-e c-n Comments are ignored. s-n The word b-i-b com no-space bee b-i-e indicates the beginning of a comment, and the word b-i-b com no-space enn b-i-e indicates the end of the comment. s-n Comments cannot be nested; if they are, the results are unpredictable. c-e r-e
 
-r-b c-b 3 c-n Hyphen c-n hyphen-here c-n A hyphen joins words that together form a hyphenated phrase. s-n For example, b-i-b dolphin h-h name b-i-e and b-i-b animals h-h under h-h the h-h sea b-i-e are hyphenated phrases. s-n A hyphen and a dash are different names for the same symbol. c-e r-e
+r-b c-b 3 c-n Hyphen c-n hyphen-here c-n A hyphen joins words that together form a hyphenated phrase. s-n For example, b-i-b dolphin h-h name b-i-e and b-i-b animals h-h under h-h the h-h sea b-i-e are hyphenated phrases. line-break line-break A hyphen and a dash are different names for the same symbol. line-break line-break A hyphenated phrase can contain multiple adjacent hyphens. s-n This convention can be used to avoid ambiguity in a &ldquo;namespace&rdquo;, and can be useful in ways that are similar to situations where object hyphen-here oriented languages would use a double colon (::). s-n For example, b-i-b animal h-h name h-h h-h characteristic b-i-e is a valid hyphenated phrase name. line-break line-break A hyphenated phrase cannot begin or end with a hyphen. c-e r-e
 
-r-b c-b 4 c-n Three or more adjacent hyphens c-n b-i-b h-h h-h h-h h-h b-i-e c-n Indicates the end of a phrase definition in Dashrep source code supplied to the Dashrep compiler. s-n This text is equivalent to the b-i-b def no-space enn b-i-e word. s-n The adjacent hyphens are easier to see when the Dashrep code is viewed in a text editor. c-e r-e
+r-b c-b 4 c-n Three or more adjacent hyphens c-n b-i-b h-h h-h h-h h-h b-i-e c-n Indicates the end of a phrase definition in Dashrep source code supplied to the Dashrep compiler. s-n This text is equivalent to the b-i-b def no-space enn b-i-e word. s-n The adjacent hyphens are easier to see (compared to the word b-i-b def no-space enn b-i-e no-space ) when Dashrep code is viewed in a text editor. c-e r-e
 
-r-b c-b 5 c-n Action within parameter phrase c-n b-i-b am no-space bee b-i-e zero h-h one h-h multiple 3 b-i-b am no-space enn b-i-e c-n If the first (left-most) hyphenated phrase following the word b-i-b am no-space bee b-i-e is a recognized action (see below), and the action is followed by text that the action knows how to handle, and the word b-i-b am no-space enn b-i-e terminates the sequence em-dash called a b-i-b parameter phrase b-i-e em-dash then the action is performed. s-n Some actions produce text that become a replacement for the parameter phrase. s-n Other actions operate on specified phrases or files and do not produce any text, in which case a space is supplied as the result that is inserted to replace the action phrase.
+r-b c-b 5 c-n Action c-n b-i-b am no-space bee b-i-e zero h-h one h-h multiple 3 b-i-b am no-space enn b-i-e c-n If the first (left-most) hyphenated phrase following the word b-i-b am no-space bee b-i-e (or equivalent) is a recognized action (see below), and the action is followed by text that the action knows how to handle, and the word b-i-b am no-space enn b-i-e terminates the sequence em-dash (sometimes called a b-i-b parameter phrase b-i-e em-dash no-space ) then the action is performed. s-n Some actions produce text that become a replacement for the parameter phrase. s-n Other actions operate on specified phrases or files and do not produce any text, in which case a space is supplied as the result that is inserted to replace the action phrase.
 line-break
 line-break
-In general, the word b-i-b am no-space bee b-i-e indicates the beginning of a parameter phrase, and the word b-i-b am no-space enn b-i-e indicates the end of a parameter phrase. s-n A parameter phrase is expanded before the surrounding text is expanded. s-n When a parameter phrase contains a nested parameter phrase (up to any level of nesting), the first-encountered innermost parameter phrase is expanded first. s-n After a parameter phrase is expanded, any spaces at the beginning or end of the supplied result are removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality.
+In general, the word b-i-b am no-space bee b-i-e indicates the beginning of a parameter phrase, and the word b-i-b am no-space enn b-i-e indicates the end of a parameter phrase. s-n An inner parameter phrase is expanded before the surrounding text is expanded. s-n When a parameter phrase contains a nested parameter phrase (up to any level of nesting), the first-encountered innermost parameter phrase is expanded first. s-n After a parameter phrase is expanded, any spaces at the beginning or end of the supplied result are removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality.
 c-e r-e
 
-r-b c-b 5 c-n Phrase name within parameter phrase c-n b-i-b am no-space bee b-i-e user h-h phrase h-h name b-i-b am no-space enn b-i-e c-n A hyphenated phrase within the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e is expanded in h-h place using the phrase's definition as the result. s-n The phrase definition can, in turn, contain parameter phrases, and they also will be expanded. s-n If the phrase name is not defined, it is left as-is, and the surrounding parameter words ( no-space b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space ) are removed. s-n Spaces at the beginning and end of the parameter phrase are also removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality. s-n The expansion of subordinate hyphenated phrases stops when there are no surrounding parameter words ( no-space b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space ), even if that un hyphen-here surrounded hyphenated phrase contains (in its definition) the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space. s-n The expansion of subordinate hyphenated phrases also stops if a definition contains use of the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e without correct pairing.
+r-b c-b 5 c-n Phrase name within parameter phrase c-n b-i-b am no-space bee b-i-e user h-h phrase h-h name b-i-b am no-space enn b-i-e c-n A hyphenated phrase within the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e is expanded in h-h place using the phrase's definition as the result. s-n The phrase definition can, in turn, contain parameter phrases, and they also will be expanded. s-n If the phrase name is not defined, it is left as-is, and the surrounding parameter words ( no-space b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space ) are removed. s-n Spaces at the beginning and end of the parameter phrase are also removed, which allows the expanded text to become part of a hyphenated phrase, which enables versatile functionality. s-n The expansion of subordinate hyphenated phrases stops when there are no surrounding parameter words ( no-space b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space ), even if that un hyphen-here surrounded hyphenated phrase contains (in its definition) the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e no-space . s-n The expansion of subordinate hyphenated phrases also stops if a definition contains use of the words b-i-b am no-space bee b-i-e and b-i-b am no-space enn b-i-e without correct pairing.
 line-break
 line-break
 The same general comments about action phrases (see above) also apply to a phrase name within a parameter phrase.
 c-e r-e
 
-r-b c-b 6 c-n Hyphenated phrase c-n dolphin h-h name c-n A hyphen surrounded by non-space characters (and also excluding square brackets) is recognized as a hyphenated phrase. s-n A phrase name is case-sensitive. s-n Lowercase-only names are recommended, but not required. s-n Speakable names are recommended, but not required. s-n The use of nouns before, rather than after, adjectives is recommended; this convention (for example b-i-b rectangle h-h large h-h begin b-i-e instead of b-i-b large h-h rectangle h-h begin b-i-e no-space ) is typical of many spoken languages, but not English.  s-n The first character cannot be a hyphen and cannot be a digit. s-n The last character cannot be a hyphen. c-e r-e
+r-b c-b 6 c-n Hyphenated phrase c-n dolphin h-h name c-n A hyphen surrounded by non-space characters is recognized as a hyphenated phrase. s-n A phrase name is case-sensitive. s-n Lowercase-only names are recommended, but not required. s-n Speakable names are recommended, but not required. s-n The use of nouns before, rather than after, adjectives is recommended; this convention (for example b-i-b rectangle h-h large h-h begin b-i-e instead of b-i-b large h-h rectangle h-h begin b-i-e no-space ) is typical of many spoken languages, but not English.  s-n The first character cannot be a hyphen and cannot be a digit. s-n The last character cannot be a hyphen. c-e r-e
 
-r-b c-b 7 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
+r-b c-b 6 c-n Undefined hyphenated phrase c-n quite-talkative parrot c-n If a hyphenated phrase has not been defined, it is not translated; it remains unchanged. s-n If a hyphenated phrase has been defined and is now empty, the hyphenated phrase will disapper. c-e r-e
 
-r-b c-b 8 c-n Colon c-n dolphin h-h name no-space b-i-b : b-i-e leaper non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n A colon can appear at the end of a hyphenated phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
+r-b c-b 7 c-n Colon c-n dolphin h-h name no-space b-i-b : b-i-e leaper non-breaking-space b-i-b h-h h-h h-h h-h b-i-e c-n A colon can appear at the end of a hyphenated phrase being defined. s-n This convention is optional. s-n It offers the advantage of making it easier to search for where a hyphenated phrase is defined, without also finding each place it is used. c-e r-e
 
-r-b c-b 9 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the b-i-b new h-h line b-i-e phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase b-i-b line h-h break b-i-e can be used to insert the appropriate target-specific code (which in HTML is the b-i-b &lt;br \&gt; b-i-e tag). s-n Newline characters can be inserted into text using special actions (explained below) and by using the special phrase b-i-b character hyphen-here newline b-i-e as an operand with some actions. c-e r-e
+r-b c-b 8 c-n New line or line break c-n one line b-i-b line-break b-i-e next line c-n When a new line begins, it is replaced with a space. s-n When a new line needs to be inserted into the resulting text, the b-i-b new h-h line b-i-e phrase (explained below) can be used. s-n If a line break in the target language (such as HTML) is needed, the phrase b-i-b line h-h break b-i-e can be used to insert the appropriate target-specific code (which in HTML is the b-i-b &lt;br \&gt; b-i-e tag). s-n Newline characters can be inserted into text using special actions (explained below) and by using the special phrase b-i-b character hyphen-here newline b-i-e as an operand with some actions. c-e r-e
 
-r-b c-b 10 c-n hyphen h-h here c-n b-i-b hyphen h-h here b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n hyphen h-h here c-n b-i-b hyphen h-h here b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 11 c-n non h-h breaking h-h space c-n b-i-b non h-h breaking h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n non h-h breaking h-h space c-n b-i-b non h-h breaking h-h space b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 12 c-n empty h-h line c-n b-i-b empty h-h line b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n empty h-h line c-n b-i-b empty h-h line b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 13 c-n new h-h line c-n b-i-b new h-h line b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n new h-h line c-n b-i-b new h-h line b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 14 c-n no h-h space c-n b-i-b no h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n no h-h space c-n b-i-b no h-h space b-i-e c-n Explained below. c-e r-e
 
-r-b c-b 15 c-n one h-h space c-n b-i-b one h-h space b-i-e c-n Explained below. c-e r-e
+r-b c-b 9 c-n one h-h space c-n b-i-b one h-h space b-i-e c-n Explained below. c-e r-e
 
 t-e
 ----
