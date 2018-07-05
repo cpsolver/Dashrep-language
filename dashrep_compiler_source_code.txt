@@ -1021,8 +1021,10 @@ ambee copy-from-phrase-append-to-file output-results-all-runtime-functions ambee
 
 ambee copy-from-phrase-append-to-file segment-functions-runtime-end ambee filename-output-results-from-compiler amenn amenn
 
+combee **** remove if OK:
 ambee clear-phrase standard-output amenn
 ambee linewise-read-from-file-and-use-handler ambee filename-output-results-from-compiler amenn append-one-line-to-standard-output amenn
+**** comenn
 ----
 bracketed-placeholder-for-empty-line:
 <placeholder_for_empty_line>
