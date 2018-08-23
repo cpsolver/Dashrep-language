@@ -1017,7 +1017,7 @@ This action appends a newline code to the end of a definition.
 ----
 
 description-for-phrase-copy-word-at-position:
-This action copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number. s-n A position number of 1 indicates the first word in the definition. s-n The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words.
+This action copies one word from the definition of the first phrase into the definition of the second phrase, with the word position being specified by a number. s-n A position number of 1 indicates the first word in the definition. s-n The words are any sequence of characters that does not include a space, and spaces are regarded as the separation between each pair of words. s-n If the position number exceeds the word count, the last word is copied.
 ----
 
 description-for-phrase-copy-zero-pad-left-to-length:
@@ -1123,7 +1123,7 @@ Example: If the first phrase contains the text b-i-b 7 1 5 3 12 b-i-e then the t
 ----
 
 description-for-phrase-get-word-at-position:
-This action supplies a word that is contained at the specified b-i-b word b-i-e position (not character position) within the second phrase. s-n The word position is supplied as an integer number. s-n The word positions are numbered starting with 1 at the first word position. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces.
+This action supplies a word that is contained at the specified b-i-b word b-i-e position (not character position) within the second phrase. s-n The word position is supplied as an integer number. s-n The word positions are numbered starting with 1 at the first word position. s-n Words are regarded as text items that do not contain any spaces, and which are separated by one (or more) spaces. s-n If the position number exceeds the word count, the last word is supplied.
 paragraph-next
 Example: If the first phrase contains b-i-b whale dolphin starfish jellyfish dolphin b-i-e and the second operand is b-i-b 2 b-i-e
 then the supplied value is b-i-b dolphin b-i-e no-space .
