@@ -1781,7 +1781,7 @@ template-quoted-dashrep-time-limit:
 '1200'
 ----
 template-quoted-dashrep-version:
-'5.01'
+'5.02'
 ----
 template-quoted-empty-text:
 ''
