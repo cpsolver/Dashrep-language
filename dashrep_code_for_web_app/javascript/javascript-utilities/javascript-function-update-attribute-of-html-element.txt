@@ -7,25 +7,25 @@ jsfunction-update-attribute-of-html-element js-equals function( jsvar-element-se
         jsvar-element-name js-equals code-open-close-quote js-statement-end
     js-if-end
     js-if js-paren-begin ! no-space jsvar-element-selected js-paren-end js-logical-or js-paren-begin jsvar-element-selected no-space .length < 1 js-paren-end js-then
-*---
+combee ***
         jslog-begin code-open-quote invalid request to change attribute one-space code-close-quote js-concat jsvar-attribute-name js-concat code-open-quote one-space of selected element one-space code-close-quote js-concat jsvar-element-name js-concat code-open-quote one-space to value one-space code-close-quote js-concat jsvar-value-after-update jslog-end
----*
+*** comenn
         jsvar-trace-info js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-end js-statement-end
 
-*---
+combee ***
         jslog-begin code-open-quote jsvar-trace-info code-close-quote jslog-equal-sign jsvar-trace-info jslog-end
----*
+*** comenn
         return false js-statement-end
     js-if-end
     js-if js-paren-begin ! no-space jsvar-attribute-name js-paren-end js-logical-or js-paren-begin jsvar-attribute-name no-space .length < 1 js-paren-end js-then
-*---
+combee ***
         jslog-begin code-open-quote invalid request to change attribute one-space code-close-quote js-concat jsvar-attribute-name js-concat code-open-quote one-space of selected element one-space code-close-quote js-concat jsvar-element-name js-concat code-open-quote one-space to value one-space code-close-quote js-concat jsvar-value-after-update jslog-end
----*
+*** comenn
         jsvar-trace-info js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-end js-statement-end
 
-*---
+combee ***
         jslog-begin code-open-quote jsvar-trace-info code-close-quote jslog-equal-sign jsvar-trace-info jslog-end
----*
+*** comenn
         return false js-statement-end
     js-if-end
 
@@ -54,9 +54,9 @@ jsfunction-update-attribute-of-html-element js-equals function( jsvar-element-se
 
     js-else-if jsvar-attribute-name js-is-equal-to "height" js-then
         js-if jsvar-element-selected no-space .hasAttribute( jsvar-attribute-name ) js-then
-*---
+combee ***
             jslog-begin code-open-quote if this element is type <img> or <input>, the height attribute of the element was not changed; only the CSS style kind of height is changed code-close-quote jslog-end
----*
+*** comenn
         js-if-end
         jsvar-element-selected no-space .style[ "height" ] js-equals jsvar-value-after-update js-statement-end
         js-if jsvar-element-selected no-space .style[ "height" ] js-is-equal-to jsvar-value-after-update js-then
@@ -70,12 +70,12 @@ jsfunction-update-attribute-of-html-element js-equals function( jsvar-element-se
         js-if-end
 
     js-else-if js-paren-begin jsvar-attribute-name js-is-equal-to "size" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "maxlength" js-paren-end js-then
-*---
+combee ***
         jslog-begin code-open-quote attribute one-space code-close-quote js-concat jsvar-attribute-name js-concat code-open-quote one-space requires special handling and is not supported by this function code-close-quote jslog-end
----*
+*** comenn
         return false js-statement-end
 
-    js-else-if js-paren-begin jsvar-attribute-name js-is-equal-to "background-image" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "background-color" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "min-width" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "max-width" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "min-height" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "max-height" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-left" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-top" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-right" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-bottom" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-left" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-top" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-right" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-bottom" js-paren-end js-then
+    js-else-if js-paren-begin jsvar-attribute-name js-is-equal-to "background-image" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "background-color" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "min-width" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "max-width" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "min-height" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "max-height" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-left" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-top" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-right" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "margin-bottom" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-left" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-top" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-right" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "padding-bottom" js-paren-end js-logical-or js-paren-begin jsvar-attribute-name js-is-equal-to "line-height" js-paren-end js-then
         jsvar-pointer-to-hyphen js-equals jsvar-attribute-name no-space .indexOf( "-" ) js-statement-end
         jsvar-letter-to-capitalize js-equals jsvar-attribute-name no-space .substr( js-paren-begin jsvar-pointer-to-hyphen + 1 js-paren-end , 1 ) js-statement-end
         jsvar-attribute-name-without-hyphen js-equals jsvar-attribute-name no-space .substring( 0 , jsvar-pointer-to-hyphen ) js-concat jsvar-letter-to-capitalize no-space .toUpperCase() js-concat jsvar-attribute-name no-space .substring( jsvar-pointer-to-hyphen + 2 ) js-statement-end
@@ -84,22 +84,32 @@ jsfunction-update-attribute-of-html-element js-equals function( jsvar-element-se
             return true js-statement-end
         js-if-end
 
+combee **** handle special "attributes" n (newline), e (empty line), i (italics), b (bold), which insert element then append text then (for italics and bold) insert closing element **** comenn
+    js-else-if jsvar-attribute-name js-is-equal-to code-open-quote n code-close-quote js-then
+        jsvar-element-selected no-space .html js-equals-concatenate '<br />' js-concat jsvar-value-after-update js-statement-end
+    js-else-if jsvar-attribute-name js-is-equal-to code-open-quote e code-close-quote js-then
+        jsvar-element-selected no-space .html js-equals-concatenate '<br /><br />' js-concat jsvar-value-after-update js-statement-end
+    js-else-if jsvar-attribute-name js-is-equal-to code-open-quote i code-close-quote js-then
+        jsvar-element-selected no-space .html js-equals-concatenate '<i>' js-concat jsvar-value-after-update js-concat '</i>' js-statement-end
+    js-else-if jsvar-attribute-name js-is-equal-to code-open-quote b code-close-quote js-then
+        jsvar-element-selected no-space .html js-equals-concatenate '<b>' js-concat jsvar-value-after-update js-concat '</b>' js-statement-end
+
     js-else
-*---
+combee ***
         jslog-begin code-open-quote attribute one-space code-close-quote js-concat jsvar-attribute-name js-concat code-open-quote one-space is not supported by updateAttributeOfHtmlElement function" jslog-end
----*
+*** comenn
         return false js-statement-end
 
     js-if-end
 
-*---
+combee ***
     jslog-begin code-open-quote failed to set attribute one-space code-close-quote js-concat jsvar-attribute-name js-concat code-open-quote one-space to value one-space code-close-quote js-concat jsvar-value-after-update js-concat code-open-quote one-space in element one-space code-close-quote js-concat jsvar-element-name jslog-end
----*
+*** comenn
     jsvar-trace-info js-equals jsfunction-get-contents-from-html-element-with-id js-params-begin code-open-quote selectext-id-javascript-trace code-close-quote js-params-end js-statement-end
 
-*---
+combee ***
     jslog-begin code-open-quote jsvar-trace-info code-close-quote jslog-equal-sign jsvar-trace-info jslog-end
----*
+*** comenn
     return true js-statement-end
 } js-statement-end
 <new_line>
