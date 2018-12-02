@@ -125,7 +125,7 @@ my $global_list_length = 0 ;  <new_line>
 
 my $global_action_debug_line = '' ;  <new_line>
 my $global_endless_loop_counter = 0 ;  <new_line>
-my $global_endless_loop_counter_limit = 900000 ;  <new_line>
+my $global_endless_loop_counter_limit = 9000000 ;  <new_line>
 my $global_time_limit = 300 ;  # 300 seconds = 5 minutes  <new_line>
 my $global_starting_time = time ;  <new_line>
 my $global_interval_count_for_time_limit_check = 0 ;  <new_line>
