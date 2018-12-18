@@ -6,6 +6,7 @@ four-hyphens
 character-newline
 line-break
 character-tab
+character-underscore
 character-open-square-bracket
 character-close-square-bracket
 dashrep-endless-loop-counter-limit
