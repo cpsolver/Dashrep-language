@@ -1,0 +1,29 @@
+ambee clear-phrase collected-dashdefs amenn
+ambee put-into-phrase dashdef-phrase-name  dashdef-language  amenn
+ambee copy-text string-yes dashdef-phrase-definition amenn
+ambee append-new-line dashdef-phrase-definition amenn
+ambee generate-one-dashdef amenn
+
+ambee put-into-phrase dashdef-phrase-name  source-code-copyright-notice-if-missing-below  amenn
+ambee copy-text source-code-copyright-notice dashdef-phrase-definition amenn
+ambee append-new-line dashdef-phrase-definition amenn
+ambee generate-one-dashdef amenn
+
+ambee put-into-phrase dashdef-phrase-name  sandbox-or-backstage  amenn
+ambee copy-text sandbox-or-backstage dashdef-phrase-definition amenn
+ambee append-new-line dashdef-phrase-definition amenn
+ambee generate-one-dashdef amenn
+
+ambee put-into-phrase dashdef-phrase-name  compatibility-version-number  amenn
+ambee copy-text compatibility-version-number dashdef-phrase-definition amenn
+ambee append-new-line dashdef-phrase-definition amenn
+ambee generate-one-dashdef amenn
+
+ambee copy-text collected-dashdefs collected-dashdefs-that-specify-version amenn
+
+combee ****
+ambee expand-text template-filename-dashdefs-that-specify-version output-filename amenn
+ambee copy-text path-to-dashdef-local dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file collected-dashdefs-that-specify-version ambee output-filename amenn amenn
+**** comenn

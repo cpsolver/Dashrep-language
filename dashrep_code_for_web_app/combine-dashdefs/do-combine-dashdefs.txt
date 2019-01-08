@@ -1,0 +1,12 @@
+ambee copy-text character-newline end-of-line-indicator amenn
+ambee put-into-phrase yes-or-no-trim-spaces-when-copy-from-file  yes  amenn
+ambee put-into-phrase yes-or-no-skip-empty-lines-when-copy-from-file  no  amenn
+ambee expand-text template-definition-end definition-end amenn
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-file-to-phrase temp_list_of_dashdef_files_to_join.txt list-of-file-paths amenn
+
+combee **** eliminate duplicate paths **** comenn
+ambee copy-words-unique-only list-of-file-paths list-of-file-paths amenn
+
+ambee use-handler-with-each-word-in-phrase handle-one-dashdef list-of-file-paths amenn

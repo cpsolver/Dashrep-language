@@ -1,0 +1,6 @@
+ambee copy-words-found-in-both-lists list-of-jslog-and-trace-words linewise-input-line-from-file possible-jslog-or-trace-word amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase possible-jslog-or-trace-word amenn amenn
+ambee append-text-no-space linewise-input-line-from-file collected-dashdefs-without-jslog-and-trace amenn
+ambee append-text-no-space character-newline collected-dashdefs-without-jslog-and-trace amenn
+ambee if-end amenn

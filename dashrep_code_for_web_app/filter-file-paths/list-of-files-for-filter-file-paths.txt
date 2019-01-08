@@ -1,0 +1,10 @@
+C:\path_to_dashrep_code_for_web_app\shared\source-code-copyright-notice.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\character-period.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\do-filter-file-paths.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\filename-list-of-file-paths.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\filename-list-of-folder-prefixes.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\handle-one-folder-prefix.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\list-of-folders-for-filter-file-paths.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\output-filename.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\start-here.txt
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\string-dot-lnk.txt

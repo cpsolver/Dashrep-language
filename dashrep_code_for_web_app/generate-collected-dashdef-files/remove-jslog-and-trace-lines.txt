@@ -1,0 +1,8 @@
+ambee clear-phrase collected-dashdefs-without-jslog-and-trace amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee put-into-phrase output-filename  temp_file_storage.txt  amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file collected-dashdefs ambee output-filename amenn amenn
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee copy-text output-filename input-filename amenn
+ambee linewise-read-from-file-and-use-handler ambee input-filename amenn remove-jslog-and-trace-handle-one-line amenn

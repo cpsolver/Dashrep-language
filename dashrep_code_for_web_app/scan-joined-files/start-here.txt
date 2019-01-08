@@ -1,0 +1,9 @@
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-text string-am string-am-bee-without-space amenn
+ambee append-text-no-space string-bee string-am-bee-without-space amenn
+ambee copy-text string-am string-am-enn-without-space amenn
+ambee append-text-no-space string-enn string-am-enn-without-space amenn
+ambee linewise-read-from-file-and-use-handler ambee input-filename amenn handle-one-line amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file all-messages ambee output-filename amenn amenn

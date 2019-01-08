@@ -1,0 +1,26 @@
+ambee copy-text word-to-use-in-handler full-path amenn
+ambee get-phrase-name-and-path-prefix amenn
+ambee copy-text phrase-name indirect-phrase-name amenn
+ambee prepend-text-no-space prefix-already-have indirect-phrase-name amenn
+
+combee **** if duplicate phrase name, use only first occurrence **** comenn
+ambee if-yes-begin ambee yes-or-no-empty-phrase indirect-phrase-name amenn amenn
+ambee clear-phrase phrase-name amenn
+ambee if-end amenn
+
+combee **** omit if no hyphen in phrase name **** comenn
+ambee if-yes-begin ambee yes-or-no-same-two-words 0 ambee get-position-of-matching-text character-hyphen phrase-name amenn amenn amenn
+ambee clear-phrase phrase-name amenn
+ambee if-end amenn
+
+combee **** omit if phrase name is not at least three characters in length **** comenn
+ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee get-count-of-characters phrase-name amenn 2 amenn amenn amenn
+ambee clear-phrase phrase-name amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase phrase-name amenn amenn
+ambee append-one-dashdef amenn
+ambee if-end amenn
+
+ambee clear-phrase phrase-name amenn
+ambee clear-phrase phrase-definition amenn

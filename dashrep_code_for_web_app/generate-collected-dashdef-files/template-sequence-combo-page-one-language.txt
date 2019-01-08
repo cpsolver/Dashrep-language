@@ -1,0 +1,9 @@
+execute
+<new_line>
+generate_combo_page_ no-space compatibility-version-number-backstage
+<new_line>
+
+execute
+<new_line>
+iterate_language_choice
+<new_line>

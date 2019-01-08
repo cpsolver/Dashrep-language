@@ -1,0 +1,9 @@
+ambee append-text-no-space phrase-name standard-output amenn
+ambee append-text-no-space character-colon standard-output amenn
+ambee append-new-line standard-output amenn
+ambee copy-text path-prefix dashrep-path-prefix-for-file-reading amenn
+ambee copy-from-file-to-phrase ambee phrase-file-name amenn phrase-definition amenn
+ambee append-text-no-space phrase-definition standard-output amenn
+ambee append-text-no-space definition-end standard-output amenn
+ambee append-new-line standard-output amenn
+ambee copy-text string-used ambee get-phrase-name-from-phrase indirect-phrase-name amenn amenn

@@ -1,0 +1,56 @@
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee copy-from-file-to-phrase ambee filename-dashrep-code-needing-shorter-names amenn list-of-names-to-assign amenn
+ambee copy-text path-to-dashdef-local dashrep-path-prefix-for-file-reading amenn
+ambee copy-words-unique-only list-of-names-to-assign list-of-names-to-assign amenn
+ambee put-into-phrase begin-with-text  jsfunction  amenn
+ambee copy-words-that-begin-with-text list-of-names-to-assign names-to-assign-beginning-with-jsfunction begin-with-text amenn
+ambee copy-words-sort-alphabetic names-to-assign-beginning-with-jsfunction names-to-assign-beginning-with-jsfunction amenn
+ambee put-into-phrase begin-with-text  jsvar  amenn
+ambee copy-words-that-begin-with-text list-of-names-to-assign names-to-assign-beginning-with-jsvar begin-with-text amenn
+ambee copy-words-sort-alphabetic names-to-assign-beginning-with-jsvar names-to-assign-beginning-with-jsvar amenn
+ambee put-into-phrase begin-with-text  jscon  amenn
+ambee copy-words-that-begin-with-text list-of-names-to-assign names-to-assign-beginning-with-jscon begin-with-text amenn
+ambee copy-words-sort-alphabetic names-to-assign-beginning-with-jscon names-to-assign-beginning-with-jscon amenn
+ambee put-into-phrase begin-with-text  selectext  amenn
+ambee copy-words-that-begin-with-text list-of-names-to-assign names-to-assign-beginning-with-selectext begin-with-text amenn
+ambee copy-words-sort-alphabetic names-to-assign-beginning-with-selectext names-to-assign-beginning-with-selectext amenn
+ambee put-into-phrase begin-with-text  class-style  amenn
+ambee copy-words-that-begin-with-text list-of-names-to-assign names-to-assign-beginning-with-class-style begin-with-text amenn
+ambee copy-words-sort-alphabetic names-to-assign-beginning-with-class-style names-to-assign-beginning-with-class-style amenn
+ambee copy-text list-of-special-names-not-automatically-recognized list-of-names-to-assign amenn
+ambee append-text names-to-assign-beginning-with-jsfunction list-of-names-to-assign amenn
+ambee append-text names-to-assign-beginning-with-jsvar list-of-names-to-assign amenn
+ambee append-text names-to-assign-beginning-with-jscon list-of-names-to-assign amenn
+ambee append-text names-to-assign-beginning-with-selectext list-of-names-to-assign amenn
+ambee append-text names-to-assign-beginning-with-class-style list-of-names-to-assign amenn
+
+
+ambee copy-text names-to-assign-beginning-with-selectext list-of-selectext-names-in-folder-lookup amenn
+combee
+todo: bug? previously worked, but list-of-special-names-in-folder-lookup not defined:
+ambee copy-words-found-in-both-lists names-to-assign-beginning-with-selectext list-of-special-names-in-folder-lookup list-of-selectext-names-in-folder-lookup amenn
+comenn
+
+
+ambee append-text list-of-selectext-names-in-folder-lookup list-of-names-to-assign amenn
+ambee copy-words-unique-only list-of-names-to-assign list-of-names-to-assign amenn
+ambee copy-text list-of-selectext-names-in-folder-lookup list-of-assigned-name-prefixes-needed-for-lookup amenn
+ambee append-text template-list-of-valid-json-lookup-requests list-of-assigned-name-prefixes-needed-for-lookup amenn
+
+
+combee
+ambee trace-show list-of-special-names-in-folder-lookup amenn
+ambee trace-show list-of-selectext-names-in-folder-lookup amenn
+ambee trace-show list-of-assigned-name-prefixes-needed-for-lookup amenn
+comenn
+
+
+ambee copy-words-that-begin-with-listed-words list-of-names-to-assign list-of-names-to-assign-needed-for-lookup list-of-assigned-name-prefixes-needed-for-lookup amenn
+ambee copy-words-found-only-in-first-list list-of-names-to-assign list-of-names-to-assign-needed-for-combo-page list-of-names-to-assign-needed-for-lookup amenn
+
+
+combee
+ambee trace-show list-of-special-names-in-folder-lookup amenn
+ambee trace-show list-of-selectext-names-in-folder-lookup amenn
+comenn
+

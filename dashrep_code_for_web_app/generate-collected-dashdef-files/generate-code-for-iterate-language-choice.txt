@@ -1,0 +1,9 @@
+ambee put-into-phrase dashrep-path-prefix-for-file-reading  C:\path_to_dashrep_code_for_web_app\  amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee delete-file code_for_compile_iterate_language_choice.txt amenn
+ambee copy-append-file-to-file tool-iterate-language-choice.txt code_for_compile_iterate_language_choice.txt amenn
+ambee delete-file language_choices_list.txt amenn
+ambee copy-from-phrase-append-to-file list-of-languages-to-upload language_choices_list.txt amenn
+ambee delete-file language_choice.txt amenn
+ambee copy-word-at-position list-of-languages-to-upload language-choice-initial 1 amenn
+ambee copy-from-phrase-append-to-file language-choice-initial language_choice.txt amenn

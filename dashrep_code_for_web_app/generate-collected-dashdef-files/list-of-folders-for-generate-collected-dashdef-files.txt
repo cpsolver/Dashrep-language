@@ -1,0 +1,15 @@
+C:\path_to_dashrep_code_for_web_app\shared\source-code-copyright-notice
+C:\path_to_dashrep_code_for_web_app\generate-collected-dashdef-files\
+C:\path_to_dashrep_code_for_web_app\shared\compatibility-version-number-sandbox
+C:\path_to_dashrep_code_for_web_app\shared\compatibility-version-number-backstage
+C:\path_to_dashrep_code_for_web_app\shared\defaults\list-of-valid-language-choices
+C:\path_to_dashrep_code_for_web_app\shared\defaults\string-dot-txt
+C:\path_to_dashrep_code_for_web_app\shared\defaults\language-choice-
+C:\path_to_dashrep_code_for_web_app\languages\list-of-languages-to-upload
+C:\path_to_dashrep_code_for_web_app\shared\choice
+C:\path_to_dashrep_code_for_web_app\shared\public\
+C:\path_to_dashrep_code_for_web_app\shared\paths\
+C:\path_to_dashrep_code_for_web_app\shared\paths-local\
+C:\path_to_dashrep_code_for_web_app\shared\filenames\
+C:\path_to_dashrep_code_for_web_app\shared\filenames-local\
+C:\path_to_dashrep_code_for_web_app\shared\utilities\get-phrase-name-and-path-prefix

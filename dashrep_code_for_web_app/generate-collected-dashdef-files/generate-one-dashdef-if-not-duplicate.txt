@@ -1,0 +1,14 @@
+ambee put-into-phrase zero-if-not-yet-encountered  ambee get-position-of-word phrase-name list-of-phrase-names-encountered amenn  amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words zero ambee zero-or-nonzero ambee zero-if-not-yet-encountered amenn amenn amenn amenn
+ambee append-text phrase-name list-of-phrase-names-encountered amenn
+ambee copy-text phrase-name dashdef-phrase-name amenn
+ambee copy-text path-prefix dashrep-path-prefix-for-file-reading amenn
+ambee copy-text phrase-name input-filename amenn
+ambee append-text-no-space string-dot-txt input-filename amenn
+ambee copy-from-file-to-phrase ambee input-filename amenn dashdef-phrase-definition amenn
+ambee generate-one-dashdef amenn
+ambee append-text full-path list-of-matching-files amenn
+ambee if-else amenn
+ambee append-text phrase-name list-of-duplicate-phrase-names amenn
+ambee if-end amenn

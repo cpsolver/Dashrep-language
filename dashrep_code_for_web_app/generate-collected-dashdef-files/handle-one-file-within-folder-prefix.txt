@@ -1,0 +1,16 @@
+ambee copy-text word-to-use-in-handler full-path amenn
+ambee get-phrase-name-and-path-prefix amenn
+ambee append-text full-path list-of-files-in-folder-sequence amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions no-if-not-generate-dashdefs string-no amenn amenn
+ambee generate-one-dashdef-if-not-duplicate amenn
+ambee if-end amenn
+
+
+combee ****
+ambee trace-show phrase-name amenn
+ambee trace-show full-path amenn
+ambee trace-show path-prefix amenn
+ambee trace-show input-filename amenn
+ambee trace-show dashrep-path-prefix-for-file-reading amenn
+**** comenn

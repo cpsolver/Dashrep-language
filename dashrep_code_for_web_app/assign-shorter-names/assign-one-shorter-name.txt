@@ -1,0 +1,23 @@
+ambee copy-text word-to-use-in-handler name-to-assign amenn
+ambee copy-and-replace name-to-assign name-to-assign-with-underscores character-hyphen character-underscore amenn
+ambee copy-characters-from-position-to-position letters-in-sequence-one first-letter ambee counter-for-assigned-numbers amenn ambee counter-for-assigned-numbers amenn amenn
+ambee copy-characters-from-position-to-position letters-in-sequence-two second-letter ambee counter-for-assigned-numbers amenn ambee counter-for-assigned-numbers amenn amenn
+ambee expand-text template-one-definition-backstage-version expanded-one-definition-backstage-version amenn
+ambee expand-text template-one-definition-sandbox-version expanded-one-definition-sandbox-version amenn
+ambee append-text-no-space expanded-one-definition-backstage-version combined-dashdefs-for-backstage-combo-names amenn
+ambee append-text-no-space expanded-one-definition-sandbox-version combined-dashdefs-for-sandbox-combo-names amenn
+ambee copy-words-that-begin-with-listed-words name-to-assign not-empty-if-needed-for-lookup list-of-assigned-name-prefixes-needed-for-lookup amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase not-empty-if-needed-for-lookup amenn amenn
+ambee append-text-no-space expanded-one-definition-backstage-version combined-dashdefs-for-backstage-lookup-names amenn
+ambee append-text-no-space expanded-one-definition-sandbox-version combined-dashdefs-for-sandbox-lookup-names amenn
+ambee if-end amenn
+
+ambee numeric-increment counter-for-assigned-numbers amenn
+
+
+combee ***
+ambee trace-show name-to-assign-with-underscores amenn
+ambee trace-show expanded-one-definition-sandbox-version amenn
+ambee trace-show ambee get-phrase-name-from-phrase name-to-assign amenn amenn
+*** comenn

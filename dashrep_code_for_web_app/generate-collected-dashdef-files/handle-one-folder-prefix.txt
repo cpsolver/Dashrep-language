@@ -1,0 +1,11 @@
+ambee copy-text word-to-use-in-handler folder-prefix amenn
+ambee copy-words-that-begin-with-text list-of-all-files matching-files folder-prefix amenn
+ambee copy-words-found-only-in-first-list matching-files list-of-files-to-exclude matching-files amenn
+ambee use-handler-with-each-word-in-phrase handle-one-file-within-folder-prefix matching-files amenn
+
+
+combee ****
+ambee trace-show folder-prefix amenn
+ambee trace-show list-of-files-to-exclude amenn
+ambee trace-show matching-files amenn
+**** comenn

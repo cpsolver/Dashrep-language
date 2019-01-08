@@ -1,0 +1,8 @@
+C:\path_to_dashrep_code_for_web_app\shared\source-code-copyright-notice
+C:\path_to_dashrep_code_for_web_app\assign-shorter-names\
+C:\path_to_dashrep_code_for_web_app\shared\paths-local\path-to-dashdef-local
+C:\path_to_dashrep_code_for_web_app\shared\filenames-local\
+C:\path_to_dashrep_code_for_web_app\shared\filenames\template-filename-shorter-defs
+C:\path_to_dashrep_code_for_web_app\shared\compatibility-version-number-sandbox
+C:\path_to_dashrep_code_for_web_app\shared\compatibility-version-number-backstage
+C:\path_to_dashrep_code_for_web_app\shared\public\slash-or-backslash

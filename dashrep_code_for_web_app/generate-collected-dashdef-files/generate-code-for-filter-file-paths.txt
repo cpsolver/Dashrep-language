@@ -1,0 +1,11 @@
+ambee put-into-phrase dashrep-path-prefix-for-file-reading  C:\path_to_dashrep_code_for_web_app\filter-file-paths\  amenn
+ambee put-into-phrase filename-list-of-folder-prefixes  list-of-folders-for-filter-file-paths.txt  amenn
+ambee copy-from-file-to-phrase ambee filename-list-of-folder-prefixes amenn list-of-folder-prefixes amenn
+ambee clear-phrase list-of-files-to-exclude amenn
+ambee copy-text string-yes no-if-not-generate-dashdefs amenn
+ambee get-list-of-matching-files-using-list-of-folder-prefixes amenn
+ambee copy-text collected-dashdefs collected-dashdefs-for-filter-file-paths amenn
+ambee put-into-phrase output-filename  code_for_compile_combine_dashdefs.txt  amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file collected-dashdefs-for-filter-file-paths ambee output-filename amenn amenn

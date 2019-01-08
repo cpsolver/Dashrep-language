@@ -1,0 +1,6 @@
+ambee copy-text word-to-use-in-handler integer-second amenn
+ambee copy-zero-pad-left-to-length integer-second integer-second-padded 4 amenn
+ambee copy-text integer-first-padded output-line amenn
+ambee append-text-no-space string-underscore output-line amenn
+ambee append-text-no-space integer-second-padded output-line amenn
+ambee copy-from-phrase-append-to-file output-line output_generated_counts.txt amenn

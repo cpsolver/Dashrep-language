@@ -1,0 +1,12 @@
+ambee copy-text word-to-use-in-handler full-path amenn
+ambee clear-phrase dashdef-phrase-definition amenn
+ambee get-phrase-name-and-path-prefix amenn
+ambee copy-text path-prefix dashrep-path-prefix-for-file-reading amenn
+ambee copy-text phrase-name input-filename amenn
+ambee append-text-no-space character-period input-filename amenn
+ambee append-text-no-space filename-extension input-filename amenn
+ambee copy-text string-start-of-next-file-in-angle-brackets start-next-file-and-filename amenn
+ambee append-text path-prefix start-next-file-and-filename amenn
+ambee append-text-no-space input-filename start-next-file-and-filename amenn
+ambee copy-from-phrase-append-to-file start-next-file-and-filename ambee output-filename amenn amenn
+ambee copy-append-file-to-file ambee input-filename amenn ambee output-filename amenn amenn

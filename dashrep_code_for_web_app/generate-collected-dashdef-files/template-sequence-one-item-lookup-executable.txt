@@ -1,0 +1,4 @@
+compile
+<new_line>
+lookup_executable_ no-space compatibility-version-number
+<new_line>

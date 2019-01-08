@@ -1,0 +1,7 @@
+no-space
+name-to-assign no-space :
+new-line
+name-to-assign-with-underscores
+new-line
+four-hyphens
+new-line

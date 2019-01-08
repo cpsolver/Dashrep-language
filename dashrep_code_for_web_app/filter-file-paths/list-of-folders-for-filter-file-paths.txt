@@ -1,0 +1,2 @@
+C:\path_to_dashrep_code_for_web_app\shared\source-code-copyright-notice
+C:\path_to_dashrep_code_for_web_app\filter-file-paths\

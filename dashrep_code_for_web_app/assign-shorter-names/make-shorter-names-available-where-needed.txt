@@ -1,0 +1,31 @@
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+
+ambee expand-text template-filename-generate-combo-page-sandbox filename-generate-combo-page-sandbox amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-sandbox-combo-names ambee filename-generate-combo-page-sandbox amenn amenn
+
+ambee expand-text template-filename-generate-combo-page-backstage filename-generate-combo-page-backstage amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-backstage-combo-names ambee filename-generate-combo-page-backstage amenn amenn
+
+ambee expand-text template-filename-lookup-executable-sandbox filename-lookup-executable-sandbox amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-sandbox-lookup-names ambee filename-lookup-executable-sandbox amenn amenn
+
+ambee expand-text template-filename-lookup-executable-backstage filename-lookup-executable-backstage amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-backstage-lookup-names ambee filename-lookup-executable-backstage amenn amenn
+
+ambee copy-text path-to-dashdef-local dashrep-path-prefix-for-file-writing amenn
+
+ambee expand-text template-filename-shorter-defs-combo-sandbox filename-shorter-defs-combo-sandbox amenn
+ambee delete-file ambee filename-shorter-defs-combo-sandbox amenn amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-sandbox-combo-names ambee filename-shorter-defs-combo-sandbox amenn amenn
+
+ambee expand-text template-filename-shorter-defs-combo-backstage filename-shorter-defs-combo-backstage amenn
+ambee delete-file ambee filename-shorter-defs-combo-backstage amenn amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-backstage-combo-names ambee filename-shorter-defs-combo-backstage amenn amenn
+
+ambee expand-text template-filename-shorter-defs-lookup-sandbox filename-shorter-defs-lookup-sandbox amenn
+ambee delete-file ambee filename-shorter-defs-lookup-sandbox amenn amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-sandbox-lookup-names ambee filename-shorter-defs-lookup-sandbox amenn amenn
+
+ambee expand-text template-filename-shorter-defs-lookup-backstage filename-shorter-defs-lookup-backstage amenn
+ambee delete-file ambee filename-shorter-defs-lookup-backstage amenn amenn
+ambee copy-from-phrase-append-to-file combined-dashdefs-for-backstage-lookup-names ambee filename-shorter-defs-lookup-backstage amenn amenn

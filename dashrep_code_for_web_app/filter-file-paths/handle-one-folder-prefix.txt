@@ -1,0 +1,3 @@
+ambee copy-text word-to-use-in-handler folder-prefix amenn
+ambee copy-words-that-begin-with-text input-list-of-file-paths matching-file-paths folder-prefix amenn
+ambee append-text matching-file-paths output-list-of-file-paths amenn

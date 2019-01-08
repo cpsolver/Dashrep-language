@@ -1,0 +1,22 @@
+ambee put-into-phrase yes-or-no-trim-spaces-when-copy-from-file  yes  amenn
+ambee put-into-phrase yes-or-no-skip-empty-lines-when-copy-from-file  no  amenn
+ambee copy-text slash-or-backslash-local slash-or-backslash amenn
+ambee expand-text template-definition-end definition-end amenn
+ambee copy-text string-yes no-if-not-generate-dashdefs amenn
+ambee get-list-of-all-files amenn
+ambee join-main-files-of-interest amenn
+ambee copy-words-that-contain-listed-words list-of-all-files list-of-all-files string-dot-txt amenn
+ambee generate-list-of-biztypes amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-text filename-dashrep-code-needing-shorter-names output-filename amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee generate-dashdefs-that-specify-sandbox amenn
+ambee generate-code-for-lookup-executable amenn
+ambee generate-code-for-generate-combo-page amenn
+ambee generate-dashdefs-that-specify-backstage amenn
+ambee generate-code-for-lookup-executable amenn
+ambee generate-code-for-generate-combo-page amenn
+ambee use-handler-with-each-word-in-phrase append-to-sequence-generate-combo-one-language list-of-languages-to-upload amenn
+ambee copy-text filename-sequence-items-generate-lookup-and-combo output-filename amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file sequence-items-generate-lookup-and-combo ambee output-filename amenn amenn

@@ -1,0 +1,7 @@
+ambee generate-positions-of-delimiter string-am-bee-without-space linewise-input-line-from-file list-of-pointers-to-am-bee amenn
+ambee generate-positions-of-delimiter string-am-enn-without-space linewise-input-line-from-file list-of-pointers-to-am-enn amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words ambee get-count-of-words list-of-pointers-to-am-bee amenn ambee get-count-of-words list-of-pointers-to-am-enn amenn amenn amenn
+ambee append-text-no-space linewise-input-line-from-file all-messages amenn
+ambee append-new-line all-messages amenn
+ambee if-end amenn

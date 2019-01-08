@@ -1,0 +1,28 @@
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee copy-from-file-to-phrase edited-list-of-folders-for-big-joined-file.txt list-of-folders-of-interest amenn
+ambee copy-words-unique-only list-of-folders-of-interest list-of-folders-of-interest amenn
+ambee copy-from-file-to-phrase edited-list-of-folders-to-exclude-from-big-joined-file.txt list-of-folders-to-exclude amenn
+ambee copy-words-unique-only list-of-folders-to-exclude list-of-folders-to-exclude amenn
+ambee copy-text string-no no-if-not-generate-dashdefs amenn
+ambee use-handler-with-each-word-in-phrase handle-one-folder-prefix list-of-folders-of-interest amenn
+ambee copy-text string-yes no-if-not-generate-dashdefs amenn
+ambee copy-words-that-contain-listed-words list-of-files-in-folder-sequence list-of-files-to-exclude list-of-folders-to-exclude amenn
+ambee copy-words-found-only-in-first-list list-of-files-in-folder-sequence list-of-files-to-exclude list-of-files-to-join amenn
+ambee copy-without-extra-spaces list-of-files-to-join list-of-files-to-join amenn
+ambee copy-and-replace list-of-files-to-join list-of-files-to-join-one-per-line character-space character-newline amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee put-into-phrase output-filename  list_of_files_of_interest.txt  amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee copy-from-phrase-append-to-file list-of-files-to-join-one-per-line ambee output-filename amenn amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee put-into-phrase output-filename  joined_files_of_interest.txt  amenn
+ambee delete-file ambee output-filename amenn amenn
+ambee use-handler-with-each-word-in-phrase join-one-file list-of-files-to-join amenn
+
+
+combee ****
+ambee trace-show list-of-folders-of-interest amenn
+ambee trace-show list-of-folders-to-exclude amenn
+ambee trace-show list-of-files-to-exclude amenn
+ambee trace-show list-of-files-to-join amenn
+**** comenn

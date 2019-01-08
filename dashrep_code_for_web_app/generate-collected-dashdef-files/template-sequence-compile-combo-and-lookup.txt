@@ -1,0 +1,19 @@
+compile
+<new_line>
+generate_combo_page_ no-space compatibility-version-number-sandbox
+<new_line>
+
+compile
+<new_line>
+code_for_skip_lookup_executable_ no-space compatibility-version-number-sandbox
+<new_line>
+
+compile
+<new_line>
+generate_combo_page_ no-space compatibility-version-number-backstage
+<new_line>
+
+compile
+<new_line>
+code_for_skip_lookup_executable_ no-space compatibility-version-number-backstage
+<new_line>

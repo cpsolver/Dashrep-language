@@ -1,0 +1,10 @@
+ambee copy-text path-to-dashdef-local path-to-dashdef amenn
+ambee copy-text path-to-dashdef-local dashrep-path-prefix-for-file-reading amenn
+ambee copy-text path-to-dashdef-local dashrep-path-prefix-for-file-writing amenn
+ambee generate-every-pairwise-combination-of-words list-of-letters-for-short-names list-of-letters-for-short-names letters-in-sequence-one letters-in-sequence-two amenn
+ambee copy-and-replace letters-in-sequence-one letters-in-sequence-one character-space empty-text amenn
+ambee copy-and-replace letters-in-sequence-two letters-in-sequence-two character-space empty-text amenn
+ambee put-into-phrase counter-for-assigned-numbers  1  amenn
+ambee generate-list-of-names-to-assign amenn
+ambee use-handler-with-each-word-in-phrase assign-one-shorter-name list-of-names-to-assign amenn
+ambee make-shorter-names-available-where-needed amenn

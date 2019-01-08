@@ -1,0 +1,18 @@
+ambee generate-positions-of-delimiter character-slash full-path list-of-positions-of-slash amenn
+ambee generate-positions-of-delimiter character-backslash full-path list-of-positions-of-backslash amenn
+ambee copy-text list-of-positions-of-slash list-of-positions-of-slash-and-backslash amenn
+ambee append-text list-of-positions-of-backslash list-of-positions-of-slash-and-backslash amenn
+ambee copy-words-sort-numeric list-of-positions-of-slash-and-backslash list-of-positions-of-slash-and-backslash amenn
+ambee put-into-phrase position-of-last-slash-or-backslash  ambee numeric-maximum ambee list-of-positions-of-slash-and-backslash amenn amenn  amenn
+ambee copy-characters-from-position-to-position full-path phrase-file-name ambee numeric-add 1 ambee position-of-last-slash-or-backslash amenn amenn 999 amenn
+ambee copy-characters-from-position-to-position full-path path-prefix 1 ambee position-of-last-slash-or-backslash amenn amenn
+ambee copy-and-replace phrase-file-name phrase-name character-period character-space amenn
+ambee copy-word-at-position phrase-name phrase-name 1 amenn
+
+
+combee ***
+ambee trace-show full-path amenn
+ambee trace-show path-prefix amenn
+ambee trace-show phrase-file-name amenn
+ambee trace-show phrase-name amenn
+*** comenn
