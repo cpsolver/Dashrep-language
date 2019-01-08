@@ -48,9 +48,6 @@ character-period:
 character-string-source:
 some words here
 ----
-character-underscore:
-_
-----
 check-dashrep-recognized-phrase-names-in-documentation:
 ambee copy-from-file-to-phrase specifications_phrase_categories_and_names.txt documented-phrase-names amenn
 ambee copy-words-that-begin-with-text documented-phrase-names category-words string-category-underscore amenn
