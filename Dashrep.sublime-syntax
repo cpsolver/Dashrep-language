@@ -7,11 +7,11 @@ scope: source.Dashrep
 contexts:
   main:
 
-    - match: \b(ambee|fenambee)\b
-      scope: string.quoted.double.perl
-
-    - match: \b(amenn|amennfen)\b
+    - match: \b(amenn|amennfen|js-params-end|js-paren-end|code-close-quote)\b
       scope: storage.modifier.perl
+
+    - match: \b(ambee|fenambee|js-if|js-params-begin|js-params-next|js-paren-begin|code-open-quote)\b
+      scope: string.quoted.double.perl
 
     - match: \b(trace-from-get-url-resource|yes-or-no-skip-empty-lines-when-copy-from-file|text-end-of-line-here-space-delimited|end-of-line-indicator|yes-or-no-trim-spaces-when-copy-from-file|hyphen-here|character-hyphen|four-hyphens|no-space|empty-text|one-space|character-space|non-breaking-space|new-line|empty-line|line-break|character-newline|character-open-square-bracket|character-close-square-bracket|character-tab|character-underscore|standard-output|word-to-use-in-handler|list-of-unique-word-counts|list-of-pointers-to-unique-words|time-day-of-month|time-day-of-week|time-day-of-year|time-hour|time-minute|time-month-number|time-second|time-year|dashrep-gather-tag-begin|dashrep-gather-tag-end|dashrep-gather-tag-unique|dashrep-gather-tag-delete|dashrep-gather-tag-matching-id|dashrep-comments-ignored|yes-or-no-empty-phrase|yes-or-no-same-two-phrase-definitions|yes-or-no-same-two-words|yes-or-no-opposite|yes-if-all-yes|yes-if-any-yes|no-if-any-no|yes-if-not-no|no-if-not-yes|get-count-of-words|get-word-at-position|get-position-of-word|get-count-of-characters|get-characters-from-position-to-position|get-position-of-matching-text|get-current-time-in-epoch-seconds|zero-or-nonzero|zero-one-multiple|numeric-equal-greater-less-compare|numeric-add|numeric-minus|numeric-multiply|numeric-divide-by|numeric-maximum|numeric-minimum|numeric-integer|numeric-absolute|numeric-odd-or-even|numeric-sine|numeric-cosine|numeric-logarithm-base-e|numeric-logarithm-base-10|numeric-pi|yes-or-no-permission-to-delete-or-overwrite-files|dashrep-path-prefix-for-file-reading|dashrep-path-prefix-for-file-writing|yes-or-no-file-exists|yes-or-no-folder-exists|size-of-file|modification-time-of-file|yes-or-no-use-two-spaces-as-column-delimiter|yes-or-no-count-phrase-usage|dashrep-language-yes|dashrep-version|delayed-nospace|delayed-newline|dashrep-endless-loop-counter-limit|dashrep-time-limit|linewise-input-line-from-file|linewise-input-line-count|yes-or-no-permission-to-append-to-files|numeric-y-map-tile-number-based-on-latitude|numeric-map-tile-zoom|yes-or-no-permission-administrator|output-trace-file-name|dashrep-file-name-if-read-file-missing|operating-system-slash-or-backslash|nospay|fen|amennfenambee)\b
       scope: entity.name.function.perl
@@ -30,6 +30,9 @@ contexts:
 
     - match: \b(combee)\b
       push: string
+
+    - match: \b(var|js-equals|js-statement-end)\b
+      scope: entity.name.function.perl
 
   string:
     - meta_scope: comment.line.number-sign.perl
