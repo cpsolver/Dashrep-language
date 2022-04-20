@@ -11,8 +11,6 @@ new-line
 empty-line
 line-break
 character-newline
-character-open-square-bracket
-character-close-square-bracket
 character-tab
 character-underscore
 
