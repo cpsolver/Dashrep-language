@@ -1,0 +1,2831 @@
+source-code-copyright-notice:
+Copyright 2021 by Richard Fobes at www.VoteFair.org ALL RIGHTS RESERVED
+----
+path-to-current-folder:
+C:\whatever\AnimationVideoGeneration\
+----
+inkscape-reminder-notes:
+* Change ID names, and avar types, using the XML editor within Inkscape! (Or, some edits can be done using a text editor on the SVG file.)
+* To control a group of objects together, put them into a group and use the XML editor to add "transform" or "style" to that group. Transform can be "matrix(1.001,0.001,0.002,1.0,100,100)". Style can be "opacity:0.99" or "opacity(0.99)". The transform type will change from matrix to a simpler transform if the numbers are simplistic with no real transformation.
+* Transform matrix X and Y offsets are relative to X and Y positions of items in the group, so use captured values as begin/end values.
+* To create an object that measures an X and Y position, draw a triangle starting at the upper left corner of the triangle. That will create SVG code such as "d="m 123,456 ..." where the first two numbers are the X and Y coordinates of that triangle's corner.
+* If the "d="m 123,..." draw object includes the letter "L" then changing the starting X and Y coordinates does not move the entire object; so insert a group and specify a transform.
+* If an object is controlled by transforms at more than one grouping level, then the non-zero values at all levels need to be considered.
+* If "00" shows up in the avar summary file, then a number within an SVG file may use exponential notation such as "5.1782078e-4" in which case it should be replaced with a number using decimal or integer notation.
+* Text needs "opacity" in addition to "fill-opacity" and "stroke-opacity". Add using transparency slider (within fill/stroke dialog, not within layers dialog).
+----
+reminder-notes:
+
+search for "todo" for code not yet finished,
+search backwards to find newest code at bottom
+
+This code must be executed using a version of the Dashrep compiler that supplies a loop counter limit that is much higher than the default. Also the time limit may need to be increased.
+----
+
+
+section-top-level:
+============================================================
+TOP LEVEL
+............................................................
+----
+
+start-here:
+ambee copy-text new-loop-counter-limit dashrep-endless-loop-counter-limit amenn
+ambee initialize-constants amenn
+ambee initialize-file-info amenn
+ambee delete-avar-info-files amenn
+ambee if-needed-convert-interval-seconds-into-frames amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase interval-frames-maximum-duration-at-constant-speed amenn amenn
+    ambee put-into-phrase interval-frames-maximum-duration-at-constant-speed 5000 amenn
+ambee if-end amenn
+
+ambee use-handler-with-each-word-in-phrase capture-values-from-one-keyframe list-of-keyframe-names amenn
+ambee custom-specify-animation-items-and-movements amenn
+ambee put-into-phrase keyframe-name start amenn
+ambee copy-text filename-svg-for-keyframe fenambee keyframe-name amenn filename-svg-keyframe amenn
+ambee generate-svg-files-and-render amenn
+ambee write-generated-files amenn
+
+combee
+ambee show-all-phrase-names amenn
+comenn
+----
+list-of-keyframe-names:
+start
+combee
+second
+third
+comenn
+----
+filename-svg-for-keyframe-start:
+keyframe_why_two_nominees.svg
+combee
+keyframe_rcipe_start.svg
+comenn
+----
+filename-svg-for-keyframe-second:
+keyframe_why_two_nominees_second.svg
+combee
+keyframe_rcipe_second.svg
+comenn
+----
+filename-svg-for-keyframe-third:
+keyframe_why_two_nominees_third.svg
+combee
+keyframe_rcipe_third.svg
+comenn
+----
+
+
+section-initialization:
+============================================================
+INITIALIZATION
+............................................................
+----
+
+list-of-valid-transition-curves:
+linear
+move-start
+move-stop
+move-short
+pen-marking-oval-x
+pen-marking-oval-y
+rotate-normal
+move-matrix
+----
+interval-seconds-maximum-duration-at-constant-speed:
+0.06
+----
+interval-frames-maximum-video-length:
+200
+----
+distance-pixels-at-begin-constant-speed:
+50
+----
+distance-pixels-at-end-constant-speed:
+40
+----
+interval-seconds-for-move-start:
+0.05
+----
+interval-seconds-for-move-stop:
+0.05
+----
+percent-times-for-transition-curve-move-start:
+0 20 40 60 70 80 90 95 100
+----
+percent-values-for-transition-curve-move-start:
+0 -5 -2 8 18 32 52 69 100
+combee determined using plot in spreadsheet comenn
+----
+percent-times-for-transition-curve-move-stop:
+0 20 40 60 70 80 90 95 100
+----
+percent-values-for-transition-curve-move-stop:
+0 31 48 68 82 92 102 105 100
+combee calculated as 100 minus numbers in move-start transition comenn
+----
+percent-times-for-transition-curve-move-short:
+0 10 20 30 35 40 45 47 50 60 70 80 85 90 95 97 100
+----
+percent-values-for-transition-curve-move-short:
+0 -3 -1 4 9 16 26 35 50 65 74 84 92 96 101 103 100
+combee can refine these numbers using spreadsheet scatter plot comenn
+----
+percent-times-for-transition-curve-rotate-normal:
+0 5 10 20 80 90 95 100
+----
+percent-values-for-transition-curve-rotate-normal:
+0 -3 7 20 80 93 103 100
+----
+percent-times-for-transition-curve-move-matrix:
+0 5 10 20 80 90 95 100
+----
+percent-values-for-transition-curve-move-matrix:
+0 -3 7 20 80 93 103 100
+----
+percent-times-for-transition-curve-linear:
+0 100
+----
+percent-values-for-transition-curve-linear:
+0 100
+----
+frames-per-second-normal:
+5
+----
+frames-per-second-current:
+3
+----
+inkscape-height-pixels:
+1080
+----
+inkscape-width-pixels:
+1920
+----
+video-width-pixels:
+640
+----
+video-height-pixels:
+360
+----
+folder-keyframe-files:
+keyframe_files
+----
+folder-avar-info-files:
+avar_info_files
+----
+folder-generated-images:
+images
+----
+folder-generated-svg-files:
+generated_svg_files
+----
+folder-generated-png-images:
+generated_png_images
+----
+filename-generated-batch-commands-do-render:
+generated_batch_file_do_render.bat
+----
+filename-batch-file-do-render-begin:
+template_batch_file_begin.txt
+----
+filename-batch-file-do-render-end:
+template_batch_file_end.txt
+----
+template-filename-generated-svg:
+output_svg_generated_image_ no-space frame-number-zero-padded no-space .svg
+----
+template-filename-image-png:
+generated_image_png_ no-space frame-number-zero-padded no-space .png
+----
+filename-list-of-image-png-filenames:
+generated_list_of_png_files_for_video_converter.txt
+----
+template-command-do-render:
+%InkscapePath%inkscape character-hyphen no-space character-hyphen no-space export-type=png character-hyphen no-space character-hyphen no-space export-filename= no-space path-to-generated-png-images no-space template-filename-image-png path-to-generated-svg-files no-space template-filename-generated-svg >> output_from_inkscape.txt new-line
+----
+list-of-svg-location-id-types:
+label
+id
+----
+svg-location-id-type-label:
+label=
+----
+svg-location-id-type-id:
+id=
+combee
+other code checks for space, so that xyzid= does not match
+comenn
+----
+list-of-avar-dimens:
+position-x
+position-y
+center-x
+center-y
+radius-x
+radius-y
+translate-x
+translate-y
+height
+width
+height-percent
+width-percent
+scale
+rotate-angle
+rotate-x-pivot
+rotate-y-pivot
+draw-point-x
+draw-point-y
+transform-matrix-value-a
+transform-matrix-value-b
+transform-matrix-value-c
+transform-matrix-value-d
+transform-matrix-value-e
+transform-matrix-value-f
+opacity-regular-version-paren
+opacity-regular-version-equa-quo-semi
+opacity-regular-version-equa-quo-quo
+opacity-regular-version-semi-semi
+opacity-regular-version-semi-quo
+opacity-fill-version-semicolon
+opacity-fill-version-quotation
+opacity-stroke-version-semicolon
+opacity-stroke-version-quotation
+opacity-stop-version-semicolon
+opacity-stop-version-quotation
+----
+big-text
+big-text-opacity
+----
+svg-location-width:
+width= " "
+----
+svg-location-height:
+height= " "
+----
+svg-location-width-percent:
+width= " %"
+----
+svg-location-height-percent:
+height= " %"
+----
+svg-location-radius-x:
+rx= " "
+----
+svg-location-radius-y:
+ry= " "
+----
+svg-location-center-x:
+cx= " "
+----
+svg-location-center-y:
+cy= " "
+----
+svg-location-position-x:
+@x= " "
+----
+svg-location-position-y:
+@y= " "
+----
+svg-location-rotate-angle:
+transform="rotate ( ,
+----
+svg-location-rotate-x-pivot:
+transform="rotate ( , ,
+----
+svg-location-rotate-y-pivot:
+transform="rotate ( , , )
+----
+svg-location-scale:
+transform="scale ( )
+----
+svg-location-translate-x:
+transform="translate ( ,
+----
+svg-location-translate-y:
+transform="translate ( , )
+----
+svg-location-draw-point-x:
+@d="m@ ,
+----
+svg-location-draw-point-y:
+@d="m@ , @
+----
+svg-location-draw-point-x-uppercase-m:
+@d="M@ ,
+----
+svg-location-draw-point-y-uppercase-m:
+@d="M@ , @
+----
+svg-location-transform-matrix-value-a:
+transform="matrix ( ,
+----
+svg-location-transform-matrix-value-b:
+transform="matrix ( , ,
+----
+svg-location-transform-matrix-value-c:
+transform="matrix ( , , ,
+----
+svg-location-transform-matrix-value-d:
+transform="matrix ( , , , ,
+----
+svg-location-transform-matrix-value-e:
+transform="matrix ( , , , , ,
+----
+svg-location-transform-matrix-value-f:
+transform="matrix ( , , , , , )
+----
+svg-location-opacity-regular-version-paren:
+="opacity ( )
+----
+svg-location-opacity-regular-version-equa-quo-semi:
+="opacity : ;
+----
+svg-location-opacity-regular-version-equa-quo-quo:
+="opacity : "
+----
+svg-location-opacity-regular-version-semi-semi:
+;opacity : ;
+----
+svg-location-opacity-regular-version-semi-quo:
+;opacity : "
+----
+svg-location-opacity-fill-version-semicolon:
+fill-opacity : ;
+----
+svg-location-opacity-fill-version-quotation:
+fill-opacity : "
+----
+svg-location-opacity-stroke-version-semicolon:
+stroke-opacity : ;
+----
+svg-location-opacity-stroke-version-quotation:
+stroke-opacity : "
+----
+svg-location-opacity-stop-version-semicolon:
+stop-opacity : ;
+----
+svg-location-opacity-stop-version-quotation:
+stop-opacity : "
+----
+svg-location-caption-text:
+caption text " "
+----
+svg-location-caption-opacity:
+caption opacity " %"
+----
+svg-location-big-text:
+big_text text " "
+----
+svg-location-big-text-opacity:
+big_text opacity " %"
+----
+yes-or-no-frame-overlap-at-begin:
+no
+----
+numeric-pi:
+3.14159
+----
+digit-zero:
+0
+----
+digits-double-zero:
+00
+----
+character-at-sign:
+@
+----
+character-quotation:
+"
+----
+character-open-angle-bracket:
+<
+----
+character-asterisk:
+*
+----
+replacement-pairs-valid-numeric-characters-to-asterisk:
+0 * 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * . *
+----
+letters-of-alphabet:
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+----
+text-percent:
+percent
+----
+text-pixels:
+pixels
+----
+initialize-constants:
+ambee put-into-phrase text-double-underscore  __  amenn
+ambee put-into-phrase
+    distance-pixels-begin-plus-end-constant-speed
+    ambee numeric-add
+        ambee distance-pixels-at-begin-constant-speed amenn
+        ambee distance-pixels-at-end-constant-speed amenn
+    amenn
+amenn
+----
+initialize-file-info:
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee put-into-phrase output-filename-log-file  output_animation_log.txt  amenn
+ambee delete-file ambee output-filename-log-file amenn amenn
+ambee copy-text folder-generated-svg-files folder-name amenn
+ambee generate-full-path-using-folder-name amenn
+ambee copy-text full-path path-to-generated-svg-files amenn
+ambee copy-text folder-avar-info-files folder-name amenn
+ambee generate-full-path-using-folder-name amenn
+ambee copy-text full-path path-to-avar-info-files amenn
+ambee copy-text folder-keyframe-files folder-name amenn
+ambee generate-full-path-using-folder-name amenn
+ambee copy-text full-path path-to-keyframe-files amenn
+ambee copy-text folder-generated-images folder-name amenn
+ambee generate-full-path-using-folder-name amenn
+ambee copy-text full-path path-to-generated-images amenn
+ambee copy-text folder-generated-png-images folder-name amenn
+ambee generate-full-path-using-folder-name amenn
+ambee copy-text full-path path-to-generated-png-images amenn
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee filename-list-of-image-png-filenames amenn amenn
+ambee delete-file ambee filename-generated-batch-commands-do-render amenn amenn
+ambee put-into-phrase filename-output-all-avar-info  output_all_avar_info.txt  amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee filename-output-all-avar-info amenn amenn
+ambee put-into-phrase filename-output-captured-values  output_captured_values.txt  amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee filename-output-captured-values amenn amenn
+
+    ambee put-into-phrase output-line file initialization done amenn
+    ambee write-output-line-to-log-file amenn
+----
+delete-avar-info-files:
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-reading amenn
+ambee generate-list-of-files-in-current-read-directory list-of-avar-info-files amenn
+ambee use-handler-with-each-word-in-phrase delete-one-avar-info-file list-of-avar-info-files amenn
+
+    ambee put-into-phrase output-line deleted avar info files amenn
+    ambee write-output-line-to-log-file amenn
+----
+delete-one-avar-info-file:
+ambee copy-text word-to-use-in-handler filename-avar-info amenn
+ambee copy-characters-from-position-to-position filename-avar-info filename-prefix 1 6 amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions filename-prefix text-frame-underscore amenn amenn
+    ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+    ambee delete-file ambee filename-avar-info amenn amenn
+ambee if-end amenn
+----
+text-frame-underscore:
+frame_
+----
+generate-full-path-using-folder-name:
+ambee copy-text path-to-current-folder full-path amenn
+ambee append-text-no-space folder-name full-path amenn
+ambee copy-characters-from-position-to-position full-path last-character ambee get-count-of-characters full-path amenn 9999 amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase full-path amenn amenn
+    ambee copy-text operating-system-slash-or-backslash last-character amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-phrase-definitions last-character operating-system-slash-or-backslash amenn amenn
+    ambee append-text-no-space operating-system-slash-or-backslash full-path amenn
+ambee if-end amenn
+----
+
+
+section-conversions:
+============================================================
+CONVERSIONS
+............................................................
+----
+
+if-needed-convert-interval-seconds-into-frames:
+ambee if-yes-begin ambee yes-or-no-empty-phrase yes-if-already-converted-seconds-into-frames amenn amenn
+    ambee copy-text frames-per-second-normal frames-per-second-current amenn
+    ambee convert-interval-seconds-to-frames-use-frame-rate-current amenn
+    ambee put-into-phrase yes-if-already-converted-seconds-into-frames yes amenn
+ambee if-end amenn
+----
+convert-interval-seconds-to-frames-use-frame-rate-current:
+ambee put-into-phrase phrase-name-prefix interval seconds amenn
+ambee get-phrase-names-that-begin-with-phrase-name-prefix amenn
+ambee use-handler-with-each-word-in-phrase handle-one-convert-interval-seconds-to-frames list-of-phrase-names-suffix amenn
+
+    ambee put-into-phrase output-line generated interval seconds phrases amenn
+    ambee write-output-line-to-log-file amenn
+----
+handle-one-convert-interval-seconds-to-frames:
+ambee copy-text word-to-use-in-handler phrase-name-suffix amenn
+ambee copy-text interval-seconds-for fenambee phrase-name-suffix amenn interval-seconds amenn
+ambee convert-interval-seconds-to-frames amenn
+ambee copy-text interval-frames interval-frames fenambee phrase-name-suffix amenn amenn
+----
+convert-interval-seconds-to-frames:
+ambee put-into-phrase
+    interval-frames
+    ambee numeric-integer
+        ambee numeric-multiply
+            ambee frames-per-second-current amenn
+            ambee interval-seconds amenn
+        amenn
+    amenn
+amenn
+----
+
+
+section-utilities:
+============================================================
+UTILITIES
+............................................................
+----
+
+load-svg-file:
+ambee clear-phrase loaded-svg-file amenn
+ambee copy-text path-to-keyframe-files dashrep-path-prefix-for-file-reading amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase filename-svg-keyframe amenn amenn
+    ambee copy-from-file-to-phrase ambee filename-svg-keyframe amenn loaded-svg-file amenn
+ambee if-end amenn
+
+ambee put-into-phrase length-of-loaded-svg-file ambee get-count-of-characters loaded-svg-file amenn amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee length-of-loaded-svg-file amenn 100 amenn amenn amenn
+    ambee put-into-phrase yes-or-no-svg-file-found yes amenn
+    ambee put-into-phrase output-line svg file found: amenn
+ambee if-else amenn
+    ambee put-into-phrase yes-or-no-svg-file-found no amenn
+    ambee put-into-phrase output-line warning, file not found: amenn
+ambee if-end amenn
+
+    ambee put-into-phrase output-line file svg keyframe: amenn
+    ambee append-text dashrep-path-prefix-for-file-reading output-line amenn
+    ambee append-text filename-svg-keyframe output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+get-phrase-names-that-begin-with-phrase-name-prefix:
+ambee copy-and-replace phrase-name-prefix phrase-name-prefix character-space character-hyphen amenn
+ambee append-text-no-space character-hyphen phrase-name-prefix amenn
+ambee generate-list-of-all-dashrep-phrases list-of-all-phrase-names amenn
+ambee copy-words-that-begin-with-text list-of-all-phrase-names list-of-phrase-names-beginning-with-prefix phrase-name-prefix amenn
+ambee copy-and-replace list-of-phrase-names-beginning-with-prefix list-of-phrase-names-suffix phrase-name-prefix empty-text amenn
+----
+determine-yes-or-no-is-number-for-possible-number:
+ambee copy-characters-from-position-to-position possible-number possible-minus-sign 1 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions possible-minus-sign character-hyphen amenn amenn
+    ambee copy-characters-from-position-to-position possible-number possible-number-positive 2 9999 amenn
+ambee if-else amenn
+    ambee copy-text possible-number possible-number-positive amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase possible-number-positive amenn amenn
+    ambee copy-text character-underscore possible-number-positive amenn
+ambee if-end amenn
+
+ambee copy-and-replace possible-number-positive is-number-if-only-asterisks character-asterisk character-underscore amenn
+ambee copy-and-replace-using-paired-listed-words is-number-if-only-asterisks is-number-if-only-asterisks replacement-pairs-valid-numeric-characters-to-asterisk amenn
+ambee copy-and-replace is-number-if-only-asterisks is-number-if-empty character-asterisk character-space amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase is-number-if-empty amenn amenn
+    ambee put-into-phrase yes-or-no-is-number yes amenn
+ambee if-else amenn
+    ambee put-into-phrase yes-or-no-is-number no amenn
+ambee if-end amenn
+----
+test-find-nearest-integers-in-list:
+ambee put-into-phrase integer-threshold 50 amenn
+ambee put-into-phrase list-of-integers -3 7 24 52 61 85 99 100 amenn
+ambee find-nearest-integers-in-list amenn
+
+    ambee put-into-phrase output-line largest smallest etc: amenn
+    ambee append-text nearest-smaller-integer output-line amenn
+    ambee append-text nearest-larger-integer output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+find-nearest-integers-in-list:
+ambee copy-word-at-position list-of-integers nearest-smaller-integer 1 amenn
+ambee copy-word-at-position list-of-integers nearest-larger-integer 9999999 amenn
+ambee use-handler-with-each-word-in-phrase handle-check-for-nearest-integer-in-list list-of-integers amenn
+----
+handle-check-for-nearest-integer-in-list:
+ambee copy-text word-to-use-in-handler next-integer amenn
+ambee put-into-phrase yes-or-no-greater-than-threshold no amenn
+ambee put-into-phrase yes-or-no-less-than-threshold no amenn
+ambee put-into-phrase yes-or-no-greater-than-nearest-smaller no amenn
+ambee put-into-phrase yes-or-no-less-than-nearest-larger no amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee next-integer amenn ambee integer-threshold amenn amenn amenn amenn
+    ambee put-into-phrase yes-or-no-greater-than-threshold yes amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee next-integer amenn ambee integer-threshold amenn amenn amenn amenn
+    ambee put-into-phrase yes-or-no-less-than-threshold yes amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee next-integer amenn ambee nearest-smaller-integer amenn amenn amenn amenn
+    ambee put-into-phrase yes-or-no-greater-than-nearest-smaller yes amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee next-integer amenn ambee nearest-larger-integer amenn amenn amenn amenn
+    ambee put-into-phrase yes-or-no-less-than-nearest-larger yes amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-if-all-yes ambee yes-or-no-less-than-threshold amenn ambee yes-or-no-greater-than-nearest-smaller amenn amenn amenn
+    ambee copy-text next-integer nearest-smaller-integer amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-if-all-yes ambee yes-or-no-greater-than-threshold amenn ambee yes-or-no-less-than-nearest-larger amenn amenn amenn
+    ambee copy-text next-integer nearest-larger-integer amenn
+ambee if-end amenn
+
+combee
+    ambee put-into-phrase output-line info: amenn
+    ambee append-text next-integer output-line amenn
+    ambee append-text nearest-smaller-integer output-line amenn
+    ambee append-text nearest-larger-integer output-line amenn
+    ambee append-text yes-or-no-greater-than-threshold output-line amenn
+    ambee append-text yes-or-no-less-than-threshold output-line amenn
+    ambee append-text yes-or-no-greater-than-nearest-smaller output-line amenn
+    ambee append-text yes-or-no-less-than-nearest-larger output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+round-decimal-value-to-four-digits:
+ambee put-into-phrase
+    decimal-value
+    ambee numeric-divide-by
+        ambee numeric-integer
+            ambee numeric-multiply
+                ambee decimal-value amenn
+                1000
+            amenn
+        amenn
+        1000
+    amenn
+amenn
+----
+write-output-line-to-log-file:
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file output-line ambee output-filename-log-file amenn amenn
+----
+write-svg-characters-sampled-to-log-file:
+
+combee usage:
+    ambee copy-text pointer-to-whatever pointer-to-characters-sampled-begin amenn
+    ambee write-svg-characters-sampled-to-log-file amenn
+comenn
+
+    ambee numeric-decrement pointer-to-characters-sampled-begin amenn
+    ambee put-into-phrase
+        pointer-to-characters-sampled-end
+        ambee numeric-add
+            12
+            ambee pointer-to-characters-sampled-begin amenn
+        amenn
+    amenn
+    ambee copy-characters-from-position-to-position loaded-svg-file characters-sampled ambee pointer-to-characters-sampled-begin amenn ambee pointer-to-characters-sampled-end amenn amenn
+
+    ambee put-into-phrase output-line characters sampled: amenn
+    ambee append-text characters-sampled output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+got-here:
+    ambee put-into-phrase output-line got here: amenn
+    ambee append-text got-here-value output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+get-all-phrase-names:
+ambee generate-list-of-all-dashrep-phrases list-of-all-phrase-names amenn
+----
+show-all-phrase-names:
+ambee get-all-phrase-names amenn
+    ambee put-into-phrase output-line all phrases: amenn
+    ambee append-text list-of-all-phrase-names output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+
+
+section-capture:
+============================================================
+CAPTURE VALUES FROM KEYFRAMES
+............................................................
+----
+
+capture-values-from-one-keyframe:
+ambee copy-text word-to-use-in-handler keyframe-name amenn
+ambee copy-text filename-svg-for-keyframe fenambee keyframe-name amenn filename-svg-keyframe amenn
+ambee handle-find-get-all-avars-in-one-svg-file amenn
+----
+generate-filename-avar-info:
+ambee copy-zero-pad-left-to-length frame-number-for-avar-info-file frame-number-zero-padded 7 amenn
+ambee expand-text template-filename-avar-info filename-avar-info amenn
+----
+template-filename-avar-info:
+frame_ no-space frame-number-zero-padded no-space _avar_info.txt no-space
+----
+write-avar-id-dimen-value-current-to-avar-info-file:
+ambee copy-text avar-frame-current frame-number-for-avar-info-file amenn
+ambee copy-text avar-id avar-info-lines-to-write amenn
+ambee append-text avar-dimen avar-info-lines-to-write amenn
+ambee append-text avar-value-current avar-info-lines-to-write amenn
+ambee write-avar-info-lines-to-write amenn
+----
+write-avar-info-lines-to-write:
+ambee generate-filename-avar-info amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file avar-info-lines-to-write ambee filename-avar-info amenn amenn
+
+combee reminder: info line is deleted here, so any logging must be done above comenn
+ambee clear-phrase avar-info-lines-to-write amenn
+----
+handle-find-get-all-avars-in-one-svg-file:
+    ambee put-into-phrase output-line loading svg keyframe files: amenn
+    ambee append-text filename-svg-keyframe output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee load-svg-file amenn
+
+ambee if-yes-begin ambee yes-or-no-svg-file-found amenn amenn
+    ambee point-to-all-svg-ids-avar-values-and-more amenn
+ambee if-end amenn
+----
+point-to-all-svg-ids-avar-values-and-more:
+ambee point-to-all-svg-ids amenn
+ambee point-to-all-svg-avar-values amenn
+ambee use-handler-with-each-word-in-phrase delete-one-combined-svg-info-phrase list-of-pointers-to-brackets-before-avar-ids amenn
+----
+delete-one-combined-svg-info-phrase:
+ambee copy-text word-to-use-in-handler character-pointer amenn
+ambee put-into-phrase phrase-name-to-delete avar-id-for-object-starting-at-svg-character-position amenn
+ambee append-text-no-space character-hyphen phrase-name-to-delete amenn
+ambee append-text-no-space character-pointer phrase-name-to-delete amenn
+ambee delete-listed-phrases phrase-name-to-delete amenn
+----
+point-to-all-svg-ids:
+ambee generate-positions-of-delimiter character-open-angle-bracket loaded-svg-file list-of-pointers-to-open-angle-brackets amenn
+ambee clear-phrase list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee use-handler-with-each-word-in-phrase point-to-svg-avar-ids-of-one-id-type list-of-svg-location-id-types amenn
+ambee copy-words-unique-only list-of-pointers-to-first-character-of-all-svg-ids list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee copy-words-sort-numeric list-of-pointers-to-first-character-of-all-svg-ids list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee generate-positions-of-first-matching-delimiter-after-listed-positions character-quotation loaded-svg-file list-of-pointers-to-first-character-of-all-svg-ids list-of-pointers-to-closing-delimiter amenn
+ambee numeric-vector-add-number list-of-pointers-to-closing-delimiter -1 list-of-pointers-to-last-character-of-all-avar-ids amenn
+ambee copy-words-unique-only list-of-pointers-to-first-character-of-all-svg-ids list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee copy-words-sort-numeric list-of-pointers-to-first-character-of-all-svg-ids list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee copy-words-unique-only list-of-pointers-to-last-character-of-all-avar-ids list-of-pointers-to-last-character-of-all-avar-ids amenn
+ambee copy-words-sort-numeric list-of-pointers-to-last-character-of-all-avar-ids list-of-pointers-to-last-character-of-all-avar-ids amenn
+ambee generate-counts-from-integer-to-integer 1 ambee get-count-of-words list-of-pointers-to-first-character-of-all-svg-ids amenn list-of-pointers-to-begin-avar-value-pointers amenn
+ambee use-handler-with-each-word-in-phrase handle-get-one-avar-id list-of-pointers-to-begin-avar-value-pointers amenn
+ambee generate-list-of-avar-ids amenn
+----
+generate-list-of-avar-ids:
+ambee clear-phrase list-of-avar-ids amenn
+ambee use-handler-with-each-word-in-phrase add-one-avar-id-to-list list-of-pointers-to-brackets-before-avar-ids amenn
+ambee copy-words-unique-only list-of-avar-ids list-of-avar-ids amenn
+ambee copy-words-sort-alphabetic list-of-avar-ids list-of-avar-ids amenn
+
+    ambee put-into-phrase output-line avar ids found: amenn
+    ambee append-text list-of-avar-ids output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+add-one-avar-id-to-list:
+ambee copy-text word-to-use-in-handler pointer-to-prior-open-angle-bracket amenn
+ambee copy-text avar-id-for-object-starting-at-svg-character-position fenambee pointer-to-prior-open-angle-bracket amenn avar-id amenn
+ambee append-text avar-id list-of-avar-ids amenn
+----
+point-to-svg-avar-ids-of-one-id-type:
+ambee copy-text word-to-use-in-handler id-type amenn
+ambee copy-text svg-location-id-type fenambee id-type amenn svg-location-id amenn
+ambee generate-positions-of-delimiter svg-location-id loaded-svg-file list-of-pointers-to-id-type-begin amenn
+ambee clear-phrase list-of-pointers-to-id-type-begin-modified amenn
+ambee use-handler-with-each-word-in-phrase check-for-non-alpha-before-id-type list-of-pointers-to-id-type-begin amenn
+ambee copy-text list-of-pointers-to-id-type-begin-modified list-of-pointers-to-id-type-begin amenn
+ambee put-into-phrase offset-distance ambee numeric-add 1 ambee get-count-of-characters svg-location-id amenn amenn amenn
+ambee clear-phrase list-of-pointers-to-avar-ids-of-one-type amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase list-of-pointers-to-id-type-begin amenn amenn
+    ambee numeric-vector-add-number list-of-pointers-to-id-type-begin ambee offset-distance amenn list-of-pointers-to-avar-ids-of-one-type amenn
+    ambee append-text list-of-pointers-to-avar-ids-of-one-type list-of-pointers-to-first-character-of-all-svg-ids amenn
+ambee if-end amenn
+----
+check-for-non-alpha-before-id-type:
+ambee copy-text word-to-use-in-handler pointer-to-id-type amenn
+ambee copy-text pointer-to-id-type pointer-to-character-before-id-type amenn
+ambee numeric-decrement pointer-to-character-before-id-type amenn
+ambee copy-characters-from-position-to-position loaded-svg-file possible-alpha ambee pointer-to-character-before-id-type amenn ambee pointer-to-character-before-id-type amenn amenn
+ambee copy-words-found-in-both-lists possible-alpha letters-of-alphabet empty-if-not-alpha amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase empty-if-not-alpha amenn amenn
+    ambee append-text pointer-to-id-type list-of-pointers-to-id-type-begin-modified amenn
+ambee if-end amenn
+----
+handle-get-one-avar-id:
+ambee copy-text word-to-use-in-handler pointer-to-pointer amenn
+ambee copy-word-at-position list-of-pointers-to-first-character-of-all-svg-ids character-pointer-begin ambee pointer-to-pointer amenn amenn
+ambee copy-text character-pointer-begin integer-threshold amenn
+ambee copy-text list-of-pointers-to-last-character-of-all-avar-ids list-of-integers amenn
+ambee find-nearest-integers-in-list amenn
+ambee copy-text nearest-larger-integer character-pointer-end amenn
+ambee copy-characters-from-position-to-position loaded-svg-file avar-id ambee character-pointer-begin amenn ambee character-pointer-end amenn amenn
+ambee copy-and-replace avar-id avar-id-with-replacements character-space character-at-sign amenn
+ambee copy-text character-pointer-begin integer-threshold amenn
+ambee copy-text list-of-pointers-to-open-angle-brackets list-of-integers amenn
+ambee find-nearest-integers-in-list amenn
+ambee copy-text nearest-smaller-integer pointer-to-prior-open-angle-bracket amenn
+ambee copy-text avar-id-with-replacements avar-id-for-object-starting-at-svg-character-position fenambee pointer-to-prior-open-angle-bracket amenn amenn
+ambee append-text pointer-to-prior-open-angle-bracket list-of-pointers-to-brackets-before-avar-ids amenn
+----
+point-to-all-svg-avar-values:
+ambee use-handler-with-each-word-in-phrase point-to-svg-avar-values-of-one-avar-dimen list-of-avar-dimens amenn
+ambee generate-counts-from-integer-to-integer 1 ambee get-count-of-words list-of-pointers-to-begin-svg-avar-values amenn list-of-pointers-to-begin-avar-value-pointers amenn
+----
+point-to-svg-avar-values-of-one-avar-dimen:
+ambee copy-text word-to-use-in-handler avar-dimen amenn
+ambee copy-text svg-location fenambee avar-dimen amenn svg-location amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase svg-location amenn amenn
+    ambee point-to-svg-avar-values-based-on-svg-location-words amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line svg location type invalid: amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+point-to-svg-avar-values-based-on-svg-location-words:
+ambee copy-word-at-position svg-location svg-location-word 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase svg-location-word amenn amenn
+    ambee copy-text character-at-sign svg-location-word amenn
+ambee if-end amenn
+
+ambee copy-and-replace svg-location-word svg-location-word character-at-sign character-space amenn
+ambee point-to-svg-avar-values-have-svg-location-word amenn
+----
+point-to-svg-avar-values-have-svg-location-word:
+ambee generate-positions-of-delimiter svg-location-word loaded-svg-file list-of-pointers-to-found-text amenn
+
+combee
+    ambee put-into-phrase output-line svg location word: amenn
+    ambee append-text svg-location-word output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase list-of-pointers-to-found-text amenn amenn
+    ambee point-to-svg-avar-values-based-on-pointers-found amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line location word not found for dimen amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+point-to-svg-avar-values-based-on-pointers-found:
+ambee numeric-vector-add-number list-of-pointers-to-found-text ambee get-count-of-characters svg-location-word amenn list-of-pointers-to-next-character-in-svg-avar-value amenn
+ambee put-into-phrase word-count-for-svg-location ambee get-count-of-words svg-location amenn amenn
+ambee generate-counts-from-integer-to-integer 2 ambee word-count-for-svg-location amenn list-of-pointers-to-svg-location-words amenn
+ambee use-handler-with-each-word-in-phrase point-to-one-svg-avar-value-for-case-found-first-word list-of-pointers-to-next-character-in-svg-avar-value amenn
+----
+point-to-one-svg-avar-value-for-case-found-first-word:
+ambee copy-text word-to-use-in-handler pointer-to-previous-next-character-in-svg-avar-value amenn
+ambee clear-phrase location-word-previous amenn
+ambee use-handler-with-each-word-in-phrase point-to-one-svg-avar-value-using-next-svg-location-word list-of-pointers-to-svg-location-words amenn
+ambee handle-one-found-svg-avar-value amenn
+----
+point-to-one-svg-avar-value-using-next-svg-location-word:
+ambee copy-text word-to-use-in-handler pointer-to-svg-location-word amenn
+ambee copy-word-at-position svg-location svg-location-word ambee pointer-to-svg-location-word amenn amenn
+ambee copy-text svg-location-word svg-location-word-before-replacements amenn
+ambee copy-and-replace svg-location-word svg-location-word character-at-sign character-space amenn
+ambee put-into-phrase
+    length-of-svg-location-word
+    ambee get-count-of-characters svg-location-word-before-replacements amenn
+amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions location-word location-word-previous amenn amenn
+    ambee put-into-phrase
+        character-pointer-minus-one
+        ambee numeric-minus
+            ambee pointer-to-previous-next-character-in-svg-avar-value amenn
+            1
+        amenn
+    amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase svg-location-word amenn amenn
+    ambee generate-positions-of-first-matching-delimiter-after-listed-positions svg-location-word loaded-svg-file character-pointer-minus-one pointer-to-next-next-character-in-svg-avar-value amenn
+ambee if-else amenn
+    ambee point-to-next-space-in-svg-file amenn
+ambee if-end amenn
+
+combee reminder: in next line change avar dimen to dimen being debugged comenn
+ambee if-yes-begin ambee yes-or-no-same-two-words draw-point-y ambee avar-dimen amenn amenn amenn
+
+combee
+    ambee put-into-phrase output-line avar location info: amenn
+    ambee append-text pointer-to-svg-location-word output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee append-text svg-location-word output-line amenn
+    ambee append-text pointer-to-next-next-character-in-svg-avar-value output-line amenn
+    ambee write-output-line-to-log-file amenn
+    ambee put-into-phrase
+        pointer-for-debugging-begin
+        ambee numeric-minus
+            ambee character-pointer-minus-one amenn
+            5
+        amenn
+    amenn
+    ambee put-into-phrase
+        pointer-for-debugging-end
+        ambee numeric-add
+            ambee pointer-to-next-next-character-in-svg-avar-value amenn
+            5
+        amenn
+    amenn
+
+    ambee put-into-phrase output-line string: amenn
+    ambee copy-characters-from-position-to-position loaded-svg-file text-string ambee pointer-for-debugging-begin amenn ambee pointer-for-debugging-end amenn amenn
+    ambee copy-characters-from-position-to-position loaded-svg-file text-string ambee pointer-to-previous-next-character-in-svg-avar-value amenn ambee pointer-to-next-next-character-in-svg-avar-value amenn amenn
+    ambee copy-and-replace text-string text-string character-newline character-at-sign amenn
+    ambee append-text text-string output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words ambee pointer-to-svg-location-word amenn ambee word-count-for-svg-location amenn amenn amenn
+    ambee put-into-phrase
+        pointer-to-previous-next-character-in-svg-avar-value
+        ambee numeric-add
+            ambee pointer-to-next-next-character-in-svg-avar-value amenn
+            ambee length-of-svg-location-word amenn
+        amenn
+    amenn
+    ambee copy-text location-word location-word-previous amenn
+ambee if-end amenn
+----
+point-to-next-space-in-svg-file:
+ambee put-into-phrase
+    character-pointer-end-of-segment
+    ambee numeric-add
+        ambee character-pointer-minus-one amenn
+        50
+    amenn
+amenn
+ambee copy-characters-from-position-to-position loaded-svg-file segment-of-svg-file ambee character-pointer-minus-one amenn ambee character-pointer-end-of-segment amenn amenn
+ambee put-into-phrase
+    pointer-to-next-next-character-in-svg-avar-value
+    ambee numeric-add
+        ambee get-position-of-matching-text character-space segment-of-svg-file amenn
+        ambee character-pointer-minus-one amenn
+    amenn
+amenn
+----
+handle-one-found-svg-avar-value:
+ambee copy-text pointer-to-previous-next-character-in-svg-avar-value character-pointer-begin amenn
+ambee copy-text pointer-to-next-next-character-in-svg-avar-value character-pointer-end amenn
+ambee numeric-decrement character-pointer-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee character-pointer-begin amenn 1 amenn amenn amenn
+    ambee put-into-phrase character-pointer-begin 1 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee character-pointer-end amenn ambee character-pointer-begin amenn amenn amenn amenn
+    ambee copy-text character-pointer-begin character-pointer-end amenn
+    ambee numeric-increment character-pointer-end amenn
+ambee if-end amenn
+
+ambee copy-characters-from-position-to-position loaded-svg-file svg-avar-value ambee character-pointer-begin amenn ambee character-pointer-end amenn amenn
+ambee copy-characters-from-position-to-position svg-avar-value svg-avar-value 1 50 amenn
+ambee copy-and-replace svg-avar-value svg-avar-value character-newline character-space amenn
+ambee copy-without-extra-spaces svg-avar-value svg-avar-value amenn
+
+combee reminder: in next line change avar dimen to dimen being debugged comenn
+ambee if-yes-begin ambee yes-or-no-same-two-words measurement-xyz ambee avar-dimen amenn amenn amenn
+    ambee put-into-phrase output-line possible avar value: amenn
+    ambee append-text svg-avar-value output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+
+ambee copy-text svg-avar-value possible-number amenn
+ambee determine-yes-or-no-is-number-for-possible-number amenn
+
+ambee if-yes-begin ambee yes-or-no-is-number amenn amenn
+    ambee put-combined-svg-avar-id-name-dimen-value amenn
+ambee if-else amenn
+    combee
+    ambee log-svg-code-context-that-is-not-number amenn
+    comenn
+ambee if-end amenn
+----
+log-svg-code-context-that-is-not-number:
+ambee put-into-phrase output-line not an avar because not a number: amenn
+ambee append-text svg-avar-value output-line amenn
+ambee write-output-line-to-log-file amenn
+
+ambee put-into-phrase output-line svg location: amenn
+ambee append-text svg-location output-line amenn
+ambee write-output-line-to-log-file amenn
+
+ambee clear-phrase svg-code-context amenn
+ambee put-into-phrase
+    svg-code-context-pointer-begin
+    ambee numeric-maximum
+        1
+        ambee numeric-minus
+            ambee character-pointer-begin amenn
+            15
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    svg-code-context-pointer-end
+    ambee numeric-minimum
+        ambee numeric-add
+            ambee character-pointer-end amenn
+            15
+        amenn
+        ambee numeric-add
+            ambee character-pointer-begin amenn
+            30
+        amenn
+    amenn
+amenn
+ambee copy-characters-from-position-to-position loaded-svg-file svg-code-context ambee svg-code-context-pointer-begin amenn ambee svg-code-context-pointer-end amenn amenn
+
+    ambee put-into-phrase output-line ******* begin context ****** amenn
+    ambee write-output-line-to-log-file amenn
+    ambee copy-text svg-code-context output-line amenn
+    ambee write-output-line-to-log-file amenn
+    ambee put-into-phrase output-line ******* end context ****** amenn
+    ambee write-output-line-to-log-file amenn
+----
+put-combined-svg-avar-id-name-dimen-value:
+ambee copy-text pointer-to-previous-next-character-in-svg-avar-value integer-threshold amenn
+ambee copy-text list-of-pointers-to-open-angle-brackets list-of-integers amenn
+ambee find-nearest-integers-in-list amenn
+ambee copy-text avar-id-for-object-starting-at-svg-character-position fenambee nearest-smaller-integer amenn avar-id amenn
+ambee copy-and-replace svg-avar-value svg-avar-value-without-spaces character-space character-at-sign amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase avar-id amenn amenn
+    ambee capture-values amenn
+ambee if-else amenn
+    combee
+    ambee put-into-phrase output-line failed to find avar-id-for-object-starting-at-svg-character-position at pointer: amenn
+    ambee append-text nearest-smaller-integer output-line amenn
+    ambee write-output-line-to-log-file amenn
+    comenn
+ambee if-end amenn
+----
+capture-values:
+ambee copy-text avar-id possible-avar-id-to-capture amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase captured-value-keyframe fenambee keyframe-name amennfen avar-id fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn amenn
+    ambee copy-text svg-avar-value-without-spaces captured-value-keyframe fenambee keyframe-name amennfen avar-id fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn
+ambee if-else amenn
+    ambee copy-text svg-avar-value-without-spaces captured-value-keyframe-dups-avar-id fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn
+ambee if-end amenn
+
+ambee append-text avar-id list-of-avar-ids-in-captured-sequence amenn
+ambee put-into-phrase text-hyphen-avar-id-hyphen -avar-id- amenn
+ambee put-into-phrase text-hyphen-dimen-hyphen -dimen- amenn
+ambee put-into-phrase captured-value-line captured-value-keyframe amenn
+ambee append-text-no-space character-hyphen captured-value-line amenn
+ambee append-text-no-space keyframe-name captured-value-line amenn
+ambee append-text-no-space text-hyphen-avar-id-hyphen captured-value-line amenn
+ambee append-text-no-space avar-id captured-value-line amenn
+ambee append-text-no-space text-hyphen-dimen-hyphen captured-value-line amenn
+ambee append-text-no-space avar-dimen captured-value-line amenn
+ambee append-text svg-avar-value-without-spaces captured-value-line amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file captured-value-line ambee filename-output-captured-values amenn amenn
+----
+handle-one-svg-location-word:
+ambee copy-text location-word location-word-previous amenn
+ambee copy-text word-to-use-in-handler location-word amenn
+ambee generate-positions-of-first-matching-delimiter-after-listed-positions location-word loaded-svg-file starting-pointer next-starting-pointer amenn
+ambee append-text next-starting-pointer list-of-starting-pointers amenn
+ambee copy-text next-starting-pointer starting-pointer amenn
+
+    ambee put-into-phrase output-line getting avar value: amenn
+    ambee append-text location-word output-line amenn
+    ambee append-text list-of-starting-pointers output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+
+
+section-transitions:
+============================================================
+TRANSITIONS
+............................................................
+----
+
+generate-transition:
+ambee write-avar-info-summary-line-to-file amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions avar-frame-begin avar-frame-end amenn amenn
+    ambee generate-transition-single-frame amenn
+ambee if-else amenn
+    ambee generate-transition-multiple-frames amenn
+ambee if-end amenn
+----
+generate-transition-single-frame:
+ambee copy-text avar-frame-begin avar-frame-current amenn
+ambee copy-text avar-id avar-info-lines-to-write amenn
+ambee append-text avar-dimen avar-info-lines-to-write amenn
+ambee append-text avar-value-current avar-info-lines-to-write amenn
+ambee write-avar-id-dimen-value-current-to-avar-info-file amenn
+----
+generate-transition-multiple-frames:
+ambee calculate-avar-frame-range amenn
+ambee calculate-avar-value-range amenn
+ambee copy-text transition-type transition-curve amenn
+ambee copy-words-found-in-both-lists transition-curve list-of-valid-transition-curves valid-transition-curve-or-empty amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase valid-transition-curve-or-empty amenn amenn
+        ambee put-into-phrase output-line invalid transition type: amenn
+        ambee append-text transition-type output-line amenn
+        ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase valid-transition-curve-or-empty amenn amenn
+    ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+ambee if-else amenn
+    ambee generate-transition-simple-linear amenn
+ambee if-end amenn
+
+ambee copy-text avar-value-begin saved-value-begin-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn
+ambee copy-text avar-value-end saved-value-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn
+ambee copy-text avar-frame-end saved-frame-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen amenn amenn
+----
+write-avar-info-summary-line-to-file:
+ambee copy-text avar-frame-begin avar-info-line amenn
+ambee append-text avar-frame-end avar-info-line amenn
+ambee append-text avar-id avar-info-line amenn
+ambee append-text avar-dimen avar-info-line amenn
+ambee append-text avar-value-begin avar-info-line amenn
+ambee append-text avar-value-end avar-info-line amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file avar-info-line ambee filename-output-all-avar-info amenn amenn
+----
+write-transition-info-to-log-file:
+ambee put-into-phrase output-line transition info: amenn
+ambee append-text avar-id output-line amenn
+ambee append-text avar-dimen output-line amenn
+ambee append-text transition-type output-line amenn
+ambee append-text transition-curve output-line amenn
+ambee append-text avar-frame-begin output-line amenn
+ambee append-text avar-frame-end output-line amenn
+ambee append-text avar-frame-at-value-begin output-line amenn
+ambee append-text avar-frame-at-value-end output-line amenn
+ambee append-text elapsed-frames output-line amenn
+ambee append-text yes-or-no-frame-overlap-at-begin output-line amenn
+ambee append-text character-asterisk output-line amenn
+ambee append-text avar-value-begin output-line amenn
+ambee append-text avar-value-end output-line amenn
+ambee append-text character-asterisk output-line amenn
+ambee append-text avar-x-position output-line amenn
+ambee append-text avar-y-position output-line amenn
+ambee append-text character-asterisk output-line amenn
+ambee append-text avar-x-step-interval output-line amenn
+ambee append-text avar-x-step-count output-line amenn
+ambee append-text avar-x-offset-to-scale output-line amenn
+ambee append-text avar-x-offset-scale output-line amenn
+ambee append-text character-asterisk output-line amenn
+ambee append-text avar-y-step-interval output-line amenn
+ambee append-text avar-y-step-count output-line amenn
+ambee append-text avar-y-offset-to-scale output-line amenn
+ambee append-text avar-y-offset-scale output-line amenn
+ambee append-text character-asterisk output-line amenn
+ambee append-text keyframe-name output-line amenn
+ambee append-text keyframe-name-begin output-line amenn
+ambee append-text keyframe-name-end output-line amenn
+ambee write-output-line-to-log-file amenn
+----
+generate-transition-simple-linear:
+ambee calculate-avar-value-range amenn
+
+    ambee write-transition-info-to-log-file amenn
+
+ambee generate-counts-from-integer-to-integer ambee avar-frame-begin amenn ambee avar-frame-end amenn list-of-frame-numbers amenn
+combee
+ambee generate-counts-from-integer-to-integer ambee avar-frame-at-value-begin amenn ambee avar-frame-at-value-end amenn list-of-frame-numbers amenn
+comenn
+
+combee
+    ambee put-into-phrase output-line frame numbers, linear: amenn
+    ambee append-text list-of-frame-numbers output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee use-handler-with-each-word-in-phrase write-one-avar-value-for-transition-type-simple-linear list-of-frame-numbers amenn
+----
+write-one-avar-value-for-transition-type-simple-linear:
+ambee copy-text word-to-use-in-handler avar-frame-current amenn
+ambee calculate-one-avar-value-for-linear-transition amenn
+ambee write-avar-id-dimen-value-current-to-avar-info-file amenn
+----
+calculate-one-avar-value-for-linear-transition:
+ambee put-into-phrase
+    avar-value-current
+    ambee numeric-add
+        ambee avar-value-begin amenn
+        ambee numeric-multiply
+            ambee avar-value-range amenn
+            ambee numeric-divide-by
+                ambee numeric-minus
+                    ambee avar-frame-current amenn
+                    ambee avar-frame-at-value-begin amenn
+                amenn
+                ambee avar-frame-range amenn
+            amenn
+        amenn
+    amenn
+amenn
+
+combee
+    ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions avar-id avar-id-ballot-full-matrix amenn amenn
+        ambee put-into-phrase output-line debugging rotation: amenn
+        ambee append-text avar-frame-current output-line amenn
+        ambee append-text avar-frame-range output-line amenn
+        ambee write-output-line-to-log-file amenn
+    ambee if-end amenn
+comenn
+----
+save-avar-values-x:
+ambee copy-text avar-value-end saved-value-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-x amenn amenn
+ambee copy-text avar-frame-end saved-frame-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-x amenn amenn
+----
+save-avar-values-y:
+ambee copy-text avar-value-end saved-value-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-y amenn amenn
+ambee copy-text avar-frame-end saved-frame-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-y amenn amenn
+----
+get-percent-times-and-percent-values-then-write-avar-values:
+ambee get-percent-times-and-percent-values-for-transition-curve amenn
+ambee generate-counts-from-integer-to-integer ambee avar-frame-at-value-begin amenn ambee avar-frame-at-value-end amenn list-of-frame-numbers amenn
+
+combee
+    ambee put-into-phrase output-line frame numbers, percents: amenn
+    ambee append-text list-of-frame-numbers output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee use-handler-with-each-word-in-phrase generate-write-one-avar-info-line-for-one-avar-using-percent-times-frames list-of-frame-numbers amenn
+----
+generate-write-one-avar-info-line-for-one-avar-using-percent-times-frames:
+ambee copy-text word-to-use-in-handler avar-frame-current amenn
+ambee clear-phrase avar-value-current amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions avar-value-begin avar-value-end amenn amenn
+    ambee copy-text avar-value-begin avar-value-current amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee avar-frame-current amenn ambee avar-frame-begin amenn amenn amenn amenn
+    ambee copy-text avar-value-begin avar-value-current amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words less ambee numeric-equal-greater-less-compare ambee avar-frame-current amenn ambee avar-frame-end amenn amenn amenn amenn
+    ambee copy-text avar-value-end avar-value-current amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-value-current amenn amenn
+    ambee calculate-one-avar-value-using-percent-times-and-percent-values amenn
+ambee if-end amenn
+
+ambee write-avar-id-dimen-value-current-to-avar-info-file amenn
+----
+get-percent-times-and-percent-values-for-transition-curve:
+ambee clear-phrase percent-times amenn
+ambee clear-phrase percent-values amenn
+ambee copy-text percent-times-for-transition-curve fenambee transition-curve amenn percent-times amenn
+ambee copy-text percent-values-for-transition-curve fenambee transition-curve amenn percent-values amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase percent-times amenn amenn
+    ambee put-into-phrase percent-times 0 100 amenn
+    ambee put-into-phrase percent-values 0 100 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase percent-values amenn amenn
+    ambee put-into-phrase percent-times 0 100 amenn
+    ambee put-into-phrase percent-values 0 100 amenn
+ambee if-end amenn
+
+combee
+    ambee put-into-phrase output-line percent-times and values: amenn
+    ambee append-text percent-times output-line amenn
+    ambee append-text percent-values output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+calculate-one-avar-value-using-percent-times-and-percent-values:
+ambee clear-phrase matching-substring amenn
+ambee copy-text avar-frame-begin frame-begin amenn
+ambee copy-text avar-frame-end frame-end amenn
+ambee copy-text avar-frame-current frame-current amenn
+ambee calculate-percent-integer-from-frame-begin-end-current amenn
+ambee copy-text percent-integer avar-frame-percent-current amenn
+ambee copy-words-found-in-both-lists avar-frame-percent-current percent-times percent-time-at-transition-interval-edge amenn
+
+combee
+    ambee put-into-phrase output-line avar-frame-current: amenn
+    ambee append-text avar-frame-current output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase percent-time-at-transition-interval-edge amenn amenn
+    ambee copy-text avar-frame-percent-current integer-threshold amenn
+    ambee copy-text percent-times list-of-integers amenn
+    ambee find-nearest-integers-in-list amenn
+    ambee copy-text nearest-smaller-integer transition-interval-frame-percent-begin amenn
+    ambee copy-text nearest-larger-integer transition-interval-frame-percent-end amenn
+ambee if-else amenn
+    ambee copy-text percent-time-at-transition-interval-edge transition-interval-frame-percent-begin amenn
+    ambee put-into-phrase pointer-to-nearby-integer ambee get-position-of-word percent-time-at-transition-interval-edge percent-times amenn amenn
+    ambee numeric-increment pointer-to-nearby-integer amenn
+    ambee copy-word-at-position percent-times transition-interval-frame-percent-end ambee pointer-to-nearby-integer amenn amenn
+ambee if-end amenn
+
+ambee put-into-phrase pointer-to-nearby-integer
+    ambee get-position-of-word transition-interval-frame-percent-begin percent-times amenn amenn
+ambee copy-word-at-position percent-values transition-interval-value-percent-begin ambee pointer-to-nearby-integer amenn amenn
+ambee numeric-increment pointer-to-nearby-integer amenn
+ambee copy-word-at-position percent-values transition-interval-value-percent-end ambee pointer-to-nearby-integer amenn amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee transition-interval-frame-percent-end amenn ambee transition-interval-frame-percent-begin amenn amenn amenn amenn
+    ambee numeric-increment transition-interval-frame-percent-end amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    transition-interval-value-decimal-current
+    ambee numeric-divide-by
+        ambee numeric-minus
+            ambee avar-frame-percent-current amenn
+            ambee transition-interval-frame-percent-begin amenn
+        amenn
+        ambee numeric-minus
+            ambee transition-interval-frame-percent-end amenn
+            ambee transition-interval-frame-percent-begin amenn
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-value-range
+    ambee numeric-minus
+        ambee avar-value-end amenn
+        ambee avar-value-begin amenn
+    amenn
+amenn
+ambee put-into-phrase
+    transition-interval-value-begin
+    ambee numeric-add
+        ambee avar-value-begin amenn
+        ambee numeric-divide-by
+            ambee numeric-multiply
+                ambee transition-interval-value-percent-begin amenn
+                ambee avar-value-range amenn
+            amenn
+            100
+        amenn
+    amenn
+amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee transition-interval-value-percent-end amenn ambee avar-value-range amenn amenn amenn amenn
+    ambee numeric-decrement transition-interval-value-percent-end amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    transition-interval-value-end
+    ambee numeric-add
+        ambee avar-value-begin amenn
+        ambee numeric-divide-by
+            ambee numeric-multiply
+                ambee transition-interval-value-percent-end amenn
+                ambee avar-value-range amenn
+            amenn
+            100
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    transition-interval-value-range
+    ambee numeric-minus
+        ambee transition-interval-value-end amenn
+        ambee transition-interval-value-begin amenn
+    amenn
+amenn
+ambee put-into-phrase
+    decimal-value
+    ambee numeric-add
+        ambee transition-interval-value-begin amenn
+        ambee numeric-multiply
+            ambee transition-interval-value-decimal-current amenn
+            ambee transition-interval-value-range amenn
+        amenn
+    amenn
+amenn
+ambee round-decimal-value-to-four-digits amenn
+ambee copy-text decimal-value avar-value-current amenn
+
+combee
+    ambee put-into-phrase output-line fjskdlfjsdlk: amenn
+    ambee append-text avar-value-current output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+calculate-percent-integer-from-frame-begin-end-current:
+ambee if-yes-begin ambee yes-or-no-same-two-words equal ambee numeric-equal-greater-less-compare ambee frame-begin amenn ambee frame-end amenn amenn amenn amenn
+    ambee numeric-increment frame-end amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    percent-integer
+    ambee numeric-integer
+        ambee numeric-divide-by
+            ambee numeric-multiply
+                100
+                ambee numeric-minus
+                    ambee frame-current amenn
+                    ambee frame-begin amenn
+                amenn
+            amenn
+            ambee numeric-minus
+                ambee frame-end amenn
+                ambee frame-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+
+combee
+    ambee put-into-phrase output-line percent-integer: amenn
+    ambee append-text percent-integer output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+generate-transition-move-normal-x-y:
+ambee calculate-x-y-distance-using-avar-value-x-y-begin-end amenn
+ambee put-into-phrase
+    distance-pixels-at-constant-speed
+    ambee numeric-absolute
+        ambee numeric-minus
+            ambee numeric-integer
+                ambee x-y-distance-for-move-normal amenn
+            amenn
+            ambee numeric-integer
+                ambee distance-pixels-begin-plus-end-constant-speed amenn
+            amenn
+        amenn
+    amenn
+amenn
+
+    ambee put-into-phrase output-line distance-pixels-at-constant-speed: amenn
+    ambee append-text distance-pixels-at-constant-speed output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee distance-pixels-at-constant-speed amenn 0 amenn amenn amenn
+    ambee generate-transition-move-normal-x-y-reaches-constant-speed amenn
+ambee if-else amenn
+    ambee generate-transition-move-short-x-y amenn
+ambee if-end amenn
+----
+generate-transition-move-normal-x-y-reaches-constant-speed:
+ambee write-transition-info-to-log-file amenn
+
+ambee calculate-frame-numbers-for-before-during-after-constant-speed amenn
+
+    ambee put-into-phrase output-line frames move full: amenn
+    ambee append-text avar-frame-begin-for-segment-start output-line amenn
+    ambee append-text avar-frame-end-for-segment-start output-line amenn
+    ambee append-text avar-frame-begin-for-segment-constant-speed output-line amenn
+    ambee append-text avar-frame-end-for-segment-constant-speed output-line amenn
+    ambee append-text avar-frame-begin-for-segment-stop output-line amenn
+    ambee append-text avar-frame-end-for-segment-stop output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-x-end saved-value-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-x amenn amenn
+ambee copy-text avar-frame-end-for-segment-stop saved-frame-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-x amenn amenn
+ambee copy-text avar-value-y-end saved-value-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-y amenn amenn
+ambee copy-text avar-frame-end-for-segment-stop saved-frame-end-for-avar fenambee avar-id amennfen dimen fenambee avar-dimen-y amenn amenn
+ambee put-into-phrase
+    proportion-distance-at-begin-constant-speed
+    ambee numeric-divide-by
+        ambee distance-pixels-at-begin-constant-speed amenn
+        ambee x-y-distance-for-move-normal amenn
+    amenn
+amenn
+ambee put-into-phrase
+    proportion-distance-at-end-constant-speed
+    ambee numeric-divide-by
+        ambee numeric-add
+            ambee distance-pixels-at-begin-constant-speed amenn
+            ambee distance-pixels-at-constant-speed amenn
+        amenn
+        ambee x-y-distance-for-move-normal amenn
+    amenn
+amenn
+ambee copy-text avar-value-begin avar-value-x-begin-for-segment-start amenn
+ambee copy-text avar-value-begin avar-value-y-begin-for-segment-start amenn
+ambee put-into-phrase
+    avar-value-x-end-for-segment-start
+    ambee numeric-add
+        ambee avar-value-x-begin amenn
+        ambee numeric-multiply
+            ambee proportion-distance-at-begin-constant-speed amenn
+            ambee numeric-minus
+                ambee avar-value-x-end amenn
+                ambee avar-value-x-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee copy-text avar-value-y-begin avar-value-y-begin-for-segment-start amenn
+ambee put-into-phrase
+    avar-value-y-end-for-segment-start
+    ambee numeric-add
+        ambee avar-value-y-begin amenn
+        ambee numeric-multiply
+            ambee proportion-distance-at-begin-constant-speed amenn
+            ambee numeric-minus
+                ambee avar-value-y-end amenn
+                ambee avar-value-y-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee copy-text avar-value-x-end-for-segment-start avar-value-x-begin-for-segment-constant-speed amenn
+ambee put-into-phrase
+    avar-value-x-end-for-segment-constant-speed
+    ambee numeric-add
+        ambee avar-value-x-begin amenn
+        ambee numeric-multiply
+            ambee proportion-distance-at-end-constant-speed amenn
+            ambee numeric-minus
+                ambee avar-value-x-end amenn
+                ambee avar-value-x-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee copy-text avar-value-y-end-for-segment-start avar-value-y-begin-for-segment-constant-speed amenn
+ambee put-into-phrase
+    avar-value-y-end-for-segment-constant-speed
+    ambee numeric-add
+        ambee avar-value-y-begin amenn
+        ambee numeric-multiply
+            ambee proportion-distance-at-end-constant-speed amenn
+            ambee numeric-minus
+                ambee avar-value-y-end amenn
+                ambee avar-value-y-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee copy-text avar-value-x-end-for-segment-constant-speed avar-value-x-begin-for-segment-stop amenn
+ambee copy-text avar-value-y-end-for-segment-constant-speed avar-value-y-begin-for-segment-stop amenn
+ambee copy-text avar-value-x-end avar-value-x-end-for-segment-stop amenn
+ambee copy-text avar-value-y-end avar-value-y-end-for-segment-stop amenn
+
+ambee copy-text avar-value-x-begin-for-segment-start avar-value-begin amenn
+ambee copy-text avar-value-x-end-for-segment-start avar-value-end amenn
+ambee copy-text avar-dimen-x avar-dimen amenn
+ambee put-into-phrase transition-curve move-start amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+
+    ambee put-into-phrase output-line values move start x: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-y-begin-for-segment-start avar-value-begin amenn
+ambee copy-text avar-value-y-end-for-segment-start avar-value-end amenn
+ambee copy-text avar-dimen-y avar-dimen amenn
+ambee put-into-phrase transition-curve move-start amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+
+    ambee put-into-phrase output-line values move start y: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-x-begin-for-segment-constant-speed avar-value-begin amenn
+ambee copy-text avar-value-x-end-for-segment-constant-speed avar-value-end amenn
+ambee copy-text avar-dimen-x avar-dimen amenn
+ambee generate-transition-simple-linear amenn
+
+    ambee put-into-phrase output-line values move constant x: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-y-begin-for-segment-constant-speed avar-value-begin amenn
+ambee copy-text avar-value-y-end-for-segment-constant-speed avar-value-end amenn
+ambee copy-text avar-dimen-y avar-dimen amenn
+ambee generate-transition-simple-linear amenn
+
+    ambee put-into-phrase output-line values move constant y: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-x-begin-for-segment-stop avar-value-begin amenn
+ambee copy-text avar-value-x-end-for-segment-stop avar-value-end amenn
+ambee copy-text avar-dimen-x avar-dimen amenn
+ambee put-into-phrase transition-curve move-stop amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+
+    ambee put-into-phrase output-line values move stop x: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text avar-value-y-begin-for-segment-stop avar-value-begin amenn
+ambee copy-text avar-value-y-end-for-segment-stop avar-value-end amenn
+ambee copy-text avar-dimen-y avar-dimen amenn
+ambee put-into-phrase transition-curve move-stop amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+
+    ambee put-into-phrase output-line values move stop y: amenn
+    ambee append-text avar-value-begin output-line amenn
+    ambee append-text avar-value-end output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+calculate-frame-numbers-for-before-during-after-constant-speed:
+ambee copy-text avar-frame-begin avar-frame-begin-for-segment-start amenn
+ambee copy-text avar-frame-end avar-frame-end-for-segment-stop amenn
+ambee put-into-phrase
+    avar-frame-end-for-segment-start
+    ambee numeric-add
+        ambee avar-frame-begin-for-segment-start amenn
+        ambee interval-frames-for-move-start amenn
+    amenn
+amenn
+ambee copy-text avar-frame-end-for-segment-start avar-frame-begin-for-segment-constant-speed amenn
+ambee put-into-phrase
+    avar-frame-end-for-segment-constant-speed
+    ambee numeric-integer
+        ambee numeric-add
+            ambee avar-frame-begin-for-segment-constant-speed amenn
+            ambee numeric-multiply
+                ambee distance-pixels-at-constant-speed amenn
+                ambee interval-frames-maximum-duration-at-constant-speed amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-frame-end-for-segment-constant-speed
+    ambee numeric-minimum
+        ambee avar-frame-end-for-segment-constant-speed amenn
+        ambee interval-frames-maximum-duration-at-constant-speed amenn
+    amenn
+amenn
+ambee copy-text avar-frame-end-for-segment-constant-speed avar-frame-begin-for-segment-stop amenn
+ambee put-into-phrase
+    avar-frame-end-for-segment-stop
+    ambee numeric-integer
+        ambee numeric-add
+            ambee avar-frame-begin-for-segment-stop amenn
+            ambee interval-frames-for-move-stop amenn
+        amenn
+    amenn
+amenn
+----
+calculate-x-y-distance-using-avar-value-x-y-begin-end:
+ambee put-into-phrase
+    x-distance-integer
+    ambee numeric-integer
+        ambee numeric-multiply
+            10000
+            ambee numeric-minus
+                ambee avar-value-x-end amenn
+                ambee avar-value-x-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    y-distance-integer
+    ambee numeric-integer
+        ambee numeric-multiply
+            10000
+            ambee numeric-minus
+                ambee avar-value-y-end amenn
+                ambee avar-value-y-begin amenn
+            amenn
+        amenn
+    amenn
+amenn
+ambee numeric-vectors-from-delta-values-calculate-distances x-distance-integer y-distance-integer distance-integer amenn
+ambee put-into-phrase
+    x-y-distance-for-move-normal
+    ambee numeric-divide-by
+        ambee distance-integer amenn
+        ambee 10000 amenn
+    amenn
+amenn
+----
+generate-transition-move-short-x-y:
+ambee put-into-phrase transition-curve move-short amenn
+ambee copy-text avar-value-x-begin avar-value-begin amenn
+ambee copy-text avar-value-x-end avar-value-end amenn
+ambee copy-text avar-dimen-x avar-dimen amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+ambee save-avar-values-x amenn
+ambee copy-text avar-value-y-begin avar-value-begin amenn
+ambee copy-text avar-value-y-end avar-value-end amenn
+ambee copy-text avar-dimen-y avar-dimen amenn
+ambee get-percent-times-and-percent-values-then-write-avar-values amenn
+ambee save-avar-values-y amenn
+----
+
+
+section-animation-tools:
+============================================================
+ANIMATION TOOLS
+............................................................
+----
+
+initialize-animation-values-to-default:
+ambee put-into-phrase avar-frame-begin 1 amenn
+ambee put-into-phrase avar-frame-end 2 amenn
+ambee put-into-phrase avar-frame-at-value-begin 0 amenn
+ambee put-into-phrase avar-frame-at-value-end 0 amenn
+ambee put-into-phrase yes-or-no-frame-overlap-at-begin no amenn
+ambee put-into-phrase avar-value-begin 0 amenn
+ambee put-into-phrase avar-value-end 0 amenn
+ambee put-into-phrase avar-dimen unspecified amenn
+ambee put-into-phrase keyframe-name start amenn
+ambee put-into-phrase keyframe-name-begin start amenn
+ambee put-into-phrase keyframe-name-end start amenn
+ambee put-into-phrase avar-x-step-count 0 amenn
+ambee put-into-phrase avar-y-step-count 0 amenn
+ambee put-into-phrase avar-x-step-interval 0 amenn
+ambee put-into-phrase avar-y-step-interval 0 amenn
+ambee put-into-phrase avar-x-offset-to-scale 0 amenn
+ambee put-into-phrase avar-y-offset-to-scale 0 amenn
+ambee put-into-phrase avar-x-offset-scale 0 amenn
+ambee put-into-phrase avar-y-offset-scale 0 amenn
+ambee put-into-phrase avar-x-position 0 amenn
+ambee put-into-phrase avar-y-position 0 amenn
+----
+animate-switch-to-frame-rate-current:
+ambee convert-interval-seconds-to-frames-use-frame-rate-current amenn
+----
+adjust-x-y-position-by-step-interval-and-step-count:
+combee
+    ambee put-into-phrase output-line un-adjusted item positions: amenn
+    ambee append-text avar-x-position output-line amenn
+    ambee append-text avar-y-position output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee put-into-phrase
+    avar-x-position
+    ambee numeric-add
+        ambee avar-x-position amenn
+        ambee numeric-multiply
+            ambee avar-x-step-interval amenn
+            ambee avar-x-step-count amenn
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-y-position
+    ambee numeric-add
+        ambee avar-y-position amenn
+        ambee numeric-multiply
+            ambee avar-y-step-interval amenn
+            ambee avar-y-step-count amenn
+        amenn
+    amenn
+amenn
+
+combee
+    ambee put-into-phrase output-line adjusted item positions: amenn
+    ambee append-text avar-x-position output-line amenn
+    ambee append-text avar-y-position output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+animate-hide:
+ambee copy-text avar-frame-begin avar-frame-current amenn
+ambee put-into-phrase avar-value-current 0 amenn
+ambee write-avar-id-dimen-value-current-to-avar-info-file amenn
+----
+animate-unhide:
+ambee copy-text avar-frame-begin avar-frame-current amenn
+ambee put-into-phrase avar-value-current 1 amenn
+ambee write-avar-id-dimen-value-current-to-avar-info-file amenn
+----
+animate-fade-in:
+ambee put-into-phrase avar-value-begin 0 amenn
+ambee put-into-phrase avar-value-end 1 amenn
+ambee animate-single-value amenn
+----
+animate-fade-out:
+ambee put-into-phrase avar-value-begin 1 amenn
+ambee put-into-phrase avar-value-end 0 amenn
+ambee animate-single-value amenn
+----
+animate-single-value:
+ambee copy-text avar-frame-begin avar-frame-at-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-at-value-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions avar-frame-begin avar-frame-end amenn amenn
+    ambee copy-text avar-value-end avar-value-begin amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-frame-overlap-at-begin amenn amenn
+    ambee numeric-increment avar-frame-begin amenn
+ambee if-end amenn
+
+ambee generate-transition-simple-linear amenn
+----
+calculate-avar-frame-range:
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-frame-begin amenn amenn
+    ambee put-into-phrase avar-frame-begin 1 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-frame-end amenn amenn
+    ambee put-into-phrase avar-frame-end 1 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase interval-frames-maximum-video-length amenn amenn
+    ambee put-into-phrase interval-frames-maximum-video-length 100 amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    avar-frame-begin
+    ambee numeric-maximum
+        1
+        ambee avar-frame-begin amenn
+    amenn
+amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions digit-zero avar-frame-at-value-begin amenn amenn
+    ambee copy-text avar-frame-begin avar-frame-at-value-begin amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions digit-zero avar-frame-at-value-end amenn amenn
+    ambee copy-text avar-frame-end avar-frame-at-value-end amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    avar-frame-begin
+    ambee numeric-minimum
+        ambee avar-frame-begin amenn
+        ambee avar-frame-end amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-frame-end
+    ambee numeric-minimum
+        ambee avar-frame-end amenn
+        ambee interval-frames-maximum-video-length amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-frame-at-value-begin
+    ambee numeric-minimum
+        ambee avar-frame-at-value-begin amenn
+        ambee avar-frame-at-value-end amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-frame-at-value-end
+    ambee numeric-minimum
+        ambee avar-frame-at-value-end amenn
+        ambee interval-frames-maximum-video-length amenn
+    amenn
+amenn
+ambee put-into-phrase
+    avar-frame-range
+    ambee numeric-maximum
+        1
+        ambee numeric-minus
+            ambee avar-frame-at-value-end amenn
+            ambee avar-frame-at-value-begin amenn
+        amenn
+    amenn
+amenn
+ambee put-into-phrase
+    last-frame-number
+    ambee numeric-maximum
+        ambee avar-frame-end amenn
+        ambee last-frame-number amenn
+    amenn
+amenn
+----
+update-avar-frame-end-using-elapsed-frames:
+ambee if-yes-begin ambee yes-or-no-empty-phrase elapsed-frames amenn amenn
+    ambee put-into-phrase elapsed-frames 0 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-frame-begin amenn amenn
+    ambee put-into-phrase avar-frame-begin 0 amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    avar-frame-end
+    ambee numeric-integer
+        ambee numeric-add
+            ambee avar-frame-begin amenn
+            ambee elapsed-frames amenn
+        amenn
+    amenn
+amenn
+----
+calculate-avar-value-range:
+ambee put-into-phrase
+    avar-value-range
+    ambee numeric-minus
+        ambee avar-value-end amenn
+        ambee avar-value-begin amenn
+    amenn
+amenn
+----
+update-avar-value-end-add-distance-to-move:
+ambee set-defaults-avar-value-begin-and-distance-to-move amenn
+ambee put-into-phrase
+    avar-value-end
+    ambee numeric-add
+        ambee avar-value-begin amenn
+        ambee distance-to-move amenn
+    amenn
+amenn
+----
+update-avar-value-end-subtract-distance-to-move:
+ambee set-defaults-avar-value-begin-and-distance-to-move amenn
+ambee put-into-phrase
+    avar-value-end
+    ambee numeric-minus
+        ambee avar-value-begin amenn
+        ambee distance-to-move amenn
+    amenn
+amenn
+----
+set-defaults-avar-value-begin-and-distance-to-move:
+ambee if-yes-begin ambee yes-or-no-empty-phrase distance-to-move amenn amenn
+    ambee put-into-phrase distance-to-move 0 amenn
+ambee if-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-value-begin amenn amenn
+    ambee put-into-phrase avar-value-begin 0 amenn
+ambee if-end amenn
+----
+template-captured-value-phrase-name:
+captured no-space character-hyphen no-space value no-space character-hyphen no-space keyframe no-space character-hyphen no-space keyframe-name no-space character-hyphen no-space avar no-space character-hyphen no-space id no-space character-hyphen no-space avar-id no-space character-hyphen no-space dimen no-space character-hyphen no-space avar-dimen no-space
+----
+get-captured-width-height-position-for-avar-id:
+ambee put-into-phrase captured-width-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase captured-halfwidth-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase captured-height-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase captured-halfheight-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase captured-position-x-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase captured-position-y-for-avar-id fenambee avar-id amenn 0 amenn
+ambee put-into-phrase avar-dimen width amenn
+ambee expand-text template-captured-value-phrase-name phrase-name-captured-value amenn
+ambee copy-text ambee get-phrase-name-from-phrase phrase-name-captured-value amenn captured-width-for-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen height amenn
+ambee expand-text template-captured-value-phrase-name phrase-name-captured-value amenn
+ambee copy-text ambee get-phrase-name-from-phrase phrase-name-captured-value amenn captured-height-for-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen position-x amenn
+ambee expand-text template-captured-value-phrase-name phrase-name-captured-value amenn
+ambee copy-text ambee get-phrase-name-from-phrase phrase-name-captured-value amenn captured-position-x-for-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen position-y amenn
+ambee expand-text template-captured-value-phrase-name phrase-name-captured-value amenn
+ambee copy-text ambee get-phrase-name-from-phrase phrase-name-captured-value amenn captured-position-y-for-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase
+    captured-halfwidth-for-avar-id fenambee avar-id amenn
+    ambee numeric-divide-by
+        ambee captured-width-for-avar-id fenambee avar-id amenn amenn
+        2
+    amenn
+amenn
+ambee put-into-phrase
+    captured-halfheight-for-avar-id fenambee avar-id amenn
+    ambee numeric-divide-by
+        ambee captured-height-for-avar-id fenambee avar-id amenn amenn
+        2
+    amenn
+amenn
+    ambee put-into-phrase output-line avar width height etc: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text phrase-name-captured-value output-line amenn
+combee
+    ambee append-text captured-width-for-avar-id fenambee avar-id amenn output-line amenn
+    ambee append-text captured-height-for-avar-id fenambee avar-id amenn output-line amenn
+    ambee append-text captured-position-x-for-avar-id fenambee avar-id amenn output-line amenn
+    ambee append-text captured-position-y-for-avar-id fenambee avar-id amenn output-line amenn
+comenn
+    ambee write-output-line-to-log-file amenn
+----
+handle-generate-one-transition-for-one-matrix-value-using-keyframe-names:
+    ambee write-transition-info-to-log-file amenn
+
+ambee copy-text word-to-use-in-handler matrix-value-letter amenn
+ambee put-into-phrase avar-dimen transform-matrix-value- amenn
+ambee append-text-no-space matrix-value-letter avar-dimen amenn
+ambee copy-word-at-position avar-keyframe-names-begin-and-end keyframe-name 1 amenn
+ambee expand-text template-name-of-captured-value name-of-captured-value amenn
+ambee clear-phrase avar-value-begin amenn
+ambee copy-text ambee get-phrase-name-from-phrase name-of-captured-value amenn avar-value-begin amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-value-begin amenn amenn
+    ambee copy-text digits-double-zero avar-value-begin amenn
+ambee if-end amenn
+
+    ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions digits-double-zero avar-value-begin amenn amenn
+        ambee put-into-phrase output-line in keyframe, captured value not found: amenn
+        ambee append-text keyframe-name output-line amenn
+        ambee append-text name-of-captured-value output-line amenn
+        ambee write-output-line-to-log-file amenn
+    ambee if-end amenn
+
+ambee copy-word-at-position avar-keyframe-names-begin-and-end keyframe-name 2 amenn
+ambee expand-text template-name-of-captured-value name-of-captured-value amenn
+ambee clear-phrase avar-value-end amenn
+ambee copy-text ambee get-phrase-name-from-phrase name-of-captured-value amenn avar-value-end amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase avar-value-end amenn amenn
+    ambee copy-text digits-double-zero avar-value-end amenn
+ambee if-end amenn
+
+    ambee if-yes-begin ambee yes-or-no-same-two-phrase-definitions digits-double-zero avar-value-end amenn amenn
+        ambee put-into-phrase output-line in keyframe, captured value not found: amenn
+        ambee append-text keyframe-name output-line amenn
+        ambee append-text name-of-captured-value output-line amenn
+        ambee write-output-line-to-log-file amenn
+    ambee if-end amenn
+
+ambee generate-transition amenn
+----
+convert-rotation-size-move-into-transform-coefficients:
+ambee copy-text avar-rotation-angle-degrees-current angle-degrees amenn
+ambee convert-degrees-into-radians amenn
+ambee put-into-phrase transform-coefficient-a ambee numeric-multiply ambee avar-scale-size-current amenn ambee numeric-cosine ambee angle-radians amenn amenn amenn amenn
+ambee put-into-phrase transform-coefficient-b ambee numeric-multiply ambee avar-scale-size-current amenn ambee numeric-sine ambee angle-radians amenn amenn amenn amenn
+ambee put-into-phrase transform-coefficient-c ambee numeric-minus 0 ambee numeric-multiply ambee avar-scale-size-current amenn ambee numeric-sine ambee angle-radians amenn amenn amenn amenn amenn
+ambee put-into-phrase transform-coefficient-d ambee numeric-multiply ambee avar-scale-size-current amenn ambee numeric-cosine ambee angle-radians amenn amenn amenn amenn
+ambee copy-text avar-x-position-current transform-coefficient-e amenn
+ambee copy-text avar-y-position-current transform-coefficient-f amenn
+
+combee
+x = Ax + Cy + E
+y = Bx + Dy + F
+A = D = sin(theta)
+B = -C = cos(theta)
+transform="matrix(1.0,0.0,0.0,1.0,0.2,0.2)"
+transform="matrix(0.22274221,-0.04554339,0.11351611,0.0893656,299.46521,747.88773)"
+comenn
+----
+convert-degrees-into-radians:
+ambee put-into-phrase angle-radians ambee numeric-multiply ambee angle-degrees amenn ambee numeric-divide-by ambee numeric-pi amenn 180 amenn amenn amenn
+
+combee
+    ambee put-into-phrase output-line angle: amenn
+    ambee append-text angle-degrees output-line amenn
+    ambee append-text angle-radians output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+----
+
+
+section-generate-svg-files:
+============================================================
+GENERATE SVG FILES
+............................................................
+----
+
+generate-svg-files-and-render:
+ambee copy-word-at-position list-of-keyframe-names keyframe-name 1 amenn
+ambee copy-text filename-svg-for-keyframe fenambee keyframe-name amenn filename-svg-keyframe amenn
+ambee load-svg-file amenn
+ambee generate-counts-from-integer-to-integer 1 ambee last-frame-number amenn list-of-all-frame-numbers amenn
+ambee use-handler-with-each-word-in-phrase generate-one-svg-file-then-render list-of-all-frame-numbers amenn
+----
+generate-one-svg-file-then-render:
+ambee copy-text word-to-use-in-handler frame-number-to-generate amenn
+ambee copy-text frame-number-to-generate frame-number-for-avar-info-file amenn
+ambee get-avars-from-avar-info-file-and-insert amenn
+ambee copy-zero-pad-left-to-length frame-number-to-generate frame-number-zero-padded 7 amenn
+ambee expand-text template-filename-generated-svg filename-generated-svg amenn
+ambee copy-text path-to-generated-svg-files dashrep-path-prefix-for-file-writing amenn
+ambee delete-file ambee filename-generated-svg amenn amenn
+ambee copy-from-phrase-append-to-file loaded-svg-file ambee filename-generated-svg amenn amenn
+ambee copy-text frame-number-to-generate frame-number-to-render amenn
+ambee request-render-frame amenn
+----
+get-avars-from-avar-info-file-and-insert:
+ambee clear-phrase list-of-avar-ids-dimens-that-have-new-values amenn
+ambee generate-filename-avar-info amenn
+
+    ambee put-into-phrase output-line filename avar info to insert: amenn
+    ambee append-text filename-avar-info output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee generate-positions-of-delimiter character-open-angle-bracket loaded-svg-file list-of-pointers-to-open-angle-brackets amenn
+ambee copy-text path-to-avar-info-files dashrep-path-prefix-for-file-reading amenn
+
+ambee if-yes-begin ambee yes-or-no-file-exists ambee filename-avar-info amenn amenn amenn
+    ambee linewise-read-from-file-and-use-handler ambee filename-avar-info amenn get-avar-info-from-avar-info-line amenn
+ambee if-end amenn
+
+ambee copy-text list-of-avar-ids-dimens-that-have-new-values list-of-avar-ids-dimens-need-to-insert amenn
+
+combee
+older:
+ambee append-text list-of-avar-ids-dimens-that-have-new-values list-of-avar-ids-dimens-need-to-insert amenn
+comenn
+
+ambee copy-words-unique-only list-of-avar-ids-dimens-need-to-insert list-of-avar-ids-dimens-need-to-insert amenn
+
+combee
+    ambee put-into-phrase output-line keeping unchanged: amenn
+    ambee append-text list-of-avar-ids-dimens-need-to-insert output-line amenn
+    ambee write-output-line-to-log-file amenn
+comenn
+
+ambee use-handler-with-each-word-in-phrase insert-avar-value-new-into-loaded-svg-file list-of-avar-ids-dimens-need-to-insert amenn
+----
+get-avar-info-from-avar-info-line:
+ambee copy-text linewise-input-line-from-file avar-info-line amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words 1 ambee get-count-of-words avar-info-line amenn amenn amenn
+    ambee get-avar-id-dimen-value-new-from-avar-info-line amenn
+ambee if-end amenn
+----
+get-avar-id-dimen-value-new-from-avar-info-line:
+ambee copy-word-at-position avar-info-line avar-id 1 amenn
+ambee copy-word-at-position avar-info-line avar-dimen 2 amenn
+ambee copy-words-from-position-to-position avar-info-line avar-value-new 3 9999 amenn
+ambee copy-text avar-id avar-id-type amenn
+ambee append-text-no-space text-double-underscore avar-id-type amenn
+ambee append-text-no-space avar-dimen avar-id-type amenn
+ambee copy-text avar-value-new value-for-avar-id-type fenambee avar-id-type amenn amenn
+ambee append-text avar-id-type list-of-avar-ids-dimens-that-have-new-values amenn
+
+    ambee put-into-phrase output-line got avar info: amenn
+    ambee append-text avar-id-type output-line amenn
+    ambee append-text value-for-avar-id-type fenambee avar-id-type amenn output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+insert-avar-value-new-into-loaded-svg-file:
+ambee copy-text word-to-use-in-handler avar-id-type amenn
+ambee copy-and-replace avar-id-type avar-id-dimen-split text-double-underscore character-space amenn
+ambee copy-word-at-position avar-id-dimen-split avar-id 1 amenn
+ambee copy-word-at-position avar-id-dimen-split avar-dimen 2 amenn
+ambee copy-text value-for-avar-id-type fenambee avar-id-type amenn avar-value-new amenn
+ambee put-into-phrase id-equals-avar-id id=" amenn
+ambee append-text-no-space avar-id id-equals-avar-id amenn
+ambee append-text-no-space character-quotation id-equals-avar-id amenn
+ambee generate-positions-of-delimiter id-equals-avar-id loaded-svg-file pointer-to-avar-id-possible-multiple amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase pointer-to-avar-id-possible-multiple amenn amenn
+    ambee insert-avar-value-new-found-avar-id-pointer amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line did not find avar id: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text id-equals-avar-id output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+insert-avar-value-new-found-avar-id-pointer:
+ambee copy-word-at-position pointer-to-avar-id-possible-multiple pointer-to-avar-id 1 amenn
+ambee generate-positions-of-delimiter character-open-angle-bracket loaded-svg-file list-of-pointers-to-open-angle-brackets amenn
+ambee copy-text pointer-to-avar-id integer-threshold amenn
+ambee copy-text list-of-pointers-to-open-angle-brackets list-of-integers amenn
+ambee find-nearest-integers-in-list amenn
+ambee copy-text nearest-smaller-integer pointer-to-prior-open-angle-bracket amenn
+ambee generate-positions-of-first-matching-delimiter-after-listed-positions character-quotation loaded-svg-file pointer-to-prior-open-angle-bracket pointer-to-avar-id-closing-delimiter-possible-multiple amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase pointer-to-avar-id-closing-delimiter-possible-multiple amenn amenn
+    ambee insert-avar-value-new-found-avar-id-closing-quote-mark amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line did not find closing quote mark: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+insert-avar-value-new-found-avar-id-closing-quote-mark:
+ambee copy-word-at-position pointer-to-avar-id-closing-delimiter-possible-multiple pointer-to-avar-id-closing-delimiter 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee pointer-to-avar-id-closing-delimiter amenn ambee pointer-to-prior-open-angle-bracket amenn amenn amenn amenn
+    ambee insert-avar-value-new-found-avar-id-closing-delimiter amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line did not find avar id closing delimiter: amenn
+    ambee append-text avar-id output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+insert-avar-value-new-found-avar-id-closing-delimiter:
+ambee copy-text svg-location fenambee avar-dimen amenn svg-location amenn
+ambee copy-word-at-position svg-location svg-location-word 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-empty-phrase svg-location-word amenn amenn
+    ambee copy-text character-at-sign svg-location-word amenn
+ambee if-end amenn
+
+ambee copy-and-replace svg-location-word svg-location-word character-at-sign character-space amenn
+ambee generate-positions-of-first-matching-delimiter-after-listed-positions svg-location-word loaded-svg-file pointer-to-prior-open-angle-bracket pointer-to-begin-next-location-word-possible-multiple amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase pointer-to-begin-next-location-word-possible-multiple amenn amenn
+    ambee insert-avar-value-new-possibly-found-first-location-word amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line did not find first location word: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee append-text svg-location-word output-line amenn
+    ambee append-text pointer-to-prior-open-angle-bracket output-line amenn
+    ambee append-text pointer-to-begin-next-location-word-possible-multiple output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+insert-avar-value-new-possibly-found-first-location-word:
+ambee copy-word-at-position pointer-to-begin-next-location-word-possible-multiple pointer-to-begin-next-location-word 1 amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee pointer-to-begin-next-location-word amenn ambee pointer-to-prior-open-angle-bracket amenn amenn amenn amenn
+    ambee insert-avar-value-new-found-first-location-word amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line did not really find first location word: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text svg-location-word output-line amenn
+    ambee append-text pointer-to-prior-open-angle-bracket output-line amenn
+    ambee append-text pointer-to-begin-next-location-word output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+insert-avar-value-new-found-first-location-word:
+ambee put-into-phrase
+    pointer-to-begin-next-location-word
+    ambee numeric-minus
+        ambee numeric-add
+            ambee pointer-to-begin-next-location-word amenn
+            ambee get-count-of-characters svg-location-word amenn
+        amenn
+        1
+    amenn
+amenn
+ambee copy-text pointer-to-begin-next-location-word pointer-to-previous-next-character-in-svg-avar-value amenn
+ambee put-into-phrase word-count-for-svg-location ambee get-count-of-words svg-location amenn amenn
+ambee generate-counts-from-integer-to-integer 2 ambee word-count-for-svg-location amenn list-of-pointers-to-svg-location-words amenn
+ambee clear-phrase location-word-previous amenn
+ambee use-handler-with-each-word-in-phrase point-to-one-svg-avar-value-using-next-svg-location-word list-of-pointers-to-svg-location-words amenn
+ambee copy-text pointer-to-previous-next-character-in-svg-avar-value character-pointer-begin amenn
+ambee copy-text pointer-to-next-next-character-in-svg-avar-value character-pointer-end amenn
+ambee numeric-decrement character-pointer-end amenn
+ambee clear-phrase avar-value-old amenn
+
+ambee if-no-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee character-pointer-begin amenn ambee character-pointer-end amenn amenn amenn amenn
+    ambee copy-characters-from-position-to-position loaded-svg-file avar-value-old ambee character-pointer-begin amenn ambee character-pointer-end amenn amenn
+ambee if-end amenn
+
+ambee put-into-phrase
+    character-pointer-begin-end-difference
+    ambee numeric-minus
+        ambee character-pointer-end amenn
+        ambee character-pointer-begin amenn
+    amenn
+amenn
+
+ambee if-yes-begin ambee yes-or-no-same-two-words greater ambee numeric-equal-greater-less-compare ambee character-pointer-begin-end-difference amenn 20 amenn amenn amenn
+    ambee clear-phrase avar-value-old amenn
+    ambee put-into-phrase output-line error in length of found avar value: amenn
+    ambee append-text character-pointer-begin-end-difference output-line amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase avar-value-old amenn amenn
+    ambee got-avar-value-new-insert-into-loaded-svg-file amenn
+ambee if-else amenn
+    ambee put-into-phrase output-line avar value not inserted: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee write-output-line-to-log-file amenn
+ambee if-end amenn
+----
+got-avar-value-new-insert-into-loaded-svg-file:
+ambee copy-text avar-value-old possible-number amenn
+ambee determine-yes-or-no-is-number-for-possible-number amenn
+ambee numeric-decrement character-pointer-begin amenn
+ambee numeric-increment character-pointer-end amenn
+
+ambee if-yes-begin ambee yes-or-no-is-number amenn amenn
+    ambee insert-new-avar-value-into-loaded-svg-file amenn
+ambee if-else amenn
+
+    ambee put-into-phrase output-line avar value not number: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee append-text avar-value-old output-line amenn
+    ambee append-text svg-location output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee if-end amenn
+----
+insert-new-avar-value-into-loaded-svg-file:
+ambee copy-characters-from-position-to-position loaded-svg-file loaded-svg-file-modified 1 ambee character-pointer-begin amenn amenn
+ambee append-text-no-space avar-value-new loaded-svg-file-modified amenn
+ambee copy-characters-from-position-to-position loaded-svg-file loaded-svg-file-part-two ambee character-pointer-end amenn 9999999 amenn
+ambee append-text-no-space loaded-svg-file-part-two loaded-svg-file-modified amenn
+ambee copy-text loaded-svg-file-modified loaded-svg-file amenn
+
+    ambee put-into-phrase output-line inserted avar: amenn
+    ambee append-text avar-id output-line amenn
+    ambee append-text avar-dimen output-line amenn
+    ambee append-text avar-value-new output-line amenn
+    ambee write-output-line-to-log-file amenn
+----
+write-generated-files:
+ambee clear-phrase dashrep-path-prefix-for-file-reading amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file list-of-files-for-png-to-video-converter ambee filename-list-of-image-png-filenames amenn amenn
+ambee copy-from-file-to-phrase ambee filename-batch-file-do-render-begin amenn batch-commands-do-render-begin amenn
+ambee copy-from-file-to-phrase ambee filename-batch-file-do-render-end amenn batch-commands-do-render-end amenn
+ambee copy-text batch-commands-do-render-begin batch-commands-do-render-all amenn
+ambee append-new-line batch-commands-do-render-all amenn
+ambee append-text-no-space generated-batch-commands-do-render batch-commands-do-render-all amenn
+ambee append-text-no-space batch-commands-do-render-end batch-commands-do-render-all amenn
+ambee clear-phrase dashrep-path-prefix-for-file-writing amenn
+ambee copy-from-phrase-append-to-file batch-commands-do-render-all ambee filename-generated-batch-commands-do-render amenn amenn
+
+    ambee put-into-phrase output-line output files written amenn
+    ambee write-output-line-to-log-file amenn
+----
+request-render-frame:
+ambee copy-zero-pad-left-to-length frame-number-to-render frame-number-zero-padded 7 amenn
+ambee expand-text template-filename-generated-svg filename-generated-svg amenn
+ambee add-png-filename-to-list-of-files-for-png-to-video-converter amenn
+ambee expand-text template-command-do-render command-do-render amenn
+ambee append-text-no-space command-do-render generated-batch-commands-do-render amenn
+----
+add-png-filename-to-list-of-files-for-png-to-video-converter:
+ambee expand-text template-filename-image-png filename-png-rendered amenn
+ambee put-into-phrase file-line-for-video-converter file amenn
+ambee append-text path-to-generated-images file-line-for-video-converter amenn
+ambee append-text-no-space filename-png-rendered file-line-for-video-converter amenn
+ambee append-new-line file-line-for-video-converter amenn
+ambee append-text-no-space file-line-for-video-converter list-of-files-for-png-to-video-converter amenn
+----
+
+
+section-custom-animation-static-definitions:
+============================================================
+CUSTOM ANIMATION STATIC DEFINITIONS
+............................................................
+----
+
+sequence-text-phrase-and-full-truncated:
+majority
+competitive
+plurality
+splitting
+concentration
+----
+
+sequence-text-phrase-and-full:
+majority
+competitive
+plurality
+splitting
+concentration
+blocking
+ranked_ballot
+pairwise
+two_nominees
+----
+
+interval-frames-for-slide-big-ballot-down:
+7
+----
+
+interval-frames-for-move-candidate:
+4
+----
+
+interval-frames-for-delay-second-candidate:
+4
+----
+
+template-avar-id-for-text-phrase-name:
+text_ no-space text-phrase-name no-space _phrase
+----
+
+template-avar-id-for-text-full:
+text_ no-space text-phrase-name no-space _full
+----
+
+interval-frames-for-text-fades:
+3
+----
+
+interval-frames-for-text-phrase:
+3
+----
+
+interval-frames-between-scenes:
+2
+----
+
+interval-frames-for-text-full:
+3
+----
+
+list-of-ballot-avar-ids-desha-side:
+ballot_d_1
+ballot_d_2
+ballot_d_3
+ballot_d_4
+ballot_d_5
+ballot_d_6
+ballot_d_7
+ballot_d_8
+ballot_d_9
+ballot_d_10
+----
+
+list-of-ballot-avar-ids-lester-side:
+ballot_L_1
+ballot_L_2
+ballot_L_3
+ballot_L_4
+ballot_L_5
+ballot_L_6
+ballot_L_7
+ballot_L_8
+----
+
+
+
+section-custom-specify-animations:
+============================================================
+CUSTOM SPECIFY ANIMATIONS
+............................................................
+----
+
+custom-specify-animation-items-and-movements:
+ambee copy-text captured-value-keyframe-start-avar-id-ruler_ballot_candidate_offsets-dimen-height distance-ballot-offset-vertical amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ruler_ballot_candidate_offsets-dimen-width distance-candidate-offset-horizontal amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ruler_candidate_reveal_distance-dimen-height distance-candidate-reveal-vertical amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ruler_ballot_reveal_distance-dimen-height distance-ballot-reveal-vertical amenn
+ambee initialize-animation-values-to-default amenn
+ambee put-into-phrase avar-frame-begin 1 amenn
+ambee copy-text avar-frame-begin avar-frame-end amenn
+ambee hide-all-items amenn
+ambee handle-all-scenes amenn
+----
+hide-all-items:
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee use-handler-with-each-word-in-phrase handle-one-text-hide sequence-text-phrase-and-full amenn
+ambee put-into-phrase avar-id title_why_question amenn
+ambee animate-hide amenn
+ambee put-into-phrase avar-id title_why_answer amenn
+ambee animate-hide amenn
+ambee put-into-phrase avar-id text_keep_watching amenn
+ambee animate-hide amenn
+----
+handle-all-scenes:
+ambee put-into-phrase avar-frame-begin 2 amenn
+
+ambee put-into-phrase avar-id title_why_question amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-in amenn
+
+ambee slide-big-ballot-down amenn
+
+ambee copy-text interval-frames-for-text-phrase elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee put-into-phrase avar-id title_why_answer amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-in amenn
+
+ambee copy-text interval-frames-for-text-phrase elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee put-into-phrase avar-id text_keep_watching amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-in amenn
+
+ambee copy-text interval-frames-for-text-full elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee put-into-phrase avar-id title_why_question amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-out amenn
+
+ambee copy-text interval-frames-for-text-full elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee put-into-phrase avar-id title_why_answer amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-out amenn
+
+ambee copy-text interval-frames-for-text-full elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee put-into-phrase avar-id text_keep_watching amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-out amenn
+
+ambee use-handler-with-each-word-in-phrase handle-one-scene sequence-text-phrase-and-full-truncated amenn
+----
+handle-one-text-hide:
+ambee copy-text word-to-use-in-handler text-phrase-name amenn
+ambee expand-text template-avar-id-for-text-phrase-name avar-id amenn
+ambee animate-hide amenn
+ambee expand-text template-avar-id-for-text-full avar-id amenn
+ambee animate-hide amenn
+----
+handle-one-scene:
+ambee copy-text word-to-use-in-handler text-phrase-name amenn
+
+    ambee put-into-phrase output-line scene name: amenn
+    ambee append-text text-phrase-name output-line amenn
+    ambee write-output-line-to-log-file amenn
+
+ambee copy-text interval-frames-between-scenes elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee expand-text template-avar-id-for-text-phrase-name avar-id amenn
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee animate-fade-in amenn
+
+ambee numeric-increment avar-frame-end amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+
+ambee if-no-begin ambee yes-or-no-empty-phrase handle-animation-in-text-phrase-name fenambee text-phrase-name amenn amenn amenn
+    ambee handle-animation-in-text-phrase-name fenambee text-phrase-name amenn amenn
+ambee if-end amenn
+
+ambee numeric-increment avar-frame-end amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+
+ambee expand-text template-avar-id-for-text-phrase-name avar-id amenn
+
+combee todo: bug, fades to 0.25 not zero comenn
+
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee put-into-phrase avar-dimen opacity-regular-version-semi-semi amenn
+ambee animate-fade-out amenn
+ambee expand-text template-avar-id-for-text-full avar-id amenn
+ambee animate-fade-in amenn
+
+ambee copy-text interval-frames-for-text-full elapsed-frames amenn
+ambee insert-delay-of-elapsed-frames amenn
+
+ambee calculate-frame-end-and-range-for-fade-text amenn
+ambee animate-fade-out amenn
+----
+insert-delay-of-elapsed-frames:
+ambee copy-text avar-frame-end avar-frame-begin amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+----
+calculate-frame-end-and-range-for-fade-text:
+ambee copy-text interval-frames-for-text-fades elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee calculate-avar-frame-range amenn
+ambee copy-text avar-frame-begin avar-frame-at-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-at-value-end amenn
+----
+show-big-ballot:
+ambee put-into-phrase avar-id ranked_choice_ballot_marked amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ruler_big_ballot_vertical_rise-dimen-height distance-big-ballot-vertical-rise amenn
+ambee put-into-phrase avar-frame-begin 1 amenn
+ambee copy-text avar-frame-begin avar-frame-end amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ranked_choice_ballot_marked-dimen-translate-y avar-value-begin amenn
+ambee copy-text distance-big-ballot-vertical-rise distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-end avar-value-begin amenn
+ambee put-into-phrase transition-type linear amenn
+ambee generate-transition amenn
+----
+slide-big-ballot-down:
+ambee put-into-phrase avar-id ranked_choice_ballot_marked amenn
+ambee copy-text avar-frame-begin saved-frame-begin-slide-big-ballot-down amenn
+ambee copy-text interval-frames-for-slide-big-ballot-down elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text avar-frame-begin avar-frame-at-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-at-value-end amenn
+ambee copy-text captured-value-keyframe-start-avar-id-ranked_choice_ballot_marked-dimen-translate-y avar-value-begin amenn
+ambee copy-text distance-big-ballot-vertical-rise distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-begin temp-storage amenn
+ambee copy-text avar-value-end avar-value-begin amenn
+ambee copy-text temp-storage avar-value-end amenn
+ambee put-into-phrase transition-type linear amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee generate-transition amenn
+ambee copy-text saved-frame-begin-slide-big-ballot-down avar-frame-end amenn
+----
+handle-animation-in-text-phrase-name-majority:
+ambee put-into-phrase avar-id candidate_desha amenn
+ambee copy-text captured-value-keyframe-start-avar-id-candidate_desha-dimen-translate-y avar-value-begin amenn
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-end saved-y-position-for-candidate-desha amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+
+ambee put-into-phrase avar-id candidate_lester amenn
+ambee copy-text captured-value-keyframe-start-avar-id-candidate_lester-dimen-translate-y avar-value-begin amenn
+
+ambee insert-delay-second-candidate amenn
+
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-end saved-y-position-for-candidate-lester amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+
+ambee insert-delay-second-candidate amenn
+
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+
+ambee insert-delay-second-candidate amenn
+
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+
+ambee use-handler-with-each-word-in-phrase measure-one-ballot-position list-of-ballot-avar-ids-desha-side amenn
+ambee use-handler-with-each-word-in-phrase measure-one-ballot-position list-of-ballot-avar-ids-lester-side amenn
+
+ambee copy-text distance-ballot-reveal-vertical distance-to-move amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-up list-of-ballot-avar-ids-desha-side amenn
+
+ambee put-into-phrase avar-id candidate_desha amenn
+ambee copy-text saved-y-position-for-candidate-desha avar-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+ambee numeric-increment avar-frame-begin amenn
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee put-into-phrase
+    distance-to-move
+    ambee numeric-multiply
+        9
+        ambee distance-ballot-offset-vertical amenn
+    amenn
+amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+
+ambee copy-text distance-ballot-reveal-vertical distance-to-move amenn
+ambee put-into-phrase
+    distance-to-move
+    ambee numeric-minus
+        ambee distance-to-move amenn
+        ambee numeric-multiply
+            2
+            ambee captured-value-keyframe-start-avar-id-ruler_ballot_candidate_offsets-dimen-height amenn
+        amenn
+    amenn
+amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-up list-of-ballot-avar-ids-lester-side amenn
+
+ambee put-into-phrase avar-id candidate_lester amenn
+ambee copy-text saved-y-position-for-candidate-lester avar-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee put-into-phrase
+    distance-to-move
+    ambee numeric-multiply
+        7
+        ambee distance-ballot-offset-vertical amenn
+    amenn
+amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
+insert-delay-second-candidate:
+ambee copy-text interval-frames-for-delay-second-candidate elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+----
+handle-animation-in-text-phrase-name-competitive:
+ambee put-into-phrase avar-id candidate_dawn amenn
+ambee copy-text captured-value-keyframe-start-avar-id-candidate_dawn-dimen-translate-y avar-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-begin amenn
+ambee reveal-additional-candidate amenn
+
+ambee insert-delay-second-candidate amenn
+
+ambee put-into-phrase avar-id candidate_lionel amenn
+ambee copy-text captured-value-keyframe-start-avar-id-candidate_lionel-dimen-translate-y avar-value-begin amenn
+ambee copy-text interval-frames-for-delay-second-candidate elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee reveal-additional-candidate amenn
+
+ambee insert-delay-second-candidate amenn
+
+ambee put-into-phrase avar-id candidate_delores amenn
+ambee copy-text captured-value-keyframe-start-avar-id-candidate_delores-dimen-translate-y avar-value-begin amenn
+ambee reveal-additional-candidate amenn
+
+ambee copy-text avar-frame-end avar-frame-begin amenn
+
+ambee copy-text distance-candidate-offset-horizontal distance-to-move amenn
+ambee copy-words-from-position-to-position list-of-ballot-avar-ids-desha-side list-of-ballots-to-move 7 10 amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-left list-of-ballots-to-move amenn
+
+ambee put-into-phrase
+    distance-to-move
+    ambee numeric-multiply
+        -4
+        ambee distance-ballot-offset-vertical amenn
+    amenn
+amenn
+ambee copy-words-from-position-to-position list-of-ballot-avar-ids-desha-side list-of-ballots-to-move 1 6 amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-up list-of-ballots-to-move amenn
+
+ambee copy-words-from-position-to-position list-of-ballot-avar-ids-lester-side list-of-ballots-to-move 5 8 amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-right list-of-ballots-to-move amenn
+
+ambee put-into-phrase
+    distance-to-move
+    ambee numeric-multiply
+        -4
+        ambee distance-ballot-offset-vertical amenn
+    amenn
+amenn
+ambee copy-words-from-position-to-position list-of-ballot-avar-ids-desha-side list-of-ballots-to-move 1 4 amenn
+ambee use-handler-with-each-word-in-phrase move-one-ballot-up list-of-ballots-to-move amenn
+
+ambee put-into-phrase avar-id banner_winner amenn
+ambee copy-text captured-value-keyframe-start-avar-id-banner_winner-dimen-translate-y saved-y-position-for-banner-winner amenn
+ambee copy-text saved-y-position-for-banner-winner avar-value-begin amenn
+
+ambee copy-text interval-frames-for-delay-second-candidate elapsed-frames amenn
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+ambee update-avar-value-end-add-distance-to-move amenn
+ambee copy-text avar-value-end saved-y-position-for-banner-winner amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
+reveal-additional-candidate:
+ambee copy-text interval-frames-for-move-candidate elapsed-frames amenn
+ambee copy-text distance-candidate-reveal-vertical distance-to-move amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee put-into-phrase avar-dimen translate-y amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
+move-one-item-using-elapsed-frames:
+ambee update-avar-frame-end-using-elapsed-frames amenn
+ambee copy-text avar-frame-begin avar-frame-at-value-begin amenn
+ambee copy-text avar-frame-end avar-frame-at-value-end amenn
+ambee put-into-phrase transition-type linear amenn
+ambee generate-transition amenn
+----
+measure-one-ballot-position:
+ambee copy-text word-to-use-in-handler avar-id amenn
+ambee copy-text captured-value-keyframe-start-avar-id fenambee avar-id amennfen dimen-transform-matrix-value-e saved-x-position-for-ballot-avar-id fenambee avar-id amenn amenn
+ambee copy-text captured-value-keyframe-start-avar-id fenambee avar-id amennfen dimen-transform-matrix-value-f saved-y-position-for-ballot-avar-id fenambee avar-id amenn amenn
+----
+move-one-ballot-up:
+ambee copy-text word-to-use-in-handler avar-id amenn
+ambee numeric-increment avar-frame-begin amenn
+ambee numeric-increment avar-frame-end amenn
+ambee copy-text saved-y-position-for-ballot-avar-id fenambee avar-id amenn avar-value-begin amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-end saved-y-position-for-ballot-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen transform-matrix-value-f amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
+move-one-ballot-left:
+ambee copy-text word-to-use-in-handler avar-id amenn
+ambee numeric-increment avar-frame-begin amenn
+ambee numeric-increment avar-frame-end amenn
+ambee copy-text saved-x-position-for-ballot-avar-id fenambee avar-id amenn avar-value-begin amenn
+ambee update-avar-value-end-subtract-distance-to-move amenn
+ambee copy-text avar-value-end saved-x-position-for-ballot-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen transform-matrix-value-e amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
+move-one-ballot-right:
+ambee copy-text word-to-use-in-handler avar-id amenn
+ambee numeric-increment avar-frame-begin amenn
+ambee numeric-increment avar-frame-end amenn
+ambee copy-text saved-x-position-for-ballot-avar-id fenambee avar-id amenn avar-value-begin amenn
+ambee update-avar-value-end-add-distance-to-move amenn
+ambee copy-text avar-value-end saved-x-position-for-ballot-avar-id fenambee avar-id amenn amenn
+ambee put-into-phrase avar-dimen transform-matrix-value-e amenn
+ambee move-one-item-using-elapsed-frames amenn
+----
