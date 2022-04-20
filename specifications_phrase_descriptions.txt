@@ -507,9 +507,11 @@ See the description for b-i-b linewise h-h read h-h from h-h file h-h and h-h us
 -----
 
 description-for-phrase-use-handler-with-each-word-in-phrase:
-This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase. s-n Each time the handler is expanded, the phrase b-i-b word-to-use-in-handler b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the handler needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done. s-n If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read h-h only list). s-n The first operand must be a phrase name that does not change, which means it cannot use any am no-space bee/am no-space enn words.
+This action expands the named handler (which is just a named phrase) multiple times, once for each word in the second phrase. s-n Each time the handler is expanded, the phrase b-i-b word h-h to h-h use h-h in h-h handler b-i-e contains the next word. s-n Nothing is supplied as a result. s-n Instead, the handler needs to store any changes in specified phrases (or in specified files). s-n The content in the second phrase must not change during the time this expansion is being done. s-n If the content in the second phrase begins or ends with a space, the leading and trailing spaces will be removed (even though this content is otherwise treated as a read h-h only list). s-n The first operand must be a phrase name that does not change, which means it cannot use any am no-space bee/am no-space enn words.
 paragraph-next
 Most commonly this action is used to either append multiple items of text to a single phrase, or generate multiple new phrases (which are typically named using the content of the phrase b-i-b word h-h to h-h use h-h in h-h handler b-i-e as part of the phrase name).
+paragraph-next
+Example: If the phrase b-i-e all h-h categories b-i-e contains b-i-b dolphin whale b-i-e and the phrase b-i-b handler h-h for h-h one h-h category b-i-e copies the contents of b-i-b word h-h to h-h use h-h in h-h handler b-i-e to b-i-b category h-h id b-i-e and expands a template that contains the phrase b-i-b category h-h id b-i-e then the code b-i-b use h-h handler h-h with h-h each h-h word h-h in h-h phrase handler h-h for h-h one h-h category all h-h categories b-i-e will generate two phrases, one in which the text b-i-b dolphin b-i-e is inserted at each instance of b-i-b category h-h id b-i-e and the second in which the text b-i-b whale b-i-e is inserted at each instance of b-i-b category h-h id b-i-e no-space .
 -----
 
 description-for-phrase-word-to-use-in-handler:
@@ -519,7 +521,7 @@ This phrase is used with the action b-i-b use-handler-with-each-word-in-phrase b
 description-for-phrase-copy-and-move-attributes-into-xml-tags:
 This action copies the content of the first phrase to the second phrase but with the content of each b-i-b specify b-i-e tag (or b-i-b attribute b-i-e tag) moved inside the preceding XML (or HTML) tag.
 paragraph-next
-Example: If th first phrase contains the text b-i-b &lt;img /&gt;&lt;specify href="image.jpg"&gt;&lt;specify alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
+Example: If the first phrase contains the text b-i-b &lt;img /&gt;&lt;specify href="image.jpg"&gt;&lt;specify alt="image"&gt; b-i-e then the definition of the second phrase will be the text b-i-b &lt;img href="image.jpg" alt="image" /&gt; b-i-e no-space .
 paragraph-next
 This functionality is useful for generating XML and HTML code by using hyphenated phrases such as b-i-b image h-h here specify h-h href image.jpg specify h-h end specify h-h alt image specify h-h end b-i-e no-space . s-n Without this approach the generation of HTML and XML code would require specifying the nesting of the beginning and ending of a tag, such as b-i-b image h-h here h-h begin b-i-e and b-i-b image h-h here h-h end b-i-e no-space .
 -----
