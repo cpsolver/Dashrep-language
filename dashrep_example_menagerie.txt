@@ -1,0 +1,188 @@
+combee
+
+The Dashrep code below generates the following text:
+
+Welcome to our menagerie. We have
+four fish that are wet,
+one cat that is aloof,
+two parrots that are talkative,
+and five rabbits that are cute.
+
+The phrases "db-animal-count-for-animal-id-1" through "db-animal-count-for-animal-id-4" specify the animal counts as integers.  These numbers can come from a database, from an XML file, or from a web server that delivers JSON format.
+
+When the phrase "language-choice" changes from "en" to "fr" the result is the following text:
+
+Bienvenue dans notre m&#233;nagerie. Nous avons
+quatre poissons qui sont humides,
+un chat qui est distant,
+deux perroquets qui sont bavards,
+et cinq lapins qui sont mignons.
+
+Note that in French the translations for "wet," "aloof," "talkative," and "cute" change between singular and plural versions according to whether the animal count is one or more than one.
+
+The comments, keywords, action names, etc. are shown in distinct colors when using the Sublime Text editor with the special files "Dashrep.sublime-settings" and "Dashrep.sublime-syntax".
+
+comenn
+
+
+start-here: ambee expand-text entire-content standard-output amenn ----
+
+language-choice: fr ----
+
+list-of-animal-ids: 3 4 1 2 ----
+
+db-animal-count-for-animal-id-1: 2 ----
+db-animal-count-for-animal-id-2: 5 ----
+db-animal-count-for-animal-id-3: 4 ----
+db-animal-count-for-animal-id-4: 1 ----
+
+entire-content:
+ambee put-into-phrase count-of-animal-types ambee get-count-of-words list-of-animal-ids amenn amenn
+ambee language-choice amennfen words-welcome-and-intro
+ambee wording-for-animal-count fenambee zero-one-multiple ambee count-of-animal-types amenn amenn amenn
+no-space . no-space
+----
+
+wording-for-animal-count-zero:
+ambee language-choice amennfen words-no-pets
+----
+
+wording-for-animal-count-one:
+ambee language-choice amennfen word-just
+ambee generate-all-animal-phrases amenn
+all-animal-phrases
+----
+
+wording-for-animal-count-multiple:
+ambee generate-all-animal-phrases amenn
+new-line
+all-animal-phrases
+----
+
+generate-all-animal-phrases:
+ambee generate-counts-from-integer-to-integer 1 ambee count-of-animal-types amenn list-of-pointers-to-animal-ids amenn
+ambee use-handler-with-each-word-in-phrase handle-one-animal-phrase list-of-pointers-to-animal-ids amenn
+----
+
+handle-one-animal-phrase:
+ambee copy-text word-to-use-in-handler pointer-to-animal-id amenn
+ambee copy-word-at-position list-of-animal-ids animal-id ambee pointer-to-animal-id amenn amenn
+ambee expand-text template-for-one-animal-phrase expanded-one-animal-phrase amenn
+ambee append-text-no-space expanded-one-animal-phrase all-animal-phrases amenn
+----
+
+template-for-one-animal-phrase:
+
+ambee separator-words-if-first fenambee yes-or-no-same-two-words 1 ambee pointer-to-animal-id amenn amennfen and-last fenambee yes-or-no-same-two-words ambee count-of-animal-types amenn ambee pointer-to-animal-id amenn amenn  amenn
+
+ambee language-choice amennfen word-for-number fenambee db-animal-count-for-animal-id fenambee animal-id amenn amenn
+
+ambee language-choice amennfen word-animal-name fenambee singular-or-plural-for-count-category fenambee zero-one-multiple ambee db-animal-count-for-animal-id fenambee animal-id amenn amenn amenn amennfen for-animal-id fenambee animal-id amenn
+
+ambee language-choice amennfen word-that
+
+ambee language-choice amennfen word-is-are fenambee zero-one-multiple ambee db-animal-count-for-animal-id fenambee animal-id amenn amenn amenn
+
+ambee language-choice amennfen words-characteristic fenambee singular-or-plural-for-count-category fenambee zero-one-multiple ambee db-animal-count-for-animal-id fenambee animal-id amenn amenn amenn amennfen for-animal-id fenambee animal-id amenn
+----
+
+singular-or-plural-for-count-category-zero: plural ----
+singular-or-plural-for-count-category-one: singular ----
+singular-or-plural-for-count-category-multiple: plural ----
+
+separator-words-if-first-no-and-last-yes: no-space , delayed-new-line ambee language-choice amennfen word-and ----
+separator-words-if-first-no-and-last-no: no-space , delayed-new-line ----
+separator-words-if-first-yes-and-last-yes: ----
+separator-words-if-first-yes-and-last-no: ----
+
+delayed-new-line: new hyphen-here line ----
+two-spaces: one-space one-space ----
+
+
+combee Language-specific words, English comenn
+
+en-words-welcome-and-intro: Welcome to our menagerie. two-spaces We have ----
+
+en-words-no-pets: no animals at the moment ----
+en-word-that: that ----
+en-word-just: just ----
+en-word-and: and ----
+
+en-word-is-are-zero: are ----
+en-word-is-are-one: is ----
+en-word-is-are-multiple: are ----
+
+en-word-for-number-0: zero ----
+en-word-for-number-1: one ----
+en-word-for-number-2: two ----
+en-word-for-number-3: three ----
+en-word-for-number-4: four ----
+en-word-for-number-5: five ----
+en-word-for-number-6: six ----
+en-word-for-number-7: seven ----
+en-word-for-number-8: eight ----
+en-word-for-number-9: nine ----
+en-word-for-number-10: ten ----
+
+en-word-animal-name-singular-for-animal-id-1: parrot ----
+en-word-animal-name-plural-for-animal-id-1: parrots ----
+en-word-animal-name-singular-for-animal-id-2: rabbit ----
+en-word-animal-name-plural-for-animal-id-2: rabbits ----
+en-word-animal-name-singular-for-animal-id-3: fish ----
+en-word-animal-name-plural-for-animal-id-3: fish ----
+en-word-animal-name-singular-for-animal-id-4: cat ----
+en-word-animal-name-plural-for-animal-id-4: cats ----
+
+en-words-characteristic-singular-for-animal-id-1: talkative ----
+en-words-characteristic-singular-for-animal-id-2: cute ----
+en-words-characteristic-singular-for-animal-id-3: wet ----
+en-words-characteristic-singular-for-animal-id-4: aloof ----
+
+en-words-characteristic-plural-for-animal-id-1: en-words-characteristic-singular-for-animal-id-1 ----
+en-words-characteristic-plural-for-animal-id-2: en-words-characteristic-singular-for-animal-id-2 ----
+en-words-characteristic-plural-for-animal-id-3: en-words-characteristic-singular-for-animal-id-3 ----
+en-words-characteristic-plural-for-animal-id-4: en-words-characteristic-singular-for-animal-id-4 ----
+
+
+combee Language-specific words, French comenn
+
+fr-words-welcome-and-intro: Bienvenue dans notre m&#233;nagerie. two-spaces Nous avons ----
+
+fr-words-no-pets: aucuns animaux a l'heure actuelle ----
+fr-word-that: qui ----
+fr-word-just: juste ----
+fr-word-and: et ----
+
+fr-word-is-are-zero: sont ----
+fr-word-is-are-one: est ----
+fr-word-is-are-multiple: sont ----
+
+fr-word-for-number-0: zero ----
+fr-word-for-number-1: un ----
+fr-word-for-number-2: deux ----
+fr-word-for-number-3: trois ----
+fr-word-for-number-4: quatre ----
+fr-word-for-number-5: cinq ----
+fr-word-for-number-6: six ----
+fr-word-for-number-7: sept ----
+fr-word-for-number-8: huit ----
+fr-word-for-number-9: nuef ----
+fr-word-for-number-10: dix ----
+
+fr-word-animal-name-singular-for-animal-id-1: perroquet ----
+fr-word-animal-name-plural-for-animal-id-1: perroquets ----
+fr-word-animal-name-singular-for-animal-id-2: lapin ----
+fr-word-animal-name-plural-for-animal-id-2: lapins ----
+fr-word-animal-name-singular-for-animal-id-3: poisson ----
+fr-word-animal-name-plural-for-animal-id-3: poissons ----
+fr-word-animal-name-singular-for-animal-id-4: chat ----
+fr-word-animal-name-plural-for-animal-id-4: chats ----
+
+fr-words-characteristic-singular-for-animal-id-1: bavard ----
+fr-words-characteristic-plural-for-animal-id-1: bavards ----
+fr-words-characteristic-singular-for-animal-id-2: mignon ----
+fr-words-characteristic-plural-for-animal-id-2: mignons ----
+fr-words-characteristic-singular-for-animal-id-3: humide ----
+fr-words-characteristic-plural-for-animal-id-3: humides ----
+fr-words-characteristic-singular-for-animal-id-4: distant ----
+fr-words-characteristic-plural-for-animal-id-4: distants ----
