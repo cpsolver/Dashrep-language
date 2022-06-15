@@ -3354,6 +3354,7 @@ template-function-parameterized-yes-or-no-phrase-name
 template-function-parameterized-yes-or-no-phrase-definition-not-empty
 template-function-parameterized-yes-or-no-positive-integer
 template-function-parameterized-yes-or-no-integer
+template-function-parameterized-yes-or-no-positive-real-number
 template-function-parameterized-yes-or-no-real-number
 template-function-parameterized-yes-or-no-phrase-contains-real-numbers
 template-function-parameterized-normalize-calculated-value

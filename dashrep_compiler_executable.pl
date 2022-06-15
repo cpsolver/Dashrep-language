@@ -4783,7 +4783,7 @@ my $storage_item__4839 = 'template-storage-item-prefix' ;
 my $storage_item__4840 = '$storage_item__ no-space' ;
 $global_dashrep_replacement{ $storage_item__4839 } = $storage_item__4840 ;
 my $storage_item__4841 = 'list-of-template-functions' ;
-my $storage_item__4842 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-url template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-folder-name template-function-parameterized-yes-or-no-input-file-exists template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions' ;
+my $storage_item__4842 = 'template-function-dashrep-expand-phrases template-function-handle-endless-loop-encountered template-function-handle-time-limit-exceeded template-function-parameterized-yes-or-no-empty template-function-parameterized-remove-leading-trailing-spaces template-function-parameterized-yes-or-no-phrase-name template-function-parameterized-yes-or-no-phrase-definition-not-empty template-function-parameterized-yes-or-no-positive-integer template-function-parameterized-yes-or-no-integer template-function-parameterized-yes-or-no-positive-real-number template-function-parameterized-yes-or-no-real-number template-function-parameterized-yes-or-no-phrase-contains-real-numbers template-function-parameterized-normalize-calculated-value template-function-parameterized-convert-numeric-text-into-numeric-value template-function-parameterized-convert-numeric-value-into-numeric-text template-function-parameterized-get-list-of-words template-function-parameterized-yes-or-no-valid-url template-function-parameterized-yes-or-no-valid-path template-function-parameterized-yes-or-no-valid-path-prefix template-function-parameterized-yes-or-no-file-name template-function-parameterized-yes-or-no-folder-name template-function-parameterized-yes-or-no-input-file-exists template-function-parameterized-open-file-for-reading template-function-parameterized-open-file-for-appending template-function-point-to-words template-function-point-to-words-in-operand-one template-function-point-to-words-in-operand-two template-function-point-to-words-in-operand-three template-function-remove-extra-spaces template-function-get-count-of-words template-function-get-word-at-position template-function-open-trace-output-file-if-not-open list-of-template-functions-for-requested-actions' ;
 $global_dashrep_replacement{ $storage_item__4841 } = $storage_item__4842 ;
 my $storage_item__4843 = 'required-operand-count-for-action-append-multiple-from-phrases-named-in-pattern' ;
 my $storage_item__4844 = '2' ;
@@ -22256,6 +22256,21 @@ sub function_parameterized__yes_or_no_integer( ) {
 my $local_text ;
 $local_text = $_[ 0 ] ;
 if ( $local_text =~ /^-?[0-9]+$/ ) {
+return $global_yes ;
+} else {
+return $global_no ;
+}
+# end of function
+}
+
+
+#------------------------------------------------------------
+# function_parameterized__yes_or_no_positive_real_number
+
+sub function_parameterized__yes_or_no_positive_real_number( ) {
+my $local_text ;
+$local_text = $_[ 0 ] ;
+if ( $local_text =~ /^([0-9]+)(\.[0-9]*)?$/ ) {
 return $global_yes ;
 } else {
 return $global_no ;
