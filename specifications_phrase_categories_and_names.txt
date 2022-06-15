@@ -135,6 +135,7 @@ numeric-decrement
 numeric-integer
 numeric-absolute
 numeric-odd-or-even
+numeric-square-root
 numeric-sine
 numeric-cosine
 numeric-logarithm-base-e

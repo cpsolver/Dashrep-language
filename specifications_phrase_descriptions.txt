@@ -425,6 +425,10 @@ description-for-phrase-numeric-vectors-from-delta-values-calculate-distances:
 This action gets the list of space h-h delimited delta X integer numbers in the definition of the first operand and gets the list of space h-h delimited delta Y integer numbers in the definition of the second operand, and calculates a list of integer distances that are put into the definition of the third operand. s-n The numbers can be positive or negative integers. s-n Although decimal numbers can be supplied, the resulting values are truncated to integer values, so the decimal portion is lost. s-n Floating-point numbers are not recognized. s-n As applies to all Dashrep numeric calculations, each calculation converts the text h-h based digits into binary values, and the result is converted back into text-based digits, so the calculations are slow compared to the speed of most programming languages.
 ----
 
+description-for-phrase-numeric-square-root:
+This action calculates the square root of the specified number, and supplies the result. s-n If the supplied value is negative, an error is indicated.
+-----
+
 description-for-phrase-numeric-logarithm-base-10:
 This action calculates the base-10 logarithm of the specified number, and supplies the result. s-n The number is assumed to be a positive number. s-n If the supplied value is a very small number less than one (typically less than 0.000001) then the result is a large negative number such as -999999 no-space .
 -----
